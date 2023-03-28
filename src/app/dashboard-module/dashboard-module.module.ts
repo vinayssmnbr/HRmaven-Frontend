@@ -1,21 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { MainComponent } from './main/main.component';
+import { DashboardContentComponent } from './main/dashboard-content/dashboard-content.component';
 
 
 
 @NgModule({
   declarations: [
+   
+  
     DashboardComponent,
-    HeaderComponent,
-    SidebarComponent,
-    MainComponent
+           HeaderComponent,
+           SidebarComponent,
+           DashboardContentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DashboardModuleRoutingModule
   ]
 })
 export class DashboardModuleModule { }
