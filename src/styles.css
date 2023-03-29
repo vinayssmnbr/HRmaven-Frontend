@@ -1,39 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Ubuntu+Condensed&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
 
 *,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  outline: none;
-  background: transparent;
-  list-style: none;
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-a {
-  cursor: pointer;
-}
-
-html {
-  height: 100%;
-  scroll-behavior: smooth;
+:root {
+    --primary-color: #0602A6;
 }
 
 body {
-  font-size: 16px;
-  min-height: 100%;
-  line-height: 1.4;
-  /* color: var(--color-black-light); */
-  background: #fff;
-  font-family: 'Ubuntu', sans-serif;
-  /* overflow-y: hidden; */
-
+    font-family: 'Outfit', sans-serif;
 }
 
-[class*="col-"] {
-  /* float: left; */
-  /* padding: 0 15px; */
-}

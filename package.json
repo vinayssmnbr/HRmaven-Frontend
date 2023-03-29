@@ -34,5 +34,17 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
-  }
+  },
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/VenturePact/outgrowx/hr_management_front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/VenturePact/outgrowx/hr_management_front-end/issues"
+  },
+  "homepage": "https://gitlab.com/VenturePact/outgrowx/hr_management_front-end#readme"
 }
