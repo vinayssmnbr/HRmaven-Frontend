@@ -76,7 +76,7 @@
         <div class="right-side">
             <form [formGroup]="sigupform">
                 <h2>Sign up to HRMaven</h2>
-                <p>Already have an account? <a routerLink="/LandingModule/login" routerLinkActive="active">Login</a> here</p>
+                <p>Already have an account? <a routerLink="/login" routerLinkActive="active">Login</a> here</p>
                 <div class="field name-field">
                     <div class="input-field">
                         <label for="name">Organization Name</label>
@@ -90,7 +90,7 @@
                         <span *ngIf="email && email.invalid && email.touched "><i
                             class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
                     </div>
-                    
+
                 </div>
                 <div class="field create-password">
                     <div class="input-field">
@@ -100,7 +100,7 @@
                             <span *ngIf="password && password.invalid && password.touched "><i
                             class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password must be atleast 8 characters</span>
                     </div>
-                    
+
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
                     <i class="fa {{ showPasswordIcon }}"></i>

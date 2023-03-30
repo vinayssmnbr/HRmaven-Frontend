@@ -11,8 +11,6 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
 
 @NgModule({
   declarations: [
-   
-  
     DashboardComponent,
            HeaderComponent,
            SidebarComponent,
