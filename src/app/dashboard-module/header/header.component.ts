@@ -21,11 +21,11 @@ greeting:any
 
     const currentHour = today.getHours();
     if (currentHour < 12) {
-      this.greeting = "Good morning";
+      this.greeting = "Good Morning";
     } else if (currentHour < 18) {
-      this.greeting = "Good afternoon";
+      this.greeting = "Good AFternoon";
     } else {
-      this.greeting = "Good evening";
+      this.greeting = "Good Evening";
     }
 
 
