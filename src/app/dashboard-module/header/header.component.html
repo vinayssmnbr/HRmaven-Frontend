@@ -5,9 +5,11 @@
     <p>January 16, 2023</p>
     </div>
     <div class="content-right">
-      <input type="search" placeholder="Search.." class="searchbox">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
+      <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>
+      <div class="dropdown" id="dropdown">
       <i class="fa-solid fa-bell"></i>
+      </div>
     <img src="./assets/images/clickup60_4.png" alt="" class="header-icon">
     </div>
     </div>
