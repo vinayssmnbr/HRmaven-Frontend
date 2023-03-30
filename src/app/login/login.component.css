@@ -1,7 +1,7 @@
 .row {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 .left-side {
@@ -15,6 +15,9 @@
     margin-bottom: 18px;
     width: 546px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -95,12 +98,15 @@
 ===========================================*/
 
 .right-side {
+    width: calc(100% - 546px);
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
     padding-right: 35px;
-    padding-top: 82px;
+    margin-top: 82px;
 }
 
 form h2 {
@@ -144,8 +150,9 @@ form .input-field {
     border: 1px solid #d1d1d1;
     margin-top: 6px;
 }
-.input-field label{
-color: #333333;
+
+.input-field label {
+    color: #333333;
 }
 
 
@@ -270,12 +277,21 @@ color: #333333;
     cursor: pointer;
 }
 
+.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 /*    Slider  card*/
+
 .slider {
+
     display: flex;
     width: 500%;
     gap: 150px;
-    margin-left: 83px;
+    margin-left: 75px;
+    padding-bottom: 80px;
 }
 
 .slider input {
@@ -285,10 +301,10 @@ color: #333333;
 .navigation_manual {
     position: absolute;
     width: 530px;
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 .manual_btn {
@@ -297,6 +313,7 @@ color: #333333;
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
+    margin-top: -100px;
 }
 
 .manual_btn:not(:last-child) {
