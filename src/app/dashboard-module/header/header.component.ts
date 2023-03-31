@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   date: any;
-greeting:any
-  constructor() {
-  }
+  greeting: any;
+  constructor() {}
 
   ngOnInit() {
     const today = new Date();
@@ -26,9 +25,12 @@ greeting:any
       this.greeting = "Good AFternoon";
     } else {
       this.greeting = "Good Evening";
+      this.greeting = 'GOOD MORNING';
+    } else if (currentHour < 17) {
+      this.greeting = 'GOOD AFTERNOON';
+    } else {
+      this.greeting = 'GOOD EVENING';
+
     }
-
-
-}
-
+  }
 }
