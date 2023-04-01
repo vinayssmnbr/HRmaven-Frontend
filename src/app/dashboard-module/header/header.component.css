@@ -1,18 +1,17 @@
 
 #header{
-  /* display: flex; */
-  width: calc(100%-223px);
-  background: #f9f9f9;
+  width: calc(100% - 223px);
+  background: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09);
+  position: fixed;
+  margin-left:223px;
 }
 
 .content{
-  margin-left: 223px;
   padding-top: 17px;
   padding-left: 30px;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
   padding-bottom: 16px;
 }
 #header .content-left h2{
