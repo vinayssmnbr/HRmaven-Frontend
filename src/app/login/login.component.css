@@ -562,7 +562,7 @@ form .input-field {
   cursor: pointer;
 }
 
-/* -----------------------Forget Reset Send Email------------------------------------ */  
+/* -----------------------Forget Reset Send Email------------------------------------ */
 .forget_email_send_content {
   visibility: hidden;
   position: absolute;
@@ -584,7 +584,7 @@ height: 402px;
 border-radius: 17px;
 text-align: center;
 }
-.forget_content .close i{
+.forget_content .icon i{
   padding-left: 200px;
   position: absolute;
   padding-top: 34px;
