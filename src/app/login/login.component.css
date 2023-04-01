@@ -456,15 +456,15 @@ form .input-field {
 }
 
 .forget_modal {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .forget_modal .modal {
@@ -548,16 +548,68 @@ form .input-field {
 }
 
 .modal_content button {
-    padding: 9px 0px;
-    background: #2F2C9F;
-    border-radius: 8px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 140%;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    margin-top: 20px;
-    cursor: pointer;
+  padding: 9px 0px;
+  background: #2F2C9F;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 140%;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* -----------------------Forget Reset Send Email------------------------------------ */  
+.forget_email_send_content {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .8);
+  transition: opacity linear .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forget_content {
+background-color: #FAFAFA;
+width: 502px;
+height: 402px;
+border-radius: 17px;
+text-align: center;
+}
+.forget_content .close i{
+  padding-left: 200px;
+  position: absolute;
+  padding-top: 34px;
+  color: #B4B4B4;
+  cursor: pointer;
+}
+.forget_content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.forget_content h1{
+  font-weight: 400;
+  font-size: 20px;
+  padding-top: 35px;
+  color: #222222;
+  text-align: center;
+}
+.forget_content p{
+  font-size: 14px;
+  color: #222222;
+  width: 326px;
+  padding-top: 16px;
+}
+form.ng-invalid.ng-touched #submit1 {
+  cursor: not-allowed;
 }

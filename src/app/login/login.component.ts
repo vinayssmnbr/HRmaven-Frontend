@@ -46,6 +46,9 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
   toggleForgot(){
       this.Forgotshow= !this.Forgotshow;
   }
+  toggleForgot1(){
+    this.Forgotshow= !this.Forgotshow;
+}
 
   loginuser(data: any){
     this.userService.users(data).subscribe((res:any)=>{
@@ -59,7 +62,9 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
       document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
     })
   }
-
+  get email(){
+    return this.forgotPassword.get("email");
+  }
 
 
 
