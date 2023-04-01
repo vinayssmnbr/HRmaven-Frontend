@@ -31,11 +31,16 @@ constructor(public fb1:FormBuilder){}
   toggleForgot(){
       this.Forgotshow= !this.Forgotshow;
   }
+  toggleForgot1(){
+    this.Forgotshow= !this.Forgotshow;
+}
 
   onSubmit(data:any){
 
   }
-
+  get email(){
+    return this.forgotPassword.get("email");
+  }
 
 }
 

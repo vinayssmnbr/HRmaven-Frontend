@@ -171,6 +171,7 @@ form .input-field {
   margin-left: 133px;
   text-decoration: none;
   color: var(--primary-color);
+  cursor: pointer;
 }
 
 .check-text .check_box {
@@ -412,8 +413,6 @@ form .input-field {
   height: 402px;
   border-radius: 17px;
   text-align: center;
-
-
 }
 
 .password_form .password_image {
@@ -450,7 +449,7 @@ form .input-field {
   border: none;
 }
 
-/* forgot modal */
+/* ----------------------forgot modal------------------------- */
 
 .forget_modal.close {
   visibility:hidden;
@@ -469,9 +468,6 @@ form .input-field {
   display: flex;
   justify-content: center;
   align-items: center;
-
-
-
 }
 
 
@@ -545,7 +541,6 @@ form .input-field {
   width: 100%;
   border: 1px solid #B4B4B4;
   border-radius: 8px;
-  /* color: #B4B4B4; */
 }
 
 .modal_content input[type="email"]::placeholder {
@@ -569,4 +564,57 @@ color: #B4B4B4;
   border: none;
   outline: none;
   margin-top: 20px;
+  cursor: pointer;
+}
+
+/* -----------------------Forget Reset Send Email------------------------------------ */  
+.forget_email_send_content {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .8);
+  transition: opacity linear .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forget_content {
+background-color: #FAFAFA;
+width: 502px;
+height: 402px;
+border-radius: 17px;
+text-align: center;
+}
+.forget_content .close i{
+  padding-left: 200px;
+  position: absolute;
+  padding-top: 34px;
+  color: #B4B4B4;
+  cursor: pointer;
+}
+.forget_content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.forget_content h1{
+  font-weight: 400;
+  font-size: 20px;
+  padding-top: 35px;
+  color: #222222;
+  text-align: center;
+}
+.forget_content p{
+  font-size: 14px;
+  color: #222222;
+  width: 326px;
+  padding-top: 16px;
+}
+form.ng-invalid.ng-touched #submit1 {
+  cursor: not-allowed;
 }
