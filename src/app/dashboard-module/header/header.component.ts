@@ -22,7 +22,7 @@ export class HeaderComponent {
     if (currentHour < 12) {
       this.greeting = "Good Morning";
     } else if (currentHour < 18) {
-      this.greeting = "Good AFternoon";
+      this.greeting = "Good Afternoon";
     } else {
       this.greeting = "Good Evening";
     }
