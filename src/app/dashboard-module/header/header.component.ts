@@ -20,11 +20,11 @@ export class HeaderComponent {
 
     const currentHour = today.getHours();
     if (currentHour < 12) {
-      this.greeting = 'GOOD MORNING';
-    } else if (currentHour < 17) {
-      this.greeting = 'GOOD AFTERNOON';
+      this.greeting = "Good Morning";
+    } else if (currentHour < 18) {
+      this.greeting = "Good Afternoon";
     } else {
-      this.greeting = 'GOOD EVENING';
+      this.greeting = "Good Evening";
     }
   }
 }
