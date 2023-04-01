@@ -10,7 +10,6 @@
     gap: 10px;
     margin-left: 30px;
     padding-top: 30px;
-    /* position: fixed; */
 }
 
 .employe_input input {
@@ -24,6 +23,7 @@
     color: black;
     outline: none;
     font-size: 14px;
+    font-family: 'Outfit';
 }
 
 .search_btn {
@@ -35,6 +35,7 @@
     color: #fff;
     cursor: pointer;
     font-size: 14px;
+    font-family: 'Outfit';
 }
 
 .search_btn:hover {
@@ -45,6 +46,60 @@
     color: #555555;
     font-size: 14px;
 }
+
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    z-index: 1;
+    outline: none;
+  }
+  select:optional{
+    padding-left: 10px;
+  }  
+  .select {
+    display: grid;
+    position: absolute;
+    right: 20px;
+    grid-template-areas: "select";
+    align-items: center;
+    width: 190px;
+    height: 44px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #EFEFF8;
+  }
+  .select select,
+  .select::after {
+    grid-area: select;
+  }
+  .select::after {
+    content: "";
+    justify-self: end;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: #777;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+   margin-right: 10px;
+  }
+
+
+
+
+
+
+
+
+
+/* table */
 
 .table_data {
     width: 100%;
@@ -58,7 +113,7 @@
 }
 
 table {
-    border-spacing: 0 10px;
+    border-spacing: 2px 5px;
     background-color: #EFEFF8;
 }
 
@@ -103,10 +158,11 @@ td {
     top: -20px;
 }
 
-.action_button{
+.action_button {
     display: flex;
     gap: 16px;
 }
+
 .action_btn {
     display: flex;
     align-items: center;
@@ -119,7 +175,7 @@ input[type="radio"] {
     cursor: pointer;
 }
 
- 
+
 .custom-radio {
     appearance: none;
     -webkit-appearance: none;
@@ -135,16 +191,20 @@ input[type="radio"] {
 #outline {
     outline: 2px solid #e8e8e8;
 }
+
 #outline1 {
     outline: 2px solid #e8e8e8;
 }
+
 #outline1:hover {
     outline-color: #29A74C;
 }
+
 #outline:hover {
     outline-color: #FA5D5D;
 }
-#outline1:checked{
+
+#outline1:checked {
     outline-color: #29A74C;
     background-color: #29A74C;
     animation: outline-checked1;
@@ -153,12 +213,15 @@ input[type="radio"] {
     animation-direction: alternate;
     animation-timing-function: linear;
 }
-#outline1:checked + label{
-     color: #29A74C;
-    }
-#outline:checked + label{
-        color: #FA5D5D;
-       }
+
+#outline1:checked+label {
+    color: #29A74C;
+}
+
+#outline:checked+label {
+    color: #FA5D5D;
+}
+
 #outline:checked {
     outline-color: #FA5D5D;
     background-color: #FA5D5D;
@@ -178,6 +241,7 @@ input[type="radio"] {
         outline-offset: -0.2rem;
     }
 }
+
 @keyframes outline-checked1 {
     0% {
         outline-offset: 0;
