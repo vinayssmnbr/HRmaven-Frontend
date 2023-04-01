@@ -63,7 +63,7 @@ select {
   }
   select:optional{
     padding-left: 10px;
-  }  
+  }
   .select {
     display: grid;
     position: absolute;
@@ -108,7 +108,7 @@ select {
 
 .table_text {
     width: 100%;
-    padding-left: 30px;
+    padding: 0 30px;
 
 }
 
