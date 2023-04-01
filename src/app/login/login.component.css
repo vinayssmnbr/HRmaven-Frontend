@@ -401,6 +401,7 @@ form .input-field {
   transition: opacity linear .2s;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .password_form {
@@ -411,6 +412,7 @@ form .input-field {
   height: 402px;
   border-radius: 17px;
   text-align: center;
+
 
 }
 
@@ -448,6 +450,8 @@ form .input-field {
   border: none;
 }
 
+/* forgot modal */
+
 .forget_modal.close {
   visibility:hidden;
 }
@@ -472,8 +476,7 @@ form .input-field {
 
 
 .forget_modal .modal {
-  width: 600px;
-  height: 500px;
+
   z-index: 1;
   background-color: rgba(250, 250, 250, 1);
   border-radius: 16px;
@@ -496,8 +499,11 @@ form .input-field {
 }
 
 .modal_content {
-  padding: 100px 100px 0 100px;
+  padding: 100px 100px 100px 100px;
   text-align: center;
+  display:flex;
+  flex-direction:column;
+  justify-content: start;
 }
 
 .modal_content h1 {
@@ -520,6 +526,7 @@ form .input-field {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin:0px;
 }
 
 .modal_content label {
