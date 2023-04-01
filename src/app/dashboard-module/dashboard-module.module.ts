@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardContentComponent } from './main/dashboard-content/dashboard-content.component';
+import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 
 
 
@@ -14,7 +15,8 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
     DashboardComponent,
            HeaderComponent,
            SidebarComponent,
-           DashboardContentComponent
+           DashboardContentComponent,
+           LeavesContentComponent
   ],
   imports: [
     CommonModule,

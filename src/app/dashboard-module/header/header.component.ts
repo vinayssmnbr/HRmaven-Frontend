@@ -25,12 +25,6 @@ export class HeaderComponent {
       this.greeting = "Good AFternoon";
     } else {
       this.greeting = "Good Evening";
-      this.greeting = 'GOOD MORNING';
-    } else if (currentHour < 17) {
-      this.greeting = 'GOOD AFTERNOON';
-    } else {
-      this.greeting = 'GOOD EVENING';
-
     }
   }
 }
