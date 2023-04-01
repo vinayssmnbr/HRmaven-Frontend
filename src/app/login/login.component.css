@@ -1,21 +1,23 @@
 .row {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: start;
 }
 
 .left-side {
-  background-color: var(--primary-color);
-  margin-top: 24px;
-  border-radius: 12px;
-  padding-bottom: 18px;
-  margin-left: 21px;
-  margin-bottom: 18px;
-  height: calc(100vh - 48px);
-  margin-bottom: 18px;
-  width: 546px;
-  overflow: hidden;
+    background-color: var(--primary-color);
+    margin-top: 24px;
+    border-radius: 12px;
+    padding-bottom: 18px;
+    margin-left: 21px;
+    margin-bottom: 18px;
+    height: calc(100vh - 48px);
+    margin-bottom: 18px;
+    width: 546px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -96,12 +98,15 @@
 ===========================================*/
 
 .right-side {
-  display: flex;
+    width: calc(100% - 546px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form {
-  padding-right: 35px;
-  padding-top: 82px;
+    padding-right: 35px;
+    margin-top: 82px;
 }
 
 form h2 {
@@ -147,7 +152,7 @@ form .input-field {
 }
 
 .input-field label {
-  color: #333333;
+    color: #333333;
 }
 
 
@@ -272,12 +277,21 @@ form .input-field {
   cursor: pointer;
 }
 
+.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 /*    Slider  card*/
+
 .slider {
-  display: flex;
-  width: 500%;
-  gap: 150px;
-  margin-left: 83px;
+
+    display: flex;
+    width: 500%;
+    gap: 150px;
+    margin-left: 75px;
+    padding-bottom: 80px;
 }
 
 .slider input {
@@ -285,20 +299,21 @@ form .input-field {
 }
 
 .navigation_manual {
-  position: absolute;
-  width: 530px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: absolute;
+    width: 530px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .manual_btn {
-  border: 1px solid #fff;
-  padding: 4px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 1s;
+    border: 1px solid #fff;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-top: -100px;
 }
 
 .manual_btn:not(:last-child) {
