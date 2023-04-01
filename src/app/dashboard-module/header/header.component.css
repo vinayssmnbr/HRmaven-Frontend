@@ -32,7 +32,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  /* margin-left: 400px; */
   gap: 20px;
   cursor: pointer;
   margin-right: 20px;
@@ -58,26 +57,7 @@ input[type='search']{
   border: 1px solid #E0E0E0;
   border-radius: 6px;
 }
-.content-right span{
-  background: #2F2C9F;
-  width: 35px;
-  height: 32px;
-  padding: 6px 9px;
-  border-radius: 0px 6px 6px 0px;
-  position: absolute;
-  right: 11%;
-}
-.content-right .fa-bell{
-  margin-left: 8px;
-  color: #111111;
-  border-radius: 50%;
-  background:#EAEAF5;
-  /* position: absolute; */
-  width: 38px;
-  height: 38px;
-  top: 2.8%;
-  right: 5%;
-}
+
 .fa-magnifying-glass{
   border-radius: 50%;
   background: #EAEAF5 ;
@@ -90,5 +70,42 @@ input[type='search']{
   justify-content: center;
   align-items: center;
 }
+
+.icon-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: #333333;
+  background: #dddddd;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.icon-button:hover {
+  cursor: pointer;
+}
+
+.icon-button:active {
+  background: #cccccc;
+}
+
+.icon-button__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 7px;
+  height: 7px;
+  background: red;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
 
 
