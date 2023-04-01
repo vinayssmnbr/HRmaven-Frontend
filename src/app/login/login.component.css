@@ -401,6 +401,7 @@ form .input-field {
     transition: opacity linear .2s;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .password_form {
