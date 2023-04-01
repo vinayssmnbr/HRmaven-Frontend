@@ -1,0 +1,105 @@
+.forget-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+.forget-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.forget-text h1{
+    font-size: 24px;
+    color: #222222;
+    font-weight: 400;
+}
+.forget-text p{
+    color: #666666;
+    font-size: 16px;
+    padding-top: 10px;
+}
+.input-field {
+    position: relative;
+    width: 400px;
+    height: 50px;
+    margin-bottom: 45px;
+    margin-top: 30px;
+}
+
+.name-field {
+    margin-top: 24px;
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    border: 1px solid #d1d1d1;
+    margin-top: 6px;
+}
+
+.input-field label {
+    color: #333333;
+}
+
+
+.error-text {
+    padding-top: 10px;
+}
+
+
+.button input {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 22px;
+}
+
+.button input:hover {
+    background-color: #0d0ae4;
+}
+form.ng-invalid.ng-touched #submit {
+    cursor: not-allowed;
+}
+
+.password-toggle i {
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 360px;
+    color: #ddd;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.input-field label {
+    color:
+        #333333 !important;
+    font-size: 14px;
+}
+
+.input-field ::placeholder {
+    color:
+        #B4B4B4;
+}
+
+.field span {
+    color: red;
+    font-size: 14px;
+}
+
+.field span i {
+    padding-right: 10px;
+
+}

@@ -12,6 +12,11 @@ constructor(public fb1:FormBuilder){}
     password : new FormControl('',[Validators.required,Validators.minLength(5)])
   })
 
+  forgotPassword = new FormGroup({
+    email : new FormControl('',[ Validators.required,Validators.email]),
+    
+  })
+
   showPassword = false;
   showPasswordIcon = 'fa-eye';
   Forgotshow=false;
