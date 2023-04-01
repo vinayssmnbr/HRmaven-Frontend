@@ -6,9 +6,9 @@
         <p class="forgot_illustration"><img src="assets/images/lock.png"></p>
         <h1>Forgot Password?</h1>
         <h2>We’ll send you a verification mail. Kindly check your inbox.</h2>
-        <form>
+        <form [formGroup]="forgotPassword" (ngSubmit)="onSubmit(forgotPassword.value)">
           <label for="Email">Email</label>
-          <input type="email" placeholder="Enter your email address">
+          <input type="email" placeholder="Enter your email address"  formControlName="email">
           <button type="submit">Send Verification Email</button>
         </form>
       </div>
