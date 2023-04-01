@@ -234,7 +234,7 @@ form .input-field {
   border-radius: 8px;
 }
 
-.google p {
+.google a {
   font-size: 14px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -268,7 +268,7 @@ form .input-field {
   background-color: #ededed79;
 }
 
-.facebook p {
+.facebook a {
   color: #3A3A3A;
   font-size: 14px;
   padding-left: 5px;
