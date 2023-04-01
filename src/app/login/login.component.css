@@ -22,79 +22,79 @@
 
 
 .left-side .logo-image {
-    margin-top: 78px;
-    padding-left: 83px;
+  margin-top: 78px;
+  padding-left: 83px;
 }
 
 .left-side .title {
-    padding-left: 78px;
-    padding-top: 29px;
-    font-family: 'Outfit';
-    font-size: 36px;
-    font-weight: 500;
-    color: #FFFFFF;
-    width: 80%;
+  padding-left: 78px;
+  padding-top: 29px;
+  font-family: 'Outfit';
+  font-size: 36px;
+  font-weight: 500;
+  color: #FFFFFF;
+  width: 80%;
 }
 
 .left-side .title_para {
-    padding-top: 12px;
-    padding-left: 78px;
-    font-size: 18px;
-    color: #FAFAFA;
-    width: 85%;
-    font-family: 'Outfit';
-    font-weight: 400;
+  padding-top: 12px;
+  padding-left: 78px;
+  font-size: 18px;
+  color: #FAFAFA;
+  width: 85%;
+  font-family: 'Outfit';
+  font-weight: 400;
 }
 
 .card {
-    width: 392px;
-    height: 197px;
-    background-color: #1D38A6;
-    margin-top: 56px;
-    border-radius: 16px;
-    transition: 2s;
+  width: 392px;
+  height: 197px;
+  background-color: #1D38A6;
+  margin-top: 56px;
+  border-radius: 16px;
+  transition: 2s;
 
 }
 
 .card .card-text {
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    color: #FAFAFA;
-    font-family: 'Outfit';
-    font-weight: 400;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #FAFAFA;
+  font-family: 'Outfit';
+  font-weight: 400;
 }
 
 .profile {
-    display: flex;
-    gap: 12px;
-    margin-left: 30px;
-    margin-top: 34px;
+  display: flex;
+  gap: 12px;
+  margin-left: 30px;
+  margin-top: 34px;
 }
 
 .profile img {
-    width: 35px;
-    height: 35px;
+  width: 35px;
+  height: 35px;
 }
 
 .profile h5 {
-    color: #FFFFFF;
-    font-size: 14px;
-    font-family: 'Outfit';
-    font-weight: 700;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: 'Outfit';
+  font-weight: 700;
 }
 
 .profile p {
-    font-size: 12px;
-    color: #FFFFFF;
-    font-family: 'Outfit';
-    font-weight: 400;
+  font-size: 12px;
+  color: #FFFFFF;
+  font-family: 'Outfit';
+  font-weight: 400;
 }
 
 /* =======================================
 
                 right-side
-  
+
 ===========================================*/
 
 .right-side {
@@ -110,45 +110,45 @@ form {
 }
 
 form h2 {
-    font-size: 30px;
-    color: #333333;
-    font-weight: 500;
-    font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  color: #333333;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
 }
 
 form p {
-    padding-top: 6px;
-    font-size: 14px;
-    color: #999999;
-    font-family: 'Outfit';
+  padding-top: 6px;
+  font-size: 14px;
+  color: #999999;
+  font-family: 'Outfit';
 }
 
 form p a {
-    text-decoration: none;
-    color: var(--primary-color);
+  text-decoration: none;
+  color: var(--primary-color);
 }
 
 form .input-field {
-    position: relative;
-    width: 400px;
-    height: 50px;
-    margin-bottom: 40px;
-    margin-top: 24px;
+  position: relative;
+  width: 400px;
+  height: 50px;
+  margin-bottom: 40px;
+  margin-top: 24px;
 }
 
 .name-field {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .input-field input {
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    padding: 0 15px;
-    border: 1px solid #d1d1d1;
-    margin-top: 6px;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  border: 1px solid #d1d1d1;
+  margin-top: 6px;
 }
 
 .input-field label {
@@ -157,124 +157,124 @@ form .input-field {
 
 
 .check-text {
-    display: flex;
-    gap: 5px;
-    margin-top: 45px !important;
+  display: flex;
+  gap: 5px;
+  margin-top: 45px !important;
 }
 
 .checkbox-text {
-    padding-top: 1px;
-    padding-left: 5px;
+  padding-top: 1px;
+  padding-left: 5px;
 }
 
 .check-text .forgot-text {
-    margin-left: 133px;
-    text-decoration: none;
-    color: var(--primary-color);
+  margin-left: 133px;
+  text-decoration: none;
+  color: var(--primary-color);
 }
 
 .check-text .check_box {
-    width: 15px;
-    height: 15px;
-    margin-top: 5px;
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
 }
 
 .button input {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 400;
-    background-color: var(--primary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 22px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 22px;
 }
 
 .button input:hover {
-    background-color: #0d0ae4;
+  background-color: #0d0ae4;
 }
 
 .or_bar {
-    text-align: center;
+  text-align: center;
 }
 
 .or_bar::before {
-    content: "";
-    display: block;
-    width: 180px;
-    height: 1px;
-    background: #999999;
-    left: 0;
-    top: 30%;
-    position: absolute
+  content: "";
+  display: block;
+  width: 180px;
+  height: 1px;
+  background: #999999;
+  left: 0;
+  top: 30%;
+  position: absolute
 }
 
 .or_bar::after {
-    content: "";
-    display: block;
-    width: 180px;
-    height: 1px;
-    background: #999999;
-    right: 0;
-    top: 30%;
-    position: absolute;
+  content: "";
+  display: block;
+  width: 180px;
+  height: 1px;
+  background: #999999;
+  right: 0;
+  top: 30%;
+  position: absolute;
 }
 
 .social_btn {
-    display: flex;
-    gap: 10px;
-    margin-top: -45px;
+  display: flex;
+  gap: 10px;
+  margin-top: -45px;
 
 }
 
 .google {
-    display: flex;
-    width: 100%;
-    background-color:
-        #EDEDED;
-    border-radius: 8px;
+  display: flex;
+  width: 100%;
+  background-color:
+    #EDEDED;
+  border-radius: 8px;
 }
 
 .google p {
-    font-size: 14px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    color: #3A3A3A;
-    cursor: pointer;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  color: #3A3A3A;
+  cursor: pointer;
 }
 
 .google_logo {
-    width: 40px;
-    height: 30px;
-    margin-top: 5px;
+  width: 40px;
+  height: 30px;
+  margin-top: 5px;
 }
 
 .facebook_logo {
-    width: 30px;
-    height: 20px;
-    margin-top: 10px;
+  width: 30px;
+  height: 20px;
+  margin-top: 10px;
 }
 
 .facebook {
-    display: flex;
-    width: 100%;
-    background-color:
-        #EDEDED;
-    border-radius: 8px;
+  display: flex;
+  width: 100%;
+  background-color:
+    #EDEDED;
+  border-radius: 8px;
 }
 
 .facebook:hover,
 .google:hover {
-    background-color: #ededed79;
+  background-color: #ededed79;
 }
 
 .facebook p {
-    color: #3A3A3A;
-    font-size: 14px;
-    padding-left: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    cursor: pointer;
+  color: #3A3A3A;
+  font-size: 14px;
+  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
 }
 
 .logo {
@@ -295,7 +295,7 @@ form .input-field {
 }
 
 .slider input {
-    display: none;
+  display: none;
 }
 
 .navigation_manual {
@@ -317,72 +317,72 @@ form .input-field {
 }
 
 .manual_btn:not(:last-child) {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 .manual_btn:hover {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 #radio1:checked~.first {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 #radio2:checked~.first {
-    margin-left: -20%;
+  margin-left: -20%;
 }
 
 #radio3:checked~.first {
-    margin-left: -40%;
+  margin-left: -40%;
 }
 
 #radio4:checked~.first {
-    margin-left: -60%;
+  margin-left: -60%;
 }
 
 .navigation_auto {
-    position: absolute;
-    display: flex;
-    width: 800px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 360px;
-    display: none;
+  position: absolute;
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 360px;
+  display: none;
 }
 
 .navigation_auto div {
-    border: 2px solid #ddd;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
+  border: 2px solid #ddd;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
 }
 
 .navigation_auto div:not(:last-child) {
-    margin-right: 40px;
+  margin-right: 40px;
 }
 
 #radio1:checked~.navigation_auto .auto-btn1 {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 #radio2:checked~.navigation_auto .auto-btn2 {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 #radio3:checked~.navigation_auto .auto-btn3 {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 #radio4:checked~.navigation_auto .auto-btn4 {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 .password-toggle i {
-    position: absolute;
-    margin-top: -46px;
-    margin-left: 360px;
-    color: #B4B4B4;
-    cursor: pointer;
+  position: absolute;
+  margin-top: -46px;
+  margin-left: 360px;
+  color: #B4B4B4;
+  cursor: pointer;
 }
 
 
@@ -405,46 +405,168 @@ form .input-field {
 }
 
 .password_form {
-    margin: 150px auto;
-    background-color: #FAFAFA;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 502px;
-    height: 402px;
-    border-radius: 17px;
-    text-align: center;
+  margin: 150px auto;
+  background-color: #FAFAFA;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 502px;
+  height: 402px;
+  border-radius: 17px;
+  text-align: center;
+
 
 }
 
 .password_form .password_image {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .password_text h1 {
-    font-size: 18px;
-    color: #222222;
-    font-weight: 400;
-    padding-top: 29px;
+  font-size: 18px;
+  color: #222222;
+  font-weight: 400;
+  padding-top: 29px;
 }
 
 .password_text p {
-    color: #565656;
-    font-size: 16px;
-    padding-top: 8px;
+  color: #565656;
+  font-size: 16px;
+  padding-top: 8px;
 }
 
 .password_text .try_again {
-    margin-top: 39px;
-    width: 108px;
-    height: 40px;
-    background: #FFFFFF;
-    color: #CB1E0F;
-    border: 1px solid #CB1E0F;
-    border-radius: 8px;
-    cursor: pointer;
+  margin-top: 39px;
+  width: 108px;
+  height: 40px;
+  background: #FFFFFF;
+  color: #CB1E0F;
+  border: 1px solid #CB1E0F;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .password_text .try_again:hover {
-    background-color: #CB1E0F;
-    color: #fff;
-    border: none;
+  background-color: #CB1E0F;
+  color: #fff;
+  border: none;
+}
+
+/* forgot modal */
+
+.forget_modal.close {
+  visibility:hidden;
+}
+.forget_modal open{
+  visibility: visible;
+}
+
+.forget_modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+
+}
+
+
+.forget_modal .modal {
+
+  z-index: 1;
+  background-color: rgba(250, 250, 250, 1);
+  border-radius: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.modal .close {
+  position: absolute;
+  top:20px;
+  right:20px;
+}
+
+.modal .close i {
+  cursor: pointer;
+  font-size:16px;
+}
+
+.modal_content {
+  padding: 100px 100px 100px 100px;
+  text-align: center;
+  display:flex;
+  flex-direction:column;
+  justify-content: start;
+}
+
+.modal_content h1 {
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #222222;
+}
+
+.modal_content h2 {
+  margin-top: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.modal_content form {
+  padding-top: 30px !important;
+  padding-right: 0px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin:0px;
+}
+
+.modal_content label {
+  width: 100%;
+  padding-bottom: 6px;
+  text-align: left !important;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.modal_content input[type="email"] {
+  padding: 9px 15px;
+  outline: none;
+  background: #FFFFFF;
+  width: 100%;
+  border: 1px solid #B4B4B4;
+  border-radius: 8px;
+  /* color: #B4B4B4; */
+}
+
+.modal_content input[type="email"]::placeholder {
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 140%;
+color: #B4B4B4;
+
+}
+
+.modal_content button {
+  padding: 9px 0px;
+  background: #2F2C9F;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 140%;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  margin-top: 20px;
 }
