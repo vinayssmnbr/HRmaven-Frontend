@@ -90,15 +90,15 @@ ForgetEmailSubmit(data:any)
   console.log("Forget Password Email");
   console.log(data);
 
-  this.userService.ForgotEmail(data).subscribe((res:any)=>{
-    this.userService.ForgotEmail(this.forgotPassword);
-    console.log("response:"+res);
-  })
-  this.Forgotshow=!this.Forgotshow;
-  setTimeout(()=>{
-    this.EmailSent=!this.EmailSent;
+  // this.userService.ForgotEmail(data).subscribe((res:any)=>{
+  //   this.userService.ForgotEmail(this.forgotPassword);
+  //   console.log("response:"+res);
+  // })
+  // this.Forgotshow=!this.Forgotshow;
+  // setTimeout(()=>{
+  //   this.EmailSent=!this.EmailSent;
 
-  },1000);
+  // },1000);
 
 }
 
