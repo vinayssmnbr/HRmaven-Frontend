@@ -35,7 +35,11 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
   showPassword = false;
   showPasswordIcon = 'fa-eye';
   Forgotshow=false;
+<<<<<<< HEAD
   EmailSent=false;
+=======
+   EmailSent=false;
+>>>>>>> 65d1f8e2422004802a35909101116280eb2e3ba9
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -84,13 +88,20 @@ onSubmit(data1:any){
   })
 
 }
+ForgetEmailSubmit(data:any)
+{
+  console.log("Forget Password Email");
+  console.log(data);
 
+<<<<<<< HEAD
 // Forget Password Email submission
 ForgetEmailSubmit(data:any)
 {
   console.log("Forget Password Email");
   console.log(data);
 
+=======
+>>>>>>> 65d1f8e2422004802a35909101116280eb2e3ba9
   this.userService.ForgotEmail(data).subscribe((res:any)=>{
     this.userService.ForgotEmail(this.forgotPassword);
     console.log("response:"+res);
@@ -102,7 +113,10 @@ ForgetEmailSubmit(data:any)
   },1000);
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 65d1f8e2422004802a35909101116280eb2e3ba9
 
 
 }
