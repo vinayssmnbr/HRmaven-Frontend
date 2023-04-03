@@ -35,6 +35,7 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
   showPassword = false;
   showPasswordIcon = 'fa-eye';
   Forgotshow=false;
+   EmailSent=false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -47,7 +48,7 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
       this.Forgotshow= !this.Forgotshow;
   }
   toggleForgot1(){
-    this.Forgotshow= !this.Forgotshow;
+    this.EmailSent= !this.EmailSent;
 }
 
   loginuser(data: any){
@@ -84,7 +85,22 @@ onSubmit(data1:any){
   })
 
 }
+ForgetEmailSubmit(data:any)
+{
+  console.log("Forget Password Email");
+  console.log(data);
 
+  this.userService.ForgotEmail(data).subscribe((res:any)=>{
+    this.userService.ForgotEmail(this.forgotPassword);
+    console.log("response:"+res);
+  })
+  this.Forgotshow=!this.Forgotshow;
+  setTimeout(()=>{
+    this.EmailSent=!this.EmailSent;
+
+  },1000);
+
+}
 
 
 }
