@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-
+import { UserService} from '../service/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,9 +15,23 @@ constructor(public fb1:FormBuilder,
   private http: HttpClient,
   private router: Router,
   private cookie:CookieService,
+  public userService:UserService
   ){}
 
 ngOnInit() {
+
+
+  let counter = 1;
+  setInterval(() => {
+    const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
+    radioBtn.checked = true;
+    counter++;
+    if (counter > 4) {
+      counter = 1;
+    }
+  }, 5000);
+  ///
+
   this.activatedRoute.queryParams.subscribe((params) => {
     // console.log(params);
     const token = params['token'];
@@ -33,6 +47,9 @@ loginwithGoogle() {
   window.location.href = 'http://localhost:8000/auth/google';
 }
 
+
+ 
+
   loginForm = new FormGroup({
     email : new FormControl('',[ Validators.required,Validators.email]),
     password : new FormControl('',[Validators.required,Validators.minLength(5)])
@@ -46,6 +63,7 @@ loginwithGoogle() {
   showPassword = false;
   showPasswordIcon = 'fa-eye';
   Forgotshow=false;
+   EmailSent=false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -57,16 +75,64 @@ loginwithGoogle() {
   toggleForgot(){
       this.Forgotshow= !this.Forgotshow;
   }
+  toggleForgot1(){
+    this.EmailSent= !this.EmailSent;
+}
 
-  onSubmit(data:any){
+  loginuser(data: any){
+    this.userService.users(data).subscribe((res:any)=>{
+      this.userService.users(data)
+      console.log("login User: ",res)
 
+      var today = new Date();
+      var expire = new Date();
+
+      expire.setTime(today.getTime() + 3600000*24*15);
+      document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
+    })
   }
+  get email(){
+    return this.forgotPassword.get("email");
+  }
+
+submit(){
+  this.router.navigate(['/dashboard'])
+}
+
+// submissions
+
+onSubmit(data1:any){
+  console.log(this.loginForm.value);
+  this.userService.users(data1).subscribe((res: any)=>{
+    this.userService.users(this.loginForm)
+    console.log("login User: ", res)
+    console.log("login User: ", res.token)
+
+
+  })
+
+}
+ForgetEmailSubmit(data:any)
+{
+  console.log("Forget Password Email");
+  console.log(data);
+
+  // this.userService.ForgotEmail(data).subscribe((res:any)=>{
+  //   this.userService.ForgotEmail(this.forgotPassword);
+  //   console.log("response:"+res);
+  // })
+  this.Forgotshow=!this.Forgotshow;
+  setTimeout(()=>{
+    this.EmailSent=!this.EmailSent;
+
+  },1000);
+
+}
 
 
 
 
 }
-
 
 
 
