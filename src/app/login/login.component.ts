@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-constructor(public fb1:FormBuilder,private activatedRoute:ActivatedRoute,private http: HttpClient,private router: Router,){}
+constructor(public fb1:FormBuilder,
+  private activatedRoute:ActivatedRoute,
+  private http: HttpClient,
+  private router: Router,
+  private cookie:CookieService,
+  ){}
 
 ngOnInit() {
   this.activatedRoute.queryParams.subscribe((params) => {
@@ -17,7 +23,7 @@ ngOnInit() {
     const token = params['token'];
     console.log(token);
     if (token) {
-      localStorage.setItem('token', token);
+      this.cookie.set('token',token);
       this.router.navigate(['dashboard']);
     }
   });

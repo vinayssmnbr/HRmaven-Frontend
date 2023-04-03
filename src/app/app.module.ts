@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgetComponent } from './forget/forget.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
@@ -32,7 +34,7 @@ import { ForgetComponent } from './forget/forget.component';
 
 
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
