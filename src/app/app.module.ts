@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetComponent } from './forget/forget.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ForgetComponent } from './forget/forget.component';
     LoginComponent,
     SignupComponent,
     ForgetComponent,
+    LoaderComponent,
 
 
   ],
