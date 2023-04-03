@@ -395,3 +395,8 @@ form.ng-invalid.ng-touched #submit {
     padding-right: 10px;
 
 }
+form.ng-invalid #submit{
+    opacity:0.5;
+    cursor:not-allowed;
+
+}

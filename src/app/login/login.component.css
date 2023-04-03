@@ -621,3 +621,8 @@ text-align: center;
 form.ng-invalid.ng-touched #submit1 {
   cursor: not-allowed;
 }
+form.ng-invalid input[type="submit"]{
+  opacity:0.5;
+  cursor:not-allowed;
+
+}
