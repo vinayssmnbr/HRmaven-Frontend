@@ -13,7 +13,8 @@ import { SignupComponent } from './signup/signup.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+
 
   ],
   imports: [
@@ -21,6 +22,7 @@ import { SignupComponent } from './signup/signup.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

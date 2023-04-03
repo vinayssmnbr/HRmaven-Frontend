@@ -3,7 +3,7 @@
   /* display: flex; */
   width: calc(100% - 223px);
   background: #FFFFFF;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09);
+  box-shadow:0px 4px 8px rgba(0, 0, 0, 0.09);
   margin-left: 223px;
 }
 
@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: flex-end;
   /* margin-left: 400px; */
-  gap: 20px;
+  gap: 16px;
   cursor: pointer;
 }
 .content-right i{
