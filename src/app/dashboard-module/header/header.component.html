@@ -5,15 +5,11 @@
     <p>{{date}}</p>
     </div>
     <div class="content-right">
-      <input type="search" placeholder="Search.." class="searchbox">
-      <i class="fa-solid fa-magnifying-glass"></i>
-     
-      <button type="button" class="icon-button">
-        <span class="material-icons">notifications</span>
-        <span class="icon-button__badge"></span>
-      </button>
-    
-
+      <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
+      <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>
+      <div class="dropdown" id="dropdown">
+      <i class="fa-solid fa-bell"></i>
+      </div>
     <img src="./assets/images/clickup60_4.png" alt="" class="header-icon">
     </div>
     </div>

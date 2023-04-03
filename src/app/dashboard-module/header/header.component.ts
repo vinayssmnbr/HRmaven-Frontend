@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  showSearchBox=false;
   date: any;
   greeting: any;
   constructor() {}
@@ -26,5 +27,8 @@ export class HeaderComponent {
     } else {
       this.greeting = "Good Evening";
     }
+  }
+  toggleSearchBox(){
+    this.showSearchBox=!this.showSearchBox;
   }
 }
