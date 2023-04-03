@@ -1,171 +1,166 @@
 <div class="row">
-  <!----------------------- Forget Modal Section------------------ -->
+    <!----------------------- Forget Modal Section------------------ -->
 
-  <div class="forget_modal" [ngClass]="{'open': Forgotshow,'close':!Forgotshow}">
-    <div class="modal">
-      <div class="close"> <i class="fa-solid fa-xmark" (click)="toggleForgot()"></i></div>
-      <div class="modal_content">
-        <p class="forgot_illustration"><img src="assets/images/lock.png"></p>
-        <h1>Forgot Password?</h1>
-        <h2>We’ll send you a verification mail. Kindly check your inbox.</h2>
-        <form [formGroup]="forgotPassword" (ngSubmit)="ForgetEmailSubmit(forgotPassword.value)">
-          <label for="Email">Email</label>
-          <input type="email" placeholder="Enter your email address" formControlName="email">
-          <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification Email</button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!--------------------incorrect Password  Modal ---------------->
-
-  <div class="incorrect_password">
-    <div class="password_form">
-      <img src="assets/images/error.png" alt="" class="password_image">
-      <div class="password_text">
-        <h1>OOPS!</h1>
-        <p>Incorrect email or password!</p>
-        <button class="try_again" routerLink="/login">Try Again</button>
-      </div>
-    </div>
-  </div>
-
-  <!----------------------- Email sent Modal Section------------------ -->
-  <div class="forget_email_send_content" [ngClass]="{'open': EmailSent,'close':!EmailSent}">
-    <div class="forget_content">
-      <div class="icon">
-        <i class="fa-solid fa-xmark" (click)="toggleForgot1()"></i>
-      </div>
-      <div class="forget_content">
-        <img src="assets/images/Group.png" alt="reset_logo">
-        <h1>Reset password email has been sent.</h1>
-        <p>We have sent an email to reset your password.Don't forget to check.</p>
-      </div>
-    </div>
-  </div>
-
-
-  <!----------------------- Login Section------------------ -->
-  <div class="left-side">
-    <div class="leftContent">
-      <div class="logo_part">
-        <a href=""><img class="logo-image" src="assets/images/hrr 3.png" alt="logo"></a>
-      </div>
-      <h1 class="title">We are happy to have you back.</h1>
-      <p class="title_para">Discover the world’s best community of freelancers and business owners.</p>
-    </div>
-    <div class="leftSlider">
-      <div class="slider">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
-        <div class="card first">
-          <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is
-            absolutely wonderful!
-          </p>
-          <div class="profile">
-            <img src="assets/images/Rectangle 11.png" alt="image">
-            <div class="profile-text">
-              <h5>Mohit Sharma</h5>
-              <p>Freelancer</p>
+    <div class="forget_modal" [ngClass]="{'open': Forgotshow,'close':!Forgotshow}">
+        <div class="modal">
+            <div class="close"> <i class="fa-solid fa-xmark" (click)="toggleForgot()"></i></div>
+            <div class="modal_content">
+                <p class="forgot_illustration"><img src="assets/images/lock.png"></p>
+                <h1>Forgot Password?</h1>
+                <h2>We’ll send you a verification mail. Kindly check your inbox.</h2>
+                <form [formGroup]="forgotPassword" (ngSubmit)="ForgetEmailSubmit(forgotPassword.value)">
+                    <label for="Email">Email</label>
+                    <input type="email" placeholder="Enter your email address" formControlName="email">
+                    <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification Email</button>
+                </form>
             </div>
-          </div>
         </div>
-        <div class="card">
-          <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is
-            absolutely wonderful!
-          </p>
-          <div class="profile">
-            <img src="assets/images/Rectangle 11.png" alt="image">
-            <div class="profile-text">
-              <h5>Mohit Sharma</h5>
-              <p>Freelancer</p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is
-            absolutely wonderful!
-          </p>
-          <div class="profile">
-            <img src="assets/images/Rectangle 11.png" alt="image">
-            <div class="profile-text">
-              <h5>Mohit Sharma</h5>
-              <p>Freelancer</p>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is
-            absolutely wonderful!
-          </p>
-          <div class="profile">
-            <img src="assets/images/Rectangle 11.png" alt="image">
-            <div class="profile-text">
-              <h5>Mohit Sharma</h5>
-              <p>Freelancer</p>
-            </div>
-          </div>
-        </div>
-        <div class="navigation_auto">
-          <div class="auto_btn1"></div>
-          <div class="auto_btn2"></div>
-          <div class="auto_btn3"></div>
-          <div class="auto_btn4"></div>
-        </div>
-      </div>
-      <div class="navigation_manual">
-        <label for="radio1" class="manual_btn"></label>
-        <label for="radio2" class="manual_btn"></label>
-        <label for="radio3" class="manual_btn"></label>
-        <label for="radio4" class="manual_btn"></label>
-      </div>
     </div>
-  </div>
-  <div class="right-side">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-      <h2>Login to HRMaven</h2>
-      <p>Don't have an account? <a routerLink="/signup" routerLinkActive="active">Signup</a> here</p>
-      <div class="field email-field formgroup">
-        <div class="input-field">
-          <label for="name" class="text-label">Email</label>
-          <input type="email" class="form-control email" formControlName="email" placeholder="Enter your email" />
-        </div>
 
-      </div>
-      <div class="field create-password">
-        <div class="input-field">
-          <label for="name" class="text-label">Password</label>
-          <input type="password" placeholder="Enter your password" class="password" #passwordInput
-            formControlName="password" />
+    <!--------------------incorrect Password  Modal ---------------->
 
+    <div class="incorrect_password">
+        <div class="password_form">
+            <img src="assets/images/error.png" alt="" class="password_image">
+            <div class="password_text">
+                <h1>OOPS!</h1>
+                <p>Incorrect email or password!</p>
+                <button class="try_again" routerLink="/login">Try Again</button>
+            </div>
         </div>
-        <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+    </div>
+
+    <!----------------------- Email sent Modal Section------------------ -->
+    <div class="forget_email_send_content" [ngClass]="{'open': EmailSent,'close':!EmailSent}">
+        <div class="forget_content">
+            <div class="icon">
+                <i class="fa-solid fa-xmark" (click)="toggleForgot1()"></i>
+            </div>
+            <div class="forget_content">
+                <img src="assets/images/Group.png" alt="reset_logo">
+                <h1>Reset password email has been sent.</h1>
+                <p>We have sent an email to reset your password.Don't forget to check.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!----------------------- Login Section------------------ -->
+    <div class="left-side">
+        <div class="leftContent">
+            <div class="logo_part">
+                <a href=""><img class="logo-image" src="assets/images/hrr 3.png" alt="logo"></a>
+            </div>
+            <h1 class="title">We are happy to have you back.</h1>
+            <p class="title_para">Discover the world’s best community of freelancers and business owners.</p>
+        </div>
+        <div class="leftSlider">
+            <div class="slider">
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <div class="card first">
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    </p>
+                    <div class="profile">
+                        <img src="assets/images/Rectangle 11.png" alt="image">
+                        <div class="profile-text">
+                            <h5>Mohit Sharma</h5>
+                            <p>Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    </p>
+                    <div class="profile">
+                        <img src="assets/images/Rectangle 11.png" alt="image">
+                        <div class="profile-text">
+                            <h5>Mohit Sharma</h5>
+                            <p>Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    </p>
+                    <div class="profile">
+                        <img src="assets/images/Rectangle 11.png" alt="image">
+                        <div class="profile-text">
+                            <h5>Mohit Sharma</h5>
+                            <p>Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    </p>
+                    <div class="profile">
+                        <img src="assets/images/Rectangle 11.png" alt="image">
+                        <div class="profile-text">
+                            <h5>Mohit Sharma</h5>
+                            <p>Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation_auto">
+                    <div class="auto_btn1"></div>
+                    <div class="auto_btn2"></div>
+                    <div class="auto_btn3"></div>
+                    <div class="auto_btn4"></div>
+                </div>
+            </div>
+            <div class="navigation_manual">
+                <label for="radio1" class="manual_btn"></label>
+                <label for="radio2" class="manual_btn"></label>
+                <label for="radio3" class="manual_btn"></label>
+                <label for="radio4" class="manual_btn"></label>
+            </div>
+        </div>
+    </div>
+    <div class="right-side">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+            <h2>Login to HRMaven</h2>
+            <p>Don't have an account? <a routerLink="/signup" routerLinkActive="active">Signup</a> here</p>
+            <div class="field email-field formgroup">
+                <div class="input-field">
+                    <label for="name" class="text-label">Email</label>
+                    <input type="email" class="form-control email" formControlName="email" placeholder="Enter your email" />
+                </div>
+
+            </div>
+            <div class="field create-password">
+                <div class="input-field">
+                    <label for="name" class="text-label">Password</label>
+                    <input type="password" placeholder="Enter your password" class="password" #passwordInput formControlName="password" />
+
+                </div>
+                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
           <i class="fa {{ showPasswordIcon }}"></i>
         </span>
-      </div>
+            </div>
 
-      <div class="check-text">
-        <input type="checkbox" class="check_box" />
-        <label for="checkbox" class="checkbox-text">Remember me</label>
-        <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
-      </div>
-      <div class="input-field button">
-        <input type="submit" value="Login" (click)="onSubmit(loginForm.value)" />
-      </div>
-      <div class="input-field">
-        <p class="or_bar">OR</p>
-      </div>
-      <div class="social_btn">
-        <div class="google">
-          <img class="google_logo" src="assets/images/google-logo.png" alt="google">
-          <p> Login with Google</p>
+            <div class="check-text">
+                <input type="checkbox" class="check_box" />
+                <label for="checkbox" class="checkbox-text">Remember me</label>
+                <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
+            </div>
+            <div class="input-field button">
+                <input type="submit" value="Login" (click)="onSubmit(loginForm.value)" />
+            </div>
+            <div class="input-field">
+                <p class="or_bar">OR</p>
+            </div>
+            <div class="social_btn">
+                <div class="google">
+                    <img class="google_logo" src="assets/images/google-logo.png" alt="google">
+                    <p> Login with Google</p>
+                </div>
+            </div>
+        </form>
+        <div class="logo">
+            <img src="assets/images/hrr 2.png" alt="logo">
         </div>
-      </div>
-    </form>
-    <div class="logo">
-      <img src="assets/images/hrr 2.png" alt="logo">
     </div>
-  </div>
 </div>

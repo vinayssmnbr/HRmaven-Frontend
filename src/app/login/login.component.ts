@@ -73,13 +73,16 @@ submit(){
 
 // submissions
 
-onSubmit(data1:any){
+
+onSubmit(data:any){
   console.log(this.loginForm.value);
-  this.userService.users(data1).subscribe((res: any)=>{
+  this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
     console.log("login User: ", res)
     console.log("login User: ", res.token)
-
+    if(res.message=="login successful") {
+      this.submit();
+    }
 
   })
 
