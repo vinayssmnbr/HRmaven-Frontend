@@ -219,6 +219,7 @@ form .input-field {
     background-color:
         #EDEDED;
     border-radius: 8px;
+    justify-content: center;
 }
 
 .google p {
