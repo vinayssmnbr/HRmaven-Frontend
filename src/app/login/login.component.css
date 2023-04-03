@@ -2,6 +2,7 @@
     display: flex;
     width: 100%;
     justify-content: start;
+    position:relative;
 }
 
 .left-side {
@@ -230,6 +231,7 @@ form .input-field {
     width: 100%;
     background-color: #EDEDED;
     border-radius: 8px;
+    justify-content: center;
 }
 
 .google p {
@@ -563,9 +565,14 @@ form .input-field {
 }
 
 /* -----------------------Forget Reset Send Email------------------------------------ */
-.forget_email_send_content {
-  visibility: hidden;
+.forget_email_send_content.close{
+  /* visibility: hidden; */
+  display:none;
+}
+.forget_email_send_content.open {
+  visibility: visible;
   position: absolute;
+  border:1px solid red;
   width: 100%;
   height: 100vh;
   top: 0;
@@ -576,6 +583,7 @@ form .input-field {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index:2;
 }
 .forget_content {
 background-color: #FAFAFA;
