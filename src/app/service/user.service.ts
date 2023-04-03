@@ -14,6 +14,8 @@ export class UserService {
 
   saveurl="http://localhost:3000/signup"
   loginurl="http://localhost:3000/login"
+  Forgoturl="http://localhost:3000/forgotpassword"
+  Reseturl="http://localhost:3000/resetpassword"
 
   users(data: any){
 
@@ -28,6 +30,21 @@ export class UserService {
 
   }
 
+  ForgotEmail(data:any)
+  {
+    return this.http.post(this.Forgoturl,data);
+  }
 
+  newpwd(data:any,token:any){
+      let headers= new HttpHeaders({
+        'Content-Type': 'application/json',
+        'auth-token':token,
+        Accept:'application/json'
+      })
 
-}
+      return this.http.post(this.Reseturl,data, { headers });
+
+    }
+
+  }
+

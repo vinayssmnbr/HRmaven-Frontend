@@ -8,7 +8,7 @@
         <p class="forgot_illustration"><img src="assets/images/lock.png"></p>
         <h1>Forgot Password?</h1>
         <h2>We’ll send you a verification mail. Kindly check your inbox.</h2>
-        <form [formGroup]="forgotPassword" (ngSubmit)="onSubmit(forgotPassword.value)">
+        <form [formGroup]="forgotPassword" (ngSubmit)="ForgetEmailSubmit(forgotPassword.value)">
           <label for="Email">Email</label>
           <input type="email" placeholder="Enter your email address" formControlName="email">
           <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification Email</button>
@@ -16,6 +16,34 @@
       </div>
     </div>
   </div>
+
+  <!--------------------incorrect Password  Modal ---------------->
+
+  <div class="incorrect_password">
+    <div class="password_form">
+      <img src="assets/images/error.png" alt="" class="password_image">
+      <div class="password_text">
+        <h1>OOPS!</h1>
+        <p>Incorrect email or password!</p>
+        <button class="try_again" routerLink="/login">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!----------------------- Email sent Modal Section------------------ -->
+  <div class="forget_email_send_content" [ngClass]="{'open': EmailSent,'close':!EmailSent}">
+    <div class="forget_content">
+      <div class="icon">
+        <i class="fa-solid fa-xmark" (click)="toggleForgot1()"></i>
+      </div>
+      <div class="forget_content">
+        <img src="assets/images/Group.png" alt="reset_logo">
+        <h1>Reset password email has been sent.</h1>
+        <p>We have sent an email to reset your password.Don't forget to check.</p>
+      </div>
+    </div>
+  </div>
+
 
   <!----------------------- Login Section------------------ -->
   <div class="left-side">
@@ -103,74 +131,41 @@
         <div class="input-field">
           <label for="name" class="text-label">Email</label>
           <input type="email" class="form-control email" formControlName="email" placeholder="Enter your email" />
+        </div>
+
+      </div>
+      <div class="field create-password">
+        <div class="input-field">
+          <label for="name" class="text-label">Password</label>
+          <input type="password" placeholder="Enter your password" class="password" #passwordInput
+            formControlName="password" />
+
+        </div>
+        <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+          <i class="fa {{ showPasswordIcon }}"></i>
+        </span>
       </div>
 
-    </div>
-    <div class="field create-password">
+      <div class="check-text">
+        <input type="checkbox" class="check_box" />
+        <label for="checkbox" class="checkbox-text">Remember me</label>
+        <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
+      </div>
+      <div class="input-field button">
+        <input type="submit" value="Login" (click)="onSubmit(loginForm.value)" />
+      </div>
       <div class="input-field">
-        <label for="name" class="text-label">Password</label>
-        <input type="password" placeholder="Enter your password" class="password" #passwordInput
-        formControlName="password" />
-
+        <p class="or_bar">OR</p>
       </div>
-      <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
-        <i class="fa {{ showPasswordIcon }}"></i>
-      </span>
-    </div>
-
-    <div class="check-text">
-      <input type="checkbox" class="check_box" />
-      <label for="checkbox" class="checkbox-text">Remember me</label>
-      <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
-    </div>
-    <div class="input-field button">
-      <input type="submit" value="Login" routerLink="/dashboard" (click)="onSubmit(loginForm.value)" />
-    </div>
-    <div class="input-field">
-      <p class="or_bar">OR</p>
-    </div>
-    <div class="social_btn">
-      <div class="google">
-        <img class="google_logo" src="assets/images/google-logo.png" alt="google">
-        <p> Login with Google</p>
+      <div class="social_btn">
+        <div class="google">
+          <img class="google_logo" src="assets/images/google-logo.png" alt="google">
+          <p> Login with Google</p>
+        </div>
       </div>
-      <div class="facebook">
-        <img class="facebook_logo" src="assets/images/Facebook_logo.png" alt="facebook">
-        <p>Login with Facebook</p>
-      </div>
-    </div>
-  </form>
-  <div class="logo">
-    <img src="assets/images/hrr 2.png" alt="logo">
-  </div>
-</div>
-</div>
-<!--------------------incorrect Password  Modal ---------------->
-
-<div class="incorrect_password">
-  <div class="password_form">
-    <img src="assets/images/error.png" alt="" class="password_image">
-    <div class="password_text">
-      <h1>OOPS!</h1>
-      <p>Incorrect email or password!</p>
-      <button class="try_again" routerLink="/login">Try Again</button>
-    </div>
-  </div>
-</div>
-
-
-
-<!----------------------- Forget Modal Section------------------ -->
-
-<div class="forget_email_send_content">
-  <div class="forget_content">
-    <div class="icon">
-      <i class="fa-solid fa-xmark" (click)="toggleForgot1()"></i>
-    </div>
-    <div class="forget_content">
-      <img src="assets/images/Group.png" alt="reset_logo">
-      <h1>Reset password email has been sent.</h1>
-      <p>We have sent an email to reset your password.Don't forget to check.</p>
+    </form>
+    <div class="logo">
+      <img src="assets/images/hrr 2.png" alt="logo">
     </div>
   </div>
 </div>

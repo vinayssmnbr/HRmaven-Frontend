@@ -93,7 +93,7 @@
 /* =======================================
 
                 right-side
-  
+
 ===========================================*/
 
 .right-side {
@@ -219,6 +219,7 @@ form .input-field {
     background-color:
         #EDEDED;
     border-radius: 8px;
+    justify-content:center;
 }
 
 .google p {
@@ -392,5 +393,10 @@ form.ng-invalid.ng-touched #submit {
 
 .field span i {
     padding-right: 10px;
+
+}
+form.ng-invalid #submit{
+    opacity:0.5;
+    cursor:not-allowed;
 
 }

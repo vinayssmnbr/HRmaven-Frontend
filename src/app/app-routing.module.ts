@@ -4,8 +4,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgetComponent } from './forget/forget.component';
+import { LoaderComponent } from './loader/loader.component';
 
-const routes: Routes = [{path:'',component:AppComponent},{path:'login',component:LoginComponent},{path:'signup',component:SignupComponent},{ path: 'dashboard', loadChildren: () => import('./dashboard-module/dashboard-module.module').then(m => m.DashboardModuleModule) },{path:'reset/:token',component:ForgetComponent}];
+const routes: Routes = [{path:'',component:LoaderComponent},{path:'login',component:LoginComponent},{path:'signup',component:SignupComponent},{ path: 'dashboard', loadChildren: () => import('./dashboard-module/dashboard-module.module').then(m => m.DashboardModuleModule) },{path:'resetpassword/:token',component:ForgetComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
