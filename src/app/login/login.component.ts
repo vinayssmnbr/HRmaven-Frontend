@@ -44,15 +44,16 @@ ngOnInit() {
 }
 //Google Login
 loginwithGoogle() {
+  console.log('google');
   window.location.href = 'http://localhost:3000/auth/google';
 }
 
 
- 
+
 
   loginForm = new FormGroup({
     email : new FormControl('',[ Validators.required,Validators.email]),
-    password : new FormControl('',[Validators.required,Validators.minLength(5)])
+    password : new FormControl('',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)])
   })
 
   forgotPassword = new FormGroup({
@@ -63,7 +64,8 @@ loginwithGoogle() {
   showPassword = false;
   showPasswordIcon = 'fa-eye';
   Forgotshow=false;
-   EmailSent=false;
+  EmailSent=false;
+  Invalid=false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -77,6 +79,11 @@ loginwithGoogle() {
   }
   toggleForgot1(){
     this.EmailSent= !this.EmailSent;
+}
+
+closeInvalid(){
+  this.Invalid=!this.Invalid;
+  this.loginForm.reset();
 }
 
   loginuser(data: any){
@@ -107,9 +114,14 @@ onSubmit(data:any){
   this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
     console.log("login User: ", res)
-    console.log("login User: ", res.token)
     if(res.message=="login successful") {
       this.submit();
+    }
+    else if(res.message=="Invalid"){
+      console.log("haha");
+      this.Invalid=!this.Invalid;
+
+
     }
 
   })
