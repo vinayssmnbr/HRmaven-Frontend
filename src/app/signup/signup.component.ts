@@ -28,7 +28,8 @@ export class SignupComponent {
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.minLength(8)]),
     confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required])
+    username: new FormControl("",[Validators.required]),
+    check: new FormControl("",[Validators.required]),
   },{
     validators:matchpassword
   });
