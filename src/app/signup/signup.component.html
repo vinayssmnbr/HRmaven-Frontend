@@ -118,11 +118,11 @@
                     </span>
                 </div>
                 <div class="check-text">
-                    <input type="checkbox" class="check_box" required />
+                    <input type="checkbox" class="check_box" formControlName="check" required />
                     <label for="checkbox" class="checkbox-text">I agree to terms & conditions</label>
                 </div>
                 <div class="input-field button">
-                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" routerLink="/dashboard" />
+                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
                 </div>
                 <div class="input-field">
                     <p class="or_bar">OR</p>

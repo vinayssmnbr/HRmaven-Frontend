@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../service/user.service';
+import { UserService} from '../service/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -87,23 +87,22 @@ export class LoginComponent {
     this.EmailSent = !this.EmailSent;
   }
 
-  closeInvalid() {
-    this.Invalid = !this.Invalid;
-    this.loginForm.reset();
-  }
+closeInvalid(){
+  this.Invalid=!this.Invalid;
+  this.loginForm.reset();
+}
 
-  loginuser(data: any) {
-    this.userService.users(data).subscribe((res: any) => {
-      this.userService.users(data);
-      console.log('login User: ', res);
+  loginuser(data: any){
+    this.userService.users(data).subscribe((res:any)=>{
+      this.userService.users(data)
+      console.log("login User: ",res)
 
       var today = new Date();
       var expire = new Date();
 
-      expire.setTime(today.getTime() + 3600000 * 24 * 15);
-      document.cookie =
-        'name= ' + res.Token + ';path=/' + ';expires=' + expire.toUTCString();
-    });
+      expire.setTime(today.getTime() + 3600000*24*15);
+      document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
+    })
   }
   get email() {
     return this.forgotPassword.get('email');
@@ -115,30 +114,43 @@ export class LoginComponent {
 
   // submissions
 
-  onSubmit(data: any) {
-    console.log(this.loginForm.value);
-    this.userService.users(data).subscribe((res: any) => {
-      this.userService.users(this.loginForm);
-      console.log('login User: ', res);
-      if (res.message == 'login successful') {
-        this.submit();
-      } else if (res.message == 'Invalid') {
-        console.log('haha');
-        this.Invalid = !this.Invalid;
-      }
-    });
-  }
-  ForgetEmailSubmit(data: any) {
-    console.log('Forget Password Email');
-    console.log(data);
 
-    this.userService.ForgotEmail(data).subscribe((res: any) => {
-      this.userService.ForgotEmail(this.forgotPassword);
-      console.log('response:' + res);
-    });
-    this.Forgotshow = !this.Forgotshow;
-    setTimeout(() => {
-      this.EmailSent = !this.EmailSent;
-    }, 1000);
-  }
+onSubmit(data:any){
+  console.log(this.loginForm.value);
+  this.userService.users(data).subscribe((res: any)=>{
+    this.userService.users(this.loginForm)
+    console.log("login User: ", res)
+    if(res.message=="login successful") {
+      this.submit();
+    }
+    else if(res.message=="Invalid"){
+      console.log("haha");
+      this.Invalid=!this.Invalid;
+
+
+    }
+
+  })
+
+}
+ForgetEmailSubmit(data:any)
+{
+  console.log("Forget Password Email");
+  console.log(data);
+
+  this.userService.ForgotEmail(data).subscribe((res:any)=>{
+    this.userService.ForgotEmail(this.forgotPassword);
+    console.log("response:"+res);
+  })
+  this.Forgotshow=!this.Forgotshow;
+  setTimeout(()=>{
+    this.EmailSent=!this.EmailSent;
+
+  },1000);
+
+}
+
+
+
+
 }

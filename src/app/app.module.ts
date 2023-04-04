@@ -22,8 +22,6 @@ import { LoaderComponent } from './loader/loader.component';
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -32,9 +30,6 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-
-
-
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

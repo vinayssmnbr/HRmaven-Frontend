@@ -28,7 +28,8 @@ export class SignupComponent {
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required])
+    username: new FormControl("",[Validators.required]),
+    check: new FormControl("",[Validators.required]),
   },{
     validators:matchpassword
   });
@@ -61,9 +62,18 @@ togglePassword(passwordInpu: any) {
 
 onSubmit(data:any){
   console.log(this.sigupform.value);
-  this.userService.saveUser(data).subscribe((result)=>{
+  this.userService.saveUser(data).subscribe((result: any)=>{
   this.userService.saveUser(this.sigupform)
   console.log(result)
+  this.submit();
+  var today = new Date();
+  var expire = new Date();
+
+  expire.setTime(today.getTime() + 3600000*24*15);
+  console.log('inside');
+      document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
+  console.log("result:",result)
+
   })
 }
 submit(){
