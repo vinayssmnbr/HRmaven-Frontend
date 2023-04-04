@@ -65,6 +65,7 @@ onSubmit(data:any){
   this.userService.saveUser(data).subscribe((result)=>{
   this.userService.saveUser(this.sigupform)
   console.log(result)
+  this.submit();
   })
 }
 submit(){
