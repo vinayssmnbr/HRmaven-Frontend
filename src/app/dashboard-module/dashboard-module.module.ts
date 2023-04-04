@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardContentComponent } from './main/dashboard-content/dashboard-content.component';
 import { EmployeeContentComponent } from './main/employee-content/employee-content.component';
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
+import { RouterModule } from '@angular/router';
 
 
 

@@ -1,27 +1,38 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService} from '../service/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+constructor(public fb1:FormBuilder,
+  private activatedRoute:ActivatedRoute,
+  private http: HttpClient,
+  private router: Router,
+  private cookie:CookieService,
+  ){}
 
-  ngOnInit() {
-    let counter = 1;
-    setInterval(() => {
-      const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
-      }
-    }, 5000);
-  }
+ngOnInit() {
+  this.activatedRoute.queryParams.subscribe((params) => {
+    // console.log(params);
+    const token = params['token'];
+    console.log(token);
+    if (token) {
+      this.cookie.set('token',token);
+      this.router.navigate(['dashboard']);
+    }
+  });
+}
+//Google Login
+loginwithGoogle() {
+  window.location.href = 'http://localhost:8000/auth/google';
+}
 
-constructor(public fb1:FormBuilder,public router : Router,public userService:UserService){}
   loginForm = new FormGroup({
     email : new FormControl('',[ Validators.required,Validators.email]),
     password : new FormControl('',[Validators.required,Validators.minLength(5)])
@@ -51,21 +62,6 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
     this.EmailSent= !this.EmailSent;
 }
 
-  loginuser(data: any){
-    this.userService.users(data).subscribe((res:any)=>{
-      this.userService.users(data)
-      console.log("login User: ",res)
-
-      var today = new Date();
-      var expire = new Date();
-
-      expire.setTime(today.getTime() + 3600000*24*15);
-      document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
-    })
-  }
-  get email(){
-    return this.forgotPassword.get("email");
-  }
 
 submit(){
   this.router.navigate(['/dashboard'])
@@ -82,6 +78,8 @@ onSubmit(data1:any){
 
 
   })
+
+
 
 }
 ForgetEmailSubmit(data:any)
@@ -103,6 +101,3 @@ ForgetEmailSubmit(data:any)
 
 
 }
-
-
-

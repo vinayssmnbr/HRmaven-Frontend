@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DashService } from '../../shared/dash.service';
 
 @Component({
   selector: 'app-employee-content',
@@ -14,7 +15,10 @@ export class EmployeeContentComponent implements OnInit {
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3='#FFFFFF';
   employeeForm: FormGroup;
-  constructor(){}
+  constructor( public dashService:DashService){
+    dashService.activeComponent = 'employees';
+    dashService.headerContent = '';
+  }
 
   ngOnInit() {
    this.employeeForm = new FormGroup({

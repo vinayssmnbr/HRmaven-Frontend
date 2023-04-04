@@ -1,15 +1,20 @@
 <header id="header">
   <div class="content">
     <div class="content-left">
-    <h2>{{greeting}}</h2>
-    <p>{{date}}</p>
+    <h2  *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p></h2>
+    <h2  *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
+
     </div>
     <div class="content-right">
-      <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
-      <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>
-      <div class="dropdown" id="dropdown">
-      <i class="fa-solid fa-bell"></i>
-      </div>
+      <input type="search" placeholder="Search.." class="searchbox">
+      <i class="fa-solid fa-magnifying-glass"></i>
+
+      <button type="button" class="icon-button">
+        <span class="material-icons">notifications</span>
+        <span class="icon-button__badge"></span>
+      </button>
+
+
     <img src="./assets/images/clickup60_4.png" alt="" class="header-icon">
     </div>
     </div>

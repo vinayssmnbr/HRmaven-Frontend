@@ -44,7 +44,6 @@
   line-height: 100%;
   text-transform: uppercase;
 }
-
 ul.navigation li{
   display: flex;
   flex-direction: column;
