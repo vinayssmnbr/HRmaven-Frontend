@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart,registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
+import { DashService } from '../../shared/dash.service';
+
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
   styleUrls: ['./dashboard-content.component.css']
 })
 export class DashboardContentComponent implements OnInit {
-    
+  constructor(public dashService:DashService){
+    dashService.activeComponent = 'dashboard';
+    dashService.headerContent = '';
+
+  }
+
   ngOnInit()
   {
-   
-    
-  
+
+
+
 // Create a chart object
 const myChart = new Chart("myChart", {
     type: 'bar',
@@ -68,12 +75,11 @@ const myChart = new Chart("myChart", {
             y: {
                 beginAtZero: true
             }
-           
+
         },
     }
 
 });
-  }
- 
 
+}
 }

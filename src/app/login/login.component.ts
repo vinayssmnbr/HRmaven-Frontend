@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService} from '../service/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -86,21 +87,6 @@ closeInvalid(){
   this.loginForm.reset();
 }
 
-  loginuser(data: any){
-    this.userService.users(data).subscribe((res:any)=>{
-      this.userService.users(data)
-      console.log("login User: ",res)
-
-      var today = new Date();
-      var expire = new Date();
-
-      expire.setTime(today.getTime() + 3600000*24*15);
-      document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
-    })
-  }
-  get email(){
-    return this.forgotPassword.get("email");
-  }
 
 submit(){
   this.router.navigate(['/dashboard'])
@@ -114,7 +100,7 @@ onSubmit(data:any){
   this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
 
-    
+
 
     console.log("login User: ", res)
     if(res.message=="login successful") {
@@ -154,9 +140,4 @@ ForgetEmailSubmit(data:any)
 }
 
 
-
-
 }
-
-
-
