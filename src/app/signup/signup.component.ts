@@ -26,7 +26,7 @@ export class SignupComponent {
 
   sigupform = new FormGroup({
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
-    password : new FormControl("",[Validators.required,Validators.minLength(8)]),
+    password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
     username: new FormControl("",[Validators.required])
   },{

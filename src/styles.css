@@ -20,7 +20,7 @@ html {
     --primary-color: #0602A6;
     --checked-color: #29A74C;
     --reject-color: #FA5D5D;
-    
+
 }
 
 body {
@@ -29,7 +29,6 @@ body {
   /* height: 100%; */
   line-height: 1.4;
   background: #fff;
-  font-family: 'Outfit', sans-serif;
 
 }
 
@@ -92,4 +91,4 @@ a{
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

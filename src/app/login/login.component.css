@@ -386,9 +386,10 @@ form .input-field {
 
 
 /*  <!-- Password incorrect Modal --> */
-
-.incorrect_password {
-    visibility: hidden;
+.incorrect_password.close{
+  display:none;
+}
+.incorrect_password.open {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -400,6 +401,7 @@ form .input-field {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index:4;
 }
 
 .password_form {

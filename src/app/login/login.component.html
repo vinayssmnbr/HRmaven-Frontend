@@ -19,13 +19,13 @@
 
     <!--------------------incorrect Password  Modal ---------------->
 
-    <div class="incorrect_password">
+    <div class="incorrect_password" [ngClass]="{'open': Invalid,'close':!Invalid}">
         <div class="password_form">
             <img src="assets/images/error.png" alt="" class="password_image">
             <div class="password_text">
                 <h1>OOPS!</h1>
                 <p>Incorrect email or password!</p>
-                <button class="try_again" routerLink="/login">Try Again</button>
+                <button class="try_again" (click)="closeInvalid()">Try Again</button>
             </div>
         </div>
     </div>
@@ -147,7 +147,7 @@
                 <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
             </div>
             <div class="input-field button">
-                <input type="submit" value="Login" (click)="onSubmit(loginForm.value)" />
+                <input type="submit" value="Login" />
             </div>
             <div class="input-field">
                 <p class="or_bar">OR</p>
@@ -155,7 +155,7 @@
             <div class="social_btn">
                 <div class="google">
                     <img class="google_logo" src="assets/images/google-logo.png" alt="google">
-                    <p> Login with Google</p>
+                    <a (click)="loginwithGoogle()"> Login with Google</a>
                 </div>
             </div>
         </form>
