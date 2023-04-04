@@ -5,6 +5,8 @@
   background: #FFFFFF;
   box-shadow:0px 4px 8px rgba(0, 0, 0, 0.09);
   margin-left: 223px;
+  position:fixed;
+  z-index:2;
 }
 
 .content{

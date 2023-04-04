@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Route,Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +8,7 @@ import { Route,Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-constructor(private router:Router){}
+constructor(private router:Router,private cookie:CookieService){}
 
 ngOnInit() {
 
@@ -15,4 +16,11 @@ ngOnInit() {
 goToEmployee(){
  this.router.navigate(['employee'])
 }
+
+logout(){
+  this.cookie.delete('token');
+  this.router.navigate(['']);
+
+}
+
 }
