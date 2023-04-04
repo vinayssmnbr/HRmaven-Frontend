@@ -113,8 +113,17 @@ onSubmit(data:any){
   console.log(this.loginForm.value);
   this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
+
+    
+
     console.log("login User: ", res)
-    if(res.message=="login successful") {
+    if(res.message=="login successfully") {
+      var today = new Date();
+    var expire = new Date();
+
+    expire.setTime(today.getTime() + 3600000*24*15);
+    console.log('inside');
+        document.cookie ="token= "  + res.token + ";path=/" + ";expires=" + expire.toUTCString();
       this.submit();
     }
     else if(res.message=="Invalid"){
