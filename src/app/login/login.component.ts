@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService} from '../service/user.service';
-
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -87,6 +87,23 @@ closeInvalid(){
   this.loginForm.reset();
 }
 
+isLoggedIn=new BehaviorSubject<boolean>(false);
+
+  loginuser(data: any){
+    this.userService.users(data).subscribe((res:any)=>{
+      if(res?.token){
+        this.userService.users(data);
+        {
+          this.cookie.set('token',res.token);
+          this.userService.isLoggedIn.next(true);
+        }
+      }
+
+    })
+  }
+  get email(){
+    return this.forgotPassword.get("email");
+  }
 
 submit(){
   this.router.navigate(['/dashboard'])
@@ -110,6 +127,7 @@ onSubmit(data:any){
     expire.setTime(today.getTime() + 3600000*24*15);
     console.log('inside');
         document.cookie ="token= "  + res.token + ";path=/" + ";expires=" + expire.toUTCString();
+        // localStorage.setItem("token",res.token);
       this.submit();
     }
     else if(res.message=="Invalid"){
