@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService} from '../service/user.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -86,16 +87,18 @@ closeInvalid(){
   this.loginForm.reset();
 }
 
+isLoggedIn=new BehaviorSubject<boolean>(false);
+
   loginuser(data: any){
     this.userService.users(data).subscribe((res:any)=>{
-      this.userService.users(data)
-      console.log("login User: ",res)
+      if(res?.token){
+        this.userService.users(data);
+        {
+          this.cookie.set('token',res.token);
+          this.userService.isLoggedIn.next(true);
+        }
+      }
 
-      var today = new Date();
-      var expire = new Date();
-
-      expire.setTime(today.getTime() + 3600000*24*15);
-      document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
     })
   }
   get email(){
@@ -114,7 +117,7 @@ onSubmit(data:any){
   this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
 
-    
+
 
     console.log("login User: ", res)
     if(res.message=="login successful") {
@@ -124,6 +127,7 @@ onSubmit(data:any){
     expire.setTime(today.getTime() + 3600000*24*15);
     console.log('inside');
         document.cookie ="token= "  + res.token + ";path=/" + ";expires=" + expire.toUTCString();
+        // localStorage.setItem("token",res.token);
       this.submit();
     }
     else if(res.message=="Invalid"){
