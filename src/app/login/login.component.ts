@@ -158,9 +158,4 @@ ForgetEmailSubmit(data:any)
 }
 
 
-
-
 }
-
-
-
