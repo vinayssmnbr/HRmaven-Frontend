@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DashService } from '../shared/dash.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ export class HeaderComponent {
   showSearchBox=false;
   date: any;
   greeting: any;
-  constructor() {}
+  employee:string
+  constructor(public dashService:DashService ) {}
 
   ngOnInit() {
     const today = new Date();
@@ -21,11 +23,11 @@ export class HeaderComponent {
 
     const currentHour = today.getHours();
     if (currentHour < 12) {
-      this.greeting = "Good Morning";
+      this.greeting = "GOOD MORNING";
     } else if (currentHour < 18) {
-      this.greeting = "Good Afternoon";
+      this.greeting = "GOOD AFTERNOON";
     } else {
-      this.greeting = "Good Evening";
+      this.greeting = "GOOD EVENING";
     }
   }
   toggleSearchBox(){
