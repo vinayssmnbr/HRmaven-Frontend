@@ -117,7 +117,7 @@ onSubmit(data:any){
     
 
     console.log("login User: ", res)
-    if(res.message=="login successfully") {
+    if(res.message=="login successful") {
       var today = new Date();
     var expire = new Date();
 
