@@ -24,7 +24,7 @@
        /* width:calc( 100% / 4); */
 
         }
-       
+
         .iconCenter {
             padding: 15px;
             display: flex;
@@ -49,26 +49,26 @@
             color: #8BAFFF;
             background: rgba(221, 232, 255, 0.29);
         }
-      
+
         .text-image{
             font-size: 12px;
             color: #777777;
-           
+
         }
         .text-image h1{
             font-size: 22px;
 color: #222222;
         }
-        
+
 
         .chart{
             padding: 0.5rem;
             border-radius: 1rem;
-             background: #FFFFFF; 
+             background: #FFFFFF;
            width: 746px;
            height: 363px;
         }
-        
+
         .chart h6{
             font-size: 18px;
             color: #111111;
@@ -80,11 +80,11 @@ color: #222222;
             margin: 30px;
             column-gap: 22px;
             }
-            
+
             .attendance{
                 display: flex;
-                justify-content: space-between; 
-                
+                justify-content: space-between;
+
                     }
             .attendance h2{
                 font-size: 18px;
@@ -99,7 +99,7 @@ color: #222222;
                 height: 100%;
                 padding: 20px 25px;
             }
-            
+
             #cars {
                 border-radius: 8px;
                 border: none;
@@ -108,10 +108,10 @@ color: #222222;
                 height: 36px;
                font-size:14px;
                padding-left: 10px;
-              
+
                 outline: none;
             }
-           
+
             .meeting-text{
                 display: flex;
                 justify-content: space-between;
@@ -129,7 +129,7 @@ a{
             .meeting-area{
                 background-color: #FFFFFF;
                 border-radius: 8px;
-                 padding: 20px; 
+                 padding: 20px;
                  height: 100%;
             }
             .interview-area{
@@ -167,7 +167,7 @@ a{
 
             .interview-area:hover{
                 background: rgba(47, 44, 159, 0.1);
-                
+
                 border-radius: 5px;
                 cursor: pointer;
                 transition: 0.3s;
@@ -190,8 +190,8 @@ a{
                 justify-content: space-between;
                 width: 100%;
 
-                
-                
+
+
             }
             .date
             {
@@ -201,7 +201,7 @@ a{
                 text-align: center;
                 border-radius: 6px;
                 padding: 5.5px 14.5px;
-                
+
             }
            .date p{ font-size: 13px;}
             .date h3{
@@ -287,7 +287,7 @@ font-size: 12px;
            }
            .john-text p {
             color: #555555;
-            
+
         }
            .image-text{
             padding-top: 27px;
@@ -298,9 +298,9 @@ font-size: 12px;
             width: 100%;
             height: calc(100% - 12px);
           }
-          
+
           td, th {
-            
+
             text-align: left;
             padding: 8px;
           }

@@ -3,7 +3,7 @@
 <div class="main">
  <div class="selection">
   <input type="text" placeholder="Type Employee ID..." formControlName="employeeId">
-  <select id="select" placeholder="Deisgnation">
+  <select id="select" >
   <option value="option1">Designation</option>
   <option value="option2">Software Developer</option>
   <option value="option3">Frontend Developer</option>
@@ -11,7 +11,7 @@
   <option value="option5">Full Stack Developer</option>
   <option value="option6">Quality Analyst</option>
   </select>
-  <!-- <i class="fa-solid fa-caret-down" (click)="toggleDropdown()"></i>
+  <i class="fa-solid fa-caret-down" (click)="toggleDropdown()"></i>
   <div id="dropdown-container" [ngClass]="{'show': isDropdownOpen}">
   <ul class="navigation" >
    <li>Software Developer</li><hr>
@@ -20,10 +20,10 @@
    <li>Full Stack Developer</li><hr>
    <li>Quality Analyst</li>
   </ul>
-  </div> -->
-<button class="btn1">Search</button>
-<button class="btn2">Clear</button>
-<button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+  </div>
+<button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
+<button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2" [style.color]="buttonColor2">Clear</button>
+<button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3" [style.color]="buttonColor3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
 </div>
 
  <div class="table-wrapper">
@@ -312,4 +312,22 @@
   </tbody>
 </table>
 </div>
+<div class="modal">
+  <div class="modal-content">
+    <div class="form-container" id="form1">
+      <!-- Form 1 code goes here -->
+    </div>
+    <div class="form-container hidden" id="form2">
+      <!-- Form 2 code goes here -->
+    </div>
+    <div class="form-container hidden" id="form3">
+      <!-- Form 3 code goes here -->
+    </div>
+    <div class="button-container">
+      <button class="next-btn" (click)="nextForm()">Next</button>
+      <button class="close-btn" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 </div>
