@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardContentComponent } from './main/dashboard-content/dashboard-content.component';
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -20,7 +21,9 @@ import { LeavesContentComponent } from './main/leaves-content/leaves-content.com
   ],
   imports: [
     CommonModule,
-    DashboardModuleRoutingModule
+    DashboardModuleRoutingModule,
+    RouterModule,
+
   ]
 })
 export class DashboardModuleModule { }

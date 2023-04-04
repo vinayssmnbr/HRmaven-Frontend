@@ -1,41 +1,71 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 import { UserService} from '../service/user.service';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+constructor(public fb1:FormBuilder,
+  private activatedRoute:ActivatedRoute,
+  private http: HttpClient,
+  private router: Router,
+  private cookie:CookieService,
+  public userService:UserService
+  ){}
 
-  ngOnInit() {
-    let counter = 1;
-    setInterval(() => {
-      const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
-      }
-    }, 5000);
-  }
+ngOnInit() {
 
-constructor(public fb1:FormBuilder,public router : Router,public userService:UserService){}
+
+  let counter = 1;
+  setInterval(() => {
+    const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
+    radioBtn.checked = true;
+    counter++;
+    if (counter > 4) {
+      counter = 1;
+    }
+  }, 5000);
+  ///
+
+  this.activatedRoute.queryParams.subscribe((params) => {
+    // console.log(params);
+    const token = params['token'];
+    console.log(token);
+    if (token) {
+      this.cookie.set('token',token);
+      this.router.navigate(['dashboard']);
+    }
+  });
+}
+//Google Login
+loginwithGoogle() {
+  console.log('google');
+  window.location.href = 'http://localhost:3000/auth/google';
+}
+
+
+
+
   loginForm = new FormGroup({
     email : new FormControl('',[ Validators.required,Validators.email]),
-    password : new FormControl('',[Validators.required,Validators.minLength(5)])
+    password : new FormControl('',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)])
   })
 
   forgotPassword = new FormGroup({
     email : new FormControl('',[ Validators.required,Validators.email]),
-    
+
   })
 
   showPassword = false;
   showPasswordIcon = 'fa-eye';
   Forgotshow=false;
-   EmailSent=false;
+  EmailSent=false;
+  Invalid=false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -49,6 +79,11 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
   }
   toggleForgot1(){
     this.EmailSent= !this.EmailSent;
+}
+
+closeInvalid(){
+  this.Invalid=!this.Invalid;
+  this.loginForm.reset();
 }
 
   loginuser(data: any){
@@ -67,20 +102,36 @@ constructor(public fb1:FormBuilder,public router : Router,public userService:Use
     return this.forgotPassword.get("email");
   }
 
-
-
-
 submit(){
   this.router.navigate(['/dashboard'])
 }
 
-onSubmit(data1:any){
-  console.log(this.loginForm.value);
-  this.userService.users(data1).subscribe((res: any)=>{
-    this.userService.users(this.loginForm)
-    console.log("login User: ", res)
-    console.log("login User: ", res.token)
+// submissions
 
+
+onSubmit(data:any){
+  console.log(this.loginForm.value);
+  this.userService.users(data).subscribe((res: any)=>{
+    this.userService.users(this.loginForm)
+
+    
+
+    console.log("login User: ", res)
+    if(res.message=="login successful") {
+      var today = new Date();
+    var expire = new Date();
+
+    expire.setTime(today.getTime() + 3600000*24*15);
+    console.log('inside');
+        document.cookie ="token= "  + res.token + ";path=/" + ";expires=" + expire.toUTCString();
+      this.submit();
+    }
+    else if(res.message=="Invalid"){
+      console.log("haha");
+      this.Invalid=!this.Invalid;
+
+
+    }
 
   })
 
@@ -101,6 +152,8 @@ ForgetEmailSubmit(data:any)
   // },1000);
 
 }
+
+
 
 
 }
