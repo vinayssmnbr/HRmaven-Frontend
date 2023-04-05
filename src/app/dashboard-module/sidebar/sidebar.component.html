@@ -1,4 +1,4 @@
-<div class="container">
+
 <div class="sidebar">
   <div class="side1">
   <div class="logo">
@@ -9,13 +9,13 @@
   </div>
   <p>Menu</p>
   <ul class="navigation">
-    <li class="active"><a href="#" ><i class="fa-solid fa-house"></i>Dashboard</a></li>
-    <li><a href="#" ><i class="fa-solid fa-user-group"></i>Employee</a></li>
-    <li><a href="#" ><i class="fa-solid fa-calendar-days"></i>Attendance</a></li>
-    <li><a href="#" ><i class="fa-solid fa-wallet"></i>Payroll</a></li>
-    <li><a href="#" ><i class="fa-solid fa-list-check"></i>Leaves</a></li>
-    <li><a href="#" ><i class="fa-solid fa-briefcase"></i>Recruitment</a></li>
-    <li><a href="#" ><i class="fa-solid fa-square-poll-vertical"></i>Report</a></li>
+    <li routerLinkActive="active"><a routerLink="/dashboard" ><i class="fa-solid fa-house"></i>Dashboard</a></li>
+    <li routerLinkActive="active"><a routerLink="/dashboard/employee" ><i class="fa-solid fa-user-group" (click)="goToEmployee()"></i>Employee</a></li>
+    <li routerLinkActive="active"><a routerLink="#" ><i class="fa-solid fa-calendar-days"></i>Attendance</a></li>
+    <li routerLinkActive="active"><a routerLink="#" ><i class="fa-solid fa-wallet"></i>Payroll</a></li>
+    <li routerLinkActive="active"><a  routerLink="/dashboard/leaves"><i class="fa-solid fa-list-check"></i>Leaves</a></li>
+    <li routerLinkActive="active"><a routerLink="#" ><i class="fa-solid fa-briefcase"></i>Recruitment</a></li>
+    <li routerLinkActive="active"><a routerLink="#" ><i class="fa-solid fa-square-poll-vertical"></i>Report</a></li>
   </ul>
   </div>
   <div class="side2">
@@ -26,4 +26,4 @@
   </ul>
   </div>
 </div>
-</div>
+

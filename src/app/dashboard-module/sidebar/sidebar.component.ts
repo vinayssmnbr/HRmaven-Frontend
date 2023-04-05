@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component,OnInit } from '@angular/core';
+import { Route,Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -8,21 +7,20 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
-  user: any;
-constructor(private http:HttpClient,
-  private cookie:CookieService,
-  private router: Router,
+export class SidebarComponent implements OnInit {
+constructor(private router:Router,private cookie:CookieService){}
 
-  ){}
+ngOnInit() {
 
-ngOnInit(){
+}
+goToEmployee(){
+ this.router.navigate(['employee'])
+}
+
+logout(){
+  this.cookie.delete('token');
+  this.router.navigate(['']);
 
 }
 
-  logout() {
-    this.cookie.deleteAll();
-    this.router.navigate(['/login']);
-
-  }
 }

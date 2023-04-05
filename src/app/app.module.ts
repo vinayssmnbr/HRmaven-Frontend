@@ -13,6 +13,7 @@ import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
 
 import { LoaderComponent } from './loader/loader.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
@@ -22,8 +23,6 @@ import { LoaderComponent } from './loader/loader.component';
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -32,9 +31,6 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-
-
-
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
