@@ -13,6 +13,7 @@ import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
 
 import { LoaderComponent } from './loader/loader.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 @NgModule({
