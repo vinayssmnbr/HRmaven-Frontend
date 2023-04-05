@@ -9,6 +9,10 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
 import { EmployeeContentComponent } from './main/employee-content/employee-content.component';
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 import { RouterModule } from '@angular/router';
+import { AttendanceContentComponent } from './main/attendance-content/attendance-content.component';
+import { PayrollContentComponent } from './main/payroll-content/payroll-content.component';
+import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
+import { ReportContentComponent } from './main/report-content/report-content.component';
 
 
 
@@ -19,7 +23,11 @@ import { RouterModule } from '@angular/router';
            SidebarComponent,
            DashboardContentComponent,
            EmployeeContentComponent,
-           LeavesContentComponent
+           LeavesContentComponent,
+           AttendanceContentComponent,
+           PayrollContentComponent,
+           RecruitmentContentComponent,
+           ReportContentComponent,
   ],
   imports: [
     CommonModule,
