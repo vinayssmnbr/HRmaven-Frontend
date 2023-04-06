@@ -5,6 +5,7 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09);
   position: fixed;
   margin-left:223px;
+  z-index: 9999;
 }
 
 .content{

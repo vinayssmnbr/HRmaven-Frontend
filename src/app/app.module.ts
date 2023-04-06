@@ -11,9 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
-
 import { LoaderComponent } from './loader/loader.component';
-
 
 @NgModule({
   declarations: [
