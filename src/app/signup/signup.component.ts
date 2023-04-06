@@ -64,6 +64,8 @@ onSubmit(data:any){
   console.log(this.sigupform.value);
   this.userService.saveUser(data).subscribe((result: any)=>{
   this.userService.saveUser(this.sigupform)
+  console.log(result)
+  this.submit();
   var today = new Date();
   var expire = new Date();
 

@@ -1,16 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
+import { DashService } from '../../shared/dash.service';
+
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
   styleUrls: ['./dashboard-content.component.css'],
 })
 export class DashboardContentComponent implements OnInit {
-  ngOnInit() {
 
 
-    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
+
+
+    constructor(public dashService:DashService){
+      dashService.activeComponent = 'dashboard';
+      dashService.headerContent = '';
+  
+    }
+  
+    ngOnInit()
+    {
+      const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
       options = optionMenu.querySelectorAll<HTMLElement>('.option'),
       sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
@@ -25,26 +36,16 @@ export class DashboardContentComponent implements OnInit {
         optionMenu.classList.remove('active');
       });
     });
-    // Create a chart object
-    const myChart = new Chart('myChart', {
-      type: 'bar',
-      data: {
-        labels: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sept',
-          'Oct',
-          'Nov',
-          'Dec',
-        ],
-        datasets: [
-          {
+
+
+
+
+// Create a chart object
+const myChart = new Chart("myChart", {
+    type: 'bar',
+    data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'],
+        datasets: [{
             label: 'Present',
             data: [50, 800, 470, 500, 800, 600, 500, 400, 700, 300, 200, 100],
             backgroundColor: ['#2D11FA'],
@@ -93,14 +94,14 @@ export class DashboardContentComponent implements OnInit {
       options: {
         responsive: true,
         scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
-  
-}
-  
+            y: {
+                beginAtZero: true
+            }
 
+        },
+    }
+
+});
+
+}
+}

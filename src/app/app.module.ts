@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,6 @@ import { LoaderComponent } from './loader/loader.component';
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -30,9 +29,6 @@ import { LoaderComponent } from './loader/loader.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-
-
-
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
