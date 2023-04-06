@@ -16,9 +16,7 @@ ngOnInit() {
 goToEmployee(){
  this.router.navigate(['./dashboard/employee'])
 }
-logout(){
 
-}
 
 logout(){
   this.cookie.delete('token');
