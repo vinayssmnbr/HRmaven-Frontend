@@ -8,7 +8,8 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService} from '../service/user.service';
+import { UserService } from '../service/user.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -36,8 +37,8 @@ export class LoginComponent {
         counter = 1;
       }
     }, 5000);
-    ///
 
+    //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
       const token = params['token'];
@@ -47,8 +48,12 @@ export class LoginComponent {
         this.router.navigate(['dashboard']);
       }
     });
+
+    if (this.userService.isUserLoggedIn()) {
+      this.router.navigate(['dashboard']);
+    }
   }
-  //Google Login
+  //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
     window.location.href = 'http://localhost:3000/auth/google';
@@ -87,23 +92,35 @@ export class LoginComponent {
     this.EmailSent = !this.EmailSent;
   }
 
-closeInvalid(){
-  this.Invalid=!this.Invalid;
-  this.loginForm.reset();
-}
-
-  loginuser(data: any){
-    this.userService.users(data).subscribe((res:any)=>{
-      this.userService.users(data)
-      console.log("login User: ",res)
-
-      var today = new Date();
-      var expire = new Date();
-
-      expire.setTime(today.getTime() + 3600000*24*15);
-      document.cookie = "name= " + res.Token + ";path=/" + ";expires=" + expire.toUTCString();
-    })
+  closeInvalid() {
+    this.Invalid = !this.Invalid;
+    this.loginForm.reset();
   }
+
+  // LOGIN
+  isLoggedIn = new BehaviorSubject<boolean>(false);
+
+  onSubmit(data) {
+    this.userService.users(data).subscribe((res: any) => {
+      if (res?.token) {
+        console.log(res);
+        this.cookie.set('token', res.token);
+        var today = new Date();
+        var expire = new Date();
+        expire.setTime(today.getTime() + 3600000 * 24 * 15);
+        document.cookie =
+          'name= ' + res.Token + ';path=/' + ';expires=' + expire.toUTCString();
+        this.userService.isLoggedIn.next(true);
+        this.router.navigate(['dashboard']);
+      }
+      (error) => {
+        error: error;
+        alert('error');
+        console.log(error);
+      };
+    });
+  }
+
   get email() {
     return this.forgotPassword.get('email');
   }
@@ -111,46 +128,17 @@ closeInvalid(){
   submit() {
     this.router.navigate(['/dashboard']);
   }
+  ForgetEmailSubmit(data: any) {
+    console.log('Forget Password Email');
+    console.log(data);
 
-  // submissions
-
-
-onSubmit(data:any){
-  console.log(this.loginForm.value);
-  this.userService.users(data).subscribe((res: any)=>{
-    this.userService.users(this.loginForm)
-    console.log("login User: ", res)
-    if(res.message=="login successful") {
-      this.submit();
-    }
-    else if(res.message=="Invalid"){
-      console.log("haha");
-      this.Invalid=!this.Invalid;
-
-
-    }
-
-  })
-
-}
-ForgetEmailSubmit(data:any)
-{
-  console.log("Forget Password Email");
-  console.log(data);
-
-  this.userService.ForgotEmail(data).subscribe((res:any)=>{
-    this.userService.ForgotEmail(this.forgotPassword);
-    console.log("response:"+res);
-  })
-  this.Forgotshow=!this.Forgotshow;
-  setTimeout(()=>{
-    this.EmailSent=!this.EmailSent;
-
-  },1000);
-
-}
-
-
-
-
+    this.userService.ForgotEmail(data).subscribe((res: any) => {
+      this.userService.ForgotEmail(this.forgotPassword);
+      console.log('response:' + res);
+    });
+    this.Forgotshow = !this.Forgotshow;
+    setTimeout(() => {
+      this.EmailSent = !this.EmailSent;
+    }, 1000);
+  }
 }

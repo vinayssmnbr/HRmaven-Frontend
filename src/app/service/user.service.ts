@@ -1,103 +1,70 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cookie: CookieService
+  ) {}
 
-  constructor(private http: HttpClient, private router : Router, private cookie:CookieService ) { }
+  isLoggedIn = new BehaviorSubject<boolean>(true);
 
-  isLoggedIn=new BehaviorSubject<boolean>(true)
-
-  isUserLogged(): boolean {
+  isUserLoggedIn(): boolean {
     return this.cookie.get('token') !== '';
   }
 
+  saveurl = 'http://localhost:3000/signup';
+  loginurl = 'http://localhost:3000/login';
+  Forgoturl = 'http://localhost:3000/forgotpassword';
+  Reseturl = 'http://localhost:3000/resetpassword';
 
-  saveurl="http://localhost:3000/signup"
-  loginurl="http://localhost:3000/login"
-  Forgoturl="http://localhost:3000/forgotpassword"
-  Reseturl="http://localhost:3000/resetpassword"
-
-  users(data: any){
-
+  saveUser(data: any) {
     this.isLoggedIn.next(true);
-
-    return this.http.post(this.loginurl,data)
+    return this.http.post(this.saveurl, data);
   }
 
-  saveUser(data: any){
-    this.isLoggedIn.next(true);
-    return this.http.post(this.saveurl,data)
-
+  ForgotEmail(data: any) {
+    return this.http.post(this.Forgoturl, data);
   }
 
-  ForgotEmail(data:any)
-  {
-    return this.http.post(this.Forgoturl,data);
+  newpwd(data: any, token: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'auth-token': token,
+      Accept: 'application/json',
+    });
+
+    return this.http.post(this.Reseturl, data, { headers });
   }
 
-  newpwd(data:any,token:any){
-      let headers= new HttpHeaders({
-        'Content-Type': 'application/json',
-        'auth-token':token,
-        Accept:'application/json'
-      })
+  //LOGIN AND VERIFY DASHBOARD
+  users(data: any) {
+    return this.http.post(this.loginurl, data);
+  }
 
-      return this.http.post(this.Reseturl,data, { headers });
+  allDataLogin() {
+    let headers = new HttpHeaders().set(
+      'Authorization',
+      `bearer ${this.cookie.get('token')}`
+    );
+    console.log(headers);
 
-    }
-   
-    // allDataLogin() {
-    //   const token = this.cookie.get("token");
+    this.http.get('http://localhost:3000/auth', { headers }).subscribe(
+      (res: any) => {
+        this.isLoggedIn.next(true);
+        this.router.navigate(['dashboard']);
+      },
 
-    //   if (!token) {
-    //     // If token is missing, navigate to login page
-    //     this.router.navigate(['login']);
-    //     return;
-    //   }
-
-    //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    //   this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-    //     (res: any) => {
-    //       this.isLoggedIn.next(true);
-    //       this.router.navigate(['dashboard']);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       this.router.navigate(['login']);
-    //     }
-    //   );
-    // }
-    allDataLogin() {
-      const token = this.cookie.get("token");
-    
-      if (!token) {
-        // If token is missing, navigate to login page
+      (error) => {
+        console.log(error);
         this.router.navigate(['login']);
-        return;
       }
-    
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    
-      this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-        (res: any) => {
-          // Check if the user is already logged in
-          if (!this.isLoggedIn.getValue()) {
-            this.isLoggedIn.next(true);
-            this.router.navigate(['dashboard']);
-          }
-        },
-        (error) => {
-          console.log(error);
-          this.router.navigate(['login']);
-        }
-      );
-    }
-    
+    );
   }
-
+}
