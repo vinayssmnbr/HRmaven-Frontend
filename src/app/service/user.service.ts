@@ -50,40 +50,19 @@ export class UserService {
       return this.http.post(this.Reseturl,data, { headers });
 
     }
-   
-    // allDataLogin() {
-    //   const token = this.cookie.get("token");
 
-    //   if (!token) {
-    //     // If token is missing, navigate to login page
-    //     this.router.navigate(['login']);
-    //     return;
-    //   }
 
-    //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    //   this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-    //     (res: any) => {
-    //       this.isLoggedIn.next(true);
-    //       this.router.navigate(['dashboard']);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       this.router.navigate(['login']);
-    //     }
-    //   );
-    // }
     allDataLogin() {
       const token = this.cookie.get("token");
-    
+
       if (!token) {
         // If token is missing, navigate to login page
         this.router.navigate(['login']);
         return;
       }
-    
+
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    
+
       this.http.get('http://localhost:3000/auth', { headers }).subscribe(
         (res: any) => {
           // Check if the user is already logged in
@@ -98,6 +77,6 @@ export class UserService {
         }
       );
     }
-    
+
   }
 

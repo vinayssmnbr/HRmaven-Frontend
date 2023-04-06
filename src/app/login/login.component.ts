@@ -27,16 +27,15 @@ export class LoginComponent {
   ngOnInit() {
     let counter = 1;
     setInterval(() => {
-      const radioBtn = document.getElementById(
-        `radio${counter}`
-      ) as HTMLInputElement;
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
+      const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
+      if (radioBtn) {
+        radioBtn.checked = true;
+        counter++;
+        if (counter > 4) {
+          counter = 1;
+        }
       }
     }, 5000);
-    ///
 
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
@@ -47,6 +46,9 @@ export class LoginComponent {
         this.router.navigate(['dashboard']);
       }
     });
+    if(this.userService.isUserLogged()){
+      this.router.navigate(['dashboard'])
+      }
   }
   //Google Login
   loginwithGoogle() {

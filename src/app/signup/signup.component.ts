@@ -14,10 +14,12 @@ export class SignupComponent {
     let counter = 1;
     setInterval(() => {
       const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
+      if (radioBtn) {
+        radioBtn.checked = true;
+        counter++;
+        if (counter > 4) {
+          counter = 1;
+        }
       }
     }, 5000);
   }
