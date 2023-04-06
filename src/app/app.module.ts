@@ -11,7 +11,6 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
-
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -19,10 +18,12 @@ import { AuthGuard } from './guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
+    LoginComponent
+
+
   ],
   imports: [
     BrowserModule,

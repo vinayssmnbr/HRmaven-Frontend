@@ -7,12 +7,7 @@ import { ForgetComponent } from './forget/forget.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 
-const routes: Routes = [{path:'',component:LoaderComponent},
-{path:'login',component:LoginComponent }
-,{path:'signup',component:SignupComponent},
-{ path: 'dashboard', loadChildren: () => import('./dashboard-module/dashboard-module.module')
-.then(m => m.DashboardModuleModule),canActivate:[AuthGuard],},
-{path:'resetpassword/:token',component:ForgetComponent}];
+const routes: Routes = [{path:'',component:LoaderComponent},{path:'login',component:LoginComponent},{path:'signup',component:SignupComponent},{ path: 'dashboard', loadChildren: () => import('./dashboard-module/dashboard-module.module').then(m => m.DashboardModuleModule)},{path:'resetpassword/:token',component:ForgetComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
