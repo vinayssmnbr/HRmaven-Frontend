@@ -29,7 +29,6 @@ body {
   /* height: 100%; */
   line-height: 1.4;
   background: #fff;
-  overflow-y: hidden;
 }
 
 
@@ -93,3 +92,4 @@ a{
 html, body { height: 100%; }
 body { margin: 0;
     }
+

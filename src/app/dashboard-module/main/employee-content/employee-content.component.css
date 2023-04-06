@@ -9,6 +9,7 @@
 .selection{
   display: flex;
   gap: 10px;
+  padding-top:65px;
 }
 input[type='text']{
   padding: 10px 42px 10px 17px;
