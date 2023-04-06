@@ -15,4 +15,7 @@ ngOnInit() {
 goToEmployee(){
  this.router.navigate(['./dashboard/employee'])
 }
+logout(){
+
+}
 }

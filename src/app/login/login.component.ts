@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ constructor(public fb1:FormBuilder,
   private http: HttpClient,
   private router: Router,
   private cookie:CookieService,
+  public userService:UserService
+
   ){}
 
 ngOnInit() {

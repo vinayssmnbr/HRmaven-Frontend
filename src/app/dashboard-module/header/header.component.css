@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: flex-end;
   /* margin-left: 400px; */
-  gap: 16px;
+  gap: 18px;
   cursor: pointer;
 }
 .content-right i{
@@ -43,7 +43,7 @@
 }
 .header-icon {
   display: flex;
-  margin-left: 6px;
+  /* margin-left: 6px; */
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -61,7 +61,7 @@ input[type='search']{
 }
 
 .content-right .fa-bell{
-  margin-left: 8px;
+  /* margin-left: 8px; */
   color: #111111;
   border-radius: 50%;
   background:#EAEAF5;

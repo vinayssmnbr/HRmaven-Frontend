@@ -21,6 +21,7 @@ import { CookieService } from 'ngx-cookie-service';
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
+    LoginComponent
 
 
   ],
