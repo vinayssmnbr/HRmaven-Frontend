@@ -33,6 +33,33 @@
       [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
   </div>
 
+  <!-- <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="employee">Employee ID</th>
+          <th class="name">Name</th>
+          <th class="email">Designation</th>
+          <th class="designation">Email</th>
+          <th class="action">Contact</th>
+          <th class="contact">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can" (click)="todelete()"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          ======= -->
   <div class="table-wrapper">
     <table>
       <thead>
@@ -46,24 +73,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of employee">
-
-          <td class="employee1">{{user.uid}}</td>
-          <td class="name1">{{user.name}}</td>
-          <td class="designation1">{{user.designation}}</td>
-          <td class="email1">{{user.email}}</td>
-          <td class="contact1">{{user.mobile}}</td>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
           <td class="action1">
             <div class="icons"><i class="fa-solid fa-pencil"></i>
-              <i class="fa-solid fa-trash-can" (click)="Removedata(user)"></i>
+              <i class="fa-solid fa-trash-can" (click)="todelete()"></i>
             </div>
           </td>
+        </tr>
+        <tr>
 
 
 
       </tbody>
     </table>
   </div>
+
+
+
+
   <div class="modal" *ngIf="showModal">
     <div class="modal-content" *ngIf="showModalContent">
       <div class="modal-header">
@@ -86,7 +118,7 @@
 
 
 
-        <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
+        <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit()">
           <div class="form-row">
             <div class="input">
               <label>Name</label>
@@ -184,7 +216,7 @@
         <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
         <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
         <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
-          (click)="submit(form.value)">Done</button>
+          (click)="submit()">Done</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">
@@ -197,123 +229,8 @@
           and edit them when necessary.</p>
         <button class="done-btn2" (click)="closeModal()">Done</button>
       </div>
-
-
-
-
-      <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
-        <div class="form-row">
-          <div class="input">
-            <label>Name</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="name" required>
-          </div>
-          <div class="input">
-            <label>Designation</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="designation">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="input">
-            <label>UID</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="uid">
-          </div>
-          <div class="input">
-            <label>Date of Joining</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="dateOfJoining">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="input">
-            <label>Date of Birth</label>
-            <input type="text" id="text1" placeholder="DD/MM/YYYY" formControlName="dateOfBirth">
-          </div>
-          <div class="input">
-            <label>Gender</label>
-            <select id="slt" formControlName="gender">
-              <option value="option">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="others">Others</option>
-            </select>
-          </div>
-        </div>
-      </form>
-
-
-
-
-
-
-      <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
-        <div class="form-row">
-          <div class="input">
-            <label>Mobile No.</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="mobile">
-          </div>
-          <div class="input">
-            <label>Email</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="email">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="input">
-            <label>Address</label>
-            <input type="textarea" id="text2" placeholder="Type here..." formControlName="address">
-          </div>
-        </div>
-      </form>
-
-
-
-      <form class="form-container " id="form3" [formGroup]="form" *ngIf="thirdStep">
-        <div class="form-row">
-          <div class="input">
-            <label>Bank Name</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="bankname">
-          </div>
-          <div class="input">
-            <label>Account Number</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="accountno">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="input">
-            <label>IFSC Code</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="ifsc">
-          </div>
-          <div class="input">
-            <label>Aadhar Card No.</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="adhaarno">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="input">
-            <label>PAN number</label>
-            <input type="text" id="text1" placeholder="Type here..." formControlName="panno">
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn">Next</button>
-      <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
-      <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
-      <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
-      <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
-        (click)="submit(form.value)">Done</button>
-    </div>
   </div>
-  <div class="modal-content2" *ngIf="fourthStep">
-    <div class="modal-header2">
-      <img src="./assets/images/tick.png" alt="img">
-    </div>
-    <div class="modal-body2">
-      <h3>New employee added successfully!</h3>
-      <p>You can add more employees in a similar way
-        and edit them when necessary.</p>
-      <button class="done-btn2" (click)="closeModal()">Done</button>
-    </div>
-  </div>
+
   <div class="modal-content3" *ngIf="rowdelete">
     <div class="modal-body3">
       <h4>Do you really want to delete this employee?</h4>

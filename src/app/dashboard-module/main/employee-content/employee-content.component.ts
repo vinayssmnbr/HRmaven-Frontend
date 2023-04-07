@@ -39,7 +39,6 @@ export class EmployeeContentComponent implements OnInit {
     ifsc: new FormControl(''),
     panno: new FormControl(''),
   });
-  employee: any[] = [];
 
   constructor(
     public dashService: DashService,
@@ -50,39 +49,20 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-  submit(data: any) {
+  submit() {
     console.log(this.form.value);
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
-    this.dashService.addEmployee(data).subscribe((result) => {
-      this.dashService.addEmployee(this.form);
-      console.log(result);
-      this.fetchdata()
-    });
-  }
-fetchdata(){
-  this.dashService.getEmployee().subscribe((res: any) => {
-    console.log('data', res);
-    this.employee = res.response;
 
-  });
-}
-
-  Removedata(data: any) {
-    if (confirm('Are you sure you want to delete this Employee?')) {
-      this.dashService.deleteStudent(data._id).subscribe(() => {
-        console.log('deleted')
-        this.employee = this.employee.filter((s) => s !== data);
-        this.fetchdata()
-      });
-    }
   }
+
+
 
 
   ngOnInit() {
 
-    this.fetchdata()
+
 
   }
   changeColor() {
@@ -111,7 +91,7 @@ fetchdata(){
   thirdStep: boolean = false;
   fourthStep: boolean = false;
   showModalContent: boolean = true;
-
+  fifthstep:boolean=false;
   onNextForm() {
     this.firstStep = false;
     this.secondStep = true;
