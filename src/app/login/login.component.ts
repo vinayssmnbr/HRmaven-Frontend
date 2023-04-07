@@ -121,6 +121,7 @@ onSubmit(data:any){
     
 
     console.log("login User: ", res)
+    console.log("login User email: ", this.loginForm.controls['email'].value);
     if(res.message=="login successful") {
       var today = new Date();
     var expire = new Date();
@@ -136,6 +137,8 @@ onSubmit(data:any){
 
 
     }
+    localStorage.setItem('LoggedInName: ', this.loginForm.controls['email'].value);
+
 
   })
 

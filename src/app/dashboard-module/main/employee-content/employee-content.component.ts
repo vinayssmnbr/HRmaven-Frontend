@@ -9,7 +9,17 @@ import { DashService } from '../../shared/dash.service';
 })
 export class EmployeeContentComponent implements OnInit {
   employeeForm: FormGroup;
-  constructor(public dashService: DashService) {
+
+
+  employeeId: any = 211; 
+
+  employeeData: any[] = [];
+
+  employeeEmail: any ='';
+
+  employeeID: any ='';
+
+  constructor( public dashService:DashService){
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
   }
@@ -36,6 +46,9 @@ export class EmployeeContentComponent implements OnInit {
         optionMenu.classList.remove('active');
       });
     });
+
+    
+
   }
   isDropdownOpen = false;
 

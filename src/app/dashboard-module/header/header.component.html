@@ -23,8 +23,35 @@
       </button>
 
 
-    <img src="./assets/images/clickup60_4.png" alt="" class="header-icon">
+    <img src="./assets/images/clickup60_4.png" alt="" class="header-icon" (click)="getProfileData();profileToggle()"><br>
+    
+      </div>
     </div>
-    </div>
+    
 </header>
+  <div  *ngIf="profileDisplay">
+    <div class="profile-content"> 
+      <div class="profile-title"> 
+          <div class="profile-logo"> 
+              <img src="./assets/images/clickup60_4.png" alt="profile_logo"> 
+          </div> 
+          <div class="profile-text"> 
+            <h2> {{name}} </h2>
+              <p >{{userEmail}}</p> 
+          </div> 
+          <div class="head-btn"> 
+              <button class="btn-head">HEAD</button> 
+          </div> 
+      </div> 
+      <div class="profile-account"> 
+          <div class="account"> 
+              <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button> 
+          </div> 
+      </div> 
 
+      <div class="profile-account"> 
+          <div class="account"> 
+              <button class="account-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i><a (click)="logout()">  <span>Sign Out</span></a></button> 
+          </div> 
+      </div>
+</div>
