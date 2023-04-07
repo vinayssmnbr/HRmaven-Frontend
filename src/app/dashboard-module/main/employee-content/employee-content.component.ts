@@ -68,6 +68,24 @@ export class EmployeeContentComponent implements OnInit {
 
   ngOnInit() {
     this.fetchdata();
+
+    //designation custom
+
+    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
+      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
+      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
+      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
+    selectBtn.addEventListener('click', () =>
+      optionMenu.classList.toggle('active')
+    );
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        let selectedOption =
+          option.querySelector<HTMLElement>('.option-text')!.innerText;
+        sBtn_text.innerText = selectedOption;
+        optionMenu.classList.remove('active');
+      });
+    });
   }
   changeColor() {
     this.buttonbackgroundColor =
@@ -140,7 +158,6 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.deleteStudent(data._id).subscribe(() => {
       console.log('deleted');
       this.employee = this.employee.filter((s) => s !== data);
-
     });
     this.fetchdata();
   }

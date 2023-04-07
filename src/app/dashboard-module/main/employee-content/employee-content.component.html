@@ -3,28 +3,33 @@
 <div class="main">
   <div class="selection">
     <input type="text" placeholder="Type Employee ID...">
-    <select id="select">
-      <option value="option1">Designation</option>
-      <option value="option2">Software Developer</option>
-      <option value="option3">Frontend Developer</option>
-      <option value="option4">UI/UX Designer</option>
-      <option value="option5">Full Stack Developer</option>
-      <option value="option6">Quality Analyst</option>
-    </select>
-    <!-- <i class="fa-solid fa-caret-down" (click)="toggleDropdown()"></i> -->
-    <div id="dropdown-container" [ngClass]="{'show': isDropdownOpen}">
-      <ul class="navigation">
-        <li>Software Developer</li>
-        <hr>
-        <li>Frontend Developer</li>
-        <hr>
-        <li>UI/UX Designer</li>
-        <hr>
-        <li>Full Stack Developer</li>
-        <hr>
-        <li>Quality Analyst</li>
+    <div class="select-menu">
+      <div class="select-btn">
+        <span class="sBtn-text">Designation</span>
+        <i class="bx bx-chevron-down"></i>
+      </div>
+      <ul class="options">
+        <li class="option">
+          <span class="option-text">Designation</span>
+        </li>
+        <li class="option">
+          <span class="option-text">Software Developer</span>
+        </li>
+        <li class="option">
+          <span class="option-text">Frontend Developer</span>
+        </li>
+        <li class="option">
+          <span class="option-text">UI/UX Designer</span>
+        </li>
+        <li class="option">
+          <span class="option-text">Full Stack Developer</span>
+        </li>
+        <li class="option">
+          <span class="option-text">Quality Analyst</span>
+        </li>
       </ul>
     </div>
+
     <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
       [style.color]="buttonColor">Search</button>
     <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"
@@ -120,10 +125,6 @@
             </div>
           </div>
         </form>
-
-
-
-
 
 
         <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
