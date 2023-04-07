@@ -1,19 +1,26 @@
-import { Component,OnInit,Input,Output,EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder,FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
-  styleUrls: ['./employee-content.component.css']
+  styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
   buttonbackgroundColor = '#2F2C9F';
-  buttonColor='#FFFFFF';
-  buttonbackgroundColor2='#ECECEC';
-  buttonColor2='#2F2C9F';
+  buttonColor = '#FFFFFF';
+  buttonbackgroundColor2 = '#ECECEC';
+  buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
-  buttonColor3='#FFFFFF';
+  buttonColor3 = '#FFFFFF';
   // employeeForm: FormGroup;
 
   form = new FormGroup({
@@ -30,50 +37,67 @@ export class EmployeeContentComponent implements OnInit {
     adhaarno: new FormControl(''),
     accountno: new FormControl(''),
     ifsc: new FormControl(''),
-    panno: new FormControl('')
+    panno: new FormControl(''),
   });
-  constructor( public dashService:DashService,private formBuilder:FormBuilder){
+  employee: any[] = [];
+
+  constructor(
+    public dashService: DashService,
+    private formBuilder: FormBuilder
+  ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
   }
-  submit() {
-    console.log(this.form.value)
+
+
+  submit(data: any) {
+    console.log(this.form.value);
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
+    this.dashService.addEmployee(data).subscribe((result) => {
+      this.dashService.addEmployee(this.form);
+      console.log(result);
+      this.fetchdata()
+    });
   }
-  name(name: any) {
-    throw new Error('Method not implemented.');
+fetchdata(){
+  this.dashService.getEmployee().subscribe((res: any) => {
+    console.log('data', res);
+    this.employee = res.response;
+
+  });
+}
+
+  Removedata(data: any) {
+    if (confirm('Are you sure you want to delete this Employee?')) {
+      this.dashService.deleteStudent(data._id).subscribe(() => {
+        console.log('deleted')
+        this.employee = this.employee.filter((s) => s !== data);
+        this.fetchdata()
+      });
+    }
   }
+
+
   ngOnInit() {
-    // this.form = this.formBuilder.group({
-    //   name: [''],
-    //   designation: [''],
-    //   uid: [''],
-    //   dateOfJoining: [''],
-    //   dateOfBirth: [''],
-    //   gender: [''],
-    //   mobile: [''],
-    //   email: [''],
-    //   address: [''],
-    //   bankname: [''],
-    //   accountno: [''],
-    //   adhaarno: [''],
-    //   panno: [''],
-    //   ifsc: ['']
-    // });
+
+    this.fetchdata()
 
   }
   changeColor() {
-    this.buttonbackgroundColor = this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonbackgroundColor =
+      this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor = this.buttonColor === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  changeColor2(){
-    this.buttonbackgroundColor2 = this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
+  changeColor2() {
+    this.buttonbackgroundColor2 =
+      this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
     this.buttonColor2 = this.buttonColor2 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
   }
   changeColor3() {
-    this.buttonbackgroundColor3 = this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonbackgroundColor3 =
+      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
   isDropdownOpen = false;
@@ -82,37 +106,37 @@ export class EmployeeContentComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-firstStep:boolean=true;
-secondStep:boolean=false;
-thirdStep:boolean=false;
-fourthStep:boolean=false;
-showModalContent: boolean = true
-
+  firstStep: boolean = true;
+  secondStep: boolean = false;
+  thirdStep: boolean = false;
+  fourthStep: boolean = false;
+  showModalContent: boolean = true;
 
   onNextForm() {
-  this.firstStep=false;
-  this.secondStep=true;
+    this.firstStep = false;
+    this.secondStep = true;
   }
 
   onPreviousForm() {
-    this.firstStep=true;
-    this.secondStep=false;
+    this.firstStep = true;
+    this.secondStep = false;
   }
-  nextForm1(){
-    this.secondStep=false;
-    this.thirdStep=true;
+  nextForm1() {
+    this.secondStep = false;
+    this.thirdStep = true;
   }
-  previousForm1(){
-    this.secondStep=true;
-    this.thirdStep=false;
+  previousForm1() {
+    this.secondStep = true;
+    this.thirdStep = false;
   }
-  showModal=false
+  showModal = false;
   closeModal() {
     this.showModal = false;
-    this.buttonbackgroundColor3 = this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonbackgroundColor3 =
+      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
-    this.showModalContent=true;
-    this.fourthStep=false;
+    this.showModalContent = true;
+    this.fourthStep = false;
   }
 
   openModal(){
@@ -143,4 +167,5 @@ showModalContent: boolean = true
   closeModal3(){
    this.showModal=false;
   }
+  nextForm2() {}
 }
