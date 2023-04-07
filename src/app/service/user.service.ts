@@ -49,22 +49,22 @@ export class UserService {
   }
 
   allDataLogin() {
-    let headers = new HttpHeaders().set(
-      'Authorization',
-      `bearer ${this.cookie.get('token')}`
-    );
-    console.log(headers);
+    // let headers = new HttpHeaders().set(
+    //   'Authorization',
+    //   `bearer ${this.cookie.get('token')}`
+    // );
+    // console.log(headers);
 
-    this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-      (res: any) => {
-        this.isLoggedIn.next(true);
-        this.router.navigate(['dashboard']);
-      },
+    // this.http.get('http://localhost:3000/auth', { headers }).subscribe(
+    //   (res: any) => {
+    //     this.isLoggedIn.next(true);
+    //     this.router.navigate(['dashboard']);
+    //   },
 
-      (error) => {
-        console.log(error);
-        this.router.navigate(['login']);
-      }
-    );
+    //   (error) => {
+    //     console.log(error);
+    //     this.router.navigate(['login']);
+    //   }
+    // );
   }
 }

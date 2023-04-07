@@ -51,96 +51,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
           <div class="bar-chart">
             <canvas id="myChart"></canvas>
@@ -153,110 +63,37 @@
             <h2>Meetings</h2>
             <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
           </div>
-          <div class="all-meetings">
+          <div class="all-meetings" *ngFor="let option of options let index = index">
           <div class="interview-area">
             <div class="date">
-              <p>Mon</p>
-              <h5>21</h5>
+              <p>{{option.day}}</p>
+              <h5>{{option.Date}}</h5>
             </div>
             <div class="interview-timings">
               <div class="interview-dots">
-                <h3>Interview</h3>
-                <p>9.00 am - 11.00am</p>
+                <h3>{{option.head}}</h3>
+                <p>{{option.time}}</p>
               </div>
               <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical" >
+                <i class="fa-solid fa-ellipsis-vertical" (click)="ToggleMenu(index)" >
+                  <ul id={{index}} class="close">
+                    <button value={{index}} (click)="Edit(index)">Edit</button>
+                    <button value="Delete">Delete</button>
+                  </ul>
                 </i>
               </div>
             </div>
           </div>
 
-          <div class="interview-area">
-            <div class="date">
-              <p>Tue</p>
-              <h5>22</h5>
-            </div>
-            <div class="interview-timings">
-              <div class="interview-dots">
-                <h3>Organisational meetings</h3>
-                <p>9.00 am - 11.00am</p>
-              </div>
-              <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="interview-area">
-            <div class="date">
-              <p>Wed</p>
-              <h5>23</h5>
-            </div>
-            <div class="interview-timings">
-              <div class="interview-dots">
-                <h3>Meeting with the manager</h3>
-                <p>9.00 am - 11.00am</p>
-              </div>
-              <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </div>
-            </div>
-          </div>
-          <div class="interview-area">
-            <div class="date">
-              <p>Thu</p>
-              <h5>24</h5>
-            </div>
-            <div class="interview-timings">
-              <div class="interview-dots">
-                <h3>Interview</h3>
-                <p>9.00 am - 11.00am</p>
-              </div>
-              <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </div>
-            </div>
-          </div>
 
 
 
-          <div class="interview-area">
-            <div class="date">
-              <p>Fri</p>
-              <h5>25</h5>
-            </div>
-            <div class="interview-timings">
-              <div class="interview-dots">
-                <h3>Meeting with the manager</h3>
-                <p>9.00 am - 11.00am</p>
-              </div>
-              <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-              </div>
-            </div>
-          </div>
 
 
 
-          <div class="interview-area">
-            <div class="date">
-              <p>Sat</p>
-              <h5>26</h5>
-            </div>
-            <div class="interview-timings">
-              <div class="interview-dots">
-                <h3>Meeting with the manager</h3>
-                <p>9.00 am - 11.00am</p>
-              </div>
-              <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical dropbtn"></i>
-                <div class="dropdown-content">
-                  <a href="#">Link 1</a>
-                  <a href="#">Link 2</a>
-                </div>
-              </div>
-            </div>
-          </div>
+
+
+
          </div>
         </div>
       </div>

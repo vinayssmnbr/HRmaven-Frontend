@@ -1,22 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { Chart,registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
-
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
   styleUrls: ['./dashboard-content.component.css']
 })
 export class DashboardContentComponent implements OnInit {
-  constructor(public dashService:DashService){
+  constructor(public dashService:DashService,@Inject(DOCUMENT) public document: Document){
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
+  }
+  options:any=[{
+    day:"Mon",
+    Date:"21",
+    head:"Interview",
+    time:"10am to 12pm"
+  },
+  {
+    day:"Mon",
+    Date:"21",
+    head:"Interview",
+    time:"10am to 12pm"
+  },
+  {
+    day:"Mon",
+    Date:"21",
+    head:"Interview",
+    time:"10am to 12pm"
+  },
+  {
+    day:"Mon",
+    Date:"10",
+    head:"Interview",
+    time:"10am to 12pm"
+  }];
 
+  Edit(index:any){
+    console.log(index);
   }
 
+  ToggleMenu(index:any)
+  {
+    var ul = document.getElementById(index);
+    ul.classList.toggle("close");
+  }
   ngOnInit()
   {
+
+
 
 
 
