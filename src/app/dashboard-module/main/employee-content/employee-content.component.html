@@ -201,7 +201,7 @@
 
 
 
-      <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit()">
+      <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
         <div class="form-row">
           <div class="input">
             <label>Name</label>
@@ -300,7 +300,7 @@
       <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
       <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
       <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
-        (click)="submit()">Done</button>
+        (click)="submit(form.value)">Done</button>
     </div>
   </div>
   <div class="modal-content2" *ngIf="fourthStep">
