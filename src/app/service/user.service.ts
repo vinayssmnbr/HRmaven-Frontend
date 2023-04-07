@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 @Injectable({
@@ -33,6 +33,8 @@ export class UserService {
     return this.http.post(this.Forgoturl, data);
   }
 
+
+
   newpwd(data: any, token: any) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -48,23 +50,45 @@ export class UserService {
     return this.http.post(this.loginurl, data);
   }
 
-  allDataLogin() {
-    // let headers = new HttpHeaders().set(
-    //   'Authorization',
-    //   `bearer ${this.cookie.get('token')}`
-    // );
-    // console.log(headers);
+ 
+  //  My code for profile fetch Name
+    getUserProfile(): Observable<any> {
+      const token = this.cookie.get('token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+      return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
+    }
+    
 
-    // this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-    //   (res: any) => {
-    //     this.isLoggedIn.next(true);
-    //     this.router.navigate(['dashboard']);
-    //   },
+    allDataLogin() {
+      const token = this.cookie.get("token");
+    
+      if (!token) {
+        // If token is missing, navigate to login page
+        this.router.navigate(['login']);
+        return;
+      }
+    
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    
+      this.http.get('http://localhost:3000/auth', { headers }).subscribe(
+        (res: any) => {
+          // Check if the user is already logged in
+          if (!this.isLoggedIn.getValue()) {
+            this.isLoggedIn.next(true);
+            this.router.navigate(['dashboard']);
+          }
+        },
+        (error) => {
+          console.log(error);
+          this.router.navigate(['login']);
+        }
+      );
+    }
+    
 
-    //   (error) => {
-    //     console.log(error);
-    //     this.router.navigate(['login']);
-    //   }
-    // );
-  }
 }
