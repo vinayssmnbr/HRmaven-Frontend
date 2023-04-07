@@ -52,17 +52,19 @@ export class UserService {
 
  
   //  My code for profile fetch Name
-    getUserProfile(): Observable<any> {
-      const token = this.cookie.get('token');
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  getUserProfileById(): Observable<any> {
+    const token = this.cookie.get('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
   
-      return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
-        map((response: any) => {
-          return response;
-        })
-      );
-    }
-    
+    const url = `http://localhost:3000/user-profile`;
+  
+    return this.http.get(url, { headers }).pipe(
+      map((response: any) => {
+        return response;
+      })
+    );
+  }
+
 
     allDataLogin() {
       const token = this.cookie.get("token");

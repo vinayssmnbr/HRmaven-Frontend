@@ -52,21 +52,16 @@ export class HeaderComponent {
   profileDisplay: boolean = false;
 
     //  My code for profile fetch Name
-  getProfileData(){
-    this.userService.getUserProfile().subscribe(
-      (response) => {
-        // console.log("header response: ", response._id, response.username, response.email);
-        
+  getProfileData() {
+    this.userService.getUserProfileById().subscribe(
+      (response: any) => {
         this.userEmail = response.email;
         this.name = response.username;
-
-        // console.log("email: ", this.userEmail);
-      },
-      (error) => {
-        console.log(error);
       }
     );
+  
   }
+
 
   profileToggle(){
     this.profileDisplay = !this.profileDisplay
