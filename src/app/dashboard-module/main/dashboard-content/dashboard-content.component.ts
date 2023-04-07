@@ -1,5 +1,5 @@
-import { Component, OnInit,Inject } from '@angular/core';
-import { Chart,registerables } from 'node_modules/chart.js';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
@@ -9,48 +9,52 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./dashboard-content.component.css'],
 })
 export class DashboardContentComponent implements OnInit {
-  constructor(public dashService:DashService,@Inject(DOCUMENT) public document: Document){
+  constructor(
+    public dashService: DashService,
+    @Inject(DOCUMENT) public document: Document
+  ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
   }
-  options:any=[{
-    day:"Mon",
-    Date:"21",
-    head:"Interview",
-    time:"10am to 12pm"
-  },
-  {
-    day:"Mon",
-    Date:"21",
-    head:"Interview",
-    time:"10am to 12pm"
-  },
-  {
-    day:"Mon",
-    Date:"21",
-    head:"Interview",
-    time:"10am to 12pm"
-  },
-  {
-    day:"Mon",
-    Date:"10",
-    head:"Interview",
-    time:"10am to 12pm"
-  }];
+  options: any = [
+    {
+      day: 'Mon',
+      Date: '21',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '21',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '21',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+  ];
 
-  Edit(index:any){
+  Edit(index: any) {
     console.log(index);
   }
 
-  ToggleMenu(index:any)
-  {
+  ToggleMenu(index: any) {
     var ul = document.getElementById(index);
-    ul.classList.toggle("close");
+    ul.classList.toggle('close');
   }
 
-    ngOnInit()
-    {
-      const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
+
+  ngOnInit() {
+    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
       options = optionMenu.querySelectorAll<HTMLElement>('.option'),
       sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
@@ -66,16 +70,26 @@ export class DashboardContentComponent implements OnInit {
       });
     });
 
-
-
-
-
-// Create a chart object
-const myChart = new Chart("myChart", {
-    type: 'bar',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sept','Oct','Nov','Dec'],
-        datasets: [{
+    // Create a chart object
+    const myChart = new Chart('myChart', {
+      type: 'bar',
+      data: {
+        labels: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sept',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+        datasets: [
+          {
             label: 'Present',
             data: [50, 800, 470, 500, 800, 600, 500, 400, 700, 300, 200, 100],
             backgroundColor: ['#2D11FA'],
@@ -124,14 +138,11 @@ const myChart = new Chart("myChart", {
       options: {
         responsive: true,
         scales: {
-            y: {
-                beginAtZero: true
-            }
-
+          y: {
+            beginAtZero: true,
+          },
         },
-    }
-
-});
-
-}
+      },
+    });
+  }
 }
