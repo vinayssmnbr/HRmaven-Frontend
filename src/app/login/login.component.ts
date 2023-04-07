@@ -31,11 +31,13 @@ export class LoginComponent {
       const radioBtn = document.getElementById(
         `radio${counter}`
       ) as HTMLInputElement;
+      if(radioBtn){
       radioBtn.checked = true;
       counter++;
       if (counter > 4) {
         counter = 1;
       }
+    }
     }, 5000);
 
     //GOOGLE LOGIN

@@ -51,6 +51,21 @@ export class UserService {
   }
 
 
+  //  My code for profile fetch Name
+  getUserProfileById(): Observable<any> {
+    const token = this.cookie.get('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    const url = `http://localhost:3000/user-profile`;
+
+    return this.http.get(url, { headers }).pipe(
+      map((response: any) => {
+        return response;
+      })
+    );
+  }
+
+
     allDataLogin() {
       const token = this.cookie.get("token");
 
