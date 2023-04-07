@@ -22,7 +22,7 @@ export class EmployeeContentComponent implements OnInit {
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
   // employeeForm: FormGroup;
-
+  employee: any[] = [];
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
@@ -48,22 +48,26 @@ export class EmployeeContentComponent implements OnInit {
     dashService.headerContent = '';
   }
 
-
-  submit() {
+  submit(data: any) {
     console.log(this.form.value);
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
-
+    this.dashService.addEmployee(data).subscribe((result) => {
+      this.dashService.addEmployee(this.form);
+      console.log(result);
+      this.fetchdata();
+    });
+  }
+  fetchdata() {
+    this.dashService.getEmployee().subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
   }
 
-
-
-
   ngOnInit() {
-
-
-
+    this.fetchdata();
   }
   changeColor() {
     this.buttonbackgroundColor =
@@ -91,7 +95,7 @@ export class EmployeeContentComponent implements OnInit {
   thirdStep: boolean = false;
   fourthStep: boolean = false;
   showModalContent: boolean = true;
-  fifthstep:boolean=false;
+  fifthstep: boolean = false;
   onNextForm() {
     this.firstStep = false;
     this.secondStep = true;
@@ -119,33 +123,40 @@ export class EmployeeContentComponent implements OnInit {
     this.fourthStep = false;
   }
 
-  openModal(){
-    this.showModal=true;
-    this.firstStep=true;
-    this.secondStep=false;
-    this.thirdStep=false;
-    this.showModalContent=true;
+  openModal() {
+    this.showModal = true;
+    this.firstStep = true;
+    this.secondStep = false;
+    this.thirdStep = false;
+    this.showModalContent = true;
   }
-  rowdelete=false;
-  todelete(){
-   this.rowdelete=true;
-   this.showModalContent=false;
-   this.showModal=true;
-   this.deletemessage=false;
+  rowdelete = false;
+  todelete(data: any) {
+    this.rowdelete = true;
+    this.showModalContent = false;
+    this.showModal = true;
+    this.deletemessage = false;
+
+    this.dashService.deleteStudent(data._id).subscribe(() => {
+      console.log('deleted');
+      this.employee = this.employee.filter((s) => s !== data);
+
+    });
+    this.fetchdata();
   }
-  closeModal2(){
-   this.showModal=false;
-   this.rowdelete=false;
-   this.deletemessage=false;
+  closeModal2() {
+    this.showModal = false;
+    this.rowdelete = false;
+    this.deletemessage = false;
   }
-  deletemessage=false
-  successdelete(){
-   this.deletemessage=true;
-   this.rowdelete=false;
-   this.showModal=true;
+  deletemessage = false;
+  successdelete() {
+    this.deletemessage = true;
+    this.rowdelete = false;
+    this.showModal = true;
   }
-  closeModal3(){
-   this.showModal=false;
+  closeModal3() {
+    this.showModal = false;
   }
   nextForm2() {}
 }

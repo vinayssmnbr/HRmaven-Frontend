@@ -9,9 +9,9 @@ export class DashService {
   public headerContent: string;
   public activeComponent: string;
 
-  createData = 'http://localhost:3000/api/studentroute/store';
-  getData = 'http://localhost:3000/api/studentroute/';
-  deleteData = 'http://localhost:3000/api/studentroute/delete';
+  createData = 'http://localhost:3000/api/create';
+  getData = 'http://localhost:3000/api/find';
+  deleteData = 'http://localhost:3000/api/';
 
   constructor(private http: HttpClient) {}
   addEmployee(data) {

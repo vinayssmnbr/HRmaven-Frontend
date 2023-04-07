@@ -33,33 +33,6 @@
       [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
   </div>
 
-  <!-- <div class="table-wrapper">
-    <table>
-      <thead>
-        <tr>
-          <th class="employee">Employee ID</th>
-          <th class="name">Name</th>
-          <th class="email">Designation</th>
-          <th class="designation">Email</th>
-          <th class="action">Contact</th>
-          <th class="contact">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="employee1">29581</td>
-          <td class="name1">Gursimran Singh</td>
-          <td class="designation1">Software Developer</td>
-          <td class="email1">gursimran123@example.com</td>
-          <td class="contact1">9876543210</td>
-          <td class="action1">
-            <div class="icons"><i class="fa-solid fa-pencil"></i>
-              <i class="fa-solid fa-trash-can" (click)="todelete()"></i>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          ======= -->
   <div class="table-wrapper">
     <table>
       <thead>
@@ -73,28 +46,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="employee1">29581</td>
-          <td class="name1">Gursimran Singh</td>
-          <td class="designation1">Software Developer</td>
-          <td class="email1">gursimran123@example.com</td>
-          <td class="contact1">9876543210</td>
+        <tr *ngFor="let user of employee">
+          <td class="employee1">{{user.uid}}</td>
+          <td class="name1">{{user.name}}</td>
+          <td class="designation1">{{user.designation}}</td>
+          <td class="email1">{{user.email}}</td>
+          <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
             <div class="icons"><i class="fa-solid fa-pencil"></i>
-              <i class="fa-solid fa-trash-can" (click)="todelete()"></i>
+              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
         </tr>
-        <tr>
-
-
-
       </tbody>
     </table>
   </div>
-
-
-
 
   <div class="modal" *ngIf="showModal">
     <div class="modal-content" *ngIf="showModalContent">
@@ -118,7 +84,7 @@
 
 
 
-        <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit()">
+        <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
           <div class="form-row">
             <div class="input">
               <label>Name</label>
@@ -216,7 +182,7 @@
         <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
         <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
         <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
-          (click)="submit()">Done</button>
+          (click)="submit(form.value)">Done</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">
@@ -229,26 +195,26 @@
           and edit them when necessary.</p>
         <button class="done-btn2" (click)="closeModal()">Done</button>
       </div>
-  </div>
+    </div>
 
-  <div class="modal-content3" *ngIf="rowdelete">
-    <div class="modal-body3">
-      <h4>Do you really want to delete this employee?</h4>
-      <div class="delete-btns">
-        <button class="yes-btn" (click)="successdelete()">Yes</button>
-        <button class="no-btn" (click)="closeModal2()">No</button>
+    <div class="modal-content3" *ngIf="rowdelete">
+      <div class="modal-body3">
+        <h4>Do you really want to delete this employee?</h4>
+        <div class="delete-btns">
+          <button class="yes-btn" (click)="successdelete()">Yes</button>
+          <button class="no-btn" (click)="closeModal2()">No</button>
+        </div>
+        <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
       </div>
-      <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
     </div>
-  </div>
-  <div class="modal-content4" *ngIf="deletemessage">
-    <div class="modal-header4">
-      <img src="./assets/images/tick.png" alt="img">
+    <div class="modal-content4" *ngIf="deletemessage">
+      <div class="modal-header4">
+        <img src="./assets/images/tick.png" alt="img">
+      </div>
+      <div class="modal-body4">
+        <h3>Employee deleted successfully!</h3>
+        <button class="done-btn2" (click)="closeModal3()">Done</button>
+      </div>
     </div>
-    <div class="modal-body4">
-      <h3>Employee deleted successfully!</h3>
-      <button class="done-btn2" (click)="closeModal3()">Done</button>
-    </div>
-  </div>
 
-</div>
+  </div>
