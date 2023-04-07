@@ -120,9 +120,27 @@ showModalContent: boolean = true
     this.firstStep=true;
     this.secondStep=false;
     this.thirdStep=false;
-
+    this.showModalContent=true;
   }
-  nextForm2(){
-
+  rowdelete=false;
+  todelete(){
+   this.rowdelete=true;
+   this.showModalContent=false;
+   this.showModal=true;
+   this.deletemessage=false;
+  }
+  closeModal2(){
+   this.showModal=false;
+   this.rowdelete=false;
+   this.deletemessage=false;
+  }
+  deletemessage=false
+  successdelete(){
+   this.deletemessage=true;
+   this.rowdelete=false;
+   this.showModal=true;
+  }
+  closeModal3(){
+   this.showModal=false;
   }
 }
