@@ -45,7 +45,10 @@ ngOnInit() {
 
   if(this.userService.isUserLogged()){
     this.router.navigate(['dashboard'])
-  }  
+  } else{
+    this.router.navigate(['login'])
+
+  }   
 
 
   
@@ -124,9 +127,8 @@ onSubmit(data:any){
   this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
 
-
-
     console.log("login User: ", res)
+    console.log("login User email: ", this.loginForm.controls['email'].value);
     if(res.message=="login successful") {
       var today = new Date();
     var expire = new Date();
@@ -143,6 +145,8 @@ onSubmit(data:any){
 
 
     }
+    localStorage.setItem('LoggedInName: ', this.loginForm.controls['email'].value);
+
 
   })
 

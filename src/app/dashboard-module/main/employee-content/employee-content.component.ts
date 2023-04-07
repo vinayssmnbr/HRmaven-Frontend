@@ -9,6 +9,16 @@ import { DashService } from '../../shared/dash.service';
 })
 export class EmployeeContentComponent implements OnInit {
   employeeForm: FormGroup;
+
+
+  employeeId: any = 211; 
+
+  employeeData: any[] = [];
+
+  employeeEmail: any ='';
+
+  employeeID: any ='';
+
   constructor( public dashService:DashService){
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
@@ -19,11 +29,16 @@ export class EmployeeContentComponent implements OnInit {
       employeeId: new FormControl('', Validators.required),
       designation: new FormControl('', Validators.required)
     });
+
+    
+
   }
   isDropdownOpen = false;
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+
 
 }

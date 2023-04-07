@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 @Injectable({
@@ -29,6 +29,7 @@ export class UserService {
     return this.http.post(this.loginurl,data)
   }
 
+
   saveUser(data: any){
     this.isLoggedIn.next(true);
     return this.http.post(this.saveurl,data)
@@ -50,29 +51,19 @@ export class UserService {
       return this.http.post(this.Reseturl,data, { headers });
 
     }
-   
-    // allDataLogin() {
-    //   const token = this.cookie.get("token");
+  //  My code for profile fetch Name
+    getUserProfile(): Observable<any> {
+      const token = this.cookie.get('token');
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+      return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
+        map((response: any) => {
+          return response;
+        })
+      );
+    }
+    
 
-    //   if (!token) {
-    //     // If token is missing, navigate to login page
-    //     this.router.navigate(['login']);
-    //     return;
-    //   }
-
-    //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    //   this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-    //     (res: any) => {
-    //       this.isLoggedIn.next(true);
-    //       this.router.navigate(['dashboard']);
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       this.router.navigate(['login']);
-    //     }
-    //   );
-    // }
     allDataLogin() {
       const token = this.cookie.get("token");
     
