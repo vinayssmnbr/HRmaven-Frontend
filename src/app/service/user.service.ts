@@ -55,19 +55,16 @@ export class UserService {
       const token = this.cookie.get("token");
 
       if (!token) {
-        // If token is missing, navigate to login page
         this.router.navigate(['login']);
         return;
       }
+
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
       this.http.get('http://localhost:3000/auth', { headers }).subscribe(
         (res: any) => {
-          // Check if the user is already logged in
-          if (!this.isLoggedIn.getValue()) {
-            this.isLoggedIn.next(true);
-            this.router.navigate(['dashboard']);
-          }
+          this.isLoggedIn.next(true);
+          this.router.navigate(['dashboard']);
         },
         (error) => {
           console.log(error);

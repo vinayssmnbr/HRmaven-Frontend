@@ -17,10 +17,12 @@ import { AuthGuard } from './guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
+    LoginComponent
+
+
   ],
   imports: [
     BrowserModule,
