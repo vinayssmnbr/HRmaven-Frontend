@@ -43,6 +43,7 @@
     gap: 10px;
     margin-left: 30px;
     padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 .employe_input input {
@@ -163,7 +164,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .table_data {
     width: 100%;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .table_text {
@@ -192,6 +193,7 @@ tr:hover{
 th,
 td {
     padding: 15px;
+    white-space: nowrap;
 }
 
 .table_data::-webkit-scrollbar {
@@ -211,12 +213,6 @@ td {
 .table_data::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
-
-
-
-
-
-
 
 .table_text tr:nth-child(even) {
     background-color: #FFFFFF;

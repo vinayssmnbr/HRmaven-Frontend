@@ -1,0 +1,7 @@
+.attendence{
+    width: calc(100% - 223px);
+    margin-left: 223px;
+    border: 1px solid #f9f9f9;
+    background-color: #f9f9f9;
+    padding-top: 84px;
+}

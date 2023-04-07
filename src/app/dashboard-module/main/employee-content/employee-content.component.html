@@ -1,315 +1,355 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
 <div class="main">
- <div class="selection">
-  <input type="text" placeholder="Type Employee ID..." formControlName="employeeId">
-  <select id="select" placeholder="Deisgnation">
-  <option value="option1">Designation</option>
-  <option value="option2">Software Developer</option>
-  <option value="option3">Frontend Developer</option>
-  <option value="option4">UI/UX Designer</option>
-  <option value="option5">Full Stack Developer</option>
-  <option value="option6">Quality Analyst</option>
-  </select>
-  <!-- <i class="fa-solid fa-caret-down" (click)="toggleDropdown()"></i>
-  <div id="dropdown-container" [ngClass]="{'show': isDropdownOpen}">
-  <ul class="navigation" >
-   <li>Software Developer</li><hr>
-   <li>Frontend Developer</li><hr>
-   <li>UI/UX Designer</li><hr>
-   <li>Full Stack Developer</li><hr>
-   <li>Quality Analyst</li>
-  </ul>
-  </div> -->
-<button class="btn1">Search</button>
-<button class="btn2">Clear</button>
-<button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
-</div>
+  <div class="selection">
+    <input type="text" placeholder="Type Employee ID..." formControlName="employeeId">
 
- <div class="table-wrapper">
-<table>
-  <thead>
-    <tr>
-      <th class="employee">Employee ID</th>
-      <th class="name">Name</th>
-      <th class="email">Designation</th>
-      <th class="designation">Email</th>
-      <th class="action">Contact</th>
-      <th class="contact">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-      <i class="fa-solid fa-trash-can"></i></div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-      <i class="fa-solid fa-trash-can"></i></div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1"><div class="icons"><i class="fa-solid fa-pencil"></i>
-        <i class="fa-solid fa-trash-can"></i>
-      </div></td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
+    <div class="select-menu">
+            <div class="select-btn">
+                <span class="sBtn-text">Designation</span>
+                <i class="bx bx-chevron-down"></i>
+            </div>
+            <ul class="options">
+                <li class="option">
+                    <span class="option-text">Designation</span>
+                </li>
+                <li class="option">
+                    <span class="option-text">Software Developer</span>
+                </li>
+                <li class="option">
+                    <span class="option-text">Frontend Developer</span>
+                </li>
+                <li class="option">
+                    <span class="option-text">UI/UX Designer</span>
+                </li>
+                <li class="option">
+                  <span class="option-text">Full Stack Developer</span>
+              </li>
+              <li class="option">
+                <span class="option-text">Quality Analyst</span>
+            </li>
+            </ul>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td class="employee1">29581</td>
-      <td class="name1">Gursimran Singh</td>
-      <td class="designation1">Software Developer</td>
-      <td class="email1">gursimran123@example.com</td>
-      <td class="contact1">9876543210</td>
-      <td class="action1">
-        <div class="icons"><i class="fa-solid fa-pencil"></i>
-          <i class="fa-solid fa-trash-can"></i>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+
+    <button class="btn1">Search</button>
+    <button class="btn2">Clear</button>
+    <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="employee">Employee ID</th>
+          <th class="name">Name</th>
+          <th class="email">Designation</th>
+          <th class="designation">Email</th>
+          <th class="action">Contact</th>
+          <th class="contact">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="employee1">29581</td>
+          <td class="name1">Gursimran Singh</td>
+          <td class="designation1">Software Developer</td>
+          <td class="email1">gursimran123@example.com</td>
+          <td class="contact1">9876543210</td>
+          <td class="action1">
+            <div class="icons"><i class="fa-solid fa-pencil"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

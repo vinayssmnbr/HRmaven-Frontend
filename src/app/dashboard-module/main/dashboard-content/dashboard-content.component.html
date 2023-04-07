@@ -89,13 +89,9 @@
               </div>
               <div class="dots">
                 <i class="fa-solid fa-ellipsis-vertical" (click)="ToggleMenu(index)">
-
-
                   <!-- dropdown done by Harpreet  -->
-
-
                   <ul id={{index}} class="close">
-                    <button value={{index}} (click)="Edit(index)">Edit</button>
+                    <button value={{index}} (click)="Edit(index)" class="edit-btn">Edit</button>
                     <button value="Delete">Delete</button>
                   </ul>
                 </i>
