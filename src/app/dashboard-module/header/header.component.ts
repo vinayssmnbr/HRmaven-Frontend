@@ -53,19 +53,15 @@ export class HeaderComponent {
 
     //  My code for profile fetch Name
   getProfileData(){
-    this.userService.getUserProfile().subscribe(
-      (response) => {
-        // console.log("header response: ", response._id, response.username, response.email);
-        
-        this.userEmail = response.email;
-        this.name = response.username;
+    this.dashService.getUserProfile().subscribe((res: any)=>{
+      this.userEmail=res.email;
+      this.name=res.username;
+    });
 
-        // console.log("email: ", this.userEmail);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+
+
+
+
   }
 
   profileToggle(){
@@ -75,9 +71,9 @@ export class HeaderComponent {
   logout(){
     this.cookie.delete('token');
     this.router.navigate(['login']);
-  
+
   }
- 
+
 
 
 

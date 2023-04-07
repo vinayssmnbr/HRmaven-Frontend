@@ -50,31 +50,22 @@ export class UserService {
     return this.http.post(this.loginurl, data);
   }
 
- 
+
   //  My code for profile fetch Name
-    getUserProfile(): Observable<any> {
-      const token = this.cookie.get('token');
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  
-      return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
-        map((response: any) => {
-          return response;
-        })
-      );
-    }
     
+
 
     allDataLogin() {
       const token = this.cookie.get("token");
-    
+
       if (!token) {
         // If token is missing, navigate to login page
         this.router.navigate(['login']);
         return;
       }
-    
+
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    
+
       this.http.get('http://localhost:3000/auth', { headers }).subscribe(
         (res: any) => {
           // Check if the user is already logged in
@@ -89,6 +80,6 @@ export class UserService {
         }
       );
     }
-    
+
 
 }
