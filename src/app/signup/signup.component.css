@@ -155,6 +155,12 @@ form .input-field {
     gap: 5px;
 
 }
+.check-text span{
+    color: #999999;
+}
+.check-text a{
+    color: var(--primary-color);
+}
 
 .checkbox-text {
     padding-top: 2px;
