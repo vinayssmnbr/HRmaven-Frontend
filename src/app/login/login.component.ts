@@ -100,26 +100,6 @@ export class LoginComponent {
   // LOGIN
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  onSubmit(data) {
-    this.userService.users(data).subscribe((res: any) => {
-      if (res?.token) {
-        console.log(res);
-        this.cookie.set('token', res.token);
-        var today = new Date();
-        var expire = new Date();
-        expire.setTime(today.getTime() + 3600000 * 24 * 15);
-        document.cookie =
-          'name= ' + res.Token + ';path=/' + ';expires=' + expire.toUTCString();
-        this.userService.isLoggedIn.next(true);
-        this.router.navigate(['dashboard']);
-      }
-      (error) => {
-        error: error;
-        alert('error');
-        console.log(error);
-      };
-    });
-  }
 
   get email() {
     return this.forgotPassword.get('email');
@@ -128,17 +108,59 @@ export class LoginComponent {
   submit() {
     this.router.navigate(['/dashboard']);
   }
-  ForgetEmailSubmit(data: any) {
-    console.log('Forget Password Email');
-    console.log(data);
+  
 
-    this.userService.ForgotEmail(data).subscribe((res: any) => {
-      this.userService.ForgotEmail(this.forgotPassword);
-      console.log('response:' + res);
-    });
-    this.Forgotshow = !this.Forgotshow;
-    setTimeout(() => {
-      this.EmailSent = !this.EmailSent;
-    }, 1000);
-  }
+// submissions
+
+
+onSubmit(data:any){
+  console.log(this.loginForm.value);
+  this.userService.users(data).subscribe((res: any)=>{
+    this.userService.users(this.loginForm)
+
+    
+
+    console.log("login User: ", res)
+    if(res.message=="login successful") {
+      var today = new Date();
+    var expire = new Date();
+
+    expire.setTime(today.getTime() + 3600000*24*15);
+    console.log('inside');
+        document.cookie ="token= "  + res.token + ";path=/" + ";expires=" + expire.toUTCString();
+      this.submit();
+    }
+    else if(res.message=="Invalid"){
+      console.log("haha");
+      this.Invalid=!this.Invalid;
+
+
+    }
+
+  })
+
 }
+ForgetEmailSubmit(data:any)
+{
+  console.log("Forget Password Email");
+  console.log(data);
+
+  this.userService.ForgotEmail(data).subscribe((res:any)=>{
+    this.userService.ForgotEmail(this.forgotPassword);
+    console.log("response:"+res);
+  })
+  this.Forgotshow=!this.Forgotshow;
+  setTimeout(()=>{
+    this.EmailSent=!this.EmailSent;
+
+  },1000);
+
+}
+
+
+
+
+}
+
+
+

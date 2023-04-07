@@ -13,6 +13,7 @@ import { AttendanceContentComponent } from './main/attendance-content/attendance
 import { PayrollContentComponent } from './main/payroll-content/payroll-content.component';
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
 import { ReportContentComponent } from './main/report-content/report-content.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 
@@ -32,8 +33,19 @@ import { ReportContentComponent } from './main/report-content/report-content.com
   imports: [
     CommonModule,
     DashboardModuleRoutingModule,
+    RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgCircleProgressModule.forRoot({
+      "animateTitle": false,
+      "animationDuration": 1000,
+      "showTitle": false,
+      "showSubtitle": false,
+      "showUnits": false,
+      "showBackground": false,
+      "clockwise": false,
+      "startFromZero": false,
+      "lazy": true}),
   ]
 })
-export class DashboardModuleModule { }
+export class DashboardModuleModule {}
