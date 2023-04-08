@@ -93,6 +93,7 @@ export class DashboardContentComponent implements OnInit {
             label: 'Present',
             data: [50, 800, 470, 500, 800, 600, 500, 400, 700, 300, 200, 100],
             backgroundColor: ['#2D11FA'],
+            pointStyle: 'circle',
             borderColor: [
               // 'rgba(255, 99, 132, 1)',
               // 'rgba(54, 162, 235, 1)',
@@ -108,6 +109,7 @@ export class DashboardContentComponent implements OnInit {
             label: 'Absent',
             data: [230, 450, 250, 350, 730, 650, 570, 350, 100, 50, 300, 400],
             backgroundColor: ['#FDA75A'],
+            pointStyle: 'circle',
             borderColor: [
               // 'rgba(255, 99, 132, 1)',
               // 'rgba(54, 162, 235, 1)',
@@ -123,6 +125,7 @@ export class DashboardContentComponent implements OnInit {
             label: 'Leaves',
             data: [250, 300, 730, 740, 250, 450, 500, 800, 150, 200, 700, 1500],
             backgroundColor: ['#00C9FF'],
+            pointStyle: 'circle',
             borderColor: [
               // 'rgba(255, 99, 132, 1)',
               // 'rgba(54, 162, 235, 1)',
@@ -142,6 +145,17 @@ export class DashboardContentComponent implements OnInit {
             beginAtZero: true,
           },
         },
+        plugins: {
+          legend: {
+              labels: {
+                padding: 40,
+                usePointStyle: true,
+                font: {
+                  size: 14
+                }
+              }
+          }
+      }
       },
     });
   }

@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { IgxLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +31,8 @@ import { IgxLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-    IgxLegendModule,
-    IgxCategoryChartModule
+    // IgxLegendModule,
+    // IgxCategoryChartModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
