@@ -2,6 +2,8 @@ import { Component,OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder,FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 
+import { NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -16,7 +18,8 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor3='#FFFFFF';
   // employeeForm: FormGroup;
 
-  form = new FormGroup({
+  form = new FormGroup
+  ({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
     uid: new FormControl(''),
@@ -32,7 +35,7 @@ export class EmployeeContentComponent implements OnInit {
     ifsc: new FormControl(''),
     panno: new FormControl('')
   });
-  constructor( public dashService:DashService,private formBuilder:FormBuilder){
+  constructor( public dashService:DashService,private formBuilder:FormBuilder,private router:Router, private ngZone:NgZone){
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
   }
@@ -46,22 +49,22 @@ export class EmployeeContentComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   ngOnInit() {
-    // this.form = this.formBuilder.group({
-    //   name: [''],
-    //   designation: [''],
-    //   uid: [''],
-    //   dateOfJoining: [''],
-    //   dateOfBirth: [''],
-    //   gender: [''],
-    //   mobile: [''],
-    //   email: [''],
-    //   address: [''],
-    //   bankname: [''],
-    //   accountno: [''],
-    //   adhaarno: [''],
-    //   panno: [''],
-    //   ifsc: ['']
-    // });
+    this.form = this.formBuilder.group({
+      name: [''],
+      designation: [''],
+      uid: [''],
+      dateOfJoining: [''],
+      dateOfBirth: [''],
+      gender: [''],
+      mobile: [''],
+      email: [''],
+      address: [''],
+      bankname: [''],
+      accountno: [''],
+      adhaarno: [''],
+      panno: [''],
+      ifsc: ['']
+    });
 
   }
   changeColor() {

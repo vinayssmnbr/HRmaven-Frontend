@@ -1,52 +1,56 @@
 {
-  "name": "hrm-front-end",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "^15.2.0",
-    "@angular/common": "^15.2.0",
-    "@angular/compiler": "^15.2.0",
-    "@angular/core": "^15.2.0",
-    "@angular/forms": "^15.2.0",
-    "@angular/platform-browser": "^15.2.0",
-    "@angular/platform-browser-dynamic": "^15.2.0",
-    "@angular/router": "^15.2.0",
-    "ngx-cookie-service": "^15.0.0",
-    "chart.js": "^4.2.1",
-    "rxjs": "~7.8.0",
-    "zone.js": "~0.12.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^15.2.0",
-    "@angular/cli": "~15.2.0",
-    "@angular/compiler-cli": "^15.2.0",
-    "@types/jasmine": "~4.3.0",
-    "jasmine-core": "~4.5.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "tslib": "^2.5.0",
-    "typescript": "~4.9.4"
-  },
-  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/VenturePact/outgrowx/hr_management_front-end.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/VenturePact/outgrowx/hr_management_front-end/issues"
-  },
-  "homepage": "https://gitlab.com/VenturePact/outgrowx/hr_management_front-end#readme"
+    "name": "hrm-front-end",
+    "version": "0.0.0",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^15.2.0",
+        "@angular/common": "^15.2.0",
+        "@angular/compiler": "^15.2.0",
+        "@angular/core": "^15.2.0",
+        "@angular/forms": "^15.2.0",
+        "@angular/platform-browser": "^15.2.0",
+        "@angular/platform-browser-dynamic": "^15.2.0",
+        "@angular/router": "^15.2.0",
+        "chart.js": "^4.2.1",
+        "igniteui-angular-charts": "^15.0.1",
+        "jquery": "^3.6.4",
+        "jquery-ui-dist": "^1.13.2",
+        "ngx-cookie-service": "^15.0.0",
+        "rxjs": "~7.8.0",
+        "zone.js": "~0.12.0"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "^15.2.0",
+        "@angular/cli": "~15.2.0",
+        "@angular/compiler-cli": "^15.2.0",
+        "@types/jasmine": "~4.3.0",
+        "@types/jquery": "^3.5.16",
+        "jasmine-core": "~4.5.0",
+        "karma": "~6.4.0",
+        "karma-chrome-launcher": "~3.1.0",
+        "karma-coverage": "~2.2.0",
+        "karma-jasmine": "~5.1.0",
+        "karma-jasmine-html-reporter": "~2.0.0",
+        "tslib": "^2.5.0",
+        "typescript": "~4.9.4"
+    },
+    "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/VenturePact/outgrowx/hr_management_front-end.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/VenturePact/outgrowx/hr_management_front-end/issues"
+    },
+    "homepage": "https://gitlab.com/VenturePact/outgrowx/hr_management_front-end#readme"
 }
