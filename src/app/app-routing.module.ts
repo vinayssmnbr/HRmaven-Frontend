@@ -12,7 +12,7 @@ const routes: Routes = [{path:'',component:LoaderComponent},
 {path:'login',component:LoginComponent }
 ,{path:'signup',component:SignupComponent},
 { path: 'dashboard', loadChildren: () => import('./dashboard-module/dashboard-module.module')
-.then(m => m.DashboardModuleModule),canActivate: [AuthGuard]},
+.then(m => m.DashboardModuleModule)},
 {path:'resetpassword/:token',component:ForgetComponent}];
 
 @NgModule({
