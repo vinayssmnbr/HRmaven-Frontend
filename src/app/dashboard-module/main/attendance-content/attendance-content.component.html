@@ -1,0 +1,125 @@
+<app-sidebar>
+</app-sidebar>
+<app-header></app-header>
+
+<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+<div class="main">
+    <div class="select-menu">
+        <div class="select-btn">
+            <span class="sBtn-text">Attendance</span>
+
+        </div>
+
+    </div>
+    <div class="bar-chart">
+        <canvas id="lineChart"></canvas>
+    </div>
+    <div class="selection">
+
+        <input type="text" placeholder="Employee Name...">
+        <input type="number" placeholder="Employee ID...">
+
+
+
+        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
+        <!-- <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2" [style.color]="buttonColor2">Clear</button>
+        <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3" [style.color]="buttonColor3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button> -->
+        <input type="text" class="calender" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
+        <!-- <input type="date" class="calendar" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')" placeholder="Select the date"> -->
+
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="employee">Employee ID</th>
+                    <th class="name">Name</th>
+                    <th class="action">STATUS</th>
+                    <th class="email">PUNCH IN</th>
+                    <th class="designation">PUNCH OUT</th>
+                    <th class="contact">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                <tr *ngFor="let user of employee">
+                    <td class="employee1">{{user.uid}}</td>
+                    <td class="name1">{{user.name}}</td>
+                    <td class="designation1">Present</td>
+                    <td class="email1">9:00 AM</td>
+                    <td class="contact1">5:00 PM</td>
+                    <td class="action1">
+                        <div class="icons"><i class="fa-solid fa-pencil"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Card selection -->
+
+    <div class="attendence-card">
+        <div class="row">
+            <div class="col-3">
+                <img src="assets\images\attendec-logo.png" alt="logo">
+                <h2>V. Sarath Kumar Reddy</h2>
+                <p>UI/UX Designer</p>
+                <div class="attendence-percent">
+                    <div class="percent-text">
+                        <p>25/30</p>
+                        <h4>Monthly</h4>
+                    </div>
+                    <div class="circle-graph">
+                        <p>ghraph</p>
+                    </div>
+                </div>
+                <button class="view-btn">View details</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <script>
+        $(function() {
+            $.datepicker.setDefaults({
+                dateFormat: "mm/dd/yy",
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+10",
+                showButtonPanel: true,
+                closeText: "Close",
+                prevText: "&#x3C;Prev",
+                nextText: "Next&#x3E;",
+                currentText: "Today",
+                monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                dayNamesMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+            });
+            $("#datepicker").datepicker();
+        });
+    </script> -->
