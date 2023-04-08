@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -31,8 +31,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-    // IgxLegendModule,
-    // IgxCategoryChartModule
+    Ng2SearchPipeModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

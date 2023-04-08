@@ -21,10 +21,17 @@ export class AttendanceContentComponent implements OnInit{
   buttonColor2='#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3='#FFFFFF';
+  employee: any[] = [];
+
   // employeeForm: FormGroup;
 
 
   constructor( public dashService:DashService){
+    // this.fetchdata();
+    this.dashService.getEmployee().subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    })
 
   }
   ngOnInit() {
@@ -112,4 +119,11 @@ optionMenu.classList.remove('active');
     this.buttonbackgroundColor3 = this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
+ //get data from employye content
+  // fetchdata() {
+  //   this.dashService.getEmployee().subscribe((res: any) => {
+  //     console.log('data', res);
+  //     this.employee = res;
+  //   });
+  // }
 }

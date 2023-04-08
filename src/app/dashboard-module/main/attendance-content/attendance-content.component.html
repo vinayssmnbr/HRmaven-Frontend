@@ -11,16 +11,9 @@
     <div class="select-menu">
         <div class="select-btn">
             <span class="sBtn-text">Attendance</span>
-            <!-- <i class="bx bx-chevron-down"></i> -->
+
         </div>
-        <!-- <ul class="options">
-            <li class="option">
-                <span class="option-text">Monthly</span>
-            </li>
-            <li class="option">
-                <span class="option-text">Weekly</span>
-            </li>
-        </ul> -->
+
     </div>
     <div class="bar-chart">
         <canvas id="lineChart"></canvas>
@@ -56,9 +49,9 @@
 
 
 
-                <tr>
-                    <td class="employee1">29581</td>
-                    <td class="name1">Prince</td>
+                <tr *ngFor="let user of employee">
+                    <td class="employee1">{{user.uid}}</td>
+                    <td class="name1">{{user.name}}</td>
                     <td class="designation1">Present</td>
                     <td class="email1">9:00 AM</td>
                     <td class="contact1">5:00 PM</td>
@@ -68,18 +61,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td class="employee1">29581</td>
-                    <td class="name1">Prince</td>
-                    <td class="designation1">Present</td>
-                    <td class="email1">9:00 AM</td>
-                    <td class="contact1">5:00 PM</td>
-                    <td class="action1">
-                        <div class="icons"><i class="fa-solid fa-pencil"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </td>
-                </tr>
+
 
 
             </tbody>
@@ -118,7 +100,7 @@
 
 
 
-    <script>
+    <!-- <script>
         $(function() {
             $.datepicker.setDefaults({
                 dateFormat: "mm/dd/yy",
@@ -140,4 +122,4 @@
             });
             $("#datepicker").datepicker();
         });
-    </script>
+    </script> -->
