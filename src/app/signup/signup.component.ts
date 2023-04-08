@@ -81,4 +81,10 @@ onSubmit(data:any){
 submit(){
   this.router.navigate(['/dashboard']) //your router URL need to pass it here
 }
+
+SignupByGoogle() {
+  console.log('google');
+  window.location.href = 'http://localhost:3000/auth/google';
+}
+
 }
