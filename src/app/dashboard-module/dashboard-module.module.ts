@@ -14,7 +14,7 @@ import { PayrollContentComponent } from './main/payroll-content/payroll-content.
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+// import { IgxLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 
 @NgModule({
@@ -36,6 +36,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    // IgxLegendModule,
+    // IgxCategoryChartModule,
     NgCircleProgressModule.forRoot({
       "animateTitle": false,
       "animationDuration": 1000,
