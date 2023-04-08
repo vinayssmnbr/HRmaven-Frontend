@@ -1,4 +1,3 @@
-// import { NgModule } from '@angular/core';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +12,8 @@ import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { IgxLegendModule, IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,6 @@ import { AuthGuard } from './guards/auth.guard';
     ForgetComponent,
     LoaderComponent,
     LoginComponent
-
-
   ],
   imports: [
     BrowserModule,
@@ -31,6 +30,9 @@ import { AuthGuard } from './guards/auth.guard';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    BrowserAnimationsModule,
+    IgxLegendModule,
+    IgxCategoryChartModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
