@@ -14,7 +14,8 @@ import { PayrollContentComponent } from './main/payroll-content/payroll-content.
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
            PayrollContentComponent,
            RecruitmentContentComponent,
            ReportContentComponent,
+           SearchPipe,
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
     NgCircleProgressModule.forRoot({
       "animateTitle": false,
       "animationDuration": 1000,
@@ -46,6 +49,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       "clockwise": false,
       "startFromZero": false,
       "lazy": true}),
-  ]
+  ],
+  providers: [SearchPipe],
 })
 export class DashboardModuleModule {}

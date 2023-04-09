@@ -22,13 +22,15 @@ export class AttendanceContentComponent implements OnInit{
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3='#FFFFFF';
   employee: any[] = [];
+  employeeid="";
+  employeename="Name";
 
   // employeeForm: FormGroup;
 
 
   constructor( public dashService:DashService){
     // this.fetchdata();
-    this.dashService.getEmployee().subscribe((res: any) => {
+     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     })
