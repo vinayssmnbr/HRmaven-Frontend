@@ -21,8 +21,32 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  // employeeForm: FormGroup;
-  employee: any[] = [];
+  employeeid="";
+  empdesignation="Designation";
+
+
+  employee: any=[{
+    uid:"1234",
+    name:"harpreet singh",
+    designation:"Full Stack Developer",
+    email:"harpeet@gmail.com",
+    mobile:"9876624565"
+    },
+    {
+      uid:"1235",
+      name:"gurpreet singh",
+      designation:"Full Stack Developer",
+      email:"harpeet@gmail.com",
+      mobile:"9876624565"
+      },
+      {
+        uid:"1236",
+        name:"inderpreet singh",
+        designation:"Frontend Developer",
+        email:"harpeet@gmail.com",
+        mobile:"9876624565"
+        }
+      ];
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
@@ -82,6 +106,7 @@ export class EmployeeContentComponent implements OnInit {
       option.addEventListener('click', () => {
         let selectedOption =
           option.querySelector<HTMLElement>('.option-text')!.innerText;
+          this.empdesignation=selectedOption;
         sBtn_text.innerText = selectedOption;
         optionMenu.classList.remove('active');
       });

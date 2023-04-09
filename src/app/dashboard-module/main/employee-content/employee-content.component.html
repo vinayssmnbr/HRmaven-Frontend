@@ -2,16 +2,16 @@
 <app-header></app-header>
 <div class="main">
   <div class="selection">
-    <input type="text" placeholder="Type Employee ID...">
+    <input type="text" [(ngModel)]="employeeid" placeholder="Type Employee ID...">
     <div class="select-menu">
       <div class="select-btn">
-        <span class="sBtn-text">Designation</span>
+        <span class="sBtn-text"></span>
         <i class="bx bx-chevron-down"></i>
       </div>
       <ul class="options">
-        <li class="option">
+        <!-- <li class="option">
           <span class="option-text">Designation</span>
-        </li>
+        </li> -->
         <li class="option">
           <span class="option-text">Software Developer</span>
         </li>
@@ -51,7 +51,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of employee">
+        <tr *ngFor="let user of employee | search:employeeid:empdesignation">
           <td class="employee1">{{user.uid}}</td>
           <td class="name1">{{user.name}}</td>
           <td class="designation1">{{user.designation}}</td>
