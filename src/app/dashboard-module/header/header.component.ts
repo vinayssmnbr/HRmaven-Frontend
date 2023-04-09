@@ -53,10 +53,10 @@ export class HeaderComponent {
 
     //  My code for profile fetch Name
   getProfileData(){
-    this.dashService.getUserProfile().subscribe((res: any)=>{
-      this.userEmail=res.email;
-      this.name=res.username;
-    });
+    // this.dashService.getUserProfile().subscribe((res: any)=>{
+    //   this.userEmail=res.email;
+    //   this.name=res.username;
+    // });
 
   }
 

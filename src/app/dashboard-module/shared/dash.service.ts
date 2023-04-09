@@ -16,15 +16,15 @@ export class DashService {
 
 
 
-  getUserProfile(): Observable<any> {
-    const token = this.cookie.get('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
-      map((response: any) => {
-        return response;
-      })
-    );
-  }
+  // getUserProfile(): Observable<any> {
+  //   const token = this.cookie.get('token');
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  //   return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
+  //     map((response: any) => {
+  //       return response;
+  //     })
+  //   );
+  // }
 
   createData = 'http://localhost:3000/api/create';
   getData = 'http://localhost:3000/api/find';

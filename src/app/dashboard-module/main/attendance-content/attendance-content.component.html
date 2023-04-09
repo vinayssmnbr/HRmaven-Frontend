@@ -1,36 +1,25 @@
 <app-sidebar>
 </app-sidebar>
 <app-header></app-header>
-
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-
 <div class="main">
     <div class="select-menu">
         <div class="select-btn">
-            <span class="sBtn-text">Attendance</span>
-
         </div>
-
     </div>
     <div class="bar-chart">
         <canvas id="lineChart"></canvas>
     </div>
     <div class="selection">
-
         <input type="text" placeholder="Employee Name...">
         <input type="number" placeholder="Employee ID...">
-
-
-
         <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
-        <!-- <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2" [style.color]="buttonColor2">Clear</button>
-        <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3" [style.color]="buttonColor3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button> -->
-        <input type="text" class="calender" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
-        <!-- <input type="date" class="calendar" onfocus="(this.type='date')" onblur="(this.value === '' ? this.type='text' : this.type='date')" placeholder="Select the date"> -->
-
+        <div class="calender">
+            <div class="grid-icon">
+                <i class="fa-sharp fa-solid fa-list-ul"></i>
+                <i class="fa-sharp fa-solid fa-list-ul"></i>
+            </div>
+            <input type="text" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
+        </div>
     </div>
 
     <div class="table-wrapper">
@@ -73,84 +62,193 @@
     <div class="attendence-card">
         <div class="row">
             <div class="col-3">
-                <img src="assets\images\attendec-logo.png" alt="logo">
-                <h2>V. Sarath Kumar Reddy</h2>
-                <p>UI/UX Designer</p>
-                <div class="attendence-percent">
-                    <div class="percent-text">
-                        <p>25/30</p>
-                        <h4>Monthly</h4>
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="95" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
                     </div>
-                    <div class="circle-graph">
-                        <p>ghraph</p>
-                    </div>
+                    <button class="view-btn">View details</button>
                 </div>
-                <button class="view-btn">View details</button>
             </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="85" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="60" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="54" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="45" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="35" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="15" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <img src="assets\images\attendec-logo.png" alt="logo">
+                    <h2>V. Sarath Kumar Reddy</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent">
+                        <div class="percent-text">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph">
+                            <circle-progress [percent]="40" [showTitle]='true' [showSubtitle]='false' [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10" [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4" [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'"
+                                [animation]='true' [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn">View details</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
 
 
-    <form class="form-container" id="form1">
-        <div class="form-row">
-            <div class="input">
-                <label>Name</label>
-                <input type="text" id="text1" placeholder="Type here...">
+    <!-- ------------------Input  Modal form---------------  -->
+
+    <div class="employee-modal">
+        <form class="input-form">
+            <div class="cross-icon">
+                <i class="fa-solid fa-xmark"></i>
             </div>
-            <div class="input">
-                <label>Employee ID</label>
-                <input type="text" id="text1" placeholder="Type here...">
+            <div class="input_form1">
+                <div class="form__group">
+                    <label for="name">Name</label>
+                    <input type="text" placeholder="Ankush Sharma" id="name" disabled />
+                </div>
+                <div class="form__group">
+                    <label for="name">Employee ID</label>
+                    <input type="number" placeholder="   25458" id="number" disabled />
+                </div>
+                <div class="form__group">
+                    <label for="name">Date</label>
+                    <input type="date" class="date-input" />
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="input">
-                <label>Date</label>
-                <input type="date" id="text1" placeholder="Type here...">
+            <div class="input_form2">
+                <div class="form__group">
+                    <label for="name">Status</label>
+                    <input type="text" placeholder="Select.." />
+                </div>
+                <div class="form__group">
+                    <label for="name">Punch In</label>
+                    <input type="text" placeholder="9.00 AM" />
+                </div>
+                <div class="form__group">
+                    <label for="name">Punch out</label>
+                    <input type="text" placeholder="5.12 PM" />
+                </div>
             </div>
-            <div class="input">
-                <label>Stats</label>
-                <input type="text" id="text1" placeholder="Type here...">
+            <div class="form__group form-btn">
+                <button class="done-btn">Done</button>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="input">
-                <label>Punch In</label>
-                <input type="text" id="text1" placeholder="DD/MM/YYYY">
-            </div>
-            <div class="input">
-                <label>Punch Out</label>
-                <input type="text" id="text1" placeholder="DD/MM/YYYY">
-            </div>
-        </div>
-    </form>
-
-
-
-
-
-
-
-    <!-- <script>
-        $(function() {
-            $.datepicker.setDefaults({
-                dateFormat: "mm/dd/yy",
-                showOtherMonths: true,
-                selectOtherMonths: true,
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-100:+10",
-                showButtonPanel: true,
-                closeText: "Close",
-                prevText: "&#x3C;Prev",
-                nextText: "Next&#x3E;",
-                currentText: "Today",
-                monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-                dayNamesMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-            });
-            $("#datepicker").datepicker();
-        });
-    </script> -->
+        </form>
+    </div>
+</div>

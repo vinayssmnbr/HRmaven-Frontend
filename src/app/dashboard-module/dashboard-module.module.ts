@@ -42,9 +42,9 @@ import { SearchPipe } from './search.pipe';
     NgCircleProgressModule.forRoot({
       "animateTitle": false,
       "animationDuration": 1000,
-      "showTitle": false,
-      "showSubtitle": false,
-      "showUnits": false,
+      // "showTitle": false,
+      // "showSubtitle": false,
+      // "showUnits": false,
       "showBackground": false,
       "clockwise": false,
       "startFromZero": false,
