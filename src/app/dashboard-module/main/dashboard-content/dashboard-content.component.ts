@@ -47,9 +47,13 @@ export class DashboardContentComponent implements OnInit {
     console.log(index);
   }
 
+
   ToggleMenu(index: any) {
     var ul = document.getElementById(index);
     ul.classList.toggle('close');
+    ul.addEventListener('mouseleave',()=>{
+      ul.classList.add('close');
+    })
   }
 
 
