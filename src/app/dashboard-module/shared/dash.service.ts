@@ -41,4 +41,8 @@ export class DashService {
   getEmployee() {
     return this.http.get(this.getData);
   }
+  getAttendance(){
+    return this.http.get("http://localhost:3000/attendance");
+  }
 }
+

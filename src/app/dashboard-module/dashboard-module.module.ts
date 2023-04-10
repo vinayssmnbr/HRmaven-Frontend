@@ -15,6 +15,7 @@ import { RecruitmentContentComponent } from './main/recruitment-content/recruitm
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SearchPipe } from './pipe/search.pipe';
+import { AttendanceFilterPipe } from './pipe/attendance-filter.pipe';
 
 
 
@@ -32,6 +33,7 @@ import { SearchPipe } from './pipe/search.pipe';
            RecruitmentContentComponent,
            ReportContentComponent,
            SearchPipe,
+           AttendanceFilterPipe,
 
 
   ],

@@ -25,13 +25,14 @@ export class AttendanceContentComponent implements OnInit {
   employee: any[] = [];
   showModal = false;
   showCard: boolean = true;
-  // employeeForm: FormGroup;
+  employeeid="";
+  employeename="";
 
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getEmployee().subscribe((res: any) => {
+     this.dashService.getAttendance().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });
