@@ -23,32 +23,20 @@ export class AttendanceContentComponent implements OnInit {
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
   employee: any[] = [];
-
+  showModal = false;
+  showCard: boolean = true;
   // employeeForm: FormGroup;
 
   constructor(public dashService: DashService) {
     // this.fetchdata();
-    this.dashService.getEmployee().subscribe((res: any) => {
+    dashService.activeComponent = 'attendance';
+    dashService.headerContent = '';
+     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });
   }
   ngOnInit() {
-    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
-    selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-    options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-    sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-  selectBtn.addEventListener('click', () =>
-    optionMenu.classList.toggle('active')
-  );
-  options.forEach((option) => {
-    option.addEventListener('click', () => {
-      let selectedOption =
-        option.querySelector<HTMLElement>('.option-text')!.innerText;
-      sBtn_text.innerText = selectedOption;
-      optionMenu.classList.remove('active');
-    });
-  });
 
     // Create a chart object
     const myChart = new Chart('lineChart', {
@@ -67,24 +55,6 @@ export class AttendanceContentComponent implements OnInit {
           '10',
           '11',
           '12',
-          '13',
-          '14',
-          '15',
-          '16',
-          '17',
-          '18',
-          '19',
-          '20',
-          '21',
-          '22',
-          '23',
-          '24',
-          '25',
-          '26',
-          '27',
-          '28',
-          '29',
-          '30',
         ],
         datasets: [
           {
@@ -162,11 +132,15 @@ export class AttendanceContentComponent implements OnInit {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  //get data from employye content
-  // fetchdata() {
-  //   this.dashService.getEmployee().subscribe((res: any) => {
-  //     console.log('data', res);
-  //     this.employee = res;
-  //   });
-  // }
-}
+  openModal() {
+    this.showModal = true;
+
+  }
+  closeModal() {
+    this.showModal = false;
+  }
+
+  toggleTable1() {
+    this.showCard = !this.showCard;
+  }
+ }

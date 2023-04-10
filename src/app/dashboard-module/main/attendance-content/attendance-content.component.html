@@ -12,19 +12,17 @@
     <div class="selection">
         <input type="text" placeholder="Employee Name...">
         <input type="number" placeholder="Employee ID...">
-        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
-            [style.color]="buttonColor">Search</button>
+        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
         <div class="calender">
             <div class="grid-icon">
-                <i class="fa-sharp fa-solid fa-list-ul"></i>
-                <i class="fa-sharp fa-solid fa-list-ul"></i>
+                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
+                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
             </div>
-            <input type="text" placeholder="Select the date" onclick="(this.type='date')"
-                onblur="(this.value === '' ? this.type='text' : null)">
+            <input type="text" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
         </div>
     </div>
 
-    <div class="table-wrapper">
+    <div class="table-wrapper" *ngIf="!showCard">
         <table>
             <thead>
                 <tr>
@@ -47,7 +45,8 @@
                     <td class="email1">9:00 AM</td>
                     <td class="contact1">5:00 PM</td>
                     <td class="action1">
-                        <div class="icons"><i class="fa-solid fa-pencil"></i>
+                        <div class="icons">
+                            <i class="fa-solid fa-pencil" (click)="openModal()"></i>
                             <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </td>
@@ -61,174 +60,150 @@
 
     <!-- Card selection -->
 
-    <div class="attendence-card">
-        <div class="row">
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+    <div class="attendence-card " *ngIf="showCard">
+        <div class="row ">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="95" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="85" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="85 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="60" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="60 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="54" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="54 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="45" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="45 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="35" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="35 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="15" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="15 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <img src="assets\images\attendec-logo.png" alt="logo">
+            <div class="col-3 ">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>V. Sarath Kumar Reddy</h2>
                     <p>UI/UX Designer</p>
-                    <div class="attendence-percent">
-                        <div class="percent-text">
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
                             <p>25/30</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph">
-                            <circle-progress [percent]="40" [showTitle]='true' [showSubtitle]='false'
-                                [titleFontSize]="'15'" [unitsFontSize]="'15'" [showUnits]='true' [space]="-10"
-                                [radius]="19" [outerStrokeWidth]="8" [innerStrokeWidth]="4"
-                                [outerStrokeColor]="'#3D9030'" [innerStrokeColor]="'#e7e8ea'" [animation]='true'
-                                [animateTitle]='true' [animationDuration]="1000"></circle-progress>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="40 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn">View details</button>
+                    <button class="view-btn ">View details</button>
                 </div>
             </div>
 
@@ -239,41 +214,41 @@
 
     <!-- ------------------Input  Modal form---------------  -->
 
-    <div class="employee-modal">
-        <form class="input-form">
-            <div class="cross-icon">
-                <i class="fa-solid fa-xmark"></i>
+    <div class="employee-modal" *ngIf=" showModal ">
+        <form class="input-form ">
+            <div class="cross-icon ">
+                <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
             </div>
-            <div class="input_form1">
-                <div class="form__group">
-                    <label for="name">Name</label>
-                    <input type="text" placeholder="Ankush Sharma" id="name" disabled />
+            <div class="input_form1 ">
+                <div class="form__group ">
+                    <label for="name ">Name</label>
+                    <input type="text " placeholder="Ankush Sharma " id="name " disabled />
                 </div>
-                <div class="form__group">
-                    <label for="name">Employee ID</label>
-                    <input type="number" placeholder="   25458" id="number" disabled />
+                <div class="form__group ">
+                    <label for="name ">Employee ID</label>
+                    <input type="number " placeholder=" 25458 " id="number " disabled />
                 </div>
-                <div class="form__group">
-                    <label for="name">Date</label>
-                    <input type="date" class="date-input" />
-                </div>
-            </div>
-            <div class="input_form2">
-                <div class="form__group">
-                    <label for="name">Status</label>
-                    <input type="text" placeholder="Select.." />
-                </div>
-                <div class="form__group">
-                    <label for="name">Punch In</label>
-                    <input type="text" placeholder="9.00 AM" />
-                </div>
-                <div class="form__group">
-                    <label for="name">Punch out</label>
-                    <input type="text" placeholder="5.12 PM" />
+                <div class="form__group ">
+                    <label for="name ">Date</label>
+                    <input type="date " class="date-input " />
                 </div>
             </div>
-            <div class="form__group form-btn">
-                <button class="done-btn">Done</button>
+            <div class="input_form2 ">
+                <div class="form__group ">
+                    <label for="name ">Status</label>
+                    <input type="text " placeholder="Select.. " />
+                </div>
+                <div class="form__group ">
+                    <label for="name ">Punch In</label>
+                    <input type="text " placeholder="9.00 AM " />
+                </div>
+                <div class="form__group ">
+                    <label for="name ">Punch out</label>
+                    <input type="text " placeholder="5.12 PM " />
+                </div>
+            </div>
+            <div class="form__group form-btn ">
+                <button class="done-btn ">Done</button>
             </div>
         </form>
     </div>
