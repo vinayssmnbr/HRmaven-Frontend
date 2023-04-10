@@ -10,8 +10,8 @@ pages:
       - public
   script:
     - rm -rf public
-    - cp build/index.html build/404.html
-    - mv build public  
+    - cp dist/index.html dist/404.html
+    - mv dist public  
   only:
     - master
     - develop
@@ -23,7 +23,7 @@ site-build:
     artifacts:
         name: "artifact-$CI_COMMIT_REF_NAME"
         paths:
-        - build
+        - dist
         expire_in: 1h
     script:
         - npm install    
