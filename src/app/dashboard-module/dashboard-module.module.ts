@@ -15,7 +15,6 @@ import { RecruitmentContentComponent } from './main/recruitment-content/recruitm
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -30,7 +29,7 @@ import { SearchPipe } from './search.pipe';
            PayrollContentComponent,
            RecruitmentContentComponent,
            ReportContentComponent,
-           SearchPipe,
+
   ],
   imports: [
     CommonModule,
@@ -50,6 +49,6 @@ import { SearchPipe } from './search.pipe';
       "startFromZero": false,
       "lazy": true}),
   ],
-  providers: [SearchPipe],
+  providers: [],
 })
 export class DashboardModuleModule {}
