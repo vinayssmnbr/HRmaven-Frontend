@@ -1,8 +1,8 @@
+---
 image: node:14-alpine
 stages:
-    - build
-    - development
-
+  - build
+  - development
 pages:
   stage: development
   artifacts:
@@ -11,24 +11,21 @@ pages:
   script:
     - rm -rf public
     - cp dist/index.html dist/404.html
-    - mv dist public  
+    - mv dist public
   only:
-    - master
+    - null
     - develop
-
-
 site-build:
-    stage: build
-    image: node:latest
-    artifacts:
-        name: "artifact-$CI_COMMIT_REF_NAME"
-        paths:
-        - dist
-        expire_in: 1h
-    script:
-        - npm install    
-        - npm install -g env-cmd  
-        - npm run build
-    only:
-        - master
-        - develop
+  stage: build
+  image: node:latest
+  artifacts:
+    name: artifact-$CI_COMMIT_REF_NAME
+    paths:
+      - dist
+    expire_in: 1h
+  script:
+    - npm install
+    - npm install -g env-cmd
+    - npm run build
+  only:
+    - develop
