@@ -24,7 +24,6 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor3 = '#FFFFFF';
   employee: any[] = [];
   showModal = false;
-  showTable: boolean = true;
   showCard: boolean = true;
   // employeeForm: FormGroup;
 
@@ -140,9 +139,7 @@ export class AttendanceContentComponent implements OnInit {
   closeModal() {
     this.showModal = false;
   }
-  toggleTable() {
-    this.showTable = !this.showTable;
-  }
+
   toggleTable1() {
     this.showCard = !this.showCard;
   }

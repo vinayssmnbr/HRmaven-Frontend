@@ -15,14 +15,14 @@
         <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
         <div class="calender">
             <div class="grid-icon">
-                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable()"></i>
+                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
                 <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
             </div>
             <input type="text" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
         </div>
     </div>
 
-    <div class="table-wrapper" *ngIf="showTable">
+    <div class="table-wrapper" *ngIf="!showCard">
         <table>
             <thead>
                 <tr>
