@@ -23,7 +23,7 @@ export class AttendanceContentComponent implements OnInit {
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
   employee: any[] = [];
-  showModal = false;
+  showModal=false;
   showCard: boolean = true;
   employeeid="";
   employeename="";
