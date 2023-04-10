@@ -5,13 +5,13 @@
     <div class="selection">
         <input type="text" placeholder="Type Employee ID...">
         <select id="select">
-  <option value="option1">Designation</option>
-  <option value="option2">Software Developer</option>
-  <option value="option3">Frontend Developer</option>
-  <option value="option4">UI/UX Designer</option>
-  <option value="option5">Full Stack Developer</option>
-  <option value="option6">Quality Analyst</option>
-  </select>
+            <option value="option1">Designation</option>
+            <option value="option2">Software Developer</option>
+            <option value="option3">Frontend Developer</option>
+            <option value="option4">UI/UX Designer</option>
+            <option value="option5">Full Stack Developer</option>
+            <option value="option6">Quality Analyst</option>
+        </select>
         <!-- <i class="fa-solid fa-caret-down" (click)="toggleDropdown()"></i> -->
         <div id="dropdown-container" [ngClass]="{'show': isDropdownOpen}">
             <ul class="navigation">
@@ -26,9 +26,13 @@
                 <li>Quality Analyst</li>
             </ul>
         </div>
-        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
-        <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2" [style.color]="buttonColor2">Clear</button>
-        <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3" [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
+            [style.color]="buttonColor">Search</button>
+        <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"
+            [style.color]="buttonColor2">Clear</button>
+        <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3"
+            [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add
+            Employee</button>
     </div>
 
     <div class="table-wrapper">
@@ -93,7 +97,8 @@
             </div>
             <div class="modal-body">
                 <div class="numbers">
-                    <div class="number" [ngClass]="{'active':firstStep}"><span [ngClass]="{'active':firstStep}">1</span></div>
+                    <div class="number" [ngClass]="{'active':firstStep}"><span [ngClass]="{'active':firstStep}">1</span>
+                    </div>
                     <div class="number"><span [ngClass]="{'active':secondStep}">2</span></div>
                     <div class="number"><span [ngClass]="{'active':thirdStep}">3</span></div>
                 </div>
@@ -106,7 +111,8 @@
 
 
 
-                <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
+                <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep"
+                    (ngSubmit)="submit(form.value)">
                     <div class="form-row">
                         <div class="input">
                             <label>Name</label>
@@ -135,10 +141,11 @@
                         <div class="input">
                             <label>Gender</label>
                             <select id="slt" formControlName="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="others">Others</option>
-           </select>
+                                <option value="" disabled selected>Select your Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                            </select>
                         </div>
                     </div>
                 </form>
@@ -146,7 +153,7 @@
                     <div class="form-row">
                         <div class="input">
                             <label>Mobile No.</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="mobile">
+                            <input type="number" id="text1" placeholder="Type here..." formControlName="mobile">
                         </div>
                         <div class="input">
                             <label>Email</label>
@@ -156,7 +163,8 @@
                     <div class="form-row">
                         <div class="input">
                             <label>Address</label>
-                            <input type="textarea" id="text2" placeholder="Type here..." formControlName="address">
+                            <textarea type="textarea" id="text2" placeholder="Type here..."
+                                formControlName="address"></textarea>
                         </div>
                     </div>
                 </form>
@@ -171,7 +179,7 @@
                         </div>
                         <div class="input">
                             <label>Account Number</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="accountno">
+                            <input type="number" id="text1" placeholder="Type here..." formControlName="accountno">
                         </div>
                     </div>
                     <div class="form-row">
@@ -181,7 +189,7 @@
                         </div>
                         <div class="input">
                             <label>Aadhar Card No.</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="adhaarno">
+                            <input type="number" id="text1" placeholder="Type here..." formControlName="adhaarno">
                         </div>
                     </div>
                     <div class="form-row">
@@ -197,7 +205,8 @@
                 <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
                 <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
                 <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
-                <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn" (click)="submit(form.value)">Done</button>
+                <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
+                    (click)="submit(form.value)">Done</button>
             </div>
         </div>
         <div class="modal-content2" *ngIf="fourthStep">
