@@ -9,8 +9,6 @@ import {
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 
-import { NgZone } from '@angular/core';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -93,7 +91,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.fetchdata();
+    this.fetchdata();
 
     //designation custom
 
