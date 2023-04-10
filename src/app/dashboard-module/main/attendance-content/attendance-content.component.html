@@ -10,8 +10,8 @@
         <canvas id="lineChart"></canvas>
     </div>
     <div class="selection">
-        <input type="text" placeholder="Employee Name...">
-        <input type="number" placeholder="Employee ID...">
+        <input type="text" [(ngModel)]="employeename"placeholder="Employee Name...">
+        <input type="text" [(ngModel)]="employeeid" placeholder="Employee ID...">
         <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
         <div class="calender">
             <div class="grid-icon">
@@ -35,15 +35,12 @@
                 </tr>
             </thead>
             <tbody>
-
-
-
-                <tr *ngFor="let user of employee">
-                    <td class="employee1">{{user.uid}}</td>
+                <tr *ngFor="let user of employee |attendanceFilter:employeename:employeeid">
+                    <td class="employee1">{{user.empId}}</td>
                     <td class="name1">{{user.name}}</td>
-                    <td class="designation1">Present</td>
-                    <td class="email1">9:00 AM</td>
-                    <td class="contact1">5:00 PM</td>
+                    <td class="designation1">{{user.status}}</td>
+                    <td class="email1">{{user.punch_in}}</td>
+                    <td class="contact1">{{user.punch_out}}</td>
                     <td class="action1">
                         <div class="icons">
                             <i class="fa-solid fa-pencil" (click)="openModal()"></i>
