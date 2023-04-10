@@ -91,7 +91,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchdata();
+    // this.fetchdata();
 
     //designation custom
 

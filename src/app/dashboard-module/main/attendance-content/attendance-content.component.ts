@@ -27,6 +27,7 @@ export class AttendanceContentComponent implements OnInit {
   showCard: boolean = true;
   employeeid="";
   employeename="";
+  update:boolean=false;
 
   constructor(public dashService: DashService) {
     // this.fetchdata();
@@ -130,11 +131,12 @@ export class AttendanceContentComponent implements OnInit {
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
   openModal() {
-    this.showModal = true;
-
+    console.log("hit");
+    this.update = !this.update;
+    console.log(this.update);
   }
   closeModal() {
-    this.showModal = false;
+    this.showModal = !this.showModal;
   }
 
   toggleTable1() {
