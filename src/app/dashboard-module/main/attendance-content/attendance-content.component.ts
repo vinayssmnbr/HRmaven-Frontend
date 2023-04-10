@@ -1,96 +1,146 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Chart, registerables } from 'node_modules/chart.js';
+Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
-  styleUrls: ['./attendance-content.component.css']
+  styleUrls: ['./attendance-content.component.css'],
 })
-export class AttendanceContentComponent {
-  constructor(private dashService:DashService){
+export class AttendanceContentComponent implements OnInit {
+  circularProgress: any;
+  progressValue: any;
+  progressStartValue = 0;
+  progressEndValue = 50;
+  speed = 100;
+  progressInterval: any;
+
+  buttonbackgroundColor = '#2F2C9F';
+  buttonColor = '#FFFFFF';
+  buttonbackgroundColor2 = '#ECECEC';
+  buttonColor2 = '#2F2C9F';
+  buttonbackgroundColor3 = '#2F2C9F';
+  buttonColor3 = '#FFFFFF';
+  employee: any[] = [];
+  showModal = false;
+  showCard: boolean = true;
+  // employeeForm: FormGroup;
+
+  constructor(public dashService: DashService) {
+    // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
+     this.dashService.getEmployee().subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
   }
-  
-  chartOptions = {
-		animationEnabled: true,  
-		title:{
-			text: "Average Monthly Rainfall"
-		},
-		axisX: {
-			title: "Months"
-		},
-		axisY: { 
-			title: "Precipitation (inches)"                   
-		},
-		toolTip: {
-			shared: true
-		},
-		legend: {
-			cursor:"pointer",
-			itemclick: function(e) {
-			  if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
-				e.dataSeries.visible = false;
-			  } else {
-				e.dataSeries.visible = true;
-			  }
-			  e.chart.render();
-			}
-		},
-		data: [{        
-			type: "spline",
-			showInLegend: true,
-			name: "Boston",
-			dataPoints: [
-			  { label: "Jan", y: 3.92 },     
-			  { label: "Feb", y: 3.31 },     
-			  { label: "Mar", y: 3.85 },     
-			  { label: "Apr", y: 3.60 },     
-			  { label: "May", y: 3.24 },     
-			  { label: "Jun", y: 3.22 },     
-			  { label: "Jul", y: 3.06 },     
-			  { label: "Aug", y: 3.37 },     
-			  { label: "Sep", y: 3.47 },     
-			  { label: "Oct", y: 3.79 },     
-			  { label: "Nov", y: 3.98 },     
-			  { label: "Dec", y: 3.73 }
-			]
-		}, {        
-			type: "spline",
-			showInLegend: true,
-			name: "Los Angeles",
-			dataPoints: [
-			  { label: "Jan", y: 2.98 },     
-			  { label: "Feb", y: 3.11 },     
-			  { label: "Mar", y: 2.4 },     
-			  { label: "Apr", y: 0.63 },     
-			  { label: "May", y: 0.24 },     
-			  { label: "Jun", y: 0.08 },     
-			  { label: "Jul", y: 0.03 },     
-			  { label: "Aug", y: 0.14 },     
-			  { label: "Sep", y: 0.26 },     
-			  { label: "Oct", y: 0.36 },     
-			  { label: "Nov", y: 1.13 },     
-			  { label: "Dec", y: 1.79 }
-			]
-		}, {        
-			type: "spline",
-			showInLegend: true,
-			name: "Seattle",
-			dataPoints: [
-			  { label: "Jan", y: 5.24 },     
-			  { label: "Feb", y: 4.09 },     
-			  { label: "Mar", y: 3.92 },     
-			  { label: "Apr", y: 2.75 },     
-			  { label: "May", y: 2.03 },     
-			  { label: "Jun", y: 1.55 },     
-			  { label: "Jul", y: 0.93 },     
-			  { label: "Aug", y: 1.16 },     
-			  { label: "Sep", y: 1.61 },     
-			  { label: "Oct", y: 3.24 },     
-			  { label: "Nov", y: 5.67 },     
-			  { label: "Dec", y: 6.06 }   
-			]
-		}]
-	}	
-}
+  ngOnInit() {
+
+    // Create a chart object
+    const myChart = new Chart('lineChart', {
+      type: 'line',
+      data: {
+        labels: [
+          '1',
+          '2',
+          '3',
+          '4',
+          '5',
+          '6',
+          '7',
+          '8',
+          '9',
+          '10',
+          '11',
+          '12',
+        ],
+        datasets: [
+          {
+            label: 'Present',
+            data: [
+              50, 280, 370, 250, 80, 60, 50, 40, 70, 30, 20, 100, 50, 280, 370,
+              250, 80, 60, 50, 40, 70, 30, 20, 100, 250, 80, 60, 50, 40, 70,
+            ],
+            backgroundColor: ['green'],
+            borderColor: ['green'],
+            borderWidth: 1,
+            pointStyle: 'circle',
+          },
+          {
+            label: 'Absent',
+            data: [
+              230, 50, 150, 350, 320, 250, 70, 350, 100, 50, 300, 40, 230, 50,
+              150, 350, 320, 250, 70, 350, 100, 50, 300, 40, 50, 150, 350, 320,
+              250, 70,
+            ],
+            backgroundColor: ['red'],
+            borderColor: ['red'],
+            borderWidth: 1,
+            pointStyle: 'circle',
+          },
+          {
+            label: 'Leaves',
+            data: [
+              250, 300, 230, 340, 250, 50, 200, 300, 150, 200, 70, 40, 250, 300,
+              230, 340, 250, 50, 200, 300, 150, 200, 70, 40, 50, 200, 300, 150,
+              200, 70,
+            ],
+            backgroundColor: ['yellow'],
+            borderColor: ['yellow'],
+            borderWidth: 1,
+            pointStyle: 'circle',
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            position: 'right',
+            labels: {
+              padding: 40,
+              usePointStyle: true,
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
+  changeColor() {
+    this.buttonbackgroundColor =
+      this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonColor = this.buttonColor === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
+  }
+  changeColor2() {
+    this.buttonbackgroundColor2 =
+      this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
+    this.buttonColor2 = this.buttonColor2 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+  }
+  changeColor3() {
+    this.buttonbackgroundColor3 =
+      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
+  }
+  openModal() {
+    this.showModal = true;
+
+  }
+  closeModal() {
+    this.showModal = false;
+  }
+
+  toggleTable1() {
+    this.showCard = !this.showCard;
+  }
+ }

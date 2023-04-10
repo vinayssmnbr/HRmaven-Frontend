@@ -18,6 +18,7 @@ import { SearchPipe } from './pipe/search.pipe';
 
 
 
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -31,6 +32,8 @@ import { SearchPipe } from './pipe/search.pipe';
            RecruitmentContentComponent,
            ReportContentComponent,
            SearchPipe,
+
+
   ],
   imports: [
     CommonModule,
@@ -41,14 +44,15 @@ import { SearchPipe } from './pipe/search.pipe';
     NgCircleProgressModule.forRoot({
       "animateTitle": false,
       "animationDuration": 1000,
-      "showTitle": false,
-      "showSubtitle": false,
-      "showUnits": false,
+      // "showTitle": false,
+      // "showSubtitle": false,
+      // "showUnits": false,
       "showBackground": false,
       "clockwise": false,
       "startFromZero": false,
       "lazy": true}),
   ],
   providers: [SearchPipe]
+
 })
 export class DashboardModuleModule {}
