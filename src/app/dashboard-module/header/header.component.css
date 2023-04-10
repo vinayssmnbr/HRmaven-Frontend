@@ -71,7 +71,7 @@
     right: 30px;
     margin-top: 76px;
     padding: 25px 20px;
-    z-index: 10;
+    z-index: 99;
 }
 
 .profile-title {

@@ -12,13 +12,15 @@
     <div class="selection">
         <input type="text" [(ngModel)]="employeename" placeholder="Employee Name...">
         <input type="text" [(ngModel)]="employeeid" placeholder="Employee ID...">
-        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
+        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
+            [style.color]="buttonColor">Search</button>
         <div class="calender">
             <div class="grid-icon">
                 <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
                 <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
             </div>
-            <input type="text" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
+            <input type="text" placeholder="Select the date" onclick="(this.type='date')"
+                onblur="(this.value === '' ? this.type='text' : null)">
         </div>
     </div>
 
@@ -69,8 +71,11 @@
                             <h4>Monthly</h4>
                         </div>
                         <div class="circle-graph ">
-                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
-                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
+                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false'
+                                [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 "
+                                [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true'
+                                [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
                     <button class="view-btn ">View details</button>
