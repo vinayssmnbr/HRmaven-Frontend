@@ -1,30 +1,25 @@
----
 image: node:14-alpine
+
 stages:
   - build
-  - development
-pages:
-  stage: development
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install -g @angular/cli
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - ng build --prod --base-href "/my-project-name/"
+    - mv dist/my-project-name/index.html dist/my-project-name/404.html
+    # Copy all files in dist to public directory to enable GitLab Pages deployment
+    - cp -R dist/my-project-name/. public/
   artifacts:
     paths:
       - public
-  script:
-    - rm -rf public
-    - cp dist/index.html dist/404.html
-    - mv dist public
   only:
-    - develop
-site-build:
-  stage: build
-  image: node:latest
-  artifacts:
-    name: artifact-$CI_COMMIT_REF_NAME
-    paths:
-      - dist
-    expire_in: 1h
-  script:
-    - npm install
-    - npm install -g env-cmd
-    - npm run build
-  only:
-    - develop
+    - develop # or whichever branch you want to deploy from
