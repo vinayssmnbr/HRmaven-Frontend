@@ -60,8 +60,7 @@ export class AttendanceContentComponent implements OnInit {
           {
             label: 'Present',
             data: [
-              50, 280, 370, 250, 80, 60, 50, 40, 70, 30, 20, 100, 50, 280, 370,
-              250, 80, 60, 50, 40, 70, 30, 20, 100, 250, 80, 60, 50, 40, 70,
+              50, 280, 370, 250, 80, 60, 50, 40, 70, 30, 20, 40,
             ],
             backgroundColor: ['green'],
             borderColor: ['green'],
@@ -71,9 +70,8 @@ export class AttendanceContentComponent implements OnInit {
           {
             label: 'Absent',
             data: [
-              230, 50, 150, 350, 320, 250, 70, 350, 100, 50, 300, 40, 230, 50,
-              150, 350, 320, 250, 70, 350, 100, 50, 300, 40, 50, 150, 350, 320,
-              250, 70,
+              230, 50, 150, 350, 320, 250, 70, 350, 100, 50, 300, 40,
+
             ],
             backgroundColor: ['red'],
             borderColor: ['red'],
@@ -83,9 +81,7 @@ export class AttendanceContentComponent implements OnInit {
           {
             label: 'Leaves',
             data: [
-              250, 300, 230, 340, 250, 50, 200, 300, 150, 200, 70, 40, 250, 300,
-              230, 340, 250, 50, 200, 300, 150, 200, 70, 40, 50, 200, 300, 150,
-              200, 70,
+              250, 300, 230, 340, 250, 50, 200, 300, 150, 200, 70, 40,
             ],
             backgroundColor: ['yellow'],
             borderColor: ['yellow'],
