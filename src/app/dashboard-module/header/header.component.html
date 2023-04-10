@@ -1,13 +1,14 @@
 <header id="header">
   <div class="content">
     <div class="content-left">
-    <h2  *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p></h2>
-    <h2  *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
-    <h2  *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2>
-    <h2  *ngIf="dashService.activeComponent === 'attendance'">Attendance Management</h2>
-    <h2  *ngIf="dashService.activeComponent === 'payroll'">Payroll</h2>
-    <h2  *ngIf="dashService.activeComponent === 'recruitment'">Recruitment</h2>
-    <h2  *ngIf="dashService.activeComponent === 'report'">Report</h2>
+      <h2 *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p>
+      </h2>
+      <h2 *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
+      <h2 *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2>
+      <h2 *ngIf="dashService.activeComponent === 'attendance'">Attendance Management</h2>
+      <h2 *ngIf="dashService.activeComponent === 'payroll'">Payroll</h2>
+      <h2 *ngIf="dashService.activeComponent === 'recruitment'">Recruitment</h2>
+      <h2 *ngIf="dashService.activeComponent === 'report'">Report</h2>
 
 
 
@@ -23,35 +24,37 @@
       </button>
 
 
-    <img src="./assets/images/clickup60_4.png" alt="" class="header-icon" (click)="getProfileData();profileToggle()"><br>
-    
+      <img src="./assets/images/clickup60_4.png" alt="" class="header-icon"
+        (click)="getProfileData();profileToggle()"><br>
+
+    </div>
+  </div>
+
+</header>
+<div *ngIf="profileDisplay">
+  <div class="profile-content">
+    <div class="profile-title">
+      <div class="profile-logo">
+        <img src="./assets/images/clickup60_4.png" alt="profile_logo">
+      </div>
+      <div class="profile-text">
+        <h2> {{name}} </h2>
+        <p>{{userEmail}}</p>
+      </div>
+      <div class="head-btn">
+        <button class="btn-head">HEAD</button>
       </div>
     </div>
-    
-</header>
-  <div  *ngIf="profileDisplay">
-    <div class="profile-content"> 
-      <div class="profile-title"> 
-          <div class="profile-logo"> 
-              <img src="./assets/images/clickup60_4.png" alt="profile_logo"> 
-          </div> 
-          <div class="profile-text"> 
-            <h2> {{name}} </h2>
-              <p >{{userEmail}}</p> 
-          </div> 
-          <div class="head-btn"> 
-              <button class="btn-head">HEAD</button> 
-          </div> 
-      </div> 
-      <div class="profile-account"> 
-          <div class="account"> 
-              <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button> 
-          </div> 
-      </div> 
-
-      <div class="profile-account"> 
-          <div class="account"> 
-              <button class="account-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i><a (click)="logout()">  <span>Sign Out</span></a></button> 
-          </div> 
+    <div class="profile-account">
+      <div class="account">
+        <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button>
       </div>
-</div>
+    </div>
+
+    <div class="profile-account">
+      <div class="account">
+        <button class="account-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i><a (click)="logout()">
+            <span>Sign Out</span></a></button>
+      </div>
+    </div>
+  </div>
