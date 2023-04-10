@@ -131,6 +131,7 @@ export class AttendanceContentComponent implements OnInit {
   }
   openModal() {
     this.showModal = true;
+    console.log("click icon")
 
   }
   closeModal() {

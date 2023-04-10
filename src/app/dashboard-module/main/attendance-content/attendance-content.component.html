@@ -10,7 +10,7 @@
         <canvas id="lineChart"></canvas>
     </div>
     <div class="selection">
-        <input type="text" [(ngModel)]="employeename"placeholder="Employee Name...">
+        <input type="text" [(ngModel)]="employeename" placeholder="Employee Name...">
         <input type="text" [(ngModel)]="employeeid" placeholder="Employee ID...">
         <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
         <div class="calender">
@@ -44,7 +44,6 @@
                     <td class="action1">
                         <div class="icons">
                             <i class="fa-solid fa-pencil" (click)="openModal()"></i>
-                            <i class="fa-solid fa-trash-can"></i>
                         </div>
                     </td>
                 </tr>
