@@ -22,7 +22,14 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any[] = [];
+  employee: any[] = [
+    {
+    empId:"12345",
+    name:"harpreet",
+    status:"present",
+    punch_in:"9:00am"
+    }
+  ];
   showModal=false;
   showCard: boolean = true;
   employeeid="";
