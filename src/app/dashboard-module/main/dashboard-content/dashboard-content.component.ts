@@ -3,6 +3,8 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
@@ -10,11 +12,18 @@ import { DOCUMENT } from '@angular/common';
 })
 export class DashboardContentComponent implements OnInit {
   constructor(
-    public dashService: DashService,
+    public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
+
+    this.dashService.getLeaves().subscribe((res: any) => {
+      console.log('data', res);
+      this.leaves = res;
+  
+    });
+
   }
   options: any = [
     {
@@ -46,14 +55,19 @@ export class DashboardContentComponent implements OnInit {
   Edit(index: any) {
     console.log(index);
   }
+  
 
   ToggleMenu(index: any) {
     var ul = document.getElementById(index);
     ul.classList.toggle('close');
   }
 
-
-  ngOnInit() {
+  leaves: any[] = [
+   
+   
+  ]
+  ngOnInit()
+   {
     const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
       options = optionMenu.querySelectorAll<HTMLElement>('.option'),
@@ -70,6 +84,8 @@ export class DashboardContentComponent implements OnInit {
       });
     });
 
+
+    
     // Create a chart object
     const myChart = new Chart('myChart', {
       type: 'bar',
@@ -145,4 +161,8 @@ export class DashboardContentComponent implements OnInit {
       },
     });
   }
+
+
+
+     
 }

@@ -29,6 +29,9 @@ export class DashService {
   createData = 'http://localhost:3000/api/create';
   getData = 'http://localhost:3000/api/find';
   deleteData = 'http://localhost:3000/api/';
+  getLeave='http://localhost:3000/api/leave/'
+ 
+
 
 
   addEmployee(data) {
@@ -41,4 +44,16 @@ export class DashService {
   getEmployee() {
     return this.http.get(this.getData);
   }
+
+  getLeaves() {
+    return this.http.get(this.getLeave);
+  }
+
+ 
+
+
+  
+  
+
+
 }
