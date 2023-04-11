@@ -12,7 +12,7 @@
       <option value="option6">Quality Analyst</option>
     </select>
     <!-- <i class="fa-solid fa-caret-down" (click)="toggleDropdown()"></i> -->
-    <div id="dropdown-container" [ngClass]="{'show': isDropdownOpen}">
+    <!-- <div id="dropdown-container" [ngClass]="{'show': isDropdownOpen}">
       <ul class="navigation">
         <li>Software Developer</li>
         <hr>
@@ -24,7 +24,7 @@
         <hr>
         <li>Quality Analyst</li>
       </ul>
-    </div>
+    </div> -->
     <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
       [style.color]="buttonColor">Search</button>
     <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"
@@ -53,11 +53,12 @@
           <td class="email1">{{user.email}}</td>
           <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
-            <div class="icons"><i class="fa-solid fa-pencil"></i>
-              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
+            <div class="icons"><i class="fa-solid fa-pencil"  ></i>
+              <a><i class="fa-solid fa-trash-can" (click)="todelete(user)"></i></a>
             </div>
           </td>
         </tr>
+
       </tbody>
     </table>
   </div>
@@ -92,23 +93,29 @@
             </div>
             <div class="input">
               <label>Designation</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="designation">
+              <select id="slt" formControlName="designation">
+                <option value="software developer">Software Developer</option>
+                <option value="frontend developer">Frontend Developer</option>
+                <option value="ui/ux">UI/UX Designer</option>
+                <option value="full stack">Full Stack Developer</option>
+                <option value="qa">Quality Analyst</option>
+              </select>
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>UID</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="uid">
+              <input type="text" id="text3" placeholder="Type here..." formControlName="uid">
             </div>
             <div class="input">
               <label>Date of Joining</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="dateOfJoining">
+              <input type="text" id="text4" placeholder="Type here..." formControlName="dateOfJoining">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Date of Birth</label>
-              <input type="text" id="text1" placeholder="DD/MM/YYYY" formControlName="dateOfBirth">
+              <input type="text" id="text5" placeholder="DD/MM/YYYY" formControlName="dateOfBirth">
             </div>
             <div class="input">
               <label>Gender</label>
@@ -130,17 +137,17 @@
           <div class="form-row">
             <div class="input">
               <label>Mobile No.</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="mobile">
+              <input type="text" id="text6" placeholder="Type here..." formControlName="mobile">
             </div>
             <div class="input">
               <label>Email</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="email">
+              <input type="text" id="text7" placeholder="Type here..." formControlName="email">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Address</label>
-              <input type="textarea" id="text2" placeholder="Type here..." formControlName="address">
+             <textarea placeholder="Type here..." cols="80" rows="8" id="text2"></textarea>
             </div>
           </div>
         </form>
@@ -151,27 +158,27 @@
           <div class="form-row">
             <div class="input">
               <label>Bank Name</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="bankname">
+              <input type="text" id="text9" placeholder="Type here..." formControlName="bankname">
             </div>
             <div class="input">
               <label>Account Number</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="accountno">
+              <input type="text" id="text10" placeholder="Type here..." formControlName="accountno">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>IFSC Code</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="ifsc">
+              <input type="text" id="text11" placeholder="Type here..." formControlName="ifsc">
             </div>
             <div class="input">
               <label>Aadhar Card No.</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="adhaarno">
+              <input type="text" id="text12" placeholder="Type here..." formControlName="adhaarno">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>PAN number</label>
-              <input type="text" id="text1" placeholder="Type here..." formControlName="panno">
+              <input type="text" id="text13" placeholder="Type here..." formControlName="panno">
             </div>
           </div>
         </form>
@@ -218,3 +225,4 @@
     </div>
 
   </div>
+</div>

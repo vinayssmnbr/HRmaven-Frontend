@@ -9,6 +9,7 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
 import { EmployeeContentComponent } from './main/employee-content/employee-content.component';
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 import { RouterModule } from '@angular/router';
+import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 
 
 
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
            SidebarComponent,
            DashboardContentComponent,
            EmployeeContentComponent,
-           LeavesContentComponent
+           LeavesContentComponent,
+           EmployeeProfileComponent
   ],
   imports: [
     CommonModule,
