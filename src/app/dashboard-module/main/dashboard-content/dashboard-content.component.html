@@ -121,137 +121,16 @@
             <th>ACTION</th>
             <th></th>
           </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
+          <tr *ngFor="let leave of leaves">
+            <td>{{leave.employeeId}}</td>
+            <td>{{leave.employeeName}}</td>
+            <td>{{leave.from | date:'short'}}</td>
+            <td>{{leave.to | date:'short'}}</td>
+            <td>{{leave.reason}}</td>
             <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>45456</td>
-            <td>Shantnu</td>
-            <td>15 May</td>
-            <td>17 May</td>
-            <td>Casual Leave</td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="accent">
-                <label for="accent">accept</label>
-              </div>
-            </td>
-            <td>
-              <div class="radio_btn">
-                <input type="radio" name="styles" id="reject">
-                <label for="reject">reject</label>
-              </div>
+
+            <p>{{leave.status == 'accept'?'Accepted': leave.status=='reject'? 'Rejected': 'Pending'}}</p>
+            
             </td>
           </tr>
         </table>

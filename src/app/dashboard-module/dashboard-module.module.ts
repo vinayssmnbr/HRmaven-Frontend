@@ -16,7 +16,7 @@ import { ReportContentComponent } from './main/report-content/report-content.com
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SearchPipe } from './pipe/search.pipe';
 import { AttendanceFilterPipe } from './pipe/attendance-filter.pipe';
-
+import { SortingPipe } from './pipe/sorting.pipe';
 
 
 
@@ -34,8 +34,7 @@ import { AttendanceFilterPipe } from './pipe/attendance-filter.pipe';
            ReportContentComponent,
            SearchPipe,
            AttendanceFilterPipe,
-
-
+           SortingPipe,
   ],
   imports: [
     CommonModule,
