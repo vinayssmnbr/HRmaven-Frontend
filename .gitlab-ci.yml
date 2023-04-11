@@ -19,9 +19,9 @@ pages:
   dependencies:
     - build
   script:
-    - if [ -d "./dist/out" ]; then mv dist/out public; fi
+    - if [ -d "./dist/out" ]; then mv dist/out src; fi
   artifacts:
     paths:
-      - public
+      - src
   only:
     - develop
