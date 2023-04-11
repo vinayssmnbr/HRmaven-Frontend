@@ -345,6 +345,7 @@ a {
   padding: 20px;
   height: 100%;
   width: 100%;
+  /* max-width:680px; */
 }
 
 .leave-request-area {
