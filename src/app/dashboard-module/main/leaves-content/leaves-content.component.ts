@@ -12,7 +12,7 @@ import { format, parseISO } from 'date-fns';
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
-  
+
 
   circularProgress: any;
   progressValue: any;
@@ -21,9 +21,10 @@ export class LeavesContentComponent {
   speed = 100;
   progressInterval: any;
   test: any = 'All';
- 
+  // searchText: string;
+  status: string;
   leaves: any[] = [
-   
+
   ]
 
   ngOnInit() {
@@ -44,17 +45,23 @@ export class LeavesContentComponent {
       });
     });
   }
-  
-  constructor(private dashService: DashService,private http:HttpClient) {
+
+  constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
 
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);
       this.leaves = res;
+      this.leaves = this.leaves.sort((a, b) => {
+        if (a.status > b.status) return 1;
+        if (a.status < b.status) return -1;
+        return 1;
+      })
+      console.log(this.leaves)
     });
 
-  
+
 
 
   }
@@ -65,29 +72,32 @@ export class LeavesContentComponent {
   }
 
 
-  updateLeaveStatus(id:any, status:'accept'|'reject'){
+  updateLeaveStatus(id: any, status: 'accept' | 'reject') {
     const url = `http://localhost:3000/api/leave/${id}`;
     const body = { status: status };
-    this.http.patch(url, JSON.stringify(body), {headers: {'content-type': 'application/json'}}
+    this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
     ).subscribe(response => {
       console.log('Leave status updated successfully: ', response);
-    
-      }, error => {
-      console.error('Error updating leave status:', error);  
-   
-  });
+
+    }, error => {
+      console.error('Error updating leave status:', error);
+
+    });
 
   }
   onAccept(id: any) {
     this.updateLeaveStatus(id, 'accept');
   }
-  
+
   onReject(id: any) {
     this.updateLeaveStatus(id, 'reject');
   }
-  
-  
- 
 
- 
+
+
+
+
+
+
+
 }

@@ -89,7 +89,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let leave of leaves">
+                <tr *ngFor="let leave of leaves ">
                         <td>{{leave.employeeId}}</td>
                         <td>{{leave.employeeName}}</td>
                         <td>{{leave.from | date:'short'}}</td>
@@ -102,7 +102,7 @@
                                     <label for="outline1" class="outline1">Accept</label>
                                 </div>
                                 <div class="action_btn">
-                                    <input type="radio"  [checked]="leave.status=='reject'" [disabled]="leave.status=='accept' || leave.status=='reject'" (change)="updateLeaveStatus(leave._id, 'reject')"  id="outline"  class="custom-radio">
+                                    <input type="radio"  [checked]="leave.status=='reject'" [disabled]="leave.status=='accept' || leave.status=='reject'" (change)="updateLeaveStatus(leave._id, 'reject')" id="outline"  class="custom-radio">
                                     <label for="outline" class="outline">Reject</label>
                                 </div>
                             </div>

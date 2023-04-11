@@ -21,6 +21,12 @@ export class DashboardContentComponent implements OnInit {
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);
       this.leaves = res;
+      this.leaves = this.leaves.sort((a, b) => {
+        if (a.status > b.status) return 1;
+        if (a.status < b.status) return -1;
+        return 1;
+      })
+      console.log(this.leaves)
   
     });
 
