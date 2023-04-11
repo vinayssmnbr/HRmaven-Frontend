@@ -37,24 +37,43 @@ export class DashService {
   addEmployee(data) {
     return this.http.post(this.createData, data);
   }
+  updateData='http://localhost:3000/api/update'
+
+  //ADD DATA
+
+//DELETE DATA
   deleteStudent(id: string): Observable<void> {
     const url = `${this.deleteData}/${id}`;
     return this.http.delete<void>(url);
   }
-  getEmployee() {
-    return this.http.get(this.getData);
-  }
-
   getLeaves() {
     return this.http.get(this.getLeave);
   }
 
- 
 
 
 
 
 
+
+
+  getEmployee() {
+    return this.http.get(this.getData);
+  }
+  //UPDATE DATA
+  updateEmployee(id:string,updatedData:any){
+    return this.http.put(`${this.updateData}/${id}`,updatedData)
+  }
+//SEARCH UID AND FILTER DESIGNATION
+  searchuid(query: string, designation: string) {
+    console.log('des', designation);
+    return this.http.get<any>(
+      `${this.getData}?uid=${query}&designation=${designation}`
+    );
+  }
+
+  getLeaveData(type: string) {
+    return this.http.get(`${this.getData}?type=${type}`);
+  }
 
 }
-

@@ -40,7 +40,7 @@ export class AttendanceContentComponent implements OnInit {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getAttendance().subscribe((res: any) => {
+     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });

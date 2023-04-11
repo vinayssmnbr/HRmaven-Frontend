@@ -21,9 +21,6 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employeeid="";
-  empdesignation="Designation";
-
 
   employee: any=[{
     uid:"1234",
@@ -47,6 +44,16 @@ export class EmployeeContentComponent implements OnInit {
         mobile:"9876624565"
         }
       ];
+  // employeeForm: FormGroup;
+  query: string = '';
+  designation: string = '';
+  empdesignation: string[] = [
+    'Software Developer',
+    'Frontend Developer',
+    'UI/UX Designer',
+    'Full Stack Developer',
+    'Quality Analyst',
+  ];
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
@@ -63,6 +70,7 @@ export class EmployeeContentComponent implements OnInit {
     ifsc: new FormControl(''),
     panno: new FormControl(''),
   });
+  data: any;
 
   constructor(
     public dashService: DashService,
@@ -72,6 +80,7 @@ export class EmployeeContentComponent implements OnInit {
     dashService.headerContent = '';
   }
 
+  //ADD DATA
   submit(data: any) {
     console.log(this.form.value);
     this.showModalContent = false;
@@ -83,12 +92,63 @@ export class EmployeeContentComponent implements OnInit {
       this.fetchdata();
     });
   }
+
+  //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });
   }
+
+  //DELETE DATA
+  todelete(data: any) {
+    this.rowdelete = true;
+    this.showModalContent = false;
+    this.showModal = true;
+    this.deletemessage = false;
+
+    this.dashService.deleteStudent(data._id).subscribe(() => {
+      console.log('deleted');
+      this.employee = this.employee.filter((s) => s !== data);
+    });
+    this.fetchdata();
+  }
+
+ //UPDATE DATA
+ toUpdate():void{
+  const id=this.data.id
+  const updatedata=this.form.value
+  this.dashService.updateEmployee(id,updatedata).subscribe(()=>{
+    console.log('dat updated successfully')
+  })
+}
+  //SEARCH UID
+  search() {
+    console.log(this.query, 'search fn', this.designation);
+    this.dashService
+      .searchuid(this.query, this.designation)
+      .subscribe((res) => {
+        console.log(res);
+        this.employee = res;
+        console.log('data', res);
+      });
+  }
+
+
+
+  //FILTER DESIGNATION
+  filter(checkbox: string) {
+    this.designation = checkbox;
+    this.dashService
+      .searchuid(this.query, this.designation)
+      .subscribe((res) => {
+        console.log(res);
+        this.employee = res;
+        console.log('data', res);
+      });
+  }
+
 
   ngOnInit() {
     // this.fetchdata();
@@ -106,12 +166,13 @@ export class EmployeeContentComponent implements OnInit {
       option.addEventListener('click', () => {
         let selectedOption =
           option.querySelector<HTMLElement>('.option-text')!.innerText;
-          this.empdesignation=selectedOption;
+          // this.empdesignation=selectedOption;
         sBtn_text.innerText = selectedOption;
         optionMenu.classList.remove('active');
       });
     });
   }
+
   changeColor() {
     this.buttonbackgroundColor =
       this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
@@ -174,18 +235,7 @@ export class EmployeeContentComponent implements OnInit {
     this.showModalContent = true;
   }
   rowdelete = false;
-  todelete(data: any) {
-    this.rowdelete = true;
-    this.showModalContent = false;
-    this.showModal = true;
-    this.deletemessage = false;
 
-    this.dashService.deleteStudent(data._id).subscribe(() => {
-      console.log('deleted');
-      this.employee = this.employee.filter((s) => s !== data);
-    });
-    this.fetchdata();
-  }
   closeModal2() {
     this.showModal = false;
     this.rowdelete = false;
@@ -200,5 +250,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
+
+  onOptionChange() {}
 }
