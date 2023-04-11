@@ -8,7 +8,7 @@ import { AttendanceContentComponent } from './main/attendance-content/attendance
 import { PayrollContentComponent } from './main/payroll-content/payroll-content.component';
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
 import { ReportContentComponent } from './main/report-content/report-content.component';
-
+import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
   {
@@ -43,6 +43,7 @@ const routes: Routes = [
         path: 'report',
         component: ReportContentComponent,
       },
+      { path: 'employee-profile', component: EmployeeProfileComponent }
     ],
   },
 ];
