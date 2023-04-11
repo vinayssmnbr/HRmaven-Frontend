@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter,Inject } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-employee-content',
@@ -15,38 +16,24 @@ import { DashService } from '../../shared/dash.service';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
+
+  constructor(public dashService: DashService,private formBuilder: FormBuilder,@Inject(DOCUMENT) public document: Document) {
+    dashService.activeComponent = 'employees';
+    dashService.headerContent = '';
+
+  }
+
   buttonbackgroundColor = '#2F2C9F';
   buttonColor = '#FFFFFF';
   buttonbackgroundColor2 = '#ECECEC';
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-
-  employee: any=[{
-    uid:"1234",
-    name:"harpreet singh",
-    designation:"Full Stack Developer",
-    email:"harpeet@gmail.com",
-    mobile:"9876624565"
-    },
-    {
-      uid:"1235",
-      name:"gurpreet singh",
-      designation:"Full Stack Developer",
-      email:"harpeet@gmail.com",
-      mobile:"9876624565"
-      },
-      {
-        uid:"1236",
-        name:"inderpreet singh",
-        designation:"Frontend Developer",
-        email:"harpeet@gmail.com",
-        mobile:"9876624565"
-        }
-      ];
-  // employeeForm: FormGroup;
+  employee: any=[];
   query: string = '';
   designation: string = '';
+  data: any;
+  deletedata:any;
   empdesignation: string[] = [
     'Software Developer',
     'Frontend Developer',
@@ -54,6 +41,7 @@ export class EmployeeContentComponent implements OnInit {
     'Full Stack Developer',
     'Quality Analyst',
   ];
+
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
@@ -70,15 +58,8 @@ export class EmployeeContentComponent implements OnInit {
     ifsc: new FormControl(''),
     panno: new FormControl(''),
   });
-  data: any;
 
-  constructor(
-    public dashService: DashService,
-    private formBuilder: FormBuilder
-  ) {
-    dashService.activeComponent = 'employees';
-    dashService.headerContent = '';
-  }
+
 
   //ADD DATA
   submit(data: any) {
@@ -107,12 +88,9 @@ export class EmployeeContentComponent implements OnInit {
     this.showModalContent = false;
     this.showModal = true;
     this.deletemessage = false;
+    this.deletedata=data;
 
-    this.dashService.deleteStudent(data._id).subscribe(() => {
-      console.log('deleted');
-      this.employee = this.employee.filter((s) => s !== data);
-    });
-    this.fetchdata();
+
   }
 
  //UPDATE DATA
@@ -149,28 +127,14 @@ export class EmployeeContentComponent implements OnInit {
       });
   }
 
-
+  opendpdtn=false;
   ngOnInit() {
-    // this.fetchdata();
+    this.fetchdata();
+
 
     //designation custom
 
-    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
-      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    selectBtn.addEventListener('click', () =>
-      optionMenu.classList.toggle('active')
-    );
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        let selectedOption =
-          option.querySelector<HTMLElement>('.option-text')!.innerText;
-          // this.empdesignation=selectedOption;
-        sBtn_text.innerText = selectedOption;
-        optionMenu.classList.remove('active');
-      });
-    });
+
   }
 
   changeColor() {
@@ -243,9 +207,16 @@ export class EmployeeContentComponent implements OnInit {
   }
   deletemessage = false;
   successdelete() {
+    let data = this.deletedata;
+    this.dashService.deleteStudent(data._id).subscribe(() => {
+      console.log('deleted');
+      this.employee = this.employee.filter((s) => s !== data);
+    });
     this.deletemessage = true;
     this.rowdelete = false;
     this.showModal = true;
+    this.fetchdata();
+    this.ngOnInit();
   }
   closeModal3() {
     this.showModal = false;

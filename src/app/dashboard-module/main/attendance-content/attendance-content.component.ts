@@ -22,14 +22,7 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any[] = [
-    {
-    empId:"12345",
-    name:"harpreet",
-    status:"present",
-    punch_in:"9:00am"
-    }
-  ];
+  employee: any= [];
   showModal=false;
   showCard: boolean = true;
   employeeid="";
@@ -40,7 +33,7 @@ export class AttendanceContentComponent implements OnInit {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getEmployee().subscribe((res: any) => {
+     this.dashService.getAttendance().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });

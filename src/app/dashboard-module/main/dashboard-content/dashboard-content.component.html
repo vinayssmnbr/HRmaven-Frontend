@@ -119,7 +119,6 @@
             <th>TO</th>
             <th>REASON</th>
             <th>ACTION</th>
-            <th></th>
           </tr>
           <tr *ngFor="let leave of leaves">
             <td>{{leave.employeeId}}</td>
@@ -130,7 +129,7 @@
             <td>
 
             <p>{{leave.status == 'accept'?'Accepted': leave.status=='reject'? 'Rejected': 'Pending'}}</p>
-            
+
             </td>
           </tr>
         </table>

@@ -437,7 +437,6 @@ table {
 
 td,
 th {
-
   text-align: left;
   padding: 8px;
 }
@@ -458,6 +457,7 @@ tr:hover {
   background-color: #dddddd;
   cursor: pointer;
   transition: 0.3s;
+  width:100%;
 }
 
 span {

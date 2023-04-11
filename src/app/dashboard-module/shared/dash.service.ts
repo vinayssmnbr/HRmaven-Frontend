@@ -29,15 +29,15 @@ export class DashService {
   createData = 'http://localhost:3000/api/create';
   getData = 'http://localhost:3000/api/find';
   deleteData = 'http://localhost:3000/api/';
-  getLeave='http://localhost:3000/api/leave/'
-
+  getLeave='http://localhost:3000/api/leave//'
+  updateData='http://localhost:3000/api/update'
+  getAttd='http://localhost:3000/attendance//';
 
 
 
   addEmployee(data) {
     return this.http.post(this.createData, data);
   }
-  updateData='http://localhost:3000/api/update'
 
   //ADD DATA
 
@@ -50,13 +50,9 @@ export class DashService {
     return this.http.get(this.getLeave);
   }
 
-
-
-
-
-
-
-
+  getAttendance(){
+    return this.http.get(this.getAttd);
+  }
   getEmployee() {
     return this.http.get(this.getData);
   }

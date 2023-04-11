@@ -1,6 +1,9 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
 <div class="main">
+
+
+  <!-- dropdown -->
   <div class="selection">
     <input type="text" placeholder="Type Employee ID..." id="search" [(ngModel)]="query" (input)="search()">
     <div class="select-menu">
@@ -29,6 +32,7 @@
         </li>
       </ul>
     </div>
+    
     <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
       [style.color]="buttonColor">Search</button>
     <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"

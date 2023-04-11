@@ -29,7 +29,8 @@
         <tr>
           <th class="employee">Employee ID</th>
           <th class="name">Name</th>
-          <th class="action">STATUS</th>
+          <th class="name">Date</th>
+          <th class="action">Status</th>
           <th class="email">PUNCH IN</th>
           <th class="designation">PUNCH OUT</th>
           <th class="contact">Action</th>
@@ -39,6 +40,7 @@
         <tr *ngFor="let user of employee |attendanceFilter:employeename:employeeid">
           <td class="employee1">{{user.empId}}</td>
           <td class="name1">{{user.name}}</td>
+          <td class="name1">{{user.date | date:'short'}}</td>
           <td class="designation1">{{user.status}}</td>
           <td class="email1">{{user.punch_in}}</td>
           <td class="contact1">{{user.punch_out}}</td>
