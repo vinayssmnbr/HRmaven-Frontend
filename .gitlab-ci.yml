@@ -19,7 +19,7 @@ pages:
   dependencies:
     - build
   script:
-    - mv dist/out public
+    - if [ -d "./dist/out" ]; then mv dist/out public; fi
   artifacts:
     paths:
       - public
