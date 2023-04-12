@@ -14,8 +14,9 @@ site-build:
     - npm install
     - npm run buildProd
     - rm -rf public
+    - mkdir -p public/develop
     - cp dist/index.html dist/404.html
-    - mv dist public
+    - mv dist/* public/develop
   artifacts:
     paths:
       - public
