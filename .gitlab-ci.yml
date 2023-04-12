@@ -10,9 +10,10 @@ pages:
       - public
   script:
     - rm -rf public
-    - cp dist/index.html dist/404.html
-    - mv dist public
+    - ng build --configuration production --base-href=/develop/
+    - cp public/index.html public/404.html
   only:
+    - master
     - develop
 site-build:
   stage: build
@@ -20,7 +21,7 @@ site-build:
   artifacts:
     name: artifact-$CI_COMMIT_REF_NAME
     paths:
-      - dist
+      - public
     expire_in: 1h
   script:
     - npm install -g @angular/cli@10.1.3
@@ -28,4 +29,5 @@ site-build:
     - ng build --configuration production --base-href=/develop/
     - ls -la
   only:
+    - master
     - develop
