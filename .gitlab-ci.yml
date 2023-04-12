@@ -16,9 +16,9 @@ pages:
   stage: deploy
   script:
     - ng build --configuration production
-    - cp dist/index.html dist/404.html
+    - cp public/index.html public/404.html
     - mkdir public
-    - mv dist public  
+    - mv public public  
   artifacts:
     paths:
       - public
