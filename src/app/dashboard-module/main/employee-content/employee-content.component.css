@@ -399,7 +399,7 @@ table,
 th,
 td {
   /* border: 1px solid white; */
-  border-collapse: separate;
+  /* border-collapse: separate; */
 }
 tr:hover{
   background-color: #efeff8 !important;
