@@ -13,10 +13,7 @@ site-build:
     - npm install -g @angular/cli@10.1.3
     - npm install
     - npm run buildProd
-    - rm -rf public
-    - mkdir -p public/develop
-    - cp dist/index.html dist/404.html
-    - mv dist/* public/develop
+    - cp public/develop/index.html public/develop/404.html
   artifacts:
     paths:
       - public
