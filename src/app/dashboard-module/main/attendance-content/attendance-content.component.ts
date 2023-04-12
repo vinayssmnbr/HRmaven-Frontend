@@ -1,13 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Chart, registerables } from 'node_modules/chart.js';
+import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
-
+import { FormControl, FormGroup } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
   styleUrls: ['./attendance-content.component.css'],
 })
+
+
 export class AttendanceContentComponent implements OnInit {
   circularProgress: any;
   progressValue: any;
@@ -22,22 +25,43 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any= [];
-  showModal=false;
+  employee: any = [];
+  showModal = false;
   showCard: boolean = true;
   employeeid="";
   employeename="";
-  update:boolean=false;
+  lineChart: Chart;
+  selectedUser:any={};
+leaves:any[]=[]
+ data: any;
+ update: boolean = false;
+  editmodal=false;
+
+
+
 
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getAttendance().subscribe((res: any) => {
+    //GET EMPLOYEE DATA
+     const data=this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+
     });
+    this.getLeaveData()
   }
+  form = new FormGroup({
+    name:new FormControl('{disabled: true}'),
+    empId:new FormControl('{disabled: true}'),
+    date: new FormControl(''),
+    status: new FormControl(''),
+    punch_in: new FormControl(''),
+    punch_out: new FormControl(''),
+
+
+  });
   ngOnInit() {
 
     // Create a chart object
@@ -115,11 +139,35 @@ export class AttendanceContentComponent implements OnInit {
     });
   }
 
+  updateChart() {
+    const presentData = [];
+    const absentData = [];
+    const leavesData = [];
+    const labels = [];
+
+    this.employee.forEach((emp) => {
+      presentData.push(emp.present);
+      absentData.push(emp.absent);
+      leavesData.push(emp.leaves);
+      labels.push(emp.month);
+    });
+
+    this.lineChart.data.datasets[0].data = presentData;
+    this.lineChart.data.datasets[1].data = absentData;
+    this.lineChart.data.datasets[2].data = leavesData;
+    this.lineChart.data.labels = labels;
+    this.lineChart.options.scales['y'].ticks.callback = (value: any) => {
+      return labels[value];
+    };
+    this.lineChart.update();
+  }
+
   changeColor() {
     this.buttonbackgroundColor =
       this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor = this.buttonColor === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
+
   changeColor2() {
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
@@ -130,11 +178,32 @@ export class AttendanceContentComponent implements OnInit {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  openModal() {
-    console.log("hit");
-    this.update = !this.update;
-    console.log(this.update);
+  openModal(user:any) {
+    this.showModal = true;
+    this.selectedUser = {_id: user._id};
+    this.form.patchValue(user)
+
   }
+
+
+//GET LEAVE DATA
+getLeaveData(){
+this.dashService.getleaves().subscribe((res: any) => {
+  console.log('data', res);
+  this.employee = res;
+});
+}
+  OnUpdate(){
+    console.log(this.form.value)
+    const updatedData = this.form.value;
+    updatedData['_id'] = this.selectedUser._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    this.getLeaveData()
+this.edit();
+    });
+  }
+
   closeModal() {
     this.showModal = !this.showModal;
   }
@@ -142,4 +211,14 @@ export class AttendanceContentComponent implements OnInit {
   toggleTable1() {
     this.showCard = !this.showCard;
   }
- }
+
+edit(){
+  this.closeModal();
+this.editmodal=!this.editmodal;
+}
+done(){
+  this.editmodal=!this.editmodal;
+}
+
+
+}

@@ -72,4 +72,9 @@ export class DashService {
     return this.http.get(`${this.getData}?type=${type}`);
   }
 
+  getleaves() {
+    return this.http.get(this.updateData);
+  }
+
+
 }
