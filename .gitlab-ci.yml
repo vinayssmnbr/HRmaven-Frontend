@@ -25,6 +25,6 @@ site-build:
   script:
     - npm install
     - npm install -g env-cmd
-    - ng build --configuration production
+    - npm run buildProd
   only:
     - develop
