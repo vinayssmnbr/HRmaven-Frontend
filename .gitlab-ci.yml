@@ -1,27 +1,30 @@
-image: node:latest
-
-cache:
-  paths:
-    - node_modules/
-
+---
+image: node:14-alpine
 stages:
   - build
-  - deploy
-
-build:
-  stage: build
-  script:
-    - npm install
-    - npm run build -- --output-path=./dist/out --configuration production
-
+  - development
 pages:
-  stage: deploy
-  dependencies:
-    - build
-  script:
-    - if [ -d "./dist/out" ]; then mv dist/out src; fi
+  stage: development
   artifacts:
     paths:
-      - src
+      - public
+  script:
+    - rm -rf public
+    - cp dist/index.html dist/404.html
+    - mv dist public
+  only:
+    - develop
+site-build:
+  stage: build
+  image: node:latest
+  artifacts:
+    name: artifact-$CI_COMMIT_REF_NAME
+    paths:
+      - dist
+    expire_in: 1h
+  script:
+    - npm install
+    - npm install -g env-cmd
+    - npm run build
   only:
     - develop
