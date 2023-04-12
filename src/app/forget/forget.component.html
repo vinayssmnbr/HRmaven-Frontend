@@ -1,0 +1,41 @@
+<div class="forget-content">
+    <div class="forget-text">
+        <div class="logo">
+            <a href="#"><img src="assets/images/resetlogo.png" alt=""></a>
+        </div>
+        <h1>Create a new password</h1>
+        <p>Almost done. Enter your new password and you’re all set.</p>
+    </div>
+
+    <form [formGroup]="forgetform" class="form" (ngSubmit)="newpassword(this.forgetform)" >
+        <div class="field create-password">
+            <div class="input-field">
+                <label for="name" class="text-label">New Password</label>
+                <input type="password" placeholder="Enter your New password" class="password" formControlName="password"
+                    #passwordInput />
+                <span *ngIf="password && password.invalid && password.touched "><i
+                        class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password must be atleast 8
+                    characters</span>
+            </div>
+
+        </div>
+        <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+            <i class="fa {{ showPasswordIcon }}"></i>
+        </span>
+        <div class="field confirm-password">
+            <div class="input-field">
+                <label for="name" class="text-label">Confirm your Password</label>
+                <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm"
+                    #passwordInpu />
+                <span *ngIf="forgetform.errors?.['passwordmatcherror']"><i
+                        class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
+            </div>
+            <span class="password-toggle" (click)="togglePassword(passwordInpu)">
+                <i class="fa {{ showPasswordIcon1 }}"></i>
+            </span>
+        </div>
+        <div class="input-field button">
+            <input type="submit" id="submit" [disabled]="forgetform.invalid" value="Reset Password" />
+        </div>
+    </form>
+</div>
