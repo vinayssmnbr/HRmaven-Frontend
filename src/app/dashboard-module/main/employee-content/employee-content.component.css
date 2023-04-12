@@ -319,7 +319,7 @@ font-style: normal;
 .employee1{
 width: 130px;
 height: 44px;
-background: #FFFFFF;
+/* background: #FFFFFF; */
 padding: 15px 20px;
 border: 1px solid #f9f9f9;
 text-align: justify;
@@ -335,7 +335,7 @@ font-style: normal;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
   text-align: justify;
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -348,7 +348,7 @@ width: 220px;
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -361,7 +361,7 @@ width: 220px;
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -374,7 +374,7 @@ width: 177px;
   padding: 15px 20px;
   text-align: justify;
   border: 1px solid #f9f9f9;
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -387,7 +387,7 @@ width: 180px;
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  background: #FFFFFF;
+  /* background: #FFFFFF; */
   font-style: normal;
   /* border-top: collapse; */
   font-weight: 400;
@@ -395,14 +395,9 @@ width: 180px;
   line-height: 100%;
   color: #555555;
 }
-table,
-th,
-td {
-  /* border: 1px solid white; */
-  /* border-collapse: separate; */
-}
+
 tr:hover{
-  background-color: #efeff8 !important;
+  background-color: #efeff8 ;
 }
 th,
 td {
