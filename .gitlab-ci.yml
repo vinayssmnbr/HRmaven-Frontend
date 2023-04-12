@@ -17,7 +17,6 @@ pages:
   script:
     - ng build --configuration production
     - cp public/index.html public/404.html
-    - mv public 
   artifacts:
     paths:
       - public
