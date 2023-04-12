@@ -7,9 +7,11 @@ pages:
   stage: development
   artifacts:
     paths:
-      - public
+      - src
   script:
+    - rm -rf src
     - cp dist/index.html dist/404.html
+    - mv dist src
   only:
     - develop
 site-build:
