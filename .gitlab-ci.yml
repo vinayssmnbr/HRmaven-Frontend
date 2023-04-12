@@ -9,7 +9,7 @@ pages:
     paths:
       - public
   script:
-    - rm -rf public
+    - rm -rf dist
     - cp dist/index.html dist/404.html
     - mv dist public
   only:
