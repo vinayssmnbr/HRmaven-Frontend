@@ -19,19 +19,19 @@ export class DashService {
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('http://localhost:3000/user-profile', { headers }).pipe(
+    return this.http.get('https://hrm21.onrender.com/user-profile', { headers }).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
 
-  createData = 'http://localhost:3000/api/create';
-  getData = 'http://localhost:3000/api/find';
-  deleteData = 'http://localhost:3000/api/';
-  getLeave='http://localhost:3000/api/leave//'
-  updateData='http://localhost:3000/api/update'
-  getAttd='http://localhost:3000/attendance//';
+  createData = 'https://hrm21.onrender.com/api/create';
+  getData = 'https://hrm21.onrender.com/api/find';
+  deleteData = 'https://hrm21.onrender.com/api/';
+  getLeave='https://hrm21.onrender.com/api/leave//'
+  updateData='https://hrm21.onrender.com/api/update'
+  getAttd='https://hrm21.onrender.com/attendance//';
 
 
 

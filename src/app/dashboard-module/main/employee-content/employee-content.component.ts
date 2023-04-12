@@ -34,13 +34,10 @@ export class EmployeeContentComponent implements OnInit {
   designation: string = '';
   data: any;
   deletedata:any;
-  empdesignation: string[] = [
-    'Software Developer',
-    'Frontend Developer',
-    'UI/UX Designer',
-    'Full Stack Developer',
-    'Quality Analyst',
-  ];
+  empdesignation="";
+  employeeid:any;
+  show:any=false;
+
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -113,7 +110,9 @@ export class EmployeeContentComponent implements OnInit {
       });
   }
 
-
+  function(){
+    this.show=!this.show;
+  }
 
   //FILTER DESIGNATION
   filter(checkbox: string) {
@@ -134,8 +133,28 @@ export class EmployeeContentComponent implements OnInit {
 
     //designation custom
 
+  //   const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
+  //   selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
+  //   options = optionMenu.querySelectorAll<HTMLElement>('.option'),
+  //   sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
+  // selectBtn.addEventListener('click', () =>
+  //   optionMenu.classList.toggle('active')
+  // );
+  // options.forEach((option) => {
+  //   option.addEventListener('click', () => {
+  //     let selectedOption =
+  //       option.querySelector<HTMLElement>('.option-text')!.innerText;
+  //       this.empdesignation=selectedOption;
+  //     sBtn_text.innerText = selectedOption;
+  //     optionMenu.classList.remove('active');
+  //   });
+  // });
+
 
   }
+
+
+
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -223,5 +242,8 @@ export class EmployeeContentComponent implements OnInit {
   }
   nextForm2() {}
 
-  onOptionChange() {}
+  onOptionChange() {};
+
+
+
 }

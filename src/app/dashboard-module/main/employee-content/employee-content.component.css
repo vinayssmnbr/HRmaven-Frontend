@@ -71,11 +71,17 @@ input:focus{
   position: relative;
   background: #fff;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-  display: none;
+
 
 }
 
-.select-menu.active .options {
+.select-menu .options {
+  display: block;
+  padding:0;
+}
+#ul{
+  padding:0;
+  z-index:9999;
   display: block;
 }
 
@@ -101,8 +107,9 @@ input:focus{
 .option .option-text {
   font-size: 14px;
   color: #333;
-  padding-left: 10px;
+/*   padding-left: 10px; */
 }
+
 
 /* -------------Drop Down End------------ */
 

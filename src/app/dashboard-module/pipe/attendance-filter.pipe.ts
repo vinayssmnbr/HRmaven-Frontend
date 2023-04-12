@@ -6,6 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class AttendanceFilterPipe implements PipeTransform {
 
   transform(value: any,name:any,id:any): any {
+    id=id.toString();
     if(name=="" && id=="")
     {
         return value;
@@ -16,7 +17,7 @@ export class AttendanceFilterPipe implements PipeTransform {
       for(let i=0;i<value.length;i++)
       {
             console.log(value[i]);
-            if((value[i].empId).startsWith(id))
+            if((value[i].empId || value[i].employeeId)==id)
             {
               Array.push(value[i]);
             }
@@ -28,7 +29,7 @@ export class AttendanceFilterPipe implements PipeTransform {
       for(let i=0;i<value.length;i++)
       {
             console.log(value[i]);
-            if((value[i].name).startsWith(name))//value[i].name==name
+            if((value[i].name || value[i].employeeName)==name)//value[i].name==name
             {
               Array.push(value[i]);
             }
@@ -40,7 +41,7 @@ export class AttendanceFilterPipe implements PipeTransform {
       for(let i=0;i<value.length;i++)
       {
             console.log(value[i]);
-            if((value[i].empId).startsWith(id) && (value[i].name).startsWith(name) )
+            if(((value[i].empId || value[i].employeeId )==id) && ((value[i].name || value[i].employeeName)==name))
             {
               Array.push(value[i]);
             }

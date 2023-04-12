@@ -11,19 +11,19 @@
   </div>
   <div class="selection">
     <input type="text" [(ngModel)]="employeename" placeholder="Employee Name...">
-    <input type="text" [(ngModel)]="employeeid" placeholder="Employee ID...">
+    <input type="number" [(ngModel)]="employeeid" placeholder="Employee ID...">
     <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor"
       [style.color]="buttonColor">Search</button>
     <div class="calender">
       <div class="grid-icon">
-        <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
-        <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
+        <i class="fa-sharp fa-solid fa-list-ul"></i>
+        <!-- <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i> -->
       </div>
       <input type="text" placeholder="Select the date" onclick="(this.type='date')"
         onblur="(this.value === '' ? this.type='text' : null)">
     </div>
   </div>
-  <div class="table-wrapper" *ngIf="!showCard">
+  <div class="table-wrapper" *ngIf="showCard">
     <table>
       <thead>
         <tr>
@@ -47,7 +47,7 @@
           <td class="action1">
             <div class="icons">
               <i class="fa-solid fa-pencil" (click)="openModal()"></i>
-              <i class="fa-solid fa-trash-can"></i>
+              <!-- <i class="fa-solid fa-trash-can"></i> -->
             </div>
           </td>
         </tr>
@@ -56,7 +56,7 @@
 
       </tbody>
     </table>
-  <div class="attendence-card " *ngIf="showCard">
+  <div class="attendence-card " *ngIf="!showCard">
     <div class="row ">
       <div class="col-3 " *ngFor="let user of employee">
         <div class="card ">

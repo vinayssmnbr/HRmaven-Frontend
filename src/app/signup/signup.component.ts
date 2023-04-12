@@ -71,7 +71,7 @@ onSubmit(data:any){
   var today = new Date();
   var expire = new Date();
 
-  expire.setTime(today.getTime() + 3600000*24*15);
+  expire.setTime(today.getTime() + 12*60*60*60*1000);
   console.log('inside');
       document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
   console.log("result:",result)
@@ -84,7 +84,7 @@ submit(){
 
 SignupByGoogle() {
   console.log('google');
-  window.location.href = 'http://localhost:3000/auth/google';
+  window.location.href = 'https://hrm21.onrender.com/auth/google';
 }
 
 }

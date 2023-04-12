@@ -23,9 +23,10 @@ export class LeavesContentComponent {
   test: any = 'All';
   // searchText: string;
   status: string;
-  leaves: any[] = [
+  leaves: any[] = []
+  employeeid="";
+  employeename="";
 
-  ]
 
   ngOnInit() {
     // ------------Drop Down Menu----------
