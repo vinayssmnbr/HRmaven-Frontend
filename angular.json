@@ -100,27 +100,5 @@
         "analytics": "05a0c132-4757-46ad-843b-cec31cfac292"
     }
 }
-{
-    "projects": {
-      "hrm_FrontEnd": {
-        "architect": {
-          "build": {
-            "configurations": {
-              "production": {
-                "outputPath": "public/develop",
-                "publicPath": "/develop/",
-                ...
-              },
-              ...
-            },
-            ...
-          },
-          ...
-        },
-        ...
-      },
-      ...
-    },
-    ...
-  }
+
   

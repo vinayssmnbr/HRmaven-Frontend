@@ -1,19 +1,24 @@
-image: node:14-alpine
-
-stages:
-  - build
+image: node:16.13.2-alpine
 
 cache:
   paths:
     - node_modules/
 
-site-build:
-  stage: build
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  NG_CLI_VERSION: 15.2.0
+
+before_script:
+  - npm ci
+  - npm install -g @angular/cli@${NG_CLI_VERSION}
+
+pages:
+  stage: deploy
   script:
-    - npm install -g @angular/cli@10.1.3
-    - npm install
-    - npm run buildProd
-    - cp public/develop/index.html public/develop/404.html
+    - ng build --configuration production
+    - cp dist/hrm-front-end/index.html dist/hrm-front-end/404.html
+    - mkdir public
+    - mv dist/hrm-front-end/* public/
   artifacts:
     paths:
       - public
