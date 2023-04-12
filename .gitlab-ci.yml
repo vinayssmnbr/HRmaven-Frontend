@@ -16,9 +16,9 @@ pages:
   stage: deploy
   script:
     - ng build --configuration production
-    - cp dist/hrm-front-end/index.html dist/hrm-front-end/404.html
+    - cp dist/index.html dist/404.html
     - mkdir public
-    - mv dist/hrm-front-end/* public/
+    - mv dist public  
   artifacts:
     paths:
       - public
