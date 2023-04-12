@@ -9,9 +9,7 @@ pages:
     paths:
       - public
   script:
-    - rm -rf public
     - cp dist/index.html dist/404.html
-    - mv dist public
   only:
     - develop
 site-build:
