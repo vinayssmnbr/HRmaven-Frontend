@@ -2,9 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
-import { HttpClient } from '@angular/common/http';
-
-
+import { FormControl, FormGroup } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 
 
@@ -32,93 +31,112 @@ export class AttendanceContentComponent implements OnInit {
   showCard: boolean = true;
   employeeid="";
   employeename="";
+  lineChart: Chart;
+  selectedUser:any={};
+leaves:any[]=[]
+ data: any;
   update:boolean=false;
-
-
-  constructor(private http: HttpClient,public dashService: DashService) {
+  editmodal=false;
+  showCard1: boolean=true;
+  showTable=false;
+  constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getAttendance().subscribe((res: any) => { // console.log('data', res);
+     this.dashService.getAttendance().subscribe((res: any) => {
+      console.log('data', res);
       this.employee = res;
     });
+    this.getLeaveData()
     this.getreport();
   }
+  form = new FormGroup({
+    name:new FormControl(),
+    empId:new FormControl(),
+    date: new FormControl(''),
+    status: new FormControl(''),
+    punch_in: new FormControl(''),
+    punch_out: new FormControl(''),
+
+
+  });
 
   async getreport(){
-   await this.dashService.getreport().subscribe((res:any)=>{
-      console.log(res);
-    const myChart = new Chart('lineChart', {
-      type: 'line',
-      data: {
-        labels: [
-          '1',
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          '10',
-          '11',
-          '12',
-        ],
-        datasets: [
-          {
-            label: 'Present',
-            data:res.present,
-            backgroundColor: ['blue'],
-            borderColor: ['blue'],
-            borderWidth: 1,
-            pointStyle: 'circle',
-          },
-          {
-            label: 'Absent',
-            data:res.absent,
-            backgroundColor: ['#FDA75A'],
-            borderColor: ['#FDA75A'],
-            borderWidth: 1,
-            pointStyle: 'circle',
-          },
-          {
-            label: 'Leaves',
-            data:res.leave,
-            backgroundColor: ['#00C9FF'],
-            borderColor: ['#00C9FF'],
-            borderWidth: 1,
-            pointStyle: 'circle',
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-        plugins: {
-          legend: {
-            position: 'right',
-            labels: {
-              padding: 40,
-              usePointStyle: true,
-              font: {
-                size: 14,
-              },
-            },
-          },
-        },
-      },
-    });
-    });
-  }
+    await this.dashService.getreport().subscribe((res:any)=>{
+       console.log(res);
+     const myChart = new Chart('lineChart', {
+       type: 'line',
+       data: {
+         labels: [
+           '1',
+           '2',
+           '3',
+           '4',
+           '5',
+           '6',
+           '7',
+           '8',
+           '9',
+           '10',
+           '11',
+           '12',
+         ],
+         datasets: [
+           {
+             label: 'Present',
+             data:res.present,
+             backgroundColor: ['blue'],
+             borderColor: ['blue'],
+             borderWidth: 1,
+             pointStyle: 'circle',
+           },
+           {
+             label: 'Absent',
+             data:res.absent,
+             backgroundColor: ['#FDA75A'],
+             borderColor: ['#FDA75A'],
+             borderWidth: 1,
+             pointStyle: 'circle',
+           },
+           {
+             label: 'Leaves',
+             data:res.leave,
+             backgroundColor: ['#00C9FF'],
+             borderColor: ['#00C9FF'],
+             borderWidth: 1,
+             pointStyle: 'circle',
+           },
+         ],
+       },
+       options: {
+         responsive: true,
+         scales: {
+           y: {
+             beginAtZero: true,
+           },
+         },
+         plugins: {
+           legend: {
+             position: 'right',
+             labels: {
+               padding: 40,
+               usePointStyle: true,
+               font: {
+                 size: 14,
+               },
+             },
+           },
+         },
+       },
+     });
+     });
+   }
+  ngOnInit() {
+    this.form.get('name').disable();
+    this.form.get('empId').disable();
+    // Create a chart object
 
-   ngOnInit() {
   }
-
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -135,16 +153,53 @@ export class AttendanceContentComponent implements OnInit {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  openModal() {
-    console.log("hit");
-    this.update = !this.update;
-    console.log(this.update);
+  openModal(user:any) {
+    this.showModal = true;
+    this.selectedUser = {_id: user._id};
+    this.form.patchValue(user)
+
   }
+
+
+//GET LEAVE DATA
+getLeaveData(){
+this.dashService.getleaves().subscribe((res: any) => {
+  console.log('data', res);
+  this.employee = res;
+});
+}
+  OnUpdate(){
+    console.log(this.form.value)
+    const updatedData = this.form.value;
+    updatedData['_id'] = this.selectedUser._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    this.getLeaveData()
+this.edit();
+    });
+  }
+
   closeModal() {
     this.showModal = !this.showModal;
   }
 
   toggleTable1() {
     this.showCard = !this.showCard;
+    this.showTable=!this.showTable;
   }
- }
+
+  toggleTable2(){
+    this.showCard=!this.showCard;
+    this.showTable=!this.showTable;
+  }
+
+edit(){
+  this.closeModal();
+this.editmodal=!this.editmodal;
+}
+done(){
+  this.editmodal=!this.editmodal;
+}
+
+
+}

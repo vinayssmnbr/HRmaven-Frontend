@@ -5,10 +5,10 @@
         <div class="col-3">
             <div class="progress-text">
                 <h3>Total Leaves</h3>
-                <h1>20</h1>
+                <h1>{{totalCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]="100" [showTitle]= 'false' [showSubtitle]='false'
+                <circle-progress [percent]=totalCount [showTitle]= 'false' [showSubtitle]='false'
                 [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13"
                     [innerStrokeWidth]="8" [outerStrokeColor]="'#8BAFFF'" [innerStrokeColor]="'#e7e8ea'"
                     [animation]="true" [animationDuration]="1000"></circle-progress>
@@ -16,11 +16,11 @@
         </div>
         <div class="col-3">
             <div class="progress-text">
-                <h3>Total Leaves</h3>
-                <h1>20</h1>
+                <h3>Accepted Leaves</h3>
+                <h1>{{acceptCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]="50" [showTitle]= 'false' [showSubtitle]='false'
+                <circle-progress [percent]=accept_graph [showTitle]= 'false' [showSubtitle]='false'
                 [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13"
                     [innerStrokeWidth]="8" [outerStrokeColor]="'#7BD36D'" [innerStrokeColor]="'#e7e8ea'"
                     [animation]="true" [animationDuration]="1000"></circle-progress>
@@ -28,11 +28,11 @@
         </div>
         <div class="col-3">
             <div class="progress-text">
-                <h3>Total Leaves</h3>
-                <h1>20</h1>
+                <h3>Rejected Leaves</h3>
+                <h1>{{rejectCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]="25" [showTitle]= 'false' [showSubtitle]='false'
+                <circle-progress [percent]=reject_graph [showTitle]= 'false' [showSubtitle]='false'
                 [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13"
                     [innerStrokeWidth]="8" [outerStrokeColor]="'#F8BB6F'" [innerStrokeColor]="'#e7e8ea'"
                     [animation]="true" [animationDuration]="1000"></circle-progress>
@@ -40,11 +40,11 @@
         </div>
         <div class="col-3">
             <div class="progress-text">
-                <h3>Total Leaves</h3>
-                <h1>20</h1>
+                <h3>Pending Leaves</h3>
+                <h1>{{pendingCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]="15" [showTitle]= 'false' [showSubtitle]='false'
+                <circle-progress [percent]=pending_graph [showTitle]= 'false' [showSubtitle]='false'
                 [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13"
                     [innerStrokeWidth]="8" [outerStrokeColor]="'#FA9796'" [innerStrokeColor]="'#e7e8ea'"
                     [animation]="true" [animationDuration]="1000"></circle-progress>

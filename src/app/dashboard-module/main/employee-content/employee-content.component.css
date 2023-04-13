@@ -37,6 +37,7 @@ input:focus{
   position: absolute;
   left: 35.63%;
   top: 14.2%;
+  /* transform: translateY(-50%); */
   color: #444444;
   cursor: pointer;
 }
@@ -55,13 +56,14 @@ input:focus{
     line-height: 140%;
     color: #2F2C9F;
 }
-
+.btn1:hover{
+  background: #2F2C9F;
+    opacity: 0.7;
+}
 .btn2:hover{
   background-color: #cbcbcb;
   opacity: 1;
-  border: 1px solid #2F2C9F;
 }
-
 
 .btn3{
   display: flex;

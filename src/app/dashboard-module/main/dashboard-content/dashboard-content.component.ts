@@ -186,7 +186,7 @@ export class DashboardContentComponent implements OnInit {
                 padding: 40,
                 usePointStyle: true,
                 font: {
-                  size: 14
+                  size: 10
                 }
               }
           }

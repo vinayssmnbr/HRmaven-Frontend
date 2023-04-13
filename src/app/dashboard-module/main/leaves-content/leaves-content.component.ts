@@ -23,16 +23,39 @@ export class LeavesContentComponent {
   leaves: any[] = [];
   employeeid = '';
   employeename = '';
+  totalCount = 0;
+  acceptCount= 0;
+  rejectCount = 0;
+  pendingCount = 0;
+  accept_graph:any;
+  reject_graph:any;
+  pending_graph:any;
+
 
   ngOnInit() {}
 
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
+    this.updatereload();
 
+  }
+
+  updatereload()
+
+  {
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);
       this.leaves = res;
+      this.totalCount = this.getTotal()
+      this.acceptCount = this.getCount('accept')
+      this.rejectCount = this.getCount1('reject')
+      this.pendingCount = this.getCount3('pending')
+
+      this.accept_graph = this.acceptCalculate()
+      this.reject_graph = this.rejectCalculate()
+      this.pending_graph = this.pendingCalculate()
+
       this.leaves = this.leaves.sort((a, b) => {
         if (a.status > b.status) return 1;
         if (a.status < b.status) return -1;
@@ -41,6 +64,31 @@ export class LeavesContentComponent {
       console.log(this.leaves);
     });
   }
+  getTotal(){
+    return this.leaves.length;
+  }
+
+  getCount(status1) {
+    return this.leaves.filter(o => o.status == status1).length;
+  }
+
+  getCount1(status2){
+    return this.leaves.filter(o=>o.status === status2).length;
+  }
+  getCount3(status3){
+    return this.leaves.filter(o=>o.status == status3).length;
+  }
+
+  acceptCalculate(){
+    return ((this.acceptCount/this.totalCount)*100);
+  }
+  rejectCalculate(){
+    return ((this.rejectCount/this.totalCount)*100)
+  }
+  pendingCalculate(){
+    return ((this.pendingCount/this.totalCount)*100)
+  }
+
 
   changeFilter(value: any) {
     this.test = value;
@@ -62,6 +110,7 @@ export class LeavesContentComponent {
           console.error('Error updating leave status:', error);
         }
       );
+      this.updatereload();
   }
   onAccept(id: any) {
     this.updateLeaveStatus(id, 'accept');
@@ -89,12 +138,15 @@ export class LeavesContentComponent {
     },
   ];
   contentdropdown: boolean = false;
+
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
 
   }
   Selectvariable: string = 'Select';
   colorvariable: number = 0;
+
+
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;

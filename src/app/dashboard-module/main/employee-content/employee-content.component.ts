@@ -94,7 +94,7 @@ export class EmployeeContentComponent implements OnInit {
  toUpdate():void{
   const id=this.data.id
   const updatedata=this.form.value
-  this.dashService.updateEmployee(id,updatedata).subscribe(()=>{
+  this.dashService.updateEmployee1(id,updatedata).subscribe(()=>{
     console.log('dat updated successfully')
   })
 }
