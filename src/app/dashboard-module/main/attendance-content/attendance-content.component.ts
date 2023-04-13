@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter,OnChanges } from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
@@ -15,8 +16,7 @@ export class AttendanceContentComponent implements OnInit {
   progressEndValue = 50;
   speed = 100;
   progressInterval: any;
-
-  buttonbackgroundColor = '#2F2C9F';
+    buttonbackgroundColor = '#2F2C9F';
   buttonColor = '#FFFFFF';
   buttonbackgroundColor2 = '#ECECEC';
   buttonColor2 = '#2F2C9F';
@@ -29,18 +29,20 @@ export class AttendanceContentComponent implements OnInit {
   employeename="";
   update:boolean=false;
 
-  constructor(public dashService: DashService) {
+
+  constructor(private http: HttpClient,public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getAttendance().subscribe((res: any) => {
-      console.log('data', res);
+     this.dashService.getAttendance().subscribe((res: any) => { // console.log('data', res);
       this.employee = res;
     });
+    this.getreport();
   }
-  ngOnInit() {
 
-    // Create a chart object
+  async getreport(){
+   await this.dashService.getreport().subscribe((res:any)=>{
+      console.log(res);
     const myChart = new Chart('lineChart', {
       type: 'line',
       data: {
@@ -61,32 +63,25 @@ export class AttendanceContentComponent implements OnInit {
         datasets: [
           {
             label: 'Present',
-            data: [
-              50, 280, 370, 250, 80, 60, 50, 40, 70, 30, 20, 40,
-            ],
-            backgroundColor: ['green'],
-            borderColor: ['green'],
+            data:res.present,
+            backgroundColor: ['blue'],
+            borderColor: ['blue'],
             borderWidth: 1,
             pointStyle: 'circle',
           },
           {
             label: 'Absent',
-            data: [
-              230, 50, 150, 350, 320, 250, 70, 350, 100, 50, 300, 40,
-
-            ],
-            backgroundColor: ['red'],
-            borderColor: ['red'],
+            data:res.absent,
+            backgroundColor: ['#FDA75A'],
+            borderColor: ['#FDA75A'],
             borderWidth: 1,
             pointStyle: 'circle',
           },
           {
             label: 'Leaves',
-            data: [
-              250, 300, 230, 340, 250, 50, 200, 300, 150, 200, 70, 40,
-            ],
-            backgroundColor: ['yellow'],
-            borderColor: ['yellow'],
+            data:res.leave,
+            backgroundColor: ['#00C9FF'],
+            borderColor: ['#00C9FF'],
             borderWidth: 1,
             pointStyle: 'circle',
           },
@@ -113,7 +108,12 @@ export class AttendanceContentComponent implements OnInit {
         },
       },
     });
+    });
   }
+
+   ngOnInit() {
+  }
+
 
   changeColor() {
     this.buttonbackgroundColor =

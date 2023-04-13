@@ -72,4 +72,8 @@ export class DashService {
     return this.http.get(`${this.getData}?type=${type}`);
   }
 
+
+   getreport(){
+     return this.http.get('http://localhost:3000/attendance/report');
+  }
 }
