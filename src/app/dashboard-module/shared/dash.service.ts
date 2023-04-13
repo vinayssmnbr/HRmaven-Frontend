@@ -80,6 +80,6 @@ export class DashService {
 
 
    getreport(){
-     return this.http.get('http://localhost:3000/attendance/report');
+     return this.http.get('https://hrm21.onrender.com/attendance/report');
   }
 }
