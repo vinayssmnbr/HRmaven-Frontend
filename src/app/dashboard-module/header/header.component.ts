@@ -72,7 +72,17 @@ export class HeaderComponent {
 
   }
 
-
+ReadMore:boolean = true
+visible:boolean =false
+onclick(){
+this.ReadMore = !this.ReadMore;
+this.visible = !this.visible;
+}
+id:any="all";
+tabChange(ids:any){
+  this.id = ids;
+   console.log(this.id);
+}
 
 
 
