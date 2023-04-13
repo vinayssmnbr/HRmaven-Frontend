@@ -54,8 +54,8 @@ export class HeaderComponent {
     //  My code for profile fetch Name
   getProfileData(){
     this.dashService.getUserProfile().subscribe((res: any)=>{
-      this.userEmail=res.email;
-      this.name=res.username;
+      this.userEmail=res.email.split("@")[0];
+      this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
 
   }
