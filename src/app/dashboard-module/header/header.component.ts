@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 import { DashService } from '../shared/dash.service';
 import { UserService } from '../../service/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,7 @@ export class HeaderComponent {
 
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
-     private router:Router ) {}
+     private router:Router, private elementRef :ElementRef ) {}
 
   ngOnInit() {
     const today = new Date();
@@ -41,7 +41,9 @@ export class HeaderComponent {
       this.greeting = "GOOD EVENING";
     }
 
-
+   this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+      this.profileDisplay = false;
+    });
   }
   toggleSearchBox(){
     this.showSearchBox=!this.showSearchBox;
@@ -54,8 +56,8 @@ export class HeaderComponent {
     //  My code for profile fetch Name
   getProfileData(){
     this.dashService.getUserProfile().subscribe((res: any)=>{
-      this.userEmail=res.email;
-      this.name=res.username;
+      this.userEmail=res.email.split("@")[0];
+      this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
 
   }

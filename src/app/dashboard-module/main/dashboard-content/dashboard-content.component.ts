@@ -195,20 +195,51 @@ export class DashboardContentComponent implements OnInit {
     });
   });
   }
-  updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-    const url = `http://localhost:3000/api/leave/${id}`;
-    const body = { status: status };
-    this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
-    ).subscribe(response => {
-      console.log('Leave status updated successfully: ', response);
-
-    }, error => {
-      console.error('Error updating leave status:', error);
-
-    });
-
-  }
 
 
+
+
+updateLeaveStatus(id: any, status: 'accept' | 'reject') {
+  const url = `http://localhost:3000/api/leave/${id}`;
+  const body = { status: status };
+  this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
+  ).subscribe(response => {
+    console.log('Leave status updated successfully: ', response);
+
+  }, error => {
+    console.error('Error updating leave status:', error);
+
+  });
+
+}
+
+array: any = [
+  {
+    id: 0,
+    name: 'Weekly',
+  },
+  {
+    id: 1,
+    name: 'Monthly',
+  },
+  {
+    id: 3,
+    name: 'Yearly',
+  },
+
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
+
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = 'Monthly';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
 
 }

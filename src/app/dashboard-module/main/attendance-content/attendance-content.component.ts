@@ -1,8 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter,OnChanges } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
+import { HttpClient } from '@angular/common/http';
+
+
+
+
 
 @Component({
   selector: 'app-attendance-content',
@@ -16,7 +20,8 @@ export class AttendanceContentComponent implements OnInit {
   progressEndValue = 50;
   speed = 100;
   progressInterval: any;
-    buttonbackgroundColor = '#2F2C9F';
+
+  buttonbackgroundColor = '#2F2C9F';
   buttonColor = '#FFFFFF';
   buttonbackgroundColor2 = '#ECECEC';
   buttonColor2 = '#2F2C9F';

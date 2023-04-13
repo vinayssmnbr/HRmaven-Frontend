@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/hrm-front-end",
+                        "outputPath": "public",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": [
@@ -100,3 +100,4 @@
         "analytics": "05a0c132-4757-46ad-843b-cec31cfac292"
     }
 }
+

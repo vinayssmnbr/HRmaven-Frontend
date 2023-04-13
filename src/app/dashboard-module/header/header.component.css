@@ -69,9 +69,20 @@
     border-radius: 8px;
     position: absolute;
     right: 30px;
-    margin-top: 76px;
+    margin-top: 16px;
     padding: 25px 20px;
     z-index: 99;
+}
+
+.profile-content img{
+    display: flex;
+    margin-right: 25px;
+    height: 35px;
+    width: 40px;
+}
+
+.profile-content .profile-text{
+    margin-right: 12px;
 }
 
 .profile-title {
@@ -254,3 +265,4 @@ input[type='search'] {
     align-items: center;
     border-radius: 50%;
 }
+
