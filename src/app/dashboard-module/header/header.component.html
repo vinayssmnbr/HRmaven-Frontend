@@ -288,7 +288,7 @@
     </div>
   </div>
 </ng-container>
-<div  *ngIf="profileDisplay">
+<div  class="profile_div"*ngIf="profileDisplay">
     <div class="profile-content">
       <div class="profile-title">
           <div class="profile-logo">
@@ -307,18 +307,11 @@
               <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button>
           </div>
       </div>
-
-      <div class="profile-account">
-          <div class="account">
-              <button class="account-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i><a (click)="logout()">  <span>Sign Out</span></a></button>
-          </div>
-      </div>
-    </div>
-
     <div class="profile-account">
       <div class="account">
         <button class="account-btn" (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i><a>
             <span>Sign Out</span></a></button>
       </div>
+    </div>
     </div>
 </div>

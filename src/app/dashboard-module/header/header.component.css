@@ -489,3 +489,10 @@ i.fa-solid.fa-star {
 .all-area:hover {
   background-color: #F7F7FB;
 }
+
+/*  */
+.profile_div {
+  position:fixed;
+  top:73px;
+  right:5px;
+}
