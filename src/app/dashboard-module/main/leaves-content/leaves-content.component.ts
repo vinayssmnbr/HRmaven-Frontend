@@ -5,15 +5,12 @@ import { Router } from '@angular/router';
 import { Action } from 'rxjs/internal/scheduler/Action';
 // import { format, parseISO } from 'date-fns';
 
-
 @Component({
   selector: 'app-leaves-content',
   templateUrl: './leaves-content.component.html',
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
-
-
   circularProgress: any;
   progressValue: any;
   progressStartValue = 0;
@@ -23,29 +20,11 @@ export class LeavesContentComponent {
   test: any = 'All';
   // searchText: string;
   status: string;
-  leaves: any[] = []
-  employeeid="";
-  employeename="";
+  leaves: any[] = [];
+  employeeid = '';
+  employeename = '';
 
-
-  ngOnInit() {
-    // ------------Drop Down Menu----------
-    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
-      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    selectBtn.addEventListener('click', () =>
-      optionMenu.classList.toggle('active')
-    );
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        let selectedOption =
-          option.querySelector<HTMLElement>('.option-text')!.innerText;
-        sBtn_text.innerText = selectedOption;
-        optionMenu.classList.remove('active');
-      });
-    });
-  }
+  ngOnInit() {}
 
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
@@ -58,13 +37,9 @@ export class LeavesContentComponent {
         if (a.status > b.status) return 1;
         if (a.status < b.status) return -1;
         return 1;
-      })
-      console.log(this.leaves)
+      });
+      console.log(this.leaves);
     });
-
-
-
-
   }
 
   changeFilter(value: any) {
@@ -72,19 +47,21 @@ export class LeavesContentComponent {
     console.log(this.test);
   }
 
-
   updateLeaveStatus(id: any, status: 'accept' | 'reject') {
     const url = `http://localhost:3000/api/leave/${id}`;
     const body = { status: status };
-    this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
-    ).subscribe(response => {
-      console.log('Leave status updated successfully: ', response);
-
-    }, error => {
-      console.error('Error updating leave status:', error);
-
-    });
-
+    this.http
+      .patch(url, JSON.stringify(body), {
+        headers: { 'content-type': 'application/json' },
+      })
+      .subscribe(
+        (response) => {
+          console.log('Leave status updated successfully: ', response);
+        },
+        (error) => {
+          console.error('Error updating leave status:', error);
+        }
+      );
   }
   onAccept(id: any) {
     this.updateLeaveStatus(id, 'accept');
@@ -93,12 +70,35 @@ export class LeavesContentComponent {
   onReject(id: any) {
     this.updateLeaveStatus(id, 'reject');
   }
-
-
-
-
-
-
-
-
+  array: any = [
+    {
+      id: 0,
+      name: 'All',
+    },
+    {
+      id: 1,
+      name: 'Pending',
+    },
+    {
+      id: 3,
+      name: 'Rejected',
+    },
+    {
+      id: 4,
+      name: 'Approved',
+    },
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+    this.contentdropdown = !this.contentdropdown;
+    
+  }
+  Selectvariable: string = 'Select';
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown = false;
+    console.log(arr.name);
+  }
 }

@@ -28,7 +28,11 @@ input[type='text'] {
     color: #888888;
     font-family: 'Outfit', sans-serif;
 }
-
+.selection input:hover,
+.selection input:focus{
+  border: 1px solid #2F2C9F;
+  border-radius: 8px;
+}
 #select {
     padding: 10px;
     width: 172px;

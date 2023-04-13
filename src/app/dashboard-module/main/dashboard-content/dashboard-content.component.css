@@ -1,5 +1,3 @@
-@import url('../../../../styles.css');
-
 .main {
   width: calc(100% - 223px);
   margin-left: 223px;
@@ -92,78 +90,69 @@
   display: flex;
   justify-content: space-between;
 }
-
-.select-menu {
-  width: 190px;
-  height: 44px;
-  z-index: 10;
-  padding-bottom: 10px;
-}
-
-.select-menu .select-btn {
-  display: flex;
-  background: #fff;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: 400;
+/* -------------Drop Down -------- */
+.dropdwon_select {
+  background-color: #fff;
+  width: 172px;
+  height: 40px;
+  cursor: pointer;
+  padding: 8px;
   border-radius: 8px;
-  align-items: center;
-  cursor: pointer;
-  justify-content: space-between;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
   color: #444444;
-}
-
-.select-btn i {
-  font-size: 25px;
-  transition: 0.3s;
-  color: #444444;
-  font-size: 20px;
-}
-
-.select-menu.active .select-btn i {
-  transform: rotate(-180deg);
-}
-
-.select-menu .options {
-  position: relative;
-  background: #fff;
-  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-  display: none;
-
-}
-
-.select-menu.active .options {
-  display: block;
-}
-
-.options .option {
   display: flex;
-  height: 45px;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+.dropdwon_select:hover,
+.dropdwon_select:focus{
+  border: 1px solid #2F2C9F;
+  border-radius: 8px;
+}
+.dropdwon_select p{
+  font-size: 14px;
+  font-weight: 400;
+}
+.dropdwon_select i{
+  font-size: 14px;
+  color: #444444;
+  padding: 3px 7px;
+}
+
+.select_content {
+  background-color: #fff;
   cursor: pointer;
-  align-items: center;
-  background: #fff;
+  width: 172px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  color: #444444;
+}
+
+.select_content ul {
+  padding: 0;
+  margin: 0;
+}
+
+.select_content ul li {
+  list-style: none;
+  padding: 10px 10px;
+  margin-top: 5px;
   font-size: 14px;
-  padding-left: 10px;
 }
 
-.options .option:hover {
-  background: #F2F2F2;
+.select_content ul li:hover {
+  background-color: #ECECEC;
+  border-radius: 8px;
 }
 
-.option i {
-  font-size: 25px;
-  margin-right: 12px;
+.select_active {
+  background-color: #ECECEC;
+  border-radius: 8px;
+  border: 1px solid #2F2C9F;
 }
 
-.option .option-text {
-  font-size: 14px;
-  color: #333;
-  padding-left: 10px;
-}
-
-
+/* ----------Drop Down END--------------- */
 
 
 .attendance-area {

@@ -12,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardContentComponent implements OnInit {
   constructor(
-    public dashService: DashService,private http:HttpClient,
+    public dashService: DashService,
+    private http: HttpClient,
     @Inject(DOCUMENT) public document: Document
   ) {
     dashService.activeComponent = 'dashboard';
@@ -25,11 +26,9 @@ export class DashboardContentComponent implements OnInit {
         if (a.status > b.status) return 1;
         if (a.status < b.status) return -1;
         return 1;
-      })
-      console.log(this.leaves)
-  
+      });
+      console.log(this.leaves);
     });
-
   }
   options: any = [
     {
@@ -61,41 +60,17 @@ export class DashboardContentComponent implements OnInit {
   Edit(index: any) {
     console.log(index);
   }
-  
-
 
   ToggleMenu(index: any) {
     var ul = document.getElementById(index);
     ul.classList.toggle('close');
-    ul.addEventListener('mouseleave',()=>{
+    ul.addEventListener('mouseleave', () => {
       ul.classList.add('close');
-    })
+    });
   }
 
-  leaves: any[] = [
-   
-   
-  ]
-  ngOnInit()
-   {
-    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
-      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    selectBtn.addEventListener('click', () =>
-      optionMenu.classList.toggle('active')
-    );
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        let selectedOption =
-          option.querySelector<HTMLElement>('.option-text')!.innerText;
-        sBtn_text.innerText = selectedOption;
-        optionMenu.classList.remove('active');
-      });
-    });
-
-
-    
+  leaves: any[] = [];
+  ngOnInit() {
     // Create a chart object
     const myChart = new Chart('myChart', {
       type: 'bar',
@@ -173,20 +148,44 @@ export class DashboardContentComponent implements OnInit {
         },
         plugins: {
           legend: {
-              labels: {
-                padding: 40,
-                usePointStyle: true,
-                font: {
-                  size: 14
-                }
-              }
-          }
-      }
+            labels: {
+              padding: 40,
+              usePointStyle: true,
+              font: {
+                size: 14,
+              },
+            },
+          },
+        },
       },
     });
   }
-
-
-
-     
+  array: any = [
+    {
+      id: 0,
+      name: 'Weekly',
+    },
+    {
+      id: 1,
+      name: 'Monthly',
+    },
+    {
+      id: 3,
+      name: 'Yearly',
+    },
+    
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+  
+    this.contentdropdown = !this.contentdropdown;
+  }
+  Selectvariable: string = 'Monthly';
+  colorvariable: number =  0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown=false;
+    console.log(arr.name);
+  }
 }

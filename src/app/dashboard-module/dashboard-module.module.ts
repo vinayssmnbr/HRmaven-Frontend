@@ -17,6 +17,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { SearchPipe } from './pipe/search.pipe';
 import { AttendanceFilterPipe } from './pipe/attendance-filter.pipe';
 import { SortingPipe } from './pipe/sorting.pipe';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 
 
@@ -35,6 +36,7 @@ import { SortingPipe } from './pipe/sorting.pipe';
            SearchPipe,
            AttendanceFilterPipe,
            SortingPipe,
+           DropdownComponent,
   ],
   imports: [
     CommonModule,
