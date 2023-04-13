@@ -17,7 +17,7 @@
       <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
       <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>
 
-      <button type="button" class="icon-button">
+      <button type="button" class="icon-button" (click)="onclick()">
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
@@ -29,6 +29,315 @@
     </div>
     
 </header>
+<ng-container *ngIf="visible">
+  <div class="notification-area">
+    <div class="notification-upper">
+      <div class="notification-mark">
+        <div class="notification-number">
+          <div class="Notification-text">
+            <p>Notification</p>
+          </div>
+          <div class="number">
+            <p>2</p>
+          </div>
+        </div>
+        <div class="Mark">
+          <p>Mark all as read</p>
+        </div>
+      </div>
+      <div class="all-read-important">
+        <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')">
+          <p>All</p>
+        </div>
+        <div class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">
+          <p>Unread</p>
+        </div>
+        <div class="all" [class.color]="id ==='important'" (click)="tabChange('important')">
+          <p>Important</p>
+        </div>
+      </div>
+    </div>
+    <div class="notification-lower">
+      <div class="all-messages" *ngIf="id ==='all' ">
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/logos_google-meet.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-link"></i>
+                </div>
+              </div></div>
+          </div>
+        </div>
+
+
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-1.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-download"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-1.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-download"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-2.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-download"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+       
+
+        
+      </div>
+
+
+      <div class="all-messages" *ngIf="id ==='unread' ">
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-2.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-download"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-2.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-download"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+
+
+
+      
+
+
+
+
+
+      <div class="all-messages" *ngIf="id ==='important' ">
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-2.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="all-area">
+          <div class="image-and-text">
+            <div class="robert-image">
+              <img src="assets/images/Rectangle-2.png" alt="hlo" />
+            </div>
+
+            <div class="robert-text">
+              <p>Robert Fox created an urgent meeting.</p>
+              <div class="days-text">
+                <span>1 day ago </span>
+                <div class="text-star">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+
+              <div class="google-meet-area">
+                <div class="google-meet-logo">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.svg" class="google" />
+                </div>
+                <div class="google-text">
+                  <h4>New Interns induction Pro...</h4>
+                  <span>join using a given link:</span>
+                </div>
+                <div class="meeting-link">
+                  <i class="fa-solid fa-download"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
   <div  *ngIf="profileDisplay">
     <div class="profile-content"> 
       <div class="profile-title"> 
