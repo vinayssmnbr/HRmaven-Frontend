@@ -1,16 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
+
+
+
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
   styleUrls: ['./attendance-content.component.css'],
 })
-
-
 export class AttendanceContentComponent implements OnInit {
   circularProgress: any;
   progressValue: any;
@@ -25,8 +26,8 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any = [];
-  showModal = false;
+  employee: any= [];
+  showModal=false;
   showCard: boolean = true;
   employeeid="";
   employeename="";
@@ -34,27 +35,23 @@ export class AttendanceContentComponent implements OnInit {
   selectedUser:any={};
 leaves:any[]=[]
  data: any;
- update: boolean = false;
+  update:boolean=false;
   editmodal=false;
-
-
-
-
+  showCard1: boolean=true;
+  showTable=false;
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-    //GET EMPLOYEE DATA
-     const data=this.dashService.getEmployee().subscribe((res: any) => {
+     this.dashService.getAttendance().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
-
     });
     this.getLeaveData()
   }
   form = new FormGroup({
-    name:new FormControl('{disabled: true}'),
-    empId:new FormControl('{disabled: true}'),
+    name:new FormControl(),
+    empId:new FormControl(),
     date: new FormControl(''),
     status: new FormControl(''),
     punch_in: new FormControl(''),
@@ -63,7 +60,8 @@ leaves:any[]=[]
 
   });
   ngOnInit() {
-
+    this.form.get('name').disable();
+    this.form.get('empId').disable();
     // Create a chart object
     const myChart = new Chart('lineChart', {
       type: 'line',
@@ -88,8 +86,8 @@ leaves:any[]=[]
             data: [
               50, 280, 370, 250, 80, 60, 50, 40, 70, 30, 20, 40,
             ],
-            backgroundColor: ['green'],
-            borderColor: ['green'],
+            backgroundColor: ['blue'],
+            borderColor: ['blue'],
             borderWidth: 1,
             pointStyle: 'circle',
           },
@@ -97,20 +95,20 @@ leaves:any[]=[]
             label: 'Absent',
             data: [
               230, 50, 150, 350, 320, 250, 70, 350, 100, 50, 300, 40,
-
             ],
-            backgroundColor: ['red'],
-            borderColor: ['red'],
+            backgroundColor: ['#FDA75A'],
+            borderColor: ['#FDA75A'],
             borderWidth: 1,
             pointStyle: 'circle',
+
           },
           {
             label: 'Leaves',
             data: [
               250, 300, 230, 340, 250, 50, 200, 300, 150, 200, 70, 40,
             ],
-            backgroundColor: ['yellow'],
-            borderColor: ['yellow'],
+            backgroundColor: ['#00C9FF'],
+            borderColor: ['#00C9FF'],
             borderWidth: 1,
             pointStyle: 'circle',
           },
@@ -130,36 +128,14 @@ leaves:any[]=[]
               padding: 40,
               usePointStyle: true,
               font: {
-                size: 14,
+                size: 10,
               },
-            },
+            }
           },
         },
       },
     });
-  }
 
-  updateChart() {
-    const presentData = [];
-    const absentData = [];
-    const leavesData = [];
-    const labels = [];
-
-    this.employee.forEach((emp) => {
-      presentData.push(emp.present);
-      absentData.push(emp.absent);
-      leavesData.push(emp.leaves);
-      labels.push(emp.month);
-    });
-
-    this.lineChart.data.datasets[0].data = presentData;
-    this.lineChart.data.datasets[1].data = absentData;
-    this.lineChart.data.datasets[2].data = leavesData;
-    this.lineChart.data.labels = labels;
-    this.lineChart.options.scales['y'].ticks.callback = (value: any) => {
-      return labels[value];
-    };
-    this.lineChart.update();
   }
 
   changeColor() {
@@ -167,7 +143,6 @@ leaves:any[]=[]
       this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor = this.buttonColor === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-
   changeColor2() {
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
@@ -210,6 +185,12 @@ this.edit();
 
   toggleTable1() {
     this.showCard = !this.showCard;
+    this.showTable=!this.showTable;
+  }
+
+  toggleTable2(){
+    this.showCard=!this.showCard;
+    this.showTable=!this.showTable;
   }
 
 edit(){

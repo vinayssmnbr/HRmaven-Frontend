@@ -27,7 +27,7 @@ export class DashboardContentComponent implements OnInit {
         return 1;
       })
       console.log(this.leaves)
-  
+
     });
 
   }
@@ -61,7 +61,7 @@ export class DashboardContentComponent implements OnInit {
   Edit(index: any) {
     console.log(index);
   }
-  
+
 
 
   ToggleMenu(index: any) {
@@ -73,8 +73,8 @@ export class DashboardContentComponent implements OnInit {
   }
 
   leaves: any[] = [
-   
-   
+
+
   ]
   ngOnInit()
    {
@@ -95,7 +95,7 @@ export class DashboardContentComponent implements OnInit {
     });
 
 
-    
+
     // Create a chart object
     const myChart = new Chart('myChart', {
       type: 'bar',
@@ -177,7 +177,7 @@ export class DashboardContentComponent implements OnInit {
                 padding: 40,
                 usePointStyle: true,
                 font: {
-                  size: 14
+                  size: 10
                 }
               }
           }
@@ -188,5 +188,5 @@ export class DashboardContentComponent implements OnInit {
 
 
 
-     
+
 }

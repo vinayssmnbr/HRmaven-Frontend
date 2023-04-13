@@ -763,3 +763,16 @@ input:focus {
     text-align: center;
     padding-top: 21px;
 }
+
+.form__group input[type="text"]:disabled {
+    cursor: not-allowed;
+}
+
+.form__group input[type="number"]:disabled {
+    cursor: not-allowed;
+}
+
+.disable>input:hover,
+input:focus {
+    border-color: #B4B4B4 !important;
+}

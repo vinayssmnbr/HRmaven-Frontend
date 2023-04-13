@@ -30,8 +30,8 @@ export class DashService {
   getData = 'https://hrm21.onrender.com/api/find';
   deleteData = 'https://hrm21.onrender.com/api/';
   getLeave='https://hrm21.onrender.com/api/leave//'
-  updateData='https://hrm21.onrender.com/api/update'
-  getAttd='https://hrm21.onrender.com/attendance//';
+  updateData='https://hrm21.onrender.com/attendance'
+  getAttd='https://hrm21.onrender.com/attendance';
 
 
 
@@ -49,7 +49,9 @@ export class DashService {
   getLeaves() {
     return this.http.get(this.getLeave);
   }
-
+  getleaves() {
+    return this.http.get(this.updateData);
+  }
   getAttendance(){
     return this.http.get(this.getAttd);
   }
@@ -57,8 +59,12 @@ export class DashService {
     return this.http.get(this.getData);
   }
   //UPDATE DATA
-  updateEmployee(id:string,updatedData:any){
+  updateEmployee1(id:string,updatedData:any){
     return this.http.put(`${this.updateData}/${id}`,updatedData)
+  }
+  updateEmployee(data: any) {
+    console.log('data', data);
+    return this.http.patch(this.updateData + `/${data._id}`, data);
   }
 //SEARCH UID AND FILTER DESIGNATION
   searchuid(query: string, designation: string) {
@@ -71,10 +77,5 @@ export class DashService {
   getLeaveData(type: string) {
     return this.http.get(`${this.getData}?type=${type}`);
   }
-
-  getleaves() {
-    return this.http.get(this.updateData);
-  }
-
 
 }
