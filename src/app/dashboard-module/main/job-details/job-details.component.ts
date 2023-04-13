@@ -36,4 +36,19 @@ export class JobDetailsComponent {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
+
+
+ 
+  visible:boolean =false
+  onclick(){
+
+  this.visible = !this.visible;
+  }
+
+
+
+
+
+
+  
 }
