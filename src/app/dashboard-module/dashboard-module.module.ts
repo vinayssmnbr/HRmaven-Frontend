@@ -14,6 +14,7 @@ import { PayrollContentComponent } from './main/payroll-content/payroll-content.
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { JobDetailsComponent } from './main/job-details/job-details.component';
 
 
 
@@ -29,6 +30,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
            PayrollContentComponent,
            RecruitmentContentComponent,
            ReportContentComponent,
+           JobDetailsComponent
   ],
   imports: [
     CommonModule,
