@@ -1,14 +1,14 @@
 <header id="header">
   <div class="content">
     <div class="content-left">
-      <h2 *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p>
-      </h2>
-      <h2 *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
-      <h2 *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2>
-      <h2 *ngIf="dashService.activeComponent === 'attendance'">Attendance Management</h2>
-      <h2 *ngIf="dashService.activeComponent === 'payroll'">Payroll</h2>
-      <h2 *ngIf="dashService.activeComponent === 'recruitment'">Recruitment</h2>
-      <h2 *ngIf="dashService.activeComponent === 'report'">Report</h2>
+    <h2  *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p></h2>
+    <h2  *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
+    <h2  *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2>
+    <h2  *ngIf="dashService.activeComponent === 'attendance'">Attendance Management</h2>
+    <h2  *ngIf="dashService.activeComponent === 'payroll'">Payroll</h2>
+    <h2  *ngIf="dashService.activeComponent === 'recruitment'">Recruitment</h2>
+    <h2  *ngIf="dashService.activeComponent === 'job-details'">Recruitment</h2>
+    <h2  *ngIf="dashService.activeComponent === 'report'">Report</h2>
 
 
 
@@ -24,7 +24,7 @@
       </button>
 
 
-      <img src="./assets/images/clickup60_4.png" alt="" class="header-icon"
+      <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
 
     </div>
@@ -292,7 +292,7 @@
     <div class="profile-content">
       <div class="profile-title">
           <div class="profile-logo">
-              <img src="./assets/images/clickup60_4.png" alt="profile_logo">
+              <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
           </div>
           <div class="profile-text">
             <h2> {{name}} </h2>
