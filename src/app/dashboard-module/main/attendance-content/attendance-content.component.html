@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of employee |attendanceFilter:employeename:employeeid">
+                <tr *ngFor="let user of employee | attendanceFilter:employeename:employeeid">
                     <td class="employee1">{{user.empId}}</td>
                     <td class="name1">{{user.name}}</td>
                     <td class="name1">{{user.date | date:'short'}}</td>

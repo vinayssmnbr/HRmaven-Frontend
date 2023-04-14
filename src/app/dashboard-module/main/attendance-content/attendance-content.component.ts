@@ -29,8 +29,8 @@ export class AttendanceContentComponent implements OnInit {
   employee: any= [];
   showModal=false;
   showCard: boolean = true;
-  employeeid="";
-  employeename="";
+  employeeid='';
+  employeename='';
   lineChart: Chart;
   selectedUser:any={};
 leaves:any[]=[]

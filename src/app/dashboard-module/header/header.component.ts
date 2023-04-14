@@ -17,12 +17,16 @@ export class HeaderComponent {
   greeting: any;
   employee:string
   loggedInName: any ='';
-
+  userEmail: any = '';
+  name: any ='';
+  profileDisplay: boolean = false;
   getUsersProfile: any =[];
 
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
-     private router:Router, private elementRef :ElementRef ) {}
+     private router:Router, private elementRef :ElementRef ) {
+      this.getProfileData();
+     }
 
   ngOnInit() {
     const today = new Date();
@@ -48,10 +52,7 @@ export class HeaderComponent {
   toggleSearchBox(){
     this.showSearchBox=!this.showSearchBox;
   }
-  userEmail: any = '';
-  name: any ='';
 
-  profileDisplay: boolean = false;
 
     //  My code for profile fetch Name
   getProfileData(){
