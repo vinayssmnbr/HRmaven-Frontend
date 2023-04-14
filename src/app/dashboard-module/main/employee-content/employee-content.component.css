@@ -12,10 +12,10 @@
   padding-top:65px;
 }
 
-input[type='text']{
-  padding: 10px 42px 10px 17px;
-  width: 182px;
-  height: 40px;
+.number1{
+  padding: 20px 32px;
+  width: 250px;
+  height: 44px;
   background: #FFFFFF;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -25,14 +25,26 @@ input[type='text']{
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
-  /* color: #888888; */
+  position: absolute;
   font-family: 'Outfit',sans-serif;
 }
 input:hover,
 input:focus{
     border-color:#2F2C9F !important;
 }
-
+.fa-magnifying-glass{
+  position: relative;
+  color:#888888;
+  margin-top: 18px;
+  margin-left: 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .fa-caret-down{
   position: absolute;
   left: 35.63%;
@@ -499,6 +511,7 @@ font-style: normal;
     border: 1px solid rgba(180, 180, 180, 0.8);
     border-radius: 8px;
     margin-bottom: 20px;
+    padding-left: 15px;
     box-shadow: none;
     font-style: normal;
       font-weight: 400;
@@ -506,6 +519,12 @@ font-style: normal;
       line-height: 140%;
       color: black;
   cursor: pointer;
+}
+input.is-invalid{
+  border-color: 1px solid red;
+}
+input.is-valid{
+  border-color: 1px solid green;
 }
 .form-row .input span{
   color: red;
