@@ -42,12 +42,12 @@ export class EmployeeContentComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
-    uid: new FormControl(''),
+    employee_id: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl('option1'),
     mobile: new FormControl(''),
-    email: new FormControl('', [Validators.required]),
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
     address: new FormControl(''),
     bankname: new FormControl(''),
     adhaarno: new FormControl(''),
@@ -219,9 +219,104 @@ export class EmployeeContentComponent implements OnInit {
     this.showModal = false;
   }
   nextForm2() {}
+  array: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Forntend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+    {
+      id:5,
+      name:'Quality Analyst',
+    }
+  ];
+  array1: any = [
+    {
+      id: 0,
+      name: 'Male',
+    },
+    {
+      id: 1,
+      name: 'Female',
+    },
+    {
+      id: 2,
+      name: 'Others',
+    }
+  ];
+  array2: any = [
+    {
+      id: 0,
+      name: 'State Bank Of India',
+    },
+    {
+      id: 1,
+      name: 'Punjab National Bank',
+    },
+    {
+      id: 2,
+      name: 'Central Bank Of India',
+    },
+    {
+      id:3,
+      name: 'HDFC Bank',
+    },
+    {
+      id:4,
+      name: 'ICICI Bank',
+    }
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
 
-  onOptionChange() {};
+    this.contentdropdown = !this.contentdropdown;
+  }
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
 
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  contentdropdown2:boolean=false;
+  dropdownOpen2() {
 
-
+    this.contentdropdown2 = !this.contentdropdown2;
+  }
+  Selectvariable: string = 'Designation';
+  colorvariable: number = 0;
+  Selectvariable1: string='Select';
+  colorvariable1:number=0;
+  Selectvariable2: string = 'Select Bank';
+  colorvariable2: number = 0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown = false;
+    console.log(arr.name);
+  }
+  Changeselect1(arr1: any) {
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable1 = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
+  }
+  Changeselect2(arr2: any) {
+    this.Selectvariable2 = arr2.name;
+    this.colorvariable2 = arr2.id;
+    this.contentdropdown2 = false;
+    console.log(arr2.name);
+  }
+  // for(let i=0; i)
 }
+
+

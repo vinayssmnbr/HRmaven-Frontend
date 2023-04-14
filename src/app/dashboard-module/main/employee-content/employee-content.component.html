@@ -1,13 +1,14 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
 <div class="main">
+  <div class="selection">
+    <input type="text" placeholder="Type Employee ID...">
 
 
-    <!-- dropdown -->
-    <div class="selection">
-        <input type="number" [(ngModel)]="employeeid" placeholder="Type Employee ID...">
-    <app-dropdown></app-dropdown>
-    <button class="btn2" (click)="changeColor2()">Clear</button>
+
+
+    <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"
+      [style.color]="buttonColor2">Clear</button>
     <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3"
       [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
@@ -48,127 +49,182 @@
                 <h4 class="modal-title">New Employee</h4>
                 <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
             </div>
-            <div class="modal-body">
-                <div class="numbers">
-                    <div class="number" [ngClass]="{'active':firstStep}"><span [ngClass]="{'active':firstStep}">1</span>
-                    </div>
-                    <div class="number"><span [ngClass]="{'active':secondStep}">2</span></div>
-                    <div class="number"><span [ngClass]="{'active':thirdStep}">3</span></div>
-                </div>
-                <div class="details">
-                    <p class="active1" [ngStyle]="firstStep && {'color': '#2F2C9F'}">Basic Details</p>
-                    <p class="notactive1" [ngStyle]="secondStep && {'color': '#2F2C9F'}">Content Details</p>
-                    <p class="notactive2" [ngStyle]=" thirdStep && {'color': '#2F2C9F'}">Personal Particulars</p>
-                </div>
 
 
+    <div class="image_record">
+      <img src="./assets/images/no_record.png" alt="">
+      <h3>No record Found!</h3>
+    </div>
+  </div>
 
-
-                <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
-                    <div class="form-row">
-                        <div class="input">
-                            <label>Name</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="name" required>
-                        </div>
-                        <div class="input">
-                            <label>Designation</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="designation">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input">
-                            <label>UID</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="uid">
-                        </div>
-                        <div class="input">
-                            <label>Date of Joining</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="dateOfJoining">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input">
-                            <label>Date of Birth</label>
-                            <input type="text" id="text1" placeholder="DD/MM/YYYY" formControlName="dateOfBirth">
-                        </div>
-                        <div class="input">
-                            <label>Gender</label>
-                            <select id="slt" formControlName="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="others">Others</option>
-              </select>
-                        </div>
-                    </div>
-                </form>
-
-
-                <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
-                    <div class="form-row">
-                        <div class="input">
-                            <label>Mobile No.</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="mobile">
-                        </div>
-                        <div class="input">
-                            <label>Email</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="email">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input">
-                            <label>Address</label>
-                            <input type="textarea" id="text2" placeholder="Type here..." formControlName="address">
-                        </div>
-                    </div>
-                </form>
-
-
-
-                <form class="form-container " id="form3" [formGroup]="form" *ngIf="thirdStep">
-                    <div class="form-row">
-                        <div class="input">
-                            <label>Bank Name</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="bankname">
-                        </div>
-                        <div class="input">
-                            <label>Account Number</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="accountno">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input">
-                            <label>IFSC Code</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="ifsc">
-                        </div>
-                        <div class="input">
-                            <label>Aadhar Card No.</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="adhaarno">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input">
-                            <label>PAN number</label>
-                            <input type="text" id="text1" placeholder="Type here..." formControlName="panno">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn">Next</button>
-                <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
-                <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
-                <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
-                <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn" (click)="submit(form.value)">Done</button>
-            </div>
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content" *ngIf="showModalContent">
+      <div class="modal-header">
+        <h4 class="modal-title">New Employee</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <div class="numbers">
+          <div class="number next prev" [ngClass]="{'active':firstStep}"><span [ngClass]="{'active':firstStep}">1</span>
+          </div>
+          <div class="number next prev"><span [ngClass]="{'active':secondStep}">2</span></div>
+          <div class="number prev"><span [ngClass]="{'active':thirdStep}">3</span></div>
         </div>
-        <div class="modal-content2" *ngIf="fourthStep">
-            <div class="modal-header2">
-                <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
+        <div class="details">
+          <p class="active1" [ngStyle]="firstStep && {'color': '#2F2C9F'}">Basic Details</p>
+          <p class="notactive1" [ngStyle]="secondStep && {'color': '#2F2C9F'}">Contact Details</p>
+          <p class="notactive2" [ngStyle]=" thirdStep && {'color': '#2F2C9F'}">Personal Particulars</p>
+        </div>
+
+
+
+
+        <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
+          <div class="form-row">
+            <div class="input">
+              <label>Name <span>*</span></label>
+              <input type="text" id="text1" placeholder="Smriti Mandhana" formControlName="name" required>
             </div>
-            <div class="modal-body2">
-                <h3>New employee added successfully!</h3>
-                <p>You can add more employees in a similar way and edit them when necessary.</p>
-                <button class="done-btn2" (click)="closeModal()">Done</button>
+            <div class="input">
+              <label>Designation <span>*</span></label>
+              <div class="dropdown_container" >
+                <div class="dropdwon_select" (click)="dropdownOpen()" id="slt1">
+                  <p>{{Selectvariable}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown">
+                  <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                      {{arr.name}}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Employee ID <span>*</span></label>
+              <input type="number" id="text3"  placeholder="29686" formControlName="employee_id" [disabled]="true" readonly>
+            </div>
+            <div class="input">
+              <label>Date of Joining <span>*</span></label>
+              <input type="date" id="text4" placeholder="DD/MM/YYYY" formControlName="dateOfJoining">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Date of Birth <span>*</span></label>
+              <input type="date" id="text5" placeholder="DD/MM/YYYY" formControlName="dateOfBirth">
+            </div>
+            <div class="input">
+              <label>Gender <span>*</span></label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
+                  <p>{{Selectvariable1}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown1">
+                  <ul>
+                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </form>
+
+
+        <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
+          <div class="form-row">
+            <div class="input">
+              <label>Mobile No. <span>*</span></label>
+              <input type="number" id="text6" placeholder="XXXXXX0652" formControlName="mobile">
+            </div>
+            <div class="input">
+              <label>Email <span>*</span></label>
+              <input type="text" id="text7" placeholder="smriti123@gmail.com" formControlName="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Address <span>*</span></label>
+             <textarea placeholder="Enter Employee Address..." cols="80" rows="8" id="text2"></textarea>
+            </div>
+          </div>
+        </form>
+
+
+
+        <form class="form-container " id="form3" [formGroup]="form" *ngIf="thirdStep">
+          <div class="form-row">
+            <div class="input">
+              <label>Bank Name <span>*</span></label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
+                  <p>{{Selectvariable2}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown2">
+                  <ul>
+                    <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                      (click)="Changeselect2(arr2)">
+                      {{arr2.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Account Number <span>*</span></label>
+              <input type="number" id="text10" placeholder="10309856890" formControlName="accountno">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>IFSC Code <span>*</span></label>
+              <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc">
+            </div>
+            <div class="input">
+              <label>Aadhar Card No. <span>*</span></label>
+              <input type="number" id="text12" placeholder="XXXX XXXX 6709 " formControlName="adhaarno">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>PAN number <span>*</span></label>
+              <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn">Next</button>
+        <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
+        <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
+        <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
+        <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
+          (click)="submit(form.value)">Done</button>
+      </div>
+    </div>
+    <div class="modal-content2" *ngIf="fourthStep">
+      <div class="modal-header2">
+        <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
+      </div>
+      <div class="modal-body2">
+        <h3>New employee added successfully!</h3>
+        <p>You can add more employees in a similar way
+          and edit them when necessary.</p>
+        <button class="done-btn2" (click)="closeModal()">Done</button>
+      </div>
+    </div>
+
+    <div class="modal-content3" *ngIf="rowdelete">
+      <div class="modal-body3">
+        <h4>Do you really want to delete this employee?</h4>
+        <div class="delete-btns">
+          <button class="yes-btn" (click)="successdelete()">Yes</button>
+          <button class="no-btn" (click)="closeModal2()">No</button>
         </div>
 
         <div class="modal-content3" *ngIf="rowdelete">
