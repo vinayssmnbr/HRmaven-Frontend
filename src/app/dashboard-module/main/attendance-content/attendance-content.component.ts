@@ -201,5 +201,32 @@ done(){
   this.editmodal=!this.editmodal;
 }
 
+array: any = [
+  {
+    id: 0,
+    name: 'Present',
+  },
+  {
+    id: 1,
+    name: 'Absent',
+  },
+  {
+    id: 3,
+    name: 'Leave',
+  },
+ 
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
 
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = 'Select';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
 }
