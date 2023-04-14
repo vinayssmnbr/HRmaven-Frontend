@@ -40,23 +40,29 @@ export class EmployeeContentComponent implements OnInit {
 
 
   form = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('', Validators.required),
     designation: new FormControl(''),
     employee_id: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl('option1'),
-    mobile: new FormControl(''),
+    mobile: new FormControl('',
+             [Validators.required,
+              Validators.minLength(10),
+              Validators.maxLength(10),
+              Validators.pattern('^[0-9]*$')]),
     email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
     address: new FormControl(''),
     bankname: new FormControl(''),
-    adhaarno: new FormControl(''),
+    adhaarno: new FormControl('',[Validators.required,Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/)]),
     accountno: new FormControl(''),
     ifsc: new FormControl(''),
-    panno: new FormControl(''),
+    panno: new FormControl('',[Validators.required,Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)]),
   });
 
-
+get registrationFormControl(){
+  return this.form.controls;
+}
 
   //ADD DATA
   submit(data: any) {

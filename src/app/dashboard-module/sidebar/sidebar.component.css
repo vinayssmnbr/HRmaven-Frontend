@@ -66,6 +66,10 @@ ul.navigation li a{
 ul.navigation li.active{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
+  transition: 0.3s;
+}
+ul.navigation li.inactive {
+  background-color: transparent;
 }
 
 ul.navigation li:hover{

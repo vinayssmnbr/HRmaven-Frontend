@@ -28,7 +28,7 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor3 = '#FFFFFF';
   employee: any= [];
   showModal=false;
-  showCard: boolean = true;
+  showCard: boolean = false;
   employeeid='';
   employeename='';
   lineChart: Chart;
@@ -38,7 +38,7 @@ leaves:any[]=[]
   update:boolean=false;
   editmodal=false;
   showCard1: boolean=true;
-  showTable=false;
+  showTable=true;
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
