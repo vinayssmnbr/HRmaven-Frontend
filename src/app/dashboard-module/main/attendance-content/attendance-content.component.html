@@ -2,120 +2,132 @@
 </app-sidebar>
 <app-header></app-header>
 <div class="main">
-  <div class="select-menu">
-    <div class="select-btn">
+    <div class="bar-chart">
+        <canvas id="lineChart"></canvas>
     </div>
-  </div>
-  <div class="bar-chart">
-    <canvas id="lineChart"></canvas>
-  </div>
-  <div class="selection">
-    <input type="text" [(ngModel)]="employeename" placeholder="Employee Name...">
-    <input type="number" [(ngModel)]="employeeid" placeholder="Employee ID...">
-    <button class="btn1" (click)="changeColor()">Search</button>
-    <div class="calender">
-      <div class="grid-icon">
-        <i class="fa-sharp fa-solid fa-list-ul"></i>
-      </div>
-      <!-- <input type="text" placeholder="Select the date" onclick="(this.type='date')"
-        onblur="(this.value === '' ? this.type='text' : null)"> -->
-    </div>
-  </div>
-  <div class="table-wrapper" *ngIf="showCard">
-    <table>
-      <thead>
-        <tr>
-          <th class="employee">Employee ID</th>
-          <th class="name">Name</th>
-          <th class="name">Date</th>
-          <th class="action">Status</th>
-          <th class="email">PUNCH IN</th>
-          <th class="designation">PUNCH OUT</th>
-          <th class="contact">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of employee |attendanceFilter:employeename:employeeid">
-          <td class="employee1">{{user.empId}}</td>
-          <td class="name1">{{user.name}}</td>
-          <td class="name1">{{user.date | date:'short'}}</td>
-          <td class="designation1">{{user.status}}</td>
-          <td class="email1">{{user.punch_in}}</td>
-          <td class="contact1">{{user.punch_out}}</td>
-          <td class="action1">
-            <div class="icons">
-              <i class="fa-solid fa-pencil" (click)="openModal()"></i>
+    <div class="selection">
+        <input type="text" [(ngModel)]="employeename" placeholder="Employee Name...">
+        <input type="number" [(ngModel)]="employeeid" placeholder="Employee ID...">
+        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
+        <div class="calender">
+            <div class="grid-icon">
+                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
+                <img src="../../../../assets/images/grid.png" (click)="toggleTable2()">
             </div>
-          </td>
-        </tr>
+            <input type="text" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
+        </div>
+        <div class="no_data">
+            <img src="assets\images\nodata.png" alt="">
+            <h2>No Record Found!</h2>
+        </div>
+
+    </div>
+    <div class="table-wrapper" *ngIf="showTable">
+        <table>
+            <thead>
+                <tr>
+                    <th class="employee">Employee ID</th>
+                    <th class="name">Name</th>
+                    <th class="name">Date</th>
+                    <th class="action">Status</th>
+                    <th class="email">PUNCH IN</th>
+                    <th class="designation">PUNCH OUT</th>
+                    <th class="contact">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of employee | attendanceFilter:employeename:employeeid">
+                    <td class="employee1">{{user.empId}}</td>
+                    <td class="name1">{{user.name}}</td>
+                    <td class="name1">{{user.date | date:'short'}}</td>
+                    <td class="designation1">{{user.status}}</td>
+                    <td class="email1">{{user.punch_in}}</td>
+                    <td class="contact1">{{user.punch_out}}</td>
+                    <td class="action1">
+                        <div class="icons">
+                            <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
+                        </div>
+                    </td>
+                </tr>
 
 
 
-      </tbody>
-    </table>
-  <div class="attendence-card " *ngIf="!showCard">
-    <div class="row ">
-      <div class="col-3 " *ngFor="let user of employee">
-        <div class="card ">
-          <img src="assets\images\attendec-logo.png " alt="logo ">
-          <h2>{{user.name}}</h2>
-          <p>UI/UX Designer</p>
-          <div class="attendence-percent ">
-            <div class="percent-text ">
-              <p>25/30</p>
-              <h4>Monthly</h4>
-            </div>
-            <div class="circle-graph ">
-              <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' "
-                [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 "
-                [innerStrokeWidth]="4
-                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true'
-                [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
-            </div>
-          </div>
-          <button class="view-btn ">View details</button>
-        </div>
-      </div>
-      <!-- ------------------Input  Modal form---------------  -->
+            </tbody>
+        </table>
     </div>
-  </div>
-  <div class="employee-modal" *ngIf="update">
-    <form class="input-form ">
-      <div class="cross-icon ">
-        <i class="fa-solid fa-xmark" (click)="openModal()"></i>
-      </div>
-      <div class="input_form1 ">
-        <div class="form__group ">
-          <label for="name ">Name</label>
-          <input type="text " placeholder="Ankush Sharma " id="name " disabled />
+    <div class="attendence-card " *ngIf="showCard">
+        <div class="row ">
+            <div class="col-3 " *ngFor="let user of employee">
+                <div class="card ">
+                    <img src="assets\images\attendec-logo.png " alt="logo ">
+                    <h2>{{user.name}}</h2>
+                    <p>UI/UX Designer</p>
+                    <div class="attendence-percent ">
+                        <div class="percent-text ">
+                            <p>25/30</p>
+                            <h4>Monthly</h4>
+                        </div>
+                        <div class="circle-graph ">
+                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
+                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
+                        </div>
+                    </div>
+                    <button class="view-btn ">View details</button>
+                </div>
+            </div>
         </div>
-        <div class="form__group ">
-          <label for="name ">Employee ID</label>
-          <input type="number " placeholder=" 25458 " id="number " disabled />
+    </div>
+    <!-- ------------------Input  Modal form---------------  -->
+    <div class="employee-modal" *ngIf="showModal">
+        <form class="input-form " [formGroup]="form" (ngSubmit)="OnUpdate()">
+            <div class="cross-icon ">
+                <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            </div>
+            <div class="input_form1 ">
+                <div class="form__group disable">
+                    <label for="name ">Name</label>
+                    <input type="text " id="name " formControlName="name" [disabled]="true" />
+                </div>
+                <div class="form__group disable">
+                    <label for="name ">Employee ID</label>
+                    <input type="number " id="number " formControlName="empId" [disabled]="true" />
+                </div>
+                <div class="form__group ">
+                    <label for="name ">Date</label>
+                    <input type="date " class="date-input " formControlName="date" />
+                </div>
+            </div>
+            <div class="input_form2 ">
+                <div class="form__group ">
+                    <label for="name ">Status</label>
+                    <input type="text " formControlName="status" />
+                </div>
+                <div class="form__group ">
+                    <label for="name ">Punch In</label>
+                    <input type="text " formControlName="punch_in" />
+                </div>
+                <div class="form__group ">
+                    <label for="name ">Punch out</label>
+                    <input type="text " formControlName="punch_out" />
+                </div>
+            </div>
+            <div class="form__group form-btn ">
+                <button type="submit" class="done-btn">Done</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ----------------------------Edit popup Modal --------------- -->
+    <div class="edit-modal" *ngIf="editmodal">
+        <div class="edit-modal-text">
+            <div class="modal-text">
+                <img src="./assets/images/tick.png" alt="img">
+            </div>
+            <div class="modal-content">
+                <h3>Successful</h3>
+                <p>Attendance has been edited successfully!</p>
+                <button class="Done_btn" (click)="done()">Done</button>
+            </div>
         </div>
-        <div class="form__group ">
-          <label for="name ">Date</label>
-          <input type="date " class="date-input " />
-        </div>
-      </div>
-      <div class="input_form2 ">
-        <div class="form__group ">
-          <label for="name ">Status</label>
-          <input type="text " placeholder="Select.. " />
-        </div>
-        <div class="form__group ">
-          <label for="name ">Punch In</label>
-          <input type="text " placeholder="9.00 AM " />
-        </div>
-        <div class="form__group ">
-          <label for="name ">Punch out</label>
-          <input type="text " placeholder="5.12 PM " />
-        </div>
-      </div>
-      <div class="form__group form-btn ">
-        <button class="done-btn ">Done</button>
-      </div>
-    </form>
-  </div>
+    </div>
 </div>
-

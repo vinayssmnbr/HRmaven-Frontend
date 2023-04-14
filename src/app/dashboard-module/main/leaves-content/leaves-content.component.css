@@ -110,24 +110,24 @@ input[type=number]::-webkit-inner-spin-button {
     justify-content: space-between;
     padding: 10px 10px;
   }
-  
+
   .dropdwon_select:hover,
   .dropdwon_select:focus{
     border: 1px solid #2F2C9F;
     border-radius: 8px;
   }
-  
+
   .dropdwon_select p {
     font-size: 14px;
     font-weight: 400;
   }
-  
+
   .dropdwon_select i {
     font-size: 14px;
     color: #444444;
     padding: 3px 7px;
   }
-  
+
   .select_content {
     background-color: #fff;
     cursor: pointer;
@@ -137,28 +137,27 @@ input[type=number]::-webkit-inner-spin-button {
     position: absolute;
     color: #444444;
   }
-  
+
   .select_content ul {
     padding: 0;
     margin: 0;
   }
-  
+
   .select_content ul li {
     list-style: none;
     padding: 10px 10px;
     margin-top: 5px;
     font-size: 14px;
   }
-  
+
   .select_content ul li:hover {
     background-color: #ECECEC;
     border-radius: 8px;
   }
-  
+
   .select_active {
     background-color: #ECECEC;
     border-radius: 8px;
-    border: 1px solid #2F2C9F;
   }
 
 /*------------------ table----------------------- */
@@ -167,6 +166,7 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
     padding-top: 10px;
 }
+
 
 .table_text {
     width: 100%;
@@ -177,12 +177,14 @@ input[type=number]::-webkit-inner-spin-button {
 table {
     border-spacing: 2px 5px;
     background-color: #EFEFF8;
+
 }
 
 table,
 th,
 td {
     font-size: 14px;
+
 }
 
 .table_heading th {
@@ -278,7 +280,6 @@ input[type="radio"] {
 #outline1 {
     outline: 2px solid #e8e8e8;
 }
-
 
 
 #outline1:checked {

@@ -18,6 +18,8 @@ import { SearchPipe } from './pipe/search.pipe';
 import { AttendanceFilterPipe } from './pipe/attendance-filter.pipe';
 import { SortingPipe } from './pipe/sorting.pipe';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { JobDetailsComponent } from './main/job-details/job-details.component';
+import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 
 
 
@@ -37,6 +39,9 @@ import { DropdownComponent } from './dropdown/dropdown.component';
            AttendanceFilterPipe,
            SortingPipe,
            DropdownComponent,
+           JobDetailsComponent,
+           EmployeeProfileComponent
+
   ],
   imports: [
     CommonModule,

@@ -1,11 +1,12 @@
-#header {
-    /* display: flex; */
-    width: calc(100% - 223px);
-    background: #FFFFFF;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.09);
-    margin-left: 223px;
-    position: fixed;
-    z-index: 9999;
+
+#header{
+  /* display: flex; */
+  width: calc(100% - 223px);
+  background: #FFFFFF;
+  box-shadow:0px 4px 8px rgba(0, 0, 0, 0.09);
+  margin-left: 223px;
+  position:fixed;
+  z-index:9999;
 }
 
 .content {
@@ -33,12 +34,12 @@
 }
 
 .content-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* margin-left: 400px; */
-    gap: 18px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  margin-right: -18px;
+  cursor: pointer;
 }
 
 .content-right i {
@@ -77,7 +78,7 @@
 
 .profile-content img{
     display: flex;
-    margin-right: 25px;
+    margin-right: 22px;
     height: 35px;
     width: 40px;
 }
@@ -268,3 +269,233 @@ input[type='search'] {
     align-items: center;
     border-radius: 50%;
 }
+
+
+
+
+
+.notification-upper {
+  /*   border:2px solid blue; */
+  height: 76px;
+  width: 310px;
+  padding-left: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.notification-area {
+  max-width: 350px;
+  width: 100%;
+  min-height: 463px;
+  z-index: 50;
+  position: absolute;
+  right: 50px;
+  top: 77px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+#all{
+  border-bottom: 2px solid #2F2C9F;
+}
+.color{
+  color: #2F2C9F;
+  border-bottom: 2px solid #2F2C9F;
+}
+
+.notification-number {
+  display: flex;
+  gap: 6px;
+  width: 138px;
+  height: 28px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notification-mark {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 3px;
+  align-items: center;
+}
+
+.Mark {
+  width: 85px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #2F2C9F;
+  cursor: pointer;
+}
+
+.all-read-important {
+  display: flex;
+  width: 232px;
+  height: 28px;
+  align-items: center;
+  margin-top: 20px;
+  padding-left: 13px;
+  column-gap: 40px;
+
+}
+.all-read-important p{
+  cursor:pointer
+}
+.all:hover{
+  border-bottom: 2px solid #2F2C9F;
+
+}
+.unread:hover{
+  border-bottom: 2px solid #2F2C9F;
+}
+.Important:hover{
+  border-bottom: 2px solid #2F2C9F;
+}
+
+.number p {
+  background-color: #eaeaf5;
+  border-radius: 50%;
+  width: 18px;
+  height: 20px;
+  font-size: 10px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.Notification-text p{
+font-size: 20px;
+font-weight: 500;
+}
+
+.notification-lower {
+  height: 328px;
+  width: 320px;
+
+}
+
+.robert-image img {
+  width: 40px;
+  height: 40px;
+}
+
+.robert-text {
+  font-size: 14px;
+}
+
+.all-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+   border-radius: 8px;
+  padding: 10px;
+  width: 310px;
+
+}
+
+.days-text {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 3px;
+}
+
+.google {
+  width: 24px;
+  height: 20px;
+}
+
+i.fa-solid.fa-star {
+  color: #B4B4B4;
+}
+
+.text-star {
+  margin-top: 4.67px;
+}
+
+.days-text span {
+  color: #b4b4b4;
+}
+
+.robert-text {
+  display: block;
+  justify-content: space-between;
+}
+
+.google-meet-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*     border:2px solid green; */
+  column-gap: 10px;
+  background: #F7F7FB;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  font-size: 12px;
+  justify-content: start;
+  padding-left: 10px;
+  padding-top: 10.5px;
+  padding-bottom: 14px;
+  margin-top: 10px;
+  height: 41px;
+}
+
+.google-text h4 {
+  font-weight: 400;
+  font-size: 12px;
+  color: #111111;
+}
+
+.google-text span {
+  font-weight: 400;
+  font-size: 10px;
+  color: #666666;
+}
+
+.google-text {
+  cursor: pointer;
+}
+
+.google-meet-logo {
+  display: flex;
+  width: 24px;
+  height: 20px;
+}
+
+.image-and-text {
+  column-gap: 10px;
+  display: flex;
+  /*       border:2px solid green; */
+}
+
+.meeting-link i {
+  position: absolute;
+  right: 38px;
+  color: #666666;
+  font-size: 16px;
+  /* bottom: 244px; */
+}
+
+.meeting-link {
+  /* margin-top: -14px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.all-area:hover {
+  background-color: #F7F7FB;
+}
+
+/*  */
+/* .profile_div {
+  position:fixed;
+  top:73px;
+  right:5px;
+} */

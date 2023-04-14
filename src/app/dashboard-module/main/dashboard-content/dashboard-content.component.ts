@@ -12,8 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardContentComponent implements OnInit {
   constructor(
-    public dashService: DashService,
-    private http: HttpClient,
+    public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document
   ) {
     dashService.activeComponent = 'dashboard';
@@ -26,9 +25,13 @@ export class DashboardContentComponent implements OnInit {
         if (a.status > b.status) return 1;
         if (a.status < b.status) return -1;
         return 1;
-      });
-      console.log(this.leaves);
+      })
+      console.log(this.leaves)
+
     });
+
+    this.showchart()
+
   }
   options: any = [
     {
@@ -61,17 +64,48 @@ export class DashboardContentComponent implements OnInit {
     console.log(index);
   }
 
+
+
   ToggleMenu(index: any) {
     var ul = document.getElementById(index);
     ul.classList.toggle('close');
-    ul.addEventListener('mouseleave', () => {
+    ul.addEventListener('mouseleave',()=>{
       ul.classList.add('close');
-    });
+    })
   }
 
-  leaves: any[] = [];
-  ngOnInit() {
+  leaves: any[] = [
+
+
+  ]
+  ngOnInit()
+   {
+    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
+      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
+      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
+      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
+    selectBtn.addEventListener('click', () =>
+      optionMenu.classList.toggle('active')
+    );
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        let selectedOption =
+          option.querySelector<HTMLElement>('.option-text')!.innerText;
+        sBtn_text.innerText = selectedOption;
+        optionMenu.classList.remove('active');
+      });
+    });
+
+
+
     // Create a chart object
+
+  }
+
+
+  showchart(){
+
+    this.dashService.getreport().subscribe((res:any)=>{
     const myChart = new Chart('myChart', {
       type: 'bar',
       data: {
@@ -92,7 +126,7 @@ export class DashboardContentComponent implements OnInit {
         datasets: [
           {
             label: 'Present',
-            data: [50, 800, 470, 500, 800, 600, 500, 400, 700, 300, 200, 100],
+            data: res.present,
             backgroundColor: ['#2D11FA'],
             pointStyle: 'circle',
             borderColor: [
@@ -108,7 +142,7 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Absent',
-            data: [230, 450, 250, 350, 730, 650, 570, 350, 100, 50, 300, 400],
+            data:res.absent,
             backgroundColor: ['#FDA75A'],
             pointStyle: 'circle',
             borderColor: [
@@ -124,7 +158,7 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Leaves',
-            data: [250, 300, 730, 740, 250, 450, 500, 800, 150, 200, 700, 1500],
+            data: res.leave,
             backgroundColor: ['#00C9FF'],
             pointStyle: 'circle',
             borderColor: [
@@ -148,44 +182,64 @@ export class DashboardContentComponent implements OnInit {
         },
         plugins: {
           legend: {
-            labels: {
-              padding: 40,
-              usePointStyle: true,
-              font: {
-                size: 14,
-              },
-            },
-          },
-        },
+              labels: {
+                padding: 40,
+                usePointStyle: true,
+                font: {
+                  size: 10
+                }
+              }
+          }
+      }
       },
     });
+  });
   }
-  array: any = [
-    {
-      id: 0,
-      name: 'Weekly',
-    },
-    {
-      id: 1,
-      name: 'Monthly',
-    },
-    {
-      id: 3,
-      name: 'Yearly',
-    },
-    
-  ];
-  contentdropdown: boolean = false;
-  dropdownOpen() {
-  
-    this.contentdropdown = !this.contentdropdown;
-  }
-  Selectvariable: string = 'Monthly';
-  colorvariable: number =  0;
-  Changeselect(arr: any) {
-    this.Selectvariable = arr.name;
-    this.colorvariable = arr.id;
-    this.contentdropdown=false;
-    console.log(arr.name);
-  }
+
+
+
+
+updateLeaveStatus(id: any, status: 'accept' | 'reject') {
+  const url = `http://localhost:3000/api/leave/${id}`;
+  const body = { status: status };
+  this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
+  ).subscribe(response => {
+    console.log('Leave status updated successfully: ', response);
+
+  }, error => {
+    console.error('Error updating leave status:', error);
+
+  });
+
+}
+
+array: any = [
+  {
+    id: 0,
+    name: 'Weekly',
+  },
+  {
+    id: 1,
+    name: 'Monthly',
+  },
+  {
+    id: 3,
+    name: 'Yearly',
+  },
+
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
+
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = 'Monthly';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
+
 }
