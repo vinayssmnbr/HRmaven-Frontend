@@ -2,13 +2,23 @@
 <app-header></app-header>
 <div class="main">
   <div class="selection">
+    <div>
     <input type="number" class="number1 no-spin" placeholder="Type Employee Name or ID">
     <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
 
-
-
-    <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"
-      [style.color]="buttonColor2">Clear</button>
+    <div class="dropdown_container">
+      <div class="dropdwon_select" (click)="dropdownOpen()">
+        <p>{{Selectvariable}}</p>
+        <i class="fa-sharp fa-solid fa-caret-down"></i>
+      </div>
+      <div class="select_content" *ngIf="contentdropdown">
+        <ul>
+          <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+            {{arr.name}}</li>
+        </ul>
+      </div>
+    </div>
     <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3"
       [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
   </div>

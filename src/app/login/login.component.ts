@@ -26,6 +26,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+  
     let counter = 0;
     setInterval(() => {
       const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
@@ -36,7 +37,7 @@ export class LoginComponent {
           counter =0;
         }
       }
-    }, 3500);
+    }, 3000);
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
