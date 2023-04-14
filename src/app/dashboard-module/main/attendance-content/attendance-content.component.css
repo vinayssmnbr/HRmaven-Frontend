@@ -302,7 +302,8 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 20px;
     cursor: pointer;
 }
-.modal-input-text{
+
+.modal-input-text {
     background-color: #F7F7F8;
     height: 75px;
     width: 100%;
@@ -311,11 +312,13 @@ input[type=number]::-webkit-inner-spin-button {
     align-items: center;
     border-radius: 8px;
 }
-.modal-input-text h1{
+
+.modal-input-text h1 {
     color: #444444;
     font-size: 18px;
     font-weight: 400;
 }
+
 .input-form {
     display: flex;
     flex-wrap: wrap;
@@ -325,10 +328,9 @@ input[type=number]::-webkit-inner-spin-button {
     width: 740px;
     height: 388px;
     border-radius: 8px;
-   
-   
 }
-.input_form2{
+
+.input_form2 {
     padding: 0 50px;
 }
 
@@ -433,7 +435,6 @@ input:focus {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    /* visibility: hidden; */
 }
 
 .edit-modal-text {
@@ -497,6 +498,14 @@ input:focus {
     opacity: 0.7;
 }
 
+#name::placeholder {
+    color: #AAAAAA;
+}
+
+#number::placeholder {
+    color: #AAAAAA;
+}
+
 
 /*--------------------------- No Data Found---------------- */
 
@@ -531,7 +540,9 @@ input:focus {
     border-color: #B4B4B4 !important;
 }
 
+
 /* ------------Drop Down---------------- */
+
 .dropdwon_select {
     background-color: #fff;
     width: 200px;
@@ -545,26 +556,26 @@ input:focus {
     justify-content: space-between;
     padding: 10px 10px;
     border: 1px solid #B4B4B4;
-  }
-  
-  .dropdwon_select:hover,
-  .dropdwon_select:focus{
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus {
     border: 1px solid #2F2C9F;
     border-radius: 8px;
-  }
-  
-  .dropdwon_select p {
+}
+
+.dropdwon_select p {
     font-size: 14px;
     font-weight: 400;
-  }
-  
-  .dropdwon_select i {
+}
+
+.dropdwon_select i {
     font-size: 14px;
     color: #444444;
     padding: 3px 7px;
-  }
-  
-  .select_content {
+}
+
+.select_content {
     background-color: #fff;
     cursor: pointer;
     width: 172px;
@@ -572,28 +583,26 @@ input:focus {
     padding: 10px;
     position: absolute;
     color: #444444;
-  }
-  
-  .select_content ul {
+}
+
+.select_content ul {
     padding: 0;
     margin: 0;
-  }
-  
-  .select_content ul li {
+}
+
+.select_content ul li {
     list-style: none;
     padding: 10px 10px;
     margin-top: 5px;
     font-size: 14px;
-  }
-  
-  .select_content ul li:hover {
+}
+
+.select_content ul li:hover {
     background-color: #ECECEC;
     border-radius: 8px;
-  }
-  
-  .select_active {
+}
+
+.select_active {
     background-color: #ECECEC;
     border-radius: 8px;
-  
-  }
-  
+}
