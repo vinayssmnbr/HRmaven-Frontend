@@ -7,29 +7,26 @@
 
 .left-side {
     background-color: var(--primary-color);
-    margin-top: 24px;
     border-radius: 12px;
     padding-bottom: 18px;
-    margin-left: 21px;
     margin-bottom: 18px;
     height: calc(100vh - 48px);
-    margin-bottom: 18px;
     width: 546px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 24px 0 18px 21px;
 }
-
+.leftContent{
+    padding-left: 78px;
+}
 .left-side .logo-image {
     margin-top: 78px;
-    padding-left: 83px;
 }
 
 .left-side .title {
-    padding-left: 78px;
     padding-top: 29px;
-    font-family: 'Outfit';
     font-size: 36px;
     font-weight: 500;
     color: #FFFFFF;
@@ -38,11 +35,9 @@
 
 .left-side .title_para {
     padding-top: 12px;
-    padding-left: 78px;
     font-size: 18px;
     color: #FAFAFA;
     width: 85%;
-    font-family: 'Outfit';
     font-weight: 400;
 }
 
@@ -150,7 +145,14 @@ form .input-field {
     border: 1px solid #d1d1d1;
     margin-top: 6px;
 }
-
+.create-password .input-field .password{
+    padding-right: 50px;
+}
+input:hover,
+input:focus{
+    border: 1px solid #2F2C9F;
+    border-color:#2F2C9F !important;
+}
 .input-field label {
     color: #333333;
 }
