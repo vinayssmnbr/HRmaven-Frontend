@@ -46,7 +46,7 @@
           <div class="attendance">
             <h2>Attendance</h2>
           </div>
-          <div class="select-menu">
+          <!-- <div class="select-menu">
             <div class="select-btn">
               <span class="sBtn-text">Select</span>
               <i class="bx bx-chevron-down"></i>
@@ -59,6 +59,18 @@
                 <span class="option-text">Weekly</span>
               </li>
             </ul>
+          </div> -->
+          <div class="dropdown_container">
+            <div class="dropdwon_select" (click)="dropdownOpen()">
+              <p>{{Selectvariable}}</p>
+              <i class="fa-sharp fa-solid fa-caret-down"></i>
+            </div>
+            <div class="select_content" *ngIf="contentdropdown">
+              <ul>
+                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                  {{arr.name}}</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -111,28 +123,47 @@
           <h2>Leave request</h2>
           <p><a routerLink="/dashboard/leaves"> View All </a></p>
         </div>
-        <table>
-          <tr>
-            <th>UID</th>
-            <th>NAME</th>
-            <th>FROM</th>
-            <th>TO</th>
-            <th>REASON</th>
-            <th>ACTION</th>
-          </tr>
-          <tr *ngFor="let leave of leaves">
-            <td>{{leave.employeeId}}</td>
-            <td>{{leave.employeeName}}</td>
-            <td>{{leave.from | date:'short'}}</td>
-            <td>{{leave.to | date:'short'}}</td>
-            <td>{{leave.reason}}</td>
-            <td>
 
-            <p>{{leave.status == 'accept'?'Accepted': leave.status=='reject'? 'Rejected': 'Pending'}}</p>
-
-            </td>
-          </tr>
-        </table>
+        <div class="table_data">
+          <table class="table_text">
+            <thead>
+              <tr class="table_heading">
+                <th>EMPLOYEE ID</th>
+                <th>EMPLOYEE NAME</th>
+                <th>FROM</th>
+                <th>TO</th>
+                <th>REASON</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let leave of leaves ">
+                <td>{{leave.employeeId}}</td>
+                <td>{{leave.employeeName}}</td>
+                <td>{{leave.from | date:'short'}}</td>
+                <td>{{leave.to | date:'short'}}</td>
+                <td>{{leave.reason}}</td>
+                <td>
+                  <div class="action_button">
+                    <div class="action_btn">
+                      <input type="radio" [checked]="leave.status=='accept'"
+                        [disabled]="leave.status=='accept' || leave.status=='reject'"
+                        (change)="updateLeaveStatus(leave._id, 'accept')" id="outline1" class="custom-radio">
+                      <label for="outline1" class="outline1">Accept</label>
+                    </div>
+                    <div class="action_btn">
+                      <input type="radio" [checked]="leave.status=='reject'"
+                        [disabled]="leave.status=='accept' || leave.status=='reject'"
+                        (change)="updateLeaveStatus(leave._id, 'reject')" id="outline" class="custom-radio">
+                      <label for="outline" class="outline">Reject</label>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- table end -->
       </div>
     </div>
 
