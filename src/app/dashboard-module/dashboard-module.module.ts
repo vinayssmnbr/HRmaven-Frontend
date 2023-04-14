@@ -23,6 +23,7 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
 
 
 
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -40,7 +41,8 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
            SortingPipe,
            DropdownComponent,
            JobDetailsComponent,
-           EmployeeProfileComponent
+           EmployeeProfileComponent,
+
 
   ],
   imports: [
