@@ -511,6 +511,7 @@ font-style: normal;
     border: 1px solid rgba(180, 180, 180, 0.8);
     border-radius: 8px;
     margin-bottom: 20px;
+    outline: none;
     padding-left: 15px;
     box-shadow: none;
     font-style: normal;
@@ -526,47 +527,54 @@ input.is-invalid{
 input.is-valid{
   border-color: 1px solid green;
 }
+input.ng-invalid{
+  border-color: red;
+}
+input.ng-valid{
+  border-color: green;
+}
 .form-row .input span{
   color: red;
 }
 #text1:hover{
-  border:1px solid #2F2C9F;
+  border-color:1px solid #2F2C9F !important;
 }
 #text2:hover {
-  border: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F !important;
 }
 #text3:hover {
-  border: 1px solid #2F2C9F;
+  border-color: 1px solid #2F2C9F !important;
 }
 #text4:hover {
-  border: 1px solid #2F2C9F;
+  border-color: 1px solid #2F2C9F !important;
 }
 #text5:hover {
-  border: 1px solid #2F2C9F;
+  border-color: 1px solid #2F2C9F !important;
 }
 #text6:hover {
-  border: 1px solid #2F2C9F;
+  border-color: 1px solid #2F2C9F !important;
 }
 #text7:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
+
 }
 #text8:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
 }
 #text9:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
 }
 #text10:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
 }
 #text11:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
 }
 #text12:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
 }
 #text13:hover {
-  border: 1px solid #2F2C9F;
+   border-color: 1px solid #2F2C9F !important;
 }
 #text2 {
   /* display: block; */
@@ -577,6 +585,7 @@ input.is-valid{
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+    outline: none;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -589,6 +598,7 @@ input.is-valid{
   height: 40px;
   padding-left: 15px;
   background: #FAFAFA;
+  outline: none;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
   margin-bottom: 20px;
@@ -611,6 +621,7 @@ input.is-valid{
   box-shadow: none;
   font-style: normal;
   font-weight: 400;
+    outline: none;
   padding-left: 15px ;
   font-size: 14px;
   line-height: 140%;
@@ -625,6 +636,7 @@ input.is-valid{
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+    outline: none;
   font-style: normal;
   font-weight: 400;
   padding-left: 15px;
@@ -642,6 +654,7 @@ input.is-valid{
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+    outline: none;
   font-style: normal;
   font-family: 'Outfit',sans-serif;
   font-weight: 400;
@@ -653,6 +666,7 @@ input.is-valid{
   /* display: block; */
   width: 260px;
   height: 40px;
+  padding-left: 15px;
   background: #FFFFFF;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
@@ -662,6 +676,7 @@ input.is-valid{
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
+    outline: none;
   cursor: pointer;
 }
 #text8 {
@@ -675,6 +690,7 @@ input.is-valid{
   box-shadow: none;
   font-style: normal;
   font-weight: 400;
+    outline: none;
   font-size: 14px;
   line-height: 140%;
   cursor: pointer;
@@ -688,6 +704,7 @@ input.is-valid{
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+    outline: none;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -704,6 +721,7 @@ input.is-valid{
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+    outline: none;
   font-style: normal;
   font-family: 'Outfit',sans-serif;
   font-weight: 400;
@@ -717,10 +735,13 @@ input.is-valid{
   width: 260px;
   height: 40px;
   background: #FFFFFF;
+
+  padding-left: 15px;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
   margin-bottom: 20px;
   box-shadow: none;
+    outline: none;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -736,6 +757,7 @@ input.is-valid{
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
   margin-bottom: 20px;
+    outline: none;
   box-shadow: none;
   font-style: normal;
   font-family: 'Outfit', sans-serif;
@@ -748,6 +770,8 @@ input.is-valid{
   /* display: block; */
   width: 260px;
   height: 40px;
+    outline: none;
+    padding-left: 15px;
   background: #FFFFFF;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
@@ -869,9 +893,7 @@ width: 700px;
     color: black;
   font-family: 'Outfit', sans-serif;
 }
-#text2:hover{
-  border:1px solid black
-}
+
 
 
 #form3{
@@ -1179,9 +1201,7 @@ width: 430px;
   position: relative;
 }
 
-input[type='number']:hover{
-  border: 1px solid #2F2C9F !important;
-}
+
 .name1 img{
   border-radius: 50%;
 }
