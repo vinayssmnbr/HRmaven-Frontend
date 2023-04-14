@@ -73,15 +73,15 @@ export class LoginComponent {
   });
 
   showPassword = false;
-  showPasswordIcon = 'fa-eye';
+  showPasswordIcon = 'fa-eye-slash';
   Forgotshow = false;
   EmailSent = false;
   Invalid = false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
-    this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
-    passwordInput.type = this.showPassword ? 'text' : 'password';
+    this.showPasswordIcon = this.showPassword ?  'fa-eye-slash':'fa-eye';
+    passwordInput.type = this.showPassword ? 'password' : 'text';
   }
 
   toggleForgot() {
