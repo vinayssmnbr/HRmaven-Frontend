@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter,Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  Inject,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -16,11 +23,13 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
-
-  constructor(public dashService: DashService,private formBuilder: FormBuilder,@Inject(DOCUMENT) public document: Document) {
+  constructor(
+    public dashService: DashService,
+    private formBuilder: FormBuilder,
+    @Inject(DOCUMENT) public document: Document
+  ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
-
   }
 
   buttonbackgroundColor = '#2F2C9F';
@@ -29,20 +38,21 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any=[];
+  employee: any = [];
+  employeeuid: any = [];
+  currentEmployeeUid: any = '';
   query: string = '';
   designation: string = '';
   data: any;
-  deletedata:any;
-  empdesignation="";
-  employeeid:any;
-  show:any=false;
-
+  deletedata: any;
+  empdesignation = '';
+  employeeid: any;
+  show: any = false;
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     designation: new FormControl(''),
-    uid: new FormControl(''),
+    uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl('option1'),
@@ -55,8 +65,6 @@ export class EmployeeContentComponent implements OnInit {
     ifsc: new FormControl(''),
     panno: new FormControl(''),
   });
-
-
 
   //ADD DATA
   submit(data: any) {
@@ -85,19 +93,18 @@ export class EmployeeContentComponent implements OnInit {
     this.showModalContent = false;
     this.showModal = true;
     this.deletemessage = false;
-    this.deletedata=data;
-
-
+    this.deletedata = data;
   }
 
- //UPDATE DATA
- toUpdate():void{
-  const id=this.data.id
-  const updatedata=this.form.value
-  this.dashService.updateEmployee1(id,updatedata).subscribe(()=>{
-    console.log('dat updated successfully')
-  })
-}
+  //UPDATE DATA
+  toUpdate(): void {
+    const id = this.data.id;
+    const updatedata = this.form.value;
+    this.dashService.updateEmployee1(id, updatedata).subscribe(() => {
+      console.log('dat updated successfully');
+    });
+  }
+
   //SEARCH UID
   search() {
     console.log(this.query, 'search fn', this.designation);
@@ -110,29 +117,15 @@ export class EmployeeContentComponent implements OnInit {
       });
   }
 
-  function(){
-    this.show=!this.show;
+  function() {
+    this.show = !this.show;
   }
 
-  //FILTER DESIGNATION
-  filter(checkbox: string) {
-    this.designation = checkbox;
-    this.dashService
-      .searchuid(this.query, this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
-  }
 
-  opendpdtn=false;
+  opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
   }
-
-
-
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -143,6 +136,8 @@ export class EmployeeContentComponent implements OnInit {
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
     this.buttonColor2 = this.buttonColor2 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.Changeselect({ name: 'Designation' });
+    this.query = '';
   }
   changeColor3() {
     this.buttonbackgroundColor3 =
@@ -194,6 +189,11 @@ export class EmployeeContentComponent implements OnInit {
     this.secondStep = false;
     this.thirdStep = false;
     this.showModalContent = true;
+    //DYNAMIC UID
+    this.dashService.getEmployeeUid().subscribe((res: any) => {
+      console.log('data', res);
+      this.currentEmployeeUid = res.uid;
+    });
   }
   rowdelete = false;
 
@@ -220,8 +220,45 @@ export class EmployeeContentComponent implements OnInit {
   }
   nextForm2() {}
 
-  onOptionChange() {};
+  onOptionChange() {}
 
-
-
+  array: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+  Selectvariable: string = 'Designation';
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown = false;
+    console.log(arr.name);
+    this.designation = arr.name;
+    console.log('str', this.designation);
+    this.dashService
+      .searchuid(this.query, this.designation)
+      .subscribe((res) => {
+        console.log(res);
+        this.employee = res;
+        console.log('data', res);
+      });
+  }
 }

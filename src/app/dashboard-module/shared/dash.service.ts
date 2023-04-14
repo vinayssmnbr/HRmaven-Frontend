@@ -32,6 +32,10 @@ export class DashService {
   getLeave='https://hrm21.onrender.com/api/leave//'
   updateData='https://hrm21.onrender.com/attendance'
   getAttd='https://hrm21.onrender.com/attendance';
+  getuid='https://hrm21.onrender.com/api/uid'
+
+
+
 
 
 
@@ -81,5 +85,10 @@ export class DashService {
 
    getreport(){
      return this.http.get('https://hrm21.onrender.com/attendance/report');
+  }
+
+  getEmployeeUid(){
+    return this.http.get(this.getuid)
+
   }
 }
