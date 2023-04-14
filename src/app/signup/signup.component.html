@@ -96,10 +96,10 @@
                 <div class="field create-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Password</label>
-                        <input type="password" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
+                        <input type="text" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
                         <span *ngIf="password && password.invalid && password.touched "><i
-                                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password must be atleast 8
-                            characters</span>
+                                class="fa-sharp fa-solid fa-triangle-exclamation"></i>atleast 8
+                            characters and contain atleast one (A,a,@,1)</span>
                     </div>
 
                 </div>
@@ -109,7 +109,7 @@
                 <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
-                        <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
+                        <input type="text" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
                         <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i
                                 class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
                     </div>
@@ -124,7 +124,7 @@
                 <div class="input-field button">
                     <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
                 </div>
-                <div class="input-field">
+                <!-- <div class="input-field">
                     <p class="or_bar">OR</p>
                 </div>
                 <div class="social_btn" (click)="SignupByGoogle()">
@@ -132,8 +132,7 @@
                         <img class="google_logo" src="assets/images/google-logo.png" alt="google">
                         <p> Sign Up with Google</p>
                     </div>
-
-                </div>
+                </div> -->
             </form>
             <div class="logo">
                 <img src="assets/images/hrr 2.png" alt="logo">

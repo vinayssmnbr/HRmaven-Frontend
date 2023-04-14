@@ -3,6 +3,8 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
@@ -10,11 +12,26 @@ import { DOCUMENT } from '@angular/common';
 })
 export class DashboardContentComponent implements OnInit {
   constructor(
-    public dashService: DashService,
+    public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
+
+    this.dashService.getLeaves().subscribe((res: any) => {
+      console.log('data', res);
+      this.leaves = res;
+      this.leaves = this.leaves.sort((a, b) => {
+        if (a.status > b.status) return 1;
+        if (a.status < b.status) return -1;
+        return 1;
+      })
+      console.log(this.leaves)
+
+    });
+
+    this.showchart()
+
   }
   options: any = [
     {
@@ -47,13 +64,22 @@ export class DashboardContentComponent implements OnInit {
     console.log(index);
   }
 
+
+
   ToggleMenu(index: any) {
     var ul = document.getElementById(index);
     ul.classList.toggle('close');
+    ul.addEventListener('mouseleave',()=>{
+      ul.classList.add('close');
+    })
   }
 
+  leaves: any[] = [
 
-  ngOnInit() {
+
+  ]
+  ngOnInit()
+   {
     const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
       options = optionMenu.querySelectorAll<HTMLElement>('.option'),
@@ -70,7 +96,16 @@ export class DashboardContentComponent implements OnInit {
       });
     });
 
+
+
     // Create a chart object
+
+  }
+
+
+  showchart(){
+
+    this.dashService.getreport().subscribe((res:any)=>{
     const myChart = new Chart('myChart', {
       type: 'bar',
       data: {
@@ -91,8 +126,9 @@ export class DashboardContentComponent implements OnInit {
         datasets: [
           {
             label: 'Present',
-            data: [50, 800, 470, 500, 800, 600, 500, 400, 700, 300, 200, 100],
+            data: res.present,
             backgroundColor: ['#2D11FA'],
+            pointStyle: 'circle',
             borderColor: [
               // 'rgba(255, 99, 132, 1)',
               // 'rgba(54, 162, 235, 1)',
@@ -106,8 +142,9 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Absent',
-            data: [230, 450, 250, 350, 730, 650, 570, 350, 100, 50, 300, 400],
+            data:res.absent,
             backgroundColor: ['#FDA75A'],
+            pointStyle: 'circle',
             borderColor: [
               // 'rgba(255, 99, 132, 1)',
               // 'rgba(54, 162, 235, 1)',
@@ -121,8 +158,9 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Leaves',
-            data: [250, 300, 730, 740, 250, 450, 500, 800, 150, 200, 700, 1500],
+            data: res.leave,
             backgroundColor: ['#00C9FF'],
+            pointStyle: 'circle',
             borderColor: [
               // 'rgba(255, 99, 132, 1)',
               // 'rgba(54, 162, 235, 1)',
@@ -142,7 +180,66 @@ export class DashboardContentComponent implements OnInit {
             beginAtZero: true,
           },
         },
+        plugins: {
+          legend: {
+              labels: {
+                padding: 40,
+                usePointStyle: true,
+                font: {
+                  size: 10
+                }
+              }
+          }
+      }
       },
     });
+  });
   }
+
+
+
+
+updateLeaveStatus(id: any, status: 'accept' | 'reject') {
+  const url = `https://hrm21.onrender.com/api/leave/${id}`;
+  const body = { status: status };
+  this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
+  ).subscribe(response => {
+    console.log('Leave status updated successfully: ', response);
+
+  }, error => {
+    console.error('Error updating leave status:', error);
+
+  });
+
+}
+
+array: any = [
+  {
+    id: 0,
+    name: 'Weekly',
+  },
+  {
+    id: 1,
+    name: 'Monthly',
+  },
+  {
+    id: 3,
+    name: 'Yearly',
+  },
+
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
+
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = 'Monthly';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
+
 }

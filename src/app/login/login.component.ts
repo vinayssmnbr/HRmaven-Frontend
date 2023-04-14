@@ -28,18 +28,15 @@ export class LoginComponent {
   ngOnInit() {
     let counter = 1;
     setInterval(() => {
-      const radioBtn = document.getElementById(
-        `radio${counter}`
-      ) as HTMLInputElement;
-      if(radioBtn){
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
-      }
+    const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
+    if (radioBtn) {
+    radioBtn.checked = true;
+    counter++;
+    if (counter > 4) {
+    counter = 1;
+    }
     }
     }, 5000);
-
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
@@ -58,7 +55,7 @@ export class LoginComponent {
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
-    window.location.href = 'http://localhost:3000/auth/google';
+    window.location.href = 'https://hrm21.onrender.com/auth/google';
   }
 
   loginForm = new FormGroup({
@@ -110,7 +107,7 @@ export class LoginComponent {
   submit() {
     this.router.navigate(['/dashboard']);
   }
-  
+
 
 // submissions
 
@@ -120,7 +117,7 @@ onSubmit(data:any){
   this.userService.users(data).subscribe((res: any)=>{
     this.userService.users(this.loginForm)
 
-    
+
 
     console.log("login User: ", res)
     console.log("login User email: ", this.loginForm.controls['email'].value);
@@ -128,7 +125,7 @@ onSubmit(data:any){
       var today = new Date();
     var expire = new Date();
 
-    expire.setTime(today.getTime() + 3600000*24*15);
+    expire.setTime(today.getTime() + 12*60*60*1000);
     console.log('inside');
         document.cookie ="token= "  + res.token + ";path=/" + ";expires=" + expire.toUTCString();
       this.submit();

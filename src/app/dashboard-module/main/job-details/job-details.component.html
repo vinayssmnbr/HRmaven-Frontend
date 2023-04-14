@@ -65,14 +65,135 @@
     </div>
 </div>
 
+
+    <ng-container *ngIf="visible"> 
+        <div class="job-popup">
+        <div class="wrapper">
+            <div class="job_details">
+            <div class="left">
+                <div>
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                    <h2>Job details</h2>           
+            </div>
+            <div class="right">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+           
+             
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="info_heading">
+                <h6>General information</h6>
+            </div>
+    
+           <div class="info_parent">
+            <div class="info_left">
+                <div class="icon"><i class="fa-brands fa-spotify"></i></div>
+                <div class="info_text">
+                <h2>Spotify</h2>
+                <p>hr@spotify.com</p>
+                </div>
+            </div>
+            <div class="info_right">
+                <i class="fa-solid fa-square-share-nodes"></i>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+        </div>
+        </div>
+           <div class="wrapper"> 
+            <div class="job">
+            <div class="job_title">
+                <h6>Job Title</h6>
+                <p>UI/UX designer</p>
+            </div>
+            <div class="dated">
+                <h6>Dated</h6>
+                <p>Feb 24,2023</p>
+            </div>
+           </div>
+    
+           <div class="location_a">
+            <div class="location">
+                <h6>Location</h6>
+                <p>Chandigarh,punjab</p>
+            </div>
+            <div class="ctc">
+                <h6>CTC</h6>
+                <p>Rs. 4.5-5.40</p>
+            </div>
+           </div>
+    
+            <div class="experience">
+            <div class="experience_required">
+                <h6>Experience required</h6>
+                <p>1-2years</p>
+            </div>
+            <div class="skill_required">
+                <h6>Skills required</h6>
+                <p>Figma, After Effects,Illustration,3D design</p>
+            </div>
+            </div>
+    
+    
+    
+        </div>
+    
+       
+    
+    
+    
+        <div class="wrapper">
+            <div class="recruiter_content">
+               <h2>Recruiters List</h2>
+                <ul class="recruiters_list">
+                    <li>Amanda Kerry</li>
+                    <li>Cameron williamson</li>
+                    <li>Jason Billy</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="wrapper">
+            <div class="job_description_heading">
+                <h2>Job Description</h2>
+            
+            <div class="job_description_content">
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                
+            
+            </div>
+            </div>
+             
+                
+            
+        </div>
+        <div class="wrapper">
+            <div class="apply_for_job">
+                <button class="apply">Apply for the Job</button>
+            </div>
+        </div>
+    </div>
+     </ng-container>
+
+
+<!-- saacekt code end -->
 <div class="jobs">
     <div class="employe_input">
         <input type="text" placeholder="Candidate Name...">
-        <button class="btn2" (click)="changeColor2()" [style.background-color]="buttonbackgroundColor2"
+        <button class="btn2" (click)="onclick()" [style.background-color]="buttonbackgroundColor2"
       [style.color]="buttonColor2">Clear</button>
     <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3"
       [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Candidate</button>
     </div>
+
 
     <div class="table_data">
         <table class="table_text">
@@ -221,3 +342,21 @@
         </table>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Saacket-->
+<!--job detail Popup-->
+<!-- <button class="job" (click)="onclick()">Job details</button> -->
+

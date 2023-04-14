@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 import { DashService } from '../shared/dash.service';
 import { UserService } from '../../service/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -17,12 +17,16 @@ export class HeaderComponent {
   greeting: any;
   employee:string
   loggedInName: any ='';
-
+  userEmail: any = '';
+  name: any ='';
+  profileDisplay: boolean = false;
   getUsersProfile: any =[];
 
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
-     private router:Router ) {}
+     private router:Router, private elementRef :ElementRef ) {
+      this.getProfileData();
+     }
 
   ngOnInit() {
     const today = new Date();
@@ -41,22 +45,21 @@ export class HeaderComponent {
       this.greeting = "GOOD EVENING";
     }
 
-
+   this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+      this.profileDisplay = false;
+    });
   }
   toggleSearchBox(){
     this.showSearchBox=!this.showSearchBox;
   }
-  userEmail: any = '';
-  name: any ='';
 
-  profileDisplay: boolean = false;
 
     //  My code for profile fetch Name
   getProfileData(){
-    // this.dashService.getUserProfile().subscribe((res: any)=>{
-    //   this.userEmail=res.email;
-    //   this.name=res.username;
-    // });
+    this.dashService.getUserProfile().subscribe((res: any)=>{
+      this.userEmail=res.email.split("@")[0];
+      this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
+    });
 
   }
 
@@ -66,11 +69,21 @@ export class HeaderComponent {
 
   logout(){
     this.cookie.delete('token');
-    this.router.navigate(['login']);
+    this.router.navigate(['./login']);
 
   }
 
-
+ReadMore:boolean = true
+visible:boolean =false
+onclick(){
+this.ReadMore = !this.ReadMore;
+this.visible = !this.visible;
+}
+id:any="all";
+tabChange(ids:any){
+  this.id = ids;
+   console.log(this.id);
+}
 
 
 

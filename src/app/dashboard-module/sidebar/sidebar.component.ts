@@ -20,7 +20,7 @@ goToEmployee(){
 
 logout(){
   this.cookie.delete('token');
-  this.router.navigate(['login']);
+  this.router.navigate(['./login']);
 
 }
 

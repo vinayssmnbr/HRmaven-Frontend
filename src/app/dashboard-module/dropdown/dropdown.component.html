@@ -1,0 +1,12 @@
+<div class="dropdown_container">
+    <div class="dropdwon_select" (click)="dropdownOpen()">
+      <p>{{Selectvariable}}</p>
+      <i class="fa-sharp fa-solid fa-caret-down"></i>
+    </div>
+    <div class="select_content" *ngIf="contentdropdown">
+      <ul>
+        <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+          {{arr.name}}</li>
+      </ul>
+    </div>
+  </div>

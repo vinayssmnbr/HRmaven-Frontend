@@ -19,10 +19,10 @@ export class UserService {
     return this.cookie.get('token') !== '';
   }
 
-  saveurl = 'http://localhost:3000/signup';
-  loginurl = 'http://localhost:3000/login';
-  Forgoturl = 'http://localhost:3000/forgotpassword';
-  Reseturl = 'http://localhost:3000/resetpassword';
+  saveurl = 'https://hrm21.onrender.com/signup';
+  loginurl = 'https://hrm21.onrender.com/login';
+  Forgoturl = 'https://hrm21.onrender.com/forgotpassword';
+  Reseturl = 'https://hrm21.onrender.com/resetpassword';
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -56,7 +56,7 @@ export class UserService {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    const url = `http://localhost:3000/user-profile`;
+    const url = `https://hrm21.onrender.com/user-profile`;
 
     return this.http.get(url, { headers }).pipe(
       map((response: any) => {
@@ -67,25 +67,25 @@ export class UserService {
 
 
     allDataLogin() {
-      // const token = this.cookie.get("token");
+      const token = this.cookie.get("token");
 
-      // if (!token) {
-      //   this.router.navigate(['login']);
-      //   return;
-      // }
+      if (!token) {
+        this.router.navigate(['login']);
+        return;
+      }
 
-      // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-      // this.http.get('http://localhost:3000/auth', { headers }).subscribe(
-      //   (res: any) => {
-      //     this.isLoggedIn.next(true);
-      //     this.router.navigate(['dashboard']);
-      //   },
-      //   (error) => {
-      //     console.log(error);
-      //     this.router.navigate(['login']);
-      //   }
-      // );
+      this.http.get('https://hrm21.onrender.com/auth', { headers }).subscribe(
+        (res: any) => {
+          this.isLoggedIn.next(true);
+          this.router.navigate(['dashboard']);
+        },
+        (error) => {
+          console.log(error);
+          this.router.navigate(['login']);
+        }
+      );
     }
 
 

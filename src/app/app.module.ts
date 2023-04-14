@@ -1,7 +1,5 @@
-// import { NgModule } from '@angular/core';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +11,8 @@ import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 
 @NgModule({
   declarations: [
@@ -21,8 +21,6 @@ import { AuthGuard } from './guards/auth.guard';
     ForgetComponent,
     LoaderComponent,
     LoginComponent
-
-
   ],
   imports: [
     BrowserModule,
@@ -31,6 +29,8 @@ import { AuthGuard } from './guards/auth.guard';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

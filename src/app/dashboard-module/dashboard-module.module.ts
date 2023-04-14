@@ -14,6 +14,10 @@ import { PayrollContentComponent } from './main/payroll-content/payroll-content.
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { SearchPipe } from './pipe/search.pipe';
+import { AttendanceFilterPipe } from './pipe/attendance-filter.pipe';
+import { SortingPipe } from './pipe/sorting.pipe';
+import { DropdownComponent } from './dropdown/dropdown.component';
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 
@@ -31,6 +35,10 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
            PayrollContentComponent,
            RecruitmentContentComponent,
            ReportContentComponent,
+           SearchPipe,
+           AttendanceFilterPipe,
+           SortingPipe,
+           DropdownComponent,
            JobDetailsComponent,
            EmployeeProfileComponent
 
@@ -44,13 +52,15 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
     NgCircleProgressModule.forRoot({
       "animateTitle": false,
       "animationDuration": 1000,
-      "showTitle": false,
-      "showSubtitle": false,
-      "showUnits": false,
+      // "showTitle": false,
+      // "showSubtitle": false,
+      // "showUnits": false,
       "showBackground": false,
       "clockwise": false,
       "startFromZero": false,
       "lazy": true}),
-  ]
+  ],
+  providers: [SearchPipe]
+
 })
 export class DashboardModuleModule {}
