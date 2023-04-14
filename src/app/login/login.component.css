@@ -495,7 +495,8 @@ input:focus {
     font-size: 18px;
     color: #B4B4B4;
 }
-.forgot_illustration img{
+
+.forgot_illustration img {
     padding-top: 50px;
 }
 
@@ -514,7 +515,7 @@ input:focus {
 }
 
 .modal_content h2 {
-   padding-top: 16px;
+    padding-top: 16px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -569,7 +570,8 @@ input:focus {
     margin-top: 20px;
     cursor: pointer;
 }
-.modal_content button:hover{
+
+.modal_content button:hover {
     background-color: #130cdb;
 }
 
@@ -581,7 +583,6 @@ input:focus {
 .forget_email_send_content.open {
     visibility: visible;
     position: absolute;
-    border: 1px solid red;
     width: 100%;
     height: 100vh;
     top: 0;
@@ -601,14 +602,27 @@ input:focus {
     height: 402px;
     border-radius: 17px;
     text-align: center;
+
+}
+
+.forget_text {
+    width: 410px;
+    height: 130px;
+    background-color: rgba(123, 211, 109, 0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .forget_content .icon i {
-    padding-left: 200px;
     position: absolute;
-    padding-top: 34px;
     color: #B4B4B4;
     cursor: pointer;
+    margin-top: -160px;
+    margin-left: 310px;
+    font-size: 22px;
+
 }
 
 .forget_content {
@@ -633,6 +647,21 @@ input:focus {
     padding-top: 16px;
 }
 
+.done_btn {
+    width: 82px;
+    height: 38px;
+    background-color: #3D9130;
+    border-radius: 8px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    padding: 9px 24px;
+    cursor: pointer;
+    border: none;
+}
+.done_btn:hover{
+    background-color: #0f4a06;
+}
+
 form.ng-invalid.ng-touched #submit1 {
     cursor: not-allowed;
 }
@@ -642,36 +671,40 @@ form.ng-invalid input[type="submit"] {
     cursor: not-allowed;
 
 }
+
 /* ----------------------------------------------- */
-.modal-content4{
+.modal-content4 {
     width: 430px;
-      height: 309px;
-        background: #FFFFFF;
-        border-radius: 20px;
-        padding: 20px 10px;
-    }
-    .modal-header4{
-      width: 410px;
-      height: 130px;
-      background: rgba(123, 211, 109, 0.3);
-        border-radius: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .modal-body4{
-      display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        flex-direction: column;
-    }
-    .modal-body4 h3{
-      font-family: 'Outfit';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        color: #444444;
-    }
+    height: 309px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px 10px;
+}
+
+.modal-header4 {
+    width: 410px;
+    height: 130px;
+    background: rgba(123, 211, 109, 0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.modal-body4 h3 {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #444444;
+}
