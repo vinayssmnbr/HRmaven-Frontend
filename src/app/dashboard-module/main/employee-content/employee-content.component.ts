@@ -40,7 +40,7 @@ export class EmployeeContentComponent implements OnInit {
 
 
   form = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('', Validators.required),
     designation: new FormControl(''),
     employee_id: new FormControl(''),
     dateOfJoining: new FormControl(''),
@@ -53,7 +53,7 @@ export class EmployeeContentComponent implements OnInit {
     adhaarno: new FormControl(''),
     accountno: new FormControl(''),
     ifsc: new FormControl(''),
-    panno: new FormControl(''),
+    panno: new FormControl('',[Validators.required,Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)]),
   });
 
 
