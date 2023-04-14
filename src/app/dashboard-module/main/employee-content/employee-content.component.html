@@ -6,6 +6,7 @@
     <input type="number" class="number1 no-spin" placeholder="Type Employee Name or ID">
     <i class="fa-solid fa-magnifying-glass"></i>
     </div>
+
     <div class="dropdown_container">
       <div class="dropdwon_select" (click)="dropdownOpen()">
         <p>{{Selectvariable}}</p>
@@ -18,7 +19,6 @@
         </ul>
       </div>
     </div>
-
     <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3"
       [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>

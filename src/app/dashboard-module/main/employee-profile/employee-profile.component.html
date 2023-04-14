@@ -623,7 +623,18 @@
             </div>
             <div class="input">
               <label>Timings</label>
-              <input type="text" placeholder="9:00 am to 5:00 pm" formControlName="timings">
+            <div class="dropdown_container">
+              <div class="dropdwon_select" (click)="dropdownOpen5()">
+                <p>{{Selectvariable5}}</p>
+                <i class="fa-sharp fa-solid fa-caret-down"></i>
+              </div>
+              <div class="select_content" *ngIf="contentdropdown5">
+                <ul>
+                  <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5" (click)="Changeselect5(arr5)">
+                    {{arr5.name}}</li>
+                </ul>
+              </div>
+            </div>
             </div>
             <div class="input">
               <label>CTC</label>

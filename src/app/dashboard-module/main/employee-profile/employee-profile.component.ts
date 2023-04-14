@@ -123,6 +123,10 @@ isPersonalDetailsActive=true;
     {
       id: 4,
       name: 'ICICI Bank',
+    },
+    {
+      id:5,
+      name:'Others',
     }
   ];
   array3: any = [
@@ -162,11 +166,26 @@ isPersonalDetailsActive=true;
     },
     {
       id: 7,
-      name: 'O+',
+      name: 'Others',
+    },
+
+  ];
+  array5: any = [
+    {
+      id: 0,
+      name: '9:00 am to 5:00 pm',
     },
     {
-      id: 8,
-      name: 'O-',
+      id: 1,
+      name: '9:00 am to 6:00pm',
+    },
+    {
+      id: 2,
+      name: '10:00 am to 5:00pm',
+    },
+    {
+      id: 1,
+      name: '10:00 am to 6:00pm',
     },
   ];
   contentdropdown: boolean = false;
@@ -197,7 +216,7 @@ isPersonalDetailsActive=true;
   Changeselect2(arr2: any) {
     this.Selectvariable2 = arr2.name;
     this.colorvariable2 = arr2.id;
-    this.contentdropdown = false;
+    this.contentdropdown2 = false;
     console.log(arr2.name);
   }
   Selectvariable3: string = 'Select';
@@ -205,7 +224,7 @@ isPersonalDetailsActive=true;
   Changeselect3(arr3: any) {
     this.Selectvariable3 = arr3.name;
     this.colorvariable3 = arr3.id;
-    this.contentdropdown = false;
+    this.contentdropdown3 = false;
     console.log(arr3.name);
   }
 personaldetails(){
@@ -336,7 +355,20 @@ closeModal6(){
   Changeselect4(arr4: any) {
     this.Selectvariable4 = arr4.name;
     this.colorvariable4 = arr4.id;
-    this.contentdropdown = false;
+    this.contentdropdown4 = false;
     console.log(arr4.name);
+  }
+  contentdropdown5: boolean = false;
+  dropdownOpen5() {
+
+    this.contentdropdown5 = !this.contentdropdown5;
+  }
+  Selectvariable5: string = 'Select';
+  colorvariable5: number = 0;
+  Changeselect5(arr5: any) {
+    this.Selectvariable5 = arr5.name;
+    this.colorvariable5 = arr5.id;
+    this.contentdropdown5 = false;
+    console.log(arr5.name);
   }
 }

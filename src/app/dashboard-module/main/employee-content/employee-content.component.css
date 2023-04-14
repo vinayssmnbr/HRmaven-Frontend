@@ -8,7 +8,7 @@
 }
 .selection{
   display: flex;
-  gap: 10px;
+
   padding-top:65px;
 }
 
@@ -1242,9 +1242,7 @@ width: 430px;
   color: #333;
   padding-left: 10px;
 }
-.dropdown-container{
-  margin-left: 50px;
-}
+
 .dropdwon_select {
   background-color: #fff;
   width: 172px;
