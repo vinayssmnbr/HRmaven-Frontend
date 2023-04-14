@@ -42,7 +42,7 @@
     display: flex;
     gap: 10px;
     margin-left: 30px;
-    padding-top: 30px;
+    padding-top: 0px;
     padding-bottom: 20px;
 }
 
@@ -361,6 +361,158 @@ input[type="radio"] {
     background-color: #cbcbcb;
     opacity: 1;
   }
+
+  .Skills-required {
+    margin-top: 18px;
+  }
+  
+  .skills li {
+    background-color: #EFEFF8;
+    border-radius: 8px;
+    padding: 4px 8px;
+  }
+  
+  .Skills-head h6 {
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  ul.skills {
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2F2C9F;
+  }
+
+  .col-4 {
+    padding-top: 30px;
+    display: inline-block;
+  }
+
+  .card-head {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+  
+  .card-logo {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .card {
+    display: inline-block;
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    width: 1664px;
+    margin-left: 223px;
+  }
+  
+  .card-logo .spotify {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8.7px;
+  }
+  
+  .card-outer {
+    height: 59px;
+    width: 100%;
+    border-bottom: 1px solid #F0F0F0;
+  }
+
+  .card-text h5 {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .card-text p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+  }
+
+  .progress-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .progress-btn .progres {
+    width: 82px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+    background: rgba(253, 167, 90, 0.2);
+    border-radius: 1000px;
+    margin-left: 15px;
+  }
+
+  .progress-btn .progres:hover {
+    border: 1px solid #7BD36D;
+  }
+
+  .job-interview{
+    display: flex;
+
+  }
+
+  .description-heading h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  .Description {
+    padding-top: 20px;
+  }
+  
+  .description-heading p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+    text-align: justify;
+  }
+
+  .card-bottom {
+    background-color: #F7F7FD;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-bottom: 13px;
+    color: #555555;
+  }
+  
+  .card-bottom .info {
+    padding: 15px;
+    display: flex;
+  }
+
+  .location-head h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+  }
+
+  .location-head p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+  }
+
+  .location {
+    display: flex;
+    font-size: 12px;
+    gap: 19px;
+    padding: 15px 18px;
+  }
+
+  .location li i,
+.year li i {
+  padding-right: 8.3px;
+}
 
 @keyframes outline-checked {
     0% {
