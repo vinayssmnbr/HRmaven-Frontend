@@ -2,8 +2,8 @@
 <app-header></app-header>
 <div class="main">
   <div class="selection">
-    <input type="text" placeholder="Type Employee ID...">
-
+    <input type="number" class="number1 no-spin" placeholder="Type Employee Name or ID">
+    <i class="fa-solid fa-magnifying-glass"></i>
 
 
 
@@ -40,7 +40,12 @@
                     </td>
                 </tr>
             </tbody>
+
         </table>
+        <div class="image_record">
+          <img src="./assets/images/no_record.png" alt="">
+          <h3>No record Found!</h3>
+        </div>
     </div>
 
     <div class="modal" *ngIf="showModal">
@@ -51,10 +56,7 @@
             </div>
 
 
-    <div class="image_record">
-      <img src="./assets/images/no_record.png" alt="">
-      <h3>No record Found!</h3>
-    </div>
+
   </div>
 
   <div class="modal" *ngIf="showModal">
@@ -150,7 +152,7 @@
           <div class="form-row">
             <div class="input">
               <label>Address <span>*</span></label>
-             <textarea placeholder="Enter Employee Address..." cols="80" rows="8" id="text2"></textarea>
+             <textarea placeholder="Enter Employee Address..." cols="80" rows="8" id="text2" resize="none"></textarea>
             </div>
           </div>
         </form>
@@ -191,9 +193,9 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="input">
+            <div class="input" >
               <label>PAN number <span>*</span></label>
-              <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno">
+              <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" >
             </div>
           </div>
         </form>
@@ -248,3 +250,7 @@
         </div>
 
     </div>
+</div>
+</div>
+
+</div>
