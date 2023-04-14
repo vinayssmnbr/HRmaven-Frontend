@@ -16,6 +16,10 @@
   display: flex;
   gap: 10px;
 }
+.input_field i{
+  position: absolute;
+  margin-left: -240px;
+}
 
 .number1 {
   padding: 20px 32px;
