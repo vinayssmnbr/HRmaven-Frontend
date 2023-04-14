@@ -81,6 +81,133 @@ isPersonalDetailsActive=true;
       name: 'Others',
     }
   ];
+  array: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Forntend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 5,
+      name: 'Quality Analyst',
+    }
+  ];
+  array2: any = [
+    {
+      id: 0,
+      name: 'State Bank Of India',
+    },
+    {
+      id: 1,
+      name: 'Punjab National Bank',
+    },
+    {
+      id: 2,
+      name: 'Central Bank Of India',
+    },
+    {
+      id: 3,
+      name: 'HDFC Bank',
+    },
+    {
+      id: 4,
+      name: 'ICICI Bank',
+    }
+  ];
+  array3: any = [
+    {
+      id: 0,
+      name: 'Married',
+    },
+    {
+      id: 1,
+      name: 'Unmarried',
+    },
+  ];
+  array4: any = [
+    {
+      id: 0,
+      name: 'A+',
+    },
+    {
+      id: 1,
+      name: 'A-',
+    },
+    {
+      id: 3,
+      name: 'B+',
+    },
+    {
+      id: 4,
+      name: 'B-',
+    },
+    {
+      id: 5,
+      name: 'AB+',
+    },
+    {
+      id:6,
+      name:'AB-',
+    },
+    {
+      id: 7,
+      name: 'O+',
+    },
+    {
+      id: 8,
+      name: 'O-',
+    },
+  ];
+  contentdropdown: boolean = false;
+  contentdropdown2: boolean = false;
+  contentdropdown3:boolean=false;
+  dropdownOpen() {
+
+    this.contentdropdown = !this.contentdropdown;
+  }
+  dropdownOpen2() {
+
+    this.contentdropdown2 = !this.contentdropdown2;
+  }
+  dropdownOpen3() {
+
+    this.contentdropdown3 = !this.contentdropdown3;
+  }
+  Selectvariable: string = 'Designation';
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown = false;
+    console.log(arr.name);
+  }
+  Selectvariable2: string = 'Select Bank';
+  colorvariable2: number = 0;
+  Changeselect2(arr2: any) {
+    this.Selectvariable2 = arr2.name;
+    this.colorvariable2 = arr2.id;
+    this.contentdropdown = false;
+    console.log(arr2.name);
+  }
+  Selectvariable3: string = 'Select';
+  colorvariable3: number = 0;
+  Changeselect3(arr3: any) {
+    this.Selectvariable3 = arr3.name;
+    this.colorvariable3 = arr3.id;
+    this.contentdropdown = false;
+    console.log(arr3.name);
+  }
 personaldetails(){
 this.personaldetail=true;
 this.jobdetail=false;
@@ -198,5 +325,18 @@ closeModal6(){
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
+  }
+  contentdropdown4: boolean = false;
+  dropdownOpen4() {
+
+    this.contentdropdown4 = !this.contentdropdown4;
+  }
+  Selectvariable4: string = 'Select';
+  colorvariable4: number = 0;
+  Changeselect4(arr4: any) {
+    this.Selectvariable4 = arr4.name;
+    this.colorvariable4 = arr4.id;
+    this.contentdropdown = false;
+    console.log(arr4.name);
   }
 }
