@@ -31,14 +31,22 @@
   font-size: 14px;
   line-height: 140%;
 }
-.input_field i{
-  position: absolute;
- margin-left: -240px;
+
+.drop-icon p {}
+
+.input_icon {
+  margin-top: -20px;
 }
-.dropdown_content i{
-  position: absolute;
-  margin-left: 115px;
+
+.drop-icon i {
+
+  position: relative;
+  margin-left: 90px;
+
+
+
 }
+
 
 input:hover,
 input:focus {
@@ -1218,71 +1226,6 @@ input.ng-valid {
   margin-top: 30px;
   margin-bottom: 30px;
   color: #444444;
-}
-
-/*----------- Drop Down Menu------------ */
-
-.select-menu {
-  width: 190px;
-  height: 44px;
-  padding-bottom: 10px;
-}
-
-.select-menu .select-btn {
-  display: flex;
-  background: #fff;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: 400;
-  border-radius: 8px;
-  align-items: center;
-  cursor: pointer;
-  justify-content: space-between;
-  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  color: #444444;
-}
-
-.select-btn i {
-  font-size: 25px;
-  transition: 0.3s;
-  color: #444444;
-  font-size: 20px;
-}
-
-.select-menu.active .select-btn i {
-  transform: rotate(-180deg);
-}
-
-.select-menu .options {
-  position: relative;
-  background: #fff;
-  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-  display: none;
-
-}
-
-.select-menu.active .options {
-  display: block;
-}
-
-.options .option {
-  display: flex;
-  height: 45px;
-  cursor: pointer;
-  align-items: center;
-  background: #fff;
-  font-size: 14px;
-  padding-left: 10px;
-}
-
-.options .option:hover {
-  background: #F2F2F2;
-}
-
-.option i {
-  font-size: 25px;
-  margin-right: 12px;
 }
 
 .dropdwon_select {

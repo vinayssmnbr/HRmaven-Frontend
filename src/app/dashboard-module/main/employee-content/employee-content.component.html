@@ -10,8 +10,12 @@
 
       <div class="dropdown_content">
         <div class="dropdwon_select" (click)="dropdownOpen()">
-          <p>{{Selectvariable}}</p>
-          <i class="fa-sharp fa-solid fa-caret-down"></i>
+          <div class="drop-icon">
+            <p>{{Selectvariable}}</p>
+          <div class="input_icon">
+            <i class="fa-sharp fa-solid fa-caret-down"></i>
+          </div>
+          </div>
         </div>
         <div class="select_content" *ngIf="contentdropdown">
           <ul>
