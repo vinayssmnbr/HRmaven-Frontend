@@ -70,9 +70,10 @@
     border-radius: 8px;
     position: absolute;
     right: 30px;
-    margin-top: 76px;
+    margin-top: 65px;
     padding: 25px 20px;
-    z-index: 99;
+    z-index: 9999;
+    position: fixed;
 }
 
 .profile-content img{
@@ -128,19 +129,21 @@
 
 .profile-logo img {
     margin-top: 10px;
-    height: 30px;
+    height: 40px;
     width: 40px;
 }
 
 .account {
-    /* display: flex; */
     height: 46px;
     width: 230px;
     background-color: #F7F7FB;
     border-radius: 8px;
     outline: none;
 }
-
+.account:hover,
+.account:focus{
+    border: 1px solid #2F2C9F;
+}
 .account-btn {
     display: flex;
     border: none;
@@ -491,8 +494,8 @@ i.fa-solid.fa-star {
 }
 
 /*  */
-.profile_div {
+/* .profile_div {
   position:fixed;
   top:73px;
   right:5px;
-}
+} */

@@ -361,7 +361,9 @@ a {
 .leave-request-heading p {
   color: #2F2C9F;
 }
-
+.leave-request-heading p a{
+  cursor: pointer;
+}
 .activity-area {
   background-color: #FFFFFF;
   padding: 20px 19px 14px 20px;
@@ -442,7 +444,7 @@ table {
 
 table {
   border-spacing: 2px 5px;
-  background-color: #EFEFF8;
+  /* background-color: #EFEFF8; */
 }
 
 table,
@@ -661,18 +663,18 @@ input[type="radio"] {
 .table_data {
   width: 100%;
   padding-top: 10px;
-  cursor: pointer;
 }
 
 .table_text {
   width: 100%;
-  /* padding: 0 30px; */
 
 }
-
-table {
-  border-spacing: 2px 5px;
-  /* background-color: #EFEFF8; */
+.table_heading th{
+  border-spacing: 2px 5px !important;
+}
+table{
+ border-spacing: 2px 5px;
+  
 }
 
 table,
@@ -748,8 +750,8 @@ td {
 }
 
 input[type="radio"] {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 12px;
+  width: 12px;
   margin-right: 0.5rem;
   cursor: pointer;
 }
@@ -759,7 +761,7 @@ input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   border: 0.2rem solid #fff;
-  background-color: #e8e8e8;
+  background-color: transparent;
   border-radius: 50%;
 }
 
@@ -775,13 +777,13 @@ input[type="radio"] {
   outline: 2px solid #e8e8e8;
 }
 
-#outline1:hover {
+/* #outline1:hover {
   outline-color: #29A74C;
 }
 
 #outline:hover {
   outline-color: #FA5D5D;
-}
+} */
 
 #outline1:checked {
   outline-color: #29A74C;

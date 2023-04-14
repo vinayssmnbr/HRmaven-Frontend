@@ -96,7 +96,7 @@
                 <div class="field create-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Password</label>
-                        <input type="password" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
+                        <input type="text" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
                         <span *ngIf="password && password.invalid && password.touched "><i
                                 class="fa-sharp fa-solid fa-triangle-exclamation"></i>atleast 8
                             characters and contain atleast one (A,a,@,1)</span>
@@ -109,7 +109,7 @@
                 <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
-                        <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
+                        <input type="text" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
                         <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i
                                 class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
                     </div>

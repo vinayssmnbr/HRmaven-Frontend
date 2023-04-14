@@ -26,17 +26,17 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-    let counter = 1;
+    let counter = 0;
     setInterval(() => {
-    const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
-    if (radioBtn) {
-    radioBtn.checked = true;
-    counter++;
-    if (counter > 4) {
-    counter = 1;
-    }
-    }
-    }, 5000);
+      const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
+      if (radioBtn) {
+        radioBtn.checked = true;
+        counter++;
+        if (counter === 4) {
+          counter =0;
+        }
+      }
+    }, 3500);
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
@@ -73,15 +73,15 @@ export class LoginComponent {
   });
 
   showPassword = false;
-  showPasswordIcon = 'fa-eye';
+  showPasswordIcon = 'fa-eye-slash';
   Forgotshow = false;
   EmailSent = false;
   Invalid = false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
-    this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
-    passwordInput.type = this.showPassword ? 'text' : 'password';
+    this.showPasswordIcon = this.showPassword ?  'fa-eye-slash':'fa-eye';
+    passwordInput.type = this.showPassword ? 'password' : 'text';
   }
 
   toggleForgot() {

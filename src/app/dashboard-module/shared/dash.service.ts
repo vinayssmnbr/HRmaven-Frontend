@@ -26,17 +26,21 @@ export class DashService {
     );
   }
 
-  createData = 'https://hrm21.onrender.com/api/create';
-  getData = 'https://hrm21.onrender.com/api/find';
-  deleteData = 'https://hrm21.onrender.com/api/';
-  getLeave='https://hrm21.onrender.com/api/leave//'
-  updateData='https://hrm21.onrender.com/attendance'
-  getAttd='https://hrm21.onrender.com/attendance';
-  getuid='https://hrm21.onrender.com/api/uid'
+  // createData = 'https://hrm21.onrender.com/api/create';
+  // getData = 'https://hrm21.onrender.com/api/find';
+  // deleteData = 'https://hrm21.onrender.com/api/';
+  // getLeave='https://hrm21.onrender.com/api/leave//'
+  // updateData='https://hrm21.onrender.com/attendance'
+  // getAttd='https://hrm21.onrender.com/attendance';
 
 
-
-
+  createData = 'http://localhost:3000/api/create';
+  getData = 'http://localhost:3000/api/find';
+  deleteData = 'http://localhost:3000/api/api/';
+  getLeave='http://localhost:3000/api/leave/'
+  updateData='http://localhost:3000/api/attendance'
+  getAttd='http://localhost:3000/api/attendance';
+  getuid='http://localhost:3000/api/uid'
 
 
   addEmployee(data) {
