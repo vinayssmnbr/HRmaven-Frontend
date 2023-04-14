@@ -87,15 +87,15 @@
             <div class="modal-input-text">
                 <h1>Attendance Rectification</h1>
             </div>
-            
+
             <div class="input_form2 ">
                 <div class="form__group ">
                     <label for="name ">Name</label>
-                    <input type="text " formControlName="" placeholder="V.Sarath Kumar Reddy" />
+                    <input type="text " formControlName="name" [disabled]="true" />
                 </div>
                 <div class="form__group ">
                     <label for="name ">Employee ID</label>
-                    <input type="text " formControlName="" placeholder="29497" />
+                    <input type="text " formControlName="empId" [disabled]="true" />
                 </div>
                 <div class="form__group ">
                     <label for="name ">Date</label>
@@ -107,16 +107,16 @@
                     <label for="name ">Status</label>
                     <div class="dropdown_container">
                         <div class="dropdwon_select" (click)="dropdownOpen()">
-                          <p>{{Selectvariable}}</p>
-                          <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            <p>{{Selectvariable}}</p>
+                            <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
                         <div class="select_content" *ngIf="contentdropdown">
-                          <ul>
-                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                              {{arr.name}}</li>
-                          </ul>
+                            <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                    {{arr.name}}</li>
+                            </ul>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch In</label>
