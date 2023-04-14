@@ -85,7 +85,7 @@
           <div class="form-row">
             <div class="input">
               <label>Name <span>*</span></label>
-              <input type="text" id="text1" placeholder="Smriti Mandhana" formControlName="name" required>
+              <input type="text" id="text1" placeholder="Zana Jones" formControlName="name" required>
             </div>
             <div class="input">
               <label>Designation <span>*</span></label>
@@ -106,7 +106,7 @@
           <div class="form-row">
             <div class="input">
               <label>Employee ID <span>*</span></label>
-              <input type="number" id="text3"  placeholder="29686" formControlName="employee_id" [disabled]="true" readonly>
+              <input type="number" class="no-spin" id="text3"  placeholder="29686" formControlName="employee_id" [disabled]="true" readonly>
             </div>
             <div class="input">
               <label>Date of Joining <span>*</span></label>
@@ -142,7 +142,7 @@
           <div class="form-row">
             <div class="input">
               <label>Mobile No. <span>*</span></label>
-              <input type="number" id="text6" placeholder="XXXXXX0652" formControlName="mobile">
+              <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile" [ngClass]="{'is-invalid':registrationFormControl.mobile.invalid,'is-valid':registrationFormControl.mobile.valid}" >
             </div>
             <div class="input">
               <label>Email <span>*</span></label>
@@ -179,7 +179,7 @@
             </div>
             <div class="input">
               <label>Account Number <span>*</span></label>
-              <input type="number" id="text10" placeholder="10309856890" formControlName="accountno">
+              <input type="number" class="no-spin" id="text10" placeholder="10309856890" formControlName="accountno">
             </div>
           </div>
           <div class="form-row">
@@ -189,13 +189,13 @@
             </div>
             <div class="input">
               <label>Aadhar Card No. <span>*</span></label>
-              <input type="number" id="text12" placeholder="XXXX XXXX 6709 " formControlName="adhaarno">
+              <input type="number " class="no-spin" id="text12" placeholder="XXXX XXXX 6709 " formControlName="adhaarno" [ngClass]="{'is-invalid':registrationFormControl.adhaarno.invalid,'is-valid':registrationFormControl.adhaarno.valid}" *ngIf="registrationFormControl.adhaarno.invalid ">
             </div>
           </div>
           <div class="form-row">
             <div class="input" >
               <label>PAN number <span>*</span></label>
-              <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" >
+              <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" [ngClass]="{'is-invalid':registrationFormControl.panno.invalid,'is-valid':registrationFormControl.panno.valid}" *ngIf="registrationFormControl.panno.invalid ">
             </div>
           </div>
         </form>
