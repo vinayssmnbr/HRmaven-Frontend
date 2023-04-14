@@ -278,7 +278,7 @@ input:focus {
 }
 
 
-/*    Slider  card*/
+/* ---------------------- Slider card--------------------*/
 
 .slider {
     display: flex;
@@ -292,85 +292,85 @@ input:focus {
     display: none;
 }
 
-.navigation_manual {
+.navigation-manual{
     position: absolute;
     width: 530px;
+    margin-top: -40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
-}
-
-.manual_btn {
-    border: 1px solid #fff;
+  }
+  
+  .manual-btn{
+    border: 2px solid #fff;
     padding: 4px;
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
-    margin-top: -100px;
-}
-
-.manual_btn:not(:last-child) {
-    margin-right: 12px;
-}
-
-.manual_btn:hover {
-    background-color: #fff;
-}
-
-#radio1:checked~.first {
+  }
+  
+  .manual-btn:not(:last-child){
+    margin-right: 20px;
+  }
+  
+  .manual-btn:hover{
+    background: #fff;
+  }
+  
+  #radio1:checked ~ .first{
     margin-left: 0;
-}
-
-#radio2:checked~.first {
+  }
+  
+  #radio2:checked ~ .first{
     margin-left: -20%;
-}
-
-#radio3:checked~.first {
+  }
+  
+  #radio3:checked ~ .first{
     margin-left: -40%;
-}
-
-#radio4:checked~.first {
+  }
+  
+  #radio4:checked ~ .first{
     margin-left: -60%;
-}
-
-.navigation_auto {
+  }
+  
+  /*css for automatic navigation*/
+  
+  .navigation-auto{
     position: absolute;
     display: flex;
-    width: 800px;
+    width: 380px;
     justify-content: center;
+    margin-top: 293px;
     align-items: center;
-    margin-top: 360px;
-    display: none;
-}
-
-.navigation_auto div {
-    border: 2px solid #ddd;
-    padding: 5px;
+  }
+  
+  .navigation-auto div{
+    border: 2px solid #fff;
+    padding: 4px;
     border-radius: 10px;
     transition: 1s;
-}
-
-.navigation_auto div:not(:last-child) {
-    margin-right: 40px;
-}
-
-#radio1:checked~.navigation_auto .auto-btn1 {
-    background-color: #ddd;
-}
-
-#radio2:checked~.navigation_auto .auto-btn2 {
-    background-color: #ddd;
-}
-
-#radio3:checked~.navigation_auto .auto-btn3 {
-    background-color: #ddd;
-}
-
-#radio4:checked~.navigation_auto .auto-btn4 {
-    background-color: #ddd;
-}
-
+  }
+  
+  .navigation-auto div:not(:last-child){
+    margin-right: 20px;
+  }
+  
+  #radio1:checked ~ .navigation-auto .auto-btn1{
+    background: #fff;
+  }
+  
+  #radio2:checked ~ .navigation-auto .auto-btn2{
+    background: #fff;
+  }
+  
+  #radio3:checked ~ .navigation-auto .auto-btn3{
+    background: #fff;
+  }
+  
+  #radio4:checked ~ .navigation-auto .auto-btn4{
+    background: #fff;
+  }
+        
 .password-toggle i {
     position: absolute;
     margin-top: -46px;

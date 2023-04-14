@@ -21,7 +21,7 @@ export class SignupComponent {
           counter = 0;
         }
       }
-    }, 3500);
+    }, 3000);
   }
 
   constructor(public userService:UserService, private router : Router){}
@@ -45,20 +45,20 @@ export class SignupComponent {
   }
 
   showPassword = false;
-showPasswordIcon = 'fa-eye';
+showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
-  passwordInput.type = this.showPassword ? 'text' : 'password';
+  this.showPasswordIcon = this.showPassword ? 'fa-eye':'fa-eye-slash'  ;
+  passwordInput.type = this.showPassword ? 'password':'text' ;
 }
 
 showPassword1 = false;
-showPasswordIcon1 = 'fa-eye';
+showPasswordIcon1 = 'fa-eye-slash';
 togglePassword(passwordInpu: any) {
   this.showPassword1 = !this.showPassword1;
   this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
-  passwordInpu.type = this.showPassword1 ? 'text' : 'password';
+  passwordInpu.type = this.showPassword1 ?  'password':'text';
 }
 
 
