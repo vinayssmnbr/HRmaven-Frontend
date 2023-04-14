@@ -39,6 +39,7 @@ leaves:any[]=[]
   editmodal=false;
   showCard1: boolean=true;
   showTable=true;
+  attDate:any="";
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
@@ -122,7 +123,7 @@ leaves:any[]=[]
                padding: 40,
                usePointStyle: true,
                font: {
-                 size: 14,
+                 size: 10,
                },
              },
            },

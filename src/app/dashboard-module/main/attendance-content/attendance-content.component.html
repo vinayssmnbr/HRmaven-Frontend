@@ -37,7 +37,7 @@
                 <tr *ngFor="let user of employee | attendanceFilter:employeename">
                     <td>{{user.empId}}</td>
                     <td>{{user.name}}</td>
-                    <td>{{user.date | date:'short'}}</td>
+                    <td>{{user.date | date:'shortDate'}}</td>
                     <td>{{user.status}}</td>
                     <td>{{user.punch_in}}</td>
                     <td>{{user.punch_out}}</td>

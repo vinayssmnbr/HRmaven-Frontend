@@ -381,6 +381,7 @@ input:focus {
 
 
 /*  <!-- Password incorrect Modal --> */
+
 .incorrect_password.close {
     display: none;
 }
@@ -575,7 +576,9 @@ input:focus {
     background-color: #130cdb;
 }
 
+
 /* -----------------------Forget Reset Send Email------------------------------------ */
+
 .forget_email_send_content.close {
     display: none;
 }
@@ -602,7 +605,6 @@ input:focus {
     height: 402px;
     border-radius: 17px;
     text-align: center;
-
 }
 
 .forget_text {
@@ -622,7 +624,6 @@ input:focus {
     margin-top: -160px;
     margin-left: 310px;
     font-size: 22px;
-
 }
 
 .forget_content {
@@ -658,7 +659,8 @@ input:focus {
     cursor: pointer;
     border: none;
 }
-.done_btn:hover{
+
+.done_btn:hover {
     background-color: #0f4a06;
 }
 
@@ -669,10 +671,11 @@ form.ng-invalid.ng-touched #submit1 {
 form.ng-invalid input[type="submit"] {
     opacity: 0.5;
     cursor: not-allowed;
-
 }
 
+
 /* ----------------------------------------------- */
+
 .modal-content4 {
     width: 430px;
     height: 309px;
