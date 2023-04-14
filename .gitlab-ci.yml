@@ -1,0 +1,24 @@
+image: node:16.13.2-alpine
+
+cache:
+  paths:
+    - node_modules/
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  NG_CLI_VERSION: 15.2.0
+
+before_script:
+  - npm ci
+  - npm install -g @angular/cli@${NG_CLI_VERSION}
+
+pages:
+  stage: deploy
+  script:
+    - ng build --configuration production
+    - cp public/index.html public/404.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - develop

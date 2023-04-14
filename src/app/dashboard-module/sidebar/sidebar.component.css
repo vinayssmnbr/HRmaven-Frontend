@@ -48,7 +48,7 @@ ul.navigation li{
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-
+  /* text-align: center; */
 }
 
 ul.navigation li a{
@@ -63,7 +63,7 @@ ul.navigation li a{
   padding: 15px 18px;
   color: #ECECEC;
 }
-ul.navigation li a.active{
+ul.navigation li.active{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
