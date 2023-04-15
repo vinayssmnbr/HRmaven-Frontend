@@ -83,7 +83,7 @@
                         <label for="name">Organization Name</label>
                         <input type="text" placeholder="Enter your Organization Name" class="name" formControlName="username" />
                         <span *ngIf="username && username.invalid  &&  username.dirty "><i
-                              class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Organization Name</span>
+                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Username</span>
                     </div>
                 </div>
                 <div class="field email-field">
@@ -91,7 +91,7 @@
                         <label for="name" class="text-label">Email</label>
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email" />
                         <span *ngIf="email && email.invalid && email.touched "><i
-                                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
+                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
                     </div>
 
                 </div>
@@ -100,29 +100,29 @@
                         <label for="name" class="text-label">Password</label>
                         <input type="password" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
                         <span *ngIf="password && password.invalid && password.touched "><i
-                                class="fa-sharp fa-solid fa-triangle-exclamation"></i>atleast 8
-                            characters and contain atleast one (A,a,@,1)</span>
+                class="fa-sharp fa-solid fa-triangle-exclamation"></i>atleast 8
+              characters and contain atleast one (A,a,@,1)</span>
                     </div>
 
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
-                    <i class="fa {{ showPasswordIcon }}"></i>
-                </span>
+          <i class="fa {{ showPasswordIcon }}"></i>
+        </span>
                 <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
                         <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
                         <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i
-                                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
+                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
                     </div>
                     <span class="password-toggle" (click)="togglePassword(passwordInpu)">
-                        <i class="fa {{ showPasswordIcon1 }}"></i>
-                    </span>
+            <i class="fa {{ showPasswordIcon1 }}"></i>
+          </span>
                 </div>
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />
                     <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a href=""> terms &
-                            conditions</a></label>
+              conditions</a></label>
                 </div>
                 <div class="input-field button">
                     <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />

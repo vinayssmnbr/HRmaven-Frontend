@@ -13,6 +13,7 @@ import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+   AbstractControl
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
@@ -44,64 +45,66 @@ export class EmployeeContentComponent implements OnInit {
   query: string = '';
   designation: string = '';
   data: any;
-  deletedata: any;
-  empdesignation = '';
-  employeeid: any;
-  show: any = false;
-
+  deletedata:any;
+  empdesignation="";
+  employeeid:any;
+  show:any=false;
+  emptybox=true;
+ nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const nameRegex = /^[a-zA-Z\s]*$/;
+  const valid = nameRegex.test(control.value);
+  return valid ? null : { 'invalidName': true };
+}
   form = new FormGroup({
-    name: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required,this.nameValidator]),
     designation: new FormControl(''),
-    uid: new FormControl(this.currentEmployeeUid),
-    dateOfJoining: new FormControl(''),
-    dateOfBirth: new FormControl(''),
+    employee_id: new FormControl(''),
+    dateOfJoining: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl('', Validators.required),
     gender: new FormControl('option1'),
-    mobile: new FormControl('', [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(10),
-      Validators.pattern('^[0-9]*$'),
-    ]),
-    email: new FormControl(
-      '',
-      Validators.compose([Validators.required, Validators.email])
-    ),
-    address: new FormControl(''),
+    mobile: new FormControl('',
+             [Validators.required,
+              Validators.maxLength(10),
+            ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    address: new FormControl('', Validators.required),
     bankname: new FormControl(''),
-    adhaarno: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^\d{4}\d{4}\d{4}$/),
-    ]),
-    accountno: new FormControl(''),
-    ifsc: new FormControl(''),
-    panno: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
-    ]),
-  });
+    adhaarno: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/),
+           ]),
+    accountno: new FormControl('', [Validators.required, Validators.maxLength(12)]),
+    ifsc: new FormControl('',[ Validators.required, Validators.pattern(/^([A-Z]){4}([0-9]){8}$/)]),
+    panno: new FormControl('',[Validators.required,Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)]),
+          });
 
-  get registrationFormControl() {
-    return this.form.controls;
-  }
+          get registrationFormControl(){
+            return this.form.controls;
+          }
 
-  //ADD DATA
-  submit(data: any) {
-    console.log(this.form.value);
-    this.showModalContent = false;
-    this.fourthStep = true;
-    this.thirdStep = false;
-    this.dashService.addEmployee(data).subscribe((result) => {
-      this.dashService.addEmployee(this.form);
-      console.log(result);
-      this.fetchdata();
-    });
-  }
+          //ADD DATA
+          submit(data: any) {
+            console.log(this.form.value);
+            this.showModalContent = false;
+            this.fourthStep = true;
+            this.thirdStep = false;
+            this.dashService.addEmployee(data).subscribe((result) => {
+              this.dashService.addEmployee(this.form);
+              console.log(result);
+              this.fetchdata();
+            });
+          }
+
+// form1Valid: boolean = this.form.controls.name.valid && this.form.controls.designation.valid && this.form.controls.employee_id.valid && this.form.controls.gender.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid
+  form1Valid: boolean = this.form.controls.name.valid
 
   //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      if(res.length>0)
+      {
+          this.emptybox=false;
+      }
     });
   }
 
@@ -251,13 +254,13 @@ export class EmployeeContentComponent implements OnInit {
       name: 'UI/UX Designer',
     },
     {
-      id: 5,
-      name: 'Quality Analyst',
+      id:5,
+      name:'Quality Analyst',
     },
     {
-      id: 6,
-      name: 'Designation',
-    },
+      id:6,
+      name:'All',
+    }
   ];
   array1: any = [
     {
