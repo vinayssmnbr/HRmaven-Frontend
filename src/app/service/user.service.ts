@@ -19,10 +19,10 @@ export class UserService {
     return this.cookie.get('token') !== '';
   }
 
-  saveurl = 'https://hrm21.onrender.com/signup';
-  loginurl = 'https://hrm21.onrender.com/login';
-  Forgoturl = 'https://hrm21.onrender.com/forgotpassword';
-  Reseturl = 'https://hrm21.onrender.com/resetpassword';
+  saveurl = 'https://hrmaven.works/signup';
+  loginurl = 'https://hrmaven.works/login';
+  Forgoturl = 'https://hrmaven.works/forgotpassword';
+  Reseturl = 'https://hrmaven.works/resetpassword';
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -56,7 +56,7 @@ export class UserService {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    const url = `https://hrm21.onrender.com/user-profile`;
+    const url = `https://hrmaven.works/user-profile`;
 
     return this.http.get(url, { headers }).pipe(
       map((response: any) => {
@@ -76,7 +76,7 @@ export class UserService {
 
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-      this.http.get('https://hrm21.onrender.com/auth', { headers }).subscribe(
+      this.http.get('https://hrmaven.works/auth', { headers }).subscribe(
         (res: any) => {
           this.isLoggedIn.next(true);
           this.router.navigate(['dashboard']);

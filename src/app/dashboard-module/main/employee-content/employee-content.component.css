@@ -91,7 +91,7 @@ input:focus {
   outline: none;
   cursor: pointer;
   font-style: normal;
-    
+
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -111,10 +111,8 @@ input:focus {
 .btn3 {
   display: flex;
   margin-left: auto;
-  /* position: absolute; */
   width: 162px;
   height: 44px;
-  /* padding-left: 15px; */
   gap: 10px;
   align-items: center;
   justify-content: center;
@@ -128,7 +126,7 @@ input:focus {
   line-height: 140%;
   outline: none;
   cursor: pointer;
-    
+
 }
 
 .btn3:hover {
@@ -137,7 +135,6 @@ input:focus {
 }
 
 .fa-circle-plus {
-  /* position: absolute; */
   margin-top: 5px;
   border-radius: 50%;
   width: 16.67px;
@@ -166,7 +163,7 @@ input:focus {
 
 .image_record h3 {
   margin-top: 20px;
-    
+
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -186,9 +183,9 @@ input:focus {
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
+} */
 
 .employee {
   width: 130px;
@@ -289,7 +286,6 @@ input:focus {
 .employee1 {
   width: 130px;
   height: 44px;
-  /* background: #FFFFFF; */
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
   text-align: justify;
@@ -306,7 +302,6 @@ input:focus {
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
   text-align: justify;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -365,12 +360,15 @@ input:focus {
   line-height: 100%;
   color: #555555;
 }
-
+/* .table-row{
+  position: sticky;
+    top: 0;
+} */
 tr:hover {
-  background-color: #efeff8 !important;
+  background-color: #EFEFF8 !important;
 }
 
-th,
+
 td {
   background-color: #ffffff;
 }
@@ -458,12 +456,10 @@ table {
   gap: 106px;
   align-items: center;
   padding-top: 50px;
-  padding-left: 180px;
+  margin-left: 176px;
 }
 
-.number.prev {
-  border-color: transparent;
-}
+
 
 .next::after {
   content: '';
@@ -477,7 +473,9 @@ table {
 .next.active {
   border: 1px solid #2F2C9F;
 }
-
+.next.inactive{
+  border: 1px solid transparent;
+}
 /* .number.active::after{
   border: 1px solid #2F2C9F;
 } */
@@ -509,7 +507,7 @@ table {
   line-height: 140%;
 }
 
-.number span {
+.numbers span {
   display: flex;
   text-align: center;
   align-items: center;
@@ -524,7 +522,10 @@ table {
   font-size: 14px;
   line-height: 140%;
 }
-
+.numbers span.inactive{
+  background-color: #2F2C9F;
+  color: white;
+}
 .details {
   display: flex;
   padding-left: 166px;
@@ -734,7 +735,7 @@ label {
   margin-bottom: 20px;
   box-shadow: none;
   font-style: normal;
-    
+
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -791,7 +792,7 @@ label {
   box-shadow: none;
   outline: none;
   font-style: normal;
-    
+
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -862,7 +863,7 @@ label {
   box-shadow: none;
   outline: none;
   font-style: normal;
-    
+
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -901,7 +902,7 @@ label {
   outline: none;
   box-shadow: none;
   font-style: normal;
-    
+
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -967,7 +968,7 @@ label {
   padding: 10px 25px;
   background: #2F2C9F;
   font-style: normal;
-    
+
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -990,7 +991,7 @@ label {
   border: 1px solid #2F2C9F;
   color: #2F2C9F;
   cursor: pointer;
-    
+
 }
 
 .back-btn:hover {
@@ -1010,7 +1011,7 @@ label {
   border: 1px solid #2F2C9F;
   color: #ffffff;
   cursor: pointer;
-  
+
 }
 
 .next-btn:hover {
@@ -1143,7 +1144,7 @@ label {
   color: #FFFFFF;
   border: 1px solid #3D9130;
   cursor: pointer;
-  
+
 }
 
 .done-btn2:hover {
@@ -1160,7 +1161,7 @@ label {
 }
 
 .modal-body3 h4 {
-  
+
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -1186,7 +1187,7 @@ label {
   border-radius: 8px;
   border: 1px solid #2F2C9F;
   color: #FFFFFF;
-  
+
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1206,7 +1207,7 @@ label {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
   color: #2F2C9F;
-  
+
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1276,7 +1277,11 @@ label {
   padding: 10px 10px;
   border: 1px solid transparent;
 }
-
+.dropdwon_select:hover,
+.dropdwon_select:focus {
+  border: 1px solid #2F2C9F !important;
+  /* border-color: #2F2C9F !important; */
+}
 #slt1 {
   width: 260px;
   height: 40px;
