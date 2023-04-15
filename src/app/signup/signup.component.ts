@@ -30,7 +30,7 @@ export class SignupComponent {
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required]),
+    username: new FormControl("",[Validators.required,Validators.pattern('^[A-Z]([a-zA-Z0-9.-_,]|[- @.#&!])*$')]),
     check: new FormControl("",[Validators.required]),
   },{
     validators:matchpassword
@@ -44,12 +44,16 @@ export class SignupComponent {
     return this.sigupform.get("email");
   }
 
+  get username(){
+    return this.sigupform.get("username");
+  }
+
   showPassword = false;
 showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash':'fa-eye' ;
+  this.showPasswordIcon = this.showPassword ? 'fa-eye':'fa-eye-slash'  ;
   passwordInput.type = this.showPassword ? 'password':'text' ;
 }
 
@@ -84,7 +88,7 @@ submit(){
 
 SignupByGoogle() {
   console.log('google');
-  window.location.href = 'http://45.138.16.177:3000/auth/google';
+  window.location.href = 'https://hrm21.onrender.com/auth/google';
 }
 
 }

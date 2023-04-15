@@ -83,6 +83,8 @@
                         <label for="name">Organization Name</label>
                         <input type="text" placeholder="Enter your Organization Name" class="name"
                             formControlName="username" />
+                        <span *ngIf="username && username.invalid  &&  username.dirty "><i
+                              class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Username</span>
                     </div>
                 </div>
                 <div class="field email-field">
