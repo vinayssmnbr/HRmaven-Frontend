@@ -8,7 +8,9 @@
                 <h1>{{totalCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]="100" [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                <circle-progress [percent]="100" [showTitle]='false' [showSubtitle]='false' [showUnits]='false'
+                    [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                     [animationDuration]="1000"></circle-progress>
             </div>
         </div>
@@ -18,7 +20,9 @@
                 <h1>{{acceptCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]=accept_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                <circle-progress [percent]=accept_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false'
+                    [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                     [animationDuration]="1000"></circle-progress>
             </div>
         </div>
@@ -28,7 +32,9 @@
                 <h1>{{rejectCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]=reject_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#F8BB6F'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                <circle-progress [percent]=reject_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false'
+                    [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#F8BB6F'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                     [animationDuration]="1000"></circle-progress>
             </div>
         </div>
@@ -38,7 +44,9 @@
                 <h1>{{pendingCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]=pending_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                <circle-progress [percent]=pending_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false'
+                    [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                     [animationDuration]="1000"></circle-progress>
             </div>
         </div>
@@ -53,46 +61,54 @@
             </div>
             <div class="select_content" *ngIf="contentdropdown">
                 <ul>
-                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                        (click)="Changeselect(arr)">
                         {{arr.name}}</li>
                 </ul>
             </div>
         </div>
     </div>
-
-    <div class="table_data">
-        <table class="table_text">
-            <thead>
-                <tr class="table_heading">
-                    <th>EMPLOYEE ID</th>
-                    <th>EMPLOYEE NAME</th>
-                    <th>FROM</th>
-                    <th>TO</th>
-                    <th>REASON</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let leave of leaves | attendanceFilter:employeename">
-                    <td>{{leave.employeeId}}</td>
-                    <td>{{leave.employeeName}}</td>
-                    <td>{{leave.from | date:'short'}}</td>
-                    <td>{{leave.to | date:'short'}}</td>
-                    <td>{{leave.reason}}</td>
-                    <td>
-                        <div class="action_button">
-                            <div class="action_btn">
-                                <input type="radio" [checked]="leave.status=='accept'" [disabled]="leave.status=='accept' || leave.status=='reject'" (change)="updateLeaveStatus(leave._id, 'accept')" id="outline1" class="custom-radio">
-                                <label for="outline1" class="outline1">Accept</label>
+    <div class="leaves_table">
+        <div class="table_data">
+            <table class="table_text">
+                <thead>
+                    <tr class="table_heading">
+                        <th>EMPLOYEE ID</th>
+                        <th>EMPLOYEE NAME</th>
+                        <th>FROM</th>
+                        <th>TO</th>
+                        <th>REASON</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let leave of leaves | attendanceFilter:employeename">
+                        <td>{{leave.employeeId}}</td>
+                        <td>{{leave.employeeName}}</td>
+                        <td>{{leave.from | date:'short'}}</td>
+                        <td>{{leave.to | date:'short'}}</td>
+                        <td>{{leave.reason}}</td>
+                        <td>
+                            <div class="action_button">
+                                <div class="action_btn">
+                                    <input type="radio" [checked]="leave.status=='accept'"
+                                        [disabled]="leave.status=='accept' || leave.status=='reject'"
+                                        (change)="updateLeaveStatus(leave._id, 'accept')" id="outline1"
+                                        class="custom-radio">
+                                    <label for="outline1" class="outline1">Accept</label>
+                                </div>
+                                <div class="action_btn">
+                                    <input type="radio" [checked]="leave.status=='reject'"
+                                        [disabled]="leave.status=='accept' || leave.status=='reject'"
+                                        (change)="updateLeaveStatus(leave._id, 'reject')" id="outline"
+                                        class="custom-radio">
+                                    <label for="outline" class="outline">Reject</label>
+                                </div>
                             </div>
-                            <div class="action_btn">
-                                <input type="radio" [checked]="leave.status=='reject'" [disabled]="leave.status=='accept' || leave.status=='reject'" (change)="updateLeaveStatus(leave._id, 'reject')" id="outline" class="custom-radio">
-                                <label for="outline" class="outline">Reject</label>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
