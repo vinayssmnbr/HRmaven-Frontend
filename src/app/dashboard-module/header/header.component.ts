@@ -20,6 +20,7 @@ export class HeaderComponent {
   name: any = '';
   profileDisplay: boolean = false;
   getUsersProfile: any = [];
+  showNotifications = true;
 
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
@@ -44,15 +45,24 @@ export class HeaderComponent {
       this.greeting = 'GOOD EVENING';
     }
 
-   this.elementRef.nativeElement.addEventListener('mouseout', () => {
+   this.elementRef.nativeElement.addEventListener('mouseout','mouseleave', () => {
       this.profileDisplay = false;
     });
+    // this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+    //   this.visible = false;
+    // });
+    // this.elementRef.nativeElement.addEventListener('click', (event) => {
+    //   const isClickedInside = this.elementRef.nativeElement.contains(event.target);
+    //   if (!isClickedInside) {
+    //     this.visible = false;
+    //   }
+    // });
+   
   }
   toggleSearchBox(){
     this.showSearchBox=!this.showSearchBox;
   }
 
-    //  My code for profile fetch Name
   getProfileData(){
     this.dashService.getUserProfile().subscribe((res: any)=>{
       this.userEmail=res.email.split("@")[0];

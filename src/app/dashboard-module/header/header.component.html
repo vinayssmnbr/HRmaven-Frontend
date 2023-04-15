@@ -28,7 +28,7 @@
 
 </header>
 <ng-container *ngIf="visible" >
-  <div class="notification-area">
+  <div class="notification-area" *ngIf="showNotifications">
     <div class="notification-upper">
       <div class="notification-mark">
         <div class="notification-number">
@@ -275,7 +275,7 @@
     </div>
   </div>
 </ng-container>
-<div  class="profile_div"*ngIf="profileDisplay" >
+<div  class="profile_div"*ngIf="profileDisplay" (click)="showNotifications = false">
     <div class="profile-content">
       <div class="profile-title">
           <div class="profile-logo">
