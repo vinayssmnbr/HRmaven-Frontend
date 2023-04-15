@@ -46,7 +46,6 @@
     color: #999999;
     cursor: pointer;
 }
-
 .header-icon {
     display: flex;
     /* margin-left: 6px; */
@@ -195,6 +194,7 @@ input[type='search'] {
     height: 38px;
     border-radius: 50%;
     cursor: pointer;
+    color: #cbcbcb;
 }
 
 input[type='search'] {
