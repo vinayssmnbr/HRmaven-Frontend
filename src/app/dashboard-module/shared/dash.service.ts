@@ -19,7 +19,7 @@ export class DashService {
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('https://hrm21.onrender.com/user-profile', { headers }).pipe(
+    return this.http.get('https://hrmaven.works/user-profile', { headers }).pipe(
       map((response: any) => {
         return response;
       })
@@ -86,7 +86,7 @@ export class DashService {
 
 
    getreport(){
-     return this.http.get('https://hrm21.onrender.com/attendance/report');
+     return this.http.get('https://hrmaven.works/attendance/report');
   }
 
   getEmployeeUid(){
