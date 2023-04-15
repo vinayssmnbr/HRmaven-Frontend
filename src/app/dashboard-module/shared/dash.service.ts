@@ -32,6 +32,11 @@ export class DashService {
   getLeave='https://hrm21.onrender.com/api/leave//'
   updateData='https://hrm21.onrender.com/attendance'
   getAttd='https://hrm21.onrender.com/attendance';
+  updatempdata="https://hrm21.onrender.com/api/update"
+  getuid='https://hrm21.onrender.com/api/uid'
+
+
+
 
 
 
@@ -59,10 +64,10 @@ export class DashService {
     return this.http.get(this.getData);
   }
   //UPDATE DATA
-  updateEmployee1(id:string,updatedData:any){
-    return this.http.put(`${this.updateData}/${id}`,updatedData)
+  updateEmployee(data:any){
+    return this.http.patch(`${this.updatempdata}/${data._id}`,data)
   }
-  updateEmployee(data: any) {
+  updateEmpAttendance(data: any) {
     console.log('data', data);
     return this.http.patch(this.updateData + `/${data._id}`, data);
   }
@@ -81,5 +86,10 @@ export class DashService {
 
    getreport(){
      return this.http.get('https://hrm21.onrender.com/attendance/report');
+  }
+
+  getEmployeeUid(){
+    return this.http.get(this.getuid)
+
   }
 }
