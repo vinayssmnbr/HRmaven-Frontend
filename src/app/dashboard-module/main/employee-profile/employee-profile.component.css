@@ -190,7 +190,7 @@ font-family: 'Outfit';
 }
 .card3{
   padding: 25px 50px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid rgba(47, 44, 159, 0.15);
   background-color: #ffffff;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -363,7 +363,7 @@ font-family: 'Outfit';
 }
 .card4{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -391,7 +391,7 @@ font-family: 'Outfit';
 }
 .card5 {
   padding: 23px 50px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid rgba(47, 44, 159, 0.15);
   background-color: #ffffff;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -418,7 +418,7 @@ font-family: 'Outfit';
 }
 .card6{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -448,7 +448,7 @@ font-family: 'Outfit';
 }
 .card7{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -472,7 +472,7 @@ font-family: 'Outfit';
 }
 .card8{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -865,7 +865,6 @@ input[type='number']:hover {
   width: 270px;
   height: 40px;
   cursor: pointer;
-  padding: 8px;
   border-radius: 8px;
   border: 1px solid rgba(180, 180, 180, 0.8);
   color: #444444;
@@ -895,7 +894,7 @@ input[type='number']:hover {
   background-color: #fff;
   cursor: pointer;
   width: 210px;
-  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   padding: 10px;
   position: absolute;
