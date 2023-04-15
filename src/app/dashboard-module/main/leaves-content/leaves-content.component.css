@@ -72,6 +72,8 @@
     color: black;
     outline: none;
     font-size: 14px;
+    padding: 10px 10px;
+    border: 1px solid transparent;
 }
 
 input[type=number]::-webkit-outer-spin-button,
@@ -128,6 +130,7 @@ input[type=number]::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     padding: 10px 10px;
+    border: 1px solid transparent;
 }
 
 .dropdwon_select:hover,
@@ -184,10 +187,13 @@ input[type=number]::-webkit-inner-spin-button {
 
 .table_data {
     width: 100%;
-    padding-top: 10px;
 }
 .leaves_table{
     padding: 0 30px;
+}
+.table_heading{
+    position: sticky;
+    top: 0;
 }
 .table_text {
     width: 100%;
@@ -272,8 +278,8 @@ td {
 }
 
 input[type="radio"] {
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 12px;
+    width: 12px;
     margin-right: 0.5rem;
     cursor: pointer;
 }
@@ -282,7 +288,7 @@ input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
     border: 0.2rem solid #fff;
-    background-color: #e8e8e8;
+    /* background-color: #e8e8e8; */
     border-radius: 50%;
 }
 
