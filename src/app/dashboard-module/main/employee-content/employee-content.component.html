@@ -34,7 +34,7 @@
   <div class="table-wrapper">
     <table>
       <thead>
-        <tr>
+        <tr class="table-row">
           <th class="employee">Employee ID</th>
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -45,7 +45,7 @@
       </thead>
 
       <tbody *ngIf="!emptybox">
-        <tr *ngFor="let user of employee">
+        <tr *ngFor="let user of employee" >
           <!--  -->
           <td class="employee1">{{user.uid}}</td>
           <td class="name1">{{user.name}}</td>
@@ -83,10 +83,10 @@
         </div>
         <div class="modal-body">
           <div class="numbers">
-            <div class="number next prev" [ngClass]="{'active':firstStep}"><span
-                [ngClass]="{'active':firstStep}">1</span>
+            <div class="number next prev" [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
+                [ngClass]="{'active':firstStep , 'inactive':!firstStep}">1</span>
             </div>
-            <div class="number next prev"><span [ngClass]="{'active':secondStep}">2</span></div>
+            <div class="number next prev"><span [ngClass]="{'active':secondStep ,'inactive':!secondStep && firstStep}">2</span></div>
             <div class="number prev"><span [ngClass]="{'active':thirdStep}">3</span></div>
           </div>
           <div class="details">
@@ -259,13 +259,6 @@
             <button class="no-btn" (click)="closeModal2()">No</button>
           </div>
 
-          <div class="modal-content3" *ngIf="rowdelete">
-            <div class="modal-body3">
-              <h4>Do you really want to delete this employee?</h4>
-              <div class="delete-btns">
-                <button class="yes-btn" (click)="successdelete()">Yes</button>
-                <button class="no-btn" (click)="closeModal2()">No</button>
-              </div>
               <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
             </div>
           </div>
@@ -283,4 +276,3 @@
       </div>
     </div>
 
-  </div>
