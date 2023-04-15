@@ -2,9 +2,29 @@
 </app-sidebar>
 <app-header></app-header>
 <div class="main">
-    <div class="bar-chart">
-        <canvas id="lineChart"></canvas>
+    <div class="bar_graph">
+        <div class="graph_text">
+            <div class="graph_heading">
+                <h1>Attendance Status</h1>
+            </div>
+            <!-- <div class="dropdown_container">
+                <div class="dropdwon_select1" (click)="dropdownOpen1()">
+                  <p>{{Selectvariable1}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown1">
+                  <ul>
+                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
+                </div>
+              </div> -->
+        </div>
+        <div class="bar-chart">
+            <canvas id="lineChart"></canvas>
+        </div>
     </div>
+    
     <div class="employe_input">
         <i class="fa fa-search" aria-hidden="true" id="ico"></i>
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
