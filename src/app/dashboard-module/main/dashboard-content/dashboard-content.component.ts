@@ -200,7 +200,7 @@ export class DashboardContentComponent implements OnInit {
 
 
 updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-  const url = `http://45.138.16.177:3000/api/leave/${id}`;
+  const url = `https://hrm21.onrender.com/api/leave/${id}`;
   const body = { status: status };
   this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
   ).subscribe(response => {
