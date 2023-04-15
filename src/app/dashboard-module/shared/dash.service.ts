@@ -19,24 +19,19 @@ export class DashService {
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('https://hrm21.onrender.com/user-profile', { headers }).pipe(
+    return this.http.get('https://hrmaven.works/user-profile', { headers }).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
 
-  createData = 'https://hrm21.onrender.com/api/create';
-  getData = 'https://hrm21.onrender.com/api/find';
-  deleteData = 'https://hrm21.onrender.com/api/';
-  getLeave='https://hrm21.onrender.com/api/leave//'
-  updateData='https://hrm21.onrender.com/attendance'
-  getAttd='https://hrm21.onrender.com/attendance';
-  updatempdata="https://hrm21.onrender.com/api/update"
-  getuid='https://hrm21.onrender.com/api/uid'
-
-
-
+  createData = 'https://hrmaven.works/api/create';
+  getData = 'https://hrmaven.works/api/find';
+  deleteData = 'https://hrmaven.works/api/';
+  getLeave='https://hrmaven.works/api/leave//'
+  updateData='https://hrmaven.works/attendance'
+  getAttd='https://hrmaven.works/attendance';
 
 
 
@@ -85,7 +80,7 @@ export class DashService {
 
 
    getreport(){
-     return this.http.get('https://hrm21.onrender.com/attendance/report');
+     return this.http.get('https://hrmaven.works/attendance/report');
   }
 
   getEmployeeUid(){
