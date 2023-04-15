@@ -19,19 +19,19 @@ export class DashService {
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('https://hrm21.onrender.com/user-profile', { headers }).pipe(
+    return this.http.get('http://45.138.16.177:3000/user-profile', { headers }).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
 
-  createData = 'https://hrm21.onrender.com/api/create';
-  getData = 'https://hrm21.onrender.com/api/find';
-  deleteData = 'https://hrm21.onrender.com/api/';
-  getLeave='https://hrm21.onrender.com/api/leave//'
-  updateData='https://hrm21.onrender.com/attendance'
-  getAttd='https://hrm21.onrender.com/attendance';
+  createData = 'http://45.138.16.177:3000/api/create';
+  getData = 'http://45.138.16.177:3000/api/find';
+  deleteData = 'http://45.138.16.177:3000/api/';
+  getLeave='http://45.138.16.177:3000/api/leave//'
+  updateData='http://45.138.16.177:3000/attendance'
+  getAttd='http://45.138.16.177:3000/attendance';
 
 
 
@@ -80,6 +80,6 @@ export class DashService {
 
 
    getreport(){
-     return this.http.get('https://hrm21.onrender.com/attendance/report');
+     return this.http.get('http://45.138.16.177:3000/attendance/report');
   }
 }
