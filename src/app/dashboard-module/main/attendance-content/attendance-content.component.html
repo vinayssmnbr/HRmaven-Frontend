@@ -108,6 +108,7 @@
                     <div class="dropdown_container">
                         <div class="dropdwon_select" (click)="dropdownOpen()">
                             <p>{{Selectvariable}}</p>
+                            <input style="display:none;" type="text" [(ngModel)]="Selectvariable" formControlName="status">
                             <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
                         <div class="select_content" *ngIf="contentdropdown">
@@ -120,11 +121,11 @@
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch In</label>
-                    <input type="text " formControlName="punch_in" />
+                    <input type="time" formControlName="punch_in" />
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch out</label>
-                    <input type="text " formControlName="punch_out" />
+                    <input type="time" formControlName="punch_out" />
                 </div>
             </div>
             <div class="form__group form-btn ">
