@@ -387,6 +387,9 @@ a {
 .activity-feed-text p {
   color: #2F2C9F;
 }
+.activity-feed-text:hover{
+  cursor: pointer;
+}
 
 .john-image {
   display: flex;
@@ -397,7 +400,6 @@ a {
 .john-image:hover {
   background-color: #F7F7FB;
   border-radius: 8px;
-  cursor: pointer;
 }
 
 .john-shaw-background {
