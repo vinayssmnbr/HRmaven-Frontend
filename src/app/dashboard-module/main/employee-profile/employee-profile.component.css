@@ -26,8 +26,6 @@
 }
 
 .card1 h2{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 21px;
     line-height: 100%;
@@ -91,8 +89,6 @@
   right: 7%;
   display: none;
   padding: 6px 14px;
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   /* display: flex; */
@@ -138,22 +134,16 @@
   padding-top: 15px;
 }
 .card2 .content h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 20px;
     color: #444444;
 }
 .card2 .content p{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     color: #999999;
 }
 .card2 .content span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   color: #999999;
@@ -172,8 +162,6 @@
   cursor: pointer;
 }
 .content1 li a{
-font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   color: #222222;
@@ -185,7 +173,6 @@ font-family: 'Outfit';
 .content1 li.active{
   border-bottom: 2px solid #2F2C9F;
 
-  /* margin-left: -20px; */
 
 }
 .card3{
@@ -196,8 +183,6 @@ font-family: 'Outfit';
   margin-bottom: 20px;
 }
 .card3 h3{
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   color: #444444;
@@ -239,106 +224,78 @@ font-family: 'Outfit';
   gap: 5px;
 }
 .row1 span{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 13px;
     color: #444444;
 }
 .row1 .column1 p{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 15px;
     color: #777777;
 }
 .row1 .column2 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row1 .column3 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row2 span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   color: #444444;
 }
 
 .row2 .column1 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row2 .column2 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row2 .column3 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row3 span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   color: #444444;
 }
 
 .row3 .column1 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row3 .column2 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row3 .column3 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row4 span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   color: #444444;
 }
 
 .row4 .column1 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
@@ -370,8 +327,6 @@ font-family: 'Outfit';
 
 }
 .card4 h3{
-font-family: 'Outfit';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   color: #444444;
@@ -397,8 +352,6 @@ font-family: 'Outfit';
   margin-bottom: 20px;
 }
 .card5 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -424,8 +377,6 @@ font-family: 'Outfit';
     margin-bottom: 20px;
 }
 .card6 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -454,8 +405,6 @@ font-family: 'Outfit';
     margin-bottom: 20px;
 }
 .card7 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -478,8 +427,6 @@ font-family: 'Outfit';
     margin-bottom: 20px;
 }
 .card8 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -507,7 +454,7 @@ font-family: 'Outfit';
   display: flex;
   justify-content: center;
   z-index: 9999;
-  /* align-items: center; */
+  align-items: center;
 }
 .modal-content {
   background-color: #ffffff;
@@ -532,8 +479,6 @@ font-family: 'Outfit';
     height: 69px;
 }
 .modal-title{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     color: #444444;
