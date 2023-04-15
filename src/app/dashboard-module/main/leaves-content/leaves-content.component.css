@@ -184,10 +184,13 @@ input[type=number]::-webkit-inner-spin-button {
 
 .table_data {
     width: 100%;
-    padding-top: 10px;
 }
 .leaves_table{
     padding: 0 30px;
+}
+.table_heading{
+    position: sticky;
+    top: 0;
 }
 .table_text {
     width: 100%;
