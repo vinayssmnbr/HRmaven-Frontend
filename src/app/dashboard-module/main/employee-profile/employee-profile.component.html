@@ -244,8 +244,8 @@
     </div>
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
-      <h3>Work Details</h3>
-      <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <h3>Work Details</h3>
+        <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -292,7 +292,8 @@
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id" formControlName="employee_id" [disabled]="true" readonly>
+              <input type="number" placeholder="28563" class="employe-id" formControlName="employee_id"
+                [disabled]="true" readonly>
             </div>
             <div class="input">
               <label>Date of birth</label>
@@ -530,55 +531,55 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
-    <form class="form-container" id="form5" [formGroup]="form">
-    <div class="form-row">
-      <div class="input">
-        <label>Company/Organisation Name</label>
-        <input type="text" placeholder="Infosys" formControlName="orgname">
+        <form class="form-container" id="form5" [formGroup]="form">
+          <div class="form-row">
+            <div class="input">
+              <label>Company/Organisation Name</label>
+              <input type="text" placeholder="Infosys" formControlName="orgname">
+            </div>
+            <div class="input">
+              <label>Duration</label>
+              <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
+            </div>
+            <div class="input">
+              <label>Designation</label>
+              <input type="text" placeholder="Lead- front end developer" formControlName="designation">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Pune, India" formControlName="location2">
+            </div>
+          </div>
+          <hr>
+          <div class="form-row">
+            <div class="input">
+              <label>Company/Organisation Name</label>
+              <input type="text" placeholder="Accenture" formControlName="orgname">
+            </div>
+            <div class="input">
+              <label>Duration</label>
+              <input type="text" placeholder="April 2019 - May 2020" formControlName="duration2">
+            </div>
+            <div class="input">
+              <label>Designation</label>
+              <input type="text" placeholder="Front End developer" formControlName="designation">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Bangalore, India" formControlName="location2">
+            </div>
+          </div>
+          <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+        </form>
       </div>
-      <div class="input">
-        <label>Duration</label>
-        <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
-      </div>
-      <div class="input">
-        <label>Designation</label>
-        <input type="text" placeholder="Lead- front end developer" formControlName="designation">
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal6()">Update</button>
       </div>
     </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Location</label>
-        <input type="text" placeholder="Pune, India" formControlName="location2">
-      </div>
-    </div>
-    <hr>
-    <div class="form-row">
-      <div class="input">
-        <label>Company/Organisation Name</label>
-        <input type="text" placeholder="Accenture" formControlName="orgname">
-      </div>
-      <div class="input">
-        <label>Duration</label>
-        <input type="text" placeholder="April 2019 - May 2020" formControlName="duration2">
-      </div>
-      <div class="input">
-        <label>Designation</label>
-        <input type="text" placeholder="Front End developer" formControlName="designation">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Location</label>
-        <input type="text" placeholder="Bangalore, India" formControlName="location2">
-      </div>
-    </div>
-    <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
-   </form>
-  </div>
-  <div class="modal-footer">
-    <button class="save" (click)="closeModal6()">Update</button>
-  </div>
-</div>
     <!-- <div class="modal-footer">
     <button class="save" (click)="closeModal2()" >Save Changes</button>
   </div> -->
@@ -601,7 +602,8 @@
                 </div>
                 <div class="select_content" *ngIf="contentdropdown">
                   <ul>
-                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                      (click)="Changeselect(arr)">
                       {{arr.name}}</li>
                   </ul>
                 </div>
@@ -623,18 +625,19 @@
             </div>
             <div class="input">
               <label>Timings</label>
-            <div class="dropdown_container">
-              <div class="dropdwon_select" (click)="dropdownOpen5()">
-                <p>{{Selectvariable5}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen5()">
+                  <p>{{Selectvariable5}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown5">
+                  <ul>
+                    <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5"
+                      (click)="Changeselect5(arr5)">
+                      {{arr5.name}}</li>
+                  </ul>
+                </div>
               </div>
-              <div class="select_content" *ngIf="contentdropdown5">
-                <ul>
-                  <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5" (click)="Changeselect5(arr5)">
-                    {{arr5.name}}</li>
-                </ul>
-              </div>
-            </div>
             </div>
             <div class="input">
               <label>CTC</label>
