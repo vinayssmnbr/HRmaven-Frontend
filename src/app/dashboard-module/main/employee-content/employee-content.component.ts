@@ -48,6 +48,8 @@ export class EmployeeContentComponent implements OnInit {
   empdesignation = '';
   employeeid: any;
   show: any = false;
+  noRecordsFound:boolean;
+  
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -130,6 +132,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
+      this.noRecordsFound=this.employee.length===0
   }
 
   function() {
@@ -330,6 +333,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
+      this.noRecordsFound=this.employee.length===0
   }
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
