@@ -35,7 +35,7 @@ isPersonalDetailsActive=true;
 employee: any = [];
 
   form = new FormGroup({
-    name:new FormControl(''),
+    name:new FormControl('Vinay'),
     employee_id:new FormControl(''),
     dob:new FormControl(''),
     fname:new FormControl(''),
