@@ -688,8 +688,11 @@ input.ng-valid {
   font-size: 14px;
   line-height: 140%;
   cursor: pointer;
+  resize: none;
 }
-
+#text2:hover{
+  border: 1px solid #2F2C9F;
+}
 #text3 {
   /* display: block; */
   width: 260px;
@@ -722,6 +725,7 @@ input.ng-valid {
   font-weight: 400;
   outline: none;
   padding-left: 15px;
+  padding-right: 5px;
   font-size: 14px;
   line-height: 140%;
   cursor: pointer;
@@ -740,6 +744,7 @@ input.ng-valid {
   font-style: normal;
   font-weight: 400;
   padding-left: 15px;
+  padding-right: 5px;
   font-size: 14px;
   line-height: 140%;
   cursor: pointer;
@@ -1235,7 +1240,7 @@ input.ng-valid {
 .dropdwon_select {
   background-color: #fff;
   width: 172px;
-  height: 40px;
+  height: 44px;
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
@@ -1255,6 +1260,7 @@ input.ng-valid {
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
   color: black;
+  padding-left: 15px;
 }
 
 #slt2 {
