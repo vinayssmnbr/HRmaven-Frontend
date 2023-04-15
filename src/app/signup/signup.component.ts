@@ -49,7 +49,7 @@ showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye':'fa-eye-slash'  ;
+  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash':'fa-eye' ;
   passwordInput.type = this.showPassword ? 'password':'text' ;
 }
 
