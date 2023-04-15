@@ -5,6 +5,13 @@
     padding-top: 70px;
 }
 
+#ico {
+    position: relative;
+    left: 1%;
+    color: gray;
+    margin-top: 15px;
+}
+
 .row {
     display: flex;
     padding: 0 30px;
@@ -41,7 +48,9 @@
 }
 
 #work {
-    width: 222px;
+    width: 250px;
+    margin-left: -25px;
+    padding-left: 40px;
 }
 
 .employe_input {
