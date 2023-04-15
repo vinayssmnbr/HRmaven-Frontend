@@ -21,12 +21,16 @@ export class HeaderComponent {
   profileDisplay: boolean = false;
   getUsersProfile: any = [];
   showNotifications = true;
+  profileDisplayNot: boolean;
+  hideNotifications = false;
 
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
      private router:Router, private elementRef :ElementRef ) {
       this.getProfileData();
      }
+     hide : boolean = true;
+
 
   ngOnInit() {
     const today = new Date();
@@ -45,20 +49,19 @@ export class HeaderComponent {
       this.greeting = 'GOOD EVENING';
     }
 
-   this.elementRef.nativeElement.addEventListener('mouseout','mouseleave', () => {
+   
+    this.elementRef.nativeElement.addEventListener('mouseleave', () => {
       this.profileDisplay = false;
     });
-    // this.elementRef.nativeElement.addEventListener('mouseleave', () => {
-    //   this.visible = false;
-    // });
-    // this.elementRef.nativeElement.addEventListener('click', (event) => {
-    //   const isClickedInside = this.elementRef.nativeElement.contains(event.target);
-    //   if (!isClickedInside) {
-    //     this.visible = false;
-    //   }
-    // });
-   
+    this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+      this.visible = false;
+    });
+    
+
   }
+    
+  
+
   toggleSearchBox(){
     this.showSearchBox=!this.showSearchBox;
   }
@@ -71,8 +74,14 @@ export class HeaderComponent {
   }
 
   profileToggle() {
+    if (!this.hideNotifications) {
+      this.visible = false;
+    }
+        this.hideNotifications = true;
+
     this.profileDisplay = !this.profileDisplay;
   }
+
 
   logout() {
     this.cookie.delete('token');
