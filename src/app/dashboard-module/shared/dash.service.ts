@@ -25,13 +25,19 @@ export class DashService {
       })
     );
   }
-
   createData = 'https://hrmaven.works/api/create';
   getData = 'https://hrmaven.works/api/find';
   deleteData = 'https://hrmaven.works/api/';
   getLeave='https://hrmaven.works/api/leave//'
   updateData='https://hrmaven.works/attendance'
   getAttd='https://hrmaven.works/attendance';
+  updatempdata="https://hrmaven.works/api/update"
+  getuid='https://hrmaven.works/api/uid'
+
+
+
+
+
 
 
 

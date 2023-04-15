@@ -49,7 +49,7 @@ export class EmployeeContentComponent implements OnInit {
   empdesignation="";
   employeeid:any;
   show:any=false;
-  emptybox=true;
+  emptybox:boolean;
  nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const nameRegex = /^[a-zA-Z\s]*$/;
   const valid = nameRegex.test(control.value);
@@ -124,7 +124,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   //SEARCH UID
-  search() {
+  search(event) {
     console.log(this.query, 'search fn', this.designation);
     this.dashService
       .searchuid(this.query, this.designation)
@@ -133,6 +133,13 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
+
+      this.emptybox=this.employee.length===0
+      if (event.keyCode === 32) { // space bar
+        this.query = '';
+        // this.itemsToDisplay = this.items;
+      }
+
   }
 
   function() {
