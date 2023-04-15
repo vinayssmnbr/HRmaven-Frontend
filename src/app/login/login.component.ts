@@ -56,7 +56,7 @@ export class LoginComponent {
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
-    window.location.href = 'https://hrm21.onrender.com/auth/google';
+    window.location.href = 'https://hrmaven.works/auth/google';
   }
 
   loginForm = new FormGroup({
