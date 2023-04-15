@@ -60,7 +60,7 @@ export class LoginComponent {
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
-    window.location.href = 'http://localhost:3000/auth/google';
+    window.location.href = 'https://hrmaven.works/auth/google';
   }
 
   loginForm = new FormGroup({
