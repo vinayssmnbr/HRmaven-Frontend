@@ -26,11 +26,19 @@ export class SignupComponent {
 
   constructor(public userService:UserService, private router : Router){}
 
+  noSpaces(control: FormControl) {
+    if (control.value && control.value.trim().length === 0) {
+      return { noSpaces: true };
+    }
+    return null;
+  }
+  
+
   sigupform = new FormGroup({
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required]),
+    username: new FormControl("",[Validators.required, Validators.minLength(6), this.noSpaces]),
     check: new FormControl("",[Validators.required]),
   },{
     validators:matchpassword
@@ -42,6 +50,10 @@ export class SignupComponent {
 
   get email(){
     return this.sigupform.get("email");
+  }
+
+  get username(){
+    return this.sigupform.get("username");
   }
 
   showPassword = false;

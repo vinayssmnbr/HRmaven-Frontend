@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 import { DashService } from '../shared/dash.service';
 import { UserService } from '../../service/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  showSearchBox = false;
+  showSearchBox=false;
   date: any;
   greeting: any;
   employee: string;
@@ -21,16 +21,11 @@ export class HeaderComponent {
   profileDisplay: boolean = false;
   getUsersProfile: any = [];
 
-  constructor(
-    public dashService: DashService,
-    private userService: UserService,
-    private http: HttpClient,
-    private cookie: CookieService,
-    private router: Router,
-    private elementRef: ElementRef
-  ) {
-    this.getProfileData();
-  }
+  constructor(public dashService:DashService, private userService : UserService,
+     private http:HttpClient, private cookie:CookieService,
+     private router:Router, private elementRef :ElementRef ) {
+      this.getProfileData();
+     }
 
   ngOnInit() {
     const today = new Date();
@@ -49,20 +44,19 @@ export class HeaderComponent {
       this.greeting = 'GOOD EVENING';
     }
 
-    this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+   this.elementRef.nativeElement.addEventListener('mouseout', () => {
       this.profileDisplay = false;
     });
-    
   }
-  toggleSearchBox() {
-    this.showSearchBox = !this.showSearchBox;
+  toggleSearchBox(){
+    this.showSearchBox=!this.showSearchBox;
   }
 
-  //  My code for profile fetch Name
-  getProfileData() {
-    this.dashService.getUserProfile().subscribe((res: any) => {
-      this.userEmail = res.email.split('@')[0];
-      this.name = res.username.charAt(0).toUpperCase() + res.username.slice(1);
+    //  My code for profile fetch Name
+  getProfileData(){
+    this.dashService.getUserProfile().subscribe((res: any)=>{
+      this.userEmail=res.email.split("@")[0];
+      this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
   }
 
