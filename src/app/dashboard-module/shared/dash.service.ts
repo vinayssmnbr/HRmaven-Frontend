@@ -26,21 +26,18 @@ export class DashService {
     );
   }
 
-  // createData = 'https://hrm21.onrender.com/api/create';
-  // getData = 'https://hrm21.onrender.com/api/find';
-  // deleteData = 'https://hrm21.onrender.com/api/';
-  // getLeave='https://hrm21.onrender.com/api/leave//'
-  // updateData='https://hrm21.onrender.com/attendance'
-  // getAttd='https://hrm21.onrender.com/attendance';
+  createData = 'https://hrm21.onrender.com/api/create';
+  getData = 'https://hrm21.onrender.com/api/find';
+  deleteData = 'https://hrm21.onrender.com/api/';
+  getLeave='https://hrm21.onrender.com/api/leave//'
+  updateData='https://hrm21.onrender.com/attendance'
+  getAttd='https://hrm21.onrender.com/attendance';
+  updatempdata="https://hrm21.onrender.com/api/update"
+  getuid='https://hrm21.onrender.com/api/uid'
 
 
-  createData = 'http://localhost:3000/api/create';
-  getData = 'http://localhost:3000/api/find';
-  deleteData = 'http://localhost:3000/api/api/';
-  getLeave='http://localhost:3000/api/leave/'
-  updateData='http://localhost:3000/api/attendance'
-  getAttd='http://localhost:3000/api/attendance';
-  getuid='http://localhost:3000/api/uid'
+
+
 
 
   addEmployee(data) {
@@ -67,10 +64,10 @@ export class DashService {
     return this.http.get(this.getData);
   }
   //UPDATE DATA
-  updateEmployee1(id:string,updatedData:any){
-    return this.http.put(`${this.updateData}/${id}`,updatedData)
+  updateEmployee(data:any){
+    return this.http.patch(`${this.updatempdata}/${data._id}`,data)
   }
-  updateEmployee(data: any) {
+  updateEmpAttendance(data: any) {
     console.log('data', data);
     return this.http.patch(this.updateData + `/${data._id}`, data);
   }

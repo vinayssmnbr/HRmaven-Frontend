@@ -56,23 +56,33 @@ export class EmployeeContentComponent implements OnInit {
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl('option1'),
-    mobile: new FormControl('',
-             [Validators.required,
-              Validators.minLength(10),
-              Validators.maxLength(10),
-              Validators.pattern('^[0-9]*$')]),
-    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    mobile: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+      Validators.pattern('^[0-9]*$'),
+    ]),
+    email: new FormControl(
+      '',
+      Validators.compose([Validators.required, Validators.email])
+    ),
     address: new FormControl(''),
     bankname: new FormControl(''),
-    adhaarno: new FormControl('',[Validators.required,Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/)]),
+    adhaarno: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{4}\d{4}\d{4}$/),
+    ]),
     accountno: new FormControl(''),
     ifsc: new FormControl(''),
-    panno: new FormControl('',[Validators.required,Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)]),
+    panno: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
+    ]),
   });
 
-get registrationFormControl(){
-  return this.form.controls;
-}
+  get registrationFormControl() {
+    return this.form.controls;
+  }
 
   //ADD DATA
   submit(data: any) {
@@ -103,14 +113,11 @@ get registrationFormControl(){
     this.deletemessage = false;
     this.deletedata = data;
   }
-
-  //UPDATE DATA
-  toUpdate(): void {
-    const id = this.data.id;
-    const updatedata = this.form.value;
-    this.dashService.updateEmployee1(id, updatedata).subscribe(() => {
-      console.log('dat updated successfully');
-    });
+  selectedUser: any = {};
+  toupdate(user: any) {
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
+    console.log(this.selectedUser);
   }
 
   //SEARCH UID
@@ -129,7 +136,6 @@ get registrationFormControl(){
     this.show = !this.show;
   }
 
-
   opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
@@ -144,7 +150,7 @@ get registrationFormControl(){
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
     this.buttonColor2 = this.buttonColor2 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
-    this.Changeselect({ name: 'Designation' });
+    this.Changeselect({ name: 'ALL' });
     this.query = '';
   }
   changeColor3() {
@@ -245,9 +251,13 @@ get registrationFormControl(){
       name: 'UI/UX Designer',
     },
     {
-      id:5,
-      name:'Quality Analyst',
-    }
+      id: 5,
+      name: 'Quality Analyst',
+    },
+    {
+      id: 6,
+      name: 'Designation',
+    },
   ];
   array1: any = [
     {
@@ -261,7 +271,7 @@ get registrationFormControl(){
     {
       id: 2,
       name: 'Others',
-    }
+    },
   ];
   array2: any = [
     {
@@ -277,33 +287,30 @@ get registrationFormControl(){
       name: 'Central Bank Of India',
     },
     {
-      id:3,
+      id: 3,
       name: 'HDFC Bank',
     },
     {
-      id:4,
+      id: 4,
       name: 'ICICI Bank',
-    }
+    },
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
-
     this.contentdropdown = !this.contentdropdown;
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
-
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  contentdropdown2:boolean=false;
+  contentdropdown2: boolean = false;
   dropdownOpen2() {
-
     this.contentdropdown2 = !this.contentdropdown2;
   }
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
-  Selectvariable1: string='Select';
-  colorvariable1:number=0;
+  Selectvariable1: string = 'Select';
+  colorvariable1: number = 0;
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
   Changeselect(arr: any) {
@@ -314,14 +321,16 @@ get registrationFormControl(){
     this.designation = arr.name;
     console.log('str', this.designation);
     this.dashService
-      .searchuid(this.query, this.designation)
+      .searchuid(
+        this.query,
+        this.designation == 'Designation' ? '' : this.designation
+      )
       .subscribe((res) => {
         console.log(res);
         this.employee = res;
         console.log('data', res);
       });
   }
-  
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
@@ -336,5 +345,3 @@ get registrationFormControl(){
   }
   // for(let i=0; i)
 }
-
-
