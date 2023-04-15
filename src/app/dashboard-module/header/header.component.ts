@@ -44,7 +44,7 @@ export class HeaderComponent {
       this.greeting = 'GOOD EVENING';
     }
 
-   this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+   this.elementRef.nativeElement.addEventListener('mouseout', () => {
       this.profileDisplay = false;
     });
   }
