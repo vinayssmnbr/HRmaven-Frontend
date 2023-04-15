@@ -28,7 +28,7 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor3 = '#FFFFFF';
   employee: any= [];
   showModal=false;
-  showCard: boolean = true;
+  showCard: boolean = false;
   employeeid='';
   employeename='';
   lineChart: Chart;
@@ -38,7 +38,8 @@ leaves:any[]=[]
   update:boolean=false;
   editmodal=false;
   showCard1: boolean=true;
-  showTable=false;
+  showTable=true;
+  attDate:any="";
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
@@ -122,7 +123,7 @@ leaves:any[]=[]
                padding: 40,
                usePointStyle: true,
                font: {
-                 size: 14,
+                 size: 10,
                },
              },
            },
@@ -201,5 +202,32 @@ done(){
   this.editmodal=!this.editmodal;
 }
 
+array: any = [
+  {
+    id: 0,
+    name: 'Present',
+  },
+  {
+    id: 1,
+    name: 'Absent',
+  },
+  {
+    id: 3,
+    name: 'Leave',
+  },
+ 
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
 
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = 'Select';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
 }

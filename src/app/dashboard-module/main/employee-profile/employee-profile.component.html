@@ -1,392 +1,536 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
 <div class="main">
-<div class="card">
-  <div class="card1">
-  <h2>Employee Profile</h2>
-  <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
-</div>
-<div class="card2">
-<span class="profile_pic"><img src="./assets/images/image_employee.png" >
-<div class="profile-content">
-  <i class="fa-solid fa-camera"></i>
-  <h2>Change</h2>
-  <p>Profile Picture</p>
-</div></span>
-<div class="content">
+  <div class="card">
+    <div class="card1">
+      <h2>Employee Profile</h2>
+    </div>
+    <div class="card2">
+      <span class="profile_pic"><img src="./assets/images/image_employee.png">
+        <div class="profile-content">
+          <i class="fa-solid fa-camera"></i>
+          <h2>Change</h2>
+          <p>Profile Picture</p>
+        </div>
+      </span>
+      <div class="content">
 
-<h3>Harshit Sharma</h3>
-<p>Front End Developer</p>
- <span><i class="fa-solid fa-location-dot"></i> Leeds, United Kingdom</span>
-  </div>
-</div>
-<ul class="content1">
-  <li [ngClass]="{'active': isPersonalDetailsActive}"><a  (click)="personaldetails()">Personal Details</a></li>
-  <li [ngClass]="{'active': isJobDetailsActive}"><a  (click)="jobdetails()">Job Details</a></li>
-  <span></span>
-</ul>
-<div class="card3" *ngIf="personaldetail">
-<h3>Basic Details</h3>
-<div class="row1">
-  <div class="column1">
-<span class="name">Name</span>
-<p class="name">Harshit Sharma</p>
-</div>
-<div class="column2">
-<span class="uid">UID</span>
-<p class="uid">25863</p>
-</div>
-<div class="column3">
-  <span class="dob">Date of birth</span>
-  <p class="dob">6th April, 1997</p>
-</div>
-</div>
-<div class="row2">
-  <div class="column1">
-    <span class="fname">Father's Name</span>
-    <p class="fname">Rahul Sharma</p>
-  </div>
-  <div class="column2">
-    <span class="mname">Mother's Name</span>
-    <p class="mname">Vanita Sharma</p>
-  </div>
-  <div class="column3">
-    <span class="marstatus">Marital Status</span>
-    <p class="marstatus">Single</p>
-  </div>
-</div>
-<div class="row3">
-  <div class="column1">
-    <span class="bgroup">Blood Group</span>
-    <p class="bgroup">B+</p>
-  </div>
-  <div class="column2">
-    <span class="gender">Gender</span>
-    <p class="gender">Male</p>
-  </div>
-  <div class="column3">
-    <span class="nation">Nationality</span>
-    <p class="nation">Indian</p>
-  </div>
-</div>
-</div>
-<div class="card4" *ngIf="personaldetail">
-<h3>Contact Details</h3>
-<div class="row1">
-  <div class="column1">
-    <span class="cno">Contact No.</span>
-    <p class="cno">9865743234</p>
-  </div>
-  <div class="column2">
-    <span class="address">Address</span>
-    <p class="address">129-8, Model Town</p>
-  </div>
-  <div class="column3">
-    <span class="email">Email</span>
-    <p class="email">harshit123@gmail.com</p>
-  </div>
-</div>
-<div class="row2">
-  <div class="column1">
-    <span class="city">City</span>
-    <p class="city">Ludhiana</p>
-  </div>
-  <div class="column2">
-    <span class="pcode">Postal Code</span>
-    <p class="pcode">141002</p>
-  </div>
-  <div class="column3">
-    <span class="state">State</span>
-    <p class="state">Punjab</p>
-  </div>
-</div>
-</div>
-<div class="card5" *ngIf="personaldetail">
-  <h3>Personal Particulars</h3>
-  <div class="row1">
-    <div class="column1">
-      <span class="bname">Bank Name</span>
-      <p class="bname">Punjab National Bank</p>
-    </div>
-    <div class="column2">
-      <span class="bno">Bank Account No.</span>
-      <p class="bno">6412365874125425</p>
-    </div>
-    <div class="column3">
-      <span class="ifsc">IFSC Code</span>
-      <p class="ifsc">PUNB0125412</p>
-    </div>
-  </div>
-  <div class="row2">
-    <div class="column1">
-      <span class="adhaarno">Aadhaar Card Number</span>
-      <p class="adhaarno">4512 3200 7456</p>
-    </div>
-    <div class="column2">
-      <span class="panno">Pan Number</span>
-      <p class="panno">ABCTY1234D</p>
-    </div>
-    <div class="column3">
-     <span class="pno">Passport Number</span>
-     <p class="pno">M5425189</p>
-    </div>
-  </div>
-</div>
-<div class="card6" *ngIf="personaldetail">
-  <h3>Education</h3>
-  <div class="row1">
-    <div class="column1">
-      <span class="inst1">10th Grade Institute</span>
-      <p class="inst1">Sacred Heart Senior Secondary School</p>
-    </div>
-    <div class="column2">
-      <span class="mper">Matriculation Percentage</span>
-      <p class="mper">88%</p>
-    </div>
-    <div class="column3">
-      <span class="inst2">12th Grade/Diploma Institute</span>
-      <p class="inst2">Guru Nanak Public School</p>
-    </div>
-  </div>
-  <div class="row2">
-    <div class="column1">
-      <span class="dper">12th Diploma Percentage</span>
-      <p class="dper">92%</p>
-    </div>
-    <div class="column2">
-      <span class="gcol">Graduation College/University</span>
-      <p class="gcol">Lovely Professional University</p>
-    </div>
-    <div class="column3">
-      <span class="stream">Stream</span>
-      <p class="stream">B.Tech CSE</p>
-    </div>
-  </div>
-  <div class="row3">
-    <div class="column1">
-      <span class="sgpa">Graduation SGPA</span>
-      <p class="sgpa">8.7</p>
-    </div>
-  </div>
-</div>
-<div class="card7" *ngIf="personaldetail">
-  <h3>Experience</h3>
-  <div class="row1">
-    <div class="column1">
-      <span class="orgname">Company/Organisation Name</span>
-      <p class="orgname">Infosys</p>
-    </div>
-    <div class="column2">
-      <span class="duration2">Duration</span>
-      <p class="duration2">May 2020 - April 2023</p>
-    </div>
-    <div class="column3">
-      <span class="designation">Designation</span>
-      <p class="desihnation">Lead- front end developer</p>
-    </div>
-  </div>
-  <div class="row2">
-    <div class="column1">
-      <span class="location2">Location</span>
-      <p class="location2">Pune, India</p>
-    </div>
-  </div>
-</div>
-<div class="card8" *ngIf="jobdetail">
-<h3>Work Details</h3>
-<div class="row1">
-  <div class="column1">
-    <span class="designation2">Designation</span>
-    <p class="designation2">Front End Developer</p>
-  </div>
-  <div class="column2">
-    <span class="estatus">Employment Status</span>
-    <p class="estatus">Full-Time Permanent</p>
-  </div>
-  <div class="column3">
-    <span class="jdate">Joining Date</span>
-    <p class="jdate">1 April 2023</p>
-  </div>
-</div>
-<div class="row2">
-  <div class="column1">
-    <span class="location3">Location</span>
-    <p class="location3">Leeds, United Kingdom</p>
-  </div>
-  <div class="column2">
-    <span class="timings">Timings</span>
-    <p class="timings">9:00 am to 5:00 pm</p>
-  </div>
-  <div class="column3">
-    <span class="ctc">CTC</span>
-    <p class="ctc">8 LPA</p>
-  </div>
-</div>
-</div>
-</div>
-<div class="modal" *ngIf="showModal">
-<div class="modal-content" *ngIf="modalContent1">
-  <div class="modal-header">
-    <h4 class="modal-title">Edit Personal Details</h4>
-    <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-  </div>
-  <div class="modal-body">
-   <form class="form-container" id="form1" [formGroup]="form">
-    <h2>Basic Details</h2>
-    <hr>
-    <div class="form-row">
-      <div class="input">
-        <label>Name</label>
-        <input type="text" placeholder="Harshit Sharma" formControlName="name">
-      </div>
-      <div class="input">
-        <label>UID</label>
-        <input type="text" placeholder="28563" formControlName="uid">
-      </div>
-      <div class="input">
-        <label>Date of birth</label>
-        <input type="text" placeholder="06/04/1997" formControlName="dob">
+        <h3>Harshit Sharma</h3>
+        <p>Front End Developer</p>
+        <span><i class="fa-solid fa-location-dot"></i> Leeds, United Kingdom</span>
       </div>
     </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Father's Name</label>
-        <input type="text" placeholder="Rahul Sharma" formControlName="fname">
+    <ul class="content1">
+      <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
+      <li [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
+      <span></span>
+    </ul>
+    <div class="card3" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Basic Details</h3>
+        <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
-      <div class="input">
-        <label>Mother's Name</label>
-        <input type="text" placeholder="Vinita Sharma" formControlName="mname">
+      <div class="row1">
+        <div class="column1">
+          <span class="name">Name</span>
+          <p class="name">Harshit Sharma</p>
+        </div>
+        <div class="column2">
+          <span class="uid">Employee ID</span>
+          <p class="uid">25863</p>
+        </div>
+        <div class="column3">
+          <span class="dob">Date of birth</span>
+          <p class="dob">6th April, 1997</p>
+        </div>
       </div>
-      <div class="input">
-        <label>Marital Status</label>
-        <input type="text" placeholder="Single" formControlName="mstatus">
+      <div class="row2">
+        <div class="column1">
+          <span class="fname">Father's Name</span>
+          <p class="fname">Rahul Sharma</p>
+        </div>
+        <div class="column2">
+          <span class="mname">Mother's Name</span>
+          <p class="mname">Vanita Sharma</p>
+        </div>
+        <div class="column3">
+          <span class="marstatus">Marital Status</span>
+          <p class="marstatus">Single</p>
+        </div>
       </div>
-    </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Blood Group</label>
-        <input type="text" placeholder="B+" formControlName="bgroup">
-      </div>
-      <div class="input">
-        <label>Gender</label>
-       <select class="select" formControlName="gender">
-        <option value="select">Select</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="others">Others</option>
-       </select>
-      </div>
-      <div class="input">
-        <label>Nationality</label>
-        <input type="text" placeholder="Indian" formControlName="nation">
-      </div>
-    </div>
-   </form>
-   <form class="form-container" id="form2" [formGroup]="form">
-     <h2>Contact Details</h2>
-     <hr>
-    <div class="form-row">
-      <div class="input">
-        <label>Contact No.</label>
-        <input type="text" placeholder="9836327872" formControlName="cno">
-      </div>
-      <div class="input">
-        <label>Address</label>
-        <input type="text" placeholder="129-B, Model Town" formControlName="address">
-      </div>
-      <div class="input">
-        <label>Email</label>
-        <input type="text" placeholder="harshit123@gmail.com" formControlName="email">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="input">
-        <label>City</label>
-        <input type="text" placeholder="Ludhiana" formControlName="city">
-      </div>
-      <div class="input">
-        <label>Postal Code</label>
-        <input type="text" placeholder="141002" formControlName="pcode">
-      </div>
-      <div class="input">
-        <label>State</label>
-        <input type="text" placeholder="Punjab" formControlName="state">
+      <div class="row3">
+        <div class="column1">
+          <span class="bgroup">Blood Group</span>
+          <p class="bgroup">B+</p>
+        </div>
+        <div class="column2">
+          <span class="gender">Gender</span>
+          <p class="gender">Male</p>
+        </div>
+        <div class="column3">
+          <span class="nation">Nationality</span>
+          <p class="nation">Indian</p>
+        </div>
       </div>
     </div>
-   </form>
-   <form class="form-container" id="form3" [formGroup]="form">
-    <h2>Personal Particulars</h2>
-    <hr>
-    <div class="form-row">
-      <div class="input">
-        <label>Bank Name</label>
-        <input type="text" placeholder="Punjab National Bank" formControlName="bname">
+    <div class="card4" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Contact Details</h3>
+        <button class="edit1" (click)="openmodal2()">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
-      <div class="input">
-        <label>Bank Account No.</label>
-        <input type="text" placeholder="6412365874125425" formControlName="bno">
+      <div class="row1">
+        <div class="column1">
+          <span class="cno">Contact No.</span>
+          <p class="cno">9865743234</p>
+        </div>
+        <div class="column2">
+          <span class="address">Address</span>
+          <p class="address">129-8, Model Town</p>
+        </div>
+        <div class="column3">
+          <span class="email">Email</span>
+          <p class="email">harshit123@gmail.com</p>
+        </div>
       </div>
-      <div class="input">
-        <label>IFSC Code</label>
-        <input type="text" placeholder="PUNB0125412" formControlName="ifsc">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Adhaar Card Number</label>
-        <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno">
-      </div>
-      <div class="input">
-        <label>PAN Number</label>
-        <input type="text" placeholder="4512 3200 7456" formControlName="panno">
-      </div>
-      <div class="input">
-        <label>Passport Number</label>
-        <input type="text" placeholder="M5425189" formControlName="pno">
-      </div>
-    </div>
-   </form>
-   <form class="form-container" id="form4" [formGroup]="form">
-    <h2>Education</h2>
-    <hr>
-    <div class="form-row">
-      <div class="input">
-        <label>10th Grade Institute</label>
-        <input type="text" placeholder="Sacred Heart Senior Secondary School" formControlName="inst1">
-      </div>
-      <div class="input">
-        <label>Matriculation Percentage</label>
-        <input type="text" placeholder="88%" formControlName="mper">
-      </div>
-      <div class="input">
-        <label>12th Grade/Diploma Institute</label>
-        <input type="text" placeholder="Guru Nanak Public School" formControlName="inst2">
+      <div class="row2">
+        <div class="column1">
+          <span class="city">City</span>
+          <p class="city">Ludhiana</p>
+        </div>
+        <div class="column2">
+          <span class="pcode">Postal Code</span>
+          <p class="pcode">141002</p>
+        </div>
+        <div class="column3">
+          <span class="state">State</span>
+          <p class="state">Punjab</p>
+        </div>
       </div>
     </div>
-    <div class="form-row">
-      <div class="input">
-        <label>12th/Diploma Percentage</label>
-        <input type="text" placeholder="92%" formControlName="dper">
+    <div class="card5" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Personal Particulars</h3>
+        <button class="edit1" (click)="openModal3()">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
-      <div class="input">
-        <label>Graduation College/University</label>
-        <input type="text" placeholder="Lovely Professional University" formControlName="gcol">
+      <div class="row1">
+        <div class="column1">
+          <span class="bname">Bank Name</span>
+          <p class="bname">Punjab National Bank</p>
+        </div>
+        <div class="column2">
+          <span class="bno">Bank Account No.</span>
+          <p class="bno">6412365874125425</p>
+        </div>
+        <div class="column3">
+          <span class="ifsc">IFSC Code</span>
+          <p class="ifsc">PUNB0125412</p>
+        </div>
       </div>
-      <div class="input">
-        <label>Stream</label>
-        <input type="text" placeholder="B.Tech CSE" formControlName="stream">
+      <div class="row2">
+        <div class="column1">
+          <span class="adhaarno">Aadhaar Card Number</span>
+          <p class="adhaarno">4512 3200 7456</p>
+        </div>
+        <div class="column2">
+          <span class="panno">Pan Number</span>
+          <p class="panno">ABCTY1234D</p>
+        </div>
+        <div class="column3">
+          <span class="pno">Passport Number</span>
+          <p class="pno">M5425189</p>
+        </div>
       </div>
     </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Graduation SGPA</label>
-        <input type="text" placeholder="8.7" formControlName="sgpa">
+    <div class="card6" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Education</h3>
+        <button class="edit1" (click)="openModal4()">Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="inst1">10th Grade Institute</span>
+          <p class="inst1">Sacred Heart Senior Secondary School</p>
+        </div>
+        <div class="column2">
+          <span class="mper">Matriculation Percentage</span>
+          <p class="mper">88%</p>
+        </div>
+        <div class="column3">
+          <span class="inst2">12th Grade/Diploma Institute</span>
+          <p class="inst2">Guru Nanak Public School</p>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="column1">
+          <span class="dper">12th Diploma Percentage</span>
+          <p class="dper">92%</p>
+        </div>
+        <div class="column2">
+          <span class="gcol">Graduation College/University</span>
+          <p class="gcol">Lovely Professional University</p>
+        </div>
+        <div class="column3">
+          <span class="stream">Stream</span>
+          <p class="stream">B.Tech CSE</p>
+        </div>
+      </div>
+      <div class="row3">
+        <div class="column1">
+          <span class="sgpa">Graduation SGPA</span>
+          <p class="sgpa">8.7</p>
+        </div>
+        <div class="column2">
+          <span class="pgcol">Post Graduation College/University</span>
+          <p class="pgcol">Lovely Professional University</p>
+        </div>
+        <div class="column3">
+          <span class="pgstream">Post Graduation Stream</span>
+          <p class="stream">B.Tech CSE</p>
+        </div>
+      </div>
+      <div class="row4">
+        <div class="column1">
+          <span class="pgsgpa">Post Graduation SGPA</span>
+          <p class="pgsgpa">8.8</p>
+        </div>
       </div>
     </div>
-   </form>
-   <form class="form-container" id="form5" [formGroup]="form">
-    <h2>Experience</h2>
-    <hr>
+    <div class="card7" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Experience</h3>
+        <button class="edit1" (click)="openModal5()">Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="orgname">Company/Organisation Name</span>
+          <p class="orgname">Infosys</p>
+        </div>
+        <div class="column2">
+          <span class="duration2">Duration</span>
+          <p class="duration2">May 2020 - April 2023</p>
+        </div>
+        <div class="column3">
+          <span class="designation">Designation</span>
+          <p class="desihnation">Lead- front end developer</p>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="column1">
+          <span class="location2">Location</span>
+          <p class="location2">Pune, India</p>
+        </div>
+      </div>
+      <hr>
+      <div class="row1">
+        <div class="column1">
+          <span class="orgname">Company/Organisation Name</span>
+          <p class="orgname">Accenture</p>
+        </div>
+        <div class="column2">
+          <span class="duration2">Duration</span>
+          <p class="duration2">April 2019 - May 2020</p>
+        </div>
+        <div class="column3">
+          <span class="designation2">Designation</span>
+          <p class="designation2">Front End developer</p>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="column1">
+          <span class="location2">Location</span>
+          <p class="location2">Bangalore, India</p>
+        </div>
+      </div>
+    </div>
+    <div class="card8" *ngIf="jobdetail">
+      <div class="details">
+      <h3>Work Details</h3>
+      <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="designation2">Designation</span>
+          <p class="designation2">Front End Developer</p>
+        </div>
+        <div class="column2">
+          <span class="estatus">Employment Status</span>
+          <p class="estatus">Full-Time Permanent</p>
+        </div>
+        <div class="column3">
+          <span class="jdate">Joining Date</span>
+          <p class="jdate">1 April 2023</p>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="column1">
+          <span class="location3">Location</span>
+          <p class="location3">Leeds, United Kingdom</p>
+        </div>
+        <div class="column2">
+          <span class="timings">Timings</span>
+          <p class="timings">9:00 am to 5:00 pm</p>
+        </div>
+        <div class="column3">
+          <span class="ctc">CTC</span>
+          <p class="ctc">8 LPA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content" *ngIf="modalContent1">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Personal Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form class="form-container" id="form1" [formGroup]="form">
+          <div class="form-row">
+            <div class="input">
+              <label>Name</label>
+              <input type="text" placeholder="Harshit Sharma" formControlName="name">
+            </div>
+            <div class="input">
+              <label>Employee ID</label>
+              <input type="number" placeholder="28563" class="employe-id" formControlName="employee_id" [disabled]="true" readonly>
+            </div>
+            <div class="input">
+              <label>Date of birth</label>
+              <input type="date" placeholder="06/04/1997" formControlName="dob">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Father's Name</label>
+              <input type="text" placeholder="Rahul Sharma" formControlName="fname">
+            </div>
+            <div class="input">
+              <label>Mother's Name</label>
+              <input type="text" placeholder="Vinita Sharma" formControlName="mname">
+            </div>
+            <div class="input">
+              <label>Marital Status</label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
+                  <p>{{Selectvariable3}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown3">
+                  <ul>
+                    <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
+                      (click)="Changeselect3(arr3)">
+                      {{arr3.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Blood Group</label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
+                  <p>{{Selectvariable4}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown4">
+                  <ul>
+                    <li *ngFor="let arr4 of array4; index as i" [class.select_active]="i === colorvariable4"
+                      (click)="Changeselect4(arr4)">
+                      {{arr4.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Gender</label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
+                  <p>{{Selectvariable1}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown1">
+                  <ul>
+                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
+                      (click)="Changeselect1(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Nationality</label>
+              <input type="text" placeholder="Indian" formControlName="nation">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal2()">Update</button>
+      </div>
+    </div>
+    <div class="modal-content" *ngIf="modalContent4">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Contact Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form class="form-container" id="form2" [formGroup]="form">
+          <div class="form-row">
+            <div class="input">
+              <label>Contact No.</label>
+              <input type="number" placeholder="9836327872" formControlName="cno">
+            </div>
+            <div class="input">
+              <label>Address</label>
+              <input type="text" placeholder="129-B, Model Town" formControlName="address">
+            </div>
+            <div class="input">
+              <label>Email</label>
+              <input type="text" placeholder="harshit123@gmail.com" formControlName="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>City</label>
+              <input type="text" placeholder="Ludhiana" formControlName="city">
+            </div>
+            <div class="input">
+              <label>Postal Code</label>
+              <input type="number" placeholder="141002" formControlName="pcode">
+            </div>
+            <div class="input">
+              <label>State</label>
+              <input type="text" placeholder="Punjab" formControlName="state">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal3()">Update</button>
+      </div>
+    </div>
+    <div class="modal-content" *ngIf="modalContent5">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Personal Particulars</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form class="form-container" id="form3" [formGroup]="form">
+          <div class="form-row">
+            <div class="input">
+              <label>Bank Name</label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
+                  <p>{{Selectvariable2}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown2">
+                  <ul>
+                    <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                      (click)="Changeselect2(arr2)">
+                      {{arr2.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Bank Account No.</label>
+              <input type="number" placeholder="6412365874125425" formControlName="bno">
+            </div>
+            <div class="input">
+              <label>IFSC Code</label>
+              <input type="text" placeholder="PUNB0125412" formControlName="ifsc">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Adhaar Card Number</label>
+              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno">
+            </div>
+            <div class="input">
+              <label>PAN Number</label>
+              <input type="text" placeholder="4512 3200 7456" formControlName="panno">
+            </div>
+            <div class="input">
+              <label>Passport Number</label>
+              <input type="text" placeholder="M5425189" formControlName="pno">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal4()">Update</button>
+      </div>
+    </div>
+    <div class="modal-content" *ngIf="modalContent6">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Education Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form class="form-container" id="form4" [formGroup]="form">
+          <div class="form-row">
+            <div class="input">
+              <label>10th Grade Institute</label>
+              <input type="text" placeholder="Sacred Heart Senior Secondary School" formControlName="inst1">
+            </div>
+            <div class="input">
+              <label>Matriculation Percentage</label>
+              <input type="number" placeholder="88%" formControlName="mper">
+            </div>
+            <div class="input">
+              <label>12th Grade/Diploma Institute</label>
+              <input type="text" placeholder="Guru Nanak Public School" formControlName="inst2">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>12th/Diploma Percentage</label>
+              <input type="number" placeholder="92%" formControlName="dper">
+            </div>
+            <div class="input">
+              <label>Graduation College/University</label>
+              <input type="text" placeholder="Lovely Professional University" formControlName="gcol">
+            </div>
+            <div class="input">
+              <label>Stream</label>
+              <input type="text" placeholder="B.Tech CSE" formControlName="stream">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Graduation SGPA</label>
+              <input type="number" placeholder="8.7" formControlName="sgpa">
+            </div>
+            <div class="input">
+              <label>Post Graduation College/University</label>
+              <input type="text" placeholder="Lovely Professional University" formControlName="pgcol">
+            </div>
+            <div class="input">
+              <label>Post Graduation Stream</label>
+              <input type="text" placeholder="M.Tech CSE" formControlName="pgstream">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Post Graduation SGPA</label>
+              <input type="number" placeholder="8.8" formControlName="pgsgpa">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal5()">Update</button>
+      </div>
+    </div>
+    <div class="modal-content" *ngIf="modalContent7">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Experience Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+    <form class="form-container" id="form5" [formGroup]="form">
     <div class="form-row">
       <div class="input">
         <label>Company/Organisation Name</label>
@@ -394,7 +538,7 @@
       </div>
       <div class="input">
         <label>Duration</label>
-        <input type="text" placeholder="9:00 am to 5:00 pm" formControlName="duration2">
+        <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
       </div>
       <div class="input">
         <label>Designation</label>
@@ -407,66 +551,111 @@
         <input type="text" placeholder="Pune, India" formControlName="location2">
       </div>
     </div>
+    <hr>
+    <div class="form-row">
+      <div class="input">
+        <label>Company/Organisation Name</label>
+        <input type="text" placeholder="Accenture" formControlName="orgname">
+      </div>
+      <div class="input">
+        <label>Duration</label>
+        <input type="text" placeholder="April 2019 - May 2020" formControlName="duration2">
+      </div>
+      <div class="input">
+        <label>Designation</label>
+        <input type="text" placeholder="Front End developer" formControlName="designation">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="input">
+        <label>Location</label>
+        <input type="text" placeholder="Bangalore, India" formControlName="location2">
+      </div>
+    </div>
+    <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
    </form>
   </div>
   <div class="modal-footer">
-    <button class="cancel" (click)="closeModal()">Cancel</button>
+    <button class="save" (click)="closeModal6()">Update</button>
+  </div>
+</div>
+    <!-- <div class="modal-footer">
     <button class="save" (click)="closeModal2()" >Save Changes</button>
-  </div>
-</div>
-<div class="modal-content2" *ngIf="modalContent2">
-  <div class="modal-header">
-    <h4 class="modal-title">Edit Job Details</h4>
-    <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-  </div>
-  <div class="modal-body2">
-    <form class="form-container" id="form6" [formGroup]="form">
-      <h2>Job Details</h2>
-      <hr>
-      <div class="form-row">
-        <div class="input">
-          <label>Designation</label>
-          <input type="text" placeholder="Front End Developer" formControlName="designation2">
-        </div>
-        <div class="input">
-          <label>Employment Status</label>
-          <input type="text" placeholder="Full- Time Permanent" formControlName="estatus">
-        </div>
-        <div class="input">
-          <label>Joining Date</label>
-          <input type="text" placeholder="1 April,2023" formControlName="jdate">
-        </div>
+  </div> -->
+
+    <div class="modal-content2" *ngIf="modalContent2">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Job Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-      <div class="form-row">
-        <div class="input">
-          <label>Location</label>
-          <input type="text" placeholder="Pune, India" formControlName="location3">
-        </div>
-        <div class="input">
-          <label>Timings</label>
-          <input type="text" placeholder="9:00 am to 5:00 pm" formControlName="timings">
-        </div>
-        <div class="input">
-          <label>CTC</label>
-          <input type="text" placeholder="8LPA"formControlName="ctc">
-        </div>
+      <div class="modal-body2">
+        <form class="form-container" id="form6" [formGroup]="form">
+
+          <div class="form-row">
+            <div class="input">
+              <label>Designation</label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                  <p>{{Selectvariable}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown">
+                  <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                      {{arr.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Employment Status</label>
+              <input type="text" placeholder="Full- Time Permanent" formControlName="estatus">
+            </div>
+            <div class="input">
+              <label>Joining Date</label>
+              <input type="date" placeholder="1 April,2023" formControlName="jdate">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Pune, India" formControlName="location3">
+            </div>
+            <div class="input">
+              <label>Timings</label>
+            <div class="dropdown_container">
+              <div class="dropdwon_select" (click)="dropdownOpen5()">
+                <p>{{Selectvariable5}}</p>
+                <i class="fa-sharp fa-solid fa-caret-down"></i>
+              </div>
+              <div class="select_content" *ngIf="contentdropdown5">
+                <ul>
+                  <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5" (click)="Changeselect5(arr5)">
+                    {{arr5.name}}</li>
+                </ul>
+              </div>
+            </div>
+            </div>
+            <div class="input">
+              <label>CTC</label>
+              <input type="text" placeholder="8LPA" formControlName="ctc">
+            </div>
+          </div>
+        </form>
       </div>
-      </form>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal2()">Update</button>
+      </div>
+    </div>
+    <div class="modal-content3" *ngIf="fourthStep">
+      <div class="modal-header2">
+        <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
+      </div>
+      <div class="modal-body3">
+        <h3>Successful</h3>
+        <p>Employee details updated successfully</p>
+        <button class="done-btn2" (click)="closeModal()">Done</button>
+      </div>
+    </div>
   </div>
-  <div class="modal-footer">
-    <button class="cancel" (click)="closeModal()">Cancel</button>
-    <button class="save" (click)="closeModal2()">Save Changes</button>
-  </div>
-</div>
-<div class="modal-content3" *ngIf="fourthStep">
-  <div class="modal-header2">
-    <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
-  </div>
-  <div class="modal-body3">
-    <h3>Successful</h3>
-    <p>Employee details updated successfully</p>
-    <button class="done-btn2" (click)="closeModal()">Done</button>
-  </div>
-</div>
-</div>
 </div>

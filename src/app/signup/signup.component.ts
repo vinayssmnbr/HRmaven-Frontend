@@ -11,17 +11,17 @@ import { Router } from '@angular/router'
 export class SignupComponent {
 
   ngOnInit() {
-    let counter = 1;
+    let counter = 0;
     setInterval(() => {
-      const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
-      if(radioBtn){
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
+      const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
+      if (radioBtn) {
+        radioBtn.checked = true;
+        counter++;
+        if (counter === 4) {
+          counter = 0;
+        }
       }
-    }
-    }, 5000);
+    }, 3000);
   }
 
   constructor(public userService:UserService, private router : Router){}
@@ -45,20 +45,20 @@ export class SignupComponent {
   }
 
   showPassword = false;
-showPasswordIcon = 'fa-eye';
+showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
-  passwordInput.type = this.showPassword ? 'text' : 'password';
+  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash':'fa-eye' ;
+  passwordInput.type = this.showPassword ? 'password':'text' ;
 }
 
 showPassword1 = false;
-showPasswordIcon1 = 'fa-eye';
+showPasswordIcon1 = 'fa-eye-slash';
 togglePassword(passwordInpu: any) {
   this.showPassword1 = !this.showPassword1;
   this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
-  passwordInpu.type = this.showPassword1 ? 'text' : 'password';
+  passwordInpu.type = this.showPassword1 ?  'password':'text';
 }
 
 
@@ -84,7 +84,7 @@ submit(){
 
 SignupByGoogle() {
   console.log('google');
-  window.location.href = 'https://hrm21.onrender.com/auth/google';
+  window.location.href = 'http://45.138.16.177:3000/auth/google';
 }
 
 }
