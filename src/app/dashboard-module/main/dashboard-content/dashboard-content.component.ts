@@ -80,21 +80,6 @@ export class DashboardContentComponent implements OnInit {
   ]
   ngOnInit()
    {
-    // const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
-    //   selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-    //   options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-    //   sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    // selectBtn.addEventListener('click', () =>
-    //   optionMenu.classList.toggle('active')
-    // );
-    // options.forEach((option) => {
-    //   option.addEventListener('click', () => {
-    //     let selectedOption =
-    //       option.querySelector<HTMLElement>('.option-text')!.innerText;
-    //     sBtn_text.innerText = selectedOption;
-    //     optionMenu.classList.remove('active');
-    //   });
-    // });
 
 
 
@@ -200,7 +185,7 @@ export class DashboardContentComponent implements OnInit {
 
 
 updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-  const url = `http://45.138.16.177:3000/api/leave/${id}`;
+  const url = `https://hrm21.onrender.com/api/leave/${id}`;
   const body = { status: status };
   this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
   ).subscribe(response => {

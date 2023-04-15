@@ -26,7 +26,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-  
+
     let counter = 0;
     setInterval(() => {
       const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
@@ -56,7 +56,7 @@ export class LoginComponent {
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
-    window.location.href = 'http://45.138.16.177:3000/auth/google';
+    window.location.href = 'https://hrm21.onrender.com/auth/google';
   }
 
   loginForm = new FormGroup({
