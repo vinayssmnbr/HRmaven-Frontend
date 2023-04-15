@@ -79,7 +79,7 @@ export class UserService {
       this.http.get('https://hrmaven.works/auth', { headers }).subscribe(
         (res: any) => {
           this.isLoggedIn.next(true);
-          // this.router.navigate(['dashboard']);
+          this.router.navigate(['dashboard']);
         },
         (error) => {
           console.log(error);

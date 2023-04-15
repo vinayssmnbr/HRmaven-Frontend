@@ -40,6 +40,7 @@ leaves:any[]=[]
   showCard1: boolean=true;
   showTable=true;
   attDate:any="";
+  loader=true;
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
@@ -50,6 +51,7 @@ leaves:any[]=[]
     });
     this.getLeaveData()
     this.getreport();
+
   }
   form = new FormGroup({
     name:new FormControl(),
@@ -61,6 +63,7 @@ leaves:any[]=[]
 
 
   });
+
 
   async getreport(){
     await this.dashService.getreport().subscribe((res:any)=>{
@@ -130,11 +133,17 @@ leaves:any[]=[]
          },
        },
      });
+     if(res){
+     setTimeout(() => {
+      this.loader=false;
+    }, 3000);
+  }
      });
    }
   ngOnInit() {
     this.form.get('name').disable();
     this.form.get('empId').disable();
+    window.scrollTo(0, 0);
     // Create a chart object
 
   }
@@ -173,7 +182,7 @@ this.dashService.getleaves().subscribe((res: any) => {
     console.log(this.form.value)
     const updatedData = this.form.value;
     updatedData['_id'] = this.selectedUser._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+    this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
       console.log('Data updated successfully');
     this.getLeaveData()
 this.edit();
@@ -202,6 +211,30 @@ done(){
   this.editmodal=!this.editmodal;
 }
 
+// array1: any = [
+//   {
+//     id: 0,
+//     name: 'Last 15 days',
+//   },
+//   {
+//     id: 1,
+//     name: 'Last 30 days',
+//   },
+
+// ];
+// contentdropdown1: boolean = false;
+// dropdownOpen1() {
+
+//   this.contentdropdown1 = !this.contentdropdown1;
+// }
+// Selectvariable1: string = 'Last 15 days';
+// colorvariable1: number =  0;
+// Changeselect1(arr1: any) {
+//   this.Selectvariable1 = arr1.name;
+//   this.colorvariable1 = arr1.id;
+//   this.contentdropdown1=false;
+//   console.log(arr1.name);
+// }
 array: any = [
   {
     id: 0,
@@ -215,7 +248,7 @@ array: any = [
     id: 3,
     name: 'Leave',
   },
- 
+
 ];
 contentdropdown: boolean = false;
 dropdownOpen() {

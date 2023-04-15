@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter,Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  Inject,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -6,6 +13,7 @@ import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+   AbstractControl
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
@@ -16,11 +24,13 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
-
-  constructor(public dashService: DashService,private formBuilder: FormBuilder,@Inject(DOCUMENT) public document: Document) {
+  constructor(
+    public dashService: DashService,
+    private formBuilder: FormBuilder,
+    @Inject(DOCUMENT) public document: Document
+  ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
-
   }
 
   buttonbackgroundColor = '#2F2C9F';
@@ -29,7 +39,9 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any=[];
+  employee: any = [];
+  employeeuid: any = [];
+  currentEmployeeUid: any = '';
   query: string = '';
   designation: string = '';
   data: any;
@@ -37,51 +49,62 @@ export class EmployeeContentComponent implements OnInit {
   empdesignation="";
   employeeid:any;
   show:any=false;
-
-
+  emptybox=true;
+ nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const nameRegex = /^[a-zA-Z\s]*$/;
+  const valid = nameRegex.test(control.value);
+  return valid ? null : { 'invalidName': true };
+}
   form = new FormGroup({
-    name: new FormControl('', Validators.required),
+    name: new FormControl('', [Validators.required,this.nameValidator]),
     designation: new FormControl(''),
     employee_id: new FormControl(''),
-    dateOfJoining: new FormControl(''),
-    dateOfBirth: new FormControl(''),
+    dateOfJoining: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl('', Validators.required),
     gender: new FormControl('option1'),
     mobile: new FormControl('',
              [Validators.required,
-              Validators.minLength(10),
               Validators.maxLength(10),
-              Validators.pattern('^[0-9]*$')]),
-    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-    address: new FormControl(''),
+            ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    address: new FormControl('', Validators.required),
     bankname: new FormControl(''),
-    adhaarno: new FormControl('',[Validators.required,Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/)]),
-    accountno: new FormControl(''),
-    ifsc: new FormControl(''),
+    adhaarno: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/),
+           ]),
+    accountno: new FormControl('', [Validators.required, Validators.maxLength(12)]),
+    ifsc: new FormControl('',[ Validators.required, Validators.pattern(/^([A-Z]){4}([0-9]){8}$/)]),
     panno: new FormControl('',[Validators.required,Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)]),
-  });
+          });
 
-get registrationFormControl(){
-  return this.form.controls;
-}
+          get registrationFormControl(){
+            return this.form.controls;
+          }
 
-  //ADD DATA
-  submit(data: any) {
-    console.log(this.form.value);
-    this.showModalContent = false;
-    this.fourthStep = true;
-    this.thirdStep = false;
-    this.dashService.addEmployee(data).subscribe((result) => {
-      this.dashService.addEmployee(this.form);
-      console.log(result);
-      this.fetchdata();
-    });
-  }
+          //ADD DATA
+          submit(data: any) {
+            console.log(this.form.value);
+            this.showModalContent = false;
+            this.fourthStep = true;
+            this.thirdStep = false;
+            this.dashService.addEmployee(data).subscribe((result) => {
+              this.dashService.addEmployee(this.form);
+              console.log(result);
+              this.fetchdata();
+            });
+          }
+
+// form1Valid: boolean = this.form.controls.name.valid && this.form.controls.designation.valid && this.form.controls.employee_id.valid && this.form.controls.gender.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid
+  form1Valid: boolean = this.form.controls.name.valid
 
   //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      if(res.length>0)
+      {
+          this.emptybox=false;
+      }
     });
   }
 
@@ -91,19 +114,15 @@ get registrationFormControl(){
     this.showModalContent = false;
     this.showModal = true;
     this.deletemessage = false;
-    this.deletedata=data;
-
-
+    this.deletedata = data;
+  }
+  selectedUser: any = {};
+  toupdate(user: any) {
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
+    console.log(this.selectedUser);
   }
 
- //UPDATE DATA
- toUpdate():void{
-  const id=this.data.id
-  const updatedata=this.form.value
-  this.dashService.updateEmployee1(id,updatedata).subscribe(()=>{
-    console.log('dat updated successfully')
-  })
-}
   //SEARCH UID
   search() {
     console.log(this.query, 'search fn', this.designation);
@@ -116,29 +135,14 @@ get registrationFormControl(){
       });
   }
 
-  function(){
-    this.show=!this.show;
+  function() {
+    this.show = !this.show;
   }
 
-  //FILTER DESIGNATION
-  filter(checkbox: string) {
-    this.designation = checkbox;
-    this.dashService
-      .searchuid(this.query, this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
-  }
-
-  opendpdtn=false;
+  opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
   }
-
-
-
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -149,6 +153,8 @@ get registrationFormControl(){
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
     this.buttonColor2 = this.buttonColor2 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.Changeselect({ name: 'ALL' });
+    this.query = '';
   }
   changeColor3() {
     this.buttonbackgroundColor3 =
@@ -200,6 +206,11 @@ get registrationFormControl(){
     this.secondStep = false;
     this.thirdStep = false;
     this.showModalContent = true;
+    //DYNAMIC UID
+    this.dashService.getEmployeeUid().subscribe((res: any) => {
+      console.log('data', res);
+      this.currentEmployeeUid = res.uid;
+    });
   }
   rowdelete = false;
 
@@ -245,6 +256,10 @@ get registrationFormControl(){
     {
       id:5,
       name:'Quality Analyst',
+    },
+    {
+      id:6,
+      name:'All',
     }
   ];
   array1: any = [
@@ -259,7 +274,7 @@ get registrationFormControl(){
     {
       id: 2,
       name: 'Others',
-    }
+    },
   ];
   array2: any = [
     {
@@ -275,33 +290,30 @@ get registrationFormControl(){
       name: 'Central Bank Of India',
     },
     {
-      id:3,
+      id: 3,
       name: 'HDFC Bank',
     },
     {
-      id:4,
+      id: 4,
       name: 'ICICI Bank',
-    }
+    },
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
-
     this.contentdropdown = !this.contentdropdown;
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
-
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  contentdropdown2:boolean=false;
+  contentdropdown2: boolean = false;
   dropdownOpen2() {
-
     this.contentdropdown2 = !this.contentdropdown2;
   }
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
-  Selectvariable1: string='Select';
-  colorvariable1:number=0;
+  Selectvariable1: string = 'Select';
+  colorvariable1: number = 0;
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
   Changeselect(arr: any) {
@@ -309,6 +321,18 @@ get registrationFormControl(){
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
+    this.designation = arr.name;
+    console.log('str', this.designation);
+    this.dashService
+      .searchuid(
+        this.query,
+        this.designation == 'Designation' ? '' : this.designation
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this.employee = res;
+        console.log('data', res);
+      });
   }
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
@@ -324,5 +348,3 @@ get registrationFormControl(){
   }
   // for(let i=0; i)
 }
-
-

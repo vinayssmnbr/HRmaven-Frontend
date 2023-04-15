@@ -40,7 +40,7 @@
   <!--Section Bar Graph-->
   <div class="row">
     <div class="col-8">
-      <div class="attendance-area">
+      <div class="attendance-area" >
 
         <div class="attendence-content">
           <div class="attendance">
@@ -70,6 +70,7 @@
           <h2>Meetings</h2>
           <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
         </div>
+        <div class="meeting-scrollbar">
         <div class="all-meetings" *ngFor="let option of options let index = index">
           <div class="interview-area">
             <div class="date">
@@ -93,6 +94,7 @@
           </div>
 
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -153,10 +155,12 @@
     <!--Activity feeds Section-->
     <div class="col-4">
       <div class="activity-area">
+       
         <div class="activity-feed-text">
           <h2>Activity Feeds</h2>
           <p>View All</p>
         </div>
+        <div class="scrollbar-start">
         <div class="image-text">
           <div class="john-image">
             <div class="john-shaw-background">
@@ -168,6 +172,33 @@
             </div>
           </div>
 
+          <div class="john-image">
+            <div class="john-shaw-background">
+              <img src="assets/images/Ellipse 47.png" alt="" />
+            </div>
+            <div class="john-text">
+              <p><span>John Shaw</span> applied for the job of Product manager</p>
+              <p class="min">9 min ago</p>
+            </div>
+          </div>
+          <div class="john-image">
+            <div class="john-shaw-background">
+              <img src="assets/images/Ellipse 47.png" alt="" />
+            </div>
+            <div class="john-text">
+              <p><span>John Shaw</span> applied for the job of Product manager</p>
+              <p class="min">9 min ago</p>
+            </div>
+          </div>
+          <div class="john-image">
+            <div class="john-shaw-background">
+              <img src="assets/images/Ellipse 47.png" alt="" />
+            </div>
+            <div class="john-text">
+              <p><span>John Shaw</span> applied for the job of Product manager</p>
+              <p class="min">9 min ago</p>
+            </div>
+          </div>
           <div class="john-image">
             <div class="john-shaw-background">
               <img src="assets/images/Ellipse 47.png" alt="" />
@@ -219,6 +250,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
   <!--Leave Request Section-->

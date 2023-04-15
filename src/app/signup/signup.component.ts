@@ -32,13 +32,13 @@ export class SignupComponent {
     }
     return null;
   }
-  
+
 
   sigupform = new FormGroup({
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required, Validators.minLength(6), this.noSpaces]),
+    username: new FormControl("",[Validators.required,Validators.pattern('^[A-Z]([a-zA-Z0-9.-_,]|[- @.#&!])*$')]),
     check: new FormControl("",[Validators.required]),
   },{
     validators:matchpassword
@@ -61,7 +61,7 @@ showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash':'fa-eye' ;
+  this.showPasswordIcon = this.showPassword ? 'fa-eye':'fa-eye-slash'  ;
   passwordInput.type = this.showPassword ? 'password':'text' ;
 }
 
