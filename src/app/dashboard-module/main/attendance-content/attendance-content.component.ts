@@ -173,7 +173,7 @@ this.dashService.getleaves().subscribe((res: any) => {
     console.log(this.form.value)
     const updatedData = this.form.value;
     updatedData['_id'] = this.selectedUser._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+    this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
       console.log('Data updated successfully');
     this.getLeaveData()
 this.edit();
@@ -239,7 +239,7 @@ array: any = [
     id: 3,
     name: 'Leave',
   },
- 
+
 ];
 contentdropdown: boolean = false;
 dropdownOpen() {
