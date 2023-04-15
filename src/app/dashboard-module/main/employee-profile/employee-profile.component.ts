@@ -7,6 +7,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { DashService } from '../../shared/dash.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -14,6 +15,12 @@ import {
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent {
+  constructor(private dashService:DashService){
+    this.dashService.getEmployee().subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    })
+  }
 personaldetail:boolean=true;
 jobdetail:boolean=false;
 showModal:boolean=false;
@@ -25,6 +32,8 @@ modalContent6:boolean=false;
 modalContent7:boolean=false;
 isJobDetailsActive = false;
 isPersonalDetailsActive=true;
+employee: any = [];
+
   form = new FormGroup({
     name:new FormControl(''),
     employee_id:new FormControl(''),
@@ -271,10 +280,20 @@ closeModal(){
   this.showModal=false;
 }
 fourthStep:boolean=false;
+selectedUser:any={};
+
 closeModal2(){
   this.fourthStep=true;
   this.modalContent2=false;
   this.modalContent1=false;
+    console.log(this.form.value)
+    const updatedData = this.form.value;
+    // console.log(updatedData)
+    updatedData['_id'] = this.selectedUser._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    });
+
 }
 closeModal3(){
   this.fourthStep=true;
@@ -371,4 +390,14 @@ closeModal6(){
     this.contentdropdown5 = false;
     console.log(arr5.name);
   }
+
+  // fetchdata() {
+  //   this.dashService.getEmployee().subscribe((res: any) => {
+  //     console.log('data', res);
+  //     this.employee = res;
+  //   });
+  // }
+
+
+
 }

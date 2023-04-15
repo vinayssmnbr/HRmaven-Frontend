@@ -26,6 +26,14 @@ export class SignupComponent {
 
   constructor(public userService:UserService, private router : Router){}
 
+  noSpaces(control: FormControl) {
+    if (control.value && control.value.trim().length === 0) {
+      return { noSpaces: true };
+    }
+    return null;
+  }
+
+
   sigupform = new FormGroup({
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
