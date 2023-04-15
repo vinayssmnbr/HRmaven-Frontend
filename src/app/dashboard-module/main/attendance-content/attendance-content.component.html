@@ -6,6 +6,7 @@
         <canvas id="lineChart"></canvas>
     </div>
     <div class="employe_input">
+        <i class="fa fa-search" aria-hidden="true" id="ico"></i>
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
@@ -15,7 +16,7 @@
             <input type="date">
         </div>
         <div class="no_data">
-            <img src="assets\images\nodata.png" alt="">
+            <img src="assets/images/no_record.png" alt="">
             <h2>No Record Found!</h2>
         </div>
     </div>
@@ -47,9 +48,6 @@
                         </div>
                     </td>
                 </tr>
-
-
-
             </tbody>
 
         </table>
@@ -93,12 +91,12 @@
                     <label for="name ">Name</label>
                     <input type="text " id="name" formControlName="name" [disabled]="true" />
                 </div>
-                <div class="form__group ">
-                    <label for="name ">Employee ID</label>
+                <div class="form__group">
+                    <label for="number">Employee ID</label>
                     <input type="text " id="number" formControlName="empId" [disabled]="true" />
                 </div>
                 <div class="form__group ">
-                    <label for="name ">Date</label>
+                    <label for="date">Date</label>
                     <input type="date" formControlName="date" />
                 </div>
             </div>
@@ -108,6 +106,7 @@
                     <div class="dropdown_container">
                         <div class="dropdwon_select" (click)="dropdownOpen()">
                             <p>{{Selectvariable}}</p>
+                            <input style="display:none;" type="text" [(ngModel)]="Selectvariable" formControlName="status">
                             <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
                         <div class="select_content" *ngIf="contentdropdown">
@@ -120,11 +119,11 @@
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch In</label>
-                    <input type="text " formControlName="punch_in" />
+                    <input type="time" formControlName="punch_in" />
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch out</label>
-                    <input type="text " formControlName="punch_out" />
+                    <input type="time" formControlName="punch_out" />
                 </div>
             </div>
             <div class="form__group form-btn ">

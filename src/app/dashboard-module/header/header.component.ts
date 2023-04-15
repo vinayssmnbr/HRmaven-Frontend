@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,12 +14,12 @@ export class HeaderComponent {
   showSearchBox=false;
   date: any;
   greeting: any;
-  employee:string
-  loggedInName: any ='';
+  employee: string;
+  loggedInName: any = '';
   userEmail: any = '';
-  name: any ='';
+  name: any = '';
   profileDisplay: boolean = false;
-  getUsersProfile: any =[];
+  getUsersProfile: any = [];
 
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
@@ -38,14 +37,14 @@ export class HeaderComponent {
 
     const currentHour = today.getHours();
     if (currentHour < 12) {
-      this.greeting = "GOOD MORNING";
+      this.greeting = 'GOOD MORNING';
     } else if (currentHour < 18) {
-      this.greeting = "GOOD AFTERNOON";
+      this.greeting = 'GOOD AFTERNOON';
     } else {
-      this.greeting = "GOOD EVENING";
+      this.greeting = 'GOOD EVENING';
     }
 
-   this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+   this.elementRef.nativeElement.addEventListener('mouseout', () => {
       this.profileDisplay = false;
     });
   }
@@ -53,39 +52,32 @@ export class HeaderComponent {
     this.showSearchBox=!this.showSearchBox;
   }
 
-
     //  My code for profile fetch Name
   getProfileData(){
     this.dashService.getUserProfile().subscribe((res: any)=>{
       this.userEmail=res.email.split("@")[0];
       this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
-
   }
 
-  profileToggle(){
-    this.profileDisplay = !this.profileDisplay
+  profileToggle() {
+    this.profileDisplay = !this.profileDisplay;
   }
 
-  logout(){
+  logout() {
     this.cookie.delete('token');
     this.router.navigate(['./login']);
-
   }
 
-ReadMore:boolean = true
-visible:boolean =false
-onclick(){
-this.ReadMore = !this.ReadMore;
-this.visible = !this.visible;
-}
-id:any="all";
-tabChange(ids:any){
-  this.id = ids;
-   console.log(this.id);
-}
-
-
-
-
+  ReadMore: boolean = true;
+  visible: boolean = false;
+  onclick() {
+    this.ReadMore = !this.ReadMore;
+    this.visible = !this.visible;
+  }
+  id: any = 'all';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
+  }
 }

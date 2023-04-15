@@ -17,21 +17,17 @@
     <div class="content-right">
       <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
       <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>
-
       <button type="button" class="icon-button" (click)="onclick()">
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-
-
-      <img src="./assets/images/clickup60_4.png" alt="" class="header-icon"
+      <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
-
     </div>
   </div>
 
 </header>
-<ng-container *ngIf="visible">
+<ng-container *ngIf="visible" >
   <div class="notification-area">
     <div class="notification-upper">
       <div class="notification-mark">
@@ -155,14 +151,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
       </div>
 
 
@@ -172,7 +160,6 @@
             <div class="robert-image">
               <img src="assets/images/Rectangle-2.png" alt="hlo" />
             </div>
-
             <div class="robert-text">
               <p>Robert Fox created an urgent meeting.</p>
               <div class="days-text">
@@ -288,11 +275,11 @@
     </div>
   </div>
 </ng-container>
-<div  class="profile_div"*ngIf="profileDisplay">
+<div  class="profile_div"*ngIf="profileDisplay" >
     <div class="profile-content">
       <div class="profile-title">
           <div class="profile-logo">
-              <img src="./assets/images/clickup60_4.png" alt="profile_logo">
+              <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
           </div>
           <div class="profile-text">
             <h2> {{name}} </h2>
@@ -307,10 +294,10 @@
               <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button>
           </div>
       </div>
-    <div class="profile-account">
-      <div class="account">
-        <button class="account-btn" (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i><a>
-            <span>Sign Out</span></a></button>
+    <div class="profile-account disable-btn">
+      <div class="account1" (click)="logout()">
+        <button class="account-btn" disabled><img src="./assets/images/subs.svg" alt="">
+            <a>Subsciption</a></button>
       </div>
     </div>
     </div>

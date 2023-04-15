@@ -6,6 +6,13 @@
     min-height: 100%;
 }
 
+#ico {
+    position: relative;
+    left: 1%;
+    color: gray;
+    margin-top: 15px;
+}
+
 .table_data {
     width: 100%;
     padding-top: 10px;
@@ -175,7 +182,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 #work {
-    width: 222px;
+    width: 250px;
+    margin-left: -25px;
+    padding-left: 40px;
 }
 
 .icons {

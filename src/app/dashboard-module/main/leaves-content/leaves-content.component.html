@@ -8,7 +8,7 @@
                 <h1>{{totalCount}}</h1>
             </div>
             <div class="circle-graph">
-                <circle-progress [percent]=totalCount [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                <circle-progress [percent]="100" [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
                     [animationDuration]="1000"></circle-progress>
             </div>
         </div>
@@ -44,6 +44,7 @@
         </div>
     </div>
     <div class="employe_input">
+        <i class="fa fa-search" aria-hidden="true" id="ico"></i>
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="dropdown_container">
             <div class="dropdwon_select" (click)="dropdownOpen()">
