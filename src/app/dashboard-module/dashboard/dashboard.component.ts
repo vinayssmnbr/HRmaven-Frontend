@@ -9,11 +9,13 @@ import { UserService } from 'src/app/service/user.service';
 export class DashboardComponent {
 
   loader:boolean=false;
-  constructor(private userService: UserService) {}
-  ngOnInit(): void {
-    this.userService.allDataLogin();
+  constructor(private userService: UserService) {
     setTimeout(() => {
       this.loader=true;
     }, 5000);
+  }
+  ngOnInit(): void {
+    this.userService.allDataLogin();
+
   }
 }

@@ -3,5 +3,5 @@
 </div>
 <app-header *ngIf="loader"></app-header>
 <app-sidebar *ngIf="loader"></app-sidebar>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="loader"></router-outlet>
 

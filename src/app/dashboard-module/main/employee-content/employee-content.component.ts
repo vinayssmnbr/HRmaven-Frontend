@@ -48,6 +48,7 @@ export class EmployeeContentComponent implements OnInit {
   empdesignation = '';
   employeeid: any;
   show: any = false;
+  emptybox=true;
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -102,6 +103,10 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      if(res.length>0)
+      {
+          this.emptybox=false;
+      }
     });
   }
 

@@ -42,7 +42,8 @@
           <th class="contact">Action</th>
         </tr>
       </thead>
-      <tbody>
+
+      <tbody *ngIf="!emptybox">
         <tr *ngFor="let user of employee">
           <!--  -->
           <td class="employee1">{{user.uid}}</td>
@@ -59,7 +60,7 @@
       </tbody>
 
     </table>
-    <div class="image_record">
+    <div class="image_record" *ngIf="emptybox">
       <img src="./assets/images/no_record.png" alt="">
       <h3>No record Found!</h3>
     </div>
