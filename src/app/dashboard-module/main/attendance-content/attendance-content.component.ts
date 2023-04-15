@@ -40,6 +40,7 @@ leaves:any[]=[]
   showCard1: boolean=true;
   showTable=true;
   attDate:any="";
+  loader=true;
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
@@ -50,6 +51,7 @@ leaves:any[]=[]
     });
     this.getLeaveData()
     this.getreport();
+
   }
   form = new FormGroup({
     name:new FormControl(),
@@ -61,6 +63,7 @@ leaves:any[]=[]
 
 
   });
+
 
   async getreport(){
     await this.dashService.getreport().subscribe((res:any)=>{
@@ -130,11 +133,17 @@ leaves:any[]=[]
          },
        },
      });
+     if(res){
+     setTimeout(() => {
+      this.loader=false;
+    }, 3000);
+  }
      });
    }
   ngOnInit() {
     this.form.get('name').disable();
     this.form.get('empId').disable();
+    window.scrollTo(0, 0);
     // Create a chart object
 
   }
@@ -211,7 +220,7 @@ done(){
 //     id: 1,
 //     name: 'Last 30 days',
 //   },
- 
+
 // ];
 // contentdropdown1: boolean = false;
 // dropdownOpen1() {
