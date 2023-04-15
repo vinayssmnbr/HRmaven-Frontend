@@ -1,4 +1,4 @@
-import { Component,ElementRef } from '@angular/core';
+import { Component,ElementRef, ViewChild } from '@angular/core';
 import { DashService } from '../shared/dash.service';
 import { UserService } from '../../service/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+
+  @ViewChild('profileDiv') profileDiv: ElementRef;
+
   showSearchBox=false;
   date: any;
   greeting: any;
@@ -25,6 +28,8 @@ export class HeaderComponent {
   constructor(public dashService:DashService, private userService : UserService,
      private http:HttpClient, private cookie:CookieService,
      private router:Router, private elementRef :ElementRef ) {
+      
+     
       this.getProfileData();
      }
 
@@ -44,11 +49,18 @@ export class HeaderComponent {
     } else {
       this.greeting = "GOOD EVENING";
     }
+ 
+    
+    
+  this.elementRef.nativeElement.addEventListener('mouseout', () => {
+    this.profileDisplay = false;
+  });
 
-   this.elementRef.nativeElement.addEventListener('mouseleave', () => {
-      this.profileDisplay = false;
-    });
-  }
+  
+
+}
+    
+
   toggleSearchBox(){
     this.showSearchBox=!this.showSearchBox;
   }

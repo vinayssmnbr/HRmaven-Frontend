@@ -37,7 +37,7 @@
                 <tr *ngFor="let user of employee | attendanceFilter:employeename">
                     <td>{{user.empId}}</td>
                     <td>{{user.name}}</td>
-                    <td>{{user.date | date:'short'}}</td>
+                    <td>{{user.date | date:'shortDate'}}</td>
                     <td>{{user.status}}</td>
                     <td>{{user.punch_in}}</td>
                     <td>{{user.punch_out}}</td>
@@ -84,24 +84,39 @@
             <div class="cross-icon ">
                 <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
             </div>
-            <div class="input_form1 ">
-                <div class="form__group disable">
+            <div class="modal-input-text">
+                <h1>Attendance Rectification</h1>
+            </div>
+
+            <div class="input_form2 ">
+                <div class="form__group ">
                     <label for="name ">Name</label>
-                    <input type="text " id="name " formControlName="name" [disabled]="true" />
+                    <input type="text " id="name" formControlName="name" [disabled]="true" />
                 </div>
-                <div class="form__group disable">
+                <div class="form__group ">
                     <label for="name ">Employee ID</label>
-                    <input type="number " id="number " formControlName="empId" [disabled]="true" />
+                    <input type="text " id="number" formControlName="empId" [disabled]="true" />
                 </div>
                 <div class="form__group ">
                     <label for="name ">Date</label>
-                    <input type="date " class="date-input " formControlName="date" />
+                    <input type="date" formControlName="date" />
                 </div>
             </div>
             <div class="input_form2 ">
                 <div class="form__group ">
                     <label for="name ">Status</label>
-                    <input type="text " formControlName="status" />
+                    <div class="dropdown_container">
+                        <div class="dropdwon_select" (click)="dropdownOpen()">
+                            <p>{{Selectvariable}}</p>
+                            <i class="fa-sharp fa-solid fa-caret-down"></i>
+                        </div>
+                        <div class="select_content" *ngIf="contentdropdown">
+                            <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                    {{arr.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch In</label>

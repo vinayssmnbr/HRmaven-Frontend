@@ -58,19 +58,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="navigation_auto">
-                        <div class="auto_btn1"></div>
-                        <div class="auto_btn2"></div>
-                        <div class="auto_btn3"></div>
-                        <div class="auto_btn4"></div>
-                    </div>
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                      </div>
                 </div>
-                <div class="navigation_manual">
-                    <label for="radio1" class="manual_btn"></label>
-                    <label for="radio2" class="manual_btn"></label>
-                    <label for="radio3" class="manual_btn"></label>
-                    <label for="radio4" class="manual_btn"></label>
-                </div>
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                  </div>
             </div>
         </div>
 
@@ -81,9 +81,14 @@
                 <div class="field name-field">
                     <div class="input-field">
                         <label for="name">Organization Name</label>
+<<<<<<< HEAD
                         <input type="text" placeholder="Enter your Organization Name" class="name" formControlName="username" />
                         <span *ngIf="username && username.invalid && email.touched "><i
                             class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid username, minimum 6 chars, Space must not be there</span>
+=======
+                        <input type="text" placeholder="Enter your Organization Name" class="name"
+                            formControlName="username" />
+>>>>>>> 6467d9436fbefe23d510916639194de6934a19b7
                     </div>
                 </div>
                 <div class="field email-field">
@@ -98,7 +103,8 @@
                 <div class="field create-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Password</label>
-                        <input type="text" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
+                        <input type="password" placeholder="Enter your password" class="password"
+                            formControlName="password" #passwordInput />
                         <span *ngIf="password && password.invalid && password.touched "><i
                                 class="fa-sharp fa-solid fa-triangle-exclamation"></i>atleast 8
                             characters and contain atleast one (A,a,@,1)</span>
@@ -111,7 +117,8 @@
                 <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
-                        <input type="text" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
+                        <input type="password" placeholder="Confirm your password" class="cPassword"
+                            formControlName="confirm" #passwordInpu />
                         <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i
                                 class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
                     </div>
@@ -121,20 +128,12 @@
                 </div>
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />
-                    <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a href="#"> terms & conditions</a></label>
+                    <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a href=""> terms &
+                            conditions</a></label>
                 </div>
                 <div class="input-field button">
                     <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
                 </div>
-                <!-- <div class="input-field">
-                    <p class="or_bar">OR</p>
-                </div>
-                <div class="social_btn" (click)="SignupByGoogle()">
-                    <div class="google">
-                        <img class="google_logo" src="assets/images/google-logo.png" alt="google">
-                        <p> Sign Up with Google</p>
-                    </div>
-                </div> -->
             </form>
             <div class="logo">
                 <img src="assets/images/hrr 2.png" alt="logo">
