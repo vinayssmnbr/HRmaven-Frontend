@@ -36,7 +36,7 @@
   line-height: 140%;
 }
 
-.drop-icon p {}
+
 
 .input_icon {
   margin-top: -20px;
@@ -91,7 +91,7 @@ input:focus {
   outline: none;
   cursor: pointer;
   font-style: normal;
-  font-family: 'Outfit', sans-serif;
+    
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -128,7 +128,7 @@ input:focus {
   line-height: 140%;
   outline: none;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+    
 }
 
 .btn3:hover {
@@ -166,7 +166,7 @@ input:focus {
 
 .image_record h3 {
   margin-top: 20px;
-  font-family: 'Outfit', sans-serif;
+    
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -320,7 +320,6 @@ input:focus {
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -334,7 +333,6 @@ input:focus {
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -348,7 +346,6 @@ input:focus {
   padding: 15px 20px;
   text-align: justify;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -362,9 +359,7 @@ input:focus {
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
-  /* border-top: collapse; */
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -372,7 +367,7 @@ input:focus {
 }
 
 tr:hover {
-  background-color: #efeff8;
+  background-color: #efeff8 !important;
 }
 
 th,
@@ -460,7 +455,6 @@ table {
 } */
 .numbers {
   display: flex;
-  /* justify-content: space-between; */
   gap: 106px;
   align-items: center;
   padding-top: 50px;
@@ -601,26 +595,60 @@ label {
   cursor: pointer;
 }
 
-input.is-invalid {
-  border-color: 1px solid red;
-}
 
-input.is-valid {
-  border-color: 1px solid green;
-}
 
-input.ng-invalid {
+#text1.ng_invalid {
   border-color: red;
 }
 
-input.ng-valid {
+#text1.ng_valid {
   border-color: green;
 }
+#text6.ng_invalid {
+  border-color: red;
+}
 
+#text6.ng_valid {
+  border-color: green;
+}
+#text7.ng_invalid {
+  border-color: red;
+}
+
+#text7.ng_valid {
+  border-color: green;
+}
 .form-row .input span {
   color: red;
 }
+#text10.ng_invalid {
+  border-color: red;
+}
 
+#text10.ng_valid {
+  border-color: green;
+}
+#text11.ng_invalid {
+  border-color: red;
+}
+
+#text11.ng_valid {
+  border-color: green;
+}
+#text12.ng_invalid {
+  border-color: red;
+}
+
+#text12.ng_valid {
+  border-color: green;
+}
+#text13.ng_invalid {
+  border-color: red;
+}
+
+#text13.ng_valid {
+  border-color: green;
+}
 #text1:hover {
   border-color: 1px solid #2F2C9F !important;
 }
@@ -706,7 +734,7 @@ input.ng-valid {
   margin-bottom: 20px;
   box-shadow: none;
   font-style: normal;
-  font-family: 'Outfit', sans-serif;
+    
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -763,7 +791,7 @@ input.ng-valid {
   box-shadow: none;
   outline: none;
   font-style: normal;
-  font-family: 'Outfit', sans-serif;
+    
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -834,7 +862,7 @@ input.ng-valid {
   box-shadow: none;
   outline: none;
   font-style: normal;
-  font-family: 'Outfit', sans-serif;
+    
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -873,7 +901,7 @@ input.ng-valid {
   outline: none;
   box-shadow: none;
   font-style: normal;
-  font-family: 'Outfit', sans-serif;
+    
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -939,7 +967,7 @@ input.ng-valid {
   padding: 10px 25px;
   background: #2F2C9F;
   font-style: normal;
-  font-family: 'Outfit', sans-serif;
+    
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -962,7 +990,7 @@ input.ng-valid {
   border: 1px solid #2F2C9F;
   color: #2F2C9F;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+    
 }
 
 .back-btn:hover {
@@ -982,7 +1010,7 @@ input.ng-valid {
   border: 1px solid #2F2C9F;
   color: #ffffff;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  
 }
 
 .next-btn:hover {
@@ -1014,7 +1042,6 @@ input.ng-valid {
   font-size: 14px;
   line-height: 140%;
   color: black;
-  font-family: 'Outfit', sans-serif;
 }
 
 
@@ -1090,7 +1117,6 @@ input.ng-valid {
   font-size: 20px;
   line-height: 100%;
   color: #444444;
-  font-family: 'Outfit', sans-serif;
 }
 
 .modal-body2 p {
@@ -1103,7 +1129,6 @@ input.ng-valid {
   font-size: 14px;
   line-height: 140%;
   color: #777777;
-  font-family: 'Outfit', sans-serif;
 }
 
 .done-btn2 {
@@ -1118,7 +1143,7 @@ input.ng-valid {
   color: #FFFFFF;
   border: 1px solid #3D9130;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  
 }
 
 .done-btn2:hover {
@@ -1135,7 +1160,7 @@ input.ng-valid {
 }
 
 .modal-body3 h4 {
-  font-family: 'Outfit', sans-serif;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -1161,7 +1186,7 @@ input.ng-valid {
   border-radius: 8px;
   border: 1px solid #2F2C9F;
   color: #FFFFFF;
-  font-family: 'Outfit', sans-serif;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1181,7 +1206,7 @@ input.ng-valid {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
   color: #2F2C9F;
-  font-family: 'Outfit', sans-serif;
+  
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1229,8 +1254,6 @@ input.ng-valid {
 }
 
 .modal-body4 h3 {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 500;
   font-size: 20px;
   margin-top: 30px;
@@ -1250,7 +1273,8 @@ input.ng-valid {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  padding: 10px 10px;
+  border: 1px solid transparent;
 }
 
 #slt1 {

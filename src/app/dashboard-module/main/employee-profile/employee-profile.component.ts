@@ -35,7 +35,7 @@ isPersonalDetailsActive=true;
 employee: any = [];
 
   form = new FormGroup({
-    name:new FormControl(''),
+    name:new FormControl('Vinay'),
     employee_id:new FormControl(''),
     dob:new FormControl(''),
     fname:new FormControl(''),
@@ -145,7 +145,7 @@ employee: any = [];
     },
     {
       id: 1,
-      name: 'Unmarried',
+      name: 'Single',
     },
   ];
   array4: any = [
@@ -308,6 +308,7 @@ openModal3(){
   this.modalContent1 = false;
   this.modalContent5=true;
   this.modalContent6=false;
+  this.modalContent7=false;
 }
 closeModal4(){
   this.fourthStep = true;
@@ -323,6 +324,7 @@ openModal4(){
   this.modalContent1 = false;
   this.modalContent5 = false;
   this.modalContent6 = true;
+  this.modalContent7=false;
 
 }
 closeModal5(){
