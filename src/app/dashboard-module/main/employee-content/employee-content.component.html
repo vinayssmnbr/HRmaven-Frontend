@@ -4,7 +4,7 @@
   <div class="selection">
     <div class="input_left">
       <div class="input_field">
-        <input type="number" class="number1 no-spin" placeholder="Type Employee Name or ID">
+        <input type="number" class="number1 no-spin" placeholder="Type Employee Name or ID" [(ngModel)]="query" id="search" (input)="search()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
@@ -43,7 +43,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of employee | search:employeeid:'Designation'">
+        <tr *ngFor="let user of employee">
           <!--  -->
           <td class="employee1">{{user.uid}}</td>
           <td class="name1">{{user.name}}</td>
@@ -51,7 +51,7 @@
           <td class="email1">{{user.email}}</td>
           <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
-            <div class="icons"><i class="fa-solid fa-pencil"></i>
+            <div class="icons"><i class="fa-solid fa-pencil" routerLink="/dashboard/employee-profile" (click)="toupdate(user)"></i>
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
@@ -126,7 +126,7 @@
             <div class="form-row">
               <div class="input">
                 <label>Employee ID <span>*</span></label>
-                <input type="number" class="no-spin" id="text3" placeholder="29686" formControlName="employee_id"
+                <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid"
                   [disabled]="true" readonly>
               </div>
               <div class="input">
