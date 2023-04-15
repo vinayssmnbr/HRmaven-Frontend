@@ -5,7 +5,7 @@
     <div class="input_left">
       <div class="input_field">
         <input type="text" class="number1 no-spin" placeholder="Type Employee Name or ID" [(ngModel)]="query"
-          id="search" (input)="search()">
+          id="search" (input)="search($event)">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
@@ -275,4 +275,5 @@
         </div>
       </div>
     </div>
+
 

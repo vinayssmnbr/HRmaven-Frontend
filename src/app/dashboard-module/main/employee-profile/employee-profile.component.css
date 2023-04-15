@@ -456,6 +456,14 @@
   z-index: 9999;
   align-items: center;
 }
+
+.modal-content input:hover,
+.modal-content input:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+    border-color: #2F2C9F;
+}
+
 .modal-content {
   background-color: #ffffff;
   position: absolute;
@@ -538,9 +546,14 @@ hr{
   display: flex;
   flex-direction: column;
 }
+
+.form-row .input input:hover,
+.form-row .input input:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+
+}
 label{
-  font-family: 'Outfit',sans-serif;
-  font-style: normal;
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 5px;
@@ -823,7 +836,11 @@ input[type='number']:hover {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
 }
-
+.input .dropdwon_select:hover,
+.input .dropdwon_select:focus {
+  border: 1px solid #2F2C9F !important;
+  border-radius: 8px !important;
+}
 .dropdwon_select p {
   font-size: 14px;
   font-weight: 400;
