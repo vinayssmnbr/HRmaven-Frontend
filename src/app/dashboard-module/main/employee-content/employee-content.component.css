@@ -36,7 +36,7 @@
   line-height: 140%;
 }
 
-.drop-icon p {}
+
 
 .input_icon {
   margin-top: -20px;
@@ -319,7 +319,6 @@ input:focus {
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -333,7 +332,6 @@ input:focus {
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -347,7 +345,6 @@ input:focus {
   padding: 15px 20px;
   text-align: justify;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -361,9 +358,7 @@ input:focus {
   text-align: justify;
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
-  /* background: #FFFFFF; */
   font-style: normal;
-  /* border-top: collapse; */
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
@@ -371,7 +366,7 @@ input:focus {
 }
 
 tr:hover {
-  background-color: #efeff8;
+  background-color: #efeff8 !important;
 }
 
 th,
@@ -599,27 +594,60 @@ label {
   cursor: pointer;
 }
 
-/* ---------Validation For Madal Border Color---------- */
-.modal input.is-invalid {
-  border-color: 1px solid red;
-}
 
-.modal input.is-valid {
-  border-color: 1px solid green;
-}
 
-.modal input.ng-invalid {
+#text1.ng_invalid {
   border-color: red;
 }
 
-.modal input.ng-valid {
+#text1.ng_valid {
   border-color: green;
 }
+#text6.ng_invalid {
+  border-color: red;
+}
 
+#text6.ng_valid {
+  border-color: green;
+}
+#text7.ng_invalid {
+  border-color: red;
+}
+
+#text7.ng_valid {
+  border-color: green;
+}
 .form-row .input span {
   color: red;
 }
+#text10.ng_invalid {
+  border-color: red;
+}
 
+#text10.ng_valid {
+  border-color: green;
+}
+#text11.ng_invalid {
+  border-color: red;
+}
+
+#text11.ng_valid {
+  border-color: green;
+}
+#text12.ng_invalid {
+  border-color: red;
+}
+
+#text12.ng_valid {
+  border-color: green;
+}
+#text13.ng_invalid {
+  border-color: red;
+}
+
+#text13.ng_valid {
+  border-color: green;
+}
 #text1:hover {
   border-color: 1px solid #2F2C9F !important;
 }

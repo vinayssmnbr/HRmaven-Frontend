@@ -90,8 +90,8 @@
           </div>
           <div class="details">
             <p class="active1" [ngStyle]="firstStep && {'color': '#2F2C9F'}">Basic Details</p>
-            <p class="notactive1" [ngStyle]="secondStep && {'color': '#2F2C9F'}">Contact Details</p>
-            <p class="notactive2" [ngStyle]=" thirdStep && {'color': '#2F2C9F'}">Personal Particulars</p>
+            <p class=" active1 notactive1" [ngStyle]=" !firstStep && secondStep && {'color': '#2F2C9F'}">Contact Details</p>
+            <p class=" active1 notactive2" [ngStyle]=" thirdStep && {'color': '#2F2C9F'}">Personal Particulars</p>
           </div>
 
 
@@ -101,7 +101,8 @@
             <div class="form-row">
               <div class="input">
                 <label>Name <span>*</span></label>
-                <input type="text" id="text1" placeholder="Zana Jones" formControlName="name" required>
+                <input type="name" id="text1"  placeholder="Zana Jones" formControlName="name"  [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.touched,'ng_valid': registrationFormControl.name.valid}">
+
               </div>
               <div class="input">
                 <label>Designation <span>*</span></label>
@@ -161,19 +162,20 @@
             <div class="form-row">
               <div class="input">
                 <label>Mobile No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
-                  [ngClass]="{'is-invalid':registrationFormControl.mobile.invalid,'is-valid':registrationFormControl.mobile.valid}">
+                <input type="number" class="no-spin" id="text6" pattern="[0-9]{10}" maxlength="10" placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin" [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.touched,'ng_valid': registrationFormControl.mobile.valid}">
+
               </div>
               <div class="input">
                 <label>Email <span>*</span></label>
-                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email">
+                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"  [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.touched,'ng_valid': registrationFormControl.email.valid}">
+
               </div>
             </div>
             <div class="form-row">
               <div class="input">
                 <label>Address <span>*</span></label>
                 <textarea placeholder="Enter Employee Address..." cols="80" rows="8" id="text2"
-                  resize="none"></textarea>
+                  formControlName="address"></textarea>
               </div>
             </div>
           </form>
@@ -200,37 +202,39 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" class="no-spin" id="text10" placeholder="10309856890" formControlName="accountno">
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" class=" no-spin" [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.touched,'ng_valid': registrationFormControl.accountno.valid}">
+
               </div>
             </div>
             <div class="form-row">
               <div class="input">
                 <label>IFSC Code <span>*</span></label>
-                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc">
+                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.touched,'ng_valid': registrationFormControl.ifsc.valid}">
+
               </div>
               <div class="input">
                 <label>Aadhar Card No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text12" placeholder="XXXX XXXX 6709 "
-                  formControlName="adhaarno"
-                  [ngClass]="{'is-invalid':registrationFormControl.adhaarno.invalid,'is-valid':registrationFormControl.adhaarno.valid}">
+                <input type="number " class="no-spin" id="text12" placeholder="XXXX XXXX 6709 " maxlength="14"
+                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
+
               </div>
             </div>
             <div class="form-row">
               <div class="input">
                 <label>PAN number <span>*</span></label>
-                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno"
-                  [ngClass]="{'is-invalid':registrationFormControl.panno.invalid,'is-valid':registrationFormControl.panno.valid}"
-                  *ngIf="registrationFormControl.panno.invalid ">
+                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.touched,'ng_valid': registrationFormControl.panno.valid}">
+
               </div>
             </div>
           </form>
         </div>
+
         <div class="modal-footer">
-          <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn">Next</button>
+          <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn" [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid)"> Next </button>
           <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
-          <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn">Next</button>
+          <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn" [disabled]="!(this.form.controls.mobile.valid && this.form.controls.email.valid && this.form.controls.address.valid)">Next</button>
           <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
-          <button type="submit" *ngIf="thirdStep" [disabled]="form.invalid" class="done-btn"
+          <button type="submit" *ngIf="thirdStep" [disabled]="!(this.form.controls.accountno.valid && this.form.controls.adhaarno.valid && this.form.controls.panno.valid && this.form.controls.ifsc.valid)" class="done-btn"
             (click)="submit(form.value)">Done</button>
         </div>
       </div>
