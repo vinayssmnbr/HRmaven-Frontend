@@ -15,7 +15,9 @@
     justify-content: space-between;
     /* align-items: center; */
 }
-
+.all,.unread{
+  height:100%;
+}
 #header .content-left h2 {
     font-style: normal;
     font-weight: 500;

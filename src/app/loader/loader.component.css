@@ -1,4 +1,4 @@
-.parent {
+.parent.loaderLogo {
   width:100%;
   height:100vh;
   display:flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-img{
+img#loader{
   animation-name: rotate;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;

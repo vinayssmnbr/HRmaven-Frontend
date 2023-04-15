@@ -45,12 +45,11 @@ export class EmployeeContentComponent implements OnInit {
   query: string = '';
   designation: string = '';
   data: any;
-  deletedata: any;
-  empdesignation = '';
-  employeeid: any;
-  show: any = false;
-  noRecordsFound:boolean;
-
+  deletedata:any;
+  empdesignation="";
+  employeeid:any;
+  show:any=false;
+  emptybox=true;
  nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const nameRegex = /^[a-zA-Z\s]*$/;
   const valid = nameRegex.test(control.value);
@@ -102,6 +101,10 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      if(res.length>0)
+      {
+          this.emptybox=false;
+      }
     });
   }
 
@@ -130,7 +133,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
-      this.noRecordsFound=this.employee.length===0
+
   }
 
   function() {
@@ -331,7 +334,6 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
-      this.noRecordsFound=this.employee.length===0
   }
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
