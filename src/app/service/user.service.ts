@@ -19,10 +19,10 @@ export class UserService {
     return this.cookie.get('token') !== '';
   }
 
-  saveurl = 'https://hrm21.onrender.com/signup';
-  loginurl = 'https://hrm21.onrender.com/login';
-  Forgoturl = 'https://hrm21.onrender.com/forgotpassword';
-  Reseturl = 'https://hrm21.onrender.com/resetpassword';
+  saveurl = 'http://45.138.16.177:3000/signup';
+  loginurl = 'http://45.138.16.177:3000/login';
+  Forgoturl = 'http://45.138.16.177:3000/forgotpassword';
+  Reseturl = 'http://45.138.16.177:3000/resetpassword';
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -56,7 +56,7 @@ export class UserService {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    const url = `https://hrm21.onrender.com/user-profile`;
+    const url = `http://45.138.16.177:3000/user-profile`;
 
     return this.http.get(url, { headers }).pipe(
       map((response: any) => {
@@ -76,10 +76,10 @@ export class UserService {
 
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-      this.http.get('https://hrm21.onrender.com/auth', { headers }).subscribe(
+      this.http.get('http://45.138.16.177:3000/auth', { headers }).subscribe(
         (res: any) => {
           this.isLoggedIn.next(true);
-          this.router.navigate(['dashboard']);
+          // this.router.navigate(['dashboard']);
         },
         (error) => {
           console.log(error);

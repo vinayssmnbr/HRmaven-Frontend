@@ -11,7 +11,8 @@
                 <form [formGroup]="forgotPassword" (ngSubmit)="ForgetEmailSubmit(forgotPassword.value)">
                     <label for="Email">Email</label>
                     <input type="email" placeholder="Enter your email address" formControlName="email">
-                    <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification Email</button>
+                    <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification
+                        Email</button>
                 </form>
             </div>
         </div>
@@ -33,17 +34,17 @@
     <!----------------------- Email sent Modal Section------------------ -->
     <div class="forget_email_send_content" [ngClass]="{'open': EmailSent,'close':!EmailSent}">
         <div class="forget_content">
-            <div class="icon">
-                <i class="fa-solid fa-xmark" (click)="toggleForgot1()"></i>
+            <div class="forget_text">
+                <div class="icon">
+                    <i class="fa-solid fa-xmark" (click)="toggleForgot1()"></i>
+                </div>
+                <img src="./assets/images/tick.png" alt="img">
             </div>
-            <div class="forget_content">
-                <img src="assets/images/Group.png" alt="reset_logo">
-                <h1>Reset password email has been sent.</h1>
-                <p>We have sent an email to reset your password.Don't forget to check.</p>
-            </div>
+            <h1>Reset password email has been sent.</h1>
+            <p>We have sent an email to reset your password.Don't forget to check.</p>
+            <button class="done_btn">Done</button>
         </div>
     </div>
-
 
     <!----------------------- Login Section------------------ -->
     <div class="left-side">
@@ -51,7 +52,7 @@
             <div class="logo_part">
                 <a href=""><img class="logo-image" src="assets/images/hrr 3.png" alt="logo"></a>
             </div>
-            <h1 class="title">We are happy to have you back.</h1>
+            <h1 class="title">We are happy to have you back :) </h1>
             <p class="title_para">Discover the world’s best community of freelancers and business owners.</p>
         </div>
         <div class="leftSlider">
@@ -104,19 +105,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="navigation_auto">
-                    <div class="auto_btn1"></div>
-                    <div class="auto_btn2"></div>
-                    <div class="auto_btn3"></div>
-                    <div class="auto_btn4"></div>
-                </div>
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                  </div>
             </div>
-            <div class="navigation_manual">
-                <label for="radio1" class="manual_btn"></label>
-                <label for="radio2" class="manual_btn"></label>
-                <label for="radio3" class="manual_btn"></label>
-                <label for="radio4" class="manual_btn"></label>
-            </div>
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+              </div>
         </div>
     </div>
     <div class="right-side">
@@ -133,17 +134,17 @@
             <div class="field create-password">
                 <div class="input-field">
                     <label for="name" class="text-label">Password</label>
-                    <input type="text" placeholder="Enter your password" class="password" #passwordInput formControlName="password" />
+                    <input type="password" placeholder="Enter your password" class="password" #passwordInput formControlName="password" />
 
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
-          <i class="fa {{ showPasswordIcon }}"></i>
-        </span>
+                    <i class="fa {{ showPasswordIcon }}"></i>
+                </span>
             </div>
 
             <div class="check-text">
                 <input type="checkbox" class="check_box" />
-                <label for="checkbox" class="checkbox-text">Remember me</label>
+                <label for="checkbox" class="checkbox-text"><a href="">Remember me</a></label>
                 <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
             </div>
             <div class="input-field button">
@@ -153,9 +154,9 @@
                 <p class="or_bar">OR</p>
             </div>
             <div class="social_btn">
-                <div class="google">
+                <div class="google" (click)="loginwithGoogle()">
                     <img class="google_logo" src="assets/images/google-logo.png" alt="google">
-                    <a (click)="loginwithGoogle()"> Login with Google</a>
+                    <a > Login with Google</a>
                 </div>
             </div>
         </form>
