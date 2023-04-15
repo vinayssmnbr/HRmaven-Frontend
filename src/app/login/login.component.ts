@@ -26,7 +26,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-  
+
     let counter = 0;
     setInterval(() => {
       const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
