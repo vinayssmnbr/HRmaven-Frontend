@@ -30,7 +30,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
