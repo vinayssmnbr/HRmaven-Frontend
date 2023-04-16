@@ -1,6 +1,6 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-<div class="main">
+<div class="main" *ngIf="user">
   <div class="card">
     <div class="card1">
       <h2>Employee Profile</h2>
@@ -15,7 +15,7 @@
       </span>
       <div class="content">
 
-        <h3>Harshit Sharma</h3>
+        <h3>{{user.name}}</h3>
         <p>Front End Developer</p>
         <span><i class="fa-solid fa-location-dot"></i> Leeds, United Kingdom</span>
       </div>
@@ -30,18 +30,18 @@
         <h3>Basic Details</h3>
         <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
-      <div class="row1">
+      <div class="row1" >
         <div class="column1">
           <span class="name">Name</span>
-          <p class="name">Harshit Sharma</p>
+          <p class="name">{{user.name}}</p>
         </div>
         <div class="column2">
           <span class="uid">Employee ID</span>
-          <p class="uid">25863</p>
+          <p class="uid">{{user.uid}}</p>
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
-          <p class="dob">6th April, 1997</p>
+          <p class="dob">{{user.dateOfBirth}}</p>
         </div>
       </div>
       <div class="row2">
@@ -65,7 +65,7 @@
         </div>
         <div class="column2">
           <span class="gender">Gender</span>
-          <p class="gender">Male</p>
+          <p class="gender">{{user.gender}}</p>
         </div>
         <div class="column3">
           <span class="nation">Nationality</span>
@@ -76,20 +76,20 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openmodal2()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal2(user._id)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="cno">Contact No.</span>
-          <p class="cno">9865743234</p>
+          <p class="cno">{{user.mobile}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
-          <p class="address">129-8, Model Town</p>
+          <p class="address">{{user.address}}</p>
         </div>
         <div class="column3">
           <span class="email">Email</span>
-          <p class="email">harshit123@gmail.com</p>
+          <p class="email">{{user.email}}</p>
         </div>
       </div>
       <div class="row2">
@@ -115,25 +115,25 @@
       <div class="row1">
         <div class="column1">
           <span class="bname">Bank Name</span>
-          <p class="bname">Punjab National Bank</p>
+          <p class="bname">{{user.bankname}}</p>
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
-          <p class="bno">6412365874125425</p>
+          <p class="bno">{{user.accountno}}</p>
         </div>
         <div class="column3">
           <span class="ifsc">IFSC Code</span>
-          <p class="ifsc">PUNB0125412</p>
+          <p class="ifsc">{{user.ifsc}}</p>
         </div>
       </div>
       <div class="row2">
         <div class="column1">
           <span class="adhaarno">Aadhaar Card Number</span>
-          <p class="adhaarno">4512 3200 7456</p>
+          <p class="adhaarno">{{user.adhaatno}}</p>
         </div>
         <div class="column2">
           <span class="panno">Pan Number</span>
-          <p class="panno">ABCTY1234D</p>
+          <p class="panno">{{user.panno}}</p>
         </div>
         <div class="column3">
           <span class="pno">Passport Number</span>
@@ -250,7 +250,7 @@
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p class="designation2">Front End Developer</p>
+          <p class="designation2">{{user.designation}}</p>
         </div>
         <div class="column2">
           <span class="estatus">Employment Status</span>

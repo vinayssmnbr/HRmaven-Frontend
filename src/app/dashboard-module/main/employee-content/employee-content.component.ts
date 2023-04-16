@@ -24,6 +24,11 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
+selectedEmployee:any
+selectEmployee(user:any){
+  this.dashService.setSelectedEmployee(user)
+}
+
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -57,18 +62,18 @@ export class EmployeeContentComponent implements OnInit {
 }
   form = new FormGroup({
     name: new FormControl('', [Validators.required,this.nameValidator]),
-    designation: new FormControl(''),
-    employee_id: new FormControl(''),
+    designation: new FormControl('UI/UX Designer'),
+    uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl('option1'),
+    gender: new FormControl('Male'),
     mobile: new FormControl('',
              [Validators.required,
             ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
-    bankname: new FormControl(''),
-    adhaarno: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/),
+    bankname: new FormControl('Punjab National Bank'),
+    adhaarno: new FormControl('', [Validators.required,
            ]),
     accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('',[ Validators.required, Validators.pattern(/^([A-Z]){4}([0-9]){8}$/)]),
@@ -116,13 +121,6 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = false;
     this.deletedata = data;
   }
-  selectedUser: any = {};
-  toupdate(user: any) {
-    this.selectedUser = { _id: user._id };
-    this.form.patchValue(user);
-    console.log(this.selectedUser);
-  }
-
   //SEARCH UID
   search(event) {
     console.log(this.query, 'search fn', this.designation);

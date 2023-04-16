@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable,map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,32 +16,35 @@ export class DashService {
   constructor(private http: HttpClient, private router : Router,private cookie:CookieService) { }
 
 
+selectedEmployee:any
+setSelectedEmployee(user:any){
+  this.selectedEmployee=user
+}
 
+getSelectedEmployee(){
+  return this.selectedEmployee
+}
 
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('https://hrmaven.works/user-profile', { headers }).pipe(
+    return this.http.get(this.profile, { headers }).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
-  createData = 'https://hrmaven.works/api/create';
-  getData = 'https://hrmaven.works/api/find';
-  deleteData = 'https://hrmaven.works/api/';
-  getLeave='https://hrmaven.works/api/leave//'
-  updateData='https://hrmaven.works/attendance'
-  getAttd='https://hrmaven.works/attendance';
-  updatempdata="https://hrmaven.works/api/update"
-  getuid='https://hrmaven.works/api/uid'
-
-
-
-
-
-
+  createData = environment.createData;
+  getData =environment.getData;
+  deleteData = environment.deleteData;
+  getLeave=environment.getLeave
+  updateData=environment.updateData
+  getAttd=environment.getAttd
+  updatempdata=environment.updatempdata
+  getuid=environment.getuid
+  report=environment.report
+  profile=environment.profile
 
 
   addEmployee(data) {
@@ -86,7 +92,7 @@ export class DashService {
 
 
    getreport(){
-     return this.http.get('https://hrmaven.works/attendance/report');
+     return this.http.get(this.report);
   }
 
   getEmployeeUid(){
