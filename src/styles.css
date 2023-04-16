@@ -151,3 +151,8 @@ img#loader{
   height: 120px;
   animation: spin 0.5s linear infinite;
 }
+
+input[type=date] {
+  text-transform: uppercase;
+  font-size: 14px;
+}
