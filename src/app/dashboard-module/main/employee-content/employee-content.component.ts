@@ -24,6 +24,11 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
+selectedEmployee:any
+selectEmployee(user:any){
+  this.dashService.setSelectedEmployee(user)
+}
+
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -61,7 +66,7 @@ export class EmployeeContentComponent implements OnInit {
     uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl('option1'),
+    gender: new FormControl('Male'),
     mobile: new FormControl('',
              [Validators.required,
               Validators.maxLength(10),
@@ -116,13 +121,6 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = false;
     this.deletedata = data;
   }
-  selectedUser: any = {};
-  toupdate(user: any) {
-    this.selectedUser = { _id: user._id };
-    this.form.patchValue(user);
-    console.log(this.selectedUser);
-  }
-
   //SEARCH UID
   search(event) {
     console.log(this.query, 'search fn', this.designation);

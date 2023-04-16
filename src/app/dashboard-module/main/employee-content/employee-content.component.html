@@ -53,8 +53,8 @@
           <td class="email1">{{user.email}}</td>
           <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
-            <div class="icons"><i class="fa-solid fa-pencil" routerLink="/dashboard/employee-profile"
-                (click)="toupdate(user)"></i>
+            <div class="icons"><i class="fa-solid fa-pencil" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)"
+               ></i>
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
