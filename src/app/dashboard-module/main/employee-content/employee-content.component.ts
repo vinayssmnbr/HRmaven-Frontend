@@ -57,8 +57,8 @@ export class EmployeeContentComponent implements OnInit {
 }
   form = new FormGroup({
     name: new FormControl('', [Validators.required,this.nameValidator]),
-    designation: new FormControl(''),
-    employee_id: new FormControl(''),
+    designation: new FormControl('UI/UX Designer'),
+    uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
     gender: new FormControl('option1'),
@@ -68,8 +68,8 @@ export class EmployeeContentComponent implements OnInit {
             ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
-    bankname: new FormControl(''),
-    adhaarno: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/),
+    bankname: new FormControl('Punjab National Bank'),
+    adhaarno: new FormControl('', [Validators.required,
            ]),
     accountno: new FormControl('', [Validators.required, Validators.maxLength(12)]),
     ifsc: new FormControl('',[ Validators.required, Validators.pattern(/^([A-Z]){4}([0-9]){8}$/)]),
