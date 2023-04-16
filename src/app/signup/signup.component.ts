@@ -61,18 +61,18 @@ showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye':'fa-eye-slash'  ;
-  passwordInput.type = this.showPassword ? 'password':'text' ;
+  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
+  passwordInput.type = this.showPassword ? 'password' : 'text';
 }
 
-showPassword1 = false;
+showPassword1= false;
 showPasswordIcon1 = 'fa-eye-slash';
+
 togglePassword(passwordInpu: any) {
   this.showPassword1 = !this.showPassword1;
   this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
-  passwordInpu.type = this.showPassword1 ?  'password':'text';
+  passwordInpu.type = this.showPassword1 ? 'password' : 'text';
 }
-
 
 onSubmit(data:any){
   console.log(this.sigupform.value);
