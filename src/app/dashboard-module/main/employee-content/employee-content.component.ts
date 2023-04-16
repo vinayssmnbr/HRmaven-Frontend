@@ -143,6 +143,10 @@ selectEmployee(user:any){
   function() {
     this.show = !this.show;
   }
+   openDatePicker(){
+     let input = document.getElementById("text4") as HTMLInputElement;
+     input.click();
+   }
 
   opendpdtn = false;
   ngOnInit() {

@@ -140,7 +140,9 @@ input:focus {
   width: 16.67px;
   height: 16.67px;
 }
-
+.icons i{
+  cursor: pointer;
+}
 .icons .fa-trash-can:hover {
   color: red;
 }
@@ -360,23 +362,14 @@ input:focus {
   line-height: 100%;
   color: #555555;
 }
-/* .table-row{
-  position: sticky;
-    top: 0;
-} */
-tr:hover {
+
+ tr:hover {
   background-color: #EFEFF8 !important;
-}
-
-
-td {
-  background-color: #ffffff;
 }
 
 table {
   width: 100%;
   border-spacing: 2px 5px;
-  cursor: pointer;
 }
 
 .icons {
@@ -405,7 +398,7 @@ table {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1192,7 +1185,6 @@ label {
 .yes-btn {
   width: 84px;
   height: 44px;
-  /* padding: 14px 30px; */
   background: #2F2C9F;
   border-radius: 8px;
   border: 1px solid #2F2C9F;
@@ -1212,7 +1204,6 @@ label {
 .no-btn {
   width: 84px;
   height: 44px;
-  /* padding: 14px 30px; */
   background: #FFFFFF;
   border: 1px solid #2F2C9F;
   border-radius: 8px;
@@ -1275,7 +1266,6 @@ label {
 .dropdwon_select {
   background-color: #fff;
   width: 172px;
-  /* height: 44px; */
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
