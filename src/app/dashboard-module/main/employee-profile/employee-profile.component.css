@@ -191,116 +191,56 @@
 .row1{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
-}
-.row2 {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-}
-.row3 {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-}
-.row4{
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: 15px;
 }
 .column1{
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 33.3%;
+  max-width: 362px;
 }
 .column2 {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width:33.3%;
+  max-width: 362px;
 
 }
 .column3 {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 33.3%;
+  max-width: 362px;
 }
 .row1 span{
     font-weight: 400;
     font-size: 13px;
     color: #444444;
+    margin-bottom: 5px;
 }
 .row1 .column1 p{
     font-weight: 400;
     font-size: 15px;
     color: #777777;
+    margin-bottom: 20px;
 }
 .row1 .column2 p {
   font-weight: 400;
   font-size: 15px;
   color: #777777;
+  margin-bottom: 20px;
 }
 .row1 .column3 p {
   font-weight: 400;
   font-size: 15px;
   color: #777777;
-}
-.row2 span {
-  font-weight: 400;
-  font-size: 13px;
-  color: #444444;
+  margin-bottom: 20px;
 }
 
-.row2 .column1 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-
-.row2 .column2 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-
-.row2 .column3 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-.row3 span {
-  font-weight: 400;
-  font-size: 13px;
-  color: #444444;
-}
-
-.row3 .column1 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-
-.row3 .column2 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-
-.row3 .column3 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-.row4 span {
-  font-weight: 400;
-  font-size: 13px;
-  color: #444444;
-}
-
-.row4 .column1 p {
-  font-weight: 400;
-  font-size: 15px;
-  color: #777777;
-}
-.uid{
+/* .uid{
   margin-left: -28px;
 }
 .gender{
@@ -317,7 +257,7 @@
 }
 .mname{
   margin-left: -17px;
-}
+} */
 .card4{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -332,7 +272,7 @@
   color: #444444;
   margin-bottom: 17px;
 }
-.pcode{
+/* .pcode{
   margin-left: -10px;
 }
 .email{
@@ -343,7 +283,7 @@
 }
 .address{
   margin-left: -48px;
-}
+} */
 .card5 {
   padding: 23px 50px;
   border: 1px solid rgba(47, 44, 159, 0.15);
@@ -357,7 +297,7 @@
     color: #444444;
     margin-bottom: 17px;
 }
-.bno{
+/* .bno{
   margin-left: 16px;
 }
 .ifsc{
@@ -368,7 +308,7 @@
 }
 .pno{
   margin-right: 128px;
-}
+} */
 .card6{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -382,7 +322,7 @@
     color: #444444;
     margin-bottom: 17px;
 }
-.mper{
+/* .mper{
   margin-left: -125px;
 }
 .gcol{
@@ -396,7 +336,7 @@
 }
 .pgcol{
   margin-left: 82px;
-}
+} */
 .card7{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -413,7 +353,7 @@
 .card7 hr{
   margin-bottom: 25px;
 }
-.duration2{
+/* .duration2{
   margin-left: -35px;
 }
 .designation2{
@@ -421,7 +361,7 @@
 }
 .designation{
   margin-right: 60px;
-}
+} */
 .card8{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -435,7 +375,7 @@
     color: #444444;
     margin-bottom: 17px;
 }
-.jdate{
+/* .jdate{
   margin-right: 130px;
 }
 .ctc{
@@ -446,7 +386,7 @@
 }
 .estatus{
   margin-left: -65px;
-}
+} */
 
 .modal {
   position: fixed;
