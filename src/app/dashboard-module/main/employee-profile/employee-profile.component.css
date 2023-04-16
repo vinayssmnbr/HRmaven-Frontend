@@ -301,22 +301,22 @@
   color: #777777;
 }
 .uid{
-  margin-left: -48px;
+  margin-left: -28px;
 }
 .gender{
-  margin-left: -44px;
+  margin-left: -48px;
 }
 .marstatus{
-  margin-right: 91px;
+  margin-right: 152px;
 }
 .dob{
-  margin-right: 76px;
+  margin-right: 36px;
 }
 .nation{
-  margin-right: 107px;
+  margin-right: 168px;
 }
 .mname{
-  margin-left: -9px;
+  margin-left: -17px;
 }
 .card4{
   padding: 23px 50px;
@@ -336,13 +336,13 @@
   margin-left: -10px;
 }
 .email{
-  margin-right: 23px;
+  margin-right: 90px;
 }
 .state{
-  margin-right: 125px;
+  margin-right: 183px;
 }
 .address{
-  margin-left: 23px;
+  margin-left: -48px;
 }
 .card5 {
   padding: 23px 50px;
@@ -358,16 +358,16 @@
     margin-bottom: 17px;
 }
 .bno{
-  margin-left: -38px;
+  margin-left: 16px;
 }
 .ifsc{
-  margin-right: 78px;
+  margin-right: 160px;
 }
 .panno{
-  margin-left: -62px;
+  margin-left: -45px;
 }
 .pno{
-  margin-right: 70px;
+  margin-right: 128px;
 }
 .card6{
   padding: 23px 50px;
@@ -389,10 +389,10 @@
   margin-left: 35px;
 }
 .inst2{
-  margin-right: 3px;
+  margin-right: 62px;
 }
 .stream{
-  margin-right: 98px;
+  margin-right: 158px;
 }
 .pgcol{
   margin-left: 82px;
@@ -417,7 +417,10 @@
   margin-left: -35px;
 }
 .designation2{
-  margin-right: 40px;
+  margin-right: 102px;
+}
+.designation{
+  margin-right: 60px;
 }
 .card8{
   padding: 23px 50px;
@@ -433,17 +436,18 @@
     margin-bottom: 17px;
 }
 .jdate{
-  margin-right: 100px;
+  margin-right: 130px;
 }
 .ctc{
-  margin-right: 137px;
+  margin-right: 167px;
 }
 .timings{
   margin-left: 7px;
 }
 .estatus{
-  margin-left: -10px;
+  margin-left: -65px;
 }
+
 .modal {
   position: fixed;
   top: 0;
@@ -586,6 +590,7 @@ input[type='date'] {
   font-family: 'Outfit', sans-serif;
   height: 40px;
   padding-left: 17px;
+  padding-right: 15px;
   background-color: #FFFFFF;
   border: 1px solid #CBCBCB;
   border-radius: 8px;
@@ -593,8 +598,10 @@ input[type='date'] {
   margin-bottom: 40px;
   cursor: pointer;
 }
-.employe-id{
+.employee_id{
   cursor: not-allowed;
+  background-color: #fafafa !important;
+  border: 1px solid #FAFAFA;
 }
 #select{
   width: 270px;
@@ -770,6 +777,18 @@ background-color: #ffffff;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
   color: black;
+  padding-left: 15px;
+}
+#slt2 {
+  width: 270px;
+  height: 40px;
+  box-shadow: none;
+  background: #FFFFFF;
+  border: 1px solid rgba(180, 180, 180, 0.8);
+  border-radius: 8px;
+  color: black;
+  padding-left: 15px;
+
 }
 
 input[type='number']:hover {
@@ -788,6 +807,7 @@ input[type='number']:hover {
   padding: 10px;
   position: absolute;
   color: #444444;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);
 }
 
 .select_content1 ul {
