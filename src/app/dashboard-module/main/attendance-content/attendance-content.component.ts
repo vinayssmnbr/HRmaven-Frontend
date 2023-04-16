@@ -41,6 +41,7 @@ leaves:any[]=[]
   showTable=true;
   attDate:any="";
   loader=true;
+  datez:any="";
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';

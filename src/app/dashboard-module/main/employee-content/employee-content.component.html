@@ -45,7 +45,7 @@
       </thead>
 
       <tbody *ngIf="!emptybox">
-        <tr *ngFor="let user of employee" >
+        <tr *ngFor="let user of employee">
           <!--  -->
           <td class="employee1">{{user.uid}}</td>
           <td class="name1">{{user.name}}</td>
@@ -53,8 +53,8 @@
           <td class="email1">{{user.email}}</td>
           <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
-            <div class="icons"><i class="fa-solid fa-pencil" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)"
-               ></i>
+            <div class="icons">
+              <img src="./assets/images/Vector.svg" alt="" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)">
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
@@ -86,12 +86,15 @@
             <div class="number next " [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
                 [ngClass]="{'active':firstStep , 'inactive':!firstStep}">1</span>
             </div>
-            <div class="number next  " [ngClass]="{'active':secondStep ,'inactive':!secondStep && !firstStep}"><span [ngClass]="{'active':secondStep ,'inactive':!secondStep && !firstStep}">2</span></div>
-            <div class="number  prev" [ngClass]="{'active':thirdStep}"><span [ngClass]="{'active':thirdStep}">3</span></div>
+            <div class="number next  " [ngClass]="{'active':secondStep ,'inactive':!secondStep && !firstStep}"><span
+                [ngClass]="{'active':secondStep ,'inactive':!secondStep && !firstStep}">2</span></div>
+            <div class="number  prev" [ngClass]="{'active':thirdStep}"><span [ngClass]="{'active':thirdStep}">3</span>
+            </div>
           </div>
           <div class="details">
             <p class="active1" [ngClass]="{'activate':firstStep ,'inactivate':!firstStep}">Basic Details</p>
-            <p class=" active1 notactive1" [ngClass]="{'activate':secondStep ,'inactivate':!firstStep}">Contact Details</p>
+            <p class=" active1 notactive1" [ngClass]="{'activate':secondStep ,'inactivate':!firstStep}">Contact Details
+            </p>
             <p class=" active1 notactive2" [ngClass]="{'activate':thirdStep}">Personal Particulars</p>
           </div>
 
@@ -102,7 +105,8 @@
             <div class="form-row">
               <div class="input">
                 <label>Name <span>*</span></label>
-                <input type="name" id="text1"  placeholder="Zana Jones" formControlName="name"  [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.touched,'ng_valid': registrationFormControl.name.valid}">
+                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name"
+                  [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.touched,'ng_valid': registrationFormControl.name.valid}">
 
               </div>
               <div class="input">
@@ -130,7 +134,8 @@
               </div>
               <div class="input">
                 <label>Date of Joining <span>*</span></label>
-                <input type="date" id="text4" placeholder="DD/MM/YYYY" formControlName="dateOfJoining">
+                <input type="date" id="text4" placeholder="DD/MM/YYYY" formControlName="dateOfJoining"
+                  (click)="openDatePicker()">
               </div>
             </div>
             <div class="form-row">
@@ -163,12 +168,15 @@
             <div class="form-row">
               <div class="input">
                 <label>Mobile No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text6" pattern="[0-9]{10}" maxlength="10" placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin" [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.touched,'ng_valid': registrationFormControl.mobile.valid}">
+                <input type="number" class="no-spin" id="text6" pattern="[0-9]{10}" maxlength="10"
+                  placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin"
+                  [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.touched,'ng_valid': registrationFormControl.mobile.valid}">
 
               </div>
               <div class="input">
                 <label>Email <span>*</span></label>
-                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"  [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.touched,'ng_valid': registrationFormControl.email.valid}">
+                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
+                  [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.touched,'ng_valid': registrationFormControl.email.valid}">
 
               </div>
             </div>
@@ -203,14 +211,17 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11" class=" no-spin" [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.touched,'ng_valid': registrationFormControl.accountno.valid}">
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11"
+                  class=" no-spin"
+                  [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.touched,'ng_valid': registrationFormControl.accountno.valid}">
 
               </div>
             </div>
             <div class="form-row">
               <div class="input">
                 <label>IFSC Code <span>*</span></label>
-                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12" [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.touched,'ng_valid': registrationFormControl.ifsc.valid}">
+                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12"
+                  [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.touched,'ng_valid': registrationFormControl.ifsc.valid}">
 
               </div>
               <div class="input">
@@ -223,7 +234,8 @@
             <div class="form-row">
               <div class="input">
                 <label>PAN number <span>*</span></label>
-                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10" [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.touched,'ng_valid': registrationFormControl.panno.valid}">
+                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10"
+                  [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.touched,'ng_valid': registrationFormControl.panno.valid}">
 
               </div>
             </div>
@@ -231,12 +243,16 @@
         </div>
 
         <div class="modal-footer">
-          <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn" [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid)"> Next </button>
+          <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
+            [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid)">
+            Next </button>
           <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
-          <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn" [disabled]="!(this.form.controls.mobile.valid && this.form.controls.email.valid && this.form.controls.address.valid)">Next</button>
+          <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn"
+            [disabled]="!(this.form.controls.mobile.valid && this.form.controls.email.valid && this.form.controls.address.valid)">Next</button>
           <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
-          <button type="submit" *ngIf="thirdStep" [disabled]="!(this.form.controls.accountno.valid && this.form.controls.adhaarno.valid && this.form.controls.panno.valid && this.form.controls.ifsc.valid)" class="done-btn"
-            (click)="submit(form.value)">Done</button>
+          <button type="submit" *ngIf="thirdStep"
+            [disabled]="!(this.form.controls.accountno.valid && this.form.controls.adhaarno.valid && this.form.controls.panno.valid && this.form.controls.ifsc.valid)"
+            class="done-btn" (click)="submit(form.value)">Done</button>
         </div>
       </div>
       <div class="modal-content2" *ngIf="fourthStep">
@@ -259,21 +275,19 @@
             <button class="no-btn" (click)="closeModal2()">No</button>
           </div>
 
-              <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
-            </div>
-          </div>
-          <div class="modal-content4" *ngIf="deletemessage">
-            <div class="modal-header4">
-              <img src="./assets/images/tick.png" alt="img">
-            </div>
-            <div class="modal-body4">
-              <h3>Employee deleted successfully!</h3>
-              <button class="done-btn2" (click)="closeModal3()">Done</button>
-            </div>
-          </div>
-
+          <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
         </div>
       </div>
+      <div class="modal-content4" *ngIf="deletemessage">
+        <div class="modal-header4">
+          <img src="./assets/images/tick.png" alt="img">
+        </div>
+        <div class="modal-body4">
+          <h3>Employee deleted successfully!</h3>
+          <button class="done-btn2" (click)="closeModal3()">Done</button>
+        </div>
+      </div>
+
     </div>
-
-
+  </div>
+</div>
