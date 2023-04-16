@@ -74,7 +74,7 @@ export class HeaderComponent {
   }
 
   profileToggle() {
-    if (!this.hideNotifications) {
+    if (this.hideNotifications) {
       this.visible = false;
     }
         this.hideNotifications = true;
