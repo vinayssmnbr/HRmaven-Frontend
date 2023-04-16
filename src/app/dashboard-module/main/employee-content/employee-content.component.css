@@ -140,8 +140,9 @@ input:focus {
   width: 16.67px;
   height: 16.67px;
 }
-.icons i{
+.icons img{
   cursor: pointer;
+  background-color: #f9f9f9 !important;
 }
 .icons .fa-trash-can:hover {
   color: red;
