@@ -26,6 +26,16 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+
+const storedemail = localStorage.getItem('email');
+const storedPassword = localStorage.getItem('password');
+if (storedemail && storedPassword) {
+  this.loginForm.setValue({
+    email: storedemail,
+    password: storedPassword,
+    Remember: true
+  });
+}
     let counter = 0;
     setInterval(() => {
       const radioBtn = document.getElementById(
@@ -65,12 +75,8 @@ export class LoginComponent {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
-      ),
-    ]),
+    password: new FormControl('', [ Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
+    Remember:new FormControl()
   });
 
   forgotPassword = new FormGroup({
@@ -116,6 +122,7 @@ export class LoginComponent {
 
   onSubmit(data: any) {
     console.log(this.loginForm.value);
+
     this.userService.users(data).subscribe((res: any) => {
       this.userService.users(this.loginForm);
 
@@ -133,10 +140,16 @@ export class LoginComponent {
           ';path=/' +
           ';expires=' +
           expire.toUTCString();
+          if(this.loginForm.value.Remember)
+    {
+      localStorage.setItem('email', this.loginForm.value.email);
+      localStorage.setItem('password', this.loginForm.value.password);
+    }
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
         this.Invalid = !this.Invalid;
+
       }
       localStorage.setItem(
         'LoggedInName: ',
@@ -155,6 +168,6 @@ export class LoginComponent {
     this.Forgotshow = !this.Forgotshow;
     setTimeout(() => {
       this.EmailSent = !this.EmailSent;
-    }, 1000);
+    }, 500);
   }
 }

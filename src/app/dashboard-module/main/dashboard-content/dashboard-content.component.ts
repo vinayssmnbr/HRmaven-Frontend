@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
@@ -11,9 +11,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./dashboard-content.component.css'],
 })
 export class DashboardContentComponent implements OnInit {
+  loader=false;
+
   constructor(
     public dashService: DashService,private http:HttpClient,
-    @Inject(DOCUMENT) public document: Document
+    @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
@@ -70,7 +72,7 @@ export class DashboardContentComponent implements OnInit {
       head: 'Interview',
       time: '10am to 12pm',
     },
-    
+
   ];
 
   Edit(index: any) {
@@ -95,16 +97,15 @@ export class DashboardContentComponent implements OnInit {
    {
 
 
-
-    // Create a chart object
-
-  }
-
-
-  showchart(){
-
     this.dashService.getreport().subscribe((res:any)=>{
-    const myChart = new Chart('myChart', {
+    if(res)
+    {
+      console.log('yeah');
+      this.loader=true;
+    }
+    let chart = this.elementRef.nativeElement.querySelector(`#myChart`);
+
+    const myChart = new Chart(chart, {
       type: 'bar',
       data: {
         labels: [
@@ -191,8 +192,15 @@ export class DashboardContentComponent implements OnInit {
       }
       },
     });
+
+
   });
 
+    // Create a chart object
+  }
+
+
+  showchart(){
 
   }
 
