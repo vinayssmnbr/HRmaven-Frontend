@@ -64,14 +64,13 @@ export class EmployeeContentComponent implements OnInit {
     gender: new FormControl('option1'),
     mobile: new FormControl('',
              [Validators.required,
-              Validators.maxLength(10),
             ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
     bankname: new FormControl(''),
     adhaarno: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\s\d{4}\s\d{4}$/),
            ]),
-    accountno: new FormControl('', [Validators.required, Validators.maxLength(12)]),
+    accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('',[ Validators.required, Validators.pattern(/^([A-Z]){4}([0-9]){8}$/)]),
     panno: new FormControl('',[Validators.required,Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/)]),
           });
@@ -90,6 +89,7 @@ export class EmployeeContentComponent implements OnInit {
               this.dashService.addEmployee(this.form);
               console.log(result);
               this.fetchdata();
+              // this.form.reset(this.form.value);
             });
           }
 
@@ -304,6 +304,10 @@ export class EmployeeContentComponent implements OnInit {
       id: 4,
       name: 'ICICI Bank',
     },
+    {
+      id:5,
+      name: 'Others',
+    }
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {

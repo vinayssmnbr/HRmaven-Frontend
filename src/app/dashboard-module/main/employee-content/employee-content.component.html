@@ -83,16 +83,16 @@
         </div>
         <div class="modal-body">
           <div class="numbers">
-            <div class="number next prev" [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
+            <div class="number next " [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
                 [ngClass]="{'active':firstStep , 'inactive':!firstStep}">1</span>
             </div>
-            <div class="number next prev"><span [ngClass]="{'active':secondStep ,'inactive':!secondStep && firstStep}">2</span></div>
-            <div class="number prev"><span [ngClass]="{'active':thirdStep}">3</span></div>
+            <div class="number next  " [ngClass]="{'active':secondStep ,'inactive':!secondStep && !firstStep}"><span [ngClass]="{'active':secondStep ,'inactive':!secondStep && !firstStep}">2</span></div>
+            <div class="number  prev" [ngClass]="{'active':thirdStep}"><span [ngClass]="{'active':thirdStep}">3</span></div>
           </div>
           <div class="details">
-            <p class="active1" [ngStyle]="firstStep && {'color': '#2F2C9F'}">Basic Details</p>
-            <p class=" active1 notactive1" [ngStyle]=" !firstStep && secondStep && {'color': '#2F2C9F'}">Contact Details</p>
-            <p class=" active1 notactive2" [ngStyle]=" thirdStep && {'color': '#2F2C9F'}">Personal Particulars</p>
+            <p class="active1" [ngClass]="{'activate':firstStep ,'inactivate':!firstStep}">Basic Details</p>
+            <p class=" active1 notactive1" [ngClass]="{'activate':secondStep ,'inactivate':!firstStep}">Contact Details</p>
+            <p class=" active1 notactive2" [ngClass]="{'activate':thirdStep}">Personal Particulars</p>
           </div>
 
 
@@ -203,14 +203,14 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" class=" no-spin" [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.touched,'ng_valid': registrationFormControl.accountno.valid}">
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11" class=" no-spin" [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.touched,'ng_valid': registrationFormControl.accountno.valid}">
 
               </div>
             </div>
             <div class="form-row">
               <div class="input">
                 <label>IFSC Code <span>*</span></label>
-                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.touched,'ng_valid': registrationFormControl.ifsc.valid}">
+                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12" [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.touched,'ng_valid': registrationFormControl.ifsc.valid}">
 
               </div>
               <div class="input">
@@ -223,7 +223,7 @@
             <div class="form-row">
               <div class="input">
                 <label>PAN number <span>*</span></label>
-                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.touched,'ng_valid': registrationFormControl.panno.valid}">
+                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10" [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.touched,'ng_valid': registrationFormControl.panno.valid}">
 
               </div>
             </div>
