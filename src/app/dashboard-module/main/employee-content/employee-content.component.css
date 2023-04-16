@@ -469,26 +469,30 @@ table {
   top: 20px;
   border: 1px dashed #cbcbcb;
 }
-
+.next.inactive::after{
+  content: '';
+    position: absolute;
+    width: 108px;
+    left: 38px;
+    top: 20px;
+    border: 1px solid #2F2C9F;
+}
 .next.active {
   border: 1px solid #2F2C9F;
 }
 .next.inactive{
   border: 1px solid transparent;
 }
-/* .number.active::after{
+.prev.active{
   border: 1px solid #2F2C9F;
-} */
+}
 .number {
-  border: 1px solid #2F2C9F;
+
   border-radius: 50%;
   padding: 4.5px;
   position: relative;
 }
 
-/* .active {
-  border: 1px dashed #000;
-} */
 .numbers span.active {
   display: flex;
   text-align: center;
@@ -525,6 +529,7 @@ table {
 .numbers span.inactive{
   background-color: #2F2C9F;
   color: white;
+  border: 1px solid transparent;
 }
 .details {
   display: flex;
@@ -538,9 +543,14 @@ table {
   font-weight: 400;
   font-size: 12px;
   line-height: 140%;
+  /* color: #2F2C9F; */
+}
+.details .active1.activate{
   color: #2F2C9F;
 }
-
+.details .active1.inactivate {
+  color: #2F2C9F;
+}
 .details p {
   font-style: normal;
   font-weight: 400;
@@ -551,11 +561,11 @@ table {
 }
 
 .details .notactive1 {
-  padding-left: 67px;
+  margin-left: 67px;
 }
 
 .details .notactive2 {
-  padding-left: 46px;
+  margin-left: 50px;
 }
 
 #form1 {
@@ -651,56 +661,56 @@ label {
   border-color: green;
 }
 #text1:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text2:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text3:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text4:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text5:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text6:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text7:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 
 }
 
 #text8:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text9:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text10:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text11:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text12:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text13:hover {
-  border-color: 1px solid #2F2C9F !important;
+  border-color: 1px solid #2F2C9F;
 }
 
 #text2 {
@@ -1265,7 +1275,7 @@ label {
 .dropdwon_select {
   background-color: #fff;
   width: 172px;
-  height: 44px;
+  /* height: 44px; */
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
@@ -1362,7 +1372,7 @@ label {
 .dropdwon_select {
   background-color: #fff;
   width: 172px;
-  height: 40px;
+  /* height: 40px; */
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
@@ -1398,6 +1408,8 @@ label {
   padding: 10px;
   position: absolute;
   color: #444444;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .select_content ul {
