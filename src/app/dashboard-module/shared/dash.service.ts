@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable,map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,31 +16,35 @@ export class DashService {
   constructor(private http: HttpClient, private router : Router,private cookie:CookieService) { }
 
 
+selectedEmployee:any
+setSelectedEmployee(user:any){
+  this.selectedEmployee=user
+}
 
+getSelectedEmployee(){
+  return this.selectedEmployee
+}
 
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get('https://hrm21.onrender.com/user-profile', { headers }).pipe(
+    return this.http.get(this.profile, { headers }).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
-
-  createData = 'https://hrm21.onrender.com/api/create';
-  getData = 'https://hrm21.onrender.com/api/find';
-  deleteData = 'https://hrm21.onrender.com/api/';
-  getLeave='https://hrm21.onrender.com/api/leave//'
-  updateData='https://hrm21.onrender.com/attendance'
-  getAttd='https://hrm21.onrender.com/attendance';
-  updatempdata="https://hrm21.onrender.com/api/update"
-  getuid='https://hrm21.onrender.com/api/uid'
-
-
-
-
+  createData = environment.createData;
+  getData =environment.getData;
+  deleteData = environment.deleteData;
+  getLeave=environment.getLeave
+  updateData=environment.updateData
+  getAttd=environment.getAttd
+  updatempdata=environment.updatempdata
+  getuid=environment.getuid
+  report=environment.report
+  profile=environment.profile
 
 
   addEmployee(data) {
@@ -85,7 +92,7 @@ export class DashService {
 
 
    getreport(){
-     return this.http.get('https://hrm21.onrender.com/attendance/report');
+     return this.http.get(this.report);
   }
 
   getEmployeeUid(){

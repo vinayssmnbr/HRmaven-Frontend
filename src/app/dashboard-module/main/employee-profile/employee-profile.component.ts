@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -15,12 +15,20 @@ import { DashService } from '../../shared/dash.service';
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent {
+  @Input() user:any
   constructor(private dashService:DashService){
-    this.dashService.getEmployee().subscribe((res: any) => {
-      console.log('data', res);
-      this.employee = res;
-    })
   }
+  ngOnInit(){
+    this.user=this.dashService.getSelectedEmployee()
+  }
+
+  selectedUser: any = {};
+  // toupdate(user: any) {
+  //   this.selectedUser = { _id: user._id };
+  //   this.form.patchValue(user);
+  //   console.log(this.selectedUser);
+
+  // }
 personaldetail:boolean=true;
 jobdetail:boolean=false;
 showModal:boolean=false;
@@ -35,7 +43,7 @@ isPersonalDetailsActive=true;
 employee: any = [];
 
   form = new FormGroup({
-    name:new FormControl(''),
+    name:new FormControl('Vinay'),
     employee_id:new FormControl(''),
     dob:new FormControl(''),
     fname:new FormControl(''),
@@ -145,7 +153,7 @@ employee: any = [];
     },
     {
       id: 1,
-      name: 'Unmarried',
+      name: 'Single',
     },
   ];
   array4: any = [
@@ -270,17 +278,21 @@ else if(this.jobdetail===true){
   this.modalContent7=false;
 }
 }
-openmodal2(){
+openmodal2(user:any){
   this.fourthStep=false;
   this.showModal=true;
   this.modalContent4=true;
   this.modalContent1=false;
+  this.selectedUser = { _id: user._id };
+  this.form.patchValue(user);
+  console.log(this.selectedUser);
+  console.log(user)
+
 }
 closeModal(){
   this.showModal=false;
 }
 fourthStep:boolean=false;
-selectedUser:any={};
 
 closeModal2(){
   this.fourthStep=true;
@@ -288,7 +300,7 @@ closeModal2(){
   this.modalContent1=false;
     console.log(this.form.value)
     const updatedData = this.form.value;
-    // console.log(updatedData)
+    console.log(updatedData)
     updatedData['_id'] = this.selectedUser._id;
     this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
@@ -308,6 +320,7 @@ openModal3(){
   this.modalContent1 = false;
   this.modalContent5=true;
   this.modalContent6=false;
+  this.modalContent7=false;
 }
 closeModal4(){
   this.fourthStep = true;
@@ -323,6 +336,7 @@ openModal4(){
   this.modalContent1 = false;
   this.modalContent5 = false;
   this.modalContent6 = true;
+  this.modalContent7=false;
 
 }
 closeModal5(){
@@ -390,13 +404,6 @@ closeModal6(){
     this.contentdropdown5 = false;
     console.log(arr5.name);
   }
-
-  // fetchdata() {
-  //   this.dashService.getEmployee().subscribe((res: any) => {
-  //     console.log('data', res);
-  //     this.employee = res;
-  //   });
-  // }
 
 
 

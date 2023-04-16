@@ -26,8 +26,6 @@
 }
 
 .card1 h2{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 21px;
     line-height: 100%;
@@ -91,8 +89,6 @@
   right: 7%;
   display: none;
   padding: 6px 14px;
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   /* display: flex; */
@@ -138,22 +134,16 @@
   padding-top: 15px;
 }
 .card2 .content h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 20px;
     color: #444444;
 }
 .card2 .content p{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     color: #999999;
 }
 .card2 .content span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   color: #999999;
@@ -172,8 +162,6 @@
   cursor: pointer;
 }
 .content1 li a{
-font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   color: #222222;
@@ -185,19 +173,16 @@ font-family: 'Outfit';
 .content1 li.active{
   border-bottom: 2px solid #2F2C9F;
 
-  /* margin-left: -20px; */
 
 }
 .card3{
   padding: 25px 50px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid rgba(47, 44, 159, 0.15);
   background-color: #ffffff;
   border-radius: 8px;
   margin-bottom: 20px;
 }
 .card3 h3{
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   color: #444444;
@@ -239,106 +224,78 @@ font-family: 'Outfit';
   gap: 5px;
 }
 .row1 span{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 13px;
     color: #444444;
 }
 .row1 .column1 p{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 15px;
     color: #777777;
 }
 .row1 .column2 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row1 .column3 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row2 span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   color: #444444;
 }
 
 .row2 .column1 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row2 .column2 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row2 .column3 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row3 span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   color: #444444;
 }
 
 .row3 .column1 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row3 .column2 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 
 .row3 .column3 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
 }
 .row4 span {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 13px;
   color: #444444;
 }
 
 .row4 .column1 p {
-  font-family: 'Outfit';
-  font-style: normal;
   font-weight: 400;
   font-size: 15px;
   color: #777777;
@@ -363,15 +320,13 @@ font-family: 'Outfit';
 }
 .card4{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
 
 }
 .card4 h3{
-font-family: 'Outfit';
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   color: #444444;
@@ -391,14 +346,12 @@ font-family: 'Outfit';
 }
 .card5 {
   padding: 23px 50px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid rgba(47, 44, 159, 0.15);
   background-color: #ffffff;
   border-radius: 8px;
   margin-bottom: 20px;
 }
 .card5 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -418,14 +371,12 @@ font-family: 'Outfit';
 }
 .card6{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 .card6 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -448,14 +399,12 @@ font-family: 'Outfit';
 }
 .card7{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 .card7 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -472,14 +421,12 @@ font-family: 'Outfit';
 }
 .card8{
   padding: 23px 50px;
-    border: 1px solid #f0f0f0;
+    border: 1px solid rgba(47, 44, 159, 0.15);
     background-color: #ffffff;
     border-radius: 8px;
     margin-bottom: 20px;
 }
 .card8 h3{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
     color: #444444;
@@ -507,8 +454,16 @@ font-family: 'Outfit';
   display: flex;
   justify-content: center;
   z-index: 9999;
-  /* align-items: center; */
+  align-items: center;
 }
+
+.modal-content input:hover,
+.modal-content input:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+    border-color: #2F2C9F;
+}
+
 .modal-content {
   background-color: #ffffff;
   position: absolute;
@@ -532,8 +487,6 @@ font-family: 'Outfit';
     height: 69px;
 }
 .modal-title{
-  font-family: 'Outfit';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     color: #444444;
@@ -593,9 +546,14 @@ hr{
   display: flex;
   flex-direction: column;
 }
+
+.form-row .input input:hover,
+.form-row .input input:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+
+}
 label{
-  font-family: 'Outfit',sans-serif;
-  font-style: normal;
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 5px;
@@ -865,7 +823,6 @@ input[type='number']:hover {
   width: 270px;
   height: 40px;
   cursor: pointer;
-  padding: 8px;
   border-radius: 8px;
   border: 1px solid rgba(180, 180, 180, 0.8);
   color: #444444;
@@ -879,7 +836,11 @@ input[type='number']:hover {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
 }
-
+.input .dropdwon_select:hover,
+.input .dropdwon_select:focus {
+  border: 1px solid #2F2C9F !important;
+  border-radius: 8px !important;
+}
 .dropdwon_select p {
   font-size: 14px;
   font-weight: 400;
@@ -895,7 +856,7 @@ input[type='number']:hover {
   background-color: #fff;
   cursor: pointer;
   width: 210px;
-  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   padding: 10px;
   position: absolute;

@@ -1,4 +1,7 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<router-outlet></router-outlet>
-<!-- <app-employee-content></app-employee-content> -->
+<div class="parent loaderLogo "*ngIf="!loader">
+  <img id=loader src="../../assets/images/logo.ico">
+</div>
+<app-header *ngIf="loader"></app-header>
+<app-sidebar *ngIf="loader"></app-sidebar>
+<router-outlet *ngIf="loader"></router-outlet>
+

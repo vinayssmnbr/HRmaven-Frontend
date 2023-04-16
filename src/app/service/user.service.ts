@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,10 +20,12 @@ export class UserService {
     return this.cookie.get('token') !== '';
   }
 
-  saveurl = 'https://hrm21.onrender.com/signup';
-  loginurl = 'https://hrm21.onrender.com/login';
-  Forgoturl = 'https://hrm21.onrender.com/forgotpassword';
-  Reseturl = 'https://hrm21.onrender.com/resetpassword';
+  private saveurl=environment.saveurl;
+  private loginurl=environment.loginurl
+  private Forgoturl=environment.Forgoturl
+  private Reseturl=environment.Reseturl
+  private url=environment.url
+  private auth=environment.auth
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -56,9 +59,9 @@ export class UserService {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    const url = `https://hrm21.onrender.com/user-profile`;
 
-    return this.http.get(url, { headers }).pipe(
+
+    return this.http.get(this.url, { headers }).pipe(
       map((response: any) => {
         return response;
       })
@@ -76,7 +79,7 @@ export class UserService {
 
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-      this.http.get('https://hrm21.onrender.com/auth', { headers }).subscribe(
+      this.http.get(this.auth, { headers }).subscribe(
         (res: any) => {
           this.isLoggedIn.next(true);
           this.router.navigate(['dashboard']);
