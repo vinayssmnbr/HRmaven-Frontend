@@ -20,15 +20,10 @@ export class EmployeeProfileComponent {
   }
   ngOnInit(){
     this.user=this.dashService.getSelectedEmployee()
+    console.log(this.user)
   }
 
   selectedUser: any = {};
-  // toupdate(user: any) {
-  //   this.selectedUser = { _id: user._id };
-  //   this.form.patchValue(user);
-  //   console.log(this.selectedUser);
-
-  // }
 personaldetail:boolean=true;
 jobdetail:boolean=false;
 showModal:boolean=false;
@@ -43,40 +38,40 @@ isPersonalDetailsActive=true;
 employee: any = [];
 
   form = new FormGroup({
-    name:new FormControl('Vinay'),
-    employee_id:new FormControl(''),
-    dob:new FormControl(''),
-    fname:new FormControl(''),
-    mname:new FormControl(''),
-    mstatus:new FormControl(''),
-    bgroup:new FormControl(''),
-    nation:new FormControl(''),
-    cno:new FormControl(''),
-    address:new FormControl(''),
-    city:new FormControl(''),
+    uid:new FormControl(''),
+    name:new FormControl(''),
+    designation:new FormControl(''),
     email:new FormControl(''),
-    pcode:new FormControl(''),
-    state:new FormControl(''),
-    bname:new FormControl(''),
-    adhaarno: new FormControl(''),
-    bno: new FormControl(''),
-    ifsc: new FormControl(''),
-    panno: new FormControl(''),
-    pno: new FormControl(''),
-    inst1: new FormControl(''),
-    mper: new FormControl(''),
-    inst2: new FormControl(''),
-    dper: new FormControl(''),
-    gcol: new FormControl(''),
-    stream: new FormControl(''),
-    sgpa: new FormControl(''),
-    pgcol:new FormControl(''),
-    pgstream: new FormControl(''),
-    pgsgpa: new FormControl(''),
-    orgname: new FormControl(''),
-    duration2: new FormControl(''),
-    designation: new FormControl(''),
-    location2: new FormControl(''),
+    mobile:new FormControl(''),
+    dateOfJoining:new FormControl(''),
+    dateOfBirth:new FormControl(''),
+    gender:new FormControl(''),
+    address:new FormControl(''),
+    bankname:new FormControl(''),
+    adhaarno:new FormControl(''),
+    accountno:new FormControl(''),
+    ifsc:new FormControl(''),
+    fatherName:new FormControl(''),
+    motherName:new FormControl(''),
+    maritalStatus: new FormControl(''),
+    bloodGroup: new FormControl(''),
+    nationality: new FormControl(''),
+    city: new FormControl(''),
+    postalCode: new FormControl(''),
+    state: new FormControl(''),
+    passport: new FormControl(''),
+    matric: new FormControl(''),
+    matricPercent: new FormControl(''),
+    inter: new FormControl(''),
+    interPercent: new FormControl(''),
+    graduation: new FormControl(''),
+    graduationStream:new FormControl(''),
+    graduationCgpa: new FormControl(''),
+    pg: new FormControl(''),
+    pgStream: new FormControl(''),
+    pgCgpa: new FormControl(''),
+    company: new FormControl(''),
+    duration: new FormControl(''),
     designation2: new FormControl(''),
     estatus: new FormControl(''),
     jdate: new FormControl(''),
@@ -285,8 +280,8 @@ openmodal2(user:any){
   this.modalContent1=false;
   this.selectedUser = { _id: user._id };
   this.form.patchValue(user);
-  console.log(this.selectedUser);
-  console.log(user)
+  console.log('checkuser',this.selectedUser);
+  console.log('check',this.user)
 
 }
 closeModal(){
@@ -294,19 +289,41 @@ closeModal(){
 }
 fourthStep:boolean=false;
 
-closeModal2(){
+successMessage:string
+basicUpdate(){
   this.fourthStep=true;
   this.modalContent2=false;
   this.modalContent1=false;
-    console.log(this.form.value)
-    const updatedData = this.form.value;
-    console.log(updatedData)
-    updatedData['_id'] = this.selectedUser._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
-      console.log('Data updated successfully');
-    });
+  console.log(this.form.value)
+  const updatedData = this.form.value;
+  console.log('abc',updatedData)
+  updatedData['_id'] = this.user._id;
+  this.dashService.updateEmployee(updatedData).subscribe(() => {
+    console.log('Data updated successfully');
+    this.fetchdata()
+  });
+console.log('value',this.user)
+
+
+// this.dashService.updateEmployee(this.user)
+//       .subscribe(
+//         () => this.successMessage = 'Employee updated successfully',
+//         error => console.log(error)
+//       );
+}
+fetchdata() {
+  this.dashService.getEmployee().subscribe((res: any) => {
+    console.log('data', res);
+    this.employee = res;
+  });
+}
+closeModal2(user){
+  this.fourthStep=true;
+  this.modalContent2=false;
+  this.modalContent1=false;
 
 }
+
 closeModal3(){
   this.fourthStep=true;
   this.modalContent1=false;

@@ -41,13 +41,13 @@
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
-          <p class="dob">{{user.dateOfBirth}}</p>
+          <p class="dob">{{user.dateOfBirth | date:"short"}}</p>
         </div>
       </div>
       <div class="row2">
         <div class="column1">
           <span class="fname">Father's Name</span>
-          <p class="fname">Rahul Sharma</p>
+          <p class="fname">{{user.fatherName}}</p>
         </div>
         <div class="column2">
           <span class="mname">Mother's Name</span>
@@ -76,7 +76,7 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openmodal2(user._id)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal2(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -284,30 +284,30 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
-        <form class="form-container" id="form1" [formGroup]="form">
+        <form class="form-container" id="form1" [formGroup]="form" (ngSubmit)="basicUpdate()">
           <div class="form-row">
             <div class="input">
               <label>Name</label>
-              <input type="text" placeholder="Harshit Sharma" formControlName="name">
+              <input type="text"  formControlName="name">
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id" formControlName="employee_id"
+              <input type="number" placeholder="28563" class="employe-id" formControlName="uid"
                 [disabled]="true" readonly>
             </div>
             <div class="input">
               <label>Date of birth</label>
-              <input type="date" placeholder="06/04/1997" formControlName="dob">
+              <input type="date" placeholder="06/04/1997" formControlName="dateOfBirth">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Father's Name</label>
-              <input type="text" placeholder="Rahul Sharma" formControlName="fname">
+              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName">
             </div>
             <div class="input">
               <label>Mother's Name</label>
-              <input type="text" placeholder="Vinita Sharma" formControlName="mname">
+              <input type="text" placeholder="Vinita Sharma" formControlName="motherName">
             </div>
             <div class="input">
               <label>Marital Status</label>
@@ -361,14 +361,17 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nation">
+              <input type="text" placeholder="Indian" formControlName="nationality">
             </div>
+          </div>
+          <div class="modal-footer">
+            <button class="save">Update</button>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button class="save" (click)="closeModal2()">Update</button>
-      </div>
+      <!-- <div class="modal-footer">
+        <button class="save">Update</button>
+      </div> -->
     </div>
     <div class="modal-content" *ngIf="modalContent4">
       <div class="modal-header">
@@ -647,7 +650,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal2()">Update</button>
+        <button class="save" (click)="closeModal2(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content3" *ngIf="fourthStep">
