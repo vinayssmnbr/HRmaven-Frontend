@@ -39,7 +39,11 @@
                 <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
                 <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()"></i>
             </div>
-            <input type="date">
+            <label for="date">
+            <input type="date" id="date" [(ngModel)]="datez">
+            {{datez}}
+          </label>
+
         </div>
         <div class="no_data">
             <img src="assets/images/no_record.png" alt="">
@@ -61,7 +65,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of employee | attendanceFilter:employeename">
+                <tr *ngFor="let user of employee | attendanceFilter:employeename:datez">
                     <td>{{user.empId}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.date | date:'shortDate'}}</td>

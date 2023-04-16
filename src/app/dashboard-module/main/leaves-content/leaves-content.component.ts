@@ -134,7 +134,7 @@ export class LeavesContentComponent {
     },
     {
       id: 4,
-      name: 'Approved',
+      name: 'Accepted',
     },
   ];
   contentdropdown: boolean = false;

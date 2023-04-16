@@ -20,6 +20,7 @@ import { SortingPipe } from './pipe/sorting.pipe';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { LeavefilterPipe } from './pipe/leavefilter.pipe';
 
 
 
@@ -42,6 +43,7 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
            DropdownComponent,
            JobDetailsComponent,
            EmployeeProfileComponent,
+           LeavefilterPipe,
 
 
   ],
