@@ -53,7 +53,7 @@
           <td class="email1">{{user.email}}</td>
           <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
-            <div class="icons"><i class="fa-solid fa-pencil" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)"
+            <div class="icons"><i class="fa-solid fa-eye" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)"
                ></i>
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
@@ -130,7 +130,7 @@
               </div>
               <div class="input">
                 <label>Date of Joining <span>*</span></label>
-                <input type="date" id="text4" placeholder="DD/MM/YYYY" formControlName="dateOfJoining">
+                <input type="date" id="text4" placeholder="DD/MM/YYYY" formControlName="dateOfJoining" (click)="openDatePicker()">
               </div>
             </div>
             <div class="form-row">
