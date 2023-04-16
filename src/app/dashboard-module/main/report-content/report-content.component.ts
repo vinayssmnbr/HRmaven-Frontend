@@ -12,5 +12,5 @@ export class ReportContentComponent {
     dashService.headerContent = '';
   }
 
-
+ 
 }
