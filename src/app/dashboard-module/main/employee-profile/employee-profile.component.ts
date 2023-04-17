@@ -42,6 +42,7 @@ export class EmployeeProfileComponent {
   gender: string = '';
   jobdesignation: string = '';
   jobtiming: string = '';
+  jobempstatus:string=''
 
   form = new FormGroup({
     uid: new FormControl(''),
@@ -343,6 +344,7 @@ export class EmployeeProfileComponent {
     this.modalContent1 = false;
     data.jobdesignation = this.jobdesignation;
     data.jobtiming = this.jobtiming;
+    data.jobempstatus=this.jobempstatus
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
@@ -500,6 +502,7 @@ export class EmployeeProfileComponent {
     this.colorvariable8 = arr8.id;
     this.contentdropdown8 = false;
     console.log(arr8.name);
+    this.jobempstatus=arr8.name
   }
 
   dropdownClose3() {
