@@ -193,7 +193,7 @@ input:focus {
 .button input {
     color: #fff;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 700;
     background-color: var(--primary-color);
     cursor: pointer;
     transition: all 0.3s ease;
