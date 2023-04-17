@@ -12,18 +12,6 @@
             <div class="graph_heading">
                 <h1>Attendance Status</h1>
             </div>
-            <!-- <div class="dropdown_container">
-                <div class="dropdwon_select1" (click)="dropdownOpen1()">
-                  <p>{{Selectvariable1}}</p>
-                  <i class="fa-sharp fa-solid fa-caret-down"></i>
-                </div>
-                <div class="select_content" *ngIf="contentdropdown1">
-                  <ul>
-                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
-                      {{arr1.name}}</li>
-                  </ul>
-                </div>
-              </div> -->
         </div>
 
         <div class="bar-chart" [ngClass]="{'attclose':loader}">
@@ -36,8 +24,8 @@
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
-                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
-                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()"></i>
+                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
+                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i>
             </div>
             <label for="date">
             <input type="date" id="date" [(ngModel)]="datez">

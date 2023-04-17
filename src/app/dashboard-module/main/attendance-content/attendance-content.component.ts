@@ -41,6 +41,9 @@ export class AttendanceContentComponent implements OnInit {
   loader = true;
   datez: any = "";
 
+  table1Visible = false;
+  table2Visible = false;
+
   constructor(public dashService: DashService) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
@@ -162,9 +165,19 @@ export class AttendanceContentComponent implements OnInit {
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
   openModal(user:any) {
+
+    this.form.patchValue(user);
+    this.form.setValue({
+      name:user.name,
+      empId:user.empId,
+      date:user.date,
+      status:user.status,
+      punch_in:user.punch_in,
+      punch_out:user.punch_out,
+    });
+    this.Selectvariable=user.status;
     this.showModal = true;
     this.selectedUser = {_id: user._id};
-    this.form.patchValue(user)
   }
 
 
@@ -193,11 +206,16 @@ this.edit();
   toggleTable1() {
     this.showCard = !this.showCard;
     this.showTable=!this.showTable;
+    this.table1Visible = !this.table1Visible;
+    this.table2Visible = false; // ensure other table is hidden
+
   }
 
   toggleTable2(){
     this.showCard=!this.showCard;
     this.showTable=!this.showTable;
+    this.table2Visible = !this.table2Visible;
+    this.table1Visible = false; // ensure other table is hidden
   }
 
 edit(){

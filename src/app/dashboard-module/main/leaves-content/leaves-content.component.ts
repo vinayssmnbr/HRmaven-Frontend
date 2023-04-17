@@ -12,6 +12,7 @@ import * as moment from 'moment';
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
+  designationdropdownOption: boolean = false;
   circularProgress: any;
   progressValue: any;
   progressStartValue = 0;
@@ -168,7 +169,8 @@ export class LeavesContentComponent {
     this.contentdropdown = false;
     console.log(arr.name);
   }
-
-
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
 
 }

@@ -93,6 +93,9 @@ export class HeaderComponent {
   onclick() {
     this.ReadMore = !this.ReadMore;
     this.visible = !this.visible;
+      if(!this.hideNotifications){
+      this.profileDisplay= false
+    }
   }
   id: any = 'all';
   tabChange(ids: any) {

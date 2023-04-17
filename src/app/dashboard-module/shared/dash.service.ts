@@ -37,15 +37,16 @@ export class DashService {
   profile=environment.profile
 
 
+  //ADD EMPLOYEE DATA
   addEmployee(data) {
     return this.http.post(this.createData, data);
   }
 
+//PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee:any
   setSelectedEmployee(user:any){
     this.selectedEmployee=user
   }
-
   getSelectedEmployee(){
     return this.selectedEmployee
   }
