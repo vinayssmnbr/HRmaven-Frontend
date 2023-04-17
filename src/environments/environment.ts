@@ -20,7 +20,7 @@ export const environment = {
 
 
 
-    // //LOCAL URL
+    //LOCAL URL
     // saveurl: 'http://localhost:3000/signup',
     // loginurl: 'http://localhost:3000/login',
     // Forgoturl: 'http://localhost:3000/forgotpassword',

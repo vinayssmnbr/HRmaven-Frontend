@@ -19,7 +19,7 @@ export const environment = {
   report: 'https://hrmaven.works/attendance/report',
   profile: 'https://hrmaven.works/user-profile',
 
-  // //LOCAL URL
+  //LOCAL URL
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
   // Forgoturl: 'http://localhost:3000/forgotpassword',
