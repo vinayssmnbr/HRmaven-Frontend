@@ -423,3 +423,48 @@ form.ng-invalid #submit {
     cursor: not-allowed;
 
 }
+/* ----------------------ToolTip----------------- */
+.iconWrap {
+    position: relative;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    top: -100px;
+    margin-left: 380px;
+  }
+  .iconWrap i{
+    color: #2F2C9F;
+  }
+  .iconWrap .tooltip {
+    position: absolute;
+    left: 30px;
+    top: -10px;
+    line-height: 22px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #888888;
+    background-color: #F7F7FB;
+    padding: 8px 14px;
+    width:163px;
+    height: 126px;
+    border-radius: 4px;
+    transform: translateX(-5px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
+  }
+  .iconWrap .tooltip::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #F7F7FB;
+    left: 0px;
+    top: 20px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 1px;
+  }
+  .iconWrap:hover .tooltip {
+    transform: translateX(5px);
+    opacity: 1;
+  }
