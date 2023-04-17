@@ -41,6 +41,9 @@ export class AttendanceContentComponent implements OnInit {
   loader = true;
   datez: any = "";
 
+  table1Visible = false;
+  table2Visible = false;
+
   constructor(public dashService: DashService) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
@@ -193,11 +196,16 @@ this.edit();
   toggleTable1() {
     this.showCard = !this.showCard;
     this.showTable=!this.showTable;
+    this.table1Visible = !this.table1Visible;
+    this.table2Visible = false; // ensure other table is hidden
+
   }
 
   toggleTable2(){
     this.showCard=!this.showCard;
     this.showTable=!this.showTable;
+    this.table2Visible = !this.table2Visible;
+    this.table1Visible = false; // ensure other table is hidden
   }
 
 edit(){
