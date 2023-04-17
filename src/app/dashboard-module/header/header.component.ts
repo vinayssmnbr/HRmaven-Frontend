@@ -1,4 +1,4 @@
-import { Component,ElementRef } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { DashService } from '../shared/dash.service';
 import { UserService } from '../../service/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  showSearchBox=false;
+  showSearchBox = false;
   date: any;
   greeting: any;
   employee: string;
@@ -24,13 +24,17 @@ export class HeaderComponent {
   profileDisplayNot: boolean;
   hideNotifications = false;
 
-  constructor(public dashService:DashService, private userService : UserService,
-     private http:HttpClient, private cookie:CookieService,
-     private router:Router, private elementRef :ElementRef ) {
-      this.getProfileData();
-     }
-     hide : boolean = true;
-
+  constructor(
+    public dashService: DashService,
+    private userService: UserService,
+    private http: HttpClient,
+    private cookie: CookieService,
+    private router: Router,
+    private elementRef: ElementRef
+  ) {
+    this.getProfileData();
+  }
+  hide: boolean = true;
 
   ngOnInit() {
     const today = new Date();
@@ -49,42 +53,35 @@ export class HeaderComponent {
       this.greeting = 'GOOD EVENING';
     }
 
-   
     this.elementRef.nativeElement.addEventListener('mouseleave', () => {
       this.profileDisplay = false;
     });
     this.elementRef.nativeElement.addEventListener('mouseleave', () => {
       this.visible = false;
     });
-    
-
-  }
-    
-  
-
-  toggleSearchBox(){
-    this.showSearchBox=!this.showSearchBox;
   }
 
-  getProfileData(){
-    this.dashService.getUserProfile().subscribe((res: any)=>{
-      this.userEmail=res.email.split("@")[0];
-      this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
+  toggleSearchBox() {
+    this.showSearchBox = !this.showSearchBox;
+  }
+
+  getProfileData() {
+    this.dashService.getUserProfile().subscribe((res: any) => {
+      this.userEmail = res.email.split('@')[0];
+      this.name = res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
   }
 
   profileToggle() {
     if (this.hideNotifications) {
       this.visible = false;
-    } else if(!this.hideNotifications){
+    } else if (!this.hideNotifications) {
       this.visible = false;
-
-    } 
+    }
     this.hideNotifications = true;
 
     this.profileDisplay = !this.profileDisplay;
   }
-
 
   logout() {
     this.cookie.delete('token');

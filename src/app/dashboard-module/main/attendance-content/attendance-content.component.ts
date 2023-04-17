@@ -215,15 +215,15 @@ done(){
 array: any = [
   {
     id: 0,
-    name: 'Present',
+    name: 'present',
   },
   {
     id: 1,
-    name: 'Absent',
+    name: 'absent',
   },
   {
     id: 3,
-    name: 'Leave',
+    name: 'leave',
   },
 
 ];
