@@ -82,7 +82,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let leave of leaves | attendanceFilter:employeename">
+                    <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
                         <td>{{leave.employeeId}}</td>
                         <td>{{leave.employeeName}}</td>
                         <td>{{leave.from | date:'short'}}</td>

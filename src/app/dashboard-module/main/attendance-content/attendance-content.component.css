@@ -20,10 +20,12 @@
 .table_text {
     width: 100%;
 }
-.table_heading{
+
+.table_heading {
     position: sticky;
     top: 0;
 }
+
 table {
     border-spacing: 2px 5px;
 }
@@ -120,7 +122,6 @@ td {
     height: 350px;
     width: 100%;
     padding-bottom: 10px;
-
 }
 
 .calender {
@@ -200,7 +201,6 @@ input[type=number]::-webkit-inner-spin-button {
 .employe_input input:focus {
     border: 1px solid #2F2C9F;
     border-radius: 8px;
-
 }
 
 #work {
@@ -574,6 +574,7 @@ input:focus {
 
 /* ------------Drop Down---------------- */
 
+
 /* .dropdwon_select1 {
     background-color: #fff;
     width: 150px;
@@ -588,6 +589,7 @@ input:focus {
     padding: 10px 10px;
     margin-top: 20px;
 } */
+
 .dropdwon_select {
     background-color: #fff;
     width: 200px;

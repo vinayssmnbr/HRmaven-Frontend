@@ -140,6 +140,8 @@
     background-color: #F7F7FB;
     border-radius: 8px;
     outline: none;
+    border: 1px solid transparent;
+    cursor: pointer;
 }
 .account1 {
   height: 46px;
@@ -152,6 +154,7 @@
 .account:hover,
 .account:focus{
     border: 1px solid #2F2C9F;
+
 }
 .account-btn {
     display: flex;

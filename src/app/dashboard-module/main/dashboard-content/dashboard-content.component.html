@@ -40,8 +40,7 @@
   <!--Section Bar Graph-->
   <div class="row">
     <div class="col-8">
-      <div class="attendance-area" >
-
+      <div class="attendance-area">
         <div class="attendence-content">
           <div class="attendance">
             <h2>Attendance</h2>
@@ -59,6 +58,7 @@
             </div>
           </div>
         </div>
+        <div class="loader" *ngIf="!loader" ></div>
         <div class="bar-chart">
           <canvas id="myChart"></canvas>
         </div>
@@ -155,7 +155,7 @@
     <!--Activity feeds Section-->
     <div class="col-4">
       <div class="activity-area">
-       
+
         <div class="activity-feed-text">
           <h2>Activity Feeds</h2>
           <p>View All</p>

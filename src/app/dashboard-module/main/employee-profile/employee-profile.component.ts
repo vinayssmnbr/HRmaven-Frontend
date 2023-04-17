@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -15,12 +15,15 @@ import { DashService } from '../../shared/dash.service';
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent {
+  @Input() user:any
   constructor(private dashService:DashService){
-    this.dashService.getEmployee().subscribe((res: any) => {
-      console.log('data', res);
-      this.employee = res;
-    })
   }
+  ngOnInit(){
+    this.user=this.dashService.getSelectedEmployee()
+    console.log(this.user)
+  }
+
+  selectedUser: any = {};
 personaldetail:boolean=true;
 jobdetail:boolean=false;
 showModal:boolean=false;
@@ -33,42 +36,46 @@ modalContent7:boolean=false;
 isJobDetailsActive = false;
 isPersonalDetailsActive=true;
 employee: any = [];
+maritalStatus:string='';
+bloodGroup:string='';
+bankname:string='';
+gender:string=''
 
   form = new FormGroup({
-    name:new FormControl('Vinay'),
-    employee_id:new FormControl(''),
-    dob:new FormControl(''),
-    fname:new FormControl(''),
-    mname:new FormControl(''),
-    mstatus:new FormControl(''),
-    bgroup:new FormControl(''),
-    nation:new FormControl(''),
-    cno:new FormControl(''),
-    address:new FormControl(''),
-    city:new FormControl(''),
+    uid:new FormControl(''),
+    name:new FormControl(''),
+    designation:new FormControl(''),
     email:new FormControl(''),
-    pcode:new FormControl(''),
-    state:new FormControl(''),
-    bname:new FormControl(''),
-    adhaarno: new FormControl(''),
-    bno: new FormControl(''),
-    ifsc: new FormControl(''),
-    panno: new FormControl(''),
-    pno: new FormControl(''),
-    inst1: new FormControl(''),
-    mper: new FormControl(''),
-    inst2: new FormControl(''),
-    dper: new FormControl(''),
-    gcol: new FormControl(''),
-    stream: new FormControl(''),
-    sgpa: new FormControl(''),
-    pgcol:new FormControl(''),
-    pgstream: new FormControl(''),
-    pgsgpa: new FormControl(''),
-    orgname: new FormControl(''),
-    duration2: new FormControl(''),
-    designation: new FormControl(''),
-    location2: new FormControl(''),
+    mobile:new FormControl(''),
+    dateOfJoining:new FormControl(''),
+    dateOfBirth:new FormControl(''),
+    gender:new FormControl(''),
+    address:new FormControl(''),
+    bankname:new FormControl(''),
+    adhaarno:new FormControl(''),
+    accountno:new FormControl(''),
+    ifsc:new FormControl(''),
+    fatherName:new FormControl(''),
+    motherName:new FormControl(''),
+    maritalStatus: new FormControl(''),
+    bloodGroup: new FormControl(''),
+    nationality: new FormControl(''),
+    city: new FormControl(''),
+    postalCode: new FormControl(''),
+    state: new FormControl(''),
+    passport: new FormControl(''),
+    matric: new FormControl(''),
+    matricPercent: new FormControl(''),
+    inter: new FormControl(''),
+    interPercent: new FormControl(''),
+    graduation: new FormControl(''),
+    graduationStream:new FormControl(''),
+    graduationCgpa: new FormControl(''),
+    pg: new FormControl(''),
+    pgStream: new FormControl(''),
+    pgCgpa: new FormControl(''),
+    company: new FormControl(''),
+    duration: new FormControl(''),
     designation2: new FormControl(''),
     estatus: new FormControl(''),
     jdate: new FormControl(''),
@@ -227,6 +234,7 @@ employee: any = [];
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
+    this.bankname=arr2.name
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
@@ -235,6 +243,7 @@ employee: any = [];
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
+    this.maritalStatus=arr3.name
   }
 personaldetails(){
 this.personaldetail=true;
@@ -249,9 +258,13 @@ this.isJobDetailsActive=true;
 this.isPersonalDetailsActive=false;
 }
 
-openmodal1(){
+openmodal1(user:any){
 this.showModal=true;
 this.fourthStep=false;
+this.selectedUser = { _id: user._id };
+this.form.patchValue(user);
+console.log('checkuser',this.selectedUser);
+console.log('check',this.user)
 if(this.personaldetail===true)
 {
   this.modalContent1=true;
@@ -270,31 +283,59 @@ else if(this.jobdetail===true){
   this.modalContent7=false;
 }
 }
-openmodal2(){
+openmodal2(user:any){
   this.fourthStep=false;
   this.showModal=true;
   this.modalContent4=true;
   this.modalContent1=false;
+  this.selectedUser = { _id: user._id };
+  this.form.patchValue(user);
+
 }
 closeModal(){
   this.showModal=false;
 }
 fourthStep:boolean=false;
-selectedUser:any={};
 
-closeModal2(){
+successMessage:string
+basicUpdate(data:any){
   this.fourthStep=true;
   this.modalContent2=false;
   this.modalContent1=false;
-    console.log(this.form.value)
-    const updatedData = this.form.value;
-    // console.log(updatedData)
-    updatedData['_id'] = this.selectedUser._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
-      console.log('Data updated successfully');
-    });
+  data.maritalStatus=this.maritalStatus
+  data.gender=this.gender
+  data.bloodGroup=this.bloodGroup
+  data.bankname=this.bankname
+  console.log(this.form.value)
+  const updatedData = this.form.value;
+  console.log('abc',updatedData)
+  updatedData['_id'] = this.user._id;
+  this.dashService.updateEmployee(updatedData).subscribe(() => {
+    console.log('Data updated successfully');
+    this.fetchdata()
+  });
+console.log('value',this.user)
+
+
+// this.dashService.updateEmployee(this.user)
+//       .subscribe(
+//         () => this.successMessage = 'Employee updated successfully',
+//         error => console.log(error)
+//       );
+}
+fetchdata() {
+  this.dashService.getEmployee().subscribe((res: any) => {
+    console.log('data', res);
+    this.employee = res;
+  });
+}
+closeModal2(user){
+  this.fourthStep=true;
+  this.modalContent2=false;
+  this.modalContent1=false;
 
 }
+
 closeModal3(){
   this.fourthStep=true;
   this.modalContent1=false;
@@ -365,6 +406,7 @@ closeModal6(){
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
+    this.gender=arr1.name
   }
   contentdropdown4: boolean = false;
   dropdownOpen4() {
@@ -378,6 +420,7 @@ closeModal6(){
     this.colorvariable4 = arr4.id;
     this.contentdropdown4 = false;
     console.log(arr4.name);
+    this.bloodGroup=arr4.name
   }
   contentdropdown5: boolean = false;
   dropdownOpen5() {
@@ -392,13 +435,6 @@ closeModal6(){
     this.contentdropdown5 = false;
     console.log(arr5.name);
   }
-
-  // fetchdata() {
-  //   this.dashService.getEmployee().subscribe((res: any) => {
-  //     console.log('data', res);
-  //     this.employee = res;
-  //   });
-  // }
 
 
 

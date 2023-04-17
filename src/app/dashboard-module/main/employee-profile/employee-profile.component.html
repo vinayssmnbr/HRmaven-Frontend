@@ -1,6 +1,6 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-<div class="main">
+<div class="main" *ngIf="user">
   <div class="card">
     <div class="card1">
       <h2>Employee Profile</h2>
@@ -15,7 +15,7 @@
       </span>
       <div class="content">
 
-        <h3>Harshit Sharma</h3>
+        <h3>{{user.name}}</h3>
         <p>Front End Developer</p>
         <span><i class="fa-solid fa-location-dot"></i> Leeds, United Kingdom</span>
       </div>
@@ -28,82 +28,58 @@
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="name">Name</span>
-          <p class="name">Harshit Sharma</p>
+          <p class="name">{{user.name}}</p>
+          <span class="fname">Father's Name</span>
+          <p class="fname">{{user.fatherName}}</p>
+          <span class="bgroup">Blood Group</span>
+          <p class="bgroup">{{user.bloodGroup}}</p>
         </div>
         <div class="column2">
           <span class="uid">Employee ID</span>
-          <p class="uid">25863</p>
+          <p class="uid">{{user.uid}}</p>
+          <span class="mname">Mother's Name</span>
+          <p class="mname">{{user.motherName}}</p>
+          <span class="gender">Gender</span>
+          <p class="gender">{{user.gender}}</p>
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
-          <p class="dob">6th April, 1997</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
-          <span class="fname">Father's Name</span>
-          <p class="fname">Rahul Sharma</p>
-        </div>
-        <div class="column2">
-          <span class="mname">Mother's Name</span>
-          <p class="mname">Vanita Sharma</p>
-        </div>
-        <div class="column3">
+          <p class="dob">{{user.dateOfBirth | date:"short"}}</p>
           <span class="marstatus">Marital Status</span>
-          <p class="marstatus">Single</p>
-        </div>
-      </div>
-      <div class="row3">
-        <div class="column1">
-          <span class="bgroup">Blood Group</span>
-          <p class="bgroup">B+</p>
-        </div>
-        <div class="column2">
-          <span class="gender">Gender</span>
-          <p class="gender">Male</p>
-        </div>
-        <div class="column3">
+          <p class="marstatus">{{user.maritalStatus}}</p>
           <span class="nation">Nationality</span>
-          <p class="nation">Indian</p>
+          <p class="nation">{{user.nationality}}</p>
         </div>
       </div>
     </div>
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openmodal2()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal2(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="cno">Contact No.</span>
-          <p class="cno">9865743234</p>
+          <p class="cno">{{user.mobile}}</p>
+          <span class="city">City</span>
+          <p class="city">{{user.city}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
-          <p class="address">129-8, Model Town</p>
+          <p class="address">{{user.address}}</p>
+          <span class="pcode">Postal Code</span>
+          <p class="pcode">{{user.postalCode}}</p>
         </div>
         <div class="column3">
           <span class="email">Email</span>
-          <p class="email">harshit123@gmail.com</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
-          <span class="city">City</span>
-          <p class="city">Ludhiana</p>
-        </div>
-        <div class="column2">
-          <span class="pcode">Postal Code</span>
-          <p class="pcode">141002</p>
-        </div>
-        <div class="column3">
+          <p class="email">{{user.email}}</p>
           <span class="state">State</span>
-          <p class="state">Punjab</p>
+          <p class="state">{{user.state}}</p>
         </div>
       </div>
     </div>
@@ -115,27 +91,19 @@
       <div class="row1">
         <div class="column1">
           <span class="bname">Bank Name</span>
-          <p class="bname">Punjab National Bank</p>
+          <p class="bname">{{user.bankname}}</p>
+          <span class="adhaarno">Aadhaar Card Number</span>
+          <p class="adhaarno">{{user.adhaarno}}</p>
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
-          <p class="bno">6412365874125425</p>
+          <p class="bno">{{user.accountno}}</p>
+          <span class="panno">Pan Number</span>
+          <p class="panno">{{user.panno}}</p>
         </div>
         <div class="column3">
           <span class="ifsc">IFSC Code</span>
-          <p class="ifsc">PUNB0125412</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
-          <span class="adhaarno">Aadhaar Card Number</span>
-          <p class="adhaarno">4512 3200 7456</p>
-        </div>
-        <div class="column2">
-          <span class="panno">Pan Number</span>
-          <p class="panno">ABCTY1234D</p>
-        </div>
-        <div class="column3">
+          <p class="ifsc">{{user.ifsc}}</p>
           <span class="pno">Passport Number</span>
           <p class="pno">M5425189</p>
         </div>
@@ -150,48 +118,28 @@
         <div class="column1">
           <span class="inst1">10th Grade Institute</span>
           <p class="inst1">Sacred Heart Senior Secondary School</p>
+          <span class="dper">12th Diploma Percentage</span>
+          <p class="dper">92%</p>
+          <span class="sgpa">Graduation SGPA</span>
+          <p class="sgpa">8.7</p>
+          <span class="pgsgpa">Post Graduation SGPA</span>
+          <p class="pgsgpa">8.8</p>
         </div>
         <div class="column2">
           <span class="mper">Matriculation Percentage</span>
           <p class="mper">88%</p>
-        </div>
-        <div class="column3">
-          <span class="inst2">12th Grade/Diploma Institute</span>
-          <p class="inst2">Guru Nanak Public School</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
-          <span class="dper">12th Diploma Percentage</span>
-          <p class="dper">92%</p>
-        </div>
-        <div class="column2">
           <span class="gcol">Graduation College/University</span>
           <p class="gcol">Lovely Professional University</p>
-        </div>
-        <div class="column3">
-          <span class="stream">Stream</span>
-          <p class="stream">B.Tech CSE</p>
-        </div>
-      </div>
-      <div class="row3">
-        <div class="column1">
-          <span class="sgpa">Graduation SGPA</span>
-          <p class="sgpa">8.7</p>
-        </div>
-        <div class="column2">
           <span class="pgcol">Post Graduation College/University</span>
           <p class="pgcol">Lovely Professional University</p>
         </div>
         <div class="column3">
-          <span class="pgstream">Post Graduation Stream</span>
+          <span class="inst2">12th Grade/Diploma Institute</span>
+          <p class="inst2">Guru Nanak Public School</p>
+          <span class="stream">Stream</span>
           <p class="stream">B.Tech CSE</p>
-        </div>
-      </div>
-      <div class="row4">
-        <div class="column1">
-          <span class="pgsgpa">Post Graduation SGPA</span>
-          <p class="pgsgpa">8.8</p>
+          <span class="pgstream">Post Graduation Stream</span>
+          <p class="stream">M.Tech CSE</p>
         </div>
       </div>
     </div>
@@ -204,6 +152,8 @@
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
           <p class="orgname">Infosys</p>
+          <span class="location2">Location</span>
+          <p class="location2">Pune, India</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
@@ -211,13 +161,7 @@
         </div>
         <div class="column3">
           <span class="designation">Designation</span>
-          <p class="desihnation">Lead- front end developer</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
-          <span class="location2">Location</span>
-          <p class="location2">Pune, India</p>
+          <p class="designation">Lead- Front end developer</p>
         </div>
       </div>
       <hr>
@@ -225,6 +169,8 @@
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
           <p class="orgname">Accenture</p>
+          <span class="location2">Location</span>
+          <p class="location2">Pune, India</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
@@ -232,45 +178,31 @@
         </div>
         <div class="column3">
           <span class="designation2">Designation</span>
-          <p class="designation2">Front End developer</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
-          <span class="location2">Location</span>
-          <p class="location2">Bangalore, India</p>
+          <p class="designation2">Lead- Front End developer</p>
         </div>
       </div>
     </div>
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
-      <h3>Work Details</h3>
-      <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <h3>Work Details</h3>
+        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p class="designation2">Front End Developer</p>
-        </div>
-        <div class="column2">
-          <span class="estatus">Employment Status</span>
-          <p class="estatus">Full-Time Permanent</p>
-        </div>
-        <div class="column3">
-          <span class="jdate">Joining Date</span>
-          <p class="jdate">1 April 2023</p>
-        </div>
-      </div>
-      <div class="row2">
-        <div class="column1">
+          <p class="designation2">{{user.designation}}</p>
           <span class="location3">Location</span>
           <p class="location3">Leeds, United Kingdom</p>
         </div>
         <div class="column2">
+          <span class="estatus">Employment Status</span>
+          <p class="estatus">Full-Time Permanent</p>
           <span class="timings">Timings</span>
           <p class="timings">9:00 am to 5:00 pm</p>
         </div>
         <div class="column3">
+          <span class="jdate">Joining Date</span>
+          <p class="jdate">1 April 2023</p>
           <span class="ctc">CTC</span>
           <p class="ctc">8 LPA</p>
         </div>
@@ -288,25 +220,26 @@
           <div class="form-row">
             <div class="input">
               <label>Name</label>
-              <input type="text" placeholder="Harshit Sharma" formControlName="name">
+              <input type="text" placeholder="Ashish" formControlName="name">
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id" formControlName="employee_id" [disabled]="true" readonly>
+              <input type="number" placeholder="28563" class="employe-id" formControlName="uid"
+                [disabled]="true" readonly>
             </div>
             <div class="input">
               <label>Date of birth</label>
-              <input type="date" placeholder="06/04/1997" formControlName="dob">
+              <input type="date" placeholder="06/04/1997" formControlName="dateOfBirth">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Father's Name</label>
-              <input type="text" placeholder="Rahul Sharma" formControlName="fname">
+              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName">
             </div>
             <div class="input">
               <label>Mother's Name</label>
-              <input type="text" placeholder="Vinita Sharma" formControlName="mname">
+              <input type="text" placeholder="Vinita Sharma" formControlName="motherName">
             </div>
             <div class="input">
               <label>Marital Status</label>
@@ -360,13 +293,16 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nation">
+              <input type="text" placeholder="Indian" formControlName="nationality">
             </div>
           </div>
+          <!-- <div class="modal-footer">
+            <button class="save">Update</button>
+          </div> -->
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal2()">Update</button>
+        <button class="save" (click)="basicUpdate(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -397,7 +333,7 @@
             </div>
             <div class="input">
               <label>Postal Code</label>
-              <input type="number" placeholder="141002" formControlName="pcode">
+              <input type="number" placeholder="141002" formControlName="postalCode">
             </div>
             <div class="input">
               <label>State</label>
@@ -407,7 +343,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3()">Update</button>
+        <button class="save" (click)="basicUpdate(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
@@ -530,55 +466,55 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
-    <form class="form-container" id="form5" [formGroup]="form">
-    <div class="form-row">
-      <div class="input">
-        <label>Company/Organisation Name</label>
-        <input type="text" placeholder="Infosys" formControlName="orgname">
+        <form class="form-container" id="form5" [formGroup]="form">
+          <div class="form-row">
+            <div class="input">
+              <label>Company/Organisation Name</label>
+              <input type="text" placeholder="Infosys" formControlName="orgname">
+            </div>
+            <div class="input">
+              <label>Duration</label>
+              <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
+            </div>
+            <div class="input">
+              <label>Designation</label>
+              <input type="text" placeholder="Lead- front end developer" formControlName="designation">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Pune, India" formControlName="location2">
+            </div>
+          </div>
+          <hr>
+          <div class="form-row">
+            <div class="input">
+              <label>Company/Organisation Name</label>
+              <input type="text" placeholder="Accenture" formControlName="orgname">
+            </div>
+            <div class="input">
+              <label>Duration</label>
+              <input type="text" placeholder="April 2019 - May 2020" formControlName="duration2">
+            </div>
+            <div class="input">
+              <label>Designation</label>
+              <input type="text" placeholder="Front End developer" formControlName="designation">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Bangalore, India" formControlName="location2">
+            </div>
+          </div>
+          <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+        </form>
       </div>
-      <div class="input">
-        <label>Duration</label>
-        <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
-      </div>
-      <div class="input">
-        <label>Designation</label>
-        <input type="text" placeholder="Lead- front end developer" formControlName="designation">
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal6()">Update</button>
       </div>
     </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Location</label>
-        <input type="text" placeholder="Pune, India" formControlName="location2">
-      </div>
-    </div>
-    <hr>
-    <div class="form-row">
-      <div class="input">
-        <label>Company/Organisation Name</label>
-        <input type="text" placeholder="Accenture" formControlName="orgname">
-      </div>
-      <div class="input">
-        <label>Duration</label>
-        <input type="text" placeholder="April 2019 - May 2020" formControlName="duration2">
-      </div>
-      <div class="input">
-        <label>Designation</label>
-        <input type="text" placeholder="Front End developer" formControlName="designation">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="input">
-        <label>Location</label>
-        <input type="text" placeholder="Bangalore, India" formControlName="location2">
-      </div>
-    </div>
-    <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
-   </form>
-  </div>
-  <div class="modal-footer">
-    <button class="save" (click)="closeModal6()">Update</button>
-  </div>
-</div>
     <!-- <div class="modal-footer">
     <button class="save" (click)="closeModal2()" >Save Changes</button>
   </div> -->
@@ -601,7 +537,8 @@
                 </div>
                 <div class="select_content" *ngIf="contentdropdown">
                   <ul>
-                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                      (click)="Changeselect(arr)">
                       {{arr.name}}</li>
                   </ul>
                 </div>
@@ -623,18 +560,19 @@
             </div>
             <div class="input">
               <label>Timings</label>
-            <div class="dropdown_container">
-              <div class="dropdwon_select" (click)="dropdownOpen5()">
-                <p>{{Selectvariable5}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen5()">
+                  <p>{{Selectvariable5}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown5">
+                  <ul>
+                    <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5"
+                      (click)="Changeselect5(arr5)">
+                      {{arr5.name}}</li>
+                  </ul>
+                </div>
               </div>
-              <div class="select_content" *ngIf="contentdropdown5">
-                <ul>
-                  <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5" (click)="Changeselect5(arr5)">
-                    {{arr5.name}}</li>
-                </ul>
-              </div>
-            </div>
             </div>
             <div class="input">
               <label>CTC</label>
@@ -644,7 +582,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal2()">Update</button>
+        <button class="save" (click)="closeModal2(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content3" *ngIf="fourthStep">
