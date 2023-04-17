@@ -57,7 +57,7 @@ export class EmployeeContentComponent implements OnInit {
   empdesignation = '';
   employeeid: any;
   show: any = false;
-  emptybox: boolean;
+  emptybox: boolean=false;
   nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
@@ -105,7 +105,7 @@ export class EmployeeContentComponent implements OnInit {
       this.dashService.addEmployee(this.form);
       console.log(result);
       this.fetchdata();
-      // this.form.reset(this.form.value);
+      this.form.reset(this.form.value);
     });
   }
 
@@ -141,8 +141,6 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
-
-    this.emptybox = this.employee.length === 0;
     if (event.keyCode === 32) {
       this.query = '';
 
@@ -265,15 +263,15 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Frontend Developer',
     },
     {
-      id: 3,
+      id: 2,
       name: 'Full Stack Developer',
     },
     {
-      id: 4,
+      id: 3,
       name: 'UI/UX Designer',
     },
     {
-      id: 5,
+      id: 4,
       name: 'Quality Analyst',
     },
     {

@@ -94,14 +94,14 @@
 }
 
 .profile-content .profile-text{
-    margin-right: 12px;
+    margin-left: -10px;
 }
 
 .profile-title {
     display: flex;
-    gap: 10px;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 10px;
+    align-items: center;
 }
 
 .profile-text h1 {
@@ -126,6 +126,7 @@
     font-size: 11px;
     color: #2F2C9F;
     cursor: pointer;
+    margin-left: 50px;
 }
 
 .profile-account {
@@ -138,9 +139,9 @@
 }
 
 .profile-logo img {
-    margin-top: 10px;
     height: 40px;
     width: 40px;
+    margin-left: -30px;
 }
 
 .account {

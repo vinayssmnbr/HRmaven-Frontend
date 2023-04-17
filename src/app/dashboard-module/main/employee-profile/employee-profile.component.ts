@@ -19,6 +19,10 @@ export class EmployeeProfileComponent {
   constructor(private dashService:DashService){
   }
   ngOnInit(){
+    this.dashService.getEmployee().subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
     this.user=this.dashService.getSelectedEmployee()
     console.log(this.user)
   }
@@ -309,30 +313,23 @@ basicUpdate(data:any){
   data.maritalStatus=this.maritalStatus
   data.gender=this.gender
   data.bloodGroup=this.bloodGroup
-  data.bankname=this.bankname
   console.log(this.form.value)
+  data.bankname=this.bankname
   const updatedData = this.form.value;
   console.log('abc',updatedData)
   updatedData['_id'] = this.user._id;
   this.dashService.updateEmployee(updatedData).subscribe(() => {
     console.log('Data updated successfully');
-    this.fetchdata()
   });
 console.log('value',this.user)
 
-
-// this.dashService.updateEmployee(this.user)
-//       .subscribe(
-//         () => this.successMessage = 'Employee updated successfully',
-//         error => console.log(error)
-//       );
 }
-fetchdata() {
-  this.dashService.getEmployee().subscribe((res: any) => {
-    console.log('data', res);
-    this.employee = res;
-  });
-}
+// fetchdata() {
+//   this.dashService.getEmployee().subscribe((res: any) => {
+//     console.log('data', res);
+//     this.employee = res;
+//   });
+// }
 closeModal2(user){
   this.fourthStep=true;
   this.modalContent2=false;
@@ -340,11 +337,20 @@ closeModal2(user){
 
 }
 
-closeModal3(){
+closeModal3(user:any){
   this.fourthStep=true;
   this.modalContent1=false;
   this.modalContent2=false;
   this.modalContent4=false;
+  const updatedData = this.form.value;
+  console.log('abc',updatedData)
+  updatedData['_id'] = this.user._id;
+  this.dashService.updateEmployee(updatedData).subscribe(() => {
+    console.log('Data updated successfully');
+    // this.fetchdata()
+  });
+console.log('value',this.user)
+
 }
 openModal3(){
   this.fourthStep = false;
