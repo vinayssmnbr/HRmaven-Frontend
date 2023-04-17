@@ -5,19 +5,16 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'hrm_FrontEnd';
-  constructor( private cookie: CookieService,private router:Router){
-    var token= this.cookie.get("token");
-    if(token=="undefined")
-    {
-     this.cookie.delete("token");
-     this.router.navigate(['./login']);
-
+  constructor(private cookie: CookieService, private router: Router) {
+    var token = this.cookie.get('token');
+    console.log(token);
+    if (token == 'undefined' || token == '') {
+      this.cookie.delete('token');
+      this.router.navigate(['./login']);
     }
   }
-
-
 }
