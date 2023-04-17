@@ -189,13 +189,16 @@ input[type=number]::-webkit-inner-spin-button {
 .table_data {
     width: 100%;
 }
-.leaves_table{
+
+.leaves_table {
     padding: 0 30px;
 }
-.table_heading{
+
+.table_heading {
     position: sticky;
     top: 0;
 }
+
 .table_text {
     width: 100%;
 }
@@ -337,6 +340,7 @@ input[type="radio"] {
     0% {
         outline-offset: 0;
     }
+
     100% {
         outline-offset: -0.2rem;
     }
@@ -346,6 +350,7 @@ input[type="radio"] {
     0% {
         outline-offset: 0;
     }
+
     100% {
         outline-offset: -0.2rem;
     }

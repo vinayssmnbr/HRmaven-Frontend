@@ -222,7 +222,7 @@ array: any = [
     name: 'absent',
   },
   {
-    id: 3,
+    id: 2,
     name: 'leave',
   },
 
@@ -232,7 +232,7 @@ dropdownOpen() {
 
   this.contentdropdown = !this.contentdropdown;
 }
-Selectvariable: string = 'Select';
+Selectvariable: string ="select";
 colorvariable: number =  0;
 Changeselect(arr: any) {
   this.Selectvariable = arr.name;
