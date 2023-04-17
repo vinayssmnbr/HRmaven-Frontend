@@ -89,7 +89,7 @@
                         <td>{{leave.to | date:'short'}}</td>
                         <td>{{leave.reason}}</td>
                         <td>
-                            <div class="action_button">
+                            <!-- <div class="action_button">
                                 <div class="action_btn">
                                     <input type="radio" [checked]="leave.status=='accept'"
                                         [disabled]="leave.status=='accept' || leave.status=='reject'"
@@ -104,7 +104,17 @@
                                         class="custom-radio">
                                     <label for="outline" class="outline">Reject</label>
                                 </div>
-                            </div>
+                            </div> -->
+                            <div class="action_button">
+                              <div class="action_btn">
+                                  <input type="radio" [checked]="leave.status=='accept'"  [name]="leave._id" (change)="updateLeaveStatus(leave, 'accept')"  id="outline1"  class="custom-radio">
+                                  <label for="outline1" class="outline1">Accept</label>
+                              </div>
+                              <div class="action_btn">
+                                  <input type="radio"  [checked]="leave.status=='reject'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'reject')"  id="outline"  class="custom-radio">
+                                  <label for="outline" class="outline">Reject</label>
+                              </div>
+                          </div>
                         </td>
                     </tr>
                 </tbody>

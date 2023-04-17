@@ -95,21 +95,26 @@ export class LeavesContentComponent {
     console.log(this.test);
   }
 
-  updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-    const url = `https://hrmaven.works/api/leave/${id}`;
-    const body = { status: status };
-    this.http
-      .patch(url, JSON.stringify(body), {
-        headers: { 'content-type': 'application/json' },
-      })
-      .subscribe(
-        (response) => {
-          console.log('Leave status updated successfully: ', response);
-        },
-        (error) => {
-          console.error('Error updating leave status:', error);
-        }
-      );
+  updateLeaveStatus(object: any, status: 'accept' | 'reject') {
+    // const url = `https://hrmaven.works/api/leave/${id}`;
+    // const body = { status: status };
+    // this.http
+    //   .patch(url, JSON.stringify(body), {
+    //     headers: { 'content-type': 'application/json' },
+    //   })
+    //   .subscribe(
+    //     (response) => {
+    //       console.log('Leave status updated successfully: ', response);
+    //     },
+    //     (error) => {
+    //       console.error('Error updating leave status:', error);
+    //     }
+    //   );
+
+    console.log(object);
+    console.log(status);
+    
+
       this.updatereload();
   }
   onAccept(id: any) {
@@ -153,4 +158,7 @@ export class LeavesContentComponent {
     this.contentdropdown = false;
     console.log(arr.name);
   }
+
+
+
 }
