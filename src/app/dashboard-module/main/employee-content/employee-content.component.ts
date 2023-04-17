@@ -262,19 +262,19 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Forntend Developer',
     },
     {
-      id: 3,
+      id: 2,
       name: 'Full Stack Developer',
     },
     {
-      id: 4,
+      id: 3,
       name: 'UI/UX Designer',
     },
     {
-      id: 5,
+      id: 4,
       name: 'Quality Analyst',
     },
     {
-      id: 6,
+      id: 5,
       name: 'All',
     },
   ];
