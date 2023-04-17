@@ -99,8 +99,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .employe_input input::placeholder {
-    color: #555555;
+    color: #CBCBCB;
     font-size: 14px;
+    font-weight: 400;
 }
 
 .employe_input input:hover,

@@ -45,7 +45,7 @@
           </label>
 
         </div>
-        <div class="no_data">
+        <div class="no_data" *ngIf="">
             <img src="assets/images/no_record.png" alt="">
             <h2>No Record Found!</h2>
         </div>
@@ -68,7 +68,7 @@
                     <tr *ngFor="let user of employee | attendanceFilter:employeename:datez">
                         <td>{{user.empId}}</td>
                         <td>{{user.name}}</td>
-                        <td>{{user. date| date:'shortDate'}}</td>
+                        <td>{{user.date | date:'shortDate'}}</td>
                         <td>{{user.status}}</td>
                         <td>{{user.punch_in}}</td>
                         <td>{{user.punch_out}}</td>

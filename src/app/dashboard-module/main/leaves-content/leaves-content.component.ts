@@ -129,11 +129,11 @@ export class LeavesContentComponent {
       name: 'Pending',
     },
     {
-      id: 3,
+      id: 2,
       name: 'Rejected',
     },
     {
-      id: 4,
+      id: 3,
       name: 'Accepted',
     },
   ];

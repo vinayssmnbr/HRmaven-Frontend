@@ -146,6 +146,13 @@ form .input-field {
     margin-top: 6px;
 }
 
+.input-field input::placeholder {
+    color: #B4B4B4;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: 'Outfit';
+}
+
 .create-password .input-field .password,
 .confirm-password .input-field .cPassword {
     padding-right: 50px;
@@ -156,9 +163,11 @@ input:focus {
     border: 1px solid #2F2C9F;
     border-color: #2F2C9F !important;
 }
-.email{
+
+.email {
     margin-bottom: 5px;
 }
+
 .error-text {
     padding-top: 10px;
 }
@@ -180,7 +189,8 @@ input:focus {
 .checkbox-text {
     padding-top: 2px;
 }
-.checkbox-text a{
+
+.checkbox-text a {
     border-bottom: 1px solid #0d0ae4;
 }
 
@@ -308,84 +318,85 @@ input:focus {
     display: none;
 }
 
-.navigation-manual{
+.navigation-manual {
     position: absolute;
     width: 530px;
     margin-top: -40px;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .manual-btn{
+}
+
+.manual-btn {
     border: 2px solid #fff;
     padding: 4px;
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
-  }
-  
-  .manual-btn:not(:last-child){
+}
+
+.manual-btn:not(:last-child) {
     margin-right: 20px;
-  }
-  
-  .manual-btn:hover{
+}
+
+.manual-btn:hover {
     background: #fff;
-  }
-  
-  #radio1:checked ~ .first{
+}
+
+#radio1:checked~.first {
     margin-left: 0;
-  }
-  
-  #radio2:checked ~ .first{
+}
+
+#radio2:checked~.first {
     margin-left: -20%;
-  }
-  
-  #radio3:checked ~ .first{
+}
+
+#radio3:checked~.first {
     margin-left: -40%;
-  }
-  
-  #radio4:checked ~ .first{
+}
+
+#radio4:checked~.first {
     margin-left: -60%;
-  }
-  
-  /*css for automatic navigation*/
-  
-  .navigation-auto{
+}
+
+/*css for automatic navigation*/
+
+.navigation-auto {
     position: absolute;
     display: flex;
     width: 380px;
     justify-content: center;
     margin-top: 293px;
     align-items: center;
-  }
-  
-  .navigation-auto div{
+}
+
+.navigation-auto div {
     border: 2px solid #fff;
     padding: 4px;
     border-radius: 10px;
     transition: 1s;
-  }
-  
-  .navigation-auto div:not(:last-child){
+}
+
+.navigation-auto div:not(:last-child) {
     margin-right: 20px;
-  }
-  
-  #radio1:checked ~ .navigation-auto .auto-btn1{
+}
+
+#radio1:checked~.navigation-auto .auto-btn1 {
     background: #fff;
-  }
-  
-  #radio2:checked ~ .navigation-auto .auto-btn2{
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
     background: #fff;
-  }
-  
-  #radio3:checked ~ .navigation-auto .auto-btn3{
+}
+
+#radio3:checked~.navigation-auto .auto-btn3 {
     background: #fff;
-  }
-  
-  #radio4:checked ~ .navigation-auto .auto-btn4{
+}
+
+#radio4:checked~.navigation-auto .auto-btn4 {
     background: #fff;
-  }
+}
+
 form.ng-invalid.ng-touched #submit {
     cursor: not-allowed;
 }
@@ -400,13 +411,11 @@ form.ng-invalid.ng-touched #submit {
 }
 
 .input-field label {
-    color:#333333 !important;
+    color: #333333 !important;
     font-size: 14px;
 }
 
-.input-field ::placeholder {
-    color:#B4B4B4;
-}
+
 
 .field span {
     color: red;
@@ -423,6 +432,7 @@ form.ng-invalid #submit {
     cursor: not-allowed;
 
 }
+
 /* ----------------------ToolTip----------------- */
 .iconWrap {
     position: relative;
@@ -431,11 +441,13 @@ form.ng-invalid #submit {
     cursor: pointer;
     top: -100px;
     margin-left: 380px;
-  }
-  .iconWrap i{
+}
+
+.iconWrap i {
     color: #2F2C9F;
-  }
-  .iconWrap .tooltip {
+}
+
+.iconWrap .tooltip {
     position: absolute;
     left: 30px;
     top: -10px;
@@ -445,15 +457,16 @@ form.ng-invalid #submit {
     color: #888888;
     background-color: #F7F7FB;
     padding: 8px 14px;
-    width:163px;
+    width: 163px;
     height: 126px;
     border-radius: 4px;
     transform: translateX(-5px);
     opacity: 0;
     pointer-events: none;
     transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
-  }
-  .iconWrap .tooltip::before {
+}
+
+.iconWrap .tooltip::before {
     content: '';
     position: absolute;
     width: 10px;
@@ -463,8 +476,9 @@ form.ng-invalid #submit {
     top: 20px;
     transform: translate(-50%, -50%) rotate(45deg);
     border-radius: 1px;
-  }
-  .iconWrap:hover .tooltip {
+}
+
+.iconWrap:hover .tooltip {
     transform: translateX(5px);
     opacity: 1;
-  }
+}
