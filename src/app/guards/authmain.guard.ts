@@ -29,11 +29,12 @@ export class AuthMainGuard implements CanActivate {
     | UrlTree {
     //LOGIN AND VERIFY DASHBOARD
     if (this.userService.isLoggedIn.value) {
-      this.router.createUrlTree(['dashboard']);
+      this.userService.allDataLogin();
+      // this.router.createUrlTree(['/dashboard']);
     } else {
       this.router.createUrlTree(['login']);
       return false;
     }
-    return this.userService.isLoggedIn;
+    return true;
   }
 }
