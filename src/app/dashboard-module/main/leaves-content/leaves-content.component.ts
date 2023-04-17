@@ -42,7 +42,7 @@ export class LeavesContentComponent {
 
   }
 
-  updatereload() {
+ async  updatereload() {
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);
       this.leaves = res;
@@ -55,7 +55,7 @@ export class LeavesContentComponent {
       this.reject_graph = this.rejectCalculate()
       this.pending_graph = this.pendingCalculate()
 
-      this.leaves = this.leaves.sort((a, b) => {
+      this.leaves =  this.leaves.sort((a, b) => {
         if (a.status > b.status) return 1;
         if (a.status < b.status) return -1;
         return 1;
@@ -68,7 +68,7 @@ export class LeavesContentComponent {
 
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);
-      this.leaves = res;
+      // this.leaves = res;
       this.totalCount = this.getTotal()
       this.acceptCount = this.getCount('accept')
       this.rejectCount = this.getCount1('reject')
@@ -128,10 +128,10 @@ export class LeavesContentComponent {
     }
     return dateArray;
   }
-  updateLeaveStatus(object: any, status: 'accept' | 'reject') {
+  async updateLeaveStatus(object: any, status: 'accept' | 'reject') {
 
     this.dashService.updateleave(object, status);
-    this.updatereload();
+    await this.updateafteraction();
   }
 
   array: any = [
