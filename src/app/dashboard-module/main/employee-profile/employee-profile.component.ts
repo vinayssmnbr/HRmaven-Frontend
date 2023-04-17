@@ -18,16 +18,13 @@ export class EmployeeProfileComponent {
   @Input() user:any
   constructor(private dashService:DashService){
   }
+
   ngOnInit(){
-    this.dashService.getEmployee().subscribe((res: any) => {
-      console.log('data', res);
-      this.employee = res;
-    });
     this.user=this.dashService.getSelectedEmployee()
     console.log(this.user)
   }
 
-  selectedUser: any = {};
+selectedUser: any = {};
 personaldetail:boolean=true;
 jobdetail:boolean=false;
 showModal:boolean=false;
@@ -316,16 +313,11 @@ basicUpdate(data:any){
   updatedData['_id'] = this.user._id;
   this.dashService.updateEmployee(updatedData).subscribe(() => {
     console.log('Data updated successfully');
+    this.user=updatedData
   });
 console.log('value',this.user)
 
 }
-// fetchdata() {
-//   this.dashService.getEmployee().subscribe((res: any) => {
-//     console.log('data', res);
-//     this.employee = res;
-//   });
-// }
 closeModal2(user){
   this.fourthStep=true;
   this.modalContent2=false;

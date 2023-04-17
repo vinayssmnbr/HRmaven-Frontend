@@ -105,7 +105,7 @@ export class EmployeeContentComponent implements OnInit {
       this.dashService.addEmployee(this.form);
       console.log(result);
       this.fetchdata();
-      this.form.reset(this.form.value);
+      this.form.reset();
     });
   }
 
