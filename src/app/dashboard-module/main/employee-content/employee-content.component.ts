@@ -403,5 +403,8 @@ export class EmployeeContentComponent implements OnInit {
     this.colorvariable6 = arr6.id;
     this.contentdropdown3 = false;
     console.log(arr6.name);
+    this.designation = arr6.name;
+
+
 }
 }
