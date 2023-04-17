@@ -75,7 +75,7 @@ export class EmployeeContentComponent implements OnInit {
     address: new FormControl('', Validators.required),
     bankname: new FormControl('',Validators.required),
     adhaarno: new FormControl('', [Validators.required]),
-    accountno: new FormControl('', [Validators.required]),
+    accountno: new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)]),
     ifsc: new FormControl('', [
       Validators.required,
       Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
