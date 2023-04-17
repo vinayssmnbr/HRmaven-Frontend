@@ -15,17 +15,6 @@ export class DashService {
   public activeComponent: string;
   constructor(private http: HttpClient, private router : Router,private cookie:CookieService) { }
 
-
-selectedEmployee:any
-setSelectedEmployee(user:any){
-  this.selectedEmployee=user
-}
-
-getSelectedEmployee(){
-  return this.selectedEmployee
-}
-
-
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -51,7 +40,15 @@ getSelectedEmployee(){
     return this.http.post(this.createData, data);
   }
 
-  //ADD DATA
+  selectedEmployee:any
+  setSelectedEmployee(user:any){
+    this.selectedEmployee=user
+  }
+
+  getSelectedEmployee(){
+    return this.selectedEmployee
+  }
+
 
 //DELETE DATA
   deleteStudent(id: string): Observable<void> {
@@ -70,10 +67,12 @@ getSelectedEmployee(){
   getEmployee() {
     return this.http.get(this.getData);
   }
-  //UPDATE DATA
-  updateEmployee(data:any){
-    return this.http.patch(`${this.updatempdata}/${data._id}`,data)
+  //UPDATE EMPLOYEE DATA
+  updateEmployee(user:any){
+    console.log('employee update id ', user);
+    return this.http.patch(`${this.updatempdata}/${user._id}`,user)
   }
+  //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
     console.log('data', data);
     return this.http.patch(this.updateData + `/${data._id}`, data);
@@ -94,7 +93,7 @@ getSelectedEmployee(){
    getreport(){
      return this.http.get(this.report);
   }
-
+//GET EMPLOYEE CUSTOM UID
   getEmployeeUid(){
     return this.http.get(this.getuid)
 

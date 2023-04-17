@@ -54,7 +54,7 @@
           <td class="contact1">{{user.mobile}}</td>
           <td class="action1">
             <div class="icons">
-              <i class="fa-solid fa-eye" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)"></i>
+              <img src="./assets/images/Vector.svg" alt="" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)">
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
@@ -226,9 +226,8 @@
               </div>
               <div class="input">
                 <label>Aadhar Card No. <span>*</span></label>
-                <input type="number " class="no-spin" id="text12" placeholder="XXXX XXXX 6709 " maxlength="14"
-                  formControlName="adhaarno"
-                  [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
+                <input type="number " class="no-spin" id="text12" placeholder="XXXXXXXX6709 " maxlength="14"
+                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
 
               </div>
             </div>
