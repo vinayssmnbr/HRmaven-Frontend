@@ -37,7 +37,8 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  /* text-align: center; */
+  margin-right: -35px;
+  justify-content: space-between;
 }
 
 .job-btn {

@@ -231,7 +231,7 @@ array: any = [
     name: 'Monthly',
   },
   {
-    id: 3,
+    id: 2,
     name: 'Yearly',
   },
 
