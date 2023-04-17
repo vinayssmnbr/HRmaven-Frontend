@@ -72,6 +72,24 @@ export class DashboardContentComponent implements OnInit {
       head: 'Interview',
       time: '10am to 12pm',
     },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
 
   ];
 
@@ -221,21 +239,21 @@ updateLeaveStatus(id: any, status: 'accept' | 'reject') {
 
 }
 
-array: any = [
-  {
-    id: 0,
-    name: 'Weekly',
-  },
-  {
-    id: 1,
-    name: 'Monthly',
-  },
-  {
-    id: 3,
-    name: 'Yearly',
-  },
+// array: any = [
+//   {
+//     id: 0,
+//     name: 'Weekly',
+//   },
+//   {
+//     id: 1,
+//     name: 'Monthly',
+//   },
+//   {
+//     id: 2,
+//     name: 'Yearly',
+//   }
 
-];
+// ];
 contentdropdown: boolean = false;
 dropdownOpen() {
 

@@ -183,8 +183,12 @@ gender:string=''
     },
     {
       id: 7,
-      name: 'Others',
+      name: 'O+',
     },
+    {
+      id:8,
+      name: 'O-',
+    }
 
   ];
   array5: any = [
@@ -434,6 +438,9 @@ closeModal6(){
     console.log(arr5.name);
   }
 
-
+contentshow:boolean=false;
+addemployee(){
+  this.contentshow=!this.contentshow;
+}
 
 }
