@@ -77,7 +77,6 @@
   margin-top: 65px;
   padding: 25px 20px;
   z-index: 9999;
-  position: fixed;
 }
 
 .profile-content img {
@@ -96,6 +95,7 @@
   justify-content: space-between;
   margin-top: 10px;
   align-items: center;
+  position: relative;
 }
 
 .profile-text h1 {
@@ -135,7 +135,7 @@
 .profile-logo img {
   height: 40px;
   width: 40px;
-  margin-left: -30px;
+  position: relative;
 }
 
 .account {
