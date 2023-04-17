@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthMainGuard implements CanActivate {
   constructor(
     private router: Router,
     private userService: UserService,
@@ -28,10 +28,9 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     //LOGIN AND VERIFY DASHBOARD
-    if (!this.userService.isLoggedIn.value) {
-      this.userService.allDataLogin();
-    }
-    if (!this.userService.isUserLoggedIn()) {
+    if (this.userService.isLoggedIn.value) {
+      this.router.createUrlTree(['dashboard']);
+    } else {
       this.router.createUrlTree(['login']);
       return false;
     }
