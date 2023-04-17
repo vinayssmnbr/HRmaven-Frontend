@@ -92,10 +92,9 @@
 
 .profile-title {
   display: flex;
-  justify-content: space-between;
   margin-top: 10px;
   align-items: center;
-  position: relative;
+  width: 100%;
 }
 
 .profile-text h1 {
@@ -135,9 +134,10 @@
 .profile-logo img {
   height: 40px;
   width: 40px;
-  position: relative;
 }
-
+.head-btn{
+  margin-top: -10px;
+}
 .account {
   height: 46px;
   width: 230px;
