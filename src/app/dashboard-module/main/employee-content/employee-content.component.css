@@ -1329,6 +1329,8 @@ label {
   padding: 10px;
   position: absolute;
   color: #444444;
+  border-radius: 6px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .select_content1 ul {
