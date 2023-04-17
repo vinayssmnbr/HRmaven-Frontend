@@ -11,26 +11,34 @@ import { Router } from '@angular/router'
 export class SignupComponent {
 
   ngOnInit() {
-    let counter = 1;
+    let counter = 0;
     setInterval(() => {
-      const radioBtn = document.getElementById(`radio${counter}`) as HTMLInputElement;
-      if(radioBtn){
-      radioBtn.checked = true;
-      counter++;
-      if (counter > 4) {
-        counter = 1;
+      const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
+      if (radioBtn) {
+        radioBtn.checked = true;
+        counter++;
+        if (counter === 4) {
+          counter = 0;
+        }
       }
-    }
-    }, 5000);
+    }, 3000);
   }
 
   constructor(public userService:UserService, private router : Router){}
+
+  noSpaces(control: FormControl) {
+    if (control.value && control.value.trim().length === 0) {
+      return { noSpaces: true };
+    }
+    return null;
+  }
+
 
   sigupform = new FormGroup({
     email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required]),
+    username: new FormControl("",[Validators.required,Validators.pattern('^[A-Z]([a-zA-Z0-9.-_,]|[- @.#&!])*$')]),
     check: new FormControl("",[Validators.required]),
   },{
     validators:matchpassword
@@ -44,23 +52,27 @@ export class SignupComponent {
     return this.sigupform.get("email");
   }
 
+  get username(){
+    return this.sigupform.get("username");
+  }
+
   showPassword = false;
-showPasswordIcon = 'fa-eye';
+showPasswordIcon = 'fa-eye-slash';
 
 togglePasswordVisibility(passwordInput: any) {
   this.showPassword = !this.showPassword;
   this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
-  passwordInput.type = this.showPassword ? 'text' : 'password';
+  passwordInput.type = this.showPassword ? 'password' : 'text';
 }
 
-showPassword1 = false;
-showPasswordIcon1 = 'fa-eye';
+showPassword1= false;
+showPasswordIcon1 = 'fa-eye-slash';
+
 togglePassword(passwordInpu: any) {
   this.showPassword1 = !this.showPassword1;
   this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
-  passwordInpu.type = this.showPassword1 ? 'text' : 'password';
+  passwordInpu.type = this.showPassword1 ? 'password' : 'text';
 }
-
 
 onSubmit(data:any){
   console.log(this.sigupform.value);
@@ -84,7 +96,7 @@ submit(){
 
 SignupByGoogle() {
   console.log('google');
-  window.location.href = 'https://hrm21.onrender.com/auth/google';
+  window.location.href = 'https://hrmaven.works/auth/google';
 }
 
 }

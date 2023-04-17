@@ -7,8 +7,15 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-  constructor(private userService: UserService) {}
+
+  loader:boolean=false;
+  constructor(private userService: UserService) {
+    setTimeout(() => {
+      this.loader=true;
+    }, 5000);
+  }
   ngOnInit(): void {
     this.userService.allDataLogin();
+
   }
 }

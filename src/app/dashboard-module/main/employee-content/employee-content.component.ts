@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter,Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  Inject,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -6,6 +13,7 @@ import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+  AbstractControl,
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
@@ -16,11 +24,18 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
+  selectedEmployee: any;
+  selectEmployee(user: any) {
+    this.dashService.setSelectedEmployee(user);
+  }
 
-  constructor(public dashService: DashService,private formBuilder: FormBuilder,@Inject(DOCUMENT) public document: Document) {
+  constructor(
+    public dashService: DashService,
+    private formBuilder: FormBuilder,
+    @Inject(DOCUMENT) public document: Document
+  ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
-
   }
 
   buttonbackgroundColor = '#2F2C9F';
@@ -29,34 +44,51 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any=[];
+  employee: any = [];
+  employeeuid: any = [];
+  currentEmployeeUid: any = '';
   query: string = '';
   designation: string = '';
+  gender:string='';
+  bankname:string=''
+
   data: any;
-  deletedata:any;
-  empdesignation="";
-  employeeid:any;
-  show:any=false;
-
-
+  deletedata: any;
+  empdesignation = '';
+  employeeid: any;
+  show: any = false;
+  emptybox: boolean;
+  nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    const valid = nameRegex.test(control.value);
+    return valid ? null : { invalidName: true };
+  }
   form = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required, this.nameValidator]),
     designation: new FormControl(''),
-    employee_id: new FormControl(''),
-    dateOfJoining: new FormControl(''),
-    dateOfBirth: new FormControl(''),
-    gender: new FormControl('option1'),
-    mobile: new FormControl(''),
-    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-    address: new FormControl(''),
+    uid: new FormControl(this.currentEmployeeUid),
+    dateOfJoining: new FormControl('', Validators.required),
+    dateOfBirth: new FormControl('', Validators.required),
+    gender: new FormControl(''),
+    mobile: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    address: new FormControl('', Validators.required),
     bankname: new FormControl(''),
-    adhaarno: new FormControl(''),
-    accountno: new FormControl(''),
-    ifsc: new FormControl(''),
-    panno: new FormControl(''),
+    adhaarno: new FormControl('', [Validators.required]),
+    accountno: new FormControl('', [Validators.required]),
+    ifsc: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
+    ]),
+    panno: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
+    ]),
   });
 
-
+  get registrationFormControl() {
+    return this.form.controls;
+  }
 
   //ADD DATA
   submit(data: any) {
@@ -64,18 +96,29 @@ export class EmployeeContentComponent implements OnInit {
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
+    data.designation = this.designation;
+    data.gender=this.gender;
+    data.bankname=this.bankname
+
     this.dashService.addEmployee(data).subscribe((result) => {
       this.dashService.addEmployee(this.form);
       console.log(result);
       this.fetchdata();
+      // this.form.reset(this.form.value);
     });
   }
+
+  // form1Valid: boolean = this.form.controls.name.valid && this.form.controls.designation.valid && this.form.controls.employee_id.valid && this.form.controls.gender.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid
+  form1Valid: boolean = this.form.controls.name.valid;
 
   //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      if (res.length > 0) {
+        this.emptybox = false;
+      }
     });
   }
 
@@ -85,21 +128,10 @@ export class EmployeeContentComponent implements OnInit {
     this.showModalContent = false;
     this.showModal = true;
     this.deletemessage = false;
-    this.deletedata=data;
-
-
+    this.deletedata = data;
   }
-
- //UPDATE DATA
- toUpdate():void{
-  const id=this.data.id
-  const updatedata=this.form.value
-  this.dashService.updateEmployee1(id,updatedata).subscribe(()=>{
-    console.log('dat updated successfully')
-  })
-}
   //SEARCH UID
-  search() {
+  search(event) {
     console.log(this.query, 'search fn', this.designation);
     this.dashService
       .searchuid(this.query, this.designation)
@@ -108,31 +140,27 @@ export class EmployeeContentComponent implements OnInit {
         this.employee = res;
         console.log('data', res);
       });
+
+    this.emptybox = this.employee.length === 0;
+    if (event.keyCode === 32) {
+      // space bar
+      this.query = '';
+      // this.itemsToDisplay = this.items;
+    }
   }
 
-  function(){
-    this.show=!this.show;
+  function() {
+    this.show = !this.show;
   }
+   openDatePicker(){
+     let input = document.getElementById("text4") as HTMLInputElement;
+     input.click();
+   }
 
-  //FILTER DESIGNATION
-  filter(checkbox: string) {
-    this.designation = checkbox;
-    this.dashService
-      .searchuid(this.query, this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
-  }
-
-  opendpdtn=false;
+  opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
   }
-
-
-
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -143,6 +171,8 @@ export class EmployeeContentComponent implements OnInit {
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
     this.buttonColor2 = this.buttonColor2 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.Changeselect({ name: 'ALL' });
+    this.query = '';
   }
   changeColor3() {
     this.buttonbackgroundColor3 =
@@ -194,6 +224,11 @@ export class EmployeeContentComponent implements OnInit {
     this.secondStep = false;
     this.thirdStep = false;
     this.showModalContent = true;
+    //DYNAMIC UID
+    this.dashService.getEmployeeUid().subscribe((res: any) => {
+      console.log('data', res);
+      this.currentEmployeeUid = res.uid;
+    });
   }
   rowdelete = false;
 
@@ -237,9 +272,13 @@ export class EmployeeContentComponent implements OnInit {
       name: 'UI/UX Designer',
     },
     {
-      id:5,
-      name:'Quality Analyst',
-    }
+      id: 5,
+      name: 'Quality Analyst',
+    },
+    {
+      id: 6,
+      name: 'All',
+    },
   ];
   array1: any = [
     {
@@ -253,7 +292,7 @@ export class EmployeeContentComponent implements OnInit {
     {
       id: 2,
       name: 'Others',
-    }
+    },
   ];
   array2: any = [
     {
@@ -269,33 +308,34 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Central Bank Of India',
     },
     {
-      id:3,
+      id: 3,
       name: 'HDFC Bank',
     },
     {
-      id:4,
+      id: 4,
       name: 'ICICI Bank',
-    }
+    },
+    {
+      id: 5,
+      name: 'Others',
+    },
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
-
     this.contentdropdown = !this.contentdropdown;
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
-
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  contentdropdown2:boolean=false;
+  contentdropdown2: boolean = false;
   dropdownOpen2() {
-
     this.contentdropdown2 = !this.contentdropdown2;
   }
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
-  Selectvariable1: string='Select';
-  colorvariable1:number=0;
+  Selectvariable1: string = 'Select';
+  colorvariable1: number = 0;
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
   Changeselect(arr: any) {
@@ -303,11 +343,22 @@ export class EmployeeContentComponent implements OnInit {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
+    this.designation = arr.name;
+    console.log('str', this.designation);
+    this.dashService
+      .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
+      .subscribe((res) => {
+        console.log(res);
+        this.employee = res;
+        console.log('data', res);
+      });
   }
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
+    this.gender = arr1.name;
+
     console.log(arr1.name);
   }
   Changeselect2(arr2: any) {
@@ -315,8 +366,9 @@ export class EmployeeContentComponent implements OnInit {
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
+    this.bankname = arr2.name;
+
+
   }
   // for(let i=0; i)
 }
-
-

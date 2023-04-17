@@ -28,7 +28,7 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor3 = '#FFFFFF';
   employee: any= [];
   showModal=false;
-  showCard: boolean = true;
+  showCard: boolean = false;
   employeeid='';
   employeename='';
   lineChart: Chart;
@@ -38,7 +38,10 @@ leaves:any[]=[]
   update:boolean=false;
   editmodal=false;
   showCard1: boolean=true;
-  showTable=false;
+  showTable=true;
+  attDate:any="";
+  loader=true;
+  datez:any="";
   constructor(public dashService: DashService) {
     // this.fetchdata();
     dashService.activeComponent = 'attendance';
@@ -49,6 +52,7 @@ leaves:any[]=[]
     });
     this.getLeaveData()
     this.getreport();
+
   }
   form = new FormGroup({
     name:new FormControl(),
@@ -60,6 +64,7 @@ leaves:any[]=[]
 
 
   });
+
 
   async getreport(){
     await this.dashService.getreport().subscribe((res:any)=>{
@@ -122,18 +127,24 @@ leaves:any[]=[]
                padding: 40,
                usePointStyle: true,
                font: {
-                 size: 14,
+                 size: 10,
                },
              },
            },
          },
        },
      });
+     if(res){
+     setTimeout(() => {
+      this.loader=false;
+    }, 3000);
+  }
      });
    }
   ngOnInit() {
     this.form.get('name').disable();
     this.form.get('empId').disable();
+    window.scrollTo(0, 0);
     // Create a chart object
 
   }
@@ -157,7 +168,6 @@ leaves:any[]=[]
     this.showModal = true;
     this.selectedUser = {_id: user._id};
     this.form.patchValue(user)
-
   }
 
 
@@ -172,7 +182,7 @@ this.dashService.getleaves().subscribe((res: any) => {
     console.log(this.form.value)
     const updatedData = this.form.value;
     updatedData['_id'] = this.selectedUser._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+    this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
       console.log('Data updated successfully');
     this.getLeaveData()
 this.edit();
@@ -202,4 +212,32 @@ done(){
 }
 
 
+array: any = [
+  {
+    id: 0,
+    name: 'Present',
+  },
+  {
+    id: 1,
+    name: 'Absent',
+  },
+  {
+    id: 3,
+    name: 'Leave',
+  },
+
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
+
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = 'Select';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
 }

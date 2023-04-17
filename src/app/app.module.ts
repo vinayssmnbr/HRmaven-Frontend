@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,8 +11,7 @@ import { ForgetComponent } from './forget/forget.component';
 import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     SignupComponent,
     ForgetComponent,
     LoaderComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +29,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

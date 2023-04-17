@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
@@ -11,9 +11,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./dashboard-content.component.css'],
 })
 export class DashboardContentComponent implements OnInit {
+  loader=false;
+
   constructor(
     public dashService: DashService,private http:HttpClient,
-    @Inject(DOCUMENT) public document: Document
+    @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
@@ -58,6 +60,19 @@ export class DashboardContentComponent implements OnInit {
       head: 'Interview',
       time: '10am to 12pm',
     },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+
   ];
 
   Edit(index: any) {
@@ -80,33 +95,17 @@ export class DashboardContentComponent implements OnInit {
   ]
   ngOnInit()
    {
-    const optionMenu = document.querySelector<HTMLElement>('.select-menu')!,
-      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    selectBtn.addEventListener('click', () =>
-      optionMenu.classList.toggle('active')
-    );
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        let selectedOption =
-          option.querySelector<HTMLElement>('.option-text')!.innerText;
-        sBtn_text.innerText = selectedOption;
-        optionMenu.classList.remove('active');
-      });
-    });
 
-
-
-    // Create a chart object
-
-  }
-
-
-  showchart(){
 
     this.dashService.getreport().subscribe((res:any)=>{
-    const myChart = new Chart('myChart', {
+    if(res)
+    {
+      console.log('yeah');
+      this.loader=true;
+    }
+    let chart = this.elementRef.nativeElement.querySelector(`#myChart`);
+
+    const myChart = new Chart(chart, {
       type: 'bar',
       data: {
         labels: [
@@ -193,14 +192,23 @@ export class DashboardContentComponent implements OnInit {
       }
       },
     });
+
+
   });
+
+    // Create a chart object
+  }
+
+
+  showchart(){
+
   }
 
 
 
 
 updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-  const url = `https://hrm21.onrender.com/api/leave/${id}`;
+  const url = `https://hrmaven.works/api/leave/${id}`;
   const body = { status: status };
   this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
   ).subscribe(response => {

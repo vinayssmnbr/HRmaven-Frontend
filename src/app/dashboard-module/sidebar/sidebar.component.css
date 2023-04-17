@@ -63,10 +63,11 @@ ul.navigation li a{
   padding: 15px 18px;
   color: #ECECEC;
 }
-ul.navigation li.active{
+.current{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
+
 
 ul.navigation li:hover{
   background: rgba(255, 255, 255, 0.3);

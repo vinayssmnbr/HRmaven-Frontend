@@ -2,59 +2,89 @@
 </app-sidebar>
 <app-header></app-header>
 <div class="main">
-    <div class="bar-chart">
-        <canvas id="lineChart"></canvas>
+    <div class="loader_parent bar_graph" [ngClass]="{'attclose':!loader}">
+        <!-- *ngIf="loader" -->
+        <div class="loader"></div>
     </div>
-    <div class="selection">
-        <input type="text" [(ngModel)]="employeename" placeholder="Employee Name...">
-        <input type="number" [(ngModel)]="employeeid" placeholder="Employee ID...">
-        <button class="btn1" (click)="changeColor()" [style.background-color]="buttonbackgroundColor" [style.color]="buttonColor">Search</button>
+    <div class="bar_graph" [ngClass]="{'attclose':loader}">
+        <!-- *ngIf="!loader" -->
+        <div class="graph_text">
+            <div class="graph_heading">
+                <h1>Attendance Status</h1>
+            </div>
+            <!-- <div class="dropdown_container">
+                <div class="dropdwon_select1" (click)="dropdownOpen1()">
+                  <p>{{Selectvariable1}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown1">
+                  <ul>
+                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
+                </div>
+              </div> -->
+        </div>
+
+        <div class="bar-chart" [ngClass]="{'attclose':loader}">
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>
+
+    <div class="employe_input">
+        <i class="fa fa-search" aria-hidden="true" id="ico"></i>
+        <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
                 <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
-                <img src="../../../../assets/images/grid.png" (click)="toggleTable2()">
+                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()"></i>
             </div>
-            <input type="text" placeholder="Select the date" onclick="(this.type='date')" onblur="(this.value === '' ? this.type='text' : null)">
+            <label for="date">
+            <input type="date" id="date" [(ngModel)]="datez">
+
+          </label>
+
         </div>
         <div class="no_data">
-            <img src="assets\images\nodata.png" alt="">
+            <img src="assets/images/no_record.png" alt="">
             <h2>No Record Found!</h2>
         </div>
-
     </div>
-    <div class="table-wrapper" *ngIf="showTable">
-        <table>
-            <thead>
-                <tr>
-                    <th class="employee">Employee ID</th>
-                    <th class="name">Name</th>
-                    <th class="name">Date</th>
-                    <th class="action">Status</th>
-                    <th class="email">PUNCH IN</th>
-                    <th class="designation">PUNCH OUT</th>
-                    <th class="contact">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of employee | attendanceFilter:employeename:employeeid">
-                    <td class="employee1">{{user.empId}}</td>
-                    <td class="name1">{{user.name}}</td>
-                    <td class="name1">{{user.date | date:'short'}}</td>
-                    <td class="designation1">{{user.status}}</td>
-                    <td class="email1">{{user.punch_in}}</td>
-                    <td class="contact1">{{user.punch_out}}</td>
-                    <td class="action1">
-                        <div class="icons">
-                            <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
-                        </div>
-                    </td>
-                </tr>
+    <div class="attendence_table">
+        <div class="table_data" *ngIf="showTable">
+            <table class="table_text">
+                <thead>
+                    <tr class="table_heading">
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>PUNCH IN</th>
+                        <th>PUNCH OUT</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of employee | attendanceFilter:employeename:datez">
+                        <td>{{user.empId}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.date | date:'shortDate'}}</td>
+                        <td>{{user.status}}</td>
+                        <td>{{user.punch_in}}</td>
+                        <td>{{user.punch_out}}</td>
+                        <td class="action1">
+                            <div class="icons">
+                                <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
 
-
-
-            </tbody>
-        </table>
+            </table>
+        </div>
     </div>
+
+
     <div class="attendence-card " *ngIf="showCard">
         <div class="row ">
             <div class="col-3 " *ngFor="let user of employee">
@@ -83,32 +113,48 @@
             <div class="cross-icon ">
                 <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
             </div>
-            <div class="input_form1 ">
-                <div class="form__group disable">
+            <div class="modal-input-text">
+                <h1>Attendance Rectification</h1>
+            </div>
+
+            <div class="input_form2 ">
+                <div class="form__group ">
                     <label for="name ">Name</label>
-                    <input type="text " id="name " formControlName="name" [disabled]="true" />
+                    <input type="text " id="name" formControlName="name" [disabled]="true" />
                 </div>
-                <div class="form__group disable">
-                    <label for="name ">Employee ID</label>
-                    <input type="number " id="number " formControlName="empId" [disabled]="true" />
+                <div class="form__group">
+                    <label for="number">Employee ID</label>
+                    <input type="text " id="number" formControlName="empId" [disabled]="true" />
                 </div>
                 <div class="form__group ">
-                    <label for="name ">Date</label>
-                    <input type="date " class="date-input " formControlName="date" />
+                    <label for="date">Date</label>
+                    <input type="date" formControlName="date" />
                 </div>
             </div>
             <div class="input_form2 ">
                 <div class="form__group ">
                     <label for="name ">Status</label>
-                    <input type="text " formControlName="status" />
+                    <div class="dropdown_container">
+                        <div class="dropdwon_select" (click)="dropdownOpen()">
+                            <p>{{Selectvariable}}</p>
+                            <input style="display:none;" type="text" [(ngModel)]="Selectvariable" formControlName="status">
+                            <i class="fa-sharp fa-solid fa-caret-down"></i>
+                        </div>
+                        <div class="select_content" *ngIf="contentdropdown">
+                            <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                    {{arr.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch In</label>
-                    <input type="text " formControlName="punch_in" />
+                    <input type="time" formControlName="punch_in" />
                 </div>
                 <div class="form__group ">
                     <label for="name ">Punch out</label>
-                    <input type="text " formControlName="punch_out" />
+                    <input type="time" formControlName="punch_out" />
                 </div>
             </div>
             <div class="form__group form-btn ">
