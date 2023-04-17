@@ -472,5 +472,25 @@ contentshow:boolean=false;
 addemployee(){
   this.contentshow=!this.contentshow;
 }
-
+dropdownClose3(){
+  this.contentdropdown3=false;
+}
+dropdownClose4(){
+  this.contentdropdown4=false;
+}
+dropdownClose1(){
+  this.contentdropdown1=false;
+}
+  dropdownClose2() {
+    this.contentdropdown2 = false;
+  }
+  dropdownClose() {
+    this.contentdropdown = false;
+  }
+  dropdownClose8() {
+    this.contentdropdown8 = false;
+  }
+  dropdownClose5() {
+    this.contentdropdown5 = false;
+  }
 }

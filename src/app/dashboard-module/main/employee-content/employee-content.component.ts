@@ -408,6 +408,16 @@ export class EmployeeContentComponent implements OnInit {
 
 
   }
-
-
+  dropdownClose() {
+    this.contentdropdown = false;
+  }
+ dropdownClose3(){
+  this.contentdropdown3=false;
+ }
+  dropdownClose1(){
+this.contentdropdown1=false;
+  }
+ dropdownClose2(){
+  this.contentdropdown2=false;
+ }
 }
