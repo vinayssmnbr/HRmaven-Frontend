@@ -1281,7 +1281,6 @@ label {
 .dropdwon_select:hover,
 .dropdwon_select:focus {
   border: 1px solid #2F2C9F !important;
-  /* border-color: #2F2C9F !important; */
 }
 #slt1 {
   width: 260px;
