@@ -63,13 +63,80 @@ export class EmployeeContentComponent implements OnInit {
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
+  array6: any = [
+    {
+      id: 0,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 1,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 2,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 3,
+      name: 'Quality Analyst',
+    },
+    {
+      id: 4,
+      name: 'Software Developer',
+    },
+  ];
+  array1: any = [
+    {
+      id: 0,
+      name: 'Male',
+    },
+    {
+      id: 1,
+      name: 'Female',
+    },
+    {
+      id: 2,
+      name: 'Others',
+    },
+  ];
+  Selectvariable: string = 'Designation';
+  colorvariable: number = 0;
+  Selectvariable1: string = 'Select';
+  colorvariable1: number = 0;
+  Selectvariable2: string = 'Select Bank';
+  colorvariable2: number = 0;
+  Selectvariable6: string = 'Designation';
+  colorvariable6: number = 0;
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  contentdropdown3: boolean = false;
+  dropdownOpen3() {
+    this.contentdropdown3 = !this.contentdropdown3;
+  }
+
+  Changeselect6(arr6: any) {
+    this.Selectvariable6 = arr6.name;
+    this.colorvariable6 = arr6.id;
+    this.contentdropdown3 = false;
+    console.log(arr6.name);
+  }
+  Changeselect1(arr1: any) {
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable1 = arr1.id;
+    this.contentdropdown1 = false;
+    this.gender = arr1.name;
+
+    console.log(arr1.name);
+  }
   form = new FormGroup({
     name: new FormControl('', [Validators.required, this.nameValidator]),
-    designation: new FormControl('',Validators.required),
+    designation: new FormControl(this.Selectvariable6,Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl('',Validators.required),
+    gender: new FormControl(this.Selectvariable1,Validators.required),
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
@@ -279,42 +346,7 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Software Developer',
     },
   ];
-  array6: any = [
-    {
-      id: 0,
-      name: 'Frontend Developer',
-    },
-    {
-      id: 1,
-      name: 'Full Stack Developer',
-    },
-    {
-      id: 2,
-      name: 'UI/UX Designer',
-    },
-    {
-      id: 3,
-      name: 'Quality Analyst',
-    },
-    {
-      id: 4,
-      name: 'Software Developer',
-    },
-  ];
-  array1: any = [
-    {
-      id: 0,
-      name: 'Male',
-    },
-    {
-      id: 1,
-      name: 'Female',
-    },
-    {
-      id: 2,
-      name: 'Others',
-    },
-  ];
+
   array2: any = [
     {
       id: 0,
@@ -345,26 +377,12 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  contentdropdown1: boolean = false;
-  dropdownOpen1() {
-    this.contentdropdown1 = !this.contentdropdown1;
-  }
+
   contentdropdown2: boolean = false;
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
-  contentdropdown3:boolean=false;
-  dropdownOpen3() {
-    this.contentdropdown3 = !this.contentdropdown3;
-  }
-  Selectvariable: string = 'Designation';
-  colorvariable: number = 0;
-  Selectvariable1: string = 'Select';
-  colorvariable1: number = 0;
-  Selectvariable2: string = 'Select Bank';
-  colorvariable2: number = 0;
-  Selectvariable6: string = 'Designation';
-  colorvariable6: number = 0;
+
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -380,14 +398,7 @@ export class EmployeeContentComponent implements OnInit {
         console.log('data', res);
       });
   }
-  Changeselect1(arr1: any) {
-    this.Selectvariable1 = arr1.name;
-    this.colorvariable1 = arr1.id;
-    this.contentdropdown1 = false;
-    this.gender = arr1.name;
 
-    console.log(arr1.name);
-  }
   Changeselect2(arr2: any) {
     this.Selectvariable2 = arr2.name;
     this.colorvariable2 = arr2.id;
@@ -397,11 +408,6 @@ export class EmployeeContentComponent implements OnInit {
 
 
   }
-  // for(let i=0; i)
-  Changeselect6(arr6: any) {
-    this.Selectvariable6 = arr6.name;
-    this.colorvariable6 = arr6.id;
-    this.contentdropdown3 = false;
-    console.log(arr6.name);
-}
+
+
 }
