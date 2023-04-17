@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'hrm_FrontEnd';
   constructor( private cookie: CookieService,private router:Router){
     var token= this.cookie.get("token");
-    if(token="undefined")
+    if(token=="undefined")
     {
      this.cookie.delete("token");
      this.router.navigate(['./login']);
