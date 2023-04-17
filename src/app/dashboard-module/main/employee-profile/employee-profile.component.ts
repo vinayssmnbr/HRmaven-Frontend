@@ -12,52 +12,52 @@ import { DashService } from '../../shared/dash.service';
 @Component({
   selector: 'app-employee-profile',
   templateUrl: './employee-profile.component.html',
-  styleUrls: ['./employee-profile.component.css']
+  styleUrls: ['./employee-profile.component.css'],
 })
 export class EmployeeProfileComponent {
-  @Input() user:any
-  constructor(private dashService:DashService){
+  designationdropdownOption: boolean = false;
+  @Input() user: any;
+  constructor(private dashService: DashService) {}
+
+  ngOnInit() {
+    this.user = this.dashService.getSelectedEmployee();
+    console.log(this.user);
   }
 
-  ngOnInit(){
-    this.user=this.dashService.getSelectedEmployee()
-    console.log(this.user)
-  }
-
-selectedUser: any = {};
-personaldetail:boolean=true;
-jobdetail:boolean=false;
-showModal:boolean=false;
-modalContent1:boolean=false;
-modalContent2:boolean=false;
-modalContent4:boolean=false;
-modalContent5:boolean=false;
-modalContent6:boolean=false;
-modalContent7:boolean=false;
-isJobDetailsActive = false;
-isPersonalDetailsActive=true;
-employee: any = [];
-maritalStatus:string='';
-bloodGroup:string='';
-bankname:string='';
-gender:string=''
+  selectedUser: any = {};
+  personaldetail: boolean = true;
+  jobdetail: boolean = false;
+  showModal: boolean = false;
+  modalContent1: boolean = false;
+  modalContent2: boolean = false;
+  modalContent4: boolean = false;
+  modalContent5: boolean = false;
+  modalContent6: boolean = false;
+  modalContent7: boolean = false;
+  isJobDetailsActive = false;
+  isPersonalDetailsActive = true;
+  employee: any = [];
+  maritalStatus: string = '';
+  bloodGroup: string = '';
+  bankname: string = '';
+  gender: string = '';
 
   form = new FormGroup({
-    uid:new FormControl(''),
-    name:new FormControl(''),
-    designation:new FormControl(''),
-    email:new FormControl(''),
-    mobile:new FormControl(''),
-    dateOfJoining:new FormControl(''),
-    dateOfBirth:new FormControl(''),
-    gender:new FormControl(''),
-    address:new FormControl(''),
-    bankname:new FormControl(''),
-    adhaarno:new FormControl(''),
-    accountno:new FormControl(''),
-    ifsc:new FormControl(''),
-    fatherName:new FormControl(''),
-    motherName:new FormControl(''),
+    uid: new FormControl(''),
+    name: new FormControl(''),
+    designation: new FormControl(''),
+    email: new FormControl(''),
+    mobile: new FormControl(''),
+    dateOfJoining: new FormControl(''),
+    dateOfBirth: new FormControl(''),
+    gender: new FormControl(''),
+    address: new FormControl(''),
+    bankname: new FormControl(''),
+    adhaarno: new FormControl(''),
+    accountno: new FormControl(''),
+    ifsc: new FormControl(''),
+    fatherName: new FormControl(''),
+    motherName: new FormControl(''),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
@@ -70,7 +70,7 @@ gender:string=''
     inter: new FormControl(''),
     interPercent: new FormControl(''),
     graduation: new FormControl(''),
-    graduationStream:new FormControl(''),
+    graduationStream: new FormControl(''),
     graduationCgpa: new FormControl(''),
     pg: new FormControl(''),
     pgStream: new FormControl(''),
@@ -82,7 +82,7 @@ gender:string=''
     jdate: new FormControl(''),
     location3: new FormControl(''),
     timings: new FormControl(''),
-    ctc: new FormControl('')
+    ctc: new FormControl(''),
   });
   array1: any = [
     {
@@ -96,7 +96,7 @@ gender:string=''
     {
       id: 2,
       name: 'Others',
-    }
+    },
   ];
   array: any = [
     {
@@ -118,7 +118,7 @@ gender:string=''
     {
       id: 5,
       name: 'Quality Analyst',
-    }
+    },
   ];
   array2: any = [
     {
@@ -142,9 +142,9 @@ gender:string=''
       name: 'ICICI Bank',
     },
     {
-      id:5,
-      name:'Others',
-    }
+      id: 5,
+      name: 'Others',
+    },
   ];
   array3: any = [
     {
@@ -178,18 +178,17 @@ gender:string=''
       name: 'AB+',
     },
     {
-      id:6,
-      name:'AB-',
+      id: 6,
+      name: 'AB-',
     },
     {
       id: 7,
       name: 'O+',
     },
     {
-      id:8,
+      id: 8,
       name: 'O-',
-    }
-
+    },
   ];
   array5: any = [
     {
@@ -222,21 +221,18 @@ gender:string=''
     {
       id: 2,
       name: 'Internship',
-    }
+    },
   ];
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
-  contentdropdown3:boolean=false;
+  contentdropdown3: boolean = false;
   dropdownOpen() {
-
     this.contentdropdown = !this.contentdropdown;
   }
   dropdownOpen2() {
-
     this.contentdropdown2 = !this.contentdropdown2;
   }
   dropdownOpen3() {
-
     this.contentdropdown3 = !this.contentdropdown3;
   }
   Selectvariable: string = 'Designation';
@@ -254,7 +250,7 @@ gender:string=''
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
-    this.bankname=arr2.name
+    this.bankname = arr2.name;
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
@@ -263,160 +259,152 @@ gender:string=''
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
-    this.maritalStatus=arr3.name
+    this.maritalStatus = arr3.name;
   }
-personaldetails(){
-this.personaldetail=true;
-this.jobdetail=false;
-this.isPersonalDetailsActive=true;
-this.isJobDetailsActive=false;
-}
-jobdetails(){
-this.jobdetail=true;
-this.personaldetail=false;
-this.isJobDetailsActive=true;
-this.isPersonalDetailsActive=false;
-}
+  personaldetails() {
+    this.personaldetail = true;
+    this.jobdetail = false;
+    this.isPersonalDetailsActive = true;
+    this.isJobDetailsActive = false;
+  }
+  jobdetails() {
+    this.jobdetail = true;
+    this.personaldetail = false;
+    this.isJobDetailsActive = true;
+    this.isPersonalDetailsActive = false;
+  }
 
-openmodal1(user:any){
-this.showModal=true;
-this.fourthStep=false;
-this.selectedUser = { _id: user._id };
-this.form.patchValue(user);
-console.log('checkuser',this.selectedUser);
-console.log('check',this.user)
-if(this.personaldetail===true)
-{
-  this.modalContent1=true;
-  this.modalContent2=false;
-  this.modalContent4 = false;
-  this.modalContent5 = false;
-  this.modalContent6 = false;
-  this.modalContent7 = false;
-}
-else if(this.jobdetail===true){
-  this.modalContent2=true;
-  this.modalContent1=false;
-  this.modalContent4=false;
-  this.modalContent5=false;
-  this.modalContent6=false;
-  this.modalContent7=false;
-}
-}
-openmodal2(user:any){
-  this.fourthStep=false;
-  this.showModal=true;
-  this.modalContent4=true;
-  this.modalContent1=false;
-  this.modalContent5 = false;
-  this.modalContent6 = false;
-  this.modalContent7 = false;
-  this.selectedUser = { _id: user._id };
-  this.form.patchValue(user);
+  openmodal1(user: any) {
+    this.showModal = true;
+    this.fourthStep = false;
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
+    console.log('checkuser', this.selectedUser);
+    console.log('check', this.user);
+    if (this.personaldetail === true) {
+      this.modalContent1 = true;
+      this.modalContent2 = false;
+      this.modalContent4 = false;
+      this.modalContent5 = false;
+      this.modalContent6 = false;
+      this.modalContent7 = false;
+    } else if (this.jobdetail === true) {
+      this.modalContent2 = true;
+      this.modalContent1 = false;
+      this.modalContent4 = false;
+      this.modalContent5 = false;
+      this.modalContent6 = false;
+      this.modalContent7 = false;
+    }
+  }
+  openmodal2(user: any) {
+    this.fourthStep = false;
+    this.showModal = true;
+    this.modalContent4 = true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent6 = false;
+    this.modalContent7 = false;
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
+  }
+  closeModal() {
+    this.showModal = false;
+  }
+  fourthStep: boolean = false;
 
-}
-closeModal(){
-  this.showModal=false;
-}
-fourthStep:boolean=false;
+  successMessage: string;
+  basicUpdate(data: any) {
+    this.fourthStep = true;
+    this.modalContent2 = false;
+    this.modalContent1 = false;
+    data.maritalStatus = this.maritalStatus;
+    data.gender = this.gender;
+    data.bloodGroup = this.bloodGroup;
+    console.log(this.form.value);
+    data.bankname = this.bankname;
+    const updatedData = this.form.value;
+    console.log('abc', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+      this.user = updatedData;
+    });
+    console.log('value', this.user);
+  }
+  closeModal2(user) {
+    this.fourthStep = true;
+    this.modalContent2 = false;
+    this.modalContent1 = false;
+  }
 
-successMessage:string
-basicUpdate(data:any){
-  this.fourthStep=true;
-  this.modalContent2=false;
-  this.modalContent1=false;
-  data.maritalStatus=this.maritalStatus
-  data.gender=this.gender
-  data.bloodGroup=this.bloodGroup
-  console.log(this.form.value)
-  data.bankname=this.bankname
-  const updatedData = this.form.value;
-  console.log('abc',updatedData)
-  updatedData['_id'] = this.user._id;
-  this.dashService.updateEmployee(updatedData).subscribe(() => {
-    console.log('Data updated successfully');
-    this.user=updatedData
-  });
-console.log('value',this.user)
-
-}
-closeModal2(user){
-  this.fourthStep=true;
-  this.modalContent2=false;
-  this.modalContent1=false;
-
-}
-
-closeModal3(user:any){
-  this.fourthStep=true;
-  this.modalContent1=false;
-  this.modalContent2=false;
-  this.modalContent4=false;
-  const updatedData = this.form.value;
-  console.log('abc',updatedData)
-  updatedData['_id'] = this.user._id;
-  this.dashService.updateEmployee(updatedData).subscribe(() => {
-    console.log('Data updated successfully');
-    // this.fetchdata()
-  });
-console.log('value',this.user)
-
-}
-openModal3(){
-  this.fourthStep = false;
-  this.showModal = true;
-  this.modalContent4 = false;
-  this.modalContent1 = false;
-  this.modalContent5=true;
-  this.modalContent6=false;
-  this.modalContent7=false;
-}
-closeModal4(){
-  this.fourthStep = true;
-  this.modalContent1 = false;
-  this.modalContent2 = false;
-  this.modalContent4 = false;
-  this.modalContent5=false;
-}
-openModal4(){
-  this.fourthStep = false;
-  this.showModal = true;
-  this.modalContent4 = false;
-  this.modalContent1 = false;
-  this.modalContent5 = false;
-  this.modalContent6 = true;
-  this.modalContent7=false;
-
-}
-closeModal5(){
-  this.fourthStep = true;
-  this.modalContent1 = false;
-  this.modalContent2 = false;
-  this.modalContent4 = false;
-  this.modalContent5 = false;
-  this.modalContent6 = false;
-}
-openModal5(){
-  this.fourthStep = false;
-  this.showModal = true;
-  this.modalContent4 = false;
-  this.modalContent1 = false;
-  this.modalContent5 = false;
-  this.modalContent6 = false;
-  this.modalContent7 = true;
-}
-closeModal6(){
-  this.fourthStep = true;
-  this.modalContent1 = false;
-  this.modalContent2 = false;
-  this.modalContent4 = false;
-  this.modalContent5 = false;
-  this.modalContent6 = false;
-  this.modalContent7 = false;
-}
+  closeModal3(user: any) {
+    this.fourthStep = true;
+    this.modalContent1 = false;
+    this.modalContent2 = false;
+    this.modalContent4 = false;
+    const updatedData = this.form.value;
+    console.log('abc', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+      // this.fetchdata()
+    });
+    console.log('value', this.user);
+  }
+  openModal3() {
+    this.fourthStep = false;
+    this.showModal = true;
+    this.modalContent4 = false;
+    this.modalContent1 = false;
+    this.modalContent5 = true;
+    this.modalContent6 = false;
+    this.modalContent7 = false;
+  }
+  closeModal4() {
+    this.fourthStep = true;
+    this.modalContent1 = false;
+    this.modalContent2 = false;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
+  }
+  openModal4() {
+    this.fourthStep = false;
+    this.showModal = true;
+    this.modalContent4 = false;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent6 = true;
+    this.modalContent7 = false;
+  }
+  closeModal5() {
+    this.fourthStep = true;
+    this.modalContent1 = false;
+    this.modalContent2 = false;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
+    this.modalContent6 = false;
+  }
+  openModal5() {
+    this.fourthStep = false;
+    this.showModal = true;
+    this.modalContent4 = false;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent6 = false;
+    this.modalContent7 = true;
+  }
+  closeModal6() {
+    this.fourthStep = true;
+    this.modalContent1 = false;
+    this.modalContent2 = false;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
+    this.modalContent6 = false;
+    this.modalContent7 = false;
+  }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
-
     this.contentdropdown1 = !this.contentdropdown1;
   }
   Selectvariable1: string = 'Select';
@@ -426,11 +414,10 @@ closeModal6(){
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
-    this.gender=arr1.name
+    this.gender = arr1.name;
   }
   contentdropdown4: boolean = false;
   dropdownOpen4() {
-
     this.contentdropdown4 = !this.contentdropdown4;
   }
   Selectvariable4: string = 'Select';
@@ -440,11 +427,10 @@ closeModal6(){
     this.colorvariable4 = arr4.id;
     this.contentdropdown4 = false;
     console.log(arr4.name);
-    this.bloodGroup=arr4.name
+    this.bloodGroup = arr4.name;
   }
   contentdropdown5: boolean = false;
   dropdownOpen5() {
-
     this.contentdropdown5 = !this.contentdropdown5;
   }
   Selectvariable5: string = 'Select';
@@ -457,7 +443,6 @@ closeModal6(){
   }
   contentdropdown8: boolean = false;
   dropdownOpen8() {
-
     this.contentdropdown8 = !this.contentdropdown8;
   }
   Selectvariable8: string = 'Employement Status';
@@ -468,9 +453,11 @@ closeModal6(){
     this.contentdropdown8 = false;
     console.log(arr8.name);
   }
-contentshow:boolean=false;
-addemployee(){
-  this.contentshow=!this.contentshow;
-}
-
+  contentshow: boolean = false;
+  addemployee() {
+    this.contentshow = !this.contentshow;
+  }
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
 }
