@@ -84,6 +84,7 @@ export class EmployeeContentComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
     ]),
+
   });
 
   get registrationFormControl() {
@@ -143,9 +144,8 @@ export class EmployeeContentComponent implements OnInit {
 
     this.emptybox = this.employee.length === 0;
     if (event.keyCode === 32) {
-      // space bar
       this.query = '';
-      // this.itemsToDisplay = this.items;
+
     }
   }
 

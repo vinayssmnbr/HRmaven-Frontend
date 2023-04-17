@@ -28,7 +28,7 @@
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -37,13 +37,13 @@
           <span class="fname">Father's Name</span>
           <p class="fname">{{user.fatherName}}</p>
           <span class="bgroup">Blood Group</span>
-          <p class="bgroup">B+</p>
+          <p class="bgroup">{{user.bloodGroup}}</p>
         </div>
         <div class="column2">
           <span class="uid">Employee ID</span>
           <p class="uid">{{user.uid}}</p>
           <span class="mname">Mother's Name</span>
-          <p class="mname">Vanita Sharma</p>
+          <p class="mname">{{user.motherName}}</p>
           <span class="gender">Gender</span>
           <p class="gender">{{user.gender}}</p>
         </div>
@@ -51,9 +51,9 @@
           <span class="dob">Date of birth</span>
           <p class="dob">{{user.dateOfBirth | date:"short"}}</p>
           <span class="marstatus">Marital Status</span>
-          <p class="marstatus">Single</p>
+          <p class="marstatus">{{user.maritalStatus}}</p>
           <span class="nation">Nationality</span>
-          <p class="nation">Indian</p>
+          <p class="nation">{{user.nationality}}</p>
         </div>
       </div>
     </div>
@@ -67,19 +67,19 @@
           <span class="cno">Contact No.</span>
           <p class="cno">{{user.mobile}}</p>
           <span class="city">City</span>
-          <p class="city">Ludhiana</p>
+          <p class="city">{{user.city}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
           <p class="address">{{user.address}}</p>
           <span class="pcode">Postal Code</span>
-          <p class="pcode">141002</p>
+          <p class="pcode">{{user.postalCode}}</p>
         </div>
         <div class="column3">
           <span class="email">Email</span>
           <p class="email">{{user.email}}</p>
           <span class="state">State</span>
-          <p class="state">Punjab</p>
+          <p class="state">{{user.state}}</p>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
           <span class="bname">Bank Name</span>
           <p class="bname">{{user.bankname}}</p>
           <span class="adhaarno">Aadhaar Card Number</span>
-          <p class="adhaarno">{{user.adhaatno}}</p>
+          <p class="adhaarno">{{user.adhaarno}}</p>
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
@@ -185,7 +185,7 @@
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
         <h3>Work Details</h3>
-        <button class="edit1" (click)="openmodal1()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -216,7 +216,7 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
-        <form class="form-container" id="form1" [formGroup]="form" (ngSubmit)="basicUpdate()">
+        <form class="form-container" id="form1" [formGroup]="form">
           <div class="form-row">
             <div class="input">
               <label>Name</label>
@@ -302,7 +302,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save">Update</button>
+        <button class="save" (click)="basicUpdate(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -333,7 +333,7 @@
             </div>
             <div class="input">
               <label>Postal Code</label>
-              <input type="number" placeholder="141002" formControlName="pcode">
+              <input type="number" placeholder="141002" formControlName="postalCode">
             </div>
             <div class="input">
               <label>State</label>
@@ -343,7 +343,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3()">Update</button>
+        <button class="save" (click)="basicUpdate(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
