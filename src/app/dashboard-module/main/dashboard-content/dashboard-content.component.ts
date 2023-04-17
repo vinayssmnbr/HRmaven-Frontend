@@ -72,6 +72,24 @@ export class DashboardContentComponent implements OnInit {
       head: 'Interview',
       time: '10am to 12pm',
     },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
+    {
+      day: 'Mon',
+      Date: '10',
+      head: 'Interview',
+      time: '10am to 12pm',
+    },
 
   ];
 
@@ -231,7 +249,7 @@ array: any = [
     name: 'Monthly',
   },
   {
-    id: 3,
+    id: 2,
     name: 'Yearly',
   },
 

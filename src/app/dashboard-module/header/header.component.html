@@ -18,7 +18,7 @@
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-      <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"
+      <img src="./assets/images/user (1).svg" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
     </div>
   </div>
@@ -270,11 +270,19 @@
     </div>
   </div>
 </ng-container>
-<div class="profile_div" *ngIf="profileDisplay">
-  <div class="profile-content">
-    <div class="profile-title">
-      <div class="profile-logo">
-        <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
+ <div  class="profile_div"*ngIf="profileDisplay" >
+    <div class="profile-content">
+      <div class="profile-title">
+          <div class="profile-logo">
+              <img src="./assets/images/user (1).svg" alt="" class="header-icon">
+          </div>
+          <div class="profile-text">
+            <h2> {{name}} </h2>
+              <p >{{userEmail}}</p>
+          </div>
+          <div class="head-btn">
+              <button class="btn-head">HEAD</button>
+          </div>
       </div>
       <div class="profile-text">
         <h2> {{name}} </h2>
@@ -297,4 +305,4 @@
     </div>
   </div>
 
-</div>
+

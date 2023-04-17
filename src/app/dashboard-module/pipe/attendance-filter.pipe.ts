@@ -6,37 +6,39 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class AttendanceFilterPipe implements PipeTransform {
 
   transform(value: any, name: any, date: any): any {
-    if (date=="") {
-      console.log(typeof (name));
+    if (date == "") {
       if (name == '') {
         return value;
-      }
-      else {
-        const Array = [];
+      } else {
+        const filteredArray = [];
         for (let i = 0; i < value.length; i++) {
-          if (value[i].name.startsWith(name) || value[i].empId.toString().startsWith(name)) {
-            Array.push(value[i]);
+          if (value[i].name.toLowerCase().startsWith(name.toLowerCase()) || value[i].empId.toString().toLowerCase().startsWith(name.toLowerCase())) {
+            filteredArray.push(value[i]);
           }
         }
+        if(filteredArray.length==0){
+          filteredArray.push({found:"true"});
+         }
 
-        return Array;
+        return filteredArray;
       }
 
-    }
-    else{
-      // console.log(date);
-      // console.log(typeof (date));
-      const Array = [];
+    } else {
+
+      const filteredArray = [];
       for (let i = 0; i < value.length; i++) {
 
         var newdate = new Date(value[i].date);
         var hello = newdate.toISOString().substring(0, 10);
         if (hello == date) {
-          Array.push(value[i]);
+          filteredArray.push(value[i]);
         }
 
       }
-      return Array;
+      if(filteredArray.length==0){
+       filteredArray.push({found:"true"});
+      }
+      return filteredArray;
     }
 
   }
