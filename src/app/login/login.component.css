@@ -148,11 +148,14 @@ form .input-field {
     margin-top: 6px;
 }
 
+
 .input-field input::placeholder {
-    font-size: 14px;
-    font-weight: 400;
     color: #B4B4B4;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: 'Outfit';
 }
+
 
 .create-password .input-field .password {
     padding-right: 50px;
@@ -293,85 +296,85 @@ input:focus {
     display: none;
 }
 
-.navigation-manual{
+.navigation-manual {
     position: absolute;
     width: 530px;
     margin-top: -40px;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .manual-btn{
+}
+
+.manual-btn {
     border: 2px solid #fff;
     padding: 4px;
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
-  }
-  
-  .manual-btn:not(:last-child){
+}
+
+.manual-btn:not(:last-child) {
     margin-right: 20px;
-  }
-  
-  .manual-btn:hover{
+}
+
+.manual-btn:hover {
     background: #fff;
-  }
-  
-  #radio1:checked ~ .first{
+}
+
+#radio1:checked~.first {
     margin-left: 0;
-  }
-  
-  #radio2:checked ~ .first{
+}
+
+#radio2:checked~.first {
     margin-left: -20%;
-  }
-  
-  #radio3:checked ~ .first{
+}
+
+#radio3:checked~.first {
     margin-left: -40%;
-  }
-  
-  #radio4:checked ~ .first{
+}
+
+#radio4:checked~.first {
     margin-left: -60%;
-  }
-  
-  /*css for automatic navigation*/
-  
-  .navigation-auto{
+}
+
+/*css for automatic navigation*/
+
+.navigation-auto {
     position: absolute;
     display: flex;
     width: 380px;
     justify-content: center;
     margin-top: 293px;
     align-items: center;
-  }
-  
-  .navigation-auto div{
+}
+
+.navigation-auto div {
     border: 2px solid #fff;
     padding: 4px;
     border-radius: 10px;
     transition: 1s;
-  }
-  
-  .navigation-auto div:not(:last-child){
+}
+
+.navigation-auto div:not(:last-child) {
     margin-right: 20px;
-  }
-  
-  #radio1:checked ~ .navigation-auto .auto-btn1{
+}
+
+#radio1:checked~.navigation-auto .auto-btn1 {
     background: #fff;
-  }
-  
-  #radio2:checked ~ .navigation-auto .auto-btn2{
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
     background: #fff;
-  }
-  
-  #radio3:checked ~ .navigation-auto .auto-btn3{
+}
+
+#radio3:checked~.navigation-auto .auto-btn3 {
     background: #fff;
-  }
-  
-  #radio4:checked ~ .navigation-auto .auto-btn4{
+}
+
+#radio4:checked~.navigation-auto .auto-btn4 {
     background: #fff;
-  }
-        
+}
+
 .password-toggle i {
     position: absolute;
     margin-top: -46px;
