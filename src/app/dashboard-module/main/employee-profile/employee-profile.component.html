@@ -3,6 +3,7 @@
 <div class="main" *ngIf="user">
   <div class="card">
     <div class="card1">
+      <img src="./assets/images/left_arrow.svg" routerLink="/dashboard/employee" alt="">
       <h2>Employee Profile</h2>
     </div>
     <div class="card2">
@@ -488,7 +489,7 @@
             </div>
           </div>
           <hr>
-          <div class="form-row">
+          <div class="form-row" *ngIf="contentshow">
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Accenture" formControlName="orgname">
@@ -502,13 +503,33 @@
               <input type="text" placeholder="Front End developer" formControlName="designation">
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" *ngIf="contentshow">
             <div class="input">
               <label>Location</label>
               <input type="text" placeholder="Bangalore, India" formControlName="location2">
             </div>
           </div>
-          <button class="btn3"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+          <!-- <div class="form-row">
+            <div class="input">
+              <label>Company/Organisation Name</label>
+              <input type="text" placeholder="Infosys" formControlName="orgname">
+            </div>
+            <div class="input">
+              <label>Duration</label>
+              <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
+            </div>
+            <div class="input">
+              <label>Designation</label>
+              <input type="text" placeholder="Lead- front end developer" formControlName="designation">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Pune, India" formControlName="location2">
+            </div>
+          </div> -->
+          <button class="btn3"  (click)="addemployee()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
         </form>
       </div>
       <div class="modal-footer">

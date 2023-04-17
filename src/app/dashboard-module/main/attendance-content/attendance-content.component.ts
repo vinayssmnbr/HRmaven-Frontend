@@ -5,8 +5,6 @@ import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
@@ -26,44 +24,43 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any= [];
-  showModal=false;
+  employee: any = [];
+  showModal = false;
   showCard: boolean = false;
-  employeeid='';
-  employeename='';
+  employeeid = '';
+  employeename = '';
   lineChart: Chart;
-  selectedUser:any={};
-leaves:any[]=[]
- data: any;
-  update:boolean=false;
-  editmodal=false;
-  showCard1: boolean=true;
-  showTable=true;
-  attDate:any="";
-  loader=true;
-  datez:any="";
+  selectedUser: any = {};
+  leaves: any[] = [];
+  data: any;
+  update = false;
+  editmodal = false;
+  showCard1: boolean = true;
+  showTable = true;
+  attDate: any = "";
+  loader = true;
+  datez: any = "";
+
   constructor(public dashService: DashService) {
-    // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getAttendance().subscribe((res: any) => {
-      console.log('data', res);
+    this.dashService.getAttendance().subscribe((res: any) => {
+      console.log('data', res); // add this line
       this.employee = res;
     });
     this.getLeaveData()
     this.getreport();
-
   }
+
   form = new FormGroup({
-    name:new FormControl(),
-    empId:new FormControl(),
+    name: new FormControl(),
+    empId: new FormControl(),
     date: new FormControl(''),
     status: new FormControl(''),
     punch_in: new FormControl(''),
     punch_out: new FormControl(''),
-
-
   });
+
 
 
   async getreport(){

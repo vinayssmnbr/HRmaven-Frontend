@@ -16,11 +16,15 @@ export class AttendanceFilterPipe implements PipeTransform {
             filteredArray.push(value[i]);
           }
         }
+        if(filteredArray.length==0){
+          filteredArray.push({found:"true"});
+         }
 
         return filteredArray;
       }
 
     } else {
+
       const filteredArray = [];
       for (let i = 0; i < value.length; i++) {
 
@@ -30,6 +34,9 @@ export class AttendanceFilterPipe implements PipeTransform {
           filteredArray.push(value[i]);
         }
 
+      }
+      if(filteredArray.length==0){
+       filteredArray.push({found:"true"});
       }
       return filteredArray;
     }

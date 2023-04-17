@@ -45,10 +45,6 @@
           </label>
 
         </div>
-        <div class="no_data" *ngIf="">
-            <img src="assets/images/no_record.png" alt="">
-            <h2>No Record Found!</h2>
-        </div>
     </div>
     <div class="attendence_table">
         <div class="table_data" *ngIf="showTable">
@@ -66,13 +62,17 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of employee | attendanceFilter:employeename:datez">
-                        <td>{{user.empId}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.date | date:'shortDate'}}</td>
-                        <td>{{user.status}}</td>
-                        <td>{{user.punch_in}}</td>
-                        <td>{{user.punch_out}}</td>
-                        <td class="action1">
+                        <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
+                            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
+                            <h2>No Record Found!</h2>
+                        </td>
+                        <td *ngIf="user.found!='true'">{{user.empId}}</td>
+                        <td *ngIf="user.found!='true'">{{user.name}}</td>
+                        <td *ngIf="user.found!='true'">{{user.date | date:'shortDate'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.status}}</td>
+                        <td *ngIf="user.found!='true'">{{user.punch_in}}</td>
+                        <td *ngIf="user.found!='true'">{{user.punch_out}}</td>
+                        <td *ngIf="user.found!='true'" class="action1">
                             <div class="icons">
                                 <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
                             </div>
@@ -81,6 +81,7 @@
                 </tbody>
 
             </table>
+
         </div>
     </div>
 
