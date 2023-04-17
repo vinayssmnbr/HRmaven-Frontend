@@ -16,11 +16,12 @@ export const environment = {
   updatempdata:"https://hrmaven.works/api/update",
   getuid:'https://hrmaven.works/api/uid',
   report:'https://hrmaven.works/attendance/report',
-  profile:'https://hrmaven.works/user-profile'
-
+  profile:'https://hrmaven.works/user-profile',
+  updateleave:'https://hrmaven.works/attendance/update'
 
 
     //LOCAL URL
+    // updateleave:'https://hrmaven.works/attendance/update'
     // saveurl: 'http://localhost:3000/signup',
     // loginurl: 'http://localhost:3000/login',
     // Forgoturl: 'http://localhost:3000/forgotpassword',

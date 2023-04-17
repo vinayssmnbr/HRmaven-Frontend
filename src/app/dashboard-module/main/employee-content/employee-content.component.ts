@@ -25,6 +25,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class EmployeeContentComponent implements OnInit {
   selectedEmployee: any;
+  designationdropdownOption: boolean = false;
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
   }
@@ -407,4 +408,22 @@ export class EmployeeContentComponent implements OnInit {
 
 
 }
+dropdownClose() {
+  this.contentdropdown = false;
+}
+dropdownClose3(){
+this.contentdropdown3=false;
+}
+dropdownClose1(){
+this.contentdropdown1=false;
+}
+dropdownClose2(){
+this.contentdropdown2=false;
+}
+
+dropdownOpenOption() {
+  this.designationdropdownOption = !this.designationdropdownOption;
+}
+
+
 }

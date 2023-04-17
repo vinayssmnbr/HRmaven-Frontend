@@ -55,7 +55,7 @@
 
 input:hover,
 input:focus {
-  /* border-color: #2F2C9F !important; */
+  border-color: #2F2C9F ;
 }
 
 .fa-magnifying-glass {
@@ -145,6 +145,9 @@ input:focus {
 .icons img{
   cursor: pointer;
   /* background-color: #f9f9f9 !important; */
+}
+.icons img:hover{
+  background-color: #f7f7f7 !important;
 }
 tbody{
   background-color: #fff !important;
@@ -621,109 +624,150 @@ label {
 
 
 #text1.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text1.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text1.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text1.ng_valid:hover {
+  border: 1px solid green;
 }
 #text6.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text6.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text6.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text6.ng_valid:hover {
+  border: 1px solid green;
 }
 #text7.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text7.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text7.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text7.ng_valid:hover {
+  border: 1px solid green;
 }
 .form-row .input span {
   color: red;
 }
 #text10.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text10.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text10.ng_valid {
-  border-color: green;
+  border:1px solid green;
+}
+#text10.ng_valid:hover {
+  border: 1px solid green;
 }
 #text11.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
 }
-
+#text11.ng_invalid:hover {
+  border: 1px solid red;
+}
 #text11.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text11.ng_valid:hover {
+  border: 1px solid green;
 }
 #text12.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text12.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text12.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text12.ng_valid:hover {
+  border: 1px solid green;
 }
 #text13.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text13.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text13.ng_valid {
-  border-color: green;
+  border: 1px solid green;
 }
-/* #text1:hover {
-  border-color: 1px solid #2F2C9F;
+#text13.ng_valid:hover {
+  border: 1px solid green;
+}
+#text1:hover {
+  border: 1px solid #2F2C9F ;
 }
 
 #text2:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text3:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text4:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text5:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text6:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text7:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 
 }
 
-#text8:hover {
-  border-color: 1px solid #2F2C9F;
-}
+/* #text8:hover {
+  border: 1px solid #2F2C9F ;
+} */
 
-#text9:hover {
-  border-color: 1px solid #2F2C9F;
-}
+/* #text9:hover {
+  border: 1px solid #2F2C9F ;
+} */
 
 #text10:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text11:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text12:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text13:hover {
-  border-color: 1px solid #2F2C9F;
-} */
+  border: 1px solid #2F2C9F ;
+}
 
 #text2 {
   width: 260px;
@@ -844,38 +888,39 @@ label {
 
 #text8 {
   /* display: block; */
-  width: 260px;
-  height: 40px;
-  background: #FFFFFF;
-  border: 1px solid rgba(180, 180, 180, 0.8);
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: none;
-  font-style: normal;
-  font-weight: 400;
-  font-family: 'Outfit', sans-serif;
-  outline: none;
-  font-size: 14px;
-  line-height: 140%;
-  cursor: pointer;
+  width: 270px;
+    height: 38px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    font-size: 14px;
+    line-height: 140%;
+    cursor: pointer;
 }
 
 #text9 {
-  /* display: block; */
-  width: 260px;
-  height: 40px;
-  background: #FFFFFF;
-  border: 1px solid rgba(180, 180, 180, 0.8);
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: none;
-  outline: none;
-  font-style: normal;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-  cursor: pointer;
+  width: 270px;
+    height: 38px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    font-size: 14px;
+    line-height: 140%;
+    cursor: pointer;
 }
 
 #text10 {
@@ -1122,11 +1167,11 @@ label {
   height: 349px;
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 20px 10px;
+  padding: 20px 15px;
 }
 
 .modal-header2 {
-  width: 450px;
+  width: 440px;
   height: 130px;
   background: rgba(123, 211, 109, 0.3);
   border-radius: 8px;
@@ -1311,6 +1356,7 @@ label {
 .dropdwon_select:hover,
 .dropdwon_select:focus {
   border: 1px solid #2F2C9F !important;
+  /* border-color: #2F2C9F !important; */
 }
 #slt1 {
   width: 260px;
@@ -1358,8 +1404,6 @@ label {
   padding: 10px;
   position: absolute;
   color: #444444;
-  border-radius: 6px;
-    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .select_content1 ul {
