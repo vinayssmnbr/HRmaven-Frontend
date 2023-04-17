@@ -36,6 +36,10 @@ modalContent7:boolean=false;
 isJobDetailsActive = false;
 isPersonalDetailsActive=true;
 employee: any = [];
+maritalStatus:string='';
+bloodGroup:string='';
+bankname:string='';
+gender:string=''
 
   form = new FormGroup({
     uid:new FormControl(''),
@@ -230,6 +234,7 @@ employee: any = [];
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
+    this.bankname=arr2.name
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
@@ -238,6 +243,7 @@ employee: any = [];
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
+    this.maritalStatus=arr3.name
   }
 personaldetails(){
 this.personaldetail=true;
@@ -252,9 +258,13 @@ this.isJobDetailsActive=true;
 this.isPersonalDetailsActive=false;
 }
 
-openmodal1(){
+openmodal1(user:any){
 this.showModal=true;
 this.fourthStep=false;
+this.selectedUser = { _id: user._id };
+this.form.patchValue(user);
+console.log('checkuser',this.selectedUser);
+console.log('check',this.user)
 if(this.personaldetail===true)
 {
   this.modalContent1=true;
@@ -280,8 +290,6 @@ openmodal2(user:any){
   this.modalContent1=false;
   this.selectedUser = { _id: user._id };
   this.form.patchValue(user);
-  console.log('checkuser',this.selectedUser);
-  console.log('check',this.user)
 
 }
 closeModal(){
@@ -290,10 +298,14 @@ closeModal(){
 fourthStep:boolean=false;
 
 successMessage:string
-basicUpdate(){
+basicUpdate(data:any){
   this.fourthStep=true;
   this.modalContent2=false;
   this.modalContent1=false;
+  data.maritalStatus=this.maritalStatus
+  data.gender=this.gender
+  data.bloodGroup=this.bloodGroup
+  data.bankname=this.bankname
   console.log(this.form.value)
   const updatedData = this.form.value;
   console.log('abc',updatedData)
@@ -394,6 +406,7 @@ closeModal6(){
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
+    this.gender=arr1.name
   }
   contentdropdown4: boolean = false;
   dropdownOpen4() {
@@ -407,6 +420,7 @@ closeModal6(){
     this.colorvariable4 = arr4.id;
     this.contentdropdown4 = false;
     console.log(arr4.name);
+    this.bloodGroup=arr4.name
   }
   contentdropdown5: boolean = false;
   dropdownOpen5() {
