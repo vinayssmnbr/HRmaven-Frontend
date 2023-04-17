@@ -65,15 +65,15 @@ export class EmployeeContentComponent implements OnInit {
   }
   form = new FormGroup({
     name: new FormControl('', [Validators.required, this.nameValidator]),
-    designation: new FormControl(''),
+    designation: new FormControl('',Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl(''),
+    gender: new FormControl('',Validators.required),
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
-    bankname: new FormControl(''),
+    bankname: new FormControl('',Validators.required),
     adhaarno: new FormControl('', [Validators.required]),
     accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('', [
@@ -192,6 +192,7 @@ export class EmployeeContentComponent implements OnInit {
   showModalContent: boolean = true;
   fifthstep: boolean = false;
   onNextForm() {
+    console.log(this.form)
     this.firstStep = false;
     this.secondStep = true;
   }
@@ -257,11 +258,11 @@ export class EmployeeContentComponent implements OnInit {
   array: any = [
     {
       id: 0,
-      name: 'Software Developer',
+      name: 'All',
     },
     {
       id: 1,
-      name: 'Forntend Developer',
+      name: 'Frontend Developer',
     },
     {
       id: 3,
@@ -277,7 +278,29 @@ export class EmployeeContentComponent implements OnInit {
     },
     {
       id: 6,
-      name: 'All',
+      name: 'Software Developer',
+    },
+  ];
+  array6: any = [
+    {
+      id: 0,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 1,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 2,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 3,
+      name: 'Quality Analyst',
+    },
+    {
+      id: 4,
+      name: 'Software Developer',
     },
   ];
   array1: any = [
@@ -332,12 +355,18 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
+  contentdropdown3:boolean=false;
+  dropdownOpen3() {
+    this.contentdropdown3 = !this.contentdropdown3;
+  }
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
+  Selectvariable6: string = 'Designation';
+  colorvariable6: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -371,4 +400,10 @@ export class EmployeeContentComponent implements OnInit {
 
   }
   // for(let i=0; i)
+  Changeselect6(arr6: any) {
+    this.Selectvariable6 = arr6.name;
+    this.colorvariable6 = arr6.id;
+    this.contentdropdown3 = false;
+    console.log(arr6.name);
+}
 }
