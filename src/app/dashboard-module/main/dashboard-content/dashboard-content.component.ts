@@ -239,21 +239,21 @@ updateLeaveStatus(id: any, status: 'accept' | 'reject') {
 
 }
 
-array: any = [
-  {
-    id: 0,
-    name: 'Weekly',
-  },
-  {
-    id: 1,
-    name: 'Monthly',
-  },
-  {
-    id: 2,
-    name: 'Yearly',
-  },
+// array: any = [
+//   {
+//     id: 0,
+//     name: 'Weekly',
+//   },
+//   {
+//     id: 1,
+//     name: 'Monthly',
+//   },
+//   {
+//     id: 2,
+//     name: 'Yearly',
+//   }
 
-];
+// ];
 contentdropdown: boolean = false;
 dropdownOpen() {
 
