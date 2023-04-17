@@ -165,9 +165,19 @@ export class AttendanceContentComponent implements OnInit {
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
   openModal(user:any) {
+
+    this.form.patchValue(user);
+    this.form.setValue({
+      name:user.name,
+      empId:user.empId,
+      date:user.date,
+      status:user.status,
+      punch_in:user.punch_in,
+      punch_out:user.punch_out,
+    });
+    this.Selectvariable=user.status;
     this.showModal = true;
     this.selectedUser = {_id: user._id};
-    this.form.patchValue(user)
   }
 
 
