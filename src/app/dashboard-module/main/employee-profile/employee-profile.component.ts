@@ -209,6 +209,21 @@ gender:string=''
       name: '10:00 am to 6:00pm',
     },
   ];
+
+  array8: any = [
+    {
+      id: 0,
+      name: 'Full-Time Permanent',
+    },
+    {
+      id: 1,
+      name: 'Part-Time Employement',
+    },
+    {
+      id: 2,
+      name: 'Internship',
+    }
+  ];
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3:boolean=false;
@@ -293,6 +308,9 @@ openmodal2(user:any){
   this.showModal=true;
   this.modalContent4=true;
   this.modalContent1=false;
+  this.modalContent5 = false;
+  this.modalContent6 = false;
+  this.modalContent7 = false;
   this.selectedUser = { _id: user._id };
   this.form.patchValue(user);
 
@@ -437,7 +455,19 @@ closeModal6(){
     this.contentdropdown5 = false;
     console.log(arr5.name);
   }
+  contentdropdown8: boolean = false;
+  dropdownOpen8() {
 
+    this.contentdropdown8 = !this.contentdropdown8;
+  }
+  Selectvariable8: string = 'Employement Status';
+  colorvariable8: number = 0;
+  Changeselect8(arr8: any) {
+    this.Selectvariable8 = arr8.name;
+    this.colorvariable8 = arr8.id;
+    this.contentdropdown8 = false;
+    console.log(arr8.name);
+  }
 contentshow:boolean=false;
 addemployee(){
   this.contentshow=!this.contentshow;
