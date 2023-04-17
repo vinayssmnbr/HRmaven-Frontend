@@ -25,6 +25,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class EmployeeContentComponent implements OnInit {
   selectedEmployee: any;
+  designationdropdownOption: boolean = false;
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
   }
@@ -49,15 +50,15 @@ export class EmployeeContentComponent implements OnInit {
   currentEmployeeUid: any = '';
   query: string = '';
   designation: string = '';
-  gender:string='';
-  bankname:string=''
+  gender: string = '';
+  bankname: string = '';
 
   data: any;
   deletedata: any;
   empdesignation = '';
   employeeid: any;
   show: any = false;
-  emptybox: boolean=false;
+  emptybox: boolean = false;
   nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
@@ -140,9 +141,12 @@ export class EmployeeContentComponent implements OnInit {
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
-    bankname: new FormControl('',Validators.required),
+    bankname: new FormControl('', Validators.required),
     adhaarno: new FormControl('', [Validators.required]),
-    accountno: new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)]),
+    accountno: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\d{11}$/),
+    ]),
     ifsc: new FormControl('', [
       Validators.required,
       Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
@@ -151,7 +155,6 @@ export class EmployeeContentComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
     ]),
-
   });
 
   get registrationFormControl() {
@@ -165,8 +168,8 @@ export class EmployeeContentComponent implements OnInit {
     this.fourthStep = true;
     this.thirdStep = false;
     data.designation = this.designation;
-    data.gender=this.gender;
-    data.bankname=this.bankname
+    data.gender = this.gender;
+    data.bankname = this.bankname;
 
     this.dashService.addEmployee(data).subscribe((result) => {
       this.dashService.addEmployee(this.form);
@@ -210,17 +213,16 @@ export class EmployeeContentComponent implements OnInit {
       });
     if (event.keyCode === 32) {
       this.query = '';
-
     }
   }
 
   function() {
     this.show = !this.show;
   }
-   openDatePicker(){
-     let input = document.getElementById("text4") as HTMLInputElement;
-     input.click();
-   }
+  openDatePicker() {
+    let input = document.getElementById('text4') as HTMLInputElement;
+    input.click();
+  }
 
   opendpdtn = false;
   ngOnInit() {
@@ -257,7 +259,7 @@ export class EmployeeContentComponent implements OnInit {
   showModalContent: boolean = true;
   fifthstep: boolean = false;
   onNextForm() {
-    console.log(this.form)
+    console.log(this.form);
     this.firstStep = false;
     this.secondStep = true;
   }
@@ -382,7 +384,6 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
-
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -405,8 +406,6 @@ export class EmployeeContentComponent implements OnInit {
     this.contentdropdown2 = false;
     console.log(arr2.name);
     this.bankname = arr2.name;
-
-
   }
   dropdownClose() {
     this.contentdropdown = false;
@@ -420,4 +419,11 @@ this.contentdropdown1=false;
  dropdownClose2(){
   this.contentdropdown2=false;
  }
+
+
+
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
 }

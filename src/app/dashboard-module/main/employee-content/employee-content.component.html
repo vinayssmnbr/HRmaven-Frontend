@@ -9,10 +9,10 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
-      <div class="dropdown_content">
+      <div class="dropdown_content" (mouseleave)="contentdropdown = false">
         <div class="dropdwon_select" (click)="dropdownOpen()">
           <div class="drop-icon">
-            <p>{{Selectvariable}}</p>
+            <p >{{Selectvariable}}</p>
             <div class="input_icon">
               <i class="fa-sharp fa-solid fa-caret-down"></i>
             </div>
@@ -112,7 +112,7 @@
               </div>
               <div class="input">
                 <label>Designation <span>*</span></label>
-                <div class="dropdown_container">
+                <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
                     <!-- <p> {{Selectvariable6}}</p> -->
                     <input type="text" value={{Selectvariable6}} formControlName="designation" id="text8" readonly>
@@ -147,7 +147,7 @@
               </div>
               <div class="input">
                 <label>Gender <span>*</span></label>
-                <div class="dropdown_container">
+                <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                     <!-- <p >{{Selectvariable1}}</p> -->
                     <input type="text" value={{Selectvariable1}} formControlName="gender" id="text9" readonly>
@@ -198,7 +198,7 @@
             <div class="form-row">
               <div class="input">
                 <label>Bank Name <span>*</span></label>
-                <div class="dropdown_container">
+                <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
                     <p>{{Selectvariable2}}</p>
                     <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>

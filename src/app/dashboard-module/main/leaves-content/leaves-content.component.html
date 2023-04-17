@@ -54,7 +54,7 @@
     <div class="employe_input">
         <i class="fa fa-search" aria-hidden="true" id="ico"></i>
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
-        <div class="dropdown_container">
+        <div class="dropdown_container"  (mouseleave)="contentdropdown = false">
             <div class="dropdwon_select" (click)="dropdownOpen()">
                 <p>{{Selectvariable}}</p>
                 <i class="fa-sharp fa-solid fa-caret-down"></i>
