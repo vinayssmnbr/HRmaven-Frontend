@@ -15,7 +15,6 @@ import { DashService } from '../../shared/dash.service';
   styleUrls: ['./employee-profile.component.css'],
 })
 export class EmployeeProfileComponent {
-  designationdropdownOption: boolean = false;
   @Input() user: any;
   constructor(private dashService: DashService) {}
 
@@ -41,30 +40,22 @@ export class EmployeeProfileComponent {
   bloodGroup: string = '';
   bankname: string = '';
   gender: string = '';
+  jobdesignation: string = '';
+  jobtiming: string = '';
+  jobempstatus:string=''
 
   form = new FormGroup({
     uid: new FormControl(''),
     name: new FormControl(''),
     designation: new FormControl(''),
-    email: new FormControl(''),
-    mobile: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    address: new FormControl(''),
-    bankname: new FormControl(''),
-    adhaarno: new FormControl(''),
-    accountno: new FormControl(''),
-    ifsc: new FormControl(''),
     fatherName: new FormControl(''),
     motherName: new FormControl(''),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
-    city: new FormControl(''),
-    postalCode: new FormControl(''),
-    state: new FormControl(''),
-    passport: new FormControl(''),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
     inter: new FormControl(''),
@@ -75,15 +66,34 @@ export class EmployeeProfileComponent {
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
-    company: new FormControl(''),
-    duration: new FormControl(''),
-    designation2: new FormControl(''),
-    estatus: new FormControl(''),
-    jdate: new FormControl(''),
-    location3: new FormControl(''),
-    timings: new FormControl(''),
-    ctc: new FormControl(''),
+    expcompany: new FormControl(''),
+    expduration: new FormControl(''),
+    explocation: new FormControl(''),
+    expcompany1: new FormControl(''),
+    expduration1: new FormControl(''),
+    explocation1: new FormControl(''),
+    expdesignation: new FormControl(''),
+    expdesignation1: new FormControl(''),
+    jobdesignation: new FormControl(''),
+    joblocation1: new FormControl(''),
+    jobtiming: new FormControl(''),
+    jobctc: new FormControl(''),
+    jobempstatus: new FormControl(''),
+    joiningdate: new FormControl(''),
+    bankname: new FormControl(''),
+    adhaarno: new FormControl(''),
+    accountno: new FormControl(''),
+    ifsc: new FormControl(''),
+    passport: new FormControl(''),
+    panno: new FormControl(''),
+    mobile: new FormControl(''),
+    email: new FormControl(''),
+    state: new FormControl(''),
+    postalCode: new FormControl(''),
+    city: new FormControl(''),
+    address: new FormControl(''),
   });
+
   array1: any = [
     {
       id: 0,
@@ -208,7 +218,6 @@ export class EmployeeProfileComponent {
       name: '10:00 am to 6:00pm',
     },
   ];
-
   array8: any = [
     {
       id: 0,
@@ -223,6 +232,7 @@ export class EmployeeProfileComponent {
       name: 'Internship',
     },
   ];
+
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
@@ -242,6 +252,7 @@ export class EmployeeProfileComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
+    this.jobdesignation = arr.name;
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -302,9 +313,6 @@ export class EmployeeProfileComponent {
     this.showModal = true;
     this.modalContent4 = true;
     this.modalContent1 = false;
-    this.modalContent5 = false;
-    this.modalContent6 = false;
-    this.modalContent7 = false;
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
   }
@@ -322,20 +330,28 @@ export class EmployeeProfileComponent {
     data.gender = this.gender;
     data.bloodGroup = this.bloodGroup;
     console.log(this.form.value);
-    data.bankname = this.bankname;
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
     this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
-      this.user = updatedData;
     });
-    console.log('value', this.user);
+    this.user = updatedData;
   }
-  closeModal2(user) {
+  closeModal2(data) {
     this.fourthStep = true;
     this.modalContent2 = false;
     this.modalContent1 = false;
+    data.jobdesignation = this.jobdesignation;
+    data.jobtiming = this.jobtiming;
+    data.jobempstatus=this.jobempstatus
+    const updatedData = this.form.value;
+    console.log('abc', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    });
+    this.user = updatedData;
   }
 
   closeModal3(user: any) {
@@ -348,11 +364,10 @@ export class EmployeeProfileComponent {
     updatedData['_id'] = this.user._id;
     this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
-      // this.fetchdata()
     });
-    console.log('value', this.user);
+    this.user = updatedData;
   }
-  openModal3() {
+  openModal3(user) {
     this.fourthStep = false;
     this.showModal = true;
     this.modalContent4 = false;
@@ -360,15 +375,26 @@ export class EmployeeProfileComponent {
     this.modalContent5 = true;
     this.modalContent6 = false;
     this.modalContent7 = false;
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
   }
-  closeModal4() {
+
+  closeModal4(data) {
     this.fourthStep = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
+    data.bankname = this.bankname;
+    const updatedData = this.form.value;
+    console.log('abc', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    });
+    this.user = updatedData;
   }
-  openModal4() {
+  openModal4(user) {
     this.fourthStep = false;
     this.showModal = true;
     this.modalContent4 = false;
@@ -376,16 +402,25 @@ export class EmployeeProfileComponent {
     this.modalContent5 = false;
     this.modalContent6 = true;
     this.modalContent7 = false;
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
   }
-  closeModal5() {
+  closeModal5(data) {
     this.fourthStep = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
     this.modalContent6 = false;
+    const updatedData = this.form.value;
+    console.log('abc', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    });
+    this.user = updatedData;
   }
-  openModal5() {
+  openModal5(user) {
     this.fourthStep = false;
     this.showModal = true;
     this.modalContent4 = false;
@@ -393,8 +428,10 @@ export class EmployeeProfileComponent {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = true;
+    this.selectedUser = { _id: user._id };
+    this.form.patchValue(user);
   }
-  closeModal6() {
+  closeModal6(data) {
     this.fourthStep = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
@@ -402,6 +439,13 @@ export class EmployeeProfileComponent {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = false;
+    const updatedData = this.form.value;
+    console.log('abc', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
+      console.log('Data updated successfully');
+    });
+    this.user = updatedData;
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
@@ -440,6 +484,12 @@ export class EmployeeProfileComponent {
     this.colorvariable5 = arr5.id;
     this.contentdropdown5 = false;
     console.log(arr5.name);
+    this.jobtiming = arr5.name;
+  }
+
+  contentshow: boolean = false;
+  addemployee() {
+    this.contentshow = !this.contentshow;
   }
   contentdropdown8: boolean = false;
   dropdownOpen8() {
@@ -452,12 +502,28 @@ export class EmployeeProfileComponent {
     this.colorvariable8 = arr8.id;
     this.contentdropdown8 = false;
     console.log(arr8.name);
+    this.jobempstatus=arr8.name
   }
-  contentshow: boolean = false;
-  addemployee() {
-    this.contentshow = !this.contentshow;
+
+  dropdownClose3() {
+    this.contentdropdown3 = false;
   }
-  dropdownOpenOption() {
-    this.designationdropdownOption = !this.designationdropdownOption;
+  dropdownClose4() {
+    this.contentdropdown4 = false;
+  }
+  dropdownClose1() {
+    this.contentdropdown1 = false;
+  }
+  dropdownClose2() {
+    this.contentdropdown2 = false;
+  }
+  dropdownClose() {
+    this.contentdropdown = false;
+  }
+  dropdownClose8() {
+    this.contentdropdown8 = false;
+  }
+  dropdownClose5() {
+    this.contentdropdown5 = false;
   }
 }
