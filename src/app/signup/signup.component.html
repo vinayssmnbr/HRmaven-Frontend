@@ -103,8 +103,7 @@
                         <label for="name" class="text-label">Password</label>
                         <input type="password" placeholder="Enter your password" class="password"
                             formControlName="password" #passwordInput />
-                        <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>atleast 8
-                            characters and contain atleast one (A,a,@,1)</span>
+                        <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span>
                         <span *ngIf="password && password.invalid && password.touched ">
                             <div class="iconWrap">
                                 <i class="fa-solid fa-circle-info"></i>

@@ -25,6 +25,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class EmployeeContentComponent implements OnInit {
   selectedEmployee: any;
+  designationdropdownOption: boolean = false;
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
   }
@@ -75,7 +76,7 @@ export class EmployeeContentComponent implements OnInit {
     address: new FormControl('', Validators.required),
     bankname: new FormControl('',Validators.required),
     adhaarno: new FormControl('', [Validators.required]),
-    accountno: new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)]),
+    accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('', [
       Validators.required,
       Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
@@ -403,5 +404,26 @@ export class EmployeeContentComponent implements OnInit {
     this.colorvariable6 = arr6.id;
     this.contentdropdown3 = false;
     console.log(arr6.name);
+    this.designation = arr6.name;
+
+
 }
+dropdownClose() {
+  this.contentdropdown = false;
+}
+dropdownClose3(){
+this.contentdropdown3=false;
+}
+dropdownClose1(){
+this.contentdropdown1=false;
+}
+dropdownClose2(){
+this.contentdropdown2=false;
+}
+
+dropdownOpenOption() {
+  this.designationdropdownOption = !this.designationdropdownOption;
+}
+
+
 }

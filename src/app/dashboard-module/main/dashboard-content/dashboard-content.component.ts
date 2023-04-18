@@ -224,36 +224,21 @@ export class DashboardContentComponent implements OnInit {
 
 
 
+array: any = [
+  {
+    id: 0,
+    name: 'Weekly',
+  },
+  {
+    id: 1,
+    name: 'Monthly',
+  },
+  {
+    id: 2,
+    name: 'Yearly',
+  },
 
-updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-  const url = `https://hrmaven.works/api/leave/${id}`;
-  const body = { status: status };
-  this.http.patch(url, JSON.stringify(body), { headers: { 'content-type': 'application/json' } }
-  ).subscribe(response => {
-    console.log('Leave status updated successfully: ', response);
-
-  }, error => {
-    console.error('Error updating leave status:', error);
-
-  });
-
-}
-
-// array: any = [
-//   {
-//     id: 0,
-//     name: 'Weekly',
-//   },
-//   {
-//     id: 1,
-//     name: 'Monthly',
-//   },
-//   {
-//     id: 2,
-//     name: 'Yearly',
-//   }
-
-// ];
+];
 contentdropdown: boolean = false;
 dropdownOpen() {
 
@@ -268,4 +253,9 @@ Changeselect(arr: any) {
   console.log(arr.name);
 }
 
+updateLeaveStatus(object: any, status: 'accept' | 'reject') {
+  this.dashService.updateleave(object,status);
 }
+
+}
+
