@@ -133,19 +133,11 @@ export class EmployeeContentComponent implements OnInit {
   }
   form = new FormGroup({
     name: new FormControl('', [Validators.required, this.nameValidator]),
-<<<<<<< HEAD
-    designation: new FormControl('', Validators.required),
-    uid: new FormControl(this.currentEmployeeUid),
-    dateOfJoining: new FormControl('', Validators.required),
-    dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl('', Validators.required),
-=======
     designation: new FormControl(this.Selectvariable6,Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
     gender: new FormControl(this.Selectvariable1,Validators.required),
->>>>>>> f35f120e8aba65a1121d1e4ce2d3b28a5836f7ad
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
@@ -392,22 +384,6 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
-<<<<<<< HEAD
-  contentdropdown3: boolean = false;
-  dropdownOpen3() {
-    this.contentdropdown3 = !this.contentdropdown3;
-  }
-  Selectvariable: string = 'Designation';
-  colorvariable: number = 0;
-  Selectvariable1: string = 'Select';
-  colorvariable1: number = 0;
-  Selectvariable2: string = 'Select Bank';
-  colorvariable2: number = 0;
-  Selectvariable6: string = 'Designation';
-  colorvariable6: number = 0;
-=======
-
->>>>>>> f35f120e8aba65a1121d1e4ce2d3b28a5836f7ad
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -431,20 +407,6 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr2.name);
     this.bankname = arr2.name;
   }
-<<<<<<< HEAD
-  // for(let i=0; i)
-  Changeselect6(arr6: any) {
-    this.Selectvariable6 = arr6.name;
-    this.colorvariable6 = arr6.id;
-    this.contentdropdown3 = false;
-    console.log(arr6.name);
-  }
-  dropdownOpenOption() {
-    this.designationdropdownOption = !this.designationdropdownOption;
-  }
-  
-=======
 
 
->>>>>>> f35f120e8aba65a1121d1e4ce2d3b28a5836f7ad
 }
