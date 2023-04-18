@@ -336,7 +336,7 @@ input:focus {
 }
 
 .manual-btn:not(:last-child) {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .manual-btn:hover {
@@ -378,7 +378,7 @@ input:focus {
 }
 
 .navigation-auto div:not(:last-child) {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 #radio1:checked~.navigation-auto .auto-btn1 {
