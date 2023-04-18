@@ -57,11 +57,25 @@
               </ul>
             </div>
           </div> -->
-                </div>
-                <div class="loader" *ngIf="!loader"></div>
-                <div class="bar-chart">
-                    <canvas id="myChart"></canvas>
-                </div>
+        </div>
+        <div class="loader" *ngIf="!loader" ></div>
+        <div class="bar-chart">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="meeting-area">
+        <div class="meeting-text">
+          <h2>Meetings</h2>
+          <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
+        </div>
+        <div class="meeting-scrollbar">
+        <div class="all-meetings" *ngFor="let option of options let index = index">
+          <div class="interview-area">
+            <div class="date">
+              <p>{{option.day}}</p>
+              <h5>{{option.Date}}</h5>
             </div>
         </div>
         <div class="col-4">
