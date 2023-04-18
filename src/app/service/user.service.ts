@@ -20,12 +20,12 @@ export class UserService {
     return this.cookie.get('token') !== '';
   }
 
-  private saveurl=environment.saveurl;
-  private loginurl=environment.loginurl
-  private Forgoturl=environment.Forgoturl
-  private Reseturl=environment.Reseturl
-  private url=environment.url
-  private auth=environment.auth
+  private saveurl = environment.saveurl;
+  private loginurl = environment.loginurl;
+  private Forgoturl = environment.Forgoturl;
+  private Reseturl = environment.Reseturl;
+  private url = environment.url;
+  private auth = environment.auth;
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -35,8 +35,6 @@ export class UserService {
   ForgotEmail(data: any) {
     return this.http.post(this.Forgoturl, data);
   }
-
-
 
   newpwd(data: any, token: any) {
     let headers = new HttpHeaders({
@@ -53,13 +51,10 @@ export class UserService {
     return this.http.post(this.loginurl, data);
   }
 
-
   //  My code for profile fetch Name
   getUserProfileById(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-
 
     return this.http.get(this.url, { headers }).pipe(
       map((response: any) => {
@@ -68,28 +63,46 @@ export class UserService {
     );
   }
 
+  allDataLogin() {
+    const token = this.cookie.get('token');
 
-    allDataLogin() {
-      const token = this.cookie.get("token");
-
-      if (!token) {
-        this.router.navigate(['login']);
-        return;
-      }
-
-      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-      this.http.get(this.auth, { headers }).subscribe(
-        (res: any) => {
-          this.isLoggedIn.next(true);
-          // this.router.navigate(['dashboard']);
-        },
-        (error) => {
-          console.log(error);
-          this.router.navigate(['login']);
-        }
-      );
+    if (!token) {
+      this.router.navigate(['login']);
+      return;
     }
 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
+    this.http.get(this.auth, { headers }).subscribe(
+      (res: any) => {
+        this.isLoggedIn.next(true);
+        this.router.navigate(['dashboard']);
+      },
+      (error) => {
+        console.log(error);
+        this.router.navigate(['login']);
+      }
+    );
+  }
+  mainAuth() {
+    const token = this.cookie.get('token');
+
+    if (!token) {
+      this.router.navigate(['login']);
+      return;
+    }
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    this.http.get(this.auth, { headers }).subscribe(
+      (res: any) => {
+        this.isLoggedIn.next(true);
+        // this.router.navigate(['dashboard']);
+      },
+      (error) => {
+        console.log(error);
+        this.router.navigate(['login']);
+      }
+    );
+  }
 }

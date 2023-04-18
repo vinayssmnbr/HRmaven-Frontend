@@ -11,8 +11,8 @@ import { AuthMainGuard } from './guards/authmain.guard';
 
 const routes: Routes = [
   { path: '', component: LoaderComponent },
-  { path: 'login', component: LoginComponent, canActivate: [AuthMainGuard] },
-  { path: 'signup', component: SignupComponent, canActivate: [AuthMainGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   {
     path: 'dashboard',
     loadChildren: () =>

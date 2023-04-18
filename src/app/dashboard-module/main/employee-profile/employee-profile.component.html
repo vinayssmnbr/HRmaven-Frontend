@@ -17,8 +17,8 @@
       <div class="content">
 
         <h3>{{user.name}}</h3>
-        <p>Front End Developer</p>
-        <span><i class="fa-solid fa-location-dot"></i> Leeds, United Kingdom</span>
+        <p>{{user.designation}}</p>
+        <span><i class="fa-solid fa-location-dot"></i>{{user.explocation}}</span>
       </div>
     </div>
     <ul class="content1">
@@ -50,7 +50,7 @@
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
-          <p class="dob">{{user.dateOfBirth | date:"short"}}</p>
+          <p class="dob">{{user.dateOfBirth | date:"shortDate"}}</p>
           <span class="marstatus">Marital Status</span>
           <p class="marstatus">{{user.maritalStatus}}</p>
           <span class="nation">Nationality</span>
@@ -87,7 +87,7 @@
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
-        <button class="edit1" (click)="openModal3()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal3(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -106,80 +106,80 @@
           <span class="ifsc">IFSC Code</span>
           <p class="ifsc">{{user.ifsc}}</p>
           <span class="pno">Passport Number</span>
-          <p class="pno">M5425189</p>
+          <p class="pno">{{user.passport}}</p>
         </div>
       </div>
     </div>
     <div class="card6" *ngIf="personaldetail">
       <div class="details">
         <h3>Education</h3>
-        <button class="edit1" (click)="openModal4()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal4(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="inst1">10th Grade Institute</span>
-          <p class="inst1">Sacred Heart Senior Secondary School</p>
+          <p class="inst1">{{user.matric}}</p>
           <span class="dper">12th Diploma Percentage</span>
-          <p class="dper">92%</p>
+          <p class="dper">{{user.interPercent}}</p>
           <span class="sgpa">Graduation SGPA</span>
-          <p class="sgpa">8.7</p>
+          <p class="sgpa">{{user.graduationCgpa}}</p>
           <span class="pgsgpa">Post Graduation SGPA</span>
-          <p class="pgsgpa">8.8</p>
+          <p class="pgsgpa">{{user.pgCgpa}}</p>
         </div>
         <div class="column2">
           <span class="mper">Matriculation Percentage</span>
-          <p class="mper">88%</p>
+          <p class="mper">{{user.matricPercent}}</p>
           <span class="gcol">Graduation College/University</span>
-          <p class="gcol">Lovely Professional University</p>
+          <p class="gcol">{{user.graduation}}</p>
           <span class="pgcol">Post Graduation College/University</span>
-          <p class="pgcol">Lovely Professional University</p>
+          <p class="pgcol">{{user.pg}}</p>
         </div>
         <div class="column3">
           <span class="inst2">12th Grade/Diploma Institute</span>
-          <p class="inst2">Guru Nanak Public School</p>
+          <p class="inst2">{{user.inter}}</p>
           <span class="stream">Stream</span>
-          <p class="stream">B.Tech CSE</p>
+          <p class="stream">{{user.graduationStream}}</p>
           <span class="pgstream">Post Graduation Stream</span>
-          <p class="stream">M.Tech CSE</p>
+          <p class="stream">{{user.pgStream}}</p>
         </div>
       </div>
     </div>
     <div class="card7" *ngIf="personaldetail">
       <div class="details">
         <h3>Experience</h3>
-        <button class="edit1" (click)="openModal5()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p class="orgname">Infosys</p>
+          <p class="orgname">{{user.expcompany}}</p>
           <span class="location2">Location</span>
-          <p class="location2">Pune, India</p>
+          <p class="location2">{{user.explocation}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p class="duration2">May 2020 - April 2023</p>
+          <p class="duration2">{{user.expduration}}</p>
         </div>
         <div class="column3">
           <span class="designation">Designation</span>
-          <p class="designation">Lead- Front end developer</p>
+          <p class="designation">{{user.expdesignation}}</p>
         </div>
       </div>
       <hr>
       <div class="row1">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p class="orgname">Accenture</p>
+          <p class="orgname">{{user.expcompany1}}</p>
           <span class="location2">Location</span>
-          <p class="location2">Pune, India</p>
+          <p class="location2">{{user.explocation1}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p class="duration2">April 2019 - May 2020</p>
+          <p class="duration2">{{user.expduration1}}</p>
         </div>
         <div class="column3">
           <span class="designation2">Designation</span>
-          <p class="designation2">Lead- Front End developer</p>
+          <p class="designation2">{{user.expdesignation1}}</p>
         </div>
       </div>
     </div>
@@ -191,21 +191,21 @@
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p class="designation2">{{user.designation}}</p>
+          <p class="designation2">{{user.jobdesignation}}</p>
           <span class="location3">Location</span>
-          <p class="location3">Leeds, United Kingdom</p>
+          <p class="location3">{{user.joblocation1}}</p>
         </div>
         <div class="column2">
           <span class="estatus">Employment Status</span>
-          <p class="estatus">Full-Time Permanent</p>
+          <p class="estatus">{{user.jobempstatus}}</p>
           <span class="timings">Timings</span>
-          <p class="timings">9:00 am to 5:00 pm</p>
+          <p class="timings">{{user.jobtiming}}</p>
         </div>
         <div class="column3">
           <span class="jdate">Joining Date</span>
-          <p class="jdate">1 April 2023</p>
+          <p class="jdate">{{user.joiningdate | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
-          <p class="ctc">8 LPA</p>
+          <p class="ctc">{{user.jobctc}}</p>
         </div>
       </div>
     </div>
@@ -225,8 +225,8 @@
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id" formControlName="uid"
-                [disabled]="true" readonly>
+              <input type="number" placeholder="28563" class="employe-id" formControlName="uid" [disabled]="true"
+                readonly>
             </div>
             <div class="input">
               <label>Date of birth</label>
@@ -244,12 +244,12 @@
             </div>
             <div class="input">
               <label>Marital Status</label>
-              <div class="dropdown_container">
+              <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
                   <p>{{Selectvariable3}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown3">
+                <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
                   <ul>
                     <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
                       (click)="Changeselect3(arr3)">
@@ -267,7 +267,7 @@
                   <p>{{Selectvariable4}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown4">
+                <div class="select_content1" *ngIf="contentdropdown4" (mouseleave)="dropdownClose4()">
                   <ul>
                     <li *ngFor="let arr4 of array4; index as i" [class.select_active]="i === colorvariable4"
                       (click)="Changeselect4(arr4)">
@@ -278,12 +278,12 @@
             </div>
             <div class="input">
               <label>Gender</label>
-              <div class="dropdown_container">
+              <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                   <p>{{Selectvariable1}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown1">
+                <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
                   <ul>
                     <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
                       (click)="Changeselect1(arr1)">
@@ -316,7 +316,7 @@
           <div class="form-row">
             <div class="input">
               <label>Contact No.</label>
-              <input type="number" placeholder="9836327872" formControlName="cno">
+              <input type="number" placeholder="9836327872" formControlName="mobile">
             </div>
             <div class="input">
               <label>Address</label>
@@ -334,7 +334,7 @@
             </div>
             <div class="input">
               <label>Postal Code</label>
-              <input type="number" placeholder="141002" formControlName="postalCode">
+              <input type="number" placeholder="141002" formControlName="postalCode" class=" no-spin">
             </div>
             <div class="input">
               <label>State</label>
@@ -357,12 +357,12 @@
           <div class="form-row">
             <div class="input">
               <label>Bank Name</label>
-              <div class="dropdown_container">
+              <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
                   <p>{{Selectvariable2}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown2">
+                <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
                   <ul>
                     <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
                       (click)="Changeselect2(arr2)">
@@ -373,7 +373,7 @@
             </div>
             <div class="input">
               <label>Bank Account No.</label>
-              <input type="number" placeholder="6412365874125425" formControlName="bno">
+              <input type="number" placeholder="6412365874125425" formControlName="accountno">
             </div>
             <div class="input">
               <label>IFSC Code</label>
@@ -391,13 +391,13 @@
             </div>
             <div class="input">
               <label>Passport Number</label>
-              <input type="text" placeholder="M5425189" formControlName="pno">
+              <input type="text" placeholder="M5425189" formControlName="passport">
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4()">Update</button>
+        <button class="save" (click)="closeModal4(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent6">
@@ -410,55 +410,55 @@
           <div class="form-row">
             <div class="input">
               <label>10th Grade Institute</label>
-              <input type="text" placeholder="Sacred Heart Senior Secondary School" formControlName="inst1">
+              <input type="text" placeholder="Sacred Heart Senior Secondary School" formControlName="matric">
             </div>
             <div class="input">
               <label>Matriculation Percentage</label>
-              <input type="number" placeholder="88%" formControlName="mper">
+              <input type="number" placeholder="88%" formControlName="matricPercent">
             </div>
             <div class="input">
               <label>12th Grade/Diploma Institute</label>
-              <input type="text" placeholder="Guru Nanak Public School" formControlName="inst2">
+              <input type="text" placeholder="Guru Nanak Public School" formControlName="inter">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>12th/Diploma Percentage</label>
-              <input type="number" placeholder="92%" formControlName="dper">
+              <input type="number" placeholder="92%" formControlName="interPercent">
             </div>
             <div class="input">
               <label>Graduation College/University</label>
-              <input type="text" placeholder="Lovely Professional University" formControlName="gcol">
+              <input type="text" placeholder="Lovely Professional University" formControlName="graduation">
             </div>
             <div class="input">
               <label>Stream</label>
-              <input type="text" placeholder="B.Tech CSE" formControlName="stream">
+              <input type="text" placeholder="B.Tech CSE" formControlName="graduationStream">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Graduation SGPA</label>
-              <input type="number" placeholder="8.7" formControlName="sgpa">
+              <input type="number" placeholder="8.7" formControlName="graduationCgpa">
             </div>
             <div class="input">
               <label>Post Graduation College/University</label>
-              <input type="text" placeholder="Lovely Professional University" formControlName="pgcol">
+              <input type="text" placeholder="Lovely Professional University" formControlName="pg">
             </div>
             <div class="input">
               <label>Post Graduation Stream</label>
-              <input type="text" placeholder="M.Tech CSE" formControlName="pgstream">
+              <input type="text" placeholder="M.Tech CSE" formControlName="pgStream">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Post Graduation SGPA</label>
-              <input type="number" placeholder="8.8" formControlName="pgsgpa">
+              <input type="number" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal5()">Update</button>
+        <button class="save" (click)="closeModal5(form.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent7">
@@ -471,42 +471,42 @@
           <div class="form-row">
             <div class="input">
               <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Infosys" formControlName="orgname">
+              <input type="text" placeholder="Infosys" formControlName="expcompany">
             </div>
             <div class="input">
               <label>Duration</label>
-              <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
+              <input type="text" placeholder="May 2020 - April 2023" formControlName="expduration">
             </div>
             <div class="input">
               <label>Designation</label>
-              <input type="text" placeholder="Lead- front end developer" formControlName="designation">
+              <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="location2">
+              <input type="text" placeholder="Pune, India" formControlName="explocation">
             </div>
           </div>
           <hr>
           <div class="form-row" *ngIf="contentshow">
             <div class="input">
               <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Accenture" formControlName="orgname">
+              <input type="text" placeholder="Accenture" formControlName="expcompany1">
             </div>
             <div class="input">
               <label>Duration</label>
-              <input type="text" placeholder="April 2019 - May 2020" formControlName="duration2">
+              <input type="text" placeholder="April 2019 - May 2020" formControlName="expduration1">
             </div>
             <div class="input">
               <label>Designation</label>
-              <input type="text" placeholder="Front End developer" formControlName="designation">
+              <input type="text" placeholder="Front End developer" formControlName="expdesignation1">
             </div>
           </div>
           <div class="form-row" *ngIf="contentshow">
             <div class="input">
               <label>Location</label>
-              <input type="text" placeholder="Bangalore, India" formControlName="location2">
+              <input type="text" placeholder="Bangalore, India" formControlName="explocation1">
             </div>
           </div>
           <!-- <div class="form-row">
@@ -529,11 +529,11 @@
               <input type="text" placeholder="Pune, India" formControlName="location2">
             </div>
           </div> -->
-          <button class="btn3"  (click)="addemployee()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+          <button class="btn3" (click)="addemployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal6()">Update</button>
+        <button class="save" (click)="closeModal6(form.value)">Update</button>
       </div>
     </div>
     <!-- <div class="modal-footer">
@@ -551,12 +551,12 @@
           <div class="form-row">
             <div class="input">
               <label>Designation</label>
-              <div class="dropdown_container">
+              <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                 <div class="dropdwon_select" (click)="dropdownOpen()">
                   <p>{{Selectvariable}}</p>
                   <i class="fa-sharp fa-solid fa-caret-down"></i>
                 </div>
-                <div class="select_content" *ngIf="contentdropdown">
+                <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
                   <ul>
                     <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
                       (click)="Changeselect(arr)">
@@ -567,26 +567,40 @@
             </div>
             <div class="input">
               <label>Employment Status</label>
-              <input type="text" placeholder="Full- Time Permanent" formControlName="estatus">
+              <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="jobempstatus"> -->
+              <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
+              <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen8()">
+                  <p>{{Selectvariable8}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown8" (mouseleave)="dropdownClose8()">
+                  <ul>
+                    <li *ngFor="let arr8 of array8; index as i" [class.select_active]="i === colorvariable8"
+                      (click)="Changeselect8(arr8)">
+                      {{arr8.name}}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="input">
               <label>Joining Date</label>
-              <input type="date" placeholder="1 April,2023" formControlName="jdate">
+              <input type="date" placeholder="1 April,2023" formControlName="joiningdate">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="location3">
+              <input type="text" placeholder="Pune, India" formControlName="joblocation1">
             </div>
             <div class="input">
               <label>Timings</label>
-              <div class="dropdown_container">
+              <div class="dropdown_container" (mouseleave)="contentdropdown5 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen5()">
                   <p>{{Selectvariable5}}</p>
                   <i class="fa-sharp fa-solid fa-caret-down"></i>
                 </div>
-                <div class="select_content" *ngIf="contentdropdown5">
+                <div class="select_content" *ngIf="contentdropdown5" (mouseleave)="dropdownClose5()">
                   <ul>
                     <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5"
                       (click)="Changeselect5(arr5)">
@@ -597,7 +611,7 @@
             </div>
             <div class="input">
               <label>CTC</label>
-              <input type="text" placeholder="8LPA" formControlName="ctc">
+              <input type="text" placeholder="8LPA" formControlName="jobctc">
             </div>
           </div>
         </form>

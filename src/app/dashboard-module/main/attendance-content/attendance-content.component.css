@@ -149,19 +149,14 @@ td {
     border-radius: 4px;
 }
 
-.grid-icon img {
-    width: 13px;
-    height: 13px;
-}
-
 .grid-icon i:hover {
     background-color: #999;
     color: #fff;
 }
 
-.grid-icon img:hover {
-    background-color: #999;
-    color: #fff;
+.grid-icon>i.active {
+    background-color: #ccc !important;
+    /* change to your desired background color */
 }
 
 .employe_input {

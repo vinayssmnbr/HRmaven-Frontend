@@ -45,18 +45,6 @@
                     <div class="attendance">
                         <h2>Attendance</h2>
                     </div>
-                    <!-- <div class="dropdown_container">
-            <div class="dropdwon_select" (click)="dropdownOpen()">
-              <p>{{Selectvariable}}</p>
-              <i class="fa-sharp fa-solid fa-caret-down"></i>
-            </div>
-            <div class="select_content" *ngIf="contentdropdown">
-              <ul>
-                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                  {{arr.name}}</li>
-              </ul>
-            </div>
-          </div> -->
                 </div>
                 <div class="loader" *ngIf="!loader"></div>
                 <div class="bar-chart">
@@ -136,10 +124,7 @@
                                             <label for="outline1" class="outline1">Accept</label>
                                         </div>
                                         <div class="action_btn">
-                                            <input type="radio" [checked]="leave.status=='reject'"
-                                                [disabled]="leave.status=='accept' || leave.status=='reject'"
-                                                (change)="updateLeaveStatus(leave._id, 'reject')" id="outline"
-                                                class="custom-radio">
+                                            <input type="radio" [checked]="leave.status=='reject'" [disabled]="leave.status=='accept' || leave.status=='reject'" (change)="updateLeaveStatus(leave._id, 'reject')" id="outline" class="custom-radio">
                                             <label for="outline" class="outline">Reject</label>
                                         </div>
                                     </div>
