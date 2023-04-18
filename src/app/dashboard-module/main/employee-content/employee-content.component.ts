@@ -132,6 +132,7 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = false;
     this.deletedata = data;
   }
+
   //SEARCH UID
   search(event) {
     console.log(this.query, 'search fn', this.designation);
@@ -247,8 +248,8 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = true;
     this.rowdelete = false;
     this.showModal = true;
-    this.fetchdata();
-    this.ngOnInit();
+    // this.fetchdata();
+    // this.ngOnInit();
   }
   closeModal3() {
     this.showModal = false;
