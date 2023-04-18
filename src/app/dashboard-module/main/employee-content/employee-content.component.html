@@ -4,21 +4,21 @@
   <div class="selection">
     <div class="input_left">
       <div class="input_field">
-        <input type="text" class="number1 no-spin" placeholder="Type Employee Name or ID" [(ngModel)]="query"
+        <input type="text" class="number1 no-spin" placeholder="Type Employee ID" [(ngModel)]="query"
           id="search" (input)="search($event)">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
-      <div class="dropdown_content">
+      <div class="dropdown_content" (mouseleave)="contentdropdown = false">
         <div class="dropdwon_select" (click)="dropdownOpen()">
           <div class="drop-icon">
-            <p>{{Selectvariable}}</p>
+            <p >{{Selectvariable}}</p>
             <div class="input_icon">
               <i class="fa-sharp fa-solid fa-caret-down"></i>
             </div>
           </div>
         </div>
-        <div class="select_content" *ngIf="contentdropdown">
+        <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
           <ul>
             <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
               (click)="Changeselect(arr)">
@@ -44,11 +44,12 @@
         </tr>
       </thead>
 
-      <tbody *ngIf="!emptybox">
+      <tbody>
         <tr *ngFor="let user of employee">
           <!--  -->
           <td class="employee1">{{user.uid}}</td>
-          <td class="name1">{{user.name}}</td>
+          <td class="name1">
+           <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}</td>
           <td class="designation1">{{user.designation}}</td>
           <td class="email1">{{user.email}}</td>
           <td class="contact1">{{user.mobile}}</td>
@@ -62,7 +63,7 @@
       </tbody>
 
     </table>
-    <div class="image_record" *ngIf="emptybox">
+    <div class="image_record" *ngIf="employee.length==0">
       <img src="./assets/images/no_record.png" alt="">
       <h3>No record Found!</h3>
     </div>
@@ -106,21 +107,22 @@
               <div class="input">
                 <label>Name <span>*</span></label>
                 <input type="name" id="text1" placeholder="Zana Jones" formControlName="name"
-                  [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.touched,'ng_valid': registrationFormControl.name.valid}">
+                  [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
 
               </div>
               <div class="input">
                 <label>Designation <span>*</span></label>
-                <div class="dropdown_container">
-                  <div class="dropdwon_select" (click)="dropdownOpen()" id="slt1">
-                    <p>{{Selectvariable}}</p>
+                <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
+                    <!-- <p> {{Selectvariable6}}</p> -->
+                    <input type="text" value={{Selectvariable6}} formControlName="designation" id="text8" readonly>
                     <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                   </div>
-                  <div class="select_content1" *ngIf="contentdropdown">
+                  <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
                     <ul>
-                      <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                        (click)="Changeselect(arr)">
-                        {{arr.name}}</li>
+                      <li *ngFor="let arr6 of array6; index as i" [class.select_active]="i === colorvariable6"
+                        (click)="Changeselect6(arr6)">
+                        {{arr6.name}}</li>
                     </ul>
                   </div>
                 </div>
@@ -145,12 +147,13 @@
               </div>
               <div class="input">
                 <label>Gender <span>*</span></label>
-                <div class="dropdown_container">
+                <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
-                    <p>{{Selectvariable1}}</p>
+                    <!-- <p >{{Selectvariable1}}</p> -->
+                    <input type="text" value={{Selectvariable1}} formControlName="gender" id="text9" readonly>
                     <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                   </div>
-                  <div class="select_content1" *ngIf="contentdropdown1">
+                  <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
                     <ul>
                       <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
                         (click)="Changeselect1(arr1)">
@@ -170,13 +173,13 @@
                 <label>Mobile No. <span>*</span></label>
                 <input type="number" class="no-spin" id="text6" pattern="[0-9]{10}" maxlength="10"
                   placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin"
-                  [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.touched,'ng_valid': registrationFormControl.mobile.valid}">
+                  [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
 
               </div>
               <div class="input">
                 <label>Email <span>*</span></label>
                 <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
-                  [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.touched,'ng_valid': registrationFormControl.email.valid}">
+                  [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
 
               </div>
             </div>
@@ -195,12 +198,12 @@
             <div class="form-row">
               <div class="input">
                 <label>Bank Name <span>*</span></label>
-                <div class="dropdown_container">
+                <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
                     <p>{{Selectvariable2}}</p>
                     <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                   </div>
-                  <div class="select_content1" *ngIf="contentdropdown2">
+                  <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
                     <ul>
                       <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
                         (click)="Changeselect2(arr2)">
@@ -211,9 +214,9 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11"
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11" minlength="9"
                   class=" no-spin"
-                  [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.touched,'ng_valid': registrationFormControl.accountno.valid}">
+                  [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
 
               </div>
             </div>
@@ -221,7 +224,7 @@
               <div class="input">
                 <label>IFSC Code <span>*</span></label>
                 <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12"
-                  [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.touched,'ng_valid': registrationFormControl.ifsc.valid}">
+                  [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.dirty,'ng_valid': registrationFormControl.ifsc.valid}">
 
               </div>
               <div class="input">
@@ -235,7 +238,7 @@
               <div class="input">
                 <label>PAN number <span>*</span></label>
                 <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10"
-                  [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.touched,'ng_valid': registrationFormControl.panno.valid}">
+                  [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.dirty,'ng_valid': registrationFormControl.panno.valid}">
 
               </div>
             </div>
@@ -244,7 +247,7 @@
 
         <div class="modal-footer">
           <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-            [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid)">
+            [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid  && this.form.controls.dateOfJoining.valid)">
             Next </button>
           <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
           <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn"

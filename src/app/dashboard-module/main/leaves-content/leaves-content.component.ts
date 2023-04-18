@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Action } from 'rxjs/internal/scheduler/Action';
 // import { format, parseISO } from 'date-fns';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-leaves-content',
@@ -11,6 +12,7 @@ import { Action } from 'rxjs/internal/scheduler/Action';
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
+  designationdropdownOption: boolean = false;
   circularProgress: any;
   progressValue: any;
   progressStartValue = 0;
@@ -24,15 +26,15 @@ export class LeavesContentComponent {
   employeeid = '';
   employeename = '';
   totalCount = 0;
-  acceptCount= 0;
+  acceptCount = 0;
   rejectCount = 0;
   pendingCount = 0;
-  accept_graph:any;
-  reject_graph:any;
-  pending_graph:any;
+  accept_graph: any;
+  reject_graph: any;
+  pending_graph: any;
 
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
@@ -41,9 +43,7 @@ export class LeavesContentComponent {
 
   }
 
-  updatereload()
-
-  {
+ async  updatereload() {
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);
       this.leaves = res;
@@ -56,7 +56,7 @@ export class LeavesContentComponent {
       this.reject_graph = this.rejectCalculate()
       this.pending_graph = this.pendingCalculate()
 
-      this.leaves = this.leaves.sort((a, b) => {
+      this.leaves =  this.leaves.sort((a, b) => {
         if (a.status > b.status) return 1;
         if (a.status < b.status) return -1;
         return 1;
@@ -64,7 +64,30 @@ export class LeavesContentComponent {
       console.log(this.leaves);
     });
   }
-  getTotal(){
+
+  updateafteraction() {
+
+    this.dashService.getLeaves().subscribe((res: any) => {
+      console.log('data', res);
+      // this.leaves = res;
+      this.totalCount = this.getTotal()
+      this.acceptCount = this.getCount('accept')
+      this.rejectCount = this.getCount1('reject')
+      this.pendingCount = this.getCount3('pending')
+
+      this.accept_graph = this.acceptCalculate()
+      this.reject_graph = this.rejectCalculate()
+      this.pending_graph = this.pendingCalculate()
+
+      // this.leaves = this.leaves.sort((a, b) => {
+      //   if (a.status > b.status) return 1;
+      //   if (a.status < b.status) return -1;
+      //   return 1;
+      // });
+      // console.log(this.leaves);
+    });
+  }
+  getTotal() {
     return this.leaves.length;
   }
 
@@ -72,21 +95,21 @@ export class LeavesContentComponent {
     return this.leaves.filter(o => o.status == status1).length;
   }
 
-  getCount1(status2){
-    return this.leaves.filter(o=>o.status === status2).length;
+  getCount1(status2) {
+    return this.leaves.filter(o => o.status === status2).length;
   }
-  getCount3(status3){
-    return this.leaves.filter(o=>o.status == status3).length;
+  getCount3(status3) {
+    return this.leaves.filter(o => o.status == status3).length;
   }
 
-  acceptCalculate(){
-    return ((this.acceptCount/this.totalCount)*100);
+  acceptCalculate() {
+    return ((this.acceptCount / this.totalCount) * 100);
   }
-  rejectCalculate(){
-    return ((this.rejectCount/this.totalCount)*100)
+  rejectCalculate() {
+    return ((this.rejectCount / this.totalCount) * 100)
   }
-  pendingCalculate(){
-    return ((this.pendingCount/this.totalCount)*100)
+  pendingCalculate() {
+    return ((this.pendingCount / this.totalCount) * 100)
   }
 
 
@@ -95,30 +118,23 @@ export class LeavesContentComponent {
     console.log(this.test);
   }
 
-  updateLeaveStatus(id: any, status: 'accept' | 'reject') {
-    const url = `https://hrmaven.works/api/leave/${id}`;
-    const body = { status: status };
-    this.http
-      .patch(url, JSON.stringify(body), {
-        headers: { 'content-type': 'application/json' },
-      })
-      .subscribe(
-        (response) => {
-          console.log('Leave status updated successfully: ', response);
-        },
-        (error) => {
-          console.error('Error updating leave status:', error);
-        }
-      );
-      this.updatereload();
+
+  getDates(startDate: string, stopDate: string): string[] {
+    const dateArray: string[] = [];
+    let currentDate = moment(startDate);
+    const endDate = moment(stopDate);
+    while (currentDate <= endDate) {
+      dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
+      currentDate = moment(currentDate).add(1, 'days');
+    }
+    return dateArray;
   }
-  onAccept(id: any) {
-    this.updateLeaveStatus(id, 'accept');
+  async updateLeaveStatus(object: any, status: 'accept' | 'reject') {
+
+    this.dashService.updateleave(object, status);
+    await this.updateafteraction();
   }
 
-  onReject(id: any) {
-    this.updateLeaveStatus(id, 'reject');
-  }
   array: any = [
     {
       id: 0,
@@ -129,11 +145,11 @@ export class LeavesContentComponent {
       name: 'Pending',
     },
     {
-      id: 3,
+      id: 2,
       name: 'Rejected',
     },
     {
-      id: 4,
+      id: 3,
       name: 'Accepted',
     },
   ];
@@ -153,4 +169,8 @@ export class LeavesContentComponent {
     this.contentdropdown = false;
     console.log(arr.name);
   }
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
 }

@@ -67,7 +67,10 @@ ul.navigation li a{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
-
+.navigation2 img{
+  width: 17px;
+  height: 17px;
+}
 
 ul.navigation li:hover{
   background: rgba(255, 255, 255, 0.3);

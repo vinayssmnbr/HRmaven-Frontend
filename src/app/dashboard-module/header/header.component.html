@@ -1,18 +1,15 @@
 <header id="header">
   <div class="content">
     <div class="content-left">
-    <h2  *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p></h2>
-    <h2  *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
-    <h2  *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2>
-    <h2  *ngIf="dashService.activeComponent === 'attendance'">Attendance Management</h2>
-    <h2  *ngIf="dashService.activeComponent === 'payroll'">Payroll</h2>
-    <h2  *ngIf="dashService.activeComponent === 'recruitment'">Recruitment</h2>
-    <h2  *ngIf="dashService.activeComponent === 'job-details'">Recruitment</h2>
-    <h2  *ngIf="dashService.activeComponent === 'report'">Report</h2>
-
-
-
-
+      <h2 *ngIf="dashService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p>
+      </h2>
+      <h2 *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2>
+      <h2 *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2>
+      <h2 *ngIf="dashService.activeComponent === 'attendance'">Attendance Management</h2>
+      <h2 *ngIf="dashService.activeComponent === 'payroll'">Payroll</h2>
+      <h2 *ngIf="dashService.activeComponent === 'recruitment'">Recruitment</h2>
+      <h2 *ngIf="dashService.activeComponent === 'job-details'">Recruitment</h2>
+      <h2 *ngIf="dashService.activeComponent === 'report'">Report</h2>
     </div>
     <div class="content-right">
       <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
@@ -27,7 +24,7 @@
   </div>
 
 </header>
-<ng-container *ngIf="visible" >
+<ng-container *ngIf="visible">
   <div class="notification-area">
     <div class="notification-upper">
       <div class="notification-mark">
@@ -83,7 +80,8 @@
                 <div class="meeting-link">
                   <i class="fa-solid fa-link"></i>
                 </div>
-              </div></div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -215,9 +213,9 @@
             </div>
           </div>
         </div>
-</div>
+      </div>
 
- <div class="all-messages" *ngIf="id ==='important' ">
+      <div class="all-messages" *ngIf="id ==='important' ">
         <div class="all-area">
           <div class="image-and-text">
             <div class="robert-image">
@@ -272,31 +270,31 @@
     </div>
   </div>
 </ng-container>
- <div  class="profile_div"*ngIf="profileDisplay" >
-    <div class="profile-content">
-      <div class="profile-title">
-          <div class="profile-logo">
-              <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
-          </div>
-          <div class="profile-text">
-            <h2> {{name}} </h2>
-              <p >{{userEmail}}</p>
-          </div>
-          <div class="head-btn">
-              <button class="btn-head">HEAD</button>
-          </div>
+<div class="profile_div" *ngIf="profileDisplay">
+  <div class="profile-content">
+    <div class="profile-title">
+      <div class="profile-logo">
+        <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
       </div>
-      <div class="profile-account">
-          <div class="account">
-              <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button>
-          </div>
+      <div class="profile-text">
+        <h2> {{name}} </h2>
+        <p>{{userEmail}}</p>
       </div>
+      <div class="head-btn">
+        <button class="btn-head">paid</button>
+      </div>
+    </div>
+    <div class="profile-account">
+      <div class="account">
+        <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button>
+      </div>
+    </div>
     <div class="profile-account disable-btn">
-      <div class="account1" (click)="logout()">
+      <div class="account1">
         <button class="account-btn" disabled><img src="./assets/images/subs.svg" alt="">
-            <a>Subsciption</a></button>
+          <a>Subsciption</a></button>
       </div>
     </div>
-    </div>
+  </div>
 
-</div> 
+</div>

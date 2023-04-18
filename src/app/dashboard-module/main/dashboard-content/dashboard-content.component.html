@@ -1,258 +1,242 @@
-<div class="main">
-  <div class="row">
-    <div class="col-3">
-      <div class="iconCenter file">
-        <i class="fa-sharp fa-solid fa-file-pen"></i>
-      </div>
-      <div class="text-image">
-        <p>Total Applications</p>
-        <h1>500</h1>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="iconCenter list">
-        <i class="fa-solid fa-rectangle-list"></i>
-      </div>
-      <div class="text-image">
-        <p>Shortlisted Candidates</p>
-        <h1>500</h1>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="iconCenter reject">
-        <i class="fa-solid fa-user-xmark"></i>
-      </div>
-      <div class="text-image">
-        <p>Rejected Candidates</p>
-        <h1>500</h1>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="iconCenter clock">
-        <i class="fa-sharp fa-regular fa-clock"></i>
-      </div>
-      <div class="text-image">
-        <p>Onhold Candidates</p>
-        <h1>500</h1>
-      </div>
-    </div>
-  </div>
-  <!--Section Bar Graph-->
-  <div class="row">
-    <div class="col-8">
-      <div class="attendance-area">
-        <div class="attendence-content">
-          <div class="attendance">
-            <h2>Attendance</h2>
-          </div>
-          <!-- <div class="dropdown_container">
-            <div class="dropdwon_select" (click)="dropdownOpen()">
-              <p>{{Selectvariable}}</p>
-              <i class="fa-sharp fa-solid fa-caret-down"></i>
-            </div>
-            <div class="select_content" *ngIf="contentdropdown">
-              <ul>
-                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                  {{arr.name}}</li>
-              </ul>
-            </div>
-          </div> -->
-        </div>
-        <div class="loader" *ngIf="!loader" ></div>
-        <div class="bar-chart">
-          <canvas id="myChart"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="meeting-area">
-        <div class="meeting-text">
-          <h2>Meetings</h2>
-          <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
-        </div>
-        <div class="meeting-scrollbar">
-        <div class="all-meetings" *ngFor="let option of options let index = index">
-          <div class="interview-area">
-            <div class="date">
-              <p>{{option.day}}</p>
-              <h5>{{option.Date}}</h5>
-            </div>
-            <div class="interview-timings">
-              <div class="interview-dots">
-                <h3>{{option.head}}</h3>
-                <p>{{option.time}}</p>
-              </div>
-              <div class="dots">
-                <i class="fa-solid fa-ellipsis-vertical" (click)="ToggleMenu(index)">
-                  <ul id={{index}} class="close">
-                    <button value={{index}} (click)="Edit(index)" class="edit-btn">Edit</button>
-                    <button value="Delete">Delete</button>
-                  </ul>
-                </i>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-  <!--Leave Request Section-->
-  <div class="row">
-    <div class="col-8">
-      <div class="leave-request-area">
-        <div class="leave-request-heading">
-          <h2>Leave request</h2>
-          <p><a routerLink="/dashboard/leaves"> View All </a></p>
-        </div>
-
-        <div class="table_data">
-          <table class="table_text">
-            <thead>
-              <tr class="table_heading">
-                <th>EMPLOYEE ID</th>
-                <th>EMPLOYEE NAME</th>
-                <th>FROM</th>
-                <th>TO</th>
-                <th>REASON</th>
-                <th>ACTION</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let leave of leaves ">
-                <td>{{leave.employeeId}}</td>
-                <td>{{leave.employeeName}}</td>
-                <td>{{leave.from | date:'short'}}</td>
-                <td>{{leave.to | date:'short'}}</td>
-                <td>{{leave.reason}}</td>
-                <td>
-                  <div class="action_button">
-                    <div class="action_btn">
-                      <input type="radio" [checked]="leave.status=='accept'"
-                        [disabled]="leave.status=='accept' || leave.status=='reject'"
-                        (change)="updateLeaveStatus(leave._id, 'accept')" id="outline1" class="custom-radio">
-                      <label for="outline1" class="outline1">Accept</label>
-                    </div>
-                    <div class="action_btn">
-                      <input type="radio" [checked]="leave.status=='reject'"
-                        [disabled]="leave.status=='accept' || leave.status=='reject'"
-                        (change)="updateLeaveStatus(leave._id, 'reject')" id="outline" class="custom-radio">
-                      <label for="outline" class="outline">Reject</label>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- table end -->
-      </div>
-    </div>
-
-    <!--End of Leave Request Section-->
-
-    <!--Activity feeds Section-->
-    <div class="col-4">
-      <div class="activity-area">
-
-        <div class="activity-feed-text">
-          <h2>Activity Feeds</h2>
-          <p>View All</p>
-        </div>
-        <div class="scrollbar-start">
-        <div class="image-text">
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-
-          <div class="john-image">
-            <div class="john-shaw-background">
-              <img src="assets/images/Ellipse 47.png" alt="" />
-            </div>
-            <div class="john-text">
-              <p><span>John Shaw</span> applied for the job of Product manager</p>
-              <p class="min">9 min ago</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-  <!--Leave Request Section-->
-
+<div class="main"> 
+    <div class="row"> 
+        <div class="col-3"> 
+            <div class="iconCenter file"> 
+                <i class="fa-sharp fa-solid fa-file-pen"></i> 
+            </div> 
+            <div class="text-image"> 
+                <p>Total Applications</p> 
+                <h1>500</h1> 
+            </div> 
+        </div> 
+        <div class="col-3"> 
+            <div class="iconCenter list"> 
+                <i class="fa-solid fa-rectangle-list"></i> 
+            </div> 
+            <div class="text-image"> 
+                <p>Shortlisted Candidates</p> 
+                <h1>500</h1> 
+            </div> 
+        </div> 
+        <div class="col-3"> 
+            <div class="iconCenter reject"> 
+                <i class="fa-solid fa-user-xmark"></i> 
+            </div> 
+            <div class="text-image"> 
+                <p>Rejected Candidates</p> 
+                <h1>500</h1> 
+            </div> 
+        </div> 
+        <div class="col-3"> 
+            <div class="iconCenter clock"> 
+                <i class="fa-sharp fa-regular fa-clock"></i> 
+            </div> 
+            <div class="text-image"> 
+                <p>Onhold Candidates</p> 
+                <h1>500</h1> 
+            </div> 
+        </div> 
+    </div> 
+    <!--Section Bar Graph--> 
+    <div class="row"> 
+        <div class="col-8"> 
+            <div class="attendance-area"> 
+                <div class="attendence-content"> 
+                    <div class="attendance"> 
+                        <h2>Attendance</h2> 
+                    </div> 
+                </div> 
+                <div class="loader" *ngIf="!loader"></div> 
+                <div class="bar-chart"> 
+                    <canvas id="myChart"></canvas> 
+                </div> 
+            </div> 
+        </div> 
+        <div class="col-4"> 
+            <div class="meeting-area"> 
+                <div class="meeting-text"> 
+                    <h2>Meetings</h2> 
+                    <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p> 
+                </div> 
+                <div class="meeting-scrollbar"> 
+                    <div class="all-meetings" *ngFor="let option of options let index = index"> 
+                        <div class="interview-area"> 
+                            <div class="date"> 
+                                <p>{{option.day}}</p> 
+                                <h5>{{option.Date}}</h5> 
+                            </div> 
+                            <div class="interview-timings"> 
+                                <div class="interview-dots"> 
+                                    <h3>{{option.head}}</h3> 
+                                    <p>{{option.time}}</p> 
+                                </div> 
+                                <div class="dots"> 
+                                    <i class="fa-solid fa-ellipsis-vertical" (click)="ToggleMenu(index)"> 
+                  <ul id={{index}} class="close"> 
+                    <button value={{index}} (click)="Edit(index)" class="edit-btn">Edit</button> 
+                    <button value="Delete">Delete</button> 
+                  </ul> 
+                </i> 
+                                </div> 
+                            </div> 
+                        </div> 
+ 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+    <!--Leave Request Section--> 
+    <div class="row"> 
+        <div class="col-8"> 
+            <div class="leave-request-area"> 
+                <div class="leave-request-heading"> 
+                    <h2>Leave request</h2> 
+                    <p><a routerLink="/dashboard/leaves"> View All </a></p> 
+                </div> 
+ 
+                <div class="table_data"> 
+                    <table class="table_text"> 
+                        <thead> 
+                            <tr class="table_heading"> 
+                                <th>EMPLOYEE ID</th> 
+                                <th>EMPLOYEE NAME</th> 
+                                <th>FROM</th> 
+                                <th>TO</th> 
+                                <th>REASON</th> 
+                                <th>ACTION</th> 
+                            </tr> 
+                        </thead> 
+                        <tbody> 
+                            <tr *ngFor="let leave of leaves "> 
+                                <td>{{leave.employeeId}}</td> 
+                                <td>{{leave.employeeName}}</td> 
+                                <td>{{leave.from | date:'short'}}</td> 
+                                <td>{{leave.to | date:'short'}}</td> 
+                                <td>{{leave.reason}}</td> 
+                                <td> 
+                                    <div class="action_button"> 
+                                        <div class="action_btn"> 
+                                            <input type="radio" [checked]="leave.status=='accept'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'accept')" id="outline1" class="custom-radio"> 
+                                            <label for="outline1" class="outline1">Accept</label> 
+                                        </div> 
+                                        <div class="action_btn"> 
+                                            <input type="radio" [checked]="leave.status=='reject'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'reject')" id="outline" class="custom-radio"> 
+                                            <label for="outline" class="outline">Reject</label> 
+                                        </div> 
+                                    </div> 
+                                </td> 
+                            </tr> 
+                        </tbody> 
+                    </table> 
+                </div> 
+                <!-- table end --> 
+            </div> 
+        </div> 
+ 
+        <!--End of Leave Request Section--> 
+ 
+        <!--Activity feeds Section--> 
+        <div class="col-4"> 
+            <div class="activity-area"> 
+ 
+                <div class="activity-feed-text"> 
+                    <h2>Activity Feeds</h2> 
+                    <p>View All</p> 
+                </div> 
+                <div class="scrollbar-start"> 
+                    <div class="image-text"> 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+ 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+ 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+ 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+ 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+ 
+                        <div class="john-image"> 
+                            <div class="john-shaw-background"> 
+                                <img src="assets/images/Ellipse 47.png" alt="" /> 
+                            </div> 
+                            <div class="john-text"> 
+                                <p><span>John Shaw</span> applied for the job of Product manager</p> 
+                                <p class="min">9 min ago</p> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+    <!--Leave Request Section--> 
+ 
 </div>

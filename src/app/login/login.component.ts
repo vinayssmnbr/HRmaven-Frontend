@@ -26,16 +26,15 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-
-const storedemail = localStorage.getItem('email');
-const storedPassword = localStorage.getItem('password');
-if (storedemail && storedPassword) {
-  this.loginForm.setValue({
-    email: storedemail,
-    password: storedPassword,
-    Remember: true
-  });
-}
+    const storedemail = localStorage.getItem('email');
+    const storedPassword = localStorage.getItem('password');
+    if (storedemail && storedPassword) {
+      this.loginForm.setValue({
+        email: storedemail,
+        password: storedPassword,
+        Remember: true,
+      });
+    }
     let counter = 0;
     setInterval(() => {
       const radioBtn = document.getElementById(
@@ -65,7 +64,7 @@ if (storedemail && storedPassword) {
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
     }
-    this.userService.allDataLogin();
+    // this.userService.allDataLogin();
   }
   //GOOGLE LOGIN
   loginwithGoogle() {
@@ -75,8 +74,13 @@ if (storedemail && storedPassword) {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [ Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
-    Remember:new FormControl()
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
+    Remember: new FormControl(),
   });
 
   forgotPassword = new FormGroup({
@@ -140,16 +144,14 @@ if (storedemail && storedPassword) {
           ';path=/' +
           ';expires=' +
           expire.toUTCString();
-          if(this.loginForm.value.Remember)
-    {
-      localStorage.setItem('email', this.loginForm.value.email);
-      localStorage.setItem('password', this.loginForm.value.password);
-    }
+        if (this.loginForm.value.Remember) {
+          localStorage.setItem('email', this.loginForm.value.email);
+          localStorage.setItem('password', this.loginForm.value.password);
+        }
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
         this.Invalid = !this.Invalid;
-
       }
       localStorage.setItem(
         'LoggedInName: ',

@@ -30,6 +30,7 @@
   border-radius: 8px;
   border: 1px solid transparent;
   outline: none;
+  font-family: 'Outfit',sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -54,7 +55,7 @@
 
 input:hover,
 input:focus {
-  border-color: #2F2C9F !important;
+  border-color: #2F2C9F ;
 }
 
 .fa-magnifying-glass {
@@ -121,6 +122,7 @@ input:focus {
   border: 1px solid #2F2C9F;
   color: #FFFFFF;
   font-size: 14px;
+  font-family: 'Outfit',sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: 140%;
@@ -142,7 +144,13 @@ input:focus {
 }
 .icons img{
   cursor: pointer;
-  background-color: #f9f9f9 !important;
+  /* background-color: #f9f9f9 !important; */
+}
+.icons img:hover{
+  background-color: #f7f7f7 !important;
+}
+tbody{
+  background-color: #fff !important;
 }
 .icons .fa-trash-can:hover {
   color: red;
@@ -305,13 +313,21 @@ input:focus {
   padding: 15px 20px;
   border: 1px solid #f9f9f9;
   text-align: justify;
+  display: flex;
+  gap: 8px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
   color: #555555;
 }
+.name1 img{
+  margin-top: -10px;
+  width: 34px;
+  height: 34px;
+  display: none;
 
+}
 .email1 {
   width: 220px;
   height: 44px;
@@ -365,9 +381,12 @@ input:focus {
 }
 
  tr:hover {
-  background-color: #EFEFF8 !important;
+  background-color: #f7f7fb !important;
 }
 
+/* td{
+  background-color: #fff ;
+} */
 table {
   width: 100%;
   border-spacing: 2px 5px;
@@ -386,6 +405,7 @@ table {
 .icons .fa-trash-can {
   color: #EE4032;
   cursor: pointer;
+  margin-top: 3px;
 }
 
 .icons .fa-pencil:hover {
@@ -594,6 +614,7 @@ label {
   box-shadow: none;
   font-style: normal;
   font-weight: 400;
+  font-family: 'Outfit', sans-serif;
   font-size: 14px;
   line-height: 140%;
   color: black;
@@ -603,112 +624,152 @@ label {
 
 
 #text1.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text1.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text1.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text1.ng_valid:hover {
+  border: 1px solid green;
 }
 #text6.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text6.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text6.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text6.ng_valid:hover {
+  border: 1px solid green;
 }
 #text7.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text7.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text7.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text7.ng_valid:hover {
+  border: 1px solid green;
 }
 .form-row .input span {
   color: red;
 }
 #text10.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text10.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text10.ng_valid {
-  border-color: green;
+  border:1px solid green;
+}
+#text10.ng_valid:hover {
+  border: 1px solid green;
 }
 #text11.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
 }
-
+#text11.ng_invalid:hover {
+  border: 1px solid red;
+}
 #text11.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text11.ng_valid:hover {
+  border: 1px solid green;
 }
 #text12.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text12.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text12.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text12.ng_valid:hover {
+  border: 1px solid green;
 }
 #text13.ng_invalid {
-  border-color: red;
+  border: 1px solid red;
+}
+#text13.ng_invalid:hover {
+  border: 1px solid red;
 }
 
 #text13.ng_valid {
-  border-color: green;
+  border: 1px solid green;
+}
+#text13.ng_valid:hover {
+  border: 1px solid green;
 }
 #text1:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text2:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text3:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text4:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text5:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text6:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text7:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 
 }
 
-#text8:hover {
-  border-color: 1px solid #2F2C9F;
-}
+/* #text8:hover {
+  border: 1px solid #2F2C9F ;
+} */
 
-#text9:hover {
-  border-color: 1px solid #2F2C9F;
-}
+/* #text9:hover {
+  border: 1px solid #2F2C9F ;
+} */
 
 #text10:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text11:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text12:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text13:hover {
-  border-color: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F ;
 }
 
 #text2 {
-  /* display: block; */
   width: 260px;
   height: 40px;
   background: #FFFFFF;
@@ -719,6 +780,7 @@ label {
   outline: none;
   font-style: normal;
   font-weight: 400;
+  font-family: 'Outfit', sans-serif;
   font-size: 14px;
   line-height: 140%;
   cursor: pointer;
@@ -739,7 +801,7 @@ label {
   margin-bottom: 20px;
   box-shadow: none;
   font-style: normal;
-
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -756,6 +818,7 @@ label {
   margin-bottom: 20px;
   box-shadow: none;
   font-style: normal;
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   outline: none;
   padding-left: 15px;
@@ -775,6 +838,7 @@ label {
   margin-bottom: 20px;
   box-shadow: none;
   outline: none;
+  font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 400;
   padding-left: 15px;
@@ -796,7 +860,7 @@ label {
   box-shadow: none;
   outline: none;
   font-style: normal;
-
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -814,6 +878,7 @@ label {
   margin-bottom: 20px;
   box-shadow: none;
   font-style: normal;
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -823,36 +888,39 @@ label {
 
 #text8 {
   /* display: block; */
-  width: 260px;
-  height: 40px;
-  background: #FFFFFF;
-  border: 1px solid rgba(180, 180, 180, 0.8);
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: none;
-  font-style: normal;
-  font-weight: 400;
-  outline: none;
-  font-size: 14px;
-  line-height: 140%;
-  cursor: pointer;
+  width: 270px;
+    height: 38px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    font-size: 14px;
+    line-height: 140%;
+    cursor: pointer;
 }
 
 #text9 {
-  /* display: block; */
-  width: 260px;
-  height: 40px;
-  background: #FFFFFF;
-  border: 1px solid rgba(180, 180, 180, 0.8);
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: none;
-  outline: none;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-  cursor: pointer;
+  width: 270px;
+    height: 38px;
+    margin-top: 20px;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: none;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    font-size: 14px;
+    line-height: 140%;
+    cursor: pointer;
 }
 
 #text10 {
@@ -867,7 +935,7 @@ label {
   box-shadow: none;
   outline: none;
   font-style: normal;
-
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -888,6 +956,7 @@ label {
   box-shadow: none;
   outline: none;
   font-style: normal;
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -906,7 +975,7 @@ label {
   outline: none;
   box-shadow: none;
   font-style: normal;
-
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -914,7 +983,7 @@ label {
 }
 
 #text13 {
-  /* display: block; */
+
   width: 260px;
   height: 40px;
   outline: none;
@@ -925,6 +994,7 @@ label {
   margin-bottom: 20px;
   box-shadow: none;
   font-style: normal;
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -942,7 +1012,7 @@ label {
   box-shadow: none;
   outline: none;
   color: black;
-
+  font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -972,7 +1042,7 @@ label {
   padding: 10px 25px;
   background: #2F2C9F;
   font-style: normal;
-
+  font-family: 'Outfit', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 140%;
@@ -990,6 +1060,7 @@ label {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
+  font-family: 'Outfit', sans-serif;
   line-height: 140%;
   border-radius: 8px;
   border: 1px solid #2F2C9F;
@@ -1010,6 +1081,7 @@ label {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
+  font-family: 'Outfit', sans-serif;
   line-height: 140%;
   border-radius: 8px;
   border: 1px solid #2F2C9F;
@@ -1042,6 +1114,7 @@ label {
   border-radius: 8px;
   padding: 10px 17px;
   outline: none;
+  font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -1094,11 +1167,11 @@ label {
   height: 349px;
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 20px 10px;
+  padding: 20px 15px;
 }
 
 .modal-header2 {
-  width: 450px;
+  width: 440px;
   height: 130px;
   background: rgba(123, 211, 109, 0.3);
   border-radius: 8px;
@@ -1169,6 +1242,7 @@ label {
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
+  font-family: 'Outfit', sans-serif;
   line-height: 100%;
   color: #444444;
   padding-top: 50px;
@@ -1190,7 +1264,7 @@ label {
   border-radius: 8px;
   border: 1px solid #2F2C9F;
   color: #FFFFFF;
-
+  font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1209,7 +1283,7 @@ label {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
   color: #2F2C9F;
-
+  font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1235,7 +1309,7 @@ label {
   height: 309px;
   background: #FFFFFF;
   border-radius: 20px;
-  padding: 20px 10px;
+  padding: 15px 15px;
 }
 
 .modal-header4 {
@@ -1259,6 +1333,7 @@ label {
 .modal-body4 h3 {
   font-weight: 500;
   font-size: 20px;
+  font-family: 'Outfit', sans-serif;
   margin-top: 30px;
   margin-bottom: 30px;
   color: #444444;
