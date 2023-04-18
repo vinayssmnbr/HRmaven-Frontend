@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
 
-  //LIVE SERVER URL
+  // LIVE SERVER URL
   saveurl: 'https://hrmaven.works/signup',
   loginurl: 'https://hrmaven.works/login',
   Forgoturl: 'https://hrmaven.works/forgotpassword',
@@ -21,7 +21,7 @@ export const environment = {
    updateleave:'https://hrmaven.works/attendance/update'
 
   //LOCAL URL
-  // updateleave:'http://localhost:3000/attendance/update'
+  // updateleave: 'http://localhost:3000/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
   // Forgoturl: 'http://localhost:3000/forgotpassword',

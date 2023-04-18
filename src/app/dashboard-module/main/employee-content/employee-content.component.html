@@ -4,8 +4,8 @@
   <div class="selection">
     <div class="input_left">
       <div class="input_field">
-        <input type="text" class="number1 no-spin" placeholder="Type Employee ID" [(ngModel)]="query"
-          id="search" (input)="search($event)">
+        <input type="text" class="number1 no-spin" placeholder="Id or Name" [(ngModel)]="query"
+          id="search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
@@ -45,7 +45,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of employee">
+        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable ">
           <!--  -->
           <td class="employee1">{{user.uid}}</td>
           <td class="name1">
@@ -247,7 +247,7 @@
 
         <div class="modal-footer">
           <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-            [disabled]="!(this.form.controls.name.valid   && this.form.controls.dateOfBirth.valid  && this.form.controls.dateOfJoining.valid)">
+            [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid  && this.form.controls.dateOfJoining.valid)">
             Next </button>
           <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
           <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn"
