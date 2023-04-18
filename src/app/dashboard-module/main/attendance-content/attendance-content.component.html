@@ -97,6 +97,7 @@
         </div>
     </div>
     <!-- ------------------Input  Modal form---------------  -->
+
     <div class="employee-modal" *ngIf="showModal">
         <form class="input-form " [formGroup]="form" (ngSubmit)="OnUpdate()">
             <div class="cross-icon ">
@@ -151,7 +152,6 @@
             </div>
         </form>
     </div>
-
     <!-- ----------------------------Edit popup Modal --------------- -->
     <div class="edit-modal" *ngIf="editmodal">
         <div class="edit-modal-text">
