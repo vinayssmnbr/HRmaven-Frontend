@@ -65,7 +65,7 @@ export class EmployeeContentComponent implements OnInit {
     return valid ? null : { invalidName: true };
   }
   form = new FormGroup({
-    name: new FormControl('', [Validators.required, this.nameValidator]),
+    name: new FormControl('', [Validators.required,this.nameValidator]),
     designation: new FormControl('',Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
     dateOfJoining: new FormControl('', Validators.required),
@@ -75,7 +75,8 @@ export class EmployeeContentComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
     bankname: new FormControl('',Validators.required),
-    adhaarno: new FormControl('', [Validators.required]),
+    adhaarno: new FormControl('', [Validators.required,
+           ]),
     accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('', [
       Validators.required,
