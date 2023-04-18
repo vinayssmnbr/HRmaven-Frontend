@@ -15,7 +15,8 @@
                     <input type="radio" name="radio-btn" id="radio3">
                     <input type="radio" name="radio-btn" id="radio4">
                     <div class="card first">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
+                            This is absolutely wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image">
@@ -26,7 +27,8 @@
                         </div>
                     </div>
                     <div class="card">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
+                            This is absolutely wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image">
@@ -37,7 +39,8 @@
                         </div>
                     </div>
                     <div class="card">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
+                            This is absolutely wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image">
@@ -48,7 +51,8 @@
                         </div>
                     </div>
                     <div class="card">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
+                            This is absolutely wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image">
@@ -81,48 +85,53 @@
                 <div class="field name-field">
                     <div class="input-field">
                         <label for="name">Organization Name</label>
-                        <input type="text" placeholder="Enter your Organization Name" class="name" formControlName="username" />
-                        <span *ngIf="username && username.invalid  &&  username.dirty "><i
-                              class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Organization Name</span>
+                        <input type="text" placeholder="Enter your Organization Name" class="name"
+                            formControlName="username" />
+                        <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span>
                     </div>
                 </div>
                 <div class="field email-field">
                     <div class="input-field">
                         <label for="name" class="text-label">Email</label>
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email" />
-                        <span *ngIf="email && email.invalid && email.touched "><i
-                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
+                        <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span>
                     </div>
 
                 </div>
                 <div class="field create-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Password</label>
-                        <input type="password" placeholder="Enter your password" class="password" formControlName="password" #passwordInput />
-                        <span *ngIf="password && password.invalid && password.touched "><i
-                class="fa-sharp fa-solid fa-triangle-exclamation"></i>atleast 8
-              characters and contain atleast one (A,a,@,1)</span>
+                        <input type="password" placeholder="Enter your password" class="password"
+                            formControlName="password" #passwordInput />
+                        <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span>
+                        <span *ngIf="password && password.invalid && password.touched ">
+                            <div class="iconWrap">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span class="tooltip">Uppercase character <br> Special character<br> Password
+                                    match<br>Lowercase character<br>Minimum 8 character</span>
+                            </div>
+                        </span>
                     </div>
 
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
-          <i class="fa {{ showPasswordIcon }}"></i>
-        </span>
+                    <i class="fa {{ showPasswordIcon }}"></i>
+                </span>
                 <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
-                        <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu />
-                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i
-                class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
+                        <input type="password" placeholder="Confirm your password" class="cPassword"
+                            formControlName="confirm" #passwordInpu />
+                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn’t match</span>
                     </div>
                     <span class="password-toggle" (click)="togglePassword(passwordInpu)">
-            <i class="fa {{ showPasswordIcon1 }}"></i>
-          </span>
+                        <i class="fa {{ showPasswordIcon1 }}"></i>
+                    </span>
                 </div>
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />
                     <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a href=""> terms &
-              conditions</a></label>
+                            conditions</a></label>
                 </div>
                 <div class="input-field button">
                     <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />

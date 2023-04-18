@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable,map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
+import * as moment from 'moment';
 
 
 
@@ -14,17 +15,6 @@ export class DashService {
   public headerContent: string;
   public activeComponent: string;
   constructor(private http: HttpClient, private router : Router,private cookie:CookieService) { }
-
-
-selectedEmployee:any
-setSelectedEmployee(user:any){
-  this.selectedEmployee=user
-}
-
-getSelectedEmployee(){
-  return this.selectedEmployee
-}
-
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
@@ -47,11 +37,20 @@ getSelectedEmployee(){
   profile=environment.profile
 
 
+  //ADD EMPLOYEE DATA
   addEmployee(data) {
     return this.http.post(this.createData, data);
   }
 
-  //ADD DATA
+//PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
+  selectedEmployee:any
+  setSelectedEmployee(user:any){
+    this.selectedEmployee=user
+  }
+  getSelectedEmployee(){
+    return this.selectedEmployee
+  }
+
 
 //DELETE DATA
   deleteStudent(id: string): Observable<void> {
@@ -70,10 +69,12 @@ getSelectedEmployee(){
   getEmployee() {
     return this.http.get(this.getData);
   }
-  //UPDATE DATA
-  updateEmployee(data:any){
-    return this.http.patch(`${this.updatempdata}/${data._id}`,data)
+  //UPDATE EMPLOYEE DATA
+  updateEmployee(user:any){
+    console.log('employee update id ', user);
+    return this.http.patch(`${this.updatempdata}/${user._id}`,user)
   }
+  //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
     console.log('data', data);
     return this.http.patch(this.updateData + `/${data._id}`, data);
@@ -94,9 +95,114 @@ getSelectedEmployee(){
    getreport(){
      return this.http.get(this.report);
   }
-
+//GET EMPLOYEE CUSTOM UID
   getEmployeeUid(){
     return this.http.get(this.getuid)
 
+  }
+
+  
+  getDates(startDate: string, stopDate: string): string[] {
+    const dateArray: string[] = [];
+    let currentDate = moment(startDate);
+    const endDate = moment(stopDate);
+    while (currentDate <= endDate) {
+      dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
+      currentDate = moment(currentDate).add(1, 'days');
+    }
+    return dateArray;
+  }
+
+  updateleave(object: any, status: 'accept' | 'reject')
+  {
+    console.log(object);
+    console.log(status);
+    if (object.status == 'pending') {
+      const url = `https://hrmaven.works/api/leave/${object._id}`;
+      const body = { status: status };
+      this.http
+        .patch(url, JSON.stringify(body), {
+          headers: { 'content-type': 'application/json' },
+        })
+        .subscribe(
+          (response) => {
+            console.log('Leave status updated successfully: ', response);
+          },
+          (error) => {
+            console.error('Error updating leave status:', error);
+          }
+        );
+      if (status == 'accept') {
+        const Array = this.getDates(object.from, object.to);
+        console.log(Array.length);
+        const body = { status: status };
+        body['Array'] = Array;
+        body['empId'] = object.employeeId;
+        body['name'] = object.employeeName;
+        const url1 = environment.updateleave;
+        this.http.post(url1, body, {
+          headers: { 'content-type': 'application/json' },
+        }).subscribe((res) => {
+          console.log(res);
+        })
+      }
+    }
+    if (object.status == 'accept' && status == 'reject') {
+      const Array = this.getDates(object.from, object.to);
+      console.log(Array.length);
+      const url = `https://hrmaven.works/api/leave/${object._id}`;
+      const body = { status: status };
+      this.http
+        .patch(url, JSON.stringify(body), {
+          headers: { 'content-type': 'application/json' },
+        })
+        .subscribe(
+          (response) => {
+            console.log('Leave status updated successfully: ', response);
+          },
+          (error) => {
+            console.error('Error updating leave status:', error);
+          }
+        );
+        body['Array'] = Array;
+        body['empId'] = object.employeeId;
+        body['name'] = object.employeeName;
+        const url1 = environment.updateleave;
+        this.http.post(url1, body, {
+          headers: { 'content-type': 'application/json' },
+        }).subscribe((res) => {
+          console.log(res);
+        })
+            
+
+    }
+    if (object.status == 'reject' && status == 'accept') {
+      const Array = this.getDates(object.from, object.to);
+      console.log(Array.length);
+      console.log('rejet -> accept ');
+      const url = `https://hrmaven.works/api/leave/${object._id}`;
+      const body = { status: status };
+      this.http.patch(url, JSON.stringify(body), {
+        headers: { 'content-type': 'application/json' },
+      })
+        .subscribe(
+          (response) => {
+            console.log('Leave status updated successfully: ', response);
+          },
+          (error) => {
+            console.error('Error updating leave status:', error);
+          }
+        );
+      body['Array'] = Array;
+      body['empId'] = object.employeeId;
+      body['name'] = object.employeeName;
+      const url1 = environment.updateleave;
+      this.http.post(url1, body, {
+        headers: { 'content-type': 'application/json' },
+      }).subscribe((res) => {
+        console.log(res);
+      })
+
+    }
   }
 }

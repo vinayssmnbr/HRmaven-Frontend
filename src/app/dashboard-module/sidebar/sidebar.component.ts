@@ -23,5 +23,11 @@ logout(){
   this.router.navigate(['./login']);
 
 }
+active:string='dashboard';
+
+access(data:any)
+{
+  this.active=data;
+}
 
 }

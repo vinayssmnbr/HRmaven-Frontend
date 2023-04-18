@@ -13,7 +13,7 @@ export class ForgetComponent {
   constructor(private route: ActivatedRoute,public service:UserService,private router :Router) { };
   token: any;
   forgetform = new FormGroup({
-    password: new FormControl("", [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)]),
+    password: new FormControl("", [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
     confirm: new FormControl("", [Validators.required])
   }, {
     validators: matchpassword

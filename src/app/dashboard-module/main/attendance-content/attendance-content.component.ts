@@ -5,8 +5,6 @@ import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
@@ -26,43 +24,46 @@ export class AttendanceContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any= [];
-  showModal=false;
+  employee: any = [];
+  showModal = false;
   showCard: boolean = false;
-  employeeid='';
-  employeename='';
+  employeeid = '';
+  employeename = '';
   lineChart: Chart;
-  selectedUser:any={};
-leaves:any[]=[]
- data: any;
-  update:boolean=false;
-  editmodal=false;
-  showCard1: boolean=true;
-  showTable=true;
-  attDate:any="";
-  loader=true;
+  selectedUser: any = {};
+  leaves: any[] = [];
+  data: any;
+  update = false;
+  editmodal = false;
+  showCard1: boolean = true;
+  showTable = true;
+  attDate: any = "";
+  loader = true;
+  datez: any = "";
+
+  table1Visible = false;
+  table2Visible = false;
+
   constructor(public dashService: DashService) {
-    // this.fetchdata();
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-     this.dashService.getAttendance().subscribe((res: any) => {
-      console.log('data', res);
+    this.dashService.getAttendance().subscribe((res: any) => {
+      console.log('data', res); // add this line
       this.employee = res;
     });
     this.getLeaveData()
     this.getreport();
-
   }
+
   form = new FormGroup({
-    name:new FormControl(),
-    empId:new FormControl(),
+    name: new FormControl(),
+    empId: new FormControl(),
     date: new FormControl(''),
     status: new FormControl(''),
     punch_in: new FormControl(''),
     punch_out: new FormControl(''),
-
-
   });
+
 
 
   async getreport(){
@@ -164,10 +165,19 @@ leaves:any[]=[]
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
   openModal(user:any) {
+
+    this.form.patchValue(user);
+    this.form.setValue({
+      name:user.name,
+      empId:user.empId,
+      date:user.date,
+      status:user.status,
+      punch_in:user.punch_in,
+      punch_out:user.punch_out,
+    });
+    this.Selectvariable=user.status;
     this.showModal = true;
     this.selectedUser = {_id: user._id};
-    this.form.patchValue(user)
-
   }
 
 
@@ -196,11 +206,16 @@ this.edit();
   toggleTable1() {
     this.showCard = !this.showCard;
     this.showTable=!this.showTable;
+    this.table1Visible = !this.table1Visible;
+    this.table2Visible = false; // ensure other table is hidden
+
   }
 
   toggleTable2(){
     this.showCard=!this.showCard;
     this.showTable=!this.showTable;
+    this.table2Visible = !this.table2Visible;
+    this.table1Visible = false; // ensure other table is hidden
   }
 
 edit(){
@@ -211,42 +226,19 @@ done(){
   this.editmodal=!this.editmodal;
 }
 
-// array1: any = [
-//   {
-//     id: 0,
-//     name: 'Last 15 days',
-//   },
-//   {
-//     id: 1,
-//     name: 'Last 30 days',
-//   },
 
-// ];
-// contentdropdown1: boolean = false;
-// dropdownOpen1() {
-
-//   this.contentdropdown1 = !this.contentdropdown1;
-// }
-// Selectvariable1: string = 'Last 15 days';
-// colorvariable1: number =  0;
-// Changeselect1(arr1: any) {
-//   this.Selectvariable1 = arr1.name;
-//   this.colorvariable1 = arr1.id;
-//   this.contentdropdown1=false;
-//   console.log(arr1.name);
-// }
 array: any = [
   {
     id: 0,
-    name: 'Present',
+    name: 'present',
   },
   {
     id: 1,
-    name: 'Absent',
+    name: 'absent',
   },
   {
-    id: 3,
-    name: 'Leave',
+    id: 2,
+    name: 'leave',
   },
 
 ];
@@ -255,7 +247,7 @@ dropdownOpen() {
 
   this.contentdropdown = !this.contentdropdown;
 }
-Selectvariable: string = 'Select';
+Selectvariable: string ="select";
 colorvariable: number =  0;
 Changeselect(arr: any) {
   this.Selectvariable = arr.name;

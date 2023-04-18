@@ -1,29 +1,17 @@
 <app-sidebar>
 </app-sidebar>
 <app-header></app-header>
-<div class="main" >
-  <div class="loader_parent bar_graph" [ngClass]="{'attclose':!loader}">
-    <!-- *ngIf="loader" -->
-    <div class="loader"></div>
-  </div>
-    <div class="bar_graph"  [ngClass]="{'attclose':loader}">
-      <!-- *ngIf="!loader" -->
+<div class="main">
+    <div class="loader_parent bar_graph" [ngClass]="{'attclose':!loader}">
+        <!-- *ngIf="loader" -->
+        <div class="loader"></div>
+    </div>
+    <div class="bar_graph" [ngClass]="{'attclose':loader}">
+        <!-- *ngIf="!loader" -->
         <div class="graph_text">
             <div class="graph_heading">
                 <h1>Attendance Status</h1>
             </div>
-            <!-- <div class="dropdown_container">
-                <div class="dropdwon_select1" (click)="dropdownOpen1()">
-                  <p>{{Selectvariable1}}</p>
-                  <i class="fa-sharp fa-solid fa-caret-down"></i>
-                </div>
-                <div class="select_content" *ngIf="contentdropdown1">
-                  <ul>
-                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
-                      {{arr1.name}}</li>
-                  </ul>
-                </div>
-              </div> -->
         </div>
 
         <div class="bar-chart" [ngClass]="{'attclose':loader}">
@@ -36,49 +24,54 @@
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
-                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()"></i>
-                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()"></i>
+                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
+                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i>
             </div>
-            <input type="date">
-        </div>
-        <div class="no_data">
-            <img src="assets/images/no_record.png" alt="">
-            <h2>No Record Found!</h2>
-        </div>
-    </div>
-<div class="attendence_table">
-    <div class="table_data" *ngIf="showTable">
-        <table class="table_text">
-            <thead>
-                <tr class="table_heading">
-                    <th>Employee ID</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>PUNCH IN</th>
-                    <th>PUNCH OUT</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of employee | attendanceFilter:employeename">
-                    <td>{{user.empId}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.date | date:'shortDate'}}</td>
-                    <td>{{user.status}}</td>
-                    <td>{{user.punch_in}}</td>
-                    <td>{{user.punch_out}}</td>
-                    <td class="action1">
-                        <div class="icons">
-                            <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+            <label for="date">
+            <input type="date" id="date" [(ngModel)]="datez">
 
-        </table>
+          </label>
+
+        </div>
     </div>
-</div>
+    <div class="attendence_table">
+        <div class="table_data" *ngIf="showTable">
+            <table class="table_text">
+                <thead>
+                    <tr class="table_heading">
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>PUNCH IN</th>
+                        <th>PUNCH OUT</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of employee | attendanceFilter:employeename:datez">
+                        <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
+                            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
+                            <h2>No Record Found!</h2>
+                        </td>
+                        <td *ngIf="user.found!='true'">{{user.empId}}</td>
+                        <td *ngIf="user.found!='true'">{{user.name}}</td>
+                        <td *ngIf="user.found!='true'">{{user.date | date:'shortDate'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.status}}</td>
+                        <td *ngIf="user.found!='true'">{{user.punch_in}}</td>
+                        <td *ngIf="user.found!='true'">{{user.punch_out}}</td>
+                        <td *ngIf="user.found!='true'" class="action1">
+                            <div class="icons">
+                                <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
 
 
     <div class="attendence-card " *ngIf="showCard">

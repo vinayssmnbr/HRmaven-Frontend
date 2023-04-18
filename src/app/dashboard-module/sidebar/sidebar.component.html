@@ -8,21 +8,21 @@
     </div>
     <p>Menu</p>
     <ul class="navigation">
-      <li routerLinkActive="active"><a routerLink="/dashboard"><i class="fa-solid fa-house"></i>Dashboard</a></li>
-      <li routerLinkActive="active"><a routerLink="/dashboard/employee"><i
+      <li routerLinkActive="active" (click)='access("dashboard")' [ngClass]="{'current':active=='dashboard'}"><a routerLink="/dashboard"><i class="fa-solid fa-house"></i>Dashboard</a></li>
+      <li routerLinkActive="active" (click)='access("employee")' [ngClass]="{'current':active=='employee'}"><a routerLink="/dashboard/employee"><i
             class="fa-solid fa-user-group"></i>Employee</a></li>
-      <li routerLinkActive="active"><a routerLink="/dashboard/attendance"><i class="fa-solid fa-calendar-days"></i>Attendance</a></li>
-      <li routerLinkActive="active"><a routerLink="/dashboard/payroll"><i class="fa-solid fa-wallet"></i>Payroll</a></li>
-      <li routerLinkActive="active"><a routerLink="/dashboard/leaves"><i class="fa-solid fa-list-check"></i>Leaves</a>
+      <li routerLinkActive="active" (click)='access("attendance")' [ngClass]="{'current':active=='attendance'}"><a routerLink="/dashboard/attendance"><i class="fa-solid fa-calendar-days"></i>Attendance</a></li>
+      <li routerLinkActive="active" (click)='access("payroll")' [ngClass]="{'current':active=='payroll'}" ><a routerLink="/dashboard/payroll"><i class="fa-solid fa-wallet"></i>Payroll</a></li>
+      <li routerLinkActive="active" (click)='access("leaves")' [ngClass]="{'current':active=='leaves'}" ><a routerLink="/dashboard/leaves"><i class="fa-solid fa-list-check"></i>Leaves</a>
       </li>
-      <li routerLinkActive="active"><a routerLink="/dashboard/recruitment"><i class="fa-solid fa-briefcase"></i>Recruitment</a></li>
-      <li routerLinkActive="active"><a routerLink="/dashboard/report"><i class="fa-solid fa-square-poll-vertical"></i>Report</a></li>
+      <li routerLinkActive="active"  (click)='access("recruitment")' [ngClass]="{'current':active=='recruitment'}"  ><a routerLink="/dashboard/recruitment"><i class="fa-solid fa-briefcase"></i>Recruitment</a></li>
+      <li routerLinkActive="active" (click)='access("report")' [ngClass]="{'current':active=='report'}"  ><a routerLink="/dashboard/report"><i class="fa-solid fa-square-poll-vertical"></i>Report</a></li>
     </ul>
   </div>
   <div class="side2">
     <p>Settings</p>
     <ul class="navigation2">
-      <li><a href="#"><i class="fa-regular fa-circle-question"></i>Help</a></li>
+      <li><a href="#"><img src="./assets/images/help.svg">Help</a></li>
       <li><a (click)="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a></li>
     </ul>
   </div>
