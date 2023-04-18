@@ -247,7 +247,7 @@
 
         <div class="modal-footer">
           <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-            [disabled]="!(this.form.controls.name.valid   && this.form.controls.dateOfBirth.valid  && this.form.controls.dateOfJoining.valid)">
+            [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid  && this.form.controls.dateOfJoining.valid)">
             Next </button>
           <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
           <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn"
