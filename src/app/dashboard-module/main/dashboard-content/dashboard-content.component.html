@@ -111,8 +111,8 @@
                             <tr *ngFor="let leave of leaves ">
                                 <td>{{leave.employeeId}}</td>
                                 <td>{{leave.employeeName}}</td>
-                                <td>{{leave.from | date:'short'}}</td>
-                                <td>{{leave.to | date:'short'}}</td>
+                                <td>{{leave.from | date:'shortDate'}}</td>
+                                <td>{{leave.to | date:'shortDate'}}</td>
                                 <td>{{leave.reason}}</td>
                                 <td>
                                     <div class="action_button">
