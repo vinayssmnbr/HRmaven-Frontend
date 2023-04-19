@@ -455,7 +455,8 @@ table {
 }
 
 table {
-  border-spacing: 2px 5px;
+  /* border-spacing: 2px 5px; */
+  /* background-color: #EFEFF8; */
 }
 
 table,
