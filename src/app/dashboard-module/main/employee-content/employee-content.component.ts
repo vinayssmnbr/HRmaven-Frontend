@@ -75,8 +75,7 @@ export class EmployeeContentComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
     bankname: new FormControl('',Validators.required),
-    adhaarno: new FormControl('', [Validators.required,
-           ]),
+    adhaarno: new FormControl('', Validators.required),
     accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('', [
       Validators.required,

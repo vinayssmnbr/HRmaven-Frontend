@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TermConditionComponent } from './term-condition/term-condition.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ForgetComponent,
     LoaderComponent,
     LoginComponent,
+    TermConditionComponent,
   ],
   imports: [
     BrowserModule,

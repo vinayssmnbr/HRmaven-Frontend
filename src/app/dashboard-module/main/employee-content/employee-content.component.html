@@ -19,7 +19,7 @@
         </div>
         <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()" >
           <ul>
-            <li *ngFor="let arr of array; index as i"  [class.select_active]="i === colorvariable"  
+            <li *ngFor="let arr of array; index as i"  [class.select_active]="i === colorvariable"
               (click)="Changeselect(arr)">
               {{arr.name}}</li>
           </ul>
@@ -109,7 +109,7 @@
             <div class="form-row">
               <div class="input">
                 <label>Name <span>*</span></label>
-                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name" pattern="^[^\s]+$"
+                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name"
                   [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
 
               </div>
@@ -117,7 +117,7 @@
                 <label>Designation <span>*</span></label>
                 <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
-                    
+
                     <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8" readonly>
                     <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                   </div>
@@ -129,8 +129,8 @@
                     </ul>
                   </div>
                 </div>
-              </div> 
-              
+              </div>
+
             </div>
             <div class="form-row">
               <div class="input">
@@ -175,15 +175,14 @@
             <div class="form-row">
               <div class="input">
                 <label>Mobile No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text6" pattern="[0-9]{10}" maxlength="10" pattern="^[^\s]+$"
+                <input type="number" class="no-spin" id="text6" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
                   placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin"
                   [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
 
               </div>
               <div class="input">
                 <label>Email <span>*</span></label>
-                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
-                  pattern="^[^\s]+$"
+                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"  pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                   [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
 
               </div>
@@ -219,8 +218,8 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11"
-                  minlength="9" class=" no-spin"
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno"  pattern="[0-9]{10,16}"
+                  class=" no-spin"
                   [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
 
               </div>
@@ -235,9 +234,8 @@
               </div>
               <div class="input">
                 <label>Aadhar Card No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709 " maxlength="14"
-                  formControlName="adhaarno"
-                  [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
+                <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709" pattern="[0-9]{12}" maxlength="12"
+                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.dirty,'ng_valid': registrationFormControl.adhaarno.valid}">
 
               </div>
             </div>
