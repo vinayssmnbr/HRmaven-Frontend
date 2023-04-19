@@ -4,15 +4,14 @@
   <div class="selection">
     <div class="input_left">
       <div class="input_field">
-        <input type="text" class="number1 no-spin" placeholder="Id or Name" [(ngModel)]="query"
-          id="search">
+        <input type="text" class="number1 no-spin" placeholder="Id or Name" [(ngModel)]="query" id="search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
       <div class="dropdown_content" (mouseleave)="contentdropdown = false">
         <div class="dropdwon_select" (click)="dropdownOpen()">
           <div class="drop-icon">
-            <p >{{Selectvariable}}</p>
+            <p>{{Selectvariable}}</p>
             <div class="input_icon">
               <i class="fa-sharp fa-solid fa-caret-down"></i>
             </div>
@@ -45,17 +44,25 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable ">
+
+        <tr *ngFor="let user of employee  | employeefilter:query:Selectvariable">
           <!--  -->
-          <td class="employee1">{{user.uid}}</td>
-          <td class="name1">
-           <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}</td>
-          <td class="designation1">{{user.designation}}</td>
-          <td class="email1">{{user.email}}</td>
-          <td class="contact1">{{user.mobile}}</td>
-          <td class="action1">
+          <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'" style="text-align:center;">
+            <p > <img src="assets/images/no_record.png" alt="" class="center"></p>
+            <h2>No Record Found!</h2>
+        </td>
+          <!--  -->
+          <td class="employee1" *ngIf="user.found!='true'">{{user.uid}}</td>
+          <td class="name1" *ngIf="user.found!='true'">
+            <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}
+          </td>
+          <td class="designation1" *ngIf="user.found!='true'">{{user.designation}}</td>
+          <td class="email1" *ngIf="user.found!='true'">{{user.email}}</td>
+          <td class="contact1" *ngIf="user.found!='true'">{{user.mobile}}</td>
+          <td class="action1" *ngIf="user.found!='true'">
             <div class="icons">
-              <img src="./assets/images/Vector.svg" alt="" routerLink="/dashboard/employee-profile" (click)="selectEmployee(user)">
+              <img src="./assets/images/Vector.svg" alt="" routerLink="/dashboard/employee-profile"
+                (click)="selectEmployee(user)">
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
@@ -63,10 +70,6 @@
       </tbody>
 
     </table>
-    <div class="image_record" *ngIf="employee.length==0">
-      <img src="./assets/images/no_record.png" alt="">
-      <h3>No record Found!</h3>
-    </div>
   </div>
 
   <div class="modal" *ngIf="showModal">
@@ -131,8 +134,8 @@
             <div class="form-row">
               <div class="input">
                 <label>Employee ID <span>*</span></label>
-                <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid" pattern="^[^\s]+$"
-                  [disabled]="true" readonly>
+                <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid"
+                  pattern="^[^\s]+$" [disabled]="true" readonly>
               </div>
               <div class="input">
                 <label>Date of Joining <span>*</span></label>
@@ -178,7 +181,8 @@
               </div>
               <div class="input">
                 <label>Email <span>*</span></label>
-                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email" pattern="^[^\s]+$"
+                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
+                  pattern="^[^\s]+$"
                   [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
 
               </div>
@@ -214,8 +218,8 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11" minlength="9"
-                  class=" no-spin"
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno" maxlength="11"
+                  minlength="9" class=" no-spin"
                   [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
 
               </div>
@@ -223,21 +227,24 @@
             <div class="form-row">
               <div class="input">
                 <label>IFSC Code <span>*</span></label>
-                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12" oninput="this.value = this.value.toUpperCase()"
+                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12"
+                  oninput="this.value = this.value.toUpperCase()"
                   [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.dirty,'ng_valid': registrationFormControl.ifsc.valid}">
 
               </div>
               <div class="input">
                 <label>Aadhar Card No. <span>*</span></label>
                 <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709 " maxlength="14"
-                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
+                  formControlName="adhaarno"
+                  [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
 
               </div>
             </div>
             <div class="form-row">
               <div class="input">
                 <label>PAN number <span>*</span></label>
-                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10" oninput="this.value = this.value.toUpperCase()"
+                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10"
+                  oninput="this.value = this.value.toUpperCase()"
                   [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.dirty,'ng_valid': registrationFormControl.panno.valid}">
 
               </div>
