@@ -290,7 +290,14 @@ export class EmployeeProfileComponent {
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
     console.log('checkuser', this.selectedUser);
-    console.log('check', this.user);
+    this.Selectvariable3=user.maritalStatus
+    this.Selectvariable4=user.bloodGroup
+    this.Selectvariable1=user.gender
+    this.Selectvariable2=user.bankname
+    this.Selectvariable=user.jobdesignation
+    this.Selectvariable8=user.jobempstatus
+    this.Selectvariable5=user.jobtiming
+        
     if (this.personaldetail === true) {
       this.modalContent1 = true;
       this.modalContent2 = false;
