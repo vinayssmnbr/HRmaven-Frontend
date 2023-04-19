@@ -11,14 +11,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./dashboard-content.component.css'],
 })
 export class DashboardContentComponent implements OnInit {
-  loader=false;
-
+  // loader=false;
+  loader: boolean = true;
   constructor(
     public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
+
+    setTimeout(() => {
+      this.loader = false;
+    }, 3000);
 
     this.dashService.getLeaves().subscribe((res: any) => {
       console.log('data', res);

@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard-module/dashboard-module.module').then(
         (m) => m.DashboardModuleModule
-      ),
+      ),canActivate: [AuthGuard],
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
 ];
