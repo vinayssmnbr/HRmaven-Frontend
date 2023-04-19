@@ -3,7 +3,7 @@
 <div class="main" *ngIf="user">
   <div class="card">
     <div class="card1">
-      <img src="./assets/images/left_arrow.svg" routerLink="/dashboard/employee" alt="">
+      <img src="./assets/images/left_arrow.svg" routerLink="/dashboard/employee" alt="" >
       <h2>Employee Profile</h2>
     </div>
     <div class="card2">
@@ -36,15 +36,18 @@
           <span class="name">Name</span>
           <p class="name">{{user.name}}</p>
           <span class="fname">Father's Name</span>
-          <p class="fname">{{user.fatherName}}</p>
+          <p *ngIf="!user.fatherName">----------</p>
+          <p class="fname" *ngIf="user.fatherName">{{user.fatherName}}</p>
           <span class="bgroup">Blood Group</span>
+          <p *ngIf="!user.bloodGroup">----------</p>
           <p class="bgroup">{{user.bloodGroup}}</p>
         </div>
         <div class="column2">
           <span class="uid">Employee ID</span>
           <p class="uid">{{user.uid}}</p>
           <span class="mname">Mother's Name</span>
-          <p class="mname">{{user.motherName}}</p>
+          <p *ngIf="!user.motherName">----------</p>
+          <p class="mname" *ngIf="user.motherName">{{user.motherName}}</p>
           <span class="gender">Gender</span>
           <p class="gender">{{user.gender}}</p>
         </div>
@@ -52,9 +55,11 @@
           <span class="dob">Date of birth</span>
           <p class="dob">{{user.dateOfBirth | date:"shortDate"}}</p>
           <span class="marstatus">Marital Status</span>
-          <p class="marstatus">{{user.maritalStatus}}</p>
+          <p *ngIf="!user.maritalStatus">----------</p>
+          <p class="marstatus" *ngIf="user.maritalStatus">{{user.maritalStatus}}</p>
           <span class="nation">Nationality</span>
-          <p class="nation">{{user.nationality}}</p>
+          <p *ngIf="!user.nationality">----------</p>
+          <p class="nation" *ngIf="user.nationality">{{user.nationality}}</p>
         </div>
       </div>
     </div>
@@ -68,19 +73,22 @@
           <span class="cno">Contact No.</span>
           <p class="cno">{{user.mobile}}</p>
           <span class="city">City</span>
-          <p class="city">{{user.city}}</p>
+          <p *ngIf="!user.city">----------</p>
+          <p class="city" *ngIf="user.city">{{user.city}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
           <p class="address">{{user.address}}</p>
           <span class="pcode">Postal Code</span>
-          <p class="pcode">{{user.postalCode}}</p>
+          <p *ngIf="!user.postalCode">----------</p>
+          <p class="pcode" *ngIf="user.postalCode">{{user.postalCode}}</p>
         </div>
         <div class="column3">
           <span class="email">Email</span>
           <p class="email">{{user.email}}</p>
           <span class="state">State</span>
-          <p class="state">{{user.state}}</p>
+          <p *ngIf="!user.state">----------</p>
+          <p class="state" *ngIf="user.state">{{user.state}}</p>
         </div>
       </div>
     </div>
@@ -106,7 +114,8 @@
           <span class="ifsc">IFSC Code</span>
           <p class="ifsc">{{user.ifsc}}</p>
           <span class="pno">Passport Number</span>
-          <p class="pno">{{user.passport}}</p>
+          <p *ngIf="!user.passport">----------</p>
+          <p class="pno" *ngIf="user.passport">{{user.passport}}</p>
         </div>
       </div>
     </div>
@@ -118,29 +127,39 @@
       <div class="row1">
         <div class="column1">
           <span class="inst1">10th Grade Institute</span>
-          <p class="inst1">{{user.matric}}</p>
+          <p *ngIf="!user.matric">----------</p>
+          <p class="inst1" *ngIf="user.matric">{{user.matric}}</p>
           <span class="dper">12th Diploma Percentage</span>
-          <p class="dper">{{user.interPercent}}</p>
+          <p *ngIf="!user.interPercent">----------</p>
+          <p class="dper" *ngIf="user.interPercent">{{user.interPercent}}</p>
           <span class="sgpa">Graduation SGPA</span>
-          <p class="sgpa">{{user.graduationCgpa}}</p>
+          <p *ngIf="!user.graduationCgpa">----------</p>
+          <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p>
           <span class="pgsgpa">Post Graduation SGPA</span>
-          <p class="pgsgpa">{{user.pgCgpa}}</p>
+          <p *ngIf="!user.pgCgpa">----------</p>
+          <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
         </div>
         <div class="column2">
           <span class="mper">Matriculation Percentage</span>
-          <p class="mper">{{user.matricPercent}}</p>
+          <p *ngIf="!user.matricPercent">----------</p>
+          <p class="mper" *ngIf="user.matricPercent">{{user.matricPercent}}</p>
           <span class="gcol">Graduation College/University</span>
-          <p class="gcol">{{user.graduation}}</p>
+          <p *ngIf="!user.graduation">----------</p>
+          <p class="gcol" *ngIf="user.graduation">{{user.graduation}}</p>
           <span class="pgcol">Post Graduation College/University</span>
-          <p class="pgcol">{{user.pg}}</p>
+          <p *ngIf="!user.pg">----------</p>
+          <p class="pgcol" *ngIf="user.pg">{{user.pg}}</p>
         </div>
         <div class="column3">
           <span class="inst2">12th Grade/Diploma Institute</span>
-          <p class="inst2">{{user.inter}}</p>
+          <p *ngIf="!user.inter">----------</p>
+          <p class="inst2" *ngIf="user.inter">{{user.inter}}</p>
           <span class="stream">Stream</span>
-          <p class="stream">{{user.graduationStream}}</p>
+          <p *ngIf="!user.graduationStream">----------</p>
+          <p class="stream" *ngIf="user.graduationStream">{{user.graduationStream}}</p>
           <span class="pgstream">Post Graduation Stream</span>
-          <p class="stream">{{user.pgStream}}</p>
+          <p *ngIf="!user.pgStream">----------</p>
+          <p class="stream" *ngIf="user.pgStream">{{user.pgStream}}</p>
         </div>
       </div>
     </div>
@@ -152,34 +171,42 @@
       <div class="row1">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p class="orgname">{{user.expcompany}}</p>
+          <p *ngIf="!user.expcompany">----------</p>
+          <p class="orgname" *ngIf="user.expcompany">{{user.expcompany}}</p>
           <span class="location2">Location</span>
-          <p class="location2">{{user.explocation}}</p>
+          <p *ngIf="!user.explocation">----------</p>
+          <p class="location2" *ngIf="user.explocation">{{user.explocation}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p class="duration2">{{user.expduration}}</p>
+          <p *ngIf="!user.expduration">----------</p>
+          <p class="duration2" *ngIf="user.expduration">{{user.expduration}}</p>
         </div>
         <div class="column3">
           <span class="designation">Designation</span>
-          <p class="designation">{{user.expdesignation}}</p>
+          <p *ngIf="!user.expdesignation">----------</p>
+          <p class="designation" *ngIf="user.expdesignation">{{user.expdesignation}}</p>
         </div>
       </div>
       <hr>
       <div class="row1">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p class="orgname">{{user.expcompany1}}</p>
+          <p *ngIf="!user.expcompany1">----------</p>
+          <p class="orgname" *ngIf="user.expcompany1">{{user.expcompany1}}</p>
           <span class="location2">Location</span>
-          <p class="location2">{{user.explocation1}}</p>
+          <p *ngIf="!user.explocation1">----------</p>
+          <p class="location2" *ngIf="user.explocation1">{{user.explocation1}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p class="duration2">{{user.expduration1}}</p>
+          <p *ngIf="!user.expduration1">----------</p>
+          <p class="duration2" *ngIf="user.expduration1">{{user.expduration1}}</p>
         </div>
         <div class="column3">
           <span class="designation2">Designation</span>
-          <p class="designation2">{{user.expdesignation1}}</p>
+          <p *ngIf="!user.expdesignation1">----------</p>
+          <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
         </div>
       </div>
     </div>
@@ -191,21 +218,27 @@
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p class="designation2">{{user.jobdesignation}}</p>
+          <p *ngIf="!user.jobdesignation">----------</p>
+          <p class="designation2" *ngIf="user.jobdesignation">{{user.jobdesignation}}</p>
           <span class="location3">Location</span>
-          <p class="location3">{{user.joblocation1}}</p>
+          <p *ngIf="!user.joblocation1">----------</p>
+          <p class="location3" *ngIf="user.joblocation1">{{user.joblocation1}}</p>
         </div>
         <div class="column2">
           <span class="estatus">Employment Status</span>
-          <p class="estatus">{{user.jobempstatus}}</p>
+          <p *ngIf="!user.jobempstatus">----------</p>
+          <p class="estatus" *ngIf="user.jobempstatus">{{user.jobempstatus}}</p>
           <span class="timings">Timings</span>
-          <p class="timings">{{user.jobtiming}}</p>
+          <p *ngIf="!user.jobtiming">----------</p>
+          <p class="timings" *ngIf="user.jobtiming">{{user.jobtiming}}</p>
         </div>
         <div class="column3">
           <span class="jdate">Joining Date</span>
-          <p class="jdate">{{user.joiningdate | date:"shortDate"}}</p>
+          <p *ngIf="!user.joiningdate">----------</p>
+          <p class="jdate"  *ngIf="user.joiningdate">{{user.joiningdate | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
-          <p class="ctc">{{user.jobctc}}</p>
+          <p *ngIf="!user.jobctc">----------</p>
+          <p class="ctc" *ngIf="user.jobctc">{{user.jobctc}}</p>
         </div>
       </div>
     </div>
@@ -217,7 +250,7 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
-        <form class="form-container" id="form1" [formGroup]="form">
+        <form class="form-container" id="form1" [formGroup]="form" >
           <div class="form-row">
             <div class="input">
               <label>Name</label>
@@ -247,7 +280,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
                   <p>{{Selectvariable3}}</p>
-                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
                   <ul>
@@ -258,13 +291,15 @@
                 </div>
               </div>
             </div>
+           
           </div>
           <div class="form-row">
             <div class="input">
               <label>Blood Group</label>
               <div class="dropdown_container">
                 <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
-                  <p>{{Selectvariable4}}</p>
+                  <p >{{Selectvariable4}}</p>
+                  <!-- <input type="text"  formControlName="designation" id="text9" readonly> -->
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown4" (mouseleave)="dropdownClose4()">
@@ -281,6 +316,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                   <p>{{Selectvariable1}}</p>
+                  <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">

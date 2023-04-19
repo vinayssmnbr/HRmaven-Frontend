@@ -44,10 +44,10 @@ export class LoginComponent {
         radioBtn.checked = true;
         counter++;
         if (counter === 4) {
-          counter = 0;
+          counter=0;
         }
       }
-    }, 3000);
+    }, 8000);
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
