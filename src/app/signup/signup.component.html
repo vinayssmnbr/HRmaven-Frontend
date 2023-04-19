@@ -134,7 +134,7 @@
                             conditions</a></label>
                 </div>
                 <div class="input-field button">
-                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
+                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" (click)="openModal()" />
                 </div>
             </form>
             <div class="logo">
@@ -143,3 +143,22 @@
         </div>
     </div>
 </header>
+
+
+<!--Modal-->
+
+<div class="modal" *ngIf="showModal" >
+    <div class="modal-content2" *ngIf="showmodalcontent2" >
+        <div class="cross_icon">
+        <i class="fa-solid fa-xmark" (click)="closeModal1()"></i>
+        </div>
+        <div class="modal-header2">
+            <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
+        </div>
+        <div class="modal-body2">
+            <h3>Signed Up Successfully!</h3>
+            <p>Kindly check your email for activation link.</p>
+            <button class="done-btn2" (click)="closeModal()">Done</button>
+        </div>
+    </div>
+</div>

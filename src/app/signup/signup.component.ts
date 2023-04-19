@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {FormGroup,FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { matchpassword } from './custom.validator';
-import { UserService} from '../service/user.service';
+import { UserService } from '../service/user.service';
 import { Router } from '@angular/router'
 @Component({
   selector: 'app-signup',
@@ -24,7 +24,7 @@ export class SignupComponent {
     }, 8000);
   }
 
-  constructor(public userService:UserService, private router : Router){}
+  constructor(public userService: UserService, private router: Router) { }
 
   noSpaces(control: FormControl) {
     if (control.value && control.value.trim().length === 0) {
@@ -35,68 +35,95 @@ export class SignupComponent {
 
 
   sigupform = new FormGroup({
-    email : new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
-    password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*-_]).{8,}$/)]),
-    confirm : new FormControl("",[Validators.required]),
-    username: new FormControl("",[Validators.required,Validators.pattern('^[A-Z]([a-zA-Z0-9.-_,]|[- @.#&!])*$')]),
-    check: new FormControl("",[Validators.required]),
-  },{
-    validators:matchpassword
+    email: new FormControl("", [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]),
+    password: new FormControl("", [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*-_]).{8,}$/)]),
+    confirm: new FormControl("", [Validators.required]),
+    username: new FormControl("", [Validators.required, Validators.pattern('^[A-Z]([a-zA-Z0-9.-_,]|[- @.#&!])*$')]),
+    check: new FormControl("", [Validators.required]),
+  }, {
+    validators: matchpassword
   });
 
-  get password(){
+  get password() {
     return this.sigupform.get('password');
   }
 
-  get email(){
+  get email() {
     return this.sigupform.get("email");
   }
 
-  get username(){
+  get username() {
     return this.sigupform.get("username");
   }
 
   showPassword = false;
-showPasswordIcon = 'fa-eye-slash';
+  showPasswordIcon = 'fa-eye-slash';
 
-togglePasswordVisibility(passwordInput: any) {
-  this.showPassword = !this.showPassword;
-  this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
-  passwordInput.type = this.showPassword ? 'password' : 'text';
-}
+  togglePasswordVisibility(passwordInput: any) {
+    this.showPassword = !this.showPassword;
+    this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput.type = this.showPassword ? 'password' : 'text';
+  }
 
-showPassword1= false;
-showPasswordIcon1 = 'fa-eye-slash';
+  showPassword1 = false;
+  showPasswordIcon1 = 'fa-eye-slash';
 
-togglePassword(passwordInpu: any) {
-  this.showPassword1 = !this.showPassword1;
-  this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
-  passwordInpu.type = this.showPassword1 ? 'password' : 'text';
-}
+  togglePassword(passwordInpu: any) {
+    this.showPassword1 = !this.showPassword1;
+    this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInpu.type = this.showPassword1 ? 'password' : 'text';
+  }
 
-onSubmit(data:any){
-  console.log(this.sigupform.value);
-  this.userService.saveUser(data).subscribe((result: any)=>{
-  this.userService.saveUser(this.sigupform)
-  console.log(result)
-  this.submit();
-  var today = new Date();
-  var expire = new Date();
+  onSubmit(data: any) {
+    console.log(this.sigupform.value);
+    this.userService.saveUser(data).subscribe((result: any) => {
+      this.userService.saveUser(this.sigupform)
+      console.log(result)
+      var today = new Date();
+      var expire = new Date();
+      
+      expire.setTime(today.getTime() + 12 * 60 * 60 * 60 * 1000);
+      console.log('inside');
+      document.cookie = "token= " + result.token + ";path=/" + ";expires=" + expire.toUTCString();
+      console.log("result:", result)
+      this.openModal()
+      
+    })
+  }
+  submit() {
+    this.router.navigate(['./login']) //your router URL need to pass it here
+  }
+  
+  SignupByGoogle() {
+    console.log('google');
+    window.location.href = 'https://hrmaven.works/auth/google';
+  }
+  showModal: boolean = false;
+  showModalContent: boolean = false;
+  firstStep: boolean = false;
+  secondStep: boolean = false;
+  thirdStep: boolean = false;
+  showmodalcontent2: boolean = false;
+  fourthStep: boolean = false;
+  openModal() {
+    this.showModal = true;
+    this.showModalContent = true;
+    this.showmodalcontent2 = true;
+  }
+  closeModal() {
+    this.showModal = false;
+    this.showModalContent = false;
+    this.showmodalcontent2 = false;
+    this.thirdStep = false;
+    this.fourthStep = false;
+    this.submit();
 
-  expire.setTime(today.getTime() + 12*60*60*60*1000);
-  console.log('inside');
-      document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
-  console.log("result:",result)
-
-  })
-}
-submit(){
-  this.router.navigate(['/dashboard']) //your router URL need to pass it here
-}
-
-SignupByGoogle() {
-  console.log('google');
-  window.location.href = 'https://hrmaven.works/auth/google';
-}
-
+  }
+  closeModal1() {
+    this.showModal = false;
+    this.showModalContent = false;
+    this.showmodalcontent2 = false;
+    this.thirdStep = false;
+    this.fourthStep = false;
+  }
 }
