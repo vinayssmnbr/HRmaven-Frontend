@@ -17,7 +17,6 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent {
   @Input() user: any;
   constructor(private dashService: DashService) {}
-
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
     console.log(this.user);

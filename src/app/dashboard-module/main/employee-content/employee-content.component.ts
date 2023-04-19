@@ -214,7 +214,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal() {
     this.showModal = false;
     this.buttonbackgroundColor3 =
-      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
     this.showModalContent = true;
     this.fourthStep = false;
@@ -282,7 +282,7 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Software Developer',
     },
   ];
-  array6: any = [
+ array6: any = [
     {
       id: 0,
       name: 'Frontend Developer',
@@ -383,7 +383,7 @@ export class EmployeeContentComponent implements OnInit {
         console.log('data', res);
       });
   }
-  Changeselect1(arr1: any) {
+Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
