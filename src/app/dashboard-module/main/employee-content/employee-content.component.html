@@ -109,7 +109,7 @@
             <div class="form-row">
               <div class="input">
                 <label>Name <span>*</span></label>
-                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name" pattern="^[^\s]+$"
+                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name"
                   [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
 
               </div>
@@ -234,8 +234,8 @@
               </div>
               <div class="input">
                 <label>Aadhar Card No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709 "
-                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.touched,'ng_valid': registrationFormControl.adhaarno.valid}">
+                <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709" pattern="[0-9]{12}" maxlength="12"
+                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.dirty,'ng_valid': registrationFormControl.adhaarno.valid}">
 
               </div>
             </div>
