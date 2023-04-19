@@ -119,7 +119,7 @@ export class LoginComponent {
   }
 
   submit() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['']);
   }
 
   // submissions

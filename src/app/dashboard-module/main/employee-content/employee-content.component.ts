@@ -133,20 +133,20 @@ export class EmployeeContentComponent implements OnInit {
     this.deletedata = data;
   }
   //SEARCH UID
-  search(event) {
-    console.log(this.query, 'search fn', this.designation);
-    this.dashService
-      .searchuid(this.query, this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
-    if (event.keyCode === 32) {
-      this.query = '';
+  // search(event) {
+  //   console.log(this.query, 'search fn', this.designation);
+  //   this.dashService
+  //     .searchuid(this.query, this.designation)
+  //     .subscribe((res) => {
+  //       console.log(res);
+  //       this.employee = res;
+  //       console.log('data', res);
+  //     });
+  //   if (event.keyCode === 32) {
+  //     this.query = '';
 
-    }
-  }
+  //   }
+  // }
 
   function() {
     this.show = !this.show;
@@ -358,7 +358,7 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable:any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
@@ -373,13 +373,13 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr.name);
     this.designation = arr.name;
     console.log('str', this.designation);
-    this.dashService
-      .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
+    // this.dashService
+    //   .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //     this.employee = res;
+    //     console.log('data', res);
+    //   });
   }
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;

@@ -13,10 +13,7 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
 
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
-  {
-    path: '',
-    component: DashboardComponent,
-    children: [
+
       {
         path: '',
         component: DashboardContentComponent,
@@ -50,8 +47,6 @@ const routes: Routes = [
         component: JobDetailsComponent
       },
       { path: 'employee-profile', component: EmployeeProfileComponent }
-    ],
-  },
 ];
 
 @NgModule({

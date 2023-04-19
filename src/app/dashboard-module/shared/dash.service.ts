@@ -101,7 +101,7 @@ export class DashService {
 
   }
 
-  
+
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
     let currentDate = moment(startDate);
@@ -125,7 +125,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response) => {
+          (response:any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {
@@ -173,7 +173,7 @@ export class DashService {
         }).subscribe((res) => {
           console.log(res);
         })
-            
+
 
     }
     if (object.status == 'reject' && status == 'accept') {
