@@ -12,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardContentComponent implements OnInit {
   // loader=false;
-  loader: boolean = true;
+  loadermain: boolean = true;
+  loader:boolean =false;
   constructor(
     public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
@@ -21,7 +22,7 @@ export class DashboardContentComponent implements OnInit {
     dashService.headerContent = '';
 
     setTimeout(() => {
-      this.loader = false;
+      this.loadermain = false;
     }, 3000);
 
     this.dashService.getLeaves().subscribe((res: any) => {
