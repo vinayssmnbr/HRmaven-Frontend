@@ -7,6 +7,7 @@ import { ForgetComponent } from './forget/forget.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthMainGuard } from './guards/authmain.guard';
+import { TermConditionComponent } from './term-condition/term-condition.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
+  {path:'t&c',component:TermConditionComponent}
 ];
 
 @NgModule({
