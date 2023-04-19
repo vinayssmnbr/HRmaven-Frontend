@@ -26,6 +26,8 @@ import { DOCUMENT } from '@angular/common';
 export class EmployeeContentComponent implements OnInit {
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
+  name: any;
+  email: any;
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
   }
@@ -75,8 +77,7 @@ export class EmployeeContentComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
     bankname: new FormControl('',Validators.required),
-    adhaarno: new FormControl('', [Validators.required,
-           ]),
+    adhaarno: new FormControl('', Validators.required),
     accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('', [
       Validators.required,
@@ -135,20 +136,20 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   //SEARCH UID
-  search(event) {
-    console.log(this.query, 'search fn', this.designation);
-    this.dashService
-      .searchuid(this.query, this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
-    if (event.keyCode === 32) {
-      this.query = '';
+  // search(event) {
+  //   console.log(this.query, 'search fn', this.designation);
+  //   this.dashService
+  //     .searchuid(this.query, this.designation)
+  //     .subscribe((res) => {
+  //       console.log(res);
+  //       this.employee = res;
+  //       console.log('data', res);
+  //     });
+  //   if (event.keyCode === 32) {
+  //     this.query = '';
 
-    }
-  }
+  //   }
+  // }
 
   function() {
     this.show = !this.show;
@@ -375,13 +376,13 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr.name);
     this.designation = arr.name;
     console.log('str', this.designation);
-    this.dashService
-      .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
+    // this.dashService
+    //   .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //     this.employee = res;
+    //     console.log('data', res);
+    //   });
   }
 Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
@@ -427,5 +428,15 @@ dropdownOpenOption() {
   this.designationdropdownOption = !this.designationdropdownOption;
 }
 
+onKeyDown(event: KeyboardEvent) {
+  if (event.keyCode === 32 && this.name.value.trim() === '') {
+    event.preventDefault();
+  }
+}
+onKeyDownEmail(event: KeyboardEvent) {
+  if (event.keyCode === 32 && this.email.value.trim() === '') {
+    event.preventDefault();
+  }
+}
 
 }
