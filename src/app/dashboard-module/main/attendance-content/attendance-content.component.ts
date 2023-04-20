@@ -149,7 +149,8 @@ export class AttendanceContentComponent implements OnInit {
     // this.form.get('punch_out').disable();
     window.scrollTo(0, 0);
     // Create a chart object
-
+    const today = new Date();
+    this.datez = today.toISOString().slice(0, 10);
   }
 
   changeColor() {
