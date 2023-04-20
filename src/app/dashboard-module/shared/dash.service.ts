@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable,map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
-
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +12,11 @@ import * as moment from 'moment';
 export class DashService {
   public headerContent: string;
   public activeComponent: string;
-  constructor(private http: HttpClient, private router : Router,private cookie:CookieService) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cookie: CookieService
+  ) {}
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
@@ -25,33 +28,31 @@ export class DashService {
     );
   }
   createData = environment.createData;
-  getData =environment.getData;
+  getData = environment.getData;
   deleteData = environment.deleteData;
-  getLeave=environment.getLeave
-  updateData=environment.updateData
-  getAttd=environment.getAttd
-  updatempdata=environment.updatempdata
-  getuid=environment.getuid
-  report=environment.report
-  profile=environment.profile
-
+  getLeave = environment.getLeave;
+  updateData = environment.updateData;
+  getAttd = environment.getAttd;
+  updatempdata = environment.updatempdata;
+  getuid = environment.getuid;
+  report = environment.report;
+  profile = environment.profile;
 
   //ADD EMPLOYEE DATA
   addEmployee(data) {
     return this.http.post(this.createData, data);
   }
 
-//PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
-  selectedEmployee:any
-  setSelectedEmployee(user:any){
-    this.selectedEmployee=user
+  //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
+  selectedEmployee: any;
+  setSelectedEmployee(user: any) {
+    this.selectedEmployee = user;
   }
-  getSelectedEmployee(){
-    return this.selectedEmployee
+  getSelectedEmployee() {
+    return this.selectedEmployee;
   }
 
-
-//DELETE DATA
+  //DELETE DATA
   deleteStudent(id: string): Observable<void> {
     const url = `${this.deleteData}/${id}`;
     return this.http.delete<void>(url);
@@ -62,42 +63,44 @@ export class DashService {
   getleaves() {
     return this.http.get(this.updateData);
   }
-  getAttendance(){
+  getAttendance() {
     return this.http.get(this.getAttd);
   }
-  getEmployee() {
-    return this.http.get(this.getData);
+  getEmployee():Observable<any[]> {
+    return this.http.get<any[]>(this.getData).pipe(
+      map(data=>data.filter(user=> user.status==='accepted'))
+    );
   }
   //UPDATE EMPLOYEE DATA
-  updateEmployee(user:any){
+  updateEmployee(user: any) {
     console.log('employee update id ', user);
-    return this.http.patch(`${this.updatempdata}/${user._id}`,user)
+    return this.http.patch(`${this.updatempdata}/${user._id}`, user);
   }
   //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
     console.log('data', data);
     return this.http.patch(this.updateData + `/${data._id}`, data);
   }
-//SEARCH UID AND FILTER DESIGNATION
+  //SEARCH UID AND FILTER DESIGNATION
   searchuid(query: string, designation: string) {
     console.log('des', designation);
     return this.http.get<any>(
-      `${this.getData}?uid=${query}&designation=${designation}`
-    );
+      `${this.getData}?uid=${query}&designation=${designation}`).pipe(
+        map(data=>data.filter(user=> user.status==='accepted'))
+      );;
+
   }
 
   getLeaveData(type: string) {
     return this.http.get(`${this.getData}?type=${type}`);
   }
 
-
-   getreport(){
-     return this.http.get(this.report);
+  getreport() {
+    return this.http.get(this.report);
   }
-//GET EMPLOYEE CUSTOM UID
-  getEmployeeUid(){
-    return this.http.get(this.getuid)
-
+  //GET EMPLOYEE CUSTOM UID
+  getEmployeeUid() {
+    return this.http.get(this.getuid);
   }
 
 
@@ -112,8 +115,7 @@ export class DashService {
     return dateArray;
   }
 
-  updateleave(object: any, status: 'accept' | 'reject')
-  {
+  updateleave(object: any, status: 'accept' | 'reject') {
     console.log(object);
     console.log(status);
     if (object.status == 'pending') {
@@ -124,7 +126,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response) => {
+          (response:any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {
@@ -139,11 +141,13 @@ export class DashService {
         body['empId'] = object.employeeId;
         body['name'] = object.employeeName;
         const url1 = environment.updateleave;
-        this.http.post(url1, body, {
-          headers: { 'content-type': 'application/json' },
-        }).subscribe((res) => {
-          console.log(res);
-        })
+        this.http
+          .post(url1, body, {
+            headers: { 'content-type': 'application/json' },
+          })
+          .subscribe((res) => {
+            console.log(res);
+          });
       }
     }
     if (object.status == 'accept' && status == 'reject') {
@@ -163,17 +167,17 @@ export class DashService {
             console.error('Error updating leave status:', error);
           }
         );
-        body['Array'] = Array;
-        body['empId'] = object.employeeId;
-        body['name'] = object.employeeName;
-        const url1 = environment.updateleave;
-        this.http.post(url1, body, {
+      body['Array'] = Array;
+      body['empId'] = object.employeeId;
+      body['name'] = object.employeeName;
+      const url1 = environment.updateleave;
+      this.http
+        .post(url1, body, {
           headers: { 'content-type': 'application/json' },
-        }).subscribe((res) => {
-          console.log(res);
         })
-
-
+        .subscribe((res) => {
+          console.log(res);
+        });
     }
     if (object.status == 'reject' && status == 'accept') {
       const Array = this.getDates(object.from, object.to);
@@ -181,9 +185,10 @@ export class DashService {
       console.log('rejet -> accept ');
       const url = `https://hrmaven.works/api/leave/${object._id}`;
       const body = { status: status };
-      this.http.patch(url, JSON.stringify(body), {
-        headers: { 'content-type': 'application/json' },
-      })
+      this.http
+        .patch(url, JSON.stringify(body), {
+          headers: { 'content-type': 'application/json' },
+        })
         .subscribe(
           (response) => {
             console.log('Leave status updated successfully: ', response);
@@ -196,12 +201,13 @@ export class DashService {
       body['empId'] = object.employeeId;
       body['name'] = object.employeeName;
       const url1 = environment.updateleave;
-      this.http.post(url1, body, {
-        headers: { 'content-type': 'application/json' },
-      }).subscribe((res) => {
-        console.log(res);
-      })
-
+      this.http
+        .post(url1, body, {
+          headers: { 'content-type': 'application/json' },
+        })
+        .subscribe((res) => {
+          console.log(res);
+        });
     }
   }
 }

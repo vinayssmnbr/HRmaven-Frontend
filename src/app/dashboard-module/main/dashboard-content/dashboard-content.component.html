@@ -1,4 +1,6 @@
-<div class="main">
+<app-header ></app-header>
+<app-sidebar></app-sidebar>
+<div class="main" >
     <div class="row">
         <div class="col-3">
             <div class="iconCenter file">
@@ -45,18 +47,6 @@
                     <div class="attendance">
                         <h2>Attendance</h2>
                     </div>
-                    <!-- <div class="dropdown_container">
-            <div class="dropdwon_select" (click)="dropdownOpen()">
-              <p>{{Selectvariable}}</p>
-              <i class="fa-sharp fa-solid fa-caret-down"></i>
-            </div>
-            <div class="select_content" *ngIf="contentdropdown">
-              <ul>
-                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                  {{arr.name}}</li>
-              </ul>
-            </div>
-          </div> -->
                 </div>
                 <div class="loader" *ngIf="!loader"></div>
                 <div class="bar-chart">
@@ -104,7 +94,7 @@
             <div class="leave-request-area">
                 <div class="leave-request-heading">
                     <h2>Leave request</h2>
-                    <p><a routerLink="/dashboard/leaves"> View All </a></p>
+                    <p><a routerLink="/leaves"> View All </a></p>
                 </div>
 
                 <div class="table_data">
@@ -129,11 +119,11 @@
                                 <td>
                                     <div class="action_button">
                                         <div class="action_btn">
-                                          <input type="radio" [checked]="leave.status=='accept'"  [name]="leave._id" (change)="updateLeaveStatus(leave, 'accept')"  id="outline1"  class="custom-radio">
+                                            <input type="radio" [checked]="leave.status=='accept'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'accept')" id="outline1" class="custom-radio">
                                             <label for="outline1" class="outline1">Accept</label>
                                         </div>
                                         <div class="action_btn">
-                                          <input type="radio"  [checked]="leave.status=='reject'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'reject')"  id="outline"  class="custom-radio">
+                                            <input type="radio" [checked]="leave.status=='reject'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'reject')" id="outline" class="custom-radio">
                                             <label for="outline" class="outline">Reject</label>
                                         </div>
                                     </div>

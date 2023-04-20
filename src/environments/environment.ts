@@ -19,27 +19,22 @@ export const environment = {
   profile:'https://hrmaven.works/user-profile',
   updateleave:'https://hrmaven.works/attendance/update'
 
-
-    //LOCAL URL
-    // updateleave:'https://hrmaven.works/attendance/update'
-    // saveurl: 'http://localhost:3000/signup',
-    // loginurl: 'http://localhost:3000/login',
-    // Forgoturl: 'http://localhost:3000/forgotpassword',
-    // Reseturl: 'http://localhost:3000/resetpassword',
-    // url: 'http://localhost:3000/user-profile',
-    // auth: 'http://localhost:3000/auth',
-    // createData: 'http://localhost:3000/api/create',
-    // getData: 'http://localhost:3000/api/find',
-    // deleteData: 'http://localhost:3000/api/',
-    // getLeave: 'http://localhost:3000/api/leave//',
-    // updateData: 'http://localhost:3000/attendance',
-    // getAttd: 'http://localhost:3000/attendance',
-    // updatempdata: 'http://localhost:3000/api/update',
-    // getuid: 'http://localhost:3000/api/uid',
-    // report: 'http://localhost:3000/attendance/report',
-    // profile: 'http://localhost:3000/user-profile',
-
-
-
-
+  //LOCAL URL
+  // updateleave: 'https://hrmaven.works/attendance/update',
+  // saveurl: 'http://localhost:3000/signup',
+  // loginurl: 'http://localhost:3000/login',
+  // Forgoturl: 'http://localhost:3000/forgotpassword',
+  // Reseturl: 'http://localhost:3000/resetpassword',
+  // url: 'http://localhost:3000/user-profile',
+  // auth: 'http://localhost:3000/auth',
+  // createData: 'http://localhost:3000/api/create',
+  // getData: 'http://localhost:3000/api/find',
+  // deleteData: 'http://localhost:3000/api/',
+  // getLeave: 'http://localhost:3000/api/leave//',
+  // updateData: 'http://localhost:3000/attendance',
+  // getAttd: 'http://localhost:3000/attendance',
+  // updatempdata: 'http://localhost:3000/api/update',
+  // getuid: 'http://localhost:3000/api/uid',
+  // report: 'http://localhost:3000/attendance/report',
+  // profile: 'http://localhost:3000/user-profile',
 };

@@ -76,7 +76,7 @@ export class UserService {
     this.http.get(this.auth, { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['']);
       },
       (error) => {
         console.log(error);

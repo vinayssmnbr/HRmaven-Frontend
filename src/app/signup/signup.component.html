@@ -7,6 +7,7 @@
             ><img class="logo-image" src="assets/images/hrr 3.png" alt="logo"
           /></a>
         </div>
+<<<<<<< HEAD
         <h1 class="title">Start your journey with us.</h1>
         <p class="title_para">
           Discover the world’s best community of freelancers and business
@@ -30,6 +31,70 @@
                 <h5>Mohit Sharma</h5>
                 <p>Freelancer</p>
               </div>
+=======
+
+        <div class="right-side">
+            <form [formGroup]="sigupform" (ngSubmit)="onSubmit(sigupform.value)">
+                <h2>Sign up to HRMaven</h2>
+                <p>Already have an account? <a routerLink="/login" routerLinkActive="active">Login</a> here</p>
+                <div class="field name-field">
+                    <div class="input-field">
+                        <label for="name">Organization Name</label>
+                        <input type="text" placeholder="Enter your Organization Name" class="name"
+                            formControlName="username" />
+                        <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span>
+                    </div>
+                </div>
+                <div class="field email-field">
+                    <div class="input-field">
+                        <label for="name" class="text-label">Email</label>
+                        <input type="email" placeholder="Enter your email" class="email" formControlName="email" />
+                        <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span>
+                    </div>
+
+                </div>
+                <div class="field create-password">
+                    <div class="input-field">
+                        <label for="name" class="text-label">Password</label>
+                        <input type="password" placeholder="Enter your password" class="password"
+                            formControlName="password" #passwordInput />
+                        <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span>
+                        <span *ngIf="password && password.invalid && password.touched ">
+                            <div class="iconWrap">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span class="tooltip">Uppercase character <br> Special character<br> Password
+                                    match<br>Lowercase character<br>Minimum 8 character</span>
+                            </div>
+                        </span>
+                    </div>
+
+                </div>
+                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+                    <i class="fa {{ showPasswordIcon }}"></i>
+                </span>
+                <div class="field confirm-password">
+                    <div class="input-field">
+                        <label for="name" class="text-label">Confirm your Password</label>
+                        <input type="password" placeholder="Confirm your password" class="cPassword"
+                            formControlName="confirm" #passwordInpu />
+                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn’t match</span>
+                    </div>
+                    <span class="password-toggle" (click)="togglePassword(passwordInpu)">
+                        <i class="fa {{ showPasswordIcon1 }}"></i>
+                    </span>
+                </div>
+                <div class="check-text">
+                    <input type="checkbox" class="check_box" formControlName="check" required />
+                    <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a routerLink="/t&c"> terms &
+                            conditions</a></label>
+                </div>
+                <div class="input-field button">
+                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
+                </div>
+            </form>
+            <div class="logo">
+                <img src="assets/images/hrr 2.png" alt="logo">
+>>>>>>> bf95d27187f17d01230ac2f57e2c0395e1ad7a29
             </div>
           </div>
           <div class="card">
