@@ -220,16 +220,6 @@ export class LeavesContentComponent {
     console.log(this.test);
   }
 
-  getDates(startDate: string, stopDate: string): string[] {
-    const dateArray: string[] = [];
-    let currentDate = moment(startDate);
-    const endDate = moment(stopDate);
-    while (currentDate <= endDate) {
-      dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
-      currentDate = moment(currentDate).add(1, 'days');
-    }
-    return dateArray;
-  }
   async updateLeaveStatus(object: any, status: 'accept' | 'reject') {
     this.dashService.updateleave(object, status);
     await this.updateafteraction();

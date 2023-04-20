@@ -11,16 +11,14 @@ import { TermConditionComponent } from './term-condition/term-condition.componen
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoaderComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
-    path: 'dashboard',
+    path: '',
     loadChildren: () =>
       import('./dashboard-module/dashboard-module.module').then(
         (m) => m.DashboardModuleModule
-      ),
-    canActivate: [AuthGuard],
+      ),canActivate: [AuthGuard],
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
   {path:'t&c',component:TermConditionComponent}
