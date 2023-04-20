@@ -248,6 +248,7 @@ export class LeavesContentComponent {
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
+  
   Selectvariable: string = 'Select';
   colorvariable: number = 0;
 

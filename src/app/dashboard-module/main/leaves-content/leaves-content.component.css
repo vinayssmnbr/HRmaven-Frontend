@@ -2,7 +2,7 @@
     width: (100%-223px);
     margin-left: 223px;
     background-color: #f9f9f9;
-    padding-top: 70px;
+    padding: 70px 30px;
 }
 
 #ico {
@@ -14,7 +14,6 @@
 
 .row {
     display: flex;
-    padding: 0 30px;
     gap: 32px;
     padding-top: 30px;
 }
@@ -53,6 +52,65 @@
     padding-left: 40px;
 }
 
+
+/* --------------Employee Form----- */
+.search_form {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    height: 232px;
+    margin-top: 25px;
+}
+
+.search_form h3 {
+    padding: 21px 27px;
+    color: #222222;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.search_form h3 span {
+    font-size: 14px;
+    color: #555555;
+    font-weight: 400;
+}
+
+.employe_form {
+    display: flex;
+    padding: 0 30px;
+    gap: 20px;
+}
+
+.form__group {
+    margin-bottom: 20px;
+}
+
+.form__group>label {
+    margin-bottom: 5px;
+    float: left;
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-size: 14px;
+}
+.employe_form input{
+    width: 260px;
+    height: 44px;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: black;
+    outline: none;
+    font-size: 14px;
+    padding: 10px 10px;
+    border: 1px solid transparent;
+}
+
+
+
+
+/* 
 .employe_input {
     display: flex;
     gap: 10px;
@@ -80,7 +138,7 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-}
+} */
 
 .search_btn {
     width: 92px;
@@ -114,14 +172,12 @@ input[type=number]::-webkit-inner-spin-button {
 /* ----------------DropDown Menu----------------------------- */
 
 .dropdown_container {
-    position: absolute;
-    right: 30px;
     z-index: 99;
 }
 
 .dropdwon_select {
     background-color: #fff;
-    width: 172px;
+    width: 260px;
     height: 40px;
     cursor: pointer;
     padding: 8px;
@@ -355,6 +411,7 @@ input[type="radio"] {
         outline-offset: -0.2rem;
     }
 }
+
 /* =====================Progress Bar=================== */
 .progress_container {
     position: relative;
@@ -363,27 +420,38 @@ input[type="radio"] {
     border-radius: 8px;
     display: grid;
     place-items: center;
-  }
-  .circular-progress,.circular-progress1,.circular-progress2,.circular-progress3 {
+}
+
+.circular-progress,
+.circular-progress1,
+.circular-progress2,
+.circular-progress3 {
     position: relative;
     height: 60px;
     width: 60px;
     border-radius: 50%;
     display: grid;
     place-items: center;
-  }
-  .circular-progress:before,.circular-progress1:before,.circular-progress2:before,.circular-progress3:before {
+}
+
+.circular-progress:before,
+.circular-progress1:before,
+.circular-progress2:before,
+.circular-progress3:before {
     content: "";
     position: absolute;
     height: 74%;
     width: 74%;
     background-color: #ffffff;
     border-radius: 50%;
-  }
-  .value-container,.value-container1,.value-container2,.value-container3 {
+}
+
+.value-container,
+.value-container1,
+.value-container2,
+.value-container3 {
     position: relative;
     font-size: 15px;
-    color:#444444;
+    color: #444444;
     font-weight: bold;
-  }
-  
+}

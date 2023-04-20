@@ -48,23 +48,70 @@
             </div>
         </div>
     </div>
-    <div class="employe_input">
-        <i class="fa fa-search" aria-hidden="true" id="ico"></i>
-        <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
-        <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-            <div class="dropdwon_select" (click)="dropdownOpen()">
-                <p>{{Selectvariable}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
+    <div class="search_form">
+        <!-- <div class="employe_input">
+            <i class="fa fa-search" aria-hidden="true" id="ico"></i>
+            <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
+            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                    <p>{{Selectvariable}}</p>
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown">
+                    <ul>
+                        <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                            (click)="Changeselect(arr)">
+                            {{arr.name}}</li>
+                    </ul>
+                </div>
             </div>
-            <div class="select_content" *ngIf="contentdropdown">
-                <ul>
-                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                        (click)="Changeselect(arr)">
-                        {{arr.name}}</li>
-                </ul>
+        </div> -->
+        <h3>Search <span>(Please specify your search)</span></h3>
+        <form action="" class="employe_form">
+            <div class="form__group">
+                <label for="date">Form</label>
+                <input type="date"  />
             </div>
-        </div>
+            <div class="form__group">
+                <label for="date">To</label>
+                <input type="date"  />
+            </div>
+            <div class="form__group">
+                <label for="dropdown_container">Category</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                    <div class="dropdwon_select" (click)="dropdownOpen()">
+                        <p>{{Selectvariable}}</p>
+                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="select_content" *ngIf="contentdropdown">
+                        <ul>
+                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                (click)="Changeselect(arr)">
+                                {{arr.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form__group">
+                <label for="uid">Type</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                    <div class="dropdwon_select" (click)="dropdownOpen()">
+                        <p>{{Selectvariable}}</p>
+                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="select_content" *ngIf="contentdropdown">
+                        <ul>
+                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                (click)="Changeselect(arr)">
+                                {{arr.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+           
+        </form>
     </div>
+
     <div class="leaves_table">
         <div class="table_data">
             <table class="table_text">
