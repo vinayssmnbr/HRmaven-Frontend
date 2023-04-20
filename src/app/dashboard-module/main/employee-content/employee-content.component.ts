@@ -427,15 +427,5 @@ dropdownOpenOption() {
   this.designationdropdownOption = !this.designationdropdownOption;
 }
 
-onKeyDown(event: KeyboardEvent) {
-  if (event.keyCode === 32 && this.name.value.trim() === '') {
-    event.preventDefault();
-  }
-}
-onKeyDownEmail(event: KeyboardEvent) {
-  if (event.keyCode === 32 && this.email.value.trim() === '') {
-    event.preventDefault();
-  }
-}
 
 }

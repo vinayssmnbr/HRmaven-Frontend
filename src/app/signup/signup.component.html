@@ -1,145 +1,299 @@
 <header>
-    <div class="row">
-        <div class="left-side">
-            <div class="leftContent">
-                <div class="logo_part">
-                    <a href=""><img class="logo-image" src="assets/images/hrr 3.png" alt="logo"></a>
-                </div>
-                <h1 class="title">Start your journey with us.</h1>
-                <p class="title_para">Discover the world’s best community of freelancers and business owners.</p>
-            </div>
-            <div class="leftSlider">
-                <div class="slider">
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
-                    <div class="card first">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
-                            This is absolutely wonderful!
-                        </p>
-                        <div class="profile">
-                            <img src="assets/images/Rectangle 11.png" alt="image">
-                            <div class="profile-text">
-                                <h5>Mohit Sharma</h5>
-                                <p>Freelancer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
-                            This is absolutely wonderful!
-                        </p>
-                        <div class="profile">
-                            <img src="assets/images/Rectangle 11.png" alt="image">
-                            <div class="profile-text">
-                                <h5>Mohit Sharma</h5>
-                                <p>Freelancer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
-                            This is absolutely wonderful!
-                        </p>
-                        <div class="profile">
-                            <img src="assets/images/Rectangle 11.png" alt="image">
-                            <div class="profile-text">
-                                <h5>Mohit Sharma</h5>
-                                <p>Freelancer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business.
-                            This is absolutely wonderful!
-                        </p>
-                        <div class="profile">
-                            <img src="assets/images/Rectangle 11.png" alt="image">
-                            <div class="profile-text">
-                                <h5>Mohit Sharma</h5>
-                                <p>Freelancer</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="navigation-auto">
-                        <div class="auto-btn1"></div>
-                        <div class="auto-btn2"></div>
-                        <div class="auto-btn3"></div>
-                        <div class="auto-btn4"></div>
-                    </div>
-                </div>
-                <div class="navigation-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                </div>
-            </div>
+  <div class="row">
+    <div class="left-side">
+      <div class="leftContent">
+        <div class="logo_part">
+          <a href=""
+            ><img class="logo-image" src="assets/images/hrr 3.png" alt="logo"
+          /></a>
         </div>
-
-        <div class="right-side">
-            <form [formGroup]="sigupform" (ngSubmit)="onSubmit(sigupform.value)">
-                <h2>Sign up to HRMaven</h2>
-                <p>Already have an account? <a routerLink="/login" routerLinkActive="active">Login</a> here</p>
-                <div class="field name-field">
-                    <div class="input-field">
-                        <label for="name">Organization Name</label>
-                        <input type="text" placeholder="Enter your Organization Name" class="name"
-                            formControlName="username" />
-                        <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span>
-                    </div>
-                </div>
-                <div class="field email-field">
-                    <div class="input-field">
-                        <label for="name" class="text-label">Email</label>
-                        <input type="email" placeholder="Enter your email" class="email" formControlName="email" />
-                        <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span>
-                    </div>
-
-                </div>
-                <div class="field create-password">
-                    <div class="input-field">
-                        <label for="name" class="text-label">Password</label>
-                        <input type="password" placeholder="Enter your password" class="password"
-                            formControlName="password" #passwordInput />
-                        <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span>
-                        <span *ngIf="password && password.invalid && password.touched ">
-                            <div class="iconWrap">
-                                <i class="fa-solid fa-circle-info"></i>
-                                <span class="tooltip">Uppercase character <br> Special character<br> Password
-                                    match<br>Lowercase character<br>Minimum 8 character</span>
-                            </div>
-                        </span>
-                    </div>
-
-                </div>
-                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
-                    <i class="fa {{ showPasswordIcon }}"></i>
-                </span>
-                <div class="field confirm-password">
-                    <div class="input-field">
-                        <label for="name" class="text-label">Confirm your Password</label>
-                        <input type="password" placeholder="Confirm your password" class="cPassword"
-                            formControlName="confirm" #passwordInpu />
-                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn’t match</span>
-                    </div>
-                    <span class="password-toggle" (click)="togglePassword(passwordInpu)">
-                        <i class="fa {{ showPasswordIcon1 }}"></i>
-                    </span>
-                </div>
-                <div class="check-text">
-                    <input type="checkbox" class="check_box" formControlName="check" required />
-                    <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a routerLink="/t&c"> terms &
-                            conditions</a></label>
-                </div>
-                <div class="input-field button">
-                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
-                </div>
-            </form>
-            <div class="logo">
-                <img src="assets/images/hrr 2.png" alt="logo">
+        <h1 class="title">Start your journey with us.</h1>
+        <p class="title_para">
+          Discover the world’s best community of freelancers and business
+          owners.
+        </p>
+      </div>
+      <div class="leftSlider">
+        <div class="slider">
+          <input type="radio" name="radio-btn" id="radio1" />
+          <input type="radio" name="radio-btn" id="radio2" />
+          <input type="radio" name="radio-btn" id="radio3" />
+          <input type="radio" name="radio-btn" id="radio4" />
+          <div class="card first">
+            <p class="card-text">
+              Simply unbelievable! I am really satisfied with my projects and
+              business. This is absolutely wonderful!
+            </p>
+            <div class="profile">
+              <img src="assets/images/Rectangle 11.png" alt="image" />
+              <div class="profile-text">
+                <h5>Mohit Sharma</h5>
+                <p>Freelancer</p>
+              </div>
             </div>
+          </div>
+          <div class="card">
+            <p class="card-text">
+              Simply unbelievable! I am really satisfied with my projects and
+              business. This is absolutely wonderful!
+            </p>
+            <div class="profile">
+              <img src="assets/images/Rectangle 11.png" alt="image" />
+              <div class="profile-text">
+                <h5>Mohit Sharma</h5>
+                <p>Freelancer</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <p class="card-text">
+              Simply unbelievable! I am really satisfied with my projects and
+              business. This is absolutely wonderful!
+            </p>
+            <div class="profile">
+              <img src="assets/images/Rectangle 11.png" alt="image" />
+              <div class="profile-text">
+                <h5>Mohit Sharma</h5>
+                <p>Freelancer</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <p class="card-text">
+              Simply unbelievable! I am really satisfied with my projects and
+              business. This is absolutely wonderful!
+            </p>
+            <div class="profile">
+              <img src="assets/images/Rectangle 11.png" alt="image" />
+              <div class="profile-text">
+                <h5>Mohit Sharma</h5>
+                <p>Freelancer</p>
+              </div>
+            </div>
+          </div>
+          <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+          </div>
         </div>
+        <div class="navigation-manual">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+          <label for="radio4" class="manual-btn"></label>
+        </div>
+      </div>
     </div>
+
+    <div class="right-side">
+      <form [formGroup]="sigupform" (ngSubmit)="onSubmit(sigupform.value)">
+        <h2>Sign up to HRMaven</h2>
+        <p>
+          Already have an account?
+          <a routerLink="/login" routerLinkActive="active">Login</a> here
+        </p>
+        <div class="field name-field">
+          <div class="input-field">
+            <label for="username">Organization Name</label>
+            <input type="text"
+              placeholder="Enter your Organization Name" class="username"
+              [class.is-invalid]="fun['username'].invalid && fun['username'].touched"
+              class="is-invalid"
+              formControlName="username"
+              (keydown)="Space($event)"
+            />
+            <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
+
+
+          <div
+            *ngIf="
+              fun['username'].invalid &&
+              (fun['username'].touched || fun['username'].dirty)
+            "
+          >
+            <span
+               *ngIf="
+                fun['username'].errors && fun['username'].errors['required']
+              "
+            > <i class="fa-solid fa-circle-info"></i>
+              Organization name is required
+        </span>
+
+            <span
+              *ngIf="
+                fun['username'].errors && fun['username'].errors['pattern']
+              "
+            ><i class="fa-solid fa-circle-info"></i>
+              Enter Only Character
+      </span>
+          </div>
+        </div>
+        </div>
+        <div class="field email-field">
+          <div class="input-field">
+            <label for="email" class="text-label">Email</label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="email"
+              formControlName="email"
+              [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
+              class="form-control is-invalid"
+              (keyup)="onKeyUp($event)"
+            />
+            <!-- <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span> -->
+
+          <div
+            *ngIf="
+              fun['email'].invalid &&
+              (fun['email'].touched || fun['email'].dirty)
+            "
+          >
+            <span *ngIf="fun['email'].errors && fun['email'].errors['required']"><i class="fa-solid fa-circle-info"></i>
+              Email is required
+            </span>
+            <span *ngIf="fun['email'].errors && fun['email'].errors['email']"><i class="fa-solid fa-circle-info"></i>
+              Invalid Email
+            </span>
+            <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']"><i class="fa-solid fa-circle-info"></i>
+              Enter Valid Email Pattern
+            </span>
+          </div>
+        </div>
+      </div>
+        <div class="field create-password">
+          <div class="input-field">
+            <label for="name" class="text-label">Password
+
+               <div class="iconWrap password_required">
+
+              <i class="fa-solid fa-circle-info"></i>
+              <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
+              <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
+
+              <!-- <input type="{{is_visible ? 'text' : 'password'}}" [(ngModel)]="password" (input)="checkPassword()" /> -->
+
+              <span class="tooltip">
+                <ul>
+                  <ul id="set">
+                    <li id="count">Length: 0</li>
+                    <!-- <i id="see" (click)="toggleVisibility()" class="far fa-eye"></i> -->
+                  </ul>
+                  <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
+                    <i class="far fa-check-circle"></i
+                    ><span [style.color]="lengthCheck ? 'green' : 'red'"
+                      >Length Should be at least8.</span
+                    >
+                  </li>
+
+                  <li id="check2">
+                    <i class="far fa-check-circle"></i
+                    ><span [style.color]="numericalCheck ? 'green' : 'red'"
+                      >Contains numerical character.</span
+                    >
+                  </li>
+                  <li id="check3">
+                    <i class="far fa-check-circle"></i
+                    ><span [style.color]="specialCharCheck ? 'green' : 'red'"
+                      >Contains special character.</span
+                    >
+                  </li>
+                  <!-- <li id="check4">
+  <i class="far fa-check-circle"></i><span [style.color]="spaceCheck?'green':'red'">Shouldn't contain spaces.</span>
+</li> -->
+                  <li id="check5">
+                    <i class="far fa-check-circle"></i
+                    ><span [style.color]="capitalCheck ? 'green' : 'red'"
+                      >Should contain at least one Capital letter</span
+                    >
+                  </li>
+                  <li id="check6">
+                    <i class="far fa-check-circle"></i
+                    ><span [style.color]="smallCheck ? 'green' : 'red'"
+                      >Should contain at least one small letter</span
+                    >
+                  </li>
+                </ul>
+              </span>
+            </div>
+            </label>
+            <div style="position: relative;">
+              <input
+              type="{{ is_visible ? 'text' : 'password' }}"
+              [(ngModel)]="password"
+              (input)="checkPassword()"
+              placeholder="Enter your password"
+              class="password"
+              [class.is-invalid]="
+                fun['password'].invalid && fun['password'].touched
+              "
+              formControlName="password"
+              #passwordInput
+              class="form-control is-invalid"
+              id="password"
+              (keyup)="onKeyUp($event)"
+              (keydown.space)="$event.preventDefault()"
+            />
+
+              <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)"><i class="fa {{ showPasswordIcon }}"></i></span>
+            </div>
+            <!-- <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span> -->
+            <!-- <span *ngIf="password && password.invalid && password.touched "> -->
+
+          </div>
+        </div>
+
+        <div class="field confirm-password">
+          <div class="input-field">
+            <label for="name" class="text-label">Confirm your Password</label>
+            <div style="position: relative;">
+
+            <input
+              type="password"
+              placeholder="Confirm your password"
+              class="cPassword"
+              formControlName="confirm"
+              #passwordInpu
+              (keyup)="onKeyUp($event)"/>
+
+
+          
+
+            <span class="password-toggle" (click)="togglePassword(passwordInpu)">
+              <i class="fa {{showPasswordIcon1}}"></i>
+            </span>
+          </div>
+          <span *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><i class="fa-solid fa-circle-info"></i>Password didn't match</span>
+
+          </div>
+
+
+        </div>
+        <div class="check-text">
+          <input
+            type="checkbox"
+            class="check_box"
+            formControlName="check"
+            required
+          />
+          <label for="checkbox" class="checkbox-text"
+            ><span>I agree to </span> <a href=""> terms & conditions</a></label
+          >
+        </div>
+        <div class="input-field button">
+          <input
+            id="submit"
+            type="submit"
+            [disabled]="sigupform.invalid"
+            value="Sign Up"
+          />
+        </div>
+      </form>
+      <div class="logo">
+        <img src="assets/images/hrr 2.png" alt="logo" />
+      </div>
+    </div>
+  </div>
 </header>

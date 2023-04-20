@@ -27,8 +27,6 @@
 .side1{
   display: flex;
   flex-direction: column;
-  /* min-height: 50vh; */
-  /* width: 100%; */
 }
 .logo{
   padding-top: 23px;
@@ -63,14 +61,21 @@ ul.navigation li a{
   padding: 15px 18px;
   color: #ECECEC;
 }
+ul.navigation li a img{
+  width: 18px;
+  height: 18px;
+  margin-top:-2px;
+}
+ul.navigation2 li a img {
+  width: 18px;
+  height: 18px;
+  /* margin-top: -2px; */
+}
 ul.navigation li.active{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
-.navigation2 img{
-  width: 17px;
-  height: 17px;
-}
+
 
 ul.navigation li:hover{
   background: rgba(255, 255, 255, 0.3);
@@ -82,33 +87,30 @@ ul.navigation li:hover{
   display: flex;
   flex-direction: column;
   min-height: 25vh;
-  width: 100%;
 }
 .side2 p{
-  margin-left: 22px;
+  /* margin-left: 22px; */
 }
 ul.navigation2 {
   display: flex;
   flex-direction: column;
-  width:100%;
-  align-items: center;
-  /* margin-top: 8px; */
-  padding-left: 40px;
-}
-ul.navigation2 li {
-  width: 100%;
-  margin-top: 33px;
-}
 
+}
 
 ul.navigation2 li a{
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
   font-style: normal;
-  gap: 23px;
+  gap: 20px;
   align-items: center;
   justify-content: flex-start;
   display: flex;
+  width: 180px;
+  height: 44px;
+  padding: 15px 18px;
 }
-
+ul.navigation2 li:hover{
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}

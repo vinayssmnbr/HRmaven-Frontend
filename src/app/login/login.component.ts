@@ -51,7 +51,7 @@ export class LoginComponent {
         radioBtn.checked = true;
         counter++;
         if (counter === 4) {
-          counter=0;
+          counter = 0;
         }
       }
     }, 8000);
@@ -64,6 +64,7 @@ export class LoginComponent {
         this.cookie.set('token', token);
         this.router.navigate(['dashboard']);
       } else {
+        this.cookie.delete('token');
         this.router.navigate(['login']);
       }
     });
@@ -161,7 +162,7 @@ export class LoginComponent {
 
   loader=false;
   submit() {
-    this.loader=true;
+    this.loader = true;
     setTimeout(() => {
       this.router.navigate(['/dashboard']);
     }, 2000);
