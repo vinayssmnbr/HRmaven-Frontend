@@ -57,6 +57,7 @@ export class LoginComponent {
         this.cookie.set('token', token);
         this.router.navigate(['dashboard']);
       } else {
+        this.cookie.delete('token');
         this.router.navigate(['login']);
       }
     });
