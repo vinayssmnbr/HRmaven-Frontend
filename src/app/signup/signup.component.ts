@@ -11,17 +11,20 @@ import { Router } from '@angular/router'
 export class SignupComponent {
 
   ngOnInit() {
-    let counter = 0;
+    let counter = 1;
     setInterval(() => {
-      const radioBtn = document.getElementById(`radio${counter + 1}`) as HTMLInputElement;
+      const radioBtn = document.getElementById(
+        `radio${counter}`
+      ) as HTMLInputElement;
       if (radioBtn) {
         radioBtn.checked = true;
         counter++;
-        if (counter === 4) {
-          counter = 0;
+        if  (counter > 4) {
+          counter=1;
         }
       }
-    }, 8000);
+      
+    }, 5000);
   }
 
   constructor(public userService: UserService, private router: Router) { }

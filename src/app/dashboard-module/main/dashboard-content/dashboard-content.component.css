@@ -686,7 +686,7 @@ input[type="radio"] {
 
 /*meeting Scrollbar*/
 .meeting-scrollbar {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   height: 400px;
   padding-right: 4px;

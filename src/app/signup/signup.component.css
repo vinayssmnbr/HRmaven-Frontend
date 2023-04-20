@@ -130,7 +130,7 @@ form .input-field {
     position: relative;
     width: 400px;
     max-height: 50px;
-    margin-bottom: 48px;
+    margin-bottom: 52px;
 }
 
 .name-field {
@@ -146,6 +146,7 @@ form .input-field {
     padding: 0 15px;
     border: 1px solid #d1d1d1;
     margin-top: 6px;
+    margin-bottom: 7px;
 }
 
 .input-field input::placeholder {
@@ -405,11 +406,15 @@ form.ng-invalid.ng-touched #submit {
 
 .password-toggle i {
     position: absolute;
-    margin-top: -50px;
-    margin-left: 360px;
+    margin-top: 18px;
+    margin-left: -30px;
     color: #ddd;
     font-size: 14px;
     cursor: pointer;
+}
+.password-i{
+    display: flex;
+    justify-content: space-between;
 }
 
 .input-field label {
@@ -441,8 +446,7 @@ form.ng-invalid #submit {
     border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
-    top: -100px;
-    margin-left: 380px;
+  
 }
 
 .iconWrap i {

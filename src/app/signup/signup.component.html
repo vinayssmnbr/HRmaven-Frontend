@@ -99,34 +99,39 @@
 
                 </div>
                 <div class="field create-password">
+
                     <div class="input-field">
-                        <label for="name" class="text-label">Password</label>
+                        <div class="password-i">
+                        <label for="name" class="text-label">Password</label><div class="iconWrap">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span class="tooltip">Uppercase character <br> Special character<br> Password
+                                match<br>Lowercase character<br>Minimum 8 character</span>
+                        </div></div>
+                        
                         <input type="password" placeholder="Enter your password" class="password"
-                            formControlName="password" #passwordInput />
+                            formControlName="password" #passwordInput /> 
+                             <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+                                <i class="fa {{ showPasswordIcon }}"></i>
+                            </span>
                         <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span>
                         <span *ngIf="password && password.invalid && password.touched ">
-                            <div class="iconWrap">
-                                <i class="fa-solid fa-circle-info"></i>
-                                <span class="tooltip">Uppercase character <br> Special character<br> Password
-                                    match<br>Lowercase character<br>Minimum 8 character</span>
-                            </div>
+                            
                         </span>
                     </div>
 
                 </div>
-                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
-                    <i class="fa {{ showPasswordIcon }}"></i>
-                </span>
+              
                 <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
                         <input type="password" placeholder="Confirm your password" class="cPassword"
                             formControlName="confirm" #passwordInpu />
-                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn’t match</span>
+                            <span class="password-toggle" (click)="togglePassword(passwordInpu)">
+                              <i class="fa {{ showPasswordIcon }}"></i>
+                            </span>
+                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn't match</span>
                     </div>
-                    <span class="password-toggle" (click)="togglePassword(passwordInpu)">
-                        <i class="fa {{ showPasswordIcon1 }}"></i>
-                    </span>
+                   
                 </div>
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />

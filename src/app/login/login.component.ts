@@ -35,19 +35,20 @@ export class LoginComponent {
         Remember: true,
       });
     }
-    let counter = 0;
+    let counter = 1;
     setInterval(() => {
       const radioBtn = document.getElementById(
-        `radio${counter + 1}`
+        `radio${counter}`
       ) as HTMLInputElement;
       if (radioBtn) {
         radioBtn.checked = true;
         counter++;
-        if (counter === 4) {
-          counter=0;
+        if  (counter > 4) {
+          counter=1;
         }
       }
-    }, 8000);
+      
+    }, 5000);
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
