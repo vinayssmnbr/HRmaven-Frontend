@@ -425,7 +425,6 @@ form.ng-invalid.ng-touched #submit {
 .password-toggle i {
     position: absolute;
 margin-top: 18px;
-margin-left: -30px;
     color: #ddd;
     font-size: 14px;
     cursor: pointer;
@@ -479,7 +478,7 @@ form.ng-invalid #submit {
     color: #888888;
     background-color: #F7F7FB;
     padding: 8px 14px;
-    width: 274px;
+    width: 284px;
     /* height: 126px; */
     border-radius: 4px;
     transform: translateX(-5px);
@@ -507,6 +506,9 @@ form.ng-invalid #submit {
 .iconWrap:hover .tooltip {
     transform: translateX(5px);
     opacity: 1;
+}
+.tooltip span{
+    margin-top: 0;
 }
 .create-password label.text-label {
   display: flex;
