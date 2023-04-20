@@ -13,9 +13,8 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
 
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
-
       {
-        path: '',
+        path: 'dashboard',
         component: DashboardContentComponent,
       },
       {

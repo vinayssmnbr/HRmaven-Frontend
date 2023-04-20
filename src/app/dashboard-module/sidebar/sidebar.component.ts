@@ -16,8 +16,8 @@ activeLink:any;
 ngOnInit() {
   this.routes.params.subscribe(params => {
     const id = params['id'];
-    if (id === '') {
-      this.activeLink = '';
+    if (id === 'dashboard') {
+      this.activeLink = 'dashboard';
     } else if (id === 'employee') {
       this.activeLink = 'employee';
     } else if (id === 'attendance') {

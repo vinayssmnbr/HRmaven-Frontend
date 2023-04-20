@@ -1,9 +1,6 @@
-<div class="parent loaderLogo " *ngIf="loadermain">
-  <img id=loader src="../../assets/images/logo.ico">
-</div>
-<app-header *ngIf="!loadermain" ></app-header>
-<app-sidebar *ngIf="!loadermain"></app-sidebar>
-<div class="main" *ngIf="!loadermain">
+<app-header ></app-header>
+<app-sidebar></app-sidebar>
+<div class="main" >
     <div class="row">
         <div class="col-3">
             <div class="iconCenter file">

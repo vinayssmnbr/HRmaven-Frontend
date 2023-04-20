@@ -44,7 +44,7 @@
   line-height: 100%;
   text-transform: uppercase;
 }
-ul.navigation li{
+ul.navigation li, ul.navigation2 li{
   display: flex;
   flex-direction: column;
   margin-top: 15px;
