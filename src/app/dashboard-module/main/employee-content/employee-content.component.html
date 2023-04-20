@@ -45,19 +45,16 @@
       <tbody>
 
         <tr *ngFor="let user of employee  | employeefilter:query:Selectvariable">
-          <!--  -->
-          <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'" style="text-align:center;">
-            <p > <img src="assets/images/no_record.png" alt="" class="center"></p>
+          <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
+            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
         </td>
-          <!--  -->
-          <td class="employee1" *ngIf="user.found!='true'">{{user.uid}}</td>
-          <td class="name1" *ngIf="user.found!='true'">
-            <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}
-          </td>
-          <td class="designation1" *ngIf="user.found!='true'">{{user.designation}}</td>
-          <td class="email1" *ngIf="user.found!='true'">{{user.email}}</td>
-          <td class="contact1" *ngIf="user.found!='true'">{{user.mobile}}</td>
+          <td  *ngIf="user.found!='true'" class="employee1">{{user.uid}}</td>
+          <td  *ngIf="user.found!='true'" class="name1">
+           <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}</td>
+          <td  *ngIf="user.found!='true'" class="designation1">{{user.designation}}</td>
+          <td  *ngIf="user.found!='true'" class="email1">{{user.email}}</td>
+          <td  *ngIf="user.found!='true'" class="contact1">{{user.mobile}}</td>
           <td class="action1" *ngIf="user.found!='true'">
             <div class="icons">
               <img src="./assets/images/Vector.svg" alt="" routerLink="/dashboard/employee-profile"
@@ -115,9 +112,9 @@
             <div class="form-row">
               <div class="input">
                 <label>Name <span>*</span></label>
-                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name"
+                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name" pattern="^[^\s]+$"
+                  (keydown)="onKeyDown($event)"
                   [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
-
               </div>
                <div class="input">
                 <label>Designation <span>*</span></label>
@@ -159,8 +156,8 @@
                 <label>Gender <span>*</span></label>
                 <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                   <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
-                    <!-- <p >{{Selectvariable1}}</p> -->
-                    <input type="text" [(ngModel)]="Selectvariable1" formControlName="gender" id="text9" readonly>
+                    <p >{{Selectvariable1}}</p>
+                    <!-- <input type="text" [(ngModel)]="Selectvariable1" formControlName="gender" id="text9" readonly> -->
                     <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                   </div>
                   <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
@@ -188,7 +185,8 @@
               </div>
               <div class="input">
                 <label>Email <span>*</span></label>
-                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"  pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
+                  (keydown)="onKeyDownEmail($event)" pattern="^[^\s]+$"
                   [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
 
               </div>
@@ -249,7 +247,7 @@
               <div class="input">
                 <label>PAN number <span>*</span></label>
                 <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10"
-                  oninput="this.value = this.value.toUpperCase()"
+                  pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" oninput="this.value = this.value.toUpperCase()"
                   [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.dirty,'ng_valid': registrationFormControl.panno.valid}">
 
               </div>
