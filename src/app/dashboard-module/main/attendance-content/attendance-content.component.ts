@@ -50,7 +50,7 @@ export class AttendanceContentComponent implements OnInit {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.dashService.getAttendance().subscribe((res: any) => {
-      console.log('data', res); // add this line
+      // console.log('data', res); // add this line
       this.employee = res;
     });
     this.getLeaveData()
@@ -70,72 +70,66 @@ export class AttendanceContentComponent implements OnInit {
 
   async getreport(){
     await this.dashService.getreport().subscribe((res:any)=>{
-       console.log(res);
-     const myChart = new Chart('lineChart', {
-       type: 'line',
-       data: {
-         labels: [
-           '1',
-           '2',
-           '3',
-           '4',
-           '5',
-           '6',
-           '7',
-           '8',
-           '9',
-           '10',
-           '11',
-           '12',
-         ],
-         datasets: [
-           {
-             label: 'Present',
-             data:res.present,
-             backgroundColor: ['blue'],
-             borderColor: ['blue'],
-             borderWidth: 1,
-             pointStyle: 'circle',
-           },
-           {
-             label: 'Absent',
-             data:res.absent,
-             backgroundColor: ['#FDA75A'],
-             borderColor: ['#FDA75A'],
-             borderWidth: 1,
-             pointStyle: 'circle',
-           },
-           {
-             label: 'Leaves',
-             data:res.leave,
-             backgroundColor: ['#00C9FF'],
-             borderColor: ['#00C9FF'],
-             borderWidth: 1,
-             pointStyle: 'circle',
-           },
-         ],
-       },
-       options: {
-         responsive: true,
-         scales: {
-           y: {
-             beginAtZero: true,
-           },
-         },
-         plugins: {
-           legend: {
-             position: 'right',
-             labels: {
-               padding: 40,
-               usePointStyle: true,
-               font: {
-                 size: 10,
+    const myChart = new Chart('barChart', {
+      type: 'bar',
+      data: {
+        labels: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sept',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+        datasets: [
+          {
+            label: 'Present',
+            data: res.present,
+            backgroundColor: ['#2D11FA'],
+            pointStyle: 'circle',
+          },
+          {
+            label: 'Absent',
+            data:res.absent,
+            backgroundColor: ['#FDA75A'],
+            pointStyle: 'circle',
+          },
+          {
+            label: 'Leaves',
+            data: res.leave,
+            backgroundColor: ['#00C9FF'],
+            pointStyle: 'circle',
+          },
+        ],
+      },
+      options: {
+             responsive: true,
+             scales: {
+               y: {
+                 beginAtZero: true,
+               },
+             },
+             plugins: {
+               legend: {
+                 position: 'right',
+                 labels: {
+                   padding: 40,
+                   usePointStyle: true,
+                   font: {
+                     size: 10,
+                   },
+                 },
                },
              },
            },
-         },
-       },
-     });
+         });
+
      if(res){
      setTimeout(() => {
       this.loader=false;
@@ -150,6 +144,8 @@ export class AttendanceContentComponent implements OnInit {
     // this.form.get('punch_out').disable();
     window.scrollTo(0, 0);
     // Create a chart object
+    const today = new Date();
+    this.datez = today.toISOString().slice(0, 10);
   }
 
   changeColor() {
@@ -187,7 +183,7 @@ export class AttendanceContentComponent implements OnInit {
 //GET LEAVE DATA
 getLeaveData(){
 this.dashService.getleaves().subscribe((res: any) => {
-  console.log('data', res);
+  // console.log('data', res);
   this.employee = res;
 });
 }
@@ -263,3 +259,7 @@ this.dashService.getleaves().subscribe((res: any) => {
 // }
 
 }
+function getCurrentDate() {
+  throw new Error('Function not implemented.');
+}
+
