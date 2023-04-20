@@ -259,7 +259,7 @@
               (keyup)="onKeyUp($event)"/>
 
 
-
+          <span *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><i class="fa-solid fa-circle-info"></i>Password didn’t match</span>
 
             <span class="password-toggle" (click)="togglePassword(passwordInpu)">
               <i class="fa {{showPasswordIcon1}}"></i>
