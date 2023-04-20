@@ -457,7 +457,7 @@ table {
 }
 
 table {
-  border-spacing: 2px 5px;
+  /* border-spacing: 2px 5px; */
   /* background-color: #EFEFF8; */
 }
 
@@ -560,13 +560,7 @@ input[type="radio"] {
   outline: 2px solid #e8e8e8;
 }
 
-#outline1:hover {
-  outline-color: #29A74C;
-}
 
-#outline:hover {
-  outline-color: #FA5D5D;
-}
 
 #outline1:checked {
   outline-color: #29A74C;

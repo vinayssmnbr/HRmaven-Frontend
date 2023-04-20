@@ -7,21 +7,21 @@ import { ForgetComponent } from './forget/forget.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthMainGuard } from './guards/authmain.guard';
+import { TermConditionComponent } from './term-condition/term-condition.component';
 // import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoaderComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {
-    path: 'dashboard',
+    path: '',
     loadChildren: () =>
       import('./dashboard-module/dashboard-module.module').then(
         (m) => m.DashboardModuleModule
-      ),
-    canActivate: [AuthGuard],
+      ),canActivate: [AuthGuard],
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
+  {path:'t&c',component:TermConditionComponent}
 ];
 
 @NgModule({

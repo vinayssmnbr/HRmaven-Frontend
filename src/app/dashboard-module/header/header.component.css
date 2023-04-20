@@ -76,6 +76,7 @@
     margin-top: 65px;
     padding: 25px 20px;
     z-index: 9999;
+    position: fixed;
 }
 
 .profile-content img {
@@ -420,7 +421,7 @@ input[type='search'] {
 }
 
 .notification-lower {
-    height: 328px;
+    /* height: 328px; */
     width: 320px;
 }
 
