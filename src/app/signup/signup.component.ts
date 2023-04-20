@@ -69,7 +69,7 @@ export class SignupComponent {
     this.subject.pipe(debounceTime(3000)).subscribe(()=>{
       // this.formGroup.controls['username'].setValidators([Validators.pattern('^[A-Z]\'?[- a-zA-Z]( [a-zA-Z]*')])
       // this.formGroup.controls['username'].setValidators([Validators.pattern('^[A-Z]\'?[- a-zA-Z]( [a-zA-Z]*')])
-      this.formGroup.controls['username'].setValidators([Validators.pattern('^(?! )[A-Za-z ]*(?<! )$')])
+      this.formGroup.controls['username'].setValidators([Validators.pattern('^(?! )[A-Za-z][0-9a-zA-Z]*(?<! )$')])
 
 
 
@@ -113,7 +113,7 @@ export class SignupComponent {
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
     confirm : new FormControl("",[Validators.required]),
     // username: new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z]*')]),
-    username: new FormControl("",[Validators.required,Validators.pattern('^(?! )[A-Za-z ]*(?<! )$')]),
+    username: new FormControl("",[Validators.required,Validators.pattern(/[a-zA-Z0-9\s]$/)]),
 
 
     check: new FormControl("",[Validators.required]),
