@@ -42,7 +42,6 @@ export class EmployeeProfileComponent {
   jobdesignation: string = '';
   jobtiming: string = '';
   jobempstatus:string=''
-
   form = new FormGroup({
     uid: new FormControl(''),
     name: new FormControl(''),
@@ -251,7 +250,9 @@ export class EmployeeProfileComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
-    this.jobdesignation = arr.name;
+    // this.jobdesignation = arr.name;
+    this.user.jobdesignation = arr.name;
+
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -261,16 +262,31 @@ export class EmployeeProfileComponent {
     this.contentdropdown2 = false;
     console.log(arr2.name);
     this.bankname = arr2.name;
+    this.user.bankname = arr2.name;
+
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
+
   Changeselect3(arr3: any) {
     this.Selectvariable3 = arr3.name;
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
-    this.maritalStatus = arr3.name;
+    // this.user['martialStatus'] = arr3.name;
+    this.user.maritalStatus=arr3.name
   }
+  // Changeselect3(arr3: any) {
+  //   this.Selectvariable3 = arr3.name;
+  //   this.colorvariable3 = arr3.id;
+  //   if (arr3.value === '') {
+  //     this.Selectvariable3 = this.form.controls['maritalStatus'].value;
+  //     this.colorvariable3 = this.array3.length; // Set the colorvariable3 to the index of the custom value in the array
+  //     this.array3[this.colorvariable3] = {id: this.colorvariable3, name: this.Selectvariable3, value: this.Selectvariable3};
+  //   }
+  //   this.form.controls['maritalStatus'].setValue(this.Selectvariable3);
+  //   this.form.controls['motherName'].setValue(this.form.controls['motherName'].value); // Set the value of the input field to itself to trigger change detection
+  // }
   personaldetails() {
     this.personaldetail = true;
     this.jobdetail = false;
@@ -293,7 +309,6 @@ export class EmployeeProfileComponent {
     this.Selectvariable3=user.maritalStatus
     this.Selectvariable4=user.bloodGroup
     this.Selectvariable1=user.gender
-    this.Selectvariable2=user.bankname
     this.Selectvariable=user.jobdesignation
     this.Selectvariable8=user.jobempstatus
     this.Selectvariable5=user.jobtiming
@@ -332,29 +347,32 @@ export class EmployeeProfileComponent {
     this.fourthStep = true;
     this.modalContent2 = false;
     this.modalContent1 = false;
-    data.maritalStatus = this.maritalStatus;
-    data.gender = this.gender;
-    data.bloodGroup = this.bloodGroup;
-    console.log(this.form.value);
+    this.user.motherName = data.motherName
+    this.user.fatherName = data.fatherName
+    this.user.name = data.name
+    this.user.dateOfBirth = data.dateOfBirth
+    this.user.nationality = data.nationality
+
     const updatedData = this.form.value;
-    console.log('abc', updatedData);
+    console.log('abc', data, this.user);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+
+    this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
     });
-    this.user = updatedData;
+    // this.user = updatedData;
   }
   closeModal2(data) {
     this.fourthStep = true;
     this.modalContent2 = false;
     this.modalContent1 = false;
-    data.jobdesignation = this.jobdesignation;
-    data.jobtiming = this.jobtiming;
-    data.jobempstatus=this.jobempstatus
+    this.user.joblocation1 = data.joblocation1
+    this.user.jobctc = data.jobctc
+
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+    this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
     });
     this.user = updatedData;
@@ -383,6 +401,8 @@ export class EmployeeProfileComponent {
     this.modalContent7 = false;
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
+    this.Selectvariable2=user.bankname
+
   }
 
   closeModal4(data) {
@@ -391,14 +411,18 @@ export class EmployeeProfileComponent {
     this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
-    data.bankname = this.bankname;
+    this.user.accountno = data.accountno
+    this.user.ifsc = data.ifsc
+    this.user.adhaarno = data.adhaarno
+    this.user.panno = data.panno
+    this.user.passport = data.passport
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+    this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
     });
-    this.user = updatedData;
+    // this.user = updatedData;
   }
   openModal4(user) {
     this.fourthStep = false;
@@ -418,13 +442,24 @@ export class EmployeeProfileComponent {
     this.modalContent4 = false;
     this.modalContent5 = false;
     this.modalContent6 = false;
+    this.user.matric = data.accountno
+    this.user.matricPercent = data.matricPercent
+    this.user.inter = data.inter
+    this.user.interPercent = data.interPercent
+    this.user.pg = data.pg
+    this.user.pgCgpa = data.pgCgpa
+    this.user.pgStream = data.pgStream
+    this.user.graduation = data.graduation
+    this.user.graduationCgpa = data.graduationCgpa
+    this.user.graduationStream = data.graduationStream
+    
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
+    this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
     });
-    this.user = updatedData;
+    // this.user = updatedData;
   }
   openModal5(user) {
     this.fourthStep = false;
@@ -464,7 +499,7 @@ export class EmployeeProfileComponent {
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
-    this.gender = arr1.name;
+    this.user.gender = arr1.name;
   }
   contentdropdown4: boolean = false;
   dropdownOpen4() {
@@ -477,7 +512,7 @@ export class EmployeeProfileComponent {
     this.colorvariable4 = arr4.id;
     this.contentdropdown4 = false;
     console.log(arr4.name);
-    this.bloodGroup = arr4.name;
+    this.user.bloodGroup = arr4.name;
   }
   contentdropdown5: boolean = false;
   dropdownOpen5() {
@@ -490,7 +525,9 @@ export class EmployeeProfileComponent {
     this.colorvariable5 = arr5.id;
     this.contentdropdown5 = false;
     console.log(arr5.name);
-    this.jobtiming = arr5.name;
+    // this.jobtiming = arr5.name;
+    this.user.jobtiming = arr5.name;
+
   }
 
   contentshow: boolean = false;
@@ -508,7 +545,9 @@ export class EmployeeProfileComponent {
     this.colorvariable8 = arr8.id;
     this.contentdropdown8 = false;
     console.log(arr8.name);
-    this.jobempstatus=arr8.name
+    // this.jobempstatus=arr8.name
+    this.user.jobempstatus = arr8.name;
+
   }
 
   dropdownClose3() {
