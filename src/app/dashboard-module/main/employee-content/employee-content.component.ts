@@ -134,7 +134,6 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = false;
     this.deletedata = data;
   }
-
   //SEARCH UID
   // search(event) {
   //   console.log(this.query, 'search fn', this.designation);
@@ -361,7 +360,7 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable:any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
