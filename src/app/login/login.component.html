@@ -1,4 +1,8 @@
-<div class="row">
+<div class="parent loaderLogo" *ngIf="loader">
+  <img id=loader src="../../assets/images/logo.ico">
+</div>
+
+<div class="row" *ngIf="!loader">
     <!----------------------- Forget Modal Section------------------ -->
 
     <div class="forget_modal" [ngClass]="{'open': Forgotshow,'close':!Forgotshow}">

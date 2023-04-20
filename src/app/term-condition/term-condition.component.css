@@ -1,44 +1,77 @@
-.term_container{
+.term_container {
+    width: 100%;
+
+}
+
+.term_title {
+    height: 80px;
     display: flex;
     justify-content: center;
-    width: 100%;
-    flex-direction: column;
-    padding: 0 100px;
+    align-items: center;
+    background-color: var(--primary-color);
 }
-h1{
-    padding-top: 50px;
+
+.term_title h2 {
     text-align: center;
-    color: var(--primary-color);
-    font-weight: 700;
-   
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    color: #FFFFFF;
 }
-h3{
-    font-size: 20px;
-    color: #fb5f66;
-   font-weight: 400;
-   padding-top: 20px;
+
+.term_title i {
+    position: absolute;
+    right: 30px;
+    font-size: 18px;
+    color: #FFFFFF;
+    cursor: pointer;
 }
-h2{
+
+.term_date {
+    padding-top: 30px;
+    padding-left: 403px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #222222;
+}
+
+.term_content {
+    display: flex;
+}
+
+.term_text {
+    padding-left: 155px;
+}
+
+.term_text h4 {
+    font-size: 18px;
+    color: #2F2C9F;
+    font-weight: 300;
+}
+
+.intro_text {
     padding-top: 50px;
-    color: var(--primary-color);
-    font-weight: 700; 
-    width: 140px;
-    border-bottom: 2px solid var(--primary-color); 
 }
-p span{
-    color: #fb5f66;
-    font-size: 24px;
-    font-weight: bold;
-    padding-right: 10px;
+
+.intro_para {
+    padding-left: 50px;
+    width: 881px;
+    padding-top: 30px;
 }
-p{
+
+.intro_para p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #333333;
     padding-top: 20px;
-     font-size: 22px;
-     text-align: left;
 }
-h4{
-    padding-top: 50px;
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 24px; 
+
+.intro_para p span {
+    padding-right: 5px;
+}
+.account,.Prohibited,.Limitation{
+    padding-top: 10px;
+}
+.User{
+    padding-top: 35px;
 }

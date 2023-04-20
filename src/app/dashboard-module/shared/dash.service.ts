@@ -125,7 +125,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response) => {
+          (response:any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {
