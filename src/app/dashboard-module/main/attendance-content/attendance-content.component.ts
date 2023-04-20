@@ -3,6 +3,7 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 
 @Component({
@@ -40,12 +41,12 @@ export class AttendanceContentComponent implements OnInit {
   showTable = true;
   attDate: any = "";
   loader = true;
-  datez: any = "";
-
+  
+  datez:any;
   table1Visible = false;
   table2Visible = false;
-
-  constructor(public dashService: DashService) {
+  todayDate:string;
+  constructor(public dashService: DashService,private datepipe:DatePipe) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.dashService.getAttendance().subscribe((res: any) => {
@@ -54,6 +55,8 @@ export class AttendanceContentComponent implements OnInit {
     });
     this.getLeaveData()
     this.getreport();
+    this.datez=this.datepipe.transform(new Date(),'dd-MM-YYYY');
+    console.log(this.datez);
   }
 
   form = new FormGroup({

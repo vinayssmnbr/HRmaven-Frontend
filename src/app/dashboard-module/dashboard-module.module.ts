@@ -22,6 +22,8 @@ import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { LeavefilterPipe } from './pipe/leavefilter.pipe';
 import { EmployeefilterPipe } from './pipe/employeefilter.pipe';
+import {DatePipe} from '@angular/common';
+
 
 
 
@@ -66,7 +68,7 @@ import { EmployeefilterPipe } from './pipe/employeefilter.pipe';
       "startFromZero": false,
       "lazy": true}),
   ],
-  providers: [SearchPipe]
-
+  providers: [SearchPipe,DatePipe
+  ]
 })
 export class DashboardModuleModule {}

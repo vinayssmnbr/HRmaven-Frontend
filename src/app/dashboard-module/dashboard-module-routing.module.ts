@@ -11,45 +11,50 @@ import { ReportContentComponent } from './main/report-content/report-content.com
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 
+
+
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
-      {
-        path: 'dashboard',
-        component: DashboardContentComponent,
-      },
-      {
-        path: 'employee',
-        component: EmployeeContentComponent,
-      },
-      {
-        path: 'leaves',
-        component: LeavesContentComponent,
-      },
-      {
-        path: 'attendance',
-        component: AttendanceContentComponent,
-      },
-      {
-        path: 'payroll',
-        component: PayrollContentComponent,
-      },
-      {
-        path: 'recruitment',
-        component: RecruitmentContentComponent,
-      },
-      {
-        path: 'report',
-        component: ReportContentComponent,
-      },
-      {
-        path: 'job-details',
-        component: JobDetailsComponent
-      },
-      { path: 'employee-profile', component: EmployeeProfileComponent }
+  {
+      path:'',redirectTo: '/login', pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    component: DashboardContentComponent,
+  },
+  {
+    path: 'employee',
+    component: EmployeeContentComponent,
+  },
+  {
+    path: 'leaves',
+    component: LeavesContentComponent,
+  },
+  {
+    path: 'attendance',
+    component: AttendanceContentComponent,
+  },
+  {
+    path: 'payroll',
+    component: PayrollContentComponent,
+  },
+  {
+    path: 'recruitment',
+    component: RecruitmentContentComponent,
+  },
+  {
+    path: 'report',
+    component: ReportContentComponent,
+  },
+  {
+    path: 'job-details',
+    component: JobDetailsComponent
+  },
+  { path: 'employee-profile', component: EmployeeProfileComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardModuleRoutingModule {}
+export class DashboardModuleRoutingModule { }
