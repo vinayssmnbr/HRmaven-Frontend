@@ -3,62 +3,135 @@
 <div class="leaves">
     <div class="row">
         <div class="col-3">
-            <div class="progress-text">
-                <h3>Total Leaves</h3>
-                <h1>{{totalCount}}</h1>
-            </div>
-            <div class="circle-graph">
-                <circle-progress [percent]="100" [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                    [animationDuration]="1000"></circle-progress>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="progress-text">
-                <h3>Accepted Leaves</h3>
-                <h1>{{acceptCount}}</h1>
-            </div>
-            <div class="circle-graph">
-                <circle-progress [percent]=accept_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                    [animationDuration]="1000"></circle-progress>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Total Leaves</h3>
+                    <h1>{{totalCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress">
+                        <div class="value-container">0%</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="progress-text">
-                <h3>Rejected Leaves</h3>
-                <h1>{{rejectCount}}</h1>
-            </div>
-            <div class="circle-graph">
-                <circle-progress [percent]=reject_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#F8BB6F'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                    [animationDuration]="1000"></circle-progress>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Accepted Leaves</h3>
+                    <h1>{{acceptCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="progress-text">
-                <h3>Pending Leaves</h3>
-                <h1>{{pendingCount}}</h1>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Rejected Leaves</h3>
+                    <h1>{{rejectCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress2">
+                        <div class="value-container2">0%</div>
+                    </div>
+                </div>
             </div>
-            <div class="circle-graph">
-                <circle-progress [percent]=pending_graph [showTitle]='false' [showSubtitle]='false' [showUnits]='false' [space]="-10" [radius]="25" [outerStrokeWidth]="13" [innerStrokeWidth]="8" [outerStrokeColor]="'#FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                    [animationDuration]="1000"></circle-progress>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Pending Leaves</h3>
+                    <h1>{{pendingCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress3">
+                        <div class="value-container3">0%</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="employe_input">
-        <i class="fa fa-search" aria-hidden="true" id="ico"></i>
-        <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
-        <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-            <div class="dropdwon_select" (click)="dropdownOpen()">
-                <p>{{Selectvariable}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
+    <div class="search_form">
+        <!-- <div class="employe_input">
+            <i class="fa fa-search" aria-hidden="true" id="ico"></i>
+            <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
+            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                    <p>{{Selectvariable}}</p>
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown">
+                    <ul>
+                        <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                            (click)="Changeselect(arr)">
+                            {{arr.name}}</li>
+                    </ul>
+                </div>
             </div>
-            <div class="select_content" *ngIf="contentdropdown">
-                <ul>
-                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                        {{arr.name}}</li>
-                </ul>
+        </div> -->
+        <h3>Search <span>(Please specify your search)</span></h3>
+        <form action="" class="employe_form">
+            <div class="employe_form_input">
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="date">Form</label>
+                        <input type="date" />
+                    </div>
+                </div>
+                <div class="col-3">
+
+                    <div class="form__group">
+                        <label for="date">To</label>
+                        <input type="date" />
+                    </div>
+                </div>
+                <div class="col-3">
+
+                    <div class="form__group">
+                        <label for="dropdown_container">Category</label>
+                        <div class="dropdown_container">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                        {{arr.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="">Type</label>
+                        <div class="dropdown_container">
+                            <div class="dropdwon_select" (click)="dropdownOpen1()">
+                                <p>{{Selectvariable1}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown1">
+                                <ul>
+                                    <li *ngFor="let arr1 of array1; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect1(arr1)">
+                                        {{arr1.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
+
+        </form>
     </div>
+
     <div class="leaves_table">
         <div class="table_data">
             <table class="table_text">
@@ -72,7 +145,7 @@
                         <th>ACTION</th>
                     </tr>
                 </thead>
-                <tbody>
+                <!-- <tbody>
                     <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
                         <td>{{leave.employeeId}}</td>
                         <td>{{leave.employeeName}}</td>
@@ -82,17 +155,20 @@
                         <td>
                             <div class="action_button">
                                 <div class="action_btn">
-                                    <input type="radio" [checked]="leave.status=='accept'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'accept')" id="outline1" class="custom-radio">
+                                    <input type="radio" [checked]="leave.status=='accept'" [name]="leave._id"
+                                        (change)="updateLeaveStatus(leave, 'accept')" id="outline1"
+                                        class="custom-radio">
                                     <label for="outline1" class="outline1">Accept</label>
                                 </div>
                                 <div class="action_btn">
-                                    <input type="radio" [checked]="leave.status=='reject'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'reject')" id="outline" class="custom-radio">
+                                    <input type="radio" [checked]="leave.status=='reject'" [name]="leave._id"
+                                        (change)="updateLeaveStatus(leave, 'reject')" id="outline" class="custom-radio">
                                     <label for="outline" class="outline">Reject</label>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </div>

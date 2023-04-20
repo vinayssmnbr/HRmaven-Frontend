@@ -103,6 +103,7 @@ export class DashService {
     return this.http.get(this.getuid);
   }
 
+
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
     let currentDate = moment(startDate);

@@ -11,6 +11,7 @@
       <h2 *ngIf="dashService.activeComponent === 'job-details'">Recruitment</h2>
       <h2 *ngIf="dashService.activeComponent === 'report'">Report</h2>
     </div>
+    
     <div class="content-right">
       <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
       <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>

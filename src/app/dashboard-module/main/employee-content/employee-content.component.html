@@ -4,7 +4,7 @@
   <div class="selection">
     <div class="input_left">
       <div class="input_field">
-        <input type="text" class="number1 no-spin" placeholder="Id or Name" [(ngModel)]="query" id="search">
+        <input type="text" class="number1 no-spin" placeholder="Type Employee Name or ID" [(ngModel)]="query" id="search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
@@ -74,19 +74,12 @@
         <h4 class="modal-title">Add New Employee</h4>
         </div>
         <div class="details_row">
-          <span class="active">1. Personal Details</span>
-          <span>2. Contact Details</span>
-          <span>3. Job Details</span>
+          <span [ngClass]="{'active':firstStep,'inactive':!firstStep}">1. General Details</span>
+          <span [ngClass]="{'active':secondStep,'inactive':!secondStep}">2. Personal Particulars</span>
+          <span [ngClass]="{'active':thirdStep,'inactive':!thirdStep}">3. Job Details</span>
         </div>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-    </div>
-    <div class="modal" *ngIf="showModal">
-      <div class="modal-content" *ngIf="showModalContent">
-        <div class="modal-header">
-          <h4 class="modal-title">Add New Employee</h4>
-          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-        </div>
         <div class="modal-body">
           <!-- <div class="numbers">
             <div class="number next " [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
@@ -112,7 +105,6 @@
               <div class="input">
                 <label>Name <span>*</span></label>
                 <input type="name" id="text1" placeholder="Zana Jones" formControlName="name" pattern="^[^\s]+$"
-                  (keydown)="onKeyDown($event)"
                   [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
               </div>
                <div class="input">
@@ -185,7 +177,7 @@
               <div class="input">
                 <label>Email <span>*</span></label>
                 <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
-                  (keydown)="onKeyDownEmail($event)" pattern="^[^\s]+$"
+
                   [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
 
               </div>
@@ -302,4 +294,3 @@
 
     </div>
   </div>
-</div>
