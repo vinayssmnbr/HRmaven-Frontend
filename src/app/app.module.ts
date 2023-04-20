@@ -12,7 +12,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 @NgModule({
   declarations: [
     AppComponent,

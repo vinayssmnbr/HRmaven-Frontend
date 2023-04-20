@@ -7,7 +7,6 @@ import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -101,7 +100,7 @@ export class DashService {
 
   }
 
-  
+
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
     let currentDate = moment(startDate);
@@ -173,7 +172,7 @@ export class DashService {
         }).subscribe((res) => {
           console.log(res);
         })
-            
+
 
     }
     if (object.status == 'reject' && status == 'accept') {

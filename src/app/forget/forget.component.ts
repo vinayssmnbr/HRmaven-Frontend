@@ -31,6 +31,8 @@ export class ForgetComponent {
     passwordInput.type = this.showPassword ? 'text' : 'password';
   }
 
+
+
   showPassword1 = false;
   showPasswordIcon1 = 'fa-eye';
   togglePassword(passwordInpu: any) {
@@ -38,6 +40,9 @@ export class ForgetComponent {
     this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
     passwordInpu.type = this.showPassword1 ? 'text' : 'password';
   }
+
+
+
 
 
 
@@ -60,6 +65,23 @@ export class ForgetComponent {
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
     });
+
+
+
+
+
+
   }
+
+  onKeyUp(event): void {
+  event.target.value = event.target.value.trim()
+
+}
+
+Space(event:any){
+  if(event.target.selectionStart === 0  && event.code == "Space"){
+   event.preventDefault();
+  }
+}
 
 }
