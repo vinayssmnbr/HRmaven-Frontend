@@ -85,8 +85,10 @@ export class DashService {
   searchuid(query: string, designation: string) {
     console.log('des', designation);
     return this.http.get<any>(
-      `${this.getData}?uid=${query}&designation=${designation}`
-    );
+      `${this.getData}?uid=${query}&designation=${designation}`).pipe(
+        map(data=>data.filter(user=> user.status==='accepted'))
+      );;
+
   }
 
   getLeaveData(type: string) {
@@ -123,7 +125,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response) => {
+          (response:any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {

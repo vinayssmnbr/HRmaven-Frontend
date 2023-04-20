@@ -159,8 +159,12 @@ export class LoginComponent {
     return this.loginForm.get("password");
   }
 
+  loader=false;
   submit() {
-    this.router.navigate(['/dashboard']);
+    this.loader=true;
+    setTimeout(() => {
+      this.router.navigate(['/dashboard']);
+    }, 2000);
   }
 
   // submissions

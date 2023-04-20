@@ -3,7 +3,7 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-attendance-content',
@@ -11,6 +11,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./attendance-content.component.css'],
 })
 export class AttendanceContentComponent implements OnInit {
+  designationdropdownOption: boolean = false;
   circularProgress: any;
   progressValue: any;
   progressStartValue = 0;
@@ -144,6 +145,8 @@ export class AttendanceContentComponent implements OnInit {
   ngOnInit() {
     this.form.get('name').disable();
     this.form.get('empId').disable();
+    // this.form.get('punch_in').disable();
+    // this.form.get('punch_out').disable();
     window.scrollTo(0, 0);
     // Create a chart object
 
@@ -164,21 +167,21 @@ export class AttendanceContentComponent implements OnInit {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  openModal(user:any) {
+  // openModal(user:any) {
 
-    this.form.patchValue(user);
-    this.form.setValue({
-      name:user.name,
-      empId:user.empId,
-      date:user.date,
-      status:user.status,
-      punch_in:user.punch_in,
-      punch_out:user.punch_out,
-    });
-    this.Selectvariable=user.status;
-    this.showModal = true;
-    this.selectedUser = {_id: user._id};
-  }
+  //   this.form.patchValue(user);
+  //   this.form.setValue({
+  //     name:user.name,
+  //     empId:user.empId,
+  //     date:user.date,
+  //     status:user.status,
+  //     punch_in:user.punch_in,
+  //     punch_out:user.punch_out,
+  //   });
+  //   this.Selectvariable=user.status;
+  //   this.showModal = true;
+  //   this.selectedUser = {_id: user._id};
+  // }
 
 
 //GET LEAVE DATA
@@ -188,20 +191,20 @@ this.dashService.getleaves().subscribe((res: any) => {
   this.employee = res;
 });
 }
-  OnUpdate(){
-    console.log(this.form.value)
-    const updatedData = this.form.value;
-    updatedData['_id'] = this.selectedUser._id;
-    this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
-      console.log('Data updated successfully');
-    this.getLeaveData()
-this.edit();
-    });
-  }
+//   OnUpdate(){
+//     console.log(this.form.value)
+//     const updatedData = this.form.value;
+//     updatedData['_id'] = this.selectedUser._id;
+//     this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
+//       console.log('Data updated successfully');
+//     this.getLeaveData()
+// this.edit();
+//     });
+//   }
 
-  closeModal() {
-    this.showModal = !this.showModal;
-  }
+  // closeModal() {
+  //   this.showModal = !this.showModal;
+  // }
 
   toggleTable1() {
     this.showCard = !this.showCard;
@@ -218,41 +221,45 @@ this.edit();
     this.table1Visible = false; // ensure other table is hidden
   }
 
-edit(){
-  this.closeModal();
-this.editmodal=!this.editmodal;
-}
-done(){
-  this.editmodal=!this.editmodal;
-}
+// edit(){
+//   this.closeModal();
+// this.editmodal=!this.editmodal;
+// }
+// done(){
+//   this.editmodal=!this.editmodal;
+// }
 
 
-array: any = [
-  {
-    id: 0,
-    name: 'present',
-  },
-  {
-    id: 1,
-    name: 'absent',
-  },
-  {
-    id: 2,
-    name: 'leave',
-  },
+// array: any = [
+//   {
+//     id: 0,
+//     name: 'present',
+//   },
+//   {
+//     id: 1,
+//     name: 'absent',
+//   },
+//   {
+//     id: 2,
+//     name: 'leave',
+//   },
 
-];
-contentdropdown: boolean = false;
-dropdownOpen() {
+// ];
+// contentdropdown: boolean = false;
+// dropdownOpen() {
 
-  this.contentdropdown = !this.contentdropdown;
-}
-Selectvariable: string ="select";
-colorvariable: number =  0;
-Changeselect(arr: any) {
-  this.Selectvariable = arr.name;
-  this.colorvariable = arr.id;
-  this.contentdropdown=false;
-  console.log(arr.name);
-}
+//   this.contentdropdown = !this.contentdropdown;
+// }
+// Selectvariable: string ="select";
+// colorvariable: number =  0;
+// Changeselect(arr: any) {
+//   this.Selectvariable = arr.name;
+//   this.colorvariable = arr.id;
+//   this.contentdropdown=false;
+//   console.log(arr.name);
+// }
+// dropdownOpenOption() {
+//   this.designationdropdownOption = !this.designationdropdownOption;
+// }
+
 }

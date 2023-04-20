@@ -91,7 +91,7 @@ onSubmit(data:any){
   })
 }
 submit(){
-  this.router.navigate(['/dashboard']) //your router URL need to pass it here
+  this.router.navigate(['']) //your router URL need to pass it here
 }
 
 SignupByGoogle() {

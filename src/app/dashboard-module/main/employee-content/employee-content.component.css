@@ -155,7 +155,7 @@ tbody {
     margin-top: 19px;
     width: 100%;
     overflow-y: auto;
-    height: 600px;
+    /* height: 600px; */
 }
 
 .image_record {
@@ -415,21 +415,18 @@ table {
 .modal-content {
     background-color: #ffffff;
     position: absolute;
-    width: 700px;
-    height: 598px;
+    width: 647px;
+    height: 505px;
     border-radius: 8px;
 }
 
 .modal-header {
-    width: 700px;
-    height: 75px;
+    width: 647px;
+    height: 110px;
     background-color: #F7F7FB;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     border-radius: 8px 8px 0px 0px;
-    align-items: center;
 }
+
 
 .modal-title {
     font-style: normal;
@@ -437,23 +434,32 @@ table {
     font-size: 18px;
     line-height: 140%;
     color: #444444;
+    padding-top: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
+.modal-header .details_row{
+  display: flex;
+  justify-content: space-between;
+}
+.details_row span.active{
+  color: #2F2C9F;
+}
 .modal-body {
-    width: 550px;
-    height: 349px;
-    margin-bottom: 95px;
+  margin: 40px 50px;
 }
 
-.numbers {
+/* .numbers {
     display: flex;
     gap: 106px;
     align-items: center;
     padding-top: 50px;
     margin-left: 176px;
-}
+} */
 
-.next::after {
+/* .next::after {
     content: '';
     position: absolute;
     width: 108px;
@@ -563,16 +569,16 @@ table {
 
 .details .notactive2 {
     margin-left: 50px;
-}
+} */
 
 #form1 {
-    padding-top: 50px;
-    padding-left: 75px;
+    /* padding-top: 50px;
+    padding-left: 75px; */
 }
 
 .form-row {
     display: flex;
-    gap: 30px;
+    gap: 25px;
 }
 
 label {
@@ -898,7 +904,7 @@ label {
 #text9 {
     width: 270px;
     height: 38px;
-    margin-top: 19px;
+    margin-top: 20px;
     background: #FFFFFF;
     border: 1px solid transparent;
     border-radius: 8px;
@@ -1009,8 +1015,8 @@ label {
 }
 
 .modal-footer {
-    width: 700px;
-    height: 75px;
+    width: 647px;
+    height: 70px;
     background-color: #F7F7FB;
     display: flex;
     gap: 15px;

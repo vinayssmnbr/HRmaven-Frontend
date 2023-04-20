@@ -26,6 +26,8 @@ import { DOCUMENT } from '@angular/common';
 export class EmployeeContentComponent implements OnInit {
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
+  name: any;
+  email: any;
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
   }
@@ -75,8 +77,7 @@ export class EmployeeContentComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     address: new FormControl('', Validators.required),
     bankname: new FormControl('',Validators.required),
-    adhaarno: new FormControl('', [Validators.required,
-           ]),
+    adhaarno: new FormControl('', Validators.required),
     accountno: new FormControl('', [Validators.required]),
     ifsc: new FormControl('', [
       Validators.required,
@@ -133,22 +134,21 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = false;
     this.deletedata = data;
   }
-
   //SEARCH UID
-  search(event) {
-    console.log(this.query, 'search fn', this.designation);
-    this.dashService
-      .searchuid(this.query, this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
-    if (event.keyCode === 32) {
-      this.query = '';
+  // search(event) {
+  //   console.log(this.query, 'search fn', this.designation);
+  //   this.dashService
+  //     .searchuid(this.query, this.designation)
+  //     .subscribe((res) => {
+  //       console.log(res);
+  //       this.employee = res;
+  //       console.log('data', res);
+  //     });
+  //   if (event.keyCode === 32) {
+  //     this.query = '';
 
-    }
-  }
+  //   }
+  // }
 
   function() {
     this.show = !this.show;
@@ -175,11 +175,11 @@ export class EmployeeContentComponent implements OnInit {
     this.Changeselect({ name: 'ALL' });
     this.query = '';
   }
-  changeColor3() {
-    this.buttonbackgroundColor3 =
-      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
-    this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
-  }
+  // changeColor3() {
+  //   this.buttonbackgroundColor3 =
+  //     this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+  //   this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
+  // }
   isDropdownOpen = false;
 
   toggleDropdown() {
@@ -214,7 +214,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal() {
     this.showModal = false;
     this.buttonbackgroundColor3 =
-      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+    this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
     this.showModalContent = true;
     this.fourthStep = false;
@@ -282,7 +282,7 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Software Developer',
     },
   ];
-  array6: any = [
+ array6: any = [
     {
       id: 0,
       name: 'Frontend Developer',
@@ -360,7 +360,7 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable:any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
@@ -375,15 +375,15 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr.name);
     this.designation = arr.name;
     console.log('str', this.designation);
-    this.dashService
-      .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
-      .subscribe((res) => {
-        console.log(res);
-        this.employee = res;
-        console.log('data', res);
-      });
+    // this.dashService
+    //   .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //     this.employee = res;
+    //     console.log('data', res);
+    //   });
   }
-  Changeselect1(arr1: any) {
+Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
@@ -427,5 +427,15 @@ dropdownOpenOption() {
   this.designationdropdownOption = !this.designationdropdownOption;
 }
 
+onKeyDown(event: KeyboardEvent) {
+  if (event.keyCode === 32 && this.name.value.trim() === '') {
+    event.preventDefault();
+  }
+}
+onKeyDownEmail(event: KeyboardEvent) {
+  if (event.keyCode === 32 && this.email.value.trim() === '') {
+    event.preventDefault();
+  }
+}
 
 }
