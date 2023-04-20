@@ -19,13 +19,19 @@ export class UserService {
   isUserLoggedIn(): boolean {
     return this.cookie.get('token') !== '';
   }
-
+  emailEntered: any = '';
   private saveurl = environment.saveurl;
   private loginurl = environment.loginurl;
   private Forgoturl = environment.Forgoturl;
   private Reseturl = environment.Reseturl;
   private url = environment.url;
   private auth = environment.auth;
+  private  emailurl = environment.getemail
+  
+  getData(email: string) {
+    const url = `${this.emailurl}/${email}`;
+    return this.http.get(url);
+  }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -50,6 +56,7 @@ export class UserService {
   users(data: any) {
     return this.http.post(this.loginurl, data);
   }
+
 
   //  My code for profile fetch Name
   getUserProfileById(): Observable<any> {
