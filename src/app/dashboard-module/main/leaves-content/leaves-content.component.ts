@@ -60,8 +60,6 @@ export class LeavesContentComponent {
       }
     }, speed);
 
-
-
     const progressBar1 = document.querySelector(
       '.circular-progress1'
     ) as HTMLElement;
@@ -87,7 +85,6 @@ export class LeavesContentComponent {
       }
     }, speed1);
 
-
     const progressBar2 = document.querySelector(
       '.circular-progress2'
     ) as HTMLElement;
@@ -112,8 +109,6 @@ export class LeavesContentComponent {
         clearInterval(progress2);
       }
     }, speed2);
-
-
 
     const progressBar3 = document.querySelector(
       '.circular-progress3'
@@ -225,40 +220,65 @@ export class LeavesContentComponent {
     await this.updateafteraction();
   }
 
+  // -------------------Drop Down---------------------
   array: any = [
     {
       id: 0,
-      name: 'All',
+      name: 'Software Developer',
     },
     {
       id: 1,
-      name: 'Pending',
-    },
-    {
-      id: 2,
-      name: 'Rejected',
+      name: 'Frontend Developer',
     },
     {
       id: 3,
-      name: 'Accepted',
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
     },
   ];
   contentdropdown: boolean = false;
-
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  
-  Selectvariable: string = 'Select';
+  Selectvariable: string = 'Designation';
   colorvariable: number = 0;
-
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
   }
-  dropdownOpenOption() {
-    this.designationdropdownOption = !this.designationdropdownOption;
+  array1: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable1: string = 'Designation';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
   }
 }

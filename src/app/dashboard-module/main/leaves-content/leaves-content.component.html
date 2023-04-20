@@ -3,47 +3,54 @@
 <div class="leaves">
     <div class="row">
         <div class="col-3">
-            <div class="progress-text" style="display:'';">
-                <h3>Total Leaves</h3>
-                <h1>{{totalCount}}</h1>
-            </div>
-            <div class="progress_container">
-                <div class="circular-progress">
-                    <div class="value-container">0%</div>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Total Leaves</h3>
+                    <h1>{{totalCount}}</h1>
                 </div>
-            </div>
-
-        </div>
-        <div class="col-3">
-            <div class="progress-text">
-                <h3>Accepted Leaves</h3>
-                <h1>{{acceptCount}}</h1>
-            </div>
-            <div class="progress_container">
-                <div class="circular-progress1">
-                    <div class="value-container1">0%</div>
+                <div class="progress_container">
+                    <div class="circular-progress">
+                        <div class="value-container">0%</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="progress-text">
-                <h3>Rejected Leaves</h3>
-                <h1>{{rejectCount}}</h1>
-            </div>
-            <div class="progress_container">
-                <div class="circular-progress2">
-                    <div class="value-container2">0%</div>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Accepted Leaves</h3>
+                    <h1>{{acceptCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-3">
-            <div class="progress-text">
-                <h3>Pending Leaves</h3>
-                <h1>{{pendingCount}}</h1>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Rejected Leaves</h3>
+                    <h1>{{rejectCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress2">
+                        <div class="value-container2">0%</div>
+                    </div>
+                </div>
             </div>
-            <div class="progress_container">
-                <div class="circular-progress3">
-                    <div class="value-container3">0%</div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Pending Leaves</h3>
+                    <h1>{{pendingCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress3">
+                        <div class="value-container3">0%</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,47 +75,60 @@
         </div> -->
         <h3>Search <span>(Please specify your search)</span></h3>
         <form action="" class="employe_form">
-            <div class="form__group">
-                <label for="date">Form</label>
-                <input type="date"  />
-            </div>
-            <div class="form__group">
-                <label for="date">To</label>
-                <input type="date"  />
-            </div>
-            <div class="form__group">
-                <label for="dropdown_container">Category</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                    <div class="dropdwon_select" (click)="dropdownOpen()">
-                        <p>{{Selectvariable}}</p>
-                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+            <div class="employe_form_input">
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="date">Form</label>
+                        <input type="date" />
                     </div>
-                    <div class="select_content" *ngIf="contentdropdown">
-                        <ul>
-                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                                (click)="Changeselect(arr)">
-                                {{arr.name}}</li>
-                        </ul>
+                </div>
+                <div class="col-3">
+
+                    <div class="form__group">
+                        <label for="date">To</label>
+                        <input type="date" />
+                    </div>
+                </div>
+                <div class="col-3">
+
+                    <div class="form__group">
+                        <label for="dropdown_container">Category</label>
+                        <div class="dropdown_container">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                        {{arr.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="">Type</label>
+                        <div class="dropdown_container">
+                            <div class="dropdwon_select" (click)="dropdownOpen1()">
+                                <p>{{Selectvariable1}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown1">
+                                <ul>
+                                    <li *ngFor="let arr1 of array1; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect1(arr1)">
+                                        {{arr1.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="form__group">
-                <label for="uid">Type</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                    <div class="dropdwon_select" (click)="dropdownOpen()">
-                        <p>{{Selectvariable}}</p>
-                        <i class="fa-sharp fa-solid fa-caret-down"></i>
-                    </div>
-                    <div class="select_content" *ngIf="contentdropdown">
-                        <ul>
-                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                                (click)="Changeselect(arr)">
-                                {{arr.name}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-           
+
+
         </form>
     </div>
 
@@ -125,7 +145,7 @@
                         <th>ACTION</th>
                     </tr>
                 </thead>
-                <tbody>
+                <!-- <tbody>
                     <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
                         <td>{{leave.employeeId}}</td>
                         <td>{{leave.employeeName}}</td>
@@ -148,7 +168,7 @@
                             </div>
                         </td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </div>

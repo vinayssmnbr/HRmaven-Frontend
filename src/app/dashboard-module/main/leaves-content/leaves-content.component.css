@@ -20,11 +20,18 @@
 
 .col-3 {
     display: flex;
+    justify-content: space-between;
+}
+
+.card {
     background-color: #FFFFFF;
     border-radius: 10px;
-    justify-content: space-between;
     align-items: center;
-    height: 80px;
+    width: 267px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .progress-text h3 {
@@ -55,14 +62,15 @@
 
 /* --------------Employee Form----- */
 .search_form {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
+    background-color: red;
     border-radius: 8px;
     height: 232px;
     margin-top: 25px;
 }
 
 .search_form h3 {
-    padding: 21px 27px;
+    padding: 21px 40px;
     color: #222222;
     font-size: 16px;
     font-weight: 400;
@@ -74,14 +82,15 @@
     font-weight: 400;
 }
 
-.employe_form {
+
+.employe_form_input{
     display: flex;
     padding: 0 30px;
     gap: 20px;
 }
 
 .form__group {
-    margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .form__group>label {
@@ -92,11 +101,10 @@
     font-weight: 400;
     font-size: 14px;
 }
-.employe_form input{
+
+.employe_form input {
     width: 260px;
-    height: 44px;
-    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    height: 40px;
     border: none;
     padding: 15px 20px;
     border-radius: 8px;
@@ -104,7 +112,9 @@
     outline: none;
     font-size: 14px;
     padding: 10px 10px;
-    border: 1px solid transparent;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(180, 180, 180, 0.8);
+    border-radius: 6px;
 }
 
 
@@ -170,11 +180,6 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 /* ----------------DropDown Menu----------------------------- */
-
-.dropdown_container {
-    /* z-index: 9999; */
-}
-
 .dropdwon_select {
     background-color: #fff;
     width: 260px;
@@ -188,8 +193,7 @@ input[type=number]::-webkit-inner-spin-button {
     justify-content: space-between;
     padding: 10px 10px;
     border: 1px solid transparent;
-    /* position: absolute; */
-   
+
 }
 
 .dropdwon_select:hover,
@@ -212,11 +216,13 @@ input[type=number]::-webkit-inner-spin-button {
 .select_content {
     background-color: #fff;
     cursor: pointer;
-    width: 172px;
+    width: 250px;
     cursor: pointer;
     padding: 10px;
     position: absolute;
     color: #444444;
+    z-index: 99;
+    margin-left: 5px;
 }
 
 .select_content ul {
@@ -239,17 +245,13 @@ input[type=number]::-webkit-inner-spin-button {
 .select_active {
     background-color: #ECECEC;
     border-radius: 8px;
-}
 
+}
 
 /*------------------ table----------------------- */
 
 .table_data {
     width: 100%;
-}
-
-.leaves_table {
-    padding: 0 30px;
 }
 
 .table_heading {
@@ -321,7 +323,7 @@ td {
 
 .table_data {
     overflow-y: auto;
-    height: 78vh;
+    /* height: 78vh; */
 }
 
 .table_text thead th {

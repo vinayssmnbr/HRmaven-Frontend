@@ -86,7 +86,7 @@ td {
 
 .table_data {
     overflow-y: auto;
-    height: 78vh;
+    /* height: 78vh; */
 }
 
 .table_text thead th {
