@@ -27,10 +27,9 @@
                 <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
                 <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i>
             </div>
-            <label for="date">
-            <input type="date" id="date" [(ngModel)]="datez">
-
-          </label>
+             <label for="date">
+              <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
+            </label>
 
         </div>
     </div>
