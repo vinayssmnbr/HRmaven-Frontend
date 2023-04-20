@@ -127,15 +127,15 @@
                         <input type="password" placeholder="Confirm your password" class="cPassword"
                             formControlName="confirm" #passwordInpu />
                             <span class="password-toggle" (click)="togglePassword(passwordInpu)">
-                              <i class="fa {{ showPasswordIcon }}"></i>
+                              
                             </span>
-                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn't match</span>
+                        <span *ngIf="sigupform.errors?.['passwordmatcherror']"><i class="fa-solid fa-circle-info"></i>Password didn’t match</span>
                     </div>
                    
                 </div>
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />
-                    <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a routerLink="/t&c"> terms &
+                    <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a href=""> terms &
                             conditions</a></label>
                 </div>
                 <div class="input-field button">
