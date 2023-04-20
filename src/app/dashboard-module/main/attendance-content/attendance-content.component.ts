@@ -42,6 +42,7 @@ export class AttendanceContentComponent implements OnInit {
   loader = true;
   datez: any = "";
 
+
   table1Visible = false;
   table2Visible = false;
 
@@ -149,7 +150,6 @@ export class AttendanceContentComponent implements OnInit {
     // this.form.get('punch_out').disable();
     window.scrollTo(0, 0);
     // Create a chart object
-
   }
 
   changeColor() {
