@@ -174,11 +174,11 @@ export class EmployeeContentComponent implements OnInit {
     this.Changeselect({ name: 'ALL' });
     this.query = '';
   }
-  changeColor3() {
-    this.buttonbackgroundColor3 =
-      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
-    this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
-  }
+  // changeColor3() {
+  //   this.buttonbackgroundColor3 =
+  //     this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+  //   this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
+  // }
   isDropdownOpen = false;
 
   toggleDropdown() {
@@ -425,6 +425,4 @@ this.contentdropdown2=false;
 dropdownOpenOption() {
   this.designationdropdownOption = !this.designationdropdownOption;
 }
-
-
 }

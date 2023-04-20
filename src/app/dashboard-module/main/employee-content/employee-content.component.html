@@ -26,8 +26,7 @@
         </div>
       </div>
     </div>
-    <button class="btn3" (click)="changeColor3()" [style.background-color]="buttonbackgroundColor3"
-      [style.color]="buttonColor3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+    <button class="btn3"  (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
   </div>
 
   <div class="table-wrapper">
@@ -75,18 +74,25 @@
   <div class="modal" *ngIf="showModal">
     <div class="modal-content" *ngIf="showModalContent">
       <div class="modal-header">
-        <h4 class="modal-title">New Employee</h4>
+        <div class="header-title">
+        <h4 class="modal-title">Add New Employee</h4>
+        </div>
+        <div class="details_row">
+          <span class="active">1. Personal Details</span>
+          <span>2. Contact Details</span>
+          <span>3. Job Details</span>
+        </div>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
     </div>
     <div class="modal" *ngIf="showModal">
       <div class="modal-content" *ngIf="showModalContent">
         <div class="modal-header">
-          <h4 class="modal-title">New Employee</h4>
+          <h4 class="modal-title">Add New Employee</h4>
           <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
         </div>
         <div class="modal-body">
-          <div class="numbers">
+          <!-- <div class="numbers">
             <div class="number next " [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
                 [ngClass]="{'active':firstStep , 'inactive':!firstStep}">1</span>
             </div>
@@ -100,7 +106,7 @@
             <p class=" active1 notactive1" [ngClass]="{'activate':secondStep ,'inactivate':!firstStep}">Contact Details
             </p>
             <p class=" active1 notactive2" [ngClass]="{'activate':thirdStep}">Personal Particulars</p>
-          </div>
+          </div> -->
 
 
 
@@ -218,7 +224,7 @@
               </div>
               <div class="input">
                 <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno"  pattern="[0-9]{10,16}"
+                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno"  pattern="[0-9]{9,16}"
                   class=" no-spin"
                   [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
 
