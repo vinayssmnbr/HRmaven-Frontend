@@ -11,7 +11,7 @@
         <div class="field create-password">
             <div class="input-field">
                 <label for="name" class="text-label">New Password</label>
-                <input type="password" placeholder="Enter your New password" class="password" formControlName="password"
+                <input type="password" (keyup)="onKeyUp($event)" (keydown.space)="$event.preventDefault()" placeholder="Enter your New password" class="password" formControlName="password"
                     #passwordInput />
                 <span *ngIf="password && password.invalid && password.touched "><i
                         class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password must be atleast 8
@@ -26,7 +26,7 @@
             <div class="input-field">
                 <label for="name" class="text-label">Confirm your Password</label>
                 <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm"
-                    #passwordInpu />
+                    #passwordInpu   />
                 <span *ngIf="forgetform.errors?.['passwordmatcherror']"><i
                         class="fa-sharp fa-solid fa-triangle-exclamation"></i>Password didn’t match</span>
             </div>
