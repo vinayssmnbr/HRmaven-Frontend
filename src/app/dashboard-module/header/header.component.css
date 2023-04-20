@@ -76,6 +76,7 @@
     margin-top: 65px;
     padding: 25px 20px;
     z-index: 9999;
+    position: fixed;
 }
 
 .profile-content img {
@@ -287,7 +288,7 @@ input[type='search'] {
     width: 38px;
     height: 38px;
     color: #333333;
-    background: #dddddd;
+    background: #f3f2f9;
     border: none;
     outline: none;
     border-radius: 50%;
@@ -420,7 +421,7 @@ input[type='search'] {
 }
 
 .notification-lower {
-    height: 328px;
+    /* height: 328px; */
     width: 320px;
 }
 

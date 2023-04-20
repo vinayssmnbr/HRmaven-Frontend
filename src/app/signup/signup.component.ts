@@ -21,7 +21,7 @@ export class SignupComponent {
           counter = 0;
         }
       }
-    }, 3000);
+    }, 8000);
   }
 
   constructor(public userService:UserService, private router : Router){}
