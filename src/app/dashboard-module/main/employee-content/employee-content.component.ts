@@ -134,7 +134,6 @@ export class EmployeeContentComponent implements OnInit {
     this.deletemessage = false;
     this.deletedata = data;
   }
-
   //SEARCH UID
   // search(event) {
   //   console.log(this.query, 'search fn', this.designation);
@@ -176,11 +175,11 @@ export class EmployeeContentComponent implements OnInit {
     this.Changeselect({ name: 'ALL' });
     this.query = '';
   }
-  changeColor3() {
-    this.buttonbackgroundColor3 =
-      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
-    this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
-  }
+  // changeColor3() {
+  //   this.buttonbackgroundColor3 =
+  //     this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+  //   this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
+  // }
   isDropdownOpen = false;
 
   toggleDropdown() {
@@ -361,7 +360,7 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable:any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
@@ -428,15 +427,5 @@ dropdownOpenOption() {
   this.designationdropdownOption = !this.designationdropdownOption;
 }
 
-onKeyDown(event: KeyboardEvent) {
-  if (event.keyCode === 32 && this.name.value.trim() === '') {
-    event.preventDefault();
-  }
-}
-onKeyDownEmail(event: KeyboardEvent) {
-  if (event.keyCode === 32 && this.email.value.trim() === '') {
-    event.preventDefault();
-  }
-}
 
 }
