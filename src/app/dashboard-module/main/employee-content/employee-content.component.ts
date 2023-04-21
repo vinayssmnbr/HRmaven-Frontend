@@ -28,6 +28,12 @@ export class EmployeeContentComponent implements OnInit {
   designationdropdownOption: boolean = false;
   name: any;
   email: any;
+  fileName: string = '';
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.fileName = file ? file.name : '';
+  }
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
   }
@@ -70,23 +76,23 @@ export class EmployeeContentComponent implements OnInit {
     name: new FormControl('', [Validators.required,this.nameValidator]),
     designation: new FormControl('',Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
+    profilepic: new FormControl('', Validators.required),
     dateOfJoining: new FormControl('', Validators.required),
-    dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl('',Validators.required),
+    location: new FormControl('',Validators.required),
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    address: new FormControl('', Validators.required),
-    bankname: new FormControl('',Validators.required),
-    adhaarno: new FormControl('', Validators.required),
-    accountno: new FormControl('', [Validators.required]),
-    ifsc: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
-    ]),
-    panno: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
-    ]),
+    timings:new FormControl('',Validators.required)
+    // bankname: new FormControl('',Validators.required),
+    // adhaarno: new FormControl('', Validators.required),
+    // accountno: new FormControl('', [Validators.required]),
+    // ifsc: new FormControl('', [
+    //   Validators.required,
+    //   Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
+    // ]),
+    // panno: new FormControl('', [
+    //   Validators.required,
+    //   Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
+    // ]),
 
   });
 
@@ -307,43 +313,57 @@ export class EmployeeContentComponent implements OnInit {
   array1: any = [
     {
       id: 0,
-      name: 'Male',
+      name: 'Full-Time Permanent',
     },
     {
       id: 1,
-      name: 'Female',
+      name: 'Part-Time Employement',
     },
     {
       id: 2,
-      name: 'Others',
+      name: 'Internship',
     },
   ];
   array2: any = [
     {
       id: 0,
-      name: 'State Bank Of India',
+      name: 'Mohali',
     },
     {
       id: 1,
-      name: 'Punjab National Bank',
+      name: 'Gurugram',
     },
     {
       id: 2,
-      name: 'Central Bank Of India',
+      name: 'Pune',
     },
     {
       id: 3,
-      name: 'HDFC Bank',
+      name: 'Hyderabad',
     },
     {
       id: 4,
-      name: 'ICICI Bank',
-    },
-    {
-      id: 5,
-      name: 'Others',
+      name: 'Bangalore',
     },
   ];
+  array3: any=[
+    {
+      id:0,
+      name: '9.00am to 5:00pm',
+    },
+    {
+      id: 0,
+      name: '9.00am to 6:00pm',
+    },
+    {
+      id: 0,
+      name: '10.00am to 5:00pm',
+    },
+    {
+      id: 0,
+      name: '10.00am to 6:00pm',
+    },
+  ]
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
@@ -364,8 +384,10 @@ export class EmployeeContentComponent implements OnInit {
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
-  Selectvariable2: string = 'Select Bank';
+  Selectvariable2: string = 'Select Location';
   colorvariable2: number = 0;
+  Selectvariable3:string= 'Select';
+  colorvariable3: number= 0;
   Selectvariable6: string = 'Designation';
   colorvariable6: number = 0;
   Changeselect(arr: any) {
@@ -409,6 +431,12 @@ Changeselect1(arr1: any) {
     this.designation = arr6.name;
 
 
+}
+Changeselect3(arr3 : any){
+  this.Selectvariable3=arr3.name;
+  this.colorvariable3=arr3.id;
+  this.contentdropdown3=false;
+  console.log(arr3.name);
 }
 dropdownClose() {
   this.contentdropdown = false;
