@@ -203,6 +203,7 @@ input:hover,
 input:focus {
     border: 1px solid #2F2C9F;
     border-color: #2F2C9F !important;
+    
 }
 
 .email {

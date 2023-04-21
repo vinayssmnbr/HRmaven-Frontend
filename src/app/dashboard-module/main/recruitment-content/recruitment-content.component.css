@@ -1,5 +1,5 @@
 .section {
-  /* width: calc(100% - 223px); */
+  width: calc(100% - 223px);
   margin-left: 223px;
   background-color: #f9f9f9;
   padding: 30px 30px;
@@ -179,7 +179,7 @@ span.line {
   padding-bottom: 10px;
 }
 
-.filter-menu .select-btn {
+.select-btn {
   display: flex;
   background: #fff;
   padding: 10px;
