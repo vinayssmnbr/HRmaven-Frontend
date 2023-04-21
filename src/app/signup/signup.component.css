@@ -203,6 +203,7 @@ input:hover,
 input:focus {
     border: 1px solid #2F2C9F;
     border-color: #2F2C9F !important;
+    
 }
 
 .email {
@@ -528,6 +529,10 @@ form.ng-invalid #submit {
 }
 
 .iconWrap:hover .tooltip {
+    transform: translateX(5px);
+    opacity: 1;
+}
+.password-tooltip, .input-field:hover .tooltip {
     transform: translateX(5px);
     opacity: 1;
 }

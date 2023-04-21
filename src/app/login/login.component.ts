@@ -16,6 +16,13 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+
+  employeemail: any[] = [];
+  emailEntered: any = '';
+  //  emailExists: any[] = [];
+  userEmail: any = '';
+  emailExists = false;
+
   constructor(
     public fb1: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -67,6 +74,32 @@ export class LoginComponent {
     }
     // this.userService.allDataLogin();
   }
+  userdetail: any = '';
+  usernotfound: any = '';
+
+  checkEmail(){
+    // this.userService.getData('atulgupta.kr7@gmail.com').subscribe((res: any) => {
+      this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
+        // this.emailExists = false;
+          console.log("message: ",res.message);
+
+        if(res.message === 'user-found'){
+          // this.userdetail = this.forgotPassword.controls['email'].value
+          this.userdetail = res.message
+        } else if(res.message === 'user-not-found'){
+          this.usernotfound = res.message;
+        }
+
+        this.employeemail = res;
+      
+      
+        console.log('Response from API:', this.employeemail);
+      });   
+  }
+
+  email_data: any = '';
+
+  
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
@@ -115,10 +148,19 @@ export class LoginComponent {
   // LOGIN
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  get email() {
+  get emailforgot() {
     return this.forgotPassword.get('email');
   }
-  loader = false;
+
+  get emaill(){
+    return this.loginForm.get("email");
+  }
+
+  get pwd(){
+    return this.loginForm.get("password");
+  }
+
+  loader=false;
   submit() {
     this.loader = true;
     setTimeout(() => {
@@ -167,13 +209,38 @@ export class LoginComponent {
     console.log('Forget Password Email');
     console.log(data);
 
-    this.userService.ForgotEmail(data).subscribe((res: any) => {
-      this.userService.ForgotEmail(this.forgotPassword);
-      console.log('response:' + res);
+    this.userService.getData(data.email).subscribe((res: any) => {
+      console.log("message: ", res.message);
+  
+      if (res.message === 'user-found') {
+        this.userService.ForgotEmail(data).subscribe((res: any) => {
+          this.userService.ForgotEmail(this.forgotPassword);
+          console.log('response:' + Object.values(res));
+        });
+        this.Forgotshow = !this.Forgotshow;
+        setTimeout(() => {
+          this.EmailSent = !this.EmailSent;
+        }, 500);
+      } else if (res.message === 'email-id not found') {
+        this.usernotfound = res.message;
+      }
+  
+      this.employeemail = res;
+  
+      console.log('Response from API:', this.employeemail);
     });
-    this.Forgotshow = !this.Forgotshow;
-    setTimeout(() => {
-      this.EmailSent = !this.EmailSent;
-    }, 500);
+
+    // this.userService.ForgotEmail(data).subscribe((res: any) => {
+    //   this.userService.ForgotEmail(this.forgotPassword);
+    //   console.log('response:' + res);
+    // });
+    // this.Forgotshow = !this.Forgotshow;
+    // setTimeout(() => {
+    //   this.EmailSent = !this.EmailSent;
+    // }, 500);
+ 
   }
+
+ 
+
 }

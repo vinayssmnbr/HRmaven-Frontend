@@ -15,6 +15,10 @@
                 <form [formGroup]="forgotPassword" (ngSubmit)="ForgetEmailSubmit(forgotPassword.value)">
                     <label for="Email">Email</label>
                     <input type="email" placeholder="Enter your email address" formControlName="email">
+                    <span *ngIf="usernotfound">Email with this id not Found! </span>                    
+                    <span *ngIf="emailforgot && emailforgot.invalid && emailforgot.touched && emailforgot.dirty"  class="emailwrg"><i
+                        class="fa-sharp fa-solid fa-triangle-exclamation"></i>Input Valid Email Id</span>
+
                     <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification
                         Email</button>
                 </form>
@@ -132,6 +136,8 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Email</label>
                     <input type="email" class="form-control email" formControlName="email" placeholder="Enter your email" />
+                    <span *ngIf="emaill && emaill.invalid && emaill.touched && emaill.dirty"  class="emailwrg"><i
+                        class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
                 </div>
 
             </div>
@@ -139,7 +145,8 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Password</label>
                     <input type="password" placeholder="Enter your password" class="password" #passwordInput formControlName="password" />
-
+                    <span *ngIf="pwd && pwd.invalid && pwd.touched  && emaill.dirty" class="pwddwrg"><i
+                        class="fa-sharp fa-solid fa-triangle-exclamation "></i>Invalid Password </span>
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
                     <i class="fa {{ showPasswordIcon }}"></i>
