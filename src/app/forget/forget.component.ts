@@ -4,13 +4,50 @@ import { matchpassword } from './custom.validator';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { UserService } from '../service/user.service';
+import { Subject, } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 @Component({
   selector: 'app-forget',
   templateUrl: './forget.component.html',
   styleUrls: ['./forget.component.css']
 })
 export class ForgetComponent {
+
+  formGroup: FormGroup;
+  subject: Subject<any> = new Subject()
+  formBuilder: FormGroup<any>;
+  lengthCheck:boolean = false;
+  specialCharCheck:boolean = false;
+  spaceCheck:boolean =  false;
+  capitalCheck:boolean = false;
+  smallCheck:boolean = false;
+  numericalCheck:boolean = false;
+
+  is_visible = false;
+  password :any = '';
+
+  checkPassword() {
+    const input = this.password.trim();
+    this.lengthCheck = input.length >= 8;
+    this. numericalCheck = (input.match(/[0-9]/i)?true:false)
+    this.specialCharCheck = (input.match(/[^A-Za-z0-9-' ']/i)?true:false);
+    this.spaceCheck = (input.match(' ')?true:false);
+    this.capitalCheck = (input.match(/[A-Z]/)?true:false);
+    this.smallCheck = (input.match(/[a-z]/)?true:false);
+    document.getElementById('count').innerText = `Length: ${input.length}`;
+
+
+  }
+
+  get fun(){
+    return this.forgetform.controls;
+  }
+
+
+
   constructor(private route: ActivatedRoute,public service:UserService,private router :Router) { };
+
   token: any;
   forgetform = new FormGroup({
     password: new FormControl("", [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
@@ -19,11 +56,9 @@ export class ForgetComponent {
     validators: matchpassword
   });
 
-  get password() {
-    return this.forgetform.get('password');
-  }
+
   showPassword = false;
-  showPasswordIcon = 'fa-eye';
+  showPasswordIcon = 'fa-eye-slash';
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -34,20 +69,14 @@ export class ForgetComponent {
 
 
   showPassword1 = false;
-  showPasswordIcon1 = 'fa-eye';
+  showPasswordIcon1 = 'fa-eye-slash';
   togglePassword(passwordInpu: any) {
     this.showPassword1 = !this.showPassword1;
     this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
     passwordInpu.type = this.showPassword1 ? 'text' : 'password';
   }
 
-
-
-
-
-
-
-  //submission
+  submission
   newpassword(data:any)
   {
     console.log(data.value);
@@ -84,4 +113,8 @@ Space(event:any){
   }
 }
 
-}
+
+
+
+
+ }
