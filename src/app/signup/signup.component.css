@@ -294,7 +294,7 @@ input:focus {
 
 .facebook_logo {
     width: 30px;
-    height: 20px;
+    /* height: 20px; */
     margin-top: 10px;
 }
 
@@ -445,7 +445,6 @@ margin-top: 18px;
     color: red;
     font-size: 14px;
     position: absolute;
-    margin-top: 8px;
 }
 
 
@@ -470,7 +469,7 @@ form.ng-invalid #submit {
 
 .iconWrap .tooltip {
     position: absolute;
-    left: 30px;
+    left: 17px;
     top: -10px;
     line-height: 22px;
     font-size: 13px;
