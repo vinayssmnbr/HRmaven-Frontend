@@ -35,19 +35,19 @@ export class LoginComponent {
         Remember: true,
       });
     }
-    // let counter = 0;
-    // setInterval(() => {
-    //   const radioBtn = document.getElementById(
-    //     `radio${counter + 1}`
-    //   ) as HTMLInputElement;
-    //   if (radioBtn) {
-    //     radioBtn.checked = true;
-    //     counter++;
-    //     if (counter === 4) {
-    //       counter=0;
-    //     }
-    //   }
-    // }, 8000);
+    let counter = 0;
+    setInterval(() => {
+      const radioBtn = document.getElementById(
+        `radio${counter + 1}`
+      ) as HTMLInputElement;
+      if (radioBtn) {
+        radioBtn.checked = true;
+        counter++;
+        if (counter === 4) {
+          counter = 0;
+        }
+      }
+    }, 8000);
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
@@ -57,6 +57,7 @@ export class LoginComponent {
         this.cookie.set('token', token);
         this.router.navigate(['dashboard']);
       } else {
+        this.cookie.delete('token');
         this.router.navigate(['login']);
       }
     });
