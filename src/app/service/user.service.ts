@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class UserService {
+
+  
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -27,6 +29,7 @@ export class UserService {
   private url = environment.url;
   private auth = environment.auth;
   private  emailurl = environment.getemail
+  private changepwd = environment.changepassword
   
   getData(email: string) {
     const url = `${this.emailurl}/${email}`;
@@ -52,11 +55,24 @@ export class UserService {
     return this.http.post(this.Reseturl, data, { headers });
   }
 
+ 
+
   //LOGIN AND VERIFY DASHBOARD
   users(data: any) {
     return this.http.post(this.loginurl, data);
   }
 
+  // updateIsLinkClicked(email: string): Observable<any> {
+  //   const url = `${this.changepwd}`;
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${this.cookie.get('token')}`
+  //   });
+  //   const body = { email: email };
+  
+  //   return this.http.post(url, body, { headers });
+  // }
+  
 
   //  My code for profile fetch Name
   getUserProfileById(): Observable<any> {

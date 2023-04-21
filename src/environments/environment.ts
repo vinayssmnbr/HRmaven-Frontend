@@ -37,5 +37,6 @@ export const environment = {
   getuid: 'http://localhost:3000/api/uid',
   report: 'http://localhost:3000/attendance/report',
   profile: 'http://localhost:3000/user-profile',
-  getemail : 'http://localhost:3000/getemails/email'
+  getemail : 'http://localhost:3000/getemails/email',
+  changepassword : 'http://localhost:3000/islinkclicked'
 };

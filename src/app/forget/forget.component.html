@@ -1,4 +1,11 @@
-<div class="forget-content">
+<ng-template #hideLink>
+
+<div >
+     <a routerLink="/login">Link has expired. Please request a new reset link.</a>
+  </div>
+</ng-template>
+
+<div class="forget-content" *ngIf="!expired && isLinkClicked; else hideLink">
     <div class="forget-text">
         <div class="logo">
             <a href="#"><img src="assets/images/resetlogo.png" alt=""></a>
@@ -7,7 +14,7 @@
         <p>Almost done. Enter your new password and you’re all set.</p>
     </div>
 
-    <form [formGroup]="forgetform" class="form" (ngSubmit)="newpassword(this.forgetform)" >
+    <form [formGroup]="forgetform"  class="form" (ngSubmit)="newpassword(this.forgetform)" >
         <div class="field create-password">
             <div class="input-field">
                 <label for="name" class="text-label">New Password</label>
@@ -37,5 +44,7 @@
         <div class="input-field button">
             <input type="submit" id="submit" [disabled]="forgetform.invalid" value="Reset Password" />
         </div>
+       
+        
     </form>
 </div>
