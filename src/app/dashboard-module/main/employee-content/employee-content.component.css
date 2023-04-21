@@ -434,8 +434,7 @@ table {
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
-    line-height: 140%;
-    color: #444444;
+    color:#444444;
     padding-top: 20px;
     align-items: center;
     display: flex;
@@ -456,13 +455,15 @@ table {
 .modal-header .details_row span.active{
   color: #2F2C9F;
   border-bottom: 3px solid #2F2C9F;
+  max-width: 215px;
   font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
 }
 .modal-header .details_row span.inactive{
-
+  width: 33%;
+  max-width: 215px;
   font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
@@ -843,13 +844,47 @@ label {
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
     outline: none;
-    padding-left: 15px;
-    padding-right: 5px;
+    padding: 10px 15px;
     font-size: 14px;
-    line-height: 140%;
     cursor: pointer;
 }
+.custom-file-picker {
+  display: inline-block;
+  /* position: relative; */
+  font-size: 16px;
+}
+.custom-file-picker a {
+  position: absolute;
+  right: 9%;
+  top: 53%;
+  background-color: #EFEFF8;
+  color: #2F2C9F;
+  border-radius: 6px;
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  border: 1px solid #efeff8;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.custom-file-picker input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
 
+.custom-file-picker input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+   z-index: -1;
+}
 #text5 {
     width: 260px;
     height: 40px;
@@ -1346,6 +1381,7 @@ label {
     background-color: #fff;
     width: 172px;
     cursor: pointer;
+    position: relative;
     padding: 8px;
     border-radius: 8px;
     box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
@@ -1371,6 +1407,7 @@ label {
     border-radius: 8px;
     color: black;
     padding-left: 15px;
+    margin-bottom: 20px;
 }
 
 #slt2 {
