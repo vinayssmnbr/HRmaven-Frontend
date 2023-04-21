@@ -18,10 +18,7 @@
     padding-top: 30px;
 }
 
-.col-3 {
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .card {
     background-color: #FFFFFF;
@@ -61,16 +58,20 @@
 
 
 /* --------------Employee Form----- */
-.search_form {
-    /* background-color: #FFFFFF; */
-    background-color: red;
-    border-radius: 8px;
-    height: 232px;
-    margin-top: 25px;
-}
 
+.search_form {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    margin-top: 25px;
+    display: inline-block;
+    width: 100%;
+}
+.search_heading{
+    display: flex;
+    justify-content: space-between;
+}
 .search_form h3 {
-    padding: 21px 40px;
+    padding: 21px 25px;
     color: #222222;
     font-size: 16px;
     font-weight: 400;
@@ -82,15 +83,22 @@
     font-weight: 400;
 }
 
-
-.employe_form_input{
-    display: flex;
-    padding: 0 30px;
-    gap: 20px;
-}
+.select-btn i {
+    font-size: 25px !important;
+    transition: 0.3s;
+    color: #444444;
+    font-size: 20px;
+    padding: 21px 35px;
+    cursor: pointer;
+  }
+  .search_form.active .select-btn i {
+    transform: rotate(-180deg);
+  }
 
 .form__group {
-    padding: 0 10px;
+    padding-left: 25px;
+    margin-bottom: 20px;
+
 }
 
 .form__group>label {
@@ -101,7 +109,12 @@
     font-weight: 400;
     font-size: 14px;
 }
-
+.search_form .employe_form{
+  display: none;
+}
+.search_form.active .employe_form {
+    display: block;
+  }
 .employe_form input {
     width: 260px;
     height: 40px;
@@ -116,67 +129,14 @@
     border: 1px solid rgba(180, 180, 180, 0.8);
     border-radius: 6px;
 }
-
-
-
-
-/* 
-.employe_input {
-    display: flex;
-    gap: 10px;
-    margin-left: 30px;
-    padding-top: 30px;
-    padding-bottom: 20px;
-}
-
-.employe_input input {
-    width: 161px;
-    height: 44px;
-    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 8px;
-    color: black;
-    outline: none;
-    font-size: 14px;
-    padding: 10px 10px;
-    border: 1px solid transparent;
-}
-
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-} */
-
-.search_btn {
-    width: 92px;
-    height: 40px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Outfit';
-}
-
-.search_btn:hover {
-    background-color: #0e06f4;
-}
-
-.employe_input input::placeholder {
-    color: #CBCBCB;
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.employe_input input:hover,
-.employe_input input:focus {
+.employe_form input:hover,
+.employe_form input:focus {
     border: 1px solid #2F2C9F;
     border-radius: 8px;
 }
+
+
+
 
 
 /* ----------------DropDown Menu----------------------------- */
@@ -192,7 +152,7 @@ input[type=number]::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     padding: 10px 10px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(180, 180, 180, 0.8);
 
 }
 
@@ -249,7 +209,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 /*------------------ table----------------------- */
-
+.leaves_table{
+    margin-top: 25px;
+}
 .table_data {
     width: 100%;
 }
