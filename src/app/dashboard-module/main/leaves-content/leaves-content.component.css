@@ -92,13 +92,16 @@
     padding: 21px 35px;
     cursor: pointer;
 }
+
 .search_form.active .select-btn i {
     transform: rotate(-180deg);
 }
+
 .form__group {
     padding-left: 25px;
     margin-bottom: 20px;
 }
+
 .form__group>label {
     margin-bottom: 5px;
     float: left;
@@ -110,8 +113,9 @@
 
 .search_form .employe_form {
     display: none;
-    
+
 }
+
 .search_form.active .employe_form {
     display: block;
 }
@@ -138,8 +142,9 @@
 }
 
 .form_btn {
-    padding:20px 0px 20px 25px ;
+    padding: 20px 0px 20px 25px;
 }
+
 .employe_form_input {
     display: flex;
     flex-wrap: wrap;
@@ -152,7 +157,7 @@
     font-size: 14px;
     border-radius: 8px;
     cursor: pointer;
-   
+
 }
 
 .form_btn .cancel_btn {
@@ -174,6 +179,7 @@
     border: none;
     outline: none;
 }
+
 /* ----------------DropDown Menu----------------------------- */
 .dropdwon_select {
     background-color: #fff;
@@ -242,9 +248,10 @@
     border-radius: 8px;
 
 }
+
 /* --------------List Items---------------------- */
 
-.all-read-important {
+.list_nav {
     display: flex;
     width: 232px;
     height: 28px;
@@ -254,7 +261,7 @@
     column-gap: 40px;
 }
 
-.all-read-important p {
+.list_nav p {
     cursor: pointer
 }
 
@@ -262,7 +269,7 @@
 
 .Pending:hover {
     border-bottom: 3px solid #2F2C9F;
-   
+
 }
 
 .Approved:hover {
@@ -272,6 +279,7 @@
 .Rejected:hover {
     border-bottom: 3px solid #2F2C9F;
 }
+
 .color {
     color: #2F2C9F;
     border-bottom: 3px solid #2F2C9F;
@@ -302,9 +310,62 @@
     top: 0;
 }
 
+.check_box {
+    display: flex;
+    gap: 5px;
+}
+
+.check_box input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.check_box span {
+    padding-top: 2px;
+}
+
+.check_box p {
+    font-size: 12px;
+}
+
+.check_box_icon {
+    display: flex;
+    gap: 8px;
+
+}
+
+.check_box_icon .fa-circle-check {
+    color: #4BAE4F;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.check_box_icon .fa-circle-check:hover {
+    color: #15e01c;
+}
+
+.check_box_icon .fa-circle-xmark {
+    color: #F44336;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.check_box_icon .fa-circle-xmark:hover {
+    color: rgb(216, 54, 54);
+}
+
+.table_text_side {
+    width: 100px;
+    position: absolute;
+    top: 13px;
+    right: -5px;
+}
+.table_text_side td{
+    height: 38px;
+}
 .table_text {
     width: 100%;
 }
+
 
 table {
     border-spacing: 2px 5px;
@@ -326,7 +387,7 @@ tr:hover {
 
 th,
 td {
-    padding: 15px;
+    padding: 10px;
     white-space: nowrap;
 }
 
@@ -348,28 +409,41 @@ td {
     background-color: #b4b4b4;
 }
 
-.table_text tr:nth-child(even) {
+.table_text tr:nth-child(even),
+.table_text_side tr:nth-child(even) {
     background-color: #FFFFFF;
 }
 
-.table_text tr:nth-child(odd) {
+.table_text tr:nth-child(odd),
+.table_text_side tr:nth-child(odd) {
     background-color: #fff;
 }
 
-.table_text th {
+.table_text th,
+.table_text_side th {
     font-size: 11px;
     text-transform: uppercase;
     color: #444444;
     background-color: #EFEFF8;
     margin-top: 10px;
+    height: 35px;
 }
 
-.table_data {
-    overflow-y: auto;
-    /* height: 78vh; */
+.leaves_table {
+    height: 78vh;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    /* padding-bottom:10px; */
+    position: relative;
 }
 
 .table_text thead th {
+    padding: 12px 10px;
+}
+
+.table_text thead th,
+.table_text_side thead th {
     position: sticky;
     top: -20px;
 }

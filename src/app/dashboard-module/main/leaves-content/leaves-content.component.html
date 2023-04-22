@@ -158,39 +158,41 @@
             </div>
         </form>
     </div>
-<!--------------------- List Item----------------- -->
-<div class="all-read-important">
-    <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
-      <p>Pending</p>
+    <!--------------------- List Item----------------- -->
+    <div class="list_nav">
+        <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
+            <p>Pending</p>
+        </div>
+        <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
+            <p>Approved</p>
+        </div>
+        <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+            <p>Rejected</p>
+        </div>
     </div>
-    <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
-      <p>Approved</p>
-    </div>
-    <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
-      <p>Rejected</p>
-    </div>
-  </div>
-
-
-
-
-
-<!-- -------------------------------------------- -->
+    <!-- -----------------------Table--------------------- -->
     <div class="leaves_table">
-        <div class="leaves_table">
             <table class="table_text">
                 <thead>
                     <tr class="table_heading">
-                        <th>EMPLOYEE ID</th>
+                        <th>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <span>EMPLOYEE ID</span>
+                            </div>
+                        </th>
                         <th>EMPLOYEE NAME</th>
+                        <th>Applied On</th>
                         <th>FROM</th>
                         <th>TO</th>
+                        <th>Duration</th>
+                        <th>Category</th>
                         <th>REASON</th>
-                        <th>ACTION</th>
+                        <th>Balance</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
+                    <!-- <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
                         <td>{{leave.employeeId}}</td>
                         <td>{{leave.employeeName}}</td>
                         <td>{{leave.from | date:'shortDate'}}</td>
@@ -211,9 +213,358 @@
                                 </div>
                             </div>
                         </td>
+                    </tr> -->
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box">
+                                <input type="checkbox">
+                                <p>20224</p>
+                            </div>
+                        </td>
+                        <td>Ankush Sharma</td>
+                        <td>29/4/2023</td>
+                        <td>1/5/2023</td>
+                        <td>2/5/2023</td>
+                        <td>2 days</td>
+                        <td>Casual Leave</td>
+                        <td>I have to attend some family fu...</td>
+                        <td>4/6</td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+
+            <!-- ---------------------Slide Table------------------ -->
+
+            <table class="table_text_side">
+                <thead>
+                    <tr class="table_heading">
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
     </div>
 </div>
