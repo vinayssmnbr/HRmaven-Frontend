@@ -76,23 +76,14 @@ export class EmployeeContentComponent implements OnInit {
     name: new FormControl('', [Validators.required,this.nameValidator]),
     designation: new FormControl('',Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
+    estatus:new FormControl('',Validators.required),
     profilepic: new FormControl('', Validators.required),
     dateOfJoining: new FormControl('', Validators.required),
     location: new FormControl('',Validators.required),
+    ctc: new FormControl('', Validators.required),
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    timings:new FormControl('',Validators.required)
-    // bankname: new FormControl('',Validators.required),
-    // adhaarno: new FormControl('', Validators.required),
-    // accountno: new FormControl('', [Validators.required]),
-    // ifsc: new FormControl('', [
-    //   Validators.required,
-    //   Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
-    // ]),
-    // panno: new FormControl('', [
-    //   Validators.required,
-    //   Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
-    // ]),
+    timings:new FormControl('',Validators.required),
 
   });
 
@@ -454,6 +445,17 @@ this.contentdropdown2=false;
 dropdownOpenOption() {
   this.designationdropdownOption = !this.designationdropdownOption;
 }
+
+  Space(event: any) {
+    if (event.target.selectionStart === 0 && event.code == "Space") {
+      event.preventDefault();
+    }
+  }
+
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim()
+
+  }
 
 
 }
