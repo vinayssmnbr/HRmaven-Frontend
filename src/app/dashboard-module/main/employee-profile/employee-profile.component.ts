@@ -6,6 +6,7 @@ import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+  FormArray,
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 
@@ -16,7 +17,7 @@ import { DashService } from '../../shared/dash.service';
 })
 export class EmployeeProfileComponent {
   @Input() user: any;
-  constructor(private dashService: DashService) {}
+  constructor(private dashService: DashService,private fb: FormBuilder,) {}
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
     console.log(this.user);
@@ -64,6 +65,7 @@ export class EmployeeProfileComponent {
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
+    employees:new FormArray([]),
     expcompany: new FormControl(''),
     expduration: new FormControl(''),
     explocation: new FormControl(''),
@@ -91,6 +93,21 @@ export class EmployeeProfileComponent {
     city: new FormControl(''),
     address: new FormControl(''),
   });
+  employees(): FormArray {
+    return this.form.get("employees") as FormArray
+  }
+  newEmployee(): FormGroup {
+    return this.fb.group({
+      expcompany: new FormControl(''),
+      expduration: new FormControl(''),
+      explocation: new FormControl(''),
+      expdesignation: new FormControl(''),
+    })
+  }
+  addEmployee() {
+    console.log("Adding a employee");
+    this.employees().push(this.newEmployee());
+  }
 
   array1: any = [
     {
@@ -312,7 +329,7 @@ export class EmployeeProfileComponent {
     this.Selectvariable=user.jobdesignation
     this.Selectvariable8=user.jobempstatus
     this.Selectvariable5=user.jobtiming
-        
+
     if (this.personaldetail === true) {
       this.modalContent1 = true;
       this.modalContent2 = false;
@@ -452,7 +469,7 @@ export class EmployeeProfileComponent {
     this.user.graduation = data.graduation
     this.user.graduationCgpa = data.graduationCgpa
     this.user.graduationStream = data.graduationStream
-    
+
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;

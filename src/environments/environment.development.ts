@@ -18,7 +18,9 @@ export const environment = {
   getuid: 'https://hrmaven.works/api/uid',
   report: 'https://hrmaven.works/attendance/report',
   profile: 'https://hrmaven.works/user-profile',
-   updateleave:'https://hrmaven.works/attendance/update'
+  updateleave: 'https://hrmaven.works/attendance/update',
+  getemail: 'https://hrmaven.works/getemails/email',
+  changepassword: 'https://hrmaven.works/islinkclicked'
 
   //LOCAL URL
   // updateleave: 'http://localhost:3000/attendance/update',
@@ -38,4 +40,6 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
+  // getemail : 'http://localhost:3000/getemails/email',
+  // changepassword : 'http://localhost:3000/islinkclicked'
 };

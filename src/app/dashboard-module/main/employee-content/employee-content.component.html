@@ -4,7 +4,8 @@
   <div class="selection">
     <div class="input_left">
       <div class="input_field">
-        <input type="text" class="number1 no-spin" placeholder="Type Employee Name or ID" [(ngModel)]="query" id="search">
+        <input type="text" class="number1 no-spin" placeholder="Enter Employee Name or ID" [(ngModel)]="query"
+          id="search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
 
@@ -17,16 +18,16 @@
             </div>
           </div>
         </div>
-        <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()" >
+        <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
           <ul>
-            <li *ngFor="let arr of array; index as i"  [class.select_active]="i === colorvariable"
+            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
               (click)="Changeselect(arr)">
               {{arr.name}}</li>
           </ul>
         </div>
       </div>
     </div>
-    <button class="btn3"  (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+    <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
   </div>
 
   <div class="table-wrapper">
@@ -45,19 +46,22 @@
       <tbody>
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable ">
           <!--  -->
-          <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
+          <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data"
+            *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
-        </td>
-          <td  *ngIf="user.found!='true'" class="employee1">{{user.uid}}</td>
-          <td  *ngIf="user.found!='true'" class="name1">
-           <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}</td>
-          <td  *ngIf="user.found!='true'" class="designation1">{{user.designation}}</td>
-          <td  *ngIf="user.found!='true'" class="email1">{{user.email}}</td>
-          <td  *ngIf="user.found!='true'" class="contact1">{{user.mobile}}</td>
-          <td  *ngIf="user.found!='true'" class="action1">
+          </td>
+          <td *ngIf="user.found!='true'" class="employee1">{{user.uid}}</td>
+          <td *ngIf="user.found!='true'" class="name1">
+            <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}
+          </td>
+          <td *ngIf="user.found!='true'" class="designation1">{{user.designation}}</td>
+          <td *ngIf="user.found!='true'" class="email1">{{user.email}}</td>
+          <td *ngIf="user.found!='true'" class="contact1">{{user.mobile}}</td>
+          <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
+                (click)="selectEmployee(user)">
               <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
@@ -71,17 +75,16 @@
     <div class="modal-content" *ngIf="showModalContent">
       <div class="modal-header">
         <div class="header-title">
-        <h4 class="modal-title">Add New Employee</h4>
+          <h4 class="modal-title">Add New Employee</h4>
         </div>
         <div class="details_row">
-          <span [ngClass]="{'active':firstStep,'inactive':!firstStep}">1. General Details</span>
-          <span [ngClass]="{'active':secondStep,'inactive':!secondStep}">2. Personal Particulars</span>
-          <span [ngClass]="{'active':thirdStep,'inactive':!thirdStep}">3. Job Details</span>
+          <span [ngClass]="{'active':firstStep,'inactive':!firstStep}"><p>1. General Details</p></span>
+          <span [ngClass]="{'active':secondStep,'inactive':!secondStep}"><p>2. Job Details</p></span>
         </div>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-        <div class="modal-body">
-          <!-- <div class="numbers">
+      <div class="modal-body">
+        <!-- <div class="numbers">
             <div class="number next " [ngClass]="{'active':firstStep,'inactive':!firstStep}"><span
                 [ngClass]="{'active':firstStep , 'inactive':!firstStep}">1</span>
             </div>
@@ -100,197 +103,238 @@
 
 
 
-          <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
-            <div class="form-row">
-              <div class="input">
-                <label>Name <span>*</span></label>
-                <input type="name" id="text1" placeholder="Zana Jones" formControlName="name" pattern="^[^\s]+$"
-                  [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
-              </div>
-               <div class="input">
-                <label>Designation <span>*</span></label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
-
-                    <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8" readonly>
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
-                    <ul>
-                      <li *ngFor="let arr6 of array6; index as i" [class.select_active]="i === colorvariable6"
-                        (click)="Changeselect6(arr6)">
-                        {{arr6.name}}</li>
-                    </ul>
-                  </div>
+        <form class="form-container" id="form1" [formGroup]="form" *ngIf="firstStep" (ngSubmit)="submit(form.value)">
+          <div class="form-row">
+            <div class="input">
+              <label>Name</label>
+              <input type="name" id="text1" placeholder="Zana Jones" formControlName="name"  (keydown)="Space($event)"
+                [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
+            </div>
+            <div class="input">
+              <label>Job Type</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
+                  <!-- <p>{{Selectvariable1}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="estatus" id="text9" readonly>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
+                  <ul>
+                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
+                      (click)="Changeselect1(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
                 </div>
               </div>
-
             </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Employee ID <span>*</span></label>
-                <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid"
-                  pattern="^[^\s]+$" [disabled]="true" readonly>
-              </div>
-              <div class="input">
-                <label>Date of Joining <span>*</span></label>
-                <input type="date" id="text4" placeholder="DD/MM/YYYY" formControlName="dateOfJoining"
-                  (click)="openDatePicker()">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Date of Birth <span>*</span></label>
-                <input type="date" id="text5" placeholder="DD/MM/YYYY" formControlName="dateOfBirth">
-              </div>
-              <div class="input">
-                <label>Gender <span>*</span></label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
-                    <p >{{Selectvariable1}}</p>
-                    <!-- <input type="text" [(ngModel)]="Selectvariable1" formControlName="gender" id="text9" readonly> -->
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
-                    <ul>
-                      <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
-                        (click)="Changeselect1(arr1)">
-                        {{arr1.name}}</li>
-                    </ul>
-                  </div>
-                </div>
 
-              </div>
-            </div>
-          </form>
-
-
-          <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
-            <div class="form-row">
-              <div class="input">
-                <label>Mobile No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text6" pattern="[6-9]{1}[0-9]{9}" maxlength="10"
-                  placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin"
-                  [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
-
-              </div>
-              <div class="input">
-                <label>Email <span>*</span></label>
-                <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email"
-
-                  [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
-
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Address <span>*</span></label>
-                <textarea placeholder="Enter Employee Address..." cols="80" rows="8" id="text2"
-                  formControlName="address"></textarea>
-              </div>
-            </div>
-          </form>
-
-
-
-          <form class="form-container " id="form3" [formGroup]="form" *ngIf="thirdStep">
-            <div class="form-row">
-              <div class="input">
-                <label>Bank Name <span>*</span></label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
-                    <p>{{Selectvariable2}}</p>
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
-                    <ul>
-                      <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
-                        (click)="Changeselect2(arr2)">
-                        {{arr2.name}}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="input">
-                <label>Account Number <span>*</span></label>
-                <input type="number" id="text10" placeholder="10309856890" formControlName="accountno"  pattern="[0-9]{9,16}"
-                  class=" no-spin"
-                  [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
-
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>IFSC Code <span>*</span></label>
-                <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12"
-                  oninput="this.value = this.value.toUpperCase()"
-                  [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.dirty,'ng_valid': registrationFormControl.ifsc.valid}">
-
-              </div>
-              <div class="input">
-                <label>Aadhar Card No. <span>*</span></label>
-                <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709" pattern="[0-9]{12}" maxlength="12"
-                  formControlName="adhaarno" [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.dirty,'ng_valid': registrationFormControl.adhaarno.valid}">
-
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>PAN number <span>*</span></label>
-                <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10"
-                  pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" oninput="this.value = this.value.toUpperCase()"
-                  [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.dirty,'ng_valid': registrationFormControl.panno.valid}">
-
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="modal-footer">
-          <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-            [disabled]="!(this.form.controls.name.valid && this.form.controls.dateOfBirth.valid  && this.form.controls.dateOfJoining.valid)">
-            Next </button>
-          <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
-          <button *ngIf="secondStep" (click)="nextForm1()" class="next-btn"
-            [disabled]="!(this.form.controls.mobile.valid && this.form.controls.email.valid && this.form.controls.address.valid)">Next</button>
-          <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button>
-          <button type="submit" *ngIf="thirdStep"
-            [disabled]="!(this.form.controls.accountno.valid && this.form.controls.adhaarno.valid && this.form.controls.panno.valid && this.form.controls.ifsc.valid)"
-            class="done-btn" (click)="submit(form.value)">Done</button>
-        </div>
-      </div>
-      <div class="modal-content2" *ngIf="fourthStep">
-        <div class="modal-header2">
-          <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
-        </div>
-        <div class="modal-body2">
-          <h3>New employee added successfully!</h3>
-          <p>You can add more employees in a similar way
-            and edit them when necessary.</p>
-          <button class="done-btn2" (click)="closeModal()">Done</button>
-        </div>
-      </div>
-
-      <div class="modal-content3" *ngIf="rowdelete">
-        <div class="modal-body3">
-          <h4>Do you really want to delete this employee?</h4>
-          <div class="delete-btns">
-            <button class="yes-btn" (click)="successdelete()">Yes</button>
-            <button class="no-btn" (click)="closeModal2()">No</button>
           </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Designation</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
 
-          <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
-        </div>
-      </div>
-      <div class="modal-content4" *ngIf="deletemessage">
-        <div class="modal-header4">
-          <img src="./assets/images/tick.png" alt="img">
-        </div>
-        <div class="modal-body4">
-          <h3>Employee deleted successfully!</h3>
-          <button class="done-btn2" (click)="closeModal3()">Done</button>
-        </div>
+                  <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8" readonly>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
+                  <ul>
+                    <li *ngFor="let arr6 of array6; index as i" [class.select_active]="i === colorvariable6"
+                      (click)="Changeselect6(arr6)">
+                      {{arr6.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Profile Picture</label>
+              <!-- <input type="file"  placeholder="No file Choosen" > -->
+              <div class="custom-file-picker">
+                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName" id="text4" readonly>
+                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="profilepic">
+                <a  (click)="fileInput.click()">Choose File</a>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Personal Email </label>
+              <input type="email" id="text7" placeholder="smriti123@gmail.com" formControlName="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"  (keyup)="onKeyUp($event)"
+                [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
+
+            </div>
+            <div class="input">
+              <label>Mobile No.</label>
+              <input type="number" class="no-spin" id="text6" pattern="[6-9]{1}[0-9]{9}"
+                placeholder="XXXXXX0652" formControlName="mobile" class=" no-spin"
+                [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
+
+            </div>
+          </div>
+        </form>
+
+
+        <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
+          <div class="form-row">
+            <div class="input">
+            <label>Employee ID </label>
+            <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid"
+              pattern="^[^\s]+$" [disabled]="true" readonly>
+
+            </div>
+            <div class="input">
+              <label>Date of Joining</label>
+              <input type="date" id="text5" placeholder="DD/MM/YYYY" formControlName="dateOfJoining">
+
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+            <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+              <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt1">
+
+                <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="text8" readonly>
+                <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+              </div>
+              <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                <ul>
+                  <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                    (click)="Changeselect2(arr2)">
+                    {{arr2.name}}</li>
+                </ul>
+              </div>
+            </div>
+            </div>
+            <div class="input">
+              <label>Timings</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
+
+                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timings" id="text8" readonly>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
+                  <ul>
+                    <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
+                      (click)="Changeselect3(arr3)">
+                      {{arr3.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="form-row">
+          <div class="input">
+            <label>CTC</label>
+            <input type="text" id="text11" placeholder="8LPA" formControlName="ctc"
+              [ngClass]="{'ng_invalid': registrationFormControl.ctc.invalid && registrationFormControl.ctc.dirty,'ng_valid': registrationFormControl.ctc.valid}">
+          </div>
+          </div>
+        </form>
+
+
+
+        <!-- <form class="form-container " id="form3" [formGroup]="form" *ngIf="thirdStep">
+          <div class="form-row">
+            <div class="input">
+              <label>Bank Name <span>*</span></label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
+                  <p>{{Selectvariable2}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                  <ul>
+                    <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                      (click)="Changeselect2(arr2)">
+                      {{arr2.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Account Number <span>*</span></label>
+              <input type="number" id="text10" placeholder="10309856890" formControlName="accountno"
+                pattern="[0-9]{9,16}" class=" no-spin"
+                [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
+
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>IFSC Code <span>*</span></label>
+              <input type="text" id="text11" placeholder="SBINXXXXXXXX" formControlName="ifsc" maxlength="12"
+                oninput="this.value = this.value.toUpperCase()"
+                [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.dirty,'ng_valid': registrationFormControl.ifsc.valid}">
+
+            </div>
+            <div class="input">
+              <label>Aadhar Card No. <span>*</span></label>
+              <input type="number" class="no-spin" id="text12" placeholder="XXXXXXXX6709" pattern="[0-9]{12}"
+                maxlength="12" formControlName="adhaarno"
+                [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.dirty,'ng_valid': registrationFormControl.adhaarno.valid}">
+
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>PAN number <span>*</span></label>
+              <input type="text" id="text13" placeholder="ABCTY1234D" formControlName="panno" maxlength="10"
+                pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" oninput="this.value = this.value.toUpperCase()"
+                [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.dirty,'ng_valid': registrationFormControl.panno.valid}">
+
+            </div>
+          </div>
+        </form> -->
       </div>
 
+      <div class="modal-footer">
+        <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
+          [disabled]="!(this.form.controls.name.valid && this.form.controls.email.valid && this.form.controls.mobile.valid && this.form.controls.profilepic.valid )">
+          Next </button>
+        <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
+        <button *ngIf="secondStep" type="submit" (click)="submit(form.value)" class="next-btn"
+         [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid )">Done</button>
+        <!-- <button *ngIf="thirdStep" (click)="previousForm1()" class="back-btn">Back</button> -->
+        <!-- <button type="submit" *ngIf="thirdStep"
+          [disabled]="!(this.form.controls.accountno.valid && this.form.controls.adhaarno.valid && this.form.controls.panno.valid && this.form.controls.ifsc.valid)"
+          class="done-btn" (click)="submit(form.value)">Done</button> -->
+      </div>
     </div>
+    <div class="modal-content2" *ngIf="fourthStep">
+      <div class="modal-header2">
+        <i class="fa-solid fa-circle-check" style="color: #3D9030; font-size: 60px;"></i>
+      </div>
+      <div class="modal-body2">
+        <h3>New employee added successfully!</h3>
+        <p>You can add more employees in a similar way
+          and edit them when necessary.</p>
+        <button class="done-btn2" (click)="closeModal()">Done</button>
+      </div>
+    </div>
+
+    <div class="modal-content3" *ngIf="rowdelete">
+      <div class="modal-body3">
+        <h4>Do you really want to delete this employee?</h4>
+        <div class="delete-btns">
+          <button class="yes-btn" (click)="successdelete()">Yes</button>
+          <button class="no-btn" (click)="closeModal2()">No</button>
+        </div>
+
+        <i class="fa-solid fa-xmark second" (click)="closeModal2()"></i>
+      </div>
+    </div>
+    <div class="modal-content4" *ngIf="deletemessage">
+      <div class="modal-header4">
+        <img src="./assets/images/tick.png" alt="img">
+      </div>
+      <div class="modal-body4">
+        <h3>Employee deleted successfully!</h3>
+        <button class="done-btn2" (click)="closeModal3()">Done</button>
+      </div>
+    </div>
+
   </div>
+</div>

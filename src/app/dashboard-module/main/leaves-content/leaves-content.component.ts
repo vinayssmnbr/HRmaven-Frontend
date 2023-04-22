@@ -35,6 +35,14 @@ export class LeavesContentComponent {
   pending_graph: any;
 
   ngOnInit() {
+    //  --------------------Drop Down-------------
+    const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
+      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!;
+    selectBtn.addEventListener('click', () =>
+      optionMenu.classList.toggle('active')
+    );
+
+    // --------------Progress Bar-----------
     const progressBar = document.querySelector(
       '.circular-progress'
     ) as HTMLElement;
@@ -42,8 +50,8 @@ export class LeavesContentComponent {
       '.value-container'
     ) as HTMLElement;
 
-    let progressValue = 0;
-    const progressEndValue = 10;
+    let progressValue = -1;
+    const progressEndValue = 0;
     const speed = 50;
 
     const progress = setInterval(() => {
@@ -51,7 +59,7 @@ export class LeavesContentComponent {
       valueContainer.textContent = `${progressValue}%`;
 
       progressBar.style.background = `conic-gradient(
-        #4d5bf9 ${progressValue * 3.6}deg,    
+        #4d5bf9 ${progressValue * 3.6}deg,
         #D9D9D9 ${progressValue * 3.6}deg
       )`;
 
@@ -67,8 +75,8 @@ export class LeavesContentComponent {
       '.value-container1'
     ) as HTMLElement;
 
-    let progressValue1 = 0;
-    const progressEndValue1 = 40;
+    let progressValue1 = -1;
+    const progressEndValue1 = 0;
     const speed1 = 50;
 
     const progress1 = setInterval(() => {
@@ -92,8 +100,8 @@ export class LeavesContentComponent {
       '.value-container2'
     ) as HTMLElement;
 
-    let progressValue2 = 0;
-    const progressEndValue2 = 80;
+    let progressValue2 = -1;
+    const progressEndValue2 = 0;
     const speed2 = 50;
 
     const progress2 = setInterval(() => {
@@ -117,8 +125,8 @@ export class LeavesContentComponent {
       '.value-container3'
     ) as HTMLElement;
 
-    let progressValue3 = 0;
-    const progressEndValue3 = 100;
+    let progressValue3 = -1;
+    const progressEndValue3 = 0;
     const speed3 = 50;
 
     const progress3 = setInterval(() => {
@@ -243,7 +251,7 @@ export class LeavesContentComponent {
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable: string = 'Select';
   colorvariable: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -273,12 +281,75 @@ export class LeavesContentComponent {
   dropdownOpen1() {
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  Selectvariable1: string = 'Designation';
+  Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
+  }
+  array2: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown2: boolean = false;
+  dropdownOpen2() {
+    this.contentdropdown2 = !this.contentdropdown2;
+  }
+  Selectvariable2: string = 'Select';
+  colorvariable2: number = 0;
+  Changeselect2(arr2: any) {
+    this.Selectvariable2 = arr2.name;
+    this.colorvariable = arr2.id;
+    this.contentdropdown2 = false;
+    console.log(arr2.name);
+  }
+  array3: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown3: boolean = false;
+  dropdownOpen3() {
+    this.contentdropdown3 = !this.contentdropdown3;
+  }
+  Selectvariable3: string = 'Select';
+  colorvariable3: number = 0;
+  Changeselect3(arr3: any) {
+    this.Selectvariable3 = arr3.name;
+    this.colorvariable = arr3.id;
+    this.contentdropdown3 = false;
+    console.log(arr3.name);
+  }
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
   }
 }
