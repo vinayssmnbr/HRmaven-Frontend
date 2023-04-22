@@ -49,6 +49,9 @@
     margin-top: 6px;
     margin-bottom: 6px;
 }
+.input-field i {
+    padding-right: 5px;
+}
 
 .input-field label {
     color: #333333;
