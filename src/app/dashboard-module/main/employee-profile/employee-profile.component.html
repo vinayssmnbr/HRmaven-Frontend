@@ -6,6 +6,16 @@
       <img src="./assets/images/left_arrow.svg" routerLink="/employee" alt="">
       <h2>Employee Profile</h2>
     </div>
+<div>
+  <input type="file" (change)="onFileSelected($event)">
+  <button (click)="onUpload(user)" [disabled]="!selectedFile || uploading">Upload</button>
+</div>
+<div *ngIf="uploading">
+  Uploading...
+</div>
+<div *ngIf="uploaded">
+  Uploaded successfully!
+</div>
     <div class="card2">
       <span class="profile_pic"><img src="./assets/images/image_employee.png">
         <div class="profile-content">

@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
+import * as filestack from 'filestack-js';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,9 @@ export class DashService {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
-  ) {}
+  ) {
+    this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
+  }
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
@@ -73,6 +76,7 @@ export class DashService {
   }
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
+    user['url']=this.fileUrl;
     console.log('employee update id ', user);
     return this.http.patch(`${this.updatempdata}/${user._id}`, user);
   }
@@ -210,4 +214,22 @@ export class DashService {
         });
     }
   }
+
+private client:any
+fileUrl:any;
+
+upload(file:File):Promise<any>{
+  return this.client.upload(file)
+  .then(res=>{
+    this.fileUrl=res.url;
+    console.log('imageurl',this.fileUrl)
+    const formData=new FormData()
+    formData.append('fileUrl',this.fileUrl)
+    return this.http.post(`${this.updatempdata}`,formData).toPromise()
+
+  })
+
+
+}
+
 }
