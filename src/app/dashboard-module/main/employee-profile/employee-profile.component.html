@@ -199,7 +199,7 @@
         </div>
       </div>
       <hr>
-      <div class="row1">
+      <!-- <div class="row1">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
           <p *ngIf="!user.expcompany1">----------</p>
@@ -218,7 +218,7 @@
           <p *ngIf="!user.expdesignation1">----------</p>
           <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
@@ -514,7 +514,7 @@
       </div>
       <div class="modal-body">
         <form class="form-container" id="form5" [formGroup]="form">
-          <div class="form-row">
+          <div class="form-row" >
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Infosys" formControlName="expcompany">
@@ -528,14 +528,14 @@
               <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" >
             <div class="input">
               <label>Location</label>
               <input type="text" placeholder="Pune, India" formControlName="explocation">
             </div>
           </div>
-          <hr>
-          <div class="form-row" *ngIf="contentshow">
+          <!-- <hr> -->
+          <!-- <div class="form-row">
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Accenture" formControlName="expcompany1">
@@ -554,7 +554,7 @@
               <label>Location</label>
               <input type="text" placeholder="Bangalore, India" formControlName="explocation1">
             </div>
-          </div>
+          </div> -->
           <!-- <div class="form-row">
             <div class="input">
               <label>Company/Organisation Name</label>
@@ -575,7 +575,7 @@
               <input type="text" placeholder="Pune, India" formControlName="location2">
             </div>
           </div> -->
-          <button class="btn3" (click)="addemployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button>
+          <button class="btn3" (click)="addEmployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button>
         </form>
       </div>
       <div class="modal-footer">

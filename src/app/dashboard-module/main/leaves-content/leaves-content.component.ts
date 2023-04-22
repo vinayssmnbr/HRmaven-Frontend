@@ -35,6 +35,14 @@ export class LeavesContentComponent {
   pending_graph: any;
 
   ngOnInit() {
+    //  --------------------Drop Down-------------
+    const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
+      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!;
+    selectBtn.addEventListener('click', () =>
+      optionMenu.classList.toggle('active')
+    );
+
+    // --------------Progress Bar-----------
     const progressBar = document.querySelector(
       '.circular-progress'
     ) as HTMLElement;
@@ -59,8 +67,6 @@ export class LeavesContentComponent {
         clearInterval(progress);
       }
     }, speed);
-
-
 
     const progressBar1 = document.querySelector(
       '.circular-progress1'
@@ -87,7 +93,6 @@ export class LeavesContentComponent {
       }
     }, speed1);
 
-
     const progressBar2 = document.querySelector(
       '.circular-progress2'
     ) as HTMLElement;
@@ -112,8 +117,6 @@ export class LeavesContentComponent {
         clearInterval(progress2);
       }
     }, speed2);
-
-
 
     const progressBar3 = document.querySelector(
       '.circular-progress3'
@@ -225,38 +228,126 @@ export class LeavesContentComponent {
     await this.updateafteraction();
   }
 
+  // -------------------Drop Down---------------------
   array: any = [
     {
       id: 0,
-      name: 'All',
+      name: 'Software Developer',
     },
     {
       id: 1,
-      name: 'Pending',
-    },
-    {
-      id: 2,
-      name: 'Rejected',
+      name: 'Frontend Developer',
     },
     {
       id: 3,
-      name: 'Accepted',
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
     },
   ];
   contentdropdown: boolean = false;
-
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  
   Selectvariable: string = 'Select';
   colorvariable: number = 0;
-
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
+  }
+  array1: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable1: string = 'Select';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
+  }
+  array2: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown2: boolean = false;
+  dropdownOpen2() {
+    this.contentdropdown2 = !this.contentdropdown2;
+  }
+  Selectvariable2: string = 'Select';
+  colorvariable2: number = 0;
+  Changeselect2(arr2: any) {
+    this.Selectvariable2 = arr2.name;
+    this.colorvariable = arr2.id;
+    this.contentdropdown2 = false;
+    console.log(arr2.name);
+  }
+  array3: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown3: boolean = false;
+  dropdownOpen3() {
+    this.contentdropdown3 = !this.contentdropdown3;
+  }
+  Selectvariable3: string = 'Select';
+  colorvariable3: number = 0;
+  Changeselect3(arr3: any) {
+    this.Selectvariable3 = arr3.name;
+    this.colorvariable = arr3.id;
+    this.contentdropdown3 = false;
+    console.log(arr3.name);
   }
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;

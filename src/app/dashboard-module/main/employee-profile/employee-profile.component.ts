@@ -6,6 +6,7 @@ import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+  FormArray,
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 
@@ -16,7 +17,7 @@ import { DashService } from '../../shared/dash.service';
 })
 export class EmployeeProfileComponent {
   @Input() user: any;
-  constructor(private dashService: DashService) {}
+  constructor(private dashService: DashService,private fb: FormBuilder,) {}
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
   }
@@ -63,6 +64,7 @@ export class EmployeeProfileComponent {
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
+    employees:new FormArray([]),
     expcompany: new FormControl(''),
     expduration: new FormControl(''),
     explocation: new FormControl(''),
@@ -90,6 +92,21 @@ export class EmployeeProfileComponent {
     city: new FormControl(''),
     address: new FormControl(''),
   });
+  employees(): FormArray {
+    return this.form.get("employees") as FormArray
+  }
+  newEmployee(): FormGroup {
+    return this.fb.group({
+      expcompany: new FormControl(''),
+      expduration: new FormControl(''),
+      explocation: new FormControl(''),
+      expdesignation: new FormControl(''),
+    })
+  }
+  addEmployee() {
+    console.log("Adding a employee");
+    this.employees().push(this.newEmployee());
+  }
 
   array1: any = [
     {
