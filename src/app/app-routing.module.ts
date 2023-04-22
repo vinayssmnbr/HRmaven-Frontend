@@ -23,7 +23,7 @@ const routes: Routes = [
         (m) => m.DashboardModuleModule
       ),canActivate: [AuthGuard],
   },
-  { path: 'resetpassword/:token', component: ForgetComponent },
+  { path: 'resetpassword', component: ForgetComponent },
   {path:'t&c',component:TermConditionComponent},
   { path: 'employee', loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) },
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }

@@ -11,13 +11,15 @@ import { ReportContentComponent } from './main/report-content/report-content.com
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 
+
+
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardContentComponent,
       },
-      {
+        {
          path:'',redirectTo: '/login', pathMatch: 'full'
         },
 
@@ -57,4 +59,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardModuleRoutingModule {}
+export class DashboardModuleRoutingModule { }
