@@ -10,6 +10,7 @@ import { RecruitmentContentComponent } from './main/recruitment-content/recruitm
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
 
 
 
