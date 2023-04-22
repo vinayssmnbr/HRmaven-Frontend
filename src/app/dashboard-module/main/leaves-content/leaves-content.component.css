@@ -242,6 +242,51 @@
     border-radius: 8px;
 
 }
+/* --------------List Items---------------------- */
+
+.all-read-important {
+    display: flex;
+    width: 232px;
+    height: 28px;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 13px;
+    column-gap: 40px;
+}
+
+.all-read-important p {
+    cursor: pointer
+}
+
+
+
+.Pending:hover {
+    border-bottom: 3px solid #2F2C9F;
+   
+}
+
+.Approved:hover {
+    border-bottom: 3px solid #2F2C9F;
+}
+
+.Rejected:hover {
+    border-bottom: 3px solid #2F2C9F;
+}
+.color {
+    color: #2F2C9F;
+    border-bottom: 3px solid #2F2C9F;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /*------------------ table----------------------- */
 .leaves_table {

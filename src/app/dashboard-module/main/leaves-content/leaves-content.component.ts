@@ -352,4 +352,10 @@ export class LeavesContentComponent {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
+  
+  id: any = 'Pending';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
+  }
 }

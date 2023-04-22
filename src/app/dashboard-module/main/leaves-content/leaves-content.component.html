@@ -158,7 +158,24 @@
             </div>
         </form>
     </div>
+<!--------------------- List Item----------------- -->
+<div class="all-read-important">
+    <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
+      <p>Pending</p>
+    </div>
+    <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
+      <p>Approved</p>
+    </div>
+    <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+      <p>Rejected</p>
+    </div>
+  </div>
 
+
+
+
+
+<!-- -------------------------------------------- -->
     <div class="leaves_table">
         <div class="leaves_table">
             <table class="table_text">
