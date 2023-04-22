@@ -10,6 +10,7 @@ import { RecruitmentContentComponent } from './main/recruitment-content/recruitm
 import { ReportContentComponent } from './main/report-content/report-content.component';
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
 
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
@@ -45,7 +46,8 @@ const routes: Routes = [
         path: 'job-details',
         component: JobDetailsComponent
       },
-      { path: 'employee-profile', component: EmployeeProfileComponent }
+      { path: 'employee-profile', component: EmployeeProfileComponent },
+      { path:'setting',component:AccountSettingsComponent}
 ];
 
 @NgModule({

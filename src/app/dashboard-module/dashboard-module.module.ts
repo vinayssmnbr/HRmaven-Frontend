@@ -22,6 +22,7 @@ import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { LeavefilterPipe } from './pipe/leavefilter.pipe';
 import { EmployeefilterPipe } from './pipe/employeefilter.pipe';
+import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
 
 
 
@@ -46,6 +47,7 @@ import { EmployeefilterPipe } from './pipe/employeefilter.pipe';
            EmployeeProfileComponent,
            LeavefilterPipe,
            EmployeefilterPipe,
+           AccountSettingsComponent,
 
 
   ],
