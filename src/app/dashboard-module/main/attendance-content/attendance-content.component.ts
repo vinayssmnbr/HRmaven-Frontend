@@ -53,6 +53,7 @@ export class AttendanceContentComponent implements OnInit {
     this.dashService.getAttendance().subscribe((res: any) => {
       // console.log('data', res); // add this line
       this.employee = res;
+      console.log(this.employee);
     });
     this.getLeaveData()
     this.getreport();

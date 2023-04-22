@@ -64,7 +64,7 @@ export class DashService {
     return this.http.get(this.updateData);
   }
   getAttendance() {
-    return this.http.get(this.getAttd);
+    return this.http.get('http://localhost:3000/attendance/all');//this.getAttd
   }
   getEmployee():Observable<any[]> {
     return this.http.get<any[]>(this.getData).pipe(
