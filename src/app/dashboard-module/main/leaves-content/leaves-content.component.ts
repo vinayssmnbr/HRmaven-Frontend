@@ -35,6 +35,12 @@ export class LeavesContentComponent {
   pending_graph: any;
 
   ngOnInit() {
+
+
+    
+
+
+
     //  --------------------Drop Down-------------
     const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!;
@@ -50,8 +56,8 @@ export class LeavesContentComponent {
       '.value-container'
     ) as HTMLElement;
 
-    let progressValue = 0;
-    const progressEndValue = 10;
+    let progressValue = -1;
+    const progressEndValue = 0;
     const speed = 50;
 
     const progress = setInterval(() => {
@@ -59,7 +65,7 @@ export class LeavesContentComponent {
       valueContainer.textContent = `${progressValue}%`;
 
       progressBar.style.background = `conic-gradient(
-        #4d5bf9 ${progressValue * 3.6}deg,    
+        #4d5bf9 ${progressValue * 3.6}deg,
         #D9D9D9 ${progressValue * 3.6}deg
       )`;
 
@@ -75,8 +81,8 @@ export class LeavesContentComponent {
       '.value-container1'
     ) as HTMLElement;
 
-    let progressValue1 = 0;
-    const progressEndValue1 = 40;
+    let progressValue1 = -1;
+    const progressEndValue1 = 0;
     const speed1 = 50;
 
     const progress1 = setInterval(() => {
@@ -100,8 +106,8 @@ export class LeavesContentComponent {
       '.value-container2'
     ) as HTMLElement;
 
-    let progressValue2 = 0;
-    const progressEndValue2 = 80;
+    let progressValue2 = -1;
+    const progressEndValue2 = 0;
     const speed2 = 50;
 
     const progress2 = setInterval(() => {
@@ -125,8 +131,8 @@ export class LeavesContentComponent {
       '.value-container3'
     ) as HTMLElement;
 
-    let progressValue3 = 0;
-    const progressEndValue3 = 100;
+    let progressValue3 = -1;
+    const progressEndValue3 = 0;
     const speed3 = 50;
 
     const progress3 = setInterval(() => {
@@ -352,4 +358,18 @@ export class LeavesContentComponent {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
+  
+  id: any = 'Pending';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
+  }
+  showSearchBox = false;
+  showSearchBox1 = true;
+
+  toggleSearchBox() {
+    this.showSearchBox =  !this.showSearchBox;
+    this.showSearchBox1 = false;
+  }
+ 
 }

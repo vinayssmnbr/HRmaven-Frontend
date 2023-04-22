@@ -158,22 +158,41 @@
             </div>
         </form>
     </div>
-
+    <!--------------------- List Item----------------- -->
+    <div class="list_nav">
+        <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
+            <p>Pending</p>
+        </div>
+        <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
+            <p>Approved</p>
+        </div>
+        <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+            <p>Rejected</p>
+        </div>
+    </div>
+    <!-- -----------------------Table--------------------- -->
     <div class="leaves_table">
-        <div class="leaves_table">
-            <table class="table_text">
-                <thead>
-                    <tr class="table_heading">
-                        <th>EMPLOYEE ID</th>
-                        <th>EMPLOYEE NAME</th>
-                        <th>FROM</th>
-                        <th>TO</th>
-                        <th>REASON</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
+        <table class="table_text">
+            <thead>
+                <tr class="table_heading">
+                    <th>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <span>EMPLOYEE ID</span>
+                        </div>
+                    </th>
+                    <th>EMPLOYEE NAME</th>
+                    <th>Applied On</th>
+                    <th>FROM</th>
+                    <th>TO</th>
+                    <th>Duration</th>
+                    <th>Category</th>
+                    <th>REASON</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
                         <td>{{leave.employeeId}}</td>
                         <td>{{leave.employeeName}}</td>
                         <td>{{leave.from | date:'shortDate'}}</td>
@@ -194,9 +213,139 @@
                                 </div>
                             </div>
                         </td>
+                    </tr> -->
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  " data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
+                          </p>
+                    </td>
+                    <td>4/6</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things." data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
+                          </p>
+                    </td>
+                    <td>4/6</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things." data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
+                          </p>
+                </td>
+                    <td>4/6</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things." data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
+                          </p>
+                </td>
+                    <td>4/6</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <!-- ---------------------Slide Table------------------ -->
+        <div class="side_tab" *ngIf="!showSearchBox">
+            <table class="table_text_side">
+                <thead>
+                    <tr class="table_heading">
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="check_box_icon">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <div class="table_btn" *ngIf="showSearchBox">
+        <button class="accept_btn">Accept All</button>
+        <button class="reject_btn">Reject All</button>
+    </div>
+
 </div>
