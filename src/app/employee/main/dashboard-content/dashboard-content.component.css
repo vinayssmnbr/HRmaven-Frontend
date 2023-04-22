@@ -1,0 +1,715 @@
+.main {
+  width: calc(100% - 223px);
+  margin-left: 223px;
+  border: 1px solid #f9f9f9;
+  background-color: #f9f9f9;
+  padding-top: 84px;
+}
+
+.row {
+  display: flex;
+  column-gap: 22px;
+}
+
+.col-3 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #FFFFFF;
+  padding: 16px 30px;
+  border-radius: 8px;
+}
+
+.iconCenter {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.iconCenter.file {
+  color: #F8BB6F;
+  background-color: rgba(251, 205, 147, 0.14);
+}
+
+.iconCenter.list {
+  color: #7BD36D;
+  background-color: rgba(141, 220, 128, 0.2);
+}
+
+.iconCenter.reject {
+  color: #FA9796;
+  background: rgba(255, 168, 167, 0.2);
+}
+
+.iconCenter.clock {
+  color: #8BAFFF;
+  background: rgba(221, 232, 255, 0.29);
+}
+
+.text-image p {
+  font-size: 14px;
+  color: #777777;
+
+}
+
+.text-image h1 {
+  font-size: 22px;
+  color: #222222;
+}
+
+
+.chart {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background: #FFFFFF;
+  width: 746px;
+  height: 363px;
+}
+
+.chart h6 {
+  font-size: 18px;
+  color: #111111;
+  padding-top: 26.5px;
+  padding-left: 33.5px;
+}
+
+.row {
+  display: flex;
+  margin: 30px;
+  column-gap: 22px;
+}
+
+.attendance h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.attendence-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* -------------Drop Down -------- */
+.dropdwon_select {
+  background-color: #F7F7FB;
+  width: 172px;
+  height: 40px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  color: #444444;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  border: 1px solid transparent;
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus {
+  border-radius: 8px;
+}
+
+.dropdwon_select p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.dropdwon_select i {
+  font-size: 14px;
+  color: #444444;
+  padding: 3px 7px;
+}
+
+.select_content {
+  background-color: #fff;
+  cursor: pointer;
+  width: 172px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  color: #444444;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+.select_content ul {
+  padding: 0;
+  margin: 0;
+}
+
+.select_content ul li {
+  list-style: none;
+  padding: 10px 10px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.select_content ul li:hover {
+  background-color: #F7F7FB;
+  border-radius: 8px;
+}
+
+.select_active {
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+/* ----------Drop Down END--------------- */
+
+
+.attendance-area {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 25px;
+  position: relative;
+}
+
+
+
+.meeting-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meeting-text h2 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+a {
+  color: #2F2C9F;
+}
+
+.meeting-text p {
+  color: #2F2C9F;
+  font-size: 14px;
+}
+
+.meeting-area {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+
+
+}
+
+.interview-area {
+  display: flex;
+  gap: 29px;
+  margin-top: 10px;
+  padding: 6px 0 6px 8px;
+  cursor: pointer;
+}
+
+.dots {
+  color: #999999;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-right: 8px;
+}
+
+.dots ul {
+  position: absolute;
+  right: -10px;
+}
+
+.dots i {
+  padding: 5px;
+}
+
+.dots ul.close {
+  display: none;
+}
+
+.dots ul button {
+  width: 100%;
+  padding: 10px 25px;
+  background-color: #FFFFFF;
+  color: #37474F;
+  outline: none;
+  border: none;
+  border-radius: 4px 4px 0px 0px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dots ul button:hover {
+  background-color: #e7e5e5b4;
+  color: black;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropbtn:hover .dropdown-content {
+  display: block;
+}
+
+.dropbtn:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+.interview-area:hover {
+  background-color: #F7F7FB;
+}
+
+.interview-area:hover .date {
+  background-color: #FFFFFF;
+
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.all-meetings {
+  margin-top: 18px;
+}
+
+.date h5 {
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.interview-timings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.date {
+  background-color: #F7F7FB;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5.5px 14.5px;
+}
+
+.date p {
+  font-size: 13px;
+}
+
+.date h3 {
+  margin-top: 4px;
+}
+
+.date h2 {
+  font-size: 18px;
+}
+
+.interview-dots h3 {
+  font-size: 16px;
+  color: #555555;
+  font-weight: 500;
+}
+
+.interview-dots p {
+  font-size: 14px;
+  color: #999999;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.leave-request-area {
+  background-color: #FFFFFF;
+  padding: 20px;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.leave-request-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leave-request-heading h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.leave-request-heading p {
+  color: #2F2C9F;
+}
+
+.leave-request-heading p a {
+  cursor: pointer;
+}
+
+.activity-area {
+  background-color: #FFFFFF;
+  padding: 20px 19px 14px 20px;
+  height: 100%;
+}
+
+.activity-feed-text {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+}
+
+.activity-feed-text h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.activity-feed-text p {
+  color: #2F2C9F;
+}
+
+.activity-feed-text:hover p {
+  cursor: pointer;
+}
+
+.john-image {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.john-image:hover {
+  background-color: #F7F7FB;
+  border-radius: 8px;
+}
+
+.john-shaw-background {
+  padding: 7px 6px 7px 5px;
+}
+
+.john-text {
+  font-size: 14px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #555555;
+  padding-top: 6px;
+  word-break: break-word;
+}
+
+.min {
+  color: #999999;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.john-text p {
+  color: #555555;
+
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  height: calc(100% - 12px);
+}
+
+
+.table_data {
+  width: 100%;
+  overflow-y: auto;
+  height: 414px;
+  overflow-x: hidden;
+  margin-top: 15px;
+}
+
+.table_text {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-collapse: separate;
+
+
+}
+
+table {
+  /* border-spacing: 2px 5px; */
+  /* background-color: #EFEFF8; */
+}
+
+table,
+th,
+td {
+  font-size: 12px;
+}
+
+.table_heading th {
+  text-align: left;
+}
+
+.table_heading {
+  position: sticky;
+  top: 0;
+}
+
+tr {
+  height: 20px !important;
+}
+
+tr:hover {
+  background-color: #f7f7fb !important;
+}
+
+th,
+td {
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.table_data::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table_data::-webkit-scrollbar-track {
+  background-color: #EFEFF8;
+}
+
+.table_data::-webkit-scrollbar-thumb {
+  background-color: #888888de;
+  border-radius: 6px;
+  height: 10px;
+}
+
+
+
+.table_text tr:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+.table_text tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.table_text th {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #444444;
+  background-color: #EFEFF8;
+  margin-top: 10px;
+}
+
+
+
+
+
+.action_button {
+  display: flex;
+  gap: 16px;
+}
+
+.action_btn {
+  display: flex;
+  align-items: center;
+}
+
+input[type="radio"] {
+  height: 10px;
+  width: 10px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+
+.custom-radio {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0.2rem solid #fff;
+  border-radius: 50%;
+}
+
+.custom-radio:focus-visible {
+  outline-offset: 0;
+}
+
+#outline {
+  outline: 2px solid #e8e8e8;
+}
+
+#outline1 {
+  outline: 2px solid #e8e8e8;
+}
+
+
+
+#outline1:checked {
+  outline-color: #29A74C;
+  background-color: #29A74C;
+  animation: outline-checked1;
+  animation-duration: 0.1s;
+  animation-iteration-count: 4;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+#outline1:checked+label {
+  color: #29A74C;
+}
+
+#outline:checked+label {
+  color: #FA5D5D;
+}
+
+#outline:checked {
+  outline-color: #FA5D5D;
+  background-color: #FA5D5D;
+  animation: outline-checked;
+  animation-duration: 0.1s;
+  animation-iteration-count: 4;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+
+@keyframes outline-checked {
+  0% {
+    outline-offset: 0;
+  }
+
+  100% {
+    outline-offset: -0.2rem;
+  }
+}
+
+@keyframes outline-checked1 {
+  0% {
+    outline-offset: 0;
+  }
+
+  100% {
+    outline-offset: -0.2rem;
+  }
+}
+
+
+/* ------------------ */
+
+.three-dots {
+  position: relative;
+}
+
+.three-dots-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.three-dots-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.show-three-dots-menu {
+  display: block;
+}
+
+/*Activity area Scroll bar*/
+
+.scrollbar-start::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-start::-webkit-scrollbar-track {
+  background-color: #EFEFF8;
+}
+
+.scrollbar-start::-webkit-scrollbar-thumb {
+  background-color: #888888de;
+  border-radius: 6px;
+  height: 10px;
+}
+
+
+.scrollbar-start {
+  overflow-y: auto;
+  height: 414px;
+  overflow-x: hidden;
+  margin-top: 27px;
+  padding-right: 4px;
+}
+
+/*All meeting Scrollbar*/
+
+.meeting-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.meeting-scrollbar::-webkit-scrollbar-track {
+  background-color: #EFEFF8;
+}
+
+.meeting-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888888de;
+  border-radius: 6px;
+  height: 10px;
+}
+
+
+/*meeting Scrollbar*/
+.meeting-scrollbar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 400px;
+  padding-right: 4px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.loader {
+  width: 50px !important;
+  height: 50px !important;
+  border-width: 10px;
+  /* transform: translate(50%); */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ------------------Media Query----------------------- */
+@media (max-width:1920px) {
+  .meeting-scrollbar {
+    height: 523px;
+  }
+}

@@ -1,0 +1,715 @@
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.left-side {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  height: calc(100vh - 48px);
+  width: 546px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 24px 0 18px 21px;
+}
+
+.leftContent {
+  padding-left: 78px;
+}
+
+.left-side .logo-image {
+  margin-top: 78px;
+}
+
+.left-side .title {
+  padding-top: 29px;
+  font-size: 36px;
+  font-weight: 500;
+  color: #FFFFFF;
+  width: 80%;
+}
+
+.left-side .title_para {
+  padding-top: 12px;
+  font-size: 18px;
+  color: #FAFAFA;
+  width: 85%;
+  font-weight: 400;
+}
+
+.card {
+  width: 392px;
+  height: 197px;
+  background-color: #1D38A6;
+  margin-top: 56px;
+  border-radius: 16px;
+  transition: 2s;
+}
+
+.card .card-text {
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #FAFAFA;
+  font-family: 'Outfit';
+  font-weight: 400;
+}
+
+.profile {
+  display: flex;
+  gap: 12px;
+  margin-left: 30px;
+  margin-top: 34px;
+}
+
+.profile img {
+  width: 35px;
+  height: 35px;
+}
+
+.profile h5 {
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: 'Outfit';
+  font-weight: 700;
+}
+
+.profile p {
+  font-size: 12px;
+  color: #FFFFFF;
+  font-family: 'Outfit';
+  font-weight: 400;
+}
+
+
+/* =======================================
+
+              right-side
+
+===========================================*/
+
+.right-side {
+  width: calc(100% - 546px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  padding-right: 35px;
+  margin-top: 82px;
+}
+
+form h2 {
+  font-size: 30px;
+  color: #333333;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+
+form p {
+  padding-top: 6px;
+  font-size: 14px;
+  color: #999999;
+  font-weight: 400;
+}
+
+form p a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+form .input-field {
+  position: relative;
+  width: 400px;
+  height: 50px;
+  margin-bottom: 40px;
+  margin-top: 24px;
+}
+
+.name-field {
+  margin-top: 24px;
+}
+
+.input-field input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  border: 1px solid #d1d1d1;
+  margin-top: 6px;
+}
+
+
+.input-field input::placeholder {
+  color: #B4B4B4;
+  font-weight: 400;
+  font-size: 13px;
+  font-family: 'Outfit';
+}
+
+
+.create-password .input-field .password {
+  padding-right: 50px;
+}
+
+input:hover,
+input:focus {
+  border: 1px solid #2F2C9F;
+  border-color: #2F2C9F !important;
+}
+
+.input-field label {
+  color: #333333;
+}
+
+.check-text {
+  display: flex;
+  gap: 5px;
+  margin-top: 45px !important;
+}
+
+.checkbox-text {
+  padding-top: 1px;
+  padding-left: 5px;
+}
+
+.checkbox-text a {
+  color: #B4B4B4;
+}
+
+.check-text .forgot-text {
+  margin-left: 133px;
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.check-text .check_box {
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.button input {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 22px;
+}
+
+.button input:hover {
+  background-color: #0d0ae4;
+}
+
+.or_bar {
+  text-align: center;
+}
+
+.or_bar::before {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 1px;
+  background: #999999;
+  left: 0;
+  top: 30%;
+  position: absolute
+}
+
+.or_bar::after {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 1px;
+  background: #999999;
+  right: 0;
+  top: 30%;
+  position: absolute;
+}
+
+.social_btn {
+  display: flex;
+  gap: 10px;
+  margin-top: -45px;
+}
+
+.google {
+  display: flex;
+  width: 100%;
+  background-color: #EDEDED;
+  border-radius: 10px;
+  justify-content: center;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+  cursor: pointer;
+}
+
+.google a {
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  color: #666666;
+  cursor: pointer;
+}
+
+.google_logo {
+  width: 40px;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.google:hover {
+  background-color: #ededed79;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+/* ---------------------- Slider card--------------------*/
+
+.slider {
+  display: flex;
+  width: 500%;
+  gap: 150px;
+  margin-left: 75px;
+  padding-bottom: 80px;
+}
+
+.slider input {
+  display: none;
+}
+
+.navigation-manual {
+  position: absolute;
+  width: 530px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manual-btn {
+  border: 2px solid #fff;
+  padding: 4px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.manual-btn:hover {
+  background: #fff;
+}
+
+#radio1:checked~.first {
+  margin-left: 0;
+}
+
+#radio2:checked~.first {
+  margin-left: -20%;
+}
+
+#radio3:checked~.first {
+  margin-left: -40%;
+}
+
+#radio4:checked~.first {
+  margin-left: -60%;
+}
+
+/*css for automatic navigation*/
+
+.navigation-auto {
+  position: absolute;
+  display: flex;
+  width: 380px;
+  justify-content: center;
+  margin-top: 293px;
+  align-items: center;
+}
+
+.navigation-auto div {
+  border: 2px solid #fff;
+  padding: 4px;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+  margin-right: 10px;
+}
+
+#radio1:checked~.navigation-auto .auto-btn1 {
+  background: #fff;
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
+  background: #fff;
+}
+
+#radio3:checked~.navigation-auto .auto-btn3 {
+  background: #fff;
+}
+
+#radio4:checked~.navigation-auto .auto-btn4 {
+  background: #fff;
+}
+
+.password-toggle i {
+  position: absolute;
+  margin-top: -46px;
+  margin-left: 360px;
+  color: #B4B4B4;
+  cursor: pointer;
+}
+
+
+/*  <!-- Password incorrect Modal --> */
+
+.incorrect_password.close {
+  display: none;
+}
+
+.incorrect_password.open {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .8);
+  transition: opacity linear .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+
+.password_form {
+  margin: 150px auto;
+  background-color: #FAFAFA;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 502px;
+  height: 402px;
+  border-radius: 17px;
+  text-align: center;
+}
+
+.password_form .password_image {
+  margin-top: 40px;
+}
+
+.password_text h1 {
+  font-size: 18px;
+  color: #222222;
+  font-weight: 400;
+  padding-top: 29px;
+}
+
+.password_text p {
+  color: #565656;
+  font-size: 16px;
+  padding-top: 8px;
+}
+
+.password_text .try_again {
+  margin-top: 39px;
+  width: 108px;
+  height: 40px;
+  background: #FFFFFF;
+  color: #CB1E0F;
+  border: 1px solid #CB1E0F;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.password_text .try_again:hover {
+  background-color: #CB1E0F;
+  color: #fff;
+  border: none;
+}
+
+
+/* --------------forgot modal----------------- */
+
+.forget_modal.close {
+  visibility: hidden;
+}
+
+.forget_modal open {
+  visibility: visible;
+}
+
+.forget_modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forget_modal .modal {
+  z-index: 1;
+  background-color: rgba(250, 250, 250, 1);
+  border-radius: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 567px;
+  height: 449px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.modal .close i {
+  cursor: pointer;
+  font-size: 16px;
+  position: absolute;
+  right: -50px;
+  top: -40px;
+  font-size: 18px;
+  color: #B4B4B4;
+}
+
+.forgot_illustration img {
+  padding-top: 50px;
+}
+
+.modal_content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.modal_content h1 {
+  padding-top: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #222222;
+}
+
+.modal_content h2 {
+  padding-top: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.modal_content form {
+  padding-top: 30px;
+  padding-right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0px;
+}
+
+.modal_content label {
+  width: 100%;
+  padding-bottom: 6px;
+  text-align: left !important;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.modal_content input[type="email"] {
+  padding: 9px 15px;
+  outline: none;
+  background: #FFFFFF;
+  width: 100%;
+  border: 1px solid #B4B4B4;
+  border-radius: 8px;
+}
+
+.modal_content input[type="email"]::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #B4B4B4;
+}
+
+.modal_content button {
+  padding: 9px 0px;
+  background: #2F2C9F;
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 140%;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.modal_content button:hover {
+  background-color: #130cdb;
+}
+
+
+/* -----------------------Forget Reset Send Email------------------------------------ */
+
+.forget_email_send_content.close {
+  display: none;
+}
+
+.forget_email_send_content.open {
+  visibility: visible;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .8);
+  transition: opacity linear .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.forget_content {
+  background-color: #FAFAFA;
+  width: 502px;
+  height: 402px;
+  border-radius: 17px;
+  text-align: center;
+}
+
+.forget_text {
+  width: 410px;
+  height: 130px;
+  background-color: rgba(123, 211, 109, 0.3);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forget_content .icon i {
+  position: absolute;
+  color: #B4B4B4;
+  cursor: pointer;
+  margin-top: -160px;
+  margin-left: 310px;
+  font-size: 22px;
+}
+
+.forget_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.forget_content h1 {
+  font-weight: 400;
+  font-size: 20px;
+  padding-top: 35px;
+  color: #222222;
+  text-align: center;
+}
+
+.forget_content p {
+  font-size: 14px;
+  color: #222222;
+  width: 326px;
+  padding-top: 16px;
+}
+
+.done_btn {
+  width: 82px;
+  height: 38px;
+  background-color: #3D9130;
+  border-radius: 8px;
+  color: #FFFFFF;
+  margin-top: 10px;
+  padding: 9px 24px;
+  cursor: pointer;
+  border: none;
+}
+
+.done_btn:hover {
+  background-color: #0f4a06;
+}
+
+form.ng-invalid.ng-touched #submit1 {
+  cursor: not-allowed;
+}
+
+form.ng-invalid input[type="submit"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ----------------------------------------------- */
+
+.modal-content4 {
+  width: 430px;
+  height: 309px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 20px 10px;
+}
+
+.modal-header4 {
+  width: 410px;
+  height: 130px;
+  background: rgba(123, 211, 109, 0.3);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.modal-body4 h3 {
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #444444;
+}

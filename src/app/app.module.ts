@@ -13,6 +13,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TermConditionComponent } from './term-condition/term-condition.component';
+import { LoginEmployeeComponent } from './login-employee/login-employee.component';
+// import { DashboardComponent } from './main/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { TermConditionComponent } from './term-condition/term-condition.componen
     LoaderComponent,
     LoginComponent,
     TermConditionComponent,
+    LoginEmployeeComponent,
+    // DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -18,6 +18,11 @@ const routes: Routes = [
         component: DashboardContentComponent,
       },
       {
+         path:'',redirectTo: '/login', pathMatch: 'full'
+        },
+
+
+      {
         path: 'employee',
         component: EmployeeContentComponent,
       },
