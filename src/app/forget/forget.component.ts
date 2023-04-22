@@ -100,26 +100,26 @@ export class ForgetComponent {
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
     });
-    this.service.newpwd(this.forgetform.value,this.token).subscribe({
-      next: (res:any) => {
-        // const isLinkClicked = res.isLinkClicked;
-        // if (isLinkClicked) {
-        //   // if the link has already been used, show an error message
-        //   this.expired = true;
-        // }
-        if(res=="changeit"){
-          console.log(res);
-        }
-        this.router.navigate(['./login']);
-    },
+    // this.service.newpwd(this.forgetform.value,this.token).subscribe({
+    //   next: (res:any) => {
+    //     // const isLinkClicked = res.isLinkClicked;
+    //     // if (isLinkClicked) {
+    //     //   // if the link has already been used, show an error message
+    //     //   this.expired = true;
+    //     // }
+    //     if(res=="changeit"){
+    //       console.log(res);
+    //     }
+    //     this.router.navigate(['./login']);
+    // },
 
-
-      error: (err) => {
-        if (err.status === 400 && err.error && err.error.message === 'Link has expired') {
-          this.expired = true;
-        }
-      }
-    });
+      
+    //   error: (err) => {
+    //     if (err.status === 400 && err.error && err.error.message === 'Link has expired') {
+    //       this.expired = true;
+    //     }
+    //   }
+    // });
 
   //   this.service.updateIsLinkClicked(this.forgetform.controls['email'].value).subscribe(
   //     (response: any) => {

@@ -28,13 +28,13 @@ export class UserService {
   private Reseturl = environment.Reseturl;
   private url = environment.url;
   private auth = environment.auth;
-  private  emailurl = environment.getemail
-  private changepwd = environment.changepassword
+  // private  emailurl = environment.getemail
+  // private changepwd = environment.changepassword
   
-  getData(email: string) {
-    const url = `${this.emailurl}/${email}`;
-    return this.http.get(url);
-  }
+  // getData(email: string) {
+  //   const url = `${this.emailurl}/${email}`;
+  //   return this.http.get(url);
+  // }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
