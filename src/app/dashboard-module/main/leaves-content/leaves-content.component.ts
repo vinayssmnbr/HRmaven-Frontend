@@ -35,6 +35,12 @@ export class LeavesContentComponent {
   pending_graph: any;
 
   ngOnInit() {
+
+
+    
+
+
+
     //  --------------------Drop Down-------------
     const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!;
@@ -358,4 +364,12 @@ export class LeavesContentComponent {
     this.id = ids;
     console.log(this.id);
   }
+  showSearchBox = false;
+  showSearchBox1 = true;
+
+  toggleSearchBox() {
+    this.showSearchBox =  !this.showSearchBox;
+    this.showSearchBox1 = false;
+  }
+ 
 }
