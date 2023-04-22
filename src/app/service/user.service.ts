@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
 
-  
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -30,7 +30,7 @@ export class UserService {
   private auth = environment.auth;
   private  emailurl = environment.getemail
   private changepwd = environment.changepassword
-  
+
   getData(email: string) {
     const url = `${this.emailurl}/${email}`;
     return this.http.get(url);
@@ -55,7 +55,7 @@ export class UserService {
     return this.http.post(this.Reseturl, data, { headers });
   }
 
- 
+
 
   //LOGIN AND VERIFY DASHBOARD
   users(data: any) {
@@ -69,10 +69,10 @@ export class UserService {
   //     'Authorization': `Bearer ${this.cookie.get('token')}`
   //   });
   //   const body = { email: email };
-  
+
   //   return this.http.post(url, body, { headers });
   // }
-  
+
 
   //  My code for profile fetch Name
   getUserProfileById(): Observable<any> {

@@ -457,5 +457,8 @@ dropdownOpenOption() {
 
   }
 
-
+selectall:boolean=false;
+selectboxes(){
+  this.selectall=!this.selectall;
+}
 }
