@@ -7,16 +7,71 @@
 }
 
 .selection {
-    display: flex;
+    /* display: flex; */
     margin-top: 65px;
-    justify-content: space-between;
-    margin-bottom: 24px;
+    /* justify-content: space-between; */
+    margin-bottom: 25px;
+    border-bottom: 1px solid #E0E0E0;
 }
-ul.navigation{
+.list_nav {
   display: flex;
-  flex-direction: row;
-  gap: 40px;
-  border-bottom: 1px solid #E0E0E0;
+  width: 232px;
+  height: 22px;
+  align-items: center;
+  margin-top: 20px;
+  padding-left: 20px;
+  column-gap: 70px;
+}
+
+.list_nav p {
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+}
+
+.All:hover {
+  border-bottom: 3px solid #2F2C9F;
+}
+
+.Active:hover {
+  border-bottom: 3px solid #2F2C9F;
+}
+
+.Resigned:hover {
+  border-bottom: 3px solid #2F2C9F;
+}
+
+.Terminated:hover {
+  border-bottom: 3px solid #2F2C9F;
+}
+
+.Absconder:hover {
+  border-bottom: 3px solid #2F2C9F;
+}
+
+
+.All p.active {
+  border-bottom: 3px solid #2F2C9F;
+  color: #2F2C9F;
+}
+.Active p.active {
+  border-bottom: 3px solid #2F2C9F;
+  color: #2F2C9F;
+}
+.Resigned p.active  {
+  border-bottom: 3px solid #2F2C9F;
+  color: #2F2C9F;
+}
+.Terminated p.active{
+  border-bottom: 3px solid #2F2C9F;
+  color: #2F2C9F;
+}
+.Absconder p.active {
+  border-bottom: 3px solid #2F2C9F;
+  color: #2F2C9F;
 }
 .selection2{
   display: flex;
@@ -203,6 +258,9 @@ tbody {
     overflow-y: auto;
     /* height: 600px; */
 }
+tbody{
+  overflow-y: auto;
+}
 
 .image_record {
     display: flex;
@@ -220,15 +278,15 @@ tbody {
     font-size: 20px;
 }
 
- ::-webkit-scrollbar {
+ .table-wrapper::-webkit-scrollbar {
     width: 10px;
 }
 
- ::-webkit-scrollbar-track {
+ .table-wrapper::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
- ::-webkit-scrollbar-thumb {
+ .table-wrapper::-webkit-scrollbar-thumb {
     background: #888;
 }
 input[type='checkbox']{

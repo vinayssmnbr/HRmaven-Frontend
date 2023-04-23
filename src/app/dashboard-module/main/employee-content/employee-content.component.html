@@ -2,13 +2,24 @@
 <app-header></app-header>
 <div class="main">
   <div class="selection">
-   <ul class="navigation">
-    <li><a>All</a></li>
-    <li><a>Active</a></li>
-    <li><a>Resigned</a></li>
-    <li><a>Terminated</a></li>
-    <li><a>Absconder</a></li>
-   </ul>
+  <div class="list_nav">
+    <div class="All">
+      <p [ngClass]="{'active': isallactive}" (click)="isall()">All</p>
+    </div>
+    <div class="Active">
+      <p [ngClass]="{'active': is_active}" (click)="isactive()">Active</p>
+    </div>
+    <div class="Resigned">
+      <p [ngClass]="{'active':is_resigned}" (click)="isresigned()">Resigned</p>
+    </div>
+    <div class="Terminated">
+      <p  [ngClass]="{'active':is_terminated}" (click)="isterminated()">Terminated</p>
+    </div>
+    <div class="Absconder">
+      <p [ngClass]="{'active':is_absconder}"  (click)="isabsconder()">Absconder</p>
+    </div>
+  </div>
+
   </div>
   <div class="selection2">
     <div class="input_left">
@@ -77,9 +88,9 @@
           <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)" routerLink="/employee-profile">{{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <!-- <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
+              <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
                 (click)="selectEmployee(user)">
-              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i> -->
+              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
             </div>
           </td>
         </tr>
