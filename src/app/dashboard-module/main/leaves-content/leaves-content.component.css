@@ -578,6 +578,7 @@ input[type="radio"] {
 }
 .tooltip {
     position: relative;
+    z-index:111;
 }
 
 .tooltip:after,
@@ -637,6 +638,7 @@ input[type="radio"] {
 [data-tooltip-pos="right"]:hover:before,
 [data-tooltip-pos="right"]:hover:after {
     transform: translate(0, -50%);
+    z-index:1111;
 }
 
 [data-tooltip-length]:after {

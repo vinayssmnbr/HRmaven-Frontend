@@ -12,8 +12,8 @@ import { LoginEmployeeComponent } from './login-employee/login-employee.componen
 // import { AuthGuard } from './guards/auth.guard';
 
 
-const routes: Routes = [ 
-  { path: 'login', component: LoginComponent }, 
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   {path:'loginemp',component:LoginEmployeeComponent},
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
   {path:'t&c',component:TermConditionComponent},
-  { path: 'employee', loadChildren: () => import('./employee/employee.module').then(m => m.EmployeeModule) },
+  { path: 'employee', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule) },
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }
 ];
 

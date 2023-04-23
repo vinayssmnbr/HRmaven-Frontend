@@ -34,10 +34,61 @@ export class LeavesContentComponent {
   reject_graph: any;
   pending_graph: any;
 
+
+
+  //
+  //                                              Harpreet Code
+  //
+  //
+  constructor(private dashService: DashService, private http: HttpClient) {
+    dashService.activeComponent = 'leaves';
+    dashService.headerContent = '';
+    this.fetchPendingLeave();
+  }
+
+  row:any=[1,1,1,1,1,1,1];
+  allchecked=false;
+  fetchPendingLeave() {
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   ngOnInit() {
 
 
-    
+
 
 
 
@@ -150,11 +201,7 @@ export class LeavesContentComponent {
     }, speed3);
   }
 
-  constructor(private dashService: DashService, private http: HttpClient) {
-    dashService.activeComponent = 'leaves';
-    dashService.headerContent = '';
-    this.updatereload();
-  }
+
 
   async updatereload() {
     this.dashService.getLeaves().subscribe((res: any) => {
@@ -358,7 +405,7 @@ export class LeavesContentComponent {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
-  
+
   id: any = 'Pending';
   tabChange(ids: any) {
     this.id = ids;
@@ -367,9 +414,10 @@ export class LeavesContentComponent {
   showSearchBox = false;
   showSearchBox1 = true;
 
-  toggleSearchBox() {
+  toggleSearchBox1() {
     this.showSearchBox =  !this.showSearchBox;
     this.showSearchBox1 = false;
+    this.allchecked=!this.allchecked;
   }
- 
+
 }
