@@ -2,6 +2,15 @@
 <app-header></app-header>
 <div class="main">
   <div class="selection">
+   <ul class="navigation">
+    <li><a>All</a></li>
+    <li><a>Active</a></li>
+    <li><a>Resigned</a></li>
+    <li><a>Terminated</a></li>
+    <li><a>Absconder</a></li>
+   </ul>
+  </div>
+  <div class="selection2">
     <div class="input_left">
       <div class="input_field">
         <input type="text" class="number1 no-spin" placeholder="Enter Employee Name or ID" [(ngModel)]="query"
@@ -27,42 +36,50 @@
         </div>
       </div>
     </div>
+    <div class="input_right">
+      <div class="view">
+      <i class="fa-solid fa-list" ></i>
+      <img src="./assets/images/Vector (1).svg" alt="">
+      </div>
+      <button class="import"><img src="./assets/images/prime_file-import.svg">Export</button>
+      <button class="import"><img src="./assets/images/prime_file-export.svg">Import</button>
     <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+    </div>
   </div>
 
   <div class="table-wrapper">
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee">Employee ID</th>
+          <th class="employee"><input type="checkbox">Employee ID</th>
           <th class="name">Name</th>
           <th class="email">Designation</th>
           <th class="designation">Email</th>
           <th class="action">Contact</th>
-          <th class="contact">Action</th>
+          <th class="contact">Status</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable ">
+        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable " >
           <!--  -->
           <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data"
             *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
           </td>
-          <td *ngIf="user.found!='true'" class="employee1">{{user.uid}}</td>
-          <td *ngIf="user.found!='true'" class="name1">
-            <img src="./assets/images/clickup60_4.png" alt="">{{user.name}}
+          <td *ngIf="user.found!='true'"><div class="employee1"><input type="checkbox" >{{user.uid}}</div></td>
+          <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
+            <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)" routerLink="/employee-profile">{{user.name}}
           </td>
-          <td *ngIf="user.found!='true'" class="designation1">{{user.designation}}</td>
-          <td *ngIf="user.found!='true'" class="email1">{{user.email}}</td>
-          <td *ngIf="user.found!='true'" class="contact1">{{user.mobile}}</td>
+          <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)" routerLink="/employee-profile">{{user.designation}}</td>
+          <td *ngIf="user.found!='true'" class="email1" (click)="selectEmployee(user)" routerLink="/employee-profile">{{user.email}}</td>
+          <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)" routerLink="/employee-profile">{{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
+              <!-- <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
                 (click)="selectEmployee(user)">
-              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
+              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i> -->
             </div>
           </td>
         </tr>

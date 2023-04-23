@@ -588,4 +588,14 @@ export class EmployeeProfileComponent {
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
+  viewMore:boolean=false;
+  showbutton:boolean=true;
+  showMoredata(){
+    this.viewMore=!this.viewMore;
+    this.showbutton=!this.showbutton;
+  }
+  hidedata(){
+    this.viewMore=false;
+    this.showbutton=true;
+  }
 }

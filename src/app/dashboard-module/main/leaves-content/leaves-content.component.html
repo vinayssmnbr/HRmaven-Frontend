@@ -189,6 +189,8 @@
                     <th>Category</th>
                     <th>REASON</th>
                     <th>Balance</th>
+                    <th class="table_slide" *ngIf="!showSearchBox"></th>
+
                 </tr>
             </thead>
             <tbody>
@@ -229,10 +231,19 @@
                     <td>Casual Leave</td>
                     <td>
                         <p class="mt20">
-                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  " data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
-                          </p>
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
                     </td>
                     <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -249,10 +260,19 @@
                     <td>Casual Leave</td>
                     <td>
                         <p class="mt20">
-                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things." data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
-                          </p>
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things."
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
                     </td>
                     <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -269,10 +289,19 @@
                     <td>Casual Leave</td>
                     <td>
                         <p class="mt20">
-                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things." data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
-                          </p>
-                </td>
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things."
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
+                    </td>
                     <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -289,17 +318,26 @@
                     <td>Casual Leave</td>
                     <td>
                         <p class="mt20">
-                            <span class="tooltip" data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things." data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family f...</span>
-                          </p>
-                </td>
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things."
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
+                    </td>
                     <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
+                    </td>
                 </tr>
 
             </tbody>
         </table>
 
         <!-- ---------------------Slide Table------------------ -->
-        <div class="side_tab" *ngIf="!showSearchBox">
+        <!-- <div class="side_tab" *ngIf="!showSearchBox">
             <table class="table_text_side">
                 <thead>
                     <tr class="table_heading">
@@ -341,7 +379,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> -->
     </div>
     <div class="table_btn" *ngIf="showSearchBox">
         <button class="accept_btn">Accept All</button>

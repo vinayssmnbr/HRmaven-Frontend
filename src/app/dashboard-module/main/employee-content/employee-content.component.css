@@ -8,13 +8,59 @@
 
 .selection {
     display: flex;
-    padding-top: 65px;
+    margin-top: 65px;
     justify-content: space-between;
+    margin-bottom: 24px;
 }
-
+ul.navigation{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.selection2{
+  display: flex;
+  justify-content: space-between;
+}
 .input_left {
     display: flex;
     gap: 10px;
+}
+.input_right{
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+.import{
+  padding: 12px 18px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid #FFFFFF;
+  display: flex;
+  gap: 6px;
+  font-family: 'Outfit',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #2F2C9F;
+  cursor: pointer;
+}
+.view{
+  display: flex;
+  background-color: #FFFFFF;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.fa-list:hover{
+  background-color: #EBEAF6;
+
+}
+.import:hover{
+  border: 1px solid #2F2C9F;
 }
 
 .input_field i {
@@ -185,26 +231,33 @@ tbody {
  ::-webkit-scrollbar-thumb {
     background: #888;
 }
-
+input[type='checkbox']{
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  /* padding-top: -16px; */
+}
 .employee {
-    width: 130px;
-    height: 41px;
+    /* width: 130px; */
+    /* height: 44px; */
     padding: 15px 20px;
-    text-align: justify;
+    display: flex;
+    gap: 10px;
+    text-align: left;
+    white-space: nowrap;
     background: #EFEFF8;
     border-radius: 5px 0px 0px 0px;
     border: 1px solid #f9f9f9;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
-    line-height: 100%;
     color: #444444;
     text-transform: uppercase;
 }
 
 .name {
-    width: 220px;
-    height: 41px;
+    /* width: 220px;
+    height: 41px; */
     padding: 15px 20px;
     text-align: justify;
     background: #EFEFF8;
@@ -213,100 +266,102 @@ tbody {
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
-    line-height: 100%;
+    white-space: nowrap;
     color: #444444;
     text-transform: uppercase;
 }
 
 .designation {
-    width: 220px;
-    height: 41px;
+    /* width: 220px;
+    height: 41px; */
     padding: 15px 20px;
     text-align: justify;
     background: #EFEFF8;
     border-radius: 5px 0px 0px 0px;
     border: 1px solid #f9f9f9;
+    white-space: nowrap;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
-    line-height: 100%;
     color: #444444;
     text-transform: uppercase;
 }
 
 .email {
-    width: 220px;
-    height: 41px;
+    /* width: 220px;
+    height: 41px; */
     background: #EFEFF8;
     text-align: justify;
     padding: 15px 20px;
     border-radius: 5px 0px 0px 0px;
+    white-space: nowrap;
     border: 1px solid #f9f9f9;
     font-style: normal;
     font-weight: 500;
     font-size: 11px;
-    line-height: 100%;
     color: #444444;
     text-transform: uppercase;
 }
 
 .action {
-    width: 177px;
-    height: 41px;
+    /* width: 177px;
+    height: 41px; */
     background: #EFEFF8;
     text-align: justify;
     border-radius: 0px 4px 0px 0px;
     padding: 15px 20px;
     border: 1px solid #f9f9f9;
     font-style: normal;
+    white-space: nowrap;
     font-weight: 500;
     font-size: 11px;
-    line-height: 100%;
     color: #444444;
     text-transform: uppercase;
 }
 
 .contact {
-    width: 180px;
-    height: 41px;
+    /* width: 180px;
+    height: 41px; */
     background: #EFEFF8;
     border-radius: 0px 4px 0px 0px;
     padding: 15px 20px;
     text-align: justify;
     border: 1px solid #f9f9f9;
     font-style: normal;
+    white-space: nowrap;
     font-weight: 500;
     font-size: 11px;
-    line-height: 100%;
     color: #444444;
     text-transform: uppercase;
 }
 
 .employee1 {
-    width: 130px;
-    height: 44px;
+    /* width: 130px; */
+    /* height: 44px; */
+    display: flex;
+    gap: 10px;
     padding: 15px 20px;
+    white-space: nowrap;
     border: 1px solid #f9f9f9;
     text-align: justify;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
     color: #555555;
 }
 
 .name1 {
-    width: 220px;
-    height: 44px;
+    /* width: 220px; */
+    /* height: 44px; */
     padding: 15px 20px;
     border: 1px solid #f9f9f9;
     text-align: justify;
+    white-space: nowrap;
     display: flex;
     gap: 8px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
     color: #555555;
 }
 
@@ -318,59 +373,61 @@ tbody {
 }
 
 .email1 {
-    width: 220px;
-    height: 44px;
+    /* width: 220px; */
+    /* height: 44px; */
     text-align: justify;
     padding: 15px 20px;
+    white-space: nowrap;
     border: 1px solid #f9f9f9;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
     color: #555555;
 }
 
 .designation1 {
-    width: 220px;
-    height: 44px;
+    /* width: 220px; */
+    /* height: 44px; */
     text-align: justify;
+    white-space: nowrap;
     padding: 15px 20px;
     border: 1px solid #f9f9f9;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
     color: #555555;
 }
 
 .action1 {
-    width: 177px;
-    height: 44px;
+    /* width: 177px; */
+    /* height: 44px; */
     padding: 15px 20px;
+    white-space: nowrap;
     text-align: justify;
     border: 1px solid #f9f9f9;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
     color: #555555;
 }
 
 .contact1 {
-    width: 180px;
-    height: 44px;
+    /* width: 180px; */
+    /* height: 44px; */
     text-align: justify;
+    white-space: nowrap;
+    white-space: nowrap;
     padding: 15px 20px;
     border: 1px solid #f9f9f9;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 100%;
     color: #555555;
 }
 
 tr:hover {
     background-color: #f7f7fb !important;
+    cursor: pointer;
 }
 
 table {
@@ -391,12 +448,11 @@ table {
 .icons .fa-trash-can {
     color: #EE4032;
     cursor: pointer;
-    margin-top: 3px;
+    /* margin-top: 3px; */
 }
 
 .icons .fa-pencil:hover {
     color: #2F2C9F;
-    ;
 }
 
 .modal {
