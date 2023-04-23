@@ -461,4 +461,45 @@ selectall:boolean=false;
 selectboxes(){
   this.selectall=!this.selectall;
 }
+isallactive:boolean=true;
+isall(){
+  this.isallactive=!this.isallactive;
+  this.is_active=false;
+  this.is_absconder = false;
+  this.is_terminated = false;
+  this.is_resigned = false;
+}
+ is_active: boolean = false;
+  isactive() {
+    this.is_active = !this.is_active;
+    this.isallactive=false;
+    this.is_absconder=false;
+    this.is_terminated=false;
+    this.is_resigned=false;
+  }
+  is_resigned:boolean=false;
+  is_terminated:boolean=false;
+  is_absconder:boolean=false;
+  isresigned(){
+    this.is_resigned=!this.is_resigned;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_active = false;
+    this.isallactive=false;
+  }
+  isterminated(){
+    this.is_terminated=!this.is_terminated;
+    this.is_absconder = false;
+    this.is_resigned = false;
+    this.is_active = false;
+    this.isallactive = false;
+  }
+  isabsconder(){
+    this.is_absconder = !this.is_absconder;
+    this.is_resigned = false;
+    this.is_terminated = false;
+    this.is_active = false;
+    this.isallactive = false;
+
+  }
 }
