@@ -3,8 +3,7 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import {DatePipe} from '@angular/common';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-attendance-content',
@@ -13,11 +12,6 @@ import {DatePipe} from '@angular/common';
 })
 export class AttendanceContentComponent implements OnInit {
   designationdropdownOption: boolean = false;
-  circularProgress: any;
-  progressValue: any;
-  progressStartValue = 0;
-  progressEndValue = 50;
-  speed = 100;
   progressInterval: any;
   buttonbackgroundColor = '#2F2C9F';
   buttonColor = '#FFFFFF';
@@ -39,13 +33,14 @@ export class AttendanceContentComponent implements OnInit {
   editmodal = false;
   showCard1: boolean = true;
   showTable = true;
-  attDate: any = "";
+  attDate: any = '';
   loader = true;
-  datez: any = "";
+  datez: any = '';
   table1Visible = false;
   table2Visible = false;
-  todayDate:string;
-  constructor(public dashService: DashService,private datepipe:DatePipe) {
+  todayDate: string;
+  totalDays: number;
+  constructor(public dashService: DashService, private datepipe: DatePipe) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.dashService.getAttendance().subscribe((res: any) => {
@@ -53,9 +48,9 @@ export class AttendanceContentComponent implements OnInit {
       this.employee = res;
       console.log(this.employee);
     });
-    this.getLeaveData()
+    this.getLeaveData();
     this.getreport();
-    this.datez=this.datepipe.transform(new Date(),'dd-MM-YYYY');
+    this.datez = this.datepipe.transform(new Date(), 'dd-MM-YYYY');
     console.log(this.datez);
   }
 
@@ -68,77 +63,76 @@ export class AttendanceContentComponent implements OnInit {
     punch_out: new FormControl(''),
   });
 
-
-
-  async getreport(){
-    await this.dashService.getreport().subscribe((res:any)=>{
-    const myChart = new Chart('barChart', {
-      type: 'bar',
-      data: {
-        labels: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sept',
-          'Oct',
-          'Nov',
-          'Dec',
-        ],
-        datasets: [
-          {
-            label: 'Present',
-            data: res.present,
-            backgroundColor: ['#2D11FA'],
-            pointStyle: 'circle',
+  async getreport() {
+    await this.dashService.getreport().subscribe((res: any) => {
+      const myChart = new Chart('barChart', {
+        type: 'bar',
+        data: {
+          labels: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sept',
+            'Oct',
+            'Nov',
+            'Dec',
+          ],
+          datasets: [
+            {
+              label: 'Present',
+              data: res.present,
+              backgroundColor: ['#2D11FA'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'Absent',
+              data: res.absent,
+              backgroundColor: ['#FDA75A'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'Leaves',
+              data: res.leave,
+              backgroundColor: ['#00C9FF'],
+              pointStyle: 'circle',
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
           },
-          {
-            label: 'Absent',
-            data:res.absent,
-            backgroundColor: ['#FDA75A'],
-            pointStyle: 'circle',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                padding: 40,
+                usePointStyle: true,
+                font: {
+                  size: 10,
+                },
+              },
+            },
           },
-          {
-            label: 'Leaves',
-            data: res.leave,
-            backgroundColor: ['#00C9FF'],
-            pointStyle: 'circle',
-          },
-        ],
-      },
-      options: {
-             responsive: true,
-             scales: {
-               y: {
-                 beginAtZero: true,
-               },
-             },
-             plugins: {
-               legend: {
-                 position: 'right',
-                 labels: {
-                   padding: 40,
-                   usePointStyle: true,
-                   font: {
-                     size: 10,
-                   },
-                 },
-               },
-             },
-           },
-         });
+        },
+      });
 
-     if(res){
-     setTimeout(() => {
-      this.loader=false;
-    }, 3000);
+      if (res) {
+        setTimeout(() => {
+          this.loader = false;
+        }, 3000);
+      }
+    });
   }
-     });
-   }
+
   ngOnInit() {
     this.form.get('name').disable();
     this.form.get('empId').disable();
@@ -148,6 +142,52 @@ export class AttendanceContentComponent implements OnInit {
     // Create a chart object
     const today = new Date();
     this.datez = today.toISOString().slice(0, 10);
+
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    this.totalDays = new Date(year, month, 0).getDate();
+    this.dashService.getAttendance().subscribe((data: any[]) => {
+      const presentDays = data.filter(
+        (record) => record.status === 'present'
+      ).length;
+      const totalDays = new Date(year, month, 0).getDate();
+      const attendancePercentage = (presentDays / totalDays) * 100;
+      // Use attendancePercentage to update your UI
+    });
+
+    // ----------------------------Custom Circular Progress Bar-----------------------
+
+
+    // const progressBar = document.querySelector(
+    //   '.circular-progress'
+    // ) as HTMLElement;
+    // const valueContainer = document.querySelector(
+    //   '.value-container'
+    // ) as HTMLElement;
+
+    // let progressValue = 0;
+    // const progressEndValue = 50;
+    // const speed = 50;
+
+    // const progress = setInterval(() => {
+    //   progressValue++;
+    //   valueContainer.textContent = `${progressValue}%`;
+
+    //   progressBar.style.background = `conic-gradient(
+    //     #4d5bf9 ${progressValue * 3.6}deg,
+    //     #D9D9D9 ${progressValue * 3.6}deg
+    //   )`;
+
+    //   if (progressValue === progressEndValue) {
+    //     clearInterval(progress);
+    //   }
+    // }, speed);
+
+
+
+
+    
   }
 
   changeColor() {
@@ -181,40 +221,42 @@ export class AttendanceContentComponent implements OnInit {
   //   this.selectedUser = {_id: user._id};
   // }
 
-
-//GET LEAVE DATA
-getLeaveData(){
-this.dashService.getleaves().subscribe((res: any) => {
-  // console.log('data', res);
-  this.employee1 = res;
-});
-}
-//   OnUpdate(){
-//     console.log(this.form.value)
-//     const updatedData = this.form.value;
-//     updatedData['_id'] = this.selectedUser._id;
-//     this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
-//       console.log('Data updated successfully');
-//     this.getLeaveData()
-// this.edit();
-//     });
-//   }
+  //GET LEAVE DATA
+  getLeaveData() {
+    this.dashService.getleaves().subscribe((res: any) => {
+      // console.log('data', res);
+      this.employee1 = res;
+    });
+  }
+  //   OnUpdate(){
+  //     console.log(this.form.value)
+  //     const updatedData = this.form.value;
+  //     updatedData['_id'] = this.selectedUser._id;
+  //     this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
+  //       console.log('Data updated successfully');
+  //     this.getLeaveData()
+  // this.edit();
+  //     });
+  //   }
 
   // closeModal() {
   //   this.showModal = !this.showModal;
   // }
-
+  calender = true;
   toggleTable1() {
     this.showCard = !this.showCard;
-    this.showTable=!this.showTable;
+    this.showTable = !this.showTable;
     this.table1Visible = !this.table1Visible;
     this.table2Visible = false; // ensure other table is hidden
-
+    this.calender = true;
+    this.dropdown = false;
   }
-
-  async toggleTable2(){
-    this.showCard=!this.showCard;
-    this.showTable=!this.showTable;
+  dropdown = false;
+  async toggleTable2() {
+    this.dropdown = true;
+    this.calender = false;
+    this.showCard = !this.showCard;
+    this.showTable = !this.showTable;
     this.table2Visible = !this.table2Visible;
     this.table1Visible = false;
     await this.dashService.getAttendance().subscribe((res: any) => {
@@ -224,49 +266,38 @@ this.dashService.getleaves().subscribe((res: any) => {
     }); // ensure other table is hidden
   }
 
-// edit(){
-//   this.closeModal();
-// this.editmodal=!this.editmodal;
-// }
-// done(){
-//   this.editmodal=!this.editmodal;
-// }
-
-
-// array: any = [
-//   {
-//     id: 0,
-//     name: 'present',
-//   },
-//   {
-//     id: 1,
-//     name: 'absent',
-//   },
-//   {
-//     id: 2,
-//     name: 'leave',
-//   },
-
-// ];
-// contentdropdown: boolean = false;
-// dropdownOpen() {
-
-//   this.contentdropdown = !this.contentdropdown;
-// }
-// Selectvariable: string ="select";
-// colorvariable: number =  0;
-// Changeselect(arr: any) {
-//   this.Selectvariable = arr.name;
-//   this.colorvariable = arr.id;
-//   this.contentdropdown=false;
-//   console.log(arr.name);
-// }
-// dropdownOpenOption() {
-//   this.designationdropdownOption = !this.designationdropdownOption;
-// }
-
+  // ---------------------Drop Down--------------------------------
+  array: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+  Selectvariable: string = 'Designation';
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown = false;
+    console.log(arr.name);
+  }
 }
 function getCurrentDate() {
   throw new Error('Function not implemented.');
 }
-
