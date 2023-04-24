@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
+import * as filestack from 'filestack-js';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,9 @@ export class DashService {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
-  ) {}
+  ) {
+    this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
+  }
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
@@ -41,6 +44,7 @@ export class DashService {
   //ADD EMPLOYEE DATA
   addEmployee(data) {
     return this.http.post(this.createData, data);
+
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
@@ -66,10 +70,10 @@ export class DashService {
   getAttendance() {
     return this.http.get('http://localhost:3000/attendance/all');//this.getAttd
   }
-  getEmployee():Observable<any[]> {
-    return this.http.get<any[]>(this.getData).pipe(
-      map(data=>data.filter(user=> user.status==='accepted'))
-    );
+  getEmployee(): Observable<any[]> {
+    return this.http
+      .get<any[]>(this.getData)
+      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
@@ -84,11 +88,9 @@ export class DashService {
   //SEARCH UID AND FILTER DESIGNATION
   searchuid(query: string, designation: string) {
     console.log('des', designation);
-    return this.http.get<any>(
-      `${this.getData}?uid=${query}&designation=${designation}`).pipe(
-        map(data=>data.filter(user=> user.status==='accepted'))
-      );;
-
+    return this.http
+      .get<any>(`${this.getData}?uid=${query}&designation=${designation}`)
+      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
 
   getLeaveData(type: string) {
@@ -102,7 +104,6 @@ export class DashService {
   getEmployeeUid() {
     return this.http.get(this.getuid);
   }
-
 
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
@@ -126,7 +127,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response:any) => {
+          (response: any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {
@@ -209,5 +210,21 @@ export class DashService {
           console.log(res);
         });
     }
+  }
+
+  private client: filestack.Client;
+  fileUrl: any;
+  upload(file: File, userId?: string): Promise<any> {
+    return this.client.upload(file).then((res) => {
+      this.fileUrl = res.url;
+      console.log('imageurl', this.fileUrl, userId);
+      this.updateEmployee({ _id: userId, url: res.url }).subscribe((res) => {
+        console.log('user', res);
+      });
+    });
+  }
+
+  upload1(file: File): Promise<any> {
+    return this.client.upload(file)
   }
 }
