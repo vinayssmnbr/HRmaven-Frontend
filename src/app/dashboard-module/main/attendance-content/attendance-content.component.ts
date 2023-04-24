@@ -3,6 +3,7 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 
 @Component({
@@ -18,7 +19,6 @@ export class AttendanceContentComponent implements OnInit {
   progressEndValue = 50;
   speed = 100;
   progressInterval: any;
-
   buttonbackgroundColor = '#2F2C9F';
   buttonColor = '#FFFFFF';
   buttonbackgroundColor2 = '#ECECEC';
@@ -26,6 +26,7 @@ export class AttendanceContentComponent implements OnInit {
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
   employee: any = [];
+  employee1: any = [];
   showModal = false;
   showCard: boolean = false;
   employeeid = '';
@@ -41,20 +42,21 @@ export class AttendanceContentComponent implements OnInit {
   attDate: any = "";
   loader = true;
   datez: any = "";
-
-
   table1Visible = false;
   table2Visible = false;
-
-  constructor(public dashService: DashService) {
+  todayDate:string;
+  constructor(public dashService: DashService,private datepipe:DatePipe) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.dashService.getAttendance().subscribe((res: any) => {
       // console.log('data', res); // add this line
       this.employee = res;
+      console.log(this.employee);
     });
     this.getLeaveData()
     this.getreport();
+    this.datez=this.datepipe.transform(new Date(),'dd-MM-YYYY');
+    console.log(this.datez);
   }
 
   form = new FormGroup({
@@ -184,7 +186,7 @@ export class AttendanceContentComponent implements OnInit {
 getLeaveData(){
 this.dashService.getleaves().subscribe((res: any) => {
   // console.log('data', res);
-  this.employee = res;
+  this.employee1 = res;
 });
 }
 //   OnUpdate(){
@@ -210,11 +212,16 @@ this.dashService.getleaves().subscribe((res: any) => {
 
   }
 
-  toggleTable2(){
+  async toggleTable2(){
     this.showCard=!this.showCard;
     this.showTable=!this.showTable;
     this.table2Visible = !this.table2Visible;
-    this.table1Visible = false; // ensure other table is hidden
+    this.table1Visible = false;
+    await this.dashService.getAttendance().subscribe((res: any) => {
+      // console.log('data', res); // add this line
+      this.employee1 = res;
+      console.log(this.employee1);
+    }); // ensure other table is hidden
   }
 
 // edit(){

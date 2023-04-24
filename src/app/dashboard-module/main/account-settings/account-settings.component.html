@@ -1,0 +1,70 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+<div class="account-main">
+    <div class="profile-area">
+        <div class="profile-bottom-line">
+            <div class="profile-arrow">
+                <div class="arrow">
+                    <img src="assets/images/Group 1241.svg" alt="">
+                </div>
+                <div class="profile-text">
+                    <h6>Profile</h6>
+                </div>
+            </div>
+        </div>
+        <div class="profile-name">
+            <div class="profile-image">
+                <img src="assets/images/user 1.svg" alt="">
+            </div>
+            <div class="name-text">
+                <h5>Abhishek Sharma</h5>
+                <p>Human Resource Manager</p>
+                <p><img src="assets/images/Vector.png" alt=""> Leeds, United Kingdom</p>
+            </div>
+        </div>
+
+        <div class="all-read-important">
+            <div class="toggle">
+                <ul>
+                    <li class="all" [class.color]="id ==='all'" (click)="tabChange('all')">Company Details</li>
+                    <li class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">Personal Details
+                    </li>
+                    <li class="all" [class.color]="id ==='important'" (click)="tabChange('important')">Password
+                        Managemen</li>
+                </ul>
+            </div>
+        </div>
+        <div class="company-name-headoffice-desc">
+            <div class="company-name-headoffice-desc-area">
+                <div class="company-name-headoffice">
+                    <div class="company-name">
+                        <h6>Company name</h6>
+                        <p>HRMaven</p>
+                    </div>
+                    <div class="employee-text">
+                        <h6>No. of employees</h6>
+                        <p>100-150</p>
+                    </div>
+                    <div class="head-office-text">
+                        <h6>Head Office</h6>
+                        <p>Leeds, United Kingdom</p>
+                    </div>
+                </div>
+
+                <div class="description-pen">
+                    <div class="description-heading">
+                        <h6>Description</h6>
+                    </div>
+                    <div class="pen" (click)="edit()">
+                        <img src="assets/images/pen.svg" alt="">
+                    </div>
+                   
+                </div>
+                <div class="paragraph-text" >
+                    <input type="text" [readonly]="true" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

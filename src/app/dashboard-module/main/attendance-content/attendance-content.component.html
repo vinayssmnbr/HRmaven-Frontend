@@ -77,11 +77,12 @@
 
     <div class="attendence-card " *ngIf="showCard">
         <div class="row ">
-            <div class="col-3 " *ngFor="let user of employee">
+            <div class="col-3 " *ngFor="let user of employee1">
                 <div class="card ">
                     <img src="assets\images\attendec-logo.png " alt="logo ">
                     <h2>{{user.name}}</h2>
-                    <p>{{user.empId}}</p>
+                    <p>{{user.uid}}</p>
+                    <p>{{user.designation}}</p>
                     <div class="attendence-percent ">
                         <div class="percent-text ">
                             <p>25/30</p>
@@ -92,7 +93,6 @@
                                 " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
-                    <button class="view-btn ">View details</button>
                 </div>
             </div>
         </div>

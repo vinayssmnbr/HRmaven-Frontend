@@ -602,5 +602,15 @@ export class EmployeeProfileComponent {
         console.log(err)
 
       });
+    }
+  viewMore:boolean=false;
+  showbutton:boolean=true;
+  showMoredata(){
+    this.viewMore=!this.viewMore;
+    this.showbutton=!this.showbutton;
+  }
+  hidedata(){
+    this.viewMore=false;
+    this.showbutton=true;
   }
 }
