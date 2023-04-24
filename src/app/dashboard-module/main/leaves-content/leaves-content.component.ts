@@ -34,10 +34,89 @@ export class LeavesContentComponent {
   reject_graph: any;
   pending_graph: any;
 
+
+
+  //
+  //                                              Harpreet Code
+  //
+  //
+  constructor(private dashService: DashService, private http: HttpClient) {
+    dashService.activeComponent = 'leaves';
+    dashService.headerContent = '';
+    this.fetchPendingLeave();
+  }
+
+  row:any=[{
+    id:1234,
+    checked:true
+  },
+  {
+    id:1235,
+    checked:true
+  },
+  {
+    id:1236,
+    checked:true
+  }];
+
+  allchecked=false;
+  fetchPendingLeave() {
+
+  }
+
+  Change($event)
+  {
+      const id = $event.target.value;
+      const ischecked  = $event.target.checked;
+      this.row.map((d)=>{
+        if(d.id==id)
+        {
+          d.checked=ischecked;
+          return d;
+        }
+      })
+      console.log(this.row);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   ngOnInit() {
 
 
-    
+
 
 
 
@@ -150,11 +229,7 @@ export class LeavesContentComponent {
     }, speed3);
   }
 
-  constructor(private dashService: DashService, private http: HttpClient) {
-    dashService.activeComponent = 'leaves';
-    dashService.headerContent = '';
-    this.updatereload();
-  }
+
 
   async updatereload() {
     this.dashService.getLeaves().subscribe((res: any) => {
@@ -295,70 +370,8 @@ export class LeavesContentComponent {
     this.contentdropdown1 = false;
     console.log(arr1.name);
   }
-  array2: any = [
-    {
-      id: 0,
-      name: 'Software Developer',
-    },
-    {
-      id: 1,
-      name: 'Frontend Developer',
-    },
-    {
-      id: 3,
-      name: 'Full Stack Developer',
-    },
-    {
-      id: 4,
-      name: 'UI/UX Designer',
-    },
-  ];
-  contentdropdown2: boolean = false;
-  dropdownOpen2() {
-    this.contentdropdown2 = !this.contentdropdown2;
-  }
-  Selectvariable2: string = 'Select';
-  colorvariable2: number = 0;
-  Changeselect2(arr2: any) {
-    this.Selectvariable2 = arr2.name;
-    this.colorvariable = arr2.id;
-    this.contentdropdown2 = false;
-    console.log(arr2.name);
-  }
-  array3: any = [
-    {
-      id: 0,
-      name: 'Software Developer',
-    },
-    {
-      id: 1,
-      name: 'Frontend Developer',
-    },
-    {
-      id: 3,
-      name: 'Full Stack Developer',
-    },
-    {
-      id: 4,
-      name: 'UI/UX Designer',
-    },
-  ];
-  contentdropdown3: boolean = false;
-  dropdownOpen3() {
-    this.contentdropdown3 = !this.contentdropdown3;
-  }
-  Selectvariable3: string = 'Select';
-  colorvariable3: number = 0;
-  Changeselect3(arr3: any) {
-    this.Selectvariable3 = arr3.name;
-    this.colorvariable = arr3.id;
-    this.contentdropdown3 = false;
-    console.log(arr3.name);
-  }
-  dropdownOpenOption() {
-    this.designationdropdownOption = !this.designationdropdownOption;
-  }
-  
+
+
   id: any = 'Pending';
   tabChange(ids: any) {
     this.id = ids;
@@ -367,9 +380,39 @@ export class LeavesContentComponent {
   showSearchBox = false;
   showSearchBox1 = true;
 
-  toggleSearchBox() {
+  toggleSearchBox1() {
     this.showSearchBox =  !this.showSearchBox;
     this.showSearchBox1 = false;
+    this.allchecked=!this.allchecked;
   }
- 
+  showModal=false;
+  openModal() {
+    this.showModal = true;
+  }
+  showModal1=false;
+  openModal1() {
+    this.showModal1 = true;
+    this.showModal = false;
+  }
+
+  showModal2=false;
+  openModal2() {
+    this.showModal2 = true;
+    this.showModal = false;
+  }
+  showModal3=false;
+  openModal3(){
+    this.showModal3 = true;
+    this.showModal1 = false;
+  }
+  closeModal(){
+    this.showModal=false;
+    this.showModal1=false;
+    this.showModal2=false;
+    this.showModal3=false;
+  }
+  toggleSearchBox(){
+    this.showSearchBox=!this.showSearchBox;
+    this.showSearchBox1=false;
+  }
 }

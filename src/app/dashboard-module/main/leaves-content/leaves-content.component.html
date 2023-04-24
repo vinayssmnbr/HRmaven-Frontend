@@ -115,42 +115,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="form__group">
-                        <label for="">Designation</label>
-                        <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
-                            <div class="dropdwon_select" (click)="dropdownOpen2()">
-                                <p>{{Selectvariable2}}</p>
-                                <i class="fa-sharp fa-solid fa-caret-down"></i>
-                            </div>
-                            <div class="select_content" *ngIf="contentdropdown2">
-                                <ul>
-                                    <li *ngFor="let arr2 of array2; index as i"
-                                        [class.select_active]="i === colorvariable" (click)="Changeselect2(arr2)">
-                                        {{arr2.name}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form__group">
-                        <label for="">Status</label>
-                        <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
-                            <div class="dropdwon_select" (click)="dropdownOpen3()">
-                                <p>{{Selectvariable3}}</p>
-                                <i class="fa-sharp fa-solid fa-caret-down"></i>
-                            </div>
-                            <div class="select_content" *ngIf="contentdropdown3">
-                                <ul>
-                                    <li *ngFor="let arr3 of array3; index as i"
-                                        [class.select_active]="i === colorvariable" (click)="Changeselect3(arr3)">
-                                        {{arr3.name}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="form_btn">
                 <button class="cancel_btn">Cancel</button>
@@ -194,28 +158,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="let leave of leaves | leavefilter:employeename:Selectvariable">
-                        <td>{{leave.employeeId}}</td>
-                        <td>{{leave.employeeName}}</td>
-                        <td>{{leave.from | date:'shortDate'}}</td>
-                        <td>{{leave.to | date:'shortDate'}}</td>
-                        <td>{{leave.reason}}</td>
-                        <td>
-                            <div class="action_button">
-                                <div class="action_btn">
-                                    <input type="radio" [checked]="leave.status=='accept'" [name]="leave._id"
-                                        (change)="updateLeaveStatus(leave, 'accept')" id="outline1"
-                                        class="custom-radio">
-                                    <label for="outline1" class="outline1">Accept</label>
-                                </div>
-                                <div class="action_btn">
-                                    <input type="radio" [checked]="leave.status=='reject'" [name]="leave._id"
-                                        (change)="updateLeaveStatus(leave, 'reject')" id="outline" class="custom-radio">
-                                    <label for="outline" class="outline">Reject</label>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> -->
                 <tr>
                     <td>
                         <div class="check_box">
@@ -240,8 +182,8 @@
                     <td>4/6</td>
                     <td class="table_slide" *ngIf="!showSearchBox">
                         <div class="check_box_icon">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
                         </div>
                     </td>
                 </tr>
@@ -269,8 +211,8 @@
                     <td>4/6</td>
                     <td class="table_slide" *ngIf="!showSearchBox">
                         <div class="check_box_icon">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
                         </div>
                     </td>
                 </tr>
@@ -298,8 +240,8 @@
                     <td>4/6</td>
                     <td class="table_slide" *ngIf="!showSearchBox">
                         <div class="check_box_icon">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
                         </div>
                     </td>
                 </tr>
@@ -327,63 +269,77 @@
                     <td>4/6</td>
                     <td class="table_slide" *ngIf="!showSearchBox">
                         <div class="check_box_icon">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
                         </div>
                     </td>
                 </tr>
 
             </tbody>
         </table>
-
-        <!-- ---------------------Slide Table------------------ -->
-        <!-- <div class="side_tab" *ngIf="!showSearchBox">
-            <table class="table_text_side">
-                <thead>
-                    <tr class="table_heading">
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="check_box_icon">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <i class="fa-solid fa-circle-xmark"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="check_box_icon">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <i class="fa-solid fa-circle-xmark"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="check_box_icon">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <i class="fa-solid fa-circle-xmark"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="check_box_icon">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <i class="fa-solid fa-circle-xmark"></i>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
     </div>
     <div class="table_btn" *ngIf="showSearchBox">
         <button class="accept_btn">Accept All</button>
         <button class="reject_btn">Reject All</button>
     </div>
+
+
+    <!--------------------- Leave a comment Modal Accepet--------------- -->
+    <form class="leave_form" *ngIf="showModal">
+        <div class="leave_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <h3>Leave a comment</h3>
+            <textarea placeholder="Type your reason here..."></textarea>
+            <div class="leave_form_btn">
+                <button class="cancel_btn" (click)="closeModal()">Cancel</button>
+                <button class="Done_btn" (click)="openModal2()">Done</button>
+            </div>
+        </div>
+    </form>
+    <!--------------------- Leave a comment Modal Reject--------------- -->
+    <form class="leave_form" *ngIf="showModal1">
+        <div class="leave_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <h3>Leave a comment</h3>
+            <textarea placeholder="Type your reason here..."></textarea>
+            <div class="leave_form_btn">
+                <button class="cancel_btn" (click)="closeModal()">Cancel</button>
+                <button class="Done_btn" (click)="openModal3()">Done</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- -------------------------Leaves approved successfully! Modal---------------------- -->
+
+
+    <form class="leave_approved_form" *ngIf="showModal2">
+        <div class="leave_approved_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <div class="logo_bg">
+                <img src="assets/images/tick.png" alt="image">
+            </div>
+            <h4>Leaves approved successfully!</h4>
+            <p>Click on the close button to go back to leave section.</p>
+            <div class="Done_form_btn">
+                <button class="Done_btn" (click)="closeModal()">Done</button>
+            </div>
+        </div>
+    </form>
+<!-- -------------------------Leaves rejected Modal---------------------- -->
+
+
+<form class="leave_approved_form" *ngIf="showModal3">
+    <div class="leave_approved_modal">
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        <div class="logo_bg">
+            <img src="assets/images/tick.png" alt="image">
+        </div>
+        <h4>Leaves rejected successfully!</h4>
+        <p>Click on the close button to go back to leave section.</p>
+        <div class="Done_form_btn">
+            <button class="Done_btn" (click)="closeModal()">Done</button>
+        </div>
+    </div>
+</form>
 
 </div>
