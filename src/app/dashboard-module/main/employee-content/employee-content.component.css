@@ -495,10 +495,9 @@ table {
 
 .icons {
     display: flex;
-    gap: 26px;
 }
 
-.icons .fa-pencil {
+/* .icons .fa-pencil {
     color: #999999;
     cursor: pointer;
 }
@@ -506,13 +505,45 @@ table {
 .icons .fa-trash-can {
     color: #EE4032;
     cursor: pointer;
-    /* margin-top: 3px; */
 }
 
 .icons .fa-pencil:hover {
     color: #2F2C9F;
+} */
+.icons .select{
+  padding: 5px 10px;
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+}
+.icons .select .activated.active{
+  background-color: rgba(123, 211, 109, 0.3);
+  color:green;
+}
+.icons .select .terminate.active{
+ background-color: rgba(250, 151, 150, 0.2);
+}
+.icons .select .abscond.active{
+  background-color: rgba(248, 187, 111, 0.4);
+}
+.icons .select .resign.active{
+  background-color: rgba(255, 238, 82, 0.5);
+}
+/* #mySelect option.activated.active {
+  background-color: green;
 }
 
+#mySelect option.terminate.active {
+  background-color: red;
+}
+
+#mySelect option.resign.active {
+  background-color: yellow;
+}
+
+#mySelect option.abscond.active {
+  background-color: brown;
+} */
 .modal {
     position: fixed;
     top: 0;
