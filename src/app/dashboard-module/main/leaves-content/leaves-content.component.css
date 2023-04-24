@@ -578,7 +578,7 @@ input[type="radio"] {
 }
 .tooltip {
     position: relative;
-    z-index:111;
+    z-index:999;
 }
 
 .tooltip:after,

@@ -189,16 +189,16 @@
           <th>Category</th>
           <th>REASON</th>
           <th>Balance</th>
-          <th class="table_slide" *ngIf="!showSearchBox"></th>
+          <th class="table_slide">Action</th>
 
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let row of row">
+        <tr *ngFor="let it of row">
           <td>
             <div class="check_box">
-              <input type="checkbox"[checked]="allchecked">
-              <p>20224</p>
+              <input type="checkbox" [value]="it.id" [checked]="it.checked" (change)="Change($event)">
+              <p>{{it.id}}</p>
             </div>
           </td>
           <td>Ankush Sharma</td>
@@ -216,7 +216,7 @@
             </p>
           </td>
           <td>4/6</td>
-          <td class="table_slide" *ngIf="!showSearchBox">
+          <td class="table_slide">
             <div class="check_box_icon">
               <i class="fa-solid fa-circle-check"></i>
               <i class="fa-solid fa-circle-xmark"></i>

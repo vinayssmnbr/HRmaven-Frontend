@@ -46,11 +46,39 @@ export class LeavesContentComponent {
     this.fetchPendingLeave();
   }
 
-  row:any=[1,1,1,1,1,1,1];
+  row:any=[{
+    id:1234,
+    checked:true
+  },
+  {
+    id:1235,
+    checked:true
+  },
+  {
+    id:1236,
+    checked:true
+  }];
+
   allchecked=false;
   fetchPendingLeave() {
 
   }
+
+  Change($event)
+  {
+      const id = $event.target.value;
+      const ischecked  = $event.target.checked;
+      this.row.map((d)=>{
+        if(d.id==id)
+        {
+          d.checked=ischecked;
+          return d;
+        }
+      })
+      console.log(this.row);
+  }
+
+
 
 
 
