@@ -371,5 +371,32 @@ export class LeavesContentComponent {
     this.showSearchBox =  !this.showSearchBox;
     this.showSearchBox1 = false;
   }
- 
+  showModal=false;
+  openModal() {
+    this.showModal = true;
+  }
+  showModal1=false;
+  openModal1() {
+    this.showModal1 = true;
+    this.showModal = false;
+  }
+
+  showModal2=false;
+  openModal2() {
+    this.showModal2 = true;
+    this.showModal = false;
+  }
+  showModal3=false;
+  openModal3(){
+    this.showModal3 = true;
+    this.showModal1 = false;
+  }
+  closeModal(){
+    this.showModal=false;
+    this.showModal1=false;
+    this.showModal2=false;
+    this.showModal3=false;
+    
+
+  }
 }
