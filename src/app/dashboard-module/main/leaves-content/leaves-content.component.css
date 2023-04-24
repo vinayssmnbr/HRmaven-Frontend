@@ -124,12 +124,11 @@
     width: 260px;
     height: 40px;
     border: none;
-    padding: 15px 20px;
+    padding: 10px;
     border-radius: 8px;
     color: black;
     outline: none;
     font-size: 14px;
-    padding: 10px 42px 10px 17px;
     background-color: #FFFFFF;
     border: 1px solid rgba(180, 180, 180, 0.8);
     border-radius: 6px;
@@ -224,6 +223,8 @@
     color: #444444;
     z-index: 99;
     margin-left: 5px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
 }
 
 .select_content ul {
