@@ -17,7 +17,8 @@ export const environment = {
   // getuid:'https://hrmaven.works/api/uid',
   // report:'https://hrmaven.works/attendance/report',
   // profile:'https://hrmaven.works/user-profile',
-  // updateleave:'https://hrmaven.works/attendance/update'
+  // updateleave:'https://hrmaven.works/attendance/update',
+  // getemail : 'http://localhost:3000/getemails/email'
 
   //LOCAL URL
   updateleave: 'https://hrmaven.works/attendance/update',

@@ -54,6 +54,7 @@ export class UserService {
 
     return this.http.post(this.Reseturl, data, { headers });
   }
+  
 
  
 
@@ -62,19 +63,8 @@ export class UserService {
     return this.http.post(this.loginurl, data);
   }
 
-  // updateIsLinkClicked(email: string): Observable<any> {
-  //   const url = `${this.changepwd}`;
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${this.cookie.get('token')}`
-  //   });
-  //   const body = { email: email };
-  
-  //   return this.http.post(url, body, { headers });
-  // }
-  
 
-  //  My code for profile fetch Name
+
   getUserProfileById(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
