@@ -88,9 +88,15 @@
           <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)" routerLink="/employee-profile">{{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
+              <!-- <img src="./assets/images/Vector.svg" alt="" routerLink="/employee-profile"
                 (click)="selectEmployee(user)">
-              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i>
+              <i class="fa-solid fa-trash-can" (click)="todelete(user)"></i> -->
+              <select class="select" id="myselect">Select
+                <option value="active" class="activated" [ngClass]="{'active':iscolorgreen}" (click)="colorgreen()">Active</option>
+                <option value="terminated" class="terminate" [ngClass]="{'active':iscolorred}" (click)="colorred()">Terminated</option>
+                <option value="resigned" class="resign" [ngClass]="{'active':iscoloryellow}" (click)="coloryellow()">Resigned</option>
+                <option value="absconder" class="abscond" [ngClass]="{'active':iscolorbrown}" (click)="colorbrown()">Absconder</option>
+              </select>
             </div>
           </td>
         </tr>

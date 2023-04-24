@@ -528,4 +528,39 @@ isall(){
     this.isallactive = false;
 
   }
+  iscolorgreen:boolean=false;
+  iscoloryellow:boolean=false;
+  iscolorred:boolean=false;
+  iscolorbrown:boolean=false;
+  colorred(){
+    this.iscolorred=!this.iscolorred;
+  }
+  colorgreen() {
+    this.iscolorgreen = !this.iscolorgreen;
+  }
+  coloryellow() {
+    this.iscoloryellow = !this.iscoloryellow;
+  }
+  colorbrown() {
+    this.iscolorbrown = !this.iscolorbrown;
+  }
+  selectedOption: string;
+
+  // onSelectChange() {
+  //   // Define your color logic here based on the selectedOption value
+  //   switch (this.selectedOption) {
+  //     case 'option1':
+  //       document.querySelector('select').style.backgroundColor = 'red';
+  //       break;
+  //     case 'option2':
+  //       document.querySelector('select').style.backgroundColor = 'green';
+  //       break;
+  //     case 'option3':
+  //       document.querySelector('select').style.backgroundColor = 'blue';
+  //       break;
+  //     default:
+  //       document.querySelector('select').style.backgroundColor = 'white';
+  //       break;
+  //   }
+  // }
 }
