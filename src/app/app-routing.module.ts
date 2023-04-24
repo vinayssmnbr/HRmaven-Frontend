@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ForgetComponent } from './forget/forget.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AuthGuard } from './guards/auth.guard';
+import { EmpGuard } from './guards/emp.guard';
 import { AuthMainGuard } from './guards/authmain.guard';
 import { TermConditionComponent } from './term-condition/term-condition.component';
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
   {path:'t&c',component:TermConditionComponent},
-  { path: 'employee', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule) },
+  { path: 'employee', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule),
+canActivate:[EmpGuard] },
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }
 ];
 

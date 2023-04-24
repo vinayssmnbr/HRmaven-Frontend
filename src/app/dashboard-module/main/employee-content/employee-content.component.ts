@@ -29,15 +29,6 @@ export class EmployeeContentComponent implements OnInit {
   name: any;
   email: any;
   fileName: string = '';
-
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    this.fileName = file ? file.name : '';
-  }
-  selectEmployee(user: any) {
-    this.dashService.setSelectedEmployee(user);
-  }
-
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -58,58 +49,69 @@ export class EmployeeContentComponent implements OnInit {
   currentEmployeeUid: any = '';
   query: string = '';
   designation: string = '';
-  gender:string='';
-  bankname:string=''
+  gender: string = '';
+  bankname: string = '';
+  location: string = '';
+  timing: string = '';
+  job_type: string = '';
 
   data: any;
   deletedata: any;
   empdesignation = '';
   employeeid: any;
   show: any = false;
-  emptybox: boolean=false;
+  emptybox: boolean = false;
   nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
+
   form = new FormGroup({
-    name: new FormControl('', [Validators.required,this.nameValidator]),
-    designation: new FormControl('',Validators.required),
+    name: new FormControl('', [
+      Validators.required,
+      this.nameValidator,
+      Validators.pattern('[a-zA-Z ]+'),
+    ]),
+    designation: new FormControl('', Validators.required),
     uid: new FormControl(this.currentEmployeeUid),
-    estatus:new FormControl('',Validators.required),
-    profilepic: new FormControl('', Validators.required),
+    job_type: new FormControl('', Validators.required),
+    url: new FormControl('', Validators.required),
     dateOfJoining: new FormControl('', Validators.required),
-    location: new FormControl('',Validators.required),
+    location: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
     mobile: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    timings:new FormControl('',Validators.required),
-
+    timing: new FormControl('', Validators.required),
   });
 
   get registrationFormControl() {
     return this.form.controls;
   }
 
+  selectEmployee(user: any) {
+    this.dashService.setSelectedEmployee(user);
+  }
   //ADD DATA
-  submit(data: any) {
-    console.log(this.form.value);
+  file: File | null = null;
+  private additionalData: any = {};
+  submit() {
+    if (this.form.invalid) return;
+    const data = this.form.value;
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
     data.designation = this.designation;
-    data.gender=this.gender;
-    data.bankname=this.bankname
-
+    data.location = this.location;
+    data.timing = this.timing;
+    data.job_type = this.job_type;
     this.dashService.addEmployee(data).subscribe((result) => {
       this.dashService.addEmployee(this.form);
-      console.log(result);
       this.fetchdata();
       this.form.reset();
     });
   }
 
-  // form1Valid: boolean = this.form.controls.name.valid && this.form.controls.designation.valid && this.form.controls.employee_id.valid && this.form.controls.gender.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid
   form1Valid: boolean = this.form.controls.name.valid;
 
   //GET DATA
@@ -150,10 +152,10 @@ export class EmployeeContentComponent implements OnInit {
   function() {
     this.show = !this.show;
   }
-   openDatePicker(){
-     let input = document.getElementById("text4") as HTMLInputElement;
-     input.click();
-   }
+  openDatePicker() {
+    let input = document.getElementById('text4') as HTMLInputElement;
+    input.click();
+  }
 
   opendpdtn = false;
   ngOnInit() {
@@ -190,7 +192,7 @@ export class EmployeeContentComponent implements OnInit {
   showModalContent: boolean = true;
   fifthstep: boolean = false;
   onNextForm() {
-    console.log(this.form)
+    console.log(this.form);
     this.firstStep = false;
     this.secondStep = true;
   }
@@ -211,7 +213,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal() {
     this.showModal = false;
     this.buttonbackgroundColor3 =
-    this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
     this.showModalContent = true;
     this.fourthStep = false;
@@ -279,7 +281,7 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Software Developer',
     },
   ];
- array6: any = [
+  array6: any = [
     {
       id: 0,
       name: 'Frontend Developer',
@@ -337,9 +339,9 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Bangalore',
     },
   ];
-  array3: any=[
+  array3: any = [
     {
-      id:0,
+      id: 0,
       name: '9.00am to 5:00pm',
     },
     {
@@ -354,7 +356,7 @@ export class EmployeeContentComponent implements OnInit {
       id: 0,
       name: '10.00am to 6:00pm',
     },
-  ]
+  ];
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
@@ -367,18 +369,18 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
-  contentdropdown3:boolean=false;
+  contentdropdown3: boolean = false;
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable:any = 'Designation';
+  Selectvariable: any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
   Selectvariable2: string = 'Select Location';
   colorvariable2: number = 0;
-  Selectvariable3:string= 'Select';
-  colorvariable3: number= 0;
+  Selectvariable3: string = 'Select';
+  colorvariable3: number = 0;
   Selectvariable6: string = 'Designation';
   colorvariable6: number = 0;
   Changeselect(arr: any) {
@@ -396,11 +398,11 @@ export class EmployeeContentComponent implements OnInit {
     //     console.log('data', res);
     //   });
   }
-Changeselect1(arr1: any) {
+  Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
-    this.gender = arr1.name;
+    this.job_type = arr1.name;
 
     console.log(arr1.name);
   }
@@ -409,9 +411,7 @@ Changeselect1(arr1: any) {
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
-    this.bankname = arr2.name;
-
-
+    this.location = arr2.name;
   }
   // for(let i=0; i)
   Changeselect6(arr6: any) {
@@ -420,43 +420,69 @@ Changeselect1(arr1: any) {
     this.contentdropdown3 = false;
     console.log(arr6.name);
     this.designation = arr6.name;
+  }
+  Changeselect3(arr3: any) {
+    this.Selectvariable3 = arr3.name;
+    this.colorvariable3 = arr3.id;
+    this.contentdropdown3 = false;
+    console.log(arr3.name);
+    this.timing = arr3.name;
+  }
+  dropdownClose() {
+    this.contentdropdown = false;
+  }
+  dropdownClose3() {
+    this.contentdropdown3 = false;
+  }
+  dropdownClose1() {
+    this.contentdropdown1 = false;
+  }
+  dropdownClose2() {
+    this.contentdropdown2 = false;
+  }
 
-
-}
-Changeselect3(arr3 : any){
-  this.Selectvariable3=arr3.name;
-  this.colorvariable3=arr3.id;
-  this.contentdropdown3=false;
-  console.log(arr3.name);
-}
-dropdownClose() {
-  this.contentdropdown = false;
-}
-dropdownClose3(){
-this.contentdropdown3=false;
-}
-dropdownClose1(){
-this.contentdropdown1=false;
-}
-dropdownClose2(){
-this.contentdropdown2=false;
-}
-
-dropdownOpenOption() {
-  this.designationdropdownOption = !this.designationdropdownOption;
-}
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
 
   Space(event: any) {
-    if (event.target.selectionStart === 0 && event.code == "Space") {
+    if (event.target.selectionStart === 0 && event.code == 'Space') {
       event.preventDefault();
     }
   }
 
-  onKeyUp(event): void {
-    event.target.value = event.target.value.trim()
-
+  validateEmail(event: KeyboardEvent) {
+    const input = (event.target as HTMLInputElement).value.trim();
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+  validatePhoneNumber(event: KeyboardEvent) {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    const phoneNumber = (event.target as HTMLInputElement).value;
+    if (!allowedKeys.includes(event.key) && !/^\d{0,9}$/.test(phoneNumber)) {
+      event.preventDefault();
+    }
   }
 
+  selectedFile: File | null = null;
+  uploading = false;
+  uploaded = false;
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    this.fileName = file ? file.name : '';
+    this.onUpload(file);
+  }
+
+
+  onUpload(file) {
+    this.dashService.upload1(file).then((res) => {
+      this.form.patchValue({
+        url: res.url,
+      });
+    });
+  }
 selectall:boolean=false;
 selectboxes(){
   this.selectall=!this.selectall;
@@ -502,4 +528,39 @@ isall(){
     this.isallactive = false;
 
   }
+  iscolorgreen:boolean=false;
+  iscoloryellow:boolean=false;
+  iscolorred:boolean=false;
+  iscolorbrown:boolean=false;
+  colorred(){
+    this.iscolorred=!this.iscolorred;
+  }
+  colorgreen() {
+    this.iscolorgreen = !this.iscolorgreen;
+  }
+  coloryellow() {
+    this.iscoloryellow = !this.iscoloryellow;
+  }
+  colorbrown() {
+    this.iscolorbrown = !this.iscolorbrown;
+  }
+  selectedOption: string;
+
+  // onSelectChange() {
+  //   // Define your color logic here based on the selectedOption value
+  //   switch (this.selectedOption) {
+  //     case 'option1':
+  //       document.querySelector('select').style.backgroundColor = 'red';
+  //       break;
+  //     case 'option2':
+  //       document.querySelector('select').style.backgroundColor = 'green';
+  //       break;
+  //     case 'option3':
+  //       document.querySelector('select').style.backgroundColor = 'blue';
+  //       break;
+  //     default:
+  //       document.querySelector('select').style.backgroundColor = 'white';
+  //       break;
+  //   }
+  // }
 }

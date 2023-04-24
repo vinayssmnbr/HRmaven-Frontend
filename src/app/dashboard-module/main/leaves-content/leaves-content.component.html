@@ -1,234 +1,345 @@
 <app-header></app-header>
 <app-sidebar></app-sidebar>
 <div class="leaves">
-  <div class="row">
-    <div class="col-3">
-      <div class="card">
-        <div class="progress-text">
-          <h3>Total Leaves</h3>
-          <h1>{{totalCount}}</h1>
-        </div>
-        <div class="progress_container">
-          <div class="circular-progress">
-            <div class="value-container">0%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="progress-text">
-          <h3>Accepted Leaves</h3>
-          <h1>{{acceptCount}}</h1>
-        </div>
-        <div class="progress_container">
-          <div class="circular-progress1">
-            <div class="value-container1">0%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="progress-text">
-          <h3>Rejected Leaves</h3>
-          <h1>{{rejectCount}}</h1>
-        </div>
-        <div class="progress_container">
-          <div class="circular-progress2">
-            <div class="value-container2">0%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="card">
-        <div class="progress-text">
-          <h3>Pending Leaves</h3>
-          <h1>{{pendingCount}}</h1>
-        </div>
-        <div class="progress_container">
-          <div class="circular-progress3">
-            <div class="value-container3">0%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="search_form">
-    <div class="search_heading">
-      <div class="search_title">
-        <h3>Search <span>(Please specify your search)</span></h3>
-      </div>
-      <div class="select-btn">
-        <i class="bx bx-chevron-down"></i>
-      </div>
-    </div>
-    <form action="" class="employe_form">
-      <div class="employe_form_input">
+    <div class="row">
         <div class="col-3">
-          <div class="form__group">
-            <label for="date">Form</label>
-            <input type="date" />
-          </div>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Total Leaves</h3>
+                    <h1>{{totalCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress">
+                        <div class="value-container">0%</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-3">
-          <div class="form__group">
-            <label for="date">To</label>
-            <input type="date" />
-          </div>
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Accepted Leaves</h3>
+                    <h1>{{acceptCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-3">
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Rejected Leaves</h3>
+                    <h1>{{rejectCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress2">
+                        <div class="value-container2">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="progress-text">
+                    <h3>Pending Leaves</h3>
+                    <h1>{{pendingCount}}</h1>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress3">
+                        <div class="value-container3">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search_form">
+        <div class="search_heading">
+            <div class="search_title">
+                <h3>Search <span>(Please specify your search)</span></h3>
+            </div>
+            <div class="select-btn">
+                <i class="bx bx-chevron-down"></i>
+            </div>
+        </div>
+        <form action="" class="employe_form">
+            <div class="employe_form_input">
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="date">Form</label>
+                        <input type="date" />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="date">To</label>
+                        <input type="date" />
+                    </div>
+                </div>
+                <div class="col-3">
 
-          <div class="form__group">
-            <label for="dropdown_container">Category</label>
-            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-              <div class="dropdwon_select" (click)="dropdownOpen()">
-                <p>{{Selectvariable}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
-              </div>
-              <div class="select_content" *ngIf="contentdropdown">
-                <ul>
-                  <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                    (click)="Changeselect(arr)">
-                    {{arr.name}}</li>
-                </ul>
-              </div>
+                    <div class="form__group">
+                        <label for="dropdown_container">Category</label>
+                        <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                        {{arr.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form__group">
+                        <label for="">Type</label>
+                        <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen1()">
+                                <p>{{Selectvariable1}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown1">
+                                <ul>
+                                    <li *ngFor="let arr1 of array1; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect1(arr1)">
+                                        {{arr1.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="form__group">
-            <label for="">Type</label>
-            <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
-              <div class="dropdwon_select" (click)="dropdownOpen1()">
-                <p>{{Selectvariable1}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
-              </div>
-              <div class="select_content" *ngIf="contentdropdown1">
-                <ul>
-                  <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable"
-                    (click)="Changeselect1(arr1)">
-                    {{arr1.name}}</li>
-                </ul>
-              </div>
+            <div class="form_btn">
+                <button class="cancel_btn">Cancel</button>
+                <button class="search_btn">Search</button>
             </div>
-          </div>
+        </form>
+    </div>
+    <!--------------------- List Item----------------- -->
+    <div class="list_nav">
+        <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
+            <p>Pending</p>
         </div>
-        <div class="col-3">
-          <div class="form__group">
-            <label for="">Designation</label>
-            <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
-              <div class="dropdwon_select" (click)="dropdownOpen2()">
-                <p>{{Selectvariable2}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
-              </div>
-              <div class="select_content" *ngIf="contentdropdown2">
-                <ul>
-                  <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable"
-                    (click)="Changeselect2(arr2)">
-                    {{arr2.name}}</li>
-                </ul>
-              </div>
+        <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
+            <p>Approved</p>
+        </div>
+        <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+            <p>Rejected</p>
+        </div>
+    </div>
+    <!-- -----------------------Table--------------------- -->
+    <div class="leaves_table">
+        <table class="table_text">
+            <thead>
+                <tr class="table_heading">
+                    <th>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <span>EMPLOYEE ID</span>
+                        </div>
+                    </th>
+                    <th>EMPLOYEE NAME</th>
+                    <th>Applied On</th>
+                    <th>FROM</th>
+                    <th>TO</th>
+                    <th>Duration</th>
+                    <th>Category</th>
+                    <th>REASON</th>
+                    <th>Balance</th>
+                    <th class="table_slide" *ngIf="!showSearchBox"></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
+                    </td>
+                    <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things."
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
+                    </td>
+                    <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things."
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
+                    </td>
+                    <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="check_box">
+                            <input type="checkbox" (click)="toggleSearchBox()">
+                            <p>20224</p>
+                        </div>
+                    </td>
+                    <td>Ankush Sharma</td>
+                    <td>29/4/2023</td>
+                    <td>1/5/2023</td>
+                    <td>2/5/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>
+                        <p class="mt20">
+                            <span class="tooltip"
+                                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things."
+                                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                f...</span>
+                        </p>
+                    </td>
+                    <td>4/6</td>
+                    <td class="table_slide" *ngIf="!showSearchBox">
+                        <div class="check_box_icon">
+                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
+                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="table_btn" *ngIf="showSearchBox">
+        <button class="accept_btn">Accept All</button>
+        <button class="reject_btn">Reject All</button>
+    </div>
+
+
+    <!--------------------- Leave a comment Modal Accepet--------------- -->
+    <form class="leave_form" *ngIf="showModal">
+        <div class="leave_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <h3>Leave a comment</h3>
+            <textarea placeholder="Type your reason here..."></textarea>
+            <div class="leave_form_btn">
+                <button class="cancel_btn" (click)="closeModal()">Cancel</button>
+                <button class="Done_btn" (click)="openModal2()">Done</button>
             </div>
-          </div>
         </div>
-        <div class="col-3">
-          <div class="form__group">
-            <label for="">Status</label>
-            <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
-              <div class="dropdwon_select" (click)="dropdownOpen3()">
-                <p>{{Selectvariable3}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
-              </div>
-              <div class="select_content" *ngIf="contentdropdown3">
-                <ul>
-                  <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable"
-                    (click)="Changeselect3(arr3)">
-                    {{arr3.name}}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="form_btn">
-        <button class="cancel_btn">Cancel</button>
-        <button class="search_btn">Search</button>
-      </div>
     </form>
-  </div>
-  <!--------------------- List Item----------------- -->
-  <div class="list_nav">
-    <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
-      <p>Pending</p>
-    </div>
-    <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
-      <p>Approved</p>
-    </div>
-    <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
-      <p>Rejected</p>
-    </div>
-  </div>
-  <!-- -----------------------Table--------------------- -->
-  <div class="leaves_table">
-    <table class="table_text">
-      <thead>
-        <tr class="table_heading">
-          <th>
-            <div class="check_box">
-              <input type="checkbox" (click)="toggleSearchBox1()">
-              <span>EMPLOYEE ID</span>
+    <!--------------------- Leave a comment Modal Reject--------------- -->
+    <form class="leave_form" *ngIf="showModal1">
+        <div class="leave_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <h3>Leave a comment</h3>
+            <textarea placeholder="Type your reason here..."></textarea>
+            <div class="leave_form_btn">
+                <button class="cancel_btn" (click)="closeModal()">Cancel</button>
+                <button class="Done_btn" (click)="openModal3()">Done</button>
             </div>
-          </th>
-          <th>EMPLOYEE NAME</th>
-          <th>Applied On</th>
-          <th>FROM</th>
-          <th>TO</th>
-          <th>Duration</th>
-          <th>Category</th>
-          <th>REASON</th>
-          <th>Balance</th>
-          <th class="table_slide">Action</th>
+        </div>
+    </form>
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let it of row">
-          <td>
-            <div class="check_box">
-              <input type="checkbox" [value]="it.id" [checked]="it.checked" (change)="Change($event)">
-              <p>{{it.id}}</p>
+    <!-- -------------------------Leaves approved successfully! Modal---------------------- -->
+
+
+    <form class="leave_approved_form" *ngIf="showModal2">
+        <div class="leave_approved_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <div class="logo_bg">
+                <img src="assets/images/tick.png" alt="image">
             </div>
-          </td>
-          <td>Ankush Sharma</td>
-          <td>29/4/2023</td>
-          <td>1/5/2023</td>
-          <td>2/5/2023</td>
-          <td>2 days</td>
-          <td>Casual Leave</td>
-          <td>
-            <p class="mt20">
-              <span class="tooltip"
-                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
-                f...</span>
-            </p>
-          </td>
-          <td>4/6</td>
-          <td class="table_slide">
-            <div class="check_box_icon">
-              <i class="fa-solid fa-circle-check"></i>
-              <i class="fa-solid fa-circle-xmark"></i>
+            <h4>Leaves approved successfully!</h4>
+            <p>Click on the close button to go back to leave section.</p>
+            <div class="Done_form_btn">
+                <button class="Done_btn" (click)="closeModal()">Done</button>
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="table_btn" *ngIf="showSearchBox">
-    <button class="accept_btn">Accept All</button>
-    <button class="reject_btn">Reject All</button>
-  </div>
+        </div>
+    </form>
+<!-- -------------------------Leaves rejected Modal---------------------- -->
+
+
+<form class="leave_approved_form" *ngIf="showModal3">
+    <div class="leave_approved_modal">
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        <div class="logo_bg">
+            <img src="assets/images/tick.png" alt="image">
+        </div>
+        <h4>Leaves rejected successfully!</h4>
+        <p>Click on the close button to go back to leave section.</p>
+        <div class="Done_form_btn">
+            <button class="Done_btn" (click)="closeModal()">Done</button>
+        </div>
+    </div>
+</form>
 
 </div>
