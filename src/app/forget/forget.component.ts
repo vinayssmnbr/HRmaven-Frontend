@@ -80,20 +80,40 @@ export class ForgetComponent {
   }
 
   submission
-  newpassword(data:any)
-  {
-    console.log(data.value);
-    
-    this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
-      // this.service.newpwd(this.forgetform.value,this.token).subscribe((res:any)=>{
-      if(res=="changeit"){
+//   newpassword(data:any)
+//   {
+//     console.log(data.value);
+//     this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
+//       // this.service.newpwd(this.forgetform.value,this.token).subscribe((res:any)=>{
+//       if(res=="changeit"){
+//         console.log(res);
+//         // this.hasChangedPassword = true;
+//       }
+
+//     });
+//     this.router.navigate(['./login']);
+  
+// }
+newpassword(data: any) {
+  console.log(data.value);
+  this.service.newpwd(data.value, this.token).subscribe({
+    next: (res) => {
+      if (res == "changeit") {
         console.log(res);
         // this.hasChangedPassword = true;
       }
-
-    });
-    this.router.navigate(['./login']);
-    
+      this.router.navigate(["./login"]);
+    },
+    error: (err) => {
+      if (err.status === 400 && err.error && err.error.message === "Link has expired" || err.error.message === "Reset password link has already been used") {
+        this.expired = true;
+        this.errorMessage = err.error.message;
+      } else {
+        // handle other errors
+        this.errorMessage = "Link has expired!!";
+      }
+    },
+  });
 }
 
 
@@ -101,55 +121,37 @@ export class ForgetComponent {
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
     });
- 
-    // this.service.newpwd(this.forgetform.value, this.token).subscribe({
-    //   next: (res: any) => {
-    //     // if (res == 'changeit') {
-    //     //   this.expired = true;
-          
-    //     //   console.log(res);
-    //     // }
-    //         console.log(res);
+    // if(this.forgetform.invalid){
 
-    //     this.router.navigate(['./login']);
-    //   },
-        
-    //   error: (err) => {
-    //     if (err.status === 400 && err.error && err.error.message === 'Link has expired' 
-    //     || err.error.message==='Reset password link has already been used') {
-    //       this.expired = true;
-    //       this.errorMessage = err.error.message;
-    //     } 
-    //     else  {
-    //       // handle other errors
-    //       // this.errorMessage = 'Link has expired!!';
-    //       // this.errorMessage =  'Link has expired';
-          
-    //     }
-    //   }
-    
-    // });
-    this.service.newpwd(this.forgetform.value, this.token).subscribe({
-      next: (res: any) => {
+    this.service.newpwd(this.forgetform.value , this.token).subscribe({
+      next: (res) => {
         // if (res == 'changeit') {
         //   this.expired = true;
+          
         //   console.log(res);
         // }
+            console.log(res);
+
         this.router.navigate(['./login']);
       },
+        
       error: (err) => {
-        this.handleError(err);
+        if (err.status === 400 && err.error && err.error.message === 'Link has expired' 
+        || err.error.message==='Reset password link has already been used') {
+          this.expired = true;
+          this.errorMessage = err.error.message;
+        } 
+        else  {
+          // handle other errors
+          // this.errorMessage = 'Link has expired!!';
+          // this.errorMessage =  'Link has expired';
+          
+        }
       }
+
     });
-}
-  handleError(err: any) {
-    if (err.status === 400 && err.error && err.error.message === 'Link has expired' 
-        || err.error.message === 'Reset password link has already been used') {
-      this.expired = true;
-      this.errorMessage = err.error.message;
-    } else {
-      // handle other errors
-    }
+  
+  // }  
    
   } 
   

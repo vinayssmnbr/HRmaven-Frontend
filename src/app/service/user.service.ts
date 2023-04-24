@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, map, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
@@ -28,13 +28,13 @@ export class UserService {
   private Reseturl = environment.Reseturl;
   private url = environment.url;
   private auth = environment.auth;
-  // private  emailurl = environment.getemail
+  private  emailurl = environment.getemail
   // private changepwd = environment.changepassword
 
-  // getData(email: string) {
-  //   const url = `${this.emailurl}/${email}`;
-  //   return this.http.get(url);
-  // }
+  getData(email: string) {
+    const url = `${this.emailurl}/${email}`;
+    return this.http.get(url);
+  }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -53,6 +53,19 @@ export class UserService {
     });
 
     return this.http.post(this.Reseturl, data, { headers });
+    // return this.http.post(this.Reseturl, data, { headers }).pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     return throwError(error.error.message);
+    //   })
+    // );
+  }
+  newpwdd(){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+
+    return this.http.get(this.Reseturl,{ headers });
   }
   
 
