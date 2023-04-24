@@ -44,6 +44,7 @@ export class DashService {
   //ADD EMPLOYEE DATA
   addEmployee(data) {
     return this.http.post(this.createData, data);
+
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
@@ -69,14 +70,13 @@ export class DashService {
   getAttendance() {
     return this.http.get(this.getAttd);
   }
-  getEmployee():Observable<any[]> {
-    return this.http.get<any[]>(this.getData).pipe(
-      map(data=>data.filter(user=> user.status==='accepted'))
-    );
+  getEmployee(): Observable<any[]> {
+    return this.http
+      .get<any[]>(this.getData)
+      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
-    user['url']=this.fileUrl;
     console.log('employee update id ', user);
     return this.http.patch(`${this.updatempdata}/${user._id}`, user);
   }
@@ -88,11 +88,9 @@ export class DashService {
   //SEARCH UID AND FILTER DESIGNATION
   searchuid(query: string, designation: string) {
     console.log('des', designation);
-    return this.http.get<any>(
-      `${this.getData}?uid=${query}&designation=${designation}`).pipe(
-        map(data=>data.filter(user=> user.status==='accepted'))
-      );;
-
+    return this.http
+      .get<any>(`${this.getData}?uid=${query}&designation=${designation}`)
+      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
 
   getLeaveData(type: string) {
@@ -106,7 +104,6 @@ export class DashService {
   getEmployeeUid() {
     return this.http.get(this.getuid);
   }
-
 
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
@@ -130,7 +127,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response:any) => {
+          (response: any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {
@@ -215,21 +212,19 @@ export class DashService {
     }
   }
 
-private client:any
-fileUrl:any;
+  private client: filestack.Client;
+  fileUrl: any;
+  upload(file: File, userId?: string): Promise<any> {
+    return this.client.upload(file).then((res) => {
+      this.fileUrl = res.url;
+      console.log('imageurl', this.fileUrl, userId);
+      this.updateEmployee({ _id: userId, url: res.url }).subscribe((res) => {
+        console.log('user', res);
+      });
+    });
+  }
 
-upload(file:File):Promise<any>{
-  return this.client.upload(file)
-  .then(res=>{
-    this.fileUrl=res.url;
-    console.log('imageurl',this.fileUrl)
-    const formData=new FormData()
-    formData.append('fileUrl',this.fileUrl)
-    return this.http.post(`${this.updatempdata}`,formData).toPromise()
-
-  })
-
-
-}
-
+  upload1(file: File): Promise<any> {
+    return this.client.upload(file)
+  }
 }

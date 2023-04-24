@@ -370,7 +370,6 @@ export class EmployeeProfileComponent {
     const updatedData = this.form.value;
     console.log('abc', data, this.user);
     updatedData['_id'] = this.user._id;
-
     this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
     });
@@ -584,36 +583,24 @@ export class EmployeeProfileComponent {
   }
 
   selectedFile: File | null = null;
-  uploading = false;
-  uploaded = false;
-
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
-  }
-  onUpload(user): void {
-    if (!this.selectedFile) {
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
       return;
     }
-    this.uploading = true;
+    this.onUpload(this.user)
+  }
+  onUpload(user): void {
     user['_id'] = this.user._id;
     this.dashService
-      .upload(this.selectedFile)
+      .upload(this.selectedFile, user._id)
       .then((res) => {
-        console.log('userimg', user);
-        console.log('upload Image', res);
-        this.uploaded = true;
-        this.uploading = false;
+        console.log("file uploaded successfully")
       })
       .catch((err) => {
-        console.log(err);
-        this.uploading = false;
+        console.log(err)
+
       });
   }
 }
-// const updatedData = this.form.value;
-//     console.log('abc', updatedData);
-//     updatedData['_id'] = this.user._id;
-//     this.dashService.updateEmployee(updatedData).subscribe(() => {
-//       console.log('Data updated successfully');
-//     });
-//     this.user = updatedData;

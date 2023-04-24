@@ -8,16 +8,9 @@
     </div>
 <div>
   <input type="file" (change)="onFileSelected($event)">
-  <button (click)="onUpload(user)" [disabled]="!selectedFile || uploading">Upload</button>
-</div>
-<div *ngIf="uploading">
-  Uploading...
-</div>
-<div *ngIf="uploaded">
-  Uploaded successfully!
 </div>
     <div class="card2">
-      <span class="profile_pic"><img src="./assets/images/image_employee.png">
+      <span class="profile_pic"><img src="{{user.url}}">
         <div class="profile-content">
           <i class="fa-solid fa-camera"></i>
           <h2>Change</h2>
