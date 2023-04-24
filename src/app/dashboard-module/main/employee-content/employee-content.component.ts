@@ -81,8 +81,9 @@ export class EmployeeContentComponent implements OnInit {
     dateOfJoining: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
-    mobile: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    mobile: new FormControl('', [Validators.required, Validators.pattern('[6-9]{1}[0-9]{9}')]),
+    email: new FormControl('', [Validators.required, Validators.email,
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$')]),
     timing: new FormControl('', Validators.required),
   });
 
@@ -175,11 +176,6 @@ export class EmployeeContentComponent implements OnInit {
     this.Changeselect({ name: 'ALL' });
     this.query = '';
   }
-  // changeColor3() {
-  //   this.buttonbackgroundColor3 =
-  //     this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
-  //   this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
-  // }
   isDropdownOpen = false;
 
   toggleDropdown() {
@@ -193,7 +189,7 @@ export class EmployeeContentComponent implements OnInit {
   showModalContent: boolean = true;
   fifthstep: boolean = false;
   onNextForm() {
-    console.log(this.form);
+    console.log(this.form.value);
     this.firstStep = false;
     this.secondStep = true;
     this.onUpload(  this.selectedFile );
@@ -578,4 +574,63 @@ export class EmployeeContentComponent implements OnInit {
   //       break;
   //   }
   // }
+  // colorgreen() {
+  //   this.iscolorgreen = !this.iscolorgreen;
+  // }
+  // coloryellow() {
+  //   this.iscoloryellow = !this.iscoloryellow;
+  // }
+  // colorbrown() {
+  //   this.iscolorbrown = !this.iscolorbrown;
+  // }
+  selectedUser: any;
+  backgroundColor: string;
+  color:string;
+  borderColor: string;
+  onSelectChange(event: any, user) {
+    // if(user===this.selectedUser){
+    switch (event.target.value) {
+      case 'active':{
+        this.backgroundColor = 'rgba(123, 211, 109, 0.3)';
+        this.color = '#3D9030';
+        this.borderColor = 'rgba(123, 211, 109, 0.3)';
+        break;
+      }
+      case 'terminated':
+        {
+        this.backgroundColor = 'rgba(250, 151, 150, 0.2)';
+        this.color = '#CB1E0F';
+        this.borderColor = 'rgba(250, 151, 150, 0.2)';
+        break;
+        }
+      case 'resigned':
+       { this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
+        this.color = '#CE524A';
+        this.borderColor = 'rgba(255, 238, 82, 0.5)';
+        break;}
+      case 'absconder':{
+        this.backgroundColor = 'rgba(248, 187, 111, 0.4)';
+        this.color = '#DB771D';
+        this.borderColor = 'rgba(248, 187, 111, 0.4)';
+        break;}
+      default:{
+        this.backgroundColor = '';
+        this.color='';
+        this.borderColor='';
+        break;}
+    }
+  // }
+  }
+  selectUser(user) {
+    this.selectedUser = user;
+    this.backgroundColor = '';
+    this.color = '';
+    this.borderColor = '';
+  }
+importfile:boolean=false;
+openImport(){
+  this.importfile=true;
+  this.showModal=true;
+  this.showModalContent=false;
+}
 }

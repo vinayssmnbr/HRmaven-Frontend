@@ -6,12 +6,13 @@
       <img src="./assets/images/left_arrow.svg" routerLink="/employee" alt="">
       <h2>Employee Profile</h2>
     </div>
-<div>
-  <input type="file" (change)="onFileSelected($event)">
-</div>
+
     <div class="card2">
       <span class="profile_pic"><img src="{{user.url}}">
         <div class="profile-content">
+          <!-- <div >
+            <input type="file" (change)="onFileSelected($event)">
+          </div> -->
           <i class="fa-solid fa-camera"></i>
           <h2>Change</h2>
           <p>Profile Picture</p>

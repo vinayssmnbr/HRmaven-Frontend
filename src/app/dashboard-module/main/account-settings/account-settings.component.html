@@ -15,11 +15,15 @@
         <div class="profile-name">
             <div class="profile-image">
                 <img src="assets/images/user 1.svg" alt="">
+                
             </div>
             <div class="name-text">
                 <h5>Abhishek Sharma</h5>
                 <p>Human Resource Manager</p>
-                <p><img src="assets/images/Vector.png" alt=""> Leeds, United Kingdom</p>
+                <div class="location">
+                    <img src="assets/images/Vector.png" alt="">
+                    <p> Leeds, United Kingdom</p>
+                </div>
             </div>
         </div>
 
@@ -30,11 +34,11 @@
                     <li class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">Personal Details
                     </li>
                     <li class="all" [class.color]="id ==='important'" (click)="tabChange('important')">Password
-                        Managemen</li>
+                        Management</li>
                 </ul>
             </div>
         </div>
-        <div class="company-name-headoffice-desc">
+        <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
             <div class="company-name-headoffice-desc-area">
                 <div class="company-name-headoffice">
                     <div class="company-name">
@@ -49,6 +53,15 @@
                         <h6>Head Office</h6>
                         <p>Leeds, United Kingdom</p>
                     </div>
+                    <div class="edit-password-button">
+                        <div class="text">
+                            <button class="edit" (click)="openModal1()">Edit <img src="assets/images/pen.svg"
+                                    alt=""></button>
+
+                        </div>
+
+
+                    </div>
                 </div>
 
                 <div class="description-pen">
@@ -58,13 +71,214 @@
                     <div class="pen" (click)="edit()">
                         <img src="assets/images/pen.svg" alt="">
                     </div>
-                   
+
                 </div>
-                <div class="paragraph-text" >
-                    <input type="text" [readonly]="true" style="width: 100%; height: auto;">
+                <div class="paragraph-text">
+                    <!-- <input type="text" [readonly]="true"
+                      placeholder=""  > -->
+                    <textarea name="" id=""
+                        style="width: 100%; height: 73px; border: 1px solid rgba(47, 44, 159, 0.15); border-radius: 8px;"></textarea>
+                </div>
+
+                <div class="clear-update-button">
+                    <button class="done-btn">Done</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
+            <div class="company-name-headoffice-desc-area">
+                <div class="company-name-headoffice">
+                    <div class="company-name">
+                        <h6>Name</h6>
+                        <p>Abhishek Sharma</p>
+                    </div>
+                    <div class="employee-text">
+                        <h6>Personal Email</h6>
+                        <p>abhishek1990@gmail.com</p>
+                    </div>
+                    <div class="head-office-edit">
+                        <div class="head-office-text">
+                            <h6>Professional Email</h6>
+                            <p>hr@hrmaven.com</p>
+                        </div>
+                        <div class="edit-password-button">
+                            <div class="text">
+                                <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg"
+                                        alt=""></button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="company-name-headoffice">
+                    <div class="phone-number">
+                        <h6>Phone Number</h6>
+                        <p>+91 9825634510</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
+            <div class="company-name-headoffice-desc-area">
+                <form action="submit" method="post">
+                    <div class="old-new-confirm-password">
+                        <label for="">Old Password</label>
+                        <input type="text" placeholder="Type your old password">
+
+                    </div>
+                    <div class="new-reenter">
+                        <div class="old-new-confirm-password">
+                            <label for="">New Password</label>
+                            <input type="text" placeholder="Type a new password">
+
+                        </div>
+                    </div>
+                    <div class="new-reenter">
+                        <div class="old-new-confirm-password">
+                            <label for="">Confirm Password</label>
+                            <input type="text" placeholder="Re-enter your password">
+
+                        </div>
+                    </div>
+                </form>
+                <div class="clear-update-button">
+                    <button class="clear-btn">Clear</button>
+                    <button class="update-btn" (click)="openModal3()">Update Password</button>
+
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+                                                 <!--Modal 1-->
+
+
+
+
+
+
+
+    <form class="Modal_form" *ngIf="showModal1">
+        <div class="company_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal1()"></i>
+            <div class="edit-company-heading">
+                <h3>Edit Company Details </h3>
+            </div>
+
+            <form class="form">
+                <div class="name-email">
+                    <div class="form__group">
+                        <label for="name">Company Name</label>
+                        <input type="text" class="form_input" placeholder='Eg. Venturepact' id="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">No. of employees</label>
+                        <input type="number" class="form_input" placeholder='0-50' id="email"
+                            required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Head Office</label>
+                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' id="email"
+                            required />
+                    </div>
+                </div>
+
+               
+
+            </form>
+
+
+            <div class="edit-profile-footer">
+                <button class="done-btn" (click)="closeModal1()">Done</button>
+            </div>
+        </div>
+    </form>
+
+
+    <!--Modal 2-->
+
+
+
+    <form class="Modal_form" *ngIf="showModal2">
+        <div class="Modal_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal2()"></i>
+            <div class="edit-profile-heading">
+                <h3>Edit Personal Details </h3>
+            </div>
+
+            <form class="form">
+                <div class="name-email">
+                    <div class="form__group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Personal Email</label>
+                        <input type="email" class="form_input" placeholder='Eg. abhishek1990@gmail.com' id="email"
+                            required />
+                    </div>
+                </div>
+
+                <div class="email-phone">
+                    <div class="form__group">
+                        <label for="name">Professional Email</label>
+                        <input type="email" class="form_input" placeholder='hr@hrmaven.com' id="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Phone no.</label>
+                        <input type="number" class="form_input" placeholder='Eg. +91 9856234510' id="email"
+                            required />
+                    </div>
+                </div>
+
+            </form>
+
+
+            <div class="edit-profile-footer">
+                <button class="done-btn" (click)="closeModal2()">Done</button>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+    <!--Modal 3-->
+
+
+
+
+    <form class="leave_approved_form" *ngIf="showModal3">
+        <div class="leave_approved_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal3()"></i>
+            <div class="logo_bg">
+                <img src="assets/images/tick.png" alt="image">
+            </div>
+            <h4>Password Changed Successfully!</h4>
+            <p>Your password has been updated.</p>
+            <div class="Done_form_btn">
+                <button class="Done_btn" (click)="closeModal3()">Done</button>
+            </div>
+        </div>
+    </form>
 
 </div>
