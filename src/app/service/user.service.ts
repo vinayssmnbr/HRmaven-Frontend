@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
 
-  
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -28,13 +28,13 @@ export class UserService {
   private Reseturl = environment.Reseturl;
   private url = environment.url;
   private auth = environment.auth;
-  private  emailurl = environment.getemail
-  private changepwd = environment.changepassword
-  
-  getData(email: string) {
-    const url = `${this.emailurl}/${email}`;
-    return this.http.get(url);
-  }
+  // private  emailurl = environment.getemail
+  // private changepwd = environment.changepassword
+
+  // getData(email: string) {
+  //   const url = `${this.emailurl}/${email}`;
+  //   return this.http.get(url);
+  // }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -56,7 +56,7 @@ export class UserService {
   }
   
 
- 
+
 
   //LOGIN AND VERIFY DASHBOARD
   users(data: any) {

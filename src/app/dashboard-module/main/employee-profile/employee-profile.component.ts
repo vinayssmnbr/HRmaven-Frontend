@@ -6,6 +6,7 @@ import {
   FormBuilder,
   FormsModule,
   ReactiveFormsModule,
+  FormArray,
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 
@@ -16,10 +17,9 @@ import { DashService } from '../../shared/dash.service';
 })
 export class EmployeeProfileComponent {
   @Input() user: any;
-  constructor(private dashService: DashService) {}
+  constructor(private dashService: DashService,private fb: FormBuilder,) {}
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
-    console.log(this.user);
   }
 
   selectedUser: any = {};
@@ -41,7 +41,7 @@ export class EmployeeProfileComponent {
   gender: string = '';
   jobdesignation: string = '';
   jobtiming: string = '';
-  jobempstatus:string=''
+  jobempstatus: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
     name: new FormControl(''),
@@ -64,6 +64,7 @@ export class EmployeeProfileComponent {
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
+    employees:new FormArray([]),
     expcompany: new FormControl(''),
     expduration: new FormControl(''),
     explocation: new FormControl(''),
@@ -91,6 +92,21 @@ export class EmployeeProfileComponent {
     city: new FormControl(''),
     address: new FormControl(''),
   });
+  employees(): FormArray {
+    return this.form.get("employees") as FormArray
+  }
+  newEmployee(): FormGroup {
+    return this.fb.group({
+      expcompany: new FormControl(''),
+      expduration: new FormControl(''),
+      explocation: new FormControl(''),
+      expdesignation: new FormControl(''),
+    })
+  }
+  addEmployee() {
+    console.log("Adding a employee");
+    this.employees().push(this.newEmployee());
+  }
 
   array1: any = [
     {
@@ -252,7 +268,6 @@ export class EmployeeProfileComponent {
     console.log(arr.name);
     // this.jobdesignation = arr.name;
     this.user.jobdesignation = arr.name;
-
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -263,7 +278,6 @@ export class EmployeeProfileComponent {
     console.log(arr2.name);
     this.bankname = arr2.name;
     this.user.bankname = arr2.name;
-
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
@@ -274,7 +288,7 @@ export class EmployeeProfileComponent {
     this.contentdropdown3 = false;
     console.log(arr3.name);
     // this.user['martialStatus'] = arr3.name;
-    this.user.maritalStatus=arr3.name
+    this.user.maritalStatus = arr3.name;
   }
   // Changeselect3(arr3: any) {
   //   this.Selectvariable3 = arr3.name;
@@ -306,13 +320,13 @@ export class EmployeeProfileComponent {
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
     console.log('checkuser', this.selectedUser);
-    this.Selectvariable3=user.maritalStatus
-    this.Selectvariable4=user.bloodGroup
-    this.Selectvariable1=user.gender
-    this.Selectvariable=user.jobdesignation
-    this.Selectvariable8=user.jobempstatus
-    this.Selectvariable5=user.jobtiming
-        
+    this.Selectvariable3 = user.maritalStatus;
+    this.Selectvariable4 = user.bloodGroup;
+    this.Selectvariable1 = user.gender;
+    this.Selectvariable = user.jobdesignation;
+    this.Selectvariable8 = user.jobempstatus;
+    this.Selectvariable5 = user.jobtiming;
+
     if (this.personaldetail === true) {
       this.modalContent1 = true;
       this.modalContent2 = false;
@@ -347,16 +361,15 @@ export class EmployeeProfileComponent {
     this.fourthStep = true;
     this.modalContent2 = false;
     this.modalContent1 = false;
-    this.user.motherName = data.motherName
-    this.user.fatherName = data.fatherName
-    this.user.name = data.name
-    this.user.dateOfBirth = data.dateOfBirth
-    this.user.nationality = data.nationality
+    this.user.motherName = data.motherName;
+    this.user.fatherName = data.fatherName;
+    this.user.name = data.name;
+    this.user.dateOfBirth = data.dateOfBirth;
+    this.user.nationality = data.nationality;
 
     const updatedData = this.form.value;
     console.log('abc', data, this.user);
     updatedData['_id'] = this.user._id;
-
     this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
     });
@@ -366,8 +379,8 @@ export class EmployeeProfileComponent {
     this.fourthStep = true;
     this.modalContent2 = false;
     this.modalContent1 = false;
-    this.user.joblocation1 = data.joblocation1
-    this.user.jobctc = data.jobctc
+    this.user.joblocation1 = data.joblocation1;
+    this.user.jobctc = data.jobctc;
 
     const updatedData = this.form.value;
     console.log('abc', updatedData);
@@ -401,8 +414,7 @@ export class EmployeeProfileComponent {
     this.modalContent7 = false;
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
-    this.Selectvariable2=user.bankname
-
+    this.Selectvariable2 = user.bankname;
   }
 
   closeModal4(data) {
@@ -411,11 +423,11 @@ export class EmployeeProfileComponent {
     this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
-    this.user.accountno = data.accountno
-    this.user.ifsc = data.ifsc
-    this.user.adhaarno = data.adhaarno
-    this.user.panno = data.panno
-    this.user.passport = data.passport
+    this.user.accountno = data.accountno;
+    this.user.ifsc = data.ifsc;
+    this.user.adhaarno = data.adhaarno;
+    this.user.panno = data.panno;
+    this.user.passport = data.passport;
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
@@ -442,17 +454,17 @@ export class EmployeeProfileComponent {
     this.modalContent4 = false;
     this.modalContent5 = false;
     this.modalContent6 = false;
-    this.user.matric = data.accountno
-    this.user.matricPercent = data.matricPercent
-    this.user.inter = data.inter
-    this.user.interPercent = data.interPercent
-    this.user.pg = data.pg
-    this.user.pgCgpa = data.pgCgpa
-    this.user.pgStream = data.pgStream
-    this.user.graduation = data.graduation
-    this.user.graduationCgpa = data.graduationCgpa
-    this.user.graduationStream = data.graduationStream
-    
+    this.user.matric = data.accountno;
+    this.user.matricPercent = data.matricPercent;
+    this.user.inter = data.inter;
+    this.user.interPercent = data.interPercent;
+    this.user.pg = data.pg;
+    this.user.pgCgpa = data.pgCgpa;
+    this.user.pgStream = data.pgStream;
+    this.user.graduation = data.graduation;
+    this.user.graduationCgpa = data.graduationCgpa;
+    this.user.graduationStream = data.graduationStream;
+
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
@@ -527,7 +539,6 @@ export class EmployeeProfileComponent {
     console.log(arr5.name);
     // this.jobtiming = arr5.name;
     this.user.jobtiming = arr5.name;
-
   }
 
   contentshow: boolean = false;
@@ -547,7 +558,6 @@ export class EmployeeProfileComponent {
     console.log(arr8.name);
     // this.jobempstatus=arr8.name
     this.user.jobempstatus = arr8.name;
-
   }
 
   dropdownClose3() {
@@ -570,5 +580,37 @@ export class EmployeeProfileComponent {
   }
   dropdownClose5() {
     this.contentdropdown5 = false;
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    this.onUpload(this.user)
+  }
+  onUpload(user): void {
+    user['_id'] = this.user._id;
+    this.dashService
+      .upload(this.selectedFile, user._id)
+      .then((res) => {
+        console.log("file uploaded successfully")
+      })
+      .catch((err) => {
+        console.log(err)
+
+      });
+    }
+  viewMore:boolean=false;
+  showbutton:boolean=true;
+  showMoredata(){
+    this.viewMore=!this.viewMore;
+    this.showbutton=!this.showbutton;
+  }
+  hidedata(){
+    this.viewMore=false;
+    this.showbutton=true;
   }
 }

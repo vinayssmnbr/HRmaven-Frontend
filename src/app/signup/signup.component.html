@@ -7,7 +7,7 @@
         </div>
         <h1 class="title">Start your journey with us.</h1>
         <p class="title_para">
-          Discover the world’s best community of freelancers and business
+          Discover the world's best community of freelancers and business
           owners.
         </p>
       </div>
@@ -147,66 +147,67 @@
         </div>
         <div class="field create-password">
           <div class="password-tooltip">
-          <div class="input-field">
-            <label for="name" class="text-label">Password
+            <div class="input-field">
+              <label for="name" class="text-label">Password
 
-              <div class="iconWrap password_required">
+                <div class="iconWrap password_required">
 
-                <i class="fa-solid fa-circle-info"></i>
-                <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
-                <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
+                  <i class="fa-solid fa-circle-info"></i>
+                  <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
+                  <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
 
-                <!-- <input type="{{is_visible ? 'text' : 'password'}}" [(ngModel)]="password" (input)="checkPassword()" /> -->
+                  <!-- <input type="{{is_visible ? 'text' : 'password'}}" [(ngModel)]="password" (input)="checkPassword()" /> -->
 
-                <span class="tooltip">
-                  <ul>
-                    <ul id="set">
-                      <li id="count">Length: 0</li>
-                      <!-- <i id="see" (click)="toggleVisibility()" class="far fa-eye"></i> -->
-                    </ul>
-                    <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
-                      <i class="far fa-check-circle"></i><span [style.color]="lengthCheck ? 'green' : 'red'">Length
-                        Should be at least8.</span>
-                    </li>
+                  <span class="tooltip">
+                    <ul>
+                      <ul id="set">
+                        <li id="count">Length: 0</li>
+                        <!-- <i id="see" (click)="toggleVisibility()" class="far fa-eye"></i> -->
+                      </ul>
+                      <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
+                        <i class="far fa-check-circle" [style.color]="lengthCheck ? 'green' : 'red'"></i><span [style.color]="lengthCheck ? 'green' : 'red'">Length
+                          Should be at least8.</span>
+                      </li>
 
-                    <li id="check2">
-                      <i class="far fa-check-circle"></i><span [style.color]="numericalCheck ? 'green' : 'red'">Contains
-                        numerical character.</span>
-                    </li>
-                    <li id="check3">
-                      <i class="far fa-check-circle"></i><span
-                        [style.color]="specialCharCheck ? 'green' : 'red'">Contains special character.</span>
-                    </li>
-                    <!-- <li id="check4">
+                      <li id="check2">
+                        <i class="far fa-check-circle" [style.color]="numericalCheck ? 'green' : 'red'"></i><span
+                          [style.color]="numericalCheck ? 'green' : 'red'">Contains
+                          numerical character.</span>
+                      </li>
+                      <li id="check3">
+                        <i class="far fa-check-circle" [style.color]="specialCharCheck ? 'green' : 'red'"></i><span
+                          [style.color]="specialCharCheck ? 'green' : 'red'">Contains special character.</span>
+                      </li>
+                      <!-- <li id="check4">
   <i class="far fa-check-circle"></i><span [style.color]="spaceCheck?'green':'red'">Shouldn't contain spaces.</span>
 </li> -->
-                    <li id="check5">
-                      <i class="far fa-check-circle"></i><span [style.color]="capitalCheck ? 'green' : 'red'">Should
-                        contain at least one Capital letter</span>
-                    </li>
-                    <li id="check6">
-                      <i class="far fa-check-circle"></i><span [style.color]="smallCheck ? 'green' : 'red'">Should
-                        contain at least one small letter</span>
-                    </li>
-                  </ul>
-                </span>
-              </div>
-            </label>
-            <div style="position: relative;">
-              <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password" (input)="checkPassword()"
-                placeholder="Enter your password" class="password" [class.is-invalid]="
+                      <li id="check5">
+                        <i class="far fa-check-circle" [style.color]="capitalCheck ? 'green' : 'red'"></i><span [style.color]="capitalCheck ? 'green' : 'red'">Should
+                          contain at least one Capital letter</span>
+                      </li>
+                      <li id="check6">
+                        <i class="far fa-check-circle" [style.color]="smallCheck ? 'green' : 'red'"></i><span [style.color]="smallCheck ? 'green' : 'red'">Should
+                          contain at least one small letter</span>
+                      </li>
+                    </ul>
+                  </span>
+                </div>
+              </label>
+              <div style="position: relative;">
+                <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password" (input)="checkPassword()"
+                  placeholder="Enter your password" class="password" [class.is-invalid]="
                 fun['password'].invalid && fun['password'].touched
               " formControlName="password" #passwordInput class="form-control is-invalid" id="password"
-                (keyup)="onKeyUp($event)" (keydown.space)="$event.preventDefault()" />
+                  (keyup)="onKeyUp($event)" (keydown.space)="$event.preventDefault()" />
 
-              <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)"><i
-                  class="fa {{ showPasswordIcon }}"></i></span>
+                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)"><i
+                    class="fa {{ showPasswordIcon }}"></i></span>
+              </div>
+              <!-- <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span> -->
+              <!-- <span *ngIf="password && password.invalid && password.touched "> -->
+
             </div>
-            <!-- <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span> -->
-            <!-- <span *ngIf="password && password.invalid && password.touched "> -->
-
           </div>
-        </div>
         </div>
 
         <div class="field confirm-password">
