@@ -81,9 +81,15 @@ export class EmployeeContentComponent implements OnInit {
     dateOfJoining: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
-    mobile: new FormControl('', [Validators.required, Validators.pattern('[6-9]{1}[0-9]{9}')]),
-    email: new FormControl('', [Validators.required, Validators.email,
-      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$')]),
+    mobile: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+    ]),
     timing: new FormControl('', Validators.required),
   });
 
@@ -98,7 +104,7 @@ export class EmployeeContentComponent implements OnInit {
   // file: File | null = null;
   submit() {
     if (this.form.invalid) return;
-    console.log(this.form)
+    console.log(this.form);
     const data = this.form.value;
     this.showModalContent = false;
     this.fourthStep = true;
@@ -192,10 +198,7 @@ export class EmployeeContentComponent implements OnInit {
     console.log(this.form.value);
     this.firstStep = false;
     this.secondStep = true;
-    this.onUpload(  this.selectedFile );
-
-
-
+    this.onUpload(this.selectedFile);
   }
 
   onPreviousForm() {
@@ -409,7 +412,6 @@ export class EmployeeContentComponent implements OnInit {
     this.form['job_type'] = arr1.name;
     if (this.form.invalid) return;
 
-
     console.log(arr1.name);
   }
   Changeselect2(arr2: any) {
@@ -474,8 +476,8 @@ export class EmployeeContentComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    this.fileName =   this.selectedFile  ?   this.selectedFile .name : '';
-    if (  this.selectedFile .type.split('/')[0] !== 'image') {
+    this.fileName = this.selectedFile ? this.selectedFile.name : '';
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
       console.error('Invalid file type. Please select an image.');
       return;
     }
@@ -483,7 +485,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   onUpload(file) {
-    console.log("fdjkhf")
+    console.log('fdjkhf');
     this.dashService.upload1(file).then(
       (res) => {
         this.form.patchValue({
@@ -585,41 +587,43 @@ export class EmployeeContentComponent implements OnInit {
   // }
   selectedUser: any;
   backgroundColor: string;
-  color:string;
+  color: string;
   borderColor: string;
   onSelectChange(event: any, user) {
     // if(user===this.selectedUser){
     switch (event.target.value) {
-      case 'active':{
+      case 'active': {
         this.backgroundColor = 'rgba(123, 211, 109, 0.3)';
         this.color = '#3D9030';
         this.borderColor = 'rgba(123, 211, 109, 0.3)';
         break;
       }
-      case 'terminated':
-        {
+      case 'terminated': {
         this.backgroundColor = 'rgba(250, 151, 150, 0.2)';
         this.color = '#CB1E0F';
         this.borderColor = 'rgba(250, 151, 150, 0.2)';
         break;
-        }
-      case 'resigned':
-       { this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
+      }
+      case 'resigned': {
+        this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
         this.color = '#CE524A';
         this.borderColor = 'rgba(255, 238, 82, 0.5)';
-        break;}
-      case 'absconder':{
+        break;
+      }
+      case 'absconder': {
         this.backgroundColor = 'rgba(248, 187, 111, 0.4)';
         this.color = '#DB771D';
         this.borderColor = 'rgba(248, 187, 111, 0.4)';
-        break;}
-      default:{
+        break;
+      }
+      default: {
         this.backgroundColor = '';
-        this.color='';
-        this.borderColor='';
-        break;}
+        this.color = '';
+        this.borderColor = '';
+        break;
+      }
     }
-  // }
+    // }
   }
   selectUser(user) {
     this.selectedUser = user;
@@ -627,10 +631,10 @@ export class EmployeeContentComponent implements OnInit {
     this.color = '';
     this.borderColor = '';
   }
-importfile:boolean=false;
-openImport(){
-  this.importfile=true;
-  this.showModal=true;
-  this.showModalContent=false;
-}
+  importfile: boolean = false;
+  openImport() {
+    this.importfile = true;
+    this.showModal = true;
+    this.showModalContent = false;
+  }
 }
