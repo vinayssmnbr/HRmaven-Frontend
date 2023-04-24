@@ -518,16 +518,19 @@ table {
 }
 .icons .select .activated.active{
   background-color: rgba(123, 211, 109, 0.3);
-  color:green;
+  color: rgba(123, 211, 109, 0.3);
 }
 .icons .select .terminate.active{
  background-color: rgba(250, 151, 150, 0.2);
+ color: rgba(250, 151, 150, 0.2);
 }
 .icons .select .abscond.active{
   background-color: rgba(248, 187, 111, 0.4);
+  color: rgba(248, 187, 111, 0.4);
 }
 .icons .select .resign.active{
   background-color: rgba(255, 238, 82, 0.5);
+  color: rgba(255, 238, 82, 0.5);
 }
 /* #mySelect option.activated.active {
   background-color: green;
