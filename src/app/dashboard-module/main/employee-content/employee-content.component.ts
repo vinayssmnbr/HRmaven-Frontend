@@ -17,6 +17,7 @@ import {
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
+import { error, log } from 'console';
 
 @Component({
   selector: 'app-employee-content',
@@ -93,10 +94,10 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.setSelectedEmployee(user);
   }
   //ADD DATA
-  file: File | null = null;
-  private additionalData: any = {};
+  // file: File | null = null;
   submit() {
     if (this.form.invalid) return;
+    console.log(this.form)
     const data = this.form.value;
     this.showModalContent = false;
     this.fourthStep = true;
@@ -195,9 +196,14 @@ export class EmployeeContentComponent implements OnInit {
     console.log(this.form);
     this.firstStep = false;
     this.secondStep = true;
+    this.onUpload(  this.selectedFile );
+
+
+
   }
 
   onPreviousForm() {
+    console.log(this.form.value);
     this.firstStep = true;
     this.secondStep = false;
   }
@@ -217,6 +223,7 @@ export class EmployeeContentComponent implements OnInit {
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
     this.showModalContent = true;
     this.fourthStep = false;
+    this.form.reset();
   }
 
   openModal() {
@@ -403,6 +410,9 @@ export class EmployeeContentComponent implements OnInit {
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     this.job_type = arr1.name;
+    this.form['job_type'] = arr1.name;
+    if (this.form.invalid) return;
+
 
     console.log(arr1.name);
   }
@@ -464,76 +474,81 @@ export class EmployeeContentComponent implements OnInit {
       event.preventDefault();
     }
   }
-
   selectedFile: File | null = null;
-  uploading = false;
-  uploaded = false;
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
-    this.fileName = file ? file.name : '';
-    this.onUpload(file);
+    this.selectedFile = event.target.files[0];
+    this.fileName =   this.selectedFile  ?   this.selectedFile .name : '';
+    if (  this.selectedFile .type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    // this.onUpload(  this.selectedFile );
   }
-
 
   onUpload(file) {
-    this.dashService.upload1(file).then((res) => {
-      this.form.patchValue({
-        url: res.url,
-      });
-    });
+    console.log("fdjkhf")
+    this.dashService.upload1(file).then(
+      (res) => {
+        this.form.patchValue({
+          url: res && res.url,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
-selectall:boolean=false;
-selectboxes(){
-  this.selectall=!this.selectall;
-}
-isallactive:boolean=true;
-isall(){
-  this.isallactive=!this.isallactive;
-  this.is_active=false;
-  this.is_absconder = false;
-  this.is_terminated = false;
-  this.is_resigned = false;
-}
- is_active: boolean = false;
+  selectall: boolean = false;
+  selectboxes() {
+    this.selectall = !this.selectall;
+  }
+  isallactive: boolean = true;
+  isall() {
+    this.isallactive = !this.isallactive;
+    this.is_active = false;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_resigned = false;
+  }
+  is_active: boolean = false;
   isactive() {
     this.is_active = !this.is_active;
-    this.isallactive=false;
-    this.is_absconder=false;
-    this.is_terminated=false;
-    this.is_resigned=false;
+    this.isallactive = false;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_resigned = false;
   }
-  is_resigned:boolean=false;
-  is_terminated:boolean=false;
-  is_absconder:boolean=false;
-  isresigned(){
-    this.is_resigned=!this.is_resigned;
+  is_resigned: boolean = false;
+  is_terminated: boolean = false;
+  is_absconder: boolean = false;
+  isresigned() {
+    this.is_resigned = !this.is_resigned;
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_active = false;
-    this.isallactive=false;
+    this.isallactive = false;
   }
-  isterminated(){
-    this.is_terminated=!this.is_terminated;
+  isterminated() {
+    this.is_terminated = !this.is_terminated;
     this.is_absconder = false;
     this.is_resigned = false;
     this.is_active = false;
     this.isallactive = false;
   }
-  isabsconder(){
+  isabsconder() {
     this.is_absconder = !this.is_absconder;
     this.is_resigned = false;
     this.is_terminated = false;
     this.is_active = false;
     this.isallactive = false;
-
   }
-  iscolorgreen:boolean=false;
-  iscoloryellow:boolean=false;
-  iscolorred:boolean=false;
-  iscolorbrown:boolean=false;
-  colorred(){
-    this.iscolorred=!this.iscolorred;
+  iscolorgreen: boolean = false;
+  iscoloryellow: boolean = false;
+  iscolorred: boolean = false;
+  iscolorbrown: boolean = false;
+  colorred() {
+    this.iscolorred = !this.iscolorred;
   }
   colorgreen() {
     this.iscolorgreen = !this.iscolorgreen;
