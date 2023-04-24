@@ -45,6 +45,7 @@ export class AttendanceContentComponent implements OnInit {
   table1Visible = false;
   table2Visible = false;
   todayDate:string;
+  totalDays: number;
   constructor(public dashService: DashService,private datepipe:DatePipe) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
@@ -139,6 +140,7 @@ export class AttendanceContentComponent implements OnInit {
   }
      });
    }
+
   ngOnInit() {
     this.form.get('name').disable();
     this.form.get('empId').disable();
@@ -148,6 +150,18 @@ export class AttendanceContentComponent implements OnInit {
     // Create a chart object
     const today = new Date();
     this.datez = today.toISOString().slice(0, 10);
+
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    this.totalDays = new Date(year, month, 0).getDate();
+    this.dashService.getAttendance().subscribe((data: any[]) => {
+      const presentDays = data.filter((record) => record.status === 'present').length;
+      const totalDays = new Date(year, month, 0).getDate();
+      const attendancePercentage = (presentDays / totalDays) * 100;
+
+      // Use attendancePercentage to update your UI
+    });
   }
 
   changeColor() {
