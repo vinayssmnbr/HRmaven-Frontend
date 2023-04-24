@@ -3,7 +3,8 @@ import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../service/user.service';
+// import { UserService } from '../service/user.service';
+import { EmployeeService } from '../service/employee.service';
 import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-login-employee',
@@ -23,7 +24,8 @@ export class LoginEmployeeComponent {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService,
-    public userService: UserService
+    public employeeService:EmployeeService,
+    // public userService: UserService
   ) {}
 
   ngOnInit() {
@@ -37,20 +39,20 @@ export class LoginEmployeeComponent {
       });
     }
 
-    // this.activatedRoute.queryParams.subscribe((params) => {
+    this.activatedRoute.queryParams.subscribe((params) => {
     //   // console.log(params);
-    //   const token = params['token'];
-    //   console.log(token);
-    //   if (token && token != 'undefined') {
-    //     this.cookie.set('token', token);
-    //     this.router.navigate(['dashboard']);
-    //   } else {
-    //     this.cookie.delete('token');
-    //     this.router.navigate(['login']);
-    //   }
-    // });
+      const token = params['token'];
+      console.log(token);
+      if (token && token != 'undefined') {
+        this.cookie.set('token', token);
+        this.router.navigate(['employee/dashboard']);
+      } else {
+        this.cookie.delete('token');
+        this.router.navigate(['loginemp']);
+      }
+    });
 
-    if (this.userService.isUserLoggedIn()) {
+    if (this.employeeService.isUserLoggedIn()) {
       this.router.navigate(['employee/dashboard']);
     }
     // this.userService.allDataLogin();
@@ -154,8 +156,8 @@ export class LoginEmployeeComponent {
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
-    this.userService.users(data).subscribe((res: any) => {
-      this.userService.users(this.loginForm);
+    this.employeeService.users(data).subscribe((res: any) => {
+      this.employeeService.users(this.loginForm);
 
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
