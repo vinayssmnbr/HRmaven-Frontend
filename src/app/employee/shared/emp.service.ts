@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +16,8 @@ export class EmpService {
     private router: Router,
     private cookie: CookieService
   ) { }
+
+
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');

@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { EmpService } from 'src/app/shared/emp.service';
-import { UserService } from '../../service/user.service';
+import { EmpService } from '../shared/emp.service';
+import { EmployeeService } from 'src/app/service/employee.service';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +25,7 @@ export class HeaderComponent {
   hideNotifications = false;
 
 
-constructor(public empService:EmpService,private userService : UserService,private router:Router,private cookie:CookieService,private elementRef :ElementRef, private http:HttpClient){
+constructor(public empService:EmpService,private employeeService:EmployeeService,private router:Router,private cookie:CookieService,private elementRef :ElementRef, private http:HttpClient){
   this.getProfileData();
 }
 hide : boolean = true;
@@ -83,10 +83,10 @@ profileToggle() {
 }
 
 
-// logout() {
-//   this.cookie.delete('token');
-//   this.router.navigate(['./login']);
-// }
+logout() {
+  this.cookie.delete('token');
+  this.router.navigate(['./loginemp']);
+}
 
 ReadMore: boolean = true;
 visible: boolean = false;
