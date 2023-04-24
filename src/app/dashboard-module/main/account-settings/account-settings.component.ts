@@ -39,9 +39,33 @@ export class AccountSettingsComponent {
    this.readonly=false;
   }
  
-  showModal=false;
-  openModal(){
-    this.showModal = true;
+  showModal1=false;
+  openModal1(){
+    this.showModal1 = true;
   }
+  
+  closeModal1(){
+    this.showModal1 = false;
+  }
+
+  showModal2=false;
+  openModal2(){
+    this.showModal2 = true;
+  }
+  
+  closeModal2(){
+    this.showModal2 = false;
+  }
+
+
+  showModal3=false;
+  openModal3(){
+    this.showModal3 = true;
+  }
+  
+  closeModal3(){
+    this.showModal3 = false;
+  }
+
   
 }

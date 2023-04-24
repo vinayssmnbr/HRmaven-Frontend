@@ -84,9 +84,14 @@
     border-bottom: 2px solid #2F2C9F;
 }
 
-.color {
+.color:after {
     color: #2F2C9F;
-    border-bottom: 2px solid #2F2C9F;
+    border-bottom: 1px solid #2F2C9F;
+    position: absolute;
+    bottom: -1px;
+    content: '';
+    left: 0;
+    right: 0;
 }
 
 .notification-number {
@@ -134,12 +139,14 @@
 
 .toggle ul {
     display: flex;
-    gap: 54px;
+   
 
 }
 
 .toggle>ul>li {
     cursor: pointer;
+    position: relative;
+    padding: 12px 28px;
 }
 
 .company-name-headoffice-desc {
@@ -293,26 +300,238 @@ border: none;
 
 
 
-/*Modal css*/
-.modal{
-    position: absolute;
+                             /*Modal--------------------------------------------- css*/
+.Modal_form{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(34, 34, 34, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
-    background: rgba(34, 34, 34, 0.7);
-    height: 100vh;
-    width: 100vw;
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
+}
 
-    
-}
-.modal_form{
+.Modal_modal {
+    z-index: 1;
+    background-color: rgba(250, 250, 250, 1);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    /* display: flex;
+    width: 100%;
+    max-width: 685px;
+    width: 100%;
     
-    flex-direction: column; */
-    background-color: #FFFFFF;
-    width: 685px;
-height: 235px;
 }
+.Modal_modal i{
+    position: absolute;
+    right: -30px;
+    top: -24px;
+    color: #ECECEC;
+    cursor: pointer;
+}
+.edit-profile-heading{
+    background-color: #F7F7FB;
+border-radius: 8px 8px 0px 0px;
+max-width: 685px;
+width: 100%;
+height: 75px;
+justify-content: center;
+display: flex;
+align-items: center;
+}
+.name-section>label{
+    float: left;
+    margin-bottom: 20px;
+}
+
+.form {
+    padding: 40px 60px;
+}
+.form__group{
+    display: flex;
+    flex-direction: column;
+}
+.form__group .form_input{
+    width: 270px;
+  padding: 10px 17px;
+height: 40px;
+background-color: #FFFFFF;
+border: 1px solid #CBCBCB;
+border-radius: 8px;
+margin-top: 5px;
+}
+.name-email{
+display: flex;
+gap: 25px;
+}
+.email-phone{
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+}
+.edit-profile-footer{
+    background-color: #F7F7FB;
+border-radius: 8px 8px 0px 0px;
+max-width: 685px;
+width: 100%;
+height: 75px;
+justify-content: center;
+display: flex;
+align-items: center;
+
+}
+.edit-profile-footer .done-btn{
+    width: 89px;
+height: 37px;
+background-color: #2F2C9F;
+border-radius: 8px;
+color: #FFFFFF;
+}
+
+
+.leave_approved_modal {
+    z-index: 1;
+    background-color: rgba(250, 250, 250, 1);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 430px;
+    height: 357px;
+    padding: 20px 20px;
+}
+
+.logo_bg {
+    background-color: rgba(123, 211, 109, 0.3);
+    border-radius: 8px;
+    width: 390px;
+    height: 152px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leave_approved_modal h4 {
+    text-align: center;
+    color: #444444;
+    font-weight: 500;
+    font-size: 18px;
+    padding-top: 22px;
+}
+
+.leave_approved_modal p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #666666;
+    text-align: center;
+    padding: 16px 66px;
+}
+
+.Done_form_btn {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Done_form_btn .Done_btn {
+    width: 82px;
+    height: 38px;
+    padding: 9px 24px;
+    background-color: #3D9130;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+.Done_form_btn .Done_btn:hover{
+    background-color: #1fa10a;
+}
+
+.leave_form,
+.leave_approved_form {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(34, 34, 34, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.leave_modal i,
+.leave_approved_modal i {
+    position: absolute;
+    right: -25px;
+    top: -20px;
+    cursor: pointer;
+    color: #ECECEC;
+    cursor: pointer;
+}
+
+/*------------------Company details Modal------------------------*/
+
+
+
+.Modal_form{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(34, 34, 34, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.company_modal {
+    z-index: 1;
+    background-color: rgba(250, 250, 250, 1);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    width: 100%;
+    
+}
+.company_modal i{
+    position: absolute;
+    right: -30px;
+    top: -24px;
+    color: #ECECEC;
+    cursor: pointer;
+}
+.edit-company-heading{
+    background-color: #F7F7FB;
+border-radius: 8px 8px 0px 0px;
+max-width: 980px;
+width: 100%;
+height: 75px;
+justify-content: center;
+display: flex;
+align-items: center;
+}
+
+/* profile upload */
+.middle-profilepic {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+  }
+  
