@@ -19,6 +19,9 @@
     gap: 12px;
     height: 44px;
 }
+.profile-arrow .arrow{
+    cursor: pointer;
+}
 
 .profile-bottom-line {
     border-bottom: 1px solid rgba(47, 44, 159, 0.15);
@@ -49,10 +52,17 @@
     color: #999999;
 }
 
-.name-text img {
+.location img {
     margin-top: 1.2px;
+    height: 15px;
+   width: 12px;
 }
-
+.location {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+}
 .notification-area {
     max-width: 350px;
     width: 100%;
@@ -64,7 +74,7 @@
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 30px;
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     z-index: 9999;
@@ -144,11 +154,37 @@
     display: flex;
     gap: 120px;
 }
+.company-name-headoffice .phone-number{
+    margin-top: 30px;
+}
+.head-office-edit{
+    display: flex;
+    gap: 30px;
+}
 
+.edit-password-button .edit{
+    width: 71px;
+min-height: 29px;
+background: #FFFFFF;
+/* grey/gray_E0 */
+cursor: pointer;
+border: 1px solid #E0E0E0;
+border-radius: 22px;
+}
+.edit-password-button{
+    display: flex;
+    gap: 7.87px;
+}
+.edit-password-button img{
+    margin-left: 7.87px;
+    width: 11.42px;
+    height: 11.42px;
+}
 .company-name,
 .employee-text,
 .head-office-text {
-    min-width: 240px;
+    width: 100%;
+    max-width: 240px;
 }
 
 .company-name-headoffice h6 {
@@ -184,4 +220,99 @@ color: #444444;
 color: #777777;
 font-weight: 400;
 font-size: 15px;
+}
+
+
+
+.old-new-confirm-password label{
+    display: inline-block;
+    text-align: left;
+    width: 200px;
+min-height: 20px;
+}
+.old-new-confirm-password input{
+    width: 300px;
+min-height: 42px;
+background-color: #FFFFFF;
+border: 1px solid #B4B4B4;
+border-radius: 8px;
+padding-left: 17px;
+padding-right: 17px;
+outline: none;
+
+}
+.old-new-confirm-password{
+    gap: 100px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.new-reenter{
+    margin-top: 25px;
+}
+.clear-update-button {
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+    margin-top: 25px;
+}
+.clear-update-button .clear-btn{
+    width: 90px;
+min-height: 37px;
+background-color: #FFFFFF;
+border: 1px solid #2F2C9F;
+border-radius: 8px;
+color: #2F2C9F;
+cursor: pointer;
+}
+.clear-update-button .update-btn{
+    width: 154px;
+    min-height: 37px;
+    background-color: #2F2C9F;
+    border-radius: 8px;
+border: 1px solid #2F2C9F;
+border-radius: 8px;
+color: #FFFFFF;
+cursor: pointer;
+}
+
+/* Company details done button*/
+.done-btn{
+    max-width: 89px;
+height: 37px;
+width: 100%;
+background-color: #2F2C9F;
+border-radius: 8px;
+color: #FFFFFF;
+outline: none;
+cursor: pointer;
+border: none;
+}
+
+
+
+/*Modal css*/
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(34, 34, 34, 0.7);
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+.modal_form{
+    position: relative;
+    /* display: flex;
+    
+    flex-direction: column; */
+    background-color: #FFFFFF;
+    width: 685px;
+height: 235px;
 }

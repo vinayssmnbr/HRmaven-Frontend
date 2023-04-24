@@ -39,5 +39,9 @@ export class AccountSettingsComponent {
    this.readonly=false;
   }
  
+  showModal=false;
+  openModal(){
+    this.showModal = true;
+  }
   
 }

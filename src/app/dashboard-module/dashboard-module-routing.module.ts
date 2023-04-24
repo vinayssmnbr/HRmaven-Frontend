@@ -53,7 +53,8 @@ const routes: Routes = [
         path: 'job-details',
         component: JobDetailsComponent
       },
-      { path: 'employee-profile', component: EmployeeProfileComponent }
+      { path: 'employee-profile', component: EmployeeProfileComponent },
+      { path: 'setting', component: AccountSettingsComponent}
 ];
 
 @NgModule({

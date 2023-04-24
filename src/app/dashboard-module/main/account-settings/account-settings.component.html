@@ -19,7 +19,10 @@
             <div class="name-text">
                 <h5>Abhishek Sharma</h5>
                 <p>Human Resource Manager</p>
-                <p><img src="assets/images/Vector.png" alt=""> Leeds, United Kingdom</p>
+                <div class="location">
+                    <img src="assets/images/Vector.png" alt="">
+                    <p> Leeds, United Kingdom</p>
+                </div>
             </div>
         </div>
 
@@ -30,11 +33,11 @@
                     <li class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">Personal Details
                     </li>
                     <li class="all" [class.color]="id ==='important'" (click)="tabChange('important')">Password
-                        Managemen</li>
+                        Management</li>
                 </ul>
             </div>
         </div>
-        <div class="company-name-headoffice-desc">
+        <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
             <div class="company-name-headoffice-desc-area">
                 <div class="company-name-headoffice">
                     <div class="company-name">
@@ -58,13 +61,135 @@
                     <div class="pen" (click)="edit()">
                         <img src="assets/images/pen.svg" alt="">
                     </div>
-                   
+
                 </div>
-                <div class="paragraph-text" >
-                    <input type="text" [readonly]="true" style="width: 100%; height: auto;">
+                <div class="paragraph-text">
+                    <input type="text" [readonly]="true"
+                        style="width: 100%; min-height: 73px; border: 1px solid rgba(47, 44, 159, 0.15); border-radius: 8px;">
+                </div>
+                <div class="clear-update-button">
+                    <button class="done-btn">Done</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
+            <div class="company-name-headoffice-desc-area">
+                <div class="company-name-headoffice">
+                    <div class="company-name">
+                        <h6>Name</h6>
+                        <p>Abhishek Sharma</p>
+                    </div>
+                    <div class="employee-text">
+                        <h6>Personal Email</h6>
+                        <p>abhishek1990@gmail.com</p>
+                    </div>
+                    <div class="head-office-edit">
+                        <div class="head-office-text">
+                            <h6>Professional Email</h6>
+                            <p>hr@hrmaven.com</p>
+                        </div>
+                        <div class="edit-password-button">
+                            <div class="text">
+                                <button class="edit" (click)="openModal()">Edit <img src="assets/images/pen.svg"
+                                        alt=""></button>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="company-name-headoffice">
+                    <div class="phone-number">
+                        <h6>Phone Number</h6>
+                        <p>+91 9825634510</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
+            <div class="company-name-headoffice-desc-area">
+                <form action="submit" method="post">
+                    <div class="old-new-confirm-password">
+                        <label for="">Old Password</label>
+                        <input type="text" placeholder="Type your old password">
+
+                    </div>
+                    <div class="new-reenter">
+                        <div class="old-new-confirm-password">
+                            <label for="">New Password</label>
+                            <input type="text" placeholder="Type a new password">
+
+                        </div>
+                    </div>
+                    <div class="new-reenter">
+                        <div class="old-new-confirm-password">
+                            <label for="">Confirm Password</label>
+                            <input type="text" placeholder="Re-enter your password">
+
+                        </div>
+                    </div>
+                </form>
+                <div class="clear-update-button">
+                    <button class="clear-btn">Clear</button>
+                    <button class="update-btn">Update Password</button>
+
                 </div>
             </div>
         </div>
     </div>
 
+
+
+
+
+
+    <!--Modal-->
+
+
+
+
+
+    <div class="modal" *ngIf="showModal">
+
+        <div class="modal_form">
+            <div class="title_bg">
+                <h1>Edit Personal Details </h1>
+            </div>
+            <form class="modal_form">
+                <div class="form_input">
+                    <div class="form_group">
+                        <label for="name">Name</label>
+                        <input type="name">
+                    </div>
+                    <div class="form_group">
+                        <label for="name">Name</label>
+                        <input type="name">
+                    </div>
+                </div>
+                <div class="form_input">
+                    <div class="form_group">
+                        <label for="name">Name</label>
+                        <input type="name">
+                    </div>
+                    <div class="form_group">
+                        <label for="name">Name</label>
+                        <input type="name">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
