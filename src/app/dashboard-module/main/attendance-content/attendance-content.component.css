@@ -141,22 +141,44 @@ td {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    width: 281px;
+    height: 44px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 5px;
 }
 
-.grid-icon i {
-    font-size: 15px;
-    padding: 4px;
+.grid-icon button {
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-color: #ffff;
+    background-color: transparent;
+    color: #B4B4B4;
+    padding: 0 4px;
+    
+}
+
+.grid-icon .history_btn {
+    width: 129px;
+    height: 34px;
     border-radius: 4px;
 }
 
-.grid-icon i:hover {
-    background-color: #999;
-    color: #fff;
+.grid-icon .Day-wise_btn {
+    width: 154px;
+    height: 34px;
+    border-radius: 4px;
 }
 
-.grid-icon>i.active {
-    background-color: #ccc !important;
-    /* change to your desired background color */
+
+.grid-icon button:hover {
+    background-color: #EBEAF6;
+}
+
+.grid-icon>button.active {
+    background-color: #EBEAF6 !important;
+    color:#333333;
 }
 
 .employe_input {
@@ -652,3 +674,38 @@ input:focus {
     background-color: #ECECEC;
     border-radius: 8px;
 }
+/* -----------------Progresss Bar------------------ */
+.progress_container {
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 28px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress{
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress:before {
+    content: "";
+    position: absolute;
+    height: 74%;
+    width: 74%;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.value-container {
+    position: relative;
+    font-size: 15px;
+    color: #444444;
+    font-weight: bold;
+}
+

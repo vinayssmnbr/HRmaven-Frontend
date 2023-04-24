@@ -1,12 +1,22 @@
 <div class="dropdown_container">
-    <div class="dropdwon_select" (click)="dropdownOpen()">
-      <p>{{Selectvariable}}</p>
-      <i class="fa-sharp fa-solid fa-caret-down"></i>
-    </div>
-    <div class="select_content" *ngIf="contentdropdown">
-      <ul>
-        <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-          {{arr.name}}</li>
-      </ul>
-    </div>
+  <div class="dropdwon_select" (click)="dropdownOpen()">
+    <p>{{Selectvariable}}</p>
+    <i class="fa-sharp fa-solid fa-caret-down"></i>
   </div>
+  <div class="select_content" *ngIf="contentdropdown">
+    <ul>
+      <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+        {{arr.name}}</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="circle-graph ">
+                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
+                                [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
+                        </div> -->

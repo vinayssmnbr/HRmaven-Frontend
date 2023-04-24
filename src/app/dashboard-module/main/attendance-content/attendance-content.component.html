@@ -24,14 +24,27 @@
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
-                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
-                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i>
+                <!-- <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
+                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i> -->
+                <button class="history_btn" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}">Employee History</button>
+                <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}">Day-wise Attendance</button>
             </div>
-            <label for="date">
+            <label for="date" *ngIf="calender">
               <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
-
+            <div class="dropdown_container" *ngIf="dropdown">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                  <p>{{Selectvariable}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown">
+                  <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                      {{arr.name}}</li>
+                  </ul>
+                </div>
+              </div>
 
         </div>
     </div>
@@ -88,9 +101,10 @@
                             <p>{{user.presents}}/{{totalDays}}</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph ">
-                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
-                                [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
+                        <div class="progress_container">
+                            <div class="circular-progress">
+                                <div class="value-container">0%</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,6 +114,15 @@
 
 
     <!-- ------------------Input  Modal form---------------  -->
+
+
+      <!-- <div class="circle-graph ">
+                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
+                                [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
+                        </div> -->
+
+
+
 
     <!-- <div class="employee-modal" *ngIf="showModal">
         <form class="input-form" [formGroup]="form" (ngSubmit)="OnUpdate()">
