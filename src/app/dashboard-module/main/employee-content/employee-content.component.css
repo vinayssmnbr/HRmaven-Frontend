@@ -105,8 +105,8 @@
   display: flex;
   background-color: #FFFFFF;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 14px;
+  padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -171,7 +171,7 @@ input:focus {
 .fa-caret-down {
     position: absolute;
     left: 35.63%;
-    top: 14.2%;
+    top: 14%;
     /* transform: translateY(-50%); */
     color: #444444;
     cursor: pointer;
@@ -515,38 +515,29 @@ table {
   border-radius: 12px;
   outline: none;
   cursor: pointer;
+  font-family: 'Outfit',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
 }
-.icons .select .activated.active{
+
+.activated{
+  color: #3D9030;
   background-color: rgba(123, 211, 109, 0.3);
-  color: rgba(123, 211, 109, 0.3);
-}
-.icons .select .terminate.active{
- background-color: rgba(250, 151, 150, 0.2);
- color: rgba(250, 151, 150, 0.2);
-}
-.icons .select .abscond.active{
-  background-color: rgba(248, 187, 111, 0.4);
-  color: rgba(248, 187, 111, 0.4);
-}
-.icons .select .resign.active{
-  background-color: rgba(255, 238, 82, 0.5);
-  color: rgba(255, 238, 82, 0.5);
-}
-/* #mySelect option.activated.active {
-  background-color: green;
-}
 
-#mySelect option.terminate.active {
-  background-color: red;
 }
-
-#mySelect option.resign.active {
-  background-color: yellow;
+.terminate{
+  color: #CB1E0F;
+  background-color: rgba(250, 151, 150, 0.2);
 }
-
-#mySelect option.abscond.active {
-  background-color: brown;
-} */
+.resign{
+ color: #CE524A;
+background-color: rgba(255, 238, 82, 0.5);
+}
+.abscond{
+ color: #DB771D;
+ background-color: rgba(248, 187, 111, 0.4);
+}
 .modal {
     position: fixed;
     top: 0;
@@ -620,126 +611,6 @@ table {
 .modal-body {
   margin: 40px 50px;
 }
-
-/* .numbers {
-    display: flex;
-    gap: 106px;
-    align-items: center;
-    padding-top: 50px;
-    margin-left: 176px;
-} */
-
-/* .next::after {
-    content: '';
-    position: absolute;
-    width: 108px;
-    left: 38px;
-    top: 20px;
-    border: 1px dashed #cbcbcb;
-}
-
-.next.inactive::after {
-    content: '';
-    position: absolute;
-    width: 108px;
-    left: 38px;
-    top: 20px;
-    border: 1px solid #2F2C9F;
-}
-
-.next.active {
-    border: 1px solid #2F2C9F;
-}
-
-.next.inactive {
-    border: 1px solid transparent;
-}
-
-.prev.active {
-    border: 1px solid #2F2C9F;
-}
-
-.number {
-    border-radius: 50%;
-    padding: 4.5px;
-    position: relative;
-}
-
-.numbers span.active {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    width: 30px;
-    background: #2F2C9F;
-    height: 30px;
-    color: #ffffff;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
-}
-
-.numbers span {
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid #E0E0E0;
-    width: 30px;
-    background: #E0E0E0;
-    height: 30px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
-}
-
-.numbers span.inactive {
-    background-color: #2F2C9F;
-    color: white;
-    border: 1px solid transparent;
-}
-
-.details {
-    display: flex;
-    padding-left: 166px;
-    padding-top: 10px;
-}
-
-.details p.active1 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 140%;
-}
-
-.details .active1.activate {
-    color: #2F2C9F;
-}
-
-.details .active1.inactivate {
-    color: #2F2C9F;
-}
-
-.details p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 140%;
-    color: #999999;
-    ;
-}
-
-.details .notactive1 {
-    margin-left: 67px;
-}
-
-.details .notactive2 {
-    margin-left: 50px;
-} */
 
 #form1 {
     /* padding-top: 50px;
@@ -1686,4 +1557,9 @@ label {
 .select_active {
     background-color: #ECECEC;
     border-radius: 8px;
+}
+.modal-content5{
+  width: 500px;
+  height: 300px;
+  background-color: white;
 }
