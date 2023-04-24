@@ -50,12 +50,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of employee | attendanceFilter:employeename:datez">
+                    <tr *ngFor="let user of employee1 | attendanceFilter:employeename:datez">
                         <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
                             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
                             <h2>No Record Found!</h2>
                         </td>
-                        <td *ngIf="user.found!='true'">{{user.empId}}</td>
+                        <td *ngIf="user.found!='true'">{{user.uid}}</td>
                         <td *ngIf="user.found!='true'">{{user.name}}</td>
                         <td *ngIf="user.found!='true'">{{user.date | date:'shortDate'}}</td>
                         <td *ngIf="user.found!='true'">{{user.status}}</td>
@@ -85,18 +85,20 @@
                     <p>{{user.designation}}</p>
                     <div class="attendence-percent ">
                         <div class="percent-text ">
-                            <p>25/30</p>
+                            <p>{{user.presents}}/{{totalDays}}</p>
                             <h4>Monthly</h4>
                         </div>
                         <div class="circle-graph ">
-                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4
-                                " [outerStrokeColor]=" '#3D9030' " [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
+                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
+                                [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <!-- ------------------Input  Modal form---------------  -->
 
     <!-- <div class="employee-modal" *ngIf="showModal">
