@@ -391,7 +391,7 @@ td {
 }
 
 .leaves_table::-webkit-scrollbar {
-    height: 8px;
+    height: 4px;
 }
 
 .leaves_table::-webkit-scrollbar-track {
@@ -528,50 +528,6 @@ input[type="radio"] {
     100% {
         outline-offset: -0.2rem;
     }
-}
-
-/* =====================Progress Bar=================== */
-.progress_container {
-    position: relative;
-    transform: translate(-50%, -50%);
-    top: 28px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-}
-
-.circular-progress,
-.circular-progress1,
-.circular-progress2,
-.circular-progress3 {
-    position: relative;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-}
-
-.circular-progress:before,
-.circular-progress1:before,
-.circular-progress2:before,
-.circular-progress3:before {
-    content: "";
-    position: absolute;
-    height: 74%;
-    width: 74%;
-    background-color: #ffffff;
-    border-radius: 50%;
-}
-
-.value-container,
-.value-container1,
-.value-container2,
-.value-container3 {
-    position: relative;
-    font-size: 15px;
-    color: #444444;
-    font-weight: bold;
 }
 
 /* -----------------Tool Tips------------------ */

@@ -72,6 +72,7 @@ export class LeavesContentComponent {
     );
 
     // --------------Progress Bar-----------
+
     const progressBar = document.querySelector(
       '.circular-progress'
     ) as HTMLElement;
