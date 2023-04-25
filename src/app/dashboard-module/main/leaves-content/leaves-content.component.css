@@ -265,23 +265,16 @@
 .list_nav p {
     cursor: pointer
 }
-
-.Pending:hover {
-    border-bottom: 3px solid #2F2C9F;
-
+.Pending,.Approved,.Rejected{
+    padding: 2px 50px;
 }
-
-.Approved:hover {
+.Pending:hover,.Approved:hover,.Rejected:hover {
     border-bottom: 3px solid #2F2C9F;
 }
-
-.Rejected:hover {
-    border-bottom: 3px solid #2F2C9F;
-}
-
 .color {
     color: #2F2C9F;
     border-bottom: 3px solid #2F2C9F;
+   
 }
 
 /*------------------ table----------------------- */
@@ -370,10 +363,9 @@ td {
 
 .table_slide {
     position: sticky;
-    right: 0;
+    right: 1px;
     width: 100px;
     z-index: 999;
-
 }
 
 td {
