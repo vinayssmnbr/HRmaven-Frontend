@@ -42,9 +42,8 @@ export class AttendanceContentComponent implements OnInit {
   table2Visible = false;
   todayDate: string;
   totalDays: number;
-  calender:boolean=true;
   DayAttendance = [];
-
+  card:any=[];
   constructor(public dashService: DashService, private datepipe: DatePipe) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
@@ -53,6 +52,7 @@ export class AttendanceContentComponent implements OnInit {
     this.datez = this.datepipe.transform(new Date(), 'YYYY-MM-dd');
     console.log(this.datez);
     this.dayWiseAttendance(this.datez);
+
   }
 
 
@@ -205,6 +205,7 @@ changefunction()
       this.employee1 = res;
     });
   }
+  calender=true;
 
   toggleTable1() {
     this.showCard = !this.showCard;
@@ -213,6 +214,10 @@ changefunction()
     this.table2Visible = false; // ensure other table is hidden
     this.calender = true;
     this.dropdown = false;
+    const d= new Date();
+    const month=d.getMonth();
+    this.Selectvariable=this.array[month].name;
+    this.loadcarddata(month);
   }
   dropdown = false;
   async toggleTable2() {
@@ -235,43 +240,43 @@ changefunction()
       name: 'February',
     },
     {
-      id: 3,
+      id: 2,
       name: 'March',
     },
     {
-      id: 4,
+      id: 3,
       name: 'April',
     },
     {
-      id: 5,
+      id: 4,
       name: 'May',
     },
     {
-      id: 6,
+      id: 5,
       name: 'June',
     },
     {
-      id: 7,
+      id: 6,
       name: 'July',
     },
     {
-      id: 8,
+      id: 7,
       name: 'August',
     },
     {
-      id: 9,
+      id: 8,
       name: 'September',
     },
     {
-      id: 10,
+      id: 9,
       name: 'October',
     },
     {
-      id: 11,
+      id: 10,
       name: 'November ',
     },
     {
-      id: 12,
+      id: 11,
       name: 'December',
     },
   ];
@@ -285,10 +290,24 @@ changefunction()
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
-    console.log(arr.name);
+    console.log(arr.id);
+    this.loadcarddata(arr.id);
+
+
+
   }
+
+  loadcarddata(month:any){
+    this.dashService.getAttendancecard(month).subscribe((res)=>{
+      console.log(res);
+      this.card=res;
+  })
+  }
+
+
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
+
   }
 
 }

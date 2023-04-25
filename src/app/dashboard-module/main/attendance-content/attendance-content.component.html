@@ -27,15 +27,13 @@
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
-                <!-- <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
-                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i> -->
                 <button class="history_btn" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}">Employee
                     History</button>
                 <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}">Day-wise
                     Attendance</button>
             </div>
             <label for="date">
-              <input type="date" id="date" (change)="changefunction()" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
+              <input type="date" id="date" *ngIf="showTable"(change)="changefunction()" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
             <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
@@ -123,82 +121,4 @@
             </div>
         </div>
 
-
-        <!-- ------------------Input  Modal form---------------  -->
-
-
-
-
-
-
-
-        <!-- <div class="employee-modal" *ngIf="showModal">
-        <form class="input-form" [formGroup]="form" (ngSubmit)="OnUpdate()">
-            <div class="cross-icon">
-                <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-            </div>
-            <div class="modal-input-text">
-                <h1>Attendance Rectification</h1>
-            </div>
-
-            <div class="input_form2">
-                <div class="form__group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" formControlName="name" [disabled]="true" />
-                </div>
-                <div class="form__group">
-                    <label for="number">Employee ID</label>
-                    <input type="text" id="number" formControlName="empId" [disabled]="true" />
-                </div>
-                <div class="form__group">
-                    <label for="date">Date</label>
-                    <input type="date" formControlName="date" />
-                </div>
-            </div>
-            <div class="input_form2">
-                <div class="form__group">
-                    <label for="name">Status</label>
-                    <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                        <div class="dropdwon_select" (click)="dropdownOpen()">
-                            <p>{{Selectvariable}}</p>
-                            <input style="display:none;" type="text" [(ngModel)]="Selectvariable" formControlName="status" />
-                            <i class="fa-sharp fa-solid fa-caret-down"></i>
-                        </div>
-                        <div class="select_content" *ngIf="contentdropdown">
-                            <ul>
-                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                                    {{arr.name}}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="form__group">
-                    <label for="name">Punch In</label>
-                    <input type="time" formControlName="punch_in" />
-                </div>
-                <div class="form__group">
-                    <label for="name">Punch out</label>
-                    <input type="time" formControlName="punch_out" />
-                </div>
-            </div>
-            <div class="form__group form-btn">
-                <button type="submit" class="done-btn">Done</button>
-            </div>
-        </form>
-    </div> -->
-
-        <!-- ----------------------------Edit popup Modal --------------- -->
-        <!-- <div class="edit-modal" *ngIf="editmodal">
-        <div class="edit-modal-text">
-            <div class="modal-text">
-                <img src="./assets/images/tick.png" alt="img">
-            </div>
-            <div class="modal-content">
-                <h3>Successful</h3>
-                <p>Attendance has been edited successfully!</p>
-                <button class="Done_btn" (click)="done()">Done</button>
-            </div>
-        </div>
-    </div> -->
     </div>

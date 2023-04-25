@@ -78,6 +78,17 @@ export class DashService {
     return this.http.get('http://localhost:3000/attendance/date/attendance',{ headers });  //this.getAttd
   }
 
+  getAttendancecard(month:any){
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'month': month.toString()
+      }
+    )
+    return this.http.get('http://localhost:3000/attendance/date/attendancecard',{ headers });
+  }
+
+
   graphcontent()
   {
     return this.http.get('http://localhost:3000/attendance/date/report');
