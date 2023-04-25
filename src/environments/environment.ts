@@ -49,7 +49,7 @@ export const environment = {
   // updatempdata: 'http://localhost:3000/api/update',
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
-  // profile: 'http://localhost:3000/user-profile',
+  // profile: 'http://localhost:3000/user-profile',g
   // getemail : 'http://localhost:3000/getemails/email',
   // getpwd : 'http://localhost:3000/userprofilepwd',
   // changepassword : 'http://localhost:3000/islinkclicked'
