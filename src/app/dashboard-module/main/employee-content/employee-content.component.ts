@@ -17,6 +17,7 @@ import {
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
+import { error, log } from 'console';
 
 @Component({
   selector: 'app-employee-content',
@@ -80,9 +81,15 @@ export class EmployeeContentComponent implements OnInit {
     dateOfJoining: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
-    mobile: new FormControl('', [Validators.required, Validators.pattern('[6-9]{1}[0-9]{9}')]),
-    email: new FormControl('', [Validators.required, Validators.email,
-      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$')]),
+    mobile: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+    ]),
     timing: new FormControl('', Validators.required),
   });
 
@@ -94,10 +101,10 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.setSelectedEmployee(user);
   }
   //ADD DATA
-  file: File | null = null;
-  private additionalData: any = {};
+  // file: File | null = null;
   submit() {
     if (this.form.invalid) return;
+    console.log(this.form);
     const data = this.form.value;
     this.showModalContent = false;
     this.fourthStep = true;
@@ -191,9 +198,11 @@ export class EmployeeContentComponent implements OnInit {
     console.log(this.form.value);
     this.firstStep = false;
     this.secondStep = true;
+    this.onUpload(this.selectedFile);
   }
 
   onPreviousForm() {
+    console.log(this.form.value);
     this.firstStep = true;
     this.secondStep = false;
   }
@@ -213,6 +222,7 @@ export class EmployeeContentComponent implements OnInit {
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
     this.showModalContent = true;
     this.fourthStep = false;
+    this.form.reset();
   }
 
   openModal() {
@@ -399,6 +409,8 @@ export class EmployeeContentComponent implements OnInit {
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     this.job_type = arr1.name;
+    this.form['job_type'] = arr1.name;
+    if (this.form.invalid) return;
 
     console.log(arr1.name);
   }
@@ -460,76 +472,109 @@ export class EmployeeContentComponent implements OnInit {
       event.preventDefault();
     }
   }
-
   selectedFile: File | null = null;
-  uploading = false;
-  uploaded = false;
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
-    this.fileName = file ? file.name : '';
-    this.onUpload(file);
+    this.selectedFile = event.target.files[0];
+    this.fileName = this.selectedFile ? this.selectedFile.name : '';
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    // this.onUpload(  this.selectedFile );
   }
-
 
   onUpload(file) {
-    this.dashService.upload1(file).then((res) => {
-      this.form.patchValue({
-        url: res.url,
-      });
-    });
+    console.log('fdjkhf');
+    this.dashService.upload1(file).then(
+      (res) => {
+        this.form.patchValue({
+          url: res && res.url,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
-selectall:boolean=false;
-selectboxes(){
-  this.selectall=!this.selectall;
-}
-isallactive:boolean=true;
-isall(){
-  this.isallactive=!this.isallactive;
-  this.is_active=false;
-  this.is_absconder = false;
-  this.is_terminated = false;
-  this.is_resigned = false;
-}
- is_active: boolean = false;
+  selectall: boolean = false;
+  selectboxes() {
+    this.selectall = !this.selectall;
+  }
+  isallactive: boolean = true;
+  isall() {
+    this.isallactive = !this.isallactive;
+    this.is_active = false;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_resigned = false;
+  }
+  is_active: boolean = false;
   isactive() {
     this.is_active = !this.is_active;
-    this.isallactive=false;
-    this.is_absconder=false;
-    this.is_terminated=false;
-    this.is_resigned=false;
+    this.isallactive = false;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_resigned = false;
   }
-  is_resigned:boolean=false;
-  is_terminated:boolean=false;
-  is_absconder:boolean=false;
-  isresigned(){
-    this.is_resigned=!this.is_resigned;
+  is_resigned: boolean = false;
+  is_terminated: boolean = false;
+  is_absconder: boolean = false;
+  isresigned() {
+    this.is_resigned = !this.is_resigned;
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_active = false;
-    this.isallactive=false;
+    this.isallactive = false;
   }
-  isterminated(){
-    this.is_terminated=!this.is_terminated;
+  isterminated() {
+    this.is_terminated = !this.is_terminated;
     this.is_absconder = false;
     this.is_resigned = false;
     this.is_active = false;
     this.isallactive = false;
   }
-  isabsconder(){
+  isabsconder() {
     this.is_absconder = !this.is_absconder;
     this.is_resigned = false;
     this.is_terminated = false;
     this.is_active = false;
     this.isallactive = false;
-
   }
-  // iscolorgreen:boolean=false;
-  // iscoloryellow:boolean=false;
-  // iscolorred:boolean=false;
-  // iscolorbrown:boolean=false;
-  // colorred(){
-  //   this.iscolorred=!this.iscolorred;
+  iscolorgreen: boolean = false;
+  iscoloryellow: boolean = false;
+  iscolorred: boolean = false;
+  iscolorbrown: boolean = false;
+  colorred() {
+    this.iscolorred = !this.iscolorred;
+  }
+  colorgreen() {
+    this.iscolorgreen = !this.iscolorgreen;
+  }
+  coloryellow() {
+    this.iscoloryellow = !this.iscoloryellow;
+  }
+  colorbrown() {
+    this.iscolorbrown = !this.iscolorbrown;
+  }
+  selectedOption: string;
+
+  // onSelectChange() {
+  //   // Define your color logic here based on the selectedOption value
+  //   switch (this.selectedOption) {
+  //     case 'option1':
+  //       document.querySelector('select').style.backgroundColor = 'red';
+  //       break;
+  //     case 'option2':
+  //       document.querySelector('select').style.backgroundColor = 'green';
+  //       break;
+  //     case 'option3':
+  //       document.querySelector('select').style.backgroundColor = 'blue';
+  //       break;
+  //     default:
+  //       document.querySelector('select').style.backgroundColor = 'white';
+  //       break;
+  //   }
   // }
   // colorgreen() {
   //   this.iscolorgreen = !this.iscolorgreen;
@@ -542,41 +587,43 @@ isall(){
   // }
   selectedUser: any;
   backgroundColor: string;
-  color:string;
+  color: string;
   borderColor: string;
   onSelectChange(event: any, user) {
     // if(user===this.selectedUser){
     switch (event.target.value) {
-      case 'active':{
+      case 'active': {
         this.backgroundColor = 'rgba(123, 211, 109, 0.3)';
         this.color = '#3D9030';
         this.borderColor = 'rgba(123, 211, 109, 0.3)';
         break;
       }
-      case 'terminated':
-        {
+      case 'terminated': {
         this.backgroundColor = 'rgba(250, 151, 150, 0.2)';
         this.color = '#CB1E0F';
         this.borderColor = 'rgba(250, 151, 150, 0.2)';
         break;
-        }
-      case 'resigned':
-       { this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
+      }
+      case 'resigned': {
+        this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
         this.color = '#CE524A';
         this.borderColor = 'rgba(255, 238, 82, 0.5)';
-        break;}
-      case 'absconder':{
+        break;
+      }
+      case 'absconder': {
         this.backgroundColor = 'rgba(248, 187, 111, 0.4)';
         this.color = '#DB771D';
         this.borderColor = 'rgba(248, 187, 111, 0.4)';
-        break;}
-      default:{
+        break;
+      }
+      default: {
         this.backgroundColor = '';
-        this.color='';
-        this.borderColor='';
-        break;}
+        this.color = '';
+        this.borderColor = '';
+        break;
+      }
     }
-  // }
+    // }
   }
   selectUser(user) {
     this.selectedUser = user;
@@ -584,10 +631,10 @@ isall(){
     this.color = '';
     this.borderColor = '';
   }
-importfile:boolean=false;
-openImport(){
-  this.importfile=true;
-  this.showModal=true;
-  this.showModalContent=false;
-}
+  importfile: boolean = false;
+  openImport() {
+    this.importfile = true;
+    this.showModal = true;
+    this.showModalContent = false;
+  }
 }
