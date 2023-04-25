@@ -25,8 +25,9 @@
     /* justify-content: center; */
 
 }
-.profile-arrow .arrow{
-        cursor: pointer;
+
+.profile-arrow .arrow {
+    cursor: pointer;
     align-items: center;
     display: flex;
 }
@@ -59,10 +60,11 @@
     align-items: center;
     justify-content: center;
 }
-.name-text h5{
+
+.name-text h5 {
     font-weight: 400;
-font-size: 20px;
-color: #444444;
+    font-size: 20px;
+    color: #444444;
 }
 
 .name-text p {
@@ -74,14 +76,16 @@ color: #444444;
 .location img {
     margin-top: 1.2px;
     height: 15px;
-   width: 12px;
+    width: 12px;
 }
+
 .location {
     display: flex;
     gap: 5px;
     align-items: center;
     text-align: center;
 }
+
 .notification-area {
     max-width: 350px;
     width: 100%;
@@ -158,7 +162,7 @@ color: #444444;
 
 .toggle ul {
     display: flex;
-   
+
 
 }
 
@@ -178,34 +182,39 @@ color: #444444;
 
 .company-name-headoffice {
     display: flex;
-justify-content: space-between;
+    justify-content: space-between;
 }
-.company-name-headoffice .phone-number{
+
+.company-name-headoffice .phone-number {
     margin-top: 30px;
 }
-.head-office-edit{
+
+.head-office-edit {
     display: flex;
     gap: 30px;
 }
 
-.edit-password-button .edit{
+.edit-password-button .edit {
     width: 71px;
-min-height: 29px;
-background: #FFFFFF;
-/* grey/gray_E0 */
-cursor: pointer;
-border: 1px solid #E0E0E0;
-border-radius: 22px;
+    min-height: 29px;
+    background: #FFFFFF;
+    /* grey/gray_E0 */
+    cursor: pointer;
+    border: 1px solid #E0E0E0;
+    border-radius: 22px;
 }
-.edit-password-button{
+
+.edit-password-button {
     display: flex;
     gap: 7.87px;
 }
-.edit-password-button img{
+
+.edit-password-button img {
     margin-left: 7.87px;
     width: 11.42px;
     height: 11.42px;
 }
+
 .company-name,
 .employee-text,
 .head-office-text {
@@ -224,100 +233,108 @@ border-radius: 22px;
     font-size: 15px;
     color: #777777;
 }
-.description-pen{
+
+.description-pen {
     display: flex;
     gap: 5.87px;
     margin-top: 30px;
 }
 
-.description-heading h6{
+.description-heading h6 {
     font-weight: 400;
-font-size: 13px;
-color: #444444;
+    font-size: 13px;
+    color: #444444;
 }
-.paragraph-text{
+
+.paragraph-text {
     text-align: justify;
     word-break: break-word;
 }
-.paragraph-text p{
-color: #777777;
-font-weight: 400;
-font-size: 15px;
+
+.paragraph-text p {
+    color: #777777;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 
 
-.old-new-confirm-password label{
+.old-new-confirm-password label {
     display: inline-block;
     text-align: left;
     width: 200px;
-min-height: 20px;
+    min-height: 20px;
 }
-.old-new-confirm-password input{
+
+.old-new-confirm-password input {
     width: 300px;
-min-height: 42px;
-background-color: #FFFFFF;
-border: 1px solid #B4B4B4;
-border-radius: 8px;
-padding-left: 17px;
-padding-right: 17px;
-outline: none;
+    min-height: 42px;
+    background-color: #FFFFFF;
+    border: 1px solid #B4B4B4;
+    border-radius: 8px;
+    padding-left: 17px;
+    padding-right: 17px;
+    outline: none;
 
 }
-.old-new-confirm-password{
+
+.old-new-confirm-password {
     gap: 100px;
     display: flex;
     text-align: center;
     align-items: center;
-    
+
 }
 
-.new-reenter{
+.new-reenter {
     margin-top: 25px;
 }
+
 .clear-update-button {
     display: flex;
     gap: 10px;
     justify-content: right;
     margin-top: 25px;
 }
-.clear-update-button .clear-btn{
+
+.clear-update-button .clear-btn {
     width: 90px;
-min-height: 37px;
-background-color: #FFFFFF;
-border: 1px solid #2F2C9F;
-border-radius: 8px;
-color: #2F2C9F;
-cursor: pointer;
+    min-height: 37px;
+    background-color: #FFFFFF;
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+    color: #2F2C9F;
+    cursor: pointer;
 }
-.clear-update-button .update-btn{
+
+.clear-update-button .update-btn {
     width: 154px;
     min-height: 37px;
     background-color: #2F2C9F;
     border-radius: 8px;
-border: 1px solid #2F2C9F;
-border-radius: 8px;
-color: #FFFFFF;
-cursor: pointer;
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 /* Company details done button*/
-.done-btn{
+.done-btn {
     max-width: 89px;
-height: 37px;
-width: 100%;
-background-color: #2F2C9F;
-border-radius: 8px;
-color: #FFFFFF;
-outline: none;
-cursor: pointer;
-border: none;
+    height: 37px;
+    width: 100%;
+    background-color: #2F2C9F;
+    border-radius: 8px;
+    color: #FFFFFF;
+    outline: none;
+    cursor: pointer;
+    border: none;
 }
 
 
 
-                             /*Modal--------------------------------------------- css*/
-.Modal_form{
+/*Modal--------------------------------------------- css*/
+.Modal_form {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -329,7 +346,7 @@ border: none;
     align-items: center;
     top: 0;
     left: 0;
-    
+
 }
 
 .Modal_modal {
@@ -342,27 +359,30 @@ border: none;
     width: 100%;
     max-width: 685px;
     width: 100%;
-   
-    
+
+
 }
-.Modal_modal i{
+
+.Modal_modal i {
     position: absolute;
     right: -30px;
     top: -24px;
     color: #ECECEC;
     cursor: pointer;
 }
-.edit-profile-heading{
+
+.edit-profile-heading {
     background-color: #F7F7FB;
-border-radius: 8px 8px 0px 0px;
-max-width: 685px;
-width: 100%;
-height: 75px;
-justify-content: center;
-display: flex;
-align-items: center;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 685px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
-.name-section>label{
+
+.name-section>label {
     float: left;
     margin-bottom: 20px;
 }
@@ -370,45 +390,51 @@ align-items: center;
 .form {
     padding: 40px 60px;
 }
-.form__group{
+
+.form__group {
     display: flex;
     flex-direction: column;
 }
-.form__group .form_input{
+
+.form__group .form_input {
     width: 270px;
-  padding: 10px 17px;
-height: 40px;
-background-color: #FFFFFF;
-border: 1px solid #CBCBCB;
-border-radius: 8px;
-margin-top: 5px;
+    padding: 10px 17px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    margin-top: 5px;
 }
-.name-email{
-display: flex;
-gap: 25px;
+
+.name-email {
+    display: flex;
+    gap: 25px;
 }
-.email-phone{
+
+.email-phone {
     display: flex;
     gap: 25px;
     margin-top: 25px;
 }
-.edit-profile-footer{
+
+.edit-profile-footer {
     background-color: #F7F7FB;
-border-radius: 8px 8px 0px 0px;
-max-width: 685px;
-width: 100%;
-height: 75px;
-justify-content: center;
-display: flex;
-align-items: center;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 685px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 
 }
-.edit-profile-footer .done-btn{
+
+.edit-profile-footer .done-btn {
     width: 89px;
-height: 37px;
-background-color: #2F2C9F;
-border-radius: 8px;
-color: #FFFFFF;
+    height: 37px;
+    background-color: #2F2C9F;
+    border-radius: 8px;
+    color: #FFFFFF;
 }
 
 
@@ -468,7 +494,8 @@ color: #FFFFFF;
     cursor: pointer;
     color: #fff;
 }
-.Done_form_btn .Done_btn:hover{
+
+.Done_form_btn .Done_btn:hover {
     background-color: #1fa10a;
 }
 
@@ -501,7 +528,7 @@ color: #FFFFFF;
 
 
 
-.Modal_form{
+.Modal_form {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -526,31 +553,19 @@ color: #FFFFFF;
     width: 100%;
     max-width: 980px;
     width: 100%;
-    
+
 }
-.company_modal i{
+
+.company_modal i {
     position: absolute;
     right: -30px;
     top: -24px;
     color: #ECECEC;
     cursor: pointer;
 }
-.edit-company-heading{
-    background-color: #F7F7FB;
-border-radius: 8px 8px 0px 0px;
-max-width: 980px;
-width: 100%;
-height: 75px;
-justify-content: center;
-display: flex;
-align-items: center;
-}
-.company-descrip{
-margin-top: 25px;
-}
 
-.company-details-footer{
-    background-color: #F7F7FB;;
+.edit-company-heading {
+    background-color: #F7F7FB;
     border-radius: 8px 8px 0px 0px;
     max-width: 980px;
     width: 100%;
@@ -558,15 +573,32 @@ margin-top: 25px;
     justify-content: center;
     display: flex;
     align-items: center;
-    }
+}
+
+.company-descrip {
+    margin-top: 25px;
+}
+
+.company-details-footer {
+    background-color: #F7F7FB;
+    ;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 980px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
 
 
 
 /* profile upload */
-.profile-image{
+.profile-image {
     position: relative;
-}  
-.profile-image img{
+}
+
+.profile-image img {
     opacity: 1;
     display: block;
     width: 100%;
@@ -574,27 +606,29 @@ margin-top: 25px;
     transition: .5s ease;
     backface-visibility: hidden;
     cursor: pointer;
-  
+
 }
 
 .profile-image:hover img {
     opacity: 0.9;
-   
-  }
-  .profile-image .middle img {
-   
+
+}
+
+.profile-image .middle img {
+
     position: absolute;
     color: #444444;
-    
-  }
-  .upload {
+
+}
+
+.upload {
     font-weight: 600;
-font-size: 9px;
+    font-size: 9px;
     color: black;
-   
-  }
- 
-.middle{
+
+}
+
+.middle {
     transition: .5s ease;
     opacity: 0;
     position: absolute;
@@ -604,7 +638,8 @@ font-size: 9px;
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
-.middle input{
+
+.middle input {
     position: absolute;
     z-index: 10;
 }
@@ -613,9 +648,9 @@ font-size: 9px;
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-   
-    min-width: 932px;
-    min-height: 120px;
+
+    width: 100%;
+    height: 120px;
     resize: none;
     outline: none;
     padding: 10px;
@@ -623,14 +658,20 @@ font-size: 9px;
     border-radius: 8px;
     margin-top: 5px;
 }
-.modal-text textarea{
-   
-    min-width: 860px;
-    min-height: 120px;
+
+.modal-text textarea {
+    width: 100%;
+    height: 120px;
     resize: none;
     outline: none;
     padding: 10px;
     border: 1px solid #CBCBCB;
     border-radius: 8px;
     margin-top: 5px;
+}
+
+textarea::placeholder {
+    font-weight: 400;
+    font-size: 15px;
+    color: #777777;
 }
