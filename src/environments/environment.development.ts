@@ -4,8 +4,8 @@ export const environment = {
   //LIVE SERVER URL
   saveurl: 'https://hrmaven.works/signup',
   loginurl: 'https://hrmaven.works/login',
-  // Forgoturl: 'https://hrmaven.works/forgotpassword',
-  // Reseturl: 'https://hrmaven.works/resetpassword',
+  Forgoturl: 'https://hrmaven.works/forgotpassword',
+  Reseturl: 'https://hrmaven.works/resetpassword',
   url: 'https://hrmaven.works/user-profile',
   auth: 'https://hrmaven.works/auth',
   createData: 'https://hrmaven.works/api/create',
@@ -19,17 +19,19 @@ export const environment = {
   report: 'https://hrmaven.works/attendance/report',
   profile: 'https://hrmaven.works/user-profile',
   updateleave: 'https://hrmaven.works/attendance/update',
-  //   getpwd : 'http://localhost:3000/userprofilepwd',
-  // getemail: 'https://hrmaven.works/getemails/email',
-  // changepassword: 'https://hrmaven.works/islinkclicked'
+  getemail: 'https://hrmaven.works/getemails/email',
 
   // //LOCAL URL
+
+  // attendancegraph:'http://localhost:3000/attendance/date/report',
+  // attendancecard:'http://localhost:3000/attendance/date/attendancecard',
+  // attendance:'http://localhost:3000/attendance/date/attendance',
   // updateleave: 'http://localhost:3000/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
-  Forgoturl: 'http://localhost:3000/forgotpassword',
-  Reseturl: 'http://localhost:3000/resetpassword',
-  getreseturl: 'http://localhost:3000/resetpassword',
+  // Forgoturl: 'http://localhost:3000/forgotpassword',
+  // Reseturl: 'http://localhost:3000/resetpassword',
+  // getreseturl: 'http://localhost:3000/resetpassword',
   // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
@@ -42,7 +44,5 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
-  getpwd : 'http://localhost:3000/userprofilepwd',
-  getemail : 'http://localhost:3000/getemails/email',
-  changepassword : 'http://localhost:3000/islinkclicked'
+//  getemail : 'http://localhost:3000/getemails/email',
 };

@@ -27,15 +27,13 @@
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
-                <!-- <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
-                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i> -->
                 <button class="history_btn" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}">Employee
                     History</button>
                 <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}">Day-wise
                     Attendance</button>
             </div>
-            <label for="date" *ngIf="calender">
-                <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
+            <label for="date">
+              <input type="date" id="date" *ngIf="showTable"(change)="changefunction()" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
             <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
@@ -61,7 +59,7 @@
                     <tr class="table_heading">
                         <th>Employee ID</th>
                         <th>Name</th>
-                        <th>Date</th>
+                        <th>Designation
                         <th>Status</th>
                         <th>PUNCH IN</th>
                         <th>PUNCH OUT</th>
@@ -69,7 +67,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of employee1 | attendanceFilter:employeename:datez">
+                    <tr *ngFor="let user of DayAttendance ">
+                      <!-- | attendanceFilter:employeename:datez -->
                         <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
                             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center">
                             </p>
@@ -77,12 +76,10 @@
                         </td>
                         <td *ngIf="user.found!='true'">{{user.uid}}</td>
                         <td *ngIf="user.found!='true'">{{user.name}}</td>
-                        <td *ngIf="user.found!='true'">{{user.date | date:'shortDate'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.designation}}</td>
                         <td *ngIf="user.found!='true'">{{user.status}}</td>
-                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.punch_in |
-                            date:'shortTime'}}</td>
-                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.punch_out |
-                            date:'shortTime'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.in | date:'shortTime'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.out | date:'shortTime'}}</td>
                         <!-- <td *ngIf="user.found!='true'" class="action1">
                             <div class="icons">
                                 <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
@@ -99,29 +96,24 @@
 
     <div class="attendence-card " *ngIf="showCard">
         <div class="row ">
-            <div class="col-3 " *ngFor="let user of employee1">
+            <div class="col-3 " *ngFor="let user of card">
                 <div class="card ">
                     <img src="assets\images\attendec-logo.png " alt="logo ">
-                    <!-- <h2>{{user.name}}</h2>
-                    <p>{{user.uid}}</p>
-                    <p>{{user.designation}}</p> -->
-                    <h2>Html</h2>
-                    <p>Text</p>
-                    <p>Css</p>
+
+                    <h2>{{user._id.name}}</h2>
+
+                    <p>{{user._id.designation}} | {{user._id.uid}}</p>
                     <div class="attendence-percent ">
                         <div class="percent-text ">
-                            <!-- <p>{{user.presents}}/{{totalDays}}</p> -->
-                            <p>Girija</p>
-                            <h4>Monthly</h4>
+
+                            <p>{{user.presentcount}}/{{user.totalcount}}</p>
+
                         </div>
-                        <!-- <div class="circle-graph ">
-                            <circle-progress [percent]="15 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
-                                [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
-                        </div> -->
-                        <div role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
-                            style="--value:50"></div>
+                        <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                            style="--value:{{user.percent}}"></div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
