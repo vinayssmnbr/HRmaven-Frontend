@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { UserService } from '../service/user.service';
 import { Subject, } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import * as bcrypt from 'bcrypt';
 
 @Component({
   selector: 'app-forget',
@@ -47,7 +48,8 @@ export class ForgetComponent {
 
 
   expired:boolean = false;
-  hasChangedPassword: boolean;
+  hasChangedPassword: boolean = false;
+  errorMessage: string ='';
   constructor(private route: ActivatedRoute,public service:UserService,private router :Router) { };
 
   token: any;
@@ -77,63 +79,65 @@ export class ForgetComponent {
     this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye' : 'fa-eye-slash';
     passwordInpu.type = this.showPassword1 ? 'text' : 'password';
   }
-
-  submission
+  hasError = false;
+//  submission
   newpassword(data:any)
   {
     console.log(data.value);
     this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
-      if(res==="changeit"){
+      // this.service.newpwd(this.forgetform.value,this.token).subscribe((res:any)=>{
+      if(res=="changeit"){
         console.log(res);
+        // this.hasChangedPassword = true;
       }
 
-    })
+    });
     this.router.navigate(['./login']);
 
-  }
-   isLinkClicked: boolean = true
+}
+
+// disable the submit button if there is an error
+get isDisabled() {
+return this.forgetform.invalid || this.hasError;
+}
 
 
-
-
+// pwdData = localStorage.getItem('password')
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
     });
-    // this.service.newpwd(this.forgetform.value,this.token).subscribe({
-    //   next: (res:any) => {
-    //     // const isLinkClicked = res.isLinkClicked;
-    //     // if (isLinkClicked) {
-    //     //   // if the link has already been used, show an error message
-    //     //   this.expired = true;
-    //     // }
-    //     if(res=="changeit"){
-    //       console.log(res);
-    //     }
-    //     this.router.navigate(['./login']);
-    // },
+    // if(this.forgetform.invalid){
+      // const pwdData = localStorage.getItem('password')
+    this.service.newpwd(this.forgetform.value, this.token).subscribe({
+      next: (res: any) => {
+        // if (res == 'changeit') {
+        //   this.expired = true;
+          
+        //   console.log(res);
+        // }
+            console.log("res: ",res);
 
-      
-    //   error: (err) => {
-    //     if (err.status === 400 && err.error && err.error.message === 'Link has expired') {
-    //       this.expired = true;
-    //     }
-    //   }
-    // });
-
-  //   this.service.updateIsLinkClicked(this.forgetform.controls['email'].value).subscribe(
-  //     (response: any) => {
-  //       console.log("updateIsLinkClicked: ",response);
-  //       this.isLinkClicked = true;
-  //       console.log('isLinkClicked:', this.isLinkClicked);
-  //       // do something with the isLinkClicked value
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  }
-
+        this.router.navigate(['./login']);
+      },
+        
+      error: (err) => {
+        if ( err.error.message === 'Link has expired' 
+        || err.error.message==='Reset password link has already been used') {
+          this.expired = true;
+          this.errorMessage = err.error.message;
+        } 
+        else  {
+          // handle other errors
+          // this.errorMessage = 'Link has expired!!';
+          // this.errorMessage =  'Link has expired';
+          
+        }
+      }
+    });
+   
+  } 
+  
   onKeyUp(event): void {
   event.target.value = event.target.value.trim()
 

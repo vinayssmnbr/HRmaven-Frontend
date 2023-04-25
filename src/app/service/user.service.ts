@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class UserService {
-
+  isFromSignupPage = false;
 
   constructor(
     private http: HttpClient,
@@ -26,15 +26,21 @@ export class UserService {
   private loginurl = environment.loginurl;
   private Forgoturl = environment.Forgoturl;
   private Reseturl = environment.Reseturl;
+  private geteseturl = environment.getreseturl;
+  private getpwd = environment.getpwd;
   private url = environment.url;
   private auth = environment.auth;
-  // private  emailurl = environment.getemail
+  private  emailurl = environment.getemail
   // private changepwd = environment.changepassword
 
-  // getData(email: string) {
-  //   const url = `${this.emailurl}/${email}`;
-  //   return this.http.get(url);
-  // }
+  getData(email: string) {
+    const url = `${this.emailurl}/${email}`;
+    return this.http.get(url);
+  }
+
+  getpwdd(){
+    return this.http.get(this.getpwd);
+  }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -51,9 +57,42 @@ export class UserService {
       'auth-token': token,
       Accept: 'application/json',
     });
-
     return this.http.post(this.Reseturl, data, { headers });
   }
+  // newpwd(data: any, token: any): Observable<any> {
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'auth-token': token,
+  //     Accept: 'application/json',
+  //   });
+  
+  //   if (data !== null) {
+  //     return this.http.post(this.Reseturl, data, { headers }).pipe(
+  //       catchError((error) => {
+  //         console.log('Error:', error);
+  //         return throwError(error);
+  //       })
+  //     );
+  //   } else {
+  //     // If data is null, return an empty observable
+  //     return of(null);
+  //   }
+  // }
+  
+
+
+
+
+  // newpwdd(token: any){
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'auth-token': token,
+  //     Accept: 'application/json',
+  //   });
+
+  //   return this.http.get(this.geteseturl,{ headers });
+  // }
+  
 
 
 
@@ -62,19 +101,8 @@ export class UserService {
     return this.http.post(this.loginurl, data);
   }
 
-  // updateIsLinkClicked(email: string): Observable<any> {
-  //   const url = `${this.changepwd}`;
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${this.cookie.get('token')}`
-  //   });
-  //   const body = { email: email };
-
-  //   return this.http.post(url, body, { headers });
-  // }
 
 
-  //  My code for profile fetch Name
   getUserProfileById(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
