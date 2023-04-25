@@ -38,7 +38,7 @@
                 <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
-            <div class="dropdown_container" *ngIf="dropdown">
+            <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
                 <div class="dropdwon_select" (click)="dropdownOpen()">
                     <p>{{Selectvariable}}</p>
                     <i class="fa-sharp fa-solid fa-caret-down"></i>

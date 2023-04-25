@@ -298,6 +298,10 @@ export class AttendanceContentComponent implements OnInit {
     this.contentdropdown = false;
     console.log(arr.name);
   }
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
 }
 function getCurrentDate() {
   throw new Error('Function not implemented.');
