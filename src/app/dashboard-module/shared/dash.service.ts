@@ -68,12 +68,15 @@ export class DashService {
     return this.http.get(this.updateData);
   }
   getAttendance() {
-    return this.http.get('http://localhost:3000/attendance/all');//this.getAttd
+    return this.http.get('http://localhost:3000/attendance/all');
   }
-  getEmployee(): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.getData)
-      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
+  // getEmployee(): Observable<any[]> {
+  //   return this.http
+  //     .get<any[]>(this.getData)
+  //     .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
+  // }
+  getEmployee(){
+    return this.http.get(this.getData)
   }
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
@@ -226,5 +229,11 @@ export class DashService {
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file)
+  }
+
+
+  updateEmpStatus(id,status):Observable<any>{
+    const url = `${this.updatempdata}/${id}`;
+    return this.http.patch(url,{status})
   }
 }
