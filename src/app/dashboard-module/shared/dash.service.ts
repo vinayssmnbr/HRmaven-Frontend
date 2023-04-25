@@ -68,6 +68,9 @@ export class DashService {
   getleaves() {
     return this.http.get(this.updateData);
   }
+
+
+  //  implementation of attendance backend by the harpreet singh
   getAttendance(date:any) {
     const headers= new HttpHeaders(
       {
@@ -75,7 +78,7 @@ export class DashService {
         'MyDate': date
       }
     )
-    return this.http.get('http://localhost:3000/attendance/date/attendance',{ headers });  //this.getAttd
+    return this.http.get(environment.attendance,{ headers });  //this.getAttd
   }
 
   getAttendancecard(month:any){
@@ -85,14 +88,16 @@ export class DashService {
         'month': month.toString()
       }
     )
-    return this.http.get('http://localhost:3000/attendance/date/attendancecard',{ headers });
+    return this.http.get(environment.attendancecard,{ headers });
   }
 
 
   graphcontent()
   {
-    return this.http.get('http://localhost:3000/attendance/date/report');
+    return this.http.get(environment.attendancegraph);
   }
+
+  /////////// end here from Harpreet Singh////////////////////////////
 
   getEmployee(): Observable<any[]> {
     return this.http
