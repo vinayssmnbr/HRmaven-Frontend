@@ -487,33 +487,33 @@
   padding: 15px 30px;
 }
 #form1{
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form2{
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form3 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form4 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form5 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form6 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 hr{
@@ -579,8 +579,8 @@ input[type='date'] {
 }
 .employe-id{
   cursor: not-allowed;
-  background-color: #fafafa !important;
-  border: 1px solid #FAFAFA;
+  background-color: #f1f1f1 !important;
+  border: 1px solid #F1f1f1;
 }
 #select{
   width: 270px;
