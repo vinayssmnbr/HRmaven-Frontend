@@ -197,7 +197,6 @@ export class EmployeeContentComponent implements OnInit {
   showModalContent: boolean = true;
   fifthstep: boolean = false;
   onNextForm() {
-    console.log(this.form.value);
     this.firstStep = false;
     this.secondStep = true;
     this.onUpload(this.selectedFile);
@@ -383,13 +382,13 @@ export class EmployeeContentComponent implements OnInit {
   }
   Selectvariable: any = 'Designation';
   colorvariable: number = 0;
-  Selectvariable1: string = 'Select';
+  Selectvariable1: string = '';
   colorvariable1: number = 0;
   Selectvariable2: string = 'Select Location';
   colorvariable2: number = 0;
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
-  Selectvariable6: string = 'Designation';
+  Selectvariable6: string = '';
   colorvariable6: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -406,14 +405,12 @@ export class EmployeeContentComponent implements OnInit {
     //     console.log('data', res);
     //   });
   }
+
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     this.job_type = arr1.name;
-    this.form['job_type'] = arr1.name;
-    if (this.form.invalid) return;
-
     console.log(arr1.name);
   }
   Changeselect2(arr2: any) {
@@ -596,7 +593,7 @@ export class EmployeeContentComponent implements OnInit {
   backgroundColor: string;
   color: string;
   borderColor: string;
-  onSelectChange(event: any, user) {
+  onSelectChange(event: any, user:any) {
     // if(user===this.selectedUser){
     switch (event.target.value) {
       case 'active': {
@@ -630,8 +627,15 @@ export class EmployeeContentComponent implements OnInit {
         break;
       }
     }
-    // }
-  }
+    this.dashService.updateEmpStatus(user._id ,event.target.value).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    }
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';
