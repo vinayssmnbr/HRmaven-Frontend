@@ -670,7 +670,7 @@ export class EmployeeContentComponent implements OnInit {
     this.showModal = false;
     this.csvadded = false;
   }
-  
+
   employeecsv() {
     this.csvadded = true;
     this.importfile = false;

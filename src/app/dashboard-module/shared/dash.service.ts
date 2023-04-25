@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { CookieService} from 'ngx-cookie-service'
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
+import { CookieService} from 'ngx-cookie-service'
 
 @Injectable({
   providedIn: 'root',

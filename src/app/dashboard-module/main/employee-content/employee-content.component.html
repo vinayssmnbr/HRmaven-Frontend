@@ -62,7 +62,7 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox">Employee ID</th>
+          <th class="employee"><input type="checkbox" >Employee ID</th>
           <th class="name">Name</th>
           <th class="email">Designation</th>
           <th class="designation">Email</th>
@@ -80,7 +80,7 @@
             <h2>No Record Found!</h2>
           </td>
           <td *ngIf="user.found!='true'">
-            <div class="employee1"><input type="checkbox">{{user.uid}}</div>
+            <div class="employee1"><input type="checkbox" >{{user.uid}}</div>
           </td>
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
             <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)"
@@ -313,6 +313,7 @@
           <h3>Select a CSV File to Upload</h3>
           <p>or drag and drop it here</p>
           <!-- <a (click)="fileInput.click()" class="choose">Choose File</a> -->
+
           <button class="import" (click)="importFile()">Choose File</button>
           <input type="file" name="csv" (change)="onFileSelectedrem($event)" style="display:none">
 
