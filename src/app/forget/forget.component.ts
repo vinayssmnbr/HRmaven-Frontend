@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { UserService } from '../service/user.service';
 import { Subject, } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import * as bcrypt from 'bcrypt';
 
 @Component({
   selector: 'app-forget',
@@ -78,65 +79,50 @@ export class ForgetComponent {
     this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye' : 'fa-eye-slash';
     passwordInpu.type = this.showPassword1 ? 'text' : 'password';
   }
-
-  submission
-//   newpassword(data:any)
-//   {
-//     console.log(data.value);
-//     this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
-//       // this.service.newpwd(this.forgetform.value,this.token).subscribe((res:any)=>{
-//       if(res=="changeit"){
-//         console.log(res);
-//         // this.hasChangedPassword = true;
-//       }
-
-//     });
-//     this.router.navigate(['./login']);
-  
-// }
-newpassword(data: any) {
-  console.log(data.value);
-  this.service.newpwd(data.value, this.token).subscribe({
-    next: (res) => {
-      if (res == "changeit") {
+  hasError = false;
+//  submission
+  newpassword(data:any)
+  {
+    console.log(data.value);
+    this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
+      // this.service.newpwd(this.forgetform.value,this.token).subscribe((res:any)=>{
+      if(res=="changeit"){
         console.log(res);
         // this.hasChangedPassword = true;
       }
-      this.router.navigate(["./login"]);
-    },
-    error: (err) => {
-      if (err.status === 400 && err.error && err.error.message === "Link has expired" || err.error.message === "Reset password link has already been used") {
-        this.expired = true;
-        this.errorMessage = err.error.message;
-      } else {
-        // handle other errors
-        this.errorMessage = "Link has expired!!";
-      }
-    },
-  });
+
+    });
+    this.router.navigate(['./login']);
+
+}
+
+// disable the submit button if there is an error
+get isDisabled() {
+return this.forgetform.invalid || this.hasError;
 }
 
 
+// pwdData = localStorage.getItem('password')
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
     });
     // if(this.forgetform.invalid){
-
-    this.service.newpwd(this.forgetform.value , this.token).subscribe({
-      next: (res) => {
+      // const pwdData = localStorage.getItem('password')
+    this.service.newpwd(this.forgetform.value, this.token).subscribe({
+      next: (res: any) => {
         // if (res == 'changeit') {
         //   this.expired = true;
           
         //   console.log(res);
         // }
-            console.log(res);
+            console.log("res: ",res);
 
         this.router.navigate(['./login']);
       },
         
       error: (err) => {
-        if (err.status === 400 && err.error && err.error.message === 'Link has expired' 
+        if ( err.error.message === 'Link has expired' 
         || err.error.message==='Reset password link has already been used') {
           this.expired = true;
           this.errorMessage = err.error.message;
@@ -148,10 +134,7 @@ newpassword(data: any) {
           
         }
       }
-
     });
-  
-  // }  
    
   } 
   

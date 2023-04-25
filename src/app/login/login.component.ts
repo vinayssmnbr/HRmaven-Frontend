@@ -73,6 +73,7 @@ export class LoginComponent {
       this.router.navigate(['dashboard']);
     }
     // this.userService.allDataLogin();
+    
   }
   userdetail: any = '';
   usernotfound: any = '';

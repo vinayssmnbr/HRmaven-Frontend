@@ -18,14 +18,18 @@ export const environment = {
   report:'https://hrmaven.works/attendance/report',
   profile:'https://hrmaven.works/user-profile',
   updateleave:'https://hrmaven.works/attendance/update',
+  // getpwd : 'http://localhost:3000/userprofilepwd',
   // getemail : 'https://hrmaven.works/getemails/email',
   // changepassword : 'https://hrmaven.works/islinkclicked'
+
+
   // //LOCAL URL
   // updateleave: 'https://hrmaven.works/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
   Forgoturl: 'http://localhost:3000/forgotpassword',
   Reseturl: 'http://localhost:3000/resetpassword',
+  getreseturl: 'http://localhost:3000/resetpassword',
   // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
@@ -39,5 +43,7 @@ export const environment = {
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
   getemail : 'http://localhost:3000/getemails/email',
+  getpwd : 'http://localhost:3000/userprofilepwd',
+
   changepassword : 'http://localhost:3000/islinkclicked'
 };

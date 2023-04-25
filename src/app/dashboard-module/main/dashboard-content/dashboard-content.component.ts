@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
@@ -15,6 +16,7 @@ export class DashboardContentComponent implements OnInit {
   loadermain: boolean = true;
   loader:boolean =false;
   constructor(
+    private route:ActivatedRoute,
     public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
@@ -91,7 +93,16 @@ export class DashboardContentComponent implements OnInit {
   ]
   ngOnInit()
    {
-
+    this.route.queryParams.subscribe(params => {
+      console.log('queryParams:', params);
+      if (params['source'] === 'signup') {
+        // User came through signup route, load data here
+      }
+    });
+    // this.route.queryParams.subscribe(params => {
+    //   const source = params['signup'];
+    //   console.log('source:', source);
+    // });
 
     this.dashService.getreport().subscribe((res:any)=>{
     if(res)

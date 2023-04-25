@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
@@ -26,6 +26,8 @@ export class UserService {
   private loginurl = environment.loginurl;
   private Forgoturl = environment.Forgoturl;
   private Reseturl = environment.Reseturl;
+  private geteseturl = environment.getreseturl;
+  private getpwd = environment.getpwd;
   private url = environment.url;
   private auth = environment.auth;
   private  emailurl = environment.getemail
@@ -34,6 +36,10 @@ export class UserService {
   getData(email: string) {
     const url = `${this.emailurl}/${email}`;
     return this.http.get(url);
+  }
+
+  getpwdd(){
+    return this.http.get(this.getpwd);
   }
 
   saveUser(data: any) {
@@ -51,22 +57,41 @@ export class UserService {
       'auth-token': token,
       Accept: 'application/json',
     });
-
     return this.http.post(this.Reseturl, data, { headers });
-    // return this.http.post(this.Reseturl, data, { headers }).pipe(
-    //   catchError((error: HttpErrorResponse) => {
-    //     return throwError(error.error.message);
-    //   })
-    // );
   }
-  newpwdd(){
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    });
+  // newpwd(data: any, token: any): Observable<any> {
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'auth-token': token,
+  //     Accept: 'application/json',
+  //   });
+  
+  //   if (data !== null) {
+  //     return this.http.post(this.Reseturl, data, { headers }).pipe(
+  //       catchError((error) => {
+  //         console.log('Error:', error);
+  //         return throwError(error);
+  //       })
+  //     );
+  //   } else {
+  //     // If data is null, return an empty observable
+  //     return of(null);
+  //   }
+  // }
+  
 
-    return this.http.get(this.Reseturl,{ headers });
-  }
+
+
+
+  // newpwdd(token: any){
+  //   let headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'auth-token': token,
+  //     Accept: 'application/json',
+  //   });
+
+  //   return this.http.get(this.geteseturl,{ headers });
+  // }
   
 
 
