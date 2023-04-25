@@ -1,9 +1,12 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../../service/user.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -14,7 +17,12 @@ export class DashboardContentComponent implements OnInit {
   // loader=false;
   loadermain: boolean = true;
   loader:boolean =false;
+  isFromSignupPage = false;
+
+
   constructor(
+    private route:ActivatedRoute,
+    private userService :UserService ,
     public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
@@ -38,6 +46,28 @@ export class DashboardContentComponent implements OnInit {
     });
 
   }
+
+
+  
+  personaldataForm = new FormGroup({
+    name: new FormControl(''),
+    totalemployee: new FormControl(''),
+    phone: new FormControl(''),
+    headoffice: new FormControl(''),
+  });
+
+
+  submitPersonalData(data: any){
+    console.log("personal data: ",this.personaldataForm.value)
+    // this.userService.saveUser(this.personaldataForm.value).subscribe((res: any)=>{
+    //   console.log("personaldataForm.value: ",this.personaldataForm.value);
+    // });
+  }
+
+
+
+
+
   options: any = [
     {
       day: 'Mon',
@@ -89,7 +119,9 @@ export class DashboardContentComponent implements OnInit {
   ]
   ngOnInit()
    {
-
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
+    this.isFromSignupPage = this.userService.isFromSignupPage;
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.graphcontent().subscribe((res:any)=>{
     if(res)

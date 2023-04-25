@@ -247,6 +247,7 @@ export class EmployeeProfileComponent {
     },
   ];
 
+
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
@@ -613,4 +614,10 @@ export class EmployeeProfileComponent {
     this.viewMore=false;
     this.showbutton=true;
   }
+  // openotherinput:boolean=false;
+  // openInput() {
+  //   if (this.array2.name==="Others"){
+  //      this.openotherinput=true;
+  //   }
+  // }
 }
