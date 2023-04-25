@@ -23,7 +23,7 @@ export const environment = {
   // getemail: 'https://hrmaven.works/getemails/email',
   // changepassword: 'https://hrmaven.works/islinkclicked'
 
-  //LOCAL URL
+  // //LOCAL URL
   // updateleave: 'http://localhost:3000/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',

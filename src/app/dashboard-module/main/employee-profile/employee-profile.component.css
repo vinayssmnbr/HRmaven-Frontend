@@ -53,20 +53,25 @@
   border-radius: 8px;
   margin-bottom: 30px;
 }
-.card2 .profile_pic{
+.card2 .profile_pic img{
   border-radius: 50%;
   position: relative;
+  width: 100px;
+  height: 100px;
 }
 .profile-content{
   display: none;
  position: absolute;
  top: 31%;
  left: 20%;
- font-size: 9px;
+ font-size: 10px;
  color: #ffffff;
  font-weight: 600;
-
 }
+/* .card2 .profile-content input[type='file']{
+  opacity: 0;
+  z-index: -1;
+} */
 .fa-camera{
   color: white;
   display: flex;

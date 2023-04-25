@@ -14,12 +14,6 @@ import { style } from '@angular/animations';
 })
 export class LeavesContentComponent {
   designationdropdownOption: boolean = false;
-  circularProgress: any;
-  progressValue: any;
-  progressStartValue = 0;
-  progressEndValue = 50;
-  speed = 100;
-  progressInterval: any;
   test: any = 'All';
   // searchText: string;
   status: string;
@@ -34,93 +28,43 @@ export class LeavesContentComponent {
   reject_graph: any;
   pending_graph: any;
 
-
-
-  //
-  //                                              Harpreet Code
-  //
-  //
+  //----------Harpreet Code-------
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
     this.fetchPendingLeave();
   }
 
-  row:any=[{
-    id:1234,
-    checked:true
-  },
-  {
-    id:1235,
-    checked:true
-  },
-  {
-    id:1236,
-    checked:true
-  }];
+  row: any = [
+    {
+      id: 1234,
+      checked: true,
+    },
+    {
+      id: 1235,
+      checked: true,
+    },
+    {
+      id: 1236,
+      checked: true,
+    },
+  ];
 
-  allchecked=false;
-  fetchPendingLeave() {
-
+  allchecked = false;
+  fetchPendingLeave() {}
+  Change($event) {
+    const id = $event.target.value;
+    const ischecked = $event.target.checked;
+    this.row.map((d) => {
+      if (d.id == id) {
+        d.checked = ischecked;
+        return d;
+      }
+    });
+    console.log(this.row);
   }
-
-  Change($event)
-  {
-      const id = $event.target.value;
-      const ischecked  = $event.target.checked;
-      this.row.map((d)=>{
-        if(d.id==id)
-        {
-          d.checked=ischecked;
-          return d;
-        }
-      })
-      console.log(this.row);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   ngOnInit() {
-
-
-
-
-
-
-    //  --------------------Drop Down-------------
+    //  --------------------Drop Down form-------------
     const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
       selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!;
     selectBtn.addEventListener('click', () =>
@@ -128,6 +72,7 @@ export class LeavesContentComponent {
     );
 
     // --------------Progress Bar-----------
+
     const progressBar = document.querySelector(
       '.circular-progress'
     ) as HTMLElement;
@@ -228,8 +173,6 @@ export class LeavesContentComponent {
       }
     }, speed3);
   }
-
-
 
   async updatereload() {
     this.dashService.getLeaves().subscribe((res: any) => {
@@ -371,7 +314,6 @@ export class LeavesContentComponent {
     console.log(arr1.name);
   }
 
-
   id: any = 'Pending';
   tabChange(ids: any) {
     this.id = ids;
@@ -381,38 +323,38 @@ export class LeavesContentComponent {
   showSearchBox1 = true;
 
   toggleSearchBox1() {
-    this.showSearchBox =  !this.showSearchBox;
+    this.showSearchBox = !this.showSearchBox;
     this.showSearchBox1 = false;
-    this.allchecked=!this.allchecked;
+    this.allchecked = !this.allchecked;
   }
-  showModal=false;
+  showModal = false;
   openModal() {
     this.showModal = true;
   }
-  showModal1=false;
+  showModal1 = false;
   openModal1() {
     this.showModal1 = true;
     this.showModal = false;
   }
 
-  showModal2=false;
+  showModal2 = false;
   openModal2() {
     this.showModal2 = true;
     this.showModal = false;
   }
-  showModal3=false;
-  openModal3(){
+  showModal3 = false;
+  openModal3() {
     this.showModal3 = true;
     this.showModal1 = false;
   }
-  closeModal(){
-    this.showModal=false;
-    this.showModal1=false;
-    this.showModal2=false;
-    this.showModal3=false;
+  closeModal() {
+    this.showModal = false;
+    this.showModal1 = false;
+    this.showModal2 = false;
+    this.showModal3 = false;
   }
-  toggleSearchBox(){
-    this.showSearchBox=!this.showSearchBox;
-    this.showSearchBox1=false;
+  toggleSearchBox() {
+    this.showSearchBox = !this.showSearchBox;
+    this.showSearchBox1 = false;
   }
 }

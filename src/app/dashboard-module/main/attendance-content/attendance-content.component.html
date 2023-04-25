@@ -12,6 +12,9 @@
             <div class="graph_heading">
                 <h1>Attendance Status</h1>
             </div>
+            <div class="year">
+                <h2>2023</h2>
+            </div>
         </div>
 
         <div class="bar-chart" [ngClass]="{'attclose':loader}">
@@ -24,14 +27,30 @@
         <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
         <div class="calender">
             <div class="grid-icon">
-                <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
-                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i>
+                <!-- <i class="fa-sharp fa-solid fa-list-ul" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}"></i>
+                <i class="fa-solid fa-table-cells-large" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}"></i> -->
+                <button class="history_btn" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}">Employee
+                    History</button>
+                <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}">Day-wise
+                    Attendance</button>
             </div>
-            <label for="date">
-              <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
+            <label for="date" *ngIf="calender">
+                <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
-
+            <div class="dropdown_container" *ngIf="dropdown">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                    <p>{{Selectvariable}}</p>
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown">
+                    <ul>
+                        <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                            (click)="Changeselect(arr)">
+                            {{arr.name}}</li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -52,15 +71,18 @@
                 <tbody>
                     <tr *ngFor="let user of employee1 | attendanceFilter:employeename:datez">
                         <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
-                            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
+                            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center">
+                            </p>
                             <h2>No Record Found!</h2>
                         </td>
                         <td *ngIf="user.found!='true'">{{user.uid}}</td>
                         <td *ngIf="user.found!='true'">{{user.name}}</td>
                         <td *ngIf="user.found!='true'">{{user.date | date:'shortDate'}}</td>
                         <td *ngIf="user.found!='true'">{{user.status}}</td>
-                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.punch_in | date:'shortTime'}}</td>
-                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.punch_out | date:'shortTime'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.punch_in |
+                            date:'shortTime'}}</td>
+                        <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.punch_out |
+                            date:'shortTime'}}</td>
                         <!-- <td *ngIf="user.found!='true'" class="action1">
                             <div class="icons">
                                 <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
@@ -80,28 +102,38 @@
             <div class="col-3 " *ngFor="let user of employee1">
                 <div class="card ">
                     <img src="assets\images\attendec-logo.png " alt="logo ">
-                    <h2>{{user.name}}</h2>
+                    <!-- <h2>{{user.name}}</h2>
                     <p>{{user.uid}}</p>
-                    <p>{{user.designation}}</p>
+                    <p>{{user.designation}}</p> -->
+                    <h2>Html</h2>
+                    <p>Text</p>
+                    <p>Css</p>
                     <div class="attendence-percent ">
                         <div class="percent-text ">
-                            <p>{{user.presents}}/{{totalDays}}</p>
+                            <!-- <p>{{user.presents}}/{{totalDays}}</p> -->
+                            <p>Girija</p>
                             <h4>Monthly</h4>
                         </div>
-                        <div class="circle-graph ">
-                            <circle-progress [percent]="95 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
+
+                         <div class="circle-graph ">
+                            <circle-progress [percent]="15 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
                                 [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- ------------------Input  Modal form---------------  -->
+        <!-- ------------------Input  Modal form---------------  -->
 
-    <!-- <div class="employee-modal" *ngIf="showModal">
+
+       
+
+
+
+
+        <!-- <div class="employee-modal" *ngIf="showModal">
         <form class="input-form" [formGroup]="form" (ngSubmit)="OnUpdate()">
             <div class="cross-icon">
                 <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
@@ -157,8 +189,8 @@
         </form>
     </div> -->
 
-    <!-- ----------------------------Edit popup Modal --------------- -->
-    <!-- <div class="edit-modal" *ngIf="editmodal">
+        <!-- ----------------------------Edit popup Modal --------------- -->
+        <!-- <div class="edit-modal" *ngIf="editmodal">
         <div class="edit-modal-text">
             <div class="modal-text">
                 <img src="./assets/images/tick.png" alt="img">
@@ -170,4 +202,4 @@
             </div>
         </div>
     </div> -->
-</div>
+    </div>

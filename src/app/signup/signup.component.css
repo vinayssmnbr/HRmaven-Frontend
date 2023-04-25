@@ -528,14 +528,17 @@ form.ng-invalid #submit {
     justify-content: space-between;
 }
 
-.iconWrap:hover .tooltip {
+.iconWrap:focus .tooltip {
     transform: translateX(5px);
     opacity: 1;
 }
-.password-tooltip, .input-field:hover .tooltip {
+.password-tooltip, .input-field:hover .tooltip{
     transform: translateX(5px);
     opacity: 1;
+    visibility: visible;
 }
+
+
 
 .tooltip span {
     margin-top: 0;
