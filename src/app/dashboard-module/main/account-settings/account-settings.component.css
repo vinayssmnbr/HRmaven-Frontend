@@ -2,7 +2,10 @@
     width: calc(100% - 223px);
     margin-left: 223px;
     background-color: #f9f9f9;
-    padding: 76px 30px;
+    padding-top: 76px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     /* min-height: 100%; */
 }
 
@@ -10,7 +13,7 @@
     background-color: #FFFFFF;
     border-radius: 20px;
     margin-top: 30px;
-    padding: 21px 33px 99px 33px;
+    padding: 21px 33px 22px 33px;
 }
 
 .profile-arrow {
@@ -170,7 +173,7 @@ color: #444444;
 
 .company-name-headoffice {
     display: flex;
-    gap: 120px;
+justify-content: space-between;
 }
 .company-name-headoffice .phone-number{
     margin-top: 30px;
@@ -321,6 +324,7 @@ border: none;
     align-items: center;
     top: 0;
     left: 0;
+    
 }
 
 .Modal_modal {
@@ -333,6 +337,7 @@ border: none;
     width: 100%;
     max-width: 685px;
     width: 100%;
+   
     
 }
 .Modal_modal i{
@@ -505,6 +510,7 @@ color: #FFFFFF;
     left: 0;
 }
 
+
 .company_modal {
     z-index: 1;
     background-color: rgba(250, 250, 250, 1);
@@ -596,4 +602,28 @@ font-size: 9px;
 .middle input{
     position: absolute;
     z-index: 10;
+}
+
+
+
+/*-------------------------Text Area-----------------------*/
+.paragraph-text textarea {
+    max-width: 1082px;
+    min-width: 1082px;
+    height: 65px;
+    outline: none;
+    padding: 10px 17px;
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+.modal-text textarea{
+    max-width: 860px;
+    min-width: 860px;
+    height: 40px;
+    outline: none;
+    padding: 10px 17px;
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    margin-top: 5px;
 }
