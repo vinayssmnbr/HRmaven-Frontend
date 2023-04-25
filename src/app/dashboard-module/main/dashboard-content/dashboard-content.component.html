@@ -1,8 +1,8 @@
 <app-header ></app-header>
 <app-sidebar></app-sidebar>
-<div *ngIf="isFromSignupPage" style="margin-left: 50%;margin-top: 50%;">
+<!-- <div *ngIf="isFromSignupPage" style="margin-left: 50%;margin-top: 50%;">
     This div will only be shown if the user is coming from the signup page.
-  </div>
+  </div> -->
 
 <div class="main" >
     <div class="row">
@@ -250,7 +250,7 @@
 
 <!---------------------------dashboard Modal------------------------------>
 
-
+<div *ngIf="isFromSignupPage">
     <form class="Modal_form">
         <div class="Modal_modal">
             
@@ -258,24 +258,41 @@
                 <h3>Required Details </h3>
             </div>
 
-            <form class="form">
+            <form class="form" [formGroup]="personaldataForm" (ngSubmit)="submitPersonalData(personaldataForm.value)">
                 <div class="name-email">
                     <div class="form__group">
                         <label for="name">Name</label>
-                        <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name" required />
+                        <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name" formControlName="name" required />
                     </div>
                     <div class="form__group">
                         <label for="email">No. of employees</label>
-                        <div class="dropdown_container">
-                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                        <div class="dropdown_container" formControlName="totalemployee">
+                            <!-- <div class="dropdwon_select" (click)="dropdownOpen()">
                               <p>{{Selectvariable}}</p>
                               <i class="fa-sharp fa-solid fa-caret-down"></i>
                             </div>
                             <div class="select_content" *ngIf="contentdropdown">
                               <ul>
-                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                 (click)="Changeselect(arr);personaldataForm.get('selectedValue').setValue(arr)" >
                                   {{arr.name}}</li>
-                              </ul>
+                                  <!-- <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" 
+                                  (click)="Changeselect(arr); personaldataForm.get('selectedValue').setValue(arr.name)">
+                                  {{arr.name}}
+                                </li> -->
+                                <!-- </ul>
+                            </div>  -->
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                        (click)="Changeselect(arr); personaldataForm.get('totalemployee').setValue(arr.name)">
+                                        {{arr.name}}
+                                    </li>
+                                </ul>
                             </div>
                           </div>
 
@@ -288,11 +305,11 @@
                 <div class="email-phone">
                     <div class="form__group">
                         <label for="name">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='+91 4512639870' id="name" required />
+                        <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone" id="name" required />
                     </div>
                     <div class="form__group">
                         <label for="email">Head Office</label>
-                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' id="email"
+                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' formControlName="headoffice" id="email"
                             required />
                     </div>
                 </div>
@@ -306,6 +323,7 @@
             </div>
         </div>
     </form>
+</div>    
     <!--Leave Request Section-->
 
 </div>

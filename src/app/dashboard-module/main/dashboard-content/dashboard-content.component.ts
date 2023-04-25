@@ -6,6 +6,7 @@ import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../../service/user.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -47,6 +48,28 @@ export class DashboardContentComponent implements OnInit {
     this.showchart()
 
   }
+
+
+  
+  personaldataForm = new FormGroup({
+    name: new FormControl(''),
+    totalemployee: new FormControl(''),
+    phone: new FormControl(''),
+    headoffice: new FormControl(''),
+  });
+
+
+  submitPersonalData(data: any){
+    console.log("personal data: ",this.personaldataForm.value)
+    // this.userService.saveUser(this.personaldataForm.value).subscribe((res: any)=>{
+    //   console.log("personaldataForm.value: ",this.personaldataForm.value);
+    // });
+  }
+
+
+
+
+
   options: any = [
     {
       day: 'Mon',
