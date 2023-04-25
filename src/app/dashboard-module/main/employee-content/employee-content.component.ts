@@ -30,7 +30,7 @@ export class EmployeeContentComponent implements OnInit {
   name: any;
   email: any;
   fileName: string = '';
-  fileName1:string = '';
+  fileName1: string = '';
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -92,7 +92,7 @@ export class EmployeeContentComponent implements OnInit {
       Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
     ]),
     timing: new FormControl('', Validators.required),
-    csv: new FormControl('',Validators.required)
+    csv: new FormControl('', Validators.required)
   });
 
   get registrationFormControl() {
@@ -262,7 +262,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() {}
+  nextForm2() { }
   array: any = [
     {
       id: 0,
@@ -644,19 +644,81 @@ export class EmployeeContentComponent implements OnInit {
     this.importfile = true;
     this.showModal = true;
     this.showModalContent = false;
-    this.csvadded=false;
-  }
-  closeFilepicker(){
-    this.importfile=false;
-    this.showModal=false;
     this.csvadded = false;
   }
- employeecsv(){
-  this.csvadded=true;
-  this.importfile=false;
- }
- closecsvadded(){
-  this.showModal=false;
-  this.csvadded=false;
- }
+  closeFilepicker() {
+    this.importfile = false;
+    this.showModal = false;
+    this.csvadded = false;
+  }
+  
+  employeecsv() {
+    this.csvadded = true;
+    this.importfile = false;
+  }
+
+  closecsvadded() {
+    this.showModal = false;
+    this.csvadded = false;
+    this.fetchdata();
+
+  }
+
+
+  download(): void {
+    this.dashService.exportUsers().subscribe(
+      (data: Blob) => {
+        const downloadUrl = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'users.csv';
+        link.click();
+      },
+      error => console.log(error)
+    );
+  }
+
+
+  onFileSelectedrem(event: any): void {
+    const file: File = event.target.files[0];
+    const reader: FileReader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const csv: string = e.target.result;
+      const lines: string[] = csv.split(/\r\n|\n/);
+      const headers: string[] = lines[0].split(',');
+      const data: any[] = [];
+
+      for (let i = 1; i < lines.length - 1; i++) {
+        const values: string[] = lines[i].split(',');
+        const item: any = {};
+
+        for (let j = 0; j < headers.length; j++) {
+          item[headers[j]] = values[j];
+        }
+
+        data.push(item);
+      }
+      console.log(data, 'adarsh console')
+      data.forEach(employee => {
+        console.log("Adarsh", employee)
+        this.dashService.addEmployee(employee).subscribe((res: any) => {
+          console.log(res, 'response')
+          console.log(res.data)
+        })
+      });
+      console.log(data);
+      // this.fetchdata()
+    };
+
+    reader.readAsText(file);
+    // this.fetchdata()
+
+  }
+
+
+  importFile() {
+    const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+    fileInput.click();
+  }
 }

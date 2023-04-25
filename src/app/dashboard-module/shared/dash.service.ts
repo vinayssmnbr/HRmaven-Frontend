@@ -11,6 +11,7 @@ import * as filestack from 'filestack-js';
   providedIn: 'root',
 })
 export class DashService {
+  private baseUrl = 'http://localhost:3000';
   public headerContent: string;
   public activeComponent: string;
   constructor(
@@ -42,7 +43,14 @@ export class DashService {
   profile = environment.profile;
 
   //ADD EMPLOYEE DATA
+  // addEmployee(data) {
+  //   return this.http.post(this.createData, data);
+
+  // }
+
+  //ADD  Employee Data
   addEmployee(data) {
+    return this.http.post('http://localhost:3000/api/create', data);
     return this.http.post(this.createData, data);
 
   }
@@ -226,5 +234,14 @@ export class DashService {
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file)
+  }
+
+  exportUsers(): Observable<Blob> {
+    const url = `${this.baseUrl}/user/export`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'text/csv'
+    });
+    return this.http.get(url, { headers, responseType: 'blob' });
   }
 }
