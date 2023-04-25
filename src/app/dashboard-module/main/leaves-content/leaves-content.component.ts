@@ -14,6 +14,7 @@ import { style } from '@angular/animations';
 })
 export class LeavesContentComponent {
   designationdropdownOption: boolean = false;
+  parentSelector: boolean = false
   test: any = 'All';
   // searchText: string;
   status: string;
@@ -37,29 +38,38 @@ export class LeavesContentComponent {
 
   row: any = [
     {
-      id: 1234,
-      checked: true,
+      id: 1,
+      select: false,
+      name: 'dumpling'
     },
     {
-      id: 1235,
-      checked: true,
+      id: 2,
+      select: false,
+      name: 'burger'
     },
     {
-      id: 1236,
-      checked: true,
+      id: 3,
+      select: false,
+      name: 'sandwic'
     },
   ];
 
   allchecked = false;
   fetchPendingLeave() {}
-  Change($event) {
+  onChange($event) {
     const id = $event.target.value;
     const ischecked = $event.target.checked;
     this.row.map((d) => {
       if (d.id == id) {
-        d.checked = ischecked;
+        d.select = ischecked;
+        this.parentSelector = false;
         return d;
       }
+      if (id == -1) {
+        d.select = this.parentSelector;
+        return d;
+      }
+      return d;
     });
     console.log(this.row);
   }

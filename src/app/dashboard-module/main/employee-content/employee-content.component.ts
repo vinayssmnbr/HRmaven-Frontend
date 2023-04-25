@@ -30,6 +30,7 @@ export class EmployeeContentComponent implements OnInit {
   name: any;
   email: any;
   fileName: string = '';
+  fileName1:string = '';
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -91,6 +92,7 @@ export class EmployeeContentComponent implements OnInit {
       Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
     ]),
     timing: new FormControl('', Validators.required),
+    csv: new FormControl('',Validators.required)
   });
 
   get registrationFormControl() {
@@ -473,6 +475,8 @@ export class EmployeeContentComponent implements OnInit {
     }
   }
   selectedFile: File | null = null;
+  selectedFile1: File | null = null;
+
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
@@ -483,7 +487,10 @@ export class EmployeeContentComponent implements OnInit {
     }
     // this.onUpload(  this.selectedFile );
   }
-
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+  }
   onUpload(file) {
     console.log('fdjkhf');
     this.dashService.upload1(file).then(
@@ -632,9 +639,24 @@ export class EmployeeContentComponent implements OnInit {
     this.borderColor = '';
   }
   importfile: boolean = false;
+  csvadded: boolean = false;
   openImport() {
     this.importfile = true;
     this.showModal = true;
     this.showModalContent = false;
+    this.csvadded=false;
   }
+  closeFilepicker(){
+    this.importfile=false;
+    this.showModal=false;
+    this.csvadded = false;
+  }
+ employeecsv(){
+  this.csvadded=true;
+  this.importfile=false;
+ }
+ closecsvadded(){
+  this.showModal=false;
+  this.csvadded=false;
+ }
 }

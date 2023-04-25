@@ -52,6 +52,7 @@
 }
 
 .name-text {
+
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -612,21 +613,23 @@ font-size: 9px;
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-    max-width: 1082px;
-    min-width: 1082px;
-    height: 65px;
+   
+    min-width: 932px;
+    min-height: 120px;
+    resize: none;
     outline: none;
-    padding: 10px 17px;
+    padding: 10px;
     border: 1px solid #CBCBCB;
     border-radius: 8px;
     margin-top: 5px;
 }
 .modal-text textarea{
-    max-width: 860px;
+   
     min-width: 860px;
-    height: 40px;
+    min-height: 120px;
+    resize: none;
     outline: none;
-    padding: 10px 17px;
+    padding: 10px;
     border: 1px solid #CBCBCB;
     border-radius: 8px;
     margin-top: 5px;

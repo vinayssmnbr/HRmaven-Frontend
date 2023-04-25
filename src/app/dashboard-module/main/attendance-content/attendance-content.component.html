@@ -38,7 +38,7 @@
                 <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
-            <div class="dropdown_container" *ngIf="dropdown">
+            <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
                 <div class="dropdwon_select" (click)="dropdownOpen()">
                     <p>{{Selectvariable}}</p>
                     <i class="fa-sharp fa-solid fa-caret-down"></i>
@@ -114,92 +114,14 @@
                             <p>Girija</p>
                             <h4>Monthly</h4>
                         </div>
-
-                         <div class="circle-graph ">
+                        <!-- <div class="circle-graph ">
                             <circle-progress [percent]="15 " [showTitle]='true' [showSubtitle]='false' [titleFontSize]=" '15' " [unitsFontSize]=" '15' " [showUnits]='true' [space]="-10 " [radius]="19 " [outerStrokeWidth]="8 " [innerStrokeWidth]="4" [outerStrokeColor]=" '#3D9030' "
                                 [innerStrokeColor]=" '#e7e8ea' " [animation]='true' [animateTitle]='true' [animationDuration]="1000 "></circle-progress>
-                        </div>
+                        </div> -->
+                        <div role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                            style="--value:50"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- ------------------Input  Modal form---------------  -->
-
-
-       
-
-
-
-
-        <!-- <div class="employee-modal" *ngIf="showModal">
-        <form class="input-form" [formGroup]="form" (ngSubmit)="OnUpdate()">
-            <div class="cross-icon">
-                <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-            </div>
-            <div class="modal-input-text">
-                <h1>Attendance Rectification</h1>
-            </div>
-
-            <div class="input_form2">
-                <div class="form__group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" formControlName="name" [disabled]="true" />
-                </div>
-                <div class="form__group">
-                    <label for="number">Employee ID</label>
-                    <input type="text" id="number" formControlName="empId" [disabled]="true" />
-                </div>
-                <div class="form__group">
-                    <label for="date">Date</label>
-                    <input type="date" formControlName="date" />
-                </div>
-            </div>
-            <div class="input_form2">
-                <div class="form__group">
-                    <label for="name">Status</label>
-                    <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                        <div class="dropdwon_select" (click)="dropdownOpen()">
-                            <p>{{Selectvariable}}</p>
-                            <input style="display:none;" type="text" [(ngModel)]="Selectvariable" formControlName="status" />
-                            <i class="fa-sharp fa-solid fa-caret-down"></i>
-                        </div>
-                        <div class="select_content" *ngIf="contentdropdown">
-                            <ul>
-                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                                    {{arr.name}}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="form__group">
-                    <label for="name">Punch In</label>
-                    <input type="time" formControlName="punch_in" />
-                </div>
-                <div class="form__group">
-                    <label for="name">Punch out</label>
-                    <input type="time" formControlName="punch_out" />
-                </div>
-            </div>
-            <div class="form__group form-btn">
-                <button type="submit" class="done-btn">Done</button>
-            </div>
-        </form>
-    </div> -->
-
-        <!-- ----------------------------Edit popup Modal --------------- -->
-        <!-- <div class="edit-modal" *ngIf="editmodal">
-        <div class="edit-modal-text">
-            <div class="modal-text">
-                <img src="./assets/images/tick.png" alt="img">
-            </div>
-            <div class="modal-content">
-                <h3>Successful</h3>
-                <p>Attendance has been edited successfully!</p>
-                <button class="Done_btn" (click)="done()">Done</button>
-            </div>
-        </div>
-    </div> -->
     </div>
