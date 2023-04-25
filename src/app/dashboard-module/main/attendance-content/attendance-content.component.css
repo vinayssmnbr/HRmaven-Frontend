@@ -106,6 +106,21 @@ td {
 .graph_text {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.year {
+    width: 81px;
+    height: 36px;
+    background: #F7F7FB;
+    border-radius: 8px;
+    padding: 8px 25px;
+}
+
+.year h2 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #37474F;
 }
 
 .graph_heading h1 {
