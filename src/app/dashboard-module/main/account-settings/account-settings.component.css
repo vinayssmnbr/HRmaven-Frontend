@@ -2,7 +2,10 @@
     width: calc(100% - 223px);
     margin-left: 223px;
     background-color: #f9f9f9;
-    padding: 76px 30px;
+    padding-top: 76px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     /* min-height: 100%; */
 }
 
@@ -10,7 +13,7 @@
     background-color: #FFFFFF;
     border-radius: 20px;
     margin-top: 30px;
-    padding: 21px 33px 99px 33px;
+    padding: 21px 33px 22px 33px;
 }
 
 .profile-arrow {
@@ -18,9 +21,14 @@
     display: flex;
     gap: 12px;
     height: 44px;
+    align-items: center;
+    /* justify-content: center; */
+
 }
 .profile-arrow .arrow{
-    cursor: pointer;
+        cursor: pointer;
+    align-items: center;
+    display: flex;
 }
 
 .profile-bottom-line {
@@ -31,6 +39,7 @@
 .profile-text h6 {
     font-weight: 500;
     font-size: 21px;
+    color: #444444;
 }
 
 .profile-name {
@@ -43,7 +52,17 @@
 }
 
 .name-text {
-    margin-top: 17px;
+
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.name-text h5{
+    font-weight: 400;
+font-size: 20px;
+color: #444444;
 }
 
 .name-text p {
@@ -159,7 +178,7 @@
 
 .company-name-headoffice {
     display: flex;
-    gap: 120px;
+justify-content: space-between;
 }
 .company-name-headoffice .phone-number{
     margin-top: 30px;
@@ -210,10 +229,7 @@ border-radius: 22px;
     gap: 5.87px;
     margin-top: 30px;
 }
-.pen img{
-    width: 11.42px;
-    height: 11.41px;
-}
+
 .description-heading h6{
     font-weight: 400;
 font-size: 13px;
@@ -313,6 +329,7 @@ border: none;
     align-items: center;
     top: 0;
     left: 0;
+    
 }
 
 .Modal_modal {
@@ -325,6 +342,7 @@ border: none;
     width: 100%;
     max-width: 685px;
     width: 100%;
+   
     
 }
 .Modal_modal i{
@@ -497,6 +515,7 @@ color: #FFFFFF;
     left: 0;
 }
 
+
 .company_modal {
     z-index: 1;
     background-color: rgba(250, 250, 250, 1);
@@ -526,12 +545,92 @@ justify-content: center;
 display: flex;
 align-items: center;
 }
+.company-descrip{
+margin-top: 25px;
+}
+
+.company-details-footer{
+    background-color: #F7F7FB;;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 980px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    }
+
+
 
 /* profile upload */
-.middle-profilepic {
+.profile-image{
+    position: relative;
+}  
+.profile-image img{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    cursor: pointer;
+  
+}
+
+.profile-image:hover img {
+    opacity: 0.9;
+   
+  }
+  .profile-image .middle img {
+   
+    position: absolute;
+    color: #444444;
+    
+  }
+  .upload {
+    font-weight: 600;
+font-size: 9px;
+    color: black;
+   
+  }
+ 
+.middle{
     transition: .5s ease;
     opacity: 0;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
-  }
-  
+}
+.middle input{
+    position: absolute;
+    z-index: 10;
+}
+
+
+
+/*-------------------------Text Area-----------------------*/
+.paragraph-text textarea {
+   
+    min-width: 932px;
+    min-height: 120px;
+    resize: none;
+    outline: none;
+    padding: 10px;
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+.modal-text textarea{
+   
+    min-width: 860px;
+    min-height: 120px;
+    resize: none;
+    outline: none;
+    padding: 10px;
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    margin-top: 5px;
+}
