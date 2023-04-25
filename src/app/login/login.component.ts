@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
+
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../service/user.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,6 +34,14 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // force a page refresh on navigation end
+      window.location.reload();
+    });
+
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
     if (storedemail && storedPassword) {

@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class UserService {
-
+  isFromSignupPage = false;
 
   constructor(
     private http: HttpClient,

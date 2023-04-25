@@ -5,6 +5,7 @@ Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../../service/user.service'
 
 @Component({
   selector: 'app-dashboard-content',
@@ -15,8 +16,12 @@ export class DashboardContentComponent implements OnInit {
   // loader=false;
   loadermain: boolean = true;
   loader:boolean =false;
+  isFromSignupPage = false;
+
+
   constructor(
     private route:ActivatedRoute,
+    private userService :UserService ,
     public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
@@ -93,16 +98,9 @@ export class DashboardContentComponent implements OnInit {
   ]
   ngOnInit()
    {
-    this.route.queryParams.subscribe(params => {
-      console.log('queryParams:', params);
-      if (params['source'] === 'signup') {
-        // User came through signup route, load data here
-      }
-    });
-    // this.route.queryParams.subscribe(params => {
-    //   const source = params['signup'];
-    //   console.log('source:', source);
-    // });
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
+    this.isFromSignupPage = this.userService.isFromSignupPage;
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.getreport().subscribe((res:any)=>{
     if(res)

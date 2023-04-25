@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {FormGroup,FormControl, Validators, FormBuilder} from '@angular/forms';
 import { matchpassword } from './custom.validator';
 import { UserService} from '../service/user.service';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Subject, } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 @Component({
@@ -64,7 +64,8 @@ export class SignupComponent {
 
 
   ngOnInit() {
-
+    // this.userService.isFromSignupPage = this.route.snapshot.url[0].path === 'signup';
+    this.userService.isFromSignupPage = true;
 
     this.subject.pipe(debounceTime(3000)).subscribe(()=>{
       // this.formGroup.controls['username'].setValidators([Validators.pattern('^[A-Z]\'?[- a-zA-Z]( [a-zA-Z]*')])
@@ -95,7 +96,7 @@ export class SignupComponent {
 
 
 
-  constructor(public userService:UserService, private router : Router){}
+  constructor(public userService:UserService, private router : Router, private route: ActivatedRoute){}
 
   noSpaces(control: FormControl) {
     if (control.value && control.value.trim().length === 0) {
