@@ -394,16 +394,17 @@
 .form__group {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .form__group .form_input {
     width: 270px;
-    padding: 10px 17px;
-    height: 40px;
-    background-color: #FFFFFF;
-    border: 1px solid #CBCBCB;
-    border-radius: 8px;
-    margin-top: 5px;
+  padding: 10px 17px;
+height: 40px;
+background-color: #FFFFFF;
+border: 1px solid #CBCBCB;
+border-radius: 8px;
+margin-top: 5px;
 }
 
 .name-email {
@@ -419,13 +420,13 @@
 
 .edit-profile-footer {
     background-color: #F7F7FB;
-    border-radius: 8px 8px 0px 0px;
-    max-width: 685px;
-    width: 100%;
-    height: 75px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+border-radius: 8px 8px 0px 0px;
+max-width: 685px;
+width: 100%;
+height: 75px;
+justify-content: center;
+display: flex;
+align-items: center;
 
 }
 
@@ -566,22 +567,21 @@
 
 .edit-company-heading {
     background-color: #F7F7FB;
-    border-radius: 8px 8px 0px 0px;
-    max-width: 980px;
-    width: 100%;
-    height: 75px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+border-radius: 8px 8px 0px 0px;
+max-width: 980px;
+width: 100%;
+height: 75px;
+justify-content: center;
+display: flex;
+align-items: center;
 }
 
 .company-descrip {
     margin-top: 25px;
 }
 
-.company-details-footer {
-    background-color: #F7F7FB;
-    ;
+.company-details-footer{
+    background-color: #F7F7FB;;
     border-radius: 8px 8px 0px 0px;
     max-width: 980px;
     width: 100%;
@@ -648,9 +648,9 @@
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-
-    width: 100%;
-    height: 120px;
+   
+    min-width: 932px;
+    min-height: 120px;
     resize: none;
     outline: none;
     padding: 10px;
@@ -658,10 +658,10 @@
     border-radius: 8px;
     margin-top: 5px;
 }
-
-.modal-text textarea {
-    width: 100%;
-    height: 120px;
+.modal-text textarea{
+   
+    min-width: 860px;
+    min-height: 120px;
     resize: none;
     outline: none;
     padding: 10px;

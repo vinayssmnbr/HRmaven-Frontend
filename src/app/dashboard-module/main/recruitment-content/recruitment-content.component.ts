@@ -50,51 +50,11 @@ export class RecruitmentContentComponent {
   this.thirdStep=false;
   this.fourthStep=false;
   }
-  
-  onNextForm() {
-    this.firstStep=false;
-    this.secondStep=true;
+  id: any = 'all';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
   }
-
-  onPreviousForm() {
-    this.secondStep=false;
-    this.firstStep=true;
-  }
-  nextForm1() {
-  this.showmodalcontent2=true;
-  this.firstStep=false;
-  this.secondStep=false;
-  this.showModalContent=false;
-  this.thirdStep=true;
-
-  }
- 
-  submit(){
-    this.showModal=false;
-    this.showModalContent=true;
-    this.showmodalcontent2=false;
-  }
-
-
-  
-    options = [
-      { label: 'Option 1', value: 'option1', checked: false },
-      { label: 'Option 2', value: 'option2', checked: false },
-      { label: 'Option 3', value: 'option3', checked: false },
-      { label: 'Option 4', value: 'option4', checked: false }
-    ];
-  
-    selectAll(checked: boolean) {
-      this.options.forEach(option => option.checked = checked);
-    }
-  
-    optionSelected() {
-      const allSelected = this.options.every(option => option.checked);
-      const indeterminate = this.options.some(option => option.checked) && !allSelected;
-      const selectAllCheckbox = document.getElementById('select-all') as HTMLInputElement;
-      selectAllCheckbox.checked = allSelected;
-      selectAllCheckbox.indeterminate = indeterminate;
-    }
   }
 
 
