@@ -29,8 +29,8 @@ export const environment = {
 
 
   // //LOCAL URL
-  attendancegraph:'http://localhost:3000/attendance/date/report'
-  attendancecard:'http://localhost:3000/attendance/date/attendancecard'
+  attendancegraph:'http://localhost:3000/attendance/date/report',
+  attendancecard:'http://localhost:3000/attendance/date/attendancecard',
   attendance:'http://localhost:3000/attendance/date/attendance',
   // updateleave: 'https://hrmaven.works/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
@@ -50,7 +50,7 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
-  getemail : 'http://localhost:3000/getemails/email',
-  getpwd : 'http://localhost:3000/userprofilepwd',
-  changepassword : 'http://localhost:3000/islinkclicked'
+  // getemail : 'http://localhost:3000/getemails/email',
+  // getpwd : 'http://localhost:3000/userprofilepwd',
+  // changepassword : 'http://localhost:3000/islinkclicked'
 };

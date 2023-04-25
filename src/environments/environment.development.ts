@@ -22,8 +22,15 @@ export const environment = {
   //   getpwd : 'http://localhost:3000/userprofilepwd',
   // getemail: 'https://hrmaven.works/getemails/email',
   // changepassword: 'https://hrmaven.works/islinkclicked'
+    // attendance:'https://hrmaven.works/attendance/date/attendance',
+  // attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
+  // attendancegraph:'https://hrmaven.works/attendance/date/report',
 
   // //LOCAL URL
+
+  attendancegraph:'http://localhost:3000/attendance/date/report',
+  attendancecard:'http://localhost:3000/attendance/date/attendancecard',
+  attendance:'http://localhost:3000/attendance/date/attendance',
   // updateleave: 'http://localhost:3000/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',

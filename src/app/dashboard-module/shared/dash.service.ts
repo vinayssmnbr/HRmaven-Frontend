@@ -40,6 +40,9 @@ export class DashService {
   getuid = environment.getuid;
   report = environment.report;
   profile = environment.profile;
+  attendance=environment.attendance;
+  attendancecard=environment.attendancecard;
+  attendancegraph=environment.attendancegraph;
   DailyAttendance
 
   //ADD EMPLOYEE DATA
@@ -71,6 +74,8 @@ export class DashService {
 
 
   //  implementation of attendance backend by the harpreet singh
+
+
   getAttendance(date:any) {
     const headers= new HttpHeaders(
       {
@@ -78,7 +83,7 @@ export class DashService {
         'MyDate': date
       }
     )
-    return this.http.get(environment.attendance,{ headers });  //this.getAttd
+    return this.http.get(this.attendance,{ headers });  //this.getAttd
   }
 
   getAttendancecard(month:any){
@@ -88,13 +93,13 @@ export class DashService {
         'month': month.toString()
       }
     )
-    return this.http.get(environment.attendancecard,{ headers });
+    return this.http.get(this.attendancecard,{ headers });
   }
 
 
   graphcontent()
   {
-    return this.http.get(environment.attendancegraph);
+    return this.http.get(this.attendancegraph);
   }
 
   /////////// end here from Harpreet Singh////////////////////////////
@@ -104,7 +109,7 @@ export class DashService {
       .get<any[]>(this.getData)
       .pipe(map((data) => data.filter((user) => user.status === 'accepted')));}
 
-      
+
   // getAttendance() {
   //   return this.http.get('http://localhost:3000/attendance/all');
   // }

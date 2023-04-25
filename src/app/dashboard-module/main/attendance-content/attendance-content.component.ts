@@ -4,6 +4,7 @@ Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-attendance-content',
@@ -29,6 +30,7 @@ export class AttendanceContentComponent implements OnInit {
   employeename = '';
   lineChart: Chart;
   selectedUser: any = {};
+  percentage=10;
   leaves: any[] = [];
   data: any;
   update = false;
@@ -44,7 +46,7 @@ export class AttendanceContentComponent implements OnInit {
   totalDays: number;
   DayAttendance = [];
   card:any=[];
-  constructor(public dashService: DashService, private datepipe: DatePipe) {
+  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.getLeaveData()
