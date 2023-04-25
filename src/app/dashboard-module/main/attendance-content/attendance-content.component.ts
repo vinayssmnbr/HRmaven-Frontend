@@ -5,19 +5,15 @@ import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
-
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
   styleUrls: ['./attendance-content.component.css'],
 })
 export class AttendanceContentComponent implements OnInit {
+  //------------ Progress Bar----------
+
   designationdropdownOption: boolean = false;
-  circularProgress: any;
-  progressValue: any;
-  progressStartValue = 0;
-  progressEndValue = 50;
-  speed = 100;
   progressInterval: any;
   buttonbackgroundColor = '#2F2C9F';
   buttonColor = '#FFFFFF';
@@ -39,14 +35,14 @@ export class AttendanceContentComponent implements OnInit {
   editmodal = false;
   showCard1: boolean = true;
   showTable = true;
-  attDate: any = "";
+  attDate: any = '';
   loader = true;
-  datez: any = "";
+  datez: any = '';
   table1Visible = false;
   table2Visible = false;
   todayDate: string;
   totalDays: number;
-
+  calender:boolean=true;
   DayAttendance = [];
 
   constructor(public dashService: DashService, private datepipe: DatePipe) {
@@ -210,65 +206,92 @@ changefunction()
     });
   }
 
-
   toggleTable1() {
     this.showCard = !this.showCard;
     this.showTable = !this.showTable;
     this.table1Visible = !this.table1Visible;
     this.table2Visible = false; // ensure other table is hidden
-
+    this.calender = true;
+    this.dropdown = false;
   }
-
+  dropdown = false;
   async toggleTable2() {
+    this.dropdown = true;
+    this.calender = false;
     this.showCard = !this.showCard;
     this.showTable = !this.showTable;
     this.table2Visible = !this.table2Visible;
     this.table1Visible = false;
   }
 
-  // edit(){
-  //   this.closeModal();
-  // this.editmodal=!this.editmodal;
-  // }
-  // done(){
-  //   this.editmodal=!this.editmodal;
-  // }
-
-
-  // array: any = [
-  //   {
-  //     id: 0,
-  //     name: 'present',
-  //   },
-  //   {
-  //     id: 1,
-  //     name: 'absent',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'leave',
-  //   },
-
-  // ];
-  // contentdropdown: boolean = false;
-  // dropdownOpen() {
-
-  //   this.contentdropdown = !this.contentdropdown;
-  // }
-  // Selectvariable: string ="select";
-  // colorvariable: number =  0;
-  // Changeselect(arr: any) {
-  //   this.Selectvariable = arr.name;
-  //   this.colorvariable = arr.id;
-  //   this.contentdropdown=false;
-  //   console.log(arr.name);
-  // }
-  // dropdownOpenOption() {
-  //   this.designationdropdownOption = !this.designationdropdownOption;
-  // }
+  // ---------------------Drop Down--------------------------------
+  array: any = [
+    {
+      id: 0,
+      name: 'January ',
+    },
+    {
+      id: 1,
+      name: 'February',
+    },
+    {
+      id: 3,
+      name: 'March',
+    },
+    {
+      id: 4,
+      name: 'April',
+    },
+    {
+      id: 5,
+      name: 'May',
+    },
+    {
+      id: 6,
+      name: 'June',
+    },
+    {
+      id: 7,
+      name: 'July',
+    },
+    {
+      id: 8,
+      name: 'August',
+    },
+    {
+      id: 9,
+      name: 'September',
+    },
+    {
+      id: 10,
+      name: 'October',
+    },
+    {
+      id: 11,
+      name: 'November ',
+    },
+    {
+      id: 12,
+      name: 'December',
+    },
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+  Selectvariable: string = 'Months';
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown = false;
+    console.log(arr.name);
+  }
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
 
 }
 function getCurrentDate() {
   throw new Error('Function not implemented.');
 }
-
