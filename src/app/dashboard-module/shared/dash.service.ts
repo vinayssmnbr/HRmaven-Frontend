@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
+import { CookieService} from 'ngx-cookie-service'
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
 
@@ -76,12 +76,15 @@ export class DashService {
     return this.http.get(this.updateData);
   }
   getAttendance() {
-    return this.http.get('http://localhost:3000/attendance/all');//this.getAttd
+    return this.http.get('http://localhost:3000/attendance/all');
   }
-  getEmployee(): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.getData)
-      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
+  // getEmployee(): Observable<any[]> {
+  //   return this.http
+  //     .get<any[]>(this.getData)
+  //     .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
+  // }
+  getEmployee(){
+    return this.http.get(this.getData)
   }
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
@@ -243,5 +246,9 @@ export class DashService {
       'Accept': 'text/csv'
     });
     return this.http.get(url, { headers, responseType: 'blob' });
+  }
+  updateEmpStatus(id,status):Observable<any>{
+    const url = `${this.updatempdata}/${id}`;
+    return this.http.patch(url,{status})
   }
 }
