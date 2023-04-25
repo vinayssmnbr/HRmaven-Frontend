@@ -205,15 +205,27 @@ export class DashboardContentComponent implements OnInit {
 array: any = [
   {
     id: 0,
-    name: 'Weekly',
+    name: '0-50',
   },
   {
     id: 1,
-    name: 'Monthly',
+    name: '50-100',
   },
   {
     id: 2,
-    name: 'Yearly',
+    name: '100-150',
+  },
+  {
+    id: 3,
+    name: '150-200',
+  },
+  {
+    id: 4,
+    name: '200-250',
+  },
+  {
+    id: 5,
+    name: '250-300',
   },
 
 ];
@@ -222,7 +234,7 @@ dropdownOpen() {
 
   this.contentdropdown = !this.contentdropdown;
 }
-Selectvariable: string = 'Monthly';
+Selectvariable: string = 'Select';
 colorvariable: number =  0;
 Changeselect(arr: any) {
   this.Selectvariable = arr.name;
