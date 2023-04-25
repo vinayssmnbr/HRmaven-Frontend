@@ -242,6 +242,66 @@
             </div>
         </div>
     </div>
+
+
+<!---------------------------dashboard Modal------------------------------>
+
+
+    <form class="Modal_form">
+        <div class="Modal_modal">
+            
+            <div class="edit-profile-heading">
+                <h3>Required Details </h3>
+            </div>
+
+            <form class="form">
+                <div class="name-email">
+                    <div class="form__group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">No. of employees</label>
+                        <div class="dropdown_container">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                              <p>{{Selectvariable}}</p>
+                              <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                              <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                  {{arr.name}}</li>
+                              </ul>
+                            </div>
+                          </div>
+
+                
+                    </div>
+                </div>
+
+                
+
+                <div class="email-phone">
+                    <div class="form__group">
+                        <label for="name">Phone no.</label>
+                        <input type="number" class="form_input" placeholder='+91 4512639870' id="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Head Office</label>
+                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' id="email"
+                            required />
+                    </div>
+                </div>
+
+
+            </form>
+
+
+            <div class="edit-profile-footer">
+                <button class="done-btn">Done</button>
+            </div>
+        </div>
+    </form>
     <!--Leave Request Section-->
 
 </div>

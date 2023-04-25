@@ -11,6 +11,8 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./attendance-content.component.css'],
 })
 export class AttendanceContentComponent implements OnInit {
+  //------------ Progress Bar----------
+
   designationdropdownOption: boolean = false;
   progressInterval: any;
   buttonbackgroundColor = '#2F2C9F';
@@ -155,39 +157,6 @@ export class AttendanceContentComponent implements OnInit {
       const attendancePercentage = (presentDays / totalDays) * 100;
       // Use attendancePercentage to update your UI
     });
-
-    // ----------------------------Custom Circular Progress Bar-----------------------
-
-
-    // const progressBar = document.querySelector(
-    //   '.circular-progress'
-    // ) as HTMLElement;
-    // const valueContainer = document.querySelector(
-    //   '.value-container'
-    // ) as HTMLElement;
-
-    // let progressValue = 0;
-    // const progressEndValue = 50;
-    // const speed = 50;
-
-    // const progress = setInterval(() => {
-    //   progressValue++;
-    //   valueContainer.textContent = `${progressValue}%`;
-
-    //   progressBar.style.background = `conic-gradient(
-    //     #4d5bf9 ${progressValue * 3.6}deg,
-    //     #D9D9D9 ${progressValue * 3.6}deg
-    //   )`;
-
-    //   if (progressValue === progressEndValue) {
-    //     clearInterval(progress);
-    //   }
-    // }, speed);
-
-
-
-
-    
   }
 
   changeColor() {
@@ -270,26 +239,58 @@ export class AttendanceContentComponent implements OnInit {
   array: any = [
     {
       id: 0,
-      name: 'Software Developer',
+      name: 'January ',
     },
     {
       id: 1,
-      name: 'Frontend Developer',
+      name: 'February',
     },
     {
       id: 3,
-      name: 'Full Stack Developer',
+      name: 'March',
     },
     {
       id: 4,
-      name: 'UI/UX Designer',
+      name: 'April',
+    },
+    {
+      id: 5,
+      name: 'May',
+    },
+    {
+      id: 6,
+      name: 'June',
+    },
+    {
+      id: 7,
+      name: 'July',
+    },
+    {
+      id: 8,
+      name: 'August',
+    },
+    {
+      id: 9,
+      name: 'September',
+    },
+    {
+      id: 10,
+      name: 'October',
+    },
+    {
+      id: 11,
+      name: 'November ',
+    },
+    {
+      id: 12,
+      name: 'December',
     },
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable: string = 'Months';
   colorvariable: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -297,6 +298,10 @@ export class AttendanceContentComponent implements OnInit {
     this.contentdropdown = false;
     console.log(arr.name);
   }
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
 }
 function getCurrentDate() {
   throw new Error('Function not implemented.');

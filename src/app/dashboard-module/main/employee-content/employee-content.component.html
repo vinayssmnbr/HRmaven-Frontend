@@ -305,6 +305,38 @@
     <div class="modal-content5" *ngIf="importfile">
       <div class="modal-header5">
         <h4>Upload CSV</h4>
+        <i class="fa-solid fa-xmark" (click)="closeFilepicker()"></i>
+      </div>
+      <hr>
+      <div class="modal-body5">
+        <div class="file-content">
+          <img src="./assets/images/Vector (4).png" alt="">
+          <h3>Select a CSV File to Upload</h3>
+          <p>or drag and drop it here</p>
+          <a (click)="fileInput.click()" class="choose">Choose File</a>
+          <input type="text"  id="text18" readonly [value]="fileName1">
+          <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv">
+        </div>
+        <h5>or Upload from a URL</h5>
+        <div class="custom-file-picker">
+          <input type="text" placeholder="Add the file URL" id="text14" >
+          <input type="file" >
+          <!-- <a (click)="fileInput.click()" class="choose">Choose File</a> -->
+        </div>
+        <div class="import-btns">
+          <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
+          <button class="imp-btn" (click)="employeecsv()">Import</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-content6" *ngIf="csvadded">
+      <div class="modal-header6">
+        <img src="./assets/images/tick.png" alt="img">
+      </div>
+      <div class="modal-body6">
+        <h3>Succesful</h3>
+        <p>Csv File Imported Successfully!</p>
+        <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
     </div>
   </div>
