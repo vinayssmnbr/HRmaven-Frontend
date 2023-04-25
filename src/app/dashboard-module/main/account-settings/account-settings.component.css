@@ -18,9 +18,14 @@
     display: flex;
     gap: 12px;
     height: 44px;
+    align-items: center;
+    /* justify-content: center; */
+
 }
 .profile-arrow .arrow{
-    cursor: pointer;
+        cursor: pointer;
+    align-items: center;
+    display: flex;
 }
 
 .profile-bottom-line {
@@ -31,6 +36,7 @@
 .profile-text h6 {
     font-weight: 500;
     font-size: 21px;
+    color: #444444;
 }
 
 .profile-name {
@@ -44,6 +50,11 @@
 
 .name-text {
     margin-top: 17px;
+}
+.name-text h5{
+    font-weight: 400;
+font-size: 20px;
+color: #444444;
 }
 
 .name-text p {
@@ -210,10 +221,7 @@ border-radius: 22px;
     gap: 5.87px;
     margin-top: 30px;
 }
-.pen img{
-    width: 11.42px;
-    height: 11.41px;
-}
+
 .description-heading h6{
     font-weight: 400;
 font-size: 13px;
@@ -526,12 +534,66 @@ justify-content: center;
 display: flex;
 align-items: center;
 }
+.company-descrip{
+margin-top: 25px;
+}
+
+.company-details-footer{
+    background-color: #F7F7FB;;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 980px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    }
+
+
 
 /* profile upload */
-.middle-profilepic {
+.profile-image{
+    position: relative;
+}  
+.profile-image img{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    cursor: pointer;
+  
+}
+
+.profile-image:hover img {
+    opacity: 0.9;
+   
+  }
+  .profile-image .middle img {
+   
+    position: absolute;
+    color: #444444;
+    
+  }
+  .upload {
+    font-weight: 600;
+font-size: 9px;
+    color: black;
+   
+  }
+ 
+.middle{
     transition: .5s ease;
     opacity: 0;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     text-align: center;
-  }
-  
+}
+.middle input{
+    position: absolute;
+    z-index: 10;
+}

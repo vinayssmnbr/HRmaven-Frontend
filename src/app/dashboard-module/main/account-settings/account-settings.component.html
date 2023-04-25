@@ -15,8 +15,13 @@
         <div class="profile-name">
             <div class="profile-image">
                 <img src="assets/images/user 1.svg" alt="">
+                <div class="middle">
+                    <img src="assets/images/upload.svg" alt="">
+                    <input type="file"   accept="image/png, image/jpeg">
+                  </div>
                 
             </div>
+            
             <div class="name-text">
                 <h5>Abhishek Sharma</h5>
                 <p>Human Resource Manager</p>
@@ -68,16 +73,12 @@
                     <div class="description-heading">
                         <h6>Description</h6>
                     </div>
-                    <div class="pen" (click)="edit()">
-                        <img src="assets/images/pen.svg" alt="">
-                    </div>
-
                 </div>
                 <div class="paragraph-text">
                     <!-- <input type="text" [readonly]="true"
                       placeholder=""  > -->
                     <textarea name="" id=""
-                        style="width: 100%; height: 73px; border: 1px solid rgba(47, 44, 159, 0.15); border-radius: 8px;"></textarea>
+                        style="width: 100%; height: 73px; border: 1px solid rgba(47, 44, 159, 0.15); border-radius: 8px; padding: 5px 5px;" placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics, and generate comprehensive reports to gain insights into their workforce."></textarea>
                 </div>
 
                 <div class="clear-update-button">
@@ -102,15 +103,16 @@
                             <h6>Professional Email</h6>
                             <p>hr@hrmaven.com</p>
                         </div>
-                        <div class="edit-password-button">
-                            <div class="text">
-                                <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg"
-                                        alt=""></button>
+                        
 
-                            </div>
-
+                    </div>
+                    <div class="edit-password-button">
+                        <div class="text">
+                            <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg"
+                                    alt=""></button>
 
                         </div>
+
 
                     </div>
 
@@ -136,20 +138,20 @@
                 <form action="submit" method="post">
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
-                        <input type="text" placeholder="Type your old password">
+                        <input type="password" placeholder="Type your old password">
 
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
-                            <input type="text" placeholder="Type a new password">
+                            <input type="password" placeholder="Type a new password">
 
                         </div>
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">Confirm Password</label>
-                            <input type="text" placeholder="Re-enter your password">
+                            <input type="password" placeholder="Re-enter your password">
 
                         </div>
                     </div>
@@ -201,12 +203,26 @@
                     </div>
                 </div>
 
+
+                <div class="name-email">
+                    <div class="form__group">
+                        <label for="name" class="company-descrip">Description</label>
+                        <div class="paragraph-text">
+                            <!-- <input type="text" [readonly]="true"
+                              placeholder=""  > -->
+                            <textarea name="" id=""
+                                style="width: 860px; height: 40px; border: 1px solid rgba(47, 44, 159, 0.15); border-radius: 8px; margin-top: 5px; padding: 10px 17px;" placeholder="Write a few words about your company..."></textarea>
+                        </div>
+                    </div>
+                   
+                </div>
+
                
 
             </form>
 
 
-            <div class="edit-profile-footer">
+            <div class="company-details-footer">
                 <button class="done-btn" (click)="closeModal1()">Done</button>
             </div>
         </div>
@@ -237,6 +253,8 @@
                     </div>
                 </div>
 
+                
+
                 <div class="email-phone">
                     <div class="form__group">
                         <label for="name">Professional Email</label>
@@ -248,6 +266,7 @@
                             required />
                     </div>
                 </div>
+
 
             </form>
 
