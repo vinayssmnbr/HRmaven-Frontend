@@ -40,6 +40,7 @@ export class DashService {
   getuid = environment.getuid;
   report = environment.report;
   profile = environment.profile;
+  DailyAttendance
 
   //ADD EMPLOYEE DATA
   addEmployee(data) {
@@ -67,9 +68,21 @@ export class DashService {
   getleaves() {
     return this.http.get(this.updateData);
   }
-  getAttendance() {
-    return this.http.get('http://localhost:3000/attendance/all');//this.getAttd
+  getAttendance(date:any) {
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'MyDate': date
+      }
+    )
+    return this.http.get('http://localhost:3000/attendance/date/attendance',{ headers });  //this.getAttd
   }
+
+  graphcontent()
+  {
+    return this.http.get('http://localhost:3000/attendance/date/report');
+  }
+
   getEmployee(): Observable<any[]> {
     return this.http
       .get<any[]>(this.getData)

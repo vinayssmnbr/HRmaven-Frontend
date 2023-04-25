@@ -3,7 +3,7 @@ import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -44,21 +44,35 @@ export class AttendanceContentComponent implements OnInit {
   datez: any = "";
   table1Visible = false;
   table2Visible = false;
-  todayDate:string;
+  todayDate: string;
   totalDays: number;
-  constructor(public dashService: DashService,private datepipe:DatePipe) {
+
+  DayAttendance = [];
+
+  constructor(public dashService: DashService, private datepipe: DatePipe) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-    this.dashService.getAttendance().subscribe((res: any) => {
-      // console.log('data', res); // add this line
-      this.employee = res;
-      console.log(this.employee);
-    });
     this.getLeaveData()
-    this.getreport();
-    this.datez=this.datepipe.transform(new Date(),'dd-MM-YYYY');
+    this.getreport()
+    this.datez = this.datepipe.transform(new Date(), 'YYYY-MM-dd');
     console.log(this.datez);
+    this.dayWiseAttendance(this.datez);
   }
+
+
+  dayWiseAttendance(date:any){
+  this.dashService.getAttendance(date).subscribe((res: any) => {
+    // console.log('data', res); // add this line
+    this.DayAttendance = res;
+
+  });
+}
+changefunction()
+{
+  this.dayWiseAttendance(this.datez);
+}
+
+
 
   form = new FormGroup({
     name: new FormControl(),
@@ -71,75 +85,84 @@ export class AttendanceContentComponent implements OnInit {
 
 
 
-  async getreport(){
-    await this.dashService.getreport().subscribe((res:any)=>{
-    const myChart = new Chart('barChart', {
-      type: 'bar',
-      data: {
-        labels: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-          'Aug',
-          'Sept',
-          'Oct',
-          'Nov',
-          'Dec',
-        ],
-        datasets: [
-          {
-            label: 'Present',
-            data: res.present,
-            backgroundColor: ['#2D11FA'],
-            pointStyle: 'circle',
+  async getreport() {
+    await this.dashService.graphcontent().subscribe((res: any) => {
+      console.log(res);
+      const present=[0,0,0,0,0,0,0,0,0,0,0,0];
+      const absent=[0,0,0,0,0,0,0,0,0,0,0,0];
+      const leave=[0,0,0,0,0,0,0,0,0,0,0,0];
+      res.map((d)=>{
+        present[d.month]=d.present;
+        absent[d.month]=d.absent;
+        leave[d.month]=d.leave;
+      })
+      const myChart = new Chart('barChart', {
+        type: 'bar',
+        data: {
+          labels: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sept',
+            'Oct',
+            'Nov',
+            'Dec',
+          ],
+          datasets: [
+            {
+              label: 'Present',
+              data: present,
+              backgroundColor: ['#2D11FA'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'Absent',
+              data: absent,
+              backgroundColor: ['#FDA75A'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'Leaves',
+              data: leave,
+              backgroundColor: ['#00C9FF'],
+              pointStyle: 'circle',
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
           },
-          {
-            label: 'Absent',
-            data:res.absent,
-            backgroundColor: ['#FDA75A'],
-            pointStyle: 'circle',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: {
+                padding: 40,
+                usePointStyle: true,
+                font: {
+                  size: 10,
+                },
+              },
+            },
           },
-          {
-            label: 'Leaves',
-            data: res.leave,
-            backgroundColor: ['#00C9FF'],
-            pointStyle: 'circle',
-          },
-        ],
-      },
-      options: {
-             responsive: true,
-             scales: {
-               y: {
-                 beginAtZero: true,
-               },
-             },
-             plugins: {
-               legend: {
-                 position: 'right',
-                 labels: {
-                   padding: 40,
-                   usePointStyle: true,
-                   font: {
-                     size: 10,
-                   },
-                 },
-               },
-             },
-           },
-         });
+        },
+      });
 
-     if(res){
-     setTimeout(() => {
-      this.loader=false;
-    }, 3000);
-  }
+      if (res) {
+        setTimeout(() => {
+          this.loader = false;
+        }, 3000);
+      }
      });
-   }
+  }
 
   ngOnInit() {
     this.form.get('name').disable();
@@ -155,13 +178,13 @@ export class AttendanceContentComponent implements OnInit {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     this.totalDays = new Date(year, month, 0).getDate();
-    this.dashService.getAttendance().subscribe((data: any[]) => {
-      const presentDays = data.filter((record) => record.status === 'present').length;
-      const totalDays = new Date(year, month, 0).getDate();
-      const attendancePercentage = (presentDays / totalDays) * 100;
+    // this.dashService.getAttendance().subscribe((data: any[]) => {
+    //   const presentDays = data.filter((record) => record.status === 'present').length;
+    //   const totalDays = new Date(year, month, 0).getDate();
+    //   const attendancePercentage = (presentDays / totalDays) * 100;
 
-      // Use attendancePercentage to update your UI
-    });
+    //   // Use attendancePercentage to update your UI
+    // });
   }
 
   changeColor() {
@@ -179,105 +202,70 @@ export class AttendanceContentComponent implements OnInit {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  // openModal(user:any) {
+  //GET LEAVE DATA
+  getLeaveData() {
+    this.dashService.getleaves().subscribe((res: any) => {
+      // console.log('data', res);
+      this.employee1 = res;
+    });
+  }
 
-  //   this.form.patchValue(user);
-  //   this.form.setValue({
-  //     name:user.name,
-  //     empId:user.empId,
-  //     date:user.date,
-  //     status:user.status,
-  //     punch_in:user.punch_in,
-  //     punch_out:user.punch_out,
-  //   });
-  //   this.Selectvariable=user.status;
-  //   this.showModal = true;
-  //   this.selectedUser = {_id: user._id};
-  // }
-
-
-//GET LEAVE DATA
-getLeaveData(){
-this.dashService.getleaves().subscribe((res: any) => {
-  // console.log('data', res);
-  this.employee1 = res;
-});
-}
-//   OnUpdate(){
-//     console.log(this.form.value)
-//     const updatedData = this.form.value;
-//     updatedData['_id'] = this.selectedUser._id;
-//     this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
-//       console.log('Data updated successfully');
-//     this.getLeaveData()
-// this.edit();
-//     });
-//   }
-
-  // closeModal() {
-  //   this.showModal = !this.showModal;
-  // }
 
   toggleTable1() {
     this.showCard = !this.showCard;
-    this.showTable=!this.showTable;
+    this.showTable = !this.showTable;
     this.table1Visible = !this.table1Visible;
     this.table2Visible = false; // ensure other table is hidden
 
   }
 
-  async toggleTable2(){
-    this.showCard=!this.showCard;
-    this.showTable=!this.showTable;
+  async toggleTable2() {
+    this.showCard = !this.showCard;
+    this.showTable = !this.showTable;
     this.table2Visible = !this.table2Visible;
     this.table1Visible = false;
-    await this.dashService.getAttendance().subscribe((res: any) => {
-      // console.log('data', res); // add this line
-      this.employee1 = res;
-      console.log(this.employee1);
-    }); // ensure other table is hidden
   }
 
-// edit(){
-//   this.closeModal();
-// this.editmodal=!this.editmodal;
-// }
-// done(){
-//   this.editmodal=!this.editmodal;
-// }
+  // edit(){
+  //   this.closeModal();
+  // this.editmodal=!this.editmodal;
+  // }
+  // done(){
+  //   this.editmodal=!this.editmodal;
+  // }
 
 
-// array: any = [
-//   {
-//     id: 0,
-//     name: 'present',
-//   },
-//   {
-//     id: 1,
-//     name: 'absent',
-//   },
-//   {
-//     id: 2,
-//     name: 'leave',
-//   },
+  // array: any = [
+  //   {
+  //     id: 0,
+  //     name: 'present',
+  //   },
+  //   {
+  //     id: 1,
+  //     name: 'absent',
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'leave',
+  //   },
 
-// ];
-// contentdropdown: boolean = false;
-// dropdownOpen() {
+  // ];
+  // contentdropdown: boolean = false;
+  // dropdownOpen() {
 
-//   this.contentdropdown = !this.contentdropdown;
-// }
-// Selectvariable: string ="select";
-// colorvariable: number =  0;
-// Changeselect(arr: any) {
-//   this.Selectvariable = arr.name;
-//   this.colorvariable = arr.id;
-//   this.contentdropdown=false;
-//   console.log(arr.name);
-// }
-// dropdownOpenOption() {
-//   this.designationdropdownOption = !this.designationdropdownOption;
-// }
+  //   this.contentdropdown = !this.contentdropdown;
+  // }
+  // Selectvariable: string ="select";
+  // colorvariable: number =  0;
+  // Changeselect(arr: any) {
+  //   this.Selectvariable = arr.name;
+  //   this.colorvariable = arr.id;
+  //   this.contentdropdown=false;
+  //   console.log(arr.name);
+  // }
+  // dropdownOpenOption() {
+  //   this.designationdropdownOption = !this.designationdropdownOption;
+  // }
 
 }
 function getCurrentDate() {
