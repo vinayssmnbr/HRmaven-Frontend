@@ -12,6 +12,9 @@
             <div class="graph_heading">
                 <h1>Attendance Status</h1>
             </div>
+            <div class="year">
+                <h2>2023</h2>
+            </div>
         </div>
 
         <div class="bar-chart" [ngClass]="{'attclose':loader}">
@@ -35,7 +38,7 @@
                 <input type="date" id="date" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
-            <div class="dropdown_container" *ngIf="dropdown">
+            <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
                 <div class="dropdwon_select" (click)="dropdownOpen()">
                     <p>{{Selectvariable}}</p>
                     <i class="fa-sharp fa-solid fa-caret-down"></i>

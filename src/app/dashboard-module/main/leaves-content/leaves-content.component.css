@@ -265,24 +265,29 @@
 .list_nav p {
     cursor: pointer
 }
-.Pending,.Approved,.Rejected{
+
+.Pending,
+.Approved,
+.Rejected {
     padding: 2px 50px;
 }
-.Pending:hover,.Approved:hover,.Rejected:hover {
+
+.Pending:hover,
+.Approved:hover,
+.Rejected:hover {
     border-bottom: 3px solid #2F2C9F;
 }
+
 .color {
     color: #2F2C9F;
     border-bottom: 3px solid #2F2C9F;
-   
+
 }
 
 /*------------------ table----------------------- */
 .leaves_table {
     margin-top: 25px;
 }
-
-
 
 .table_heading {
     position: sticky;
@@ -529,7 +534,7 @@ input[type="radio"] {
 
 .tooltip {
     position: relative;
-    z-index:999;
+    z-index: 999;
 }
 
 .tooltip:after,
@@ -591,7 +596,7 @@ input[type="radio"] {
 [data-tooltip-pos="right"]:hover:before,
 [data-tooltip-pos="right"]:hover:after {
     transform: translate(0, -50%);
-    z-index:1111;
+    z-index: 1111;
 }
 
 [data-tooltip-length]:after {
@@ -800,7 +805,50 @@ input[type="radio"] {
     cursor: pointer;
     color: #fff;
 }
-.Done_form_btn .Done_btn:hover{
+
+.Done_form_btn .Done_btn:hover {
     background-color: #1fa10a;
 }
+/* --------------------Progress Bar---------------------- */
+.progress_container {
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 28px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
 
+.circular-progress,
+.circular-progress1,
+.circular-progress2,
+.circular-progress3 {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress:before,
+.circular-progress1:before,
+.circular-progress2:before,
+.circular-progress3:before {
+    content: "";
+    position: absolute;
+    height: 74%;
+    width: 74%;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.value-container,
+.value-container1,
+.value-container2,
+.value-container3 {
+    position: relative;
+    font-size: 15px;
+    color: #444444;
+    font-weight: bold;
+}
