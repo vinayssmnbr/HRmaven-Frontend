@@ -484,6 +484,21 @@ export class EmployeeContentComponent implements OnInit {
     }
     // this.onUpload(  this.selectedFile );
   }
+  // files: File[] = [];
+
+  // onDrop(event: DragEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   const files = event.dataTransfer.files;
+  //   for (let i = 0; i < files.length; i++) {
+  //     this.files.push(files.item(i));
+  //   }
+  // }
+
+  // onDragOver(event: DragEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  // }
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
     this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';

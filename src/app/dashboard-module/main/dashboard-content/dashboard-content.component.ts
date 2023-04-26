@@ -45,8 +45,6 @@ export class DashboardContentComponent implements OnInit {
 
     });
 
-    this.showchart()
-
   }
 
 
@@ -89,15 +87,15 @@ export class DashboardContentComponent implements OnInit {
       head: 'Interview',
       time: '10am to 12pm',
     },
-   
-   
+
+
     {
       day: 'Mon',
       Date: '10',
       head: 'Interview',
       time: '10am to 12pm',
     },
-    
+
 
   ];
 
@@ -125,12 +123,20 @@ export class DashboardContentComponent implements OnInit {
     this.isFromSignupPage = this.userService.isFromSignupPage;
     console.log("isFromSignupPage: ", this.isFromSignupPage);
 
-    this.dashService.getreport().subscribe((res:any)=>{
+    this.dashService.graphcontent().subscribe((res:any)=>{
     if(res)
     {
       console.log('yeah');
       this.loader=true;
     }
+    const present=[0,0,0,0,0,0,0,0,0,0,0,0];
+    const absent=[0,0,0,0,0,0,0,0,0,0,0,0];
+    const leave=[0,0,0,0,0,0,0,0,0,0,0,0];
+    res.map((d)=>{
+      present[d.month]=d.present;
+      absent[d.month]=d.absent;
+      leave[d.month]=d.leave;
+    })
     let chart = this.elementRef.nativeElement.querySelector(`#myChart`);
 
     const myChart = new Chart(chart, {
@@ -153,7 +159,7 @@ export class DashboardContentComponent implements OnInit {
         datasets: [
           {
             label: 'Present',
-            data: res.present,
+            data: present,
             backgroundColor: ['#2D11FA'],
             pointStyle: 'circle',
             borderColor: [
@@ -169,7 +175,7 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Absent',
-            data:res.absent,
+            data:absent,
             backgroundColor: ['#FDA75A'],
             pointStyle: 'circle',
             borderColor: [
@@ -185,7 +191,7 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Leaves',
-            data: res.leave,
+            data: leave,
             backgroundColor: ['#00C9FF'],
             pointStyle: 'circle',
             borderColor: [
@@ -228,9 +234,7 @@ export class DashboardContentComponent implements OnInit {
   }
 
 
-  showchart(){
 
-  }
 
 
 

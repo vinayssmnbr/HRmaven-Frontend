@@ -53,8 +53,8 @@
         <img src="./assets/images/Vector (1).svg" alt="">
       </div>
       <button class="import"><img src="./assets/images/prime_file-import.svg">Export</button>
-      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
-      <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
+      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg" >Import</button>
+    <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
 
@@ -176,10 +176,9 @@
             <div class="input">
               <label>Profile Picture</label>
               <div class="custom-file-picker">
-                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName"
-                  id="text4" readonly>
+                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName" id="text4" readonly>
                 <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url">
-                <a (click)="fileInput.click()">Choose File</a>
+                <a  (click)="fileInput.click()">Choose File</a>
               </div>
             </div>
           </div>
@@ -314,6 +313,9 @@
           <h3>Select a CSV File to Upload</h3>
           <p>or drag and drop it here</p>
           <a (click)="fileInput.click()" class="choose">Choose File</a>
+          <!-- <ul class="file-list">
+            <li *ngFor="let file of files">{{file.name}}</li>
+          </ul> -->
           <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv">
         </div>
