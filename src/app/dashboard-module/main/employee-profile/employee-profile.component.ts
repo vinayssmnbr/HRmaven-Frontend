@@ -23,6 +23,21 @@ export class EmployeeProfileComponent {
       employees: this.fb.array([]),
     })
   }
+  employees(): FormArray {
+    return this.empForm.get("employees") as FormArray
+  }
+  newEmployee(): FormGroup {
+    return this.fb.group({
+      excompany: '',
+      exdesignation: '',
+      exlocation:'',
+      exduration:'',
+    })
+  }
+  addEmployee() {
+    console.log("Adding a employee");
+    this.employees().push(this.newEmployee());
+  }
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
   }
