@@ -33,7 +33,7 @@
                     Attendance</button>
             </div>
             <label for="date">
-              <input type="date" id="date" *ngIf="showTable"(change)="changefunction()" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
+              <input type="date" id="date" *ngIf="showTable" (change)="changefunction()" [(ngModel)]="datez" [ngModelOptions]="{standalone: true}">
             </label>
 
             <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
@@ -70,7 +70,7 @@
                     <tr *ngFor="let user of DayAttendance | attendanceFilter:employeename ">
                       <!-- | attendanceFilter:employeename:datez -->
                         <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
-                            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center">
+                            <p> <img src="assets/images/no_record.png" alt="" class="center">
                             </p>
                             <h2>No Record Found!</h2>
                         </td>

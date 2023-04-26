@@ -3,20 +3,20 @@
 <div class="main">
   <div class="selection">
     <div class="list_nav">
-      <div class="All">
-        <p [ngClass]="{'active': isallactive}" (click)="isall()">All</p>
+      <div class="All" [ngClass]="{'active': isallactive}">
+        <p  (click)="isall()">All</p>
       </div>
-      <div class="Active">
-        <p [ngClass]="{'active': is_active}" (click)="isactive()">Active</p>
+      <div class="Active" [ngClass]="{'active': is_active}">
+        <p (click)="isactive()">Active</p>
       </div>
-      <div class="Resigned">
-        <p [ngClass]="{'active':is_resigned}" (click)="isresigned()">Resigned</p>
+      <div class="Resigned" [ngClass]="{'active':is_resigned}">
+        <p  (click)="isresigned()">Resigned</p>
       </div>
-      <div class="Terminated">
-        <p [ngClass]="{'active':is_terminated}" (click)="isterminated()">Terminated</p>
+      <div class="Terminated" [ngClass]="{'active':is_terminated}">
+        <p  (click)="isterminated()">Terminated</p>
       </div>
-      <div class="Absconder">
-        <p [ngClass]="{'active':is_absconder}" (click)="isabsconder()">Absconder</p>
+      <div class="Absconder" [ngClass]="{'active':is_absconder}">
+        <p  (click)="isabsconder()">Absconder</p>
       </div>
     </div>
 
@@ -94,7 +94,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" (change)="selectedUser=user._id; onSelectChange($event,user)"
+              <select class="select" id="myselect" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
                 [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
                 [style.color]="selectedUser === user._id ? color : ''"
                 [style.border]="selectedUser === user._id ? borderColor : ''">Select
@@ -141,7 +141,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                   <!-- <p>{{Selectvariable1}}</p> -->
-                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="job_type" id="text9" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="job_type" id="text9" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
@@ -161,7 +161,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
@@ -192,7 +192,7 @@
             </div>
             <div class="input">
               <label>Mobile No.</label>
-              <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
+    <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile" (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
 
             </div>
@@ -220,7 +220,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="text8" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="slt3" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
@@ -237,7 +237,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timing" id="text8" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timing" id="slt4" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
@@ -313,9 +313,6 @@
           <h3>Select a CSV File to Upload</h3>
           <p>or drag and drop it here</p>
           <a (click)="fileInput.click()" class="choose">Choose File</a>
-          <!-- <ul class="file-list">
-            <li *ngFor="let file of files">{{file.name}}</li>
-          </ul> -->
           <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv">
         </div>
