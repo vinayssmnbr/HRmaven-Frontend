@@ -4,7 +4,8 @@
     background-color: #f9f9f9;
     padding: 100px 30px;
 }
-.available-balance-area{
+
+.available-balance-area {
     background-color: #FFFFFF;
     width: 100%;
     padding: 20px 20px;
@@ -12,92 +13,126 @@
     flex-direction: column;
     gap: 20px;
 }
-.available-balance-area h6{
+
+.available-balance-area h6 {
     font-weight: 500;
     font-size: 18px;
     color: #444444;
-    }
-    .leaves{
-        max-width: 260px;
-        border-radius: 10px;
-        height: 100px;
-        background-color: #FAFAFA;
-        padding: 27px 30px;
-        width: 100%;
-        display: flex;
-    }
-
-.casual-leaves{
-   display: flex;
-   gap: 25px;
-   width: 100%;
-}
-/*---------------------------Progress bar---------------------------*/
-.progress_container {
-    position: relative;
-    transform: translate(-50%, -50%);
-    top: 28px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
 }
 
-.circular-progress,
-.circular-progress1,
-.circular-progress2,
-.circular-progress3 {
-    position: relative;
-    height: 60px;
-    width: 60px;
+.leaves {
+    border-radius: 10px;
+    height: 100px;
+    background-color: #FAFAFA;
+    padding: 27px 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.casual-leaves {
+    display: flex;
+    gap: 25px;
+    width: 100%;
+}
+
+/* -------------------Progress Bar------------------------- */
+
+@keyframes growProgressBar {
+
+    0%,
+    33% {
+        --pgPercentage: 0;
+    }
+
+    100% {
+        --pgPercentage: var(--value);
+    }
+}
+
+@property --pgPercentage {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+}
+
+div[role="progressbar"],
+div[role="progressbar1"],
+div[role="progressbar2"],
+div[role="progressbar3"] {
+    --pgPercentage: var(--value);
+    animation: growProgressBar 3s 1 forwards;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: grid;
     place-items: center;
+    font-size: 12px;
 }
 
-.circular-progress:before,
-.circular-progress1:before,
-.circular-progress2:before,
-.circular-progress3:before {
-    content: "";
-    position: absolute;
-    height: 74%;
-    width: 74%;
-    background-color: #ffffff;
-    border-radius: 50%;
+div[role="progressbar"] {
+    color: #8BAFFF;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#8BAFFF calc(var(--pgPercentage) * 1%), #def 0);
 }
 
-.value-container,
-.value-container1,
-.value-container2,
-.value-container3 {
-    position: relative;
-    font-size: 15px;
-    color: #444444;
-    font-weight: bold;
+div[role="progressbar1"] {
+    color: #7BD36D;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#7BD36D calc(var(--pgPercentage) * 1%), #def 0);
 }
+
+div[role="progressbar2"] {
+    color: #369;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#F8BB6F calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar3"] {
+    color: #FA9796;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#FA9796 calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar"]::before,
+div[role="progressbar1"]::before,
+div[role="progressbar2"]::before,
+div[role="progressbar3"]::before {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%';
+}
+
 /*-----------------------Leave-status--------------------*/
-.leave-status-area{
+.leave-status-area {
     background-color: #FFFFFF;
     width: 100%;
     padding: 20px 20px;
     margin-top: 25px;
     border-radius: 20px;
-    
+
 }
-.Leave-status{
+
+.Leave-status {
     display: flex;
     justify-content: space-between;
 }
-.Leave-status h6{
+
+.Leave-status h6 {
     font-weight: 500;
-font-size: 18px;
-color: #444444;
+    font-size: 18px;
+    color: #444444;
 }
-.Leave-status a{
+
+.Leave-status a {
     font-weight: 400;
-font-size: 14px;
-color: #2F2C9F;
+    font-size: 14px;
+    color: #2F2C9F;
 }
+
 /*--------------------------------------------Table---------------------------------------*/
 .table_data {
     width: 100%;
@@ -169,6 +204,7 @@ td {
     background-color: #EFEFF8;
     margin-top: 10px;
 }
+
 /* 
 .table_data {
     overflow-y: auto;
@@ -179,40 +215,51 @@ td {
     position: sticky;
     top: -20px;
 }
+
 .attendence_table {
     margin-top: 20px;
 }
+
 /*--------------Apply for leaves----------------------*/
-.apply-for-leaves{
+.apply-for-leaves {
     padding: 20px;
     width: 100%;
     background-color: #FFFFFF;
     margin-top: 25px;
     border-radius: 20px;
 }
-.apply-for-leaves h6{
+
+.apply-for-leaves h6 {
     font-weight: 500;
-font-size: 18px;
-color: #444444;
+    font-size: 18px;
+    color: #444444;
 }
-.form{
+
+.form {
     margin-top: 25px;
-  gap: 22px;
-   display: flex;
+    gap: 22px;
+    display: flex;
+    justify-content: space-between;
 }
-.form-group input{
-padding: 10px 17px;
-width: 240px;
-height: 40px;
-border: 1px solid rgba(180, 180, 180, 0.8);
-border-radius: 6px;
-outline: none;
+
+.form-group input {
+    padding: 10px 17px;
+    width: 240px;
+    height: 40px;
+    border: 1px solid rgba(180, 180, 180, 0.8);
+    border-radius: 6px;
+    outline: none;
 }
-.form-group label{
+
+.form-group label {
     font-weight: 400;
-font-size: 13px;
-color: #333333;
+    font-size: 13px;
+    color: #333333;
 }
+.form-group input:disabled{
+   cursor: not-allowed;
+}
+
 /*------------------------drpdown css----------------------*/
 .dropdwon_select {
     background-color: #fff;
@@ -221,31 +268,31 @@ color: #333333;
     cursor: pointer;
     padding: 8px;
     border: 1px solid rgba(180, 180, 180, 0.8);
-border-radius: 6px;
+    border-radius: 6px;
     color: #444444;
     display: flex;
     justify-content: space-between;
     padding: 10px 10px;
-  }
-  
-  .dropdwon_select:hover,
-  .dropdwon_select:focus{
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus {
     border: 1px solid #2F2C9F;
     border-radius: 8px;
-  }
-  
-  .dropdwon_select p {
+}
+
+.dropdwon_select p {
     font-size: 14px;
     font-weight: 400;
-  }
-  
-  .dropdwon_select i {
+}
+
+.dropdwon_select i {
     font-size: 14px;
     color: #444444;
     padding: 3px 7px;
-  }
-  
-  .select_content {
+}
+
+.select_content {
     background-color: #fff;
     cursor: pointer;
     width: 240px;
@@ -255,81 +302,93 @@ border-radius: 6px;
     position: absolute;
     color: #444444;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
-  }
-  
-  .select_content ul {
+    z-index: 99;
+}
+
+.select_content ul {
     padding: 0;
     margin: 0;
-  }
-  
-  .select_content ul li {
+}
+
+.select_content ul li {
     list-style: none;
     padding: 10px 10px;
     margin-top: 5px;
     font-size: 14px;
-  }
-  
-  .select_content ul li:hover {
+}
+
+.select_content ul li:hover {
     background-color: #ECECEC;
     border-radius: 8px;
-  }
-  
-  .select_active {
+}
+
+.select_active {
     background-color: #ECECEC;
     border-radius: 8px;
-  
-  }
-  /*------------------------------------reason Attachments-------------------------------------*/
-  .reason-attachments{
+
+}
+
+/*------------------------------------reason Attachments-------------------------------------*/
+.reason-attachments {
     display: flex;
     flex-direction: row;
     gap: 25px;
     margin-top: 25px;
-  }
-  .reason textarea{
+    justify-content: space-between;
+}
+
+.reason textarea {
     min-width: 500px;
-    height: 167px;width: 100%;
+    height: 167px;
+    width: 100%;
     resize: none;
     border: 1px solid #CBCBCB;
-border-radius: 8px;
-padding: 10px 17px;
-outline: none;
-  }
-  .reason label{
+    border-radius: 8px;
+    padding: 10px 17px;
+    outline: none;
+}
+
+.reason label {
     font-weight: 400;
-font-size: 14px;
-color: #333333;
+    font-size: 14px;
+    color: #333333;
 
-  }
+}
 
-  .inside-attachment{
+.inside-attachment {
     padding: 19px;
-  }
-  .textarea{
+}
+
+.textarea {
     min-width: 500px;
-    height: 167px;width: 100%;
+    height: 167px;
+    width: 100%;
     resize: none;
     border: 1px solid #CBCBCB;
-border-radius: 8px;
-text-align: center;
-padding: 10px 17px;
-outline: none;
-  }
-  .textarea .first{
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px 17px;
+    outline: none;
+}
+
+.textarea .first {
     font-weight: 400;
-font-size: 14px;
-color: #777777;
-  }
-  .textarea .second{
+    font-size: 14px;
+    color: #777777;
+}
+
+.textarea .second {
     font-weight: 400;
-font-size: 12px;
-color: #777777;
-  }
-  .textarea input{
-   /* position: relative; */
-   opacity: 0;
-  }
-  .choose-file{
+    font-size: 12px;
+    color: #777777;
+}
+
+.textarea input {
+    /* position: relative; */
+    opacity: 0;
+}
+
+.choose-file {
     width: 82px;
     height: 22px;
     background-color: #EFEFF8;
@@ -337,17 +396,18 @@ color: #777777;
     position: absolute;
     color: #2F2C9F;
     font-weight: 400;
-font-size: 12px;
-outline: none;
-border: none;
-cursor: pointer;
+    font-size: 12px;
+    outline: none;
+    border: none;
+    cursor: pointer;
 
-/* position: absolute; */
-  }
-  .choose-btn{
+    /* position: absolute; */
+}
+
+.choose-btn {
     align-items: center;
     justify-content: center;
     display: flex;
     margin-top: 16px;
-    
-  }
+
+}
