@@ -19,6 +19,8 @@ import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
 import { saveAs } from 'file-saver';
+import { json2csv } from 'json2csv';
+
 
 @Component({
   selector: 'app-employee-content',
@@ -31,7 +33,7 @@ export class EmployeeContentComponent implements OnInit {
   selected: any[] = [];
   selectAll: boolean = false;
   parentSelector:boolean=false;
-  employee:any = [ ];
+  employee:any = [];
   selectedEmployess:any[]=[];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
@@ -695,6 +697,7 @@ export class EmployeeContentComponent implements OnInit {
     this.showModal = true;
     this.showModalContent = false;
     this.csvadded = false;
+    // this.importFile()
   }
   closeFilepicker() {
     this.importfile = false;
@@ -716,7 +719,7 @@ export class EmployeeContentComponent implements OnInit {
 
 
   download(): void {
-    this.dashService.exportUsers().subscribe(
+    this.dashService.exportUsers(this.selectedEmployess).subscribe(
       (data: Blob) => {
         const downloadUrl = window.URL.createObjectURL(data);
         const link = document.createElement('a');
@@ -767,69 +770,45 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-  importFile() {
-    const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+   importFile() {
+   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
     fileInput.click();
   }
 
-
-  // selected: any[] = [];
-
-  // isSelected(item: any): boolean {
-  //   return this.selected.indexOf(item) > -1;
-  // }
-
-  // toggleSelection(item: any): void {
-  //   const idx = this.selected.indexOf(item);
-  //   if (idx > -1) {
-  //     this.selected.splice(idx, 1);
-  //   } else {
-  //     this.selected.push(item);
-  //   }
-  // }
-
-  // checkAll(checked: boolean): void {
-  //   if (checked) {
-  //     this.user.forEach((item:any) => {
-  //       const idx = this.selected.indexOf(item);
-  //       if (idx === -1) {
-  //         this.selected.push(item);
-  //       }
-  //     });
-  //   } else {
-  //     this.selected = [];
-  //   }
-  // }
 
   onCheckboxChange($event, user:any){
     const id=$event.target.value;
     const isChecked=$event.target.checked;
 
     if(isChecked){
-      this.selectedEmployess.push(user);
+      if(user=='All'){
+        this.selectedEmployess = [...this.employee];
+      }else{
+
+        this.selectedEmployess.push(user);
+      }
+      console.log(this.selectedEmployess, 'added employees');
     }else{
        // delelting the user from array: this.selectedEmployess
-       const index = this.selectedEmployess.indexOf(user);
-        if (index > -1) {
-          this.selectedEmployess.splice(index, 1);
+       if(user=='All'){
+        this.selectedEmployess = [];
+       }else{
+        let index:number = -1;
+        this.selectedEmployess.forEach((el:any, i:number)=>{
+         if(el._id==user._id){
+           index = i;
+           return;
+         }
+        })
+        if(index>=0){
+         this.selectedEmployess.splice(index, 1);
+        }
       }
+      console.log(this.selectedEmployess, 'removed user')
+       
     }
 
 }
-
-// onCheckboxChange($event, user:any){
-//   const id=$event.target.value;
-//   const isChecked=$event.target.checked;
-
-//   if(isChecked){
-//       this.selectedEmployess.push(user);
-//   }else{
-//       const index = this.selectedEmployess.indexOf(user);
-//       if (index > -1) {
-//           this.selectedEmployess.splice(index, 1);
-//       }
-//   }
-// }
 
 
 }
