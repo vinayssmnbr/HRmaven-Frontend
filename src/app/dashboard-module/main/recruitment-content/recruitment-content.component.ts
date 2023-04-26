@@ -55,6 +55,16 @@ export class RecruitmentContentComponent {
     this.id = ids;
     console.log(this.id);
   }
+  showModal5=false;
+  openModal5(){
+    this.showModal5 = true;
+    this.showModalContent=true
+  }
+  
+  closeModal5(){
+    this.showModal5 = false;
+    this.showModalContent=false;
+  }
   }
 
 

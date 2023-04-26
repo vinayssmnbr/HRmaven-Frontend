@@ -672,7 +672,6 @@
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-
     min-width: 932px;
     min-height: 120px;
     resize: none;
