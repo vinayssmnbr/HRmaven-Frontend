@@ -1802,3 +1802,8 @@ label {
     color: #666666;
     margin-bottom: 20px;
 }
+.no_data{
+    background-color: #f9f9f9;
+    padding: 20px 0;
+    text-align:center;
+}

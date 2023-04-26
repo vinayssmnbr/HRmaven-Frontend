@@ -6,6 +6,7 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
 import { PayrollComponent } from './main/payroll/payroll.component';
 import { RecruitmentComponent } from './main/recruitment/recruitment.component';
 import { ReportComponent } from './main/report/report.component';
+import { LeavesContentComponent } from './leaves-content/leaves-content.component';
 const routes: Routes = [
     {path:'dashboard',component:DashboardContentComponent},
 
@@ -22,6 +23,9 @@ const routes: Routes = [
   },{
     path:'report',
     component:ReportComponent
+  },
+  {
+    path:'leave',component:LeavesContentComponent
   }
 ];
 
