@@ -70,11 +70,11 @@ export class DashService {
   getAttendance() {
     return this.http.get('http://localhost:3000/attendance/all');
   }
-  // getEmployee(): Observable<any[]> {
-  //   return this.http
-  //     .get<any[]>(this.getData)
-  //     .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
-  // }
+  getEmployee1(status:string): Observable<any[]> {
+    return this.http
+      .get<any[]>(this.getData)
+      .pipe(map((data) => data.filter((user) => user.status ===status)));
+  }
   getEmployee(){
     return this.http.get(this.getData)
   }
@@ -89,11 +89,11 @@ export class DashService {
     return this.http.patch(this.updateData + `/${data._id}`, data);
   }
   //SEARCH UID AND FILTER DESIGNATION
-  searchuid(query: string, designation: string) {
-    console.log('des', designation);
+  searchuid(query: string, status: string) {
+    console.log('des', status);
     return this.http
-      .get<any>(`${this.getData}?uid=${query}&designation=${designation}`)
-      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
+      .get<any>(`${this.getData}?uid=${query}&status=${status}`)
+      // .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
 
   getLeaveData(type: string) {

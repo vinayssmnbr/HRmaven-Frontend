@@ -94,7 +94,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" (change)="selectedUser=user._id; onSelectChange($event,user)"
+              <select class="select" id="myselect" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
                 [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
                 [style.color]="selectedUser === user._id ? color : ''"
                 [style.border]="selectedUser === user._id ? borderColor : ''">Select
@@ -193,7 +193,7 @@
             </div>
             <div class="input">
               <label>Mobile No.</label>
-              <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
+    <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile" (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
 
             </div>
@@ -313,9 +313,9 @@
           <img src="./assets/images/Vector (4).png" alt="">
           <h3>Select a CSV File to Upload</h3>
           <p>or drag and drop it here</p>
-          <a (click)="fileInput.click()" class="choose">Choose File</a>
-          <input type="text"  id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv">
+          <!-- <a (click)="fileInput.click()" class="choose">Choose File</a> -->
+          <!-- <input type="text"  id="text18" readonly [value]="fileName1"> -->
+          <!-- <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv"> -->
         </div>
         <h5>or Upload from a URL</h5>
         <div class="custom-file-picker">
