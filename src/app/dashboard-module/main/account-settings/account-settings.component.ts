@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../service/user.service';
 
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
   styleUrls: ['./account-settings.component.css']
 })
-export class AccountSettingsComponent {
+export class AccountSettingsComponent implements OnInit {
   showSearchBox=false;
   date: any;
   greeting: any;
@@ -20,6 +21,17 @@ export class AccountSettingsComponent {
   hideNotifications = false;
  readonly= false;
 
+ constructor(private userService:UserService){}
+  loginobjectid = localStorage.getItem('objectid')
+  // loginobjectid:any = ''
+
+ data: any = ''
+ ngOnInit(){
+  this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
+
+    console.log('response account:' +res.useridd);
+  });
+ }
   ReadMore: boolean = true;
   visible: boolean = false;
   onclick() {

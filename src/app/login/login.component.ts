@@ -35,12 +35,12 @@ export class LoginComponent {
 
   ngOnInit() {
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      // force a page refresh on navigation end
-      window.location.reload();
-    });
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd)
+    // ).subscribe(() => {
+    //   // force a page refresh on navigation end
+    //   window.location.reload();
+    // });
 
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
@@ -185,7 +185,6 @@ export class LoginComponent {
 
     this.userService.users(data).subscribe((res: any) => {
       this.userService.users(this.loginForm);
-
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
@@ -213,6 +212,8 @@ export class LoginComponent {
         'LoggedInName: ',
         this.loginForm.controls['email'].value
       );
+
+
     });
   }
   ForgetEmailSubmit(data: any) {

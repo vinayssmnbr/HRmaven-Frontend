@@ -29,10 +29,9 @@ export class UserService {
   private url = environment.url;
   private auth = environment.auth;
   private  emailurl = environment.getemail
-  private   personaldataurl = environment.personalurl
   private personaldataupdate = environment.updatepersonaldata
+  private getpersonaldata = environment.getpersonaldata
 
-  // private changepwd = environment.changepassword
 
   getData(email: string) {
     const url = `${this.emailurl}/${email}`;
@@ -43,16 +42,18 @@ export class UserService {
     this.isLoggedIn.next(true);
     return this.http.post(this.saveurl, data);
   }
-  savepersonal(data: any){
-    return this.http.post(this.personaldataurl, data);
-  }
+ 
   updatepersonals(userId: any, data: any){
-    const url = `${this.personaldataupdate}`;
+    const url = `${this.personaldataupdate}/${userId}`;
     return this.http.put(url, data);
   }
 
   ForgotEmail(data: any) {
     return this.http.post(this.Forgoturl, data);
+  }
+
+  getpersonals(id: any){
+    return this.http.get(`${this.getpersonaldata}/${id}`);
   }
 
   newpwd(data: any, token: any) {
