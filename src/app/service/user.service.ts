@@ -30,6 +30,7 @@ export class UserService {
   private auth = environment.auth;
   private  emailurl = environment.getemail
   private personaldataupdate = environment.updatepersonaldata
+  private addpersonaldata = environment.addpersonalurl
   private getpersonaldata = environment.getpersonaldata
 
 
@@ -46,6 +47,10 @@ export class UserService {
   updatepersonals(userId: any, data: any){
     const url = `${this.personaldataupdate}/${userId}`;
     return this.http.patch(url, data);
+  }
+  addpersonals(userId: any, data: any){
+    const url = `${this.addpersonaldata}/${userId}`;
+    return this.http.put(url, data);
   }
 
   ForgotEmail(data: any) {
