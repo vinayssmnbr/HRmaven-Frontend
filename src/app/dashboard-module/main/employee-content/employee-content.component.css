@@ -83,26 +83,36 @@
 
 .All.active {
   border-bottom: 3px solid #2F2C9F;
+}
+.All.active p {
   color: #2F2C9F;
   font-weight: 500;
 }
 .Active.active {
   border-bottom: 3px solid #2F2C9F;
+}
+.Active.active p{
   color: #2F2C9F;
   font-weight: 500;
 }
 .Resigned.active  {
   border-bottom: 3px solid #2F2C9F;
+}
+.Resigned.active p{
   color: #2F2C9F;
-  font-weight: 500;
+    font-weight: 500;
 }
 .Terminated.active{
   border-bottom: 3px solid #2F2C9F;
+}
+.Terminated.active p{
   color: #2F2C9F;
   font-weight: 500;
 }
 .Absconder.active {
   border-bottom: 3px solid #2F2C9F;
+}
+.Absconder.active p{
   color: #2F2C9F;
   font-weight: 500;
 }
@@ -638,13 +648,14 @@ background-color: rgba(255, 238, 82, 0.5);
   width: 100%;
   max-width: 647px;
 }
-.modal-header .details_row span {
+.modal-header .details_row span p{
   padding-left: 40px;
+  padding-bottom: 3px;
 }
 .modal-header .details_row span.active{
   color: #2F2C9F;
   border-bottom: 3px solid #2F2C9F;
-  width: 30%;
+  width: 28%;
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 500;
@@ -1025,6 +1036,7 @@ label {
     cursor: pointer;
 }
 
+
 #text9 {
     width: 270px;
     height: 30px;
@@ -1043,7 +1055,14 @@ label {
     cursor: pointer;
 }
 #text9::placeholder{
-  color: #666666;
+  color: black;
+}
+#text8::placeholder{
+  color: black;
+}
+input::placeholder{
+  color: #888888;
+  /* opacity: 0.7; */
 }
 
 #text10 {
@@ -1476,10 +1495,37 @@ label {
     background: #FFFFFF;
     border: 1px solid rgba(180, 180, 180, 0.8);
     border-radius: 8px;
-    color: black;
+    color: #666666;
     padding-left: 15px;
     margin-bottom: 20px;
 }
+#slt3 {
+  width: 260px;
+  height: 30px;
+  box-shadow: none;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: black;
+  outline: none;
+
+}
+#slt4 {
+  width: 260px;
+  height: 30px;
+  box-shadow: none;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: black;
+  outline: none;
+}
+/* #slt3::placeholder{
+  color: #666666;
+}
+#slt4::placeholder {
+  color: #666666;
+} */
 
 #slt2 {
     width: 260px;
