@@ -5,7 +5,7 @@
         <div class="profile-bottom-line">
             <div class="profile-arrow">
                 <div class="arrow">
-                    <img src="assets/images/Group 1241.svg" alt="">
+                    <img src="assets/images/Group 1241.svg" routerLink="/dashboard" >
                 </div>
                 <div class="profile-text">
                     <h6>Profile</h6>
@@ -14,11 +14,21 @@
         </div>
         <div class="profile-name">
             <div class="profile-image">
-                <img src="assets/images/user 1.svg" alt="">
-               
-                
+                <div class="upload_content">
+                    <div class="content-overlay"></div>
+                    <img class="content-image" src="assets/images/user 1.svg" alt="">
+                    <div class="content-details fadeIn-bottom">
+                        <img src="assets/images/upload.png" alt="">
+                        <h3 class="content-title">UPLOAD </h3>
+                        <p class="content-text">PROFILE PICTURE</p>
+                    </div>
+                </div>
+
+
+
+
             </div>
-            
+
             <div class="name-text">
                 <h5>Abhishek Sharma</h5>
                 <!-- <p>Human Resource Manager</p> -->
@@ -74,7 +84,8 @@
                 <div class="paragraph-text">
                     <!-- <input type="text" [readonly]="true"
                       placeholder=""  > -->
-                    <textarea  placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics, and generate comprehensive reports to gain insights into their workforce."></textarea>
+                    <textarea
+                        placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics, and generate comprehensive reports to gain insights into their workforce."></textarea>
                 </div>
 
                 <div class="clear-update-button">
@@ -99,7 +110,7 @@
                             <h6>Professional Email</h6>
                             <p>hr@hrmaven.com</p>
                         </div>
-                        
+
 
                     </div>
                     <div class="edit-password-button">
@@ -166,7 +177,7 @@
 
 
 
-                                                 <!--Modal 1-->
+    <!--Modal 1-->
 
 
 
@@ -189,13 +200,11 @@
                     </div>
                     <div class="form__group">
                         <label for="email">No. of employees</label>
-                        <input type="number" class="form_input" placeholder='0-50' id="email"
-                            required />
+                        <input type="number" class="form_input" placeholder='0-50' id="email" required />
                     </div>
                     <div class="form__group">
                         <label for="email">Head Office</label>
-                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' id="email"
-                            required />
+                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' id="email" required />
                     </div>
                 </div>
 
@@ -206,13 +215,14 @@
                         <div class="modal-text">
                             <!-- <input type="text" [readonly]="true"
                               placeholder=""  > -->
-                            <textarea class="textarea-2" placeholder="Write a few words about your company..."></textarea>
+                            <textarea class="textarea-2"
+                                placeholder="Write a few words about your company..."></textarea>
                         </div>
                     </div>
-                   
+
                 </div>
 
-               
+
 
             </form>
 
@@ -248,7 +258,7 @@
                     </div>
                 </div>
 
-                
+
 
                 <div class="email-phone">
                     <div class="form__group">
@@ -257,8 +267,7 @@
                     </div>
                     <div class="form__group">
                         <label for="email">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='Eg. +91 9856234510' id="email"
-                            required />
+                        <input type="number" class="form_input" placeholder='Eg. +91 9856234510' id="email" required />
                     </div>
                 </div>
 

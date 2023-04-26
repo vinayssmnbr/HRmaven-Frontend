@@ -399,13 +399,12 @@
 
 .form__group .form_input {
     width: 270px;
-  padding: 10px 17px;
-height: 40px;
-background-color: #FFFFFF;
-border: 1px solid #CBCBCB;
-border-radius: 8px;
-margin-top: 5px;
-outline: none;
+    padding: 10px 17px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 1px solid #CBCBCB;
+    border-radius: 8px;
+    margin-top: 5px;
 }
 
 .name-email {
@@ -421,13 +420,13 @@ outline: none;
 
 .edit-profile-footer {
     background-color: #F7F7FB;
-border-radius: 8px 8px 0px 0px;
-max-width: 685px;
-width: 100%;
-height: 75px;
-justify-content: center;
-display: flex;
-align-items: center;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 685px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -568,21 +567,22 @@ align-items: center;
 
 .edit-company-heading {
     background-color: #F7F7FB;
-border-radius: 8px 8px 0px 0px;
-max-width: 980px;
-width: 100%;
-height: 75px;
-justify-content: center;
-display: flex;
-align-items: center;
+    border-radius: 8px 8px 0px 0px;
+    max-width: 980px;
+    width: 100%;
+    height: 75px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
 
 .company-descrip {
     margin-top: 25px;
 }
 
-.company-details-footer{
-    background-color: #F7F7FB;;
+.company-details-footer {
+    background-color: #F7F7FB;
+    ;
     border-radius: 8px 8px 0px 0px;
     max-width: 980px;
     width: 100%;
@@ -594,17 +594,84 @@ align-items: center;
 
 
 
-/* profile upload */
+/*----------------------- profile upload ------------------*/
+/* .profile-image {
+    position: relative;
+} */
 
 
+.upload_content {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
+    cursor: pointer;
+}
 
+.upload_content .content-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    height: 96%;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+    border-radius: 100%;
+}
 
+.upload_content:hover .content-overlay {
+    opacity: 0.5;
+}
 
+.content-image {
+    width: 100%;
+}
 
+.content-details {
+    position: absolute;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.upload_content:hover .content-details {
+    top: 40%;
+    left: 50%;
+    opacity: 1;
+}
+
+.content-title {
+    font-weight: 600;
+    font-size: 9px;
+    width: 100%;
+    color: #fff;
+}
+.content-text{
+    width: 90px;
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    color: #fff;
+}
+
+.fadeIn-bottom {
+    top: 90%;
+}
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-   width: 100%;
     min-width: 932px;
     min-height: 120px;
     resize: none;
@@ -614,8 +681,9 @@ align-items: center;
     border-radius: 8px;
     margin-top: 5px;
 }
-.modal-text textarea{
-   width: 100%;
+
+.modal-text textarea {
+
     min-width: 860px;
     min-height: 120px;
     resize: none;
