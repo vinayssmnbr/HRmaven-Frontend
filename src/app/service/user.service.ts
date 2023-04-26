@@ -47,7 +47,7 @@ export class UserService {
     return this.http.post(this.personaldataurl, data);
   }
   updatepersonals(userId: any, data: any){
-    const url = `${this.personaldataupdate}/${userId}`;
+    const url = `${this.personaldataupdate}`;
     return this.http.put(url, data);
   }
 

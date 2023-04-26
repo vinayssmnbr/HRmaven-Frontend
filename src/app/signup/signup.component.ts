@@ -171,6 +171,8 @@ onSubmit(data:any){
   console.log('inside');
       document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
   console.log("result:",result)
+  console.log("object_id:",result.user._id)
+    localStorage.setItem('objectid', result.user._id)
 
   })
 }

@@ -264,10 +264,10 @@
                         <label for="name">Name</label>
                         <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name" formControlName="name" required />
                     </div>
-                    <div class="form__group" formControlName="totalemployee">
-                        <label for="email">No. of employees</label>
+                    <!-- <div class="form__group" formControlName="totalemployee">
+                        <label for="email">No. of employees</label> -->
                         <!-- <input type="text" class="form_input" placeholder="total employee" id="name" formControlName="totalemployee"required /> -->
-                        <div class="dropdwon_select" (click)="dropdownOpen()">
+                        <!-- <div class="dropdwon_select" (click)="dropdownOpen()">
                             <p>{{Selectvariable}}</p>
                             <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
@@ -279,8 +279,14 @@
                                 </li>
                             </ul>
                         </div>
+                      </div> -->
+                      <div class="form__group">
+                        <label for="totalemployee">No. of employees</label>
+                        <select id="totalemployee" formControlName="totalemployee">
+                          <option value="" disabled selected>Select an option</option>
+                          <option *ngFor="let options of dropdownOptions" [value]="options.option">{{ options.option }}</option>
+                        </select>
                       </div>
-
                        
                     </div>
                 <!-- </div> -->

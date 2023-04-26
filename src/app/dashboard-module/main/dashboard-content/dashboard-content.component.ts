@@ -55,12 +55,12 @@ export class DashboardContentComponent implements OnInit {
     phone: new FormControl(''),
     headOffice: new FormControl(''),
   })
-
+  objectid = localStorage.getItem('objectid');
   submitPersonalData(data: any){
     console.log("personal data: ", data);
-    this.userService.updatepersonals(this.personaldataForm.value,data).subscribe((res: any)=>{
-      console.log("personaldataForm.value: ", res);
-      console.log("personaldataForm.value: ", data);
+    this.userService.updatepersonals(this.objectid,data.value).subscribe((res: any)=>{
+      console.log("personaldataForm.value res: ", res);
+      console.log("personaldataForm.value data: ", data);
     });
   }
 
@@ -231,9 +231,11 @@ export class DashboardContentComponent implements OnInit {
   });
 
     // Create a chart object
+
+  
   }
 
-
+storeObjectId: any = '';
 
 
 
@@ -265,6 +267,13 @@ array: any = [
   },
 
 ];
+dropdownOptions = [
+    { option: '0-50' },  { option: '50-100' },  { option: '100-150' },
+    { option: '150-200' },    { option: '200-250' },     { option: '250-300' }
+
+  ];
+
+
 contentdropdown: boolean = false;
 dropdownOpen() {
 
