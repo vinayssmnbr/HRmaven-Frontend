@@ -208,7 +208,6 @@ changefunction()
     });
   }
   calender=true;
-
   toggleTable1() {
     this.showCard = !this.showCard;
     this.showTable = !this.showTable;
