@@ -26,8 +26,8 @@ export class UserService {
   private loginurl = environment.loginurl;
   private Forgoturl = environment.Forgoturl;
   private Reseturl = environment.Reseturl;
-  private geteseturl = environment.getreseturl;
-  private getpwd = environment.getpwd;
+  // private geteseturl = environment.getreseturl;
+  // private getpwd = environment.getpwd;
   private url = environment.url;
   private auth = environment.auth;
   private  emailurl = environment.getemail
@@ -38,9 +38,9 @@ export class UserService {
     return this.http.get(url);
   }
 
-  getpwdd(){
-    return this.http.get(this.getpwd);
-  }
+  // getpwdd(){
+  //   return this.http.get(this.getpwd);
+  // }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
@@ -65,7 +65,7 @@ export class UserService {
   //     'auth-token': token,
   //     Accept: 'application/json',
   //   });
-  
+
   //   if (data !== null) {
   //     return this.http.post(this.Reseturl, data, { headers }).pipe(
   //       catchError((error) => {
@@ -78,7 +78,7 @@ export class UserService {
   //     return of(null);
   //   }
   // }
-  
+
 
 
 
@@ -92,7 +92,7 @@ export class UserService {
 
   //   return this.http.get(this.geteseturl,{ headers });
   // }
-  
+
 
 
 
