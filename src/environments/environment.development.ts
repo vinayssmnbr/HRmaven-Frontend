@@ -51,4 +51,7 @@ export const environment = {
 //   report: 'http://localhost:3000/attendance/report',
 //   profile: 'http://localhost:3000/user-profile',
 //  getemail : 'http://localhost:3000/getemails/email',
+
+//leave
+leavegraph:'http://localhost:3000/api/leave/graph/leave'
 };

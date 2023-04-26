@@ -108,6 +108,14 @@ export class DashService {
 
 
 
+  // ///////////////////////////////////////////////////////////////
+                                //Leave work by Harpreet
+  // ///////////////////////////////////////////////////////////////
+
+  getleavegraph(){
+    return this.http.get(environment.leavegraph);
+  }
+
   getEmployeeStatus(status:string): Observable<any[]> {
     return this.http
       .get<any[]>(this.getData)

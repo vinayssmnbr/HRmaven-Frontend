@@ -34,6 +34,34 @@ export class LeavesContentComponent {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
     this.fetchPendingLeave();
+    this.graphleave();
+  }
+  total=0;
+  pendingcount=0;
+  acceptcount=0;
+  rejectcount=0;
+
+  graphleave(){
+    this.dashService.getleavegraph().subscribe((res: any) => {
+      console.log('data', res);
+
+    res.map((d:any)=>{
+      this.total=this.total+d.count;
+      if(d._id=="pending")
+      {
+          this.pendingcount=d.count;
+      }
+      if(d._id=="reject")
+      {
+        this.rejectcount=d.count;
+      }
+      if(d._id=="accept")
+      {
+        this.acceptcount=d.count;
+      }
+      console.log(this.total);
+    })
+  })
   }
 
   row: any = [
@@ -91,8 +119,8 @@ export class LeavesContentComponent {
       '.value-container'
     ) as HTMLElement;
 
-    let progressValue = -1;
-    const progressEndValue = 0;
+    let progressValue = this.total;
+    const progressEndValue =this.total;
     const speed = 50;
 
     const progress = setInterval(() => {
@@ -116,8 +144,8 @@ export class LeavesContentComponent {
       '.value-container1'
     ) as HTMLElement;
 
-    let progressValue1 = -1;
-    const progressEndValue1 = 0;
+    let progressValue1 = this.acceptcount;
+    const progressEndValue1 = (this.acceptcount / this.total) * 100;
     const speed1 = 50;
 
     const progress1 = setInterval(() => {
@@ -142,7 +170,7 @@ export class LeavesContentComponent {
     ) as HTMLElement;
 
     let progressValue2 = -1;
-    const progressEndValue2 = 0;
+    const progressEndValue2 = (this.rejectcount / this.total) * 100;
     const speed2 = 50;
 
     const progress2 = setInterval(() => {
@@ -166,8 +194,8 @@ export class LeavesContentComponent {
       '.value-container3'
     ) as HTMLElement;
 
-    let progressValue3 = -1;
-    const progressEndValue3 = 0;
+    let progressValue3 = this.pendingcount;
+    const progressEndValue3 = (this.pendingcount / this.total) * 100;
     const speed3 = 50;
 
     const progress3 = setInterval(() => {
@@ -185,27 +213,27 @@ export class LeavesContentComponent {
     }, speed3);
   }
 
-  async updatereload() {
-    this.dashService.getLeaves().subscribe((res: any) => {
-      console.log('data', res);
-      this.leaves = res;
-      this.totalCount = this.getTotal();
-      this.acceptCount = this.getCount('accept');
-      this.rejectCount = this.getCount1('reject');
-      this.pendingCount = this.getCount3('pending');
+  // async updatereload() {
+  //   this.dashService.getLeaves().subscribe((res: any) => {
+  //     console.log('data', res);
+  //     this.leaves = res;
+  //     this.totalCount = this.getTotal();
+  //     this.acceptCount = this.getCount('accept');
+  //     this.rejectCount = this.getCount1('reject');
+  //     this.pendingCount = this.getCount3('pending');
 
-      this.accept_graph = this.acceptCalculate();
-      this.reject_graph = this.rejectCalculate();
-      this.pending_graph = this.pendingCalculate();
+  //     this.accept_graph = this.acceptCalculate();
+  //     this.reject_graph = this.rejectCalculate();
+  //     this.pending_graph = this.pendingCalculate();
 
-      this.leaves = this.leaves.sort((a, b) => {
-        if (a.status > b.status) return 1;
-        if (a.status < b.status) return -1;
-        return 1;
-      });
-      console.log(this.leaves);
-    });
-  }
+  //     this.leaves = this.leaves.sort((a, b) => {
+  //       if (a.status > b.status) return 1;
+  //       if (a.status < b.status) return -1;
+  //       return 1;
+  //     });
+  //     console.log(this.leaves);
+  //   });
+  // }
 
   updateafteraction() {
     this.dashService.getLeaves().subscribe((res: any) => {

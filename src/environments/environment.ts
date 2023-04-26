@@ -52,5 +52,10 @@ export const environment = {
   // profile: 'http://localhost:3000/user-profile',
   // getemail : 'http://localhost:3000/getemails/email',
   // getpwd : 'http://localhost:3000/userprofilepwd',
-  // changepassword : 'http://localhost:3000/islinkclicked'
+  // changepassword : 'http://localhost:3000/islinkclicked',
+
+
+  // leave api
+  leavegraph:'http://localhost:3000/api/leave/graph/leave'
+
 };
