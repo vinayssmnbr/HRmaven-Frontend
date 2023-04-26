@@ -536,7 +536,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_resigned = false;
-    this.dashService.getEmployee1('active').subscribe((res: any) => {
+    this.dashService.getEmployeeStatus('active').subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
       // if (res.length > 0) {
@@ -554,7 +554,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_terminated = false;
     this.is_active = false;
     this.isallactive = false;
-    this.dashService.getEmployee1('resigned').subscribe((res: any) => {
+    this.dashService.getEmployeeStatus('resigned').subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });
@@ -566,7 +566,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_resigned = false;
     this.is_active = false;
     this.isallactive = false;
-    this.dashService.getEmployee1('terminated').subscribe((res: any) => {
+    this.dashService.getEmployeeStatus('terminated').subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });
@@ -577,7 +577,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_terminated = false;
     this.is_active = false;
     this.isallactive = false;
-    this.dashService.getEmployee1('absconder').subscribe((res: any) => {
+    this.dashService.getEmployeeStatus('absconder').subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
     });
