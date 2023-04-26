@@ -40,6 +40,10 @@ export class DashService {
   getuid = environment.getuid;
   report = environment.report;
   profile = environment.profile;
+  attendance=environment.attendance;
+  attendancecard=environment.attendancecard;
+  attendancegraph=environment.attendancegraph;
+  DailyAttendance
 
   //ADD EMPLOYEE DATA
   addEmployee(data) {
@@ -67,10 +71,42 @@ export class DashService {
   getleaves() {
     return this.http.get(this.updateData);
   }
-  getAttendance() {
-    return this.http.get('http://localhost:3000/attendance/all');
+
+
+  //  implementation of attendance backend by the harpreet singh
+
+
+  getAttendance(date:any) {
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'MyDate': date
+      }
+    )
+    return this.http.get(this.attendance,{ headers });  //this.getAttd
   }
-  getEmployee1(status:string): Observable<any[]> {
+
+  getAttendancecard(month:any){
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'month': month.toString()
+      }
+    )
+    return this.http.get(this.attendancecard,{ headers });
+  }
+
+
+  graphcontent()
+  {
+    return this.http.get(this.attendancegraph);
+  }
+
+  //////////////////////////////////////////////////////
+
+
+
+  getEmployeeStatus(status:string): Observable<any[]> {
     return this.http
       .get<any[]>(this.getData)
       .pipe(map((data) => data.filter((user) => user.status ===status)));
@@ -78,6 +114,11 @@ export class DashService {
   getEmployee(){
     return this.http.get(this.getData)
   }
+
+
+
+
+
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);

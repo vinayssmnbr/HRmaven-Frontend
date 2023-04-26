@@ -9,10 +9,12 @@
 
     <div class="card2">
       <span class="profile_pic"><img src="{{user.url}}">
+
         <div class="profile-content">
           <!-- <div >
             <input type="file" (change)="onFileSelected($event)">
           </div> -->
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
           <i class="fa-solid fa-camera"></i>
           <h2>Change</h2>
           <p>Profile Picture</p>
@@ -443,6 +445,12 @@
                 </div>
               </div>
             </div>
+            <div class="input bank">
+              <label >Other Bank Name</label>
+              <input type="text" placeholder="Specify Bank Name" formControlName="bankname" >
+            </div>
+            </div>
+            <div class="form-row">
             <div class="input">
               <label>Bank Account No.</label>
               <input type="number" placeholder="6412365874125425" formControlName="accountno">

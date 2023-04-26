@@ -4,6 +4,7 @@ Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-attendance-content',
@@ -29,6 +30,7 @@ export class AttendanceContentComponent implements OnInit {
   employeename = '';
   lineChart: Chart;
   selectedUser: any = {};
+  percentage=10;
   leaves: any[] = [];
   data: any;
   update = false;
@@ -42,19 +44,33 @@ export class AttendanceContentComponent implements OnInit {
   table2Visible = false;
   todayDate: string;
   totalDays: number;
-  constructor(public dashService: DashService, private datepipe: DatePipe) {
+  DayAttendance = [];
+  card:any=[];
+  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-    this.dashService.getAttendance().subscribe((res: any) => {
-      // console.log('data', res); // add this line
-      this.employee = res;
-      console.log(this.employee);
-    });
-    this.getLeaveData();
-    this.getreport();
-    this.datez = this.datepipe.transform(new Date(), 'dd-MM-YYYY');
+    this.getLeaveData()
+    this.getreport()
+    this.datez = this.datepipe.transform(new Date(), 'YYYY-MM-dd');
     console.log(this.datez);
+    this.dayWiseAttendance(this.datez);
+
   }
+
+
+  dayWiseAttendance(date:any){
+  this.dashService.getAttendance(date).subscribe((res: any) => {
+    // console.log('data', res); // add this line
+    this.DayAttendance = res;
+
+  });
+}
+changefunction()
+{
+  this.dayWiseAttendance(this.datez);
+}
+
+
 
   form = new FormGroup({
     name: new FormControl(),
@@ -65,8 +81,19 @@ export class AttendanceContentComponent implements OnInit {
     punch_out: new FormControl(''),
   });
 
+
+
   async getreport() {
-    await this.dashService.getreport().subscribe((res: any) => {
+    await this.dashService.graphcontent().subscribe((res: any) => {
+      console.log(res);
+      const present=[0,0,0,0,0,0,0,0,0,0,0,0];
+      const absent=[0,0,0,0,0,0,0,0,0,0,0,0];
+      const leave=[0,0,0,0,0,0,0,0,0,0,0,0];
+      res.map((d)=>{
+        present[d.month]=d.present;
+        absent[d.month]=d.absent;
+        leave[d.month]=d.leave;
+      })
       const myChart = new Chart('barChart', {
         type: 'bar',
         data: {
@@ -87,19 +114,19 @@ export class AttendanceContentComponent implements OnInit {
           datasets: [
             {
               label: 'Present',
-              data: res.present,
+              data: present,
               backgroundColor: ['#2D11FA'],
               pointStyle: 'circle',
             },
             {
               label: 'Absent',
-              data: res.absent,
+              data: absent,
               backgroundColor: ['#FDA75A'],
               pointStyle: 'circle',
             },
             {
               label: 'Leaves',
-              data: res.leave,
+              data: leave,
               backgroundColor: ['#00C9FF'],
               pointStyle: 'circle',
             },
@@ -132,7 +159,7 @@ export class AttendanceContentComponent implements OnInit {
           this.loader = false;
         }, 3000);
       }
-    });
+     });
   }
 
   ngOnInit() {
@@ -149,14 +176,13 @@ export class AttendanceContentComponent implements OnInit {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     this.totalDays = new Date(year, month, 0).getDate();
-    this.dashService.getAttendance().subscribe((data: any[]) => {
-      const presentDays = data.filter(
-        (record) => record.status === 'present'
-      ).length;
-      const totalDays = new Date(year, month, 0).getDate();
-      const attendancePercentage = (presentDays / totalDays) * 100;
-      // Use attendancePercentage to update your UI
-    });
+    // this.dashService.getAttendance().subscribe((data: any[]) => {
+    //   const presentDays = data.filter((record) => record.status === 'present').length;
+    //   const totalDays = new Date(year, month, 0).getDate();
+    //   const attendancePercentage = (presentDays / totalDays) * 100;
+
+    //   // Use attendancePercentage to update your UI
+    // });
   }
 
   changeColor() {
@@ -174,22 +200,6 @@ export class AttendanceContentComponent implements OnInit {
       this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
-  // openModal(user:any) {
-
-  //   this.form.patchValue(user);
-  //   this.form.setValue({
-  //     name:user.name,
-  //     empId:user.empId,
-  //     date:user.date,
-  //     status:user.status,
-  //     punch_in:user.punch_in,
-  //     punch_out:user.punch_out,
-  //   });
-  //   this.Selectvariable=user.status;
-  //   this.showModal = true;
-  //   this.selectedUser = {_id: user._id};
-  // }
-
   //GET LEAVE DATA
   getLeaveData() {
     this.dashService.getleaves().subscribe((res: any) => {
@@ -197,21 +207,8 @@ export class AttendanceContentComponent implements OnInit {
       this.employee1 = res;
     });
   }
-  //   OnUpdate(){
-  //     console.log(this.form.value)
-  //     const updatedData = this.form.value;
-  //     updatedData['_id'] = this.selectedUser._id;
-  //     this.dashService.updateEmpAttendance(updatedData).subscribe(() => {
-  //       console.log('Data updated successfully');
-  //     this.getLeaveData()
-  // this.edit();
-  //     });
-  //   }
+  calender=true;
 
-  // closeModal() {
-  //   this.showModal = !this.showModal;
-  // }
-  calender = true;
   toggleTable1() {
     this.showCard = !this.showCard;
     this.showTable = !this.showTable;
@@ -219,6 +216,10 @@ export class AttendanceContentComponent implements OnInit {
     this.table2Visible = false; // ensure other table is hidden
     this.calender = true;
     this.dropdown = false;
+    const d= new Date();
+    const month=d.getMonth();
+    this.Selectvariable=this.array[month].name;
+    this.loadcarddata(month);
   }
   dropdown = false;
   async toggleTable2() {
@@ -228,11 +229,6 @@ export class AttendanceContentComponent implements OnInit {
     this.showTable = !this.showTable;
     this.table2Visible = !this.table2Visible;
     this.table1Visible = false;
-    await this.dashService.getAttendance().subscribe((res: any) => {
-      // console.log('data', res); // add this line
-      this.employee1 = res;
-      console.log(this.employee1);
-    }); // ensure other table is hidden
   }
 
   // ---------------------Drop Down--------------------------------
@@ -246,43 +242,43 @@ export class AttendanceContentComponent implements OnInit {
       name: 'February',
     },
     {
-      id: 3,
+      id: 2,
       name: 'March',
     },
     {
-      id: 4,
+      id: 3,
       name: 'April',
     },
     {
-      id: 5,
+      id: 4,
       name: 'May',
     },
     {
-      id: 6,
+      id: 5,
       name: 'June',
     },
     {
-      id: 7,
+      id: 6,
       name: 'July',
     },
     {
-      id: 8,
+      id: 7,
       name: 'August',
     },
     {
-      id: 9,
+      id: 8,
       name: 'September',
     },
     {
-      id: 10,
+      id: 9,
       name: 'October',
     },
     {
-      id: 11,
+      id: 10,
       name: 'November ',
     },
     {
-      id: 12,
+      id: 11,
       name: 'December',
     },
   ];
@@ -296,10 +292,24 @@ export class AttendanceContentComponent implements OnInit {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
-    console.log(arr.name);
+    console.log(arr.id);
+    this.loadcarddata(arr.id);
+
+
+
   }
+
+  loadcarddata(month:any){
+    this.dashService.getAttendancecard(month).subscribe((res)=>{
+      console.log(res);
+      this.card=res;
+  })
+  }
+
+
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
+
   }
 
 }

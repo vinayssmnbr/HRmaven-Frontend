@@ -23,7 +23,21 @@
   padding-left: 20px;
   column-gap: 70px;
 }
-
+.All{
+  width: 30%;
+}
+.Terminated{
+  width: 50%;
+}
+.Resigned{
+  width: 30%;
+}
+.Absconder{
+  width: 50%;
+}
+.Active{
+  width: 30%;
+}
 .list_nav p {
   cursor: pointer;
   font-family: 'Outfit', sans-serif;
@@ -54,25 +68,30 @@
 }
 
 
-.All p.active {
+.All .active {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
+  font-weight: 500;
 }
 .Active p.active {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
+  font-weight: 500;
 }
 .Resigned p.active  {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
+  font-weight: 500;
 }
 .Terminated p.active{
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
+  font-weight: 500;
 }
 .Absconder p.active {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
+  font-weight: 500;
 }
 .selection2{
   display: flex;
@@ -102,6 +121,22 @@
   color: #2F2C9F;
   cursor: pointer;
 }
+.export{
+  padding: 12px 18px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #FFFFFF;
+    display: flex;
+    gap: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #2F2C9F;
+    /* cursor: not-allowed; */
+}
+
 .view{
   display: flex;
   background-color: #FFFFFF;
@@ -523,7 +558,7 @@ table {
   font-size: 14px;
 }
 
-.activated{
+/* .activated{
   color: #3D9030;
   background-color: rgba(123, 211, 109, 0.3);
 
@@ -539,7 +574,7 @@ background-color: rgba(255, 238, 82, 0.5);
 .abscond{
  color: #DB771D;
  background-color: rgba(248, 187, 111, 0.4);
-}
+} */
 .modal {
     position: fixed;
     top: 0;
