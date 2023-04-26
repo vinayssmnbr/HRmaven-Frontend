@@ -220,11 +220,16 @@
 }
 .content1 li{
   cursor: pointer;
+  padding-bottom: 10px;
 }
 .content1 li.active{
   border-bottom: 2px solid #2F2C9F;
 
 
+}
+.content1 li.active a{
+  font-weight: 500;
+    color: #2F2C9F;
 }
 .card3{
   padding: 25px 50px;

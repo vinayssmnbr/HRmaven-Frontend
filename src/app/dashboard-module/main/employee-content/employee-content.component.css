@@ -16,28 +16,15 @@
 }
 .list_nav {
   display: flex;
-  width: 232px;
+  width: 100%;
+  max-width: 500px;
   height: 22px;
   align-items: center;
   margin-top: 20px;
   padding-left: 20px;
   column-gap: 70px;
 }
-.All{
-  width: 30%;
-}
-.Terminated{
-  width: 50%;
-}
-.Resigned{
-  width: 30%;
-}
-.Absconder{
-  width: 50%;
-}
-.Active{
-  width: 30%;
-}
+
 .list_nav p {
   cursor: pointer;
   font-family: 'Outfit', sans-serif;
@@ -46,7 +33,31 @@
     font-size: 14px;
     color: #666666;
 }
-
+.All{
+  width: 100%;
+  max-width: 60px;
+  border: 3px solid transparent;
+}
+.Active{
+  width: 100%;
+  max-width: 90px;
+  border: 3px solid transparent;
+}
+.Resigned{
+  width: 100%;
+  max-width: 110px;
+  border: 3px solid transparent;
+}
+.Terminated{
+  width: 100%;
+  max-width: 130px;
+  border: 3px solid transparent;
+}
+.Absconder{
+  width: 100%;
+  max-width: 120px;
+  border: 3px solid transparent;
+}
 .All:hover {
   border-bottom: 3px solid #2F2C9F;
 }
@@ -66,29 +77,31 @@
 .Absconder:hover {
   border-bottom: 3px solid #2F2C9F;
 }
+.All, .Resigned, .Absconder, .Terminated,.Active{
+  /* padding-bottom: 10px; */
+}
 
-
-.All .active {
+.All.active {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
   font-weight: 500;
 }
-.Active p.active {
+.Active.active {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
   font-weight: 500;
 }
-.Resigned p.active  {
+.Resigned.active  {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
   font-weight: 500;
 }
-.Terminated p.active{
+.Terminated.active{
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
   font-weight: 500;
 }
-.Absconder p.active {
+.Absconder.active {
   border-bottom: 3px solid #2F2C9F;
   color: #2F2C9F;
   font-weight: 500;
@@ -625,7 +638,7 @@ background-color: rgba(255, 238, 82, 0.5);
   width: 100%;
   max-width: 647px;
 }
-.modal-header .details_row span p{
+.modal-header .details_row span {
   padding-left: 40px;
 }
 .modal-header .details_row span.active{
@@ -1028,6 +1041,9 @@ label {
     font-size: 14px;
     line-height: 140%;
     cursor: pointer;
+}
+#text9::placeholder{
+  color: #666666;
 }
 
 #text10 {
