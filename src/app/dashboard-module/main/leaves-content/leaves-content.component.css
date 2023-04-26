@@ -27,6 +27,7 @@
     height: 100px;
     display: flex;
     justify-content: space-between;
+    padding-right:  40px;
 
 }
 
@@ -809,46 +810,151 @@ input[type="radio"] {
 .Done_form_btn .Done_btn:hover {
     background-color: #1fa10a;
 }
-/* --------------------Progress Bar---------------------- */
-.progress_container {
-    position: relative;
-    transform: translate(-50%, -50%);
-    top: 28px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
+
+/* -------------------Progress Bar------------------------- */
+
+@keyframes growProgressBar {
+
+    0%,
+    33% {
+        --pgPercentage: 0;
+    }
+
+    100% {
+        --pgPercentage: var(--value);
+    }
 }
 
-.circular-progress,
-.circular-progress1,
-.circular-progress2,
-.circular-progress3 {
-    position: relative;
-    height: 60px;
-    width: 60px;
+@property --pgPercentage {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+}
+
+div[role="progressbar"],
+div[role="progressbar1"],
+div[role="progressbar2"],
+div[role="progressbar3"] {
+    --pgPercentage: var(--value);
+    animation: growProgressBar 3s 1 forwards;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: grid;
     place-items: center;
+    font-size: 12px;
 }
 
-.circular-progress:before,
-.circular-progress1:before,
-.circular-progress2:before,
-.circular-progress3:before {
-    content: "";
+div[role="progressbar"] {
+    color: #8BAFFF;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#8BAFFF calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar1"] {
+    color: #7BD36D;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#7BD36D calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar2"] {
+    color: #369;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#F8BB6F calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar3"] {
+    color: #FA9796;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#FA9796 calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar"]::before,
+div[role="progressbar1"]::before,
+div[role="progressbar2"]::before,
+div[role="progressbar3"]::before {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%';
+}
+
+/* -----------------------Custom Check Box ---------------------------- */
+
+.thick_round {
+    position: relative;
+  }
+  
+  .thick_round label {
+    background-color: #fff;
+    border: 1px solid green;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 20px;
+    left: 0;
     position: absolute;
-    height: 74%;
-    width: 74%;
-    background-color: #ffffff;
-    border-radius: 50%;
-}
-
-.value-container,
-.value-container1,
-.value-container2,
-.value-container3 {
+    top: 0;
+    width: 20px;
+  }
+  .thick_round label:before {
+    border: 2px solid green;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 5px;
+    left: 4px;
+    opacity: 1;
+    position: absolute;
+    top: 6px;
+    transform: rotate(-45deg);
+    width: 10px;
+  }
+  .thick_round label:hover:before {
+    border-color:#fff
+  }
+  .thick_round label:hover {
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+  }
+  .thick_round  label:hover:after {
+     border-color:#fff
+  }
+  
+  .cross_round {
     position: relative;
-    font-size: 15px;
-    color: #444444;
-    font-weight: bold;
-}
+    margin-left:25px;
+  }
+  
+  .cross_round label {
+    background-color: #fff;
+    border: 1px solid red;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+  }
+  .cross_round label:before {
+     content: '\2716';
+    opacity: 1;
+    position: absolute;
+    left:3px;
+    color:red;
+  }
+  .cross_round label:hover:before {
+    border-color:#fff;
+    color:#fff;
+  }
+  .cross_round label:hover {
+    background-color: red;
+    border-color: red;
+  }
+  .cross_round  label:hover:after {
+     border-color:#fff;
+       color:#fff;
+  }
+  

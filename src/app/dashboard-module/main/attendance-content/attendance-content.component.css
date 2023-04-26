@@ -583,8 +583,10 @@ input:focus {
 /*--------------------------- No Data Found---------------- */
 
 .no_data {
-    margin-top: 100px;
-    /* display: none; */
+    padding: 20px 0;
+    background-color: #f9f9f9;
+    text-align:center;
+
 }
 
 .no_data img {
