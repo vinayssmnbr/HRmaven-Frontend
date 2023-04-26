@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   // LIVE SERVER URL
+
   saveurl : 'https://hrmaven.works/signup',
   loginurl : 'https://hrmaven.works/login',
   Forgoturl :'https://hrmaven.works/forgotpassword',
@@ -23,9 +24,8 @@ export const environment = {
   attendance:'https://hrmaven.works/attendance/date/attendance',
   attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
   attendancegraph:'https://hrmaven.works/attendance/date/report',
-  // getpwd : 'http://localhost:3000/userprofilepwd',
-  // getemail : 'https://hrmaven.works/getemails/email',
-  // changepassword : 'https://hrmaven.works/islinkclicked'
+  getpwd : 'https://hrmaven.works/userprofilepwd',
+
 
 
   // //LOCAL URL
@@ -49,7 +49,7 @@ export const environment = {
   // updatempdata: 'http://localhost:3000/api/update',
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
-  // profile: 'http://localhost:3000/user-profile',g
+  // profile: 'http://localhost:3000/user-profile',
   // getemail : 'http://localhost:3000/getemails/email',
   // getpwd : 'http://localhost:3000/userprofilepwd',
   // changepassword : 'http://localhost:3000/islinkclicked'
