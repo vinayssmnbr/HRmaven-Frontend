@@ -20,6 +20,9 @@ export const environment = {
   profile: 'https://hrmaven.works/user-profile',
   updateleave: 'https://hrmaven.works/attendance/update',
   getemail: 'https://hrmaven.works/getemails/email',
+  attendance:'https://hrmaven.works/attendance/date/attendance',
+  attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
+  attendancegraph:'https://hrmaven.works/attendance/date/report'
 
   // //LOCAL URL
 

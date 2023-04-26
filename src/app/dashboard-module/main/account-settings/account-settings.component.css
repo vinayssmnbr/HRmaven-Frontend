@@ -405,6 +405,7 @@ background-color: #FFFFFF;
 border: 1px solid #CBCBCB;
 border-radius: 8px;
 margin-top: 5px;
+outline: none;
 }
 
 .name-email {
@@ -594,61 +595,16 @@ align-items: center;
 
 
 /* profile upload */
-.profile-image {
-    position: relative;
-}
 
-.profile-image img {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    cursor: pointer;
 
-}
 
-.profile-image:hover img {
-    opacity: 0.9;
 
-}
-
-.profile-image .middle img {
-
-    position: absolute;
-    color: #444444;
-
-}
-
-.upload {
-    font-weight: 600;
-    font-size: 9px;
-    color: black;
-
-}
-
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.middle input {
-    position: absolute;
-    z-index: 10;
-}
 
 
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-   
+   width: 100%;
     min-width: 932px;
     min-height: 120px;
     resize: none;
@@ -659,7 +615,7 @@ align-items: center;
     margin-top: 5px;
 }
 .modal-text textarea{
-   
+   width: 100%;
     min-width: 860px;
     min-height: 120px;
     resize: none;
