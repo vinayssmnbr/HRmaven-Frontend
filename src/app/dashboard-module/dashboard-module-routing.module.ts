@@ -17,6 +17,9 @@ import { AccountSettingsComponent } from './main/account-settings/account-settin
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
       {
+      path:'',redirectTo: '/login', pathMatch: 'full'
+      },
+      {
         path: 'dashboard',
         component: DashboardContentComponent,
       },

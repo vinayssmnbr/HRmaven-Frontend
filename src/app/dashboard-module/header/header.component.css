@@ -345,10 +345,7 @@ input[type='search'] {
     border-bottom: 2px solid #2F2C9F;
 }
 
-.color {
-    color: #2F2C9F;
-    border-bottom: 2px solid #2F2C9F;
-}
+
 
 .notification-number {
     display: flex;
@@ -376,7 +373,7 @@ input[type='search'] {
     color: #2F2C9F;
     cursor: pointer;
 }
-
+/*-----------------------Toggle Notification----------------------*/
 .all-read-important {
     display: flex;
     width: 232px;
@@ -402,7 +399,11 @@ input[type='search'] {
 .Important:hover {
     border-bottom: 2px solid #2F2C9F;
 }
-
+.color {
+    color: #2F2C9F;
+    border-bottom: 2px solid #2F2C9F;
+}
+/*-------------------------------------------------------------------------------------*/
 .number p {
     background-color: #eaeaf5;
     border-radius: 50%;

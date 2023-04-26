@@ -7,4 +7,39 @@ import { Component } from '@angular/core';
 })
 export class LeavesContentComponent {
 
+  ngOnIt(){
+  
+  }
+
+  array: any = [
+    {
+      id: 0,
+      name: 'Casual leave',
+    },
+    {
+      id: 1,
+      name: 'Medical Leave',
+    },
+    {
+      id: 2,
+      name: 'Urgent Leave',
+    },
+    {
+      id: 3,
+      name: 'Earned Leave',
+    },
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+  
+    this.contentdropdown = !this.contentdropdown;
+  }
+  Selectvariable: string = 'Designation';
+  colorvariable: number =  0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown=false;
+    console.log(arr.name);
+  }
 }
