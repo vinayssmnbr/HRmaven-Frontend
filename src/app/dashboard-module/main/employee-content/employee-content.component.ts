@@ -92,9 +92,10 @@ export class EmployeeContentComponent implements OnInit {
       Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
     ]),
     timing: new FormControl('', Validators.required),
-    csv: new FormControl('',Validators.required)
   });
-
+ csvform= new FormGroup({
+   csv: new FormControl('', Validators.required)
+ })
   get registrationFormControl() {
     return this.form.controls;
   }
