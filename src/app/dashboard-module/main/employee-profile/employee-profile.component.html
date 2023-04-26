@@ -6,9 +6,15 @@
       <img src="./assets/images/left_arrow.svg" routerLink="/employee" alt="">
       <h2>Employee Profile</h2>
     </div>
+
     <div class="card2">
-      <span class="profile_pic"><img src="./assets/images/image_employee.png">
+      <span class="profile_pic"><img src="{{user.url}}">
+
         <div class="profile-content">
+          <!-- <div >
+            <input type="file" (change)="onFileSelected($event)">
+          </div> -->
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
           <i class="fa-solid fa-camera"></i>
           <h2>Change</h2>
           <p>Profile Picture</p>
@@ -166,9 +172,10 @@
     <div class="card7" *ngIf="personaldetail">
       <div class="details">
         <h3>Experience</h3>
-        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
-      <div class="row1">
+      <div class="row1" >
+        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
           <p *ngIf="!user.expcompany">----------</p>
@@ -189,7 +196,12 @@
         </div>
       </div>
       <hr>
-      <div class="row1">
+      <div class="cnt-btn">
+      <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More</button>
+      </div>
+      <div class="row1" *ngIf="viewMore">
+        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
           <p *ngIf="!user.expcompany1">----------</p>
@@ -208,6 +220,32 @@
           <p *ngIf="!user.expdesignation1">----------</p>
           <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
         </div>
+      </div>
+      <hr *ngIf="viewMore">
+      <div class="row1" *ngIf="viewMore">
+        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+
+        <div class="column1">
+          <span class="orgname">Company/Organisation Name</span>
+          <p *ngIf="!user.expcompany1">----------</p>
+          <p class="orgname" *ngIf="user.expcompany1">{{user.expcompany1}}</p>
+          <span class="location2">Location</span>
+          <p *ngIf="!user.explocation1">----------</p>
+          <p class="location2" *ngIf="user.explocation1">{{user.explocation1}}</p>
+        </div>
+        <div class="column2">
+          <span class="duration2">Duration</span>
+          <p *ngIf="!user.expduration1">----------</p>
+          <p class="duration2" *ngIf="user.expduration1">{{user.expduration1}}</p>
+        </div>
+        <div class="column3">
+          <span class="designation2">Designation</span>
+          <p *ngIf="!user.expdesignation1">----------</p>
+          <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
+        </div>
+      </div>
+      <div class="cnt-btn">
+        <button class="hide" (click)="hidedata()" *ngIf="viewMore">Hide</button>
       </div>
     </div>
     <div class="card8" *ngIf="jobdetail">
@@ -407,6 +445,12 @@
                 </div>
               </div>
             </div>
+            <div class="input bank">
+              <label >Other Bank Name</label>
+              <input type="text" placeholder="Specify Bank Name" formControlName="bankname" >
+            </div>
+            </div>
+            <div class="form-row">
             <div class="input">
               <label>Bank Account No.</label>
               <input type="number" placeholder="6412365874125425" formControlName="accountno">
@@ -504,7 +548,7 @@
       </div>
       <div class="modal-body">
         <form class="form-container" id="form5" [formGroup]="form">
-          <div class="form-row">
+          <div class="form-row" >
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Infosys" formControlName="expcompany">
@@ -518,14 +562,14 @@
               <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" >
             <div class="input">
               <label>Location</label>
               <input type="text" placeholder="Pune, India" formControlName="explocation">
             </div>
           </div>
-          <hr>
-          <div class="form-row" *ngIf="contentshow">
+          <!-- <hr> -->
+          <!-- <div class="form-row">
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Accenture" formControlName="expcompany1">
@@ -544,7 +588,7 @@
               <label>Location</label>
               <input type="text" placeholder="Bangalore, India" formControlName="explocation1">
             </div>
-          </div>
+          </div> -->
           <!-- <div class="form-row">
             <div class="input">
               <label>Company/Organisation Name</label>
@@ -565,7 +609,7 @@
               <input type="text" placeholder="Pune, India" formControlName="location2">
             </div>
           </div> -->
-          <button class="btn3" (click)="addemployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button>
+          <!-- <button class="btn3" (click)="addEmployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button> -->
         </form>
       </div>
       <div class="modal-footer">

@@ -86,7 +86,7 @@ td {
 
 .table_data {
     overflow-y: auto;
-    height: 78vh;
+    /* height: 78vh; */
 }
 
 .table_text thead th {
@@ -106,6 +106,21 @@ td {
 .graph_text {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.year {
+    width: 81px;
+    height: 36px;
+    background: #F7F7FB;
+    border-radius: 8px;
+    padding: 8px 25px;
+}
+
+.year h2 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #37474F;
 }
 
 .graph_heading h1 {
@@ -141,22 +156,44 @@ td {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    width: 281px;
+    height: 44px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding: 5px;
 }
 
-.grid-icon i {
-    font-size: 15px;
-    padding: 4px;
+.grid-icon button {
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-color: #ffff;
+    background-color: transparent;
+    color: #B4B4B4;
+    padding: 0 4px;
+
+}
+
+.grid-icon .history_btn {
+    width: 129px;
+    height: 34px;
     border-radius: 4px;
 }
 
-.grid-icon i:hover {
-    background-color: #999;
-    color: #fff;
+.grid-icon .Day-wise_btn {
+    width: 154px;
+    height: 34px;
+    border-radius: 4px;
 }
 
-.grid-icon>i.active {
-    background-color: #ccc !important;
-    /* change to your desired background color */
+
+.grid-icon button:hover {
+    background-color: #EBEAF6;
+}
+
+.grid-icon>button.active {
+    background-color: #EBEAF6 !important;
+    color: #333333;
 }
 
 .employe_input {
@@ -243,6 +280,13 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: #ffff;
     border-radius: 8px;
     text-align: center;
+    width: 270.5px;
+    height: 241px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card img {
@@ -267,11 +311,13 @@ input[type=number]::-webkit-inner-spin-button {
 
 .attendence-percent {
     display: flex;
-    gap: 32px;
-    justify-content: center;
+    gap: 40px;
     align-items: center;
-    text-align: center;
-    padding-top: 20px;
+    width: 227px;
+    height: 70px;
+    background-color: #F7F7FD;
+    border-radius: 8px;
+    padding: 15px 50px;
 }
 
 .percent-text p {
@@ -569,23 +615,6 @@ input:focus {
 
 
 /* ------------Drop Down---------------- */
-
-
-/* .dropdwon_select1 {
-    background-color: #fff;
-    width: 150px;
-    height: 44px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-    color: #444444;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 10px;
-    margin-top: 20px;
-} */
-
 .dropdwon_select {
     background-color: #fff;
     width: 200px;
@@ -629,6 +658,7 @@ input:focus {
     color: #444444;
     border-radius: 6px;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+    z-index: 99;
 }
 
 .select_content ul {
@@ -651,4 +681,45 @@ input:focus {
 .select_active {
     background-color: #ECECEC;
     border-radius: 8px;
+}
+
+/* -------------------Progress Bar------------------------- */
+
+@keyframes growProgressBar {
+
+    0%,
+    33% {
+        --pgPercentage: 0;
+    }
+
+    100% {
+        --pgPercentage: var(--value);
+    }
+}
+
+@property --pgPercentage {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+}
+
+div[role="progressbar"] {
+    --pgPercentage: var(--value);
+    animation: growProgressBar 3s 1 forwards;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
+        conic-gradient(#369 calc(var(--pgPercentage) * 1%), #def 0);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #369;
+}
+
+div[role="progressbar"]::before {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%';
 }

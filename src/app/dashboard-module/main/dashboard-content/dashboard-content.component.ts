@@ -1,9 +1,12 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from '../../../service/user.service'
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -14,7 +17,12 @@ export class DashboardContentComponent implements OnInit {
   // loader=false;
   loadermain: boolean = true;
   loader:boolean =false;
+  isFromSignupPage = false;
+
+
   constructor(
+    private route:ActivatedRoute,
+    private userService :UserService ,
     public dashService: DashService,private http:HttpClient,
     @Inject(DOCUMENT) public document: Document,private elementRef: ElementRef
   ) {
@@ -37,9 +45,29 @@ export class DashboardContentComponent implements OnInit {
 
     });
 
-    this.showchart()
-
   }
+
+
+  
+  personaldataForm = new FormGroup({
+    name: new FormControl(''),
+    totalemployee: new FormControl(''),
+    phone: new FormControl(''),
+    headoffice: new FormControl(''),
+  });
+
+
+  submitPersonalData(data: any){
+    console.log("personal data: ",this.personaldataForm.value)
+    // this.userService.saveUser(this.personaldataForm.value).subscribe((res: any)=>{
+    //   console.log("personaldataForm.value: ",this.personaldataForm.value);
+    // });
+  }
+
+
+
+
+
   options: any = [
     {
       day: 'Mon',
@@ -59,42 +87,15 @@ export class DashboardContentComponent implements OnInit {
       head: 'Interview',
       time: '10am to 12pm',
     },
+
+
     {
       day: 'Mon',
       Date: '10',
       head: 'Interview',
       time: '10am to 12pm',
     },
-    {
-      day: 'Mon',
-      Date: '10',
-      head: 'Interview',
-      time: '10am to 12pm',
-    },
-    {
-      day: 'Mon',
-      Date: '10',
-      head: 'Interview',
-      time: '10am to 12pm',
-    },
-    {
-      day: 'Mon',
-      Date: '10',
-      head: 'Interview',
-      time: '10am to 12pm',
-    },
-    {
-      day: 'Mon',
-      Date: '10',
-      head: 'Interview',
-      time: '10am to 12pm',
-    },
-    {
-      day: 'Mon',
-      Date: '10',
-      head: 'Interview',
-      time: '10am to 12pm',
-    },
+
 
   ];
 
@@ -118,14 +119,24 @@ export class DashboardContentComponent implements OnInit {
   ]
   ngOnInit()
    {
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
+    this.isFromSignupPage = this.userService.isFromSignupPage;
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
 
-
-    this.dashService.getreport().subscribe((res:any)=>{
+    this.dashService.graphcontent().subscribe((res:any)=>{
     if(res)
     {
       console.log('yeah');
       this.loader=true;
     }
+    const present=[0,0,0,0,0,0,0,0,0,0,0,0];
+    const absent=[0,0,0,0,0,0,0,0,0,0,0,0];
+    const leave=[0,0,0,0,0,0,0,0,0,0,0,0];
+    res.map((d)=>{
+      present[d.month]=d.present;
+      absent[d.month]=d.absent;
+      leave[d.month]=d.leave;
+    })
     let chart = this.elementRef.nativeElement.querySelector(`#myChart`);
 
     const myChart = new Chart(chart, {
@@ -148,7 +159,7 @@ export class DashboardContentComponent implements OnInit {
         datasets: [
           {
             label: 'Present',
-            data: res.present,
+            data: present,
             backgroundColor: ['#2D11FA'],
             pointStyle: 'circle',
             borderColor: [
@@ -164,7 +175,7 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Absent',
-            data:res.absent,
+            data:absent,
             backgroundColor: ['#FDA75A'],
             pointStyle: 'circle',
             borderColor: [
@@ -180,7 +191,7 @@ export class DashboardContentComponent implements OnInit {
           },
           {
             label: 'Leaves',
-            data: res.leave,
+            data: leave,
             backgroundColor: ['#00C9FF'],
             pointStyle: 'circle',
             borderColor: [
@@ -223,24 +234,34 @@ export class DashboardContentComponent implements OnInit {
   }
 
 
-  showchart(){
 
-  }
 
 
 
 array: any = [
   {
     id: 0,
-    name: 'Weekly',
+    name: '0-50',
   },
   {
     id: 1,
-    name: 'Monthly',
+    name: '50-100',
   },
   {
     id: 2,
-    name: 'Yearly',
+    name: '100-150',
+  },
+  {
+    id: 3,
+    name: '150-200',
+  },
+  {
+    id: 4,
+    name: '200-250',
+  },
+  {
+    id: 5,
+    name: '250-300',
   },
 
 ];
@@ -249,7 +270,7 @@ dropdownOpen() {
 
   this.contentdropdown = !this.contentdropdown;
 }
-Selectvariable: string = 'Monthly';
+Selectvariable: string = 'Select';
 colorvariable: number =  0;
 Changeselect(arr: any) {
   this.Selectvariable = arr.name;

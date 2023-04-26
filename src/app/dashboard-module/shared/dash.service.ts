@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
+import * as filestack from 'filestack-js';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,9 @@ export class DashService {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
-  ) {}
+  ) {
+    this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
+  }
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
@@ -37,10 +40,15 @@ export class DashService {
   getuid = environment.getuid;
   report = environment.report;
   profile = environment.profile;
+  attendance=environment.attendance;
+  attendancecard=environment.attendancecard;
+  attendancegraph=environment.attendancegraph;
+  DailyAttendance
 
   //ADD EMPLOYEE DATA
   addEmployee(data) {
     return this.http.post(this.createData, data);
+
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
@@ -63,14 +71,54 @@ export class DashService {
   getleaves() {
     return this.http.get(this.updateData);
   }
-  getAttendance() {
-    return this.http.get(this.getAttd);
+
+
+  //  implementation of attendance backend by the harpreet singh
+
+
+  getAttendance(date:any) {
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'MyDate': date
+      }
+    )
+    return this.http.get(this.attendance,{ headers });  //this.getAttd
   }
-  getEmployee():Observable<any[]> {
-    return this.http.get<any[]>(this.getData).pipe(
-      map(data=>data.filter(user=> user.status==='accepted'))
-    );
+
+  getAttendancecard(month:any){
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'month': month.toString()
+      }
+    )
+    return this.http.get(this.attendancecard,{ headers });
   }
+
+
+  graphcontent()
+  {
+    return this.http.get(this.attendancegraph);
+  }
+
+  //////////////////////////////////////////////////////
+
+
+
+  getEmployeeStatus(status:string): Observable<any[]> {
+    return this.http
+      .get<any[]>(this.getData)
+      .pipe(map((data) => data.filter((user) => user.status ===status)));
+  }
+  getEmployee(){
+    return this.http.get(this.getData)
+  }
+
+
+
+
+
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);
@@ -82,13 +130,11 @@ export class DashService {
     return this.http.patch(this.updateData + `/${data._id}`, data);
   }
   //SEARCH UID AND FILTER DESIGNATION
-  searchuid(query: string, designation: string) {
-    console.log('des', designation);
-    return this.http.get<any>(
-      `${this.getData}?uid=${query}&designation=${designation}`).pipe(
-        map(data=>data.filter(user=> user.status==='accepted'))
-      );;
-
+  searchuid(query: string, status: string) {
+    console.log('des', status);
+    return this.http
+      .get<any>(`${this.getData}?uid=${query}&status=${status}`)
+      // .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
 
   getLeaveData(type: string) {
@@ -125,7 +171,7 @@ export class DashService {
           headers: { 'content-type': 'application/json' },
         })
         .subscribe(
-          (response:any) => {
+          (response: any) => {
             console.log('Leave status updated successfully: ', response);
           },
           (error) => {
@@ -208,5 +254,27 @@ export class DashService {
           console.log(res);
         });
     }
+  }
+
+  private client: filestack.Client;
+  fileUrl: any;
+  upload(file: File, userId?: string): Promise<any> {
+    return this.client.upload(file).then((res) => {
+      this.fileUrl = res.url;
+      console.log('imageurl', this.fileUrl, userId);
+      this.updateEmployee({ _id: userId, url: res.url }).subscribe((res) => {
+        console.log('user', res);
+      });
+    });
+  }
+
+  upload1(file: File): Promise<any> {
+    return this.client.upload(file)
+  }
+
+
+  updateEmpStatus(id,status):Observable<any>{
+    const url = `${this.updatempdata}/${id}`;
+    return this.http.patch(url,{status})
   }
 }

@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  //LIVE SERVER URL
+  // LIVE SERVER URL
+
   saveurl : 'https://hrmaven.works/signup',
   loginurl : 'https://hrmaven.works/login',
   Forgoturl :'https://hrmaven.works/forgotpassword',
@@ -17,14 +18,26 @@ export const environment = {
   getuid:'https://hrmaven.works/api/uid',
   report:'https://hrmaven.works/attendance/report',
   profile:'https://hrmaven.works/user-profile',
-  updateleave:'https://hrmaven.works/attendance/update'
+  updateleave:'https://hrmaven.works/attendance/update',
+  getemail : 'https://hrmaven.works/getemails/email',
+  changepassword : 'https://hrmaven.works/islinkclicked',
+  attendance:'https://hrmaven.works/attendance/date/attendance',
+  attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
+  attendancegraph:'https://hrmaven.works/attendance/date/report',
+  getpwd : 'https://hrmaven.works/userprofilepwd',
 
-  //LOCAL URL
+
+
+  // //LOCAL URL
+  // attendancegraph:'http://localhost:3000/attendance/date/report',
+  // attendancecard:'http://localhost:3000/attendance/date/attendancecard',
+  // attendance:'http://localhost:3000/attendance/date/attendance',
   // updateleave: 'https://hrmaven.works/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
   // Forgoturl: 'http://localhost:3000/forgotpassword',
   // Reseturl: 'http://localhost:3000/resetpassword',
+  // getreseturl: 'http://localhost:3000/resetpassword',
   // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
@@ -37,4 +50,7 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
+  // getemail : 'http://localhost:3000/getemails/email',
+  // getpwd : 'http://localhost:3000/userprofilepwd',
+  // changepassword : 'http://localhost:3000/islinkclicked'
 };

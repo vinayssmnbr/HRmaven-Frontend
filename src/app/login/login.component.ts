@@ -1,21 +1,29 @@
 import { Component } from '@angular/core';
+
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../service/user.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+
+  employeemail: any[] = [];
+  emailEntered: any = '';
+  //  emailExists: any[] = [];
+  userEmail: any = '';
+  emailExists = false;
+
   constructor(
     public fb1: FormBuilder,
     private activatedRoute: ActivatedRoute,
@@ -26,6 +34,14 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // force a page refresh on navigation end
+      window.location.reload();
+    });
+
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
     if (storedemail && storedPassword) {
@@ -35,19 +51,19 @@ export class LoginComponent {
         Remember: true,
       });
     }
-    let counter = 0;
-    setInterval(() => {
-      const radioBtn = document.getElementById(
-        `radio${counter + 1}`
-      ) as HTMLInputElement;
-      if (radioBtn) {
-        radioBtn.checked = true;
-        counter++;
-        if (counter === 4) {
-          counter=0;
-        }
-      }
-    }, 8000);
+    // let counter = 0;
+    // setInterval(() => {
+    //   const radioBtn = document.getElementById(
+    //     `radio${counter + 1}`
+    //   ) as HTMLInputElement;
+    //   if (radioBtn) {
+    //     radioBtn.checked = true;
+    //     counter++;
+    //     if (counter === 4) {
+    //       counter = 0;
+    //     }
+    //   }
+    // }, 8000);
     //GOOGLE LOGIN
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
@@ -66,7 +82,34 @@ export class LoginComponent {
       this.router.navigate(['dashboard']);
     }
     // this.userService.allDataLogin();
+    
   }
+  userdetail: any = '';
+  usernotfound: any = '';
+
+  checkEmail(){
+  
+      // this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
+      //   // this.emailExists = false;
+      //     console.log("message: ",res.message);
+
+      //   if(res.message === 'user-found'){
+      //     // this.userdetail = this.forgotPassword.controls['email'].value
+      //     this.userdetail = res.message
+      //   } else if(res.message === 'user-not-found'){
+      //     this.usernotfound = res.message;
+      //   }
+
+      //   this.employeemail = res;
+      
+      
+      //   console.log('Response from API:', this.employeemail);
+      // });   
+  }
+
+  email_data: any = '';
+
+  
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
@@ -115,12 +158,21 @@ export class LoginComponent {
   // LOGIN
   isLoggedIn = new BehaviorSubject<boolean>(false);
 
-  get email() {
+  get emailforgot() {
     return this.forgotPassword.get('email');
   }
+
+  get emaill(){
+    return this.loginForm.get("email");
+  }
+
+  get pwd(){
+    return this.loginForm.get("password");
+  }
+
   loader=false;
   submit() {
-    this.loader=true;
+    this.loader = true;
     setTimeout(() => {
       this.router.navigate(['/dashboard']);
     }, 2000);
@@ -167,6 +219,27 @@ export class LoginComponent {
     console.log('Forget Password Email');
     console.log(data);
 
+    this.userService.getData(data.email).subscribe((res: any) => {
+      console.log("message: ", res.message);
+  
+      if (res.message === 'user-found') {
+        this.userService.ForgotEmail(data).subscribe((res: any) => {
+          this.userService.ForgotEmail(this.forgotPassword);
+          console.log('response:' + Object.values(res));
+        });
+        this.Forgotshow = !this.Forgotshow;
+        setTimeout(() => {
+          this.EmailSent = !this.EmailSent;
+        }, 500);
+      } else if (res.message === 'email-id not found') {
+        this.usernotfound = res.message;
+      }
+  
+      this.employeemail = res;
+  
+      console.log('Response from API:', this.employeemail);
+    });
+
     this.userService.ForgotEmail(data).subscribe((res: any) => {
       this.userService.ForgotEmail(this.forgotPassword);
       console.log('response:' + res);
@@ -175,5 +248,9 @@ export class LoginComponent {
     setTimeout(() => {
       this.EmailSent = !this.EmailSent;
     }, 500);
+ 
   }
+
+ 
+
 }

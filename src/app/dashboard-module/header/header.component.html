@@ -11,6 +11,7 @@
       <h2 *ngIf="dashService.activeComponent === 'job-details'">Recruitment</h2>
       <h2 *ngIf="dashService.activeComponent === 'report'">Report</h2>
     </div>
+    
     <div class="content-right">
       <input type="search" placeholder="Search.." class="searchbox" *ngIf="showSearchBox">
       <i class="fa-solid fa-magnifying-glass" (click)="toggleSearchBox()"></i>
@@ -285,7 +286,7 @@
       </div>
     </div>
     <div class="profile-account">
-      <div class="account">
+      <div class="account" routerLink="/setting">
         <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>Account Settings</span></button>
       </div>
     </div>

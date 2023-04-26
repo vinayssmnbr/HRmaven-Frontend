@@ -14,12 +14,7 @@ import { style } from '@angular/animations';
 })
 export class LeavesContentComponent {
   designationdropdownOption: boolean = false;
-  circularProgress: any;
-  progressValue: any;
-  progressStartValue = 0;
-  progressEndValue = 50;
-  speed = 100;
-  progressInterval: any;
+  parentSelector: boolean = false
   test: any = 'All';
   // searchText: string;
   status: string;
@@ -34,7 +29,60 @@ export class LeavesContentComponent {
   reject_graph: any;
   pending_graph: any;
 
+  //----------Harpreet Code-------
+  constructor(private dashService: DashService, private http: HttpClient) {
+    dashService.activeComponent = 'leaves';
+    dashService.headerContent = '';
+    this.fetchPendingLeave();
+  }
+
+  row: any = [
+    {
+      id: 1,
+      select: false,
+      name: 'dumpling'
+    },
+    {
+      id: 2,
+      select: false,
+      name: 'burger'
+    },
+    {
+      id: 3,
+      select: false,
+      name: 'sandwic'
+    },
+  ];
+
+  allchecked = false;
+  fetchPendingLeave() {}
+  onChange($event) {
+    const id = $event.target.value;
+    const ischecked = $event.target.checked;
+    this.row.map((d) => {
+      if (d.id == id) {
+        d.select = ischecked;
+        this.parentSelector = false;
+        return d;
+      }
+      if (id == -1) {
+        d.select = this.parentSelector;
+        return d;
+      }
+      return d;
+    });
+    console.log(this.row);
+  }
   ngOnInit() {
+    //  --------------------Drop Down form-------------
+    const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
+      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!;
+    selectBtn.addEventListener('click', () =>
+      optionMenu.classList.toggle('active')
+    );
+
+    // --------------Progress Bar-----------
+
     const progressBar = document.querySelector(
       '.circular-progress'
     ) as HTMLElement;
@@ -42,8 +90,8 @@ export class LeavesContentComponent {
       '.value-container'
     ) as HTMLElement;
 
-    let progressValue = 0;
-    const progressEndValue = 10;
+    let progressValue = -1;
+    const progressEndValue = 0;
     const speed = 50;
 
     const progress = setInterval(() => {
@@ -51,7 +99,7 @@ export class LeavesContentComponent {
       valueContainer.textContent = `${progressValue}%`;
 
       progressBar.style.background = `conic-gradient(
-        #4d5bf9 ${progressValue * 3.6}deg,    
+        #4d5bf9 ${progressValue * 3.6}deg,
         #D9D9D9 ${progressValue * 3.6}deg
       )`;
 
@@ -60,8 +108,6 @@ export class LeavesContentComponent {
       }
     }, speed);
 
-
-
     const progressBar1 = document.querySelector(
       '.circular-progress1'
     ) as HTMLElement;
@@ -69,8 +115,8 @@ export class LeavesContentComponent {
       '.value-container1'
     ) as HTMLElement;
 
-    let progressValue1 = 0;
-    const progressEndValue1 = 40;
+    let progressValue1 = -1;
+    const progressEndValue1 = 0;
     const speed1 = 50;
 
     const progress1 = setInterval(() => {
@@ -87,7 +133,6 @@ export class LeavesContentComponent {
       }
     }, speed1);
 
-
     const progressBar2 = document.querySelector(
       '.circular-progress2'
     ) as HTMLElement;
@@ -95,8 +140,8 @@ export class LeavesContentComponent {
       '.value-container2'
     ) as HTMLElement;
 
-    let progressValue2 = 0;
-    const progressEndValue2 = 80;
+    let progressValue2 = -1;
+    const progressEndValue2 = 0;
     const speed2 = 50;
 
     const progress2 = setInterval(() => {
@@ -113,8 +158,6 @@ export class LeavesContentComponent {
       }
     }, speed2);
 
-
-
     const progressBar3 = document.querySelector(
       '.circular-progress3'
     ) as HTMLElement;
@@ -122,8 +165,8 @@ export class LeavesContentComponent {
       '.value-container3'
     ) as HTMLElement;
 
-    let progressValue3 = 0;
-    const progressEndValue3 = 100;
+    let progressValue3 = -1;
+    const progressEndValue3 = 0;
     const speed3 = 50;
 
     const progress3 = setInterval(() => {
@@ -139,12 +182,6 @@ export class LeavesContentComponent {
         clearInterval(progress3);
       }
     }, speed3);
-  }
-
-  constructor(private dashService: DashService, private http: HttpClient) {
-    dashService.activeComponent = 'leaves';
-    dashService.headerContent = '';
-    this.updatereload();
   }
 
   async updatereload() {
@@ -225,40 +262,109 @@ export class LeavesContentComponent {
     await this.updateafteraction();
   }
 
+  // -------------------Drop Down---------------------
   array: any = [
     {
       id: 0,
-      name: 'All',
+      name: 'Software Developer',
     },
     {
       id: 1,
-      name: 'Pending',
-    },
-    {
-      id: 2,
-      name: 'Rejected',
+      name: 'Frontend Developer',
     },
     {
       id: 3,
-      name: 'Accepted',
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
     },
   ];
   contentdropdown: boolean = false;
-
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  
   Selectvariable: string = 'Select';
   colorvariable: number = 0;
-
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
   }
-  dropdownOpenOption() {
-    this.designationdropdownOption = !this.designationdropdownOption;
+  array1: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable1: string = 'Select';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
+  }
+
+  id: any = 'Pending';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
+  }
+  showSearchBox = false;
+  showSearchBox1 = true;
+
+  toggleSearchBox1() {
+    this.showSearchBox = !this.showSearchBox;
+    this.showSearchBox1 = false;
+    this.allchecked = !this.allchecked;
+  }
+  showModal = false;
+  openModal() {
+    this.showModal = true;
+  }
+  showModal1 = false;
+  openModal1() {
+    this.showModal1 = true;
+    this.showModal = false;
+  }
+
+  showModal2 = false;
+  openModal2() {
+    this.showModal2 = true;
+    this.showModal = false;
+  }
+  showModal3 = false;
+  openModal3() {
+    this.showModal3 = true;
+    this.showModal1 = false;
+  }
+  closeModal() {
+    this.showModal = false;
+    this.showModal1 = false;
+    this.showModal2 = false;
+    this.showModal3 = false;
+  }
+  toggleSearchBox() {
+    this.showSearchBox = !this.showSearchBox;
+    this.showSearchBox1 = false;
   }
 }

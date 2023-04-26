@@ -1,5 +1,9 @@
 <app-header ></app-header>
 <app-sidebar></app-sidebar>
+<!-- <div *ngIf="isFromSignupPage" style="margin-left: 50%;margin-top: 50%;">
+    This div will only be shown if the user is coming from the signup page.
+  </div> -->
+
 <div class="main" >
     <div class="row">
         <div class="col-3">
@@ -74,11 +78,11 @@
                                 </div>
                                 <div class="dots">
                                     <i class="fa-solid fa-ellipsis-vertical" (click)="ToggleMenu(index)">
-                  <ul id={{index}} class="close">
-                    <button value={{index}} (click)="Edit(index)" class="edit-btn">Edit</button>
-                    <button value="Delete">Delete</button>
-                  </ul>
-                </i>
+                                        <ul id={{index}} class="close">
+                                            <button value={{index}} (click)="Edit(index)" class="edit-btn">Edit</button>
+                                            <button value="Delete">Delete</button>
+                                        </ul>
+                                    </i>
                                 </div>
                             </div>
                         </div>
@@ -119,11 +123,14 @@
                                 <td>
                                     <div class="action_button">
                                         <div class="action_btn">
-                                            <input type="radio" [checked]="leave.status=='accept'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'accept')" id="outline1" class="custom-radio">
+                                            <input type="radio" [checked]="leave.status=='accept'"
+                                                [disabled]="leave.status=='accept' || leave.status=='reject'"
+                                                (change)="updateLeaveStatus(leave._id, 'accept')" id="outline1"
+                                                class="custom-radio">
                                             <label for="outline1" class="outline1">Accept</label>
                                         </div>
                                         <div class="action_btn">
-                                            <input type="radio" [checked]="leave.status=='reject'" [name]="leave._id" (change)="updateLeaveStatus(leave, 'reject')" id="outline" class="custom-radio">
+                                            <input type="radio" [checked]="leave.status=='reject'" [disabled]="leave.status=='accept' || leave.status=='reject'" (change)="updateLeaveStatus(leave._id, 'reject')" id="outline" class="custom-radio">
                                             <label for="outline" class="outline">Reject</label>
                                         </div>
                                     </div>
@@ -239,6 +246,84 @@
             </div>
         </div>
     </div>
+
+
+<!---------------------------dashboard Modal------------------------------>
+
+<div *ngIf="isFromSignupPage">
+    <form class="Modal_form">
+        <div class="Modal_modal">
+            
+            <div class="edit-profile-heading">
+                <h3>Required Details </h3>
+            </div>
+
+            <form class="form" [formGroup]="personaldataForm" (ngSubmit)="submitPersonalData(personaldataForm.value)">
+                <div class="name-email">
+                    <div class="form__group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name" formControlName="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">No. of employees</label>
+                        <div class="dropdown_container" formControlName="totalemployee">
+                            <!-- <div class="dropdwon_select" (click)="dropdownOpen()">
+                              <p>{{Selectvariable}}</p>
+                              <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                              <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                 (click)="Changeselect(arr);personaldataForm.get('selectedValue').setValue(arr)" >
+                                  {{arr.name}}</li>
+                                  <!-- <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" 
+                                  (click)="Changeselect(arr); personaldataForm.get('selectedValue').setValue(arr.name)">
+                                  {{arr.name}}
+                                </li> -->
+                                <!-- </ul>
+                            </div>  -->
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                        (click)="Changeselect(arr); personaldataForm.get('totalemployee').setValue(arr.name)">
+                                        {{arr.name}}
+                                    </li>
+                                </ul>
+                            </div>
+                          </div>
+
+                
+                    </div>
+                </div>
+
+                
+
+                <div class="email-phone">
+                    <div class="form__group">
+                        <label for="name">Phone no.</label>
+                        <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone" id="name" required />
+                    </div>
+                    <div class="form__group">
+                        <label for="email">Head Office</label>
+                        <input type="text" class="form_input" placeholder='Eg. Leeds, America' formControlName="headoffice" id="email"
+                            required />
+                    </div>
+                </div>
+
+
+            </form>
+
+
+            <div class="edit-profile-footer">
+                <button class="done-btn">Done</button>
+            </div>
+        </div>
+    </form>
+</div>    
     <!--Leave Request Section-->
 
 </div>

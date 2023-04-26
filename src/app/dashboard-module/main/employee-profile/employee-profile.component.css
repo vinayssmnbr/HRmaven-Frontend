@@ -53,20 +53,38 @@
   border-radius: 8px;
   margin-bottom: 30px;
 }
-.card2 .profile_pic{
+.card2 .profile_pic img{
   border-radius: 50%;
   position: relative;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
 }
+/* #file-input{
+  position: absolute;
+  left:10%;
+  top:10%;
+} */
 .profile-content{
   display: none;
  position: absolute;
- top: 31%;
- left: 20%;
- font-size: 9px;
+ top: 30%;
+ left: 21.2%;
+ font-size: 10px;
  color: #ffffff;
  font-weight: 600;
 
 }
+.profile-content input[type='file']
+{
+  opacity: 0;
+  z-index: -1;
+  cursor: pointer;
+}
+/* .card2 .profile-content input[type='file']{
+  opacity: 0;
+  z-index: -1;
+} */
 .fa-camera{
   color: white;
   display: flex;
@@ -83,7 +101,35 @@
 .card2 .profile_pic:hover .profile-content{
   display:block;
 }
-
+.cnt-btn{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.view{
+  padding: 5px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #2F2C9F;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+.hide {
+  padding: 5px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #2F2C9F;
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
 .details{
   display: flex;
   justify-content: space-between;
@@ -454,33 +500,33 @@
   padding: 15px 30px;
 }
 #form1{
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form2{
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form3 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form4 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form5 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 #form6 {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 25px;
   padding-left: 8px;
 }
 hr{
@@ -508,6 +554,12 @@ label{
     font-size: 14px;
     margin-bottom: 5px;
     color: #333333;
+}
+.bank{
+  display: none;
+}
+.bank.active{
+  display: block;
 }
 input[type='text']{
   width: 270px;
@@ -546,8 +598,8 @@ input[type='date'] {
 }
 .employe-id{
   cursor: not-allowed;
-  background-color: #fafafa !important;
-  border: 1px solid #FAFAFA;
+  background-color: #f1f1f1 !important;
+  border: 1px solid #F1f1f1;
 }
 #select{
   width: 270px;
@@ -734,7 +786,7 @@ background-color: #ffffff;
   border-radius: 8px;
   color: black;
   padding-left: 15px;
-
+  margin-bottom: 40px;
 }
 
 input[type='number']:hover {

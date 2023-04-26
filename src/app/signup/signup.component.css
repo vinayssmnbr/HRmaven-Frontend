@@ -4,30 +4,47 @@
     justify-content: flex-end;
 }
 
+/* .tooltip{
+  position: absolute;
+    left: 30px;
+    top: -10px;
+    line-height: 22px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #888888;
+    background-color: #F7F7FB;
+    padding: 8px 14px;
+    width: 274px;
+    height: 126px;
+    height: 100%;
+    border-radius: 4px;
+    transform: translateX(-5px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
+} */
 .left-side {
     background-color: var(--primary-color);
-    margin-top: 24px;
     border-radius: 12px;
     padding-bottom: 18px;
-    margin-left: 21px;
-    margin-bottom: 18px;
     height: calc(100vh - 48px);
-    margin-bottom: 18px;
     width: 546px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 24px 0 18px 21px;
 }
 
+.leftContent {
+    padding-left: 78px;
+}
 
 .left-side .logo-image {
     margin-top: 78px;
-    padding-left: 83px;
 }
 
 .left-side .title {
-    padding-left: 78px;
     padding-top: 29px;
     font-size: 36px;
     color: #FFFFFF;
@@ -38,7 +55,6 @@
 
 .left-side .title_para {
     padding-top: 12px;
-    padding-left: 78px;
     font-size: 18px;
     color: #FAFAFA;
     width: 85%;
@@ -103,6 +119,10 @@
     align-items: center;
 }
 
+.right-side p {
+    color: #999999;
+}
+
 form {
     padding-right: 35px;
     padding-top: 24px;
@@ -127,8 +147,28 @@ form p a {
 form .input-field {
     position: relative;
     width: 400px;
-    height: 50px;
-    margin-bottom: 48px;
+    max-height: 50px;
+    margin-bottom: 55px;
+}
+
+.field span.password-toggle {
+    margin-top: 5px;
+    top: 18px;
+    right: 30px;
+}
+
+.field span.password-toggle i {
+    margin-top: 0;
+}
+
+.inputerror {
+    font-size: 13px !important;
+    margin-top: 0 !important;
+    bottom: -20px;
+}
+
+.inputerror i {
+    padding-right: 10px;
 }
 
 .name-field {
@@ -136,7 +176,7 @@ form .input-field {
 }
 
 .input-field input {
-    height: 100%;
+    min-height: 50px;
     width: 100%;
     outline: none;
     border: none;
@@ -144,6 +184,7 @@ form .input-field {
     padding: 0 15px;
     border: 1px solid #d1d1d1;
     margin-top: 6px;
+    margin-bottom: 7px;
 }
 
 .input-field input::placeholder {
@@ -162,6 +203,7 @@ input:hover,
 input:focus {
     border: 1px solid #2F2C9F;
     border-color: #2F2C9F !important;
+    
 }
 
 .email {
@@ -273,7 +315,7 @@ input:focus {
 
 .facebook_logo {
     width: 30px;
-    height: 20px;
+    /* height: 20px; */
     margin-top: 10px;
 }
 
@@ -403,11 +445,15 @@ form.ng-invalid.ng-touched #submit {
 
 .password-toggle i {
     position: absolute;
-    margin-top: -50px;
-    margin-left: 360px;
+    margin-top: 18px;
     color: #ddd;
     font-size: 14px;
     cursor: pointer;
+}
+
+.password-i {
+    display: flex;
+    justify-content: space-between;
 }
 
 .input-field label {
@@ -415,17 +461,18 @@ form.ng-invalid.ng-touched #submit {
     font-size: 14px;
 }
 
+.input-field i {
+    padding-right: 5px;
+}
 
 
 .field span {
     color: red;
     font-size: 14px;
+    position: absolute;
 }
 
-.field span i {
-    padding-right: 10px;
 
-}
 
 form.ng-invalid #submit {
     opacity: 0.5;
@@ -439,8 +486,6 @@ form.ng-invalid #submit {
     border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
-    top: -100px;
-    margin-left: 380px;
 }
 
 .iconWrap i {
@@ -449,7 +494,7 @@ form.ng-invalid #submit {
 
 .iconWrap .tooltip {
     position: absolute;
-    left: 30px;
+    left: 17px;
     top: -10px;
     line-height: 22px;
     font-size: 13px;
@@ -457,8 +502,8 @@ form.ng-invalid #submit {
     color: #888888;
     background-color: #F7F7FB;
     padding: 8px 14px;
-    width: 163px;
-    height: 126px;
+    width: 284px;
+    /* height: 126px; */
     border-radius: 4px;
     transform: translateX(-5px);
     opacity: 0;
@@ -478,7 +523,120 @@ form.ng-invalid #submit {
     border-radius: 1px;
 }
 
-.iconWrap:hover .tooltip {
+.password-i {
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconWrap:focus .tooltip {
     transform: translateX(5px);
     opacity: 1;
+}
+.password-tooltip, .input-field:hover .tooltip{
+    transform: translateX(5px);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.tooltip span {
+    margin-top: 0;
+}
+
+.create-password label.text-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*---------------------Sign Up Modal--------------------------*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content2 {
+    width: 470px;
+    height: 349px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px 10px;
+}
+
+.cross_icon i {
+    position: absolute;
+    cursor: pointer;
+    color: #B4B4B4;
+    font-size: 20px;
+    margin-left: 469px;
+    margin-top: -44px;
+}
+
+.modal-header2 {
+    width: 450px;
+    height: 130px;
+    background: rgba(123, 211, 109, 0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.modal-body2 h3 {
+    padding-top: 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    color: #444444;
+    font-family: 'Outfit', sans-serif;
+}
+
+.modal-body2 p {
+    margin-top: 5px;
+    margin-bottom: 28px;
+    margin-left: 80px;
+    margin-right: 80px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #777777;
+    font-family: 'Outfit', sans-serif;
+}
+
+.done-btn2 {
+    width: 82px;
+    height: 38px;
+    background: #3D9130;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    color: #FFFFFF;
+    border: 1px solid #3D9130;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+}
+
+.done-btn2:hover {
+    background-color: #3D9130;
+    opacity: 0.7;
 }

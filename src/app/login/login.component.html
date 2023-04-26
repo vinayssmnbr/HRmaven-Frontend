@@ -1,5 +1,5 @@
 <div class="parent loaderLogo" *ngIf="loader">
-  <img id=loader src="../../assets/images/logo.ico">
+    <img id=loader src="../../assets/images/logo.ico">
 </div>
 
 <div class="row" *ngIf="!loader">
@@ -15,6 +15,11 @@
                 <form [formGroup]="forgotPassword" (ngSubmit)="ForgetEmailSubmit(forgotPassword.value)">
                     <label for="Email">Email</label>
                     <input type="email" placeholder="Enter your email address" formControlName="email">
+                    <span *ngIf="usernotfound">Email with this id not Found! </span>
+                    <span *ngIf="emailforgot && emailforgot.invalid && emailforgot.touched && emailforgot.dirty"
+                        class="emailwrg"><i class="fa-sharp fa-solid fa-triangle-exclamation"></i>Input Valid Email
+                        Id</span>
+
                     <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification
                         Email</button>
                 </form>
@@ -46,7 +51,7 @@
             </div>
             <h1>Reset password email has been sent.</h1>
             <p>We have sent an email to reset your password.Don't forget to check.</p>
-            <button class="done_btn">Done</button>
+            <button class="done_btn" (click)="toggleForgot1()">Done</button>
         </div>
     </div>
 
@@ -66,7 +71,8 @@
                 <input type="radio" name="radio-btn" id="radio3">
                 <input type="radio" name="radio-btn" id="radio4">
                 <div class="card first">
-                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This
+                        is absolutely wonderful!
                     </p>
                     <div class="profile">
                         <img src="assets/images/Rectangle 11.png" alt="image">
@@ -77,7 +83,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This
+                        is absolutely wonderful!
                     </p>
                     <div class="profile">
                         <img src="assets/images/Rectangle 11.png" alt="image">
@@ -88,7 +95,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This
+                        is absolutely wonderful!
                     </p>
                     <div class="profile">
                         <img src="assets/images/Rectangle 11.png" alt="image">
@@ -99,7 +107,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                    <p class="card-text">Simply unbelievable! I am really satisfied with my projects and business. This
+                        is absolutely wonderful!
                     </p>
                     <div class="profile">
                         <img src="assets/images/Rectangle 11.png" alt="image">
@@ -114,14 +123,14 @@
                     <div class="auto-btn2"></div>
                     <div class="auto-btn3"></div>
                     <div class="auto-btn4"></div>
-                  </div>
+                </div>
             </div>
             <div class="navigation-manual">
                 <label for="radio1" class="manual-btn"></label>
                 <label for="radio2" class="manual-btn"></label>
                 <label for="radio3" class="manual-btn"></label>
                 <label for="radio4" class="manual-btn"></label>
-              </div>
+            </div>
         </div>
     </div>
     <div class="right-side">
@@ -131,15 +140,20 @@
             <div class="field email-field formgroup">
                 <div class="input-field">
                     <label for="name" class="text-label">Email</label>
-                    <input type="email" class="form-control email" formControlName="email" placeholder="Enter your email" />
+                    <input type="email" class="form-control email" formControlName="email"
+                        placeholder="Enter your email" />
+                    <span *ngIf="emaill && emaill.invalid && emaill.touched && emaill.dirty" class="emailwrg"><i
+                            class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
                 </div>
 
             </div>
             <div class="field create-password">
                 <div class="input-field">
                     <label for="name" class="text-label">Password</label>
-                    <input type="password" placeholder="Enter your password" class="password" #passwordInput formControlName="password" />
-
+                    <input type="password" placeholder="Enter your password" class="password" #passwordInput
+                        formControlName="password" />
+                    <span *ngIf="pwd && pwd.invalid && pwd.touched  && emaill.dirty" class="pwddwrg"><i
+                            class="fa-sharp fa-solid fa-triangle-exclamation "></i>Invalid Password </span>
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
                     <i class="fa {{ showPasswordIcon }}"></i>
@@ -148,6 +162,7 @@
 
             <div class="check-text">
                 <input type="checkbox" class="check_box" id="checkbox" formControlName="Remember">
+                <span class="mark"></span>
                 <label for="checkbox" class="checkbox-text"><a>Remember me</a></label>
                 <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
             </div>
@@ -160,7 +175,7 @@
             <div class="social_btn">
                 <div class="google" (click)="loginwithGoogle()">
                     <img class="google_logo" src="assets/images/google-logo.png" alt="google">
-                    <a > Login with Google</a>
+                    <a> Login with Google</a>
                 </div>
             </div>
         </form>

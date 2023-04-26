@@ -17,6 +17,7 @@ import {
 } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
+import { error, log } from 'console';
 
 @Component({
   selector: 'app-employee-content',
@@ -28,10 +29,8 @@ export class EmployeeContentComponent implements OnInit {
   designationdropdownOption: boolean = false;
   name: any;
   email: any;
-  selectEmployee(user: any) {
-    this.dashService.setSelectedEmployee(user);
-  }
-
+  fileName: string = '';
+  fileName1:string = '';
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -52,67 +51,77 @@ export class EmployeeContentComponent implements OnInit {
   currentEmployeeUid: any = '';
   query: string = '';
   designation: string = '';
-  gender:string='';
-  bankname:string=''
+  gender: string = '';
+  bankname: string = '';
+  location: string = '';
+  timing: string = '';
+  job_type: string = '';
 
   data: any;
   deletedata: any;
   empdesignation = '';
   employeeid: any;
   show: any = false;
-  emptybox: boolean=false;
+  emptybox: boolean = false;
   nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
-  form = new FormGroup({
-    name: new FormControl('', [Validators.required,this.nameValidator]),
-    designation: new FormControl('',Validators.required),
-    uid: new FormControl(this.currentEmployeeUid),
-    dateOfJoining: new FormControl('', Validators.required),
-    dateOfBirth: new FormControl('', Validators.required),
-    gender: new FormControl('',Validators.required),
-    mobile: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    address: new FormControl('', Validators.required),
-    bankname: new FormControl('',Validators.required),
-    adhaarno: new FormControl('', Validators.required),
-    accountno: new FormControl('', [Validators.required]),
-    ifsc: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([A-Z]){4}([0-9]){8}$/),
-    ]),
-    panno: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/),
-    ]),
 
+  form = new FormGroup({
+    name: new FormControl('', [
+      Validators.required,
+      this.nameValidator,
+      Validators.pattern('[a-zA-Z ]+'),
+    ]),
+    designation: new FormControl('', Validators.required),
+    uid: new FormControl(this.currentEmployeeUid),
+    job_type: new FormControl('', Validators.required),
+    url: new FormControl('', Validators.required),
+    dateOfJoining: new FormControl('', Validators.required),
+    location: new FormControl('', Validators.required),
+    ctc: new FormControl('', Validators.required),
+    mobile: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+    ]),
+    timing: new FormControl('', Validators.required),
+    // csv: new FormControl('',Validators.required)
   });
 
   get registrationFormControl() {
     return this.form.controls;
   }
 
+  selectEmployee(user: any) {
+    this.dashService.setSelectedEmployee(user);
+  }
   //ADD DATA
-  submit(data: any) {
+  // file: File | null = null;
+  submit() {
+    if (this.form.invalid) return;
     console.log(this.form.value);
+    const data = this.form.value;
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
     data.designation = this.designation;
-    data.gender=this.gender;
-    data.bankname=this.bankname
-
+    data.location = this.location;
+    data.timing = this.timing;
+    data.job_type = this.job_type;
     this.dashService.addEmployee(data).subscribe((result) => {
       this.dashService.addEmployee(this.form);
-      console.log(result);
       this.fetchdata();
       this.form.reset();
     });
   }
 
-  // form1Valid: boolean = this.form.controls.name.valid && this.form.controls.designation.valid && this.form.controls.employee_id.valid && this.form.controls.gender.valid && this.form.controls.dateOfBirth.valid && this.form.controls.dateOfJoining.valid
   form1Valid: boolean = this.form.controls.name.valid;
 
   //GET DATA
@@ -153,10 +162,10 @@ export class EmployeeContentComponent implements OnInit {
   function() {
     this.show = !this.show;
   }
-   openDatePicker(){
-     let input = document.getElementById("text4") as HTMLInputElement;
-     input.click();
-   }
+  openDatePicker() {
+    let input = document.getElementById('text4') as HTMLInputElement;
+    input.click();
+  }
 
   opendpdtn = false;
   ngOnInit() {
@@ -175,11 +184,6 @@ export class EmployeeContentComponent implements OnInit {
     this.Changeselect({ name: 'ALL' });
     this.query = '';
   }
-  // changeColor3() {
-  //   this.buttonbackgroundColor3 =
-  //     this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
-  //   this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
-  // }
   isDropdownOpen = false;
 
   toggleDropdown() {
@@ -193,12 +197,13 @@ export class EmployeeContentComponent implements OnInit {
   showModalContent: boolean = true;
   fifthstep: boolean = false;
   onNextForm() {
-    console.log(this.form)
     this.firstStep = false;
     this.secondStep = true;
+    this.onUpload(this.selectedFile);
   }
 
   onPreviousForm() {
+    console.log(this.form.value);
     this.firstStep = true;
     this.secondStep = false;
   }
@@ -214,10 +219,11 @@ export class EmployeeContentComponent implements OnInit {
   closeModal() {
     this.showModal = false;
     this.buttonbackgroundColor3 =
-    this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
+      this.buttonbackgroundColor3 === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor3 = this.buttonColor3 === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
     this.showModalContent = true;
     this.fourthStep = false;
+    this.form.reset();
   }
 
   openModal() {
@@ -282,7 +288,7 @@ export class EmployeeContentComponent implements OnInit {
       name: 'Software Developer',
     },
   ];
- array6: any = [
+  array6: any = [
     {
       id: 0,
       name: 'Frontend Developer',
@@ -307,41 +313,55 @@ export class EmployeeContentComponent implements OnInit {
   array1: any = [
     {
       id: 0,
-      name: 'Male',
+      name: 'Full-Time Permanent',
     },
     {
       id: 1,
-      name: 'Female',
+      name: 'Part-Time Employement',
     },
     {
       id: 2,
-      name: 'Others',
+      name: 'Internship',
     },
   ];
   array2: any = [
     {
       id: 0,
-      name: 'State Bank Of India',
+      name: 'Mohali',
     },
     {
       id: 1,
-      name: 'Punjab National Bank',
+      name: 'Gurugram',
     },
     {
       id: 2,
-      name: 'Central Bank Of India',
+      name: 'Pune',
     },
     {
       id: 3,
-      name: 'HDFC Bank',
+      name: 'Hyderabad',
     },
     {
       id: 4,
-      name: 'ICICI Bank',
+      name: 'Bangalore',
+    },
+  ];
+  array3: any = [
+    {
+      id: 0,
+      name: '9.00am to 5:00pm',
     },
     {
-      id: 5,
-      name: 'Others',
+      id: 0,
+      name: '9.00am to 6:00pm',
+    },
+    {
+      id: 0,
+      name: '10.00am to 5:00pm',
+    },
+    {
+      id: 0,
+      name: '10.00am to 6:00pm',
     },
   ];
   contentdropdown: boolean = false;
@@ -356,17 +376,19 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
-  contentdropdown3:boolean=false;
+  contentdropdown3: boolean = false;
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable:any = 'Designation';
+  Selectvariable: any = 'Designation';
   colorvariable: number = 0;
-  Selectvariable1: string = 'Select';
+  Selectvariable1: string = '';
   colorvariable1: number = 0;
-  Selectvariable2: string = 'Select Bank';
+  Selectvariable2: string = 'Select Location';
   colorvariable2: number = 0;
-  Selectvariable6: string = 'Designation';
+  Selectvariable3: string = 'Select';
+  colorvariable3: number = 0;
+  Selectvariable6: string = '';
   colorvariable6: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -383,12 +405,12 @@ export class EmployeeContentComponent implements OnInit {
     //     console.log('data', res);
     //   });
   }
-Changeselect1(arr1: any) {
+
+  Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
-    this.gender = arr1.name;
-
+    this.job_type = arr1.name;
     console.log(arr1.name);
   }
   Changeselect2(arr2: any) {
@@ -396,9 +418,7 @@ Changeselect1(arr1: any) {
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
-    this.bankname = arr2.name;
-
-
+    this.location = arr2.name;
   }
   // for(let i=0; i)
   Changeselect6(arr6: any) {
@@ -407,25 +427,278 @@ Changeselect1(arr1: any) {
     this.contentdropdown3 = false;
     console.log(arr6.name);
     this.designation = arr6.name;
+  }
+  Changeselect3(arr3: any) {
+    this.Selectvariable3 = arr3.name;
+    this.colorvariable3 = arr3.id;
+    this.contentdropdown3 = false;
+    console.log(arr3.name);
+    this.timing = arr3.name;
+  }
+  dropdownClose() {
+    this.contentdropdown = false;
+  }
+  dropdownClose3() {
+    this.contentdropdown3 = false;
+  }
+  dropdownClose1() {
+    this.contentdropdown1 = false;
+  }
+  dropdownClose2() {
+    this.contentdropdown2 = false;
+  }
+
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
+  Space(event: any) {
+    if (event.target.selectionStart === 0 && event.code == 'Space') {
+      event.preventDefault();
+    }
+  }
+
+  validateEmail(event: KeyboardEvent) {
+    const input = (event.target as HTMLInputElement).value.trim();
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+  validatePhoneNumber(event: KeyboardEvent) {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    const phoneNumber = (event.target as HTMLInputElement).value;
+    if (!allowedKeys.includes(event.key) && !/^\d{0,9}$/.test(phoneNumber)) {
+      event.preventDefault();
+    }
+  }
+  selectedFile: File | null = null;
+  selectedFile1: File | null = null;
 
 
-}
-dropdownClose() {
-  this.contentdropdown = false;
-}
-dropdownClose3(){
-this.contentdropdown3=false;
-}
-dropdownClose1(){
-this.contentdropdown1=false;
-}
-dropdownClose2(){
-this.contentdropdown2=false;
-}
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.fileName = this.selectedFile ? this.selectedFile.name : '';
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    // this.onUpload(  this.selectedFile );
+  }
+  // files: File[] = [];
 
-dropdownOpenOption() {
-  this.designationdropdownOption = !this.designationdropdownOption;
-}
+  // onDrop(event: DragEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //   const files = event.dataTransfer.files;
+  //   for (let i = 0; i < files.length; i++) {
+  //     this.files.push(files.item(i));
+  //   }
+  // }
 
+  // onDragOver(event: DragEvent) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  // }
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+  }
+  onUpload(file) {
+    console.log('fdjkhf');
+    this.dashService.upload1(file).then(
+      (res) => {
+        this.form.patchValue({
+          url: res && res.url,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+  selectall: boolean = false;
+  selectboxes() {
+    this.selectall = !this.selectall;
+  }
+  isallactive: boolean = true;
+  isall() {
+    this.isallactive = !this.isallactive;
+    this.is_active = false;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_resigned = false;
+    this.fetchdata()
+  }
+  is_active: boolean = false;
+  isactive() {
+    this.is_active = !this.is_active;
+    this.isallactive = false;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_resigned = false;
+    this.dashService.getEmployeeStatus('active').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+      // if (res.length > 0) {
+      //   this.emptybox = false;
+      // }
+    });
+
+  }
+  is_resigned: boolean = false;
+  is_terminated: boolean = false;
+  is_absconder: boolean = false;
+  isresigned() {
+    this.is_resigned = !this.is_resigned;
+    this.is_absconder = false;
+    this.is_terminated = false;
+    this.is_active = false;
+    this.isallactive = false;
+    this.dashService.getEmployeeStatus('resigned').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
+
+  }
+  isterminated() {
+    this.is_terminated = !this.is_terminated;
+    this.is_absconder = false;
+    this.is_resigned = false;
+    this.is_active = false;
+    this.isallactive = false;
+    this.dashService.getEmployeeStatus('terminated').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
+  }
+  isabsconder() {
+    this.is_absconder = !this.is_absconder;
+    this.is_resigned = false;
+    this.is_terminated = false;
+    this.is_active = false;
+    this.isallactive = false;
+    this.dashService.getEmployeeStatus('absconder').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
+  }
+  iscolorgreen: boolean = false;
+  iscoloryellow: boolean = false;
+  iscolorred: boolean = false;
+  iscolorbrown: boolean = false;
+  colorred() {
+    this.iscolorred = !this.iscolorred;
+  }
+  colorgreen() {
+    this.iscolorgreen = !this.iscolorgreen;
+  }
+  coloryellow() {
+    this.iscoloryellow = !this.iscoloryellow;
+  }
+  colorbrown() {
+    this.iscolorbrown = !this.iscolorbrown;
+  }
+  selectedOption: string;
+
+  // onSelectChange() {
+  //   // Define your color logic here based on the selectedOption value
+  //   switch (this.selectedOption) {
+  //     case 'option1':
+  //       document.querySelector('select').style.backgroundColor = 'red';
+  //       break;
+  //     case 'option2':
+  //       document.querySelector('select').style.backgroundColor = 'green';
+  //       break;
+  //     case 'option3':
+  //       document.querySelector('select').style.backgroundColor = 'blue';
+  //       break;
+  //     default:
+  //       document.querySelector('select').style.backgroundColor = 'white';
+  //       break;
+  //   }
+  // }
+  // colorgreen() {
+  //   this.iscolorgreen = !this.iscolorgreen;
+  // }
+  // coloryellow() {
+  //   this.iscoloryellow = !this.iscoloryellow;
+  // }
+  // colorbrown() {
+  //   this.iscolorbrown = !this.iscolorbrown;
+  // }
+  selectedUser: any;
+  backgroundColor: string;
+  color: string;
+  borderColor: string;
+  onSelectChange(event: any, user:any) {
+    // if(user===this.selectedUser){
+    switch (event.target.value) {
+      case 'active': {
+        this.backgroundColor = 'rgba(123, 211, 109, 0.3)';
+        this.color = '#3D9030';
+        this.borderColor = 'rgba(123, 211, 109, 0.3)';
+        break;
+      }
+      case 'terminated': {
+        this.backgroundColor = 'rgba(250, 151, 150, 0.2)';
+        this.color = '#CB1E0F';
+        this.borderColor = 'rgba(250, 151, 150, 0.2)';
+        break;
+      }
+      case 'resigned': {
+        this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
+        this.color = '#CE524A';
+        this.borderColor = 'rgba(255, 238, 82, 0.5)';
+        break;
+      }
+      case 'absconder': {
+        this.backgroundColor = 'rgba(248, 187, 111, 0.4)';
+        this.color = '#DB771D';
+        this.borderColor = 'rgba(248, 187, 111, 0.4)';
+        break;
+      }
+      default: {
+        this.backgroundColor = '';
+        this.color = '';
+        this.borderColor = '';
+        break;
+      }
+    }
+    this.dashService.updateEmpStatus(user._id ,event.target.value).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    }
+  selectUser(user) {
+    this.selectedUser = user;
+    this.backgroundColor = '';
+    this.color = '';
+    this.borderColor = '';
+  }
+  importfile: boolean = false;
+  csvadded: boolean = false;
+  openImport() {
+    this.importfile = true;
+    this.showModal = true;
+    this.showModalContent = false;
+    this.csvadded=false;
+  }
+  closeFilepicker(){
+    this.importfile=false;
+    this.showModal=false;
+    this.csvadded = false;
+  }
+ employeecsv(){
+  this.csvadded=true;
+  this.importfile=false;
+ }
+ closecsvadded(){
+  this.showModal=false;
+  this.csvadded=false;
+ }
 
 }
