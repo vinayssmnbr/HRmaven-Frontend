@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
+import { CookieService} from 'ngx-cookie-service'
 @Injectable({
   providedIn: 'root',
 })

@@ -62,7 +62,7 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" >Employee ID</th>
+          <th class="employee"><input type="checkbox" (change)="onCheckboxChange($event, 'All')" >Employee ID</th>
           <th class="name">Name</th>
           <th class="email">Designation</th>
           <th class="designation">Email</th>
@@ -72,16 +72,18 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable ">
+        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable " >
           <!--  -->
           <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data"
             *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
           </td>
+
           <td *ngIf="user.found!='true'">
-            <div class="employee1"><input type="checkbox" >{{user.uid}}</div>
+            <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
           </td>
+
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
             <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)"
               routerLink="/employee-profile">{{user.name}}
@@ -94,7 +96,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" (change)="selectedUser=user._id; onSelectChange($event,user)"
+              <select class="select" id="myselect" (change)="selectedUser=user._id; onSelectChange($event,user)" 
                 [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
                 [style.color]="selectedUser === user._id ? color : ''"
                 [style.border]="selectedUser === user._id ? borderColor : ''">Select

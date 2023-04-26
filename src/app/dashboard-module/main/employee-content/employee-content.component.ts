@@ -18,6 +18,7 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-employee-content',
@@ -25,12 +26,20 @@ import { error, log } from 'console';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
+  // user:any;
+  users: any[] = [];
+  selected: any[] = [];
+  selectAll: boolean = false;
+  parentSelector:boolean=false;
+  employee:any = [ ];
+  selectedEmployess:any[]=[];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
   name: any;
   email: any;
   fileName: string = '';
   fileName1: string = '';
+
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -46,7 +55,7 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any = [];
+  // employee: any = [];
   employeeuid: any = [];
   currentEmployeeUid: any = '';
   query: string = '';
@@ -608,7 +617,7 @@ export class EmployeeContentComponent implements OnInit {
   backgroundColor: string;
   color: string;
   borderColor: string;
-  onSelectChange(event: any, user:any) {
+  onSelectChange(event: any, user: any) {
     // if(user===this.selectedUser){
     switch (event.target.value) {
       case 'active': {
@@ -642,7 +651,7 @@ export class EmployeeContentComponent implements OnInit {
         break;
       }
     }
-    this.dashService.updateEmpStatus(user._id ,event.target.value).subscribe(
+    this.dashService.updateEmpStatus(user._id, event.target.value).subscribe(
       (response) => {
         console.log(response);
       },
@@ -650,7 +659,7 @@ export class EmployeeContentComponent implements OnInit {
         console.log(error);
       }
     );
-    }
+  }
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';
@@ -740,4 +749,65 @@ export class EmployeeContentComponent implements OnInit {
     const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
     fileInput.click();
   }
+
+
+  // selected: any[] = [];
+
+  // isSelected(item: any): boolean {
+  //   return this.selected.indexOf(item) > -1;
+  // }
+
+  // toggleSelection(item: any): void {
+  //   const idx = this.selected.indexOf(item);
+  //   if (idx > -1) {
+  //     this.selected.splice(idx, 1);
+  //   } else {
+  //     this.selected.push(item);
+  //   }
+  // }
+
+  // checkAll(checked: boolean): void {
+  //   if (checked) {
+  //     this.user.forEach((item:any) => {
+  //       const idx = this.selected.indexOf(item);
+  //       if (idx === -1) {
+  //         this.selected.push(item);
+  //       }
+  //     });
+  //   } else {
+  //     this.selected = [];
+  //   }
+  // }
+
+  onCheckboxChange($event, user:any){
+    const id=$event.target.value;
+    const isChecked=$event.target.checked;
+
+    if(isChecked){
+      this.selectedEmployess.push(user);
+    }else{
+       // delelting the user from array: this.selectedEmployess
+       const index = this.selectedEmployess.indexOf(user);
+        if (index > -1) {
+          this.selectedEmployess.splice(index, 1);
+      }
+    }
+
+}
+
+// onCheckboxChange($event, user:any){
+//   const id=$event.target.value;
+//   const isChecked=$event.target.checked;
+
+//   if(isChecked){
+//       this.selectedEmployess.push(user);
+//   }else{
+//       const index = this.selectedEmployess.indexOf(user);
+//       if (index > -1) {
+//           this.selectedEmployess.splice(index, 1);
+//       }
+//   }
+// }
+
+
 }

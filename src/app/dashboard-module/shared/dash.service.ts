@@ -44,7 +44,7 @@ export class DashService {
   attendance=environment.attendance;
   attendancecard=environment.attendancecard;
   attendancegraph=environment.attendancegraph;
-  DailyAttendance
+
 
   //ADD EMPLOYEE DATA
   // addEmployee(data) {
@@ -112,10 +112,9 @@ export class DashService {
 
   /////////// end here from Harpreet Singh////////////////////////////
 
-  getEmployee(): Observable<any[]> {
-    return this.http
-      .get<any[]>(this.getData)
-      .pipe(map((data) => data.filter((user) => user.status === 'accepted')));}
+  getEmployee(){
+    return this.http.get(this.getData)
+  }
 
 
   // getAttendance() {
