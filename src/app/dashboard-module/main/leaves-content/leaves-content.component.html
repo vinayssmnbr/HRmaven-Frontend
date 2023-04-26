@@ -159,38 +159,11 @@
             </thead>
             <tbody>
                 <tr *ngFor="let n of row">
-                  <td scope="row">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      [value]="n.id"
-                      [checked]="n.select"
-                      (change)="onChange($event)"
-                    />
-                  </td>
-                  <td>{{ n.name }}</td>
-                  <!-- <td>Ankush Sharma</td>
-                    <td>29/4/2023</td>
-                    <td>1/5/2023</td>
-                    <td>2/5/2023</td>
-                    <td>2 days</td>
-                    <td>Casual Leave</td> -->
-                </tr>
-              </tbody>
-            <!-- <tbody>
-                <tr *ngFor="let n of row>
-                    <td>
-                        <div class="check_box">
-                            <input type="checkbox" (click)="toggleSearchBox()">
-                            <p>20224</p>
-                        </div>
+                    <td scope="row">
+                        <input class="form-check-input" type="checkbox" [value]="n.id" [checked]="n.select"
+                            (change)="onChange($event)" />
                     </td>
-                    <td>Ankush Sharma</td>
-                    <td>29/4/2023</td>
-                    <td>1/5/2023</td>
-                    <td>2/5/2023</td>
-                    <td>2 days</td>
-                    <td>Casual Leave</td>
+                    <td>{{ n.name }}</td>
                     <td>
                         <p class="mt20">
                             <span class="tooltip"
@@ -200,15 +173,15 @@
                         </p>
                     </td>
                     <td>4/6</td>
-                    <td class="table_slide" *ngIf="!showSearchBox">
+                    <td class="table_slide">
                         <div class="check_box_icon">
                             <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
                             <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
                         </div>
                     </td>
                 </tr>
-                
-            </tbody> -->
+
+            </tbody>
         </table>
     </div>
     <div class="table_btn" *ngIf="showSearchBox">
@@ -258,21 +231,21 @@
             </div>
         </div>
     </form>
-<!-- -------------------------Leaves rejected Modal---------------------- -->
+    <!-- -------------------------Leaves rejected Modal---------------------- -->
 
 
-<form class="leave_approved_form" *ngIf="showModal3">
-    <div class="leave_approved_modal">
-        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-        <div class="logo_bg">
-            <img src="assets/images/tick.png" alt="image">
+    <form class="leave_approved_form" *ngIf="showModal3">
+        <div class="leave_approved_modal">
+            <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+            <div class="logo_bg">
+                <img src="assets/images/tick.png" alt="image">
+            </div>
+            <h4>Leaves rejected successfully!</h4>
+            <p>Click on the close button to go back to leave section.</p>
+            <div class="Done_form_btn">
+                <button class="Done_btn" (click)="closeModal()">Done</button>
+            </div>
         </div>
-        <h4>Leaves rejected successfully!</h4>
-        <p>Click on the close button to go back to leave section.</p>
-        <div class="Done_form_btn">
-            <button class="Done_btn" (click)="closeModal()">Done</button>
-        </div>
-    </div>
-</form>
+    </form>
 
 </div>
