@@ -72,7 +72,8 @@ export class LeavesContentComponent {
       return d;
     });
     console.log(this.row);
-  }
+    this.showSearchBox=true;
+    }
   ngOnInit() {
     //  --------------------Drop Down form-------------
     const optionMenu = document.querySelector<HTMLElement>('.search_form')!,

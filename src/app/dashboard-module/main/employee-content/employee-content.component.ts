@@ -92,9 +92,10 @@ export class EmployeeContentComponent implements OnInit {
       Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
     ]),
     timing: new FormControl('', Validators.required),
-    csv: new FormControl('',Validators.required)
   });
-
+ csvform= new FormGroup({
+   csv: new FormControl('', Validators.required)
+ })
   get registrationFormControl() {
     return this.form.controls;
   }
@@ -106,7 +107,7 @@ export class EmployeeContentComponent implements OnInit {
   // file: File | null = null;
   submit() {
     if (this.form.invalid) return;
-    console.log(this.form);
+    console.log(this.form.value);
     const data = this.form.value;
     this.showModalContent = false;
     this.fourthStep = true;
@@ -527,6 +528,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_resigned = false;
+    this.fetchdata()
   }
   is_active: boolean = false;
   isactive() {
@@ -535,6 +537,14 @@ export class EmployeeContentComponent implements OnInit {
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_resigned = false;
+    this.dashService.getEmployeeStatus('active').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+      // if (res.length > 0) {
+      //   this.emptybox = false;
+      // }
+    });
+
   }
   is_resigned: boolean = false;
   is_terminated: boolean = false;
@@ -545,6 +555,11 @@ export class EmployeeContentComponent implements OnInit {
     this.is_terminated = false;
     this.is_active = false;
     this.isallactive = false;
+    this.dashService.getEmployeeStatus('resigned').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
+
   }
   isterminated() {
     this.is_terminated = !this.is_terminated;
@@ -552,6 +567,10 @@ export class EmployeeContentComponent implements OnInit {
     this.is_resigned = false;
     this.is_active = false;
     this.isallactive = false;
+    this.dashService.getEmployeeStatus('terminated').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
   }
   isabsconder() {
     this.is_absconder = !this.is_absconder;
@@ -559,6 +578,10 @@ export class EmployeeContentComponent implements OnInit {
     this.is_terminated = false;
     this.is_active = false;
     this.isallactive = false;
+    this.dashService.getEmployeeStatus('absconder').subscribe((res: any) => {
+      console.log('data', res);
+      this.employee = res;
+    });
   }
   iscolorgreen: boolean = false;
   iscoloryellow: boolean = false;
@@ -678,4 +701,5 @@ export class EmployeeContentComponent implements OnInit {
   this.showModal=false;
   this.csvadded=false;
  }
+
 }
