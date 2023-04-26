@@ -55,15 +55,15 @@ export class DashboardContentComponent implements OnInit {
     name: new FormControl(''),
     totalemployee: new FormControl(''),
     phone: new FormControl(''),
-    headoffice: new FormControl(''),
-  });
-
+    headOffice: new FormControl(''),
+  })
 
   submitPersonalData(data: any){
-    console.log("personal data: ",this.personaldataForm.value)
-    // this.userService.saveUser(this.personaldataForm.value).subscribe((res: any)=>{
-    //   console.log("personaldataForm.value: ",this.personaldataForm.value);
-    // });
+    console.log("personal data: ", data);
+    this.userService.updatepersonals(this.personaldataForm.value,data).subscribe((res: any)=>{
+      console.log("personaldataForm.value: ", res);
+      console.log("personaldataForm.value: ", data);
+    });
   }
 
 
