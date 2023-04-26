@@ -1,3 +1,172 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-<h1>This</h1>
+<div class="employee_leaves">
+    <div class="available-balance-area">
+        <h6>Available Leave Balance (On Annual basis)</h6>
+
+        <div class="casual-leaves">
+            <div class="leaves">
+                <div class="leave-text">
+                    <h6>Casual Leave</h6>
+                    <h4>05</h4>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaves">
+                <div class="leave-text">
+                    <h6>Medical Leave</h6>
+                    <h4>05</h4>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaves">
+                <div class="leave-text">
+                    <h6>Urgent Leave</h6>
+                    <h4>04</h4>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="leaves">
+                <div class="leave-text">
+                    <h6>Earned Leave</h6>
+                    <h4>10</h4>
+                </div>
+                <div class="progress_container">
+                    <div class="circular-progress1">
+                        <div class="value-container1">0%</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+ </div>
+ <div class="leave-status-area">
+ <div class="Leave-status">
+    <h6>Leave Status (This Month)</h6>
+    <a href="">My Leave History</a>
+ </div>
+ <!----------------------------Table------------------------------->
+ <div class="attendence_table">
+    <div class="table_data">
+        <table class="table_text">
+            <thead>
+                <tr class="table_heading">
+                    <th>APPLIED ON</th>
+                    <th>FROM</th>
+                    <th>TO</th>
+                    <th>DURATION</th>
+                    <th>CATEGORY</th>
+                    <th>REASON</th>
+                    <th>STATUS</th>
+                    <th>COMMENT (BY HR)</th>
+                    <!-- <th>Action</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <!-- | attendanceFilter:employeename:datez -->
+                    <td>26/04/2023</td>
+                    <td>30/04/2023</td>
+                    <td>01/05/2023</td>
+                    <td>2 days</td>
+                    <td>Casual Leave</td>
+                    <td>I have to attend some family...</td>
+                    <td>Rejected</td>
+                    <td>Due to staffing limitation...</td>
+                    <!-- <td *ngIf="user.found!='true'" class="action1">
+                        <div class="icons">
+                            <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
+                        </div>
+                    </td> -->
+                </tr>
+
+                <tr>
+                    <!-- | attendanceFilter:employeename:datez -->
+                      <td>12/04/20233</td>
+                      <td>15/04/2023</td>
+                      <td>15/04/2023</td>
+                      <td>2 days</td>
+                      <td>Medical Leave</td>
+                      <td>My health is not good...</td>
+                      <td>Approved</td>
+                      <td>-----</td>
+                      <!-- <td *ngIf="user.found!='true'" class="action1">
+                          <div class="icons">
+                              <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
+                          </div>
+                      </td> -->
+                  </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+</div>
+<!--------------------Apply for leaves------------------->
+<div class="apply-for-leaves">
+    <h6>Apply For Leave </h6>
+    <form class="form">
+    <div class="form-group">
+        <label for="">From</label><br>
+        <input type="date" placeholder="29/04/2023">
+    </div>
+    <div class="form-group">
+        <label for="">To</label><br>
+        <input type="date" placeholder="29/04/2023">
+    </div>
+    <div class="form-group">
+        <label for="">Duration</label><br>
+        <input type="date" placeholder="1 Dy">
+    </div>
+    <div class="form-group">
+        <label for="">Category</label><br>
+        <div class="dropdown_container">
+            <div class="dropdwon_select" (click)="dropdownOpen()">
+              <p>{{Selectvariable}}</p>
+              <i class="fa-sharp fa-solid fa-caret-down"></i>
+            </div>
+            <div class="select_content" *ngIf="contentdropdown">
+              <ul>
+                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                  {{arr.name}}</li>
+              </ul>
+            </div>
+          </div>
+    </div>
+</form>
+
+<!--Apply for leaves-->
+<div class="reason-attachments">
+    <div class="reason">
+       <label for="">Reason</label>
+        <textarea placeholder="Type your reason here..."></textarea>
+    </div>
+    <div class="reason">
+        <label for="">Attachments(Optional)</label>
+         <div class="textarea">
+            <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
+            <p class="first">Select a file or drag and drop here</p>
+            <p class="second">Supported formats: pdf, jpg, png</p>
+            <div class="choose-btn">
+            <button class="choose-file">Choose File</button>
+            <input type="file">
+            </div>
+         </div>
+     </div>
+</div>
+</div>
+
+    </div>

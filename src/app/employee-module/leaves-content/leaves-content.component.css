@@ -1,0 +1,353 @@
+.employee_leaves {
+    width: (100%-223px);
+    margin-left: 223px;
+    background-color: #f9f9f9;
+    padding: 100px 30px;
+}
+.available-balance-area{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.available-balance-area h6{
+    font-weight: 500;
+    font-size: 18px;
+    color: #444444;
+    }
+    .leaves{
+        max-width: 260px;
+        border-radius: 10px;
+        height: 100px;
+        background-color: #FAFAFA;
+        padding: 27px 30px;
+        width: 100%;
+        display: flex;
+    }
+
+.casual-leaves{
+   display: flex;
+   gap: 25px;
+   width: 100%;
+}
+/*---------------------------Progress bar---------------------------*/
+.progress_container {
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 28px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress,
+.circular-progress1,
+.circular-progress2,
+.circular-progress3 {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress:before,
+.circular-progress1:before,
+.circular-progress2:before,
+.circular-progress3:before {
+    content: "";
+    position: absolute;
+    height: 74%;
+    width: 74%;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.value-container,
+.value-container1,
+.value-container2,
+.value-container3 {
+    position: relative;
+    font-size: 15px;
+    color: #444444;
+    font-weight: bold;
+}
+/*-----------------------Leave-status--------------------*/
+.leave-status-area{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 20px 20px;
+    margin-top: 25px;
+    border-radius: 20px;
+    
+}
+.Leave-status{
+    display: flex;
+    justify-content: space-between;
+}
+.Leave-status h6{
+    font-weight: 500;
+font-size: 18px;
+color: #444444;
+}
+.Leave-status a{
+    font-weight: 400;
+font-size: 14px;
+color: #2F2C9F;
+}
+/*--------------------------------------------Table---------------------------------------*/
+.table_data {
+    width: 100%;
+}
+
+.table_text {
+    width: 100%;
+}
+
+.table_heading {
+    position: sticky;
+    top: 0;
+}
+
+table {
+    border-spacing: 2px 5px;
+}
+
+table,
+th,
+td {
+    font-size: 12px;
+}
+
+.table_heading th {
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #f7f7f7f9 !important;
+}
+
+th,
+td {
+    padding: 15px;
+    white-space: nowrap;
+}
+
+/* .table_data::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+}
+
+.table_data::-webkit-scrollbar-track {
+    background-color: #ffffff;
+}
+
+.table_data::-webkit-scrollbar-thumb {
+    background-color: #B4B4B4;
+    border-radius: 2px;
+}
+
+.table_data::-webkit-scrollbar-thumb:hover {
+    background-color: #b4b4b4;
+} */
+
+.table_text tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+.table_text tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.table_text th {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #444444;
+    background-color: #EFEFF8;
+    margin-top: 10px;
+}
+/* 
+.table_data {
+    overflow-y: auto;
+    height: 78vh;
+} */
+
+.table_text thead th {
+    position: sticky;
+    top: -20px;
+}
+.attendence_table {
+    margin-top: 20px;
+}
+/*--------------Apply for leaves----------------------*/
+.apply-for-leaves{
+    padding: 20px;
+    width: 100%;
+    background-color: #FFFFFF;
+    margin-top: 25px;
+    border-radius: 20px;
+}
+.apply-for-leaves h6{
+    font-weight: 500;
+font-size: 18px;
+color: #444444;
+}
+.form{
+    margin-top: 25px;
+  gap: 22px;
+   display: flex;
+}
+.form-group input{
+padding: 10px 17px;
+width: 240px;
+height: 40px;
+border: 1px solid rgba(180, 180, 180, 0.8);
+border-radius: 6px;
+outline: none;
+}
+.form-group label{
+    font-weight: 400;
+font-size: 13px;
+color: #333333;
+}
+/*------------------------drpdown css----------------------*/
+.dropdwon_select {
+    background-color: #fff;
+    width: 240px;
+    height: 40px;
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid rgba(180, 180, 180, 0.8);
+border-radius: 6px;
+    color: #444444;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+  }
+  
+  .dropdwon_select:hover,
+  .dropdwon_select:focus{
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+  }
+  
+  .dropdwon_select p {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .dropdwon_select i {
+    font-size: 14px;
+    color: #444444;
+    padding: 3px 7px;
+  }
+  
+  .select_content {
+    background-color: #fff;
+    cursor: pointer;
+    width: 240px;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 17px;
+    position: absolute;
+    color: #444444;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+  }
+  
+  .select_content ul {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .select_content ul li {
+    list-style: none;
+    padding: 10px 10px;
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
+  .select_content ul li:hover {
+    background-color: #ECECEC;
+    border-radius: 8px;
+  }
+  
+  .select_active {
+    background-color: #ECECEC;
+    border-radius: 8px;
+  
+  }
+  /*------------------------------------reason Attachments-------------------------------------*/
+  .reason-attachments{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin-top: 25px;
+  }
+  .reason textarea{
+    min-width: 500px;
+    height: 167px;width: 100%;
+    resize: none;
+    border: 1px solid #CBCBCB;
+border-radius: 8px;
+padding: 10px 17px;
+outline: none;
+  }
+  .reason label{
+    font-weight: 400;
+font-size: 14px;
+color: #333333;
+
+  }
+
+  .inside-attachment{
+    padding: 19px;
+  }
+  .textarea{
+    min-width: 500px;
+    height: 167px;width: 100%;
+    resize: none;
+    border: 1px solid #CBCBCB;
+border-radius: 8px;
+text-align: center;
+padding: 10px 17px;
+outline: none;
+  }
+  .textarea .first{
+    font-weight: 400;
+font-size: 14px;
+color: #777777;
+  }
+  .textarea .second{
+    font-weight: 400;
+font-size: 12px;
+color: #777777;
+  }
+  .textarea input{
+   /* position: relative; */
+   opacity: 0;
+  }
+  .choose-file{
+    width: 82px;
+    height: 22px;
+    background-color: #EFEFF8;
+    border-radius: 4px;
+    position: absolute;
+    color: #2F2C9F;
+    font-weight: 400;
+font-size: 12px;
+outline: none;
+border: none;
+cursor: pointer;
+
+/* position: absolute; */
+  }
+  .choose-btn{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 16px;
+    
+  }
