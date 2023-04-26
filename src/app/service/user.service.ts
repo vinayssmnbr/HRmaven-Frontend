@@ -65,7 +65,7 @@ export class UserService {
   //     'auth-token': token,
   //     Accept: 'application/json',
   //   });
-  
+
   //   if (data !== null) {
   //     return this.http.post(this.Reseturl, data, { headers }).pipe(
   //       catchError((error) => {
@@ -78,7 +78,7 @@ export class UserService {
   //     return of(null);
   //   }
   // }
-  
+
 
 
 
@@ -92,7 +92,7 @@ export class UserService {
 
   //   return this.http.get(this.geteseturl,{ headers });
   // }
-  
+
 
 
 
