@@ -8,10 +8,7 @@
                     <h3>Total Leaves</h3>
                     <h1>{{total}}</h1>
                 </div>
-                <div class="progress_container">
-                    <div class="circular-progress">
-                        <div class="value-container">0%</div>
-                    </div>
+                <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:10">
                 </div>
             </div>
         </div>
@@ -21,10 +18,7 @@
                     <h3>Accepted Leaves</h3>
                     <h1>{{acceptcount}}</h1>
                 </div>
-                <div class="progress_container">
-                    <div class="circular-progress1">
-                        <div class="value-container1">0%</div>
-                    </div>
+                <div role="progressbar1" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:50">
                 </div>
             </div>
         </div>
@@ -34,10 +28,7 @@
                     <h3>Rejected Leaves</h3>
                     <h1>{{rejectcount}}</h1>
                 </div>
-                <div class="progress_container">
-                    <div class="circular-progress2">
-                        <div class="value-container2">0%</div>
-                    </div>
+                <div role="progressbar2" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:80">
                 </div>
             </div>
         </div>
@@ -47,10 +38,7 @@
                     <h3>Pending Leaves</h3>
                     <h1>{{pendingcount}}</h1>
                 </div>
-                <div class="progress_container">
-                    <div class="circular-progress3">
-                        <div class="value-container3">0%</div>
-                    </div>
+                <div role="progressbar3" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:100">
                 </div>
             </div>
         </div>
@@ -141,7 +129,8 @@
                 <tr class="table_heading">
                     <th>
                         <div class="check_box">
-                            <input type="checkbox" [(ngModel)]="parentSelector" [value]="-1" (change)="onChange($event)">
+                            <input type="checkbox" [(ngModel)]="parentSelector" [value]="-1"
+                                (change)="onChange($event)">
                             <span>EMPLOYEE ID</span>
                         </div>
                     </th>
@@ -175,8 +164,12 @@
                     <td>4/6</td>
                     <td class="table_slide">
                         <div class="check_box_icon">
-                            <i class="fa-solid fa-circle-check" (click)="openModal()"></i>
-                            <i class="fa-solid fa-circle-xmark" (click)="openModal1()"></i>
+                            <div class="thick_round">
+                                <label for="checkbox" (click)="openModal()"></label>
+                              </div>
+                               <div class="cross_round">
+                                <label for="checkbox" (click)="openModal1()"></label>
+                              </div>
                         </div>
                     </td>
                 </tr>

@@ -8,14 +8,26 @@
     </div>
 
     <div class="card2">
-      <span class="profile_pic"><img src="{{user.url}}">
-
-        <div class="profile-content">
+      <span class="profile_pic">
+        <!-- <img src="{{user.url}}"> -->
+        <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="user.url" src="{{user.url}}" alt="">
+        <div class="profile-content" *ngIf="!user.url">
           <!-- <div >
             <input type="file" (change)="onFileSelected($event)">
           </div> -->
           <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
+          <!-- <i class="fa-solid fa-up-from-line"></i> -->
+          <h2>Upload</h2>
+          <p>Profile Picture</p>
+        </div>
+        <div class="profile-content1" *ngIf="user.url">
+          <!-- <div >
+                    <input type="file" (change)="onFileSelected($event)">
+                  </div> -->
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
           <i class="fa-solid fa-camera"></i>
+
           <h2>Change</h2>
           <p>Profile Picture</p>
         </div>
@@ -197,7 +209,7 @@
       </div>
       <hr>
       <div class="cnt-btn">
-      <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More</button>
+      <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i class="fa-solid fa-angle-down"></i></button>
       </div>
       <div class="row1" *ngIf="viewMore">
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
@@ -245,7 +257,7 @@
         </div>
       </div>
       <div class="cnt-btn">
-        <button class="hide" (click)="hidedata()" *ngIf="viewMore">Hide</button>
+        <button class="hide" (click)="hidedata()" *ngIf="viewMore">View less<i class="fa-solid fa-angle-up"></i></button>
       </div>
     </div>
     <div class="card8" *ngIf="jobdetail">
