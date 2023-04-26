@@ -21,17 +21,17 @@ export const environment = {
   updateleave:'https://hrmaven.works/attendance/update',
   getemail : 'https://hrmaven.works/getemails/email',
   changepassword : 'https://hrmaven.works/islinkclicked',
-  attendance:'https://hrmaven.works/attendance/date/attendance',
-  attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
-  attendancegraph:'https://hrmaven.works/attendance/date/report',
+  // attendance:'https://hrmaven.works/attendance/date/attendance',
+  // attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
+  // attendancegraph:'https://hrmaven.works/attendance/date/report',
   getpwd : 'https://hrmaven.works/userprofilepwd',
 
 
 
   // //LOCAL URL
-  // attendancegraph:'http://localhost:3000/attendance/date/report',
-  // attendancecard:'http://localhost:3000/attendance/date/attendancecard',
-  // attendance:'http://localhost:3000/attendance/date/attendance',
+  attendancegraph:'http://localhost:3000/attendance/date/report',
+  attendancecard:'http://localhost:3000/attendance/date/attendancecard',
+  attendance:'http://localhost:3000/attendance/date/attendance',
   // updateleave: 'https://hrmaven.works/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
