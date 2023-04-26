@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import jwt_decode from "jwt-decode";
 import {
   FormBuilder,
   FormControl,
@@ -188,6 +188,12 @@ export class LoginComponent {
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
+        const token = res.token;
+
+        // Decode the token to retrieve the user ID
+        const decodedToken: any = jwt_decode(token);
+        const userId = decodedToken.userId;
+        console.log("user_id: ",userId);
         var today = new Date();
         var expire = new Date();
 
@@ -203,6 +209,7 @@ export class LoginComponent {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
+        localStorage.setItem('userId', userId);
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');

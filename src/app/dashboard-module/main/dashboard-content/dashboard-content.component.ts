@@ -118,19 +118,11 @@ export class DashboardContentComponent implements OnInit {
 
 
   ]
-  loginobjectid: any =''
 
   ngOnInit()
    {
 
-    this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
-      console.log('response account:' +res.useridd);
-     
-      this.loginobjectid = localStorage.setItem('objectid', res.useridd)
-
-      console.log('response account:' +this.loginobjectid);
-    });
-
+  
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
