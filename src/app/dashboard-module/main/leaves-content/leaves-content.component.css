@@ -3,7 +3,7 @@
     margin-left: 223px;
     background-color: #f9f9f9;
     padding: 70px 30px;
-    
+
 }
 
 #ico {
@@ -28,7 +28,7 @@
     height: 100px;
     display: flex;
     justify-content: space-between;
-    padding-right:  40px;
+    padding-right: 40px;
 
 }
 
@@ -578,10 +578,14 @@ input[type="radio"] {
 }
 
 [data-tooltip-pos="right"]:before {
+    transform: none;
+    left: -4px !important;
+    margin-left: 0 !important;
     border-top: 6px solid transparent;
-    border-right: 6px solid #b4b4b4;
+    border-left: 6px solid #2F2C9F;
     border-bottom: 6px solid transparent;
-    margin-left: 6px;
+    border-right: none;
+
 }
 
 [data-tooltip-pos="right"]:before,
@@ -886,9 +890,9 @@ div[role="progressbar3"]::before {
 
 .thick_round {
     position: relative;
-  }
-  
-  .thick_round label {
+}
+
+.thick_round label {
     background-color: #fff;
     border: 1px solid green;
     border-radius: 50%;
@@ -898,8 +902,9 @@ div[role="progressbar3"]::before {
     position: absolute;
     top: 0;
     width: 20px;
-  }
-  .thick_round label:before {
+}
+
+.thick_round label:before {
     border: 2px solid green;
     border-top: none;
     border-right: none;
@@ -911,24 +916,27 @@ div[role="progressbar3"]::before {
     top: 6px;
     transform: rotate(-45deg);
     width: 10px;
-  }
-  .thick_round label:hover:before {
-    border-color:#fff
-  }
-  .thick_round label:hover {
+}
+
+.thick_round label:hover:before {
+    border-color: #fff
+}
+
+.thick_round label:hover {
     background-color: #66bb6a;
     border-color: #66bb6a;
-  }
-  .thick_round  label:hover:after {
-     border-color:#fff
-  }
-  
-  .cross_round {
+}
+
+.thick_round label:hover:after {
+    border-color: #fff
+}
+
+.cross_round {
     position: relative;
-    margin-left:25px;
-  }
-  
-  .cross_round label {
+    margin-left: 25px;
+}
+
+.cross_round label {
     background-color: #fff;
     border: 1px solid red;
     border-radius: 50%;
@@ -938,24 +946,27 @@ div[role="progressbar3"]::before {
     position: absolute;
     top: 0;
     width: 20px;
-  }
-  .cross_round label:before {
-     content: '\2716';
+}
+
+.cross_round label:before {
+    content: '\2716';
     opacity: 1;
     position: absolute;
-    left:3px;
-    color:red;
-  }
-  .cross_round label:hover:before {
-    border-color:#fff;
-    color:#fff;
-  }
-  .cross_round label:hover {
+    left: 3px;
+    color: red;
+}
+
+.cross_round label:hover:before {
+    border-color: #fff;
+    color: #fff;
+}
+
+.cross_round label:hover {
     background-color: red;
     border-color: red;
-  }
-  .cross_round  label:hover:after {
-     border-color:#fff;
-       color:#fff;
-  }
-  
+}
+
+.cross_round label:hover:after {
+    border-color: #fff;
+    color: #fff;
+}
