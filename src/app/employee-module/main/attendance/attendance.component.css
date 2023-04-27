@@ -138,7 +138,9 @@ div[role="progressbar2"]::before {
 }
 
 .attendence_history {
-    padding-top: 25px;
+    margin-top: 25px;
+    background-color: #FFFFFF;
+     border-radius: 8px;
 }
 
 .attendence_title {
@@ -225,12 +227,19 @@ div[role="progressbar2"]::before {
 }
 
 .attendence_history_card {
-    background-color: #FFFFFF;
     border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-
+.attendence_history_card .col-4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
 .attendence_history_card .col-4 .card {
-    width: 352px;
+    width: 380px;
     height: 130px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -261,13 +270,48 @@ div[role="progressbar2"]::before {
     height: 16px;
 }
 
+.present_btn {
+    width: 82px;
+    height: 22px;
+    background-color: rgba(123, 211, 109, 0.3);
+    border-radius: 16px;
+    padding: 3px 10px 10px 10px;
+    border: none;
+    outline: none;
+    color:#3D8037;
+}
+ 
+.Absent_btn{
+    width: 82px;
+    height: 22px;
+    background-color: rgba(207, 52, 52, 0.2);
+    border-radius: 16px;
+    padding: 3px 10px 10px 10px;
+    border: none;
+    outline: none;
+    color: #CF3434;
+}
+.Leave_btn{
+    width: 82px;
+    height: 22px;
+    background-color: rgba(234, 149, 8, 0.3);
+    border-radius: 16px;
+    padding: 3px 10px 10px 10px;
+    border: none;
+    outline: none;
+    color: 
+    #EE9B11;
+}
 .punching_timing {
     display: flex;
     justify-content: space-between;
+    padding-top: 27px;
 }
 
 .punching_in p,
-.punching_in h6 {
+.punching_in h6,
+.punching_out p,
+.punching_out h6 {
     font-weight: 400;
     font-size: 14px;
     color: #666666;
