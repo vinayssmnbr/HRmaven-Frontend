@@ -1,0 +1,41 @@
+.employee-attendance {
+    width: calc(100% - 223px);
+    margin-left: 223px;
+    background-color: #f9f9f9;
+    padding-top: 76px;
+    height: 100%;
+    padding: 76px 30px;
+}
+
+.row {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card_content {
+    display: flex;
+    /* background-color: #FCFCFC; */
+    background-color: red;
+    gap: 20px;
+    width: 227px;
+    height: 86px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.attendence_card {
+    padding: 20px 20px;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+.attendence_card h3{
+    font-size: ;
+}

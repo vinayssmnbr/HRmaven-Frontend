@@ -9,6 +9,7 @@ export const environment = {
   addpersonalurl: 'https://hrmaven.works/putpersonal',
   updatepersonaldata :'https://hrmaven.works/updatepersonal',
   getpersonaldata :'https://hrmaven.works/getpersonalsdata',
+  resetpwdaccount : 'https://hrmaven.works/resetpasswordaccount',
 
   url:'https://hrmaven.works/user-profile',
   auth:'https://hrmaven.works/auth',
@@ -44,6 +45,7 @@ export const environment = {
   // updatepersonaldata :'http://localhost:3000/updatepersonal',
   // addpersonalurl: 'http://localhost:3000/putpersonal',
   // getpersonaldata :'http://localhost:3000/getpersonalsdata',
+  // resetpwdaccount : 'http://localhost:3000/resetpasswordaccount',
   // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
