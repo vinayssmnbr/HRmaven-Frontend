@@ -29,12 +29,15 @@ import { json2csv } from 'json2csv';
 })
 export class EmployeeContentComponent implements OnInit {
   // user:any;
+  isChecked: boolean =true;
+  // isChecked1:boolean=true;
+  // parentSelector: boolean = false;
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
-  parentSelector:boolean=false;
-  employee:any = [];
-  selectedEmployess:any[]=[];
+  parentSelector: boolean = false;
+  employee: any = [];
+  selectedEmployess: any[] = [];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
   name: any;
@@ -104,9 +107,9 @@ export class EmployeeContentComponent implements OnInit {
     ]),
     timing: new FormControl('', Validators.required),
   });
- csvform= new FormGroup({
-   csv: new FormControl('', Validators.required)
- })
+  csvform = new FormGroup({
+    csv: new FormControl('', Validators.required)
+  })
   get registrationFormControl() {
     return this.form.controls;
   }
@@ -771,45 +774,81 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-   importFile() {
-   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+  importFile() {
+    const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
     fileInput.click();
   }
 
 
-  onCheckboxChange($event, user:any){
-    const id=$event.target.value;
-    const isChecked=$event.target.checked;
+  
 
-    if(isChecked){
-      if(user=='All'){
+  
+  onCheckboxChange($event, user: any) {
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+  
+    if (isChecked) {
+      if (user == 'All') {
         this.selectedEmployess = [...this.employee];
-      }else{
-
+        // Check all checkboxes
+        this.employee.forEach((el:any, i: number) => {
+          el['checked'] = true;
+        });
+      } else {
+        
+        this.employee.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            this.employee['checked'] = true;
+            return;
+          }
+        })
         this.selectedEmployess.push(user);
       }
       console.log(this.selectedEmployess, 'added employees');
-    }else{
-       // delelting the user from array: this.selectedEmployess
-       if(user=='All'){
+  
+    } else {
+      if (user == 'All') {
         this.selectedEmployess = [];
-       }else{
-        let index:number = -1;
-        this.selectedEmployess.forEach((el:any, i:number)=>{
-         if(el._id==user._id){
-           index = i;
-           return;
-         }
+        // Uncheck all checkboxes
+        this.employee.forEach((el:any , i:number) => {
+          el['checked'] = false;
+        });
+      } else {
+        let index: number = -1;
+        this.selectedEmployess.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            index = i;
+            return;
+          }
         })
-        if(index>=0){
-         this.selectedEmployess.splice(index, 1);
+        this.employee.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            this.employee['checked'] = false;
+            return;
+          }
+        })
+        if (index >= 0) {
+          this.selectedEmployess.splice(index, 1);
         }
       }
       console.log(this.selectedEmployess, 'removed user')
-       
+  
     }
+  }
 
-}
+
+
+  toggleAllCheckboxes() {
+    let checkboxes = document.getElementsByTagName('input');
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].type === 'checkbox') {
+        checkboxes[i].checked = this.isChecked;
+      }
+    }
+  }
+
+
+
 
 
 }
