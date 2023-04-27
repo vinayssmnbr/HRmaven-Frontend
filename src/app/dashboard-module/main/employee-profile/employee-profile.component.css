@@ -53,18 +53,20 @@
   border-radius: 8px;
   margin-bottom: 30px;
 }
-.card2 .profile_pic img{
-  border-radius: 50%;
+.card2 .profile_pic {
   position: relative;
-  width: 100px;
-  height: 100px;
   cursor: pointer;
 }
-
+.card2 .profile_pic img{
+  border-radius: 50%;
+  width: 105px;
+  height: 105px;
+  cursor: pointer;
+}
 .profile-content{
   display: none;
  position: absolute;
- top: 31%;
+ top: 23%;
  left: 21.3%;
  font-size: 10px;
  color: #666666;
@@ -234,7 +236,6 @@
 .content1{
   display: flex;
   gap: 75px;
-  padding-left: 40px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 20px;
   cursor: pointer;
@@ -248,15 +249,21 @@
 .content1 li{
   cursor: pointer;
   padding-bottom: 10px;
+  padding-left: 20px;
+
 }
 .content1 li.active{
-  border-bottom: 2px solid #2F2C9F;
-
-
+border-bottom: 2px solid #2F2C9F;
+width: 11%;
+}
+.content1 #job.active{
+  width: 9%;
+  padding-left: 25px;
 }
 .content1 li.active a{
   font-weight: 500;
-    color: #2F2C9F;
+  color: #2F2C9F;
+
 }
 .card3{
   padding: 25px 50px;
