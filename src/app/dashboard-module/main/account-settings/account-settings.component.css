@@ -672,7 +672,7 @@
 
 /*-------------------------Text Area-----------------------*/
 .paragraph-text textarea {
-    min-width: 932px;
+    width: 100%;
     min-height: 120px;
     resize: none;
     outline: none;
@@ -699,3 +699,8 @@ textarea::placeholder {
     font-size: 15px;
     color: #777777;
 }
+
+/* input:disabled {
+    background-color: #f4f4f4;
+    color: #aaa;
+} */

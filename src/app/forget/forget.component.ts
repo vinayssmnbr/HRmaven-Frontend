@@ -85,10 +85,8 @@ export class ForgetComponent {
   {
     console.log(data.value);
     this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
-      // this.service.newpwd(this.forgetform.value,this.token).subscribe((res:any)=>{
       if(res=="changeit"){
         console.log(res);
-        // this.hasChangedPassword = true;
       }
 
     });

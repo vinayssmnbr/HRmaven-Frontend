@@ -52,52 +52,77 @@
   padding: 20px 30px;
   border-radius: 8px;
   margin-bottom: 30px;
+  align-items: center;
+}
+.card2 .profile_pic {
+  position: relative;
+  cursor: pointer;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
 }
 .card2 .profile_pic img{
   border-radius: 50%;
-  position: relative;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 }
-
 .profile-content{
   display: none;
- position: absolute;
- top: 31%;
- left: 21.3%;
- font-size: 10px;
- color: #666666;
- font-weight: 600;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  color: #666666;
+  font-weight: 600;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
+/* .profile-content img{
+  color: #666666;
+  height: 10px;
+  width: 10px;
+} */
 .profile-content1 {
   display: none;
   position: absolute;
-  top: 31%;
-  left: 21.3%;
-  font-size: 10px;
-  color: #ffffff;
-  font-weight: 600;
-}
+    top: 0;
+    left: 0;
+    font-size: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+        border-radius: 50%;
+  }
+
 
 .profile-content input[type='file']
 {
   opacity: 0;
-  z-index: -1;
-  cursor: pointer;
-    /* width: 0;
-    height: 0; */
+    /* z-index: -1; */
+    cursor: pointer;
     overflow: hidden;
-    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
 }
 .profile-content1 input[type='file'] {
-  opacity: 0;
-  z-index: -1;
+opacity: 0;
+  /* z-index: -1; */
   cursor: pointer;
-    /* width: 0;
-    height: 0; */
-    overflow: hidden;
-    /* position: absolute; */
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1
 }
 
 .fa-camera{
@@ -109,24 +134,24 @@
 .profile-content h2{
   padding-left: 5px;
 }
-.card2 .profile_pic:hover{
-  opacity: 0.6;
+.card2 .profile_pic img:hover{
+   opacity: 0.6;
   cursor: pointer;
 }
 .card2 .profile_pic:hover .profile-content{
-  display:block;
+  display:flex;
 }
 .profile-content1 h2 {
   padding-left: 5px;
 }
 
-.card2 .profile_pic:hover {
-  opacity: 0.6;
-  cursor: pointer;
+.fa-arrow-up{
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .card2 .profile_pic:hover .profile-content1 {
-  display: block;
+  display: flex;
 }
 .cnt-btn{
  display: flex;
@@ -209,7 +234,6 @@
 .card2 .content{
   display: flex;
   flex-direction: column;
-  padding-top: 15px;
 }
 .card2 .content h3{
     font-weight: 400;
@@ -234,7 +258,6 @@
 .content1{
   display: flex;
   gap: 75px;
-  padding-left: 40px;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 20px;
   cursor: pointer;
@@ -248,15 +271,21 @@
 .content1 li{
   cursor: pointer;
   padding-bottom: 10px;
+  padding-left: 20px;
+
 }
 .content1 li.active{
-  border-bottom: 2px solid #2F2C9F;
-
-
+border-bottom: 2px solid #2F2C9F;
+width: 11%;
+}
+.content1 #job.active{
+  width: 9%;
+  padding-left: 25px;
 }
 .content1 li.active a{
   font-weight: 500;
-    color: #2F2C9F;
+  color: #2F2C9F;
+
 }
 .card3{
   padding: 25px 50px;

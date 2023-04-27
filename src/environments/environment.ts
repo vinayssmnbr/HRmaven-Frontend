@@ -6,6 +6,11 @@ export const environment = {
   loginurl : 'https://hrmaven.works/login',
   Forgoturl :'https://hrmaven.works/forgotpassword',
   Reseturl : 'https://hrmaven.works/resetpassword',
+  addpersonalurl: 'https://hrmaven.works/putpersonal',
+  updatepersonaldata :'https://hrmaven.works/updatepersonal',
+  getpersonaldata :'https://hrmaven.works/getpersonalsdata',
+  resetpwdaccount : 'https://hrmaven.works/resetpasswordaccount',
+
   url:'https://hrmaven.works/user-profile',
   auth:'https://hrmaven.works/auth',
   createData: 'https://hrmaven.works/api/create',
@@ -37,7 +42,10 @@ export const environment = {
   // loginurl: 'http://localhost:3000/login',
   // Forgoturl: 'http://localhost:3000/forgotpassword',
   // Reseturl: 'http://localhost:3000/resetpassword',
-  // getreseturl: 'http://localhost:3000/resetpassword',
+  // updatepersonaldata :'http://localhost:3000/updatepersonal',
+  // addpersonalurl: 'http://localhost:3000/putpersonal',
+  // getpersonaldata :'http://localhost:3000/getpersonalsdata',
+  // resetpwdaccount : 'http://localhost:3000/resetpasswordaccount',
   // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
@@ -50,6 +58,7 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
+<<<<<<< HEAD
   // getemail : 'http://localhost:3000/getemails/email',
   // getpwd : 'http://localhost:3000/userprofilepwd',
   // changepassword : 'http://localhost:3000/islinkclicked',
@@ -59,5 +68,8 @@ export const environment = {
   leavegraph:'http://localhost:3000/api/leave/graph/leave',
   leavecontent:'http://localhost:3000/api/leave/data/leaves',
   patchleave:'http://localhost:3000/api/leave/update/leave'
+=======
+//  getemail : 'http://localhost:3000/getemails/email',
+>>>>>>> 75d3e6e105a5996ebe82218163ba2450ab6adbaf
 
 };

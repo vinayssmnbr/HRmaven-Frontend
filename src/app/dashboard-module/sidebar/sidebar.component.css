@@ -82,7 +82,69 @@ ul.navigation li:hover{
   border-radius: 8px;
 
 }
-
+.home_img1{
+  display: none;
+}
+.employee_img1{
+  display: none;
+}
+.attendance_img1{
+  display: none;
+}
+.payroll_img1{
+  display: none;
+}
+.leaves_img1{
+  display: none;
+}
+.recruitment_img1{
+  display: none;
+}
+.report_img1{
+  display: none;
+}
+ul.navigation li:hover .home_img{
+  display: none;
+}
+ul.navigation li:hover .employee_img{
+  display: none;
+}
+ul.navigation li:hover .attendance_img{
+  display: none;
+}
+ul.navigation li:hover .payroll_img{
+  display: none;
+}
+ul.navigation li:hover .leaves_img{
+  display: none;
+}
+ul.navigation li:hover .recruitment_img{
+  display: none;
+}
+ul.navigation li:hover .report_img {
+  display: none;
+}
+ul.navigation li:hover .home_img1{
+  display: block;
+}
+ul.navigation li:hover .employee_img1{
+  display: block;
+}
+ul.navigation li:hover .attendance_img1{
+  display: block;
+}
+ul.navigation li:hover .payroll_img1{
+  display: block;
+}
+ul.navigation li:hover .leaves_img1{
+  display: block;
+}
+ul.navigation li:hover .recruitment_img1{
+  display: block;
+}
+ul.navigation li:hover .report_img1 {
+  display: block;
+}
 .side2 {
   display: flex;
   flex-direction: column;
