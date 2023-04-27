@@ -107,10 +107,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
 
-    readonlydata = true;
-    // toggleEditable() {
-    //   this.readonlydata = !this.readonlydata;
-    // }
+  
 
     objectid = localStorage.getItem('email');
 
