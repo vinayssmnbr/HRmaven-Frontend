@@ -2,11 +2,17 @@
     width: calc(100% - 223px);
     margin-left: 223px;
     background-color: #f9f9f9;
-    /* background-color: red; */
     padding-top: 76px;
     height: 100%;
-    /* padding: 30px 30px; */
+    padding: 76px 30px;
 }
+
+.row {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+
 
 .card {
     display: flex;
@@ -16,14 +22,20 @@
 
 .card_content {
     display: flex;
-    background-color: #FCFCFC;
+    /* background-color: #FCFCFC; */
+    background-color: red;
     gap: 20px;
+    width: 227px;
+    height: 86px;
+    border-radius: 8px;
+    margin-top: 30px;
 }
 
-/* .col-6{
-    padding: 20px 20px;
-} */
 .attendence_card {
-    background-color: red;
     padding: 20px 20px;
+    background: #FFFFFF;
+    border-radius: 8px;
+}
+.attendence_card h3{
+    font-size: ;
 }
