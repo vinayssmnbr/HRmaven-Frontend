@@ -5,9 +5,9 @@ import { EmployeeContentComponent } from './main/employee-content/employee-conte
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 import { DashboardContentComponent } from './main/dashboard-content/dashboard-content.component';
 import { AttendanceContentComponent } from './main/attendance-content/attendance-content.component';
-import { PayrollContentComponent } from './main/payroll-content/payroll-content.component';
+// import { PayrollContentComponent } from './main/payroll-content/payroll-content.component';
 import { RecruitmentContentComponent } from './main/recruitment-content/recruitment-content.component';
-import { ReportContentComponent } from './main/report-content/report-content.component';
+// import { ReportContentComponent } from './main/report-content/report-content.component';
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
@@ -40,18 +40,18 @@ const routes: Routes = [
         path: 'attendance',
         component: AttendanceContentComponent,
       },
-      {
-        path: 'payroll',
-        component: PayrollContentComponent,
-      },
+      // {
+      //   path: 'payroll',
+      //   component: PayrollContentComponent,
+      // },
       {
         path: 'recruitment',
         component: RecruitmentContentComponent,
       },
-      {
-        path: 'report',
-        component: ReportContentComponent,
-      },
+      // {
+      //   path: 'report',
+      //   component: ReportContentComponent,
+      // },
       {
         path: 'job-details',
         component: JobDetailsComponent
