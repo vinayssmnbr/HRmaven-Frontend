@@ -8,9 +8,9 @@ export const environment = {
   Reseturl: 'https://hrmaven.works/resetpassword',
   Resetpwdurl: 'https://hrmaven.works/resetpasswordaccount',
 
-  addpersonalurl: 'http://localhost:3000/putpersonal',
-  updatepersonaldata :'http://localhost:3000/updatepersonal',
-  getpersonaldata :'http://localhost:3000/getpersonalsdata',
+  addpersonalurl: 'https://hrmaven.works/putpersonal',
+  updatepersonaldata :'https://hrmaven.works/updatepersonal',
+  getpersonaldata :'https://hrmaven.works/getpersonalsdata',
   url: 'https://hrmaven.works/user-profile',
   auth: 'https://hrmaven.works/auth',
   createData: 'https://hrmaven.works/api/create',
