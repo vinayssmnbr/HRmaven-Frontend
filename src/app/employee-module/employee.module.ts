@@ -12,6 +12,7 @@ import { PayrollComponent } from './main/payroll/payroll.component';
 import { RecruitmentComponent } from './main/recruitment/recruitment.component';
 import { ReportComponent } from './main/report/report.component';
 import { LeavesContentComponent } from './leaves-content/leaves-content.component';
+import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -23,6 +24,7 @@ import { LeavesContentComponent } from './leaves-content/leaves-content.componen
     ReportComponent,
     LeavesContentComponent,
     DashboardContentComponent,
+    EmployeeProfileComponent,
   ],
   imports: [
     CommonModule,
