@@ -94,7 +94,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
+              <select class="select" id="myselect" [class.active]="user.status==='active'" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
                 [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
                 [style.color]="selectedUser === user._id ? color : ''"
                 [style.border]="selectedUser === user._id ? borderColor : ''">Select

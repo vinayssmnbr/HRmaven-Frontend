@@ -664,6 +664,8 @@ export class EmployeeContentComponent implements OnInit {
         this.borderColor = '';
         break;
       }
+
+        console.log(event.target.value)
     }
     this.dashService.updateEmpStatus(user._id ,event.target.value).subscribe(
       (response) => {
