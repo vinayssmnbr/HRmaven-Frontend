@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-account-settings',
@@ -67,6 +67,7 @@ export class AccountSettingsComponent implements OnInit {
         this.totalemployee = res.personaldata.noOfEmployee;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
+        this.description = res.personaldata.description
 
       });
     }
@@ -86,6 +87,25 @@ export class AccountSettingsComponent implements OnInit {
 
       });
     }
+
+    forgetpwd = new FormGroup({
+      password: new FormControl("", [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
+      confirm: new FormControl("", [Validators.required])
+    }
+    );  
+
+    newpassword(data:any)
+    {
+      console.log(data.value);
+      this.userService.newpwdaccount(this.objectid,data.value).subscribe((res:any)=>{
+        if(res=="changeit"){
+          console.log(res);
+        }
+  
+      });
+  
+  }
+
 
     readonlydata = true;
     // toggleEditable() {

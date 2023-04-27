@@ -85,10 +85,10 @@
                     </div>
                 </div>
                 <div class="paragraph-text">
-                    <!-- <input type="text" [readonly]="true"
-                      placeholder=""  > -->
-                    <textarea
-                        placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics, and generate comprehensive reports to gain insights into their workforce."></textarea>
+                    <!-- <textarea
+                        placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics,
+                         and generate comprehensive reports to gain insights into their workforce."></textarea> -->
+                    <textarea placeholder="{{description}}"></textarea>     
                 </div>
 
                 <div class="clear-update-button">
@@ -148,7 +148,7 @@
 
         <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
             <div class="company-name-headoffice-desc-area">
-                <form action="submit" method="post">
+                <form action="submit"  [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd)">
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password" placeholder="Type your old password">
@@ -157,23 +157,25 @@
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
-                            <input type="password" placeholder="Type a new password">
+                            <input type="password" placeholder="Type a new password" formControlName="password" >
 
                         </div>
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">Confirm Password</label>
-                            <input type="password" placeholder="Re-enter your password">
+                            <input type="password" placeholder="Re-enter your password"  formControlName="confirm">
 
                         </div>
                     </div>
-                </form>
+                <!-- </form> -->
                 <div class="clear-update-button">
                     <button class="clear-btn">Clear</button>
-                    <button class="update-btn" (click)="openModal3()">Update Password</button>
+                    <button class="update-btn" (click)="openModal3()" type="submit">Update Password</button>
 
                 </div>
+            </form>
+    
             </div>
         </div>
     </div>
@@ -209,11 +211,11 @@
                     <div class="form__group">
                         <label for="employeeno">No. of employees</label>
                         <input type="number" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder='0-50'  id="employeeno" disabled />
+                        color: #aaa;" placeholder="{{totalemployee}}"  id="employeeno" disabled />
                     </div>
                     <div class="form__group">
                         <label for="email">Head Office</label>
-                        <input type="text" class="form_input" placeholder='Eg. Leeds, America'
+                        <input type="text" class="form_input" placeholder='{{headOffice}}'
                         formControlName="headOffice" id="email" required />
                     </div>
                 </div>
@@ -226,7 +228,7 @@
                             <!-- <input type="text" [readonly]="true"
                               placeholder=""  > -->
                             <textarea class="textarea-2"
-                                formControlName="description" placeholder="Write a few words about your company..."></textarea>
+                                formControlName="description" placeholder="{{description}}"></textarea>
                         </div>
                     </div>
 
