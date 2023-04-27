@@ -266,7 +266,7 @@ td {
 /*------------------------drpdown css----------------------*/
 .dropdwon_select {
     background-color: #fff;
-    width: 240px;
+    width: 100%;
     height: 40px;
     cursor: pointer;
     padding: 8px;
