@@ -57,4 +57,10 @@ export class LeavesContentComponent {
   closemodal(){
     this.leave_approved_form = false;
   }
+  designationdropdownOption: boolean = false;
+
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
 }
