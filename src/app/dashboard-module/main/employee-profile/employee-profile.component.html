@@ -41,7 +41,7 @@
     </div>
     <ul class="content1">
       <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
-      <li [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
+      <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
       <span></span>
     </ul>
     <div class="card3" *ngIf="personaldetail">
@@ -277,7 +277,7 @@
           <p class="location3" *ngIf="user.joblocation1">{{user.joblocation1}}</p>
         </div>
         <div class="column2">
-          <span class="estatus">Employment Status</span>
+          <span class="estatus">Job Type</span>
           <p *ngIf="!user.jobempstatus">----------</p>
           <p class="estatus" *ngIf="user.jobempstatus">{{user.jobempstatus}}</p>
           <span class="timings">Timings</span>
@@ -660,7 +660,7 @@
               </div>
             </div>
             <div class="input">
-              <label>Employment Status</label>
+              <label>Job Type</label>
               <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="jobempstatus"> -->
               <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
               <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">

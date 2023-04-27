@@ -32,30 +32,31 @@
     font-weight: 400;
     font-size: 14px;
     color: #666666;
+    padding-bottom: 5px;
 }
 .All{
   width: 100%;
-  max-width: 60px;
+  max-width: 38px;
   border: 3px solid transparent;
 }
 .Active{
   width: 100%;
-  max-width: 90px;
+  max-width: 60px;
   border: 3px solid transparent;
 }
 .Resigned{
   width: 100%;
-  max-width: 110px;
+  max-width: 77px;
   border: 3px solid transparent;
 }
 .Terminated{
   width: 100%;
-  max-width: 130px;
+  max-width: 92px;
   border: 3px solid transparent;
 }
 .Absconder{
   width: 100%;
-  max-width: 120px;
+  max-width: 86px;
   border: 3px solid transparent;
 }
 .All:hover {
@@ -86,35 +87,47 @@
 }
 .All.active p {
   color: #2F2C9F;
-  font-weight: 500;
+    font-weight: 500;
+    padding-bottom: 5px;
+    width: 38px;
+    padding-left: 8px;
 }
 .Active.active {
   border-bottom: 3px solid #2F2C9F;
 }
 .Active.active p{
   color: #2F2C9F;
-  font-weight: 500;
-}
+    font-weight: 500;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    width: 60px;
+  }
 .Resigned.active  {
   border-bottom: 3px solid #2F2C9F;
 }
 .Resigned.active p{
   color: #2F2C9F;
     font-weight: 500;
+    padding-left: 8px;
+    width: 77px;
 }
 .Terminated.active{
   border-bottom: 3px solid #2F2C9F;
 }
 .Terminated.active p{
-  color: #2F2C9F;
+color: #2F2C9F;
   font-weight: 500;
+  padding-left: 8px;
+  width: 92px;
 }
 .Absconder.active {
   border-bottom: 3px solid #2F2C9F;
 }
 .Absconder.active p{
-  color: #2F2C9F;
+color: #2F2C9F;
   font-weight: 500;
+  padding-left: 8px;
+  width: 88px;
 }
 .selection2{
   display: flex;
@@ -338,15 +351,15 @@ tbody{
     font-size: 20px;
 }
 
- .table-wrapper::-webkit-scrollbar {
+ table::-webkit-scrollbar {
     width: 10px;
 }
 
- .table-wrapper::-webkit-scrollbar-track {
+ table::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
- .table-wrapper::-webkit-scrollbar-thumb {
+ table::-webkit-scrollbar-thumb {
     background: #888;
 }
 input[type='checkbox']{
@@ -1508,7 +1521,9 @@ input::placeholder{
   border-radius: 8px;
   color: black;
   outline: none;
-
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
 #slt4 {
   width: 260px;
@@ -1519,13 +1534,16 @@ input::placeholder{
   border-radius: 8px;
   color: black;
   outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
-/* #slt3::placeholder{
+#slt3::placeholder{
   color: #666666;
 }
 #slt4::placeholder {
   color: #666666;
-} */
+}
 
 #slt2 {
     width: 260px;
