@@ -1,0 +1,42 @@
+.employee-attendance{
+    width: calc(100% - 223px);
+    margin-left: 223px;
+    background-color: #f9f9f9;
+    padding-top: 76px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.row{
+    justify-content: space-between;
+}
+.card{
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 20px 20px;
+}
+.punch-in-punch-out{
+    margin-top: 15px;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.punch-in{
+    display: flex;
+    gap: 30px;
+}
+.today-heading h5{
+    font-weight: 400;
+    font-size: 18px;
+    color: #222222;
+}
+.punch-in-text p{
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+}
+.punch-in-text h4{
+    font-weight: 500;
+font-size: 22px;
+color: #444444;
+}
