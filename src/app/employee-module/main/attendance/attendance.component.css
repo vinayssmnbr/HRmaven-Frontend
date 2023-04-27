@@ -1,0 +1,29 @@
+.employee-attendance {
+    width: calc(100% - 223px);
+    margin-left: 223px;
+    background-color: #f9f9f9;
+    /* background-color: red; */
+    padding-top: 76px;
+    height: 100%;
+    /* padding: 30px 30px; */
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card_content {
+    display: flex;
+    background-color: #FCFCFC;
+    gap: 20px;
+}
+
+/* .col-6{
+    padding: 20px 20px;
+} */
+.attendence_card {
+    background-color: red;
+    padding: 20px 20px;
+}
