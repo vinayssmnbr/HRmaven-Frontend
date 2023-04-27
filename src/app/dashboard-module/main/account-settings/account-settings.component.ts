@@ -23,7 +23,7 @@ export class AccountSettingsComponent implements OnInit {
  readonly= false;
 
  constructor(private userService:UserService, private formBuilder: FormBuilder){}
-  objectuserid = localStorage.getItem('userId')
+  objectuserid = localStorage.getItem('email')
   // loginobjectid:any = ''
 
  data: any = ''
@@ -55,6 +55,8 @@ export class AccountSettingsComponent implements OnInit {
     phone: ['']
   });
       this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+        console.log("res account settings personaldata: ", res);
+
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
 
@@ -90,7 +92,7 @@ export class AccountSettingsComponent implements OnInit {
     //   this.readonlydata = !this.readonlydata;
     // }
 
-    objectid = localStorage.getItem('userId');
+    objectid = localStorage.getItem('email');
 
     updateProfile(data: any){
       this.userService.updatepersonals(this.objectid,data).subscribe((res: any)=>{

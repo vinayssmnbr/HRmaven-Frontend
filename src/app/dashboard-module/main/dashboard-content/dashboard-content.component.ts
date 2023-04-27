@@ -56,10 +56,10 @@ export class DashboardContentComponent implements OnInit {
     phone: new FormControl(''),
     headOffice: new FormControl(''),
   })
-  objectid = localStorage.getItem('userId');
+  email = localStorage.getItem('email');
   submitPersonalData(data: any){
     console.log("personal data: ", data);
-    this.userService.addpersonals(this.objectid,data).subscribe((res: any)=>{
+    this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
       this.formSubmitted = true;

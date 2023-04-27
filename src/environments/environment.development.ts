@@ -6,10 +6,12 @@ export const environment = {
   loginurl: 'https://hrmaven.works/login',
   Forgoturl: 'https://hrmaven.works/forgotpassword',
   Reseturl: 'https://hrmaven.works/resetpassword',
-  addpersonalurl: 'http://localhost:3000/putpersonal',
-  updatepersonaldata :'http://localhost:3000/updatepersonal',
-  getpersonaldata :'http://localhost:3000/getpersonalsdata',
-  // url: 'https://hrmaven.works/user-profile',
+  Resetpwdurl: 'https://hrmaven.works/resetpasswordaccount',
+
+  addpersonalurl: 'https://hrmaven.works/putpersonal',
+  updatepersonaldata :'https://hrmaven.works/updatepersonal',
+  getpersonaldata :'https://hrmaven.works/getpersonalsdata',
+  url: 'https://hrmaven.works/user-profile',
   auth: 'https://hrmaven.works/auth',
   createData: 'https://hrmaven.works/api/create',
   getData: 'https://hrmaven.works/api/find',
@@ -25,7 +27,7 @@ export const environment = {
   attendance:'https://hrmaven.works/attendance/date/attendance',
   attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
   attendancegraph:'https://hrmaven.works/attendance/date/report',
-  // getemail: 'https://hrmaven.works/getemails/email',
+  getemail: 'https://hrmaven.works/getemails/email',
 
   // //LOCAL URL
   // updateleave: 'http://localhost:3000/attendance/update',
@@ -36,7 +38,7 @@ export const environment = {
   // addpersonalurl: 'http://localhost:3000/putpersonal',
   // updatepersonaldata :'http://localhost:3000/updatepersonal',
   // getpersonaldata :'http://localhost:3000/getpersonalsdata',
-    url: 'http://localhost:3000/user-profile',
+    // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
   // getData: 'http://localhost:3000/api/find',
@@ -48,5 +50,5 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
-  getemail : 'http://localhost:3000/getemails/email',
+  // getemail : 'http://localhost:3000/getemails/email',
 };

@@ -246,5 +246,78 @@
 
 
 
+    <!--------------------Apply for leaves------------------->
+    <div class="apply-for-leaves">
+        <h6>Apply For Leave </h6>
+        <form class="form">
+            <div class="col-3">
+            <div class="form-group">
+                <label for="">From</label><br>
+                <input type="date" placeholder="29/04/2023">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="">To</label><br>
+                <input type="date" placeholder="29/04/2023">
+            </div>
+        </div>
+        <div class="col-3">
+
+            <div class="form-group">
+                <label for="">Duration</label><br>
+                <input type="text" placeholder="1 day" disabled>
+            </div>
+            </div>
+        <div class="col-3">
+
+            <div class="form-group">
+                <label for="">Category</label><br>
+                <div class="dropdown_container">
+                    <div class="dropdwon_select" (click)="dropdownOpen()">
+                        <p>{{Selectvariable}}</p>
+                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="select_content" *ngIf="contentdropdown">
+                        <ul>
+                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                (click)="Changeselect(arr)">
+                                {{arr.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+
+        <!--Apply for leaves-->
+        <div class="reason-attachments">
+            <div class="col-6">
+            <div class="reason">
+                <label for="">Reason</label>
+                <textarea placeholder="Type your reason here..."></textarea>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="reason">
+                <label for="">Attachments(Optional)</label>
+                <div class="textarea">
+                    <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
+                    <p class="first">Select a file or drag and drop here</p>
+                    <p class="second">Supported formats: pdf, jpg, png</p>
+                    <div class="choose-btn">
+                        <button class="choose-file">Choose File</button>
+                        <input type="file">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="clear-apply-button">
+            <button class="clear">Clear</button>
+            <button class="apply">Apply</button>
+        </div>
+    </div>
 
 </div>
