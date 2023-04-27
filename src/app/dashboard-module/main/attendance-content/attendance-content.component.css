@@ -725,3 +725,21 @@ div[role="progressbar"]::before {
     counter-reset: percentage var(--value);
     content: counter(percentage) '%';
 }
+.progressbar-outer {
+  --pgPercentage: var(--value);
+  width:60px;
+  background: conic-gradient(crimson 100deg, black 0deg);
+  background: conic-gradient(crimson var(--pgPercentage)deg, black 0deg);
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.progressbar-inner{
+  position: absolute;background-color: lightgrey;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

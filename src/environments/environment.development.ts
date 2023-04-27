@@ -53,5 +53,7 @@ export const environment = {
 //  getemail : 'http://localhost:3000/getemails/email',
 
 //leave
-leavegraph:'http://localhost:3000/api/leave/graph/leave'
+leavegraph:'http://localhost:3000/api/leave/graph/leave',
+leavecontent:'http://localhost:3000/api/leave/data/leaves',
+patchleave:'http://localhost:3000/api/leave/update/leave'
 };

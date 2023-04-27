@@ -3,7 +3,8 @@
     margin-left: 223px;
     background-color: #f9f9f9;
     padding: 70px 30px;
-    
+    height:100Vh;
+
 }
 
 #ico {
@@ -886,7 +887,7 @@ div[role="progressbar3"]::before {
 .thick_round {
     position: relative;
   }
-  
+
   .thick_round label {
     background-color: #fff;
     border: 1px solid green;
@@ -921,12 +922,12 @@ div[role="progressbar3"]::before {
   .thick_round  label:hover:after {
      border-color:#fff
   }
-  
+
   .cross_round {
     position: relative;
     margin-left:25px;
   }
-  
+
   .cross_round label {
     background-color: #fff;
     border: 1px solid red;
@@ -957,4 +958,3 @@ div[role="progressbar3"]::before {
      border-color:#fff;
        color:#fff;
   }
-  
