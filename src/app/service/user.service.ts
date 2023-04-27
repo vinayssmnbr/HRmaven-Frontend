@@ -44,12 +44,12 @@ export class UserService {
     return this.http.post(this.saveurl, data);
   }
  
-  updatepersonals(userId: any, data: any){
-    const url = `${this.personaldataupdate}/${userId}`;
+  updatepersonals(email: any, data: any){
+    const url = `${this.personaldataupdate}/${email}`;
     return this.http.patch(url, data);
   }
-  addpersonals(userId: any, data: any){
-    const url = `${this.addpersonaldata}/${userId}`;
+  addpersonals(email: any, data: any){
+    const url = `${this.addpersonaldata}/${email}`;
     return this.http.put(url, data);
   }
 
@@ -57,8 +57,8 @@ export class UserService {
     return this.http.post(this.Forgoturl, data);
   }
 
-  getpersonals(id: any){
-    return this.http.get(`${this.getpersonaldata}/${id}`);
+  getpersonals(email: any){
+    return this.http.get(`${this.getpersonaldata}/${email}`);
   }
 
   newpwd(data: any, token: any) {

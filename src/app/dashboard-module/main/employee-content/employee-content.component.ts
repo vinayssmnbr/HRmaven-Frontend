@@ -385,9 +385,9 @@ export class EmployeeContentComponent implements OnInit {
   colorvariable: number = 0;
   Selectvariable1: string = '';
   colorvariable1: number = 0;
-  Selectvariable2: string = 'Select Location';
+  Selectvariable2: string = '';
   colorvariable2: number = 0;
-  Selectvariable3: string = 'Select';
+  Selectvariable3: string = '';
   colorvariable3: number = 0;
   Selectvariable6: string = '';
   colorvariable6: number = 0;
