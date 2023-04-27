@@ -265,7 +265,7 @@
           Next </button>
         <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
-          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid )">Done</button>
+          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">Done</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">
