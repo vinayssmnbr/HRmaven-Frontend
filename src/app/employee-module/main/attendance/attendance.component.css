@@ -20,15 +20,16 @@
     width: 100%;
 }
 
-.card_content {
+.col-5 .card_content {
     display: flex;
-    /* background-color: #FCFCFC; */
-    background-color: red;
+    background-color: #FCFCFC;
     gap: 20px;
-    width: 227px;
+    width: 250px;
     height: 86px;
     border-radius: 8px;
     margin-top: 30px;
+    padding: 20px 20px;
+    justify-content: space-between;
 }
 
 .attendence_card {
@@ -36,6 +37,238 @@
     background: #FFFFFF;
     border-radius: 8px;
 }
-.attendence_card h3{
-    font-size: ;
+
+.attendence_card h3 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #222222;
+}
+
+.card_text p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+}
+
+.card_text h1 {
+    font-weight: 500;
+    font-size: 22px;
+    color: #444444;
+}
+
+.card_logo {
+    cursor: pointer;
+    background-color: #EBF1FF;
+    border-radius: 50%;
+}
+
+.col-7 .card_content {
+    display: flex;
+    background-color: #FCFCFC;
+    gap: 20px;
+    width: 227px;
+    height: 86px;
+    border-radius: 8px;
+    margin-top: 30px;
+    padding: 20px 20px;
+    justify-content: space-between;
+}
+
+/* -------------------Progress Bar------------------------- */
+
+@keyframes growProgressBar {
+
+    0%,
+    33% {
+        --pgPercentage: 0;
+    }
+
+    100% {
+        --pgPercentage: var(--value);
+    }
+}
+
+@property --pgPercentage {
+    syntax: '<number>';
+    inherits: false;
+    initial-value: 0;
+}
+
+div[role="progressbar"],
+div[role="progressbar1"],
+div[role="progressbar2"] {
+    --pgPercentage: var(--value);
+    animation: growProgressBar 3s 1 forwards;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+}
+
+div[role="progressbar"] {
+    color: #8BAFFF;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#8BAFFF calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar1"] {
+    color: #7BD36D;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#7BD36D calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+div[role="progressbar2"] {
+    color: #369;
+    background:
+        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
+        conic-gradient(#F8BB6F calc(var(--pgPercentage) * 1%), #def 0);
+}
+
+
+
+div[role="progressbar"]::before,
+div[role="progressbar1"]::before,
+div[role="progressbar2"]::before {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%';
+}
+
+.attendence_history {
+    padding-top: 25px;
+}
+
+.attendence_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 31px 20px;
+    align-items: center;
+}
+
+.attendence_title h3 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #222222;
+}
+
+.attendence_title span {
+    font-size: 15px;
+}
+
+/* --------------------Drop Down---------------------- */
+.dropdwon_select {
+    background-color: #fff;
+    width: 172px;
+    height: 40px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    color: #444444;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border: 1px solid transparent;
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+}
+
+.dropdwon_select p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.dropdwon_select i {
+    font-size: 14px;
+    color: #444444;
+    padding: 3px 7px;
+}
+
+.select_content {
+    background-color: #fff;
+    cursor: pointer;
+    width: 172px;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    color: #444444;
+}
+
+.select_content ul {
+    padding: 0;
+    margin: 0;
+}
+
+.select_content ul li {
+    list-style: none;
+    padding: 10px 10px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.select_content ul li:hover {
+    background-color: #ECECEC;
+    border-radius: 8px;
+}
+
+.select_active {
+    background-color: #ECECEC;
+    border-radius: 8px;
+
+}
+
+.attendence_history_card {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+
+.attendence_history_card .col-4 .card {
+    width: 352px;
+    height: 130px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    padding: 26px 32px;
+    display: inline-block;
+}
+
+.card_date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left_date {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.left_date p {
+    font-weight: 500;
+    font-size: 14px;
+    color: #444444;
+}
+
+.left_date img {
+    width: 16px;
+    height: 16px;
+}
+
+.punching_timing {
+    display: flex;
+    justify-content: space-between;
+}
+
+.punching_in p,
+.punching_in h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
 }
