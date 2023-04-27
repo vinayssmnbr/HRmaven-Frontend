@@ -1,42 +1,29 @@
-.employee-attendance{
+.employee-attendance {
     width: calc(100% - 223px);
     margin-left: 223px;
     background-color: #f9f9f9;
+    /* background-color: red; */
     padding-top: 76px;
-    padding-bottom: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+    height: 100%;
+    /* padding: 30px 30px; */
 }
-.row{
+
+.card {
+    display: flex;
     justify-content: space-between;
-}
-.card{
-    background-color: #FFFFFF;
     width: 100%;
-    padding: 20px 20px;
 }
-.punch-in-punch-out{
-    margin-top: 15px;
-    padding: 20px 20px;
+
+.card_content {
     display: flex;
-    justify-content: space-between;
+    background-color: #FCFCFC;
+    gap: 20px;
 }
-.punch-in{
-    display: flex;
-    gap: 30px;
-}
-.today-heading h5{
-    font-weight: 400;
-    font-size: 18px;
-    color: #222222;
-}
-.punch-in-text p{
-    font-weight: 400;
-    font-size: 14px;
-    color: #666666;
-}
-.punch-in-text h4{
-    font-weight: 500;
-font-size: 22px;
-color: #444444;
+
+/* .col-6{
+    padding: 20px 20px;
+} */
+.attendence_card {
+    background-color: red;
+    padding: 20px 20px;
 }
