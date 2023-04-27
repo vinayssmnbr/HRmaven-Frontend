@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import jwt_decode from "jwt-decode";
 import {
   FormBuilder,
   FormControl,
@@ -35,12 +35,12 @@ export class LoginComponent {
 
   ngOnInit() {
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      // force a page refresh on navigation end
-      window.location.reload();
-    });
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationEnd)
+    // ).subscribe(() => {
+    //   // force a page refresh on navigation end
+    //   window.location.reload();
+    // });
 
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
@@ -185,10 +185,15 @@ export class LoginComponent {
 
     this.userService.users(data).subscribe((res: any) => {
       this.userService.users(this.loginForm);
-
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
+        const token = res.token;
+
+        // Decode the token to retrieve the user ID
+        const decodedToken: any = jwt_decode(token);
+        const userId = decodedToken.userId;
+        console.log("user_id: ",userId);
         var today = new Date();
         var expire = new Date();
 
@@ -204,6 +209,7 @@ export class LoginComponent {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
+        localStorage.setItem('userId', userId);
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
@@ -213,6 +219,8 @@ export class LoginComponent {
         'LoggedInName: ',
         this.loginForm.controls['email'].value
       );
+
+
     });
   }
   ForgetEmailSubmit(data: any) {
