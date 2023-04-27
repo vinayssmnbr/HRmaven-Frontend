@@ -1521,7 +1521,9 @@ input::placeholder{
   border-radius: 8px;
   color: black;
   outline: none;
-
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
 #slt4 {
   width: 260px;
@@ -1532,13 +1534,16 @@ input::placeholder{
   border-radius: 8px;
   color: black;
   outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
 }
-/* #slt3::placeholder{
+#slt3::placeholder{
   color: #666666;
 }
 #slt4::placeholder {
   color: #666666;
-} */
+}
 
 #slt2 {
     width: 260px;
