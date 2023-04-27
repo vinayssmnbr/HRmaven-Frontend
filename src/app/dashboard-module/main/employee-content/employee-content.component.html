@@ -52,9 +52,8 @@
         <i class="fa-solid fa-list"></i>
         <img src="./assets/images/Vector (1).svg" alt="">
       </div>
-      <button class="import" (click)="download()"><img src="./assets/images/prime_file-import.svg">Export</button>
-      <button class="import"   (click)="openImport()" ><img src="./assets/images/prime_file-export.svg" >Import</button>
-     
+      <button class="import" [disabled]="true"><img src="./assets/images/prime_file-import.svg">Export</button>
+      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg" >Import</button>
     <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
@@ -99,7 +98,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" (change)="selectedUser=user._id; onSelectChange($event,user)"
+              <select class="select" id="myselect" [class.active]="user.status==='active'" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
                 [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
                 [style.color]="selectedUser === user._id ? color : ''"
                 [style.border]="selectedUser === user._id ? borderColor : ''">Select
@@ -225,7 +224,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="slt3" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="slt3" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
@@ -242,7 +241,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timing" id="slt4" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timing" id="slt4" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
@@ -270,7 +269,7 @@
           Next </button>
         <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
-          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid )">Done</button>
+          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">Done</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">

@@ -71,7 +71,7 @@ export class HeaderComponent {
       this.name = res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
   }
-
+  loginobjectid: any ='';
   profileToggle() {
     if (this.hideNotifications) {
       this.visible = false;
@@ -82,6 +82,10 @@ export class HeaderComponent {
     // this.hideNotifications = true;
 
     this.profileDisplay = !this.profileDisplay;
+    this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
+    
+      console.log('response account:' +res.personaldata.headOffice);
+    });
   }
 
   logout() {
