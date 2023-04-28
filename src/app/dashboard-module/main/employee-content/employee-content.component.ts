@@ -18,8 +18,6 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
-import { saveAs } from 'file-saver';
-import { json2csv } from 'json2csv';
 
 @Component({
   selector: 'app-employee-content',
@@ -611,73 +609,52 @@ export class EmployeeContentComponent implements OnInit {
   }
   selectedOption: string;
 
-  // onSelectChange() {
-  //   // Define your color logic here based on the selectedOption value
-  //   switch (this.selectedOption) {
-  //     case 'option1':
-  //       document.querySelector('select').style.backgroundColor = 'red';
-  //       break;
-  //     case 'option2':
-  //       document.querySelector('select').style.backgroundColor = 'green';
-  //       break;
-  //     case 'option3':
-  //       document.querySelector('select').style.backgroundColor = 'blue';
-  //       break;
-  //     default:
-  //       document.querySelector('select').style.backgroundColor = 'white';
-  //       break;
-  //   }
-  // }
-  // colorgreen() {
-  //   this.iscolorgreen = !this.iscolorgreen;
-  // }
-  // coloryellow() {
-  //   this.iscoloryellow = !this.iscoloryellow;
-  // }
-  // colorbrown() {
-  //   this.iscolorbrown = !this.iscolorbrown;
-  // }
+
   selectedUser: any;
-  backgroundColor: string;
-  color: string;
-  borderColor: string;
+  optionStyle: any;
+
   onSelectChange(event: any, user: any) {
-    // if(user===this.selectedUser){
     switch (event.target.value) {
       case 'active': {
-        this.backgroundColor = 'rgba(123, 211, 109, 0.3)';
-        this.color = '#3D9030';
-        this.borderColor = 'rgba(123, 211, 109, 0.3)';
+        this.optionStyle = {
+          'background-color': 'rgba(123, 211, 109, 0.3)',
+          color: '#3D9030',
+          border: 'rgba(123, 211, 109, 0.3)',
+        };
         break;
       }
       case 'terminated': {
-        this.backgroundColor = 'rgba(250, 151, 150, 0.2)';
-        this.color = '#CB1E0F';
-        this.borderColor = 'rgba(250, 151, 150, 0.2)';
+        this.optionStyle = {
+          'background-color': 'rgba(250, 151, 150, 0.2)',
+          color: '#CB1E0F',
+          border: 'rgba(250, 151, 150, 0.2)',
+        };
         break;
       }
       case 'resigned': {
-        this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
-        this.color = '#CE524A';
-        this.borderColor = 'rgba(255, 238, 82, 0.5)';
+        this.optionStyle = {
+          'background-color': 'rgba(255, 238, 82, 0.5)',
+          color: '#CE524A',
+          border: 'rgba(255, 238, 82, 0.5)',
+        };
         break;
       }
       case 'absconder': {
-        this.backgroundColor = 'rgba(248, 187, 111, 0.4)';
-        this.color = '#DB771D';
-        this.borderColor = 'rgba(248, 187, 111, 0.4)';
+        this.optionStyle = {
+          'background-color': 'rgba(248, 187, 111, 0.4)',
+          color: '#DB771D',
+          border: 'rgba(248, 187, 111, 0.4)',
+        };
         break;
       }
-      default:
-        {
-          this.backgroundColor = '';
-          this.color = '';
-          this.borderColor = '';
-          break;
-        }
-
-        console.log(event.target.value);
+      default: {
+        this.optionStyle = {};
+        break;
+      }
     }
+
+    this.selectedUser = user._id;
+
     this.dashService.updateEmpStatus(user._id, event.target.value).subscribe(
       (response) => {
         console.log(response);
@@ -690,10 +667,39 @@ export class EmployeeContentComponent implements OnInit {
 
   selectUser(user) {
     this.selectedUser = user;
-    this.backgroundColor = '';
-    this.color = '';
-    this.borderColor = '';
+    this.optionStyle = {};
   }
+
+  getStatusStyle(user) {
+    if (user.status === 'active') {
+      return {
+        'background-color': 'rgba(123, 211, 109, 0.3)',
+        color: '#3D9030',
+        border: 'rgba(123, 211, 109, 0.3)',
+      };
+    } else if (user.status === 'terminated') {
+      return {
+        'background-color': 'rgba(250, 151, 150, 0.2)',
+        color: '#CB1E0F',
+        border: 'rgba(250, 151, 150, 0.2)',
+      };
+    } else if (user.status === 'resigned') {
+      return {
+        'background-color': 'rgba(255, 238, 82, 0.5)',
+        color: '#CE524A',
+        border: 'rgba(255, 238, 82, 0.5)',
+      };
+    } else if (user.status === 'absconder') {
+      return {
+        'background-color': 'rgba(248, 187, 111, 0.4)',
+        color: '#DB771D',
+        border: 'rgba(248, 187, 111, 0.4)',
+      };
+    } else {
+      return {};
+    }
+  }
+
   importfile: boolean = false;
   csvadded: boolean = false;
   openImport() {

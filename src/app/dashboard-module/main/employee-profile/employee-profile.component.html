@@ -11,7 +11,8 @@
       <span class="profile_pic">
         <!-- <img src="{{user.url}}"> -->
         <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
-        <img *ngIf="user.url" src="{{user.url}}" alt="">
+        <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
+        <img *ngIf="upload" src="{{imageurl}}" alt="">
         <div class="profile-content" *ngIf="!user.url">
           <!-- <div >
             <input type="file" (change)="onFileSelected($event)">
