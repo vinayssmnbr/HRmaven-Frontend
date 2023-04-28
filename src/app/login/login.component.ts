@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../service/user.service';
@@ -40,6 +40,14 @@ export class LoginComponent {
     //   // force a page refresh on navigation end
     //   window.location.reload();
     // });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe((event: NavigationStart) => {
+      if (event.url === '/login') {
+        // Force a page refresh on login page
+        window.location.reload();
+      }
+    });
 
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
@@ -79,6 +87,7 @@ export class LoginComponent {
 
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
+      // this.router.navigateByUrl('dashboard')
     }
     // this.userService.allDataLogin();
     

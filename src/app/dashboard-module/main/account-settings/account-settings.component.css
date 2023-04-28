@@ -59,6 +59,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: -20%;
 }
 
 .name-text h5 {
@@ -71,6 +72,7 @@
     font-weight: 400;
     font-size: 14px;
     color: #999999;
+
 }
 
 .location img {
@@ -172,11 +174,17 @@
     padding: 12px 28px;
 }
 
-.company-name-headoffice-desc {
+.company-name-headoffice-desc,
+.company-name_hover {
     padding: 22px 33px;
     border: 1px solid rgba(47, 44, 159, 0.15);
     border-radius: 8px;
     margin-top: 20px;
+
+}
+
+.company-name_hover:hover .edit-password-button {
+    visibility: visible;
 
 }
 
@@ -198,7 +206,6 @@
     width: 71px;
     min-height: 29px;
     background: #FFFFFF;
-    /* grey/gray_E0 */
     cursor: pointer;
     border: 1px solid #E0E0E0;
     border-radius: 22px;
@@ -207,6 +214,8 @@
 .edit-password-button {
     display: flex;
     gap: 7.87px;
+    visibility: hidden;
+
 }
 
 .edit-password-button img {
@@ -318,6 +327,10 @@
     cursor: pointer;
 }
 
+.company-name-headoffice-desc-area:hover .edit-password-button {
+    visibility: visible;
+}
+
 /* Company details done button*/
 .done-btn {
     max-width: 89px;
@@ -333,7 +346,7 @@
 
 
 
-/*Modal--------------------------------------------- css*/
+/*---------------------------Modal---------------------*/
 .Modal_form {
     width: 100vw;
     height: 100vh;
@@ -420,7 +433,7 @@
 
 .edit-profile-footer {
     background-color: #F7F7FB;
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 8px;
     max-width: 685px;
     width: 100%;
     height: 75px;
@@ -582,8 +595,7 @@
 
 .company-details-footer {
     background-color: #F7F7FB;
-    ;
-    border-radius: 8px 8px 0px 0px;
+  border-radius: 8px;
     max-width: 980px;
     width: 100%;
     height: 75px;
@@ -626,7 +638,10 @@
 }
 
 .content-image {
-    width: 100%;
+    /* width: 100%; */
+    width: 40%;
+    height: 50%;
+    border-radius: 50%;
 }
 
 .content-details {
@@ -658,7 +673,8 @@
     width: 100%;
     color: #fff;
 }
-.content-text{
+
+.content-text {
     width: 90px;
     font-size: 8px;
     position: absolute;
@@ -677,9 +693,9 @@
     resize: none;
     outline: none;
     padding: 10px;
-    border: 1px solid #CBCBCB;
     border-radius: 8px;
     margin-top: 5px;
+    border: none;
 }
 
 .modal-text textarea {
@@ -704,3 +720,10 @@ textarea::placeholder {
     background-color: #f4f4f4;
     color: #aaa;
 } */
+input:hover,
+input:focus {
+    border: 1px solid#2F2C9F !important;
+}
+input:disabled{
+    cursor: not-allowed;
+}

@@ -227,16 +227,15 @@ div[role="progressbar2"]::before {
 }
 
 .attendence_history_card {
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: start;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
+    padding: 0 20px;
 }
 .attendence_history_card .col-4{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
+    display: inline-block;
+    width: 100%;
 }
 .attendence_history_card .col-4 .card {
     width: 380px;

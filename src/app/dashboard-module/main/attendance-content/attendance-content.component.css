@@ -1,7 +1,7 @@
 .main {
     width: calc(100% - 223px);
     margin-left: 223px;
-    background: #f9f9f9;
+    background-color: #f9f9f9;
     padding: 30px;
     min-height: 100%;
 }
@@ -13,7 +13,8 @@
     margin-top: 15px;
 }
 
-.table_data {
+.table_data,
+.table_data1 {
     width: 100%;
 }
 
@@ -50,21 +51,25 @@ td {
     white-space: nowrap;
 }
 
-.table_data::-webkit-scrollbar {
+.table_data::-webkit-scrollbar,
+.table_data1::-webkit-scrollbar {
     width: 6px;
     height: 35px;
 }
 
-.table_data::-webkit-scrollbar-track {
+.table_data::-webkit-scrollbar-track,
+.table_data1::-webkit-scrollbar-track {
     background-color: #ffffff;
 }
 
-.table_data::-webkit-scrollbar-thumb {
+.table_data::-webkit-scrollbar-thumb,
+.table_data1::-webkit-scrollbar-thumb {
     background-color: #B4B4B4;
     border-radius: 6px;
 }
 
-.table_data::-webkit-scrollbar-thumb:hover {
+.table_data::-webkit-scrollbar-thumb:hover,
+.table_data1::-webkit-scrollbar-thumb:hover {
     background-color: #b4b4b4;
 }
 
@@ -89,9 +94,17 @@ td {
     /* height: 78vh; */
 }
 
+.table_data1 {
+    overflow-y: auto;
+    max-height: 68vh;
+    margin-top: 21px;
+}
+
+
 .table_text thead th {
     position: sticky;
-    top: -20px;
+    /* top: -20px; */
+    top: 0;
 }
 
 .bar_graph {
@@ -140,11 +153,11 @@ td {
 }
 
 .calender {
-    position: absolute;
-    right: 30px;
     cursor: pointer;
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    position: absolute;
+    right: 0;
 }
 
 .calender input {
@@ -201,6 +214,7 @@ td {
     gap: 10px;
     padding-top: 30px;
     padding-bottom: 20px;
+    position: relative;
 }
 
 .employe_input input {
@@ -265,28 +279,29 @@ input[type=number]::-webkit-inner-spin-button {
 /*---------------------------- Card section------------------ */
 
 .row {
-    margin-left: -25px;
-    margin-right: -25px;
-    display: flex;
-    flex-wrap: wrap;
+    align-items: start;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
 }
 
 .col-3 {
     display: inline-block;
-    padding: 20px 25px;
+    width: 100%;
 }
 
 .card {
     background-color: #ffff;
     border-radius: 8px;
     text-align: center;
-    width: 270.5px;
+    width: 100%;
     height: 241px;
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .card img {
@@ -585,7 +600,7 @@ input:focus {
 .no_data {
     padding: 20px 0;
     background-color: #f9f9f9;
-    text-align:center;
+    text-align: center;
 
 }
 
@@ -619,7 +634,7 @@ input:focus {
 /* ------------Drop Down---------------- */
 .dropdwon_select {
     background-color: #fff;
-    width: 200px;
+    width: 161px;
     height: 44px;
     cursor: pointer;
     padding: 8px;
@@ -629,12 +644,13 @@ input:focus {
     display: flex;
     justify-content: space-between;
     padding: 10px 10px;
-    border: 1px solid #B4B4B4;
-    /* border: 1px solid transparent; */
+    border: 1px solid transparent;
 }
 
 .dropdwon_select:hover,
-.dropdwon_select:focus {
+.dropdwon_select:focus,
+.dropdwon_select1:hover,
+.dropdwon_select1:focus {
     border: 1px solid #2F2C9F;
     border-radius: 8px;
 }
@@ -653,7 +669,9 @@ input:focus {
 .select_content {
     background-color: #fff;
     cursor: pointer;
-    width: 190px;
+    width: 160px;
+    max-height: 200px;
+    overflow-y: auto;
     cursor: pointer;
     padding: 10px;
     position: absolute;
@@ -661,21 +679,43 @@ input:focus {
     border-radius: 6px;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
     z-index: 99;
+
 }
 
-.select_content ul {
+.select_content::-webkit-scrollbar,
+.select_content1::-webkit-scrollbar {
+    width: 8px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.select_content::-webkit-scrollbar-track,
+.select_content1::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.select_content::-webkit-scrollbar-thumb,
+.select_content1::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #888;
+}
+
+.select_content ul,
+.select_content1 ul {
     padding: 0;
     margin: 0;
 }
 
-.select_content ul li {
+.select_content ul li,
+.select_content1 ul li {
     list-style: none;
     padding: 10px 10px;
     margin-top: 5px;
     font-size: 14px;
 }
 
-.select_content ul li:hover {
+.select_content ul li:hover,
+.select_content1 ul li:hover {
     background-color: #ECECEC;
     border-radius: 8px;
 }
@@ -686,42 +726,170 @@ input:focus {
 }
 
 /* -------------------Progress Bar------------------------- */
-
-@keyframes growProgressBar {
-
-    0%,
-    33% {
-        --pgPercentage: 0;
-    }
-
-    100% {
-        --pgPercentage: var(--value);
-    }
+.progress {
+    width: 50px;
+    height: 50px;
+    z-index: 1;
 }
 
-@property --pgPercentage {
-    syntax: '<number>';
-    inherits: false;
-    initial-value: 0;
+.progress .track,
+.progress .fill {
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 10;
+    transform: rotate(90deg)translate(0px, -80px);
 }
 
-div[role="progressbar"] {
-    --pgPercentage: var(--value);
-    animation: growProgressBar 3s 1 forwards;
+.progress .track {
+    stroke: #c8cacb;
+    stroke-width: 6;
+}
+
+.progress .fill {
+    stroke: #008eff;
+    stroke-dasharray: 219.99078369140625;
+    stroke-dashoffset: -219.99078369140625;
+    transition: stroke-dashoffset 1s;
+}
+
+
+/* ---------------------card Profile View------------------------------------- */
+.card_profile_main {
+    height: 84px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 76px;
+}
+
+.card_profile_heading {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.back_icon {
+    width: 24px;
+    height: 24px;
+    background-color: #F7F7FB;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.back_icon i {
+    font-size: 10px;
+    color: #444444;
+}
+
+.profile_logo {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background:
-        radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
-        conic-gradient(#369 calc(var(--pgPercentage) * 1%), #def 0);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    color: #369;
 }
 
-div[role="progressbar"]::before {
-    counter-reset: percentage var(--value);
-    content: counter(percentage) '%';
+.profile_modal_title h2 {
+    font-weight: 400;
+    font-size: 16px;
+    color: #444444;
+}
+
+.profile_modal_title h2 {
+    color: #444444;
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.profile_logo_btn {
+    width: 114px;
+    height: 21px;
+    background-color: #FEF0C8;
+    border-radius: 1000px;
+    border: none;
+    padding: 4px 16px;
+    font-weight: 400;
+    font-size: 10px;
+}
+
+.car_profile_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.export_btn {
+    width: 103px;
+    height: 44px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.export_btn:hover,
+.export_btn:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+}
+
+.export_card_btn {
+    border: none;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666666;
+    cursor: pointer;
+}
+
+
+/* -------------Drop Down--------- */
+.dropdwon_select1 {
+    background-color: #fff;
+    width: 126px;
+    height: 44px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    color: #444444;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border: 1px solid transparent;
+}
+
+.dropdwon_select p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.dropdwon_select i {
+    font-size: 14px;
+    color: #444444;
+    padding: 3px 7px;
+}
+
+.select_content1 {
+    background-color: #fff;
+    cursor: pointer;
+    width: 140px;
+    max-height: 200px;
+    overflow-y: auto;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    color: #444444;
+    border-radius: 6px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+    z-index: 99;
+
 }

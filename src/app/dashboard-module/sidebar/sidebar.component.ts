@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
 
 constructor(private router:Router,private cookie:CookieService,private renderer:Renderer2,private routes: ActivatedRoute){}
 activeLink:any;
+isAttendanceAndLeaveVisible:boolean= false;
 ngOnInit() {
   this.routes.params.subscribe(params => {
     const id = params['id'];

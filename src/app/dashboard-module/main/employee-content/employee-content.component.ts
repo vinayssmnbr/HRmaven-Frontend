@@ -18,8 +18,8 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
-import { saveAs } from 'file-saver';
-import { json2csv } from 'json2csv';
+// import { saveAs } from 'file-saver';
+// import { json2csv } from 'json2csv';
 
 
 @Component({
@@ -689,7 +689,10 @@ export class EmployeeContentComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+    }
+ 
+
+  
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';
