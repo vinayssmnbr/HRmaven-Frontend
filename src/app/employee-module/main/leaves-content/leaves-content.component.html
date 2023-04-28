@@ -97,24 +97,24 @@
         <!--------------------Apply for leaves------------------->
         <div class="apply-for-leaves">
             <h6>Apply For Leave </h6>
-            <form class="form">
+            <form  [formGroup]="empleaveForm" class="form">
                 <div class="col-3">
                     <div class="form-group">
                         <label for="">From</label><br>
-                        <input type="date" placeholder="29/04/2023">
+                        <input type="date" placeholder="29/04/2023" formControlName="from">
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label for="">To</label><br>
-                        <input type="date" placeholder="29/04/2023">
+                        <input type="date" placeholder="29/04/2023" formControlName="to">
                     </div>
                 </div>
                 <div class="col-3">
 
                     <div class="form-group">
                         <label for="">Duration</label><br>
-                        <input type="text" placeholder="1 day" disabled>
+                        <input type="text" placeholder="1 day"  formControlName="duration" [disabled]="true">
                     </div>
                 </div>
                 <div class="col-3">

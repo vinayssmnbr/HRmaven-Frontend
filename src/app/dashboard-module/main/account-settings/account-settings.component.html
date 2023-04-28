@@ -5,7 +5,7 @@
         <div class="profile-bottom-line">
             <div class="profile-arrow">
                 <div class="arrow">
-                    <img src="assets/images/Group 1241.svg" routerLink="/dashboard" >
+                    <img src="assets/images/Group 1241.svg" routerLink="/dashboard">
                 </div>
                 <div class="profile-text">
                     <h6>Profile</h6>
@@ -16,17 +16,15 @@
             <div class="profile-image">
                 <div class="upload_content">
                     <div class="content-overlay"></div>
-                    <img class="content-image" src="assets/images/user 1.svg" alt="">
+                    <!-- <img class="content-image" src="assets/images/user 1.svg" alt=""> -->
+                    <img class="content-image" src="{{profileimage}}" alt="">
                     <div class="content-details fadeIn-bottom">
-                        <img src="assets/images/upload.png" alt="">
+                        <!-- <img src="assets/images/upload.png" alt=""> -->
+                        <!-- <img src="{{profileimage}}" alt=""> -->
                         <h3 class="content-title">UPLOAD </h3>
                         <p class="content-text">PROFILE PICTURE</p>
                     </div>
                 </div>
-
-
-
-
             </div>
 
             <div class="name-text">
@@ -52,7 +50,7 @@
                 </ul>
             </div>
         </div>
-        <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
+        <div class="company-name_hover" *ngIf="id ==='all' ">
             <div class="company-name-headoffice-desc-area">
                 <div class="company-name-headoffice">
                     <div class="company-name">
@@ -72,7 +70,6 @@
                         <div class="text">
                             <button class="edit" (click)="openModal1() ">Edit <img src="assets/images/pen.svg"
                                     alt=""></button>
-
                         </div>
 
 
@@ -85,14 +82,7 @@
                     </div>
                 </div>
                 <div class="paragraph-text">
-                    <!-- <textarea
-                        placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics,
-                         and generate comprehensive reports to gain insights into their workforce."></textarea> -->
-                    <textarea placeholder="{{description}}"></textarea>     
-                </div>
-
-                <div class="clear-update-button">
-                    <button class="done-btn">Done</button>
+                    <textarea placeholder="{{description}}"></textarea>
                 </div>
             </div>
         </div>
@@ -113,16 +103,14 @@
                     <div class="head-office-edit">
                         <div class="head-office-text">
                             <h6>Professional Email</h6>
-                            <p>hr@hrmaven.com</p>
+                            <!-- <p>hr@hrmaven.com</p> -->
+                            <p>{{professional_email_id}}</p>
                         </div>
-
-
                     </div>
                     <div class="edit-password-button">
                         <div class="text">
                             <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg"
                                     alt=""></button>
-
                         </div>
 
 
@@ -148,7 +136,7 @@
 
         <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
             <div class="company-name-headoffice-desc-area">
-                <form action="submit"  [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd)">
+                <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd)">
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password" placeholder="Type your old password">
@@ -157,25 +145,25 @@
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
-                            <input type="password" placeholder="Type a new password" formControlName="password" >
+                            <input type="password" placeholder="Type a new password" formControlName="password">
 
                         </div>
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">Confirm Password</label>
-                            <input type="password" placeholder="Re-enter your password"  formControlName="confirm">
+                            <input type="password" placeholder="Re-enter your password" formControlName="confirm">
 
                         </div>
                     </div>
-                <!-- </form> -->
-                <div class="clear-update-button">
-                    <button class="clear-btn">Clear</button>
-                    <button class="update-btn" (click)="openModal3()" type="submit">Update Password</button>
+                    <!-- </form> -->
+                    <div class="clear-update-button">
+                        <button class="clear-btn">Clear</button>
+                        <button class="update-btn" (click)="openModal3()" type="submit">Update Password</button>
 
-                </div>
-            </form>
-    
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
@@ -194,7 +182,7 @@
 
 
     <!-- <form class="Modal_form" *ngIf="showModal1"> -->
-    <div class="Modal_form" *ngIf="showModal1"> 
+    <div class="Modal_form" *ngIf="showModal1">
         <div class="company_modal">
             <i class="fa-solid fa-xmark" (click)="closeModal1()"></i>
             <div class="edit-company-heading">
@@ -206,17 +194,17 @@
                     <div class="form__group">
                         <label for="name">Company Name</label>
                         <input type="text" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;"  placeholder='Eg. Venturepact' id="name" disabled />
+                        color: #aaa;" placeholder='Eg. Venturepact' id="name" disabled />
                     </div>
                     <div class="form__group">
                         <label for="employeeno">No. of employees</label>
                         <input type="number" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder="{{totalemployee}}"  id="employeeno" disabled />
+                        color: #aaa;" placeholder="{{totalemployee}}" id="employeeno" disabled />
                     </div>
                     <div class="form__group">
                         <label for="email">Head Office</label>
-                        <input type="text" class="form_input" placeholder='{{headOffice}}'
-                        formControlName="headOffice" id="email" required />
+                        <input type="text" class="form_input" placeholder='{{headOffice}}' formControlName="headOffice"
+                            id="email" required />
                     </div>
                 </div>
 
@@ -227,8 +215,8 @@
                         <div class="modal-text">
                             <!-- <input type="text" [readonly]="true"
                               placeholder=""  > -->
-                            <textarea class="textarea-2"
-                                formControlName="description" placeholder="{{description}}"></textarea>
+                            <textarea class="textarea-2" formControlName="description"
+                                placeholder="{{description}}"></textarea>
                         </div>
                     </div>
 
@@ -243,7 +231,7 @@
                 <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">Done</button>
             </div>
         </div>
-    <!-- </form> -->
+        <!-- </form> -->
     </div>
 
     <!--Modal 2-->
@@ -251,25 +239,25 @@
 
 
     <!-- <form class="Modal_form" *ngIf="showModal2"> -->
-    <div class="Modal_form" *ngIf="showModal2">  
+    <div class="Modal_form" *ngIf="showModal2">
         <div class="Modal_modal">
             <i class="fa-solid fa-xmark" (click)="closeModal2()"></i>
             <div class="edit-profile-heading">
                 <h3>Edit Personal Details </h3>
             </div>
 
-            <form class="form"  [formGroup]="personalDetailsForm" (ngSubmit)="updateData(personalDetailsForm.value)">
+            <form class="form" [formGroup]="personalDetailsForm" (ngSubmit)="updateData(personalDetailsForm.value)">
                 <div class="name-email">
                     <div class="form__group">
                         <label for="empname">Name</label>
                         <input type="text" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;"  placeholder='Eg. Abhishek Sharma'  id="empname" disabled />
+                        color: #aaa;"  placeholder='{{employeename}}'  id="empname" disabled />
 
                     </div>
                     <div class="form__group">
                         <label >Personal Email</label>
-                        <input type="email" class="form_input"  placeholder='Eg. abhishek1990@gmail.com' 
-                        formControlName="phone"   
+                        <input type="email" class="form_input"  placeholder='{{employeeemail}}' 
+                        formControlName="personalemail"   
                         required />
                     </div>
                 </div>
@@ -281,11 +269,11 @@
                         <label for="professionalemail">Professional Email</label>
                         <input type="email" class="form_input"
                         style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder='hr@hrmaven.com' id="professionalemail" disabled />
+                        color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
                     </div>
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='Eg. +91 9856234510' formControlName="phone" id="phone" required />
+                        <input type="number" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required />
                     </div>
                 </div>
 
@@ -297,7 +285,7 @@
                 <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
             </div>
         </div>
-    <!-- </form> -->
+        <!-- </form> -->
     </div>
 
 

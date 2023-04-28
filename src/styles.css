@@ -159,3 +159,25 @@ input[type=date] {
   font-size: 14px;
   color: #666666;
 }
+
+
+/*  */
+.no_data {
+  padding: 20px 0;
+  background-color: #f9f9f9;
+  text-align:center;
+
+}
+
+.no_data img {
+  width: 184.65px;
+  height: 132.3px;
+}
+
+.no_data h2 {
+  color: #444444;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 21px;
+}
