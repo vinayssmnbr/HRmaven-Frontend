@@ -1,1 +1,142 @@
-<p>employee-profile works!</p>
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+<div class="main">
+  <div class="card">
+    <div class="card1">
+      <img src="./assets/images/left_arrow.svg" routerLink="/employee" alt="">
+      <h2>My Profile</h2>
+    </div>
+    <div class="card2">
+      <span class="profile_pic">
+        <img  src="./assets/images/Ellipse 98.svg">
+        <!-- <img  alt=""> -->
+        <div class="profile-content" >
+          <input type="file" accept="image/*" id="file-input">
+          <i class="fa-solid fa-arrow-up"></i>
+          <h2>Upload</h2>
+          <p>Profile Picture</p>
+        </div>
+        <!-- <div class="profile-content1" *ngIf="user.url">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
+          <i class="fa-solid fa-camera"></i>
+
+          <h2>Change</h2>
+          <p>Profile Picture</p>
+        </div> -->
+      </span>
+      <div class="content">
+
+        <h3>Harshit Sharma</h3>
+        <p>Frontend Developer</p>
+        <span><i class="fa-solid fa-location-dot"></i>Leeds, United Kingdom</span>
+      </div>
+    </div>
+    <ul class="content1">
+      <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
+      <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
+      <span></span>
+    </ul>
+    <div class="card3" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Basic Details</h3>
+        <button class="edit1" >Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="name">Name</span>
+          <p class="name">-------</p>
+          <span class="fname">Father's Name</span>
+          <p class="fname">----------</p>
+          <!-- <p class="fname" *ngIf="user.fatherName">{{user.fatherName}}</p> -->
+          <span class="bgroup">Blood Group</span>
+          <p class="bgroup">----------</p>
+          <!-- <p class="bgroup">{{user.bloodGroup}}</p> -->
+        </div>
+        <div class="column2">
+          <span class="uid">Employee ID</span>
+          <p class="uid">--------</p>
+          <span class="mname">Mother's Name</span>
+          <p class="mname">----------</p>
+          <!-- <p class="mname" *ngIf="user.motherName">{{user.motherName}}</p> -->
+          <span class="gender">Gender</span>
+          <p class="gender">--------</p>
+        </div>
+        <div class="column3">
+          <span class="dob">Date of birth</span>
+          <p class="dob">-------</p>
+          <!-- <p class="dob">{{user.dateOfBirth | date:"shortDate"}}</p> -->
+          <span class="marstatus">Marital Status</span>
+          <p class="marstatus">----------</p>
+          <!-- <p class="marstatus" *ngIf="user.maritalStatus">{{user.maritalStatus}}</p> -->
+          <span class="nation">Nationality</span>
+          <p class="nation">----------</p>
+          <!-- <p class="nation" *ngIf="user.nationality">{{user.nationality}}</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="card4" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Contact Details</h3>
+        <button class="edit1" >Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="cno">Contact No.</span>
+          <p class="cno">-------</p>
+          <!-- <p class="cno">{{user.mobile}}</p> -->
+          <span class="city">City</span>
+          <p class="city">----------</p>
+          <!-- <p class="city" *ngIf="user.city">{{user.city}}</p> -->
+        </div>
+        <div class="column2">
+          <span class="address">Address</span>
+          <p class="address">-------</p>
+          <!-- <p class="address">{{user.address}}</p> -->
+          <span class="pcode">Postal Code</span>
+          <p class="pcode">----------</p>
+          <!-- <p class="pcode" *ngIf="user.postalCode">{{user.postalCode}}</p> -->
+        </div>
+        <div class="column3">
+          <span class="email">Email</span>
+          <p class="email">--------</p>
+          <!-- <p class="email">{{user.email}}</p> -->
+          <span class="state">State</span>
+          <p class="state">----------</p>
+          <!-- <p class="state" *ngIf="user.state">{{user.state}}</p> -->
+        </div>
+      </div>
+    </div>
+    <div class="card5" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Personal Particulars</h3>
+        <button class="edit1" >Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="bname">Bank Name</span>
+          <p class="bname">-------</p>
+          <!-- <p class="bname">{{user.bankname}}</p> -->
+          <span class="adhaarno">Aadhaar Card Number</span>
+          <p class="adhaarno">-------</p>
+          <!-- <p class="adhaarno">{{user.adhaarno}}</p> -->
+        </div>
+        <div class="column2">
+          <span class="bno">Bank Account No.</span>
+          <p class="bno">-------</p>
+          <!-- <p class="bno">{{user.accountno}}</p> -->
+          <span class="panno">Pan Number</span>
+          <p class="panno">-------</p>
+          <!-- <p class="panno">{{user.panno}}</p> -->
+        </div>
+        <div class="column3">
+          <span class="ifsc">IFSC Code</span>
+          <p class="ifsc">-------</p>
+          <!-- <p class="ifsc">{{user.ifsc}}</p> -->
+          <span class="pno">Passport Number</span>
+          <p class="pno">----------</p>
+          <!-- <p class="pno" *ngIf="user.passport">{{user.passport}}</p> -->
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>

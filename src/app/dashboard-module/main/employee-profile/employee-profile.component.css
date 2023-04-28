@@ -29,6 +29,7 @@
   background-color: #F7F7FB ;
   width: 24px;
   height: 24px;
+  padding: 5px;
   cursor: pointer;
 }
 .card1 h2{
@@ -134,8 +135,8 @@ opacity: 0;
 .profile-content h2{
   padding-left: 5px;
 }
-.card2 .profile_pic img:hover{
-   opacity: 0.6;
+.card2 .profile_pic:hover{
+   opacity: 0.4;
   cursor: pointer;
 }
 .card2 .profile_pic:hover .profile-content{
