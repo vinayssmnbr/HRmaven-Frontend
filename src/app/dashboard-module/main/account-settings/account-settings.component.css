@@ -198,7 +198,6 @@
     width: 71px;
     min-height: 29px;
     background: #FFFFFF;
-    /* grey/gray_E0 */
     cursor: pointer;
     border: 1px solid #E0E0E0;
     border-radius: 22px;
@@ -207,6 +206,8 @@
 .edit-password-button {
     display: flex;
     gap: 7.87px;
+    visibility: hidden;
+
 }
 
 .edit-password-button img {
