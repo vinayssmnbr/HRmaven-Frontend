@@ -13,6 +13,7 @@ import { RecruitmentComponent } from './main/recruitment/recruitment.component';
 import { ReportComponent } from './main/report/report.component';
 import { LeavesContentComponent } from './leaves-content/leaves-content.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -28,7 +29,9 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeeModule { }
