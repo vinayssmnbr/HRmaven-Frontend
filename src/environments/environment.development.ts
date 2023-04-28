@@ -25,9 +25,9 @@ export const environment = {
   report: 'https://hrmaven.works/attendance/report',
   profile: 'https://hrmaven.works/user-profile',
   updateleave: 'https://hrmaven.works/attendance/update',
-  attendance:'https://hrmaven.works/attendance/date/attendance',
-  attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
-  attendancegraph:'https://hrmaven.works/attendance/date/report',
+  // attendance:'https://hrmaven.works/attendance/date/attendance',
+  // attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
+  // attendancegraph:'https://hrmaven.works/attendance/date/report',
   getemail: 'https://hrmaven.works/getemails/email',
 
   // //LOCAL URL
@@ -40,7 +40,7 @@ export const environment = {
   // updatepersonaldata :'http://localhost:3000/updatepersonal',
   // getpersonaldata :'http://localhost:3000/getpersonalsdata',
   // resetpwdaccount : 'http://localhost:3000/resetpasswordaccount',
-    // url: 'http://localhost:3000/user-profile',
+  //   url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
   // getData: 'http://localhost:3000/api/find',
@@ -53,4 +53,15 @@ export const environment = {
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
   // getemail : 'http://localhost:3000/getemails/email',
+  attendancegraph:'http://localhost:3000/attendance/date/report',
+  attendancecard:'http://localhost:3000/attendance/date/attendancecard',
+  attendance:'http://localhost:3000/attendance/date/attendance',
+  //getpwd : 'http://localhost:3000/userprofilepwd',
+
+
+
+
+leavegraph:'http://localhost:3000/api/leave/graph/leave',
+leavecontent:'http://localhost:3000/api/leave/data/leaves',
+patchleave:'http://localhost:3000/api/leave/update/leave'
 };

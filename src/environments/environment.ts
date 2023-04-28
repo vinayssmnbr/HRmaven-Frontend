@@ -1,7 +1,6 @@
 export const environment = {
   production: true,
   // LIVE SERVER URL
-
   saveurl : 'https://hrmaven.works/signup',
   loginurl : 'https://hrmaven.works/login',
   Forgoturl :'https://hrmaven.works/forgotpassword',
@@ -26,17 +25,17 @@ export const environment = {
   updateleave:'https://hrmaven.works/attendance/update',
   getemail : 'https://hrmaven.works/getemails/email',
   changepassword : 'https://hrmaven.works/islinkclicked',
-  attendance:'https://hrmaven.works/attendance/date/attendance',
-  attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
-  attendancegraph:'https://hrmaven.works/attendance/date/report',
+  // attendance:'https://hrmaven.works/attendance/date/attendance',
+  // attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
+  // attendancegraph:'https://hrmaven.works/attendance/date/report',
   getpwd : 'https://hrmaven.works/userprofilepwd',
 
 
 
   // //LOCAL URL
-  // attendancegraph:'http://localhost:3000/attendance/date/report',
-  // attendancecard:'http://localhost:3000/attendance/date/attendancecard',
-  // attendance:'http://localhost:3000/attendance/date/attendance',
+  attendancegraph:'http://localhost:3000/attendance/date/report',
+  attendancecard:'http://localhost:3000/attendance/date/attendancecard',
+  attendance:'http://localhost:3000/attendance/date/attendance',
   // updateleave: 'https://hrmaven.works/attendance/update',
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
@@ -58,6 +57,14 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
-//  getemail : 'http://localhost:3000/getemails/email',
+  // getemail : 'http://localhost:3000/getemails/email',
+  // getpwd : 'http://localhost:3000/userprofilepwd',
+  // changepassword : 'http://localhost:3000/islinkclicked',
+
+
+  // leave api
+  leavegraph:'http://localhost:3000/api/leave/graph/leave',
+  leavecontent:'http://localhost:3000/api/leave/data/leaves',
+  patchleave:'http://localhost:3000/api/leave/update/leave'
 
 };

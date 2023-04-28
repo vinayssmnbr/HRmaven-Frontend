@@ -97,31 +97,31 @@
         <!--------------------Apply for leaves------------------->
         <div class="apply-for-leaves">
             <h6>Apply For Leave </h6>
-            <form class="form">
+            <form  [formGroup]="empleaveForm" class="form">
                 <div class="col-3">
                     <div class="form-group">
                         <label for="">From</label><br>
-                        <input type="date" placeholder="29/04/2023">
+                        <input type="date" placeholder="29/04/2023" formControlName="from">
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label for="">To</label><br>
-                        <input type="date" placeholder="29/04/2023">
+                        <input type="date" placeholder="29/04/2023" formControlName="to">
                     </div>
                 </div>
                 <div class="col-3">
 
                     <div class="form-group">
                         <label for="">Duration</label><br>
-                        <input type="text" placeholder="1 day" disabled>
+                        <input type="text" placeholder="1 day"  formControlName="duration" [disabled]="true">
                     </div>
                 </div>
                 <div class="col-3">
 
                     <div class="form-group">
                         <label for="">Category</label><br>
-                        <div class="dropdown_container">
+                        <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                             <div class="dropdwon_select" (click)="dropdownOpen()">
                                 <p>{{Selectvariable}}</p>
                                 <i class="fa-sharp fa-solid fa-caret-down"></i>
@@ -164,7 +164,7 @@
 
             <div class="clear-apply-button">
                 <button class="clear">Clear</button>
-                <button class="apply">Apply</button>
+                <button class="apply" (click)="applyleaves()">Apply</button>
             </div>
         </div>
 
@@ -207,7 +207,8 @@
                                 <p class="mt20">
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
                                         f...</span>
                                 </p>
 
@@ -217,7 +218,8 @@
                                 <p class="mt20">
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
                                         f...</span>
                                 </p>
                             </td>
@@ -232,7 +234,8 @@
                                 <p class="mt20">
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
                                         f...</span>
                                 </p>
 
@@ -242,7 +245,8 @@
                                 <p class="mt20">
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
                                         f...</span>
                                 </p>
                             </td>
@@ -282,5 +286,23 @@
             </div>
         </div>
     </div>
+
+
+<!-- ----------------------Leave applied successfully! Modal------------------------ -->
+
+    <form class="leave_approved_form" *ngIf="leave_approved_form">
+        <div class="leave_approved_modal">
+            <i class="fa-solid fa-xmark" (click)="closemodal()"></i>
+            <div class="logo_bg">
+                <img src="assets/images/tick.png" alt="image">
+            </div>
+            <h4>Leave applied successfully!</h4>
+            <p>You’ll be notified about the decision of HR regarding your leave.</p>
+            <div class="Done_form_btn">
+                <button class="Done_btn" (click)="closemodal()">Done</button>
+            </div>
+        </div>
+    </form>
+
 
 </div>

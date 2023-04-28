@@ -38,6 +38,7 @@ export class EmployeeProfileComponent {
     console.log("Adding a employee");
     this.employees().push(this.newEmployee());
   }
+
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
   }
