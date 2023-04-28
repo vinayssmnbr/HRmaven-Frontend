@@ -37,7 +37,7 @@ export class LeavesContentComponent {
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
-    this.Selectvariable="all";
+    this.Selectvariable = "all";
     this.fetchPendingLeave();
     this.graphleave();
     this.leavecontentload()
@@ -51,9 +51,10 @@ export class LeavesContentComponent {
 
   //////////////////////Harpreet Singh work on leaves  //////////////////////////////
 
-  acceptleave: any = [];
-  rejectleave: any[];
-  pendingleave: any[];
+  acceptleave = new Array();
+  rejectleave = new Array();
+  pendingleave = new Array();
+  allLeaves = [];
   pendingshow = true;
   rejectshow = false;
   acceptshow = false;
@@ -64,8 +65,6 @@ export class LeavesContentComponent {
 
   graphleave() {
     this.dashService.getleavegraph().subscribe((res: any) => {
-      console.log('data', res);
-
       res.map((d: any) => {
         this.total = this.total + d.count;
         if (d._id == "pending") {
@@ -77,7 +76,6 @@ export class LeavesContentComponent {
         if (d._id == "accept") {
           this.acceptcount = d.count;
         }
-        console.log(this.total);
       })
     })
   }
@@ -100,7 +98,6 @@ export class LeavesContentComponent {
       return d;
     });
     this.showSearchBox = true;
-    console.log(this.pendingleave);
   }
 
   leavecontentload() {
@@ -117,9 +114,8 @@ export class LeavesContentComponent {
         }
 
       })
-      console.log(this.acceptleave);
-      console.log(this.rejectleave);
-      console.log(this.acceptleave);
+
+
     })
   }
 
@@ -144,9 +140,9 @@ export class LeavesContentComponent {
 
   search() {
     this.filter.value.category = this.Selectvariable;
-    console.log(this.filter.value);
+
     this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
-      console.log(res);
+
       res.result.map((d: any) => {
         if (d._id == "pending") {
           this.pendingleave = d.pending;
@@ -154,7 +150,7 @@ export class LeavesContentComponent {
         else if (d._id == "reject") {
           this.rejectleave = d.leave;
         }
-        else if(d._id== "accept") {
+        else if (d._id == "accept") {
           this.acceptleave = d.leave;
         }
 
@@ -167,22 +163,22 @@ export class LeavesContentComponent {
     this.filter.value.from = '',
       this.filter.value.to = '',
       this.filter.value.category = 'all',
-      console.log(this.filter.value);
-    this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
-      console.log(res);
-      res.result.map((d: any) => {
-        if (d._id == "pending") {
-          this.pendingleave = d.pending;
-        }
-        else if (d._id == "reject") {
-          this.rejectleave = d.leave;
-        }
-        else if(d._id=="accept") {
-          this.acceptleave = d.leave;
-        }
 
+      this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
+
+        res.result.map((d: any) => {
+          if (d._id == "pending") {
+            this.pendingleave = d.pending;
+          }
+          else if (d._id == "reject") {
+            this.rejectleave = d.leave;
+          }
+          else if (d._id == "accept") {
+            this.acceptleave = d.leave;
+          }
+
+        })
       })
-    })
   }
 
   /////////////////////////////////////////////////////////////////////////
@@ -205,7 +201,7 @@ export class LeavesContentComponent {
 
   // async updatereload() {
   //   this.dashService.getLeaves().subscribe((res: any) => {
-  //     console.log('data', res);
+
   //     this.leaves = res;
   //     this.totalCount = this.getTotal();
   //     this.acceptCount = this.getCount('accept');
@@ -221,13 +217,13 @@ export class LeavesContentComponent {
   //       if (a.status < b.status) return -1;
   //       return 1;
   //     });
-  //     console.log(this.leaves);
+
   //   });
   // }
 
   updateafteraction() {
     this.dashService.getLeaves().subscribe((res: any) => {
-      console.log('data', res);
+
       // this.leaves = res;
       this.totalCount = this.getTotal();
       this.acceptCount = this.getCount('accept');
@@ -243,7 +239,7 @@ export class LeavesContentComponent {
       //   if (a.status < b.status) return -1;
       //   return 1;
       // });
-      // console.log(this.leaves);
+
     });
   }
   getTotal() {
@@ -273,7 +269,7 @@ export class LeavesContentComponent {
 
   changeFilter(value: any) {
     this.test = value;
-    console.log(this.test);
+
   }
 
   // async updateLeaveStatus(object: any, status: 'accept' | 'reject') {
@@ -314,7 +310,7 @@ export class LeavesContentComponent {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
-    console.log(arr.name);
+
   }
 
   contentdropdown1: boolean = false;
@@ -327,7 +323,7 @@ export class LeavesContentComponent {
     this.Selectvariable1 = arr1.name;
     this.colorvariable = arr1.id;
     this.contentdropdown1 = false;
-    console.log(arr1.name);
+
   }
 
   id: any = 'Pending';
@@ -373,20 +369,19 @@ export class LeavesContentComponent {
 
   showModal2 = false;
   openModal2() {
+    let accepttemp = [];
+    let pendingtemp = [];
     if (this.acceptall == false) {
-      console.log(this.acceptmessage);
-      console.log(this.acceptdata);
-      console.log(this.index);
+
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
-
+      this.pendingcount = this.pendingcount - 1;
+      this.acceptcount = this.acceptcount + 1;
 
       this.dashService.updateleavestatus(this.acceptdata._id, "accept", this.acceptmessage).subscribe((res) => {
-        console.log(res);
       });
 
       this.dashService.updateleave(this.acceptdata.uid, this.acceptdata.from, this.acceptdata.to).subscribe((res: any) => {
-        console.log(res);
       })
 
       this.acceptleave.push(row);
@@ -396,40 +391,48 @@ export class LeavesContentComponent {
       this.showModal = false;
     }
     else {
-      console.log(this.acceptdata);
-      let temp=[];
-      this.acceptdata.map((data: any,index:any,arr) => {
+
+
+      this.acceptdata.map((data: any, index: any, arr) => {
         if (data.select == true) {
           this.dashService.updateleavestatus(data._id, "accept", this.acceptmessage).subscribe((res) => {
-            console.log(res);
           });
-          const row=this.acceptdata[index];
-          temp.push(row);
+          const row = this.acceptdata[index];
+          this.acceptleave.push(row);
           this.dashService.updateleave(data.uid, data.from, data.to).subscribe((res: any) => {
-            console.log(res);
+
           })
+          this.pendingcount = this.pendingcount - 1;
+          this.acceptcount = this.acceptcount + 1;
+
+        } else {
+          const row = this.acceptdata[index];
+          pendingtemp.push(row);
         }
       })
-      this.acceptleave=temp;
+      //////////////////////////////////////////
+      this.pendingleave = pendingtemp;
       this.showModal2 = true;
       this.showModal = false;
-      console.log(this.acceptmessage);
       this.acceptall = false;
-      this.leavecontentload();
-      this.graphleave();
+      // this.leavecontentload();
+      // this.graphleave();
     }
   }
   showModal3 = false;
   openModal3() {
+    let pendingtemp = [];
     if (this.rejectall == false) {
       this.showModal3 = true;
       this.showModal1 = false;
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
-
+      this.rejectcount = this.rejectcount + 1;
       this.dashService.updateleavestatus(this.acceptdata._id, "reject", this.acceptmessage).subscribe((res) => {
-        console.log(res);
+
       });
+      this.pendingcount = this.pendingcount - 1;
+      this.rejectcount = this.rejectcount + 1;
       this.acceptmessage = "";
       this.rejectleave.push(row);
       this.graphleave();
@@ -437,16 +440,23 @@ export class LeavesContentComponent {
     else {
       this.showModal3 = true;
       this.showModal1 = false;
-      this.acceptdata.map((data: any) => {
+      this.acceptdata.map((data: any, index: any) => {
         if (data.select == true) {
           this.dashService.updateleavestatus(data._id, "reject", this.acceptmessage).subscribe((res) => {
-            console.log(res);
           });
+          this.pendingcount = this.pendingcount - 1;
+          this.rejectcount = this.rejectcount + 1;
+          const row = this.acceptdata[index];
+          this.rejectleave.push(row);
+        }
+        else {
+          const row = this.acceptdata[index];
+          pendingtemp.push(row);
         }
       })
-      this.rejectall=false;
+      this.pendingleave = pendingtemp;
+      this.rejectall = false;
       this.acceptmessage = "";
-      this.graphleave();
     }
   }
   closeModal() {

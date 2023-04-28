@@ -43,7 +43,7 @@ export class AttendanceContentComponent implements OnInit {
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card:any=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+  card:any=[];
   constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
@@ -181,7 +181,7 @@ changefunction()
 
     //   // Use attendancePercentage to update your UI
     // });
-    
+
     //------------ Progress Bar Girija----------
     const max = -219.99078369140625;
     const progressElements = document.querySelectorAll('.progress');
@@ -317,7 +317,7 @@ changefunction()
     this.designationdropdownOption = !this.designationdropdownOption;
 
   }
-  
+
 
 }
 function getCurrentDate() {

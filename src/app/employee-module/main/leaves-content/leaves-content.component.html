@@ -107,14 +107,14 @@
                 <div class="col-3">
                     <div class="form-group">
                         <label for="">To</label><br>
-                        <input type="date" placeholder="29/04/2023" formControlName="to">
+                        <input type="date" placeholder="29/04/2023" formControlName="to" (change)="getDates()">
                     </div>
                 </div>
                 <div class="col-3">
 
                     <div class="form-group">
                         <label for="">Duration</label><br>
-                        <input type="text" placeholder="1 day"  formControlName="duration" [disabled]="true">
+                        <input type="text" placeholder="days" [(ngModel)]="str" formControlName="duration" [disabled]="true" readonly>
                     </div>
                 </div>
                 <div class="col-3">
@@ -122,7 +122,9 @@
                     <div class="form-group">
                         <label for="">Category</label><br>
                         <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                          <input type="text" style="display:none" formControlName="category">
                             <div class="dropdwon_select" (click)="dropdownOpen()">
+
                                 <p>{{Selectvariable}}</p>
                                 <i class="fa-sharp fa-solid fa-caret-down"></i>
                             </div>
@@ -143,7 +145,7 @@
                 <div class="col-6">
                     <div class="reason">
                         <label for="">Reason</label>
-                        <textarea placeholder="Type your reason here..."></textarea>
+                        <textarea placeholder="Type your reason here..." formControlName="reason"></textarea>
                     </div>
                 </div>
                 <div class="col-6">
@@ -164,7 +166,7 @@
 
             <div class="clear-apply-button">
                 <button class="clear">Clear</button>
-                <button class="apply" (click)="applyleaves()">Apply</button>
+                <button  class="apply" (click)="applyleaves()">Apply</button>
             </div>
         </div>
 
@@ -197,88 +199,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>26/04/2023</td>
-                            <td>30/04/2023</td>
-                            <td>01/05/2023</td>
-                            <td>2 days</td>
-                            <td>Casual Leave</td>
+                        <tr  *ngFor=" let n of leaves;">
+                            <td>{{n.appliedOn | date:'shortDate'}}</td>
+                            <td>{{n.from | date:'shortDate'}}</td>
+                            <td>{{n.to | date:'shortDate'}}</td>
+                            <td>{{n.duration}}</td>
+                            <td>{{n.category}}</td>
                             <td>
                                 <p class="mt20">
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
-                                        family
-                                        f...</span>
+                                        data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}
+                                        </span>
                                 </p>
 
                             </td>
-                            <td>Rejected</td>
+                            <td>{{n.status}}</td>
                             <td>
                                 <p class="mt20">
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
-                                        family
-                                        f...</span>
+                                        data-tooltip-pos="right" data-tooltip-length="medium">{{n.message}}</span>
                                 </p>
                             </td>
                         </tr>
-                        <tr>
-                            <td>26/04/2023</td>
-                            <td>30/04/2023</td>
-                            <td>01/05/2023</td>
-                            <td>2 days</td>
-                            <td>Casual Leave</td>
-                            <td>
-                                <p class="mt20">
-                                    <span class="tooltip"
-                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
-                                        family
-                                        f...</span>
-                                </p>
-
-                            </td>
-                            <td>Rejected</td>
-                            <td>
-                                <p class="mt20">
-                                    <span class="tooltip"
-                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
-                                        family
-                                        f...</span>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>26/04/2023</td>
-                            <td>30/04/2023</td>
-                            <td>01/05/2023</td>
-                            <td>2 days</td>
-                            <td>Casual Leave</td>
-                            <td>
-                                <p class="mt20">
-                                    <span class="tooltip"
-                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
-                                        family
-                                        f...</span>
-                                </p>
-
-                            </td>
-                            <td>Rejected</td>
-                            <td>
-                                <p class="mt20">
-                                    <span class="tooltip"
-                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
-                                        family
-                                        f...</span>
-                                </p>
-                            </td>
-                        </tr>
-
                     </tbody>
 
                 </table>

@@ -41,4 +41,29 @@ export class EmpService {
     return dateArray;
   }
 
+
+  leavegraph(){
+    const id = this.cookie.get('id');
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id':id
+      }
+    )
+    return this.http.get('http://localhost:3000/api/leave/emp/leave',{ headers});
+
 }
+
+leavehistory() {
+    const id = this.cookie.get('id');
+    const headers= new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id':id
+      }
+    )
+    return this.http.get('http://localhost:3000/api/leave/emp/history',{ headers});
+
+}
+}
+

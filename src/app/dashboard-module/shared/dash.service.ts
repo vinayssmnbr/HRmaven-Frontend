@@ -206,12 +206,8 @@ export class DashService {
   }
 
   updateleave(uid:any,from:any,to:any) {
-    console.log(uid);
-    console.log(from);
-    console.log(to);
+
         const Array = this.getDates(from,to);
-        console.log(Array.length);
-        console.log(Array);
         const body = {  };
         body['Array'] = Array;
         body['uid'] = uid;
@@ -246,7 +242,7 @@ export class DashService {
     });
     return this.http.post(url,{data}, { headers, responseType: 'blob' });
   }
-  
+
   updateEmpStatus(id,status):Observable<any>{
     const url = `${this.updatempdata}/${id}`;
     return this.http.patch(url,{status})

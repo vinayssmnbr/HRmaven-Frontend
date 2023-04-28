@@ -177,6 +177,7 @@ export class LoginEmployeeComponent {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
+        // this.cookie.set('token', token);
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
@@ -209,7 +210,7 @@ export class LoginEmployeeComponent {
     //   }
 
     //   this.employeemail = res;
-    
+
 
     //   console.log('Response from API:', this.employeemail);
     // });

@@ -62,7 +62,7 @@ export const environment = {
   changepassword : 'http://localhost:3000/islinkclicked',
   // leave api
   leavegraph:'http://localhost:3000/api/leave/graph/leave',
-  leavecontent:'http://localhost:3000/api/leave/data/leaves',
+  leavecontent:'http://localhost:3000/api/leavdata/leavese/',
   patchleave:'http://localhost:3000/api/leave/update/leave'
 
 };
