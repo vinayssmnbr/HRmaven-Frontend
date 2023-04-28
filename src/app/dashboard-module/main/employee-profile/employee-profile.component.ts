@@ -112,6 +112,9 @@ export class EmployeeProfileComponent {
     postalCode: new FormControl(''),
     city: new FormControl(''),
     address: new FormControl(''),
+    profemail:new FormControl(''),
+    yop:new FormControl(''),
+    yop1:new FormControl(''),
   });
 
 
@@ -356,6 +359,9 @@ export class EmployeeProfileComponent {
     this.showModal = true;
     this.modalContent4 = true;
     this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent6 = false;
+    this.modalContent7 = false;
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
   }
