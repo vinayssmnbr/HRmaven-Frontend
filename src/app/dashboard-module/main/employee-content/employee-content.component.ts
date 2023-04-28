@@ -667,6 +667,7 @@ export class EmployeeContentComponent implements OnInit {
 
         console.log(event.target.value)
     }
+
     this.dashService.updateEmpStatus(user._id ,event.target.value).subscribe(
       (response) => {
         console.log(response);
@@ -676,6 +677,7 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
     }
+    
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';

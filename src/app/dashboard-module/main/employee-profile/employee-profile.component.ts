@@ -598,19 +598,12 @@ export class EmployeeProfileComponent {
       return;
     }
     this.onUpload(this.user)
-  }
-  onUpload(user): void {
-    user['_id'] = this.user._id;
-    this.dashService
-      .upload(this.selectedFile, user._id)
-      .then((res) => {
-        console.log("file uploaded successfully")
-      })
-      .catch((err) => {
-        console.log(err)
 
-      });
-    }
+  }
+  onUpload(user){
+    user['_id'] = this.user._id;
+    this.dashService.upload(this.selectedFile, user._id)
+  }
   viewMore:boolean=false;
   showbutton:boolean=true;
   showMoredata(){

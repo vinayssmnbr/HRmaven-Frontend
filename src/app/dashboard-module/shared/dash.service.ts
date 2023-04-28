@@ -258,15 +258,19 @@ export class DashService {
 
   private client: filestack.Client;
   fileUrl: any;
-  upload(file: File, userId?: string): Promise<any> {
-    return this.client.upload(file).then((res) => {
-      this.fileUrl = res.url;
-      console.log('imageurl', this.fileUrl, userId);
-      this.updateEmployee({ _id: userId, url: res.url }).subscribe((res) => {
-        console.log('user', res);
-      });
-    });
+
+async upload(file:File, userId?:string){
+  try{
+    const res=await this.client.upload(file)
+    this.fileUrl=res.url;
+    const user=await this.updateEmployee({_id:userId,url:res.url}).subscribe((result)=>{
+      console.log("update",result)
+    })
+  }catch(error){
+    console.log(error)
   }
+
+}
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file)
