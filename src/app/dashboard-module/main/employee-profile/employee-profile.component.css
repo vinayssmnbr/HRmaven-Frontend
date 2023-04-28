@@ -353,24 +353,7 @@ width: 11%;
   margin-bottom: 20px;
 }
 
-/* .uid{
-  margin-left: -28px;
-}
-.gender{
-  margin-left: -48px;
-}
-.marstatus{
-  margin-right: 152px;
-}
-.dob{
-  margin-right: 36px;
-}
-.nation{
-  margin-right: 168px;
-}
-.mname{
-  margin-left: -17px;
-} */
+
 .card4{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -385,18 +368,7 @@ width: 11%;
   color: #444444;
   margin-bottom: 17px;
 }
-/* .pcode{
-  margin-left: -10px;
-}
-.email{
-  margin-right: 90px;
-}
-.state{
-  margin-right: 183px;
-}
-.address{
-  margin-left: -48px;
-} */
+
 .card5 {
   padding: 23px 50px;
   border: 1px solid rgba(47, 44, 159, 0.15);
@@ -410,18 +382,7 @@ width: 11%;
     color: #444444;
     margin-bottom: 17px;
 }
-/* .bno{
-  margin-left: 16px;
-}
-.ifsc{
-  margin-right: 160px;
-}
-.panno{
-  margin-left: -45px;
-}
-.pno{
-  margin-right: 128px;
-} */
+
 .card6{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -435,21 +396,7 @@ width: 11%;
     color: #444444;
     margin-bottom: 17px;
 }
-/* .mper{
-  margin-left: -125px;
-}
-.gcol{
-  margin-left: 35px;
-}
-.inst2{
-  margin-right: 62px;
-}
-.stream{
-  margin-right: 158px;
-}
-.pgcol{
-  margin-left: 82px;
-} */
+
 .card7{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -466,15 +413,7 @@ width: 11%;
 .card7 hr{
   margin-bottom: 25px;
 }
-/* .duration2{
-  margin-left: -35px;
-}
-.designation2{
-  margin-right: 102px;
-}
-.designation{
-  margin-right: 60px;
-} */
+
 .card8{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -488,18 +427,6 @@ width: 11%;
     color: #444444;
     margin-bottom: 17px;
 }
-/* .jdate{
-  margin-right: 130px;
-}
-.ctc{
-  margin-right: 167px;
-}
-.timings{
-  margin-left: -52px;
-}
-.estatus{
-  margin-left: -65px;
-} */
 
 .modal {
   position: fixed;
@@ -633,6 +560,17 @@ input[type='text']{
     border-radius: 8px;
     outline: none;
     margin-bottom: 40px;
+}
+input[type='email'] {
+  width: 270px;
+  font-family: 'Outfit', sans-serif;
+  height: 40px;
+  padding-left: 17px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB;
+  border-radius: 8px;
+  outline: none;
+  /* margin-bottom: 20px; */
 }
 input[type='number'] {
   width: 270px;
