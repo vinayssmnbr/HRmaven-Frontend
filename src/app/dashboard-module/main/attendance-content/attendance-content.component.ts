@@ -41,11 +41,11 @@ export class AttendanceContentComponent implements OnInit {
   loader = true;
   datez: any = '';
   table1Visible = false;
-  table2Visible = false;
+  table2Visible = true;
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card:any=[];
+  card:any=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
   constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
@@ -207,14 +207,15 @@ changefunction()
       this.employee1 = res;
     });
   }
+
   calender=true;
   toggleTable1() {
-    this.showCard = !this.showCard;
-    this.showTable = !this.showTable;
+    this.showCard = true;
+    this.showTable = false;
     this.table1Visible = !this.table1Visible;
     this.table2Visible = false; // ensure other table is hidden
-    this.calender = true;
-    this.dropdown = false;
+    this.calender = false;
+    this.dropdown = true;
     const d= new Date();
     const month=d.getMonth();
     this.Selectvariable=this.array[month].name;
@@ -222,10 +223,10 @@ changefunction()
   }
   dropdown = false;
   async toggleTable2() {
-    this.dropdown = true;
-    this.calender = false;
-    this.showCard = !this.showCard;
-    this.showTable = !this.showTable;
+    this.dropdown = false;
+    this.calender = true;
+    this.showCard = false;
+    this.showTable = true;
     this.table2Visible = !this.table2Visible;
     this.table1Visible = false;
   }
