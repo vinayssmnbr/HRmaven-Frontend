@@ -16,9 +16,11 @@
             <div class="profile-image">
                 <div class="upload_content">
                     <div class="content-overlay"></div>
-                    <img class="content-image" src="assets/images/user 1.svg" alt="">
+                    <!-- <img class="content-image" src="assets/images/user 1.svg" alt=""> -->
+                    <img class="content-image" src="{{profileimage}}" alt="">
                     <div class="content-details fadeIn-bottom">
-                        <img src="assets/images/upload.png" alt="">
+                        <!-- <img src="assets/images/upload.png" alt=""> -->
+                        <!-- <img src="{{profileimage}}" alt=""> -->
                         <h3 class="content-title">UPLOAD </h3>
                         <p class="content-text">PROFILE PICTURE</p>
                     </div>
@@ -113,7 +115,8 @@
                     <div class="head-office-edit">
                         <div class="head-office-text">
                             <h6>Professional Email</h6>
-                            <p>hr@hrmaven.com</p>
+                            <!-- <p>hr@hrmaven.com</p> -->
+                            <p>{{professional_email_id}}</p>
                         </div>
 
 
@@ -263,13 +266,13 @@
                     <div class="form__group">
                         <label for="empname">Name</label>
                         <input type="text" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;"  placeholder='Eg. Abhishek Sharma'  id="empname" disabled />
+                        color: #aaa;"  placeholder='{{employeename}}'  id="empname" disabled />
 
                     </div>
                     <div class="form__group">
                         <label >Personal Email</label>
-                        <input type="email" class="form_input"  placeholder='Eg. abhishek1990@gmail.com' 
-                        formControlName="phone"   
+                        <input type="email" class="form_input"  placeholder='{{employeeemail}}' 
+                        formControlName="personalemail"   
                         required />
                     </div>
                 </div>
@@ -281,11 +284,11 @@
                         <label for="professionalemail">Professional Email</label>
                         <input type="email" class="form_input"
                         style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder='hr@hrmaven.com' id="professionalemail" disabled />
+                        color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
                     </div>
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='Eg. +91 9856234510' formControlName="phone" id="phone" required />
+                        <input type="number" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required />
                     </div>
                 </div>
 

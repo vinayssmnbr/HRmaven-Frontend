@@ -87,6 +87,7 @@ export class LoginComponent {
 
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
+      // this.router.navigateByUrl('dashboard')
     }
     // this.userService.allDataLogin();
     
