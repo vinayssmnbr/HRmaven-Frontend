@@ -702,60 +702,23 @@ input:focus {
 }
 
 /* -------------------Progress Bar------------------------- */
-
-@keyframes growProgressBar {
-
-    0%,
-    33% {
-        --pgPercentage: 0;
-    }
-
-    100% {
-        --pgPercentage: var(--value);
-    }
-}
-
-@property --pgPercentage {
-    syntax: '<number>';
-    inherits: false;
-    initial-value: 0;
-}
-
-div[role="progressbar"] {
-    --pgPercentage: var(--value);
-    animation: growProgressBar 3s 1 forwards;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background:
-        radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
-        conic-gradient(#369 calc(var(--pgPercentage) * 1%), #def 0);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    color: #369;
-}
-
-div[role="progressbar"]::before {
-    counter-reset: percentage var(--value);
-    content: counter(percentage) '%';
-}
-.progressbar-outer {
-  --pgPercentage: var(--value);
-  width:60px;
-  background: conic-gradient(crimson 100deg, black 0deg);
-  background: conic-gradient(crimson var(--pgPercentage)deg, black 0deg);
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-.progressbar-inner{
-  position: absolute;background-color: lightgrey;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
+  .progress{
+      width: 50px;
+      height: 50px;
+      z-index: 1;
+  }
+  .progress .track, .progress .fill{
+      fill: rgba(0, 0, 0, 0);
+      stroke-width: 10;
+      transform: rotate(90deg)translate(0px, -80px);
+  }
+  .progress .track{
+      stroke: #c8cacb;
+    stroke-width: 6;
+  }
+  .progress .fill {
+      stroke: #008eff;
+      stroke-dasharray: 219.99078369140625;
+      stroke-dashoffset: -219.99078369140625;
+      transition: stroke-dashoffset 1s;
+  }

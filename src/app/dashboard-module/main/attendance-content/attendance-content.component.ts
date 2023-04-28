@@ -12,8 +12,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./attendance-content.component.css'],
 })
 export class AttendanceContentComponent implements OnInit {
-  //------------ Progress Bar----------
-
   designationdropdownOption: boolean = false;
   progressInterval: any;
   buttonbackgroundColor = '#2F2C9F';
@@ -183,6 +181,14 @@ changefunction()
 
     //   // Use attendancePercentage to update your UI
     // });
+    
+    //------------ Progress Bar Girija----------
+    const max = -219.99078369140625;
+    const progressElements = document.querySelectorAll('.progress');
+    progressElements.forEach((value, index) => {
+      const percent = parseFloat(value.getAttribute('data-progress'));
+      value.querySelector('.fill').setAttribute('style', `stroke-dashoffset: ${(100 - percent) / 100 * max}`);
+    });
   }
 
   changeColor() {
@@ -311,6 +317,7 @@ changefunction()
     this.designationdropdownOption = !this.designationdropdownOption;
 
   }
+  
 
 }
 function getCurrentDate() {
