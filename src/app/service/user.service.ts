@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
+import { CookieService} from 'ngx-cookie-service'
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +26,7 @@ export class UserService {
   private loginurl = environment.loginurl;
   private Forgoturl = environment.Forgoturl;
   private Reseturl = environment.Reseturl;
+  private resetpwdaccount = environment.resetpwdaccount
   private url = environment.url;
   private auth = environment.auth;
   private  emailurl = environment.getemail
@@ -69,39 +70,17 @@ export class UserService {
     });
     return this.http.post(this.Reseturl, data, { headers });
   }
-  // newpwd(data: any, token: any): Observable<any> {
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'auth-token': token,
-  //     Accept: 'application/json',
-  //   });
 
-  //   if (data !== null) {
-  //     return this.http.post(this.Reseturl, data, { headers }).pipe(
-  //       catchError((error) => {
-  //         console.log('Error:', error);
-  //         return throwError(error);
-  //       })
-  //     );
-  //   } else {
-  //     // If data is null, return an empty observable
-  //     return of(null);
-  //   }
-  // }
+  newpwdaccount(email: any ,data: any) {
+ 
+    return this.http.post(`${this.resetpwdaccount}/${email}`, data);
+  }
 
 
 
 
 
-  // newpwdd(token: any){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'auth-token': token,
-  //     Accept: 'application/json',
-  //   });
-
-  //   return this.http.get(this.geteseturl,{ headers });
-  // }
+  
 
 
 

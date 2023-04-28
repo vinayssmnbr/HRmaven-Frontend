@@ -98,7 +98,7 @@
 .Active.active p{
   color: #2F2C9F;
     font-weight: 500;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
     padding-left: 8px;
     width: 60px;
   }
@@ -327,9 +327,10 @@ tbody {
 
 .table-wrapper {
     margin-top: 19px;
-    width: 100%;
-    overflow-y: auto;
-    /* height: 600px; */
+      width: 100%;
+      overflow-y: auto;
+      min-height: 60px;
+      height: calc(100vh - 236px);
 }
 tbody{
   overflow-y: auto;
@@ -351,15 +352,17 @@ tbody{
     font-size: 20px;
 }
 
- table::-webkit-scrollbar {
-    width: 10px;
+ .table-wrapper::-webkit-scrollbar {
+    width: 8px;
+   cursor: pointer;
 }
 
- table::-webkit-scrollbar-track {
+ .table-wrapper::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
- table::-webkit-scrollbar-thumb {
+ .table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
     background: #888;
 }
 input[type='checkbox']{

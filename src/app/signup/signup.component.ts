@@ -91,6 +91,9 @@ export class SignupComponent {
     //     }
     //   }
     // }, 8000);
+    if (this.userService.isUserLoggedIn()) {
+      this.router.navigate(['dashboard']);
+    }
   }
 
 
@@ -172,7 +175,7 @@ onSubmit(data:any){
       document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
   console.log("result:",result)
   console.log("object_id:",result.user._id)
-    localStorage.setItem('userId', result.user._id)
+    localStorage.setItem('email', this.sigupform.controls['email'].value)
 
   })
 }

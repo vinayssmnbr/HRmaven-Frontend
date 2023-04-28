@@ -95,78 +95,78 @@
             </div>
         </div>
         <!--------------------Apply for leaves------------------->
-    <div class="apply-for-leaves">
-        <h6>Apply For Leave </h6>
-        <form class="form">
-            <div class="col-3">
-            <div class="form-group">
-                <label for="">From</label><br>
-                <input type="date" placeholder="29/04/2023">
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label for="">To</label><br>
-                <input type="date" placeholder="29/04/2023">
-            </div>
-        </div>
-        <div class="col-3">
-
-            <div class="form-group">
-                <label for="">Duration</label><br>
-                <input type="text" placeholder="1 day" disabled>
-            </div>
-            </div>
-        <div class="col-3">
-
-            <div class="form-group">
-                <label for="">Category</label><br>
-                <div class="dropdown_container">
-                    <div class="dropdwon_select" (click)="dropdownOpen()">
-                        <p>{{Selectvariable}}</p>
-                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+        <div class="apply-for-leaves">
+            <h6>Apply For Leave </h6>
+            <form class="form">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="">From</label><br>
+                        <input type="date" placeholder="29/04/2023">
                     </div>
-                    <div class="select_content" *ngIf="contentdropdown">
-                        <ul>
-                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                                (click)="Changeselect(arr)">
-                                {{arr.name}}</li>
-                        </ul>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="">To</label><br>
+                        <input type="date" placeholder="29/04/2023">
+                    </div>
+                </div>
+                <div class="col-3">
+
+                    <div class="form-group">
+                        <label for="">Duration</label><br>
+                        <input type="text" placeholder="1 day" disabled>
+                    </div>
+                </div>
+                <div class="col-3">
+
+                    <div class="form-group">
+                        <label for="">Category</label><br>
+                        <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                        {{arr.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!--Apply for leaves-->
+            <div class="reason-attachments">
+                <div class="col-6">
+                    <div class="reason">
+                        <label for="">Reason</label>
+                        <textarea placeholder="Type your reason here..."></textarea>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="reason">
+                        <label for="">Attachments(Optional)</label>
+                        <div class="textarea">
+                            <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
+                            <p class="first">Select a file or drag and drop here</p>
+                            <p class="second">Supported formats: pdf, jpg, png</p>
+                            <div class="choose-btn">
+                                <button class="choose-file">Choose File</button>
+                                <input type="file">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </form>
 
-        <!--Apply for leaves-->
-        <div class="reason-attachments">
-            <div class="col-6">
-            <div class="reason">
-                <label for="">Reason</label>
-                <textarea placeholder="Type your reason here..."></textarea>
+            <div class="clear-apply-button">
+                <button class="clear">Clear</button>
+                <button class="apply" (click)="applyleaves()">Apply</button>
             </div>
         </div>
-        <div class="col-6">
-            <div class="reason">
-                <label for="">Attachments(Optional)</label>
-                <div class="textarea">
-                    <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
-                    <p class="first">Select a file or drag and drop here</p>
-                    <p class="second">Supported formats: pdf, jpg, png</p>
-                    <div class="choose-btn">
-                        <button class="choose-file">Choose File</button>
-                        <input type="file">
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="clear-apply-button">
-            <button class="clear">Clear</button>
-            <button class="apply">Apply</button>
-        </div>
-    </div>
 
     </div>
 
@@ -203,20 +203,26 @@
                             <td>01/05/2023</td>
                             <td>2 days</td>
                             <td>Casual Leave</td>
-                            <td>I have to attend some family...</td>
-                            <td>Rejected</td>
-                            <td>Due to staffing limitation...</td>
-                        </tr>
+                            <td>
+                                <p class="mt20">
+                                    <span class="tooltip"
+                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
+                                        f...</span>
+                                </p>
 
-                        <tr>
-                            <td>12/04/20233</td>
-                            <td>15/04/2023</td>
-                            <td>15/04/2023</td>
-                            <td>2 days</td>
-                            <td>Medical Leave</td>
-                            <td>My health is not good...</td>
-                            <td>Approved</td>
-                            <td>-----</td>
+                            </td>
+                            <td>Rejected</td>
+                            <td>
+                                <p class="mt20">
+                                    <span class="tooltip"
+                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
+                                        f...</span>
+                                </p>
+                            </td>
                         </tr>
                         <tr>
                             <td>26/04/2023</td>
@@ -224,21 +230,55 @@
                             <td>01/05/2023</td>
                             <td>2 days</td>
                             <td>Casual Leave</td>
-                            <td>I have to attend some family...</td>
+                            <td>
+                                <p class="mt20">
+                                    <span class="tooltip"
+                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
+                                        f...</span>
+                                </p>
+
+                            </td>
                             <td>Rejected</td>
-                            <td>Due to staffing limitation...</td>
+                            <td>
+                                <p class="mt20">
+                                    <span class="tooltip"
+                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
+                                        f...</span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>26/04/2023</td>
+                            <td>30/04/2023</td>
+                            <td>01/05/2023</td>
+                            <td>2 days</td>
+                            <td>Casual Leave</td>
+                            <td>
+                                <p class="mt20">
+                                    <span class="tooltip"
+                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
+                                        f...</span>
+                                </p>
+
+                            </td>
+                            <td>Rejected</td>
+                            <td>
+                                <p class="mt20">
+                                    <span class="tooltip"
+                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                                        data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some
+                                        family
+                                        f...</span>
+                                </p>
+                            </td>
                         </tr>
 
-                        <tr>
-                            <td>12/04/20233</td>
-                            <td>15/04/2023</td>
-                            <td>15/04/2023</td>
-                            <td>2 days</td>
-                            <td>Medical Leave</td>
-                            <td>My health is not good...</td>
-                            <td>Approved</td>
-                            <td>-----</td>
-                        </tr>
                     </tbody>
 
                 </table>
@@ -246,5 +286,23 @@
             </div>
         </div>
     </div>
-    
+
+
+<!-- ----------------------Leave applied successfully! Modal------------------------ -->
+
+    <form class="leave_approved_form" *ngIf="leave_approved_form">
+        <div class="leave_approved_modal">
+            <i class="fa-solid fa-xmark" (click)="closemodal()"></i>
+            <div class="logo_bg">
+                <img src="assets/images/tick.png" alt="image">
+            </div>
+            <h4>Leave applied successfully!</h4>
+            <p>You’ll be notified about the decision of HR regarding your leave.</p>
+            <div class="Done_form_btn">
+                <button class="Done_btn" (click)="closemodal()">Done</button>
+            </div>
+        </div>
+    </form>
+
+
 </div>

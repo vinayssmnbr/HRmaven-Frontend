@@ -42,11 +42,25 @@ export class LeavesContentComponent {
   employeemaintable = true;
   tablehistory() {
     this.leaveshistory = true;
-  this.employeemaintable = false;
-
+    this.employeemaintable = false;
   }
-  employee_leaves(){
-    this.leaveshistory=false;
+  employee_leaves() {
+    this.leaveshistory = false;
     this.employeemaintable = true;
   }
+
+  // ---------Modal popoup----------
+  leave_approved_form = false;
+  applyleaves() {
+    this.leave_approved_form = true;
+  }
+  closemodal(){
+    this.leave_approved_form = false;
+  }
+  designationdropdownOption: boolean = false;
+
+  dropdownOpenOption() {
+    this.designationdropdownOption = !this.designationdropdownOption;
+  }
+
 }
