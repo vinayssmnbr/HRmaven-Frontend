@@ -933,3 +933,12 @@ input[type="radio"] {
   border-color: #fff;
   color: #fff;
 }
+.progress.circular1 .fill{ 
+  stroke: #7BD36D !important;
+}
+.progress.circular2 .fill{ 
+  stroke: #F8BB6F !important;
+}
+.progress.circular3 .fill{ 
+  stroke: #FA9796 !important;
+}
