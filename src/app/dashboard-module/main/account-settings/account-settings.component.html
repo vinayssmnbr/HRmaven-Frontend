@@ -48,7 +48,7 @@
                 </ul>
             </div>
         </div>
-        <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
+        <div class="company-name_hover" *ngIf="id ==='all' ">
             <div class="company-name-headoffice-desc-area">
                 <div class="company-name-headoffice">
                     <div class="company-name">
@@ -80,14 +80,7 @@
                     </div>
                 </div>
                 <div class="paragraph-text">
-                    <!-- <textarea
-                        placeholder="HRMaven is a cloud-based human resource management software designed to streamline HR processes for small and medium-sized businesses. The platform offers a range of tools and features to manage employee data, benefits, payroll, performance, and more. With HRMaven, HR professionals can automate manual tasks, track employee performance metrics,
-                         and generate comprehensive reports to gain insights into their workforce."></textarea> -->
                     <textarea placeholder="{{description}}"></textarea>
-                </div>
-
-                <div class="clear-update-button">
-                    <button class="done-btn">Done</button>
                 </div>
             </div>
         </div>
@@ -110,14 +103,11 @@
                             <h6>Professional Email</h6>
                             <p>hr@hrmaven.com</p>
                         </div>
-
-
                     </div>
                     <div class="edit-password-button">
                         <div class="text">
                             <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg"
                                     alt=""></button>
-
                         </div>
 
 
