@@ -818,73 +818,29 @@ input[type="radio"] {
 }
 
 /* -------------------Progress Bar------------------------- */
-
-@keyframes growProgressBar {
-
-  0%,
-  33% {
-    --pgPercentage: 0;
-  }
-
-  100% {
-    --pgPercentage: var(--value);
-  }
-}
-
-@property --pgPercentage {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 0;
-}
-
-div[role="progressbar"],
-div[role="progressbar1"],
-div[role="progressbar2"],
-div[role="progressbar3"] {
-  --pgPercentage: var(--value);
-  animation: growProgressBar 3s 1 forwards;
+.progress {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
+  z-index: 1;
 }
 
-div[role="progressbar"] {
-  color: #8BAFFF;
-  background:
-    radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-    conic-gradient(#8BAFFF calc(var(--pgPercentage) * 1%), #def 0);
+.progress .track,
+.progress .fill {
+  fill: rgba(0, 0, 0, 0);
+  stroke-width: 10;
+  transform: rotate(90deg)translate(0px, -80px);
 }
 
-div[role="progressbar1"] {
-  color: #7BD36D;
-  background:
-    radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-    conic-gradient(#7BD36D calc(var(--pgPercentage) * 1%), #def 0);
+.progress .track {
+  stroke: #c8cacb;
+  stroke-width: 6;
 }
 
-div[role="progressbar2"] {
-  color: #369;
-  background:
-    radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-    conic-gradient(#F8BB6F calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-div[role="progressbar3"] {
-  color: #FA9796;
-  background:
-    radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-    conic-gradient(#FA9796 calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-div[role="progressbar"]::before,
-div[role="progressbar1"]::before,
-div[role="progressbar2"]::before,
-div[role="progressbar3"]::before {
-  counter-reset: percentage var(--value);
-  content: counter(percentage) '%';
+.progress .fill {
+  stroke: #8BAFFF;
+  stroke-dasharray: 219.99078369140625;
+  stroke-dashoffset: -219.99078369140625;
+  transition: stroke-dashoffset 1s;
 }
 
 /* -----------------------Custom Check Box ---------------------------- */
@@ -894,7 +850,6 @@ div[role="progressbar3"]::before {
 }
 
 .thick_round label {
-
   background-color: #fff;
   border: 1px solid green;
   border-radius: 50%;
@@ -973,8 +928,17 @@ div[role="progressbar3"]::before {
   border-color: #fff;
   color: #fff;
 }
+
 .cross_round label:hover:after {
   border-color: #fff;
   color: #fff;
 }
-
+.progress.circular1 .fill{ 
+  stroke: #7BD36D !important;
+}
+.progress.circular2 .fill{ 
+  stroke: #F8BB6F !important;
+}
+.progress.circular3 .fill{ 
+  stroke: #FA9796 !important;
+}

@@ -40,7 +40,7 @@ export class LeavesContentComponent {
     this.Selectvariable = "all";
     this.fetchPendingLeave();
     this.graphleave();
-    this.leavecontentload()
+    this.leavecontentload();
   }
   total = 0;
   pendingcount = 0;
@@ -59,7 +59,7 @@ export class LeavesContentComponent {
   rejectshow = false;
   acceptshow = false;
   acceptdata: any;
-  acceptmessage: any = "";
+  acceptmessage: any = '';
   acceptall = false;
   rejectall = false;
 
@@ -67,13 +67,13 @@ export class LeavesContentComponent {
     this.dashService.getleavegraph().subscribe((res: any) => {
       res.map((d: any) => {
         this.total = this.total + d.count;
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingcount = d.count;
         }
-        if (d._id == "reject") {
+        if (d._id == 'reject') {
           this.rejectcount = d.count;
         }
-        if (d._id == "accept") {
+        if (d._id == 'accept') {
           this.acceptcount = d.count;
         }
       })
@@ -81,7 +81,7 @@ export class LeavesContentComponent {
   }
   allchecked = false;
 
-  fetchPendingLeave() { }
+  fetchPendingLeave() {}
   onChange($event) {
     const id = $event.target.value;
     const ischecked = $event.target.checked;
@@ -103,13 +103,11 @@ export class LeavesContentComponent {
   leavecontentload() {
     this.dashService.getleavecontent().subscribe((res: any) => {
       res.map((d: any) => {
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingleave = d.pending;
-        }
-        else if (d._id == "reject") {
+        } else if (d._id == 'reject') {
           this.rejectleave = d.leave;
-        }
-        else {
+        } else {
           this.acceptleave = d.leave;
         }
 
@@ -144,18 +142,16 @@ export class LeavesContentComponent {
     this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
 
       res.result.map((d: any) => {
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingleave = d.pending;
-        }
-        else if (d._id == "reject") {
+        } else if (d._id == 'reject') {
           this.rejectleave = d.leave;
         }
         else if (d._id == "accept") {
           this.acceptleave = d.leave;
         }
-
-      })
-    })
+      });
+    });
   }
   cancel() {
     this.filter.reset();
@@ -185,9 +181,6 @@ export class LeavesContentComponent {
   /////////////////       Harpreet Work       /////////////////////////////
   /////////////////////////////////////////////////////////////////////////
 
-
-
-
   ngOnInit() {
     //  --------------------Drop Down form-------------
     const optionMenu = document.querySelector<HTMLElement>('.search_form')!,
@@ -195,7 +188,18 @@ export class LeavesContentComponent {
     selectBtn.addEventListener('click', () =>
       optionMenu.classList.toggle('active')
     );
-
+    //------------ Progress Bar Girija----------
+    const max = -219.99078369140625;
+    const progressElements = document.querySelectorAll('.progress');
+    progressElements.forEach((value, index) => {
+      const percent = parseFloat(value.getAttribute('data-progress'));
+      value
+        .querySelector('.fill')
+        .setAttribute(
+          'style',
+          `stroke-dashoffset: ${((100 - percent) / 100) * max}`
+        );
+    });
 
   }
 
@@ -329,17 +333,15 @@ export class LeavesContentComponent {
   id: any = 'Pending';
   tabChange(ids: any) {
     this.id = ids;
-    if (ids == "Pending") {
+    if (ids == 'Pending') {
       this.pendingshow = true;
       this.rejectshow = false;
       this.acceptshow = false;
-    }
-    else if (ids == "Rejected") {
+    } else if (ids == 'Rejected') {
       this.pendingshow = false;
       this.rejectshow = true;
       this.acceptshow = false;
-    }
-    else {
+    } else {
       this.pendingshow = false;
       this.rejectshow = false;
       this.acceptshow = true;
@@ -385,7 +387,7 @@ export class LeavesContentComponent {
       })
 
       this.acceptleave.push(row);
-      this.acceptmessage = "";
+      this.acceptmessage = '';
       this.graphleave();
       this.showModal2 = true;
       this.showModal = false;
@@ -436,8 +438,7 @@ export class LeavesContentComponent {
       this.acceptmessage = "";
       this.rejectleave.push(row);
       this.graphleave();
-    }
-    else {
+    } else {
       this.showModal3 = true;
       this.showModal1 = false;
       this.acceptdata.map((data: any, index: any) => {

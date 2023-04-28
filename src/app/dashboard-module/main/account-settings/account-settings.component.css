@@ -59,6 +59,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: -20%;
 }
 
 .name-text h5 {
@@ -71,6 +72,7 @@
     font-weight: 400;
     font-size: 14px;
     color: #999999;
+
 }
 
 .location img {
@@ -636,7 +638,10 @@
 }
 
 .content-image {
-    width: 100%;
+    /* width: 100%; */
+    width: 40%;
+    height: 50%;
+    border-radius: 50%;
 }
 
 .content-details {

@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../service/user.service';
@@ -40,6 +40,14 @@ export class LoginComponent {
     //   // force a page refresh on navigation end
     //   window.location.reload();
     // });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe((event: NavigationStart) => {
+      if (event.url === '/login') {
+        // Force a page refresh on login page
+        window.location.reload();
+      }
+    });
 
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
@@ -64,21 +72,30 @@ export class LoginComponent {
     //   }
     // }, 8000);
     //GOOGLE LOGIN
-    this.activatedRoute.queryParams.subscribe((params) => {
-      // console.log(params);
-      const token = params['token'];
-      console.log(token);
-      if (token && token != 'undefined') {
-        this.cookie.set('token', token);
-        this.router.navigate(['dashboard']);
-      } else {
-        this.cookie.delete('token');
-        this.router.navigate(['login']);
-      }
-    });
 
+
+
+
+    // this.activatedRoute.queryParams.subscribe((params) => {
+    //   // console.log(params);
+    //   const token = params['token'];
+    //   // console.log(token);
+
+    //   if (token && token != 'undefined') {
+    //     this.cookie.set('token', token);
+    //     this.router.navigate(['dashboard']);
+    //   } else {
+    //     this.cookie.delete('token');
+    //     this.router.navigate(['login']);
+    //   }
+    // });
+
+
+
+    
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
+      // this.router.navigateByUrl('dashboard')
     }
     // this.userService.allDataLogin();
 
