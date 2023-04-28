@@ -24,6 +24,8 @@ import { LeavefilterPipe } from './pipe/leavefilter.pipe';
 import { EmployeefilterPipe } from './pipe/employeefilter.pipe';
 import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
 import {DatePipe} from '@angular/common';
+import { TimesheetComponent } from './main/timesheet/timesheet.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
 
 
 
@@ -50,6 +52,8 @@ import {DatePipe} from '@angular/common';
            LeavefilterPipe,
            EmployeefilterPipe,
            AccountSettingsComponent,
+           TimesheetComponent,
+           CalendarComponent,
 
 
   ],

@@ -11,6 +11,7 @@ import { RecruitmentContentComponent } from './main/recruitment-content/recruitm
 import { JobDetailsComponent } from './main/job-details/job-details.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
 
 
 
@@ -57,7 +58,10 @@ const routes: Routes = [
         component: JobDetailsComponent
       },
       { path: 'employee-profile', component: EmployeeProfileComponent },
-      { path: 'setting', component: AccountSettingsComponent}
+      { path: 'setting', component: AccountSettingsComponent},
+      {
+        path:'calendar',component:CalendarComponent
+      }
 ];
 
 @NgModule({
