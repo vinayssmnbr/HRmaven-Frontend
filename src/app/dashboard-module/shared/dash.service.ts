@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
+import { CookieService} from 'ngx-cookie-service'
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashService {
+  private baseUrl = 'http://localhost:3000';
   public headerContent: string;
   public activeComponent: string;
   constructor(
@@ -43,10 +44,17 @@ export class DashService {
   attendance=environment.attendance;
   attendancecard=environment.attendancecard;
   attendancegraph=environment.attendancegraph;
-  DailyAttendance
+
 
   //ADD EMPLOYEE DATA
+  // addEmployee(data) {
+  //   return this.http.post(this.createData, data);
+
+  // }
+
+  //ADD  Employee Data
   addEmployee(data) {
+    return this.http.post('http://localhost:3000/api/create', data);
     return this.http.post(this.createData, data);
 
   }
@@ -230,7 +238,15 @@ export class DashService {
     return this.client.upload(file)
   }
 
-
+  exportUsers(data:any[]): Observable<Blob> {
+    const url = `${this.baseUrl}/user/export`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'text/csv'
+    });
+    return this.http.post(url,{data}, { headers, responseType: 'blob' });
+  }
+  
   updateEmpStatus(id,status):Observable<any>{
     const url = `${this.updatempdata}/${id}`;
     return this.http.patch(url,{status})

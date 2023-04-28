@@ -1,7 +1,6 @@
 export const environment = {
   production: true,
   // LIVE SERVER URL
-
   saveurl : 'https://hrmaven.works/signup',
   loginurl : 'https://hrmaven.works/login',
   Forgoturl :'https://hrmaven.works/forgotpassword',

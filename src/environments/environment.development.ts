@@ -40,7 +40,7 @@ export const environment = {
   // updatepersonaldata :'http://localhost:3000/updatepersonal',
   // getpersonaldata :'http://localhost:3000/getpersonalsdata',
   // resetpwdaccount : 'http://localhost:3000/resetpasswordaccount',
-    // url: 'http://localhost:3000/user-profile',
+  //   url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',
   // createData: 'http://localhost:3000/api/create',
   // getData: 'http://localhost:3000/api/find',
@@ -55,7 +55,7 @@ export const environment = {
   // getemail : 'http://localhost:3000/getemails/email',
   attendancegraph:'http://localhost:3000/attendance/date/report',
   attendancecard:'http://localhost:3000/attendance/date/attendancecard',
-    attendance:'http://localhost:3000/attendance/date/attendance',
+  attendance:'http://localhost:3000/attendance/date/attendance',
   //getpwd : 'http://localhost:3000/userprofilepwd',
 
 
