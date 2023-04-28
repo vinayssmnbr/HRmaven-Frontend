@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-
+import { EmpService } from '../../shared/emp.service';
 @Component({
   selector: 'app-leaves-content',
   templateUrl: './leaves-content.component.html',
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
+  constructor(public empService:EmpService){
+    empService.activeComponent = 'leave';
+    empService.headerContent = '';
+
+  }
+
   ngOnIt() {}
 
   array: any = [

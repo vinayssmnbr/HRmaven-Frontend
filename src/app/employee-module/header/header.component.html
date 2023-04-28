@@ -5,7 +5,12 @@
       </h2>
       <!-- <h2 *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2> -->
       <!-- <h2 *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2> -->
-      <h2 *ngIf="empService.activeComponent === 'attendance'">Calendar</h2>
+      <h2 *ngIf="empService.activeComponent === 'calendar'">Calendar</h2>
+
+      <h2 *ngIf="empService.activeComponent === 'attendance'">Attendance</h2>
+      <h2 *ngIf="empService.activeComponent === 'leave'">Leave</h2>
+
+      <!-- <h2 *ngIf="empService.activeComponent === 'attendance'">Attendance</h2> -->
       <h2 *ngIf="empService.activeComponent === 'payroll'">Payroll</h2>
       <h2 *ngIf="empService.activeComponent === 'recruitment'">Recruitment</h2>
       <!-- <h2 *ngIf="dashService.activeComponent === 'job-details'">Recruitment</h2> -->

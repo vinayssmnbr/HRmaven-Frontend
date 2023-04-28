@@ -6,8 +6,10 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
 import { PayrollComponent } from './main/payroll/payroll.component';
 import { RecruitmentComponent } from './main/recruitment/recruitment.component';
 import { ReportComponent } from './main/report/report.component';
-import { LeavesContentComponent } from './leaves-content/leaves-content.component';
+// import { LeavesContentComponent } from './leaves-content/leaves-content.component';
+import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
 const routes: Routes = [
     {path:'dashboard',component:DashboardContentComponent},
 
@@ -29,6 +31,9 @@ const routes: Routes = [
     path:'leave',component:LeavesContentComponent
   },{
     path:'profile',component:EmployeeProfileComponent
+  },
+  {
+    path:'calendar',component:CalendarComponent
   }
 ];
 
