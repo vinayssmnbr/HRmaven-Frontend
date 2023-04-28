@@ -397,17 +397,20 @@ export class LeavesContentComponent {
     }
     else {
       console.log(this.acceptdata);
-      this.acceptdata.map((data: any) => {
+      let temp=[];
+      this.acceptdata.map((data: any,index:any,arr) => {
         if (data.select == true) {
           this.dashService.updateleavestatus(data._id, "accept", this.acceptmessage).subscribe((res) => {
             console.log(res);
           });
-
+          const row=this.acceptdata[index];
+          temp.push(row);
           this.dashService.updateleave(data.uid, data.from, data.to).subscribe((res: any) => {
             console.log(res);
           })
         }
       })
+      this.acceptleave=temp;
       this.showModal2 = true;
       this.showModal = false;
       console.log(this.acceptmessage);
@@ -441,6 +444,7 @@ export class LeavesContentComponent {
           });
         }
       })
+      this.rejectall=false;
       this.acceptmessage = "";
       this.graphleave();
     }
