@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit{
   @ViewChild('ul')
   private testElement:ElementRef;
 activeLink: any;
-
+  isAttendanceAndLeaveVisible:boolean = false;
   constructor(private router:Router,private cookie:CookieService,private renderer:Renderer2,private routes: ActivatedRoute){}
 
    ngOnInit(){

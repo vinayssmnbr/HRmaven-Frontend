@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
 import { EmpService } from '../../shared/emp.service';
 @Component({
   selector: 'app-leaves-content',
@@ -6,31 +8,50 @@ import { EmpService } from '../../shared/emp.service';
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
-  constructor(public empService:EmpService){
+  // empleaveForm: FormGroup;
+
+  constructor(public empService:EmpService, private formBuilder:FormBuilder){
     empService.activeComponent = 'leave';
     empService.headerContent = '';
 
   }
 
-  ngOnIt() {}
+  ngOnIt() {
+
+
+
+  }
+
+  empleaveForm = new FormGroup({
+    from :new FormControl("",[Validators.required]),
+    to:  new FormControl("",[Validators.required]),
+    category: new FormControl("",[Validators.required]),
+    duration: new FormControl("",Validators.required)
+  })
+
+
+
 
   array: any = [
     {
       id: 0,
-      name: 'Casual leave',
+      name: 'Casual',
     },
     {
       id: 1,
-      name: 'Medical Leave',
+      name: 'Medical',
     },
     {
       id: 2,
-      name: 'Urgent Leave',
+      name: 'Urgent',
     },
     {
       id: 3,
-      name: 'Earned Leave',
-    },
+      name: 'Earned',
+    },{
+      id:4,
+      name:'All'
+    }
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {

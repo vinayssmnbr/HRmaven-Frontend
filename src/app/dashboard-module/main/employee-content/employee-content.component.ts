@@ -689,7 +689,10 @@ export class EmployeeContentComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+    }
+ 
+
+  
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';

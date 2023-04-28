@@ -15,6 +15,8 @@ import { ReportComponent } from './main/report/report.component';
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
+import { TimesheetComponent } from './main/timesheet/timesheet.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -28,10 +30,13 @@ import { CalendarComponent } from './main/calendar/calendar.component';
     DashboardContentComponent,
     EmployeeProfileComponent,
     CalendarComponent,
+    TimesheetComponent,
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeeModule { }
