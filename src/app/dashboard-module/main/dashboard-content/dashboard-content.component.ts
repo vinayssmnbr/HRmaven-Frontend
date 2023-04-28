@@ -49,7 +49,7 @@ export class DashboardContentComponent implements OnInit {
   }
 
 
-  
+
   personaldataForm = new FormGroup({
     name: new FormControl(''),
     noOfEmployee: new FormControl(''),
@@ -300,7 +300,7 @@ Changeselect(arr: any) {
 }
 
 updateLeaveStatus(object: any, status: 'accept' | 'reject') {
-  this.dashService.updateleave(object,status);
+  // this.dashService.updateleave(object,status);
 }
 
 }
