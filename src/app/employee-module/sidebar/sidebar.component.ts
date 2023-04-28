@@ -28,6 +28,9 @@ activeLink: any;
       else if (id === 'attendance') {
         this.activeLink = 'attendance';
       }
+      else if (id === 'leave') {
+        this.activeLink = 'leave';
+      }
       else if(id==='payroll') {
         this.activeLink='payroll';
       }
