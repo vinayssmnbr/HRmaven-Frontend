@@ -72,31 +72,39 @@ export class LoginComponent {
     //   }
     // }, 8000);
     //GOOGLE LOGIN
-    this.activatedRoute.queryParams.subscribe((params) => {
-      // console.log(params);
-      const token = params['token'];
-      console.log(token);
-      if (token && token != 'undefined') {
-        this.cookie.set('token', token);
-        this.router.navigate(['dashboard']);
-      } else {
-        this.cookie.delete('token');
-        this.router.navigate(['login']);
-      }
-    });
 
+
+
+
+    // this.activatedRoute.queryParams.subscribe((params) => {
+    //   // console.log(params);
+    //   const token = params['token'];
+    //   // console.log(token);
+
+    //   if (token && token != 'undefined') {
+    //     this.cookie.set('token', token);
+    //     this.router.navigate(['dashboard']);
+    //   } else {
+    //     this.cookie.delete('token');
+    //     this.router.navigate(['login']);
+    //   }
+    // });
+
+
+
+    
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
       // this.router.navigateByUrl('dashboard')
     }
     // this.userService.allDataLogin();
-    
+
   }
   userdetail: any = '';
   usernotfound: any = '';
 
   checkEmail(){
-  
+
       // this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
       //   // this.emailExists = false;
       //     console.log("message: ",res.message);
@@ -109,15 +117,15 @@ export class LoginComponent {
       //   }
 
       //   this.employeemail = res;
-      
-      
+
+
       //   console.log('Response from API:', this.employeemail);
-      // });   
+      // });
   }
 
   email_data: any = '';
 
-  
+
   //GOOGLE LOGIN
   loginwithGoogle() {
     console.log('google');
@@ -196,7 +204,7 @@ export class LoginComponent {
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
-   
+
         var today = new Date();
         var expire = new Date();
 
@@ -232,7 +240,7 @@ export class LoginComponent {
 
     this.userService.getData(data.email).subscribe((res: any) => {
       console.log("message: ", res.message);
-  
+
       if (res.message === 'user-found') {
         this.userService.ForgotEmail(data).subscribe((res: any) => {
           this.userService.ForgotEmail(this.forgotPassword);
@@ -245,9 +253,9 @@ export class LoginComponent {
       } else if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
       }
-  
+
       this.employeemail = res;
-  
+
       console.log('Response from API:', this.employeemail);
     });
 
@@ -259,9 +267,9 @@ export class LoginComponent {
     setTimeout(() => {
       this.EmailSent = !this.EmailSent;
     }, 500);
- 
+
   }
 
- 
+
 
 }

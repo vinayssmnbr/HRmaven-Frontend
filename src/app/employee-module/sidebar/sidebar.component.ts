@@ -12,12 +12,19 @@ export class SidebarComponent implements OnInit{
   private testElement:ElementRef;
 activeLink: any;
   isAttendanceAndLeaveVisible:boolean = false;
-  constructor(private router:Router,private cookie:CookieService,private renderer:Renderer2,private routes: ActivatedRoute){}
+  constructor(private router:Router, public cookie:CookieService,private renderer:Renderer2,private routes: ActivatedRoute){}
 
    ngOnInit(){
+    if(this.router.url == '/employees/attendance' || this.router.url == '/employees/leave'){
 
+      this.isAttendanceAndLeaveVisible = true
+
+  }
 
     this.routes.params.subscribe(params => {
+      console.log('params')
+      console.log(params)
+
       const id = params['id'];
       if (id === 'dashboard') {
         this.activeLink = 'dashboard';
@@ -25,6 +32,9 @@ activeLink: any;
       // else if (id === 'employee') {
       //   this.activeLink = 'employee';
       // }
+      else if (id === 'timesheet') {
+        this.activeLink = 'timesheet';
+      }
       else if (id === 'attendance') {
         this.activeLink = 'attendance';
       }

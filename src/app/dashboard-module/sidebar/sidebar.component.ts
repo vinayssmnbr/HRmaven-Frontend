@@ -14,8 +14,20 @@ export class SidebarComponent implements OnInit {
 constructor(private router:Router,private cookie:CookieService,private renderer:Renderer2,private routes: ActivatedRoute){}
 activeLink:any;
 isAttendanceAndLeaveVisible:boolean= false;
+
+
 ngOnInit() {
+  console.log('abcd')
+  if(this.router.url == '/attendance' || this.router.url == '/leaves'){
+
+    this.isAttendanceAndLeaveVisible = true
+
+}
   this.routes.params.subscribe(params => {
+    console.log(params)
+    console.log('params')
+
+
     const id = params['id'];
     if (id === 'dashboard') {
       this.activeLink = 'dashboard';
@@ -37,6 +49,11 @@ ngOnInit() {
       this.activeLink='report';
     }
   });
+}
+
+goToUrl(link:string){
+ this.router.navigate([link])
+
 }
 goToEmployee(){
  this.router.navigate(['./employee'])
