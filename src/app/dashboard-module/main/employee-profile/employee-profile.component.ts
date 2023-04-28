@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -15,33 +15,28 @@ import { DashService } from '../../shared/dash.service';
   templateUrl: './employee-profile.component.html',
   styleUrls: ['./employee-profile.component.css'],
 })
-export class EmployeeProfileComponent {
+export class EmployeeProfileComponent implements OnInit{
   @Input() user: any;
   empForm: FormGroup;
-  constructor(private dashService: DashService,private fb: FormBuilder,) {
-    this.empForm = this.fb.group({
-      employees: this.fb.array([]),
-    })
+  constructor(private dashService: DashService) {
   }
-  employees(): FormArray {
-    return this.empForm.get("employees") as FormArray
-  }
-  newEmployee(): FormGroup {
-    return this.fb.group({
-      excompany: '',
-      exdesignation: '',
-      exlocation:'',
-      exduration:'',
-    })
-  }
-  addEmployee() {
-    console.log("Adding a employee");
-    this.employees().push(this.newEmployee());
-  }
+  // employees(): FormArray {
+  //   return this.empForm.get("employees") as FormArray
+  // }
+  // newEmployee(): FormGroup {
+  //   return this.fb.group({
+  //     excompany: '',
+  //     exdesignation: '',
+  //     exlocation:'',
+  //     exduration:'',
+  //   })
+  // }
+  // addEmployee() {
+  //   console.log("Adding a employee");
+  //   this.employees().push(this.newEmployee());
+  // }
 
-  ngOnInit() {
-    this.user = this.dashService.getSelectedEmployee();
-  }
+
 
   selectedUser: any = {};
   personaldetail: boolean = true;
@@ -86,13 +81,13 @@ export class EmployeeProfileComponent {
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
     employees:new FormArray([]),
-    expcompany: new FormControl(''),
-    expduration: new FormControl(''),
-    explocation: new FormControl(''),
+    // expcompany: new FormControl(''),
+    // expduration: new FormControl(''),
+    // explocation: new FormControl(''),
     expcompany1: new FormControl(''),
     expduration1: new FormControl(''),
     explocation1: new FormControl(''),
-    expdesignation: new FormControl(''),
+    // expdesignation: new FormControl(''),
     expdesignation1: new FormControl(''),
     jobdesignation: new FormControl(''),
     joblocation1: new FormControl(''),
@@ -117,6 +112,41 @@ export class EmployeeProfileComponent {
     yop1:new FormControl(''),
   });
 
+  experienceForm: FormGroup;
+
+  ngOnInit() {
+    this.user = this.dashService.getSelectedEmployee();
+    this.experienceForm = new FormGroup({
+      experienceItems: new FormArray([
+        this.createExperienceItem()
+      ])
+    });
+  }
+
+  createExperienceItem(): FormGroup {
+    return new FormGroup({
+      expcompany: new FormControl(''),
+      expduration: new FormControl(''),
+      explocation: new FormControl(''),
+      exdesignation: new FormControl('')
+    });
+  }
+
+  get experienceItems() {
+    return this.experienceForm.get('experienceItems') as FormArray;
+  }
+
+  addItem() {
+    this.experienceItems.push(this.createExperienceItem());
+  }
+
+  removeItem(index: number) {
+    this.experienceItems.removeAt(index);
+  }
+
+  onSubmit() {
+    console.log(this.experienceForm.value);
+  }
 
   array1: any = [
     {

@@ -565,14 +565,15 @@
         <button class="save" (click)="closeModal5(form.value)">Update</button>
       </div>
     </div>
-    <div class="modal-content" *ngIf="modalContent7">
-      <div class="modal-header">
+    <div class="modal-content4" *ngIf="modalContent7">
+      <div class="modal-header4">
         <h4 class="modal-title">Edit Experience Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-      <div class="modal-body">
-        <form class="form-container" id="form5" [formGroup]="form">
-          <div class="form-row">
+      <div class="modal-body4">
+        <form class="form-container" id="form5" [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
+          <div  *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
+          <div class="form-row" formArrayName="experienceItems">
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Infosys" formControlName="expcompany">
@@ -586,58 +587,19 @@
               <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row" formArrayName="experienceItems">
             <div class="input">
               <label>Location</label>
               <input type="text" placeholder="Pune, India" formControlName="explocation">
             </div>
           </div>
+          <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add more</button>
+          </div>
           <!-- <hr> -->
-          <!-- <div class="form-row">
-            <div class="input">
-              <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Accenture" formControlName="expcompany1">
-            </div>
-            <div class="input">
-              <label>Duration</label>
-              <input type="text" placeholder="April 2019 - May 2020" formControlName="expduration1">
-            </div>
-            <div class="input">
-              <label>Designation</label>
-              <input type="text" placeholder="Front End developer" formControlName="expdesignation1">
-            </div>
-          </div>
-          <div class="form-row" *ngIf="contentshow">
-            <div class="input">
-              <label>Location</label>
-              <input type="text" placeholder="Bangalore, India" formControlName="explocation1">
-            </div>
-          </div> -->
-          <!-- <div class="form-row">
-            <div class="input">
-              <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Infosys" formControlName="orgname">
-            </div>
-            <div class="input">
-              <label>Duration</label>
-              <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
-            </div>
-            <div class="input">
-              <label>Designation</label>
-              <input type="text" placeholder="Lead- front end developer" formControlName="designation">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="input">
-              <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="location2">
-            </div>
-          </div> -->
-          <!-- <button class="btn3" (click)="addEmployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button> -->
         </form>
       </div>
-      <div class="modal-footer">
-        <button class="save" (click)="closeModal6(form.value)">Update</button>
+      <div class="modal-footer4">
+        <button class="save" (click)="closeModal6(experienceForm.value)">Update</button>
       </div>
     </div>
     <!-- <div class="modal-footer">
