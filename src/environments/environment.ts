@@ -58,7 +58,6 @@ export const environment = {
   // getuid: 'http://localhost:3000/api/uid',
   // report: 'http://localhost:3000/attendance/report',
   // profile: 'http://localhost:3000/user-profile',
-<<<<<<< HEAD
   // getemail : 'http://localhost:3000/getemails/email',
   // getpwd : 'http://localhost:3000/userprofilepwd',
   // changepassword : 'http://localhost:3000/islinkclicked',
@@ -68,8 +67,5 @@ export const environment = {
   leavegraph:'http://localhost:3000/api/leave/graph/leave',
   leavecontent:'http://localhost:3000/api/leave/data/leaves',
   patchleave:'http://localhost:3000/api/leave/update/leave'
-=======
-//  getemail : 'http://localhost:3000/getemails/email',
->>>>>>> 75d3e6e105a5996ebe82218163ba2450ab6adbaf
 
 };

@@ -37,59 +37,57 @@ export class LeavesContentComponent {
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
+    this.Selectvariable="all";
     this.fetchPendingLeave();
     this.graphleave();
     this.leavecontentload()
   }
-  total=0;
-  pendingcount=0;
-  acceptcount=0;
-  rejectcount=0;
+  total = 0;
+  pendingcount = 0;
+  acceptcount = 0;
+  rejectcount = 0;
 
   // //////////////////////////////////////////////////////////////////////
 
- //////////////////////Harpreet Singh work on leaves  //////////////////////////////
+  //////////////////////Harpreet Singh work on leaves  //////////////////////////////
 
- acceptleave:any=[];
- rejectleave:any[];
- pendingleave:any[];
- pendingshow=true;
- rejectshow=false;
- acceptshow=false;
- acceptdata:any;
- acceptmessage:any="";
- acceptall=false;
- rejectall=false;
+  acceptleave: any = [];
+  rejectleave: any[];
+  pendingleave: any[];
+  pendingshow = true;
+  rejectshow = false;
+  acceptshow = false;
+  acceptdata: any;
+  acceptmessage: any = "";
+  acceptall = false;
+  rejectall = false;
 
-  graphleave(){
+  graphleave() {
     this.dashService.getleavegraph().subscribe((res: any) => {
       console.log('data', res);
 
-    res.map((d:any)=>{
-      this.total=this.total+d.count;
-      if(d._id=="pending")
-      {
-          this.pendingcount=d.count;
-      }
-      if(d._id=="reject")
-      {
-        this.rejectcount=d.count;
-      }
-      if(d._id=="accept")
-      {
-        this.acceptcount=d.count;
-      }
-      console.log(this.total);
+      res.map((d: any) => {
+        this.total = this.total + d.count;
+        if (d._id == "pending") {
+          this.pendingcount = d.count;
+        }
+        if (d._id == "reject") {
+          this.rejectcount = d.count;
+        }
+        if (d._id == "accept") {
+          this.acceptcount = d.count;
+        }
+        console.log(this.total);
+      })
     })
-  })
   }
   allchecked = false;
 
-  fetchPendingLeave() {}
+  fetchPendingLeave() { }
   onChange($event) {
     const id = $event.target.value;
     const ischecked = $event.target.checked;
-    this.pendingleave.map((d:any) => {
+    this.pendingleave.map((d: any) => {
       if (d._id == id) {
         d.select = ischecked;
         this.parentSelector = false;
@@ -101,71 +99,95 @@ export class LeavesContentComponent {
       }
       return d;
     });
-    this.showSearchBox=true;
+    this.showSearchBox = true;
     console.log(this.pendingleave);
-    }
+  }
 
-    leavecontentload(){
-      this.dashService.getleavecontent().subscribe((res:any)=>{
-        res.map((d:any)=>{
-          if(d._id=="pending")
-          {
-            this.pendingleave=d.pending;
-          }
-          else if(d._id=="reject")
-          {
-            this.rejectleave=d.leave;
-          }
-          else{
-            this.acceptleave=d.leave;
-          }
+  leavecontentload() {
+    this.dashService.getleavecontent().subscribe((res: any) => {
+      res.map((d: any) => {
+        if (d._id == "pending") {
+          this.pendingleave = d.pending;
+        }
+        else if (d._id == "reject") {
+          this.rejectleave = d.leave;
+        }
+        else {
+          this.acceptleave = d.leave;
+        }
 
-        })
-        console.log(this.acceptleave);
-          console.log(this.rejectleave);
-          console.log(this.acceptleave);
       })
-    }
+      console.log(this.acceptleave);
+      console.log(this.rejectleave);
+      console.log(this.acceptleave);
+    })
+  }
 
-      acceptfunction(){
-        this.showModal = true;
-        this.acceptdata=this.pendingleave;
-        this.acceptall=true;
-      }
+  acceptfunction() {
+    this.showModal = true;
+    this.acceptdata = this.pendingleave;
+    this.acceptall = true;
+  }
 
-      rejectfunction(){
-        this.showModal1=true;
-        this.acceptdata=this.pendingleave;
-        this.rejectall=true;
-      }
+  rejectfunction() {
+    this.showModal1 = true;
+    this.acceptdata = this.pendingleave;
+    this.rejectall = true;
+  }
 
-      filter = new FormGroup({
-        from: new FormControl(''),
-        to: new FormControl(''),
-        category:new FormControl(''),
-        // type:new FormControl('')
-        });
+  filter = new FormGroup({
+    from: new FormControl(''),
+    to: new FormControl(''),
+    category: new FormControl(''),
+    // type:new FormControl('')
+  });
 
-        search(){
-          this.filter.value.category=this.Selectvariable;
-          console.log(this.filter.value);
-          this.dashService.filterleave(this.filter.value).subscribe((res:any)=>{
-                  console.log(res);
-          })
+  search() {
+    this.filter.value.category = this.Selectvariable;
+    console.log(this.filter.value);
+    this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
+      console.log(res);
+      res.result.map((d: any) => {
+        if (d._id == "pending") {
+          this.pendingleave = d.pending;
         }
-        cancel(){
-          this.filter.reset();
-          this.Selectvariable='all';
-          this.filter.value.from='',
-          this.filter.value.to='',
-          this.filter.value.category='all',
-          console.log(this.filter.value);
-
+        else if (d._id == "reject") {
+          this.rejectleave = d.leave;
+        }
+        else if(d._id== "accept") {
+          this.acceptleave = d.leave;
         }
 
-/////////////////////////////////////////////////////////////////////////
-/////////////////       Harpreet Work       /////////////////////////////
-/////////////////////////////////////////////////////////////////////////
+      })
+    })
+  }
+  cancel() {
+    this.filter.reset();
+    this.Selectvariable = 'all';
+    this.filter.value.from = '',
+      this.filter.value.to = '',
+      this.filter.value.category = 'all',
+      console.log(this.filter.value);
+    this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
+      console.log(res);
+      res.result.map((d: any) => {
+        if (d._id == "pending") {
+          this.pendingleave = d.pending;
+        }
+        else if (d._id == "reject") {
+          this.rejectleave = d.leave;
+        }
+        else if(d._id=="accept") {
+          this.acceptleave = d.leave;
+        }
+
+      })
+    })
+  }
+
+  /////////////////////////////////////////////////////////////////////////
+  /////////////////       Harpreet Work       /////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
 
 
 
@@ -311,22 +333,20 @@ export class LeavesContentComponent {
   id: any = 'Pending';
   tabChange(ids: any) {
     this.id = ids;
-    if(ids=="Pending")
-    {
-      this.pendingshow=true;
-      this.rejectshow=false;
-      this.acceptshow=false;
+    if (ids == "Pending") {
+      this.pendingshow = true;
+      this.rejectshow = false;
+      this.acceptshow = false;
     }
-    else if( ids=="Rejected")
-    {
-      this.pendingshow=false;
-      this.rejectshow=true;
-      this.acceptshow=false;
+    else if (ids == "Rejected") {
+      this.pendingshow = false;
+      this.rejectshow = true;
+      this.acceptshow = false;
     }
-    else{
-      this.pendingshow=false;
-      this.rejectshow=false;
-      this.acceptshow=true;
+    else {
+      this.pendingshow = false;
+      this.rejectshow = false;
+      this.acceptshow = true;
     }
   }
   showSearchBox = false;
@@ -338,94 +358,92 @@ export class LeavesContentComponent {
     this.allchecked = !this.allchecked;
   }
   showModal = false;
-  index:any;
-  openModal(data:any,index:any) {
-    this.acceptdata=data;
+  index: any;
+  openModal(data: any, index: any) {
+    this.acceptdata = data;
     this.showModal = true;
-    this.index=index;
+    this.index = index;
   }
   showModal1 = false;
-  openModal1(data:any,index:any) {
-    this.acceptdata=data;
+  openModal1(data: any, index: any) {
+    this.acceptdata = data;
     this.showModal1 = true;
     this.showModal = false;
   }
 
   showModal2 = false;
   openModal2() {
-    if(this.acceptall==false)
-    {
-    console.log(this.acceptmessage);
-    console.log(this.acceptdata);
-    console.log(this.index);
-    let row = this.pendingleave[this.index];
-    this.pendingleave.splice(this.index, 1);
+    if (this.acceptall == false) {
+      console.log(this.acceptmessage);
+      console.log(this.acceptdata);
+      console.log(this.index);
+      let row = this.pendingleave[this.index];
+      this.pendingleave.splice(this.index, 1);
 
 
-    this.dashService.updateleavestatus(this.acceptdata._id,"accept",this.acceptmessage).subscribe((res)=>{
-      console.log(res);
-    });
-
-    this.dashService.updateleave(this.acceptdata.uid,this.acceptdata.from,this.acceptdata.to).subscribe((res:any)=>{
-      console.log(res);
-    })
-
-    this.acceptleave.push(row);
-    this.acceptmessage="";
-    this.graphleave();
-    this.showModal2 = true;
-    this.showModal = false;
-  }
-  else{
-    console.log(this.acceptdata);
-    this.acceptdata.map((data:any)=>{
-      if(data.select==true){
-      this.dashService.updateleavestatus(data._id,"accept",this.acceptmessage).subscribe((res)=>{
+      this.dashService.updateleavestatus(this.acceptdata._id, "accept", this.acceptmessage).subscribe((res) => {
         console.log(res);
       });
 
-    this.dashService.updateleave(data.uid,data.from,data.to).subscribe((res:any)=>{
+      this.dashService.updateleave(this.acceptdata.uid, this.acceptdata.from, this.acceptdata.to).subscribe((res: any) => {
         console.log(res);
       })
+
+      this.acceptleave.push(row);
+      this.acceptmessage = "";
+      this.graphleave();
+      this.showModal2 = true;
+      this.showModal = false;
     }
-    })
-    this.showModal2 = true;
-    this.showModal = false;
-    console.log(this.acceptmessage);
-    this.acceptall=false;
-    this.leavecontentload();
-    this.graphleave();
-  }
+    else {
+      console.log(this.acceptdata);
+      this.acceptdata.map((data: any) => {
+        if (data.select == true) {
+          this.dashService.updateleavestatus(data._id, "accept", this.acceptmessage).subscribe((res) => {
+            console.log(res);
+          });
+
+          this.dashService.updateleave(data.uid, data.from, data.to).subscribe((res: any) => {
+            console.log(res);
+          })
+        }
+      })
+      this.showModal2 = true;
+      this.showModal = false;
+      console.log(this.acceptmessage);
+      this.acceptall = false;
+      this.leavecontentload();
+      this.graphleave();
+    }
   }
   showModal3 = false;
   openModal3() {
-    if(this.rejectall==false)
-    {
-    this.showModal3 = true;
-    this.showModal1 = false;
-    let row = this.pendingleave[this.index];
-    this.pendingleave.splice(this.index, 1);
+    if (this.rejectall == false) {
+      this.showModal3 = true;
+      this.showModal1 = false;
+      let row = this.pendingleave[this.index];
+      this.pendingleave.splice(this.index, 1);
 
-    this.dashService.updateleavestatus(this.acceptdata._id,"reject",this.acceptmessage).subscribe((res)=>{
-      console.log(res);
-    });
-    this.acceptmessage="";
-    this.rejectleave.push(row);
-    this.graphleave();
-  }
-  else{
-    this.showModal3 = true;
-    this.showModal1 = false;
-    this.acceptdata.map((data:any)=>{
-      if(data.select==true){
-      this.dashService.updateleavestatus(data._id,"reject",this.acceptmessage).subscribe((res)=>{
+      this.dashService.updateleavestatus(this.acceptdata._id, "reject", this.acceptmessage).subscribe((res) => {
         console.log(res);
       });
+      this.acceptmessage = "";
+      this.rejectleave.push(row);
+      this.graphleave();
     }
-    })
-    this.acceptmessage="";
-    this.graphleave();
-  }
+    else {
+      this.showModal3 = true;
+      this.showModal1 = false;
+      this.acceptdata.map((data: any) => {
+        if (data.select == true) {
+          this.dashService.updateleavestatus(data._id, "reject", this.acceptmessage).subscribe((res) => {
+            console.log(res);
+          });
+        }
+      })
+      this.acceptmessage = "";
+      this.graphleave();
+    }
   }
   closeModal() {
     this.showModal = false;
