@@ -29,7 +29,7 @@ import { json2csv } from 'json2csv';
 })
 export class EmployeeContentComponent implements OnInit {
   // user:any;
-  isChecked: boolean =true;
+  isChecked: boolean = true;
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
   users: any[] = [];
@@ -741,7 +741,7 @@ export class EmployeeContentComponent implements OnInit {
   onFileSelectedrem(event: any): void {
     const file: File = event.target.files[0];
     const reader: FileReader = new FileReader();
-
+   
     reader.onload = (e: any) => {
       const csv: string = e.target.result;
       const lines: string[] = csv.split(/\r\n|\n/);
@@ -782,22 +782,23 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-  
 
-  
+
+
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
-  
+
     if (isChecked) {
       if (user == 'All') {
         this.selectedEmployess = [...this.employee];
         // Check all checkboxes
-        this.employee.forEach((el:any, i: number) => {
+        this.employee.forEach((el: any, i: number) => {
           el['checked'] = true;
         });
+
       } else {
-        
+
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
             this.employee['checked'] = true;
@@ -807,14 +808,15 @@ export class EmployeeContentComponent implements OnInit {
         this.selectedEmployess.push(user);
       }
       console.log(this.selectedEmployess, 'added employees');
-  
+
     } else {
       if (user == 'All') {
         this.selectedEmployess = [];
         // Uncheck all checkboxes
-        this.employee.forEach((el:any , i:number) => {
+        this.employee.forEach((el: any, i: number) => {
           el['checked'] = false;
         });
+
       } else {
         let index: number = -1;
         this.selectedEmployess.forEach((el: any, i: number) => {
@@ -834,10 +836,16 @@ export class EmployeeContentComponent implements OnInit {
         }
       }
       console.log(this.selectedEmployess, 'removed user')
-  
+
     }
   }
 
+
+  uncheckAll() {
+    this.employee.forEach((el: any, i: number) => {
+      this.employee[i].checked = false;
+    })
+  }
 
 
   toggleAllCheckboxes() {
@@ -852,5 +860,9 @@ export class EmployeeContentComponent implements OnInit {
 
 
 
-
+  // uncheckAll(){
+  //   this.employee.forEach((el:any, i:number)=>{
+  //   this.employee[i].checked = false;
+  //   })
+  // }
 }
