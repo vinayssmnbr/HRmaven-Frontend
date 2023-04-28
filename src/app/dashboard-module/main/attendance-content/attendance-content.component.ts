@@ -28,7 +28,7 @@ export class AttendanceContentComponent implements OnInit {
   employeename = '';
   lineChart: Chart;
   selectedUser: any = {};
-  percentage=10;
+  percentage = 10;
   leaves: any[] = [];
   data: any;
   update = false;
@@ -43,32 +43,33 @@ export class AttendanceContentComponent implements OnInit {
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card:any=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
+  card: any = [
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  ];
+  constructor(
+    public dashService: DashService,
+    private datepipe: DatePipe,
+    private http: HttpClient
+  ) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
-    this.getLeaveData()
-    this.getreport()
+    this.getLeaveData();
+    this.getreport();
     this.datez = this.datepipe.transform(new Date(), 'YYYY-MM-dd');
     console.log(this.datez);
     this.dayWiseAttendance(this.datez);
-
   }
 
-
-  dayWiseAttendance(date:any){
-  this.dashService.getAttendance(date).subscribe((res: any) => {
-    // console.log('data', res); // add this line
-    this.DayAttendance = res;
-
-  });
-}
-changefunction()
-{
-  this.dayWiseAttendance(this.datez);
-}
-
-
+  dayWiseAttendance(date: any) {
+    this.dashService.getAttendance(date).subscribe((res: any) => {
+      // console.log('data', res); // add this line
+      this.DayAttendance = res;
+    });
+  }
+  changefunction() {
+    this.dayWiseAttendance(this.datez);
+  }
 
   form = new FormGroup({
     name: new FormControl(),
@@ -79,19 +80,17 @@ changefunction()
     punch_out: new FormControl(''),
   });
 
-
-
   async getreport() {
     await this.dashService.graphcontent().subscribe((res: any) => {
       console.log(res);
-      const present=[0,0,0,0,0,0,0,0,0,0,0,0];
-      const absent=[0,0,0,0,0,0,0,0,0,0,0,0];
-      const leave=[0,0,0,0,0,0,0,0,0,0,0,0];
-      res.map((d)=>{
-        present[d.month]=d.present;
-        absent[d.month]=d.absent;
-        leave[d.month]=d.leave;
-      })
+      const present = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      const absent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      const leave = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      res.map((d) => {
+        present[d.month] = d.present;
+        absent[d.month] = d.absent;
+        leave[d.month] = d.leave;
+      });
       const myChart = new Chart('barChart', {
         type: 'bar',
         data: {
@@ -157,7 +156,7 @@ changefunction()
           this.loader = false;
         }, 3000);
       }
-     });
+    });
   }
 
   ngOnInit() {
@@ -181,13 +180,18 @@ changefunction()
 
     //   // Use attendancePercentage to update your UI
     // });
-    
+
     //------------ Progress Bar Girija----------
     const max = -219.99078369140625;
     const progressElements = document.querySelectorAll('.progress');
     progressElements.forEach((value, index) => {
       const percent = parseFloat(value.getAttribute('data-progress'));
-      value.querySelector('.fill').setAttribute('style', `stroke-dashoffset: ${(100 - percent) / 100 * max}`);
+      value
+        .querySelector('.fill')
+        .setAttribute(
+          'style',
+          `stroke-dashoffset: ${((100 - percent) / 100) * max}`
+        );
     });
   }
 
@@ -214,7 +218,7 @@ changefunction()
     });
   }
 
-  calender=true;
+  calender = true;
   toggleTable1() {
     this.showCard = true;
     this.showTable = false;
@@ -222,9 +226,9 @@ changefunction()
     this.table2Visible = false; // ensure other table is hidden
     this.calender = false;
     this.dropdown = true;
-    const d= new Date();
-    const month=d.getMonth();
-    this.Selectvariable=this.array[month].name;
+    const d = new Date();
+    const month = d.getMonth();
+    this.Selectvariable = this.array[month].name;
     this.loadcarddata(month);
   }
   dropdown = false;
@@ -300,24 +304,32 @@ changefunction()
     this.contentdropdown = false;
     console.log(arr.id);
     this.loadcarddata(arr.id);
-
-
-
   }
 
-  loadcarddata(month:any){
-    this.dashService.getAttendancecard(month).subscribe((res)=>{
+  loadcarddata(month: any) {
+    this.dashService.getAttendancecard(month).subscribe((res) => {
       console.log(res);
-      this.card=res;
-  })
+      this.card = res;
+    });
   }
-
 
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
-
   }
-  
+// ----------------Profile table Girija----------------
+profilecard=false;
+attendence_main=true;
+profileview(){
+this.profilecard=true;
+this.attendence_main=false;
+
+}
+back_profile(){
+  this.profilecard=false;
+this.attendence_main=true;
+
+}
+
 
 }
 function getCurrentDate() {

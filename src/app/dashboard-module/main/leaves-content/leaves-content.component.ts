@@ -37,10 +37,10 @@ export class LeavesContentComponent {
   constructor(private dashService: DashService, private http: HttpClient) {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
-    this.Selectvariable="all";
+    this.Selectvariable = 'all';
     this.fetchPendingLeave();
     this.graphleave();
-    this.leavecontentload()
+    this.leavecontentload();
   }
   total = 0;
   pendingcount = 0;
@@ -58,7 +58,7 @@ export class LeavesContentComponent {
   rejectshow = false;
   acceptshow = false;
   acceptdata: any;
-  acceptmessage: any = "";
+  acceptmessage: any = '';
   acceptall = false;
   rejectall = false;
 
@@ -68,22 +68,22 @@ export class LeavesContentComponent {
 
       res.map((d: any) => {
         this.total = this.total + d.count;
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingcount = d.count;
         }
-        if (d._id == "reject") {
+        if (d._id == 'reject') {
           this.rejectcount = d.count;
         }
-        if (d._id == "accept") {
+        if (d._id == 'accept') {
           this.acceptcount = d.count;
         }
         console.log(this.total);
-      })
-    })
+      });
+    });
   }
   allchecked = false;
 
-  fetchPendingLeave() { }
+  fetchPendingLeave() {}
   onChange($event) {
     const id = $event.target.value;
     const ischecked = $event.target.checked;
@@ -106,21 +106,18 @@ export class LeavesContentComponent {
   leavecontentload() {
     this.dashService.getleavecontent().subscribe((res: any) => {
       res.map((d: any) => {
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingleave = d.pending;
-        }
-        else if (d._id == "reject") {
+        } else if (d._id == 'reject') {
           this.rejectleave = d.leave;
-        }
-        else {
+        } else {
           this.acceptleave = d.leave;
         }
-
-      })
+      });
       console.log(this.acceptleave);
       console.log(this.rejectleave);
       console.log(this.acceptleave);
-    })
+    });
   }
 
   acceptfunction() {
@@ -148,49 +145,40 @@ export class LeavesContentComponent {
     this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
       console.log(res);
       res.result.map((d: any) => {
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingleave = d.pending;
-        }
-        else if (d._id == "reject") {
+        } else if (d._id == 'reject') {
           this.rejectleave = d.leave;
-        }
-        else if(d._id== "accept") {
+        } else if (d._id == 'accept') {
           this.acceptleave = d.leave;
         }
-
-      })
-    })
+      });
+    });
   }
   cancel() {
     this.filter.reset();
     this.Selectvariable = 'all';
-    this.filter.value.from = '',
-      this.filter.value.to = '',
-      this.filter.value.category = 'all',
+    (this.filter.value.from = ''),
+      (this.filter.value.to = ''),
+      (this.filter.value.category = 'all'),
       console.log(this.filter.value);
     this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
       console.log(res);
       res.result.map((d: any) => {
-        if (d._id == "pending") {
+        if (d._id == 'pending') {
           this.pendingleave = d.pending;
-        }
-        else if (d._id == "reject") {
+        } else if (d._id == 'reject') {
           this.rejectleave = d.leave;
-        }
-        else if(d._id=="accept") {
+        } else if (d._id == 'accept') {
           this.acceptleave = d.leave;
         }
-
-      })
-    })
+      });
+    });
   }
 
   /////////////////////////////////////////////////////////////////////////
   /////////////////       Harpreet Work       /////////////////////////////
   /////////////////////////////////////////////////////////////////////////
-
-
-
 
   ngOnInit() {
     //  --------------------Drop Down form-------------
@@ -199,7 +187,18 @@ export class LeavesContentComponent {
     selectBtn.addEventListener('click', () =>
       optionMenu.classList.toggle('active')
     );
-
+    //------------ Progress Bar Girija----------
+    const max = -219.99078369140625;
+    const progressElements = document.querySelectorAll('.progress');
+    progressElements.forEach((value, index) => {
+      const percent = parseFloat(value.getAttribute('data-progress'));
+      value
+        .querySelector('.fill')
+        .setAttribute(
+          'style',
+          `stroke-dashoffset: ${((100 - percent) / 100) * max}`
+        );
+    });
 
   }
 
@@ -333,17 +332,15 @@ export class LeavesContentComponent {
   id: any = 'Pending';
   tabChange(ids: any) {
     this.id = ids;
-    if (ids == "Pending") {
+    if (ids == 'Pending') {
       this.pendingshow = true;
       this.rejectshow = false;
       this.acceptshow = false;
-    }
-    else if (ids == "Rejected") {
+    } else if (ids == 'Rejected') {
       this.pendingshow = false;
       this.rejectshow = true;
       this.acceptshow = false;
-    }
-    else {
+    } else {
       this.pendingshow = false;
       this.rejectshow = false;
       this.acceptshow = true;
@@ -380,34 +377,44 @@ export class LeavesContentComponent {
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
 
+      this.dashService
+        .updateleavestatus(this.acceptdata._id, 'accept', this.acceptmessage)
+        .subscribe((res) => {
+          console.log(res);
+        });
 
-      this.dashService.updateleavestatus(this.acceptdata._id, "accept", this.acceptmessage).subscribe((res) => {
-        console.log(res);
-      });
-
-      this.dashService.updateleave(this.acceptdata.uid, this.acceptdata.from, this.acceptdata.to).subscribe((res: any) => {
-        console.log(res);
-      })
+      this.dashService
+        .updateleave(
+          this.acceptdata.uid,
+          this.acceptdata.from,
+          this.acceptdata.to
+        )
+        .subscribe((res: any) => {
+          console.log(res);
+        });
 
       this.acceptleave.push(row);
-      this.acceptmessage = "";
+      this.acceptmessage = '';
       this.graphleave();
       this.showModal2 = true;
       this.showModal = false;
-    }
-    else {
+    } else {
       console.log(this.acceptdata);
       this.acceptdata.map((data: any) => {
         if (data.select == true) {
-          this.dashService.updateleavestatus(data._id, "accept", this.acceptmessage).subscribe((res) => {
-            console.log(res);
-          });
+          this.dashService
+            .updateleavestatus(data._id, 'accept', this.acceptmessage)
+            .subscribe((res) => {
+              console.log(res);
+            });
 
-          this.dashService.updateleave(data.uid, data.from, data.to).subscribe((res: any) => {
-            console.log(res);
-          })
+          this.dashService
+            .updateleave(data.uid, data.from, data.to)
+            .subscribe((res: any) => {
+              console.log(res);
+            });
         }
-      })
+      });
       this.showModal2 = true;
       this.showModal = false;
       console.log(this.acceptmessage);
@@ -424,24 +431,27 @@ export class LeavesContentComponent {
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
 
-      this.dashService.updateleavestatus(this.acceptdata._id, "reject", this.acceptmessage).subscribe((res) => {
-        console.log(res);
-      });
-      this.acceptmessage = "";
+      this.dashService
+        .updateleavestatus(this.acceptdata._id, 'reject', this.acceptmessage)
+        .subscribe((res) => {
+          console.log(res);
+        });
+      this.acceptmessage = '';
       this.rejectleave.push(row);
       this.graphleave();
-    }
-    else {
+    } else {
       this.showModal3 = true;
       this.showModal1 = false;
       this.acceptdata.map((data: any) => {
         if (data.select == true) {
-          this.dashService.updateleavestatus(data._id, "reject", this.acceptmessage).subscribe((res) => {
-            console.log(res);
-          });
+          this.dashService
+            .updateleavestatus(data._id, 'reject', this.acceptmessage)
+            .subscribe((res) => {
+              console.log(res);
+            });
         }
-      })
-      this.acceptmessage = "";
+      });
+      this.acceptmessage = '';
       this.graphleave();
     }
   }

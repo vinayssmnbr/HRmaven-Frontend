@@ -571,24 +571,13 @@ table {
 
 .icons {
     display: flex;
+    position: relative;
 }
 
-/* .icons .fa-pencil {
-    color: #999999;
-    cursor: pointer;
-}
-
-.icons .fa-trash-can {
-    color: #EE4032;
-    cursor: pointer;
-}
-
-.icons .fa-pencil:hover {
-    color: #2F2C9F;
-} */
 .icons .select{
   padding: 5px 10px;
   border-radius: 12px;
+  width: 108px;
   outline: none;
   cursor: pointer;
   font-family: 'Outfit',sans-serif;
@@ -596,8 +585,13 @@ table {
   font-weight: 400;
   font-size: 14px;
 }
-/* 
- .activated{
+/* .fa-chevron-down{
+  position: absolute;
+  right: 32%;
+  top:28%;
+  font-size: 12px;
+} */
+/* .activated{
   color: #3D9030;
   background-color: rgba(123, 211, 109, 0.3);
 
@@ -942,11 +936,21 @@ label {
     padding: 10px 15px;
     font-size: 14px;
     cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .custom-file-picker {
   display: inline-block;
   /* position: relative; */
   font-size: 16px;
+}
+.csv{
+  color: #2F2C9F;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.modal-body5 h5{
+  margin-bottom: 30px;
 }
 .custom-file-picker a {
   position: absolute;
