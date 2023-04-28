@@ -18,6 +18,8 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
+import { saveAs } from 'file-saver';
+import { json2csv } from 'json2csv';
 
 @Component({
   selector: 'app-employee-content',
@@ -25,12 +27,23 @@ import { error, log } from 'console';
   styleUrls: ['./employee-content.component.css'],
 })
 export class EmployeeContentComponent implements OnInit {
+  // user:any;
+  isChecked: boolean = true;
+  // isChecked1:boolean=true;
+  // parentSelector: boolean = false;
+  users: any[] = [];
+  selected: any[] = [];
+  selectAll: boolean = false;
+  parentSelector: boolean = false;
+  employee: any = [];
+  selectedEmployess: any[] = [];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
   name: any;
   email: any;
   fileName: string = '';
-  fileName1:string = '';
+  fileName1: string = '';
+
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -46,7 +59,7 @@ export class EmployeeContentComponent implements OnInit {
   buttonColor2 = '#2F2C9F';
   buttonbackgroundColor3 = '#2F2C9F';
   buttonColor3 = '#FFFFFF';
-  employee: any = [];
+  // employee: any = [];
   employeeuid: any = [];
   currentEmployeeUid: any = '';
   query: string = '';
@@ -93,9 +106,9 @@ export class EmployeeContentComponent implements OnInit {
     ]),
     timing: new FormControl('', Validators.required),
   });
- csvform= new FormGroup({
-   csv: new FormControl('', Validators.required)
- })
+  csvform = new FormGroup({
+    csv: new FormControl('', Validators.required),
+  });
   get registrationFormControl() {
     return this.form.controls;
   }
@@ -475,7 +488,6 @@ export class EmployeeContentComponent implements OnInit {
   selectedFile: File | null = null;
   selectedFile1: File | null = null;
 
-
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
@@ -528,7 +540,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_resigned = false;
-    this.fetchdata()
+    this.fetchdata();
   }
   is_active: boolean = false;
   isactive() {
@@ -544,7 +556,6 @@ export class EmployeeContentComponent implements OnInit {
       //   this.emptybox = false;
       // }
     });
-
   }
   is_resigned: boolean = false;
   is_terminated: boolean = false;
@@ -559,7 +570,6 @@ export class EmployeeContentComponent implements OnInit {
       console.log('data', res);
       this.employee = res;
     });
-
   }
   isterminated() {
     this.is_terminated = !this.is_terminated;
@@ -631,7 +641,7 @@ export class EmployeeContentComponent implements OnInit {
   backgroundColor: string;
   color: string;
   borderColor: string;
-  onSelectChange(event: any, user:any) {
+  onSelectChange(event: any, user: any) {
     // if(user===this.selectedUser){
     switch (event.target.value) {
       case 'active': {
@@ -658,17 +668,17 @@ export class EmployeeContentComponent implements OnInit {
         this.borderColor = 'rgba(248, 187, 111, 0.4)';
         break;
       }
-      default: {
-        this.backgroundColor = '';
-        this.color = '';
-        this.borderColor = '';
-        break;
-      }
+      default:
+        {
+          this.backgroundColor = '';
+          this.color = '';
+          this.borderColor = '';
+          break;
+        }
 
-        console.log(event.target.value)
+        console.log(event.target.value);
     }
-
-    this.dashService.updateEmpStatus(user._id ,event.target.value).subscribe(
+    this.dashService.updateEmpStatus(user._id, event.target.value).subscribe(
       (response) => {
         console.log(response);
       },
@@ -676,8 +686,8 @@ export class EmployeeContentComponent implements OnInit {
         console.log(error);
       }
     );
-    }
-    
+  }
+
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';
@@ -690,20 +700,138 @@ export class EmployeeContentComponent implements OnInit {
     this.importfile = true;
     this.showModal = true;
     this.showModalContent = false;
-    this.csvadded=false;
+    this.csvadded = false;
+    // this.importFile()
   }
-  closeFilepicker(){
-    this.importfile=false;
-    this.showModal=false;
+  closeFilepicker() {
+    this.importfile = false;
+    this.showModal = false;
     this.csvadded = false;
   }
- employeecsv(){
-  this.csvadded=true;
-  this.importfile=false;
- }
- closecsvadded(){
-  this.showModal=false;
-  this.csvadded=false;
- }
 
+  employeecsv() {
+    this.csvadded = true;
+    this.importfile = false;
+  }
+
+  closecsvadded() {
+    this.showModal = false;
+    this.csvadded = false;
+    this.fetchdata();
+  }
+
+  download(): void {
+    this.dashService.exportUsers(this.selectedEmployess).subscribe(
+      (data: Blob) => {
+        const downloadUrl = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'users.csv';
+        link.click();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  onFileSelectedrem(event: any): void {
+    const file: File = event.target.files[0];
+    const reader: FileReader = new FileReader();
+
+    reader.onload = (e: any) => {
+      const csv: string = e.target.result;
+      const lines: string[] = csv.split(/\r\n|\n/);
+      const headers: string[] = lines[0].split(',');
+      const data: any[] = [];
+
+      for (let i = 1; i < lines.length - 1; i++) {
+        const values: string[] = lines[i].split(',');
+        const item: any = {};
+
+        for (let j = 0; j < headers.length; j++) {
+          item[headers[j]] = values[j];
+        }
+
+        data.push(item);
+      }
+      console.log(data, 'adarsh console');
+      data.forEach((employee) => {
+        console.log('Adarsh', employee);
+        this.dashService.addEmployee(employee).subscribe((res: any) => {
+          console.log(res, 'response');
+          console.log(res.data);
+        });
+      });
+      console.log(data);
+      // this.fetchdata()
+    };
+
+    reader.readAsText(file);
+    // this.fetchdata()
+  }
+
+  importFile() {
+    const fileInput = document.querySelector(
+      'input[type=file]'
+    ) as HTMLInputElement;
+    fileInput.click();
+  }
+
+  onCheckboxChange($event, user: any) {
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+
+    if (isChecked) {
+      if (user == 'All') {
+        this.selectedEmployess = [...this.employee];
+        // Check all checkboxes
+        this.employee.forEach((el: any, i: number) => {
+          el['checked'] = true;
+        });
+      } else {
+        this.employee.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            this.employee['checked'] = true;
+            return;
+          }
+        });
+        this.selectedEmployess.push(user);
+      }
+      console.log(this.selectedEmployess, 'added employees');
+    } else {
+      if (user == 'All') {
+        this.selectedEmployess = [];
+        // Uncheck all checkboxes
+        this.employee.forEach((el: any, i: number) => {
+          el['checked'] = false;
+        });
+      } else {
+        let index: number = -1;
+        this.selectedEmployess.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            index = i;
+            return;
+          }
+        });
+        this.employee.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            this.employee['checked'] = false;
+            return;
+          }
+        });
+        if (index >= 0) {
+          this.selectedEmployess.splice(index, 1);
+        }
+      }
+      console.log(this.selectedEmployess, 'removed user');
+    }
+  }
+
+  toggleAllCheckboxes() {
+    let checkboxes = document.getElementsByTagName('input');
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].type === 'checkbox') {
+        checkboxes[i].checked = this.isChecked;
+      }
+    }
+  }
 }
