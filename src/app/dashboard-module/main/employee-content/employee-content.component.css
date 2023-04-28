@@ -593,8 +593,8 @@ table {
   font-weight: 400;
   font-size: 14px;
 }
-
-/* .activated{
+/* 
+ .activated{
   color: #3D9030;
   background-color: rgba(123, 211, 109, 0.3);
 
@@ -610,7 +610,7 @@ background-color: rgba(255, 238, 82, 0.5);
 .abscond{
  color: #DB771D;
  background-color: rgba(248, 187, 111, 0.4);
-} */
+}  */
 .modal {
     position: fixed;
     top: 0;

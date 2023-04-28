@@ -674,6 +674,9 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
     }
+ 
+
+  
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';
