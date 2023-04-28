@@ -155,7 +155,7 @@ export class LoginEmployeeComponent {
   submit() {
     this.loader = true;
     setTimeout(() => {
-      this.router.navigate(['/employee/dashboard']);
+      this.router.navigate(['/employees/dashboard']);
     }, 2000);
   }
 
