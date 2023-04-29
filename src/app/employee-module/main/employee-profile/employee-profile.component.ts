@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   FormArray,
 } from '@angular/forms';
+import { EmpService } from '../../shared/emp.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -37,6 +38,16 @@ export class EmployeeProfileComponent {
   contentdropdown6: boolean = false;
   contentdropdown7: boolean = false;
   contentdropdown8: boolean = false;
+  employee:any[]=[]
+  obj:any
+  constructor(private empdashService:EmpService){
+    this.empdashService.getEmployee().subscribe((res)=>{
+      console.log('abc',res)
+      // this.employee=res
+      this.obj=res
+      console.log('obj',this.obj)
+    })
+  }
 
   array1: any = [
     {
