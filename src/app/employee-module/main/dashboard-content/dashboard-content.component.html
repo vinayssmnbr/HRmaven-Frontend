@@ -1,90 +1,324 @@
-<app-header ></app-header>
-  <app-sidebar></app-sidebar>
-<!-- <div class="main" >
-  <div class="row">
-      <div class="col-3">
-          <div class="iconCenter file">
-              <i class="fa-sharp fa-solid fa-file-pen"></i>
-          </div>
-          <div class="text-image">
-              <p>Total Applications</p>
-              <h1>500</h1>
-          </div>
-      </div>
-      <div class="col-3">
-          <div class="iconCenter list">
-              <i class="fa-solid fa-rectangle-list"></i>
-          </div>
-          <div class="text-image">
-              <p>Shortlisted Candidates</p>
-              <h1>500</h1>
-          </div>
-      </div>
-      <div class="col-3">
-          <div class="iconCenter reject">
-              <i class="fa-solid fa-user-xmark"></i>
-          </div>
-          <div class="text-image">
-              <p>Rejected Candidates</p>
-              <h1>500</h1>
-          </div>
-      </div>
-      <div class="col-3">
-          <div class="iconCenter clock">
-              <i class="fa-sharp fa-regular fa-clock"></i>
-          </div>
-          <div class="text-image">
-              <p>Onhold Candidates</p>
-              <h1>500</h1>
-          </div>
-      </div>
-  </div> -->
-  <!--Section Bar Graph-->
-  <!-- <div class="row">
-      <div class="col-8">
-          <div class="attendance-area">
-              <div class="attendence-content">
-                  <div class="attendance">
-                      <h2>Attendance</h2>
-                  </div>
-              </div>
-              <div class="loader" *ngIf="!loader"></div>
-              <div class="bar-chart">
-                  <canvas id="myChart"></canvas>
-              </div>
-          </div>
-      </div>
-      <div class="col-4">
-          <div class="meeting-area">
-              <div class="meeting-text">
-                  <h2>Meetings</h2>
-                  <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
-              </div>
-              <div class="meeting-scrollbar">
-                  <div class="all-meetings" *ngFor="let option of options let index = index">
-                      <div class="interview-area">
-                          <div class="date">
-                              <p>{{option.day}}</p>
-                              <h5>{{option.Date}}</h5>
-                          </div>
-                          <div class="interview-timings">
-                              <div class="interview-dots">
-                                  <h3>{{option.head}}</h3>
-                                  <p>{{option.time}}</p>
-                              </div>
-                              <div class="dots">
-                                  <i class="fa-solid fa-ellipsis-vertical" (click)="ToggleMenu(index)">
-                                      <ul id={{index}} class="close">
-                                          <button value={{index}} (click)="Edit(index)" class="edit-btn">Edit</button>
-                                          <button value="Delete">Delete</button>
-                                      </ul>
-                                  </i>
-                              </div>
-                          </div> 
-                      </div>
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="main">
+    <div class="row">
+        <div class="col-9">
+            <div class="col-4">
+                <div class="card">
+                    <div class="text-image">
+                        <p>Punch in timing</p>
+                        <h1>08:46 am</h1>
+                    </div>
+                    <div class="text-image-icon">
+                        <img src="assets/images/Group 1248.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="text-image">
+                        <p>Punch in timing</p>
+                        <h1>--:-- pm</h1>
+                    </div>
+                    <div class="text-image-icon">
+                        <img src="assets/images/Group 1248.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="quick-action">
 
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div> -->
+                    <p>Quick actions</p>
+                    <div class="leave-profile">
+                        <div class="leave">
+                            <img src="assets/images/Group 1248-leave.png" alt="">
+                            <p>Leave</p>
+                        </div>
+                        <div class="profile">
+                            <img src="assets/images/Group 1248-profile.png" alt="">
+                            <p>Profile</p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="attendance-chart">
+                    <div class="attendance-heading">
+                        <h5>Attendance</h5>
+                        <div class="dropdown_container">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                                <p>{{Selectvariable}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown">
+                                <ul>
+                                    <li *ngFor="let arr of array; index as i"
+                                        [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                        {{arr.name}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart">
+                        <canvas id="doughnut"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="leave-balance"></div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <!-- <div class="iconCenter clock">
+            <i class="fa-sharp fa-regular fa-clock"></i>
+        </div>
+        <div class="text-image">
+            <p>Onhold Candidates</p>
+            <h1>500</h1>
+        </div> -->
+            <div class="meeting-area">
+                <div class="meeting-text">
+                    <h2>Meetings</h2>
+                    <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
+                </div>
+                <div class="meeting-scrollbar">
+                    <div class="all-meetings">
+                        <div class="interview-area">
+                            <div class="date">
+                                <p>Mon</p>
+                                <h5>20</h5>
+                            </div>
+                            <div class="interview-timings">
+                                <div class="interview-dots">
+                                    <h3>Interview</h3>
+                                    <p>9:00 am - 11:00am</p>
+                                </div>
+                                <div class="dots">
+                                    <i class="fa-solid fa-ellipsis-vertical">
+                                        <ul class="close">
+                                            <button class="edit-btn">Edit</button>
+                                            <button>Delete</button>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="all-meetings">
+                        <div class="interview-area">
+                            <div class="date">
+                                <p>Mon</p>
+                                <h5>20</h5>
+                            </div>
+                            <div class="interview-timings">
+                                <div class="interview-dots">
+                                    <h3>Interview</h3>
+                                    <p>9:00 am - 11:00am</p>
+                                </div>
+                                <div class="dots">
+                                    <i class="fa-solid fa-ellipsis-vertical">
+                                        <ul class="close">
+                                            <button class="edit-btn">Edit</button>
+                                            <button>Delete</button>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="all-meetings">
+                        <div class="interview-area">
+                            <div class="date">
+                                <p>Mon</p>
+                                <h5>20</h5>
+                            </div>
+                            <div class="interview-timings">
+                                <div class="interview-dots">
+                                    <h3>Interview</h3>
+                                    <p>9:00 am - 11:00am</p>
+                                </div>
+                                <div class="dots">
+                                    <i class="fa-solid fa-ellipsis-vertical">
+                                        <ul class="close">
+                                            <button class="edit-btn">Edit</button>
+                                            <button>Delete</button>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="all-meetings">
+                        <div class="interview-area">
+                            <div class="date">
+                                <p>Mon</p>
+                                <h5>20</h5>
+                            </div>
+                            <div class="interview-timings">
+                                <div class="interview-dots">
+                                    <h3>Interview</h3>
+                                    <p>9:00 am - 11:00am</p>
+                                </div>
+                                <div class="dots">
+                                    <i class="fa-solid fa-ellipsis-vertical">
+                                        <ul class="close">
+                                            <button class="edit-btn">Edit</button>
+                                            <button>Delete</button>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="all-meetings">
+                        <div class="interview-area">
+                            <div class="date">
+                                <p>Mon</p>
+                                <h5>20</h5>
+                            </div>
+                            <div class="interview-timings">
+                                <div class="interview-dots">
+                                    <h3>Interview</h3>
+                                    <p>9:00 am - 11:00am</p>
+                                </div>
+                                <div class="dots">
+                                    <i class="fa-solid fa-ellipsis-vertical">
+                                        <ul class="close">
+                                            <button class="edit-btn">Edit</button>
+                                            <button>Delete</button>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="all-meetings">
+                        <div class="interview-area">
+                            <div class="date">
+                                <p>Mon</p>
+                                <h5>20</h5>
+                            </div>
+                            <div class="interview-timings">
+                                <div class="interview-dots">
+                                    <h3>Interview</h3>
+                                    <p>9:00 am - 11:00am</p>
+                                </div>
+                                <div class="dots">
+                                    <i class="fa-solid fa-ellipsis-vertical">
+                                        <ul class="close">
+                                            <button class="edit-btn">Edit</button>
+                                            <button>Delete</button>
+                                        </ul>
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------Job-Post-Summary-------------------->
+    <div class="job-post-summary-area">
+        <div class="job-post-heading">
+            <h6>Job post summary</h6>
+            <a href="">View All</a>
+        </div>
+        <div class="job-summary-list">
+            <div class="UI-UX-area">
+                <div class="ui-heading">
+                    <h5>UI/UX Designer</h5>
+                    <p>In progress</p>
+                </div>
+                <div class="bookmark">
+                    <img src="assets/images/Group 1307.png" alt="">
+                </div>
+            </div>
+            <div class="skills-required">
+                <div class="ul-li">
+                <h4>Skill Required:</h4>
+                <ul class="skill-require-ul">
+                    <li>Figma</li>
+                    <li>3D Design</li>
+                    <li>After Effects</li>
+                    <li>Illustrations</li>
+    </ul>
+</div>
+    <div class="job-posted">
+    <p>Job Posted: 05 Jul 2023</p>
+    </div>
+            </div>
+        </div>
+        <div class="job-summary-list">
+            <div class="UI-UX-area">
+                <div class="ui-heading">
+                    <h5>UI/UX Designer</h5>
+                    <p>In progress</p>
+                </div>
+                <div class="bookmark">
+                    <img src="assets/images/Group 1307.png" alt="">
+                </div>
+            </div>
+            <div class="skills-required">
+                <div class="ul-li">
+                <h4>Skill Required:</h4>
+                <ul class="skill-require-ul">
+                    <li>Figma</li>
+                    <li>3D Design</li>
+                    <li>After Effects</li>
+                    <li>Illustrations</li>
+    </ul>
+</div>
+    <div class="job-posted">
+    <p>Job Posted: 05 Jul 2023</p>
+    </div>
+            </div>
+        </div>
+        <div class="job-summary-list">
+            <div class="UI-UX-area">
+                <div class="ui-heading">
+                    <h5>UI/UX Designer</h5>
+                    <p>In progress</p>
+                </div>
+                <div class="bookmark">
+                    <img src="assets/images/Group 1307.png" alt="">
+                </div>
+            </div>
+            <div class="skills-required">
+                <div class="ul-li">
+                <h4>Skill Required:</h4>
+                <ul class="skill-require-ul">
+                    <li>Figma</li>
+                    <li>3D Design</li>
+                    <li>After Effects</li>
+                    <li>Illustrations</li>
+    </ul>
+</div>
+    <div class="job-posted">
+    <p>Job Posted: 05 Jul 2023</p>
+    </div>
+            </div>
+        </div>
+
+
+        
+        
+    </div>
+</div>
+
