@@ -23,7 +23,7 @@ export class LoginEmployeeComponent {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private cookie: CookieService,
+    public cookie: CookieService,
     public employeeService:EmployeeService,
     // public userService: UserService
   ) {}
@@ -39,21 +39,29 @@ export class LoginEmployeeComponent {
       });
     }
 
-    this.activatedRoute.queryParams.subscribe((params) => {
-    //   // console.log(params);
-      const token = params['token'];
-      console.log(token);
-      if (token && token != 'undefined') {
-        this.cookie.set('token', token);
-        this.router.navigate(['employee/dashboard']);
-      } else {
-        this.cookie.delete('token');
-        this.router.navigate(['loginemp']);
-      }
-    });
+
+
+
+
+    // this.activatedRoute.queryParams.subscribe((params) => {
+    // //   // console.log(params);
+    //   const token = params['token'];
+    //   console.log(token);
+    //   if (token && token != 'undefined') {
+    //     this.cookie.set('token', token);
+    //     this.router.navigate(['employee/dashboard']);
+    //   } else {
+    //     this.cookie.delete('token');
+    //     this.router.navigate(['loginemp']);
+    //   }
+    // });
+
+
+
+
 
     if (this.employeeService.isUserLoggedIn()) {
-      this.router.navigate(['employee/dashboard']);
+      this.router.navigate(['employees/dashboard']);
     }
     // this.userService.allDataLogin();
   }
@@ -147,7 +155,7 @@ export class LoginEmployeeComponent {
   submit() {
     this.loader = true;
     setTimeout(() => {
-      this.router.navigate(['/employee/dashboard']);
+      this.router.navigate(['/employees/dashboard']);
     }, 2000);
   }
 
@@ -209,7 +217,7 @@ export class LoginEmployeeComponent {
     //   }
 
     //   this.employeemail = res;
-    
+
 
     //   console.log('Response from API:', this.employeemail);
     // });
