@@ -13,7 +13,73 @@ export class DashboardContentComponent {
 
   }
 
-
-
-
+  array: any = [
+    {
+      id: 0,
+      name: 'January',
+    },
+    {
+      id: 1,
+      name: 'February',
+    },
+    {
+      id: 2,
+      name: 'March',
+    },
+    {
+      id: 3,
+      name: 'April',
+    },
+    {
+      id: 4,
+      name: 'May',
+    },
+    {
+      id: 5,
+      name: 'June',
+    },
+    {
+      id: 6,
+      name: 'July',
+    },
+    {
+      id: 7,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 8,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 9,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 10,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 11,
+      name: 'UI/UX Designer',
+    },
+    {
+      id: 12,
+      name: 'UI/UX Designer',
+    },
+  ];
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+  
+    this.contentdropdown = !this.contentdropdown;
+  }
+  Selectvariable: string = 'Designation';
+  colorvariable: number =  0;
+  Changeselect(arr: any) {
+    this.Selectvariable = arr.name;
+    this.colorvariable = arr.id;
+    this.contentdropdown=false;
+    console.log(arr.name);
+  }
+  
 }
+
