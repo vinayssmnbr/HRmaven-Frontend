@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
+import * as filestack from 'filestack-js';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,9 @@ export class EmpService {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
-  ) { }
+  ) {
+    this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
+  }
 
 
 
@@ -42,7 +45,32 @@ export class EmpService {
   }
 
 
-  leavegraph(){
+  leavegraph() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('http://localhost:3000/api/leave/emp/leave', { headers });
+
+  }
+
+  leavehistory() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('http://localhost:3000/api/leave/emp/history', { headers });
+
+
+  }
+
+  attendanceload(){
     const id = this.cookie.get('id');
     const headers= new HttpHeaders(
       {
@@ -50,20 +78,12 @@ export class EmpService {
         'id':id
       }
     )
-    return this.http.get('http://localhost:3000/api/leave/emp/leave',{ headers});
+    return this.http.get('http://localhost:3000/attendance/emp/attendance',{ headers});
+  }
 
-}
-
-leavehistory() {
-    const id = this.cookie.get('id');
-    const headers= new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id':id
-      }
-    )
-    return this.http.get('http://localhost:3000/api/leave/emp/history',{ headers});
-
-}
+  private client: filestack.Client;
+  upload1(file: File): Promise<any> {
+    return this.client.upload(file)
+  }
 }
 

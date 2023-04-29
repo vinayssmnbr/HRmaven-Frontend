@@ -11,8 +11,14 @@ import { EmpService } from '../../shared/emp.service';
 export class LeavesContentComponent {
   // empleaveForm: FormGroup;
 
-  leaves=[];
-  str="";
+  leaves:any=[];
+  str = "";
+  obj={
+    casual:1,
+    earned:2,
+    urgent:3,
+    medical:4
+  };
 
   constructor(public empService: EmpService, private formBuilder: FormBuilder) {
     empService.activeComponent = 'leave';
@@ -20,23 +26,45 @@ export class LeavesContentComponent {
     this.leavegraphcontent();
   }
 
-  leavegraphcontent() {
-    this.empService.leavegraph().subscribe((res: any) => {
-      console.log(res.response);
+ async  leavegraphcontent() {
+   await  this.empService.leavegraph().subscribe((res: any) => {
+      console.log(res.response[0]);
+      this.obj= res.response[0];
     })
 
-    this.empService.leavehistory().subscribe((res:any)=>{
+    this.empService.leavehistory().subscribe((res: any) => {
       console.log(res.response[0].History);
-      this.leaves=res.response[0].History;
+      this.leaves = res.response[0].History;
     })
 
   }
 
 
-  Submit(){
+  Submit() {
     console.log(this.empleaveForm.value);
   }
+
+  upload() {
+
+  }
+
+  onfileselect(event: any) {
+
+  }
+  selectedFile1: File | null = null;
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+  }
+  onUpload(file:any) {
+    console.log('fdjkhf');
+    this.empService.upload1(file).then((res) => {
+      console.log(res)
+    });
+  }
+
   ngOnIt() {
+
   }
 
   empleaveForm = new FormGroup({
@@ -44,22 +72,22 @@ export class LeavesContentComponent {
     to: new FormControl("", [Validators.required]),
     category: new FormControl("", [Validators.required]),
     duration: new FormControl("", Validators.required),
-    url:new FormControl(""),
-    reason:new FormControl("")
+    url: new FormControl(""),
+    reason: new FormControl("")
   })
   getDates() {
     const dateArray: string[] = [];
     let startDate = this.empleaveForm.value.from;
-    let stopDate=this.empleaveForm.value.to;
+    let stopDate = this.empleaveForm.value.to;
     let currentDate = moment(startDate);
     const endDate = moment(stopDate);
     while (currentDate <= endDate) {
       dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
       currentDate = moment(currentDate).add(1, 'days');
     }
-    let len =  dateArray.length;
-     this.str = len.toString()
-    let obj = {duration:this.str};
+    let len = dateArray.length;
+    this.str = len.toString()
+    let obj = { duration: this.str };
     this.empleaveForm.value.duration = this.str;
 
   }
@@ -101,7 +129,7 @@ export class LeavesContentComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
-    this.empleaveForm.value.category=arr.name;
+    this.empleaveForm.value.category = arr.name;
 
   }
   leaveshistory = false;
