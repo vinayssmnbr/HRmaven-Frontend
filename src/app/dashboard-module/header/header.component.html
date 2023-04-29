@@ -21,8 +21,12 @@
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-      <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"
+      <img *ngIf="!user" src="./assets/images/gg_profile.svg" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
+
+        <img *ngIf="user" src="{{header}}" alt="" class="header-icon"
+        (click)="getProfileData();profileToggle()"><br>
+
     </div>
   </div>
 
@@ -92,6 +96,7 @@
           <div class="image-and-text">
             <div class="robert-image">
               <img src="assets/images/Rectangle-1.png" alt="hlo" />
+
             </div>
 
             <div class="robert-text">
