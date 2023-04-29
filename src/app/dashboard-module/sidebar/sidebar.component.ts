@@ -86,5 +86,6 @@ export class SidebarComponent implements OnInit {
     'Recruitment',
     'Report',
   ];
-  
+
 }
+

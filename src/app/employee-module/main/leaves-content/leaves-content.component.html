@@ -165,6 +165,35 @@
                     <button class="apply" (click)="applyleaves()">Apply</button>
                 </div>
             </form>
+
+            <!--Apply for leaves-->
+            <div class="reason-attachments">
+                <div class="col-6">
+                    <div class="reason">
+                        <label for="">Reason</label>
+                        <textarea placeholder="Type your reason here..."></textarea>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="reason">
+                        <label for="">Attachments(Optional)</label>
+                        <div class="textarea">
+                            <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
+                            <p class="first">Select a file or drag and drop here</p>
+                            <p class="second">Supported formats: pdf, jpg, png</p>
+                            <div class="choose-btn">
+                                <button class="choose-file" (click)="onUpload()"a>Choose File</button>
+                                <input type="file" (change)="onFileSelected($event)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear-apply-button">
+                <button class="clear">Clear</button>
+                <button class="apply" (click)="applyleaves()">Apply</button>
+            </div>
         </div>
 
     </div>

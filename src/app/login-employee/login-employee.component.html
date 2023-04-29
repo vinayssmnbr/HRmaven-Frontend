@@ -136,9 +136,12 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Email</label>
                     <input type="email" class="form-control email" formControlName="email" placeholder="Enter your email" />
+                    <div *ngIf="emaill.invalid && emaill.touched || emaill.dirty">
                     <span *ngIf="emaill && emaill.invalid && emaill.touched && emaill.dirty"  class="emailwrg"><i
                         class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span>
-                </div>
+                        <span *ngIf="emaill.errors" class="emailwrg"><i class="fa-sharp fa-solid fa-triangle-exclamation">Enter Valid Email Pattern</i></span>
+                      </div>
+                      </div>
 
             </div>
             <div class="field create-password">
