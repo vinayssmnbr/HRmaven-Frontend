@@ -532,18 +532,14 @@ form.ng-invalid #submit {
     transform: translateX(5px);
     opacity: 1;
 }
-.password-tooltip, .input-field:hover .tooltip{
+.input-field:hover .tooltip{
     transform: translateX(5px);
     opacity: 1;
     visibility: visible;
 }
-
-
-
 .tooltip span {
     margin-top: 0;
 }
-
 .create-password label.text-label {
     display: flex;
     justify-content: space-between;
