@@ -609,7 +609,6 @@ export class EmployeeContentComponent implements OnInit {
   }
   selectedOption: string;
 
-
   selectedUser: any;
   optionStyle: any;
 

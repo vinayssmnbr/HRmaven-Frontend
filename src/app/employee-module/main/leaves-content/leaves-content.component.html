@@ -154,8 +154,8 @@
                             <p class="first">Select a file or drag and drop here</p>
                             <p class="second">Supported formats: pdf, jpg, png</p>
                             <div class="choose-btn">
-                                <button class="choose-file">Choose File</button>
-                                <input type="file">
+                                <button class="choose-file" (click)="onUpload()"a>Choose File</button>
+                                <input type="file" (change)="onFileSelected($event)">
                             </div>
                         </div>
                     </div>
