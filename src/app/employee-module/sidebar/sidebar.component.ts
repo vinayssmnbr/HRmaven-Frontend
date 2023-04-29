@@ -75,7 +75,8 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.cookie.delete('token');
-    window.location.href='http://localhost:4200/login-emp'
+    this.router.navigate(['./login-emp'])
+    // window.location.href='http://localhost:4200/login-emp'
     // window.open('https://turneazy.com/login', '_blank');
 
 
