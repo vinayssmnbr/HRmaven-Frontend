@@ -12,7 +12,12 @@
 
   /* background-color: red; */
 }
-
+.left_side{
+  width: 60%;
+}
+.right_side{
+  width: 40%;
+}
 .col-9 .col-4 {
   padding-right: 20px;
   border-radius: 8px;
@@ -52,6 +57,7 @@
   background-color: #ffffff;
   border-radius: 8px;
   margin-top: 25px;
+  padding: 25px 25px;
 }
 
 .leave-balance {
@@ -425,15 +431,51 @@
 
 /* ----------Drop Down END--------------- */
 
+/*---------------------------Leave-Balance------------------------*/
 
+.casual_leave{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 39px;
+  cursor: pointer;
+  /* background-color: #FAFAFA; */
+border-radius: 10px;
+}
+.medical_leave{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 39px;
+  cursor: pointer;
+  margin-top: 10px;
+  /* background-color: #FAFAFA; */
+border-radius: 10px;
+}
+.medical_leave:hover{
+  background-color: #FAFAFA;;
+}
+.casual_leave:hover{
+  background-color: #FAFAFA;;
+}
 .attendance-area {
   background-color: #FFFFFF;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 20px 25px;
   position: relative;
+}
+.present_leave_absent{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.chart_leaves {
+  display: flex;
+  gap: 100px;
+}
+.present {
+  display: flex;
+  gap: 43px;
 }
 
 
