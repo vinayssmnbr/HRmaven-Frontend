@@ -353,24 +353,7 @@ width: 11%;
   margin-bottom: 20px;
 }
 
-/* .uid{
-  margin-left: -28px;
-}
-.gender{
-  margin-left: -48px;
-}
-.marstatus{
-  margin-right: 152px;
-}
-.dob{
-  margin-right: 36px;
-}
-.nation{
-  margin-right: 168px;
-}
-.mname{
-  margin-left: -17px;
-} */
+
 .card4{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -385,18 +368,7 @@ width: 11%;
   color: #444444;
   margin-bottom: 17px;
 }
-/* .pcode{
-  margin-left: -10px;
-}
-.email{
-  margin-right: 90px;
-}
-.state{
-  margin-right: 183px;
-}
-.address{
-  margin-left: -48px;
-} */
+
 .card5 {
   padding: 23px 50px;
   border: 1px solid rgba(47, 44, 159, 0.15);
@@ -410,18 +382,7 @@ width: 11%;
     color: #444444;
     margin-bottom: 17px;
 }
-/* .bno{
-  margin-left: 16px;
-}
-.ifsc{
-  margin-right: 160px;
-}
-.panno{
-  margin-left: -45px;
-}
-.pno{
-  margin-right: 128px;
-} */
+
 .card6{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -435,21 +396,7 @@ width: 11%;
     color: #444444;
     margin-bottom: 17px;
 }
-/* .mper{
-  margin-left: -125px;
-}
-.gcol{
-  margin-left: 35px;
-}
-.inst2{
-  margin-right: 62px;
-}
-.stream{
-  margin-right: 158px;
-}
-.pgcol{
-  margin-left: 82px;
-} */
+
 .card7{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -466,15 +413,7 @@ width: 11%;
 .card7 hr{
   margin-bottom: 25px;
 }
-/* .duration2{
-  margin-left: -35px;
-}
-.designation2{
-  margin-right: 102px;
-}
-.designation{
-  margin-right: 60px;
-} */
+
 .card8{
   padding: 23px 50px;
     border: 1px solid rgba(47, 44, 159, 0.15);
@@ -488,18 +427,6 @@ width: 11%;
     color: #444444;
     margin-bottom: 17px;
 }
-/* .jdate{
-  margin-right: 130px;
-}
-.ctc{
-  margin-right: 167px;
-}
-.timings{
-  margin-left: -52px;
-}
-.estatus{
-  margin-left: -65px;
-} */
 
 .modal {
   position: fixed;
@@ -527,9 +454,30 @@ width: 11%;
   width: 100%;
   max-width: 986px;
   border-radius: 8px;
-  /* margin-top: 30px; */
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+}
+.modal-content4 {
+  background-color: #ffffff;
+  position: absolute;
+  width: 100%;
+  max-width: 986px;
+  border-radius: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.modal-content4::-webkit-scrollbar {
+  width: 8px;
+  cursor: pointer;
+}
 
-  /* margin-bottom: 40px; */
+.modal-content4r::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.modal-content4::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
 }
 
 .modal-header{
@@ -543,6 +491,19 @@ width: 11%;
     width: 100%;
     max-width: 986px;
     height: 69px;
+}
+.modal-header4 {
+  position: fixed;
+  background-color: #F7F7FB;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 8px 8px 0px 0px;
+  align-items: center;
+  padding: 22px 0;
+  width: 100%;
+  max-width: 986px;
+  height: 69px;
 }
 .modal-title{
     font-weight: 400;
@@ -560,6 +521,10 @@ width: 11%;
 .modal-body{
   /* padding: 30px; */
   padding: 15px 30px;
+}
+.modal-body4 {
+  padding: 15px 30px;
+  margin-top: 90px;
 }
 #form1{
   margin-top: 30px;
@@ -582,9 +547,8 @@ width: 11%;
   padding-left: 8px;
 }
 #form5 {
-  margin-top: 30px;
-  margin-bottom: 25px;
   padding-left: 8px;
+  height: 260px;
 }
 #form6 {
   margin-top: 30px;
@@ -633,6 +597,17 @@ input[type='text']{
     border-radius: 8px;
     outline: none;
     margin-bottom: 40px;
+}
+input[type='email'] {
+  width: 270px;
+  font-family: 'Outfit', sans-serif;
+  height: 40px;
+  padding-left: 17px;
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB;
+  border-radius: 8px;
+  outline: none;
+  /* margin-bottom: 20px; */
 }
 input[type='number'] {
   width: 270px;
@@ -697,6 +672,37 @@ input[type='date'] {
   border-radius: 0px 0px 8px 8px;
   gap: 10px;
   /* position: fixed; */
+}
+.modal-footer4 {
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F7F7FB;
+  border-radius: 0px 0px 8px 8px;
+  gap: 10px;
+  margin-top: -8px;
+  position: fixed;
+  width: 100%;
+  max-width: 986px;
+  height: 69px;
+}
+.add-more{
+  margin-top: -15px;
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #2F2C9F;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 /* .cancel{
   padding: 13px 26px;

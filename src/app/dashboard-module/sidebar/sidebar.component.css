@@ -82,6 +82,24 @@ ul.navigation li:hover{
   border-radius: 8px;
 
 }
+.select-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.select-btn i{
+  position: absolute;
+  right: 30px;
+  margin-top: 3px;
+  color: #fff;
+  transition: 0.3s;
+  font-size: 20px;
+  cursor: pointer;
+}
+li.active .select-btn i {
+  transform: rotate(-180deg);
+}
 .home_img1{
   display: none;
 }
