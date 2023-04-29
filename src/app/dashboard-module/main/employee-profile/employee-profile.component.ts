@@ -665,4 +665,8 @@ export class EmployeeProfileComponent implements OnInit{
   //      this.openotherinput=true;
   //   }
   // }
+  showpgdetails:boolean=false;
+  showpgdet(){
+    this.showpgdetails=true;
+  }
 }
