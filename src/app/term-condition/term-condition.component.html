@@ -1,73 +1,317 @@
 <div class="term_container">
     <div class="term_title">
         <h2>Terms & Conditions</h2>
-        <i class="fa-solid fa-xmark" routerLink="/signup"></i>
-    </div>
-
-    <div class="term_date">
         <p>Last Updated: July 23, 2022</p>
     </div>
+
     <div class="term_content">
-        <div class="term_text">
-            <div class="intro_text">
-                <h4><u>Introduction</u></h4>
+        <div class="col-3">
+            <div class="term_leftside">
+                <button class="term_btn" href="" (click)="toggleterm1()"
+                    [ngClass]="{'active': term1Visible}"><span>1.</span>General terms & Conditions</button>
+                <button class="term_btn" (click)="toggleterm2()"
+                    [ngClass]="{'active': term2Visible}"><span>2.</span>Acceptable Use Policy</button>
+                <button class="term_btn" (click)="toggleterm3()"
+                    [ngClass]="{'active': term3Visible}"><span>3.</span>Cancellation Policy</button>
+                <button class="term_btn" (click)="toggleterm4()"
+                    [ngClass]="{'active': term4Visible}"><span>4.</span>Privacy Policy</button>
             </div>
-            <div class="intro_text">
-                <h4 class="account"><u>Account Registration</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4 class="User"><u>User Content</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4 class="Prohibited"><u>Prohibited Conduct</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4><u>Intellectual Property</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4><u>Disclaimer of Warranties</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4 class="Limitation"><u>Limitation of Liability</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4><u>Termination</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4><u>Governing Law</u></h4>
-            </div>
-            <div class="intro_text">
-                <h4><u>Modification of Terms</u></h4>
-            </div>
-
-
         </div>
+        <div class="col-9">
+            <div class="term_bar">
+                <img src="assets/images/termside.png" alt="">
+            </div>
+            <div class="term_rightside">
+                <div class="General_term" id="General_term">
+                    <div class="term_heading">
+                        <h3>General terms & Conditions</h3>
+                    </div>
 
-        <div class="intro_para">
-            <p><span>1.</span>Introduction: Welcome to HRMaven! These Terms of Service (“Terms”) are a contract between you and HRMaven (“we” or “us”) and govern your use of our HRMaven software, services and websites (collectively, “Services”). By using
-                our Services, you agree to these Terms. If you do not agree to these Terms, please do not use our Services.</p>
-            <p><span>2.</span>Account Registration: To use our Services, you must create an account and provide accurate and complete information. You are responsible for keeping your account information up-to-date and confidential. You must be authorized
-                to use our Services on behalf of a company or organization. By creating an account, you agree to receive communications from us.</p>
-            <p><span>3.</span>User Content: Our Services allow you to upload, store, share, and manage content. You retain ownership of all content you upload, store, or share. By using our Services, you grant us a non-exclusive, royalty-free, worldwide
-                license to use, store, display, reproduce, modify, and distribute your content as necessary to provide our Services.</p>
-            <p><span>4.</span>Prohibited Conduct: You may not use our Services to engage in any illegal, harmful, or inappropriate conduct. This includes, but is not limited to, uploading or sharing content that is defamatory, infringing, or obscene.</p>
-            <p><span>5.</span>Intellectual Property: Our Services and all content, trademarks, logos, and other intellectual property related to our Services are owned by HRMaven. You may not use or reproduce our intellectual property without our prior written
-                consent.
-            </p>
+                    <div class="term_text">
+                        <p><span>1.</span><b>Introduction:</b>Welcome to HRMaven! These Terms of Service (“Terms”) are a
+                            contract between you and HRMaven (“we” or “us”) and govern your use of our HRMaven software,
+                            services and websites (collectively, “Services”). By using our Services, you agree to these
+                            Terms.
+                            If you do not agree to these Terms, please do not use our Services.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>2.</span><b>Account Registration:</b>To use our Services, you must create an account
+                            and
+                            provide accurate and complete information. You are responsible for keeping your account
+                            information
+                            up-to-date and confidential. You must be authorized to use our Services on behalf of a
+                            company
+                            or
+                            organization. By creating an account, you agree to receive communications from us.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>3.</span><b>User Content:</b>Our Services allow you to upload, store, share, and manage
+                            content. You retain ownership of all content you upload, store, or share. By using our
+                            Services,
+                            you
+                            grant us a non-exclusive, royalty-free, worldwide license to use, store, display, reproduce,
+                            modify,
+                            and distribute your content as necessary to provide our Services.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>4.</span><b>Prohibited Conduct:</b>
+                            You may not use our Services to engage in any illegal, harmful, or inappropriate conduct.
+                            This
+                            includes, but is not limited to, uploading or sharing content that is defamatory,
+                            infringing, or
+                            obscene.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>5.</span><b>Intellectual Property:</b>Our Services and all content, trademarks, logos,
+                            and
+                            other intellectual property related to our Services are owned by HRMaven. You may not use or
+                            reproduce our intellectual property without our prior written consent.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>6.</span><b>Disclaimer of Warranties:</b>Our Services are provided “as is” without
+                            warranty
+                            of
+                            any kind, express or implied, including but not limited to, warranties of merchantability,
+                            fitness
+                            for a particular purpose, or non-infringement. We make no warranty that our Services will be
+                            error-free, uninterrupted, or secure.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>7.</span><b>Limitation of Liability:</b>To the maximum extent permitted by law, HRMaven
+                            will
+                            not be liable for any indirect, special, incidental, consequential, or punitive damages
+                            arising
+                            out
+                            of or relating to these Terms or your use of our Services.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>8.</span><b>Termination:</b> We may terminate or suspend your account and access to our
+                            Services at any time and for any reason, without notice or liability. Upon termination, your
+                            right
+                            to use our Services will immediately cease.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>9.</span><b>Governing Law: </b>These Terms are governed by and construed in accordance
+                            with
+                            the
+                            laws of the state of California, USA, without giving effect to any principles of conflicts
+                            of
+                            law.
+                        </p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>10</span><b>Modification of Terms:</b>We reserve the right to modify these Terms at any
+                            time.
+                            If we make material changes to these Terms, we will notify you by email or by posting a
+                            notice
+                            on
+                            our website. Your continued use of our Services after the changes have been made constitutes
+                            acceptance of the modified Terms.</p>
+                    </div>
+                </div>
 
-            <p><span>6.</span> Disclaimer of Warranties: Our Services are provided “as is” without warranty of any kind, express or implied, including but not limited to, warranties of merchantability, fitness for a particular purpose, or non-infringement.
-                We make no warranty that our Services will be error-free, uninterrupted, or secure.
-            </p>
-            <p><span>7.</span>Limitation of Liability: To the maximum extent permitted by law, HRMaven will not be liable for any indirect, special, incidental, consequential, or punitive damages arising out of or relating to these Terms or your use of our
-                Services.
-            </p>
-            <p><span>8.</span>Termination: We may terminate or suspend your account and access to our Services at any time and for any reason, without notice or liability. Upon termination, your right to use our Services will immediately cease.</p>
-            <p><span>9.</span> Governing Law: These Terms are governed by and construed in accordance with the laws of the state of California, USA, without giving effect to any principles of conflicts of law.</p>
-            <p><span>10.</span>Modification of Terms: We reserve the right to modify these Terms at any time. If we make material changes to these Terms, we will notify you by email or by posting a notice on our website. Your continued use of our Services
-                after the changes have been made constitutes acceptance of the modified Terms.
-            </p>
+
+                <div class="use_policy" id="use_policy">
+                    <h3>Acceptable Use Policy</h3>
+                    <div class="term_text">
+                        <p><span>1.</span><b>Introduction:</b>Welcome to HRMaven! These Terms of Service (“Terms”) are a
+                            contract between you and HRMaven (“we” or “us”) and govern your use of our HRMaven software,
+                            services and websites (collectively, “Services”). By using our Services, you agree to these
+                            Terms.
+                            If you do not agree to these Terms, please do not use our Services.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>2.</span><b>Account Registration:</b>
+                            Account Registration: To use our Services, you must create an account and provide accurate
+                            and
+                            complete information. You are responsible for keeping your account information up-to-date
+                            and
+                            confidential. You must be authorized to use our Services on behalf of a company or
+                            organization.
+                            By
+                            creating an account, you agree to receive communications from us.
+                        </p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>3.</span><b>User Content:</b>Our Services allow you to upload, store, share, and manage
+                            content. You retain ownership of all content you upload, store, or share. By using our
+                            Services,
+                            you
+                            grant us a non-exclusive, royalty-free, worldwide license to use, store, display, reproduce,
+                            modify,
+                            and distribute your content as necessary to provide our Services.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>4.</span><b>Prohibited Conduct:</b>You may not use our Services to engage in any
+                            illegal,
+                            harmful, or inappropriate conduct. This includes, but is not limited to, uploading or
+                            sharing
+                            content that is defamatory, infringing, or obscene.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>5.</span><b>
+                                Intellectual Property:</b>Our Services and all content, trademarks, logos, and other
+                            intellectual property related to our Services are owned by HRMaven. You may not use or
+                            reproduce
+                            our
+                            intellectual property without our prior written consent.
+                        </p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>6.</span><b>Disclaimer of Warranties:</b>Our Services are provided “as is” without
+                            warranty
+                            of
+                            any kind, express or implied, including but not limited to, warranties of merchantability,
+                            fitness
+                            for a particular purpose, or non-infringement. We make no warranty that our Services will be
+                            error-free, uninterrupted, or secure.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>7.</span><b>Limitation of Liability: </b>To the maximum extent permitted by law,
+                            HRMaven
+                            will
+                            not be liable for any indirect, special, incidental, consequential, or punitive damages
+                            arising
+                            out
+                            of or relating to these Terms or your use of our Services.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>8.</span><b>Termination:</b>We may terminate or suspend your account and access to our
+                            Services
+                            at any time and for any reason, without notice or liability. Upon termination, your right to
+                            use
+                            our
+                            Services will immediately cease.</p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>9.</span><b>Governing Law:</b>These Terms are governed by and construed in accordance
+                            with
+                            the
+                            laws of the state of California, USA, without giving effect to any principles of conflicts
+                            of
+                            law.
+                        </p>
+                    </div>
+                    <div class="term_text">
+                        <p><span>10.</span><b>Modification of Terms:</b>We reserve the right to modify these Terms at
+                            any
+                            time.
+                            If we make material changes to these Terms, we will notify you by email or by posting a
+                            notice
+                            on
+                            our website. Your continued use of our Services after the changes have been made constitutes
+                            acceptance of the modified Terms.</p>
+                    </div>
+                </div>
+
+                <div class="Cancellation_Policy">
+                    <div class="Cancellation">
+                        <h3>Cancellation Policy</h3>
+                    </div>
+                    <p>At HRMaven, we respect your privacy and are committed to protecting your personal information.
+                        This
+                        Privacy Notice explains how we collect, use, share, and protect your personal information.</p>
+                    <p>Information We Collect
+                        We collect personal information that you provide to us, such as your name, address, email
+                        address,
+                        phone number, Social Security number, and any other information that is necessary for HRMaven to
+                        provide its services. We may also collect information about your use of our website, such as
+                        your IP
+                        address, browser type, and other technical information.</p>
+                    <p>
+
+                        How We Use Your Information
+                        We use your personal information to provide our services, communicate with you, and improve our
+                        products and services. We may also use your information for research and analytics purposes.</p>
+                    <p>
+                        How We Share Your Information
+                        We may share your personal information with third-party service providers or other users as
+                        necessary to provide our services. We may also share your information if required by law or to
+                        protect our legal rights.</p>
+                    <p>Cookies and Other Tracking Technologies
+                        We use cookies and other tracking technologies to collect information about your use of our
+                        website.
+                        We use this information to improve our website and personalize your experience.</p>
+                    <p>Security Measures
+                        We take reasonable measures to protect your personal information from unauthorized access or
+                        disclosure. However, no method of transmission over the internet or electronic storage is 100%
+                        secure, and we cannot guarantee absolute security.
+                    </p>
+                    <p>Your Rights
+                        You have the right to access, correct, or delete your personal information. You may also have
+                        other
+                        rights depending on the jurisdiction in which you reside. Please contact us using the
+                        information
+                        below if you have any questions about your rights.</p>
+                    <p>Contact Us
+                        If you have any questions or concerns about our privacy practices, please contact us at
+                        privacy@hrmaven.com.</p>
+                    <p>
+                        Changes to This Notice
+                        We may update this Privacy Notice from time to time. We will post the updated Privacy Notice on
+                        our
+                        website and notify you of any material changes. Your continued use of our services after the
+                        effective date of the updated Privacy Notice constitutes your agreement to the updated terms.
+                    </p>
+                </div>
+
+                <div class="Privacy_Policy">
+
+                    <div class="Privacy_title">
+                        <h3>Privacy Policy</h3>
+                    </div>
+
+                    <p>
+                        At HRMaven, we respect your privacy and are committed to protecting your personal information.
+                        This
+                        Privacy Notice explains how we collect, use, share, and protect your personal information.
+                    </p>
+                    <p>Information We Collect
+                        We collect personal information that you provide to us, such as your name, address, email
+                        address,
+                        phone number, Social Security number, and any other information that is necessary for HRMaven to
+                        provide its services. We may also collect information about your use of our website, such as
+                        your IP
+                        address, browser type, and other technical information.
+                    </p>
+                    <p>
+                        How We Use Your Information
+                        We use your personal information to provide our services, communicate with you, and improve our
+                        products and services. We may also use your information for research and analytics purposes.</p>
+                    <p>How We Share Your Information
+                        We may share your personal information with third-party service providers or other users as
+                        necessary to provide our services. We may also share your information if required by law or to
+                        protect our legal rights.</p>
+                    <p>Cookies and Other Tracking Technologies
+                        We use cookies and other tracking technologies to collect information about your use of our
+                        website.
+                        We use this information to improve our website and personalize your experience.</p>
+                    <p>Security Measures
+                        We take reasonable measures to protect your personal information from unauthorized access or
+                        disclosure. However, no method of transmission over the internet or electronic storage is 100%
+                        secure, and we cannot guarantee absolute security.</p>
+                    <p>Your Rights
+                        You have the right to access, correct, or delete your personal information. You may also have
+                        other
+                        rights depending on the jurisdiction in which you reside. Please contact us using the
+                        information
+                        below if you have any questions about your rights.</p>
+                    <p>Contact Us
+                        If you have any questions or concerns about our privacy practices, please contact us at
+                        privacy@hrmaven.com.</p>
+                    <p>Changes to This Notice
+                        We may update this Privacy Notice from time to time. We will post the updated Privacy Notice on
+                        our
+                        website and notify you of any material changes. Your continued use of our services after the
+                        effective date of the updated Privacy Notice constitutes your agreement to the updated terms.
+                    </p>
+                </div>
+            </div>
         </div>
-
+    </div>
+    <div class="term_condition_btn">
+        <button class="Decline" routerLink="/signup">Decline</button>
+        <button class="Agree" routerLink="/signup">Agree</button>
     </div>
 
 </div>

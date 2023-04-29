@@ -25,7 +25,7 @@ export class EmpGuard implements CanActivate {
         const token = this.cookie.get('token');
 
         if (!token || token == '') {
-          this.router.createUrlTree(['loginemp']);
+          this.router.createUrlTree(['login-emp']);
           return false;
         }
 
@@ -38,17 +38,17 @@ export class EmpGuard implements CanActivate {
             return true;
           }),
           catchError((error) => {
-            return this.router.navigate(['loginemp']);
+            return this.router.navigate(['login-emp']);
           })
         );
       }
       if (!this.employeeService.isUserLoggedIn()) {
-        this.router.createUrlTree(['loginemp']);
+        this.router.createUrlTree(['login-emp']);
         return false;
       }
       return false;
     }
-  
+
 
 
 
