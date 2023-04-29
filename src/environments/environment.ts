@@ -65,4 +65,4 @@ export const environment = {
   leavecontent:'http://localhost:3000/api/leavdata/leavese/',
   patchleave:'http://localhost:3000/api/leave/update/leave'
 
-};
+}

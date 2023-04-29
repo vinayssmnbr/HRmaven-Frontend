@@ -158,4 +158,19 @@ export class LeavesContentComponent {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
 
-}
+  selectedFile: File | null = null;
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    this.onUpload();
+  }
+
+  onUpload(): void {
+    this.empService.upload(this.selectedFile).then(() => {
+      console.log('File uploaded successfully.');
+    });
+  }
+
+  }
+
+
+

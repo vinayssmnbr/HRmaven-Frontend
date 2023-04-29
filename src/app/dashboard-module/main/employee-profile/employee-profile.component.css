@@ -454,9 +454,30 @@ width: 11%;
   width: 100%;
   max-width: 986px;
   border-radius: 8px;
-  /* margin-top: 30px; */
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+}
+.modal-content4 {
+  background-color: #ffffff;
+  position: absolute;
+  width: 100%;
+  max-width: 986px;
+  border-radius: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.modal-content4::-webkit-scrollbar {
+  width: 8px;
+  cursor: pointer;
+}
 
-  /* margin-bottom: 40px; */
+.modal-content4r::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.modal-content4::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
 }
 
 .modal-header{
@@ -470,6 +491,19 @@ width: 11%;
     width: 100%;
     max-width: 986px;
     height: 69px;
+}
+.modal-header4 {
+  position: fixed;
+  background-color: #F7F7FB;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 8px 8px 0px 0px;
+  align-items: center;
+  padding: 22px 0;
+  width: 100%;
+  max-width: 986px;
+  height: 69px;
 }
 .modal-title{
     font-weight: 400;
@@ -487,6 +521,10 @@ width: 11%;
 .modal-body{
   /* padding: 30px; */
   padding: 15px 30px;
+}
+.modal-body4 {
+  padding: 15px 30px;
+  margin-top: 90px;
 }
 #form1{
   margin-top: 30px;
@@ -509,9 +547,8 @@ width: 11%;
   padding-left: 8px;
 }
 #form5 {
-  margin-top: 30px;
-  margin-bottom: 25px;
   padding-left: 8px;
+  height: 260px;
 }
 #form6 {
   margin-top: 30px;
@@ -635,6 +672,37 @@ input[type='date'] {
   border-radius: 0px 0px 8px 8px;
   gap: 10px;
   /* position: fixed; */
+}
+.modal-footer4 {
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F7F7FB;
+  border-radius: 0px 0px 8px 8px;
+  gap: 10px;
+  margin-top: -8px;
+  position: fixed;
+  width: 100%;
+  max-width: 986px;
+  height: 69px;
+}
+.add-more{
+  margin-top: -15px;
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #2F2C9F;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
 /* .cancel{
   padding: 13px 26px;

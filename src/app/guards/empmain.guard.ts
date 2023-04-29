@@ -34,7 +34,7 @@ export class AuthMainGuard implements CanActivate {
       this.employeeService.allDataLogin();
       // this.router.createUrlTree(['/employee/dashboard']);
     } else {
-      this.router.createUrlTree(['loginemp']);
+      this.router.createUrlTree(['login-emp']);
       return false;
     }
     return true;

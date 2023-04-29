@@ -29,8 +29,8 @@ export class AccountSettingsComponent implements OnInit {
  data: any = ''
  employeename: any = '';
  personaldata: any ='';
- headOffice: any = ''; 
- totalemployee: any = ''; 
+ headOffice: any = '';
+ totalemployee: any = '';
  description: any = '';
  phone : any = '';
  profileimage: any = '';
@@ -93,14 +93,14 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
 
       });
     }
-  
-    
+
+
 
     forgetpwd = new FormGroup({
       password: new FormControl("", [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
       confirm: new FormControl("", [Validators.required])
     }
-    );  
+    );
 
     newpassword(data:any)
     {
@@ -109,13 +109,13 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
         if(res=="changeit"){
           console.log(res);
         }
-  
+
       });
-  
+
   }
 
 
-  
+
 
     objectid = localStorage.getItem('email');
 
@@ -131,7 +131,7 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
   visible: boolean = false;
   onclick() {
     this.ReadMore = !this.ReadMore;
-    this.visible = !this.visible; 
+    this.visible = !this.visible;
      if(!this.hideNotifications){
       this.profileDisplay= false
     }
@@ -145,12 +145,12 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
   edit(){
    this.readonly=false;
   }
- 
+
   showModal1=false;
   openModal1(){
     this.showModal1 = true;
   }
-  
+
   closeModal1(){
     this.showModal1 = false;
   }
@@ -159,7 +159,7 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
   openModal2(){
     this.showModal2 = true;
   }
-  
+
   closeModal2(){
     this.showModal2 = false;
   }
@@ -169,11 +169,11 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
   openModal3(){
     this.showModal3 = true;
   }
-  
+
   closeModal3(){
     this.showModal3 = false;
   }
 
-  
-  
+
+
 }

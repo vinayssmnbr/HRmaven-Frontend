@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmpService {
   public headerContent: string;
@@ -81,9 +81,19 @@ export class EmpService {
     return this.http.get('http://localhost:3000/attendance/emp/attendance',{ headers});
   }
 
+
   private client: filestack.Client;
-  upload1(file: File): Promise<any> {
-    return this.client.upload(file)
+
+  fileUrl: any;
+
+  async upload(file: File): Promise<void> {
+    try {
+      const res = await this.client.upload(file);
+      this.fileUrl = res.url;
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

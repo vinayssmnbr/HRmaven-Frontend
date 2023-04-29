@@ -17,7 +17,7 @@
                     <input type="email" placeholder="Enter your email address" formControlName="email">
                     <span *ngIf="usernotfound">Email with this id not Found! </span>
                     <span *ngIf="emailforgot && emailforgot.invalid && emailforgot.touched && emailforgot.dirty"
-                        class="emailwrg"><i class="fa-sharp fa-solid fa-triangle-exclamation"></i>Input Valid Email
+                        class="emailwrg"><i class="fa-solid fa-circle-info"></i>Input Valid Email
                         Id</span>
 
                     <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification

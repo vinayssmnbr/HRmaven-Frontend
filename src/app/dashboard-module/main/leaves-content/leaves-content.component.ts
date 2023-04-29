@@ -200,7 +200,7 @@ export class LeavesContentComponent {
           `stroke-dashoffset: ${((100 - percent) / 100) * max}`
         );
     });
-
+    
   }
 
   // async updatereload() {
