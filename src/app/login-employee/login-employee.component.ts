@@ -61,7 +61,7 @@ export class LoginEmployeeComponent {
 
 
     if (this.employeeService.isUserLoggedIn()) {
-      this.router.navigate(['employees/dashboard']);
+      this.router.navigate(['emp-dashboard']);
     }
     // this.userService.allDataLogin();
   }
@@ -155,7 +155,7 @@ export class LoginEmployeeComponent {
   submit() {
     this.loader = true;
     setTimeout(() => {
-      this.router.navigate(['/employees/dashboard']);
+      this.router.navigate(['/emp-dashboard']);
     }, 2000);
   }
 
