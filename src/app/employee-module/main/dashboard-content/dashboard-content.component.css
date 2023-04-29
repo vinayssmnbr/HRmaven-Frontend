@@ -8,22 +8,17 @@
 
 .row {
   display: flex;
-  column-gap: 22px;
+  justify-content: space-between;
+
+  /* background-color: red; */
 }
 
-.col-4 {
-  padding: 18px 24px;
+.col-9 .col-4 {
+  padding-right: 20px;
   border-radius: 8px;
 }
-.col-2{
-  /* display: flex;
-  align-items: center;
-  gap: 20px;
-  background-color: #FFFFFF;
-  padding: 16px 30px;
-  border-radius: 8px; */
-}
-.card{
+
+.card {
   padding: 27px 25px;
   height: 100px;
   background-color: #ffffff;
@@ -31,48 +26,56 @@
   justify-content: space-between;
   border-radius: 8px;
 }
-.card p{
+
+.card p {
   font-weight: 400;
-font-size: 14px;
-color: #666666;
+  font-size: 14px;
+  color: #666666;
 
 }
-.card h1{
+
+.card h1 {
   font-weight: 500;
-font-size: 22px;
-color: #444444;
+  font-size: 22px;
+  color: #444444;
 }
-.quick-action{
+
+.quick-action {
   padding: 18px 24px;
   height: 100px;
   background-color: #ffffff;
-  gap: 30px;
   border-radius: 8px;
 }
-.attendance-chart{
+
+.attendance-chart {
+  height: 420px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-top: 25px;
+}
+
+.leave-balance {
   padding: 27px 25px;
   height: 420px;
-    background-color: #ffffff;
-    border-radius: 8px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
 }
-.leave-balance{
-  padding: 27px 25px;
-  height: 420px;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-}
+
 .attendance-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 25px 25px;
 }
-.attendance-heading h5{
+
+.attendance-heading h5 {
   font-weight: 500;
-font-size: 18px;
-color: #222222;
+  font-size: 18px;
+  color: #222222;
 }
+
 /*-------------------------Attendance-dropdown-------------*/
 .dropdwon_select {
   background-color: #fff;
@@ -89,7 +92,7 @@ color: #222222;
 }
 
 .dropdwon_select:hover,
-.dropdwon_select:focus{
+.dropdwon_select:focus {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
 }
@@ -137,22 +140,43 @@ color: #222222;
   border-radius: 8px;
 
 }
+
 /*--------------------------------------------------*/
-.job-post-summary-area{
+
+.leave_balance {
+  margin: 20px 20px;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 420px;
+  border-radius: 8px;
+}
+
+.leave_balance h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #222222;
+  padding: 19px 25px;
+}
+
+.job-post-summary-area {
   background-color: #FFFFFF;
   padding: 25px 25px;
   margin: 30px;
+  border-radius: 8px;
 }
-.job-post-heading{
+
+.job-post-heading {
   display: flex;
   justify-content: space-between;
 }
-.job-post-heading h6{
+
+.job-post-heading h6 {
   font-weight: 500;
-font-size: 18px;
-color: #222222;
+  font-size: 18px;
+  color: #222222;
 }
-.job-summary-list{
+
+.job-summary-list {
   margin-top: 25px;
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -161,74 +185,82 @@ color: #222222;
 }
 
 
-.UI-UX-area{
+.UI-UX-area {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.ui-heading{
+
+.ui-heading {
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
 }
-.ui-heading p{
+
+.ui-heading p {
   width: 93px;
-height: 24px;
-background-color: #FEF0C8;
-display: flex;
-justify-content: center;
-border-radius: 1000px;
-align-items: center;
-font-weight: 400;
-font-size: 12px;
-color: #5F2500;
+  height: 24px;
+  background-color: #FEF0C8;
+  display: flex;
+  justify-content: center;
+  border-radius: 1000px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 12px;
+  color: #5F2500;
 }
+
 .ul-li h4 {
   font-weight: 400;
   font-size: 14px;
   color: #333333;
 }
 
-.skills-required{
+.skills-required {
   margin-top: 17.5px;
   display: flex;
   justify-content: space-between;
 }
-.skill-require-ul{
+
+.skill-require-ul {
   display: flex;
   gap: 10px;
 }
-.ul-li{
+
+.ul-li {
   display: flex;
   gap: 5px;
   align-items: center;
 }
-.skill-require-ul li{
- padding: 4px 8px;
- /* width: 50px; */
-height: 25px;
-background-color: #EFEFF8;
-border-radius: 12px;
-cursor: pointer;
-font-weight: 400;
-font-size: 12px;
-color: #2F2C9F;
-}
 
-.job-posted{
+.skill-require-ul li {
+  padding: 4px 8px;
+  /* width: 50px; */
+  height: 25px;
+  background-color: #EFEFF8;
+  border-radius: 12px;
+  cursor: pointer;
   font-weight: 400;
-font-size: 12px;
-color: #999999;
+  font-size: 12px;
+  color: #2F2C9F;
+}
+
+.job-posted {
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
 }
 
 
-.leave-profile{
+.leave-profile {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
-.leave ,.profile{
+
+.leave,
+.profile {
   /* width: 101px; */
   height: 40px;
   display: flex;
@@ -236,14 +268,19 @@ color: #999999;
   cursor: pointer;
   gap: 10px;
   padding: 18px 16px;
+  border-radius: 8px;
 }
-.leave:hover{
+
+.leave {
   background-color: #F7F7FB;
 }
-.profile:hover{
+
+.profile:hover {
   background-color: #F7F7FB;
 }
-.leave,.profile p{
+
+.leave,
+.profile p {
   font-weight: 400;
   font-size: 12px;
   color: #444444;
@@ -290,11 +327,11 @@ color: #999999;
 
 
 .chart {
-  padding: 0.5rem;
-  border-radius: 1rem;
-  background: #FFFFFF;
-  width: 746px;
-  height: 363px;
+  /* border-radius: 1rem; */
+  /* background-color: #FFFFFF; */
+  /* width: 746px;
+  height: 363px; */
+  /* background-color: green; */
 }
 
 .chart h6 {
@@ -424,8 +461,8 @@ a {
   background-color: #FFFFFF;
   border-radius: 8px;
   padding: 20px;
-  height: 100%;
-
+  min-height: 97%;
+  /* height: 100%; */
 
 }
 
@@ -934,11 +971,4 @@ input[type="radio"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* ------------------Media Query----------------------- */
-@media (max-width:1920px) {
-  .meeting-scrollbar {
-    height: 523px;
-  }
 }
