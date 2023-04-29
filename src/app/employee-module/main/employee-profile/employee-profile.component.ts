@@ -177,7 +177,10 @@ export class EmployeeProfileComponent {
     },
   ];
 
-
+passwordform= new FormGroup({
+  password: new FormControl(''),
+  confirm: new FormControl('')
+});
 
   empform1 = new FormGroup({
     uid: new FormControl(''),
@@ -405,4 +408,16 @@ export class EmployeeProfileComponent {
     this.personaldetail = false;
     this.jobdetail = false;
   }
+  showModal3:boolean=false;
+  openModal3() {
+    this.showModal3 = true;
+    this.showModal=true;
+  }
+
+  closeModal8() {
+    this.showModal3 = false;
+    this.showModal=false;
+  }
+
+
 }

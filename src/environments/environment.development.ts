@@ -56,7 +56,7 @@ export const environment = {
   // attendancegraph:'http://localhost:3000/attendance/date/report',
   // attendancecard:'http://localhost:3000/attendance/date/attendancecard',
   // attendance:'http://localhost:3000/attendance/date/attendance',
-  //getpwd : 'http://localhost:3000/userprofilepwd',
+  // getpwd : 'http://localhost:3000/userprofilepwd',
 
 
 

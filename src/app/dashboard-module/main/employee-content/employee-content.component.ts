@@ -113,6 +113,27 @@ export class EmployeeContentComponent implements OnInit {
   get registrationFormControl() {
     return this.form.controls;
   }
+  // validateFileType(control: AbstractControl) {
+  //   const url = control.value;
+  //   const fileType = url.type;
+  //   if (
+  //     !fileType.includes("jpeg") &&
+  //     !fileType.includes("jpg") &&
+  //     !fileType.includes("png")
+  //   ) {
+  //     return { invalidFileType: true };
+  //   }
+  //   return null;
+  // }
+
+  // validateFileSize(control: AbstractControl) {
+  //   const url = control.value;
+  //   const fileSize = url.size / 1024 / 1024; // in MB
+  //   if (fileSize > 5) {
+  //     return { maxSize: true };
+  //   }
+  //   return null;
+  // }
 
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
@@ -492,8 +513,12 @@ export class EmployeeContentComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    const maxAllowedSize = 5 * 1024 * 1024;
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    if (this.selectedFile.type.split('/')[0] !== 'image') {
+    if(this.selectedFile.size > maxAllowedSize){
+      this.fileName='';
+    }
+    if (this.selectedFile.type.split('/')[0] !== 'image' ) {
       console.error('Invalid file type. Please select an image.');
       return;
     }
@@ -690,9 +715,9 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
     }
- 
 
-  
+
+
   selectUser(user) {
     this.selectedUser = user;
     this.backgroundColor = '';
@@ -785,13 +810,13 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-  
 
-  
+
+
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
-  
+
     if (isChecked) {
       if (user == 'All') {
         this.selectedEmployess = [...this.employee];
@@ -800,7 +825,7 @@ export class EmployeeContentComponent implements OnInit {
           el['checked'] = true;
         });
       } else {
-        
+
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
             this.employee['checked'] = true;
@@ -810,7 +835,7 @@ export class EmployeeContentComponent implements OnInit {
         this.selectedEmployess.push(user);
       }
       console.log(this.selectedEmployess, 'added employees');
-  
+
     } else {
       if (user == 'All') {
         this.selectedEmployess = [];
@@ -837,7 +862,7 @@ export class EmployeeContentComponent implements OnInit {
         }
       }
       console.log(this.selectedEmployess, 'removed user')
-  
+
     }
   }
 
