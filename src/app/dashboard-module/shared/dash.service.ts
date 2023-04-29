@@ -44,6 +44,7 @@ export class DashService {
   attendance=environment.attendance;
   attendancecard=environment.attendancecard;
   attendancegraph=environment.attendancegraph;
+  leavegraph=environment.leavegraph
 
 
   //ADD EMPLOYEE DATA
@@ -148,7 +149,7 @@ export class DashService {
 
 
   getleavegraph(){
-    return this.http.get(environment.leavegraph);
+    return this.http.get(this.leavegraph);
   }
 
   getEmployeeStatus(status:string): Observable<any[]> {
@@ -250,7 +251,7 @@ async upload(file:File, userId?:string){
     });
     return this.http.post(url,{data}, { headers, responseType: 'blob' });
   }
-  
+
   updateEmpStatus(id,status):Observable<any>{
     const url = `${this.updatempdata}/${id}`;
     return this.http.patch(url,{status})

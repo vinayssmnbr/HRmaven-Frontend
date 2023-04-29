@@ -28,6 +28,9 @@ export const environment = {
   attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
   attendancegraph:'https://hrmaven.works/attendance/date/report',
   getpwd : 'https://hrmaven.works/userprofilepwd',
+  leavegraph:'https://hrmaven.works/api/leave/graph/leave',
+leavecontent:'https://hrmaven.works/api/leave/data/leaves',
+patchleave:'https://hrmaven.works/api/leave/update/leave'
 
 
 
