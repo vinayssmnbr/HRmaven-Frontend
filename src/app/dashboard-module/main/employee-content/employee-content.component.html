@@ -88,8 +88,7 @@
           </td>
 
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile">{{user.name}}
+            <img src="{{user.url}}" alt="" (click)="selectEmployee(user)" >{{user.name}}
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
             routerLink="/employee-profile">{{user.designation}}</td>
@@ -99,17 +98,6 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <!-- <select class="select" id="myselect" [class.active]="user.status==='active'" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
-                [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
-                [style.color]="selectedUser === user._id ? color : ''"
-                [style.border]="selectedUser === user._id ? borderColor : ''">Select
-                <option value="active" class="activated">Active</option>
-                <option value="terminated" class="terminate">Terminated</option>
-                <option value="resigned" class="resign">Resigned</option>
-                <option value="absconder" class="abscond">Absconder</option>
-
-              </select> -->
-
               <select class="select" id="myselect" [class.active]="user.status==='active'"
                 (change)="onSelectChange($event, user)" [value]="user.status"
                 [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
@@ -118,10 +106,6 @@
                 <option value="resigned" class="resign">Resigned</option>
                 <option value="absconder" class="abscond">Absconder</option>
               </select>
-
-
-
-
             </div>
           </td>
         </tr>
