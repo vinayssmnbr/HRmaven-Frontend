@@ -11,29 +11,29 @@ import { LeavesContentComponent } from './main/leaves-content/leaves-content.com
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 const routes: Routes = [
-    {path:'dashboard',component:DashboardContentComponent},
+    {path:'emp-dashboard',component:DashboardContentComponent},
 
   {
-    path: 'attendance',
+    path: 'emp-attendance',
     component: AttendanceComponent,
   },
   {
-    path:'payroll',
+    path:'emp-payroll',
     component:PayrollComponent
   },{
-    path:'recruitment',
+    path:'emp-recruitment',
     component:RecruitmentComponent
   },{
-    path:'report',
+    path:'emp-report',
     component:ReportComponent
   },
   {
-    path:'leave',component:LeavesContentComponent
+    path:'emp-leave',component:LeavesContentComponent
   },{
-    path:'profile',component:EmployeeProfileComponent
+    path:'emp-profile',component:EmployeeProfileComponent
   },
   {
-    path:'calendar',component:CalendarComponent
+    path:'emp-calendar',component:CalendarComponent
   }
 ];
 

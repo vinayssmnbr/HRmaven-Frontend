@@ -9,7 +9,6 @@ export const environment = {
   updatepersonaldata :'https://hrmaven.works/updatepersonal',
   getpersonaldata :'https://hrmaven.works/getpersonalsdata',
   resetpwdaccount : 'https://hrmaven.works/resetpasswordaccount',
-
   url:'https://hrmaven.works/user-profile',
   auth:'https://hrmaven.works/auth',
   createData: 'https://hrmaven.works/api/create',
@@ -29,6 +28,9 @@ export const environment = {
   attendancecard:'https://hrmaven.works/attendance/date/attendancecard',
   attendancegraph:'https://hrmaven.works/attendance/date/report',
   getpwd : 'https://hrmaven.works/userprofilepwd',
+  leavegraph:'https://hrmaven.works/api/leave/graph/leave',
+leavecontent:'https://hrmaven.works/api/leave/data/leaves',
+patchleave:'https://hrmaven.works/api/leave/update/leave'
 
 
 
@@ -60,11 +62,8 @@ export const environment = {
   // getemail : 'http://localhost:3000/getemails/email',
   // getpwd : 'http://localhost:3000/userprofilepwd',
   // changepassword : 'http://localhost:3000/islinkclicked',
-
-
-  // leave api
-  leavegraph:'http://localhost:3000/api/leave/graph/leave',
-  leavecontent:'http://localhost:3000/api/leave/data/leaves',
-  patchleave:'http://localhost:3000/api/leave/update/leave'
+  // leavegraph:'http://localhost:3000/api/leave/graph/leave',
+  // leavecontent:'http://localhost:3000/api/leave/data/leaves',
+  // patchleave:'http://localhost:3000/api/leave/update/leave'
 
 };

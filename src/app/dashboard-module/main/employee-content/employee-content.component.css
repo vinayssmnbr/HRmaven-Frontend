@@ -21,7 +21,7 @@
   height: 22px;
   align-items: center;
   margin-top: 20px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   column-gap: 70px;
 }
 
@@ -37,29 +37,29 @@
 .All{
   width: 100%;
   max-width: 38px;
-  border: 3px solid transparent;
+  padding-left: 8px;
 }
 .Active{
   width: 100%;
   max-width: 60px;
-  border: 3px solid transparent;
+  /* padding-left: 8px; */
 }
 .Resigned{
   width: 100%;
   max-width: 77px;
-  border: 3px solid transparent;
+  padding-left: 8px;
 }
 .Terminated{
   width: 100%;
   max-width: 92px;
-  border: 3px solid transparent;
+  padding-left: 8px;
 }
 .Absconder{
   width: 100%;
   max-width: 86px;
-  border: 3px solid transparent;
+  padding-left: 8px;
 }
-.All:hover {
+/* .All:hover {
   border-bottom: 3px solid #2F2C9F;
 }
 
@@ -77,10 +77,8 @@
 
 .Absconder:hover {
   border-bottom: 3px solid #2F2C9F;
-}
-.All, .Resigned, .Absconder, .Terminated,.Active{
-  /* padding-bottom: 10px; */
-}
+} */
+
 
 .All.active {
   border-bottom: 3px solid #2F2C9F;
@@ -90,7 +88,7 @@
     font-weight: 500;
     padding-bottom: 5px;
     width: 38px;
-    padding-left: 8px;
+    /* padding-left: 8px; */
 }
 .Active.active {
   border-bottom: 3px solid #2F2C9F;
@@ -99,7 +97,7 @@
   color: #2F2C9F;
     font-weight: 500;
     padding-bottom: 4px;
-    padding-left: 8px;
+    /* padding-left: 8px; */
     width: 60px;
   }
 .Resigned.active  {
@@ -108,7 +106,7 @@
 .Resigned.active p{
   color: #2F2C9F;
     font-weight: 500;
-    padding-left: 8px;
+    /* padding-left: 8px; */
     width: 77px;
 }
 .Terminated.active{
@@ -117,7 +115,7 @@
 .Terminated.active p{
 color: #2F2C9F;
   font-weight: 500;
-  padding-left: 8px;
+  /* padding-left: 8px; */
   width: 92px;
 }
 .Absconder.active {
@@ -126,7 +124,7 @@ color: #2F2C9F;
 .Absconder.active p{
 color: #2F2C9F;
   font-weight: 500;
-  padding-left: 8px;
+  /* padding-left: 8px; */
   width: 88px;
 }
 .selection2{

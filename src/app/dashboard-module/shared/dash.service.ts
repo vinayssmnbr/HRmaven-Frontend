@@ -44,6 +44,7 @@ export class DashService {
   attendance=environment.attendance;
   attendancecard=environment.attendancecard;
   attendancegraph=environment.attendancegraph;
+  leavegraph=environment.leavegraph
 
 
   //ADD EMPLOYEE DATA
@@ -148,7 +149,7 @@ export class DashService {
 
 
   getleavegraph(){
-    return this.http.get(environment.leavegraph);
+    return this.http.get(this.leavegraph);
   }
 
   getEmployeeStatus(status:string): Observable<any[]> {
@@ -224,15 +225,19 @@ export class DashService {
 
   private client: filestack.Client;
   fileUrl: any;
-  upload(file: File, userId?: string): Promise<any> {
-    return this.client.upload(file).then((res) => {
-      this.fileUrl = res.url;
-      console.log('imageurl', this.fileUrl, userId);
-      this.updateEmployee({ _id: userId, url: res.url }).subscribe((res) => {
-        console.log('user', res);
-      });
-    });
+
+async upload(file:File, userId?:string){
+  try{
+    const res=await this.client.upload(file)
+    this.fileUrl=res.url;
+    const user=await this.updateEmployee({_id:userId,url:res.url}).subscribe((result)=>{
+      console.log("update",result)
+    })
+  }catch(error){
+    console.log(error)
   }
+
+}
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file)
@@ -246,7 +251,7 @@ export class DashService {
     });
     return this.http.post(url,{data}, { headers, responseType: 'blob' });
   }
-  
+
   updateEmpStatus(id,status):Observable<any>{
     const url = `${this.updatempdata}/${id}`;
     return this.http.patch(url,{status})

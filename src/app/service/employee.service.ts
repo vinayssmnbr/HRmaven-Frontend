@@ -82,7 +82,7 @@ export class EmployeeService {
     const token = this.cookie.get('token');
 
     if (!token) {
-      this.router.navigate(['loginemp']);
+      this.router.navigate(['login-emp']);
       return;
     }
 
@@ -95,7 +95,7 @@ export class EmployeeService {
       },
       (error) => {
         console.log(error);
-        this.router.navigate(['loginemp']);
+        this.router.navigate(['login-emp']);
       }
     );
   }
@@ -103,7 +103,7 @@ export class EmployeeService {
     const token = this.cookie.get('token');
 
     if (!token) {
-      this.router.navigate(['loginemp']);
+      this.router.navigate(['login-emp']);
       return;
     }
 
@@ -116,7 +116,7 @@ export class EmployeeService {
       },
       (error) => {
         console.log(error);
-        this.router.navigate(['loginemp']);
+        this.router.navigate(['login-emp']);
       }
     );
   }
