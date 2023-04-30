@@ -20,6 +20,8 @@ export class EmpService {
   ) {
     this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
   }
+  getData = environment.getData;
+
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('emp-token');
@@ -55,5 +57,8 @@ export class EmpService {
     } catch (error) {
       console.log(error);
     }
+  }
+  getEmployee(){
+    return this.http.get(this.getData)
   }
 }

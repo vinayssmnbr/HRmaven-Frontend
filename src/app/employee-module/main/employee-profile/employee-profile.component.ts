@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   FormArray,
 } from '@angular/forms';
+import { EmpService } from '../../shared/emp.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -37,6 +38,16 @@ export class EmployeeProfileComponent {
   contentdropdown6: boolean = false;
   contentdropdown7: boolean = false;
   contentdropdown8: boolean = false;
+  employee:any[]=[]
+  obj:any
+  constructor(private empdashService:EmpService){
+    this.empdashService.getEmployee().subscribe((res)=>{
+      console.log('abc',res)
+      // this.employee=res
+      this.obj=res
+      console.log('obj',this.obj)
+    })
+  }
 
   array1: any = [
     {
@@ -177,7 +188,10 @@ export class EmployeeProfileComponent {
     },
   ];
 
-
+passwordform= new FormGroup({
+  password: new FormControl(''),
+  confirm: new FormControl('')
+});
 
   empform1 = new FormGroup({
     uid: new FormControl(''),
@@ -405,4 +419,16 @@ export class EmployeeProfileComponent {
     this.personaldetail = false;
     this.jobdetail = false;
   }
+  showModal3:boolean=false;
+  openModal3() {
+    this.showModal3 = true;
+    this.showModal=true;
+  }
+
+  closeModal8() {
+    this.showModal3 = false;
+    this.showModal=false;
+  }
+
+
 }
