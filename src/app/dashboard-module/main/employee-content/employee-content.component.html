@@ -88,7 +88,9 @@
           </td>
 
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)"
+            <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
+              routerLink="/employee-profile">
+              <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
               routerLink="/employee-profile">{{user.name}}
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
@@ -99,7 +101,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" [class.active]="user.status==='active'"
+              <select class="select" id="myselect" [class.active]="user.status==='active'" [disabled]="isSelectDisabled"
                 (change)="onSelectChange($event, user)" [value]="user.status"
                 [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
                 <option value="active" class="activated">Active</option>
@@ -181,8 +183,8 @@
             <div class="input">
               <label>Profile Picture</label>
               <div class="custom-file-picker">
-                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()"  [value]="fileName" id="text4" readonly>
-                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url">
+                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()"  [value]="fileName" id="text4" readonly accept="image/*" formControlName="url" >
+                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url" accept="image/*">
                 <a  (click)="fileInput.click()" >Choose File</a>
               </div>
             </div>

@@ -41,13 +41,16 @@ export class EmployeeProfileComponent {
   employee:any[]=[]
   obj:any
   constructor(private empdashService:EmpService){
-    this.empdashService.getEmployee().subscribe((res)=>{
-      console.log('abc',res)
-      // this.employee=res
-      this.obj=res
-      console.log('obj',this.obj)
+
+    this.empdashService.getEmployeeRecord().subscribe((res)=>{
+      console.log("pro",res)
+      this.obj=res.response
+      console.log('xyz',this.obj)
+
     })
+
   }
+
 
   array1: any = [
     {
