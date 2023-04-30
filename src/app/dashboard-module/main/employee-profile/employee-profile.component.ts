@@ -18,7 +18,7 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent implements OnInit{
   @Input() user: any;
   empForm: FormGroup;
-  constructor(private dashService: DashService) {
+  constructor(private dashService: DashService,private fb: FormBuilder) {
   }
   // employees(): FormArray {
   //   return this.empForm.get("employees") as FormArray
@@ -120,9 +120,11 @@ export class EmployeeProfileComponent implements OnInit{
       experienceItems: new FormArray([
         this.createExperienceItem()
       ])
-    });
-  }
+    }); 
 
+  }
+  
+  
   createExperienceItem(): FormGroup {
     return new FormGroup({
       expcompany: new FormControl(''),
@@ -131,7 +133,7 @@ export class EmployeeProfileComponent implements OnInit{
       exdesignation: new FormControl('')
     });
   }
-
+  
   get experienceItems() {
     return this.experienceForm.get('experienceItems') as FormArray;
   }
@@ -147,6 +149,9 @@ export class EmployeeProfileComponent implements OnInit{
   onSubmit() {
     console.log(this.experienceForm.value);
   }
+
+
+ 
 
   array1: any = [
     {

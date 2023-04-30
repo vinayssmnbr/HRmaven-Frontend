@@ -316,14 +316,14 @@
           <img src="./assets/images/Vector (4).png" alt="">
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
-          <button class="choose" (click)="importFile()" >Choose File</button>
-          <!-- <button class="import" (click)="importFile()">Submit</button>  -->
-          <input type="file" name="csv" (change)=" onFileSelectedrem($event)"  style="display:none">
-          <!-- <a (click)="fileInput.click()" class="choose">Choose File</a> -->
+
+         
+          <a (click)="fileInput.click()" class="choose">Choose File</a>
           <input type="text"  id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv">
+          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
         </div>
-        <h5>Download <a class="csv"  >Sample CSV File</a> for Reference</h5>
+        <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5>
+       
         <!-- <div class="custom-file-picker">
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >
@@ -331,8 +331,11 @@
 
         </div> -->
         <div class="import-btns">
-          <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
-          <button class="imp-btn" (click)="employeecsv()">Import</button>
+          <button class="can-btn"  (click)="closeFilepicker()">Cancel</button>
+          <button class="imp-btn" (click)="employeecsv()" >Import</button>
+         
+        
+
         </div>
       </div>
     </div>
