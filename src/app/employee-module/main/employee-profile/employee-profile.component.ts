@@ -41,6 +41,9 @@ export class EmployeeProfileComponent {
   employee:any[]=[]
   obj:any
   constructor(private empdashService:EmpService){
+    empdashService.activeComponent = 'My Profile';
+    empdashService.headerContent='';
+
     this.empdashService.getEmployee().subscribe((res)=>{
       console.log('abc',res)
       // this.employee=res
