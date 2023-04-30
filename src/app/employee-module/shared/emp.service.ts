@@ -22,7 +22,7 @@ export class EmpService {
   }
 
   getUserProfile(): Observable<any> {
-    const token = this.cookie.get('token');
+    const token = this.cookie.get('emp-token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(this.profile, { headers }).pipe(
       map((response: any) => {

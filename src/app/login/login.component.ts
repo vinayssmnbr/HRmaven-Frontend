@@ -92,7 +92,7 @@ export class LoginComponent {
 
 
 
-    
+
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
       // this.router.navigateByUrl('dashboard')
@@ -121,6 +121,9 @@ export class LoginComponent {
 
       //   console.log('Response from API:', this.employeemail);
       // });
+
+    this.cookie.deleteAll()
+
   }
 
   email_data: any = '';

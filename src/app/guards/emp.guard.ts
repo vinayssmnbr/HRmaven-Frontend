@@ -22,7 +22,8 @@ export class EmpGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (this.employeeService.isLoggedIn.value) {
         // this.userService.mainAuth();
-        const token = this.cookie.get('token');
+        const token = this.cookie.get('emp-token');
+        // console.log(token);
 
         if (!token || token == '') {
           this.router.createUrlTree(['login-emp']);
@@ -43,7 +44,9 @@ export class EmpGuard implements CanActivate {
         );
       }
       if (!this.employeeService.isUserLoggedIn()) {
-        this.router.createUrlTree(['login-emp']);
+        // this.router.createUrlTree(['login-emp']);
+      this.router.navigate(['/login-emp'])
+
         return false;
       }
       return false;
