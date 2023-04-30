@@ -278,30 +278,30 @@
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p *ngIf="!user.jobdesignation">----------</p>
-          <p class="designation2" *ngIf="user.jobdesignation">{{user.jobdesignation}}</p>
+          <p *ngIf="!user.designation">----------</p>
+          <p class="designation2" *ngIf="user.designation">{{user.designation}}</p>
           <span class="location3">Location</span>
-          <p *ngIf="!user.joblocation1">----------</p>
-          <p class="location3" *ngIf="user.joblocation1">{{user.joblocation1}}</p>
+          <p *ngIf="!user.location">----------</p>
+          <p class="location3" *ngIf="user.location">{{user.location}}</p>
           <span class="pemail">Professional Email</span>
-          <p *ngIf="!user.pemail">----------</p>
-          <p class="pemail" *ngIf="user.pemail">{{user.profemail}}</p>
+          <p *ngIf="!user.professionalemail">----------</p>
+          <p class="pemail" *ngIf="user.professionalemail">{{user.professionalemail}}</p>
         </div>
         <div class="column2">
           <span class="estatus">Job Type</span>
-          <p *ngIf="!user.jobempstatus">----------</p>
-          <p class="estatus" *ngIf="user.jobempstatus">{{user.jobempstatus}}</p>
+          <p *ngIf="!user.job_type">----------</p>
+          <p class="estatus" *ngIf="user.job_type">{{user.job_type}}</p>
           <span class="timings">Timings</span>
-          <p *ngIf="!user.jobtiming">----------</p>
-          <p class="timings" *ngIf="user.jobtiming">{{user.jobtiming}}</p>
+          <p *ngIf="!user.timing">----------</p>
+          <p class="timings" *ngIf="user.timing">{{user.timing}}</p>
         </div>
         <div class="column3">
           <span class="jdate">Joining Date</span>
-          <p *ngIf="!user.joiningdate">----------</p>
-          <p class="jdate" *ngIf="user.joiningdate">{{user.joiningdate | date:"shortDate"}}</p>
+          <p *ngIf="!user.dateOfJoining">----------</p>
+          <p class="jdate" *ngIf="user.dateOfJoining">{{user.dateOfJoining | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
-          <p *ngIf="!user.jobctc">----------</p>
-          <p class="ctc" *ngIf="user.jobctc">{{user.jobctc}}</p>
+          <p *ngIf="!user.ctc">----------</p>
+          <p class="ctc" *ngIf="user.ctc">{{user.ctc}}</p>
         </div>
       </div>
     </div>
@@ -675,13 +675,13 @@
             </div>
             <div class="input">
               <label>Joining Date</label>
-              <input type="date" placeholder="1 April,2023" formControlName="joiningdate">
+              <input type="date" placeholder="1 April,2023" formControlName="dateOfJoining">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="joblocation1">
+              <input type="text" placeholder="Pune, India" formControlName="location">
             </div>
             <div class="input">
               <label>Timings</label>
@@ -701,13 +701,13 @@
             </div>
             <div class="input">
               <label>CTC</label>
-              <input type="text" placeholder="8LPA" formControlName="jobctc">
+              <input type="text" placeholder="8LPA" formControlName="ctc">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Professional Email</label>
-              <input type="email" placeholder="zonah123@gmail.com" formControlName="profemail">
+              <input type="email" placeholder="zonah123@gmail.com" formControlName="professionalemail">
             </div>
           </div>
         </form>

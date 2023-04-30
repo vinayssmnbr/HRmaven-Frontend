@@ -42,6 +42,7 @@ export class EmployeeContentComponent implements OnInit {
   email: any;
   fileName: string = '';
   fileName1: string = '';
+  isSelectDisabled = false;
 
   constructor(
     public dashService: DashService,
@@ -521,25 +522,6 @@ export class EmployeeContentComponent implements OnInit {
     }
     // this.onUpload(  this.selectedFile );
   }
-  // files: File[] = [];
-
-  // onDrop(event: DragEvent) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   const files = event.dataTransfer.files;
-  //   for (let i = 0; i < files.length; i++) {
-  //     this.files.push(files.item(i));
-  //   }
-  // }
-
-  // onDragOver(event: DragEvent) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  // }
-  onFileSelected1(event: any) {
-    this.selectedFile1 = event.target.files[0];
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-  }
   onUpload(file) {
     console.log('fdjkhf');
     this.dashService.upload1(file).then(
@@ -553,6 +535,12 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
+
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+  }
+
   selectall: boolean = false;
   selectboxes() {
     this.selectall = !this.selectall;
@@ -580,6 +568,7 @@ export class EmployeeContentComponent implements OnInit {
       //   this.emptybox = false;
       // }
     });
+
   }
   is_resigned: boolean = false;
   is_terminated: boolean = false;
@@ -908,6 +897,7 @@ export class EmployeeContentComponent implements OnInit {
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
+    this.isSelectDisabled = $event.target.checked;
 
     if (isChecked) {
       if (user == 'All') {

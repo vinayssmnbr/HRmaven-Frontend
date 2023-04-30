@@ -8,7 +8,8 @@
     </div>
     <div class="card2">
       <span class="profile_pic">
-        <img  src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="obj.url" src="{{obj.url}}" alt="">
         <!-- <img  alt=""> -->
         <div class="profile-content" >
           <input type="file" accept="image/*" id="file-input">
@@ -26,9 +27,9 @@
       </span>
       <div class="content">
 
-        <h3>Harshit Sharma</h3>
-        <p>Frontend Developer</p>
-        <span><i class="fa-solid fa-location-dot"></i>Leeds, United Kingdom</span>
+        <h3>{{obj.name}}</h3>
+        <p>{{obj.designation}}</p>
+        <span><i class="fa-solid fa-location-dot"></i>{{obj.location}}</span>
       </div>
     </div>
     <ul class="content1">
@@ -45,33 +46,33 @@
       <div class="row1">
         <div class="column1">
           <span class="name">Name</span>
-          <p class="name">-------</p>
+          <p class="name">{{obj.name}}</p>
           <span class="fname">Father's Name</span>
-          <p class="fname">----------</p>
-          <!-- <p class="fname" *ngIf="user.fatherName">{{user.fatherName}}</p> -->
+          <p *ngIf="!obj.fatherName">----------</p>
+          <p class="fname" *ngIf="obj.fatherName">{{obj.fatherName}}</p>
           <span class="bgroup">Blood Group</span>
-          <p class="bgroup">----------</p>
-          <!-- <p class="bgroup">{{user.bloodGroup}}</p> -->
+          <p *ngIf="!obj.bloodGroup">----------</p>
+          <p class="bgroup">{{obj.bloodGroup}}</p>
         </div>
         <div class="column2">
           <span class="uid">Employee ID</span>
-          <p class="uid">--------</p>
+          <p class="name">{{obj.uid}}</p>
+
           <span class="mname">Mother's Name</span>
-          <p class="mname">----------</p>
-          <!-- <p class="mname" *ngIf="user.motherName">{{user.motherName}}</p> -->
+          <p *ngIf="!obj.motherName">----------</p>
+          <p class="mname" *ngIf="obj.motherName">{{obj.motherName}}</p>
           <span class="gender">Gender</span>
-          <p class="gender">--------</p>
+          <p class="gender">{{obj.gender}}</p>
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
-          <p class="dob">-------</p>
-          <!-- <p class="dob">{{user.dateOfBirth | date:"shortDate"}}</p> -->
+          <p class="dob">{{obj.dateOfBirth | date:"shortDate"}}</p>
           <span class="marstatus">Marital Status</span>
-          <p class="marstatus">----------</p>
-          <!-- <p class="marstatus" *ngIf="user.maritalStatus">{{user.maritalStatus}}</p> -->
+          <p *ngIf="!obj.maritalStatus">----------</p>
+          <p class="marstatus" *ngIf="obj.maritalStatus">{{obj.maritalStatus}}</p>
           <span class="nation">Nationality</span>
-          <p class="nation">----------</p>
-          <!-- <p class="nation" *ngIf="user.nationality">{{user.nationality}}</p> -->
+          <p *ngIf="!obj.nationality">----------</p>
+          <p class="nation" *ngIf="obj.nationality">{{obj.nationality}}</p>
         </div>
       </div>
     </div>
@@ -83,27 +84,25 @@
       <div class="row1">
         <div class="column1">
           <span class="cno">Contact No.</span>
-          <p class="cno">-------</p>
-          <!-- <p class="cno">{{user.mobile}}</p> -->
+          <p class="cno">{{obj.mobile}}</p>
+          <!-- <p class="cno">{{obj.mobile}}</p> -->
           <span class="city">City</span>
-          <p class="city">----------</p>
-          <!-- <p class="city" *ngIf="user.city">{{user.city}}</p> -->
+          <p *ngIf="!obj.city">----------</p>
+          <p class="city" *ngIf="obj.city">{{obj.city}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
-          <p class="address">-------</p>
-          <!-- <p class="address">{{user.address}}</p> -->
+          <p class="address">{{obj.address}}</p>
           <span class="pcode">Postal Code</span>
-          <p class="pcode">----------</p>
-          <!-- <p class="pcode" *ngIf="user.postalCode">{{user.postalCode}}</p> -->
+          <p *ngIf="!obj.postalCode">----------</p>
+          <p class="pcode" *ngIf="obj.postalCode">{{obj.postalCode}}</p>
         </div>
         <div class="column3">
           <span class="email">Email</span>
-          <p class="email">--------</p>
-          <!-- <p class="email">{{user.email}}</p> -->
+          <p class="email">{{obj.email}}</p>
           <span class="state">State</span>
-          <p class="state">----------</p>
-          <!-- <p class="state" *ngIf="user.state">{{user.state}}</p> -->
+          <p *ngIf="!obj.state">----------</p>
+          <p class="state" *ngIf="obj.state">{{obj.state}}</p>
         </div>
       </div>
     </div>
@@ -115,27 +114,26 @@
       <div class="row1">
         <div class="column1">
           <span class="bname">Bank Name</span>
-          <p class="bname">-------</p>
-          <!-- <p class="bname">{{user.bankname}}</p> -->
+          <p class="bname">{{obj.bankname}}</p>
           <span class="adhaarno">Aadhaar Card Number</span>
-          <p class="adhaarno">-------</p>
-          <!-- <p class="adhaarno">{{user.adhaarno}}</p> -->
+          <p class="adhaarno">{{obj.adhaarno}}</p>
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
-          <p class="bno">-------</p>
-          <!-- <p class="bno">{{user.accountno}}</p> -->
+          <p class="bno">{{obj.accountno}}</p>
+          <!-- <p class="bno">{{obj.accountno}}</p> -->
           <span class="panno">Pan Number</span>
-          <p class="panno">-------</p>
-          <!-- <p class="panno">{{user.panno}}</p> -->
+          <p *ngIf="!obj.panno" class="panno">-------</p>
+          <p *ngIf="obj.ifsc" class="panno">{{obj.panno}}</p>
+
         </div>
         <div class="column3">
           <span class="ifsc">IFSC Code</span>
-          <p class="ifsc">-------</p>
-          <!-- <p class="ifsc">{{user.ifsc}}</p> -->
+          <p *ngIf="!obj.ifsc" class="ifsc">-------</p>
+          <p *ngIf="obj.ifsc" class="ifsc">{{obj.ifsc}}</p>
           <span class="pno">Passport Number</span>
-          <p class="pno">----------</p>
-          <!-- <p class="pno" *ngIf="user.passport">{{user.passport}}</p> -->
+          <p *ngIf="!obj.passport">----------</p>
+          <p class="pno" *ngIf="obj.passport">{{obj.passport}}</p>
         </div>
       </div>
     </div>
@@ -147,45 +145,45 @@
       <div class="row1">
         <div class="column1">
           <span class="inst1">10th Grade Institute</span>
-          <p class="inst1">----------</p>
-          <!-- <p class="inst1" *ngIf="user.matric">{{user.matric}}</p> -->
+          <p *ngIf="!obj.matric">----------</p>
+          <p class="inst1" *ngIf="obj.matric">{{obj.matric}}</p>
           <span class="inst2">12th Grade Institute</span>
-          <p class="inst2">----------</p>
-          <!-- <p class="inst2" *ngIf="user.inter">{{user.inter}}</p> -->
+          <p *ngIf="!obj.inter">----------</p>
+          <p class="inst2" *ngIf="obj.inter">{{obj.inter}}</p>
           <span class="gcol">Graduation College/University</span>
-          <p class="gcol">----------</p>
-          <!-- <p class="gcol" *ngIf="user.graduation">{{user.graduation}}</p> -->
+          <p *ngIf="!obj.graduation">----------</p>
+          <p class="gcol" *ngIf="obj.graduation">{{obj.graduation}}</p>
           <span class="pgcol" *ngIf="showdata">Post Graduation College/University</span>
-          <p class="pgcol" *ngIf="showdata">----------</p>
-          <!-- <p class="pgcol" *ngIf="user.pg">{{user.pg}}</p> -->
+          <p *ngIf="!obj.pg">----------</p>
+          <p class="pgcol" *ngIf="obj.pg">{{obj.pg}}</p>
         </div>
         <div class="column2">
           <span class="mper">Matriculation Percentage</span>
-          <p class="mper">----------</p>
-          <!-- <p class="mper" *ngIf="user.matricPercent">{{user.matricPercent}}</p> -->
+          <p *ngIf="!obj.matricPercent">----------</p>
+          <p class="mper" *ngIf="obj.matricPercent">{{obj.matricPercent}}</p>
           <span class="dper">12th Grade/Diploma Percentage</span>
-          <p class="dper">----------</p>
-          <!-- <p class="dper" *ngIf="user.interPercent">{{user.interPercent}}</p> -->
+          <p *ngIf="!obj.interPercent">----------</p>
+          <p class="dper" *ngIf="obj.interPercent">{{obj.interPercent}}</p>
           <span class="sgpa">Cgpa</span>
-          <p class="sgpa">----------</p>
-          <!-- <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p> -->
+          <p *ngIf="!obj.graduationCgpa">----------</p>
+          <p class="sgpa" *ngIf="obj.graduationCgpa">{{obj.graduationCgpa}}</p>
           <span class="pgsgpa" *ngIf="showdata">PgCgpa</span>
-          <p class="pgsgpa" *ngIf="showdata">-----------</p>
-          <!-- <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p> -->
+          <p *ngIf="!obj.pgCgpa">-----------</p>
+          <p class="pgsgpa" *ngIf="obj.pgCgpa">{{obj.pgCgpa}}</p>
         </div>
         <div class="column3">
           <span class="yop">Year of Passing</span>
-          <p class="yop">----------</p>
-          <!-- <p class="yop" *ngIf="user.yop">{{user.yop}}</p> -->
+          <p *ngIf="!obj.yop">----------</p>
+          <p class="yop" *ngIf="obj.yop">{{obj.yop}}</p>
           <span class="yop1">Year of Passing</span>
-          <p class="yop1">----------</p>
-          <!-- <p class="yop1" *ngIf="user.yop1">{{user.yop1}}</p> -->
+          <p *ngIf="!obj.yop1">----------</p>
+          <p class="yop1" *ngIf="obj.yop1">{{obj.yop1}}</p>
           <span class="stream">Graduation Stream</span>
-          <p class="stream">----------</p>
-          <!-- <p class="stream" *ngIf="user.pgStream">{{user.graduationStream}}</p> -->
+          <p *ngIf="!obj.graduationStream">----------</p>
+          <p class="stream" *ngIf="obj.pgStream">{{obj.graduationStream}}</p>
           <span class="pgstream" *ngIf="showdata">Post Graduation Stream</span>
-          <p class="pgStream" *ngIf="showdata">----------</p>
-          <!-- <p class="pgstream" *ngIf="user.pgStream">{{user.pgStream}}</p> -->
+          <p *ngIf="!obj.pgStream">----------</p>
+          <p class="pgstream" *ngIf="obj.pgStream">{{obj.pgStream}}</p>
         </div>
       </div>
       <hr>
@@ -206,21 +204,22 @@
         <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p class="orgname">----------</p>
-          <!-- <p class="orgname" *ngIf="user.expcompany">{{user.expcompany}}</p> -->
+          <p *ngIf="!obj.expcompany">----------</p>
+          <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p>
+          <!-- <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p> -->
           <span class="location2">Location</span>
-          <p class="location2">----------</p>
-          <!-- <p class="location2" *ngIf="user.explocation">{{user.explocation}}</p> -->
+          <p *ngIf="!obj.explocation">----------</p>
+          <p class="location2" *ngIf="obj.explocation">{{obj.explocation}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p class="duration2">----------</p>
-          <!-- <p class="duration2" *ngIf="user.expduration">{{user.expduration}}</p> -->
+          <p *ngIf="!obj.expduration">----------</p>
+          <p class="duration2" *ngIf="obj.expduration">{{obj.expduration}}</p>
         </div>
         <div class="column3">
           <span class="designation">Designation</span>
-          <p class="designation">----------</p>
-          <!-- <p class="designation" *ngIf="user.expdesignation">{{user.expdesignation}}</p> -->
+          <p *ngIf="!obj.expdesignation">----------</p>
+          <p class="designation" *ngIf="obj.expdesignation">{{obj.expdesignation}}</p>
         </div>
       </div>
     </div>
@@ -232,30 +231,30 @@
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p class="designation2">----------</p>
-          <!-- <p class="designation2" *ngIf="user.jobdesignation">{{user.jobdesignation}}</p> -->
+          <p *ngIf="!obj.designation">----------</p>
+          <p class="designation2" *ngIf="obj.designation">{{obj.designation}}</p>
           <span class="location3">Location</span>
-          <p class="location3">----------</p>
-          <!-- <p class="location3" *ngIf="user.joblocation1">{{user.joblocation1}}</p> -->
+          <p *ngIf="!obj.location">----------</p>
+          <p class="location3" *ngIf="obj.location">{{obj.location}}</p>
           <span class="pemail">Professional Email</span>
-          <p class="pemail">----------</p>
-          <!-- <p class="pemail" *ngIf="user.pemail">{{user.profemail}}</p> -->
+          <p *ngIf="!obj.professionalemail">----------</p>
+          <p class="pemail" *ngIf="obj.professionalemail">{{obj.professionalemail}}</p>
         </div>
         <div class="column2">
           <span class="estatus">Job Type</span>
-          <p class="estatus">----------</p>
-          <!-- <p class="estatus" *ngIf="user.jobempstatus">{{user.jobempstatus}}</p> -->
+          <p *ngIf="!obj.job_type">----------</p>
+          <p class="estatus" *ngIf="obj.job_type">{{obj.job_type}}</p>
           <span class="timings">Timings</span>
-          <p class="timings">----------</p>
-          <!-- <p class="timings" *ngIf="user.jobtiming">{{user.jobtiming}}</p> -->
+          <p *ngIf="!obj.timing">----------</p>
+          <p class="timings" *ngIf="obj.timing">{{obj.timing}}</p>
         </div>
         <div class="column3">
           <span class="jdate">Joining Date</span>
-          <p class="jdate">----------</p>
-          <!-- <p class="jdate" *ngIf="user.joiningdate">{{user.joiningdate | date:"shortDate"}}</p> -->
+          <p *ngIf="!obj.dateOfJoining">----------</p>
+          <p class="jdate" *ngIf="obj.dateOfJoining">{{obj.dateOfJoining | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
-          <p class="ctc">----------</p>
-          <!-- <p class="ctc" *ngIf="user.jobctc">{{user.jobctc}}</p> -->
+          <p *ngIf="!obj.ctc">----------</p>
+          <p class="ctc" *ngIf="obj.ctc">{{obj.ctc}}</p>
         </div>
       </div>
     </div>
