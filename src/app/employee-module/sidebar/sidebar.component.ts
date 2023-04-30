@@ -27,8 +27,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     if (
-      this.router.url == '/employees/attendance' ||
-      this.router.url == '/employees/leave'
+      this.router.url == '/emp-attendance' ||
+      this.router.url == '/emp-leave'
     ) {
       this.isAttendanceAndLeaveVisible = true;
     }
@@ -74,8 +74,12 @@ export class SidebarComponent implements OnInit {
   }
 
   logout() {
-    this.cookie.delete('token');
-    this.router.navigate(['./loginemp']);
+    this.cookie.delete('emp-token');
+    this.router.navigate(['./login-emp'])
+    // window.location.href='http://localhost:4200/login-emp'
+    // window.open('https://turneazy.com/login', '_blank');
+
+
   }
   active: string = 'dashboard';
 

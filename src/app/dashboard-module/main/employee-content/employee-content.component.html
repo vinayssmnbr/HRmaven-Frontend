@@ -4,19 +4,19 @@
   <div class="selection">
     <div class="list_nav">
       <div class="All" [ngClass]="{'active': isallactive}">
-        <p  (click)="isall()">All</p>
+        <p (click)="isall()">All</p>
       </div>
       <div class="Active" [ngClass]="{'active': is_active}">
         <p (click)="isactive()">Active</p>
       </div>
       <div class="Resigned" [ngClass]="{'active':is_resigned}">
-        <p  (click)="isresigned()">Resigned</p>
+        <p (click)="isresigned()">Resigned</p>
       </div>
       <div class="Terminated" [ngClass]="{'active':is_terminated}">
-        <p  (click)="isterminated()">Terminated</p>
+        <p (click)="isterminated()">Terminated</p>
       </div>
       <div class="Absconder" [ngClass]="{'active':is_absconder}">
-        <p  (click)="isabsconder()">Absconder</p>
+        <p (click)="isabsconder()">Absconder</p>
       </div>
     </div>
 
@@ -82,7 +82,8 @@
           </td>
 
           <td *ngIf="user.found!='true'">
-            <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked" (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
+            <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
+                (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
             <!-- <div class="employee1"><input type="checkbox" [ngModel]=" isChecked" (click)="toggleAllCheckboxes()" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div> -->
           </td>
 
@@ -98,16 +99,14 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <select class="select" id="myselect" [class.active]="user.status==='active'" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
-                [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
-                [style.color]="selectedUser === user._id ? color : ''"
-                [style.border]="selectedUser === user._id ? borderColor : ''">Select
+              <select class="select" id="myselect" [class.active]="user.status==='active'"
+                (change)="onSelectChange($event, user)" [value]="user.status"
+                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
                 <option value="active" class="activated">Active</option>
                 <option value="terminated" class="terminate">Terminated</option>
                 <option value="resigned" class="resign">Resigned</option>
                 <option value="absconder" class="abscond">Absconder</option>
               </select>
-              <!-- <i class="fa-solid fa-chevron-down"></i> -->
             </div>
           </td>
         </tr>
@@ -145,7 +144,8 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                   <!-- <p>{{Selectvariable1}}</p> -->
-                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="job_type" id="text9" placeholder="Select" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="job_type" id="text9"
+                    placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
@@ -165,7 +165,8 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8" placeholder="Select" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable6" formControlName="designation" id="text8"
+                    placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
@@ -196,7 +197,8 @@
             </div>
             <div class="input">
               <label>Mobile No.</label>
-    <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile" (keydown)="validatePhoneNumber($event)"
+              <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
+                (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
 
             </div>
@@ -204,7 +206,7 @@
         </form>
 
 
-        <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep" >
+        <form class="form-container " id="form2" [formGroup]="form" *ngIf="secondStep">
           <div class="form-row">
             <div class="input">
               <label>Employee ID </label>
@@ -224,7 +226,8 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="slt3" placeholder="Select" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="location" id="slt3"
+                    placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
@@ -241,7 +244,8 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt1">
 
-                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timing" id="slt4" placeholder="Select" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="timing" id="slt4"
+                    placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
@@ -265,7 +269,8 @@
       </div>
 
       <div class="modal-footer">
-        <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn" [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url)">
+        <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
+          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url)">
           Next </button>
         <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
@@ -327,7 +332,7 @@
         <!-- <div class="custom-file-picker">
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >
-          <a (click)="fileInput.click()" class="choose">Choose File</a>
+          <a  class="choose">Choose File</a>
 
         </div> -->
         <div class="import-btns">

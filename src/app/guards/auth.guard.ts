@@ -39,7 +39,9 @@ export class AuthGuard implements CanActivate {
       const token = this.cookie.get('token');
 
       if (!token || token == '') {
-        this.router.createUrlTree(['login']);
+        // this.router.createUrlTree(['login']);
+      this.router.navigate(['/login'])
+
         return false;
       }
 
@@ -48,7 +50,10 @@ export class AuthGuard implements CanActivate {
       return this.http.get(this.auth, { headers }).pipe(
         map((res: any) => {
           this.isLoggedIn.next(true);
-
+          //if(localStorage.getItem('userRole') == 'HR'){
+          //   return true;
+          // }
+          // return false;
           return true;
         }),
         catchError((error) => {

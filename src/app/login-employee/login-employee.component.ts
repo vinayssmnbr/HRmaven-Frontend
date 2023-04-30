@@ -61,8 +61,10 @@ export class LoginEmployeeComponent {
 
 
     if (this.employeeService.isUserLoggedIn()) {
-      this.router.navigate(['employees/dashboard']);
+      this.router.navigate(['emp-dashboard']);
     }
+
+    this.cookie.deleteAll()
     // this.userService.allDataLogin();
   }
   userdetail: any = '';
@@ -98,7 +100,7 @@ export class LoginEmployeeComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -155,7 +157,7 @@ export class LoginEmployeeComponent {
   submit() {
     this.loader = true;
     setTimeout(() => {
-      this.router.navigate(['/employees/dashboard']);
+      this.router.navigate(['/emp-dashboard']);
     }, 2000);
   }
 
@@ -176,7 +178,7 @@ export class LoginEmployeeComponent {
         expire.setTime(today.getTime() + 12 * 60 * 60 * 1000);
         console.log('inside');
         document.cookie =
-          'token= ' +
+          'emp-token= ' +
           res.token +
           ';path=/' +
           ';expires=' +

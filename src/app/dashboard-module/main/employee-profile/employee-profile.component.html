@@ -11,7 +11,8 @@
       <span class="profile_pic">
         <!-- <img src="{{user.url}}"> -->
         <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
-        <img *ngIf="user.url" src="{{user.url}}" alt="">
+        <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
+        <img *ngIf="upload" src="{{imageurl}}" alt="">
         <div class="profile-content" *ngIf="!user.url">
           <!-- <div >
             <input type="file" (change)="onFileSelected($event)">
@@ -504,16 +505,17 @@
         <button class="save" (click)="closeModal4(form.value)">Update</button>
       </div>
     </div>
-    <div class="modal-content" *ngIf="modalContent6">
-      <div class="modal-header">
+    <div class="modal-content5" *ngIf="modalContent6">
+      <div class="modal-header5">
         <h4 class="modal-title">Edit Education Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-      <div class="modal-body">
+      <div class="modal-body5">
         <form class="form-container" id="form4" [formGroup]="form">
-          <div class="form-row">
+          <h3>10th Details</h3>
+          <div class="form-row card10">
             <div class="input">
-              <label>10th Grade Institute</label>
+              <label>Institute</label>
               <input type="text" placeholder="Sacred Heart Senior Secondary School" formControlName="matric">
             </div>
             <div class="input">
@@ -521,45 +523,58 @@
               <input type="number" placeholder="88%" class="no-spin" formControlName="matricPercent">
             </div>
             <div class="input">
-              <label>12th Grade/Diploma Institute</label>
-              <input type="text" placeholder="Guru Nanak Public School" formControlName="inter">
+              <label>Year of Passing</label>
+              <input type="number" class="no-spin" placeholder="2012" formControlName="yop">
             </div>
           </div>
-          <div class="form-row">
+          <h3>12th Details</h3>
+          <div class="form-row card10">
             <div class="input">
-              <label>12th/Diploma Percentage</label>
-              <input type="number" placeholder="92%" class="no-spin" formControlName="interPercent">
+              <label>Institute</label>
+              <input type="text" placeholder="Guru Nanak Public School"  formControlName="inter">
             </div>
             <div class="input">
+              <label>Percentage</label>
+              <input type="number" class="no-spin" placeholder="92%" formControlName="interPercent">
+            </div>
+            <div class="input">
+              <label>Year of Passing</label>
+              <input type="number" placeholder="2014" class="no-spin" formControlName="yop1">
+            </div>
+          </div>
+          <h3>Graduation Details</h3>
+          <div class="form-row card10">
+            <div class="input">
               <label>Graduation College/University</label>
-              <input type="text" placeholder="Lovely Professional University" formControlName="graduation">
+              <input type="text" placeholder="GNDEC"  formControlName="graduation">
             </div>
             <div class="input">
               <label>Stream</label>
-              <input type="text" placeholder="B.Tech CSE" formControlName="graduationStream">
+              <input type="text" placeholder="CSE" formControlName="graduationStream">
+            </div>
+            <div class="input">
+              <label>CGPA</label>
+              <input type="number"class="no-spin" placeholder="10" formControlName="graduationCgpa">
             </div>
           </div>
-          <div class="form-row">
-            <div class="input">
-              <label>Graduation SGPA</label>
-              <input type="number" placeholder="8.7" class="no-spin" formControlName="graduationCgpa">
-            </div>
+          <h3 *ngIf="showpgdetails">Post Graduation Details</h3>
+          <div class="form-row card10" *ngIf="showpgdetails">
             <div class="input">
               <label>Post Graduation College/University</label>
-              <input type="text" placeholder="Lovely Professional University" formControlName="pg">
+              <input type="text" placeholder="LPU"  formControlName="pg">
             </div>
             <div class="input">
-              <label>Post Graduation Stream</label>
-              <input type="text" placeholder="M.Tech CSE" formControlName="pgStream">
+              <label>Stream</label>
+              <input type="text" placeholder="IT" formControlName="pgStream">
             </div>
-          </div>
-          <div class="form-row">
             <div class="input">
-              <label>Post Graduation SGPA</label>
-              <input type="number" placeholder="8.8" class="no-spin" formControlName="pgCgpa">
+              <label>CGPA</label>
+              <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
+          <button class="add-more1" (click)="showpgdet()"><i class="fa-solid fa-circle-plus"></i>Add More</button>
         </form>
+
       </div>
 
       <div class="modal-footer">

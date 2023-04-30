@@ -639,19 +639,21 @@ export class EmployeeProfileComponent implements OnInit{
       return;
     }
     this.onUpload(this.user)
-  }
-  onUpload(user): void {
-    user['_id'] = this.user._id;
-    this.dashService
-      .upload(this.selectedFile, user._id)
-      .then((res) => {
-        console.log("file uploaded successfully")
-      })
-      .catch((err) => {
-        console.log(err)
 
-      });
-    }
+  }
+
+  upload:boolean=false
+  imageurl:any;
+  onUpload(user){
+    user['_id'] = this.user._id;
+    this.dashService.upload(this.selectedFile, user._id).then((res:any)=>{
+      this.upload=true;
+      this.imageurl=this.dashService.fileUrl
+      console.log("img",this.imageurl)
+
+
+    })
+  }
   viewMore:boolean=false;
   showbutton:boolean=true;
   showMoredata(){
@@ -668,4 +670,8 @@ export class EmployeeProfileComponent implements OnInit{
   //      this.openotherinput=true;
   //   }
   // }
+  showpgdetails:boolean=false;
+  showpgdet(){
+    this.showpgdetails=true;
+  }
 }

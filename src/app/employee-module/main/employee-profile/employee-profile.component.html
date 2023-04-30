@@ -284,7 +284,7 @@
           <!-- </form> -->
           <div class="clear-update-button">
             <button class="clear-btn">Clear</button>
-            <button class="update-btn" type="submit">Update Password</button>
+            <button class="update-btn" type="submit" (click)="openModal3()">Update Password</button>
 
           </div>
         </form>
@@ -578,5 +578,19 @@
           <button class="save" (click)="closeModal2()">Update</button>
         </div>
       </div>
+      <form class="leave_approved_form" *ngIf="showModal3">
+        <div class="leave_approved_modal">
+          <i class="fa-solid fa-xmark" (click)="closeModal8()"></i>
+          <div class="logo_bg">
+            <img src="assets/images/tick.png" alt="image">
+          </div>
+          <h4>Password Changed Successfully!</h4>
+          <p>Your password has been updated.</p>
+          <div class="Done_form_btn">
+            <button class="Done_btn" (click)="closeModal8()">Done</button>
+          </div>
+        </div>
+      </form>
+
 </div>
 </div>
