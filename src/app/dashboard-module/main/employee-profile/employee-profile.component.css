@@ -660,12 +660,8 @@ label{
     margin-bottom: 5px;
     color: #333333;
 }
-.bank{
-  display: none;
-}
-.bank.active{
-  display: block;
-}
+
+
 input[type='text']{
   width: 270px;
   font-family: 'Outfit',sans-serif;
@@ -986,7 +982,12 @@ input[type='number']:hover {
   color: #444444;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);
 }
-
+.bank{
+  margin-top: -38px;
+}
+.marriage{
+  margin-top: -38px;
+}
 .select_content1 ul {
   padding: 0;
   margin: 0;

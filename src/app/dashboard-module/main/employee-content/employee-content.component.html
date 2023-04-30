@@ -88,8 +88,8 @@
           </td>
 
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile">{{user.name}}
+            <img src="{{user.url}}" alt="" (click)="selectEmployee(user)"
+              routerLink="/employee-profile"><p>{{user.name}}</p>
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
             routerLink="/employee-profile">{{user.designation}}</td>
