@@ -18,7 +18,7 @@ export class EmployeeService {
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
   isUserLoggedIn(): boolean {
-    return this.cookie.get('token') !== '';
+    return this.cookie.get('emp-token') !== '';
   }
   emailEntered: any = '';
   private saveurl = environment.saveurl;
@@ -68,7 +68,7 @@ export class EmployeeService {
 
   //  My code for profile fetch Name
   getUserProfileById(): Observable<any> {
-    const token = this.cookie.get('token');
+    const token = this.cookie.get('emp-token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.get(this.url, { headers }).pipe(
@@ -79,7 +79,7 @@ export class EmployeeService {
   }
 
   allDataLogin() {
-    const token = this.cookie.get('token');
+    const token = this.cookie.get('emp-token');
 
     if (!token) {
       this.router.navigate(['login-emp']);
@@ -100,7 +100,7 @@ export class EmployeeService {
     );
   }
   mainAuth() {
-    const token = this.cookie.get('token');
+    const token = this.cookie.get('emp-token');
 
     if (!token) {
       this.router.navigate(['login-emp']);

@@ -63,6 +63,8 @@ export class LoginEmployeeComponent {
     if (this.employeeService.isUserLoggedIn()) {
       this.router.navigate(['emp-dashboard']);
     }
+
+    this.cookie.deleteAll()
     // this.userService.allDataLogin();
   }
   userdetail: any = '';
@@ -176,7 +178,7 @@ export class LoginEmployeeComponent {
         expire.setTime(today.getTime() + 12 * 60 * 60 * 1000);
         console.log('inside');
         document.cookie =
-          'token= ' +
+          'emp-token= ' +
           res.token +
           ';path=/' +
           ';expires=' +
