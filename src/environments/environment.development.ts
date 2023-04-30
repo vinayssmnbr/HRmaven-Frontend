@@ -31,7 +31,9 @@ export const environment = {
   getpwd : 'https://hrmaven.works/userprofilepwd',
   leavegraph:'https://hrmaven.works/api/leave/graph/leave',
   leavecontent:'https://hrmaven.works/api/leave/data/leaves',
-  patchleave:'https://hrmaven.works/api/leave/update/leave'
+  patchleave:'https://hrmaven.works/api/leave/update/leave',
+getempRecord:'https://hrmaven.works/api/detail/fetch'
+
 
 
   // //LOCAL URL
@@ -63,5 +65,7 @@ export const environment = {
   // getpwd : 'http://localhost:3000/userprofilepwd',
 // leavegraph:'http://localhost:3000/api/leave/graph/leave',
 // leavecontent:'http://localhost:3000/api/leave/data/leaves',
-// patchleave:'http://localhost:3000/api/leave/update/leave'
+// patchleave:'http://localhost:3000/api/leave/update/leave',
+// getempRecord:'http://localhost:3000/api/detail/fetch'
+
 };
