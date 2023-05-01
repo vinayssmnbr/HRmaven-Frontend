@@ -689,6 +689,7 @@ export class EmployeeContentComponent implements OnInit {
         'background-color': 'rgba(123, 211, 109, 0.3)',
         color: '#3D9030',
         border: 'rgba(123, 211, 109, 0.3)',
+
       };
     } else if (user.status === 'terminated') {
       return {
