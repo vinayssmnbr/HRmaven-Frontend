@@ -75,7 +75,7 @@
       <tbody>
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable " >
           <!--  -->
-          <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data"
+          <td colspan="7" class="nodata" class="no_data"
             *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
@@ -109,6 +109,7 @@
                 <option value="resigned" class="resign">Resigned</option>
                 <option value="absconder" class="abscond">Absconder</option>
               </select>
+              <i class="fa-solid fa-chevron-down" ></i>
             </div>
           </td>
         </tr>
@@ -322,7 +323,7 @@
         <div class="file-content">
           <img src="./assets/images/Vector (4).png" alt="">
           <h3>Select a CSV File to Upload</h3>
-          <p>or drag and drop it here</p>
+          <!-- <p>or drag and drop it here</p> -->
           <button class="choose"  (click)="fileInput.click()">Choose File</button>
           <!-- <button class="import" (click)="importFile()">Submit</button>  -->
           <input type="file" name="csv" (change)=" onFileSelectedrem($event)" formControlName="csv" accept=".csv, application/vnd.ms-excel" >

@@ -337,11 +337,17 @@ tbody{
 thead,th{
   position: sticky;
   top: 0;
+  z-index: 10;
 }
  .table-wrapper::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
-
+i.fa-solid.fa-chevron-down {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 12px;
+}
  .table-wrapper::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: #88888861;
@@ -451,13 +457,11 @@ input[type='checkbox']{
 }
 
 .employee1 {
-    /* width: 130px; */
-    /* height: 44px; */
+
     display: flex;
     gap: 10px;
     padding: 15px 20px;
     white-space: nowrap;
-    border: 1px solid #f9f9f9;
     text-align: justify;
     font-style: normal;
     font-weight: 400;
@@ -554,7 +558,8 @@ table {
 
 .icons {
   display: flex;
-  /* position: relative; */
+  position: relative;
+  width: 120px;
 }
 
 .icons .select{
@@ -567,6 +572,7 @@ table {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
+  appearance: none;
 }
 
 /* .select {
@@ -1638,7 +1644,7 @@ input::placeholder{
 }
 .file-content2{
   display: flex;
-  gap: 50px;
+  gap: 58px;
 }
 .file-content2 p{
  margin-top: 18px;
