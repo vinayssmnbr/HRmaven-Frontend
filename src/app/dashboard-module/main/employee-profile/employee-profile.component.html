@@ -175,11 +175,11 @@
         </div>
         <div class="column3">
           <span class="yop">Year of Passing</span>
-          <p *ngIf="!user.yop">----------</p>
-          <p class="yop" *ngIf="user.yop">{{user.yop}}</p>
+          <p *ngIf="!user.matricpassing">----------</p>
+          <p class="yop" *ngIf="user.matricpassing">{{user.matricpassing}}</p>
           <span class="yop1">Year of Passing</span>
-          <p *ngIf="!user.yop1">----------</p>
-          <p class="yop1" *ngIf="user.yop1">{{user.yop1}}</p>
+          <p *ngIf="!user.interpassing">----------</p>
+          <p class="yop1" *ngIf="user.interpassing">{{user.interpassing}}</p>
           <span class="stream">Graduation Stream</span>
           <p *ngIf="!user.graduationStream">----------</p>
           <p class="stream" *ngIf="user.pgStream">{{user.graduationStream}}</p>
@@ -345,7 +345,7 @@
                   <p>{{Selectvariable3}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
+                <div class="select_content1 marriage" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
                   <ul>
                     <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
                       (click)="Changeselect3(arr3)">
@@ -461,7 +461,7 @@
                   <p>{{Selectvariable2}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                <div class="select_content1 bank" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
                   <ul>
                     <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
                       (click)="Changeselect2(arr2)">
@@ -470,7 +470,7 @@
                 </div>
               </div>
             </div>
-            <div class="input bank">
+            <div class="input" *ngIf="Selectvariable2=== 'Others'">
               <label>Other Bank Name</label>
               <input type="text" placeholder="Specify Bank Name" formControlName="bankname">
             </div>
@@ -524,7 +524,7 @@
             </div>
             <div class="input">
               <label>Year of Passing</label>
-              <input type="number" class="no-spin" placeholder="2012" formControlName="yop">
+              <input type="number" class="no-spin" placeholder="2012" formControlName="matricpassing">
             </div>
           </div>
           <h3>12th Details</h3>
@@ -539,7 +539,7 @@
             </div>
             <div class="input">
               <label>Year of Passing</label>
-              <input type="number" placeholder="2014" class="no-spin" formControlName="yop1">
+              <input type="number" placeholder="2014" class="no-spin" formControlName="interpassing">
             </div>
           </div>
           <h3>Graduation Details</h3>

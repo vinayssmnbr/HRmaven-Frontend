@@ -109,8 +109,8 @@ export class EmployeeProfileComponent implements OnInit{
     city: new FormControl(''),
     address: new FormControl(''),
     profemail:new FormControl(''),
-    yop:new FormControl(''),
-    yop1:new FormControl(''),
+    matricpassing:new FormControl(''),
+    interpassing:new FormControl(''),
   });
 
   experienceForm: FormGroup;
@@ -330,6 +330,10 @@ export class EmployeeProfileComponent implements OnInit{
     console.log(arr2.name);
     this.bankname = arr2.name;
     this.user.bankname = arr2.name;
+    if(this.colorvariable2===5)
+    {
+      this.Selectvariable2='Others';
+    }
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
@@ -519,7 +523,8 @@ export class EmployeeProfileComponent implements OnInit{
     this.user.graduation = data.graduation;
     this.user.graduationCgpa = data.graduationCgpa;
     this.user.graduationStream = data.graduationStream;
-
+    this.user.matricpassing = data.matricpassing;
+    this.user.interpassing = data.interpassing;
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
