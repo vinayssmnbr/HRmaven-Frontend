@@ -10,16 +10,16 @@
           <div class="card_content">
             <div class="card_text">
               <p>Punch in timing</p>
-              <h1>08:46 am</h1>
+              <h1>{{in | date:'shortTime'}}</h1>
             </div>
             <div class="card_logo">
-              <img src="assets/images/Group 1248.svg" alt="">
+              <img src="assets/images/Group 1248.svg" (click)="punchin()"alt="">
             </div>
           </div>
           <div class="card_content">
             <div class="card_text">
               <p>Punch in timing</p>
-              <h1>--:-- pm</h1>
+              <h1>{{out}}</h1>
             </div>
             <div class="card_logo">
               <img src="assets/images/Group 1248.png" alt="">

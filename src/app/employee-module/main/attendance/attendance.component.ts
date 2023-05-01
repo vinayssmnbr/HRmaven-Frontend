@@ -19,6 +19,11 @@ export class AttendanceComponent implements OnInit {
   present:any=0;
   absent:any=0;
 
+   today:any;
+   tomorrow:any;
+   in:any;
+   out:any;
+
   attendance() {
     this.empService.attendanceload().subscribe((res: any) => {
       // current date
@@ -53,10 +58,27 @@ export class AttendanceComponent implements OnInit {
     // this.leave=(this.leave/this.total)*100;
     // console.log(this.total);
   }
-  ngOnInit(): void {
 
-
+  punchin(){
+    this.empService.punch("in").subscribe((res)=>{
+      console.log(res);
+    })
   }
+  ngOnInit(): void {
+    this.empService.attendanceTime().subscribe((res:any)=>{
+      if(res.in=='----')
+      {
+      this.in="";
+      this.out ="";
+      }
+      else{
+        this.in=res.in;
+      }
+      console.log(res);
+    })
+  }
+
+
   array: any = [
     {
       id: 0,

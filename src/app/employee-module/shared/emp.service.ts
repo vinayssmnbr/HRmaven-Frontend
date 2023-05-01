@@ -53,7 +53,7 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('http://localhost:3000/api/leave/emp/leave', { headers });
+    return this.http.get('https://hrmaven.works/api/leave/emp/leave', { headers });
 
   }
 
@@ -65,20 +65,20 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('http://localhost:3000/api/leave/emp/history', { headers });
+    return this.http.get('https://hrmaven.works/api/leave/emp/history', { headers });
 
 
   }
 
-  attendanceload(){
+  attendanceload() {
     const id = this.cookie.get('id');
-    const headers= new HttpHeaders(
+    const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'id':id
+        'id': id
       }
     )
-    return this.http.get('http://localhost:3000/attendance/emp/attendance',{ headers});
+    return this.http.get('https://hrmaven.works/attendance/emp/attendance', { headers });
   }
 
 
@@ -94,6 +94,45 @@ export class EmpService {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  createleave(data: any) {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'data': data
+      }
+    )
+    data['id']=id;
+    const d = new Date();
+    data['appliedon']=d;
+    return this.http.post('https://hrmaven.works/api/leave/add/leave', data);
+  }
+
+  attendanceTime() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('https://hrmaven.works/attendance/check/empattendance', { headers });
+  }
+
+
+  punch(action:any) {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id,
+        'in':action
+      }
+    )
+    return this.http.patch('https://hrmaven.works/attendance/update/time', { headers });
+
   }
 }
 
