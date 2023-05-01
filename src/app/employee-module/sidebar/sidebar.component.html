@@ -26,12 +26,16 @@
       </li>
       <ng-container *ngIf="isAttendanceAndLeaveVisible">
 
-        <li routerLink="/emp-attendance" routerLinkActive="active" [class.active]="activeLink === 'attendance'">
-          <a><img src="./assets/images/Frame-13.svg" alt="">Attendance</a>
+        <li routerLink="/emp-attendance" routerLinkActive="active" [class.active]="activeLink === 'attendance'" class="ulDropdown">
+          <a>
+            <!-- <img src="./assets/images/Frame-13.svg" alt=""> -->
+            Attendance</a>
 
         </li>
-        <li routerLink="/emp-leave" routerLinkActive="active" [class.active]="activeLink === 'leave'"><a><img
-              src="./assets/images/Frame-13.svg" alt="">Leave</a></li>
+        <li routerLink="/emp-leave" routerLinkActive="active" [class.active]="activeLink === 'leave'" class="ulDropdown lastDropdown"><a>
+          <!-- <img
+              src="./assets/images/Frame-13.svg" alt=""> -->
+              Leave</a></li>
       </ng-container>
       <!-- <li routerLink="/leaves" routerLinkActive="active" [class.active]="activeLink === 'leaves'"><a><i class="fa-solid fa-list-check"></i>Leaves</a>
       </li> -->

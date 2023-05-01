@@ -48,7 +48,39 @@ ul.navigation li, ul.navigation2 li{
   margin-top: 15px;
   /* text-align: center; */
 }
+li.ulDropdown {
+  position: relative;
+  width: calc(100% - 46px);
+  margin-left: auto;
+}
+li.ulDropdown:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  /* width: 1px; */
+  height: calc(100% + 15px);
+  left: -24px;
+  /* background: rgba(255, 255, 255, 0.5); */
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
 
+li.ulDropdown:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  /* height: 1px; */
+  left: -24px;
+  /* background: rgba(255, 255, 255, 0.5); */
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+li.ulDropdown.lastDropdown::before{
+  height: calc(100% - 11px);
+} 
+
+li.ulDropdown a {
+  width: 100% !important;
+}
 ul.navigation li a{
   display: flex;
   gap: 20px;
