@@ -320,15 +320,16 @@ input[type='search'] {
 .notification-upper {
     /*   border:2px solid blue; */
     height: 76px;
-    width: 310px;
+    /* width: 310px; */
     padding-left: 10px;
-    border-bottom: 1px solid #E0E0E0;
+   padding-right: 20px;
+    /* border-bottom: 1px solid #E0E0E0; */
 }
 
 .notification-area {
     max-width: 350px;
     width: 100%;
-    min-height: 463px;
+   height: 474px;
     z-index: 50;
     position: fixed;
     right: 50px;
@@ -354,7 +355,7 @@ input[type='search'] {
     width: 138px;
     height: 28px;
     align-items: center;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .notification-mark {
@@ -377,16 +378,20 @@ input[type='search'] {
 /*-----------------------Toggle Notification----------------------*/
 .all-read-important {
     display: flex;
-    width: 232px;
+    /* width: 232px; */
     height: 28px;
     align-items: center;
     margin-top: 20px;
     padding-left: 13px;
     column-gap: 40px;
+    border-bottom: 1px solid #E0E0E0;
 }
 
 .all-read-important p {
-    cursor: pointer
+    cursor: pointer;
+    font-weight: 400;
+font-size: 14px;
+color: #000000;
 }
 
 .all:hover {
@@ -424,7 +429,13 @@ input[type='search'] {
 
 .notification-lower {
     /* height: 328px; */
-    width: 320px;
+    /* width: 320px; */
+    padding-right: 20px;
+    /* width: 100%;
+    max-height: 550px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 4px; */
 }
 
 .robert-image img {
@@ -443,7 +454,7 @@ input[type='search'] {
     column-gap: 10px;
     border-radius: 8px;
     padding: 10px;
-    width: 310px;
+    /* width: 310px; */
 }
 
 .days-text {
@@ -476,20 +487,19 @@ i.fa-solid.fa-star {
 
 .google-meet-area {
     display: flex;
-    justify-content: center;
     align-items: center;
-    /*     border:2px solid green; */
     column-gap: 10px;
     background: #F7F7FB;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
     font-size: 12px;
-    justify-content: start;
-    padding-left: 10px;
+    justify-content: space-between;
+    padding-left: 6px;
     padding-top: 10.5px;
     padding-bottom: 14px;
     margin-top: 10px;
     height: 41px;
+    padding-right: 6px;
 }
 
 .google-text h4 {
@@ -521,11 +531,8 @@ i.fa-solid.fa-star {
 }
 
 .meeting-link i {
-    position: absolute;
-    right: 38px;
     color: #666666;
     font-size: 16px;
-    /* bottom: 244px; */
 }
 
 .meeting-link {
@@ -542,11 +549,13 @@ i.fa-solid.fa-star {
 }
 
 
-/*  */
+/*-------------All-Messages----------------- */
 
+.all-messages{
+    width: 100%;
+    max-height: 550px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 4px;
+}
 
-/* .profile_div {
-  position:fixed;
-  top:73px;
-  right:5px;
-} */

@@ -83,7 +83,7 @@
 }
 
 /*-------------------------Attendance-dropdown-------------*/
-.dropdwon_select {
+/* .dropdwon_select {
   background-color: #fff;
   width: 172px;
   height: 40px;
@@ -145,7 +145,7 @@
   background-color: #ECECEC;
   border-radius: 8px;
 
-}
+} */
 
 /*--------------------------------------------------*/
 
@@ -366,7 +366,7 @@
 /* -------------Drop Down -------- */
 .dropdwon_select {
   background-color: #F7F7FB;
-  width: 172px;
+  width: 94px;
   height: 40px;
   cursor: pointer;
   padding: 8px;
@@ -398,7 +398,7 @@
 .select_content {
   background-color: #fff;
   cursor: pointer;
-  width: 172px;
+  width: 94px;
   cursor: pointer;
   padding: 10px;
   position: absolute;
@@ -433,29 +433,40 @@
 
 /*---------------------------Leave-Balance------------------------*/
 
+.casual_medical_urgent{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 14px 14px;
+  gap: 20px;
+
+}
 .casual_leave{
-  display: flex;
-  justify-content: space-between;
-  padding: 30px 39px;
-  cursor: pointer;
-  /* background-color: #FAFAFA; */
+  width: 130px;
+height: 146px;
+background-color: #FAFAFA;
 border-radius: 10px;
+padding: 6px 6px;
 }
-.medical_leave{
+.casual_leave_text p{
+  font-weight: 400;
+font-size: 14px;
+color: #666666;
+}
+.casual_leave_text h2{
+  font-weight: 700;
+font-size: 22px;
+color: #444444;
+}
+.progress_bar {
+  margin-top: 30px;
+}
+.casual_medical_urgent_earned{
   display: flex;
-  justify-content: space-between;
-  padding: 30px 39px;
-  cursor: pointer;
-  margin-top: 10px;
-  /* background-color: #FAFAFA; */
-border-radius: 10px;
+  flex-direction: column;
 }
-.medical_leave:hover{
-  background-color: #FAFAFA;;
-}
-.casual_leave:hover{
-  background-color: #FAFAFA;;
-}
+
+/*-----------------------------Leave Balance End---------------------*/
 .attendance-area {
   background-color: #FFFFFF;
   border-radius: 8px;
@@ -471,7 +482,8 @@ border-radius: 10px;
 }
 .chart_leaves {
   display: flex;
-  gap: 100px;
+  align-items: center;
+  justify-content: space-between;
 }
 .present {
   display: flex;
