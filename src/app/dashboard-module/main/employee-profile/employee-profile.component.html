@@ -321,8 +321,8 @@
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid" [disabled]="true"
-                readonly>
+              <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid"
+                [disabled]="true" readonly>
             </div>
             <div class="input">
               <label>Date of birth</label>
@@ -576,7 +576,8 @@
         </form>
 
       </div>
-      <div class="modal-footer5">
+
+      <div class="modal-footer">
         <button class="save" (click)="closeModal5(form.value)">Update</button>
       </div>
     </div>
@@ -586,32 +587,41 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body4">
+
+
+        
         <form class="form-container" id="form5" [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
-          <div  *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
-          <div class="form-row" formArrayName="experienceItems">
-            <div class="input">
-              <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Infosys" formControlName="expcompany">
+          <div *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
+            <div class="form-row" formArrayName="experienceItems">
+              <div class="input">
+                <label>Company/Organisation Name</label>
+                <input type="text" placeholder="Infosys" formControlName="expcompany">
+              </div>
+              <div class="input">
+                <label>Duration</label>
+                <input type="text" placeholder="May 2020 - April 2023" formControlName="expduration">
+              </div>
+              <div class="input">
+                <label>Designation</label>
+                <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
+              </div>
             </div>
-            <div class="input">
-              <label>Duration</label>
-              <input type="text" placeholder="May 2020 - April 2023" formControlName="expduration">
+            <div class="form-row" formArrayName="experienceItems">
+              <div class="input">
+                <label>Location</label>
+                <input type="text" placeholder="Pune, India" formControlName="explocation">
+              </div>
             </div>
-            <div class="input">
-              <label>Designation</label>
-              <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
-            </div>
+            <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
+              more</button>
           </div>
-          <div class="form-row" formArrayName="experienceItems">
-            <div class="input">
-              <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="explocation">
-            </div>
-          </div>
-          <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add more</button>
-          </div>
-          <!-- <hr> -->
         </form>
+       
+
+       
+        
+
+
       </div>
       <div class="modal-footer4">
         <button class="save" (click)="closeModal6(experienceForm.value)">Update</button>
