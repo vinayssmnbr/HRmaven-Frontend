@@ -870,7 +870,8 @@ input[type="radio"] {
   height: 100%;
   border-radius: 50%;
   -webkit-animation: colorload 2s;
-  animation: colorload 2s; }
+  animation: colorload 2s;
+}
 
 .progress-circle span {
   font-size: 1rem;
@@ -893,9 +894,21 @@ input[type="radio"] {
 .progress-circle span:after {
   content: "";
   font-weight: 600;
-  color: #8b8b8b; 
+  color: #8b8b8b;
 }
 
+.card .progress-circle-container.totalleavesProgress .progress-circle:after {
+  background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
+}
+.card .progress-circle-container.aproveleavesProgress .progress-circle:after {
+  background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
+}
+.card .progress-circle-container.rejectleavesProgress .progress-circle:after {
+  background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #F8BB6F 50%, #ebebeb 50%, #ebebeb) !important;
+}
+.card .progress-circle-container.pendingleavesProgress .progress-circle:after {
+  background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
+}
 /* -----------------------Custom Check Box ---------------------------- */
 
 .thick_round {
@@ -986,4 +999,3 @@ input[type="radio"] {
   border-color: #fff;
   color: #fff;
 }
-
