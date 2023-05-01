@@ -38,9 +38,10 @@ export class EmpService {
   }
 
   getEmployeeRecord(): Observable<any> {
-    const token = this.cookie.get('token');
+    const token = this.cookie.get('emp-token');
+    console.log(token);
     // const email = localStorage.getItem('email');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('authorization', `Bearer ${token}`);
     return this.http.get(this.getempRecord, { headers });
   }
 
