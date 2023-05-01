@@ -254,8 +254,9 @@
 }
 
 .paragraph-text {
-    text-align: justify;
-    word-break: break-word;
+    /* text-align: justify;
+    word-break: break-word; */
+    opacity: 0;
 }
 
 .paragraph-text p {
