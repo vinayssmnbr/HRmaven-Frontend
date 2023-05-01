@@ -331,7 +331,7 @@ tbody{
 
  .table-wrapper::-webkit-scrollbar {
 
-    width: 8px;
+    width: 6px;
    cursor: pointer;
 }
 thead,th{
@@ -344,7 +344,7 @@ thead,th{
 
  .table-wrapper::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: #888;
+    background: #88888861;
 }
 input[type='checkbox']{
   border-radius: 4px;
@@ -549,7 +549,7 @@ tr:hover {
 
 table {
     width: 100%;
-    border-spacing: 2px 5px;
+    /* border-spacing: 2px 5px; */
 }
 
 .icons {
