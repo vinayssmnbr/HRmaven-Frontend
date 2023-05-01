@@ -56,6 +56,7 @@ export class DashboardContentComponent implements OnInit {
     phone: new FormControl(''),
     headOffice: new FormControl(''),
   })
+ 
   email = localStorage.getItem('email');
   submitPersonalData(data: any){
     console.log("personal data: ", data);
@@ -63,6 +64,7 @@ export class DashboardContentComponent implements OnInit {
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
       this.formSubmitted = true;
+      localStorage.setItem('personalFormData', JSON.stringify(data));
         });
   }
 
@@ -121,7 +123,11 @@ export class DashboardContentComponent implements OnInit {
 
   ngOnInit()
    {
-
+    const savedFormData = localStorage.getItem('personalFormData');
+    if (savedFormData) {
+      const formData = JSON.parse(savedFormData);
+      this.personaldataForm.patchValue(formData);
+    }
   
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);
