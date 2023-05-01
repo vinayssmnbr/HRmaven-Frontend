@@ -14,7 +14,9 @@ export class DashService {
   private baseUrl = 'http://localhost:3000';
   public headerContent: string;
   public activeComponent: string;
-  constructor(
+
+
+   constructor(
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
@@ -169,6 +171,7 @@ export class DashService {
   updateEmployee(user: any) {
     console.log('employee update id ', user);
     return this.http.patch(`${this.updatempdata}/${user._id}`, user);
+    
   }
   //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
@@ -256,4 +259,7 @@ async upload(file:File, userId?:string){
     const url = `${this.updatempdata}/${id}`;
     return this.http.patch(url,{status})
   }
+
+
+  
 }

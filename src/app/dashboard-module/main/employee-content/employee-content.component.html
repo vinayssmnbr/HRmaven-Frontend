@@ -328,6 +328,7 @@
           <a (click)="fileInput.click()" class="choose">Choose File</a>
           <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
+         
         </div>
         <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5>
        
@@ -340,6 +341,7 @@
         <div class="import-btns">
           <button class="can-btn"  (click)="closeFilepicker()">Cancel</button>
           <button class="imp-btn" (click)="employeecsv()" >Import</button>
+          <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
          
         
 

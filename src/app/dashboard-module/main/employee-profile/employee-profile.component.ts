@@ -18,7 +18,7 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent implements OnInit{
   @Input() user: any;
   empForm: FormGroup;
-  constructor(private dashService: DashService,private fb: FormBuilder) {
+  constructor(private dashService: DashService,private fb: FormBuilder,private http:DashService) {
   }
   // employees(): FormArray {
   //   return this.empForm.get("employees") as FormArray
@@ -37,6 +37,8 @@ export class EmployeeProfileComponent implements OnInit{
   // }
 
 
+  employeeExperience: any[] = [];
+  employeeId: string;
 
   selectedUser: any = {};
   personaldetail: boolean = true;
@@ -114,12 +116,16 @@ export class EmployeeProfileComponent implements OnInit{
   experienceForm: FormGroup;
 
   ngOnInit() {
-    this.user = this.dashService.getSelectedEmployee();
+   
+    this.user = this.dashService.getSelectedEmployee();   
     this.experienceForm = new FormGroup({
       experienceItems: new FormArray([
         this.createExperienceItem()
+    
       ])
     }); 
+    
+    
 
   }
   
@@ -150,7 +156,8 @@ export class EmployeeProfileComponent implements OnInit{
   }
 
 
- 
+  
+
 
   array1: any = [
     {
@@ -541,11 +548,17 @@ export class EmployeeProfileComponent implements OnInit{
     this.modalContent6 = false;
     this.modalContent7 = false;
     const updatedData = this.form.value;
+    // const updatedData1=this.formArrayName.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
     this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
     });
+
+    // this.dashService.updateEmployeeExperiences(updatedData).subscribe((data: any) => {
+    //   console.log(data.message);
+    // });
+
     this.user = updatedData;
   }
   contentdropdown1: boolean = false;
@@ -673,4 +686,7 @@ export class EmployeeProfileComponent implements OnInit{
   showpgdet(){
     this.showpgdetails=true;
   }
+
+
+
 }
