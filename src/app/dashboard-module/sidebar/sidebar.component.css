@@ -76,7 +76,7 @@ li.ulDropdown:after {
 }
 li.ulDropdown.lastDropdown::before{
   height: calc(100% - 11px);
-} 
+}
 
 li.ulDropdown a {
   width: 100% !important;
@@ -118,7 +118,7 @@ ul.navigation li:hover{
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .select-btn i{
   position: absolute;
@@ -193,6 +193,26 @@ ul.navigation li:hover .recruitment_img1{
   display: block;
 }
 ul.navigation li:hover .report_img1 {
+  display: block;
+}
+.calendar_img1{
+  display: none;
+}
+ul.navigation li:hover .calendar_img{
+  display: none;
+}
+ul.navigation li:hover .calendar_img1 {
+  display: block;
+}
+.timesheet_img1 {
+  display: none;
+}
+
+ul.navigation li:hover .timesheet_img {
+  display: none;
+}
+
+ul.navigation li:hover .timesheet_img1 {
   display: block;
 }
 .side2 {
