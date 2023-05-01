@@ -53,13 +53,11 @@
 }
 
 .name-text {
-
     display: flex;
     text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: -20%;
 }
 
 .name-text h5 {
@@ -665,6 +663,8 @@
     top: 60%;
     left: 50%;
     opacity: 1;
+    position: absolute;
+    margin-top: -14px;
 }
 
 .content-details .upload_title span {
@@ -674,13 +674,18 @@
     color: #fff;
     
 }
+
 input[type="file"]{
     opacity: 0;
-
+}
+.upload_title input{
+ width: 100%;
+ cursor: pointer;
 }
 
 .upload_title{
-    margin-top: -40px;
+    margin-top: -35px;
+   
 }
 
 .content-text {
