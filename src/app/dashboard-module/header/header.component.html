@@ -21,11 +21,18 @@
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-      <img *ngIf="!user" src="./assets/images/gg_profile.svg" alt="" class="header-icon"
+      <!-- <img *ngIf="!user" src="./assets/images/gg_profile.svg" alt="" class="header-icon"
+        (click)="getProfileData();profileToggle()"><br> -->
+        <!-- https://cdn.filestackcontent.com/5lob9pNSSEG08bQX0eNi -->
+        <img *ngIf="!user" src="https://cdn.filestackcontent.com/5lob9pNSSEG08bQX0eNi" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
 
-        <img *ngIf="user" src="{{header}}" alt="" class="header-icon"
+
+        <!-- <img *ngIf="user" src="{{header}}" alt="" class="header-icon"
+        (click)="getProfileData();profileToggle()"><br> -->
+        <img *ngIf="user" src="https://cdn.filestackcontent.com/5lob9pNSSEG08bQX0eNi" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
+
 
     </div>
   </div>
@@ -282,7 +289,8 @@
   <div class="profile-content">
     <div class="profile-title">
       <div class="profile-logo">
-        <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
+        <!-- <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"> -->
+        <img src="./assets/images/Ellipse 98.svg" alt="" class="header-icon">
       </div>
       <div class="profile-text">
         <h2> {{name}} </h2>

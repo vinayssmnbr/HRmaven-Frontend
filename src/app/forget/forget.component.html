@@ -15,7 +15,7 @@
     <p>Almost done. Enter your new password and you’re all set.</p>
   </div>
 
-  <form [formGroup]="forgetform" class="form"(ngSubmit)="newpassword(this.forgetform)">
+  <form [formGroup]="forgetform" class="form"(ngSubmit)="newpassword(this.forgetform)"  *ngIf="!expired && !errorMessage ">
     <div class="field create-password">
       <div class="password-tooltip">
         <div class="input-field">

@@ -81,23 +81,31 @@ export class ForgetComponent {
   }
   hasError = false;
 //  submission
-  newpassword(data:any)
-  {
-    console.log(data.value);
-    this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
-      if(res=="changeit"){
-        console.log(res);
-      }
+//   newpassword(data:any)
+//   {
+//     console.log(data.value);
+//     this.service.newpwd(data.value,this.token).subscribe((res:any)=>{
+//       if(res=="changeit"){
+//         console.log(res);
+//       }
 
-    });
-    this.router.navigate(['./login']);
+//     });
+//     this.router.navigate(['./login']);
 
+// }
+newpassword(data: any) {
+  if (this.expired) {
+    return; // Do nothing if the user has already used the page
+  }
+  console.log(data.value);
+  this.service.newpwd(data.value, this.token).subscribe((res: any) => {
+    if (res == "changeit") {
+      console.log(res);
+    }
+  });
+  this.router.navigate(['./login']);
 }
 
-// disable the submit button if there is an error
-get isDisabled() {
-return this.forgetform.invalid || this.hasError;
-}
 
 
 // pwdData = localStorage.getItem('password')
@@ -105,34 +113,35 @@ return this.forgetform.invalid || this.hasError;
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
     });
-    // if(this.forgetform.invalid){
-      // const pwdData = localStorage.getItem('password')
-    this.service.newpwd(this.forgetform.value, this.token).subscribe({
-      next: (res: any) => {
-        // if (res == 'changeit') {
-        //   this.expired = true;
+    this.newpassword(this.forgetform)
+    // this.service.newpwd(this.forgetform.value, this.token).subscribe({
+    //   next: (res: any) => {
+    //     // if (res == 'changeit') {
+    //     //   this.expired = true;
           
-        //   console.log(res);
-        // }
-            console.log("res: ",res);
+    //     //   console.log(res);
+    //     // }
+    //         console.log("res: ",res);
 
-        this.router.navigate(['./login']);
-      },
+    //     this.router.navigate(['./login']);
+    //   },
         
-      error: (err) => {
-        if ( err.error.message === 'Link has expired' 
-        || err.error.message==='Reset password link has already been used') {
-          this.expired = true;
-          this.errorMessage = err.error.message;
-        } 
-        else  {
-          // handle other errors
-          // this.errorMessage = 'Link has expired!!';
-          // this.errorMessage =  'Link has expired';
+    //   error: (err) => {
+    //     if ( err.error.message === 'Link has expired' 
+    //     || err.error.message==='Reset password link has already been used') {
+    //       this.expired = true;
+    //       this.errorMessage = err.error.message;
+    //     } 
+    //     else  {
+    //       // handle other errors
+    //       // this.errorMessage = 'Link has expired!!';
+    //       // this.errorMessage =  'Link has expired';
           
-        }
-      }
-    });
+    //     }
+    //   }
+    // });
+  
+  
    
   } 
   
