@@ -1,0 +1,595 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+<div class="main">
+  <div class="card">
+    <div class="card1">
+      <img src="./assets/images/left_arrow.svg" routerLink="/employee/dashboard" alt="">
+      <h2>My Profile</h2>
+    </div>
+    <div class="card2">
+      <span class="profile_pic">
+        <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="obj.url" src="{{obj.url}}" alt="">
+        <!-- <img  alt=""> -->
+        <div class="profile-content" >
+          <input type="file" accept="image/*" id="file-input">
+          <i class="fa-solid fa-arrow-up"></i>
+          <h2>Upload</h2>
+          <p>Profile Picture</p>
+        </div>
+        <!-- <div class="profile-content1" *ngIf="user.url">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
+          <i class="fa-solid fa-camera"></i>
+
+          <h2>Change</h2>
+          <p>Profile Picture</p>
+        </div> -->
+      </span>
+      <div class="content">
+
+        <h3>{{obj.name}}</h3>
+        <p>{{obj.designation}}</p>
+        <span><i class="fa-solid fa-location-dot"></i>{{obj.location}}</span>
+      </div>
+    </div>
+    <ul class="content1">
+      <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
+      <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
+      <li id="Password"[ngClass]="{'active': isPasswordManagement}"><a (click)="managePassword()">Password Management</a></li>
+      <span></span>
+    </ul>
+    <div class="card3" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Basic Details</h3>
+        <button class="edit1" (click)="openModal()">Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="name">Name</span>
+          <p class="name">{{obj.name}}</p>
+          <span class="fname">Father's Name</span>
+          <p *ngIf="!obj.fatherName">----------</p>
+          <p class="fname" *ngIf="obj.fatherName">{{obj.fatherName}}</p>
+          <span class="bgroup">Blood Group</span>
+          <p *ngIf="!obj.bloodGroup">----------</p>
+          <p class="bgroup">{{obj.bloodGroup}}</p>
+        </div>
+        <div class="column2">
+          <span class="uid">Employee ID</span>
+          <p class="name">{{obj.uid}}</p>
+
+          <span class="mname">Mother's Name</span>
+          <p *ngIf="!obj.motherName">----------</p>
+          <p class="mname" *ngIf="obj.motherName">{{obj.motherName}}</p>
+          <span class="gender">Gender</span>
+          <p class="gender">{{obj.gender}}</p>
+        </div>
+        <div class="column3">
+          <span class="dob">Date of birth</span>
+          <p class="dob">{{obj.dateOfBirth | date:"shortDate"}}</p>
+          <span class="marstatus">Marital Status</span>
+          <p *ngIf="!obj.maritalStatus">----------</p>
+          <p class="marstatus" *ngIf="obj.maritalStatus">{{obj.maritalStatus}}</p>
+          <span class="nation">Nationality</span>
+          <p *ngIf="!obj.nationality">----------</p>
+          <p class="nation" *ngIf="obj.nationality">{{obj.nationality}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card4" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Contact Details</h3>
+        <button class="edit1" (click)="openModal2()" >Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="cno">Contact No.</span>
+          <p class="cno">{{obj.mobile}}</p>
+          <!-- <p class="cno">{{obj.mobile}}</p> -->
+          <span class="city">City</span>
+          <p *ngIf="!obj.city">----------</p>
+          <p class="city" *ngIf="obj.city">{{obj.city}}</p>
+        </div>
+        <div class="column2">
+          <span class="address">Address</span>
+          <p class="address">{{obj.address}}</p>
+          <span class="pcode">Postal Code</span>
+          <p *ngIf="!obj.postalCode">----------</p>
+          <p class="pcode" *ngIf="obj.postalCode">{{obj.postalCode}}</p>
+        </div>
+        <div class="column3">
+          <span class="email">Email</span>
+          <p class="email">{{obj.email}}</p>
+          <span class="state">State</span>
+          <p *ngIf="!obj.state">----------</p>
+          <p class="state" *ngIf="obj.state">{{obj.state}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card5" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Personal Particulars</h3>
+        <button class="edit1" (click)="openModal4()">Edit <i class="fa-solid fa-pencil"></i></button>
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="bname">Bank Name</span>
+          <p class="bname">{{obj.bankname}}</p>
+          <span class="adhaarno">Aadhaar Card Number</span>
+          <p class="adhaarno">{{obj.adhaarno}}</p>
+        </div>
+        <div class="column2">
+          <span class="bno">Bank Account No.</span>
+          <p class="bno">{{obj.accountno}}</p>
+          <!-- <p class="bno">{{obj.accountno}}</p> -->
+          <span class="panno">Pan Number</span>
+          <p *ngIf="!obj.panno" class="panno">-------</p>
+          <p *ngIf="obj.ifsc" class="panno">{{obj.panno}}</p>
+
+        </div>
+        <div class="column3">
+          <span class="ifsc">IFSC Code</span>
+          <p *ngIf="!obj.ifsc" class="ifsc">-------</p>
+          <p *ngIf="obj.ifsc" class="ifsc">{{obj.ifsc}}</p>
+          <span class="pno">Passport Number</span>
+          <p *ngIf="!obj.passport">----------</p>
+          <p class="pno" *ngIf="obj.passport">{{obj.passport}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card6" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Education</h3>
+        <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="inst1">10th Grade Institute</span>
+          <p *ngIf="!obj.matric">----------</p>
+          <p class="inst1" *ngIf="obj.matric">{{obj.matric}}</p>
+          <span class="inst2">12th Grade Institute</span>
+          <p *ngIf="!obj.inter">----------</p>
+          <p class="inst2" *ngIf="obj.inter">{{obj.inter}}</p>
+          <span class="gcol">Graduation College/University</span>
+          <p *ngIf="!obj.graduation">----------</p>
+          <p class="gcol" *ngIf="obj.graduation">{{obj.graduation}}</p>
+          <span class="pgcol" *ngIf="showdata">Post Graduation College/University</span>
+          <p *ngIf="!obj.pg">----------</p>
+          <p class="pgcol" *ngIf="obj.pg">{{obj.pg}}</p>
+        </div>
+        <div class="column2">
+          <span class="mper">Matriculation Percentage</span>
+          <p *ngIf="!obj.matricPercent">----------</p>
+          <p class="mper" *ngIf="obj.matricPercent">{{obj.matricPercent}}</p>
+          <span class="dper">12th Grade/Diploma Percentage</span>
+          <p *ngIf="!obj.interPercent">----------</p>
+          <p class="dper" *ngIf="obj.interPercent">{{obj.interPercent}}</p>
+          <span class="sgpa">Cgpa</span>
+          <p *ngIf="!obj.graduationCgpa">----------</p>
+          <p class="sgpa" *ngIf="obj.graduationCgpa">{{obj.graduationCgpa}}</p>
+          <span class="pgsgpa" *ngIf="showdata">PgCgpa</span>
+          <p *ngIf="!obj.pgCgpa">-----------</p>
+          <p class="pgsgpa" *ngIf="obj.pgCgpa">{{obj.pgCgpa}}</p>
+        </div>
+        <div class="column3">
+          <span class="yop">Year of Passing</span>
+          <p *ngIf="!obj.matricpassing">----------</p>
+          <p class="yop" *ngIf="obj.matricpassing">{{obj.matricpassing}}</p>
+          <span class="yop1">Year of Passing</span>
+          <p *ngIf="!obj.interpassing">----------</p>
+          <p class="yop1" *ngIf="obj.interpassing">{{obj.interpassing}}</p>
+          <span class="stream">Graduation Stream</span>
+          <p *ngIf="!obj.graduationStream">----------</p>
+          <p class="stream" *ngIf="obj.pgStream">{{obj.graduationStream}}</p>
+          <span class="pgstream" *ngIf="showdata">Post Graduation Stream</span>
+          <p *ngIf="!obj.pgStream">----------</p>
+          <p class="pgstream" *ngIf="obj.pgStream">{{obj.pgStream}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="cnt-btn">
+        <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+            class="fa-solid fa-angle-down"></i></button>
+      </div>
+      <div class="cnt-btn">
+        <button class="hide" (click)="hidedata()" *ngIf="viewless">View less<i class="fa-solid fa-angle-up"></i></button>
+      </div>
+    </div>
+    <div class="card7" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Experience</h3>
+        <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
+      </div>
+      <div class="row1">
+        <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
+        <div class="column1">
+          <span class="orgname">Company/Organisation Name</span>
+          <p *ngIf="!obj.expcompany">----------</p>
+          <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p>
+          <!-- <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p> -->
+          <span class="location2">Location</span>
+          <p *ngIf="!obj.explocation">----------</p>
+          <p class="location2" *ngIf="obj.explocation">{{obj.explocation}}</p>
+        </div>
+        <div class="column2">
+          <span class="duration2">Duration</span>
+          <p *ngIf="!obj.expduration">----------</p>
+          <p class="duration2" *ngIf="obj.expduration">{{obj.expduration}}</p>
+        </div>
+        <div class="column3">
+          <span class="designation">Designation</span>
+          <p *ngIf="!obj.expdesignation">----------</p>
+          <p class="designation" *ngIf="obj.expdesignation">{{obj.expdesignation}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card8" *ngIf="jobdetail">
+      <div class="details">
+        <h3>Work Details</h3>
+        <!-- <button class="edit1" (click)="openModal5()">Edit <i class="fa-solid fa-pencil"></i></button> -->
+      </div>
+      <div class="row1">
+        <div class="column1">
+          <span class="designation2">Designation</span>
+          <p *ngIf="!obj.designation">----------</p>
+          <p class="designation2" *ngIf="obj.designation">{{obj.designation}}</p>
+          <span class="location3">Location</span>
+          <p *ngIf="!obj.location">----------</p>
+          <p class="location3" *ngIf="obj.location">{{obj.location}}</p>
+          <span class="pemail">Professional Email</span>
+          <p *ngIf="!obj.professionalemail">----------</p>
+          <p class="pemail" *ngIf="obj.professionalemail">{{obj.professionalemail}}</p>
+        </div>
+        <div class="column2">
+          <span class="estatus">Job Type</span>
+          <p *ngIf="!obj.job_type">----------</p>
+          <p class="estatus" *ngIf="obj.job_type">{{obj.job_type}}</p>
+          <span class="timings">Timings</span>
+          <p *ngIf="!obj.timing">----------</p>
+          <p class="timings" *ngIf="obj.timing">{{obj.timing}}</p>
+        </div>
+        <div class="column3">
+          <span class="jdate">Joining Date</span>
+          <p *ngIf="!obj.dateOfJoining">----------</p>
+          <p class="jdate" *ngIf="obj.dateOfJoining">{{obj.dateOfJoining | date:"shortDate"}}</p>
+          <span class="ctc">CTC</span>
+          <p *ngIf="!obj.ctc">----------</p>
+          <p class="ctc" *ngIf="obj.ctc">{{obj.ctc}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="company-name-headoffice-desc" *ngIf="isPasswordManagement">
+      <div class="company-name-headoffice-desc-area">
+        <form action="submit">
+          <div class="old-new-confirm-password">
+            <label for="">Old Password</label>
+            <input type="password" placeholder="Type your old password">
+
+          </div>
+          <div class="new-reenter">
+            <div class="old-new-confirm-password">
+              <label for="">New Password</label>
+              <input type="password" placeholder="Type a new password" formControlName="password">
+
+            </div>
+          </div>
+          <div class="new-reenter">
+            <div class="old-new-confirm-password">
+              <label for="">Confirm Password</label>
+              <input type="password" placeholder="Re-enter your password" formControlName="confirm">
+
+            </div>
+          </div>
+          <!-- </form> -->
+          <div class="clear-update-button">
+            <button class="clear-btn">Clear</button>
+            <button class="update-btn" type="submit" (click)="openModal3()">Update Password</button>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    </div>
+    <div class="modal" *ngIf="showModal">
+      <div class="modal-content" *ngIf="modalContent1">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Personal Details</h4>
+          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        </div>
+        <div class="modal-body">
+          <form class="form-container" id="form1" [formGroup]="empform1">
+            <div class="form-row">
+              <div class="input">
+                <label>Name</label>
+                <input type="text" id="name" placeholder="Ashish" formControlName="name" [disabled]="true" readonly>
+              </div>
+              <div class="input">
+                <label>Employee ID</label>
+                <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid" [disabled]="true"
+                  readonly>
+              </div>
+              <div class="input">
+                <label>Date of birth</label>
+                <input type="date" placeholder="06/04/1997" formControlName="dateOfBirth">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>Father's Name</label>
+                <input type="text" placeholder="Rahul Sharma" formControlName="fatherName">
+              </div>
+              <div class="input">
+                <label>Mother's Name</label>
+                <input type="text" placeholder="Vinita Sharma" formControlName="motherName">
+              </div>
+              <div class="input">
+                <label>Marital Status</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
+                    <p>{{Selectvariable3}}</p>
+                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                  </div>
+                  <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
+                    <ul>
+                      <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
+                        (click)="Changeselect3(arr3)">
+                        {{arr3.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>Blood Group</label>
+                <div class="dropdown_container">
+                  <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
+                    <p>{{Selectvariable4}}</p>
+                    <!-- <input type="text"  formControlName="designation" id="text9" readonly> -->
+                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                  </div>
+                  <div class="select_content1" *ngIf="contentdropdown4" (mouseleave)="dropdownClose4()">
+                    <ul>
+                      <li *ngFor="let arr4 of array4; index as i" [class.select_active]="i === colorvariable4"
+                        (click)="Changeselect4(arr4)">
+                        {{arr4.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="input">
+                <label>Gender</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
+                    <p>{{Selectvariable1}}</p>
+                    <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
+                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                  </div>
+                  <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
+                    <ul>
+                      <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
+                        (click)="Changeselect1(arr1)">
+                        {{arr1.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="input">
+                <label>Nationality</label>
+                <input type="text" placeholder="Indian" formControlName="nationality">
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="save">Update</button>
+              </div> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="save" (click)="basicUpdate(empform1.value)">Update</button>
+        </div>
+      </div>
+      <div class="modal-content" *ngIf="modalContent4">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Contact Details</h4>
+          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        </div>
+        <div class="modal-body">
+          <form class="form-container" id="form2" [formGroup]="empform2">
+            <div class="form-row">
+              <div class="input">
+                <label>Contact No.</label>
+                <input type="number" placeholder="9836327872" class="no-spin" formControlName="mobile">
+              </div>
+              <div class="input">
+                <label>Address</label>
+                <input type="text" placeholder="129-B, Model Town" formControlName="address">
+              </div>
+              <div class="input">
+                <label>Email</label>
+                <input type="text" placeholder="harshit123@gmail.com" formControlName="email" id="email" [disabled]="true" readonly>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>City</label>
+                <input type="text" placeholder="Ludhiana" formControlName="city">
+              </div>
+              <div class="input">
+                <label>Postal Code</label>
+                <input type="number" placeholder="141002" formControlName="postalCode" class=" no-spin">
+              </div>
+              <div class="input">
+                <label>State</label>
+                <input type="text" placeholder="Punjab" formControlName="state">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="save" (click)="closeModal3()">Update</button>
+        </div>
+      </div>
+      <div class="modal-content" *ngIf="modalContent5">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Personal Particulars</h4>
+          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        </div>
+        <div class="modal-body">
+          <form class="form-container" id="form3" [formGroup]="empform3">
+            <div class="form-row">
+              <div class="input">
+                <label>Bank Name</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
+                    <p>{{Selectvariable2}}</p>
+                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                  </div>
+                  <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                    <ul>
+                      <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                        (click)="Changeselect2(arr2)">
+                        {{arr2.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="input bank">
+                <label>Other Bank Name</label>
+                <input type="text" placeholder="Specify Bank Name" formControlName="bankname">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>Bank Account No.</label>
+                <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
+              </div>
+              <div class="input">
+                <label>IFSC Code</label>
+                <input type="text" placeholder="PUNB0125412" formControlName="ifsc">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>Adhaar Card Number</label>
+                <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno">
+              </div>
+              <div class="input">
+                <label>PAN Number</label>
+                <input type="text" placeholder="4512 3200 7456" formControlName="panno">
+              </div>
+              <div class="input">
+                <label>Passport Number</label>
+                <input type="text" placeholder="M5425189" formControlName="passport">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="save" (click)="closeModal4()">Update</button>
+        </div>
+      </div>
+      <div class="modal-content2" *ngIf="modalContent2">
+        <div class="modal-header">
+          <h4 class="modal-title">Update Job Details</h4>
+          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        </div>
+        <div class="modal-body2">
+          <form class="form-container" id="form6" [formGroup]="empform6">
+
+            <div class="form-row">
+              <div class="input">
+                <label>Designation</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen()">
+                    <p>{{Selectvariable}}</p>
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                  </div>
+                  <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
+                    <ul>
+                      <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                        (click)="Changeselect(arr)">
+                        {{arr.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="input">
+                <label>Job Type</label>
+                <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="jobempstatus"> -->
+                <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
+                <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen8()">
+                    <p>{{Selectvariable8}}</p>
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                  </div>
+                  <div class="select_content" *ngIf="contentdropdown8" (mouseleave)="dropdownClose8()">
+                    <ul>
+                      <li *ngFor="let arr8 of array8; index as i" [class.select_active]="i === colorvariable8"
+                        (click)="Changeselect8(arr8)">
+                        {{arr8.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="input">
+                <label>Joining Date</label>
+                <input type="date" placeholder="1 April,2023" formControlName="joiningdate">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>Location</label>
+                <input type="text" placeholder="Pune, India" formControlName="joblocation1">
+              </div>
+              <div class="input">
+                <label>Timings</label>
+                <div class="dropdown_container" (mouseleave)="contentdropdown5 = false">
+                  <div class="dropdwon_select" (click)="dropdownOpen5()">
+                    <p>{{Selectvariable5}}</p>
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                  </div>
+                  <div class="select_content" *ngIf="contentdropdown5" (mouseleave)="dropdownClose5()">
+                    <ul>
+                      <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5"
+                        (click)="Changeselect5(arr5)">
+                        {{arr5.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="input">
+                <label>CTC</label>
+                <input type="text" placeholder="8LPA" formControlName="jobctc">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="input">
+                <label>Professional Email</label>
+                <input type="email" placeholder="zonah123@gmail.com" formControlName="profemail">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="save" (click)="closeModal2()">Update</button>
+        </div>
+      </div>
+      <form class="leave_approved_form" *ngIf="showModal3">
+        <div class="leave_approved_modal">
+          <i class="fa-solid fa-xmark" (click)="closeModal8()"></i>
+          <div class="logo_bg">
+            <img src="assets/images/tick.png" alt="image">
+          </div>
+          <h4>Password Changed Successfully!</h4>
+          <p>Your password has been updated.</p>
+          <div class="Done_form_btn">
+            <button class="Done_btn" (click)="closeModal8()">Done</button>
+          </div>
+        </div>
+      </form>
+
+</div>
+</div>

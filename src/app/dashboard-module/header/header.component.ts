@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { DashService } from '../shared/dash.service';
 import { UserService } from '../../service/user.service';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  @Input() user:any
   showSearchBox = false;
   date: any;
   greeting: any;
@@ -35,7 +36,7 @@ export class HeaderComponent {
     this.getProfileData();
   }
   hide: boolean = true;
-
+header:any
   ngOnInit() {
     const today = new Date();
     this.date = today.toLocaleString('default', {
@@ -59,7 +60,14 @@ export class HeaderComponent {
     this.elementRef.nativeElement.addEventListener('mouseleave', () => {
       this.visible = false;
     });
+
+    this.user=this.dashService.getSelectedEmployee()
+    console.log('header xyz',this.user.url)
+    this.header=this.user.url
+    console.log('xyz',this.header)
+    
   }
+
 
   toggleSearchBox() {
     this.showSearchBox = !this.showSearchBox;
@@ -71,7 +79,7 @@ export class HeaderComponent {
       this.name = res.username.charAt(0).toUpperCase() + res.username.slice(1);
     });
   }
-
+  loginobjectid: any ='';
   profileToggle() {
     if (this.hideNotifications) {
       this.visible = false;
@@ -82,6 +90,10 @@ export class HeaderComponent {
     // this.hideNotifications = true;
 
     this.profileDisplay = !this.profileDisplay;
+    this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
+
+      console.log('response account:' +res.personaldata.headOffice);
+    });
   }
 
   logout() {

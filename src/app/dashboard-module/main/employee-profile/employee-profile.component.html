@@ -8,14 +8,28 @@
     </div>
 
     <div class="card2">
-      <span class="profile_pic"><img src="{{user.url}}">
-
-        <div class="profile-content">
+      <span class="profile_pic">
+        <!-- <img src="{{user.url}}"> -->
+        <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
+        <img *ngIf="upload" src="{{imageurl}}" alt="">
+        <div class="profile-content" *ngIf="!user.url">
           <!-- <div >
             <input type="file" (change)="onFileSelected($event)">
           </div> -->
           <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
+          <!-- <img src="./assets/images/upload.png" alt=""> -->
+          <i class="fa-solid fa-arrow-up"></i>
+          <h2>Upload</h2>
+          <p>Profile Picture</p>
+        </div>
+        <div class="profile-content1" *ngIf="user.url">
+          <!-- <div >
+                    <input type="file" (change)="onFileSelected($event)">
+                  </div> -->
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
           <i class="fa-solid fa-camera"></i>
+
           <h2>Change</h2>
           <p>Profile Picture</p>
         </div>
@@ -24,12 +38,12 @@
 
         <h3>{{user.name}}</h3>
         <p>{{user.designation}}</p>
-        <span><i class="fa-solid fa-location-dot"></i>{{user.explocation}}</span>
+        <span><i class="fa-solid fa-location-dot"></i>{{user.location}}</span>
       </div>
     </div>
     <ul class="content1">
       <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
-      <li [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
+      <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
       <span></span>
     </ul>
     <div class="card3" *ngIf="personaldetail">
@@ -135,20 +149,9 @@
           <span class="inst1">10th Grade Institute</span>
           <p *ngIf="!user.matric">----------</p>
           <p class="inst1" *ngIf="user.matric">{{user.matric}}</p>
-          <span class="dper">12th Diploma Percentage</span>
-          <p *ngIf="!user.interPercent">----------</p>
-          <p class="dper" *ngIf="user.interPercent">{{user.interPercent}}</p>
-          <span class="sgpa">Graduation SGPA</span>
-          <p *ngIf="!user.graduationCgpa">----------</p>
-          <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p>
-          <span class="pgsgpa">Post Graduation SGPA</span>
-          <p *ngIf="!user.pgCgpa">----------</p>
-          <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
-        </div>
-        <div class="column2">
-          <span class="mper">Matriculation Percentage</span>
-          <p *ngIf="!user.matricPercent">----------</p>
-          <p class="mper" *ngIf="user.matricPercent">{{user.matricPercent}}</p>
+          <span class="inst2">12th Grade Institute</span>
+          <p *ngIf="!user.inter">----------</p>
+          <p class="inst2" *ngIf="user.inter">{{user.inter}}</p>
           <span class="gcol">Graduation College/University</span>
           <p *ngIf="!user.graduation">----------</p>
           <p class="gcol" *ngIf="user.graduation">{{user.graduation}}</p>
@@ -156,16 +159,33 @@
           <p *ngIf="!user.pg">----------</p>
           <p class="pgcol" *ngIf="user.pg">{{user.pg}}</p>
         </div>
+        <div class="column2">
+          <span class="mper">Matriculation Percentage</span>
+          <p *ngIf="!user.matricPercent">----------</p>
+          <p class="mper" *ngIf="user.matricPercent">{{user.matricPercent}}</p>
+          <span class="dper">12th Grade/Diploma Percentage</span>
+          <p *ngIf="!user.interPercent">----------</p>
+          <p class="dper" *ngIf="user.interPercent">{{user.interPercent}}</p>
+          <span class="sgpa">Cgpa</span>
+          <p *ngIf="!user.graduationCgpa">----------</p>
+          <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p>
+          <span class="pgsgpa">PgCgpa</span>
+          <p *ngIf="!user.pgCgpa">-----------</p>
+          <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
+        </div>
         <div class="column3">
-          <span class="inst2">12th Grade/Diploma Institute</span>
-          <p *ngIf="!user.inter">----------</p>
-          <p class="inst2" *ngIf="user.inter">{{user.inter}}</p>
-          <span class="stream">Stream</span>
+          <span class="yop">Year of Passing</span>
+          <p *ngIf="!user.matricpassing">----------</p>
+          <p class="yop" *ngIf="user.matricpassing">{{user.matricpassing}}</p>
+          <span class="yop1">Year of Passing</span>
+          <p *ngIf="!user.interpassing">----------</p>
+          <p class="yop1" *ngIf="user.interpassing">{{user.interpassing}}</p>
+          <span class="stream">Graduation Stream</span>
           <p *ngIf="!user.graduationStream">----------</p>
-          <p class="stream" *ngIf="user.graduationStream">{{user.graduationStream}}</p>
+          <p class="stream" *ngIf="user.pgStream">{{user.graduationStream}}</p>
           <span class="pgstream">Post Graduation Stream</span>
           <p *ngIf="!user.pgStream">----------</p>
-          <p class="stream" *ngIf="user.pgStream">{{user.pgStream}}</p>
+          <p class="pgstream" *ngIf="user.pgStream">{{user.pgStream}}</p>
         </div>
       </div>
     </div>
@@ -174,7 +194,7 @@
         <h3>Experience</h3>
         <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
-      <div class="row1" >
+      <div class="row1">
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
@@ -197,9 +217,10 @@
       </div>
       <hr>
       <div class="cnt-btn">
-      <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More</button>
+        <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+            class="fa-solid fa-angle-down"></i></button>
       </div>
-      <div class="row1" *ngIf="viewMore">
+      <!-- <div class="row1" *ngIf="viewMore">
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
 
         <div class="column1">
@@ -245,8 +266,9 @@
         </div>
       </div>
       <div class="cnt-btn">
-        <button class="hide" (click)="hidedata()" *ngIf="viewMore">Hide</button>
-      </div>
+        <button class="hide" (click)="hidedata()" *ngIf="viewMore">View less<i
+            class="fa-solid fa-angle-up"></i></button>
+      </div> -->
     </div>
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
@@ -256,27 +278,30 @@
       <div class="row1">
         <div class="column1">
           <span class="designation2">Designation</span>
-          <p *ngIf="!user.jobdesignation">----------</p>
-          <p class="designation2" *ngIf="user.jobdesignation">{{user.jobdesignation}}</p>
+          <p *ngIf="!user.designation">----------</p>
+          <p class="designation2" *ngIf="user.designation">{{user.designation}}</p>
           <span class="location3">Location</span>
-          <p *ngIf="!user.joblocation1">----------</p>
-          <p class="location3" *ngIf="user.joblocation1">{{user.joblocation1}}</p>
+          <p *ngIf="!user.location">----------</p>
+          <p class="location3" *ngIf="user.location">{{user.location}}</p>
+          <span class="pemail">Professional Email</span>
+          <p *ngIf="!user.professionalemail">----------</p>
+          <p class="pemail" *ngIf="user.professionalemail">{{user.professionalemail}}</p>
         </div>
         <div class="column2">
-          <span class="estatus">Employment Status</span>
-          <p *ngIf="!user.jobempstatus">----------</p>
-          <p class="estatus" *ngIf="user.jobempstatus">{{user.jobempstatus}}</p>
+          <span class="estatus">Job Type</span>
+          <p *ngIf="!user.job_type">----------</p>
+          <p class="estatus" *ngIf="user.job_type">{{user.job_type}}</p>
           <span class="timings">Timings</span>
-          <p *ngIf="!user.jobtiming">----------</p>
-          <p class="timings" *ngIf="user.jobtiming">{{user.jobtiming}}</p>
+          <p *ngIf="!user.timing">----------</p>
+          <p class="timings" *ngIf="user.timing">{{user.timing}}</p>
         </div>
         <div class="column3">
           <span class="jdate">Joining Date</span>
-          <p *ngIf="!user.joiningdate">----------</p>
-          <p class="jdate"  *ngIf="user.joiningdate">{{user.joiningdate | date:"shortDate"}}</p>
+          <p *ngIf="!user.dateOfJoining">----------</p>
+          <p class="jdate" *ngIf="user.dateOfJoining">{{user.dateOfJoining | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
-          <p *ngIf="!user.jobctc">----------</p>
-          <p class="ctc" *ngIf="user.jobctc">{{user.jobctc}}</p>
+          <p *ngIf="!user.ctc">----------</p>
+          <p class="ctc" *ngIf="user.ctc">{{user.ctc}}</p>
         </div>
       </div>
     </div>
@@ -288,7 +313,7 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
-        <form class="form-container" id="form1" [formGroup]="form" >
+        <form class="form-container" id="form1" [formGroup]="form">
           <div class="form-row">
             <div class="input">
               <label>Name</label>
@@ -296,7 +321,7 @@
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id" formControlName="uid" [disabled]="true"
+              <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid" [disabled]="true"
                 readonly>
             </div>
             <div class="input">
@@ -318,9 +343,9 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
                   <p>{{Selectvariable3}}</p>
-                <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
+                <div class="select_content1 marriage" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
                   <ul>
                     <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
                       (click)="Changeselect3(arr3)">
@@ -336,7 +361,7 @@
               <label>Blood Group</label>
               <div class="dropdown_container">
                 <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
-                  <p >{{Selectvariable4}}</p>
+                  <p>{{Selectvariable4}}</p>
                   <!-- <input type="text"  formControlName="designation" id="text9" readonly> -->
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
@@ -353,7 +378,7 @@
               <label>Gender</label>
               <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
-                  <p >{{Selectvariable1}}</p>
+                  <p>{{Selectvariable1}}</p>
                   <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
@@ -390,7 +415,7 @@
           <div class="form-row">
             <div class="input">
               <label>Contact No.</label>
-              <input type="number" placeholder="9836327872" formControlName="mobile">
+              <input type="number" placeholder="9836327872" class="no-spin" formControlName="mobile">
             </div>
             <div class="input">
               <label>Address</label>
@@ -436,7 +461,7 @@
                   <p>{{Selectvariable2}}</p>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
-                <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                <div class="select_content1 bank" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
                   <ul>
                     <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
                       (click)="Changeselect2(arr2)">
@@ -445,15 +470,15 @@
                 </div>
               </div>
             </div>
-            <div class="input bank">
-              <label >Other Bank Name</label>
-              <input type="text" placeholder="Specify Bank Name" formControlName="bankname" >
+            <div class="input" *ngIf="Selectvariable2=== 'Others'">
+              <label>Other Bank Name</label>
+              <input type="text" placeholder="Specify Bank Name" formControlName="bankname">
             </div>
-            </div>
-            <div class="form-row">
+          </div>
+          <div class="form-row">
             <div class="input">
               <label>Bank Account No.</label>
-              <input type="number" placeholder="6412365874125425" formControlName="accountno">
+              <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
             </div>
             <div class="input">
               <label>IFSC Code</label>
@@ -480,75 +505,90 @@
         <button class="save" (click)="closeModal4(form.value)">Update</button>
       </div>
     </div>
-    <div class="modal-content" *ngIf="modalContent6">
-      <div class="modal-header">
+    <div class="modal-content5" *ngIf="modalContent6">
+      <div class="modal-header5">
         <h4 class="modal-title">Edit Education Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-      <div class="modal-body">
+      <div class="modal-body5">
         <form class="form-container" id="form4" [formGroup]="form">
-          <div class="form-row">
+          <h3>10th Details</h3>
+          <div class="form-row card10">
             <div class="input">
-              <label>10th Grade Institute</label>
+              <label>Institute</label>
               <input type="text" placeholder="Sacred Heart Senior Secondary School" formControlName="matric">
             </div>
             <div class="input">
               <label>Matriculation Percentage</label>
-              <input type="number" placeholder="88%" formControlName="matricPercent">
+              <input type="number" placeholder="88%" class="no-spin" formControlName="matricPercent">
             </div>
             <div class="input">
-              <label>12th Grade/Diploma Institute</label>
-              <input type="text" placeholder="Guru Nanak Public School" formControlName="inter">
+              <label>Year of Passing</label>
+              <input type="number" class="no-spin" placeholder="2012" formControlName="matricpassing">
             </div>
           </div>
-          <div class="form-row">
+          <h3>12th Details</h3>
+          <div class="form-row card10">
             <div class="input">
-              <label>12th/Diploma Percentage</label>
-              <input type="number" placeholder="92%" formControlName="interPercent">
+              <label>Institute</label>
+              <input type="text" placeholder="Guru Nanak Public School"  formControlName="inter">
             </div>
             <div class="input">
+              <label>Percentage</label>
+              <input type="number" class="no-spin" placeholder="92%" formControlName="interPercent">
+            </div>
+            <div class="input">
+              <label>Year of Passing</label>
+              <input type="number" placeholder="2014" class="no-spin" formControlName="interpassing">
+            </div>
+          </div>
+          <h3>Graduation Details</h3>
+          <div class="form-row card10">
+            <div class="input">
               <label>Graduation College/University</label>
-              <input type="text" placeholder="Lovely Professional University" formControlName="graduation">
+              <input type="text" placeholder="GNDEC"  formControlName="graduation">
             </div>
             <div class="input">
               <label>Stream</label>
-              <input type="text" placeholder="B.Tech CSE" formControlName="graduationStream">
+              <input type="text" placeholder="CSE" formControlName="graduationStream">
+            </div>
+            <div class="input">
+              <label>CGPA</label>
+              <input type="number"class="no-spin" placeholder="10" formControlName="graduationCgpa">
             </div>
           </div>
-          <div class="form-row">
-            <div class="input">
-              <label>Graduation SGPA</label>
-              <input type="number" placeholder="8.7" formControlName="graduationCgpa">
-            </div>
+          <h3 *ngIf="showpgdetails">Post Graduation Details</h3>
+          <div class="form-row card10" *ngIf="showpgdetails">
             <div class="input">
               <label>Post Graduation College/University</label>
-              <input type="text" placeholder="Lovely Professional University" formControlName="pg">
+              <input type="text" placeholder="LPU"  formControlName="pg">
             </div>
             <div class="input">
-              <label>Post Graduation Stream</label>
-              <input type="text" placeholder="M.Tech CSE" formControlName="pgStream">
+              <label>Stream</label>
+              <input type="text" placeholder="IT" formControlName="pgStream">
             </div>
-          </div>
-          <div class="form-row">
             <div class="input">
-              <label>Post Graduation SGPA</label>
-              <input type="number" placeholder="8.8" formControlName="pgCgpa">
+              <label>CGPA</label>
+              <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
+          <button class="add-more1" (click)="showpgdet()"><i class="fa-solid fa-circle-plus"></i>Add More</button>
         </form>
+
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer5">
         <button class="save" (click)="closeModal5(form.value)">Update</button>
       </div>
     </div>
-    <div class="modal-content" *ngIf="modalContent7">
-      <div class="modal-header">
+    <div class="modal-content4" *ngIf="modalContent7">
+      <div class="modal-header4">
         <h4 class="modal-title">Edit Experience Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-      <div class="modal-body">
-        <form class="form-container" id="form5" [formGroup]="form">
-          <div class="form-row" >
+      <div class="modal-body4">
+        <form class="form-container" id="form5" [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
+          <div  *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
+          <div class="form-row" formArrayName="experienceItems">
             <div class="input">
               <label>Company/Organisation Name</label>
               <input type="text" placeholder="Infosys" formControlName="expcompany">
@@ -562,58 +602,19 @@
               <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
             </div>
           </div>
-          <div class="form-row" >
+          <div class="form-row" formArrayName="experienceItems">
             <div class="input">
               <label>Location</label>
               <input type="text" placeholder="Pune, India" formControlName="explocation">
             </div>
           </div>
+          <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add more</button>
+          </div>
           <!-- <hr> -->
-          <!-- <div class="form-row">
-            <div class="input">
-              <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Accenture" formControlName="expcompany1">
-            </div>
-            <div class="input">
-              <label>Duration</label>
-              <input type="text" placeholder="April 2019 - May 2020" formControlName="expduration1">
-            </div>
-            <div class="input">
-              <label>Designation</label>
-              <input type="text" placeholder="Front End developer" formControlName="expdesignation1">
-            </div>
-          </div>
-          <div class="form-row" *ngIf="contentshow">
-            <div class="input">
-              <label>Location</label>
-              <input type="text" placeholder="Bangalore, India" formControlName="explocation1">
-            </div>
-          </div> -->
-          <!-- <div class="form-row">
-            <div class="input">
-              <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Infosys" formControlName="orgname">
-            </div>
-            <div class="input">
-              <label>Duration</label>
-              <input type="text" placeholder="May 2020 - April 2023" formControlName="duration2">
-            </div>
-            <div class="input">
-              <label>Designation</label>
-              <input type="text" placeholder="Lead- front end developer" formControlName="designation">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="input">
-              <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="location2">
-            </div>
-          </div> -->
-          <!-- <button class="btn3" (click)="addEmployee()"><i class="fa-solid fa-circle-plus"></i>Edit Employee</button> -->
         </form>
       </div>
-      <div class="modal-footer">
-        <button class="save" (click)="closeModal6(form.value)">Update</button>
+      <div class="modal-footer4">
+        <button class="save" (click)="closeModal6(experienceForm.value)">Update</button>
       </div>
     </div>
     <!-- <div class="modal-footer">
@@ -646,7 +647,7 @@
               </div>
             </div>
             <div class="input">
-              <label>Employment Status</label>
+              <label>Job Type</label>
               <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="jobempstatus"> -->
               <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
               <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">
@@ -665,13 +666,13 @@
             </div>
             <div class="input">
               <label>Joining Date</label>
-              <input type="date" placeholder="1 April,2023" formControlName="joiningdate">
+              <input type="date" placeholder="1 April,2023" formControlName="dateOfJoining">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="joblocation1">
+              <input type="text" placeholder="Pune, India" formControlName="location">
             </div>
             <div class="input">
               <label>Timings</label>
@@ -691,7 +692,13 @@
             </div>
             <div class="input">
               <label>CTC</label>
-              <input type="text" placeholder="8LPA" formControlName="jobctc">
+              <input type="text" placeholder="8LPA" formControlName="ctc">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Professional Email</label>
+              <input type="email" placeholder="zonah123@gmail.com" formControlName="professionalemail">
             </div>
           </div>
         </form>

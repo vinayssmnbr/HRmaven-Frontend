@@ -6,72 +6,168 @@
 .term_title {
     height: 80px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--primary-color);
+    padding: 30px 30px;
 }
 
 .term_title h2 {
-    text-align: center;
     font-weight: 500;
     font-size: 32px;
     line-height: 40px;
     color: #FFFFFF;
 }
 
-.term_title i {
-    position: absolute;
-    right: 30px;
-    font-size: 18px;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-.term_date {
-    padding-top: 30px;
-    padding-left: 403px;
+.term_title p {
     font-weight: 400;
     font-size: 18px;
-    color: #222222;
+    color: #FFFFFF;
 }
 
 .term_content {
     display: flex;
+    justify-content: space-between;
+}
+
+.term_content .col-9 {
+    height: 78vh;
+    overflow-y: auto;
+    padding-right: 30px;
+}
+
+.term_content .col-9::-webkit-scrollbar {
+    width: 6px;
+}
+
+.term_content .col-9::-webkit-scrollbar-track {
+    background-color: #EFEFF8;
+}
+
+.term_content .col-9::-webkit-scrollbar-thumb {
+    background-color: #888888de;
+    border-radius: 6px;
+    height: 10px;
+}
+
+.term_leftside {
+    padding-top: 14px;
+}
+
+.term_leftside button {
+    margin-top: 26px;
+    cursor: pointer;
+    margin-left: 42px;
+}
+.term_bar img{
+    position: fixed;
+    height: 78vh;
+}
+.term_leftside .term_btn {
+    width: 270px;
+    height: 37px;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #555555;
+    border: none;
+    text-align: left;
+}
+
+.term_leftside .term_btn span {
+    padding-right: 5px;
+}
+
+.term_leftside button:hover {
+    background-color: #F7F7FB;
+}
+
+.term_leftside>button.active {
+    background-color: #F7F7FB !important;
+}
+
+.term_content .col-9 {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    background-image: url(/assets/images/termlogo.png);
+    background-repeat: no-repeat;
+}
+
+
+
+.General_term {
+    margin-top: 40px;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 18px;
+    color: #2F2C9F;
 }
 
 .term_text {
-    padding-left: 155px;
-}
-
-.term_text h4 {
-    font-size: 18px;
-    color: #2F2C9F;
-    font-weight: 300;
-}
-
-.intro_text {
-    padding-top: 50px;
-}
-
-.intro_para {
-    padding-left: 50px;
-    width: 881px;
-    padding-top: 30px;
-}
-
-.intro_para p {
-    font-weight: 400;
+    padding-top: 20px;
     font-size: 16px;
-    color: #333333;
+}
+
+.term_text span,
+.term_text b {
+    padding-right: 5px;
+}
+
+.use_policy,
+.Cancellation_Policy,
+.Privacy_Policy {
     padding-top: 20px;
 }
 
-.intro_para p span {
-    padding-right: 5px;
+.Cancellation_Policy p,
+.Privacy_Policy p {
+    padding-top: 20px;
 }
-.account,.Prohibited,.Limitation{
-    padding-top: 10px;
+
+.term_condition_btn {
+    height: 87px;
+    background-color: #EFEFF8;
+    
 }
-.User{
-    padding-top: 35px;
+
+.term_condition_btn button {
+    position: absolute;
+    right: 69px;
+    width: 143px;
+    height: 44px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.Decline {
+    margin-right: 180px;
+    padding: 12px 48px;
+    background-color: #FFFFFF;
+    font-weight: 500;
+    font-size: 14px;
+    color: #2F2C9F;
+    border-radius: 8px;
+}
+
+.Decline:hover {
+    background-color: #d7caca;
+}
+
+.Agree {
+    background-color: #2F2C9F;
+    border-radius: 8px;
+    padding: 12px 48px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.Agree:hover{
+    background-color: #1912e0;
+
 }

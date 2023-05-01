@@ -1,3 +1,112 @@
 <app-sidebar>
 </app-sidebar>
 <app-header></app-header>
+<div class="employee-attendance">
+  <div class="row">
+    <div class="col-5">
+      <div class="attendence_card">
+        <h3>Today’s attendance</h3>
+        <div class="card">
+          <div class="card_content">
+            <div class="card_text">
+              <p>Punch in timing</p>
+              <h1>{{in | date:'shortTime'}}</h1>
+            </div>
+            <div class="card_logo">
+              <img src="assets/images/Group 1248.svg" (click)="punchin()"alt="">
+            </div>
+          </div>
+          <div class="card_content">
+            <div class="card_text">
+              <p>Punch in timing</p>
+              <h1>{{out}}</h1>
+            </div>
+            <div class="card_logo">
+              <img src="assets/images/Group 1248.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-7">
+      <div class="attendence_card">
+        <h3>Attendance (This Month)</h3>
+        <div class="card">
+          <div class="card_content">
+            <div class="card_text">
+              <p>Present</p>
+              <h1>{{(present/total)*100 | number: '1.0-0'}}%</h1>
+            </div>
+            <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:{{(present/total)*100 | number: '1.0-0'}}">
+            </div>
+          </div>
+          <div class="card_content">
+            <div class="card_text">
+              <p>Absent</p>
+              <h1>{{(absent/total)*100 | number: '1.0-0'}}%</h1>
+            </div>
+            <div role="progressbar1" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:{{(absent/total)*100 | number: '1.0-0'}}">
+            </div>
+          </div>
+          <div class="card_content">
+            <div class="card_text">
+              <p>Leave</p>
+              <h1>{{(leave/total)*100 | number: '1.0-0'}}%</h1>
+            </div>
+            <div role="progressbar2" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:{{(leave/total)*100 | number: '1.0-0'}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="attendence_history">
+    <div class="attendence_title">
+      <h3>Attendance History <span>(Monthly)</span></h3>
+      <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+        <div class="dropdwon_select" (click)="dropdownOpen()">
+          <p>{{Selectvariable}}</p>
+          <i class="fa-sharp fa-solid fa-caret-down"></i>
+        </div>
+        <div class="select_content" *ngIf="contentdropdown">
+          <ul>
+            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+              (click)="Changeselect(arr)">
+              {{arr.name}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="attendence_history_card">
+      <div class="col-4" *ngFor="let i of obj | filterattendance:month">
+        <div class="card">
+          <div class="card_date">
+            <div class="left_date">
+              <img src="assets/images/date.png" alt="">
+              <p>{{i.date | date}}</p>
+            </div>
+            <div class="card_btn">
+              <button *ngIf="i.status=='present'" class="present_btn">{{i.status | uppercase}}</button>
+              <button *ngIf="i.status=='absent'" class="absent_btn">{{i.status | uppercase}}</button>
+              <button *ngIf="i.status=='leave'" class="leave_btn">{{i.status | uppercase}}</button>
+            </div>
+          </div>
+          <div class="punching_timing">
+            <div class="punching_in" *ngIf="i.status=='present'">
+              <p>Punch in timing</p>
+              <h6>{{i.punch_in | date:'shortTime'}}</h6>
+            </div>
+            <div class="punching_out" *ngIf="i.status=='present'">
+              <p>Punch in timing</p>
+              <h6>{{i.punch_out | date:'shortTime'}}</h6>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

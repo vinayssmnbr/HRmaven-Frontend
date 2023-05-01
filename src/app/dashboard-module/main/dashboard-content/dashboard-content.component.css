@@ -302,6 +302,7 @@ a {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  word-break: break-all;
 }
 
 .date {
@@ -785,6 +786,11 @@ border: 1px solid #CBCBCB;
 border-radius: 8px;
 margin-top: 5px;
 outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .name-email{
 display: flex;

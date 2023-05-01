@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chart, registerables } from 'node_modules/chart.js';
 Chart.register(...registerables);
 import { DashService } from '../../shared/dash.service';
@@ -18,9 +18,10 @@ export class DashboardContentComponent implements OnInit {
   loadermain: boolean = true;
   loader:boolean =false;
   isFromSignupPage = false;
-
+  formSubmitted = false;
 
   constructor(
+    private router:Router,
     private route:ActivatedRoute,
     private userService :UserService ,
     public dashService: DashService,private http:HttpClient,
@@ -48,22 +49,22 @@ export class DashboardContentComponent implements OnInit {
   }
 
 
-  
+
   personaldataForm = new FormGroup({
     name: new FormControl(''),
-    totalemployee: new FormControl(''),
+    noOfEmployee: new FormControl(''),
     phone: new FormControl(''),
-    headoffice: new FormControl(''),
-  });
-
-
+    headOffice: new FormControl(''),
+  })
+  email = localStorage.getItem('email');
   submitPersonalData(data: any){
-    console.log("personal data: ",this.personaldataForm.value)
-    // this.userService.saveUser(this.personaldataForm.value).subscribe((res: any)=>{
-    //   console.log("personaldataForm.value: ",this.personaldataForm.value);
-    // });
+    console.log("personal data: ", data);
+    this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
+      console.log("personaldataForm.value res: ", res);
+      console.log("personaldataForm.value data: ", data);
+      this.formSubmitted = true;
+        });
   }
-
 
 
 
@@ -117,8 +118,12 @@ export class DashboardContentComponent implements OnInit {
 
 
   ]
+
   ngOnInit()
    {
+
+  
+
     console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
     console.log("isFromSignupPage: ", this.isFromSignupPage);
@@ -231,11 +236,15 @@ export class DashboardContentComponent implements OnInit {
   });
 
     // Create a chart object
+
+  
   }
 
+  closeModal: boolean = true;
 
-
-
+  clickClose(){
+    this.closeModal = false
+  }
 
 
 array: any = [
@@ -265,6 +274,17 @@ array: any = [
   },
 
 ];
+dropdownOptions = [
+    { option: '0-50' },  { option: '50-100' },  { option: '100-150' },
+    { option: '150-200' },    { option: '200-250' },     { option: '250-300' }
+
+  ];
+  officeOptions = [
+    { option: '0-50' },  { option: '50-100' },  { option: '100-150' },
+    { option: '150-200' },    { option: '200-250' },     { option: '250-300' }
+
+  ];
+
 contentdropdown: boolean = false;
 dropdownOpen() {
 
@@ -280,7 +300,7 @@ Changeselect(arr: any) {
 }
 
 updateLeaveStatus(object: any, status: 'accept' | 'reject') {
-  this.dashService.updateleave(object,status);
+  // this.dashService.updateleave(object,status);
 }
 
 }

@@ -1,11 +1,12 @@
-<ng-template #hideLink>
+<!-- <ng-template #hideLink> -->
 
-<div >
+<div *ngIf="expired && errorMessage">
     <br>
      <a routerLink="/login"> Please request a new reset link.{{errorMessage}}!! Click here to go to Login Page again</a>
   </div>
-</ng-template>
-<div class="forget-content" *ngIf="!expired && !errorMessage ; else hideLink">
+<!-- </ng-template> -->
+<!-- <div class="forget-content" *ngIf="!expired && !errorMessage ; else hideLink"> -->
+  <div class="forget-content" *ngIf="!expired && !errorMessage ">  
   <div class="forget-text">
     <div class="logo">
       <a href="#"><img src="assets/images/resetlogo.png" alt=""></a>

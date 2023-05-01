@@ -11,7 +11,14 @@ import { PayrollComponent } from './main/payroll/payroll.component';
 // import { EmployeesComponent } from './main/employees/employees.component';
 import { RecruitmentComponent } from './main/recruitment/recruitment.component';
 import { ReportComponent } from './main/report/report.component';
-import { LeavesContentComponent } from './leaves-content/leaves-content.component';
+// import { LeavesContentComponent } from './leaves-content/leaves-content.component';
+import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
+import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
+import { TimesheetComponent } from './main/timesheet/timesheet.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodayattendancePipe } from './pipe/todayattendance.pipe';
+import { FilterattendancePipe } from './pipe/filterattendance.pipe';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -23,10 +30,17 @@ import { LeavesContentComponent } from './leaves-content/leaves-content.componen
     ReportComponent,
     LeavesContentComponent,
     DashboardContentComponent,
+    EmployeeProfileComponent,
+    CalendarComponent,
+    TimesheetComponent,
+    TodayattendancePipe,
+    FilterattendancePipe,
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeeModule { }

@@ -6,22 +6,34 @@ import { DashboardContentComponent } from './main/dashboard-content/dashboard-co
 import { PayrollComponent } from './main/payroll/payroll.component';
 import { RecruitmentComponent } from './main/recruitment/recruitment.component';
 import { ReportComponent } from './main/report/report.component';
+// import { LeavesContentComponent } from './leaves-content/leaves-content.component';
+import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
+import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
+import { CalendarComponent } from './main/calendar/calendar.component';
 const routes: Routes = [
-    {path:'dashboard',component:DashboardContentComponent},
+    {path:'emp-dashboard',component:DashboardContentComponent},
 
   {
-    path: 'attendance',
+    path: 'emp-attendance',
     component: AttendanceComponent,
   },
   {
-    path:'payroll',
+    path:'emp-payroll',
     component:PayrollComponent
   },{
-    path:'recruitment',
+    path:'emp-recruitment',
     component:RecruitmentComponent
   },{
-    path:'report',
+    path:'emp-report',
     component:ReportComponent
+  },
+  {
+    path:'emp-leave',component:LeavesContentComponent
+  },{
+    path:'emp-profile',component:EmployeeProfileComponent
+  },
+  {
+    path:'emp-calendar',component:CalendarComponent
   }
 ];
 
