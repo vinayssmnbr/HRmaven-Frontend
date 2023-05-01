@@ -318,6 +318,10 @@ export class EmployeeProfileComponent implements OnInit{
     console.log(arr2.name);
     this.bankname = arr2.name;
     this.user.bankname = arr2.name;
+    if(this.colorvariable2===5)
+    {
+      this.Selectvariable2='Others';
+    }
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
