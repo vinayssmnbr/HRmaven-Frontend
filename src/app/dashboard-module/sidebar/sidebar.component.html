@@ -16,11 +16,12 @@
           <img class="employee_img1" src="./assets/images/Frame-6.svg" alt="">Employee</a></li>
       <li routerLink="/calendar" routerLinkActive="active" [class.active]="activeLink === 'calendar'"><a><img
             class="calendar_img" src="./assets/images/Frame-13.svg" alt="">
-          Calendar</a></li>
+          <img class="calendar_img1" src="./assets/images/timesheet_filled.svg" alt="">Calendar</a></li>
       <li class="Timesheet" (click)="isAttendanceAndLeaveVisible=!isAttendanceAndLeaveVisible" routerLinkActive="active"
         [class.active]="activeLink === 'Timesheet'">
         <div class="select-btn">
-          <a><img src="./assets/images/timesheet.png" alt="">Timesheet</a>
+          <a><img class="timesheet_img" src="./assets/images/timesheet.png" alt="">
+          <img class="timesheet_img1" src="./assets/images/calendar_filled.svg" alt=""> Timesheet</a>
           <i class="bx bx-chevron-down"></i>
         </div>
       </li>

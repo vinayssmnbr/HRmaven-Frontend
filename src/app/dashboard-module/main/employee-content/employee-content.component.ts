@@ -29,6 +29,7 @@ export class EmployeeContentComponent implements OnInit {
   isChecked: boolean = true;
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
+  
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -689,6 +690,7 @@ export class EmployeeContentComponent implements OnInit {
         'background-color': 'rgba(123, 211, 109, 0.3)',
         color: '#3D9030',
         border: 'rgba(123, 211, 109, 0.3)',
+
       };
     } else if (user.status === 'terminated') {
       return {
@@ -729,6 +731,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   employeecsv() {
+
     this.csvadded = true;
     this.importfile = false;
   }
@@ -739,7 +742,8 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  download(): void {
+
+  download1(): void {
     this.dashService.exportUsers(this.selectedEmployess).subscribe(
       (data: Blob) => {
         const downloadUrl = window.URL.createObjectURL(data);
@@ -752,48 +756,144 @@ export class EmployeeContentComponent implements OnInit {
     );
   }
 
-  onFileSelectedrem(event: any): void {
-    const file: File = event.target.files[0];
-    const reader: FileReader = new FileReader();
+  
+  download(): void {
+    if (this.selectedEmployess && this.selectedEmployess.length > 0) {
+      this.dashService.exportUsers(this.selectedEmployess).subscribe(
+        (data: Blob) => {
+          const downloadUrl = window.URL.createObjectURL(data);
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = 'users.csv';
+          link.click();
+        },
+        error => console.log(error)
+      );
+    }
+  }
 
+
+
+  // onFileSelectedrem(event: any): void {
+  //   const file: File = event.target.files[0];
+  //   const reader: FileReader = new FileReader();
+  //   reader.onload = (e: any) => {
+  //     const csv: string = e.target.result;
+  //     const lines: string[] = csv.split(/\r\n|\n/);
+  //     const headers: string[] = lines[0].split(',');
+  //     const data: any[] = [];
+
+  //     for (let i = 1; i < lines.length - 1; i++) {
+  //       const values: string[] = lines[i].split(',');
+  //       const item: any = {};
+
+  //       for (let j = 0; j < headers.length; j++) {
+  //         item[headers[j]] = values[j];
+  //       }
+
+  //       data.push(item);
+  //     }
+  //     console.log(data, 'adarsh console')
+  //     data.forEach(employee => {
+  //       console.log("Adarsh", employee)
+  //       this.dashService.addEmployee(employee).subscribe((res: any) => {
+  //         console.log(res, 'response')
+  //         console.log(res.data)
+  //       })
+  //     });
+  //     console.log(data);
+  //     // this.fetchdata()
+  //   };
+
+  //   reader.readAsText(file);
+  //   // this.fetchdata()
+
+  // }
+
+
+  // importFile() {
+  //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+  //   fileInput.click();
+  // }
+
+  //onFIleSelectedream 
+  
+  onFileSelectedrem(event: any): void {
+
+    const file: File = event.target.files[0];
+    
+    if (!file) {
+      console.log('No file selected.');
+      return;
+    }
+
+    if (!validateCsvFile(file)) {
+           alert('Invalid file type. Please select a CSV file.');
+         return;
+      }
+    
+     function validateCsvFile(file: File): boolean {
+          const allowedExtensions = /(\.csv)$/i;
+        
+          if (!allowedExtensions.exec(file.name)) {
+             return false;
+          }
+        
+          return true;
+        }
+
+  
+    // const file: File = event.target.files[0];
+  
+    // Check file size
+    const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      console.log('Selected file is too large.');
+      return;
+    }
+  
+    // Parse CSV file
+    const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       const csv: string = e.target.result;
       const lines: string[] = csv.split(/\r\n|\n/);
       const headers: string[] = lines[0].split(',');
       const data: any[] = [];
-
+  
       for (let i = 1; i < lines.length - 1; i++) {
         const values: string[] = lines[i].split(',');
         const item: any = {};
-
+  
         for (let j = 0; j < headers.length; j++) {
           item[headers[j]] = values[j];
         }
-
+  
         data.push(item);
       }
-      console.log(data, 'adarsh console');
-      data.forEach((employee) => {
-        console.log('Adarsh', employee);
+  
+      console.log(data, 'parsed CSV data');
+  
+      // Add each employee to system using dashService
+      data.forEach(employee => {
+        console.log('Adding employee:', employee);
         this.dashService.addEmployee(employee).subscribe((res: any) => {
-          console.log(res, 'response');
-          console.log(res.data);
-        });
+          console.log('Response:', res);
+          console.log('Data:', res.data);
+        })
       });
-      console.log(data);
-      // this.fetchdata()
     };
-
+  
     reader.readAsText(file);
-    // this.fetchdata()
   }
+   
+  // importFile() {
+  //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+  //  fileInput.click();
+  //  }
 
-  importFile() {
-    const fileInput = document.querySelector(
-      'input[type=file]'
-    ) as HTMLInputElement;
-    fileInput.click();
-  }
+ 
+  
+  //FOR CHECKING THE CHECK BOX 
 
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
@@ -807,6 +907,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = true;
         });
+
       } else {
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
@@ -824,6 +925,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = false;
         });
+
       } else {
         let index: number = -1;
         this.selectedEmployess.forEach((el: any, i: number) => {
@@ -854,4 +956,16 @@ export class EmployeeContentComponent implements OnInit {
       }
     }
   }
+
+   validateCsvFile(file: File): boolean {
+    const allowedExtensions = /(\.csv)$/i;
+  
+    if (!allowedExtensions.exec(file.name)) {
+      return false;
+    }
+  
+    return true;
+  }
+
+  
 }

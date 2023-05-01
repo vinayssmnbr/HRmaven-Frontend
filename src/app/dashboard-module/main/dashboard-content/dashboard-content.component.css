@@ -210,10 +210,6 @@ a {
 
 .dots {
   color: #999999;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   padding-right: 8px;
 }
 
@@ -231,7 +227,7 @@ a {
 }
 
 .dots ul button {
-  width: 100%;
+  width: 60%;
   padding: 10px 25px;
   background-color: #FFFFFF;
   color: #37474F;
@@ -732,7 +728,7 @@ input[type="radio"] {
   align-items: center;
   top: 0;
   left: 0;
-  
+
 }
 
 .Modal_modal {
@@ -745,8 +741,8 @@ input[type="radio"] {
   width: 100%;
   max-width: 685px;
   width: 100%;
- 
-  
+
+
 }
 .Modal_modal i{
   position: absolute;
