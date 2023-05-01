@@ -69,8 +69,8 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.cookie.delete('token');
-    // this.router.navigate(['./login']);
-    window.open('http://localhost:4200/login', '_blank');
+    this.router.navigate(['./login']);
+    // window.open('http://localhost:4200/login');
 
   }
   active: string = 'dashboard';

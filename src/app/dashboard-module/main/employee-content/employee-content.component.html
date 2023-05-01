@@ -62,7 +62,7 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+          <th class="employee"><input type="checkbox" (change)="onCheckboxChange($event, 'All')" >Employee ID</th>
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -73,7 +73,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable ">
+        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable " >
           <!--  -->
           <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data"
             *ngIf="user.found=='true'">
@@ -88,8 +88,10 @@
           </td>
 
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            <img src="./assets/images/clickup60_4.png" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile">{{user.name}}
+            <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
+              routerLink="/employee-profile">
+              <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
+              routerLink="/employee-profile"><p>{{user.name}}</p>
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
             routerLink="/employee-profile">{{user.designation}}</td>
@@ -99,18 +101,7 @@
             {{user.mobile}}</td>
           <td *ngIf="user.found!='true'" class="action1">
             <div class="icons">
-              <!-- <select class="select" id="myselect" [class.active]="user.status==='active'" (change)="selectedUser=user.value; onSelectChange($event,user)"  [value]="user.status"
-                [style.background-color]="selectedUser === user._id ? backgroundColor : ''"
-                [style.color]="selectedUser === user._id ? color : ''"
-                [style.border]="selectedUser === user._id ? borderColor : ''">Select
-                <option value="active" class="activated">Active</option>
-                <option value="terminated" class="terminate">Terminated</option>
-                <option value="resigned" class="resign">Resigned</option>
-                <option value="absconder" class="abscond">Absconder</option>
-
-              </select> -->
-
-              <select class="select" id="myselect" [class.active]="user.status==='active'"
+              <select class="select" id="myselect" [class.active]="user.status==='active'" [disabled]="isSelectDisabled"
                 (change)="onSelectChange($event, user)" [value]="user.status"
                 [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
                 <option value="active" class="activated">Active</option>
@@ -118,10 +109,6 @@
                 <option value="resigned" class="resign">Resigned</option>
                 <option value="absconder" class="abscond">Absconder</option>
               </select>
-
-
-
-
             </div>
           </td>
         </tr>
@@ -196,10 +183,9 @@
             <div class="input">
               <label>Profile Picture</label>
               <div class="custom-file-picker">
-                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName"
-                  id="text4" readonly>
-                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url">
-                <a (click)="fileInput.click()">Choose File</a>
+                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()"  [value]="fileName" id="text4" readonly accept="image/*" formControlName="url" >
+                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url" accept="image/*">
+                <a  (click)="fileInput.click()" >Choose File</a>
               </div>
             </div>
           </div>
@@ -337,18 +323,21 @@
           <img src="./assets/images/Vector (4).png" alt="">
           <h3>Select a CSV File to Upload</h3>
           <p>or drag and drop it here</p>
-          <button class="choose" (click)="importFile()">Choose File</button>
+          <button class="choose"  (click)="fileInput.click()">Choose File</button>
           <!-- <button class="import" (click)="importFile()">Submit</button>  -->
-          <input type="file" name="csv" (change)=" onFileSelectedrem($event)" style="display:none">
+          <input type="file" name="csv" (change)=" onFileSelectedrem($event)" formControlName="csv" accept=".csv, application/vnd.ms-excel" >
           <!-- <a (click)="fileInput.click()" class="choose">Choose File</a> -->
-          <input type="text" id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv">
+          <input type="text"  id="text18" readonly [value]="fileName1">
+          <input type="file" #fileInput (change)="onFileSelected1($event)" formControlName="csv" accept=".csv, application/vnd.ms-excel">
         </div>
+        <div class=file-content2>
         <h5>Download <a class="csv">Sample CSV File</a> for Reference</h5>
+        <p>Maximum Size: 5MB</p>
+        </div>
         <!-- <div class="custom-file-picker">
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >
-          <a (click)="fileInput.click()" class="choose">Choose File</a>
+          <a  class="choose">Choose File</a>
 
         </div> -->
         <div class="import-btns">

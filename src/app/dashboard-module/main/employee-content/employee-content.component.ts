@@ -41,6 +41,7 @@ export class EmployeeContentComponent implements OnInit {
   email: any;
   fileName: string = '';
   fileName1: string = '';
+  isSelectDisabled = false;
 
   constructor(
     public dashService: DashService,
@@ -110,6 +111,27 @@ export class EmployeeContentComponent implements OnInit {
   get registrationFormControl() {
     return this.form.controls;
   }
+  // validateFileType(control: AbstractControl) {
+  //   const url = control.value;
+  //   const fileType = url.type;
+  //   if (
+  //     !fileType.includes("jpeg") &&
+  //     !fileType.includes("jpg") &&
+  //     !fileType.includes("png")
+  //   ) {
+  //     return { invalidFileType: true };
+  //   }
+  //   return null;
+  // }
+
+  // validateFileSize(control: AbstractControl) {
+  //   const url = control.value;
+  //   const fileSize = url.size / 1024 / 1024; // in MB
+  //   if (fileSize > 5) {
+  //     return { maxSize: true };
+  //   }
+  //   return null;
+  // }
 
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
@@ -488,31 +510,16 @@ export class EmployeeContentComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    const maxAllowedSize = 5 * 1024 * 1024;
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    if (this.selectedFile.type.split('/')[0] !== 'image') {
+    if(this.selectedFile.size > maxAllowedSize){
+      this.fileName='';
+    }
+    if (this.selectedFile.type.split('/')[0] !== 'image' ) {
       console.error('Invalid file type. Please select an image.');
       return;
     }
     // this.onUpload(  this.selectedFile );
-  }
-  // files: File[] = [];
-
-  // onDrop(event: DragEvent) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   const files = event.dataTransfer.files;
-  //   for (let i = 0; i < files.length; i++) {
-  //     this.files.push(files.item(i));
-  //   }
-  // }
-
-  // onDragOver(event: DragEvent) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  // }
-  onFileSelected1(event: any) {
-    this.selectedFile1 = event.target.files[0];
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
   }
   onUpload(file) {
     console.log('fdjkhf');
@@ -527,6 +534,12 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
+
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+  }
+
   selectall: boolean = false;
   selectboxes() {
     this.selectall = !this.selectall;
@@ -554,6 +567,7 @@ export class EmployeeContentComponent implements OnInit {
       //   this.emptybox = false;
       // }
     });
+
   }
   is_resigned: boolean = false;
   is_terminated: boolean = false;
@@ -784,6 +798,7 @@ export class EmployeeContentComponent implements OnInit {
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
+    this.isSelectDisabled = $event.target.checked;
 
     if (isChecked) {
       if (user == 'All') {

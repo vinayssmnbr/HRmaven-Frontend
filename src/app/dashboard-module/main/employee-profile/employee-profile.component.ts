@@ -55,9 +55,9 @@ export class EmployeeProfileComponent implements OnInit{
   bloodGroup: string = '';
   bankname: string = '';
   gender: string = '';
-  jobdesignation: string = '';
-  jobtiming: string = '';
-  jobempstatus: string = '';
+  designation: string = '';
+  timing: string = '';
+  job_type: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
     name: new FormControl(''),
@@ -81,20 +81,19 @@ export class EmployeeProfileComponent implements OnInit{
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
     employees:new FormArray([]),
-    // expcompany: new FormControl(''),
-    // expduration: new FormControl(''),
-    // explocation: new FormControl(''),
+    expcompany: new FormControl(''),
+    expduration: new FormControl(''),
+    explocation: new FormControl(''),
     expcompany1: new FormControl(''),
     expduration1: new FormControl(''),
     explocation1: new FormControl(''),
-    // expdesignation: new FormControl(''),
+    expdesignation: new FormControl(''),
     expdesignation1: new FormControl(''),
     jobdesignation: new FormControl(''),
-    joblocation1: new FormControl(''),
-    jobtiming: new FormControl(''),
-    jobctc: new FormControl(''),
-    jobempstatus: new FormControl(''),
-    joiningdate: new FormControl(''),
+    location: new FormControl(''),
+    timing: new FormControl(''),
+    ctc: new FormControl(''),
+    job_type: new FormControl(''),
     bankname: new FormControl(''),
     adhaarno: new FormControl(''),
     accountno: new FormControl(''),
@@ -108,8 +107,8 @@ export class EmployeeProfileComponent implements OnInit{
     city: new FormControl(''),
     address: new FormControl(''),
     profemail:new FormControl(''),
-    yop:new FormControl(''),
-    yop1:new FormControl(''),
+    matricpassing:new FormControl(''),
+    interpassing:new FormControl(''),
   });
 
   experienceForm: FormGroup;
@@ -308,7 +307,7 @@ export class EmployeeProfileComponent implements OnInit{
     this.contentdropdown = false;
     console.log(arr.name);
     // this.jobdesignation = arr.name;
-    this.user.jobdesignation = arr.name;
+    this.user.designation = arr.name;
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -319,6 +318,10 @@ export class EmployeeProfileComponent implements OnInit{
     console.log(arr2.name);
     this.bankname = arr2.name;
     this.user.bankname = arr2.name;
+    if(this.colorvariable2===5)
+    {
+      this.Selectvariable2='Others';
+    }
   }
   Selectvariable3: string = 'Select';
   colorvariable3: number = 0;
@@ -364,9 +367,9 @@ export class EmployeeProfileComponent implements OnInit{
     this.Selectvariable3 = user.maritalStatus;
     this.Selectvariable4 = user.bloodGroup;
     this.Selectvariable1 = user.gender;
-    this.Selectvariable = user.jobdesignation;
-    this.Selectvariable8 = user.jobempstatus;
-    this.Selectvariable5 = user.jobtiming;
+    this.Selectvariable = user.designation;
+    this.Selectvariable8 = user.job_type;
+    this.Selectvariable5 = user.timing;
 
     if (this.personaldetail === true) {
       this.modalContent1 = true;
@@ -423,8 +426,8 @@ export class EmployeeProfileComponent implements OnInit{
     this.fourthStep = true;
     this.modalContent2 = false;
     this.modalContent1 = false;
-    this.user.joblocation1 = data.joblocation1;
-    this.user.jobctc = data.jobctc;
+    this.user.location = data.location;
+    this.user.ctc = data.ctc;
 
     const updatedData = this.form.value;
     console.log('abc', updatedData);
@@ -508,7 +511,8 @@ export class EmployeeProfileComponent implements OnInit{
     this.user.graduation = data.graduation;
     this.user.graduationCgpa = data.graduationCgpa;
     this.user.graduationStream = data.graduationStream;
-
+    this.user.matricpassing = data.matricpassing;
+    this.user.interpassing = data.interpassing;
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
@@ -582,7 +586,7 @@ export class EmployeeProfileComponent implements OnInit{
     this.contentdropdown5 = false;
     console.log(arr5.name);
     // this.jobtiming = arr5.name;
-    this.user.jobtiming = arr5.name;
+    this.user.timing = arr5.name;
   }
 
   contentshow: boolean = false;
@@ -600,8 +604,8 @@ export class EmployeeProfileComponent implements OnInit{
     this.colorvariable8 = arr8.id;
     this.contentdropdown8 = false;
     console.log(arr8.name);
-    // this.jobempstatus=arr8.name
-    this.user.jobempstatus = arr8.name;
+    // this.job_type=arr8.name
+    this.user.job_type = arr8.name;
   }
 
   dropdownClose3() {
@@ -665,4 +669,8 @@ export class EmployeeProfileComponent implements OnInit{
   //      this.openotherinput=true;
   //   }
   // }
+  showpgdetails:boolean=false;
+  showpgdet(){
+    this.showpgdetails=true;
+  }
 }
