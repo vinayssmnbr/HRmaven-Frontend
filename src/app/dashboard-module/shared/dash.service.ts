@@ -60,6 +60,7 @@ export class DashService {
   //ADD  Employee Data
   addEmployee(data) {
     return this.http.post('https://hrmaven.works/api/create', data);
+    // return this.http.post('http://localhost:3000/api/create', data);
     return this.http.post(this.createData, data);
 
   }
