@@ -11,7 +11,7 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class DashService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://hrmaven.works';
   public headerContent: string;
   public activeComponent: string;
   constructor(
@@ -55,7 +55,7 @@ export class DashService {
 
   //ADD  Employee Data
   addEmployee(data) {
-    return this.http.post('http://localhost:3000/api/create', data);
+    return this.http.post('https://hrmaven.works/api/create', data);
     return this.http.post(this.createData, data);
 
   }
@@ -140,7 +140,7 @@ export class DashService {
         'category':data.category
       }
     )
-    return this.http.get('http://localhost:3000/api/leave/filter/leave',{ headers});
+    return this.http.get('https://hrmaven.works/api/leave/filter/leave',{ headers});
   }
   /////////// end here from Harpreet Singh////////////////////////////
 
@@ -207,17 +207,13 @@ export class DashService {
   }
 
   updateleave(uid:any,from:any,to:any) {
-    console.log(uid);
-    console.log(from);
-    console.log(to);
+
         const Array = this.getDates(from,to);
-        console.log(Array.length);
-        console.log(Array);
         const body = {  };
         body['Array'] = Array;
         body['uid'] = uid;
 
-        return this.http.post('http://localhost:3000/attendance/update/leave', body, {
+        return this.http.post('https://hrmaven.works/attendance/update/leave', body, {
             headers: { 'content-type': 'application/json' },
           })
   }

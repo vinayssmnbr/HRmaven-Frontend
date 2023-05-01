@@ -6,7 +6,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +25,8 @@ export class EmpService {
   getData = environment.getData;
   getempRecord = environment.getempRecord;
 
+
+
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('emp-token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -38,9 +39,10 @@ export class EmpService {
   }
 
   getEmployeeRecord(): Observable<any> {
-    const token = this.cookie.get('token');
+    const token = this.cookie.get('emp-token');
+    console.log(token);
     // const email = localStorage.getItem('email');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('authorization', `Bearer ${token}`);
     return this.http.get(this.getempRecord, { headers });
   }
 
@@ -57,6 +59,44 @@ export class EmpService {
     return dateArray;
   }
 
+
+  leavegraph() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('https://hrmaven.works/api/leave/emp/leave', { headers });
+
+  }
+
+  leavehistory() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('https://hrmaven.works/api/leave/emp/history', { headers });
+
+
+  }
+
+  attendanceload() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('https://hrmaven.works/attendance/emp/attendance', { headers });
+  }
+
+
   private client: filestack.Client;
 
   fileUrl: any;
@@ -70,7 +110,48 @@ export class EmpService {
       console.log(error);
     }
   }
+
+  createleave(data: any) {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'data': data
+      }
+    )
+    data['id']=id;
+    const d = new Date();
+    data['appliedon']=d;
+    return this.http.post('https://hrmaven.works/api/leave/add/leave', data);
+  }
+
+  attendanceTime() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get('https://hrmaven.works/attendance/check/empattendance', { headers });
+  }
+
+
+  punch(action:any) {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id,
+        'in':action
+      }
+    )
+    return this.http.patch('https://hrmaven.works/attendance/update/time', { headers });
+
+  }
+
   getEmployee() {
     return this.http.get(this.getData);
   }
+
 }

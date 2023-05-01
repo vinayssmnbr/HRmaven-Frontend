@@ -43,15 +43,8 @@ export class AttendanceContentComponent implements OnInit {
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card: any = [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  ];
-  constructor(
-    public dashService: DashService,
-    private datepipe: DatePipe,
-    private http: HttpClient
-  ) {
+  card:any=[];
+  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.getLeaveData();

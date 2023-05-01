@@ -17,6 +17,8 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodayattendancePipe } from './pipe/todayattendance.pipe';
+import { FilterattendancePipe } from './pipe/filterattendance.pipe';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -31,6 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmployeeProfileComponent,
     CalendarComponent,
     TimesheetComponent,
+    TodayattendancePipe,
+    FilterattendancePipe,
   ],
   imports: [
     CommonModule,

@@ -223,6 +223,8 @@ export class LoginComponent {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
+        console.log(res._id);
+        this.cookie.set('id',res._id);
         // localStorage.setItem('userId', userId);
         this.submit();
       } else if (res.message == 'Invalid') {

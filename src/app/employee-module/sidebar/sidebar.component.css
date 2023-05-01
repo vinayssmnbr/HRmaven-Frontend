@@ -86,7 +86,7 @@ ul.navigation li:hover{
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .select-btn i{
   position: absolute;
@@ -131,3 +131,77 @@ ul.navigation2 li:hover{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
+li.ulDropdown {
+  position: relative;
+  width: calc(100% - 46px);
+  margin-left: auto;
+}
+li.ulDropdown:before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  /* width: 1px; */
+  height: calc(100% + 15px);
+  left: -24px;
+  /* background: rgba(255, 255, 255, 0.5); */
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+li.ulDropdown:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  /* height: 1px; */
+  left: -24px;
+  /* background: rgba(255, 255, 255, 0.5); */
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+li.ulDropdown.lastDropdown::before{
+  height: calc(100% - 11px);
+}
+
+li.ulDropdown a {
+  width: 100% !important;
+}
+.home_img1 {
+  display: none;
+}
+ul.navigation li:hover .home_img {
+  display: none;
+}
+ul.navigation li:hover .home_img1 {
+  display: block;
+}
+.recruitment_img1{
+  display: none;
+}
+ul.navigation li:hover .recruitment_img{
+  display: none;
+}
+ul.navigation li:hover .recruitment_img1{
+  display: block;
+}
+.calendar_img1 {
+  display: none;
+}
+
+ul.navigation li:hover .calendar_img {
+  display: none;
+}
+
+ul.navigation li:hover .calendar_img1 {
+  display: block;
+}
+.timesheet_img1 {
+  display: none;
+}
+
+ul.navigation li:hover .timesheet_img {
+  display: none;
+}
+
+ul.navigation li:hover .timesheet_img1 {
+  display: block;
+}
+

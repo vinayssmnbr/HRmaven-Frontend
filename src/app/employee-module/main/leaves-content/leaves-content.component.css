@@ -208,7 +208,7 @@ td {
     margin-top: 10px;
 }
 
-/* 
+/*
 .table_data {
     overflow-y: auto;
     height: 78vh;
@@ -651,4 +651,18 @@ td {
 
 .Done_form_btn .Done_btn:hover {
     background-color: #1fa10a;
+}
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #2F2C9F; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: 6px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
