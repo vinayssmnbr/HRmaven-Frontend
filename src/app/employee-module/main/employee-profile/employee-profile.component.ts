@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -8,24 +8,25 @@ import {
   ReactiveFormsModule,
   FormArray,
 } from '@angular/forms';
+import { EmpService } from '../../shared/emp.service';
 
 @Component({
   selector: 'app-employee-profile',
   templateUrl: './employee-profile.component.html',
-  styleUrls: ['./employee-profile.component.css']
+  styleUrls: ['./employee-profile.component.css'],
 })
 export class EmployeeProfileComponent {
   isJobDetailsActive = false;
   isPersonalDetailsActive = true;
-  isPasswordManagement=false;
-  personaldetail:boolean=true;
-  jobdetail:boolean=false;
-  showdata:boolean=false;
-  showbutton:boolean=true;
-  viewless:boolean=false
-  showModal:boolean=false;
+  isPasswordManagement = false;
+  personaldetail: boolean = true;
+  jobdetail: boolean = false;
+  showdata: boolean = false;
+  showbutton: boolean = true;
+  viewless: boolean = false;
+  showModal: boolean = false;
   modalContent1: boolean = false;
-  modalContent2: boolean =false;
+  modalContent2: boolean = false;
   modalContent4: boolean = false;
   modalContent5: boolean = false;
   contentdropdown: boolean = false;
@@ -37,6 +38,15 @@ export class EmployeeProfileComponent {
   contentdropdown6: boolean = false;
   contentdropdown7: boolean = false;
   contentdropdown8: boolean = false;
+  employee: any[] = [];
+  obj: any;
+  constructor(private empdashService: EmpService) {
+    this.empdashService.getEmployeeRecord().subscribe((res) => {
+      console.log('pro', res);
+      this.obj = res.response;
+      console.log('xyz', this.obj);
+    });
+  }
 
   array1: any = [
     {
@@ -177,7 +187,10 @@ export class EmployeeProfileComponent {
     },
   ];
 
-
+  passwordform = new FormGroup({
+    password: new FormControl(''),
+    confirm: new FormControl(''),
+  });
 
   empform1 = new FormGroup({
     uid: new FormControl(''),
@@ -207,7 +220,6 @@ export class EmployeeProfileComponent {
     ifsc: new FormControl(''),
     passport: new FormControl(''),
     panno: new FormControl(''),
-
   });
 
   empform6 = new FormGroup({
@@ -218,33 +230,32 @@ export class EmployeeProfileComponent {
     jobempstatus: new FormControl(''),
     joiningdate: new FormControl(''),
     profemail: new FormControl(''),
-
-  })
+  });
 
   personaldetails() {
     this.personaldetail = true;
     this.jobdetail = false;
     this.isPersonalDetailsActive = true;
     this.isJobDetailsActive = false;
-    this.isPasswordManagement=false;
+    this.isPasswordManagement = false;
   }
   jobdetails() {
     this.jobdetail = true;
     this.personaldetail = false;
     this.isJobDetailsActive = true;
     this.isPersonalDetailsActive = false;
-    this.isPasswordManagement=false;
+    this.isPasswordManagement = false;
   }
- showMoredata(){
-  this.showdata=true;
-  this.showbutton=false;
-  this.viewless=true;
- }
- hidedata(){
-  this.showdata=false;
-  this.viewless=false;
-  this.showbutton=true;
- }
+  showMoredata() {
+    this.showdata = true;
+    this.showbutton = false;
+    this.viewless = true;
+  }
+  hidedata() {
+    this.showdata = false;
+    this.viewless = false;
+    this.showbutton = true;
+  }
 
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
@@ -358,51 +369,59 @@ export class EmployeeProfileComponent {
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
-  basicUpdate(data:any){
-
+  basicUpdate(data: any) {}
+  openModal() {
+    this.modalContent1 = true;
+    this.showModal = true;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
   }
-  openModal(){
-    this.modalContent1=true;
-    this.showModal=true;
-    this.modalContent4=false;
-    this.modalContent5=false;
-  }
-  openModal2(){
-    this.modalContent4=true;
-    this.showModal=true;
-    this.modalContent1=false;
-    this.modalContent5=false;
+  openModal2() {
+    this.modalContent4 = true;
+    this.showModal = true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
   }
   closeModal() {
     this.showModal = false;
   }
-  closeModal2(){
-    this.showModal=false;
+  closeModal2() {
+    this.showModal = false;
   }
-  closeModal3(){
-    this.showModal=false;
+  closeModal3() {
+    this.showModal = false;
   }
-  closeModal4(){
-    this.showModal=false;
+  closeModal4() {
+    this.showModal = false;
   }
-  openModal4(){
-    this.showModal=true;
-    this.modalContent5=true;
-    this.modalContent1=false;
-    this.modalContent4=false;
+  openModal4() {
+    this.showModal = true;
+    this.modalContent5 = true;
+    this.modalContent1 = false;
+    this.modalContent4 = false;
   }
-  openModal5(){
-    this.showModal=true;
-    this.modalContent2=true;
-    this.modalContent1=false;
-    this.modalContent4=false;
-    this.modalContent5=false;
+  openModal5() {
+    this.showModal = true;
+    this.modalContent2 = true;
+    this.modalContent1 = false;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
   }
-  managePassword(){
-    this.isJobDetailsActive=false;
-    this.isPasswordManagement=true;
-    this.isPersonalDetailsActive=false;
+  managePassword() {
+    this.isJobDetailsActive = false;
+    this.isPasswordManagement = true;
+    this.isPersonalDetailsActive = false;
     this.personaldetail = false;
     this.jobdetail = false;
+  }
+  showModal3: boolean = false;
+  openModal3() {
+    this.showModal3 = true;
+    this.showModal = true;
+  }
+
+  closeModal8() {
+    this.showModal3 = false;
+    this.showModal = false;
   }
 }

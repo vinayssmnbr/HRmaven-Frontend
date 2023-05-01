@@ -8,10 +8,12 @@
           <h3>Total Leaves</h3>
           <h1>{{total}}</h1>
         </div>
-        <svg class="progress" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
-          <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-          <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"/>
-        </svg>
+        <div class="progress-circle-container">
+          <div class="progress-circle progress-18">
+            <span></span>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="col-3">
@@ -20,10 +22,15 @@
           <h3>Accepted Leaves</h3>
           <h1>{{acceptcount}}</h1>
         </div>
-        <svg class="progress circular1" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
+        <!-- <svg class="progress circular1" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
           <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
           <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-        </svg>
+        </svg> -->
+        <div class="progress-circle-container">
+          <div class="progress-circle progress-18">
+            <span></span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-3">
@@ -32,10 +39,11 @@
           <h3>Rejected Leaves</h3>
           <h1>{{rejectcount}}</h1>
         </div>
-        <svg class="progress circular2" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
-          <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-          <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"/>
-        </svg>
+        <div class="progress-circle-container">
+          <div class="progress-circle progress-58">
+            <span></span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-3">
@@ -44,10 +52,11 @@
           <h3>Pending Leaves</h3>
           <h1>{{pendingcount}}</h1>
         </div>
-        <svg class="progress circular3" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
-          <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-          <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"/>
-        </svg>
+        <div class="progress-circle-container">
+          <div class="progress-circle progress-88">
+            <span></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -94,25 +103,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-3">
-          <div class="form__group">
-            <label for="">Type</label>
-            <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
-              <div class="dropdwon_select" (click)="dropdownOpen1()">
-                <input type="text" formControlName="type" style="display:none;">
-                <p>{{Selectvariable1}}</p>
-                <i class="fa-sharp fa-solid fa-caret-down"></i>
-              </div>
-              <div class="select_content" *ngIf="contentdropdown1">
-                <ul>
-                  <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable"
-                    (click)="Changeselect1(arr1)">
-                    {{arr1.name}}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
       <div class="form_btn">
         <button class="cancel_btn" (click)="cancel()">Cancel</button>

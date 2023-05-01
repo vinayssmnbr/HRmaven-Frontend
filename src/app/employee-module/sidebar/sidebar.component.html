@@ -8,25 +8,35 @@
     </div>
     <p>Menu</p>
     <ul class="navigation">
-      <li routerLink="/employee/dashboard" routerLinkActive="active"  [class.active]="activeLink === 'dashboard'"><a><img src="./assets/images/Frame-5.svg" alt="" >Dashboard</a></li>
+      <li routerLink="/emp-dashboard" routerLinkActive="active" [class.active]="activeLink === 'dashboard'">
+        <a><img src="./assets/images/Frame-5.svg" alt="">Dashboard</a></li>
       <!-- <li routerLink="/employee" routerLinkActive="active"  [class.active]="activeLink === 'employee'"><a><img src="./assets/images/Frame-7.svg" alt="">Employee</a></li> -->
-      <li routerLink="/employee/calendar" routerLinkActive="active" [class.active]="activeLink === 'calendar'"><a><img src="./assets/images/Frame-13.svg" alt="">Calendar</a>
+      <li routerLink="/emp-calendar" routerLinkActive="active" [class.active]="activeLink === 'calendar'"><a><img
+            src="./assets/images/Frame-13.svg" alt="">Calendar</a>
 
-  </li>
+      </li>
 
-      <li (click)="isAttendanceAndLeaveVisible = !isAttendanceAndLeaveVisible"  routerLinkActive="active" [class.active]="activeLink === 'Timesheet'"><a><img src="./assets/images/timesheet.png" alt="">Timesheet</a>
+      <li class="Timesheet" (click)="isAttendanceAndLeaveVisible = !isAttendanceAndLeaveVisible" routerLinkActive="active"
+        [class.active]="activeLink === 'Timesheet'">
+        <div class="select-btn">
+          <a><img src="./assets/images/timesheet.png" alt="">Timesheet</a>
+          <i class="bx bx-chevron-down"></i>
+        </div>
 
       </li>
       <ng-container *ngIf="isAttendanceAndLeaveVisible">
 
-        <li routerLink="/employee/attendance" routerLinkActive="active" [class.active]="activeLink === 'attendance'"><a><img src="./assets/images/Frame-13.svg" alt="">Attendance</a>
+        <li routerLink="/emp-attendance" routerLinkActive="active" [class.active]="activeLink === 'attendance'">
+          <a><img src="./assets/images/Frame-13.svg" alt="">Attendance</a>
 
         </li>
-        <li routerLink="/employee/leave" routerLinkActive="active" [class.active]="activeLink === 'leave'"><a><img src="./assets/images/Frame-13.svg" alt="">Leave</a></li>
+        <li routerLink="/emp-leave" routerLinkActive="active" [class.active]="activeLink === 'leave'"><a><img
+              src="./assets/images/Frame-13.svg" alt="">Leave</a></li>
       </ng-container>
       <!-- <li routerLink="/leaves" routerLinkActive="active" [class.active]="activeLink === 'leaves'"><a><i class="fa-solid fa-list-check"></i>Leaves</a>
       </li> -->
-      <li routerLink="/employee/recruitment" routerLinkActive="active" [class.active]="activeLink === 'recruitment'"><a><img src="./assets/images/Frame.svg" alt="">Recruitment</a>
+      <li routerLink="/emp-recruitment" routerLinkActive="active" [class.active]="activeLink === 'recruitment'">
+        <a><img src="./assets/images/Frame.svg" alt="">Recruitment</a>
       </li>
       <!-- <li routerLink="/employee/report" routerLinkActive="active" [class.active]="activeLink === 'report'"><a><img src="./assets/images/Frame-11.svg" alt="">Report</a>
       </li> -->

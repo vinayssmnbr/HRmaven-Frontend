@@ -18,9 +18,6 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
-// import { saveAs } from 'file-saver';
-// import { json2csv } from 'json2csv';
-
 
 @Component({
   selector: 'app-employee-content',
@@ -29,7 +26,7 @@ import { error, log } from 'console';
 })
 export class EmployeeContentComponent implements OnInit {
   // user:any;
-  isChecked: boolean =true;
+  isChecked: boolean = true;
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
   users: any[] = [];
@@ -44,6 +41,7 @@ export class EmployeeContentComponent implements OnInit {
   email: any;
   fileName: string = '';
   fileName1: string = '';
+  isSelectDisabled = false;
 
   constructor(
     public dashService: DashService,
@@ -108,11 +106,32 @@ export class EmployeeContentComponent implements OnInit {
     timing: new FormControl('', Validators.required),
   });
   csvform = new FormGroup({
-    csv: new FormControl('', Validators.required)
-  })
+    csv: new FormControl('', Validators.required),
+  });
   get registrationFormControl() {
     return this.form.controls;
   }
+  // validateFileType(control: AbstractControl) {
+  //   const url = control.value;
+  //   const fileType = url.type;
+  //   if (
+  //     !fileType.includes("jpeg") &&
+  //     !fileType.includes("jpg") &&
+  //     !fileType.includes("png")
+  //   ) {
+  //     return { invalidFileType: true };
+  //   }
+  //   return null;
+  // }
+
+  // validateFileSize(control: AbstractControl) {
+  //   const url = control.value;
+  //   const fileSize = url.size / 1024 / 1024; // in MB
+  //   if (fileSize > 5) {
+  //     return { maxSize: true };
+  //   }
+  //   return null;
+  // }
 
   selectEmployee(user: any) {
     this.dashService.setSelectedEmployee(user);
@@ -276,7 +295,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -489,34 +508,18 @@ export class EmployeeContentComponent implements OnInit {
   selectedFile: File | null = null;
   selectedFile1: File | null = null;
 
-
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    const maxAllowedSize = 5 * 1024 * 1024;
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    if (this.selectedFile.type.split('/')[0] !== 'image') {
+    if(this.selectedFile.size > maxAllowedSize){
+      this.fileName='';
+    }
+    if (this.selectedFile.type.split('/')[0] !== 'image' ) {
       console.error('Invalid file type. Please select an image.');
       return;
     }
     // this.onUpload(  this.selectedFile );
-  }
-  // files: File[] = [];
-
-  // onDrop(event: DragEvent) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //   const files = event.dataTransfer.files;
-  //   for (let i = 0; i < files.length; i++) {
-  //     this.files.push(files.item(i));
-  //   }
-  // }
-
-  // onDragOver(event: DragEvent) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  // }
-  onFileSelected1(event: any) {
-    this.selectedFile1 = event.target.files[0];
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
   }
   onUpload(file) {
     console.log('fdjkhf');
@@ -531,6 +534,12 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
+
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target.files[0];
+    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+  }
+
   selectall: boolean = false;
   selectboxes() {
     this.selectall = !this.selectall;
@@ -542,7 +551,7 @@ export class EmployeeContentComponent implements OnInit {
     this.is_absconder = false;
     this.is_terminated = false;
     this.is_resigned = false;
-    this.fetchdata()
+    this.fetchdata();
   }
   is_active: boolean = false;
   isactive() {
@@ -573,7 +582,6 @@ export class EmployeeContentComponent implements OnInit {
       console.log('data', res);
       this.employee = res;
     });
-
   }
   isterminated() {
     this.is_terminated = !this.is_terminated;
@@ -615,72 +623,51 @@ export class EmployeeContentComponent implements OnInit {
   }
   selectedOption: string;
 
-  // onSelectChange() {
-  //   // Define your color logic here based on the selectedOption value
-  //   switch (this.selectedOption) {
-  //     case 'option1':
-  //       document.querySelector('select').style.backgroundColor = 'red';
-  //       break;
-  //     case 'option2':
-  //       document.querySelector('select').style.backgroundColor = 'green';
-  //       break;
-  //     case 'option3':
-  //       document.querySelector('select').style.backgroundColor = 'blue';
-  //       break;
-  //     default:
-  //       document.querySelector('select').style.backgroundColor = 'white';
-  //       break;
-  //   }
-  // }
-  // colorgreen() {
-  //   this.iscolorgreen = !this.iscolorgreen;
-  // }
-  // coloryellow() {
-  //   this.iscoloryellow = !this.iscoloryellow;
-  // }
-  // colorbrown() {
-  //   this.iscolorbrown = !this.iscolorbrown;
-  // }
   selectedUser: any;
-  backgroundColor: string;
-  color: string;
-  borderColor: string;
+  optionStyle: any;
+
   onSelectChange(event: any, user: any) {
-    // if(user===this.selectedUser){
     switch (event.target.value) {
       case 'active': {
-        this.backgroundColor = 'rgba(123, 211, 109, 0.3)';
-        this.color = '#3D9030';
-        this.borderColor = 'rgba(123, 211, 109, 0.3)';
+        this.optionStyle = {
+          'background-color': 'rgba(123, 211, 109, 0.3)',
+          color: '#3D9030',
+          border: 'rgba(123, 211, 109, 0.3)',
+        };
         break;
       }
       case 'terminated': {
-        this.backgroundColor = 'rgba(250, 151, 150, 0.2)';
-        this.color = '#CB1E0F';
-        this.borderColor = 'rgba(250, 151, 150, 0.2)';
+        this.optionStyle = {
+          'background-color': 'rgba(250, 151, 150, 0.2)',
+          color: '#CB1E0F',
+          border: 'rgba(250, 151, 150, 0.2)',
+        };
         break;
       }
       case 'resigned': {
-        this.backgroundColor = 'rgba(255, 238, 82, 0.5)';
-        this.color = '#CE524A';
-        this.borderColor = 'rgba(255, 238, 82, 0.5)';
+        this.optionStyle = {
+          'background-color': 'rgba(255, 238, 82, 0.5)',
+          color: '#CE524A',
+          border: 'rgba(255, 238, 82, 0.5)',
+        };
         break;
       }
       case 'absconder': {
-        this.backgroundColor = 'rgba(248, 187, 111, 0.4)';
-        this.color = '#DB771D';
-        this.borderColor = 'rgba(248, 187, 111, 0.4)';
+        this.optionStyle = {
+          'background-color': 'rgba(248, 187, 111, 0.4)',
+          color: '#DB771D',
+          border: 'rgba(248, 187, 111, 0.4)',
+        };
         break;
       }
       default: {
-        this.backgroundColor = '';
-        this.color = '';
-        this.borderColor = '';
+        this.optionStyle = {};
         break;
       }
-
-        console.log(event.target.value)
     }
+
+    this.selectedUser = user._id;
+
     this.dashService.updateEmpStatus(user._id, event.target.value).subscribe(
       (response) => {
         console.log(response);
@@ -689,16 +676,43 @@ export class EmployeeContentComponent implements OnInit {
         console.log(error);
       }
     );
-    }
- 
+  }
 
-  
   selectUser(user) {
     this.selectedUser = user;
-    this.backgroundColor = '';
-    this.color = '';
-    this.borderColor = '';
+    this.optionStyle = {};
   }
+
+  getStatusStyle(user) {
+    if (user.status === 'active') {
+      return {
+        'background-color': 'rgba(123, 211, 109, 0.3)',
+        color: '#3D9030',
+        border: 'rgba(123, 211, 109, 0.3)',
+      };
+    } else if (user.status === 'terminated') {
+      return {
+        'background-color': 'rgba(250, 151, 150, 0.2)',
+        color: '#CB1E0F',
+        border: 'rgba(250, 151, 150, 0.2)',
+      };
+    } else if (user.status === 'resigned') {
+      return {
+        'background-color': 'rgba(255, 238, 82, 0.5)',
+        color: '#CE524A',
+        border: 'rgba(255, 238, 82, 0.5)',
+      };
+    } else if (user.status === 'absconder') {
+      return {
+        'background-color': 'rgba(248, 187, 111, 0.4)',
+        color: '#DB771D',
+        border: 'rgba(248, 187, 111, 0.4)',
+      };
+    } else {
+      return {};
+    }
+  }
+
   importfile: boolean = false;
   csvadded: boolean = false;
   openImport() {
@@ -723,9 +737,7 @@ export class EmployeeContentComponent implements OnInit {
     this.showModal = false;
     this.csvadded = false;
     this.fetchdata();
-
   }
-
 
   download(): void {
     this.dashService.exportUsers(this.selectedEmployess).subscribe(
@@ -736,10 +748,9 @@ export class EmployeeContentComponent implements OnInit {
         link.download = 'users.csv';
         link.click();
       },
-      error => console.log(error)
+      (error) => console.log(error)
     );
   }
-
 
   onFileSelectedrem(event: any): void {
     const file: File = event.target.files[0];
@@ -761,13 +772,13 @@ export class EmployeeContentComponent implements OnInit {
 
         data.push(item);
       }
-      console.log(data, 'adarsh console')
-      data.forEach(employee => {
-        console.log("Adarsh", employee)
+      console.log(data, 'adarsh console');
+      data.forEach((employee) => {
+        console.log('Adarsh', employee);
         this.dashService.addEmployee(employee).subscribe((res: any) => {
-          console.log(res, 'response')
-          console.log(res.data)
-        })
+          console.log(res, 'response');
+          console.log(res.data);
+        });
       });
       console.log(data);
       // this.fetchdata()
@@ -775,47 +786,42 @@ export class EmployeeContentComponent implements OnInit {
 
     reader.readAsText(file);
     // this.fetchdata()
-
   }
 
-
   importFile() {
-    const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+    const fileInput = document.querySelector(
+      'input[type=file]'
+    ) as HTMLInputElement;
     fileInput.click();
   }
 
-
-  
-
-  
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
-  
+    this.isSelectDisabled = $event.target.checked;
+
     if (isChecked) {
       if (user == 'All') {
         this.selectedEmployess = [...this.employee];
         // Check all checkboxes
-        this.employee.forEach((el:any, i: number) => {
+        this.employee.forEach((el: any, i: number) => {
           el['checked'] = true;
         });
       } else {
-        
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
             this.employee['checked'] = true;
             return;
           }
-        })
+        });
         this.selectedEmployess.push(user);
       }
       console.log(this.selectedEmployess, 'added employees');
-  
     } else {
       if (user == 'All') {
         this.selectedEmployess = [];
         // Uncheck all checkboxes
-        this.employee.forEach((el:any , i:number) => {
+        this.employee.forEach((el: any, i: number) => {
           el['checked'] = false;
         });
       } else {
@@ -825,23 +831,20 @@ export class EmployeeContentComponent implements OnInit {
             index = i;
             return;
           }
-        })
+        });
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
             this.employee['checked'] = false;
             return;
           }
-        })
+        });
         if (index >= 0) {
           this.selectedEmployess.splice(index, 1);
         }
       }
-      console.log(this.selectedEmployess, 'removed user')
-  
+      console.log(this.selectedEmployess, 'removed user');
     }
   }
-
-
 
   toggleAllCheckboxes() {
     let checkboxes = document.getElementsByTagName('input');
@@ -851,9 +854,4 @@ export class EmployeeContentComponent implements OnInit {
       }
     }
   }
-
-
-
-
-
 }

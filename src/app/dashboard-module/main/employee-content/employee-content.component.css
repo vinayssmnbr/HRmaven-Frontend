@@ -21,7 +21,7 @@
   height: 22px;
   align-items: center;
   margin-top: 20px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   column-gap: 70px;
 }
 
@@ -37,50 +37,29 @@
 .All{
   width: 100%;
   max-width: 38px;
-  border: 3px solid transparent;
+  padding-left: 8px;
 }
 .Active{
   width: 100%;
   max-width: 60px;
-  border: 3px solid transparent;
+  padding-left: 8px;
 }
 .Resigned{
   width: 100%;
   max-width: 77px;
-  border: 3px solid transparent;
+  padding-left: 10px;
 }
 .Terminated{
   width: 100%;
   max-width: 92px;
-  border: 3px solid transparent;
+  padding-left: 10px;
 }
 .Absconder{
   width: 100%;
   max-width: 86px;
-  border: 3px solid transparent;
-}
-.All:hover {
-  border-bottom: 3px solid #2F2C9F;
+  padding-left: 9px;
 }
 
-.Active:hover {
-  border-bottom: 3px solid #2F2C9F;
-}
-
-.Resigned:hover {
-  border-bottom: 3px solid #2F2C9F;
-}
-
-.Terminated:hover {
-  border-bottom: 3px solid #2F2C9F;
-}
-
-.Absconder:hover {
-  border-bottom: 3px solid #2F2C9F;
-}
-.All, .Resigned, .Absconder, .Terminated,.Active{
-  /* padding-bottom: 10px; */
-}
 
 .All.active {
   border-bottom: 3px solid #2F2C9F;
@@ -90,7 +69,6 @@
     font-weight: 500;
     padding-bottom: 5px;
     width: 38px;
-    padding-left: 8px;
 }
 .Active.active {
   border-bottom: 3px solid #2F2C9F;
@@ -99,7 +77,6 @@
   color: #2F2C9F;
     font-weight: 500;
     padding-bottom: 4px;
-    padding-left: 8px;
     width: 60px;
   }
 .Resigned.active  {
@@ -108,7 +85,7 @@
 .Resigned.active p{
   color: #2F2C9F;
     font-weight: 500;
-    padding-left: 8px;
+    padding-bottom: 4px;
     width: 77px;
 }
 .Terminated.active{
@@ -117,7 +94,7 @@
 .Terminated.active p{
 color: #2F2C9F;
   font-weight: 500;
-  padding-left: 8px;
+    padding-bottom: 4px;
   width: 92px;
 }
 .Absconder.active {
@@ -126,7 +103,7 @@ color: #2F2C9F;
 .Absconder.active p{
 color: #2F2C9F;
   font-weight: 500;
-  padding-left: 8px;
+    padding-bottom: 4px;
   width: 88px;
 }
 .selection2{
@@ -353,10 +330,14 @@ tbody{
 }
 
  .table-wrapper::-webkit-scrollbar {
+
     width: 8px;
    cursor: pointer;
 }
-
+thead,th{
+  position: sticky;
+  top: 0;
+}
  .table-wrapper::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
@@ -492,7 +473,7 @@ input[type='checkbox']{
     text-align: justify;
     white-space: nowrap;
     display: flex;
-    gap: 8px;
+    gap: 10px;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -500,12 +481,14 @@ input[type='checkbox']{
 }
 
 .name1 img {
-    margin-top: -10px;
+    /* margin-top: -3px; */
     width: 34px;
     height: 34px;
-    display: none;
+    /* display: none; */
 }
-
+.name1 p{
+  margin-top: 6px;
+}
 .email1 {
     /* width: 220px; */
     /* height: 44px; */
@@ -570,14 +553,14 @@ table {
 }
 
 .icons {
-    display: flex;
-    position: relative;
+  display: flex;
+  /* position: relative; */
 }
 
 .icons .select{
   padding: 5px 10px;
   border-radius: 12px;
-  width: 108px;
+  width: 120px;
   outline: none;
   cursor: pointer;
   font-family: 'Outfit',sans-serif;
@@ -585,10 +568,15 @@ table {
   font-weight: 400;
   font-size: 14px;
 }
+
+/* .select {
+  -webkit-appearance: none;
+  appearance: none;
+} */
 /* .fa-chevron-down{
   position: absolute;
-  right: 32%;
-  top:28%;
+  right: 49%;
+  top: 48%;
   font-size: 12px;
 } */
 /* .activated{
@@ -1648,7 +1636,18 @@ input::placeholder{
     color: #444444;
     padding: 3px 7px;
 }
-
+.file-content2{
+  display: flex;
+  gap: 50px;
+}
+.file-content2 p{
+ margin-top: 18px;
+font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+}
 .select_content {
     background-color: #fff;
     cursor: pointer;
@@ -1659,6 +1658,7 @@ input::placeholder{
     color: #444444;
     box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    z-index: 99;
 }
 
 .select_content ul {
@@ -1684,7 +1684,7 @@ input::placeholder{
 }
 .modal-content5{
   width: 540px;
-  height: 470px;
+  height: 430px;
   background-color: white;
   border-radius: 8px;
   position: relative;
@@ -1813,7 +1813,7 @@ input::placeholder{
 
 
 .import-btns{
-  margin-top: 10px;
+  margin-top: 22px;
   display: flex;
   align-items: center;
   justify-content: center;

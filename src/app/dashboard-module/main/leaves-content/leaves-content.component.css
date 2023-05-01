@@ -818,7 +818,7 @@ input[type="radio"] {
 }
 
 /* -------------------Progress Bar------------------------- */
-.progress {
+/* .progress {
   width: 50px;
   height: 50px;
   z-index: 1;
@@ -841,6 +841,59 @@ input[type="radio"] {
   stroke-dasharray: 219.99078369140625;
   stroke-dashoffset: -219.99078369140625;
   transition: stroke-dashoffset 1s;
+}
+.progress.circular1 .fill {
+  stroke: #7BD36D !important;
+}
+
+.progress.circular2 .fill {
+  stroke: #F8BB6F !important;
+}
+
+.progress.circular3 .fill {
+  stroke: #FA9796 !important;
+} */
+/* -------------------------Progress bar girija------------------------------- */
+.progress-circle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ebebeb;
+}
+
+.progress-circle:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-animation: colorload 2s;
+  animation: colorload 2s; }
+
+.progress-circle span {
+  font-size: 1rem;
+  color: #8b8b8b;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 60px;
+  margin-left: -20px;
+  margin-top: -20px;
+  text-align: center;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+}
+
+.progress-circle span:after {
+  content: "";
+  font-weight: 600;
+  color: #8b8b8b; 
 }
 
 /* -----------------------Custom Check Box ---------------------------- */
@@ -933,12 +986,4 @@ input[type="radio"] {
   border-color: #fff;
   color: #fff;
 }
-.progress.circular1 .fill{ 
-  stroke: #7BD36D !important;
-}
-.progress.circular2 .fill{ 
-  stroke: #F8BB6F !important;
-}
-.progress.circular3 .fill{ 
-  stroke: #FA9796 !important;
-}
+

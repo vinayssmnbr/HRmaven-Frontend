@@ -8,16 +8,288 @@
 
 .row {
   display: flex;
-  column-gap: 22px;
+  justify-content: space-between;
+
+  /* background-color: red; */
+}
+.left_side{
+  width: 60%;
+}
+.right_side{
+  width: 40%;
+}
+.col-9 .col-4 {
+  padding-right: 20px;
+  border-radius: 8px;
 }
 
-.col-3 {
+.card {
+  padding: 27px 25px;
+  height: 100px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+
+.card p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666666;
+
+}
+
+.card h1 {
+  font-weight: 500;
+  font-size: 22px;
+  color: #444444;
+}
+
+.quick-action {
+  padding: 18px 24px;
+  height: 100px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.attendance-chart {
+  height: 420px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-top: 25px;
+  padding: 25px 25px;
+}
+
+.leave-balance {
+  padding: 27px 25px;
+  height: 420px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+
+.attendance-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 25px;
+}
+
+.attendance-heading h5 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #222222;
+}
+
+/*-------------------------Attendance-dropdown-------------*/
+.dropdwon_select {
+  background-color: #fff;
+  width: 172px;
+  height: 40px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  color: #444444;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus {
+  border: 1px solid #2F2C9F;
+  border-radius: 8px;
+}
+
+.dropdwon_select p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.dropdwon_select i {
+  font-size: 14px;
+  color: #444444;
+  padding: 3px 7px;
+}
+
+.select_content {
+  background-color: #fff;
+  cursor: pointer;
+  width: 172px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  color: #444444;
+}
+
+.select_content ul {
+  padding: 0;
+  margin: 0;
+}
+
+.select_content ul li {
+  list-style: none;
+  padding: 10px 10px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.select_content ul li:hover {
+  background-color: #ECECEC;
+  border-radius: 8px;
+}
+
+.select_active {
+  background-color: #ECECEC;
+  border-radius: 8px;
+
+}
+
+/*--------------------------------------------------*/
+
+.leave_balance {
+  margin: 20px 20px;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 420px;
+  border-radius: 8px;
+}
+
+.leave_balance h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #222222;
+  padding: 19px 25px;
+}
+
+.job-post-summary-area {
+  background-color: #FFFFFF;
+  padding: 25px 25px;
+  margin: 30px;
+  border-radius: 8px;
+}
+
+.job-post-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-post-heading h6 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #222222;
+}
+
+.job-summary-list {
+  margin-top: 25px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 22px 20px;
+}
+
+
+.UI-UX-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui-heading {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.ui-heading p {
+  width: 93px;
+  height: 24px;
+  background-color: #FEF0C8;
+  display: flex;
+  justify-content: center;
+  border-radius: 1000px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 12px;
+  color: #5F2500;
+}
+
+.ul-li h4 {
+  font-weight: 400;
+  font-size: 14px;
+  color: #333333;
+}
+
+.skills-required {
+  margin-top: 17.5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-require-ul {
+  display: flex;
+  gap: 10px;
+}
+
+.ul-li {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.skill-require-ul li {
+  padding: 4px 8px;
+  /* width: 50px; */
+  height: 25px;
+  background-color: #EFEFF8;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 12px;
+  color: #2F2C9F;
+}
+
+.job-posted {
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+}
+
+
+.leave-profile {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.leave,
+.profile {
+  /* width: 101px; */
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  background-color: #FFFFFF;
-  padding: 16px 30px;
+  cursor: pointer;
+  gap: 10px;
+  padding: 18px 16px;
   border-radius: 8px;
+}
+
+.leave {
+  background-color: #F7F7FB;
+}
+
+.profile:hover {
+  background-color: #F7F7FB;
+}
+
+.leave,
+.profile p {
+  font-weight: 400;
+  font-size: 12px;
+  color: #444444;
 }
 
 .iconCenter {
@@ -61,11 +333,11 @@
 
 
 .chart {
-  padding: 0.5rem;
-  border-radius: 1rem;
-  background: #FFFFFF;
-  width: 746px;
-  height: 363px;
+  /* border-radius: 1rem; */
+  /* background-color: #FFFFFF; */
+  /* width: 746px;
+  height: 363px; */
+  /* background-color: green; */
 }
 
 .chart h6 {
@@ -159,15 +431,51 @@
 
 /* ----------Drop Down END--------------- */
 
+/*---------------------------Leave-Balance------------------------*/
 
+.casual_leave{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 39px;
+  cursor: pointer;
+  /* background-color: #FAFAFA; */
+border-radius: 10px;
+}
+.medical_leave{
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 39px;
+  cursor: pointer;
+  margin-top: 10px;
+  /* background-color: #FAFAFA; */
+border-radius: 10px;
+}
+.medical_leave:hover{
+  background-color: #FAFAFA;;
+}
+.casual_leave:hover{
+  background-color: #FAFAFA;;
+}
 .attendance-area {
   background-color: #FFFFFF;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 20px 25px;
   position: relative;
+}
+.present_leave_absent{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.chart_leaves {
+  display: flex;
+  gap: 100px;
+}
+.present {
+  display: flex;
+  gap: 43px;
 }
 
 
@@ -195,8 +503,8 @@ a {
   background-color: #FFFFFF;
   border-radius: 8px;
   padding: 20px;
-  height: 100%;
-
+  min-height: 97%;
+  /* height: 100%; */
 
 }
 
@@ -705,11 +1013,4 @@ input[type="radio"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* ------------------Media Query----------------------- */
-@media (max-width:1920px) {
-  .meeting-scrollbar {
-    height: 523px;
-  }
 }

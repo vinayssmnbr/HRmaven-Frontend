@@ -129,7 +129,7 @@ form .input-field {
   position: relative;
   width: 400px;
   height: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   margin-top: 24px;
 }
 
@@ -169,6 +169,17 @@ input:focus {
 
 .input-field label {
   color: #333333;
+}
+
+.input-field span i{
+  font-size: 13px;
+  color: red;
+  padding-right: 5px;
+
+}
+.input-field .emailwrg, .pwddwrg{
+ font-size: 14px;
+ color: red;
 }
 
 .check-text {

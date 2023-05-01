@@ -23,7 +23,7 @@ export class LoginEmployeeComponent {
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private cookie: CookieService,
+    public cookie: CookieService,
     public employeeService:EmployeeService,
     // public userService: UserService
   ) {}
@@ -39,22 +39,32 @@ export class LoginEmployeeComponent {
       });
     }
 
-    this.activatedRoute.queryParams.subscribe((params) => {
-    //   // console.log(params);
-      const token = params['token'];
-      console.log(token);
-      if (token && token != 'undefined') {
-        this.cookie.set('token', token);
-        this.router.navigate(['employee/dashboard']);
-      } else {
-        this.cookie.delete('token');
-        this.router.navigate(['loginemp']);
-      }
-    });
+
+
+
+
+    // this.activatedRoute.queryParams.subscribe((params) => {
+    // //   // console.log(params);
+    //   const token = params['token'];
+    //   console.log(token);
+    //   if (token && token != 'undefined') {
+    //     this.cookie.set('token', token);
+    //     this.router.navigate(['employee/dashboard']);
+    //   } else {
+    //     this.cookie.delete('token');
+    //     this.router.navigate(['loginemp']);
+    //   }
+    // });
+
+
+
+
 
     if (this.employeeService.isUserLoggedIn()) {
-      this.router.navigate(['employee/dashboard']);
+      this.router.navigate(['emp-dashboard']);
     }
+
+    this.cookie.deleteAll()
     // this.userService.allDataLogin();
   }
   userdetail: any = '';
@@ -90,7 +100,7 @@ export class LoginEmployeeComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -147,7 +157,7 @@ export class LoginEmployeeComponent {
   submit() {
     this.loader = true;
     setTimeout(() => {
-      this.router.navigate(['/employee/dashboard']);
+      this.router.navigate(['/emp-dashboard']);
     }, 2000);
   }
 
@@ -168,7 +178,7 @@ export class LoginEmployeeComponent {
         expire.setTime(today.getTime() + 12 * 60 * 60 * 1000);
         console.log('inside');
         document.cookie =
-          'token= ' +
+          'emp-token= ' +
           res.token +
           ';path=/' +
           ';expires=' +
@@ -209,7 +219,7 @@ export class LoginEmployeeComponent {
     //   }
 
     //   this.employeemail = res;
-    
+
 
     //   console.log('Response from API:', this.employeemail);
     // });
