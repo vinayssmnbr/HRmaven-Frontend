@@ -234,7 +234,7 @@ export class EmployeeContentComponent implements OnInit {
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-
+  emailAlreadyExists = false;
   firstStep: boolean = true;
   secondStep: boolean = false;
   thirdStep: boolean = false;
@@ -245,6 +245,16 @@ export class EmployeeContentComponent implements OnInit {
     this.firstStep = false;
     this.secondStep = true;
     this.onUpload(this.selectedFile);
+    this.dashService.getEmployeeEmail(this.query).subscribe((response:{exists:boolean})=>{
+      console.log("response",this.emailAlreadyExists)
+      if (!response.exists) {
+        // submit the form
+      this.emailAlreadyExists = response.exists;
+      console.log("error")
+
+        // this.secondStep=true
+      }
+    })
   }
 
   onPreviousForm() {
