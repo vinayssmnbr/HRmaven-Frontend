@@ -6,21 +6,20 @@
       <div class="card">
         <div class="progress-text">
           <h3>Total Leaves</h3>
-          <h1>{{total}}</h1>
+          <h1>{{ total }}</h1>
         </div>
         <div class="progress-circle-container">
           <div class="progress-circle progress-{{(total/total)*100}}">
             <span></span>
           </div>
         </div>
-
       </div>
     </div>
     <div class="col-3">
       <div class="card">
         <div class="progress-text">
           <h3>Accepted Leaves</h3>
-          <h1>{{acceptcount}}</h1>
+          <h1>{{ acceptcount }}</h1>
         </div>
 
         <div class="progress-circle-container">
@@ -34,7 +33,7 @@
       <div class="card">
         <div class="progress-text">
           <h3>Rejected Leaves</h3>
-          <h1>{{rejectcount}}</h1>
+          <h1>{{ rejectcount }}</h1>
         </div>
         <div class="progress-circle-container">
           <div class="progress-circle progress-{{(rejectcount/total)*100}}">
@@ -47,7 +46,7 @@
       <div class="card">
         <div class="progress-text">
           <h3>Pending Leaves</h3>
-          <h1>{{pendingcount}}</h1>
+          <h1>{{ pendingcount }}</h1>
         </div>
         <div class="progress-circle-container">
           <div class="progress-circle progress-{{(pendingcount/total)*100}}">
@@ -71,30 +70,40 @@
         <div class="col-3">
           <div class="form__group">
             <label for="date">From</label>
-            <input type="date" formControlName='from' />
+            <input type="date" formControlName="from" />
           </div>
         </div>
         <div class="col-3">
           <div class="form__group">
             <label for="date">To</label>
-            <input type="date" formControlName='to' />
+            <input type="date" formControlName="to" />
           </div>
         </div>
         <div class="col-3">
-
           <div class="form__group">
             <label for="dropdown_container">Category</label>
-            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-              <input type="text" formControlName="category" style="display:none;">
+            <div
+              class="dropdown_container"
+              (mouseleave)="contentdropdown = false"
+            >
+              <input
+                type="text"
+                formControlName="category"
+                style="display: none"
+              />
               <div class="dropdwon_select" (click)="dropdownOpen()">
-                <p>{{Selectvariable}}</p>
+                <p>{{ Selectvariable }}</p>
                 <i class="fa-sharp fa-solid fa-caret-down"></i>
               </div>
               <div class="select_content" *ngIf="contentdropdown">
                 <ul>
-                  <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                    (click)="Changeselect(arr)">
-                    {{arr.name}}</li>
+                  <li
+                    *ngFor="let arr of array; index as i"
+                    [class.select_active]="i === colorvariable"
+                    (click)="Changeselect(arr)"
+                  >
+                    {{ arr.name }}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -103,19 +112,33 @@
       </div>
       <div class="form_btn">
         <button class="cancel_btn" (click)="cancel()">Cancel</button>
-        <button type="submit" class="search_btn" (click)="search()">Search</button>
+        <button type="submit" class="search_btn" (click)="search()">
+          Search
+        </button>
       </div>
     </form>
   </div>
   <!--------------------- List Item----------------- -->
   <div class="list_nav">
-    <div class="Pending" [class.color]="id ==='Pending'" (click)="tabChange('Pending')">
+    <div
+      class="Pending"
+      [class.color]="id === 'Pending'"
+      (click)="tabChange('Pending')"
+    >
       <p>Pending</p>
     </div>
-    <div class="Approved" [class.color]="id ==='Approved'" (click)="tabChange('Approved')">
+    <div
+      class="Approved"
+      [class.color]="id === 'Approved'"
+      (click)="tabChange('Approved')"
+    >
       <p>Approved</p>
     </div>
-    <div class="Rejected" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+    <div
+      class="Rejected"
+      [class.color]="id === 'Rejected'"
+      (click)="tabChange('Rejected')"
+    >
       <p>Rejected</p>
     </div>
   </div>
@@ -140,28 +163,29 @@
           <th>Balance</th>
           <th>Attachment</th>
           <th class="table_slide">Action</th>
-
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let n of pendingleave let index=index">
-
-
+        <tr *ngFor="let n of pendingleave; let index = index">
           <td scope="row">
             <input class="form-check-input" type="checkbox" [value]="n._id" [checked]='n.select'
               (change)="onChange($event)"  /><span> {{n.uid}}</span>
           </td>
-          <td>{{n.name}}</td>
-          <td>{{n.appliedOn | date:'shortDate'}}</td>
-          <td>{{n.from | date:'shortDate'}}</td>
-          <td>{{n.to | date:'shortDate'}}</td>
-          <td>{{n.duration}}</td>
-          <td>{{n.category}}</td>
+          <td>{{ n.name }}</td>
+          <td>{{ n.appliedOn | date : "shortDate" }}</td>
+          <td>{{ n.from | date : "shortDate" }}</td>
+          <td>{{ n.to | date : "shortDate" }}</td>
+          <td>{{ n.duration }}</td>
+          <td>{{ n.category }}</td>
           <td>
             <p class="mt20">
-              <span class="tooltip"
-                data-tooltip='n.reason'
-                data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}</span>
+              <span
+                class="tooltip"
+                data-tooltip="n.reason"
+                data-tooltip-pos="right"
+                data-tooltip-length="medium"
+                >{{ n.reason }}</span
+              >
             </p>
           </td>
           <td>4/6</td>
@@ -169,10 +193,10 @@
           <td class="table_slide">
             <div class="check_box_icon" *ngIf="!n.select">
               <div class="thick_round">
-                <label for="checkbox" (click)="openModal(n,index)" ></label>
+                <label for="checkbox" (click)="openModal(n, index)"></label>
               </div>
               <div class="cross_round" *ngIf="!n.select">
-                <label for="checkbox" (click)="openModal1(n,index)"></label>
+                <label for="checkbox" (click)="openModal1(n, index)"></label>
               </div>
             </div>
           </td>
@@ -210,26 +234,28 @@
           <th>REASON</th>
           <th>Balance</th>
           <th>Attachment</th>
-
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let n of rejectleave">
           <td scope="row">
-            {{n.uid}}
+            {{ n.uid }}
           </td>
-          <td>{{n.name}}</td>
-          <td>{{n.appliedOn | date:'shortDate'}}</td>
-          <td>{{n.from | date:'shortDate'}}</td>
-          <td>{{n.to | date:'shortDate'}}</td>
-          <td>{{n.duration}}</td>
-          <td>{{n.category}}</td>
+          <td>{{ n.name }}</td>
+          <td>{{ n.appliedOn | date : "shortDate" }}</td>
+          <td>{{ n.from | date : "shortDate" }}</td>
+          <td>{{ n.to | date : "shortDate" }}</td>
+          <td>{{ n.duration }}</td>
+          <td>{{ n.category }}</td>
           <td>
             <p class="mt20">
-              <span class="tooltip"
+              <span
+                class="tooltip"
                 data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
-                f...</span>
+                data-tooltip-pos="right"
+                data-tooltip-length="medium"
+                >I have to attend some family f...</span
+              >
             </p>
           </td>
           <td>4/6</td>
@@ -267,27 +293,28 @@
           <th>REASON</th>
           <th>Balance</th>
           <th>Attachment</th>
-
-
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let n of acceptleave">
           <td scope="row">
-            {{n.uid}}
+            {{ n.uid }}
           </td>
-          <td>{{n.name}}</td>
-          <td>{{n.appliedOn | date:'shortDate'}}</td>
-          <td>{{n.from | date:'shortDate'}}</td>
-          <td>{{n.to | date:'shortDate'}}</td>
-          <td>{{n.duration}}</td>
-          <td>{{n.category}}</td>
+          <td>{{ n.name }}</td>
+          <td>{{ n.appliedOn | date : "shortDate" }}</td>
+          <td>{{ n.from | date : "shortDate" }}</td>
+          <td>{{ n.to | date : "shortDate" }}</td>
+          <td>{{ n.duration }}</td>
+          <td>{{ n.category }}</td>
           <td>
             <p class="mt20">
-              <span class="tooltip"
+              <span
+                class="tooltip"
                 data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
-                f...</span>
+                data-tooltip-pos="right"
+                data-tooltip-length="medium"
+                >I have to attend some family f...</span
+              >
             </p>
           </td>
           <td>4/6</td>
@@ -306,20 +333,25 @@
     </table>
   </div>
 
-
   <div class="table_btn" *ngIf="showSearchBox && pendingshow">
-    <button class="accept_btn" (click)="acceptfunction()" *ngIf="count>0">Accept</button>
-    <button class="reject_btn" (click)="rejectfunction()" *ngIf="count>0">Reject</button>
+    <button class="accept_btn" (click)="acceptfunction()" *ngIf="count > 0">
+      Accept
+    </button>
+    <button class="reject_btn" (click)="rejectfunction()" *ngIf="count > 0">
+      Reject
+    </button>
   </div>
 
-
   <!--------------------- Leave a comment Modal Accepet--------------- -->
-  <form class="leave_form" *ngIf="showModal" >
-    <div class="leave_modal" style="height:300px">
+  <form class="leave_form" *ngIf="showModal">
+    <div class="leave_modal" style="height: 300px">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <h3>Leave a comment</h3>
-      <textarea placeholder="Type your reason here..." [(ngModel)]="acceptmessage"
-        [ngModelOptions]="{standalone: true}" ></textarea>
+      <textarea
+        placeholder="Type your reason here..."
+        [(ngModel)]="acceptmessage"
+        [ngModelOptions]="{ standalone: true }"
+      ></textarea>
       <div class="leave_form_btn">
         <button class="cancel_btn" (click)="closeModal()">Cancel</button>
         <button class="Done_btn" (click)="openModal2()">Done</button>
@@ -327,12 +359,15 @@
     </div>
   </form>
   <!--------------------- Leave a comment Modal Reject--------------- -->
-  <form class="leave_form" *ngIf="showModal1" >
-    <div class="leave_modal" style="height:300px">
+  <form class="leave_form" *ngIf="showModal1">
+    <div class="leave_modal" style="height: 300px">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <h3>Leave a comment</h3>
-      <textarea placeholder="Type your reason here..." [(ngModel)]="acceptmessage"
-        [ngModelOptions]="{standalone: true}"></textarea>
+      <textarea
+        placeholder="Type your reason here..."
+        [(ngModel)]="acceptmessage"
+        [ngModelOptions]="{ standalone: true }"
+      ></textarea>
       <div class="leave_form_btn">
         <button class="cancel_btn" (click)="closeModal()">Cancel</button>
         <button class="Done_btn" (click)="openModal3()">Done</button>
@@ -342,12 +377,11 @@
 
   <!-- -------------------------Leaves approved successfully! Modal---------------------- -->
 
-
   <form class="leave_approved_form" *ngIf="showModal2">
     <div class="leave_approved_modal">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <div class="logo_bg">
-        <img src="assets/images/tick.png" alt="image">
+        <img src="assets/images/tick.png" alt="image" />
       </div>
       <h4>Leaves approved successfully!</h4>
       <p>Click on the close button to go back to leave section.</p>
@@ -358,12 +392,11 @@
   </form>
   <!-- -------------------------Leaves rejected Modal---------------------- -->
 
-
   <form class="leave_approved_form" *ngIf="showModal3">
     <div class="leave_approved_modal">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <div class="logo_bg">
-        <img src="assets/images/tick.png" alt="image">
+        <img src="assets/images/tick.png" alt="image" />
       </div>
       <h4>Leaves rejected successfully!</h4>
       <p>Click on the close button to go back to leave section.</p>
@@ -372,5 +405,8 @@
       </div>
     </div>
   </form>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bcc64daa98d26a56af4eb96e01c3887be85cd649
 </div>

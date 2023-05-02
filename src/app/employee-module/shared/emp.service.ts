@@ -22,9 +22,6 @@ export class EmpService {
   ) {
     this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
   }
-  getData = environment.getData;
-  getempRecord = environment.getempRecord;
-
   private prefix = environment.v1;
 
 

@@ -43,8 +43,12 @@ export class AttendanceContentComponent implements OnInit {
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card:any=[];
-  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
+  card: any = [];
+  constructor(
+    public dashService: DashService,
+    private datepipe: DatePipe,
+    private http: HttpClient
+  ) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.getLeaveData();
@@ -116,6 +120,12 @@ export class AttendanceContentComponent implements OnInit {
             },
             {
               label: 'Leaves',
+              data: leave,
+              backgroundColor: ['#00C9FF'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'short leave',
               data: leave,
               backgroundColor: ['#00C9FF'],
               pointStyle: 'circle',
@@ -331,6 +341,5 @@ getEmployeeData(){
     this.employee=res
   })
 }
-
 
 }
