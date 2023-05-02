@@ -19,6 +19,7 @@ export class DashboardContentComponent implements OnInit {
   loader: boolean = false;
   isFromSignupPage = false;
   formSubmitted = false;
+  showModalContent: boolean;
 
   constructor(
     private router: Router,
@@ -91,13 +92,13 @@ export class DashboardContentComponent implements OnInit {
     {
       day: 'Mon',
       Date: '21',
-      head: 'Interview',
+      head: 'Organisational meetings',
       time: '10am to 12pm',
     },
     {
       day: 'Mon',
       Date: '21',
-      head: 'Interview',
+      head: 'Meeting with the manager',
       time: '10am to 12pm',
     },
 
@@ -235,11 +236,11 @@ export class DashboardContentComponent implements OnInit {
     // Create a chart object
   }
 
-  closeModal: boolean = true;
+  
 
-  clickClose() {
-    this.closeModal = false;
-  }
+  // clickClose() {
+  //   this.closeModal = false;
+  // }
 
   array: any = [
     {
@@ -300,4 +301,55 @@ export class DashboardContentComponent implements OnInit {
   updateLeaveStatus(object: any, status: 'accept' | 'reject') {
     // this.dashService.updateleave(object,status);
   }
+
+
+
+  //Modal ts//
+  showModal10=false;
+  openModal10(){
+    this.showModal10 = true;
+    this.showModalContent=true
+  }
+  
+  closeModal10(){
+    this.showModal10 = false;
+    this.showModalContent=false;
+  }
+
+
+  array1: any = [
+    {
+      id: 0,
+      name: 'Online',
+    },
+    {
+      id: 1,
+      name: 'Offline',
+    },
+  ];
+  Venuelink:boolean=false;
+  Meetinglink:boolean=true;
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable1: string = 'online';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    if (arr1.id == 0){
+      this.Meetinglink=true;
+      this.Venuelink=false;
+    }
+    if(arr1.id==1){
+      this.Venuelink=true;
+      this.Meetinglink=false;
+    }
+    
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable1 = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
+  }
+
+
 }
