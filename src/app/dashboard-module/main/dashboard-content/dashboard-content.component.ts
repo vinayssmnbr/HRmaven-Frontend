@@ -111,11 +111,30 @@ export class DashboardContentComponent implements OnInit {
   ]
   personalData: any =''
   empname: any = ''
+  objectuserid = localStorage.getItem('email')
 
   ngOnInit()
    {
+    this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+      console.log("res account settings personaldata: ", res);
 
-    this.personalData = localStorage.getItem('totalemp');
+      console.log("res account settings personaldata: ", res.personaldata);
+      console.log("res account settings personaldata: ", res.personaldata.headOffice);
+
+      console.log("res account settings personaldata: ", res.useridd);
+
+      this.empname = res.personaldata.noOfEmployee;
+      localStorage.setItem('empname', this.empname)
+      // this.employeename = res.personaldata.name;
+      // this.totalemployee = res.personaldata.noOfEmployee;
+      // this.headOffice = res.personaldata.headOffice;
+      // this.phone = res.personaldata.phone;
+      // this.description = res.personaldata.description
+      // this.profileimage = res.personaldata.profileimage;
+
+    });
+
+    this.personalData = localStorage.getItem('empname');
     if (this.personalData === null) {
       this.formSubmitted = false;
     } else {
