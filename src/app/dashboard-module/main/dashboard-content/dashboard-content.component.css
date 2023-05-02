@@ -962,3 +962,35 @@ cursor: pointer;
   border-radius: 8px;
 
 }
+
+#name.ng_invalid{
+  border:1px solid red;
+}
+#name.ng_invalid:hover{
+  border:1px solid red;
+}
+#name.ng_valid:hover{
+  border:1px solid green;
+}
+
+#name1.ng_invalid{
+  border:1px solid red;
+}
+#name1.ng_invalid:hover{
+  border:1px solid red;
+}
+#name1.ng_valid:hover{
+  border:1px solid green;
+}
+
+#office.ng_invalid{
+  border:1px solid red;
+}
+#office.ng_invalid:hover{
+  border:1px solid red;
+}
+#office.ng_valid:hover{
+  border:1px solid green;
+}
+
+

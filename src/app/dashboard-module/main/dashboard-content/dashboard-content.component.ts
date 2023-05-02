@@ -300,4 +300,8 @@ export class DashboardContentComponent implements OnInit {
   updateLeaveStatus(object: any, status: 'accept' | 'reject') {
     // this.dashService.updateleave(object,status);
   }
+
+  dropdownClose() {
+    this.contentdropdown = false;
+  }
 }

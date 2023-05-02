@@ -267,16 +267,16 @@
                         <div class="form__group">
                             <label for="name">Name</label>
                             <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name"
-                                formControlName="name" required (keydown)="Space($event)" />
-                              <div *ngIf="name.invalid && name.touched || name.dirty">
+                                formControlName="name" required (keydown)="Space($event)" [ngClass]="{'ng_invalid':personaldataForm.controls.name.invalid && personaldataForm.controls.name.dirty,'ng_valid':personaldataForm.controls.name.valid}"/>
+                              <!-- <div *ngIf="name.invalid && name.touched || name.dirty">
                                 <span *ngIf="name.errors">
                                   <i class="fa-solid fa-circle-info"></i>Enter Only Character
                                 </span>
 
-                              </div>
+                              </div> -->
 
                         </div>
-                        <div class="form__group">
+                        <!-- <div class="form__group">
                             <label for="noOfEmployee">No. of employees</label>
                             <select class="form_input" id="noOfEmployee" formControlName="noOfEmployee">
                                 <option value="" disabled selected>Select an option</option>
@@ -284,17 +284,32 @@
                                     options.option }}</option>
                             </select>
                             <i class="fa-solid fa-chevron-down"></i>
+                        </div> -->
+                        <div class="form__group">
+                          <label for="noOfEmployee">No. of employees</label>
+                        <div class="dropdown_container">
+                          <div class="dropdwon_select" (click)="dropdownOpen()">
+                            <p>{{Selectvariable}}</p>
+                            <i class="fa-sharp fa-solid fa-caret-down"></i>
+                          </div>
+                          <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
+                            <ul>
+                              <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                {{arr.name}}</li>
+                            </ul>
+                          </div>
+                        </div>
                         </div>
                     </div>
                     <div class="email-phone">
                         <div class="form__group">
                             <label for="name">Phone no.</label>
                             <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
-                                id="name" required />
-                                <div *ngIf="phone.invalid && phone.touched || phone.dirty">
+                                id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
+                                <!-- <div *ngIf="phone.invalid && phone.touched || phone.dirty">
                                   <span *ngIf="phone.errors"><i class="fa-solid fa-circle-info"></i>Enter Valid Phone Number</span>
 
-                                </div>
+                                </div> -->
                         </div>
                         <div class="form__group">
                             <!-- <label for="email">Head Office</label>
@@ -302,10 +317,10 @@
                                 formControlName="headOffice" id="email" required /> -->
                                 <label for="office">Head Office</label>
                                 <input type="text" class="form_input" placeholder='Eg. Leeds, America'
-                                    formControlName="headOffice" id="office" required (keydown)="Space($event)" />
-                                <div *ngIf="headOffice.invalid && headOffice.touched || headOffice.dirty">
+                                    formControlName="headOffice" id="office" required (keydown)="Space($event)" [ngClass]="{'ng_invalid':personaldataForm.controls.headOffice && personaldataForm.controls.headOffice.dirty,'ng_valid':personaldataForm.controls.headOffice.valid}"/>
+                                <!-- <div *ngIf="headOffice.invalid && headOffice.touched || headOffice.dirty">
                                   <span *ngIf="headOffice.errors"><i class="fa-solid fa-circle-info"></i>Enter Only Characters</span>
-                                </div>
+                                </div> -->
                         </div>
                     </div>
 
