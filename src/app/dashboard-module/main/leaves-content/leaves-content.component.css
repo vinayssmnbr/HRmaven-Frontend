@@ -182,6 +182,10 @@
   outline: none;
 }
 
+.form_btn .search_btn:hover {
+  background-color: #170feb;
+}
+
 /* ----------------DropDown Menu----------------------------- */
 .dropdwon_select {
   background-color: #fff;
@@ -300,14 +304,11 @@
 .check_box {
   display: flex;
   gap: 5px;
+  align-items: center;
 }
 
 .check_box input[type="checkbox"] {
   cursor: pointer;
-}
-
-.check_box span {
-  padding-top: 2px;
 }
 
 .check_box p {
@@ -676,7 +677,7 @@ input[type="radio"] {
   flex-direction: column;
   position: relative;
   width: 555px;
-  height: 171px;
+  height: 350px;
   padding: 20px 20px;
 }
 
@@ -691,19 +692,21 @@ input[type="radio"] {
 }
 
 .leave_modal h3 {
-  font-size: 13px;
+  font-size: 15px;
   color: #333333;
   font-weight: 400;
+  padding-top: 10px;
 }
 
 .leave_modal textarea {
-  margin-top: 5px;
+  margin-top: 30px;
   padding: 10px 10px;
   border: 1px solid #CBCBCB;
   border-radius: 8px;
   background-color: #fff;
   outline: none;
   resize: none;
+  height: 160px;
 }
 
 .leave_modal textarea:focus,
@@ -900,15 +903,19 @@ input[type="radio"] {
 .card .progress-circle-container.totalleavesProgress .progress-circle:after {
   background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
 }
+
 .card .progress-circle-container.aproveleavesProgress .progress-circle:after {
   background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
 }
+
 .card .progress-circle-container.rejectleavesProgress .progress-circle:after {
   background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #F8BB6F 50%, #ebebeb 50%, #ebebeb) !important;
 }
+
 .card .progress-circle-container.pendingleavesProgress .progress-circle:after {
   background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
 }
+
 /* -----------------------Custom Check Box ---------------------------- */
 
 .thick_round {
