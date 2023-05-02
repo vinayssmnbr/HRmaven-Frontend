@@ -110,9 +110,9 @@ div[role="progressbar3"]::before {
     height: 60px;
     border-radius: 50%;
     background-color: #ebebeb;
-  }
-  
-  .progress-circle:after {
+}
+
+.progress-circle:after {
     content: '';
     display: inline-block;
     width: 100%;
@@ -120,9 +120,9 @@ div[role="progressbar3"]::before {
     border-radius: 50%;
     -webkit-animation: colorload 2s;
     animation: colorload 2s;
-  }
-  
-  .progress-circle span {
+}
+
+.progress-circle span {
     font-size: 1rem;
     color: #8b8b8b;
     position: absolute;
@@ -138,25 +138,25 @@ div[role="progressbar3"]::before {
     border-radius: 50%;
     background: #fff;
     z-index: 1;
-  }
-  
-  .progress-circle span:after {
+}
+
+.progress-circle span:after {
     content: "";
     font-weight: 600;
     color: #8b8b8b;
-  }
-  
-  .leaves .progress-circle-container.CasualProgress .progress-circle:after {
+}
+
+.leaves .progress-circle-container.CasualProgress .progress-circle:after {
     background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
-  }
-  
-  .leaves .progress-circle-container.MedicalProgress .progress-circle:after {
+}
+
+.leaves .progress-circle-container.MedicalProgress .progress-circle:after {
     background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
-  }
-  
-  .leaves .progress-circle-container.CompensatoryProgress .progress-circle:after {
+}
+
+.leaves .progress-circle-container.CompensatoryProgress .progress-circle:after {
     background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
-  }
+}
 
 /*-----------------------Leave-status--------------------*/
 .leave-status-area {
@@ -310,17 +310,20 @@ td {
     color: #333333;
 }
 
-.form-group input:read-only{
+.form-group input:read-only {
     cursor: not-allowed;
     background-color: #F1F1F1;
 }
-.form-group.short_leave{
+
+.form-group.short_leave {
     padding-top: 20px;
 }
-.drop_down_input{
+
+.drop_down_input {
     width: 280px;
     height: 40px;
 }
+
 /*------------------------drpdown css----------------------*/
 .dropdwon_select {
     background-color: #fff;
@@ -381,6 +384,25 @@ td {
 .select_content ul li:hover {
     background-color: #ECECEC;
     border-radius: 8px;
+}
+
+.half_day_leave {
+    position: absolute;
+    width: 170px;
+    background-color: #fff;
+    right: 260px;
+    margin-top: -180px;
+    z-index: 99;
+
+}
+
+.half_day_leave p {
+    height: 40px;
+    padding: 10px 16px 10px 17px;
+    border: 1px solid #B4B4B4;
+    color: #B4B4B4;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .select_active {
@@ -671,6 +693,7 @@ td {
     justify-content: center;
     align-items: center;
 }
+
 .leave_approved_modal h4 {
     text-align: center;
     color: #444444;
@@ -709,17 +732,25 @@ td {
 .Done_form_btn .Done_btn:hover {
     background-color: #1fa10a;
 }
+
 .loader {
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #2F2C9F; /* Blue */
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin-top: 6px;
-  animation: spin 2s linear infinite;
+    border: 5px solid #f3f3f3;
+    /* Light grey */
+    border-top: 5px solid #2F2C9F;
+    /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 6px;
+    animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
