@@ -196,8 +196,9 @@
               <label>Personal Email </label>
               <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
                 (keydown)="validateEmail($event)"
+                (blur)="checkEmailExists()"
                 [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
-              <div class="validation-message" *ngIf="checkEmailExists(email)"><i class="fa-solid fa-circle-info"></i>Email already exists</div>
+              <div class="validation-message" *ngIf="checkEmailExists()"><i class="fa-solid fa-circle-info"></i>Email already exists</div>
 
             </div>
             <div class="input">
