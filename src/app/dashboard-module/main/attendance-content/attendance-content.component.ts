@@ -324,7 +324,11 @@ this.attendence_main=true;
 }
 
 
+getEmployeeData(){
+  this.dashService.getEmployee().subscribe((res)=>{
+    this.employee=res
+  })
 }
-function getCurrentDate() {
-  throw new Error('Function not implemented.');
+
+
 }
