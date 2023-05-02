@@ -76,19 +76,19 @@ export class LoginComponent {
 
 
 
-    // this.activatedRoute.queryParams.subscribe((params) => {
-    //   // console.log(params);
-    //   const token = params['token'];
-    //   // console.log(token);
+    this.activatedRoute.queryParams.subscribe((params) => {
+      // console.log(params);
+      const token = params['token'];
+      // console.log(token);
 
-    //   if (token && token != 'undefined') {
-    //     this.cookie.set('token', token);
-    //     this.router.navigate(['dashboard']);
-    //   } else {
-    //     this.cookie.delete('token');
-    //     this.router.navigate(['login']);
-    //   }
-    // });
+      if (token && token != 'undefined') {
+        this.cookie.set('token', token);
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.cookie.delete('token');
+        this.router.navigate(['/login']);
+      }
+    });
 
 
 
@@ -200,7 +200,7 @@ export class LoginComponent {
   }
 
   // submissions
-
+obj:any
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
@@ -210,6 +210,9 @@ export class LoginComponent {
       console.log('login User: ', res.noOfEmployee);
       this.personalData = res.noOfEmployee
       console.log('login personalData: ',this.personalData);
+      this.obj=res.role
+      localStorage.setItem('role',this.obj)
+      console.log("obj",this.obj)
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
 

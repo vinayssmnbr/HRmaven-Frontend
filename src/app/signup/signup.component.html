@@ -18,7 +18,8 @@
                     <input type="radio" name="radio-btn" id="radio4" />
                     <div class="card first">
                         <p class="card-text">
-                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely
+                            wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image" />
@@ -30,7 +31,8 @@
                     </div>
                     <div class="card">
                         <p class="card-text">
-                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely
+                            wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image" />
@@ -42,7 +44,8 @@
                     </div>
                     <div class="card">
                         <p class="card-text">
-                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely
+                            wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image" />
@@ -54,7 +57,8 @@
                     </div>
                     <div class="card">
                         <p class="card-text">
-                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely wonderful!
+                            Simply unbelievable! I am really satisfied with my projects and business. This is absolutely
+                            wonderful!
                         </p>
                         <div class="profile">
                             <img src="assets/images/Rectangle 11.png" alt="image" />
@@ -90,7 +94,9 @@
                 <div class="field name-field">
                     <div class="input-field">
                         <label for="username">Organization Name</label>
-                        <input type="text" placeholder="Enter your Organization Name" class="username" [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid" formControlName="username" (keydown)="Space($event)" />
+                        <input type="text" placeholder="Enter your Organization Name" class="username"
+                            [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
+                            formControlName="username" (keydown)="Space($event)" />
                         <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
 
 
@@ -100,39 +106,42 @@
             ">
                             <span *ngIf="
                 fun['username'].errors && fun['username'].errors['required']
-              "> <i class="fa-solid fa-circle-info"></i>
-                Organization name is required
-              </span>
+              "> <img src="assets/images/valid_error.svg" alt="">
+                                Organization name is required
+                            </span>
 
                             <span *ngIf="
                 fun['username'].errors && fun['username'].errors['pattern']
-              "><i class="fa-solid fa-circle-info"></i>
-                Enter Only Character
-              </span>
+              "><img src="assets/images/valid_error.svg" alt="">
+                                Enter Only Character
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="field email-field">
                     <div class="input-field">
                         <label for="email" class="text-label">Email</label>
-                        <input type="email" placeholder="Enter your email" class="email" formControlName="email" [class.is-invalid]="fun['email'].invalid && fun['email'].touched" class="form-control is-invalid" (keyup)="onKeyUp($event)" />
+                        <input type="email" placeholder="Enter your email" class="email" formControlName="email"
+                            [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
+                            class="form-control is-invalid" (keyup)="onKeyUp($event)" />
                         <!-- <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span> -->
 
                         <div *ngIf="
               fun['email'].invalid &&
               (fun['email'].touched || fun['email'].dirty)
             ">
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['required']"><i
-                  class="fa-solid fa-circle-info"></i>
-                Email is required
-              </span>
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['email']"><i class="fa-solid fa-circle-info"></i>
-                Invalid Email
-              </span>
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']"><i
-                  class="fa-solid fa-circle-info"></i>
-                Enter Valid Email Pattern
-              </span>
+                            <span *ngIf="fun['email'].errors && fun['email'].errors['required']"><img
+                                    src="assets/images/valid_error.svg" alt="">
+                                Email is required
+                            </span>
+                            <span *ngIf="fun['email'].errors && fun['email'].errors['email']"><img
+                                    src="assets/images/valid_error.svg" alt="">
+                                Invalid Email
+                            </span>
+                            <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']"><img
+                                    src="assets/images/valid_error.svg" alt="">
+                                Enter Valid Email Pattern
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -141,56 +150,68 @@
                         <div class="input-field ">
                             <label for="name" class="text-label">Password
 
-                <div class="iconWrap password_required">
+                                <div class="iconWrap password_required">
 
-                  <i class="fa-solid fa-circle-info"></i>
-                  <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
-                  <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
+                                    <img src="assets/images/valid_error.svg" alt="">
+                                    <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
+                                    <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
 
-                  <!-- <input type="{{is_visible ? 'text' : 'password'}}" [(ngModel)]="password" (input)="checkPassword()" /> -->
+                                    <!-- <input type="{{is_visible ? 'text' : 'password'}}" [(ngModel)]="password" (input)="checkPassword()" /> -->
 
-                  <span class="tooltip">
-                    <ul>
-                      <ul id="set">
-                        <li id="count">Length: 0</li>
-                        <!-- <i id="see" (click)="toggleVisibility()" class="far fa-eye"></i> -->
-                      </ul>
-                      <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
-                        <i class="far fa-check-circle" [style.color]="lengthCheck ? 'green' : 'red'"></i><span [style.color]="lengthCheck ? 'green' : 'red'">Length
-                          Should be at least8.</span>
-                      </li>
+                                    <span class="tooltip">
+                                        <ul>
+                                            <ul id="set">
+                                                <li id="count">Length: 0</li>
+                                                <!-- <i id="see" (click)="toggleVisibility()" class="far fa-eye"></i> -->
+                                            </ul>
+                                            <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
+                                                <i class="far fa-check-circle"
+                                                    [style.color]="lengthCheck ? 'green' : 'red'"></i><span
+                                                    [style.color]="lengthCheck ? 'green' : 'red'">Length
+                                                    Should be at least8.</span>
+                                            </li>
 
-                      <li id="check2">
-                        <i class="far fa-check-circle" [style.color]="numericalCheck ? 'green' : 'red'"></i><span
-                          [style.color]="numericalCheck ? 'green' : 'red'">Contains
-                          numerical character.</span>
-                      </li>
-                      <li id="check3">
-                        <i class="far fa-check-circle" [style.color]="specialCharCheck ? 'green' : 'red'"></i><span
-                          [style.color]="specialCharCheck ? 'green' : 'red'">Contains special character.</span>
-                      </li>
-                      <!-- <li id="check4">
+                                            <li id="check2">
+                                                <i class="far fa-check-circle"
+                                                    [style.color]="numericalCheck ? 'green' : 'red'"></i><span
+                                                    [style.color]="numericalCheck ? 'green' : 'red'">Contains
+                                                    numerical character.</span>
+                                            </li>
+                                            <li id="check3">
+                                                <i class="far fa-check-circle"
+                                                    [style.color]="specialCharCheck ? 'green' : 'red'"></i><span
+                                                    [style.color]="specialCharCheck ? 'green' : 'red'">Contains special
+                                                    character.</span>
+                                            </li>
+                                            <!-- <li id="check4">
   <i class="far fa-check-circle"></i><span [style.color]="spaceCheck?'green':'red'">Shouldn't contain spaces.</span>
 </li> -->
-                      <li id="check5">
-                        <i class="far fa-check-circle" [style.color]="capitalCheck ? 'green' : 'red'"></i><span [style.color]="capitalCheck ? 'green' : 'red'">Should
-                          contain at least one Capital letter</span>
-                      </li>
-                      <li id="check6">
-                        <i class="far fa-check-circle" [style.color]="smallCheck ? 'green' : 'red'"></i><span [style.color]="smallCheck ? 'green' : 'red'">Should
-                          contain at least one small letter</span>
-                      </li>
-                    </ul>
-                  </span>
-                </div>
-              </label>
+                                            <li id="check5">
+                                                <i class="far fa-check-circle"
+                                                    [style.color]="capitalCheck ? 'green' : 'red'"></i><span
+                                                    [style.color]="capitalCheck ? 'green' : 'red'">Should
+                                                    contain at least one Capital letter</span>
+                                            </li>
+                                            <li id="check6">
+                                                <i class="far fa-check-circle"
+                                                    [style.color]="smallCheck ? 'green' : 'red'"></i><span
+                                                    [style.color]="smallCheck ? 'green' : 'red'">Should
+                                                    contain at least one small letter</span>
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </label>
                             <div style="position: relative;">
-                                <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password" (input)="checkPassword()" placeholder="Enter your password" class="password" [class.is-invalid]="
+                                <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password"
+                                    (input)="checkPassword()" placeholder="Enter your password" class="password"
+                                    [class.is-invalid]="
                 fun['password'].invalid && fun['password'].touched
-              " formControlName="password" #passwordInput class="form-control is-invalid" id="password" (keyup)="onKeyUp($event)" (keydown.space)="$event.preventDefault()" />
+              " formControlName="password" #passwordInput class="form-control is-invalid" id="password"
+                                    (keyup)="onKeyUp($event)" (keydown.space)="$event.preventDefault()" />
 
                                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)"><i
-                    class="fa {{ showPasswordIcon }}"></i></span>
+                                        class="fa {{ showPasswordIcon }}"></i></span>
                             </div>
                             <!-- <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span> -->
                             <!-- <span *ngIf="password && password.invalid && password.touched "> -->
@@ -204,17 +225,19 @@
                         <label for="name" class="text-label">Confirm your Password</label>
                         <div style="position: relative;">
 
-                            <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm" #passwordInpu (keyup)="onKeyUp($event)" />
+                            <input type="password" placeholder="Confirm your password" class="cPassword"
+                                formControlName="confirm" #passwordInpu (keyup)="onKeyUp($event)" />
 
 
 
 
-                            <span class="password-toggle" (click)="togglePassword(passwordInpu)">
-                <i class="fa {{showPasswordIcon1}}"></i>
-              </span>
+                            <span class="password-toggle icon_eye" (click)="togglePassword(passwordInpu)">
+                                <i class="fa {{showPasswordIcon1}}"></i>
+                            </span>
                         </div>
-                        <span *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><i
-                class="fa-solid fa-circle-info"></i>Password didn't match</span>
+                        <span
+                            *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><img
+                            src="assets/images/valid_error.svg" alt="">Password didn't match</span>
 
                     </div>
 
@@ -223,7 +246,7 @@
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />
                     <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a routerLink="/t&c"> terms &
-              conditions</a></label>
+                            conditions</a></label>
                 </div>
                 <div class="input-field button">
                     <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />

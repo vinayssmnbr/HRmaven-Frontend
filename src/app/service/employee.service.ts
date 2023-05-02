@@ -50,9 +50,20 @@ export class EmployeeService {
 
 
   //LOGIN AND VERIFY DASHBOARD
-  users(data: any) {
-    return this.http.post(this.loginurl, data);
-  }
+  // Role=localStorage.getItem('role')
+  // users(data: any) {
+  //     if (this.Role === 'Employee') {
+  //       return this.http.post(this.loginurl, data);
+  //     } else {
+  //       window.location.href = '/login';
+  //       return null
+  //     }
+
+  // }
+users(data:any){
+  return this.http.post(this.loginurl,data)
+}
+
 
   // updateIsLinkClicked(email: string): Observable<any> {
   //   const url = `${this.changepwd}`;

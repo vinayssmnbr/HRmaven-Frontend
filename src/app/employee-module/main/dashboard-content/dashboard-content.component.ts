@@ -44,35 +44,32 @@ export class DashboardContentComponent {
     },
     {
       id: 7,
-      name: 'UI/UX Designer',
+      name: 'August',
     },
     {
       id: 8,
-      name: 'UI/UX Designer',
+      name: 'September',
     },
     {
       id: 9,
-      name: 'UI/UX Designer',
+      name: 'October',
     },
     {
       id: 10,
-      name: 'UI/UX Designer',
+      name: 'November',
     },
     {
       id: 11,
-      name: 'UI/UX Designer',
+      name: 'December',
     },
-    {
-      id: 12,
-      name: 'UI/UX Designer',
-    },
+    
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
   
     this.contentdropdown = !this.contentdropdown;
   }
-  Selectvariable: string = 'Designation';
+  Selectvariable: string = 'January';
   colorvariable: number =  0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
