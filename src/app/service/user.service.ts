@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rx
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { CookieService} from 'ngx-cookie-service'
-import * as bcrypt from 'bcryptjs';
 
 @Injectable({
   providedIn: 'root',
