@@ -107,7 +107,36 @@ ul.navigation li.active{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
-
+ul.navigation li.active .home_img1{
+  display: block;
+}
+ul.navigation li.active .calendar_img1 {
+  display: block;
+}
+ul.navigation li.active .home_img{
+  display: none;
+}
+ul.navigation li.active .calendar_img {
+  display: none;
+}
+ul.navigation li.active .timesheet_img1 {
+  display: block;
+}
+ul.navigation li.active .timesheet_img {
+  display: none;
+}
+ul.navigation li.active .employee_img1 {
+  display: block;
+}
+ul.navigation li.active .employee_img {
+  display: none;
+}
+ul.navigation li.active .recruitment_img1 {
+  display: block;
+}
+ul.navigation li.active .recruitment_img {
+  display: none;
+}
 
 ul.navigation li:hover{
   background: rgba(255, 255, 255, 0.3);
@@ -135,6 +164,7 @@ li.active .select-btn i {
 .home_img1{
   display: none;
 }
+
 .employee_img1{
   display: none;
 }
@@ -152,6 +182,24 @@ li.active .select-btn i {
 }
 .report_img1{
   display: none;
+}
+.signout1{
+  display: none;
+}
+.help1{
+  display: none;
+}
+ul.navigation2 li:hover .help{
+  display: none;
+}
+ul.navigation2 li:hover .help1{
+  display: block;
+}
+ul.navigation2 li:hover .signout{
+  display: none;
+}
+ul.navigation2 li:hover .signout1{
+  display: block;
 }
 ul.navigation li:hover .home_img{
   display: none;
