@@ -105,12 +105,12 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
     newpassword(data:any)
     {
       console.log(data.value);
-      this.userService.newpwdaccount(this.objectid,data.value).subscribe((res:any)=>{
-        if(res=="changeit"){
-          console.log(res);
-        }
+      // this.userService.newpwdaccount(this.objectid,data.value).subscribe((res:any)=>{
+      //   if(res=="changeit"){
+      //     console.log(res);
+      //   }
 
-      });
+      // });
 
   }
 

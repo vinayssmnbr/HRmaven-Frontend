@@ -12,7 +12,7 @@
             </div>
             <div class="text-image">
                 <p>Total Applications</p>
-                <h1>500</h1>
+                <h1>--:--</h1>
             </div>
         </div>
         <div class="col-3">
@@ -21,7 +21,7 @@
             </div>
             <div class="text-image">
                 <p>Shortlisted Candidates</p>
-                <h1>500</h1>
+                <h1>--:--</h1>
             </div>
         </div>
         <div class="col-3">
@@ -30,7 +30,7 @@
             </div>
             <div class="text-image">
                 <p>Rejected Candidates</p>
-                <h1>500</h1>
+                <h1>--:--</h1>
             </div>
         </div>
         <div class="col-3">
@@ -38,8 +38,8 @@
                 <i class="fa-sharp fa-regular fa-clock"></i>
             </div>
             <div class="text-image">
-                <p>Onhold Candidates</p>
-                <h1>500</h1>
+                <p>Hired Candidates</p>
+                <h1>--:--</h1>
             </div>
         </div>
     </div>
@@ -62,7 +62,8 @@
             <div class="meeting-area">
                 <div class="meeting-text">
                     <h2>Meetings</h2>
-                    <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
+                    <p (click)="openModal10()"><i class="fa-solid fa-circle-plus" (click)="openModal10()"></i> Create
+                        new</p>
                 </div>
                 <div class="meeting-scrollbar">
                     <div class="all-meetings" *ngFor="let option of options let index = index">
@@ -253,9 +254,11 @@
 
     <!---------------------------dashboard Modal------------------------------>
 
-    <div *ngIf="isFromSignupPage">
-        <div class="Modal_form" *ngIf="!formSubmitted">
-            <div class="Modal_modal">
+    <!-- <div *ngIf="isFromSignupPage"> -->
+        <div *ngIf="!empname">   
+        <div class="Modal_form">
+
+            <div class="Modal_modal"  *ngIf=" !formSubmitted">
 
                 <div class="edit-profile-heading">
                     <h3>Required Details </h3>
@@ -267,14 +270,7 @@
                         <div class="form__group">
                             <label for="name">Name</label>
                             <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name"
-                                formControlName="name" required (keydown)="Space($event)" />
-                              <div *ngIf="name.invalid && name.touched || name.dirty">
-                                <span *ngIf="name.errors">
-                                  <i class="fa-solid fa-circle-info"></i>Enter Only Character
-                                </span>
-
-                              </div>
-
+                                formControlName="name" required />
                         </div>
                         <div class="form__group">
                             <label for="noOfEmployee">No. of employees</label>
@@ -291,21 +287,11 @@
                             <label for="name">Phone no.</label>
                             <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
                                 id="name" required />
-                                <div *ngIf="phone.invalid && phone.touched || phone.dirty">
-                                  <span *ngIf="phone.errors"><i class="fa-solid fa-circle-info"></i>Enter Valid Phone Number</span>
-
-                                </div>
                         </div>
                         <div class="form__group">
-                            <!-- <label for="email">Head Office</label>
+                            <label for="email">Head Office</label>
                             <input type="text" class="form_input" placeholder='Eg. Leeds, America'
-                                formControlName="headOffice" id="email" required /> -->
-                                <label for="office">Head Office</label>
-                                <input type="text" class="form_input" placeholder='Eg. Leeds, America'
-                                    formControlName="headOffice" id="office" required (keydown)="Space($event)" />
-                                <div *ngIf="headOffice.invalid && headOffice.touched || headOffice.dirty">
-                                  <span *ngIf="headOffice.errors"><i class="fa-solid fa-circle-info"></i>Enter Only Characters</span>
-                                </div>
+                                formControlName="headOffice" id="email" required />
                         </div>
                     </div>
 
@@ -316,4 +302,162 @@
             </div>
         </div>
     </div>
+
+
+    <!-------------------------Meetings On click Modal--------------->
+
+
+    <div class="modal"*ngIf="showModal10" >
+        <div class="modal-content" *ngIf="showModalContent">
+            <i class="fa-solid fa-xmark" (click)="closeModal10()"></i>
+            <div class="modal-heading">
+                <h5>Add an event or meetings</h5>
+            </div>
+            <form class="create-new-form">
+                <div class="meeting-mode">
+                    <div class="form-group">
+                        <label>Meeting title</label> <br>
+                        <input type="text" placeholder="UI/UX designer" class="meeting-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Mode</label><br>
+                        <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen1()">
+                              <p>{{Selectvariable1}}</p>
+                              <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown1">
+                              <ul>
+                                <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                                  {{arr1.name}}</li>
+                              </ul>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="meeting-mode">
+                    <div class="form-group">
+                        <label>Date</label> <br>
+                        <input type="date" placeholder="23/04/2023" class="date-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Start time</label><br>
+                        <input type="time" placeholder="02:00 pm" class="date-input">
+                    </div>
+                    <div class="form-group">
+                        <label>End time</label><br>
+                        <input type="time" placeholder="2 hrs" class="date-input">
+                    </div>
+                </div>
+
+                <div class="meeting-mode" *ngIf="Meetinglink">
+                    <div class="form-group">
+                        <label>Meeting link</label> <br>
+                        <input type="text" placeholder="Paste here..." class="meeting-link">
+                        <div class="link-image"><img src="assets/images/meeting-link.svg" alt=""></div>
+                    </div>
+                </div>
+                <div class="meeting-mode" *ngIf="Venuelink">
+                    <div class="form-group">
+                        <label>Venue</label> <br>
+                        <input type="text" placeholder="Paste here..." class="meeting-link">
+                       
+                    </div>
+                </div>
+
+                <div class="meeting-mode">
+                    <div class="invite-add">
+                        <div class="form-group">
+                            <label>Invite an employees</label> <br>
+                            <input type="text" placeholder="Type employee name" class="invite">
+
+                        </div>
+                        <div class="add-btn">
+                            <button>Add</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="in-this-interview-area">
+                <h5>In this interview</h5>
+                <div class="image-text-design">
+                    <div class="image-text-heading">
+                    <div class="image-name">
+                        <img src="assets/images/olivye.png" alt="">
+                    </div>
+                    <div class="name-heading">
+                        <h6>Olivye Wu</h6>
+                        <p>Olivye@gmail.com</p>
+                    </div>
+                </div>
+                    <div class="designer-text">
+                        <h5>UI/UX designer</h5>
+                    </div>
+                </div>
+                <div class="image-text-design">
+                    <div class="image-text-heading">
+                    <div class="image-name">
+                        <img src="assets/images/olivye.png" alt="">
+                    </div>
+                    <div class="name-heading">
+                        <h6>Olivye Wu</h6>
+                        <p>Olivye@gmail.com</p>
+                    </div>
+                </div>
+                    <div class="designer-text">
+                        <h5>UI/UX designer</h5>
+                    </div>
+                </div>
+                <div class="image-text-design">
+                    <div class="image-text-heading">
+                    <div class="image-name">
+                        <img src="assets/images/olivye.png" alt="">
+                    </div>
+                    <div class="name-heading">
+                        <h6>Olivye Wu</h6>
+                        <p>Olivye@gmail.com</p>
+                    </div>
+                </div>
+                    <div class="designer-text">
+                        <h5>UI/UX designer</h5>
+                    </div>
+                </div>
+                <div class="image-text-design">
+                    <div class="image-text-heading">
+                    <div class="image-name">
+                        <img src="assets/images/olivye.png" alt="">
+                    </div>
+                    <div class="name-heading">
+                        <h6>Olivye Wu</h6>
+                        <p>Olivye@gmail.com</p>
+                    </div>
+                </div>
+                    <div class="designer-text">
+                        <h5>UI/UX designer</h5>
+                    </div>
+                </div>
+
+
+            </div>
+           
+
+            <div class="discard-save">
+                <div class="discard"><button (click)="closeModal10()">Discard</button></div>
+                <div class="save"><button (click)="closeModal10()">Save</button> </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
 </div>
+
+
+
+
