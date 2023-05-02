@@ -276,7 +276,9 @@
 .Pending,
 .Approved,
 .Rejected {
-  padding: 2px 50px;
+  padding: 3px 50px;
+  border: 3px solid transparent;
+  border-radius: 3px;
 }
 
 .Pending:hover,
@@ -692,10 +694,10 @@ input[type="radio"] {
 }
 
 .leave_modal h3 {
-  font-size: 15px;
-  color: #333333;
-  font-weight: 400;
-  padding-top: 10px;
+      font-size: 15px;
+    color: #333333;
+    font-weight: 400;
+    padding-top: 10px;
 }
 
 .leave_modal textarea {
