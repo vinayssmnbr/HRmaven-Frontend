@@ -9,7 +9,7 @@
           <h1>{{total}}</h1>
         </div>
         <div class="progress-circle-container">
-          <div class="progress-circle progress-18">
+          <div class="progress-circle progress-{{(total/total)*100}}">
             <span></span>
           </div>
         </div>
@@ -22,12 +22,9 @@
           <h3>Accepted Leaves</h3>
           <h1>{{acceptcount}}</h1>
         </div>
-        <!-- <svg class="progress circular1" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
-          <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-          <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-        </svg> -->
+
         <div class="progress-circle-container">
-          <div class="progress-circle progress-18">
+          <div class="progress-circle progress-{{(acceptcount/total)*100}}">
             <span></span>
           </div>
         </div>
@@ -40,7 +37,7 @@
           <h1>{{rejectcount}}</h1>
         </div>
         <div class="progress-circle-container">
-          <div class="progress-circle progress-58">
+          <div class="progress-circle progress-{{(rejectcount/total)*100}}">
             <span></span>
           </div>
         </div>
@@ -53,7 +50,7 @@
           <h1>{{pendingcount}}</h1>
         </div>
         <div class="progress-circle-container">
-          <div class="progress-circle progress-88">
+          <div class="progress-circle progress-{{(pendingcount/total)*100}}">
             <span></span>
           </div>
         </div>
@@ -163,19 +160,18 @@
           <td>
             <p class="mt20">
               <span class="tooltip"
-                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                data-tooltip-pos="right" data-tooltip-length="medium">I have to attend some family
-                f...</span>
+                data-tooltip='n.reason'
+                data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}</span>
             </p>
           </td>
           <td>4/6</td>
           <td><a href="https://google.com" target="_blank">Document</a></td>
           <td class="table_slide">
-            <div class="check_box_icon">
+            <div class="check_box_icon" *ngIf="!n.select">
               <div class="thick_round">
-                <label for="checkbox" (click)="openModal(n,index)"></label>
+                <label for="checkbox" (click)="openModal(n,index)" ></label>
               </div>
-              <div class="cross_round">
+              <div class="cross_round" *ngIf="!n.select">
                 <label for="checkbox" (click)="openModal1(n,index)"></label>
               </div>
             </div>
@@ -305,19 +301,19 @@
   </div>
 
 
-  <div class="table_btn" *ngIf="showSearchBox">
-    <button class="accept_btn" (click)="acceptfunction()">Accept All</button>
-    <button class="reject_btn" (click)="rejectfunction()">Reject All</button>
+  <div class="table_btn" *ngIf="showSearchBox && pendingshow">
+    <button class="accept_btn" (click)="acceptfunction()" *ngIf="count>0">Accept</button>
+    <button class="reject_btn" (click)="rejectfunction()" *ngIf="count>0">Reject</button>
   </div>
 
 
   <!--------------------- Leave a comment Modal Accepet--------------- -->
-  <form class="leave_form" *ngIf="showModal">
-    <div class="leave_modal">
+  <form class="leave_form" *ngIf="showModal" >
+    <div class="leave_modal" style="height:300px">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <h3>Leave a comment</h3>
       <textarea placeholder="Type your reason here..." [(ngModel)]="acceptmessage"
-        [ngModelOptions]="{standalone: true}"></textarea>
+        [ngModelOptions]="{standalone: true}" ></textarea>
       <div class="leave_form_btn">
         <button class="cancel_btn" (click)="closeModal()">Cancel</button>
         <button class="Done_btn" (click)="openModal2()">Done</button>
@@ -325,8 +321,8 @@
     </div>
   </form>
   <!--------------------- Leave a comment Modal Reject--------------- -->
-  <form class="leave_form" *ngIf="showModal1">
-    <div class="leave_modal">
+  <form class="leave_form" *ngIf="showModal1" >
+    <div class="leave_modal" style="height:300px">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <h3>Leave a comment</h3>
       <textarea placeholder="Type your reason here..." [(ngModel)]="acceptmessage"

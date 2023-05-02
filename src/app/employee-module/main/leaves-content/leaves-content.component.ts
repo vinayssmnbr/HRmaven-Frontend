@@ -13,28 +13,43 @@ export class LeavesContentComponent {
 
   leaves: any = [];
   str = "";
-  obj = {
-    casual: 1,
-    earned: 2,
-    urgent: 3,
-    medical: 4
-  };
+  obj:any;
 
   constructor(public empService: EmpService, private formBuilder: FormBuilder) {
     empService.activeComponent = 'leave';
     empService.headerContent = '';
     this.leavegraphcontent();
+    this.obj={
+      casual: 1,
+      earned: 2,
+      urgent: 3,
+      medical: 4
+    };
   }
 
   async leavegraphcontent() {
     await this.empService.leavegraph().subscribe((res: any) => {
-      console.log(res.response[0]);
-      this.obj = res.response[0];
+      if(res.response[0]==undefined)
+      {
+        this.obj={
+          casual: 1,
+          earned: 2,
+          urgent: 3,
+          medical: 4
+        };
+      }
     })
 
     this.empService.leavehistory().subscribe((res: any) => {
+      console.log(res.response[0])
+      if(res.response[0].History==undefined)
+      {
+        console.log("undefined");
+      }
+      else{
       console.log(res.response[0].History);
       this.leaves = res.response[0].History;
+      }
     })
 
   }
@@ -49,16 +64,17 @@ export class LeavesContentComponent {
     this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
       console.log(res);
     })
-    console.log(this.leaves);
     this.leaves.push({
-      appliedOn:this.date.getDate(),
+      appliedOn:this.date.toISOString(),
       category:this.empleaveForm.value.category,
-      document:this.fileurl,
       from:this.empleaveForm.value.from,
       to:this.empleaveForm.value.to,
       reason:this.empleaveForm.value.reason,
       status:"pending",
+      duration:Number(this.str),
+      message:""
     })
+    console.log(this.leaves);
   }
   cancel(){
     this.empleaveForm.reset();
@@ -199,6 +215,15 @@ export class LeavesContentComponent {
       this.loader = false;
       this.empleaveForm.value.url = this.empService.fileUrl;
     });
+  }
+
+  ngAfterViewInit(){
+    this.obj={
+      casual: 1,
+      earned: 2,
+      urgent: 3,
+      medical: 4
+    };
   }
 
 }

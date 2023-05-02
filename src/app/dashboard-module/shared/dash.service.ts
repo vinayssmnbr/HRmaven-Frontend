@@ -55,7 +55,8 @@ export class DashService {
 
   //ADD  Employee Data
   addEmployee(data) {
-    return this.http.post('https://hrmaven.works/api/create', data);
+
+    return this.http.post('http://localhost:3000/api/create', data);
     return this.http.post(this.createData, data);
 
   }
@@ -95,31 +96,43 @@ export class DashService {
         'MyDate': date
       }
     )
-    return this.http.get(this.attendance,{ headers });  //this.getAttd
+    return this.http.get(this.attendance,{ headers });
   }
 
   getAttendancecard(month:any){
+
     const headers= new HttpHeaders(
       {
         'Content-Type': 'application/json',
         'month': month.toString()
       }
     )
-    return this.http.get(this.attendancecard,{ headers });
+    return this.http.get(this.attendancecard);
   }
 
 
   graphcontent()
   {
-    return this.http.get(this.attendancegraph);
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.attendancegraph, { headers });
   }
 
 
 
   getleavecontent(){
-    return this.http.get(environment.leavecontent);
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(environment.leavecontent ,{headers});
   }
-
   updateleavestatus(id:any,status:any,message:any){
     const headers= new HttpHeaders(
       {
@@ -149,7 +162,13 @@ export class DashService {
 
 
   getleavegraph(){
-    return this.http.get(this.leavegraph);
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.leavegraph, { headers });
   }
 
   getEmployeeStatus(status:string): Observable<any[]> {
@@ -158,7 +177,13 @@ export class DashService {
       .pipe(map((data) => data.filter((user) => user.status ===status)));
   }
   getEmployee(){
-    return this.http.get(this.getData)
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.getData,{ headers })
   }
 
 
