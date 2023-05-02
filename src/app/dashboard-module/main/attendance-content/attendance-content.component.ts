@@ -43,8 +43,12 @@ export class AttendanceContentComponent implements OnInit {
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card:any=[];
-  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
+  card: any = [];
+  constructor(
+    public dashService: DashService,
+    private datepipe: DatePipe,
+    private http: HttpClient
+  ) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.getLeaveData();
@@ -116,6 +120,12 @@ export class AttendanceContentComponent implements OnInit {
             },
             {
               label: 'Leaves',
+              data: leave,
+              backgroundColor: ['#00C9FF'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'short leave',
               data: leave,
               backgroundColor: ['#00C9FF'],
               pointStyle: 'circle',
@@ -309,26 +319,21 @@ export class AttendanceContentComponent implements OnInit {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
-// ----------------Profile table Girija----------------
-profilecard=false;
-attendence_main=true;
-profileview(){
-this.profilecard=true;
-this.attendence_main=false;
+  // ----------------Profile table Girija----------------
+  profilecard = false;
+  attendence_main = true;
+  profileview() {
+    this.profilecard = true;
+    this.attendence_main = false;
+  }
+  back_profile() {
+    this.profilecard = false;
+    this.attendence_main = true;
+  }
 
-}
-back_profile(){
-  this.profilecard=false;
-this.attendence_main=true;
-
-}
-
-
-getEmployeeData(){
-  this.dashService.getEmployee().subscribe((res)=>{
-    this.employee=res
-  })
-}
-
-
+  getEmployeeData() {
+    this.dashService.getEmployee().subscribe((res) => {
+      this.employee = res;
+    });
+  }
 }
