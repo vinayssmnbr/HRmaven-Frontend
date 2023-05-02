@@ -996,7 +996,7 @@ export class EmployeeContentComponent implements OnInit {
   generateSampleCsvFile() {
    
     const csvData = [
-      ['name', 'dateOfJoining', 'mobile',' email','timing','Gender','designation','location','ctc','job_Type','City','bankname','ifsc','uid','url'],
+      ['name', 'dateOfJoining', 'mobile',' email','timing','Gender','designation','location','ctc','job_Type','City','bankname','ifsc'],
       ['John kumar', '9/28/93', '8825167890','john1v5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB7906456'],
       ['Ramanujan kumar', '9/28/94', '8815167990','ramanujan7t5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB7906465'],
       ['Ravi kumar', '9/28/95', '8837167880','ravi2p5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB9706386'],
