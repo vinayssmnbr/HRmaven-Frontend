@@ -32,7 +32,8 @@ export const environment = {
   patchleave:'https://hrmaven.works/api/leave/update/leave',
   leavegraph:'https://hrmaven.works/api/leave/graph/leave',
  getempRecord:'https://hrmaven.works/api/detail/fetch',
-baseUrl:'https://hrmaven.works/user/export'
+baseUrl:'https://hrmaven.works/user/export',
+checkemail : 'http://localhost:3000/api/checkemail',
 
 
 
