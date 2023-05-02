@@ -60,14 +60,9 @@ export class EmployeeService {
   //     }
 
   // }
-
-
-  users(data: any) {
-      return this.http.post(this.loginurl, data);
-    }
-
-
-
+users(data:any){
+  return this.http.post(this.loginurl,data)
+}
 
 
   // updateIsLinkClicked(email: string): Observable<any> {

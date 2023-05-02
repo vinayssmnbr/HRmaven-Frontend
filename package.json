@@ -22,6 +22,7 @@
         "@swimlane/ngx-charts": "^20.1.2",
         "bcrypt": "^5.1.0",
         "chart.js": "^4.2.1",
+        "csv-stringify": "^6.3.3",
         "file-saver": "^2.0.5",
         "filestack-js": "^3.26.1",
         "jquery": "^3.6.4",
@@ -34,6 +35,7 @@
         "node": ">=16.13.2",
         "npm": "<=9.5.1",
         "rxjs": "~7.8.0",
+        "stream-browserify": "^3.0.0",
         "zone.js": "~0.12.0"
     },
     "devDependencies": {
