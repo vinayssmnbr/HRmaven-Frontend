@@ -105,22 +105,22 @@ export class LoginComponent {
 
   checkEmail(){
 
-      // this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
-      //   // this.emailExists = false;
-      //     console.log("message: ",res.message);
+      this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
+        // this.emailExists = false;
+          console.log("message: ",res.message);
 
-      //   if(res.message === 'user-found'){
-      //     // this.userdetail = this.forgotPassword.controls['email'].value
-      //     this.userdetail = res.message
-      //   } else if(res.message === 'user-not-found'){
-      //     this.usernotfound = res.message;
-      //   }
+        if(res.message === 'user-found'){
+          // this.userdetail = this.forgotPassword.controls['email'].value
+          this.userdetail = res.message
+        } else if(res.message === 'user-not-found'){
+          this.usernotfound = res.message;
+        }
 
-      //   this.employeemail = res;
+        this.employeemail = res;
 
 
-      //   console.log('Response from API:', this.employeemail);
-      // });
+        console.log('Response from API:', this.employeemail);
+      });
 
     this.cookie.deleteAll()
 
@@ -164,6 +164,8 @@ export class LoginComponent {
 
   toggleForgot() {
     this.Forgotshow = !this.Forgotshow;
+    this.userNotFound !== true
+
   }
   toggleForgot1() {
     this.EmailSent = !this.EmailSent;
@@ -205,6 +207,9 @@ obj:any
     this.userService.users(data).subscribe((res: any) => {
       this.userService.users(this.loginForm);
       console.log('login User: ', res);
+      console.log('login User: ', res.noOfEmployee);
+      this.personalData = res.noOfEmployee
+      console.log('login personalData: ',this.personalData);
       this.obj=res.role
       localStorage.setItem('role',this.obj)
       console.log("obj",this.obj)
@@ -226,8 +231,6 @@ obj:any
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
-        console.log(res._id);
-        this.cookie.set('id',res._id);
         // localStorage.setItem('userId', userId);
         this.submit();
       } else if (res.message == 'Invalid') {
@@ -241,7 +244,20 @@ obj:any
 
 
     });
+    // this.personalData = localStorage.getItem('totalemployee');
+    // this.userService.isnotFromSignupPage = true;
+
+    // if (this.userService.isnotFromSignupPage) {
+    //   this.formSubmitted = false;
+    //   console.log("isFromSignupPage: ", this.userService.isnotFromSignupPage);
+    // } else {
+    //   this.formSubmitted = true;
+    // }
   }
+  personalData: any = '';
+  formSubmitted: any = '';
+
+  userNotFound: boolean = false;
   ForgetEmailSubmit(data: any) {
     console.log('Forget Password Email');
     console.log(data);
@@ -258,8 +274,11 @@ obj:any
         setTimeout(() => {
           this.EmailSent = !this.EmailSent;
         }, 500);
-      } else if (res.message === 'email-id not found') {
+      } if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
+        console.log("usernotfound: ",this.usernotfound)
+                this.usernotfound = true;
+
       }
 
       this.employeemail = res;
@@ -271,11 +290,12 @@ obj:any
       this.userService.ForgotEmail(this.forgotPassword);
       console.log('response:' + res);
     });
+    if(!this.userNotFound){
     this.Forgotshow = !this.Forgotshow;
     setTimeout(() => {
       this.EmailSent = !this.EmailSent;
     }, 500);
-
+  }
   }
 
 

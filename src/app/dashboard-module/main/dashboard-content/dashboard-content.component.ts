@@ -55,31 +55,14 @@ export class DashboardContentComponent implements OnInit {
     phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
   })
-
-  get name(){
-    return this.personaldataForm.get('name');
-  }
-  get phone(){
-    return this.personaldataForm.get('phone')
-  }
-  get headOffice(){
-    return this.personaldataForm.get('headOffice')
-  }
-
-  Space(event:any){
-    if(event.target.selectionStart === 0  && event.code == "Space"){
-     event.preventDefault();
-    }
- }
-
   email = localStorage.getItem('email');
-  submitPersonalData(data: any) {
-    console.log('personal data: ', data);
-    this.userService.addpersonals(this.email, data).subscribe((res: any) => {
-      console.log('personaldataForm.value res: ', res);
-      console.log('personaldataForm.value data: ', data);
+  submitPersonalData(data: any){
+    console.log("personal data: ", data);
+    this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
+      console.log("personaldataForm.value res: ", res);
+      console.log("personaldataForm.value data: ", data);
       this.formSubmitted = true;
-    });
+        });
   }
 
   options: any = [
@@ -122,12 +105,46 @@ export class DashboardContentComponent implements OnInit {
     });
   }
 
-  leaves: any[] = [];
+  leaves: any[] = [
 
-  ngOnInit() {
-    console.log('isFromSignupPage: ', this.isFromSignupPage);
+
+  ]
+  personalData: any =''
+  empname: any = ''
+  objectuserid = localStorage.getItem('email')
+
+  ngOnInit()
+   {
+    this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+      console.log("res account settings personaldata: ", res);
+
+      console.log("res account settings personaldata: ", res.personaldata);
+      console.log("res account settings personaldata: ", res.personaldata.headOffice);
+
+      console.log("res account settings personaldata: ", res.useridd);
+
+      this.empname = res.personaldata.noOfEmployee;
+      localStorage.setItem('empname', this.empname)
+      // this.employeename = res.personaldata.name;
+      // this.totalemployee = res.personaldata.noOfEmployee;
+      // this.headOffice = res.personaldata.headOffice;
+      // this.phone = res.personaldata.phone;
+      // this.description = res.personaldata.description
+      // this.profileimage = res.personaldata.profileimage;
+
+    });
+
+    this.personalData = localStorage.getItem('empname');
+    if (this.personalData === null) {
+      this.formSubmitted = false;
+    } else {
+      this.formSubmitted = true;
+    }
+  
+
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
-    console.log('isFromSignupPage: ', this.isFromSignupPage);
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.graphcontent().subscribe((res: any) => {
       if (res) {
@@ -316,7 +333,16 @@ export class DashboardContentComponent implements OnInit {
     this.showModalContent=false;
   }
 
-
+  showModal11=false;
+  openModal11(){
+    this.showModal11 = true;
+    this.showModalContent=true
+  }
+  
+  closeModal11(){
+    this.showModal11 = false;
+    this.showModalContent=false;
+  }
   array1: any = [
     {
       id: 0,

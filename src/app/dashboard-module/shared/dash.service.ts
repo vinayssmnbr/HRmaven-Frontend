@@ -48,7 +48,8 @@ export class DashService {
   attendance=environment.attendance;
   attendancecard=environment.attendancecard;
   attendancegraph=environment.attendancegraph;
-  leavegraph=environment.leavegraph
+  leavegraph=environment.leavegraph;
+  checkemail=environment.checkemail
 
 
   //ADD EMPLOYEE DATA
@@ -166,8 +167,8 @@ export class DashService {
     return this.http.get(this.getData)
   }
 
-  getEmployeeEmail(email:string){
-    return this.http.get(`${this.getData}?email=${email}`)
+  getEmployeeEmail(email:any){
+    return this.http.get(`${this.checkemail}/${email}`)
   }
 
 

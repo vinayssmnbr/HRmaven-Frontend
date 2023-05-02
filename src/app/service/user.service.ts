@@ -4,12 +4,25 @@ import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rx
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { CookieService} from 'ngx-cookie-service'
+import * as bcrypt from 'bcryptjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   isFromSignupPage = false;
 
+  private behaviorNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('default');
+
+  // Method to update the behavior name
+  updateBehaviorName(name: string) {
+    this.behaviorNameSubject.next(name);
+  }
+
+  // Method to get the current behavior name as an Observable
+  getBehaviorName(): Observable<string> {
+    return this.behaviorNameSubject.asObservable();
+  }
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -79,19 +92,19 @@ export class UserService {
 
   //LOGIN AND VERIFY DASHBOARD
 
-  // Role=localStorage.getItem('role')
-  // users(data: any) {
-  //     if (this.Role === 'HR') {
-  //       return this.http.post(this.loginurl, data);
-  //     } else {
-  //       window.location.href = '/login';
-  //       return null
-  //     }
+  Role=localStorage.getItem('role')
+  users(data: any) {
+      if (this.Role === 'HR') {
+        return this.http.post(this.loginurl, data);
+      } else {
+        window.location.href = '/login';
+        return null
+      }
 
-  // }
-  users(data:any){
-    return this.http.post(this.loginurl,data)
   }
+  // users(data:any){
+  //   return this.http.post(this.loginurl,data)
+  // }
 
 
   getUserProfileById(): Observable<any> {

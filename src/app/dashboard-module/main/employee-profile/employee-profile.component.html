@@ -389,7 +389,7 @@
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                   <!-- <p>{{Selectvariable1}}</p> -->
                   <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
-                  <input type="text" [(ngModel)]="Selectvariable4" formControlName="gender" id="text10" placeholder="Select" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="gender" id="text10" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
@@ -583,7 +583,16 @@
               <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
-          <button class="add-more1" (click)="showpgdet()"><i class="fa-solid fa-circle-plus"></i>Add More</button>
+          <div class="">
+          <button class="add-more1" (click)="dropdownOpen2()"><i class="fa-solid fa-circle-plus"></i>Add More<img src="./assets/images/Vector (7).png" alt=""></button>
+          <div class="select_content1 " *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+            <ul>
+              <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                (click)="Changeselect2(arr2)">
+                {{arr2.name}}</li>
+            </ul>
+          </div>
+          </div>
         </form>
 
       </div>
