@@ -76,19 +76,19 @@ export class LoginComponent {
 
 
 
-    // this.activatedRoute.queryParams.subscribe((params) => {
-    //   // console.log(params);
-    //   const token = params['token'];
-    //   // console.log(token);
+    this.activatedRoute.queryParams.subscribe((params) => {
+      // console.log(params);
+      const token = params['token'];
+      // console.log(token);
 
-    //   if (token && token != 'undefined') {
-    //     this.cookie.set('token', token);
-    //     this.router.navigate(['dashboard']);
-    //   } else {
-    //     this.cookie.delete('token');
-    //     this.router.navigate(['login']);
-    //   }
-    // });
+      if (token && token != 'undefined') {
+        this.cookie.set('token', token);
+        this.router.navigate(['dashboard']);
+      } else {
+        this.cookie.delete('token');
+        this.router.navigate(['login']);
+      }
+    });
 
 
 
