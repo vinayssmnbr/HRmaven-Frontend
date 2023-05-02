@@ -196,6 +196,8 @@ div[role="progressbar2"]::before {
 .select_content {
     background-color: #fff;
     cursor: pointer;
+    max-height: 200px;
+    overflow-y: auto;
     width: 172px;
     cursor: pointer;
     padding: 10px;
@@ -219,6 +221,22 @@ div[role="progressbar2"]::before {
     background-color: #ECECEC;
     border-radius: 8px;
 }
+.select_content::-webkit-scrollbar{
+    width: 6px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.select_content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.select_content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #88888881;
+}
+
+
 
 .select_active {
     background-color: #ECECEC;

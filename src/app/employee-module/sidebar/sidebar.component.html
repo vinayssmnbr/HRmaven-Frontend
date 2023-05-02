@@ -9,18 +9,20 @@
     <p>Menu</p>
     <ul class="navigation">
       <li routerLink="/emp-dashboard" routerLinkActive="active" [class.active]="activeLink === 'dashboard'">
-        <a><img src="./assets/images/Frame-5.svg" alt="">
-          Dashboard</a></li>
+        <a><img class="home_img" src="./assets/images/Frame-5.svg" alt="">
+        <img class="home_img1" src="./assets/images/mingcute_home-4-fill.svg" alt="" [class.active]="activeLink === 'dashboard'"> Dashboard</a></li>
       <!-- <li routerLink="/employee" routerLinkActive="active"  [class.active]="activeLink === 'employee'"><a><img src="./assets/images/Frame-7.svg" alt="">Employee</a></li> -->
-      <li routerLink="/emp-calendar" routerLinkActive="active" [class.active]="activeLink === 'calendar'"><a><img
-            src="./assets/images/Frame-13.svg" alt="">Calendar</a>
+      <li routerLink="/emp-calendar" routerLinkActive="active" [class.active]="activeLink === 'calendar'"><a><img class="calendar_img"
+            src="./assets/images/Frame-13.svg" alt="">
+            <img class="calendar_img1" src="./assets/images/timesheet_filled.svg" alt="" [class.active]="activeLink === 'calendar'">Calendar</a>
 
       </li>
 
       <li class="Timesheet" (click)="isAttendanceAndLeaveVisible = !isAttendanceAndLeaveVisible" routerLinkActive="active"
         [class.active]="activeLink === 'Timesheet'">
         <div class="select-btn">
-          <a><img src="./assets/images/timesheet.png" alt="">Timesheet</a>
+          <a><img class="timesheet_img" src="./assets/images/timesheet.png" alt="">
+            <img class="timesheet_img1" src="./assets/images/calendar_filled.svg" alt="" [class.active]="activeLink === 'Timesheet'">Timesheet</a>
           <i class="bx bx-chevron-down"></i>
         </div>
 
@@ -41,7 +43,8 @@
       <!-- <li routerLink="/leaves" routerLinkActive="active" [class.active]="activeLink === 'leaves'"><a><i class="fa-solid fa-list-check"></i>Leaves</a>
       </li> -->
       <li routerLink="/emp-recruitment" routerLinkActive="active" [class.active]="activeLink === 'recruitment'">
-        <a><img src="./assets/images/Frame.svg" alt="">Recruitment</a>
+        <a><img class="recruitment_img" src="./assets/images/Frame.svg" alt="">
+          <img class="recruitment_img1" src="./assets/images/Frame-10.svg" alt="" [class.active]="activeLink === 'recruitment'">Recruitment</a>
       </li>
       <!-- <li routerLink="/employee/report" routerLinkActive="active" [class.active]="activeLink === 'report'"><a><img src="./assets/images/Frame-11.svg" alt="">Report</a>
       </li> -->
@@ -51,8 +54,10 @@
   <div class="side2">
     <p>Settings</p>
     <ul class="navigation2">
-      <li><a href="#"><img src="./assets/images/icon-park-outline_help.svg">Help</a></li>
-      <li><a (click)="logout()"><img src="./assets/images/uil_signout.svg">Sign Out</a></li>
+      <li><a href="#"><img class="help" src="./assets/images/icon-park-outline_help.svg">
+        <img class="help1" src="./assets/images/material-symbols_help.svg" alt="">Help</a></li>
+      <li><a (click)="logout()"><img class="signout" src="./assets/images/uil_signout.svg">
+        <img class="signout1" src="./assets/images/uis_signout.svg" alt="">Sign Out</a></li>
     </ul>
   </div>
 </div>

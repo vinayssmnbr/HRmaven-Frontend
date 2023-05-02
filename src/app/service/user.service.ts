@@ -4,12 +4,25 @@ import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rx
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { CookieService} from 'ngx-cookie-service'
+import * as bcrypt from 'bcryptjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   isFromSignupPage = false;
 
+  private behaviorNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('default');
+
+  // Method to update the behavior name
+  updateBehaviorName(name: string) {
+    this.behaviorNameSubject.next(name);
+  }
+
+  // Method to get the current behavior name as an Observable
+  getBehaviorName(): Observable<string> {
+    return this.behaviorNameSubject.asObservable();
+  }
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -44,7 +57,7 @@ export class UserService {
     this.isLoggedIn.next(true);
     return this.http.post(this.saveurl, data);
   }
- 
+
   updatepersonals(email: any, data: any){
     const url = `${this.personaldataupdate}/${email}`;
     return this.http.patch(url, data);
@@ -72,24 +85,26 @@ export class UserService {
   }
 
   newpwdaccount(email: any ,data: any) {
- 
+
     return this.http.post(`${this.resetpwdaccount}/${email}`, data);
   }
 
 
-
-
-
-  
-
-
-
-
   //LOGIN AND VERIFY DASHBOARD
-  users(data: any) {
-    return this.http.post(this.loginurl, data);
-  }
 
+  // Role=localStorage.getItem('role')
+  // users(data: any) {
+  //     if (this.Role === 'HR') {
+  //       return this.http.post(this.loginurl, data);
+  //     } else {
+  //       window.location.href = '/login';
+  //       return null
+  //     }
+
+  // }
+  users(data:any){
+    return this.http.post(this.loginurl,data)
+  }
 
 
   getUserProfileById(): Observable<any> {

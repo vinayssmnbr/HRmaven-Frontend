@@ -1,286 +1,336 @@
-<app-sidebar>
-</app-sidebar>
+<app-sidebar> </app-sidebar>
 <app-header></app-header>
 <div class="main">
-    <div class="attendence_main" *ngIf="attendence_main">
-        <div class="loader_parent bar_graph" [ngClass]="{'attclose':!loader}">
-            <!-- *ngIf="loader" -->
-            <div class="loader"></div>
+  <div class="attendence_main" *ngIf="attendence_main">
+    <div class="loader_parent bar_graph" [ngClass]="{ attclose: !loader }">
+      <!-- *ngIf="loader" -->
+      <div class="loader"></div>
+    </div>
+    <div class="bar_graph" [ngClass]="{ attclose: loader }">
+      <!-- *ngIf="!loader" -->
+      <div class="graph_text">
+        <div class="graph_heading">
+          <h1>Attendance Status</h1>
         </div>
-        <div class="bar_graph" [ngClass]="{'attclose':loader}">
-            <!-- *ngIf="!loader" -->
-            <div class="graph_text">
-                <div class="graph_heading">
-                    <h1>Attendance Status</h1>
-                </div>
-                <div class="year">
-                    <h2>2023</h2>
-                </div>
-            </div>
-
-            <div class="bar-chart" [ngClass]="{'attclose':loader}">
-                <canvas id="barChart"></canvas>
-            </div>
+        <div class="year">
+          <h2>2023</h2>
         </div>
+      </div>
 
-        <div class="employe_input">
-            <i class="fa fa-search" aria-hidden="true" id="ico"></i>
-            <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work">
-            <div class="calender">
-                <div class="grid-icon">
-                    <button class="history_btn" (click)="toggleTable1()" [ngClass]="{'active': table1Visible}">Employee
-                        History</button>
-                    <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{'active': table2Visible}">Day-wise
-                        Attendance</button>
-                </div>
-                <label for="date">
-                    <input type="date" id="date" *ngIf="showTable" (change)="changefunction()" [(ngModel)]="datez"
-                        [ngModelOptions]="{standalone: true}">
-                </label>
+      <div class="bar-chart" [ngClass]="{ attclose: loader }">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
 
-                <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
-                    <div class="dropdwon_select" (click)="dropdownOpen()">
-                        <p>{{Selectvariable}}</p>
-                        <i class="fa-sharp fa-solid fa-caret-down"></i>
-                    </div>
-                    <div class="select_content" *ngIf="contentdropdown">
-                        <ul>
-                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                                (click)="Changeselect(arr)">
-                                {{arr.name}}</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+    <div class="employe_input">
+      <i class="fa fa-search" aria-hidden="true" id="ico"></i>
+      <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work" />
+      <div class="calender">
+        <div class="grid-icon">
+          <button class="history_btn" (click)="toggleTable1()" [ngClass]="{ active: table1Visible }">
+            Employee History
+          </button>
+          <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{ active: table2Visible }">
+            Day-wise Attendance
+          </button>
         </div>
-        <div class="attendence_table">
-            <div class="table_data" *ngIf="showTable">
-                <table class="table_text">
-                    <thead>
-                        <tr class="table_heading">
-                            <th>Employee ID</th>
-                            <th>Name</th>
-                            <th>Designation
-                            <th>Status</th>
-                            <th>PUNCH IN</th>
-                            <th>PUNCH OUT</th>
-                            <!-- <th>Action</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let user of DayAttendance | attendanceFilter:employeename ">
-                            <!-- | attendanceFilter:employeename:datez -->
-                            <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
-                                <p> <img src="assets/images/no_record.png" alt="" class="center">
-                                </p>
-                                <h2>No Record Found!</h2>
-                            </td>
-                            <td *ngIf="user.found!='true'">{{user.uid}}</td>
-                            <td *ngIf="user.found!='true'">{{user.name}}</td>
-                            <td *ngIf="user.found!='true'">{{user.designation}}</td>
-                            <td *ngIf="user.found!='true'">{{user.status}}</td>
-                            <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.in |
-                                date:'shortTime'}}
-                            </td>
-                            <td *ngIf="user.found!='true'">{{user.status!="present"?"------":user.out |
-                                date:'shortTime'}}
-                            </td>
-                            <!-- <td *ngIf="user.found!='true'" class="action1">
+        <label for="date">
+          <input type="date" id="date" *ngIf="showTable" (change)="changefunction()" [(ngModel)]="datez"
+            [ngModelOptions]="{ standalone: true }" />
+        </label>
+
+        <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
+          <div class="dropdwon_select" (click)="dropdownOpen()">
+            <p>{{ Selectvariable }}</p>
+            <i class="fa-sharp fa-solid fa-caret-down"></i>
+          </div>
+          <div class="select_content" *ngIf="contentdropdown">
+            <ul>
+              <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                (click)="Changeselect(arr)">
+                {{ arr.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="attendence_table">
+      <div class="table_data" *ngIf="showTable">
+        <table class="table_text">
+          <thead>
+            <tr class="table_heading">
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>Status</th>
+              <th>PUNCH IN</th>
+              <th>PUNCH OUT</th>
+              <!-- <th>Action</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+                let user of DayAttendance | attendanceFilter : employeename
+              ">
+              <!-- | attendanceFilter:employeename:datez -->
+              <td colspan="7" class="nodata" class="no_data" *ngIf="user.found == 'true'">
+                <p>
+                  <img src="assets/images/no_record.png" alt="" class="center" />
+                </p>
+                <h2>No Record Found!</h2>
+              </td>
+              <td *ngIf="user.found != 'true'">{{ user.uid }}</td>
+              <td *ngIf="user.found != 'true'">{{ user.name }}</td>
+              <td *ngIf="user.found != 'true'">{{ user.designation }}</td>
+              <td *ngIf="user.found != 'true'">{{ user.status }}</td>
+              <td *ngIf="user.found != 'true'">
+                {{
+                user.status != "present"
+                ? "------"
+                : (user.in | date : "shortTime")
+                }}
+              </td>
+              <td *ngIf="user.found != 'true'">
+                {{
+                user.status != "present"
+                ? "------"
+                : (user.out | date : "shortTime")
+                }}
+              </td>
+              <!-- <td *ngIf="user.found!='true'" class="action1">
                             <div class="icons">
                                 <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
                             </div>
                         </td> -->
-                        </tr>
-                    </tbody>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-                </table>
+    <!-- <div class="attendence-card" *ngIf="showCard">
+      <div class="row">
+        <div
+          class="col-3"
+          *ngFor="let user of card | attendanceFilter : employeename"
+        >
+          <div class="card" (click)="profileview()" *ngIf="!user.found">
+            <img src="assets\images\attendec-logo.png " alt="logo " />
 
-            </div>
-        </div>
+            <h2>{{ user._id.name }}</h2>
 
+            <p>{{ user._id.designation }} | {{ user._id.uid }}</p>
+            <div class="attendence-percent">
+              <div class="percent-text">
+                <p>{{ user.presentcount }}/{{ user.totalcount }}</p>
+              </div> -->
 
-        <div class="attendence-card " *ngIf="showCard">
-            <div class="row ">
-                <div class="col-3 " *ngFor="let user of card | attendanceFilter:employeename">
-                  <ng-container *ngIf="user[0].found=='true'">
-                    <div class="card" (click)="profileview()">
-                        <img src="assets\images\attendec-logo.png " alt="logo ">
-
-                        <h2>{{user._id.name}}</h2>
-
-                        <p>{{user._id.designation}} | {{user._id.uid}}</p>
-                        <div class="attendence-percent ">
-                            <div class="percent-text ">
-
-                                <p>{{user.presentcount}}/{{user.totalcount}}</p>
-                            </div>
-                            <!-- <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+    <!-- <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
                             style="--value:{{user.percent}}"> -->
 
-                            <!-- <div class="progressbar-inner" ></div></div> -->
-                            <!-- {{user.percent}} per -->
-                            <!-- <div class="progressbar-outer" style="background: conic-gradient(crimson 57deg, black 0deg)">
+    <!-- <div class="progressbar-inner" ></div></div> -->
+    <!-- {{user.percent}} per -->
+    <!-- <div class="progressbar-outer" style="background: conic-gradient(crimson 57deg, black 0deg)">
                                 <div class="progressbar-inner" ></div> -->
-                            <!-- </div> -->
 
-                            <!-- <svg class="progress" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
+    <!-- <svg
+                class="progress"
+                data-progress="50"
+                x="0px"
+                y="0px"
+                viewBox="0 0 80 80"
+              >
+                <path
+                  class="track"
+                  d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"
+                />
+                <path
+                  class="fill"
+                  d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"
                                 <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                                 <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                             </svg> -->
-                            <div class="progress-circle-container">
-                                <div class="progress-circle progress-40"><span></span></div>
-                              </div>
 
-                        </div>
-                    </div>
-                  </ng-container>
-                </div>
+    <!-- <div class="progress-circle-container">
+                <div class="progress-circle progress-40"><span></span></div>
+              </div>
             </div>
+          </div>
+          <div class="empty-card" *ngIf="user.found === true">
+            <p>
+              <img src="assets/images/no_record.png" alt="" class="center" />
+            </p>
+            <h2>No Record Found!</h2>
+          </div>
         </div>
+      </div>
+    </div> -->
+
+    <div class="attendence-card" *ngIf="showCard">
+      <div class="row">
+        <div class="col-3" *ngFor="let user of card | attendanceFilter : employeename">
+          <div class="card" (click)="profileview()" *ngIf="!user.found">
+            <img src="assets/images/attendec-logo.png" alt="logo" />
+
+            <h2>{{ user._id.name }}</h2>
+
+            <p>{{ user._id.designation }} | {{ user._id.uid }}</p>
+            <div class="attendence-percent">
+              <div class="percent-text">
+                <p>{{ user.presentcount }}/{{ user.totalcount }}</p>
+              </div>
+              <svg class="progress" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
+                <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+                <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+              </svg>
+              <div class="progress-circle-container">
+                <div class="progress-circle progress-40"><span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="empty-card" *ngIf="user.found">
+            <p>
+              <img src="assets/images/no_record.png" alt="" class="center" />
+            </p>
+            <h2>No Record Found!</h2>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-
-
-    <!-- ----------------------card Profile View---------------------------------------- -->
-    <div class="card_profile" *ngIf="profilecard">
-        <div class="card_profile_main">
-            <div class="card_profile_heading">
-                <div class="back_icon" (click)="back_profile()">
-                    <i class="fa-sharp fa-solid fa-less-than"></i>
-                </div>
-                <div class="profile_logo">
-                    <img src="assets/images/cardprofile.png" alt="">
-                </div>
-                <div class="bar">
-                    <img src="assets/images/Rectangle 580.png" alt="">
-                </div>
-                <div class="profile_modal_title">
-                    <h2>V.Sarath Kumar Reddy</h2>
-                    <p>UID: 29497</p>
-                </div>
-                <div class="profile_card_btn">
-                    <button class="profile_logo_btn">UI/UX DESIGNER</button>
-                </div>
-            </div>
-            <div class="car_profile_right">
-                <div class="export_btn">
-                    <img src="assets/images/export.png" alt="export.logo">
-                    <button class="export_card_btn">Export</button>
-                </div>
-                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                    <div class="dropdwon_select1" (click)="dropdownOpen()">
-                        <p>{{Selectvariable}}</p>
-                        <i class="fa-sharp fa-solid fa-caret-down"></i>
-                    </div>
-                    <div class="select_content1" *ngIf="contentdropdown">
-                        <ul>
-                            <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                                (click)="Changeselect(arr)">
-                                {{arr.name}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <!-- ----------------------card Profile View---------------------------------------- -->
+  <div class="card_profile" *ngIf="profilecard">
+    <div class="card_profile_main">
+      <div class="card_profile_heading">
+        <div class="back_icon" (click)="back_profile()">
+          <i class="fa-sharp fa-solid fa-less-than"></i>
         </div>
-        <div class="attendence_table">
-            <div class="table_data1">
-                <table class="table_text">
-                    <thead>
-                        <tr class="table_heading">
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>PUNCH IN</th>
-                            <th>PUNCH OUT</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-
-                        <tr>
-                            <td>26/05/2023</td>
-                            <td>present</td>
-                            <td>09:20 a.m.</td>
-                            <td>05:00 p.m.</td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </div>
+        <div class="profile_logo">
+          <img src="assets/images/cardprofile.png" alt="" />
         </div>
+        <div class="bar">
+          <img src="assets/images/Rectangle 580.png" alt="" />
+        </div>
+        <div class="profile_modal_title">
+          <h2>V.Sarath Kumar Reddy</h2>
+          <p>UID: 29497</p>
+        </div>
+        <div class="profile_card_btn">
+          <button class="profile_logo_btn">UI/UX DESIGNER</button>
+        </div>
+      </div>
+      <div class="car_profile_right">
+        <div class="export_btn">
+          <img src="assets/images/export.png" alt="export.logo" />
+          <button class="export_card_btn">Export</button>
+        </div>
+        <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+          <div class="dropdwon_select1" (click)="dropdownOpen()">
+            <p>{{ Selectvariable }}</p>
+            <i class="fa-sharp fa-solid fa-caret-down"></i>
+          </div>
+          <div class="select_content1" *ngIf="contentdropdown">
+            <ul>
+              <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                (click)="Changeselect(arr)">
+                {{ arr.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="attendence_table">
+      <div class="table_data1">
+        <table class="table_text">
+          <thead>
+            <tr class="table_heading">
+              <th>Date</th>
+              <th>Status</th>
+              <th>PUNCH IN</th>
+              <th>PUNCH OUT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
 
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
 
-
-
-
-
-
+            <tr>
+              <td>26/05/2023</td>
+              <td>present</td>
+              <td>09:20 a.m.</td>
+              <td>05:00 p.m.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

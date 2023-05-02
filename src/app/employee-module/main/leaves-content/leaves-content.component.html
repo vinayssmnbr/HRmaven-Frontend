@@ -10,7 +10,10 @@
                         <h6>Casual Leave</h6>
                         <h4>{{obj.casual}}</h4>
                     </div>
-                    <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="--value:10">
+                    <div class="progress-circle-container CasualProgress">
+                        <div class="progress-circle progress-18">
+                            <span></span>
+                        </div>
                     </div>
                 </div>
                 <div class="leaves">
@@ -18,20 +21,25 @@
                         <h6>Medical Leave</h6>
                         <h4>{{obj.medical}}</h4>
                     </div>
-                    <div role="progressbar1" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-                        style="--value:10">
+                    <div class="progress-circle-container MedicalProgress">
+                        <div class="progress-circle progress-18">
+                            <span></span>
+                        </div>
                     </div>
                 </div>
                 <div class="leaves">
                     <div class="leave-text">
-                        <h6>Urgent Leave</h6>
+                        <h6>Compensatory Leave</h6>
                         <h4>{{obj.urgent}}</h4>
                     </div>
-                    <div role="progressbar2" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-                        style="--value:10">
+                    <div class="progress-circle-container CompensatoryProgress">
+                        <div class="progress-circle progress-18">
+                            <span></span>
+                        </div>
                     </div>
                 </div>
-                <div class="leaves">
+
+                <!-- <div class="leaves">
                     <div class="leave-text">
                         <h6>Earned Leave</h6>
                         <h4>{{obj.earned}}</h4>
@@ -39,7 +47,7 @@
                     <div role="progressbar3" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
                         style="--value:10">
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -103,7 +111,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="">Duration</label><br>
-                            <input type="text" placeholder="day" [value]="str" formControlName="duration" readonly>
+                            <input type="text" placeholder="1 day" [value]="str" formControlName="duration" readonly>
                         </div>
                     </div>
                     <div class="col-3">
@@ -111,7 +119,8 @@
                             <label for="">Category</label><br>
                             <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                                 <div class="dropdwon_select" (click)="dropdownOpen()">
-                                  <input type="text" formControlName="category" style="display:none" [value]="Selectvariable">
+                                    <input type="text" formControlName="category" style="display:none"
+                                        [value]="Selectvariable">
                                     <p>{{Selectvariable}}</p>
                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                 </div>
@@ -126,7 +135,25 @@
                         </div>
                     </div>
                 </div>
-                <!--------------------Apply for leaves---------------->
+
+                <div class="form-group short_leave" *ngIf="shortleave">
+                    <label for="">Time Duration</label><br>
+                    <div class="dropdown_container drop_down_input" (mouseleave)="contentdropdown1 = false">
+                        <div class="dropdwon_select" (click)="dropdownOpen1()">
+                            <input type="text" formControlName="category" style="display:none" [value]="Selectvariable1">
+                            <p>{{Selectvariable1}}</p>
+                            <i class="fa-sharp fa-solid fa-caret-down"></i>
+                        </div>
+                        <div class="select_content" *ngIf="contentdropdown1">
+                            <ul>
+                                <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
+                                    (click)="Changeselect1(arr1)">
+                                    {{arr1.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="reason-attachments">
                     <div class="col-6">
                         <div class="reason">
@@ -142,7 +169,7 @@
                                 <!-- <p class="first">Select a file or drag and drop here</p> -->
                                 <p class="second">Supported formats: pdf, jpg, png</p>
                                 <div class="choose-btn">
-                                    <button class="choose-file"(click)="onUpload()" >Choose File</button>
+                                    <button class="choose-file" (click)="onUpload()">Choose File</button>
                                     <input type="file" (change)=" onFileSelected($event)">
 
                                 </div>
@@ -187,7 +214,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr  *ngFor=" let n of leaves;">
+                        <tr *ngFor=" let n of leaves;">
                             <td>{{n.appliedOn | date:'shortDate'}}</td>
                             <td>{{n.from | date:'shortDate'}}</td>
                             <td>{{n.to | date:'shortDate'}}</td>
@@ -198,7 +225,7 @@
                                     <span class="tooltip"
                                         data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
                                         data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}
-                                        </span>
+                                    </span>
                                 </p>
 
                             </td>

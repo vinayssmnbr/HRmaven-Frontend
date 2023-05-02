@@ -20,6 +20,8 @@ import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
 import { CookieService } from 'ngx-cookie-service';
 
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -30,6 +32,7 @@ export class EmployeeContentComponent implements OnInit {
   isChecked: boolean = true;
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
+
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -43,7 +46,15 @@ export class EmployeeContentComponent implements OnInit {
   fileName: string = '';
   fileName1: string = '';
   isSelectDisabled = false;
+  emailValidationMessage: string = '';
+  mobile:number
 
+  checkEmailExists(email: string){
+
+  }
+  checkMobileNoExists(mobile: number) {
+
+  }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -225,7 +236,7 @@ export class EmployeeContentComponent implements OnInit {
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-
+  emailAlreadyExists = false;
   firstStep: boolean = true;
   secondStep: boolean = false;
   thirdStep: boolean = false;
@@ -236,6 +247,16 @@ export class EmployeeContentComponent implements OnInit {
     this.firstStep = false;
     this.secondStep = true;
     this.onUpload(this.selectedFile);
+    this.dashService.getEmployeeEmail(this.query).subscribe((response:{exists:boolean})=>{
+      console.log("response",this.emailAlreadyExists)
+      if (!response.exists) {
+        // submit the form
+      this.emailAlreadyExists = response.exists;
+      console.log("error")
+
+        // this.secondStep=true
+      }
+    })
   }
 
   onPreviousForm() {
@@ -691,6 +712,7 @@ export class EmployeeContentComponent implements OnInit {
         'background-color': 'rgba(123, 211, 109, 0.3)',
         color: '#3D9030',
         border: 'rgba(123, 211, 109, 0.3)',
+
       };
     } else if (user.status === 'terminated') {
       return {
@@ -731,6 +753,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   employeecsv() {
+
     this.csvadded = true;
     this.importfile = false;
   }
@@ -741,7 +764,8 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  download(): void {
+
+  download1(): void {
     this.dashService.exportUsers(this.selectedEmployess).subscribe(
       (data: Blob) => {
         const downloadUrl = window.URL.createObjectURL(data);
@@ -754,10 +778,104 @@ export class EmployeeContentComponent implements OnInit {
     );
   }
 
-  onFileSelectedrem(event: any): void {
-    const file: File = event.target.files[0];
-    const reader: FileReader = new FileReader();
 
+  download(): void {
+    if (this.selectedEmployess && this.selectedEmployess.length > 0) {
+      this.dashService.exportUsers(this.selectedEmployess).subscribe(
+        (data: Blob) => {
+          const downloadUrl = window.URL.createObjectURL(data);
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = 'users.csv';
+          link.click();
+        },
+        error => console.log(error)
+      );
+    }
+  }
+
+
+
+  // onFileSelectedrem(event: any): void {
+  //   const file: File = event.target.files[0];
+  //   const reader: FileReader = new FileReader();
+  //   reader.onload = (e: any) => {
+  //     const csv: string = e.target.result;
+  //     const lines: string[] = csv.split(/\r\n|\n/);
+  //     const headers: string[] = lines[0].split(',');
+  //     const data: any[] = [];
+
+  //     for (let i = 1; i < lines.length - 1; i++) {
+  //       const values: string[] = lines[i].split(',');
+  //       const item: any = {};
+
+  //       for (let j = 0; j < headers.length; j++) {
+  //         item[headers[j]] = values[j];
+  //       }
+
+  //       data.push(item);
+  //     }
+  //     console.log(data, 'adarsh console')
+  //     data.forEach(employee => {
+  //       console.log("Adarsh", employee)
+  //       this.dashService.addEmployee(employee).subscribe((res: any) => {
+  //         console.log(res, 'response')
+  //         console.log(res.data)
+  //       })
+  //     });
+  //     console.log(data);
+  //     // this.fetchdata()
+  //   };
+
+  //   reader.readAsText(file);
+  //   // this.fetchdata()
+
+  // }
+
+
+  // importFile() {
+  //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+  //   fileInput.click();
+  // }
+
+  //onFIleSelectedream
+
+  onFileSelectedrem(event: any): void {
+
+    const file: File = event.target.files[0];
+
+    if (!file) {
+      console.log('No file selected.');
+      return;
+    }
+
+    if (!validateCsvFile(file)) {
+           alert('Invalid file type. Please select a CSV file.');
+         return;
+      }
+
+     function validateCsvFile(file: File): boolean {
+          const allowedExtensions = /(\.csv)$/i;
+
+          if (!allowedExtensions.exec(file.name)) {
+             return false;
+          }
+
+          return true;
+        }
+
+
+    // const file: File = event.target.files[0];
+
+    // Check file size
+    const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      console.log('Selected file is too large.');
+      return;
+    }
+
+    // Parse CSV file
+    const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
       const csv: string = e.target.result;
       const lines: string[] = csv.split(/\r\n|\n/);
@@ -774,28 +892,30 @@ export class EmployeeContentComponent implements OnInit {
 
         data.push(item);
       }
-      console.log(data, 'adarsh console');
-      data.forEach((employee) => {
-        console.log('Adarsh', employee);
+
+      console.log(data, 'parsed CSV data');
+
+      // Add each employee to system using dashService
+      data.forEach(employee => {
+        console.log('Adding employee:', employee);
         this.dashService.addEmployee(employee).subscribe((res: any) => {
-          console.log(res, 'response');
-          console.log(res.data);
-        });
+          console.log('Response:', res);
+          console.log('Data:', res.data);
+        })
       });
-      console.log(data);
-      // this.fetchdata()
     };
 
     reader.readAsText(file);
-    // this.fetchdata()
   }
 
-  importFile() {
-    const fileInput = document.querySelector(
-      'input[type=file]'
-    ) as HTMLInputElement;
-    fileInput.click();
-  }
+  // importFile() {
+  //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
+  //  fileInput.click();
+  //  }
+
+
+
+  //FOR CHECKING THE CHECK BOX
 
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
@@ -809,6 +929,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = true;
         });
+
       } else {
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
@@ -826,6 +947,7 @@ export class EmployeeContentComponent implements OnInit {
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = false;
         });
+
       } else {
         let index: number = -1;
         this.selectedEmployess.forEach((el: any, i: number) => {
@@ -856,4 +978,28 @@ export class EmployeeContentComponent implements OnInit {
       }
     }
   }
+
+   validateCsvFile(file: File): boolean {
+    const allowedExtensions = /(\.csv)$/i;
+
+    if (!allowedExtensions.exec(file.name)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  generateSampleCsvFile() {
+
+    const csvData = [
+      ['Uid','Name', 'DateOfJoining', 'Mobile','E-mail','Timing','Gender','Designation','Location','Ctc','Job_Type','Url','City','Bankname','Ifsc'],
+      ['2986','John kumar', '9/28/93', '8825167890','john1v5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','https://cdn.finlmnoataktackcontent.com','Mohali','Punjab National Bank','PNB7906456'],
+
+    ];
+
+    const blob = new Blob([csvData.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    FileSaver.saveAs(blob, 'sample.csv');
+  }
+
+
 }

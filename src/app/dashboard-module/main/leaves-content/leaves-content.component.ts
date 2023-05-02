@@ -204,18 +204,18 @@ export class LeavesContentComponent {
       optionMenu.classList.toggle('active')
     );
     //------------ Progress Bar Girija----------
-    const max = -219.99078369140625;
-    const progressElements = document.querySelectorAll('.progress');
-    progressElements.forEach((value, index) => {
-      const percent = parseFloat(value.getAttribute('data-progress'));
-      value
-        .querySelector('.fill')
-        .setAttribute(
-          'style',
-          `stroke-dashoffset: ${((100 - percent) / 100) * max}`
-        );
-    });
-
+    // const max = -219.99078369140625;
+    // const progressElements = document.querySelectorAll('.progress');
+    // progressElements.forEach((value, index) => {
+    //   const percent = parseFloat(value.getAttribute('data-progress'));
+    //   value
+    //     .querySelector('.fill')
+    //     .setAttribute(
+    //       'style',
+    //       `stroke-dashoffset: ${((100 - percent) / 100) * max}`
+    //     );
+    // });
+    
   }
 
   // async updatereload() {

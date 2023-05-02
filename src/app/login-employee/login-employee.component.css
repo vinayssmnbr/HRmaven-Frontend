@@ -170,16 +170,20 @@ input:focus {
 .input-field label {
   color: #333333;
 }
-
-.input-field span i{
-  font-size: 13px;
-  color: red;
+.input-field span{
+    color: #CB1E0F;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    padding-top: 3px;
+}
+.input-field span img{
   padding-right: 5px;
 
 }
 .input-field .emailwrg, .pwddwrg{
  font-size: 14px;
- color: red;
+ /* color: red; */
 }
 
 .check-text {
@@ -388,7 +392,7 @@ input:focus {
 
 .password-toggle i {
   position: absolute;
-  margin-top: -46px;
+  margin-top: -53px;
   margin-left: 360px;
   color: #B4B4B4;
   cursor: pointer;

@@ -162,13 +162,14 @@ export class LoginEmployeeComponent {
   }
 
   // submissions
-
+obj:any
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
     this.employeeService.users(data).subscribe((res: any) => {
       this.employeeService.users(this.loginForm);
-
+      this.obj=res.role
+      localStorage.setItem('role',this.obj)
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {

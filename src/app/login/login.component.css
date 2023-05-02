@@ -138,6 +138,12 @@ form .input-field {
 }
 .input-field span{
     color: #CB1E0F;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.input-field span img{
+    padding-right: 5px;
 }
 .input-field input {
     height: 100%;

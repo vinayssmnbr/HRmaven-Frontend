@@ -44,7 +44,6 @@
     <ul class="content1">
       <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
       <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
-      <span></span>
     </ul>
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
@@ -69,10 +68,12 @@
           <p *ngIf="!user.motherName">----------</p>
           <p class="mname" *ngIf="user.motherName">{{user.motherName}}</p>
           <span class="gender">Gender</span>
+          <p *ngIf="!user.gender">----------</p>
           <p class="gender">{{user.gender}}</p>
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
+          <p *ngIf="!user.dateOfBirth">----------</p>
           <p class="dob">{{user.dateOfBirth | date:"shortDate"}}</p>
           <span class="marstatus">Marital Status</span>
           <p *ngIf="!user.maritalStatus">----------</p>
@@ -98,6 +99,7 @@
         </div>
         <div class="column2">
           <span class="address">Address</span>
+          <p *ngIf="!user.address">----------</p>
           <p class="address">{{user.address}}</p>
           <span class="pcode">Postal Code</span>
           <p *ngIf="!user.postalCode">----------</p>
@@ -120,18 +122,23 @@
       <div class="row1">
         <div class="column1">
           <span class="bname">Bank Name</span>
+          <p *ngIf="!user.bankname">----------</p>
           <p class="bname">{{user.bankname}}</p>
           <span class="adhaarno">Aadhaar Card Number</span>
+          <p *ngIf="!user.adhaarno">----------</p>
           <p class="adhaarno">{{user.adhaarno}}</p>
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
+          <p *ngIf="!user.accountno">----------</p>
           <p class="bno">{{user.accountno}}</p>
           <span class="panno">Pan Number</span>
+          <p *ngIf="!user.panno">----------</p>
           <p class="panno">{{user.panno}}</p>
         </div>
         <div class="column3">
           <span class="ifsc">IFSC Code</span>
+          <p *ngIf="!user.ifsc">----------</p>
           <p class="ifsc">{{user.ifsc}}</p>
           <span class="pno">Passport Number</span>
           <p *ngIf="!user.passport">----------</p>
@@ -321,8 +328,8 @@
             </div>
             <div class="input">
               <label>Employee ID</label>
-              <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid" [disabled]="true"
-                readonly>
+              <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid"
+                [disabled]="true" readonly>
             </div>
             <div class="input">
               <label>Date of birth</label>
@@ -342,7 +349,8 @@
               <label>Marital Status</label>
               <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
-                  <p>{{Selectvariable3}}</p>
+                  <!-- <p>{{Selectvariable3}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable3" formControlName="maritalStatus" id="text11" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1 marriage" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
@@ -361,7 +369,8 @@
               <label>Blood Group</label>
               <div class="dropdown_container">
                 <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
-                  <p>{{Selectvariable4}}</p>
+                  <!-- <p>{{Selectvariable4}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable4" formControlName="bloodGroup" id="text9" placeholder="Select" readonly>
                   <!-- <input type="text"  formControlName="designation" id="text9" readonly> -->
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
@@ -378,8 +387,9 @@
               <label>Gender</label>
               <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
-                  <p>{{Selectvariable1}}</p>
+                  <!-- <p>{{Selectvariable1}}</p> -->
                   <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
+                  <input type="text" [(ngModel)]="Selectvariable4" formControlName="gender" id="text10" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
@@ -433,7 +443,7 @@
             </div>
             <div class="input">
               <label>Postal Code</label>
-              <input type="number" placeholder="141002" formControlName="postalCode" class=" no-spin">
+              <input type="number" placeholder="141002" formControlName="postalCode" class=" no-spin" (keydown)="validatePincode($event)">
             </div>
             <div class="input">
               <label>State</label>
@@ -458,7 +468,8 @@
               <label>Bank Name</label>
               <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
-                  <p>{{Selectvariable2}}</p>
+                  <!-- <p>{{Selectvariable2}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable2" formControlName="bankname" id="text8" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1 bank" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
@@ -482,21 +493,21 @@
             </div>
             <div class="input">
               <label>IFSC Code</label>
-              <input type="text" placeholder="PUNB0125412" formControlName="ifsc">
+              <input type="text" placeholder="PUNB0125412" formControlName="ifsc"  (keydown)="validateIfsc($event)">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Adhaar Card Number</label>
-              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno">
+              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno" (keydown)="validateAddhar($event)">
             </div>
             <div class="input">
               <label>PAN Number</label>
-              <input type="text" placeholder="4512 3200 7456" formControlName="panno">
+              <input type="text" placeholder="4512 3200 7456" formControlName="panno"  (keydown)="validatePanNumber($event)">
             </div>
             <div class="input">
               <label>Passport Number</label>
-              <input type="text" placeholder="M5425189" formControlName="passport">
+              <input type="text" placeholder="M5425189" formControlName="passport"  (keydown)="validatePassport($event)">
             </div>
           </div>
         </form>
@@ -572,11 +583,21 @@
               <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
-          <button class="add-more1" (click)="showpgdet()"><i class="fa-solid fa-circle-plus"></i>Add More</button>
+          <div class="">
+          <button class="add-more1" (click)="dropdownOpen2()"><i class="fa-solid fa-circle-plus"></i>Add More<img src="./assets/images/Vector (7).png" alt=""></button>
+          <div class="select_content1 " *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+            <ul>
+              <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                (click)="Changeselect2(arr2)">
+                {{arr2.name}}</li>
+            </ul>
+          </div>
+          </div>
         </form>
 
       </div>
-      <div class="modal-footer5">
+
+      <div class="modal-footer">
         <button class="save" (click)="closeModal5(form.value)">Update</button>
       </div>
     </div>
@@ -586,32 +607,41 @@
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body4">
+
+
+
         <form class="form-container" id="form5" [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
-          <div  *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
-          <div class="form-row" formArrayName="experienceItems">
-            <div class="input">
-              <label>Company/Organisation Name</label>
-              <input type="text" placeholder="Infosys" formControlName="expcompany">
+          <div *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
+            <div class="form-row" formArrayName="experienceItems">
+              <div class="input">
+                <label>Company/Organisation Name</label>
+                <input type="text" placeholder="Infosys" formControlName="expcompany">
+              </div>
+              <div class="input">
+                <label>Duration</label>
+                <input type="text" placeholder="May 2020 - April 2023" formControlName="expduration">
+              </div>
+              <div class="input">
+                <label>Designation</label>
+                <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
+              </div>
             </div>
-            <div class="input">
-              <label>Duration</label>
-              <input type="text" placeholder="May 2020 - April 2023" formControlName="expduration">
+            <div class="form-row" formArrayName="experienceItems">
+              <div class="input">
+                <label>Location</label>
+                <input type="text" placeholder="Pune, India" formControlName="explocation">
+              </div>
             </div>
-            <div class="input">
-              <label>Designation</label>
-              <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
-            </div>
+            <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
+              more</button>
           </div>
-          <div class="form-row" formArrayName="experienceItems">
-            <div class="input">
-              <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="explocation">
-            </div>
-          </div>
-          <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add more</button>
-          </div>
-          <!-- <hr> -->
         </form>
+
+
+
+
+
+
       </div>
       <div class="modal-footer4">
         <button class="save" (click)="closeModal6(experienceForm.value)">Update</button>
@@ -634,7 +664,8 @@
               <label>Designation</label>
               <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                 <div class="dropdwon_select" (click)="dropdownOpen()">
-                  <p>{{Selectvariable}}</p>
+                  <!-- <p>{{Selectvariable}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable" formControlName="designation" id="text7" placeholder="Select" readonly>
                   <i class="fa-sharp fa-solid fa-caret-down"></i>
                 </div>
                 <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
@@ -652,7 +683,8 @@
               <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
               <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen8()">
-                  <p>{{Selectvariable8}}</p>
+                  <!-- <p>{{Selectvariable8}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable8" formControlName="job_type" id="text6" placeholder="Select" readonly>
                   <i class="fa-sharp fa-solid fa-caret-down"></i>
                 </div>
                 <div class="select_content" *ngIf="contentdropdown8" (mouseleave)="dropdownClose8()">
@@ -678,7 +710,8 @@
               <label>Timings</label>
               <div class="dropdown_container" (mouseleave)="contentdropdown5 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen5()">
-                  <p>{{Selectvariable5}}</p>
+                  <!-- <p>{{Selectvariable5}}</p> -->
+                  <input type="text" [(ngModel)]="Selectvariable5" formControlName="timings" id="text5" placeholder="Select" readonly>
                   <i class="fa-sharp fa-solid fa-caret-down"></i>
                 </div>
                 <div class="select_content" *ngIf="contentdropdown5" (mouseleave)="dropdownClose5()">

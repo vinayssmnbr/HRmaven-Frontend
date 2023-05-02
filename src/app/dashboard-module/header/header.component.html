@@ -21,11 +21,12 @@
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-      <img *ngIf="!user" src="./assets/images/gg_profile.svg" alt="" class="header-icon"
-        (click)="getProfileData();profileToggle()"><br>
+      <img *ngIf="!user" src="./assets/images/Ellipse 98.svg" alt="user-icon" class="header-icon"
+        (click)="getProfileData();profileToggle()">
 
-        <img *ngIf="user" src="{{header}}" alt="" class="header-icon"
-        (click)="getProfileData();profileToggle()"><br>
+        <img *ngIf="user" src="{{header}}" alt="user-icon" class="header-icon"
+        (click)="getProfileData();profileToggle()">
+
 
     </div>
   </div>
@@ -91,6 +92,14 @@
             </div>
           </div>
         </div>
+
+
+        
+
+
+
+
+
 
         <div class="all-area">
           <div class="image-and-text">
@@ -282,7 +291,8 @@
   <div class="profile-content">
     <div class="profile-title">
       <div class="profile-logo">
-        <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
+        <!-- <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"> -->
+        <img src="./assets/images/Ellipse 98.svg" alt="" class="header-icon">
       </div>
       <div class="profile-text">
         <h2> {{name}} </h2>

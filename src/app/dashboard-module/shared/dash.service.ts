@@ -11,10 +11,14 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class DashService {
-  private baseUrl = 'https://hrmaven.works';
+  // private baseUrl = 'https://hrmaven.works';
+  // private baseUrl="http://localhost:3000"
   public headerContent: string;
   public activeComponent: string;
-  constructor(
+  private baseUrl=environment.baseUrl
+
+
+   constructor(
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
@@ -56,7 +60,8 @@ export class DashService {
   //ADD  Employee Data
   addEmployee(data) {
 
-    return this.http.post('http://localhost:3000/api/create', data);
+    return this.http.post('https://hrmaven.works/api/create', data);
+    // return this.http.post('http://localhost:3000/api/create', data);
     return this.http.post(this.createData, data);
 
   }
@@ -186,6 +191,10 @@ export class DashService {
     return this.http.get(this.getData,{ headers })
   }
 
+  getEmployeeEmail(email:string){
+    return this.http.get(`${this.getData}?email=${email}`)
+  }
+
 
 
 
@@ -194,6 +203,7 @@ export class DashService {
   updateEmployee(user: any) {
     console.log('employee update id ', user);
     return this.http.patch(`${this.updatempdata}/${user._id}`, user);
+
   }
   //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
@@ -265,7 +275,7 @@ async upload(file:File, userId?:string){
   }
 
   exportUsers(data:any[]): Observable<Blob> {
-    const url = `${this.baseUrl}/user/export`;
+    const url = `${this.baseUrl}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'text/csv'
@@ -277,4 +287,7 @@ async upload(file:File, userId?:string){
     const url = `${this.updatempdata}/${id}`;
     return this.http.patch(url,{status})
   }
+
+
+
 }
