@@ -27,7 +27,33 @@
     font-size: 14px;
     color: #666666;
     padding-bottom: 5px;
+    padding-left: 15px;
 }
+.All{
+  width: 100%;
+  max-width: 38px;
+}
+.All.active{
+  border-bottom: 3px solid #2F2C9F;
+}
+.validation-message{
+  color: red;
+  display: flex;
+  gap: 6px;
+  margin-top: -15px;
+  font-family: 'Outfit',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+}
+.fa-circle-info{
+  color: red;
+  margin-top: 3px;
+}
+/* .All{
+  width: 100%;
+  max-width: 38px;
+  padding-left: 8px;
 
 .All,
 .Active,
@@ -56,10 +82,45 @@
     font-weight: 500;
     padding-bottom: 5px;
 }
-
-.selection2 {
-    display: flex;
-    justify-content: space-between;
+.Active.active {
+  border-bottom: 3px solid #2F2C9F;
+}
+.Active.active p{
+  color: #2F2C9F;
+    font-weight: 500;
+    padding-bottom: 4px;
+    width: 60px;
+  }
+.Resigned.active  {
+  border-bottom: 3px solid #2F2C9F;
+}
+.Resigned.active p{
+  color: #2F2C9F;
+    font-weight: 500;
+    padding-bottom: 4px;
+    width: 77px;
+}
+.Terminated.active{
+  border-bottom: 3px solid #2F2C9F;
+}
+.Terminated.active p{
+color: #2F2C9F;
+  font-weight: 500;
+    padding-bottom: 4px;
+  width: 92px;
+}
+.Absconder.active {
+  border-bottom: 3px solid #2F2C9F;
+}
+.Absconder.active p{
+color: #2F2C9F;
+  font-weight: 500;
+    padding-bottom: 4px;
+  width: 88px;
+} */
+.selection2{
+  display: flex;
+  justify-content: space-between;
 }
 
 .input_left {
