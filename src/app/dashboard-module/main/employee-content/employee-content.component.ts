@@ -19,6 +19,7 @@ import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
 
+
 import * as FileSaver from 'file-saver';
 
 @Component({
@@ -32,7 +33,7 @@ export class EmployeeContentComponent implements OnInit {
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
  
-
+  
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -208,7 +209,10 @@ export class EmployeeContentComponent implements OnInit {
   opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
+    // this.readCsvData();
   }
+
+
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -972,11 +976,13 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   generateSampleCsvFile() {
-
+   
     const csvData = [
-      ['Uid','Name', 'DateOfJoining', 'Mobile','E-mail','Timing','Gender','Designation','Location','Ctc','Job_Type','Url','City','Bankname','Ifsc'],
-      ['2986','John kumar', '9/28/93', '8825167890','john1v5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','https://cdn.finlmnoataktackcontent.com','Mohali','Punjab National Bank','PNB7906456'],
-     
+      ['name', 'dateOfJoining', 'mobile',' email','timing','Gender','designation','location','ctc','job_Type','City','bankname','ifsc','uid','url'],
+      ['John kumar', '9/28/93', '8825167890','john1v5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB7906456'],
+      ['Ramanujan kumar', '9/28/94', '8815167990','ramanujan7t5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB7906465'],
+      ['Ravi kumar', '9/28/95', '8837167880','ravi2p5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB9706386'],
+
     ];
   
     const blob = new Blob([csvData.join('\n')], { type: 'text/csv;charset=utf-8;' });
@@ -985,7 +991,6 @@ export class EmployeeContentComponent implements OnInit {
 
 
  
-  
-  
+ 
   
 }
