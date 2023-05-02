@@ -31,7 +31,7 @@ export const environment = {
   leavegraph: 'https://hrmaven.works/api/leave/graph/leave',
   leavecontent: 'https://hrmaven.works/api/leave/data/leaves',
   patchleave: 'https://hrmaven.works/api/leave/update/leave',
-  getempRecord: 'https://hrmaven.works/api/detail/fetch'
+  getempRecord: 'https://hrmaven.works/api/detail/fetch',
 
 
 

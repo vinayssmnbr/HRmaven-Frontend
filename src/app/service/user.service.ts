@@ -4,12 +4,25 @@ import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rx
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { CookieService} from 'ngx-cookie-service'
+import * as bcrypt from 'bcryptjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   isFromSignupPage = false;
 
+  private behaviorNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('default');
+
+  // Method to update the behavior name
+  updateBehaviorName(name: string) {
+    this.behaviorNameSubject.next(name);
+  }
+
+  // Method to get the current behavior name as an Observable
+  getBehaviorName(): Observable<string> {
+    return this.behaviorNameSubject.asObservable();
+  }
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -71,11 +84,34 @@ export class UserService {
     return this.http.post(this.Reseturl, data, { headers });
   }
 
-  newpwdaccount(email: any ,data: any) {
- 
-    return this.http.post(`${this.resetpwdaccount}/${email}`, data);
-  }
+  // resetPassword(token: string, newpassword: any, confirm: any): Observable<any> {
+  //   // resetPassword(token: string, data: any): Observable<any> {
+  //   const url = `${this.Reseturl}`;
+  //   const body = {
+  //     token: token,
+  //     // datapwd: data
+  //     password: newpassword,
+  //     confirmpassword: confirm
+  //   };
+    
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'auth-token': token,
+  //     Accept: 'application/json'
+  //   });
 
+  //   return this.http.post<any>(url, body, { headers }).pipe(
+  //     catchError((error: any) => {
+  //       return throwError(error.error.message || 'Server error');
+  //     })
+  //   );
+  // }
+
+
+  // resetPasswordUrl = 'http://localhost:3000/reset'
+  // resetPassword(token: string): Observable<any> {
+  //   return this.http.post(this.resetPasswordUrl, { token });
+  // }
 
 
 

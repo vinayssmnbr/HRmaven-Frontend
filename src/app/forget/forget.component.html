@@ -1,12 +1,12 @@
-<!-- <ng-template #hideLink> -->
-
-<div *ngIf="expired && errorMessage">
+<ng-template #hideLink>
+<div>
+<!-- <div *ngIf="expired && errorMessage"> -->
     <br>
      <a routerLink="/login"> Please request a new reset link.{{errorMessage}}!! Click here to go to Login Page again</a>
   </div>
-<!-- </ng-template> -->
-<!-- <div class="forget-content" *ngIf="!expired && !errorMessage ; else hideLink"> -->
-  <div class="forget-content" *ngIf="!expired && !errorMessage ">  
+</ng-template> 
+ <div class="forget-content" *ngIf="!expired && !errorMessage ; else hideLink">
+  <!-- <div class="forget-content" *ngIf="!expired && !errorMessage ">   -->
   <div class="forget-text">
     <div class="logo">
       <a href="#"><img src="assets/images/resetlogo.png" alt=""></a>
@@ -15,7 +15,7 @@
     <p>Almost done. Enter your new password and you’re all set.</p>
   </div>
 
-  <form [formGroup]="forgetform" class="form"(ngSubmit)="newpassword(this.forgetform)"  *ngIf="!expired && !errorMessage ">
+  <form [formGroup]="forgetform" class="form"(ngSubmit)="newpassword(forgetform)"  *ngIf="!expired && !errorMessage ">
     <div class="field create-password">
       <div class="password-tooltip">
         <div class="input-field">

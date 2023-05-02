@@ -63,8 +63,9 @@ export class DashboardContentComponent implements OnInit {
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
+      localStorage.setItem('empname', this.personaldataForm.controls['noOfEmployee'].value)
       this.formSubmitted = true;
-      localStorage.setItem('personalFormData', JSON.stringify(data));
+      // localStorage.setItem('personalFormData', JSON.stringify(data));
         });
   }
 
@@ -121,18 +122,48 @@ export class DashboardContentComponent implements OnInit {
 
   ]
 
+  updateBehaviorName(name: string) {
+    this.userService.updateBehaviorName(name);
+  }
+
+  personalData: any = ''
+  behaviorName: any = ''
+  empname: any = '';
+  employeemail = localStorage.getItem('email')
+
+
   ngOnInit()
    {
-    const savedFormData = localStorage.getItem('personalFormData');
-    if (savedFormData) {
-      const formData = JSON.parse(savedFormData);
-      this.personaldataForm.patchValue(formData);
-    }
-  
+    // this.userService.getBehaviorName().subscribe(name => {
+    //   this.behaviorName = name;
+    // });
+
+    this.userService.getpersonals(this.employeemail).subscribe((res: any) => {
+      console.log("res account settings personaldata: ", res);
+
+      console.log("res account settings personaldata: ", res.personaldata.name);
+      console.log("res account settings personaldata: ", res.personaldata.headOffice);
+
+      console.log("res account settings personaldata: ", res.useridd);
+
+
+      this.empname = res.personaldata.name;
+
+    });
+
+ 
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
     console.log("isFromSignupPage: ", this.isFromSignupPage);
+
+    this.personalData = localStorage.getItem('totalemp');
+    if (this.personalData === null) {
+      this.formSubmitted = false;
+    } else {
+      this.formSubmitted = true;
+    }
+  
 
     this.dashService.graphcontent().subscribe((res:any)=>{
     if(res)
