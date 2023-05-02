@@ -186,7 +186,15 @@ form .input-field {
     margin-top: 6px;
     margin-bottom: 7px;
 }
-
+.name-field .input-field span,.email-field .input-field span,.confirm-password .input-field span{
+    color: #CB1E0F;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+.input-field span img{
+    padding-right: 5px;
+}
 .input-field input::placeholder {
     color: #B4B4B4;
     font-weight: 400;
@@ -464,10 +472,12 @@ form.ng-invalid.ng-touched #submit {
 .input-field i {
     padding-right: 5px;
 }
-
+span.password-toggle.icon_eye {
+    padding-top: 9px !important;
+}
 
 .field span {
-    color: red;
+    color: #CB1E0F;
     font-size: 14px;
     position: absolute;
 }

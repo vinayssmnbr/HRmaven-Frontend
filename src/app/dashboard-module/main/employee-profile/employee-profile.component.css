@@ -303,23 +303,21 @@
   font-size: 14px;
   color: #222222;
   cursor: pointer;
+  padding-left: 25px;
 }
 
 .content1 li {
   cursor: pointer;
   padding-bottom: 10px;
-  padding-left: 20px;
-
+  width: 13%;
 }
 
 .content1 li.active {
   border-bottom: 2px solid #2F2C9F;
-  width: 11%;
 }
 
-.content1 #job.active {
-  width: 9%;
-  padding-left: 25px;
+#job{
+  padding-left: 15px;
 }
 
 .content1 li.active a {
@@ -751,6 +749,65 @@ input[type='text'] {
   outline: none;
   margin-bottom: 40px;
 }
+
+#text9{
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text10 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text11 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text8 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text7 {
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text5 {
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text6 {
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+
 
 input[type='email'] {
   width: 270px;
