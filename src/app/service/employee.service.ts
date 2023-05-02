@@ -50,9 +50,18 @@ export class EmployeeService {
 
 
   //LOGIN AND VERIFY DASHBOARD
+  Role=localStorage.getItem('role')
   users(data: any) {
-    return this.http.post(this.loginurl, data);
+      if (this.Role === 'Employee') {
+        return this.http.post(this.loginurl, data);
+      } else {
+        window.location.href = '/login';
+        return null
+      }
+
   }
+
+
 
   // updateIsLinkClicked(email: string): Observable<any> {
   //   const url = `${this.changepwd}`;

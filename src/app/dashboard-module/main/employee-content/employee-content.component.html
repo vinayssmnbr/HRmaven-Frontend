@@ -330,8 +330,10 @@
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
 
         </div>
-        <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5>
-
+        <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
+        <h5>Download <a class="csv" (click)=" generateSampleCsvFile()" >Sample CSV File</a> for Reference</h5>
+       
+       
         <!-- <div class="custom-file-picker">
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >

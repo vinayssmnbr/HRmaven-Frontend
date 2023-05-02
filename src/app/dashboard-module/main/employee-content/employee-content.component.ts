@@ -19,6 +19,8 @@ import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
 
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -967,5 +969,17 @@ export class EmployeeContentComponent implements OnInit {
     return true;
   }
 
+  generateSampleCsvFile() {
+
+    const csvData = [
+      ['Uid','Name', 'DateOfJoining', 'Mobile','E-mail','Timing','Gender','Designation','Location','Ctc','Job_Type','Url','City','Bankname','Ifsc'],
+      ['2986','John kumar', '9/28/93', '8825167890','john1v5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','https://cdn.finlmnoataktackcontent.com','Mohali','Punjab National Bank','PNB7906456'],
+     
+    ];
+  
+    const blob = new Blob([csvData.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    FileSaver.saveAs(blob, 'sample.csv');
+  }
+  
   
 }
