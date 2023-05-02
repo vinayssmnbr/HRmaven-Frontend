@@ -39,7 +39,7 @@
 }
 
 /* -------------------Progress Bar------------------------- */
-
+/* 
 @keyframes growProgressBar {
 
     0%,
@@ -90,15 +90,9 @@ div[role="progressbar2"] {
     color: #369;
     background:
         radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-        conic-gradient(#F8BB6F calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-div[role="progressbar3"] {
-    color: #FA9796;
-    background:
-        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
         conic-gradient(#FA9796 calc(var(--pgPercentage) * 1%), #def 0);
 }
+
 
 div[role="progressbar"]::before,
 div[role="progressbar1"]::before,
@@ -106,7 +100,63 @@ div[role="progressbar2"]::before,
 div[role="progressbar3"]::before {
     counter-reset: percentage var(--value);
     content: counter(percentage) '%';
-}
+} */
+
+/* -------------------circular Progress Bar Girija------------------------- */
+.progress-circle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ebebeb;
+  }
+  
+  .progress-circle:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-animation: colorload 2s;
+    animation: colorload 2s;
+  }
+  
+  .progress-circle span {
+    font-size: 1rem;
+    color: #8b8b8b;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 60px;
+    margin-left: -20px;
+    margin-top: -20px;
+    text-align: center;
+    border-radius: 50%;
+    background: #fff;
+    z-index: 1;
+  }
+  
+  .progress-circle span:after {
+    content: "";
+    font-weight: 600;
+    color: #8b8b8b;
+  }
+  
+  .leaves .progress-circle-container.CasualProgress .progress-circle:after {
+    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
+  }
+  
+  .leaves .progress-circle-container.MedicalProgress .progress-circle:after {
+    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
+  }
+  
+  .leaves .progress-circle-container.CompensatoryProgress .progress-circle:after {
+    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
+  }
 
 /*-----------------------Leave-status--------------------*/
 .leave-status-area {
@@ -260,10 +310,17 @@ td {
     color: #333333;
 }
 
-.form-group input:disabled {
+.form-group input:read-only{
     cursor: not-allowed;
+    background-color: #F1F1F1;
 }
-
+.form-group.short_leave{
+    padding-top: 20px;
+}
+.drop_down_input{
+    width: 280px;
+    height: 40px;
+}
 /*------------------------drpdown css----------------------*/
 .dropdwon_select {
     background-color: #fff;
@@ -299,7 +356,7 @@ td {
 .select_content {
     background-color: #fff;
     cursor: pointer;
-    width: 240px;
+    width: 260px;
     border-radius: 6px;
     cursor: pointer;
     padding: 10px 17px;

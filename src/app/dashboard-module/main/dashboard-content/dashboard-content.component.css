@@ -929,6 +929,8 @@ cursor: pointer;
   font-size: 14px;
   color: #444444;
   padding: 3px 7px;
+  display: flex;
+    align-items: center;
 }
 
 .select_content {
@@ -964,6 +966,100 @@ cursor: pointer;
 
 }
 
+#name.ng_invalid{
+  border:1px solid red;
+}
+#name.ng_invalid:hover{
+  border:1px solid red;
+}
+#name.ng_valid:hover{
+  border:1px solid green;
+}
+#name.ng_valid{
+  border:1px solid green;
+}
+
+#name1.ng_invalid{
+  border:1px solid red;
+}
+#name1.ng_invalid:hover{
+  border:1px solid red;
+}
+#name1.ng_valid:hover{
+  border:1px solid green;
+}
+#name1.ng_valid{
+  border:1px solid green;
+}
+
+#office.ng_invalid{
+  border:1px solid red;
+}
+#office.ng_invalid:hover{
+  border:1px solid red;
+}
+#office.ng_valid:hover{
+  border:1px solid green;
+}
+#office.ng_valid{
+  border:1px solid green;
+}
+
+input:hover,
+input:focus {
+    border-color: #2F2C9F;
+}
+
+
+
+
+#name.ng_invalid{
+  border:1px solid red;
+}
+#name.ng_invalid:hover{
+  border:1px solid red;
+}
+#name.ng_valid:hover{
+  border:1px solid green;
+}
+#name.ng_valid{
+  border:1px solid green;
+}
+
+#name1.ng_invalid{
+  border:1px solid red;
+}
+#name1.ng_invalid:hover{
+  border:1px solid red;
+}
+#name1.ng_valid:hover{
+  border:1px solid green;
+}
+#name1.ng_valid{
+  border:1px solid green;
+}
+
+#office.ng_invalid{
+  border:1px solid red;
+}
+#office.ng_invalid:hover{
+  border:1px solid red;
+}
+#office.ng_valid:hover{
+  border:1px solid green;
+}
+#office.ng_valid{
+  border:1px solid green;
+}
+
+input:hover,
+input:focus {
+    border-color: #2F2C9F;
+}
+
+
+
+
 /*-------------------------------Modal-------------------------*/
 .modal {
   position: fixed;
@@ -971,11 +1067,12 @@ cursor: pointer;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(34, 34, 34, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  backdrop-filter: blur(5px);
 }
 
 .modal-content {
@@ -1092,7 +1189,9 @@ display: flex;
 gap: 10px;
 }
 .name-heading{
-  text-align: center;
+     align-items: start;
+     display: flex;
+     flex-direction: column;
 }
 .name-heading h6{
   font-weight: 400;
