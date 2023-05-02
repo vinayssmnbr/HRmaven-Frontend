@@ -11,11 +11,8 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class DashService {
-  // private baseUrl = 'https://hrmaven.works';
-  private base="http://localhost:3000"
   public headerContent: string;
   public activeComponent: string;
-  // private baseUrl=environment.baseUrl
 
 private prefix = environment.v1;
    constructor(
