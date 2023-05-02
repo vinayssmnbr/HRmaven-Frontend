@@ -110,6 +110,7 @@ export class DashboardContentComponent implements OnInit {
 
   ]
   personalData: any =''
+  empname: any = ''
 
   ngOnInit()
    {
