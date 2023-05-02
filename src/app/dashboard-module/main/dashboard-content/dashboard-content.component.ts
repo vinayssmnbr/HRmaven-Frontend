@@ -49,11 +49,28 @@ export class DashboardContentComponent implements OnInit {
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
     noOfEmployee: new FormControl(''),
-    phone: new FormControl(''),
-    headOffice: new FormControl(''),
-  });
+    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
+  })
+
+  get name(){
+    return this.personaldataForm.get('name');
+  }
+  get phone(){
+    return this.personaldataForm.get('phone')
+  }
+  get headOffice(){
+    return this.personaldataForm.get('headOffice')
+  }
+
+  Space(event:any){
+    if(event.target.selectionStart === 0  && event.code == "Space"){
+     event.preventDefault();
+    }
+ }
+
   email = localStorage.getItem('email');
   submitPersonalData(data: any) {
     console.log('personal data: ', data);

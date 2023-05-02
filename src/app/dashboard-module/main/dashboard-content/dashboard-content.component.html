@@ -267,7 +267,14 @@
                         <div class="form__group">
                             <label for="name">Name</label>
                             <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name"
-                                formControlName="name" required />
+                                formControlName="name" required (keydown)="Space($event)" />
+                              <div *ngIf="name.invalid && name.touched || name.dirty">
+                                <span *ngIf="name.errors">
+                                  <i class="fa-solid fa-circle-info"></i>Enter Only Character
+                                </span>
+
+                              </div>
+
                         </div>
                         <div class="form__group">
                             <label for="noOfEmployee">No. of employees</label>
@@ -284,11 +291,21 @@
                             <label for="name">Phone no.</label>
                             <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
                                 id="name" required />
+                                <div *ngIf="phone.invalid && phone.touched || phone.dirty">
+                                  <span *ngIf="phone.errors"><i class="fa-solid fa-circle-info"></i>Enter Valid Phone Number</span>
+
+                                </div>
                         </div>
                         <div class="form__group">
-                            <label for="email">Head Office</label>
+                            <!-- <label for="email">Head Office</label>
                             <input type="text" class="form_input" placeholder='Eg. Leeds, America'
-                                formControlName="headOffice" id="email" required />
+                                formControlName="headOffice" id="email" required /> -->
+                                <label for="office">Head Office</label>
+                                <input type="text" class="form_input" placeholder='Eg. Leeds, America'
+                                    formControlName="headOffice" id="office" required (keydown)="Space($event)" />
+                                <div *ngIf="headOffice.invalid && headOffice.touched || headOffice.dirty">
+                                  <span *ngIf="headOffice.errors"><i class="fa-solid fa-circle-info"></i>Enter Only Characters</span>
+                                </div>
                         </div>
                     </div>
 
