@@ -130,7 +130,13 @@
                                             [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
                                             {{arr.name}}</li>
                                     </ul>
+                                    <!-------- Side dropdown--------------- -->
+                                    <div class="half_day_leave" *ngIf="halfdayleave">
+                                        <p class="First_Half">First Half</p>
+                                        <p class="Second_Half">Second Half</p>
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -140,7 +146,8 @@
                     <label for="">Time Duration</label><br>
                     <div class="dropdown_container drop_down_input" (mouseleave)="contentdropdown1 = false">
                         <div class="dropdwon_select" (click)="dropdownOpen1()">
-                            <input type="text" formControlName="category" style="display:none" [value]="Selectvariable1">
+                            <input type="text" formControlName="category" style="display:none"
+                                [value]="Selectvariable1">
                             <p>{{Selectvariable1}}</p>
                             <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>

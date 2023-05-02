@@ -133,7 +133,7 @@ export class LeavesContentComponent {
     },
     {
       id: 1,
-      name: 'Medical leave',
+      name: ' Half day leave',
     },
     {
       id: 2,
@@ -145,10 +145,10 @@ export class LeavesContentComponent {
     },
     {
       id: 4,
-      name: 'Half day leave',
+      name: 'Medical leave',
     },
   ];
-
+  halfdayleave:boolean=false;
   shortleave: boolean = false;
   contentdropdown: boolean = false;
   dropdownOpen() {
@@ -162,7 +162,13 @@ export class LeavesContentComponent {
     }
     else{
       this.shortleave=false;
+      this.halfdayleave=false;
     }
+    if(arr.id ==1){
+      this.halfdayleave=true;
+    }
+   
+
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
@@ -200,7 +206,6 @@ export class LeavesContentComponent {
       name: '3 am - 5 am',
     },
   ];
-
   contentdropdown1: boolean = false;
   dropdownOpen1() {
     this.contentdropdown1 = !this.contentdropdown1;
@@ -214,6 +219,16 @@ export class LeavesContentComponent {
     console.log(arr1.name);
     this.empleaveForm.value.category = arr1.name;
   }
+ 
+
+
+
+
+
+
+
+
+
 
 
   leaveshistory = false;
