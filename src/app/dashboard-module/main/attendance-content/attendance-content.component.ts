@@ -312,9 +312,11 @@ export class AttendanceContentComponent implements OnInit {
 // ----------------Profile table Girija----------------
 profilecard=false;
 attendence_main=true;
-profileview(){
+profile:any={};
+profileview(profile:any){
 this.profilecard=true;
 this.attendence_main=false;
+this.profile=profile;
 
 }
 back_profile(){

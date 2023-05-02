@@ -71,4 +71,9 @@ getempRecord:'http://localhost:3000/api/detail/fetch',
 checkemail: 'https://hrmaven.works/checkemail',
 baseUrl: 'https://hrmaven.works/user/export',
 
+
+// v1:'https://hrmaven.works/',
+v1:'http://localhost:3000/'
+
+
 };

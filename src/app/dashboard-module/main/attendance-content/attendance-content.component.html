@@ -170,8 +170,8 @@
     <div class="attendence-card" *ngIf="showCard">
       <div class="row">
         <div class="col-3" *ngFor="let user of card | attendanceFilter : employeename">
-          <div class="card" (click)="profileview()" *ngIf="!user.found">
-            <img src="assets/images/attendec-logo.png" alt="logo" />
+          <div class="card" (click)="profileview(user)" *ngIf="!user.found">
+            <img src={{user._id.url}} alt="logo" onError="this.src='./assets/images/Ellipse 98.svg'"/>
 
             <h2>{{ user._id.name }}</h2>
 
@@ -180,12 +180,8 @@
               <div class="percent-text">
                 <p>{{ user.presentcount }}/{{ user.totalcount }}</p>
               </div>
-              <svg class="progress" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
-                <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-                <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-              </svg>
               <div class="progress-circle-container">
-                <div class="progress-circle progress-40"><span></span></div>
+                <div class="progress-circle progress-{{user.percent}}"><span></span></div>
               </div>
             </div>
           </div>
@@ -208,17 +204,17 @@
           <i class="fa-sharp fa-solid fa-less-than"></i>
         </div>
         <div class="profile_logo">
-          <img src="assets/images/cardprofile.png" alt="" />
+          <img src={{profile._id.url}} alt="" onError="this.src='./assets/images/Ellipse 98.svg'"/>
         </div>
         <div class="bar">
           <img src="assets/images/Rectangle 580.png" alt="" />
         </div>
         <div class="profile_modal_title">
-          <h2>V.Sarath Kumar Reddy</h2>
-          <p>UID: 29497</p>
+          <h2>{{profile._id.name}}</h2>
+          <p>{{profile._id.uid}}</p>
         </div>
         <div class="profile_card_btn">
-          <button class="profile_logo_btn">UI/UX DESIGNER</button>
+          <button class="profile_logo_btn">{{profile._id.designation}}</button>
         </div>
       </div>
       <div class="car_profile_right">
@@ -254,79 +250,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
-            </tr>
-
-            <tr>
-              <td>26/05/2023</td>
-              <td>present</td>
-              <td>09:20 a.m.</td>
-              <td>05:00 p.m.</td>
+            <tr *ngFor="let i of profile.attendance">
+              <td>{{i.date | date:'shortDate'}}</td>
+              <td>{{i.status}}</td>
+              <td>{{i.in==null?'----':i.in }}</td>
+              <td>{{i.out==null?'----':i.out }}</td>
             </tr>
           </tbody>
         </table>
