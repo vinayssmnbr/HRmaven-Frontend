@@ -109,7 +109,9 @@
                 <option value="resigned" class="resign">Resigned</option>
                 <option value="absconder" class="abscond">Absconder</option>
               </select>
+              <i class="fa-solid fa-chevron-down"></i>
             </div>
+
           </td>
         </tr>
       </tbody>
@@ -195,6 +197,7 @@
               <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
                 (keydown)="validateEmail($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
+              <div class="validation-message" *ngIf="checkEmailExists(email)"><i class="fa-solid fa-circle-info"></i>Email already exists</div>
 
             </div>
             <div class="input">
@@ -202,7 +205,7 @@
               <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
                 (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
-
+            <div class="validation-message" *ngIf="checkMobileNoExists(mobile)"><i class="fa-solid fa-circle-info"></i>Mobile No. already exists</div>
             </div>
           </div>
         </form>
@@ -332,8 +335,8 @@
         </div>
         <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
         <h5>Download <a class="csv" (click)=" generateSampleCsvFile()" >Sample CSV File</a> for Reference</h5>
-       
-       
+
+
         <!-- <div class="custom-file-picker">
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >

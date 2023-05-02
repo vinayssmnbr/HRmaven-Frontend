@@ -62,13 +62,13 @@ export class EmployeeProfileComponent implements OnInit{
   job_type: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl(''),
+    name: new FormControl('',[ Validators.pattern('/^[a-zA-Z]+$/')]),
     designation: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl(''),
-    motherName: new FormControl(''),
+    fatherName: new FormControl('',[ Validators.pattern('/^[a-zA-Z]+$/')]),
+    motherName: new FormControl('',[ Validators.pattern('/^[a-zA-Z]+$/')]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
@@ -97,15 +97,15 @@ export class EmployeeProfileComponent implements OnInit{
     ctc: new FormControl(''),
     job_type: new FormControl(''),
     bankname: new FormControl(''),
-    adhaarno: new FormControl(''),
+    adhaarno: new FormControl('',[ Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
     accountno: new FormControl(''),
-    ifsc: new FormControl(''),
-    passport: new FormControl(''),
-    panno: new FormControl(''),
-    mobile: new FormControl(''),
-    email: new FormControl(''),
+    ifsc: new FormControl('', [ Validators.pattern('/^([A-Z]{4}0[A-Z0-9]{6})$/')]),
+    passport: new FormControl('', [ Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$')]),
+    panno: new FormControl('', [ Validators.pattern('/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/')]),
+    mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}')]),
+    email: new FormControl('', [Validators.email,Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$')]),
     state: new FormControl(''),
-    postalCode: new FormControl(''),
+    postalCode: new FormControl('',Validators.pattern('/^[0-9]{6}$/')),
     city: new FormControl(''),
     address: new FormControl(''),
     profemail:new FormControl(''),
@@ -116,20 +116,20 @@ export class EmployeeProfileComponent implements OnInit{
   experienceForm: FormGroup;
 
   ngOnInit() {
-   
-    this.user = this.dashService.getSelectedEmployee();   
+
+    this.user = this.dashService.getSelectedEmployee();
     this.experienceForm = new FormGroup({
       experienceItems: new FormArray([
         this.createExperienceItem()
-    
+
       ])
-    }); 
-    
-    
+    });
+
+
 
   }
-  
-  
+
+
   createExperienceItem(): FormGroup {
     return new FormGroup({
       expcompany: new FormControl(''),
@@ -138,7 +138,7 @@ export class EmployeeProfileComponent implements OnInit{
       exdesignation: new FormControl('')
     });
   }
-  
+
   get experienceItems() {
     return this.experienceForm.get('experienceItems') as FormArray;
   }
@@ -156,7 +156,7 @@ export class EmployeeProfileComponent implements OnInit{
   }
 
 
-  
+
 
 
   array1: any = [
@@ -692,6 +692,44 @@ export class EmployeeProfileComponent implements OnInit{
     this.showpgdetails=true;
   }
 
+//Validation
+allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+validatePincode(event: KeyboardEvent) {
+  const pincode = (event.target as HTMLInputElement).value;
+  if (!this.allowedKeys.includes(event.key) && !/^\d{0,5}$/.test(pincode)) {
+    event.preventDefault();
+  }
+}
+validatePanNumber(event) {
+  const panno = (event.target as HTMLInputElement).value;
+  if (!this.allowedKeys.includes(event.key) && !/^[a-zA-Z]{0,5}\d{0,5}$/.test(panno)) {
+    event.preventDefault();
+  } else if (/^[a-zA-Z]{0,5}\d{0,4}$/.test(panno)) {
+    event.target.value = panno.toUpperCase();
+  }
+}
 
+validatePassport(event: KeyboardEvent) {
+  const passport = (event.target as HTMLInputElement).value;
+  if (!this.allowedKeys.includes(event.key) && !/^\d{0,8}$/.test(passport)) {
+    event.preventDefault();
+  }
+
+}
+validateIfsc(event: KeyboardEvent) {
+  const ifsc = (event.target as HTMLInputElement).value;
+  if (!this.allowedKeys.includes(event.key) && !/^\d{0,10}$/.test(ifsc)) {
+    event.preventDefault();
+  }
+
+}
+validateAddhar(event: KeyboardEvent) {
+  const adhaarno = (event.target as HTMLInputElement).value;
+  if (!this.allowedKeys.includes(event.key) && !/^\d{0,11}$/.test(adhaarno)) {
+    event.preventDefault();
+
+}
+
+}
 
 }

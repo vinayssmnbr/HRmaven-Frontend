@@ -47,7 +47,15 @@ export class EmployeeContentComponent implements OnInit {
   fileName: string = '';
   fileName1: string = '';
   isSelectDisabled = false;
+  emailValidationMessage: string = '';
+  mobile:number
 
+  checkEmailExists(email: string){
+
+  }
+  checkMobileNoExists(mobile: number) {
+
+  }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -231,7 +239,7 @@ export class EmployeeContentComponent implements OnInit {
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
-
+  emailAlreadyExists = false;
   firstStep: boolean = true;
   secondStep: boolean = false;
   thirdStep: boolean = false;
@@ -242,6 +250,16 @@ export class EmployeeContentComponent implements OnInit {
     this.firstStep = false;
     this.secondStep = true;
     this.onUpload(this.selectedFile);
+    this.dashService.getEmployeeEmail(this.query).subscribe((response:{exists:boolean})=>{
+      console.log("response",this.emailAlreadyExists)
+      if (!response.exists) {
+        // submit the form
+      this.emailAlreadyExists = response.exists;
+      console.log("error")
+
+        // this.secondStep=true
+      }
+    })
   }
 
   onPreviousForm() {
@@ -763,7 +781,7 @@ export class EmployeeContentComponent implements OnInit {
     );
   }
 
-  
+
   download(): void {
     if (this.selectedEmployess && this.selectedEmployess.length > 0) {
       this.dashService.exportUsers(this.selectedEmployess).subscribe(
@@ -823,12 +841,12 @@ export class EmployeeContentComponent implements OnInit {
   //   fileInput.click();
   // }
 
-  //onFIleSelectedream 
-  
+  //onFIleSelectedream
+
   onFileSelectedrem(event: any): void {
 
     const file: File = event.target.files[0];
-    
+
     if (!file) {
       console.log('No file selected.');
       return;
@@ -839,27 +857,27 @@ export class EmployeeContentComponent implements OnInit {
          
          return;
       }
-    
+
      function validateCsvFile(file: File): boolean {
           const allowedExtensions = /(\.csv)$/i;
-        
+
           if (!allowedExtensions.exec(file.name)) {
              return false;
           }
-        
+
           return true;
         }
 
-  
+
     // const file: File = event.target.files[0];
-  
+
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
     if (file.size > MAX_FILE_SIZE_BYTES) {
       console.log('Selected file is too large.');
       return;
     }
-  
+
     // Parse CSV file
     const reader: FileReader = new FileReader();
     reader.onload = (e: any) => {
@@ -867,20 +885,20 @@ export class EmployeeContentComponent implements OnInit {
       const lines: string[] = csv.split(/\r\n|\n/);
       const headers: string[] = lines[0].split(',');
       const data: any[] = [];
-  
+
       for (let i = 1; i < lines.length - 1; i++) {
         const values: string[] = lines[i].split(',');
         const item: any = {};
-  
+
         for (let j = 0; j < headers.length; j++) {
           item[headers[j]] = values[j];
         }
-  
+
         data.push(item);
       }
-  
+
       console.log(data, 'parsed CSV data');
-  
+
       // Add each employee to system using dashService
       data.forEach(employee => {
         console.log('Adding employee:', employee);
@@ -890,18 +908,18 @@ export class EmployeeContentComponent implements OnInit {
         })
       });
     };
-  
+
     reader.readAsText(file);
   }
-   
+
   // importFile() {
   //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //  fileInput.click();
   //  }
 
- 
-  
-  //FOR CHECKING THE CHECK BOX 
+
+
+  //FOR CHECKING THE CHECK BOX
 
   onCheckboxChange($event, user: any) {
     const id = $event.target.value;
@@ -967,11 +985,11 @@ export class EmployeeContentComponent implements OnInit {
 
    validateCsvFile(file: File): boolean {
     const allowedExtensions = /(\.csv)$/i;
-  
+
     if (!allowedExtensions.exec(file.name)) {
       return false;
     }
-  
+
     return true;
   }
 
@@ -984,7 +1002,7 @@ export class EmployeeContentComponent implements OnInit {
       ['Ravi kumar', '9/28/95', '8837167880','ravi2p5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB9706386'],
 
     ];
-  
+
     const blob = new Blob([csvData.join('\n')], { type: 'text/csv;charset=utf-8;' });
     FileSaver.saveAs(blob, 'sample.csv');
   }

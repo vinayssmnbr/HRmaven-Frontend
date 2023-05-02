@@ -166,6 +166,10 @@ export class DashService {
     return this.http.get(this.getData)
   }
 
+  getEmployeeEmail(email:string){
+    return this.http.get(`${this.getData}?email=${email}`)
+  }
+
 
 
 
@@ -174,7 +178,7 @@ export class DashService {
   updateEmployee(user: any) {
     console.log('employee update id ', user);
     return this.http.patch(`${this.updatempdata}/${user._id}`, user);
-    
+
   }
   //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
@@ -260,5 +264,5 @@ async upload(file:File, userId?:string){
   }
 
 
-  
+
 }

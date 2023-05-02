@@ -106,13 +106,13 @@
             ">
                             <span *ngIf="
                 fun['username'].errors && fun['username'].errors['required']
-              "> <i class="fa-solid fa-circle-info"></i>
+              "> <img src="assets/images/valid_error.svg" alt="">
                                 Organization name is required
                             </span>
 
                             <span *ngIf="
                 fun['username'].errors && fun['username'].errors['pattern']
-              "><i class="fa-solid fa-circle-info"></i>
+              "><img src="assets/images/valid_error.svg" alt="">
                                 Enter Only Character
                             </span>
                         </div>
@@ -130,16 +130,16 @@
               fun['email'].invalid &&
               (fun['email'].touched || fun['email'].dirty)
             ">
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['required']"><i
-                                    class="fa-solid fa-circle-info"></i>
+                            <span *ngIf="fun['email'].errors && fun['email'].errors['required']"><img
+                                    src="assets/images/valid_error.svg" alt="">
                                 Email is required
                             </span>
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['email']"><i
-                                    class="fa-solid fa-circle-info"></i>
+                            <span *ngIf="fun['email'].errors && fun['email'].errors['email']"><img
+                                    src="assets/images/valid_error.svg" alt="">
                                 Invalid Email
                             </span>
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']"><i
-                                    class="fa-solid fa-circle-info"></i>
+                            <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']"><img
+                                    src="assets/images/valid_error.svg" alt="">
                                 Enter Valid Email Pattern
                             </span>
                         </div>
@@ -152,7 +152,7 @@
 
                                 <div class="iconWrap password_required">
 
-                                    <i class="fa-solid fa-circle-info"></i>
+                                    <img src="assets/images/valid_error.svg" alt="">
                                     <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
                                     <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
 
@@ -231,13 +231,13 @@
 
 
 
-                            <span class="password-toggle" (click)="togglePassword(passwordInpu)">
+                            <span class="password-toggle icon_eye" (click)="togglePassword(passwordInpu)">
                                 <i class="fa {{showPasswordIcon1}}"></i>
                             </span>
                         </div>
                         <span
-                            *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><i
-                                class="fa-solid fa-circle-info"></i>Password didn't match</span>
+                            *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><img
+                            src="assets/images/valid_error.svg" alt="">Password didn't match</span>
 
                     </div>
 
