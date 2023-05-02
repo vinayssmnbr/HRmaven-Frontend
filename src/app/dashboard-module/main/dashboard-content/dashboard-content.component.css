@@ -972,6 +972,9 @@ cursor: pointer;
 #name.ng_valid:hover{
   border:1px solid green;
 }
+#name.ng_valid{
+  border:1px solid green;
+}
 
 #name1.ng_invalid{
   border:1px solid red;
@@ -980,6 +983,9 @@ cursor: pointer;
   border:1px solid red;
 }
 #name1.ng_valid:hover{
+  border:1px solid green;
+}
+#name1.ng_valid{
   border:1px solid green;
 }
 
@@ -992,5 +998,14 @@ cursor: pointer;
 #office.ng_valid:hover{
   border:1px solid green;
 }
+#office.ng_valid{
+  border:1px solid green;
+}
+
+input:hover,
+input:focus {
+    border-color: #2F2C9F;
+}
+
 
 
