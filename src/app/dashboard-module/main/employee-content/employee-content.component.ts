@@ -31,7 +31,8 @@ export class EmployeeContentComponent implements OnInit {
   isChecked: boolean = true;
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
-  
+ 
+
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -831,6 +832,7 @@ export class EmployeeContentComponent implements OnInit {
 
     if (!validateCsvFile(file)) {
            alert('Invalid file type. Please select a CSV file.');
+         
          return;
       }
     
@@ -980,6 +982,10 @@ export class EmployeeContentComponent implements OnInit {
     const blob = new Blob([csvData.join('\n')], { type: 'text/csv;charset=utf-8;' });
     FileSaver.saveAs(blob, 'sample.csv');
   }
+
+
+ 
+  
   
   
 }
