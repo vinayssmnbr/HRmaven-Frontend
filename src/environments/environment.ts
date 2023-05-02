@@ -32,12 +32,15 @@ export const environment = {
   leavecontent: 'https://hrmaven.works/api/leave/data/leaves',
   patchleave: 'https://hrmaven.works/api/leave/update/leave',
   getempRecord: 'https://hrmaven.works/api/detail/fetch',
+baseUrl:'https://hrmaven.works/user/export',
 <<<<<<< HEAD
+checkemail : 'http://localhost:3000/api/checkemail'
+
 =======
-baseUrl:'https://hrmaven.works/user/export'
+checkemail:'https://hrmaven.works/checkemail'
+>>>>>>> 111645c30ebd33e7f35e98a6e9b148fdb269e35f
 
 
->>>>>>> 435cfb9486f50b19a71bade0d6e6130b7b107b11
 
 
 
@@ -75,7 +78,10 @@ baseUrl:'https://hrmaven.works/user/export'
   // leavecontent:'http://localhost:3000/api/leave/data/leaves',
   // patchleave:'http://localhost:3000/api/leave/update/leave',
   // getempRecord:'http://localhost:3000/api/detail/fetch',
-  // baseUrl:'http://localhost:3000/user/export'
+  // baseUrl:'http://localhost:3000/user/export',
+// checkemail:'http://localhost:3000/checkemail'
+
+
 
 
 }
