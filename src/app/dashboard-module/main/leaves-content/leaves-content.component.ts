@@ -65,7 +65,7 @@ export class LeavesContentComponent {
 
   graphleave() {
     this.dashService.getleavegraph().subscribe((res: any) => {
-      res.map((d: any) => {
+      res.graph.map((d: any) => {
         this.total = this.total + d.count;
         if (d._id == 'pending') {
           this.pendingcount = d.count;
@@ -80,18 +80,32 @@ export class LeavesContentComponent {
     })
   }
   allchecked = false;
-
+  count=0;
   fetchPendingLeave() {}
   onChange($event) {
     const id = $event.target.value;
     const ischecked = $event.target.checked;
     this.pendingleave.map((d: any) => {
       if (d._id == id) {
+        if(ischecked==true)
+        {
+          this.count++;
+        }
+        else{
+          this.count--;
+        }
         d.select = ischecked;
         this.parentSelector = false;
         return d;
       }
       if (id == -1) {
+        if(this.parentSelector==false)
+        {
+          this.count=0;
+        }
+        else{
+          this.count++;
+        }
         d.select = this.parentSelector;
         return d;
       }
@@ -112,6 +126,7 @@ export class LeavesContentComponent {
         }
 
       })
+      console.log(res);
 
 
     })
@@ -377,8 +392,8 @@ export class LeavesContentComponent {
 
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
-      this.pendingcount = this.pendingcount - 1;
-      this.acceptcount = this.acceptcount + 1;
+      this.pendingcount--;
+      this.acceptcount++;
 
       this.dashService.updateleavestatus(this.acceptdata._id, "accept", this.acceptmessage).subscribe((res) => {
       });
@@ -404,8 +419,8 @@ export class LeavesContentComponent {
           this.dashService.updateleave(data.uid, data.from, data.to).subscribe((res: any) => {
 
           })
-          this.pendingcount = this.pendingcount - 1;
-          this.acceptcount = this.acceptcount + 1;
+          this.pendingcount--;
+          this.acceptcount++;
 
         } else {
           const row = this.acceptdata[index];
@@ -433,8 +448,8 @@ export class LeavesContentComponent {
       this.dashService.updateleavestatus(this.acceptdata._id, "reject", this.acceptmessage).subscribe((res) => {
 
       });
-      this.pendingcount = this.pendingcount - 1;
-      this.rejectcount = this.rejectcount + 1;
+      this.pendingcount--;
+      this.rejectcount++;
       this.acceptmessage = "";
       this.rejectleave.push(row);
       this.graphleave();
@@ -445,8 +460,8 @@ export class LeavesContentComponent {
         if (data.select == true) {
           this.dashService.updateleavestatus(data._id, "reject", this.acceptmessage).subscribe((res) => {
           });
-          this.pendingcount = this.pendingcount - 1;
-          this.rejectcount = this.rejectcount + 1;
+          this.pendingcount--;
+          this.rejectcount++;
           const row = this.acceptdata[index];
           this.rejectleave.push(row);
         }

@@ -188,7 +188,11 @@ obj:any
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
-        // this.cookie.set('token', token);
+        console.log(res);
+        this.cookie.set('token', res.token);
+        this.cookie.set('id',res.empId);
+
+
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
