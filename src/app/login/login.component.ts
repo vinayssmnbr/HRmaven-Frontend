@@ -198,13 +198,16 @@ export class LoginComponent {
   }
 
   // submissions
-
+obj:any
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
     this.userService.users(data).subscribe((res: any) => {
       this.userService.users(this.loginForm);
       console.log('login User: ', res);
+      this.obj=res.role
+      localStorage.setItem('role',this.obj)
+      console.log("obj",this.obj)
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
 

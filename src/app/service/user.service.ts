@@ -44,7 +44,7 @@ export class UserService {
     this.isLoggedIn.next(true);
     return this.http.post(this.saveurl, data);
   }
- 
+
   updatepersonals(email: any, data: any){
     const url = `${this.personaldataupdate}/${email}`;
     return this.http.patch(url, data);
@@ -72,24 +72,26 @@ export class UserService {
   }
 
   newpwdaccount(email: any ,data: any) {
- 
+
     return this.http.post(`${this.resetpwdaccount}/${email}`, data);
   }
 
 
-
-
-
-  
-
-
-
-
   //LOGIN AND VERIFY DASHBOARD
-  users(data: any) {
-    return this.http.post(this.loginurl, data);
-  }
 
+  // Role=localStorage.getItem('role')
+  // users(data: any) {
+  //     if (this.Role === 'HR') {
+  //       return this.http.post(this.loginurl, data);
+  //     } else {
+  //       window.location.href = '/login';
+  //       return null
+  //     }
+
+  // }
+  users(data:any){
+    return this.http.post(this.loginurl,data)
+  }
 
 
   getUserProfileById(): Observable<any> {
