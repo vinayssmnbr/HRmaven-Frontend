@@ -19,6 +19,7 @@ export class DashboardContentComponent implements OnInit {
   loader: boolean = false;
   isFromSignupPage = false;
   formSubmitted = false;
+  showModalContent: boolean;
 
   constructor(
     private router: Router,
@@ -49,19 +50,19 @@ export class DashboardContentComponent implements OnInit {
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
     noOfEmployee: new FormControl(''),
-    phone: new FormControl(''),
-    headOffice: new FormControl(''),
-  });
+    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
+  })
   email = localStorage.getItem('email');
-  submitPersonalData(data: any) {
-    console.log('personal data: ', data);
-    this.userService.addpersonals(this.email, data).subscribe((res: any) => {
-      console.log('personaldataForm.value res: ', res);
-      console.log('personaldataForm.value data: ', data);
+  submitPersonalData(data: any){
+    console.log("personal data: ", data);
+    this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
+      console.log("personaldataForm.value res: ", res);
+      console.log("personaldataForm.value data: ", data);
       this.formSubmitted = true;
-    });
+        });
   }
 
   options: any = [
@@ -74,13 +75,13 @@ export class DashboardContentComponent implements OnInit {
     {
       day: 'Mon',
       Date: '21',
-      head: 'Interview',
+      head: 'Organisational meetings',
       time: '10am to 12pm',
     },
     {
       day: 'Mon',
       Date: '21',
-      head: 'Interview',
+      head: 'Meeting with the manager',
       time: '10am to 12pm',
     },
 
@@ -104,12 +105,46 @@ export class DashboardContentComponent implements OnInit {
     });
   }
 
-  leaves: any[] = [];
+  leaves: any[] = [
 
-  ngOnInit() {
-    console.log('isFromSignupPage: ', this.isFromSignupPage);
+
+  ]
+  personalData: any =''
+  empname: any = ''
+  objectuserid = localStorage.getItem('email')
+
+  ngOnInit()
+   {
+    this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+      console.log("res account settings personaldata: ", res);
+
+      console.log("res account settings personaldata: ", res.personaldata);
+      console.log("res account settings personaldata: ", res.personaldata.headOffice);
+
+      console.log("res account settings personaldata: ", res.useridd);
+
+      this.empname = res.personaldata.noOfEmployee;
+      localStorage.setItem('empname', this.empname)
+      // this.employeename = res.personaldata.name;
+      // this.totalemployee = res.personaldata.noOfEmployee;
+      // this.headOffice = res.personaldata.headOffice;
+      // this.phone = res.personaldata.phone;
+      // this.description = res.personaldata.description
+      // this.profileimage = res.personaldata.profileimage;
+
+    });
+
+    this.personalData = localStorage.getItem('empname');
+    if (this.personalData === null) {
+      this.formSubmitted = false;
+    } else {
+      this.formSubmitted = true;
+    }
+  
+
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
-    console.log('isFromSignupPage: ', this.isFromSignupPage);
+    console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.graphcontent().subscribe((res: any) => {
       if (res) {
@@ -218,11 +253,11 @@ export class DashboardContentComponent implements OnInit {
     // Create a chart object
   }
 
-  closeModal: boolean = true;
+  
 
-  clickClose() {
-    this.closeModal = false;
-  }
+  // clickClose() {
+  //   this.closeModal = false;
+  // }
 
   array: any = [
     {
@@ -283,4 +318,64 @@ export class DashboardContentComponent implements OnInit {
   updateLeaveStatus(object: any, status: 'accept' | 'reject') {
     // this.dashService.updateleave(object,status);
   }
+
+
+
+  //Modal ts//
+  showModal10=false;
+  openModal10(){
+    this.showModal10 = true;
+    this.showModalContent=true
+  }
+  
+  closeModal10(){
+    this.showModal10 = false;
+    this.showModalContent=false;
+  }
+
+  showModal11=false;
+  openModal11(){
+    this.showModal11 = true;
+    this.showModalContent=true
+  }
+  
+  closeModal11(){
+    this.showModal11 = false;
+    this.showModalContent=false;
+  }
+  array1: any = [
+    {
+      id: 0,
+      name: 'Online',
+    },
+    {
+      id: 1,
+      name: 'Offline',
+    },
+  ];
+  Venuelink:boolean=false;
+  Meetinglink:boolean=true;
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable1: string = 'online';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    if (arr1.id == 0){
+      this.Meetinglink=true;
+      this.Venuelink=false;
+    }
+    if(arr1.id==1){
+      this.Venuelink=true;
+      this.Meetinglink=false;
+    }
+    
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable1 = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
+  }
+
+
 }

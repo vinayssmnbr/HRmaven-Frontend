@@ -4,12 +4,24 @@ import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rx
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { CookieService} from 'ngx-cookie-service'
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   isFromSignupPage = false;
 
+  private behaviorNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('default');
+
+  // Method to update the behavior name
+  updateBehaviorName(name: string) {
+    this.behaviorNameSubject.next(name);
+  }
+
+  // Method to get the current behavior name as an Observable
+  getBehaviorName(): Observable<string> {
+    return this.behaviorNameSubject.asObservable();
+  }
   constructor(
     private http: HttpClient,
     private router: Router,

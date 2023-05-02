@@ -330,7 +330,10 @@ export class AttendanceContentComponent implements OnInit {
     this.profilecard = false;
     this.attendence_main = true;
   }
-}
-function getCurrentDate() {
-  throw new Error('Function not implemented.');
+
+  getEmployeeData() {
+    this.dashService.getEmployee().subscribe((res) => {
+      this.employee = res;
+    });
+  }
 }

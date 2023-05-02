@@ -80,7 +80,7 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('https://hrmaven.works/api/leave/emp/history', { headers });
+    return this.http.get('http://localhost:3000/api/leave/emp/history', { headers });
 
 
   }
