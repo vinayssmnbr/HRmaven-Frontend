@@ -66,7 +66,7 @@
                         new</p>
                 </div>
                 <div class="meeting-scrollbar">
-                    <div class="all-meetings" *ngFor="let option of options let index = index">
+                    <div class="all-meetings" *ngFor="let option of options let index = index" (click)="openModal11()">
                         <div class="interview-area">
                             <div class="date">
                                 <p>{{option.day}}</p>
@@ -305,7 +305,7 @@
     <!-------------------------Meetings On click Modal--------------->
 
 
-    <div class="modal"*ngIf="showModal10" >
+    <div class="modal" *ngIf="showModal10">
         <div class="modal-content" *ngIf="showModalContent">
             <i class="fa-solid fa-xmark" (click)="closeModal10()"></i>
             <div class="modal-heading">
@@ -321,16 +321,17 @@
                         <label>Mode</label><br>
                         <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                             <div class="dropdwon_select" (click)="dropdownOpen1()">
-                              <p>{{Selectvariable1}}</p>
-                              <i class="fa-sharp fa-solid fa-caret-down"></i>
+                                <p>{{Selectvariable1}}</p>
+                                <i class="fa-sharp fa-solid fa-caret-down"></i>
                             </div>
                             <div class="select_content" *ngIf="contentdropdown1">
-                              <ul>
-                                <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
-                                  {{arr1.name}}</li>
-                              </ul>
+                                <ul>
+                                    <li *ngFor="let arr1 of array1; index as i"
+                                        [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                                        {{arr1.name}}</li>
+                                </ul>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="meeting-mode">
@@ -359,7 +360,7 @@
                     <div class="form-group">
                         <label>Venue</label> <br>
                         <input type="text" placeholder="Paste here..." class="meeting-link">
-                       
+
                     </div>
                 </div>
 
@@ -380,56 +381,56 @@
                 <h5>In this interview</h5>
                 <div class="image-text-design">
                     <div class="image-text-heading">
-                    <div class="image-name">
-                        <img src="assets/images/olivye.png" alt="">
+                        <div class="image-name">
+                            <img src="assets/images/olivye.png" alt="">
+                        </div>
+                        <div class="name-heading">
+                            <h6>Olivye Wu</h6>
+                            <p>Olivye@gmail.com</p>
+                        </div>
                     </div>
-                    <div class="name-heading">
-                        <h6>Olivye Wu</h6>
-                        <p>Olivye@gmail.com</p>
-                    </div>
-                </div>
                     <div class="designer-text">
                         <h5>UI/UX designer</h5>
                     </div>
                 </div>
                 <div class="image-text-design">
                     <div class="image-text-heading">
-                    <div class="image-name">
-                        <img src="assets/images/olivye.png" alt="">
+                        <div class="image-name">
+                            <img src="assets/images/olivye.png" alt="">
+                        </div>
+                        <div class="name-heading">
+                            <h6>Olivye Wu</h6>
+                            <p>Olivye@gmail.com</p>
+                        </div>
                     </div>
-                    <div class="name-heading">
-                        <h6>Olivye Wu</h6>
-                        <p>Olivye@gmail.com</p>
-                    </div>
-                </div>
                     <div class="designer-text">
                         <h5>UI/UX designer</h5>
                     </div>
                 </div>
                 <div class="image-text-design">
                     <div class="image-text-heading">
-                    <div class="image-name">
-                        <img src="assets/images/olivye.png" alt="">
+                        <div class="image-name">
+                            <img src="assets/images/olivye.png" alt="">
+                        </div>
+                        <div class="name-heading">
+                            <h6>Olivye Wu</h6>
+                            <p>Olivye@gmail.com</p>
+                        </div>
                     </div>
-                    <div class="name-heading">
-                        <h6>Olivye Wu</h6>
-                        <p>Olivye@gmail.com</p>
-                    </div>
-                </div>
                     <div class="designer-text">
                         <h5>UI/UX designer</h5>
                     </div>
                 </div>
                 <div class="image-text-design">
                     <div class="image-text-heading">
-                    <div class="image-name">
-                        <img src="assets/images/olivye.png" alt="">
+                        <div class="image-name">
+                            <img src="assets/images/olivye.png" alt="">
+                        </div>
+                        <div class="name-heading">
+                            <h6>Olivye Wu</h6>
+                            <p>Olivye@gmail.com</p>
+                        </div>
                     </div>
-                    <div class="name-heading">
-                        <h6>Olivye Wu</h6>
-                        <p>Olivye@gmail.com</p>
-                    </div>
-                </div>
                     <div class="designer-text">
                         <h5>UI/UX designer</h5>
                     </div>
@@ -437,7 +438,7 @@
 
 
             </div>
-           
+
 
             <div class="discard-save">
                 <div class="discard"><button (click)="closeModal10()">Discard</button></div>
@@ -451,11 +452,48 @@
 
 
 
+    <!----------------------Meetings-modal------------------>
+    <div class="interview-modal"*ngIf="showModal11"> 
+        <div class="interview-modal-content" *ngIf="showModalContent">
+            <div class="tag-date-notes">
+                <div class="tag-interview-cross">
+                    <div class="tag-interview">
+                        <div class="tag">
+                            <img src="assets/images/tag.svg" alt="">
+                        </div>
+                        <h4>Inteview</h4>
+                    </div>
+                    <i class="fa-solid fa-xmark interview-cross" (click)="closeModal11()"></i>
+                </div>
+                <div class="calender-date-time">
+                    <div class="calender">
+                        <img src="assets/images/calender-date.png" alt="">
+                    </div>
+                    <div class="date-time">
+                        <h4>22nd January 2023</h4>
+                        <p>9:00 am - 11:00 am</p>
+                    </div>
 
+                </div>
+                <div class="notes-text">
+                    <div class="notes">
+                        <img src="assets/images/Group 214.svg" alt="">
+                    </div>
+                    <div class="notes-para">
+                        <h4>Latest notes</h4>
+                        <p>posted on 9 january, 2023</p>
+                        <div class="notes-para-text">
+                            <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing projects </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="join-meeting-button">
+                <button class="join" (click)="closeModal11()">Join meeting</button>
+            </div>
+        </div>
+    </div>
 
 
 </div>
-
-
-
-
