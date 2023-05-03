@@ -156,7 +156,11 @@ export class DashService {
   }
 
   getEmployeeEmail(email: any) {
-    return this.http.get('${this.checkemail}/${email}');
+    return this.http.get(`${this.prefix + 'api/checkemail'}/${email}`);
+  }
+
+  getEmployeeMobile(mobile: any) {
+    return this.http.get(`${this.prefix + 'api/checkmobile'}/${mobile}`);
   }
 
   //UPDATE EMPLOYEE DATA

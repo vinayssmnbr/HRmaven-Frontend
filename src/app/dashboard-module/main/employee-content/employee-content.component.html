@@ -245,13 +245,22 @@
                 exists</div>
             </div>
 
-            <div class="input">
+            <!-- <div class="input">
               <label>Mobile No.</label>
               <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
                 (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
               <div class="validation-message" *ngIf="checkMobileNoExists(mobile)"><i
                   class="fa-solid fa-circle-info"></i>Mobile No. already exists</div>
+            </div> -->
+
+            <div class="input">
+              <label>Mobile No.</label>
+              <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
+                (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
+                [ngClass]="{'ng_invalid': mobileExists , 'ng_valid': !mobileExists}">
+              <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-info"></i>Mobile No.
+                already exists</div>
             </div>
           </div>
         </form>
