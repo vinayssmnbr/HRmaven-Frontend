@@ -34,7 +34,8 @@ export class EmployeeContentComponent implements OnInit {
   // parentSelector: boolean = false;
  
   public list: string[] = [];
-
+  
+  // flag:any;
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -893,6 +894,11 @@ export class EmployeeContentComponent implements OnInit {
 
     // Parse CSV file
     const reader: FileReader = new FileReader();
+
+    reader.onloadstart = () => {
+      console.log('Please wait, file is uploading...');
+    };
+    
     reader.onload = (e: any) => {
       const csv: string = e.target.result;
       const lines: string[] = csv.split(/\r\n|\n/);
@@ -915,9 +921,12 @@ export class EmployeeContentComponent implements OnInit {
       // Add each employee to system using dashService
       data.forEach((employee) => {
         console.log('Adding employee:', employee);
+        console.log('Please wait, employee is being added...');
+       
         this.dashService.addEmployee(employee).subscribe((res: any) => {
           console.log('Response:', res);
           console.log('Data:', res.data);
+         
         });
       });
     };
@@ -1009,7 +1018,7 @@ export class EmployeeContentComponent implements OnInit {
       ['John kumar', '9/28/93', '8825167890','john1v5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB7906456'],
       ['Ramanujan kumar', '9/28/94', '8815167990','ramanujan7t5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB7906465'],
       ['Ravi kumar', '9/28/95', '8837167880','ravi2p5@gmail.com','10.00am to 6:00pm','Male','Full Stack Developer','Mohali','8LPA','Internship','Mohali','Punjab National Bank','PNB9706386'],
-
+     
     ];
 
     const blob = new Blob([csvData.join('\n')], {
