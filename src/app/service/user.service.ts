@@ -61,7 +61,7 @@ export class UserService {
   }
 
   getpersonals(email: any){
-    return this.http.get(`${this.prefix+"getpersonaldata"}/${email}`);
+    return this.http.get(`${this.prefix+"getpersonalsdata"}/${email}`);
   }
 
   newpwd(data: any, token: any) {
