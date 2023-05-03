@@ -18,6 +18,10 @@
 .right_side{
   width: 40%;
 }
+.left-side-content{
+  display: flex;
+  justify-content: space-between;
+}
 .col-9 .col-4 {
   padding-right: 20px;
   border-radius: 8px;
@@ -30,6 +34,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
+  width: 263px;
 }
 
 .card p {
@@ -50,6 +55,10 @@
   height: 100px;
   background-color: #ffffff;
   border-radius: 8px;
+  width: 263px;
+}
+.chart-balance{
+  display: flex;
 }
 
 .attendance-chart {
@@ -58,8 +67,11 @@
   border-radius: 8px;
   margin-top: 25px;
   padding: 25px 25px;
+  margin-right: 25px;
 }
-
+.attendance{
+  width: 60%;
+}
 .leave-balance {
   padding: 27px 25px;
   height: 420px;
@@ -150,13 +162,15 @@
 /*--------------------------------------------------*/
 
 .leave_balance {
-  margin: 20px 20px;
+  margin: 20px 0px;
   width: 100%;
   background-color: #FFFFFF;
   height: 420px;
   border-radius: 8px;
 }
-
+.balance{
+  width: 40%;
+}
 .leave_balance h1 {
   font-weight: 500;
   font-size: 18px;
@@ -400,11 +414,28 @@
   cursor: pointer;
   width: 94px;
   cursor: pointer;
+  height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
   padding: 10px;
   position: absolute;
   color: #444444;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
+}
+
+.select_content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.select_content::-webkit-scrollbar-track {
+  background-color: #EFEFF8;
+}
+
+.select_content::-webkit-scrollbar-thumb {
+  background-color: #888888de;
+  border-radius: 6px;
+  height: 10px;
 }
 
 .select_content ul {
@@ -414,7 +445,7 @@
 
 .select_content ul li {
   list-style: none;
-  padding: 10px 10px;
+  padding: 10px 2px;
   margin-top: 5px;
   font-size: 14px;
 }
@@ -438,7 +469,7 @@
   flex-direction: row;
   text-align: center;
   margin: 14px 14px;
-  gap: 20px;
+  justify-content: space-between;
 
 }
 .casual_leave{
@@ -516,7 +547,7 @@ a {
   border-radius: 8px;
   padding: 20px;
   min-height: 97%;
-  /* height: 100%; */
+  height: 543px;
 
 }
 
@@ -1008,7 +1039,7 @@ input[type="radio"] {
 .meeting-scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 400px;
+  height: 545px;
   padding-right: 4px;
 }
 
