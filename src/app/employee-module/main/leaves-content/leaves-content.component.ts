@@ -29,6 +29,12 @@ export class LeavesContentComponent {
     empService.activeComponent = 'leave';
     empService.headerContent = '';
     this.leavegraphcontent();
+    this.obj={
+      casual: 1,
+      earned: 2,
+      urgent: 3,
+      medical: 4
+    };
   }
 
   async leavegraphcontent() {
@@ -38,9 +44,15 @@ export class LeavesContentComponent {
     });
 
     this.empService.leavehistory().subscribe((res: any) => {
+      console.log(res.response[0])
+      if(res.response[0].History==undefined)
+      {
+        console.log("undefined");
+      }
+      else{
       console.log(res.response[0].History);
       this.leaves = res.response[0].History;
-    });
+    }});
   }
 
   date = new Date();
@@ -52,17 +64,18 @@ export class LeavesContentComponent {
     console.log(this.empleaveForm.value);
     this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
       console.log(res);
-    });
-    console.log(this.leaves);
+    })
     this.leaves.push({
-      appliedOn: this.date.getDate(),
-      category: this.empleaveForm.value.category,
-      document: this.fileurl,
-      from: this.empleaveForm.value.from,
-      to: this.empleaveForm.value.to,
-      reason: this.empleaveForm.value.reason,
-      status: 'pending',
-    });
+      appliedOn:this.date.toISOString(),
+      category:this.empleaveForm.value.category,
+      from:this.empleaveForm.value.from,
+      to:this.empleaveForm.value.to,
+      reason:this.empleaveForm.value.reason,
+      status:"pending",
+      duration:Number(this.str),
+      message:""
+    })
+    console.log(this.leaves);
   }
   cancel() {
     this.empleaveForm.reset();

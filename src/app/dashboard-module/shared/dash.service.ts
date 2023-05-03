@@ -11,13 +11,10 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class DashService {
-  // private baseUrl = 'https://hrmaven.works';
-  // private baseUrl="http://localhost:3000"
   public headerContent: string;
   public activeComponent: string;
-  private baseUrl=environment.baseUrl
 
-
+private prefix = environment.v1;
    constructor(
     private http: HttpClient,
     private router: Router,
@@ -29,28 +26,12 @@ export class DashService {
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(this.profile, { headers }).pipe(
+    return this.http.get(this.prefix+"user-profile", { headers }).pipe(
       map((response: any) => {
         return response;
       })
     );
   }
-  createData = environment.createData;
-  getData = environment.getData;
-  deleteData = environment.deleteData;
-  getLeave = environment.getLeave;
-  updateData = environment.updateData;
-  getAttd = environment.getAttd;
-  updatempdata = environment.updatempdata;
-  getuid = environment.getuid;
-  report = environment.report;
-  profile = environment.profile;
-  attendance=environment.attendance;
-  attendancecard=environment.attendancecard;
-  attendancegraph=environment.attendancegraph;
-  leavegraph=environment.leavegraph;
-  // checkemail=environment.checkemail
-
 
   //ADD EMPLOYEE DATA
   // addEmployee(data) {
@@ -60,10 +41,7 @@ export class DashService {
 
   //ADD  Employee Data
   addEmployee(data) {
-    return this.http.post('https://hrmaven.works/api/create', data);
-    // return this.http.post('http://localhost:3000/api/create', data);
-    return this.http.post(this.createData, data);
-
+    return this.http.post(this.prefix+'api/create', data);
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
@@ -77,14 +55,14 @@ export class DashService {
 
   //DELETE DATA
   deleteStudent(id: string): Observable<void> {
-    const url = `${this.deleteData}/${id}`;
+    const url = `${this.prefix+'api/'}/${id}`;
     return this.http.delete<void>(url);
   }
   getLeaves() {
-    return this.http.get(this.getLeave);
+    return this.http.get(this.prefix+'api/leave//');
   }
   getleaves() {
-    return this.http.get(this.updateData);
+    return this.http.get(this.prefix+'attendance');
   }
 
 
@@ -95,37 +73,52 @@ export class DashService {
 
 
   getAttendance(date:any) {
+    const id = this.cookie.get('hr_id');
     const headers= new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'MyDate': date
+        'MyDate': date,
+        'hrid':id.toString()
       }
     )
-    return this.http.get(this.attendance,{ headers });  //this.getAttd
+    return this.http.get(this.prefix+'attendance/date/attendance',{ headers });
   }
 
   getAttendancecard(month:any){
+    const id = this.cookie.get('hr_id');
     const headers= new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'month': month.toString()
+        'month': month.toString(),
+        'hrid':id.toString()
       }
     )
-    return this.http.get(this.attendancecard,{ headers });
+    return this.http.get(this.prefix+'attendance/date/attendancecard', { headers});
   }
 
 
   graphcontent()
   {
-    return this.http.get(this.attendancegraph);
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.prefix+'attendance/date/report', { headers });
   }
 
 
 
   getleavecontent(){
-    return this.http.get(environment.leavecontent);
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.prefix+'api/leave/data/leaves' ,{headers});
   }
-
   updateleavestatus(id:any,status:any,message:any){
     const headers= new HttpHeaders(
       {
@@ -134,7 +127,7 @@ export class DashService {
         'id':id.toString(),
         'message':message.toString()
       })
-      return this.http.patch(environment.patchleave,{id,status,message},{ headers })
+      return this.http.patch(this.prefix+'api/leave/update/leave',{id,status,message},{ headers })
   }
 
   filterleave(data:any){
@@ -146,7 +139,7 @@ export class DashService {
         'category':data.category
       }
     )
-    return this.http.get('https://hrmaven.works/api/leave/filter/leave',{ headers});
+    return this.http.get(this.prefix+'api/leave/filter/leave',{ headers});
   }
   /////////// end here from Harpreet Singh////////////////////////////
 
@@ -155,20 +148,32 @@ export class DashService {
 
 
   getleavegraph(){
-    return this.http.get(this.leavegraph);
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.prefix+'api/leave/graph/leave', { headers });
   }
 
   getEmployeeStatus(status:string): Observable<any[]> {
     return this.http
-      .get<any[]>(this.getData)
+      .get<any[]>(this.prefix+'api/find')
       .pipe(map((data) => data.filter((user) => user.status ===status)));
   }
   getEmployee(){
-    return this.http.get(this.getData)
+    const id = this.cookie.get('hr_id');
+    const headers= new HttpHeaders(
+      {
+        'hrid':id.toString()
+      }
+    )
+    return this.http.get(this.prefix+'api/find',{ headers })
   }
 
   getEmployeeEmail(email:any){
-    // return this.http.get(`${this.checkemail}/${email}`)
+    return this.http.get("${this.checkemail}/${email}");
   }
 
 
@@ -178,32 +183,32 @@ export class DashService {
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);
-    return this.http.patch(`${this.updatempdata}/${user._id}`, user);
+    return this.http.patch(`${this.prefix+'api/update'}/${user._id}`, user);
 
   }
   //UPDATE EMPLOYEE ATTENDENCE DATA
   updateEmpAttendance(data: any) {
     console.log('data', data);
-    return this.http.patch(this.updateData + `/${data._id}`, data);
+    return this.http.patch(this.prefix+'attendance'+`/${data._id}`, data);
   }
   //SEARCH UID AND FILTER DESIGNATION
   searchuid(query: string, status: string) {
     console.log('des', status);
     return this.http
-      .get<any>(`${this.getData}?uid=${query}&status=${status}`)
+      .get<any>(`${this.prefix+'api/find'}?uid=${query}&status=${status}`)
       // .pipe(map((data) => data.filter((user) => user.status === 'accepted')));
   }
 
   getLeaveData(type: string) {
-    return this.http.get(`${this.getData}?type=${type}`);
+    return this.http.get(`${this.prefix+'api/find'}?type=${type}`);
   }
 
   getreport() {
-    return this.http.get(this.report);
+    return this.http.get(this.prefix+'attendance/report');
   }
   //GET EMPLOYEE CUSTOM UID
   getEmployeeUid() {
-    return this.http.get(this.getuid);
+    return this.http.get(this.prefix+'api/uid');
   }
 
   getDates(startDate: string, stopDate: string): string[] {
@@ -224,7 +229,7 @@ export class DashService {
         body['Array'] = Array;
         body['uid'] = uid;
 
-        return this.http.post('https://hrmaven.works/attendance/update/leave', body, {
+        return this.http.post(this.prefix+'attendance/update/leave', body, {
             headers: { 'content-type': 'application/json' },
           })
   }
@@ -250,8 +255,8 @@ async upload(file:File, userId?:string){
     return this.client.upload(file)
   }
 
-  exportUsers(data:any[]): Observable<Blob> {
-    const url = `${this.baseUrl}`;
+  exportUsers(data:any[]){
+    const url = `${this.prefix}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'text/csv'
@@ -260,7 +265,7 @@ async upload(file:File, userId?:string){
   }
 
   updateEmpStatus(id,status):Observable<any>{
-    const url = `${this.updatempdata}/${id}`;
+    const url = `${this.prefix+'api/update'}/${id}`;
     return this.http.patch(url,{status})
   }
 

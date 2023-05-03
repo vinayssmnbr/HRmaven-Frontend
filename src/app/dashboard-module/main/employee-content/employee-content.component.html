@@ -91,7 +91,7 @@
             <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
               routerLink="/employee-profile">
               <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile"><p>{{user.name}}</p>
+              routerLink="/employee-profile" onError="this.src='./assets/images/Ellipse 98.svg'"><p>{{user.name}} </p>
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
             routerLink="/employee-profile">{{user.designation}}</td>
