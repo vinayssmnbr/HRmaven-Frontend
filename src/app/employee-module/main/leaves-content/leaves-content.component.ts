@@ -29,11 +29,11 @@ export class LeavesContentComponent {
     empService.activeComponent = 'leave';
     empService.headerContent = '';
     this.leavegraphcontent();
-    this.obj={
+    this.obj = {
       casual: 1,
       earned: 2,
       urgent: 3,
-      medical: 4
+      medical: 4,
     };
   }
 
@@ -44,15 +44,14 @@ export class LeavesContentComponent {
     });
 
     this.empService.leavehistory().subscribe((res: any) => {
-      console.log(res.response[0])
-      if(res.response[0].History==undefined)
-      {
-        console.log("undefined");
+      console.log(res.response[0]);
+      if (res.response[0].History == undefined) {
+        console.log('undefined');
+      } else {
+        console.log(res.response[0].History);
+        this.leaves = res.response[0].History;
       }
-      else{
-      console.log(res.response[0].History);
-      this.leaves = res.response[0].History;
-    }});
+    });
   }
 
   date = new Date();
@@ -64,17 +63,17 @@ export class LeavesContentComponent {
     console.log(this.empleaveForm.value);
     this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
       console.log(res);
-    })
+    });
     this.leaves.push({
-      appliedOn:this.date.toISOString(),
-      category:this.empleaveForm.value.category,
-      from:this.empleaveForm.value.from,
-      to:this.empleaveForm.value.to,
-      reason:this.empleaveForm.value.reason,
-      status:"pending",
-      duration:Number(this.str),
-      message:""
-    })
+      appliedOn: this.date.toISOString(),
+      category: this.empleaveForm.value.category,
+      from: this.empleaveForm.value.from,
+      to: this.empleaveForm.value.to,
+      reason: this.empleaveForm.value.reason,
+      status: 'pending',
+      duration: Number(this.str),
+      message: '',
+    });
     console.log(this.leaves);
   }
   cancel() {
@@ -148,7 +147,7 @@ export class LeavesContentComponent {
       name: 'Medical leave',
     },
   ];
-  halfdayleave:boolean=false;
+  halfdayleave: boolean = false;
   shortleave: boolean = false;
   contentdropdown: boolean = false;
   dropdownOpen() {
@@ -159,15 +158,13 @@ export class LeavesContentComponent {
   Changeselect(arr: any) {
     if (arr.id == 3) {
       this.shortleave = true;
+    } else {
+      this.shortleave = false;
+      this.halfdayleave = false;
     }
-    else{
-      this.shortleave=false;
-      this.halfdayleave=false;
+    if (arr.id == 1) {
+      this.halfdayleave = true;
     }
-    if(arr.id ==1){
-      this.halfdayleave=true;
-    }
-   
 
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -219,17 +216,6 @@ export class LeavesContentComponent {
     console.log(arr1.name);
     this.empleaveForm.value.category = arr1.name;
   }
- 
-
-
-
-
-
-
-
-
-
-
 
   leaveshistory = false;
   employeemaintable = true;
