@@ -3,8 +3,6 @@ export const environment = {
 
 
   // v1:'https://hrmaven.works/',
-
-
     v1: 'http://localhost:3000/'
 
 
