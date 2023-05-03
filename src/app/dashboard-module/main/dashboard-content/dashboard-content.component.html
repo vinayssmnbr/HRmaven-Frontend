@@ -87,7 +87,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -255,10 +254,10 @@
     <!---------------------------dashboard Modal------------------------------>
 
     <!-- <div *ngIf="isFromSignupPage"> -->
-        <div *ngIf="!empname">   
+    <div *ngIf="!empname">
         <div class="Modal_form">
 
-            <div class="Modal_modal"  *ngIf=" !formSubmitted">
+            <div class="Modal_modal" *ngIf=" !formSubmitted">
 
                 <div class="edit-profile-heading">
                     <h3>Required Details </h3>
@@ -279,7 +278,6 @@
                                 <option *ngFor="let options of dropdownOptions" [value]="options.option">{{
                                     options.option }}</option>
                             </select>
-                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
                     <div class="email-phone">
@@ -294,11 +292,11 @@
                                 formControlName="headOffice" id="email" required />
                         </div>
                     </div>
-
-                    <div class="edit-profile-footer">
-                        <button class="done-btn" type="submit">Done</button>
-                    </div>
                 </form>
+                <div class="edit-profile-footer">
+                    <button class="done-btn" type="submit">Done</button>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -455,7 +453,7 @@
 
 
     <!----------------------Meetings-modal------------------>
-    <div class="interview-modal" *ngIf="showModal11"> 
+    <div class="interview-modal" *ngIf="showModal11">
         <div class="interview-modal-content" *ngIf="showModalContent">
             <div class="tag-date-notes">
                 <div class="tag-interview-cross">
@@ -485,7 +483,8 @@
                         <h4>Latest notes</h4>
                         <p>posted on 9 january, 2023</p>
                         <div class="notes-para-text">
-                            <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing projects </p>
+                            <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing
+                                projects </p>
                         </div>
                     </div>
                 </div>

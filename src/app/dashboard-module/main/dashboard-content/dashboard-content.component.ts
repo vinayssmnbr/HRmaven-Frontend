@@ -343,6 +343,8 @@ export class DashboardContentComponent implements OnInit {
     this.showModal11 = false;
     this.showModalContent=false;
   }
+ 
+
   array1: any = [
     {
       id: 0,
