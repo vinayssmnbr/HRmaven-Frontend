@@ -172,6 +172,7 @@
                 [(ngModel)]="parentSelector"
                 [value]="-1"
                 (change)="onChange($event)"
+                *ngIf="pendingleave.length > 0 || pendingleave == undefined"
               />
               <span>EMPLOYEE ID</span>
             </div>
@@ -229,14 +230,18 @@
             </div>
           </td>
         </tr>
-        <tr *ngIf="!pendingleave">
-          <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
-            <p>
-              <img src="assets/images/no_record.png" alt="" class="center" />
-            </p>
-            <h2>No Record Found!</h2>
-          </td>
-        </tr>
+        <ng-container
+          *ngIf="pendingleave.length == 0 || pendingleave == undefined"
+        >
+          <tr>
+            <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
+              <p>
+                <img src="assets/images/no_record.png" alt="" class="center" />
+              </p>
+              <h2>No Record Found!</h2>
+            </td>
+          </tr>
+        </ng-container>
       </tbody>
     </table>
   </div>
@@ -288,14 +293,18 @@
           <td>4/6</td>
           <td><a href="https://google.com" target="_blank">Document</a></td>
         </tr>
-        <tr *ngIf="!rejectleave">
-          <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
-            <p>
-              <img src="assets/images/no_record.png" alt="" class="center" />
-            </p>
-            <h2>No Record Found!</h2>
-          </td>
-        </tr>
+        <ng-container
+          *ngIf="rejectleave.length == 0 || rejectleave == undefined"
+        >
+          <tr>
+            <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
+              <p>
+                <img src="assets/images/no_record.png" alt="" class="center" />
+              </p>
+              <h2>No Record Found!</h2>
+            </td>
+          </tr>
+        </ng-container>
       </tbody>
     </table>
   </div>
@@ -346,14 +355,18 @@
           <td>4/6</td>
           <td><a href="https://google.com" target="_blank">Document</a></td>
         </tr>
-        <tr *ngIf="!acceptleave">
-          <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
-            <p>
-              <img src="assets/images/no_record.png" alt="" class="center" />
-            </p>
-            <h2>No Record Found!</h2>
-          </td>
-        </tr>
+        <ng-container
+          *ngIf="acceptleave.length == 0 || acceptleave == undefined"
+        >
+          <tr>
+            <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
+              <p>
+                <img src="assets/images/no_record.png" alt="" class="center" />
+              </p>
+              <h2>No Record Found!</h2>
+            </td>
+          </tr>
+        </ng-container>
       </tbody>
     </table>
   </div>

@@ -494,12 +494,11 @@
   align-items: center;
 }
 
-.modal-content input:hover,
+/* .modal-content input:hover,
 .modal-content input:focus {
-  border: 1px solid #2F2C9F;
+  border: 1px solid #2F2C9F !important;
   border-radius: 8px;
-  border-color: #2F2C9F;
-}
+} */
 
 .modal-content {
   background-color: #ffffff;
@@ -723,11 +722,8 @@ hr {
   flex-direction: column;
 }
 
-.form-row .input input:hover,
-.form-row .input input:focus {
-  border: 1px solid #2F2C9F;
+.form-row .input input:hover {
   border-radius: 8px;
-
 }
 
 label {
@@ -1103,8 +1099,9 @@ input[type='date'] {
 }
 
 input[type='number']:hover {
-  border: 1px solid #2F2C9F !important;
+  border: 1px solid #2F2C9F;
 }
+
 
 .name1 img {
   border-radius: 50%;
@@ -1194,8 +1191,8 @@ input[type='number']:hover {
 }
 
 .dropdwon_select:hover,
-.dropdwon_select:focus {
-  border: 1px solid #2F2C9F;
+.dropdwon_select:focus{
+  border: 1px solid #2F2C9F !important;
   border-radius: 8px;
 }
 
@@ -1261,4 +1258,25 @@ input[type='number']:hover {
   padding-left: 3px;
   padding-top: 25px;
   font-size: 12px;
+}
+.text.ng_invalid {
+  border: 1px solid red !important;
+}
+
+.text.ng_invalid:hover {
+  border: 1px solid red !important;
+}
+
+.text.ng_valid {
+  border: 1px solid green ;
+}
+
+.text.ng_valid:hover {
+  border: 1px solid green;
+}
+.text{
+  border: 1px solid #Cbcbcb !important;
+}
+.text:hover{
+  border: 1px solid #2F2C9F !important;
 }

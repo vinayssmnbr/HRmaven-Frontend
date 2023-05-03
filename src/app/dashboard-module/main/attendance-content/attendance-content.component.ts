@@ -319,21 +319,27 @@ export class AttendanceContentComponent implements OnInit {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
-  // ----------------Profile table Girija----------------
-  profilecard = false;
-  attendence_main = true;
-  profileview() {
-    this.profilecard = true;
-    this.attendence_main = false;
-  }
-  back_profile() {
-    this.profilecard = false;
-    this.attendence_main = true;
-  }
+// ----------------Profile table Girija----------------
+profilecard=false;
+attendence_main=true;
+profile:any={};
+profileview(profile:any){
+this.profilecard=true;
+this.attendence_main=false;
+this.profile=profile;
 
-  getEmployeeData() {
-    this.dashService.getEmployee().subscribe((res) => {
-      this.employee = res;
-    });
-  }
+}
+back_profile(){
+  this.profilecard=false;
+this.attendence_main=true;
+
+}
+
+
+getEmployeeData(){
+  this.dashService.getEmployee().subscribe((res)=>{
+    this.employee=res
+  })
+}
+
 }
