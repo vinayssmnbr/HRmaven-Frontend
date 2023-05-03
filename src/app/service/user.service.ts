@@ -147,4 +147,8 @@ export class UserService {
       }
     );
   }
+
+  // checkOrganizationNameExists(orgName:string){
+  //   return this.http.post('/checkOrganizationName',{organizationName:orgName})
+  // }
 }

@@ -96,7 +96,9 @@
                         <label for="username">Organization Name</label>
                         <input type="text" placeholder="Enter your Organization Name" class="username"
                             [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
-                            formControlName="username" (keydown)="Space($event)" />
+                            formControlName="username" (keydown)="Space($event)"/>
+                            <!-- formControlName="username" (keydown)="Space($event)" [(ngModel)]="organizationName" (input)="onOrgNameInput()" /> -->
+
                         <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
 
 

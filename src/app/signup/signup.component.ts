@@ -207,6 +207,12 @@ Space(event:any){
    }
 }
 
+// onOrgNameInput(){
+//   this.checkOrganizationNameExists(this.organizationName).subscribe((response)=>{
+//     this.orgNameExists = response.exists;
+//   })
+// }
+
 
 
 }
