@@ -18,6 +18,7 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
+import { CookieService } from 'ngx-cookie-service';
 
 import * as FileSaver from 'file-saver';
 
@@ -52,7 +53,7 @@ export class EmployeeContentComponent implements OnInit {
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
-    @Inject(DOCUMENT) public document: Document
+    @Inject(DOCUMENT) public document: Document,private cookie:CookieService
   ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
@@ -147,7 +148,8 @@ export class EmployeeContentComponent implements OnInit {
   submit() {
     if (this.form.invalid) return;
     console.log(this.form.value);
-    const data = this.form.value;
+    let data = this.form.value;
+    data['hrid']=this.cookie.get('hr_id');
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
