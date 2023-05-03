@@ -13,14 +13,14 @@
   /* background-color: red; */
 }
 .left_side{
-  width: 60%;
+  width: 70%;
 }
 .right_side{
-  width: 40%;
+  width: 30%;
 }
 .left-side-content{
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 .col-9 .col-4 {
   padding-right: 20px;
@@ -59,6 +59,9 @@
 }
 .chart-balance{
   display: flex;
+}
+.chart img{
+  width: 100%;
 }
 
 .attendance-chart {
@@ -341,7 +344,7 @@
 }
 
 .text-image h1 {
-  font-size: 22px;
+  font-size: 16px;
   color: #222222;
 }
 
