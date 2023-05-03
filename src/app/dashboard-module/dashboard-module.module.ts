@@ -26,6 +26,7 @@ import { AccountSettingsComponent } from './main/account-settings/account-settin
 import {DatePipe} from '@angular/common';
 import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
+import { FilterByStatusPipe } from './pipe/employeestatus';
 
 
 
@@ -54,7 +55,7 @@ import { CalendarComponent } from './main/calendar/calendar.component';
            AccountSettingsComponent,
            TimesheetComponent,
            CalendarComponent,
-
+           FilterByStatusPipe
 
   ],
   imports: [

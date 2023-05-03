@@ -1,7 +1,7 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
 <div class="main">
-  <div class="selection">
+  <!-- <div class="selection">
     <div class="list_nav">
       <div class="All" [ngClass]="{'active': isallactive}">
         <p (click)="isall()">All</p>
@@ -20,7 +20,41 @@
       </div>
     </div>
 
+  </div> -->
+
+  <div class="selection">
+    <div class="list_nav">
+      <div class="All" [ngClass]="{'active': statusFilter === 'all'}">
+        <p (click)="setStatusFilter('all')">All</p>
+      </div>
+      <div class="Active" [ngClass]="{'active': statusFilter === 'active'}">
+        <p (click)="setStatusFilter('active')">Active</p>
+      </div>
+      <div class="Resigned" [ngClass]="{'active': statusFilter === 'resigned'}">
+        <p (click)="setStatusFilter('resigned')">Resigned</p>
+      </div>
+      <div class="Terminated" [ngClass]="{'active': statusFilter === 'terminated'}">
+        <p (click)="setStatusFilter('terminated')">Terminated</p>
+      </div>
+      <div class="Absconder" [ngClass]="{'active': statusFilter === 'absconder'}">
+        <p (click)="setStatusFilter('absconder')">Absconder</p>
+      </div>
+    </div>
   </div>
+  <!-- <div *ngIf="employee.length===0">
+    <p>No records found.</p>
+  </div> -->
+  <!-- <div *ngIf="employee.length > 1">
+
+  </div> -->
+
+  <!-- <td  colspan="7" class="nodata" class="no_data"
+  *ngIf="name.found=='true'">
+  <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
+  <h2>No Record Found!</h2>
+</td> -->
+
+
   <div class="selection2">
     <div class="input_left">
       <div class="input_field">
@@ -62,7 +96,7 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" (change)="onCheckboxChange($event, 'All')" >Employee ID</th>
+          <th class="employee"><input type="checkbox" (change)="onCheckboxChange($event, 'All')">Employee ID</th>
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -73,10 +107,9 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable " >
+        <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
-          <td  colspan="7" class="nodata" class="no_data"
-            *ngIf="user.found=='true'">
+          <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
           </td>
@@ -90,8 +123,9 @@
           <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
             <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
               routerLink="/employee-profile">
-              <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile"><p>{{user.name}}</p>
+            <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
+              routerLink="/employee-profile">
+            <p>{{user.name}}</p>
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
             routerLink="/employee-profile">{{user.designation}}</td>
@@ -185,14 +219,15 @@
             <div class="input">
               <label>Profile Picture</label>
               <div class="custom-file-picker">
-                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()"  [value]="fileName" id="text4" readonly accept="image/*" formControlName="url" >
+                <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName"
+                  id="text4" readonly accept="image/*" formControlName="url">
                 <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url" accept="image/*">
-                <a  (click)="fileInput.click()" >Choose File</a>
+                <a (click)="fileInput.click()">Choose File</a>
               </div>
             </div>
           </div>
           <div class="form-row">
-            <div class="input">
+            <!-- <div class="input">
               <label>Personal Email </label>
               <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
                 (keydown)="validateEmail($event)"
@@ -200,13 +235,23 @@
                 [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
               <div class="validation-message" *ngIf="checkEmailExists()"><i class="fa-solid fa-circle-info"></i>Email already exists</div>
 
+            </div> -->
+            <div class="input">
+              <label>Personal Email </label>
+              <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
+                (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
+                [ngClass]="{'ng_invalid': emailExists , 'ng_valid': !emailExists}">
+              <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-info"></i>Email already
+                exists</div>
             </div>
+
             <div class="input">
               <label>Mobile No.</label>
               <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
                 (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
-            <div class="validation-message" *ngIf="checkMobileNoExists(mobile)"><i class="fa-solid fa-circle-info"></i>Mobile No. already exists</div>
+              <div class="validation-message" *ngIf="checkMobileNoExists(mobile)"><i
+                  class="fa-solid fa-circle-info"></i>Mobile No. already exists</div>
             </div>
           </div>
         </form>
@@ -330,12 +375,12 @@
 
 
           <a (click)="fileInput.click()" class="choose">Choose File</a>
-          <input type="text"  id="text18" readonly [value]="fileName1">
+          <input type="text" id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
 
         </div>
         <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
-        <h5>Download <a class="csv" (click)=" generateSampleCsvFile()" >Sample CSV File</a> for Reference</h5>
+        <h5>Download <a class="csv" (click)=" generateSampleCsvFile()">Sample CSV File</a> for Reference</h5>
 
 
         <!-- <div class="custom-file-picker">
@@ -345,8 +390,8 @@
 
         </div> -->
         <div class="import-btns">
-          <button class="can-btn"  (click)="closeFilepicker()">Cancel</button>
-          <button class="imp-btn" (click)="employeecsv()" >Import</button>
+          <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
+          <button class="imp-btn" (click)="employeecsv()">Import</button>
           <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
 
 
@@ -365,4 +410,3 @@
       </div>
     </div>
   </div>
-
