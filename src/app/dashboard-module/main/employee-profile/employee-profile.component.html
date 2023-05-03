@@ -580,8 +580,8 @@
               <input type="number"class="no-spin" placeholder="10" formControlName="graduationCgpa">
             </div>
           </div>
-          <h3 *ngIf="showpgdetails">Post Graduation Details</h3>
-          <div class="form-row card10" *ngIf="showpgdetails">
+          <h3 *ngIf="Selectvariable9==='Post-Graduation Details'">Post Graduation Details</h3>
+          <div class="form-row card10" *ngIf="Selectvariable9==='Post-Graduation Details'">
             <div class="input">
               <label>Post Graduation College/University</label>
               <input type="text" placeholder="LPU"  formControlName="pg">
@@ -595,13 +595,13 @@
               <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
-          <div class="">
-          <button class="add-more1" (click)="dropdownOpen2()"><i class="fa-solid fa-circle-plus"></i>Add More<img src="./assets/images/Vector (7).png" alt=""></button>
-          <div class="select_content1 " *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+          <div class="parent">
+          <button class="add-more1" (click)="dropdownOpen10()"><i class="fa-solid fa-circle-plus"></i>Add More<img src="./assets/images/Vector (7).png" alt="" (click)="dropdownClose10()"></button>
+          <div class="select_content1 content3" *ngIf="contentdropdown10" (mouseleave)="dropdownClose10()">
             <ul>
-              <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
-                (click)="Changeselect2(arr2)">
-                {{arr2.name}}</li>
+              <li *ngFor="let arr9 of array9; index as i" [class.select_active]="i === colorvariable9"
+                (click)="Changeselect9(arr9)">
+                {{arr9.name}}</li>
             </ul>
           </div>
           </div>
