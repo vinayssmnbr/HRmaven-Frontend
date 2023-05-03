@@ -384,8 +384,8 @@
 
 
           <a (click)="fileInput.click()" class="choose">Choose File</a>
-          <input type="text" id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
+          <!-- <input type="text"  id="text18" readonly [value]="fileName1">
+          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 
         </div>
         <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
@@ -396,8 +396,12 @@
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >
           <a  class="choose">Choose File</a>
-
         </div> -->
+        <div class="card">
+          <input type="text" id="text18" readonly [value]="fileName1" >
+          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
+        <div class="progress_bar"></div>
+        </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
           <button class="imp-btn" (click)="employeecsv()">Import</button>

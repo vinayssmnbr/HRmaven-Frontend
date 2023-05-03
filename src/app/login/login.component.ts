@@ -34,20 +34,7 @@ export class LoginComponent {
 
   ngOnInit() {
 
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe(() => {
-    //   // force a page refresh on navigation end
-    //   window.location.reload();
-    // });
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
-    ).subscribe((event: NavigationStart) => {
-      if (event.url === '/login') {
-        // Force a page refresh on login page
-        window.location.reload();
-      }
-    });
+
 
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
