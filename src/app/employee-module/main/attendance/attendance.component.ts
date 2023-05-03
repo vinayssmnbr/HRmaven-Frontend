@@ -63,47 +63,51 @@ export class AttendanceComponent implements OnInit {
 
   punchin(){
     // this.empService.punch("in").subscribe((res)=>{
-    //   console.log(res);
-    // })
+      //   console.log(res);
+      // })
 
-    //   navigator.geolocation.getCurrentPosition(showLoc, errHand);
-    // function showLoc(pos:any) {
-    //   console.log('lat'+pos.coords.latitude,'long'+pos.coords.longitude);
-    // }
 
-    // function errHand(err:any) {
-    //   switch (err.code) {
-    //     case err.PERMISSION_DENIED:
-    //       alert('you dont have right to mark the attendance until location is share')
-    //       break;
-    //   }
-    // }
-    function inside(lat2, lon2,lat1,lon1,radius) {
-      // const lat1 = this.latitude
-      // const lon1 = this.longitude
-          const R = 63710;
+      navigator.geolocation.getCurrentPosition(showLoc, errHand);
 
-      return Math.acos(Math.sin(lat1)*Math.sin(lat2) +
-                       Math.cos(lat1)*Math.cos(lat2) *
-                       Math.cos(lon2-lon1)) * R < radius;
-    }
+      function showLoc(pos:any) {
+      console.log('lat'+pos.coords.latitude,'long'+pos.coords.longitude);
 
-  navigator.geolocation.watchPosition(({coords}) => {
+        const lat = pos.coords.latitude
+        const lon = pos.coords.longitude
+        const lat1 = 31.2521879;
+        const lon1 = 75.7033441;
+        const R = 63710;
+          if((Math.acos(Math.sin(lat1)*Math.sin(lat) + Math.cos(lat1)*Math.cos(lat) *Math.cos(lon-lon1)) * R < 1000)){
 
-      const lat = coords.latitude
-      const lon = coords.longitude
-      const lat1 = 59.345635;
-      const lon1 = 18.059707
-      if (inside(lat, lon,lat1,lon1,1000)) {
-        console.log(lat);
-        console.log(lon);
-      }
-      else{
+          console.log(lat);
+          console.log(lon);
+        }
+        else{
           console.log("out of range")
+        }
+    }
+    function errHand(err:any) {
+      switch (err.code) {
+        case err.PERMISSION_DENIED:
+          alert('you dont have right to mark the attendance until location is share')
+          break;
+        }
       }
-  })
 
-}
+
+
+      }
+
+        // inside(lat2:any, lon2:any,lat1:any,lon1:any,radius:any):any {
+
+
+
+        //   return Math.acos(Math.sin(lat1)*Math.sin(lat2) +
+        //                    Math.cos(lat1)*Math.cos(lat2) *
+        //                    Math.cos(lon2-lon1)) * R < radius;
+        // }
+
+
 
   punchout(){
 
