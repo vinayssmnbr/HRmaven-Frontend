@@ -18,7 +18,7 @@ import {
 import { DashService } from '../../shared/dash.service';
 import { DOCUMENT } from '@angular/common';
 import { error, log } from 'console';
-
+import { v4 as uuid } from 'uuid';
 
 import * as FileSaver from 'file-saver';
 
@@ -33,7 +33,8 @@ export class EmployeeContentComponent implements OnInit {
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
  
-  
+  public list: string[] = [];
+
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -49,6 +50,7 @@ export class EmployeeContentComponent implements OnInit {
   isSelectDisabled = false;
   emailValidationMessage: string = '';
   mobile: number;
+
 
   checkMobileNoExists(mobile: number) {}
   constructor(
@@ -238,9 +240,9 @@ export class EmployeeContentComponent implements OnInit {
     // );
     this.dashService
       .getEmployeeEmail(this.emailId)
-      .subscribe((response: any) => {
-        console.log('hello',response);
-      });
+      // .subscribe((response: any) => {
+      //   console.log('hello',response);
+      // });
   }
 
 
@@ -857,6 +859,7 @@ export class EmployeeContentComponent implements OnInit {
   //onFIleSelectedream
 
   onFileSelectedrem(event: any): void {
+   
     const file: File = event.target.files[0];
 
     if (!file) {
@@ -1014,4 +1017,6 @@ export class EmployeeContentComponent implements OnInit {
     });
     FileSaver.saveAs(blob, 'sample.csv');
   }
+
+  
 }
