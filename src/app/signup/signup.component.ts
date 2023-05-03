@@ -115,7 +115,11 @@ export class SignupComponent {
     // email : new FormControl("",[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
 
     password : new FormControl("",[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
+    // password : new FormControl("",[Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/)]),
+    // password : new FormControl(""),
+
     confirm : new FormControl("",[Validators.required]),
+    // confirm : new FormControl(""),
     // username: new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z]*')]),
     username: new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9. ]+$")]),
 

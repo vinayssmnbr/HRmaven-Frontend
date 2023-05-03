@@ -72,8 +72,8 @@ export class UserService {
     return this.http.post(this.prefix + 'forgotpassword', data);
   }
 
-  getpersonals(email: any) {
-    return this.http.get(`${this.prefix + 'getpersonalsdata'}/${email}`);
+  getpersonals(email: any){
+    return this.http.get(`${this.prefix+"getpersonalsdata"}/${email}`);
   }
 
   newpwd(data: any, token: any) {
