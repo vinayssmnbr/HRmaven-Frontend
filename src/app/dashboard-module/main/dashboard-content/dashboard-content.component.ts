@@ -379,5 +379,19 @@ export class DashboardContentComponent implements OnInit {
     console.log(arr1.name);
   }
 
-
+  /**/ 
+  meetingForm=new FormGroup({
+    meetingtitle:new FormControl(''),
+    mode:new FormControl(''),
+    date:new FormControl(''),
+    starttime:new FormControl(''),
+    endtime:new FormControl(''),
+    meetinglink:new FormControl(''),
+    venue:new FormControl(''),
+    inviteanemplyee:new FormControl(''),
+  })
+  meetingdetail()
+{
+  console.warn(this.meetingForm.value);
+}
 }

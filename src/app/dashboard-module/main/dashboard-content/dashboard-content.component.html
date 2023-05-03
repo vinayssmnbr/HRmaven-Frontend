@@ -305,17 +305,17 @@
     <!-------------------------Meetings On click Modal--------------->
 
 
-    <div class="modal" *ngIf="showModal10">
+    <div class="modal" *ngIf="showModal10" >
         <div class="modal-content" *ngIf="showModalContent">
             <i class="fa-solid fa-xmark" (click)="closeModal10()"></i>
             <div class="modal-heading">
                 <h5>Add an event or meetings</h5>
             </div>
-            <form class="create-new-form">
+            <form class="create-new-form" [formGroup]="meetingForm" (ngSubmit)="meetingdetail()">
                 <div class="meeting-mode">
                     <div class="form-group">
                         <label>Meeting title</label> <br>
-                        <input type="text" placeholder="UI/UX designer" class="meeting-input">
+                        <input type="text" placeholder="UI/UX designer" class="meeting-input" formControlName="meetingtitle">
                     </div>
                     <div class="form-group">
                         <label>Mode</label><br>
@@ -337,29 +337,29 @@
                 <div class="meeting-mode">
                     <div class="form-group">
                         <label>Date</label> <br>
-                        <input type="date" placeholder="23/04/2023" class="date-input">
+                        <input type="date" placeholder="23/04/2023" class="date-input" formControlName="date">
                     </div>
                     <div class="form-group">
                         <label>Start time</label><br>
-                        <input type="time" placeholder="02:00 pm" class="date-input">
+                        <input type="time" placeholder="02:00 pm" class="date-input" formControlName="starttime">
                     </div>
                     <div class="form-group">
                         <label>End time</label><br>
-                        <input type="time" placeholder="2 hrs" class="date-input">
+                        <input type="time" placeholder="2 hrs" class="date-input" formControlName="endtime">
                     </div>
                 </div>
 
                 <div class="meeting-mode" *ngIf="Meetinglink">
                     <div class="form-group">
                         <label>Meeting link</label> <br>
-                        <input type="text" placeholder="Paste here..." class="meeting-link">
+                        <input type="text" placeholder="Paste here..." class="meeting-link" formControlName="meetinglink">
                         <div class="link-image"><img src="assets/images/meeting-link.svg" alt=""></div>
                     </div>
                 </div>
                 <div class="meeting-mode" *ngIf="Venuelink">
                     <div class="form-group">
                         <label>Venue</label> <br>
-                        <input type="text" placeholder="Paste here..." class="meeting-link">
+                        <input type="text" placeholder="Paste here..." class="meeting-link" formControlName="venue">
 
                     </div>
                 </div>
@@ -368,7 +368,7 @@
                     <div class="invite-add">
                         <div class="form-group">
                             <label>Invite an employees</label> <br>
-                            <input type="text" placeholder="Type employee name" class="invite">
+                            <input type="text" placeholder="Type employee name" class="invite" formControlName="inviteanemplyee">
 
                         </div>
                         <div class="add-btn">
@@ -376,74 +376,75 @@
                         </div>
                     </div>
                 </div>
+                <div class="in-this-interview-area">
+                    <h5>In this interview</h5>
+                    <div class="image-text-design">
+                        <div class="image-text-heading">
+                            <div class="image-name">
+                                <img src="assets/images/olivye.png" alt="">
+                            </div>
+                            <div class="name-heading">
+                                <h6>Olivye Wu</h6>
+                                <p>Olivye@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="designer-text">
+                            <h5>UI/UX designer</h5>
+                        </div>
+                    </div>
+                    <div class="image-text-design">
+                        <div class="image-text-heading">
+                            <div class="image-name">
+                                <img src="assets/images/olivye.png" alt="">
+                            </div>
+                            <div class="name-heading">
+                                <h6>Olivye Wu</h6>
+                                <p>Olivye@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="designer-text">
+                            <h5>UI/UX designer</h5>
+                        </div>
+                    </div>
+                    <div class="image-text-design">
+                        <div class="image-text-heading">
+                            <div class="image-name">
+                                <img src="assets/images/olivye.png" alt="">
+                            </div>
+                            <div class="name-heading">
+                                <h6>Olivye Wu</h6>
+                                <p>Olivye@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="designer-text">
+                            <h5>UI/UX designer</h5>
+                        </div>
+                    </div>
+                    <div class="image-text-design">
+                        <div class="image-text-heading">
+                            <div class="image-name">
+                                <img src="assets/images/olivye.png" alt="">
+                            </div>
+                            <div class="name-heading">
+                                <h6>Olivye Wu</h6>
+                                <p>Olivye@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="designer-text">
+                            <h5>UI/UX designer</h5>
+                        </div>
+                    </div>
+    
+    
+                </div>
+    
+    
+                <div class="discard-save">
+                    <div class="discard"><button (click)="closeModal10()">Discard</button></div>
+                    <div class="save"><button type="submit"   (click)="closeModal10()" >Save</button> </div>
+                </div>
             </form>
-            <div class="in-this-interview-area">
-                <h5>In this interview</h5>
-                <div class="image-text-design">
-                    <div class="image-text-heading">
-                        <div class="image-name">
-                            <img src="assets/images/olivye.png" alt="">
-                        </div>
-                        <div class="name-heading">
-                            <h6>Olivye Wu</h6>
-                            <p>Olivye@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="designer-text">
-                        <h5>UI/UX designer</h5>
-                    </div>
-                </div>
-                <div class="image-text-design">
-                    <div class="image-text-heading">
-                        <div class="image-name">
-                            <img src="assets/images/olivye.png" alt="">
-                        </div>
-                        <div class="name-heading">
-                            <h6>Olivye Wu</h6>
-                            <p>Olivye@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="designer-text">
-                        <h5>UI/UX designer</h5>
-                    </div>
-                </div>
-                <div class="image-text-design">
-                    <div class="image-text-heading">
-                        <div class="image-name">
-                            <img src="assets/images/olivye.png" alt="">
-                        </div>
-                        <div class="name-heading">
-                            <h6>Olivye Wu</h6>
-                            <p>Olivye@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="designer-text">
-                        <h5>UI/UX designer</h5>
-                    </div>
-                </div>
-                <div class="image-text-design">
-                    <div class="image-text-heading">
-                        <div class="image-name">
-                            <img src="assets/images/olivye.png" alt="">
-                        </div>
-                        <div class="name-heading">
-                            <h6>Olivye Wu</h6>
-                            <p>Olivye@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="designer-text">
-                        <h5>UI/UX designer</h5>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-            <div class="discard-save">
-                <div class="discard"><button (click)="closeModal10()">Discard</button></div>
-                <div class="save"><button (click)="closeModal10()">Save</button> </div>
-            </div>
+          
         </div>
 
 
