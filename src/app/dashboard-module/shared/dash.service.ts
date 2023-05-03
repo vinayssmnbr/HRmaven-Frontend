@@ -32,21 +32,7 @@ private prefix = environment.v1;
       })
     );
   }
-  createData = environment.createData;
-  getData = environment.getData;
-  deleteData = environment.deleteData;
-  getLeave = environment.getLeave;
-  updateData = environment.updateData;
-  getAttd = environment.getAttd;
-  updatempdata = environment.updatempdata;
-  getuid = environment.getuid;
-  report = environment.report;
-  profile = environment.profile;
-  attendance=environment.attendance;
-  attendancecard=environment.attendancecard;
-  attendancegraph=environment.attendancegraph;
-  leavegraph=environment.leavegraph;
-  // checkemail=environment.checkemail
+
 
 
   //ADD EMPLOYEE DATA
@@ -57,11 +43,7 @@ private prefix = environment.v1;
 
   //ADD  Employee Data
   addEmployee(data) {
-
     return this.http.post(this.prefix+'api/create', data);
-
-    return this.http.post(this.createData, data);
-
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
