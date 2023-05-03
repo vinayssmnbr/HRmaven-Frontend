@@ -1715,13 +1715,22 @@ input::placeholder {
 }
 
 .modal-content5 {
-  width: 540px;
-  height: 430px;
-  background-color: white;
-  border-radius: 8px;
-  position: relative;
+    width: 540px;
+    height: 490px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
 }
-
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+  /* height: 60px; */
+  /* width: 420px; */
+  border-radius: 8px;
+  /* padding-bottom: 40px; */
+}
 .modal-header5 {
   background-color: #ffffff;
   border-radius: 8px;
@@ -1746,19 +1755,19 @@ input::placeholder {
 }
 
 .modal-body5 .file-content {
-  border: 2px dashed #cbcbcb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-  padding-top: 35px;
-  padding-bottom: 10px;
-  height: 235px;
+    border: 2px dashed #cbcbcb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+     padding-top: 30px;
+padding-bottom: 10px;
+    height: 210px;
 }
 
-.modal-body5 .file-content input[type="file"] {
-  /* position: absolute;
+.modal-body5 .card input[type="file"] {
+    /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1768,11 +1777,11 @@ input::placeholder {
   z-index: -1;
 }
 
-.modal-body5 .file-content input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.modal-body5 .card input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 .modal-body5 .file-content .choose {
@@ -1945,4 +1954,41 @@ input::placeholder {
   background-color: #f9f9f9;
   padding: 20px 0;
   text-align: center;
+}
+.progress_bar {
+  margin: auto;
+  width: 450px;
+  max-width: 80%;
+  height: 15px;
+  box-shadow: 0px 0px 4px #ffffffd1;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress_bar:before {
+  content: '';
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: progress-anime 10s ease-out infinite;
+  background: linear-gradient(to right, #7ff224 0%, #4c6f12 50%, #d2d2d2 50%, #d2d2d2 100%);
+}
+
+@keyframes progress-anime {
+  0% {
+    left: -100%;
+  }
+
+  75% {
+    left: -5%;
+  }
+
+  85% {
+    left: -5%;
+  }
+
+  95% {
+    left: 0;
+  }
 }
