@@ -691,9 +691,9 @@ export class EmployeeContentComponent implements OnInit {
       }
       case 'resigned': {
         this.optionStyle = {
-          'background-color': 'rgba(255, 238, 82, 0.5)',
+          'background-color': '#2f2c9f',
           color: '#CE524A',
-          border: 'rgba(255, 238, 82, 0.5)',
+          border: '#2f2c9f',
         };
         break;
       }

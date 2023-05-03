@@ -389,8 +389,8 @@
           <a  class="choose">Choose File</a>
         </div> -->
         <div class="card">
-          <input type="text" id="text18" readonly [value]="fileName1" >
-          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
+          <input type="text" id="text18" readonly [value]="fileName1" (change)="onFileSelected1($event)" formControlName="csv">
+          <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)" accept=".csv" formControlName="csv">
         <div class="progress_bar"></div>
         </div>
         <div class="import-btns">
