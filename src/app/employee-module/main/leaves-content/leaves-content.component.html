@@ -131,7 +131,8 @@
                                             {{arr.name}}</li>
                                     </ul>
                                     <!-------- Side dropdown--------------- -->
-                                    <div class="half_day_leave" *ngIf="halfdayleave" (mouseleave)="halfdayleave = false">
+                                    <div class="half_day_leave" *ngIf="halfdayleave"
+                                        (mouseleave)="halfdayleave = false">
                                         <p class="First_Half">First Half</p>
                                         <p class="Second_Half">Second Half</p>
                                     </div>
@@ -177,7 +178,7 @@
                                 <p class="second">Supported formats: pdf, jpg, png</p>
                                 <div class="choose-btn">
                                     <div class="progress_bar_loader" *ngIf="loader"></div>
-                                   
+
                                     <input type="file" (change)="onFileSelected($event)">
                                 </div>
                             </div>
