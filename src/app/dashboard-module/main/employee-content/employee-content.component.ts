@@ -50,7 +50,6 @@ export class EmployeeContentComponent implements OnInit {
   emailValidationMessage: string = '';
   mobile: number;
 
-  checkMobileNoExists(mobile: number) {}
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -239,6 +238,27 @@ export class EmployeeContentComponent implements OnInit {
           console.log(response.message);
         } else {
           this.emailExists = false;
+          console.log(response.message);
+        }
+      });
+  }
+
+  mobileExists = false;
+
+  mobileNo: any;
+  checkmobileExists() {
+    this.mobileNo = this.form.controls['mobile'].value;
+
+    console.log('sh', this.mobileNo);
+    this.dashService
+      .getEmployeeMobile(this.mobileNo)
+      .subscribe((response: any) => {
+        console.log('check', response);
+        if (response.flag) {
+          this.mobileExists = true;
+          console.log(response.message);
+        } else {
+          this.mobileExists = false;
           console.log(response.message);
         }
       });
@@ -723,6 +743,11 @@ export class EmployeeContentComponent implements OnInit {
     );
   }
 
+  // const index: number = this.data.indexOf(msg);
+  // if (index !== -1) {
+  //     this.data.splice(index, 1);
+  // }
+
   selectUser(user) {
     this.selectedUser = user;
     this.optionStyle = {};
@@ -1051,5 +1076,6 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.getEmployee().subscribe((data: any[]) => {
       this.employee = data;
     });
+    this.fetchdata();
   }
 }
