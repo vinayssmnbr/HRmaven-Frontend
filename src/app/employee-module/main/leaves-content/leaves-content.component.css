@@ -393,19 +393,20 @@ td {
     right: 260px;
     margin-top: -180px;
     z-index: 99;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
 
 }
 
 .half_day_leave p {
     height: 40px;
     padding: 10px 16px 10px 17px;
-    border: 1px solid #B4B4B4;
-    color: #B4B4B4;
-    border-radius: 8px;
     cursor: pointer;
+    color: #444444;
+    font-size: 14px;
 }
-.half_day_leave p:hover{
-    background-color: #F7F7FB;
+
+.half_day_leave p:hover {
+    background-color: #ECECEC;
 }
 
 .select_active {
