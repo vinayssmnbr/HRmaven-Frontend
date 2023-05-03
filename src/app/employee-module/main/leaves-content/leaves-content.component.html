@@ -176,9 +176,9 @@
                                 <!-- <p class="first">Select a file or drag and drop here</p> -->
                                 <p class="second">Supported formats: pdf, jpg, png</p>
                                 <div class="choose-btn">
-                                    <button class="choose-file" (click)="onUpload()">Choose File</button>
-                                    <input type="file" (change)=" onFileSelected($event)">
-
+                                    <div class="progress_bar_loader" *ngIf="loader"></div>
+                                   
+                                    <input type="file" (change)="onFileSelected($event)">
                                 </div>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                 <div class="clear-apply-button">
                     <button class="clear" (click)="cancel()">Clear</button>
                     <button class="apply" (click)="applyleaves()">Apply </button>
-                    <div class="loader" *ngIf="loader"></div>
+                    <!-- <div class="loader" *ngIf="loader"></div> -->
                 </div>
             </form>
         </div>

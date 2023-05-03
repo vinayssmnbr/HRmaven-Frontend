@@ -426,7 +426,7 @@ td {
 
 .reason textarea {
     /* min-width: 500px; */
-    height: 167px;
+    height: 217px;
     width: 100%;
     resize: none;
     border: 1px solid #CBCBCB;
@@ -447,8 +447,7 @@ td {
 }
 
 .textarea {
-    /* min-width: 500px; */
-    height: 167px;
+    height: 217px;
     width: 100%;
     resize: none;
     border: 1px solid #CBCBCB;
@@ -456,6 +455,10 @@ td {
     text-align: center;
     padding: 10px 17px;
     outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .textarea .first {
@@ -470,37 +473,37 @@ td {
     color: #777777;
 }
 
-.textarea input {
-    /* position: relative; */
-    opacity: 0;
+.choose-btn input[type="file"] {
+    color: #878787;
+    padding-top: 25px;
 }
 
-.choose-file {
-    width: 82px;
-    height: 22px;
+.choose-btn input[type="file"]::-webkit-file-upload-button {
     background-color: #EFEFF8;
     border-radius: 4px;
-    position: absolute;
     color: #2F2C9F;
-    font-weight: 400;
+    cursor: pointer;
     font-size: 12px;
     outline: none;
-    border: none;
-    cursor: pointer;
-
-    /* position: absolute; */
+    padding: 5px 10px;
+    transition: all 1s ease;
+    border: 1px solid transparent;
 }
+
+.choose-btn input[type="file"]::-webkit-file-upload-button:hover,
+.choose-btn input[type="file"]::-webkit-file-upload-button:focus {
+    background-color: #fff;
+    border: 1px solid #2F2C9F;
+    color: #000;
+}
+
 
 .choose-btn {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin-top: 16px;
-}
-
-.choose-btn input {
+    margin-top: 30px;
+    margin-left: 120px;
     cursor: pointer;
 }
+
 
 
 
@@ -758,3 +761,29 @@ td {
         transform: rotate(360deg);
     }
 }
+
+/* -----------------Loader Progress bar girija--------------------- */
+.progress_bar_loader {
+    /* margin-left: 80px; */
+    width: 165px;
+    max-width:80%;
+    height: 8px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .progress_bar_loader:before {
+      content: '';
+      width: 200%;
+      height: 100%;
+      position: absolute;
+      animation: progress-anime 10s ease-out infinite;
+      background: linear-gradient(to right, #2F2C9F 0%,#2F2C9F 50%,#d2d2d2 50%,#d2d2d2 100%);
+  }
+  
+  @keyframes progress-anime {
+      0% {left: -100%;}
+      75% {left: -5%;}
+      85% {left: -5%;}
+      100% {left: 0;}
+  }
