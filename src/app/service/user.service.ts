@@ -1,9 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rxjs';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
+import {
+  BehaviorSubject,
+  Observable,
+  map,
+  catchError,
+  throwError,
+  of,
+} from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { CookieService} from 'ngx-cookie-service'
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +22,8 @@ import { CookieService} from 'ngx-cookie-service'
 export class UserService {
   isFromSignupPage = false;
 
-  private behaviorNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('default');
+  private behaviorNameSubject: BehaviorSubject<string> =
+    new BehaviorSubject<string>('default');
 
   // Method to update the behavior name
   updateBehaviorName(name: string) {
@@ -38,30 +50,30 @@ export class UserService {
   private prefix = environment.v1;
 
   getData(email: string) {
-    const url = `${this.prefix+"getemails/email"}/${email}`;
+    const url = `${this.prefix + 'getemails/email'}/${email}`;
     return this.http.get(url);
   }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
-    return this.http.post(this.prefix+"signup", data);
+    return this.http.post(this.prefix + 'signup', data);
   }
 
-  updatepersonals(email: any, data: any){
-    const url = `${this.prefix+"updatepersonal"}/${email}`;
+  updatepersonals(email: any, data: any) {
+    const url = `${this.prefix + 'updatepersonal'}/${email}`;
     return this.http.patch(url, data);
   }
-  addpersonals(email: any, data: any){
-    const url = `${this.prefix+"putpersonal"}/${email}`;
+  addpersonals(email: any, data: any) {
+    const url = `${this.prefix + 'putpersonal'}/${email}`;
     return this.http.put(url, data);
   }
 
   ForgotEmail(data: any) {
-    return this.http.post(this.prefix+"forgotpassword", data);
+    return this.http.post(this.prefix + 'forgotpassword', data);
   }
 
-  getpersonals(email: any){
-    return this.http.get(`${this.prefix+"getpersonaldata"}/${email}`);
+  getpersonals(email: any) {
+    return this.http.get(`${this.prefix + 'getpersonalsdata'}/${email}`);
   }
 
   newpwd(data: any, token: any) {
@@ -70,14 +82,15 @@ export class UserService {
       'auth-token': token,
       Accept: 'application/json',
     });
-    return this.http.post(this.prefix+"resetpassword", data, { headers });
+    return this.http.post(this.prefix + 'resetpassword', data, { headers });
   }
 
-  newpwdaccount(email: any ,data: any) {
-
-    return this.http.post(`${this.prefix+"resetpasswordaccount"}/${email}`, data);
+  newpwdaccount(email: any, data: any) {
+    return this.http.post(
+      `${this.prefix + 'resetpasswordaccount'}/${email}`,
+      data
+    );
   }
-
 
   //LOGIN AND VERIFY DASHBOARD
 
@@ -91,16 +104,15 @@ export class UserService {
   //     }
 
   // }
-  users(data:any){
-    return this.http.post(this.prefix+"login",data)
+  users(data: any) {
+    return this.http.post(this.prefix + 'login', data);
   }
-
 
   getUserProfileById(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get(this.prefix+"user-profile", { headers }).pipe(
+    return this.http.get(this.prefix + 'user-profile', { headers }).pipe(
       map((response: any) => {
         return response;
       })
@@ -117,7 +129,7 @@ export class UserService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get(this.prefix+"auth", { headers }).subscribe(
+    this.http.get(this.prefix + 'auth', { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
         this.router.navigate(['']);
@@ -138,7 +150,7 @@ export class UserService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get(this.prefix+"auth", { headers }).subscribe(
+    this.http.get(this.prefix + 'auth', { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
         // this.router.navigate(['dashboard']);
