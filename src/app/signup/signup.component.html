@@ -96,7 +96,7 @@
                         <label for="username">Organization Name</label>
                         <input type="text" placeholder="Enter your Organization Name" class="username"
                             [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
-                            formControlName="username" (keydown)="Space($event)"/>
+                            formControlName="username" (keydown)="Space($event)" (blur)="checkUsernameExists()"/>
                             <!-- formControlName="username" (keydown)="Space($event)" [(ngModel)]="organizationName" (input)="onOrgNameInput()" /> -->
 
                         <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
@@ -125,7 +125,7 @@
                         <label for="email" class="text-label">Email</label>
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email"
                             [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
-                            class="form-control is-invalid" (keyup)="onKeyUp($event)" />
+                            class="form-control is-invalid" (keyup)="onKeyUp($event)" (blur)="checkEmailExists()"/>
                         <!-- <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span> -->
 
                         <div *ngIf="
