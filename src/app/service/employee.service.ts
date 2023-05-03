@@ -21,20 +21,17 @@ export class EmployeeService {
     return this.cookie.get('emp-token') !== '';
   }
   emailEntered: any = '';
-  private saveurl = environment.saveurl;
-  private loginurl = environment.loginurl;
-  private Forgoturl = environment.Forgoturl;
-  private Reseturl = environment.Reseturl;
-  private url = environment.url;
-  private auth = environment.auth;
+
+
+ private prefix = environment.v1;
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
-    return this.http.post(this.saveurl, data);
+    return this.http.post(this.prefix+"signup", data);
   }
 
   ForgotEmail(data: any) {
-    return this.http.post(this.Forgoturl, data);
+    return this.http.post(this.prefix+"forgotpassword", data);
   }
 
   newpwd(data: any, token: any) {
@@ -44,15 +41,26 @@ export class EmployeeService {
       Accept: 'application/json',
     });
 
-    return this.http.post(this.Reseturl, data, { headers });
+    return this.http.post(this.prefix+"resetpassword", data, { headers });
   }
 
 
 
   //LOGIN AND VERIFY DASHBOARD
-  users(data: any) {
-    return this.http.post(this.loginurl, data);
-  }
+  // Role=localStorage.getItem('role')
+  // users(data: any) {
+  //     if (this.Role === 'Employee') {
+  //       return this.http.post(this.loginurl, data);
+  //     } else {
+  //       window.location.href = '/login';
+  //       return null
+  //     }
+
+  // }
+users(data:any){
+  return this.http.post(this.prefix+"login",data)
+}
+
 
   // updateIsLinkClicked(email: string): Observable<any> {
   //   const url = `${this.changepwd}`;
@@ -71,7 +79,7 @@ export class EmployeeService {
     const token = this.cookie.get('emp-token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get(this.url, { headers }).pipe(
+    return this.http.get(this.prefix+"user-profile", { headers }).pipe(
       map((response: any) => {
         return response;
       })
@@ -88,7 +96,7 @@ export class EmployeeService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get(this.auth, { headers }).subscribe(
+    this.http.get(this.prefix+"auth", { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
         this.router.navigate(['']);
@@ -109,7 +117,7 @@ export class EmployeeService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get(this.auth, { headers }).subscribe(
+    this.http.get(this.prefix+"auth", { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
         // this.router.navigate(['dashboard']);

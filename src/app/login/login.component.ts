@@ -34,20 +34,7 @@ export class LoginComponent {
 
   ngOnInit() {
 
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe(() => {
-    //   // force a page refresh on navigation end
-    //   window.location.reload();
-    // });
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
-    ).subscribe((event: NavigationStart) => {
-      if (event.url === '/login') {
-        // Force a page refresh on login page
-        window.location.reload();
-      }
-    });
+
 
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
@@ -83,10 +70,10 @@ export class LoginComponent {
 
       if (token && token != 'undefined') {
         this.cookie.set('token', token);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['/dashboard']);
       } else {
         this.cookie.delete('token');
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
       }
     });
 
@@ -105,22 +92,22 @@ export class LoginComponent {
 
   checkEmail(){
 
-      // this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
-      //   // this.emailExists = false;
-      //     console.log("message: ",res.message);
+      this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
+        // this.emailExists = false;
+          console.log("message: ",res.message);
 
-      //   if(res.message === 'user-found'){
-      //     // this.userdetail = this.forgotPassword.controls['email'].value
-      //     this.userdetail = res.message
-      //   } else if(res.message === 'user-not-found'){
-      //     this.usernotfound = res.message;
-      //   }
+        if(res.message === 'user-found'){
+          // this.userdetail = this.forgotPassword.controls['email'].value
+          this.userdetail = res.message
+        } else if(res.message === 'user-not-found'){
+          this.usernotfound = res.message;
+        }
 
-      //   this.employeemail = res;
+        this.employeemail = res;
 
 
-      //   console.log('Response from API:', this.employeemail);
-      // });
+        console.log('Response from API:', this.employeemail);
+      });
 
     this.cookie.deleteAll()
 
@@ -164,6 +151,8 @@ export class LoginComponent {
 
   toggleForgot() {
     this.Forgotshow = !this.Forgotshow;
+    this.userNotFound !== true
+
   }
   toggleForgot1() {
     this.EmailSent = !this.EmailSent;
@@ -198,13 +187,19 @@ export class LoginComponent {
   }
 
   // submissions
-
+obj:any
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
     this.userService.users(data).subscribe((res: any) => {
       this.userService.users(this.loginForm);
       console.log('login User: ', res);
+      console.log('login User: ', res.noOfEmployee);
+      this.personalData = res.noOfEmployee
+      console.log('login personalData: ',this.personalData);
+      this.obj=res.role
+      localStorage.setItem('role',this.obj)
+      console.log("obj",this.obj)
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
 
@@ -223,8 +218,9 @@ export class LoginComponent {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
         }
+
         console.log(res._id);
-        this.cookie.set('id',res._id);
+        this.cookie.set('hr_id',res._id);
         // localStorage.setItem('userId', userId);
         this.submit();
       } else if (res.message == 'Invalid') {
@@ -238,7 +234,20 @@ export class LoginComponent {
 
 
     });
+    // this.personalData = localStorage.getItem('totalemployee');
+    // this.userService.isnotFromSignupPage = true;
+
+    // if (this.userService.isnotFromSignupPage) {
+    //   this.formSubmitted = false;
+    //   console.log("isFromSignupPage: ", this.userService.isnotFromSignupPage);
+    // } else {
+    //   this.formSubmitted = true;
+    // }
   }
+  personalData: any = '';
+  formSubmitted: any = '';
+
+  userNotFound: boolean = false;
   ForgetEmailSubmit(data: any) {
     console.log('Forget Password Email');
     console.log(data);
@@ -255,8 +264,11 @@ export class LoginComponent {
         setTimeout(() => {
           this.EmailSent = !this.EmailSent;
         }, 500);
-      } else if (res.message === 'email-id not found') {
+      } if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
+        console.log("usernotfound: ",this.usernotfound)
+                this.usernotfound = true;
+
       }
 
       this.employeemail = res;
@@ -268,11 +280,12 @@ export class LoginComponent {
       this.userService.ForgotEmail(this.forgotPassword);
       console.log('response:' + res);
     });
+    if(!this.userNotFound){
     this.Forgotshow = !this.Forgotshow;
     setTimeout(() => {
       this.EmailSent = !this.EmailSent;
     }, 500);
-
+  }
   }
 
 

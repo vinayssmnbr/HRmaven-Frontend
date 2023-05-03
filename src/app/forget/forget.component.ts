@@ -91,48 +91,111 @@ export class ForgetComponent {
 
     });
     this.router.navigate(['./login']);
+  
 
 }
 
-// disable the submit button if there is an error
-get isDisabled() {
-return this.forgetform.invalid || this.hasError;
-}
 
-
-// pwdData = localStorage.getItem('password')
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.token = params['token']; // (+) converts string 'id' to a number
+      console.log("token", this.token);
+      // this.service.resetPassword(this.token).subscribe(
+      //   (response: any) => {
+      //     // Password reset successful
+      //     // Redirect to a success page or display a success message
+      //   },
+      //   (error: any) => {
+      //     if (error.status === 400 && error.error.message === 'Reset password link has already been used') {
+      //       this.errorMessage = 'Reset password link has already been used.';
+      //     } else {
+      //       this.errorMessage = 'An error occurred while resetting the password.';
+      //     }
+      //   }
+      // );
     });
-    // if(this.forgetform.invalid){
-      // const pwdData = localStorage.getItem('password')
-    this.service.newpwd(this.forgetform.value, this.token).subscribe({
-      next: (res: any) => {
-        // if (res == 'changeit') {
-        //   this.expired = true;
-          
-        //   console.log(res);
-        // }
-            console.log("res: ",res);
+    // this.service.resetPassword(this.token, this.forgetform.controls['password'].value, this.forgetform.controls['confirm'].value).subscribe(
+    //   (response: any) => {
+    //     // Password reset successful
+    //     // Handle any success actions (e.g., show success message)
+    //     this.router.navigate(['/login']);
+    //   },
+    //   (error: any) => {
+    //     if (error.status === 400 && error.message === 'Link has expired' && error.message === 'Reset password link has already been used') {
+    //       // this.expired = true;
+    //       this.errorMessage = error.error.message;
+    //       console.log("errorMessage: ", this.errorMessage)
+    //     } else {
+    //       // Handle other error cases
+    //       // Set the appropriate error message or perform error handling logic
+    //       console.error("error111: ",error);
+    //       this.errorMessage = error
+    //     }
+    //   }
+    // );
+// -----------------------2nd
+  //   this.service.resetPassword(this.token, this.forgetform.controls['password'].value, this.forgetform.controls['confirm'].value)
+  // .then((res: any) => {
+  //   if (res === "changeit") {
+  //     console.log(res);
+  //   }
+  //   this.router.navigate(['./login']);
+  // })
+  // .catch((error: any) => {
+  //   if (error.status === 400 && (error.error.message === 'Link has expired' || error.error.message === 'Reset password link has already been used')) {
+  //     // this.expired = true;
+  //     this.errorMessage = error.error.message;
+  //     console.log("errorMessage: ", this.errorMessage)
+  //   } else {
+  //     // Handle other error cases
+  //     // Set the appropriate error message or perform error handling logic
+  //     console.error(error);
+  //   }
+  // });
 
+  
+    this.service.newpwd(this.forgetform.value, this.token).subscribe({
+      // next: (res: any) => {
+      //   // if (res == 'changeit') {
+      //   //   this.expired = true;
+          
+      //   //   console.log(res);
+      //   // }
+      //       console.log("res: ",res);
+
+      //   this.router.navigate(['./login']);
+      // },
+        
+      // error: (err) => {
+      //   if ( err.error.message === 'Link has expired' 
+      //   || err.error.message==='Reset password link has already been used') {
+      //     this.expired = true;
+      //     this.errorMessage = err.error.message;
+      //   } 
+      //   else  {
+      //     // handle other errors
+      //     this.errorMessage = err.error.message
+      //     // this.errorMessage = 'Link has expired!!';
+      //     // this.errorMessage =  'Link has expired';
+          
+      //   }
+      // }
+      next: (res: any) => {
+        console.log("res: ", res);
         this.router.navigate(['./login']);
       },
-        
       error: (err) => {
-        if ( err.error.message === 'Link has expired' 
-        || err.error.message==='Reset password link has already been used') {
+        if (err.error.message === 'Link has expired' || err.error.message === 'Reset password link has already been used') {
           this.expired = true;
           this.errorMessage = err.error.message;
-        } 
-        else  {
+        } else {
           // handle other errors
-          // this.errorMessage = 'Link has expired!!';
-          // this.errorMessage =  'Link has expired';
-          
+          this.errorMessage = err.error.message;
         }
       }
+    
     });
+  
    
   } 
   

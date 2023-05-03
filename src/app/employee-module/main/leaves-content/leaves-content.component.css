@@ -39,7 +39,7 @@
 }
 
 /* -------------------Progress Bar------------------------- */
-
+/* 
 @keyframes growProgressBar {
 
     0%,
@@ -90,15 +90,9 @@ div[role="progressbar2"] {
     color: #369;
     background:
         radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-        conic-gradient(#F8BB6F calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-div[role="progressbar3"] {
-    color: #FA9796;
-    background:
-        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
         conic-gradient(#FA9796 calc(var(--pgPercentage) * 1%), #def 0);
 }
+
 
 div[role="progressbar"]::before,
 div[role="progressbar1"]::before,
@@ -106,6 +100,62 @@ div[role="progressbar2"]::before,
 div[role="progressbar3"]::before {
     counter-reset: percentage var(--value);
     content: counter(percentage) '%';
+} */
+
+/* -------------------circular Progress Bar Girija------------------------- */
+.progress-circle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ebebeb;
+}
+
+.progress-circle:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-animation: colorload 2s;
+    animation: colorload 2s;
+}
+
+.progress-circle span {
+    font-size: 1rem;
+    color: #8b8b8b;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 60px;
+    margin-left: -20px;
+    margin-top: -20px;
+    text-align: center;
+    border-radius: 50%;
+    background: #fff;
+    z-index: 1;
+}
+
+.progress-circle span:after {
+    content: "";
+    font-weight: 600;
+    color: #8b8b8b;
+}
+
+.leaves .progress-circle-container.CasualProgress .progress-circle:after {
+    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
+}
+
+.leaves .progress-circle-container.MedicalProgress .progress-circle:after {
+    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
+}
+
+.leaves .progress-circle-container.CompensatoryProgress .progress-circle:after {
+    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
 }
 
 /*-----------------------Leave-status--------------------*/
@@ -260,8 +310,18 @@ td {
     color: #333333;
 }
 
-.form-group input:disabled {
+.form-group input:read-only {
     cursor: not-allowed;
+    background-color: #F1F1F1;
+}
+
+.form-group.short_leave {
+    padding-top: 20px;
+}
+
+.drop_down_input {
+    width: 280px;
+    height: 40px;
 }
 
 /*------------------------drpdown css----------------------*/
@@ -299,7 +359,7 @@ td {
 .select_content {
     background-color: #fff;
     cursor: pointer;
-    width: 240px;
+    width: 260px;
     border-radius: 6px;
     cursor: pointer;
     padding: 10px 17px;
@@ -326,6 +386,29 @@ td {
     border-radius: 8px;
 }
 
+.half_day_leave {
+    position: absolute;
+    width: 170px;
+    background-color: #fff;
+    right: 260px;
+    margin-top: -180px;
+    z-index: 99;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+
+}
+
+.half_day_leave p {
+    height: 40px;
+    padding: 10px 16px 10px 17px;
+    cursor: pointer;
+    color: #444444;
+    font-size: 14px;
+}
+
+.half_day_leave p:hover {
+    background-color: #ECECEC;
+}
+
 .select_active {
     background-color: #ECECEC;
     border-radius: 8px;
@@ -343,7 +426,7 @@ td {
 
 .reason textarea {
     /* min-width: 500px; */
-    height: 167px;
+    height: 217px;
     width: 100%;
     resize: none;
     border: 1px solid #CBCBCB;
@@ -364,8 +447,7 @@ td {
 }
 
 .textarea {
-    /* min-width: 500px; */
-    height: 167px;
+    height: 217px;
     width: 100%;
     resize: none;
     border: 1px solid #CBCBCB;
@@ -373,6 +455,10 @@ td {
     text-align: center;
     padding: 10px 17px;
     outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .textarea .first {
@@ -387,37 +473,37 @@ td {
     color: #777777;
 }
 
-.textarea input {
-    /* position: relative; */
-    opacity: 0;
+.choose-btn input[type="file"] {
+    color: #878787;
+    padding-top: 25px;
 }
 
-.choose-file {
-    width: 82px;
-    height: 22px;
+.choose-btn input[type="file"]::-webkit-file-upload-button {
     background-color: #EFEFF8;
     border-radius: 4px;
-    position: absolute;
     color: #2F2C9F;
-    font-weight: 400;
+    cursor: pointer;
     font-size: 12px;
     outline: none;
-    border: none;
-    cursor: pointer;
-
-    /* position: absolute; */
+    padding: 5px 10px;
+    transition: all 1s ease;
+    border: 1px solid transparent;
 }
+
+.choose-btn input[type="file"]::-webkit-file-upload-button:hover,
+.choose-btn input[type="file"]::-webkit-file-upload-button:focus {
+    background-color: #fff;
+    border: 1px solid #2F2C9F;
+    color: #000;
+}
+
 
 .choose-btn {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin-top: 16px;
-}
-
-.choose-btn input {
+    margin-top: 30px;
+    margin-left: 120px;
     cursor: pointer;
 }
+
 
 
 
@@ -614,6 +700,7 @@ td {
     justify-content: center;
     align-items: center;
 }
+
 .leave_approved_modal h4 {
     text-align: center;
     color: #444444;
@@ -652,17 +739,51 @@ td {
 .Done_form_btn .Done_btn:hover {
     background-color: #1fa10a;
 }
+
 .loader {
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #2F2C9F; /* Blue */
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin-top: 6px;
-  animation: spin 2s linear infinite;
+    border: 5px solid #f3f3f3;
+    /* Light grey */
+    border-top: 5px solid #2F2C9F;
+    /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: 6px;
+    animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
+
+/* -----------------Loader Progress bar girija--------------------- */
+.progress_bar_loader {
+    /* margin-left: 80px; */
+    width: 165px;
+    max-width:80%;
+    height: 8px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .progress_bar_loader:before {
+      content: '';
+      width: 200%;
+      height: 100%;
+      position: absolute;
+      animation: progress-anime 10s ease-out infinite;
+      background: linear-gradient(to right, #2F2C9F 0%,#2F2C9F 50%,#d2d2d2 50%,#d2d2d2 100%);
+  }
+  
+  @keyframes progress-anime {
+      0% {left: -100%;}
+      75% {left: -5%;}
+      85% {left: -5%;}
+      100% {left: 0;}
+  }
