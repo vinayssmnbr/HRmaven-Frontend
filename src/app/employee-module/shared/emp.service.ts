@@ -22,15 +22,13 @@ export class EmpService {
   ) {
     this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
   }
-  getData = environment.getData;
-  getempRecord = environment.getempRecord;
-
+  private prefix = environment.v1;
 
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('emp-token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(this.profile, { headers }).pipe(
+    return this.http.get(this.prefix+"user-profile", { headers }).pipe(
       map((response: any) => {
         console.log('yyy', response);
         return response;
@@ -43,10 +41,9 @@ export class EmpService {
     console.log(token);
     // const email = localStorage.getItem('email');
     const headers = new HttpHeaders().set('authorization', `Bearer ${token}`);
-    return this.http.get(this.getempRecord, { headers });
+    return this.http.get(this.prefix+"api/detail/fetch", { headers });
   }
 
-  profile = environment.profile;
 
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
@@ -68,7 +65,7 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('https://hrmaven.works/api/leave/emp/leave', { headers });
+    return this.http.get(this.prefix+"api/leave/emp/leave", { headers });
 
   }
 
@@ -80,7 +77,7 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('http://localhost:3000/api/leave/emp/history', { headers });
+    return this.http.get(this.prefix+'api/leave/emp/history', { headers });
 
 
   }
@@ -93,7 +90,7 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('https://hrmaven.works/attendance/emp/attendance', { headers });
+    return this.http.get(this.prefix+'attendance/emp/attendance', { headers });
   }
 
 
@@ -122,7 +119,7 @@ export class EmpService {
     data['id']=id;
     const d = new Date();
     data['appliedon']=d;
-    return this.http.post('https://hrmaven.works/api/leave/add/leave', data);
+    return this.http.post(this.prefix+'api/leave/add/leave', data);
   }
 
   attendanceTime() {
@@ -133,7 +130,7 @@ export class EmpService {
         'id': id
       }
     )
-    return this.http.get('https://hrmaven.works/attendance/check/empattendance', { headers });
+    return this.http.get(this.prefix+'attendance/check/empattendance', { headers });
   }
 
 
@@ -146,12 +143,12 @@ export class EmpService {
         'in':action
       }
     )
-    return this.http.patch('https://hrmaven.works/attendance/update/time', { headers });
+    return this.http.patch(this.prefix+'attendance/update/time', { headers });
 
   }
 
   getEmployee() {
-    return this.http.get(this.getData);
+    return this.http.get(this.prefix+'api/find');
   }
 
 }

@@ -99,7 +99,7 @@ export class EmployeeProfileComponent implements OnInit{
     bankname: new FormControl(''),
     adhaarno: new FormControl('',[ Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
     accountno: new FormControl(''),
-    ifsc: new FormControl('', [ Validators.pattern('/^([A-Z]{4}0[A-Z0-9]{6})$/')]),
+    ifsc: new FormControl('', [ Validators.pattern('/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/')]),
     passport: new FormControl('', [ Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$')]),
     panno: new FormControl('', [ Validators.pattern('/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/')]),
     mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}')]),
@@ -114,7 +114,9 @@ export class EmployeeProfileComponent implements OnInit{
   });
 
   experienceForm: FormGroup;
-
+  get registrationFormControl() {
+    return this.form.controls;
+  }
   ngOnInit() {
 
     this.user = this.dashService.getSelectedEmployee();

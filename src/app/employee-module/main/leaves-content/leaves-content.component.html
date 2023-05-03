@@ -11,7 +11,7 @@
                         <h4>{{obj.casual}}</h4>
                     </div>
                     <div class="progress-circle-container CasualProgress">
-                        <div class="progress-circle progress-18">
+                        <div class="progress-circle progress-20">
                             <span></span>
                         </div>
                     </div>
@@ -131,12 +131,12 @@
                                             {{arr.name}}</li>
                                     </ul>
                                     <!-------- Side dropdown--------------- -->
-                                    <div class="half_day_leave" *ngIf="halfdayleave">
+                                    <div class="half_day_leave" *ngIf="halfdayleave" (mouseleave)="halfdayleave = false">
                                         <p class="First_Half">First Half</p>
                                         <p class="Second_Half">Second Half</p>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -269,6 +269,4 @@
             </div>
         </div>
     </form>
-
-
 </div>
