@@ -24,56 +24,30 @@
 
     <div class="employe_input">
       <i class="fa fa-search" aria-hidden="true" id="ico"></i>
-      <input
-        type="text"
-        [(ngModel)]="employeename"
-        placeholder="Enter Employee Name or ID"
-        id="work"
-      />
+      <input type="text" [(ngModel)]="employeename" placeholder="Enter Employee Name or ID" id="work" />
       <div class="calender">
         <div class="grid-icon">
-          <button
-            class="history_btn"
-            (click)="toggleTable1()"
-            [ngClass]="{ active: table1Visible }"
-          >
+          <button class="history_btn" (click)="toggleTable1()" [ngClass]="{ active: table1Visible }">
             Employee History
           </button>
-          <button
-            class="Day-wise_btn"
-            (click)="toggleTable2()"
-            [ngClass]="{ active: table2Visible }"
-          >
+          <button class="Day-wise_btn" (click)="toggleTable2()" [ngClass]="{ active: table2Visible }">
             Day-wise Attendance
           </button>
         </div>
         <label for="date">
-          <input
-            type="date"
-            id="date"
-            *ngIf="showTable"
-            (change)="changefunction()"
-            [(ngModel)]="datez"
-            [ngModelOptions]="{ standalone: true }"
-          />
+          <input type="date" id="date" *ngIf="showTable" (change)="changefunction()" [(ngModel)]="datez"
+            [ngModelOptions]="{ standalone: true }" />
         </label>
 
-        <div
-          class="dropdown_container"
-          *ngIf="dropdown"
-          (mouseleave)="contentdropdown = false"
-        >
+        <div class="dropdown_container" *ngIf="dropdown" (mouseleave)="contentdropdown = false">
           <div class="dropdwon_select" (click)="dropdownOpen()">
             <p>{{ Selectvariable }}</p>
             <i class="fa-sharp fa-solid fa-caret-down"></i>
           </div>
           <div class="select_content" *ngIf="contentdropdown">
             <ul>
-              <li
-                *ngFor="let arr of array; index as i"
-                [class.select_active]="i === colorvariable"
-                (click)="Changeselect(arr)"
-              >
+              <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                (click)="Changeselect(arr)">
                 {{ arr.name }}
               </li>
             </ul>
@@ -96,24 +70,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              *ngFor="
+            <tr *ngFor="
                 let user of DayAttendance | attendanceFilter : employeename
-              "
-            >
+              ">
               <!-- | attendanceFilter:employeename:datez -->
-              <td
-                colspan="7"
-                class="nodata"
-                class="no_data"
-                *ngIf="user.found == 'true'"
-              >
+              <td colspan="7" class="nodata" class="no_data" *ngIf="user.found == 'true'">
                 <p>
-                  <img
-                    src="assets/images/no_record.png"
-                    alt=""
-                    class="center"
-                  />
+                  <img src="assets/images/no_record.png" alt="" class="center" />
                 </p>
                 <h2>No Record Found!</h2>
               </td>
@@ -123,16 +86,16 @@
               <td *ngIf="user.found != 'true'">{{ user.status }}</td>
               <td *ngIf="user.found != 'true'">
                 {{
-                  user.status != "present"
-                    ? "------"
-                    : (user.in | date : "shortTime")
+                user.status != "present"
+                ? "------"
+                : (user.in | date : "shortTime")
                 }}
               </td>
               <td *ngIf="user.found != 'true'">
                 {{
-                  user.status != "present"
-                    ? "------"
-                    : (user.out | date : "shortTime")
+                user.status != "present"
+                ? "------"
+                : (user.out | date : "shortTime")
                 }}
               </td>
               <!-- <td *ngIf="user.found!='true'" class="action1">
@@ -206,16 +169,9 @@
 
     <div class="attendence-card" *ngIf="showCard">
       <div class="row">
-        <div
-          class="col-3"
-          *ngFor="let user of card | attendanceFilter : employeename"
-        >
+        <div class="col-3" *ngFor="let user of card | attendanceFilter : employeename">
           <div class="card" (click)="profileview(user)" *ngIf="!user.found">
-            <img
-              src="{{ user._id.url }}"
-              alt="logo"
-              onError="this.src='./assets/images/Ellipse 98.svg'"
-            />
+            <img src="{{ user._id.url }}" alt="logo" onError="this.src='./assets/images/Ellipse 98.svg'" />
 
             <h2>{{ user._id.name }}</h2>
 
@@ -235,7 +191,7 @@
             <p>
               <img src="assets/images/no_record.png" alt="" class="center" />
             </p>
-            <h2>No Record Found!</h2>
+            <p>No Record Found!</p>
           </div>
         </div>
       </div>
@@ -250,11 +206,7 @@
           <i class="fa-sharp fa-solid fa-less-than"></i>
         </div>
         <div class="profile_logo">
-          <img
-            src="{{ profile._id.url }}"
-            alt=""
-            onError="this.src='./assets/images/Ellipse 98.svg'"
-          />
+          <img src="{{ profile._id.url }}" alt="" onError="this.src='./assets/images/Ellipse 98.svg'" />
         </div>
         <div class="bar">
           <img src="assets/images/Rectangle 580.png" alt="" />
@@ -282,11 +234,8 @@
           </div>
           <div class="select_content1" *ngIf="contentdropdown">
             <ul>
-              <li
-                *ngFor="let arr of array; index as i"
-                [class.select_active]="i === colorvariable"
-                (click)="Changeselect(arr)"
-              >
+              <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                (click)="Changeselect(arr)">
                 {{ arr.name }}
               </li>
             </ul>
