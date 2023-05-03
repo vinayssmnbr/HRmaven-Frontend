@@ -257,7 +257,7 @@
     <div *ngIf="!empname">
         <div class="Modal_form">
 
-            <div class="Modal_modal" *ngIf=" !formSubmitted">
+            <div class="Modal_modal" *ngIf=" !formSubmitted" >
 
                 <div class="edit-profile-heading">
                     <h3>Required Details </h3>
@@ -272,12 +272,9 @@
                                 formControlName="name" required />
                         </div>
                         <div class="form__group">
-                            <label for="noOfEmployee">No. of employees</label>
-                            <select class="form_input" id="noOfEmployee" formControlName="noOfEmployee">
-                                <option value="" disabled selected>Select an option</option>
-                                <option *ngFor="let options of dropdownOptions" [value]="options.option">{{
-                                    options.option }}</option>
-                            </select>
+                            <label for="noOfEmployee">Domain</label>
+                            <input type="text" class="form_input" placeholder='Specify your domain' formControlName="domain"
+                                id="name" required />
                         </div>
                     </div>
                     <div class="email-phone">
