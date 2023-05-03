@@ -324,7 +324,8 @@
           <div class="form-row">
             <div class="input">
               <label>Name</label>
-              <input type="text" placeholder="Ashish" formControlName="name">
+              <input type="text" placeholder="Ashish" formControlName="name" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
             </div>
             <div class="input">
               <label>Employee ID</label>
@@ -339,11 +340,13 @@
           <div class="form-row">
             <div class="input">
               <label>Father's Name</label>
-              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName">
+              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.fatherName.invalid && registrationFormControl.fatherName.dirty,'ng_valid': registrationFormControl.fatherName.valid}">
             </div>
             <div class="input">
               <label>Mother's Name</label>
-              <input type="text" placeholder="Vinita Sharma" formControlName="motherName">
+              <input type="text" placeholder="Vinita Sharma" formControlName="motherName" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.motherName.invalid && registrationFormControl.motherName.dirty,'ng_valid': registrationFormControl.motherName.valid}">
             </div>
             <div class="input">
               <label>Marital Status</label>
@@ -389,7 +392,7 @@
                 <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
                   <!-- <p>{{Selectvariable1}}</p> -->
                   <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
-                  <input type="text" [(ngModel)]="Selectvariable4" formControlName="gender" id="text10" placeholder="Select" readonly>
+                  <input type="text" [(ngModel)]="Selectvariable1" formControlName="gender" id="text10" placeholder="Select" readonly>
                   <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
                 </div>
                 <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
@@ -425,15 +428,18 @@
           <div class="form-row">
             <div class="input">
               <label>Contact No.</label>
-              <input type="number" placeholder="9836327872" class="no-spin" formControlName="mobile">
+              <input type="number" placeholder="9836327872"  formControlName="mobile"
+               class="text no-spin"
+               [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
             </div>
             <div class="input">
               <label>Address</label>
-              <input type="text" placeholder="129-B, Model Town" formControlName="address">
+              <input type="text" placeholder="129-B, Model Town" formControlName="address" >
             </div>
             <div class="input">
               <label>Email</label>
-              <input type="text" placeholder="harshit123@gmail.com" formControlName="email">
+              <input type="text" placeholder="harshit123@gmail.com" formControlName="email" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
             </div>
           </div>
           <div class="form-row">
@@ -443,7 +449,9 @@
             </div>
             <div class="input">
               <label>Postal Code</label>
-              <input type="number" placeholder="141002" formControlName="postalCode" class=" no-spin" (keydown)="validatePincode($event)">
+              <input type="number" placeholder="141002" formControlName="postalCode"  (keydown)="validatePincode($event)"
+               class="text no-spin"
+               [ngClass]="{'ng_invalid': registrationFormControl.postalCode.invalid && registrationFormControl.postalCode.dirty,'ng_valid': registrationFormControl.postalCode.valid}">
             </div>
             <div class="input">
               <label>State</label>
@@ -493,21 +501,25 @@
             </div>
             <div class="input">
               <label>IFSC Code</label>
-              <input type="text" placeholder="PUNB0125412" formControlName="ifsc"  (keydown)="validateIfsc($event)">
+              <input type="text" placeholder="PUNB0125412" formControlName="ifsc"  (keydown)="validateIfsc($event)" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.ifsc.invalid && registrationFormControl.ifsc.dirty,'ng_valid': registrationFormControl.ifsc.valid}">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Adhaar Card Number</label>
-              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno" (keydown)="validateAddhar($event)">
+              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno" (keydown)="validateAddhar($event)" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.adhaarno.invalid && registrationFormControl.adhaarno.dirty,'ng_valid': registrationFormControl.adhaarno.valid}">
             </div>
             <div class="input">
               <label>PAN Number</label>
-              <input type="text" placeholder="4512 3200 7456" formControlName="panno"  (keydown)="validatePanNumber($event)">
+              <input type="text" placeholder="ABCTY1234D" formControlName="panno"  (keydown)="validatePanNumber($event)" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.panno.invalid && registrationFormControl.panno.dirty,'ng_valid': registrationFormControl.panno.valid}">
             </div>
             <div class="input">
               <label>Passport Number</label>
-              <input type="text" placeholder="M5425189" formControlName="passport"  (keydown)="validatePassport($event)">
+              <input type="text" placeholder="M5425189" formControlName="passport"  (keydown)="validatePassport($event)" class="text"
+               [ngClass]="{'ng_invalid': registrationFormControl.passport.invalid && registrationFormControl.passport.dirty,'ng_valid': registrationFormControl.passport.valid}">
             </div>
           </div>
         </form>
@@ -583,7 +595,16 @@
               <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
             </div>
           </div>
-          <button class="add-more1" (click)="showpgdet()"><i class="fa-solid fa-circle-plus"></i>Add More</button>
+          <div class="">
+          <button class="add-more1" (click)="dropdownOpen2()"><i class="fa-solid fa-circle-plus"></i>Add More<img src="./assets/images/Vector (7).png" alt=""></button>
+          <div class="select_content1 " *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+            <ul>
+              <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                (click)="Changeselect2(arr2)">
+                {{arr2.name}}</li>
+            </ul>
+          </div>
+          </div>
         </form>
 
       </div>

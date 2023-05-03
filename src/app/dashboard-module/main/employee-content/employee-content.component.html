@@ -75,7 +75,7 @@
       <tbody>
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable " >
           <!--  -->
-          <td style="text-align:center; background-color: transparent;" colspan="7" class="nodata" class="no_data"
+          <td  colspan="7" class="nodata" class="no_data"
             *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
@@ -91,7 +91,7 @@
             <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
               routerLink="/employee-profile">
               <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile"><p>{{user.name}}</p>
+              routerLink="/employee-profile" onError="this.src='./assets/images/Ellipse 98.svg'"><p>{{user.name}} </p>
           </td>
           <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
             routerLink="/employee-profile">{{user.designation}}</td>
@@ -196,8 +196,9 @@
               <label>Personal Email </label>
               <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
                 (keydown)="validateEmail($event)"
+                (blur)="checkEmailExists()"
                 [ngClass]="{'ng_invalid': registrationFormControl.email.invalid && registrationFormControl.email.dirty,'ng_valid': registrationFormControl.email.valid}">
-              <div class="validation-message" *ngIf="checkEmailExists(email)"><i class="fa-solid fa-circle-info"></i>Email already exists</div>
+              <div class="validation-message" *ngIf="checkEmailExists()"><i class="fa-solid fa-circle-info"></i>Email already exists</div>
 
             </div>
             <div class="input">

@@ -4,12 +4,24 @@ import { BehaviorSubject, Observable, map, catchError, throwError, of } from 'rx
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { CookieService} from 'ngx-cookie-service'
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   isFromSignupPage = false;
 
+  private behaviorNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('default');
+
+  // Method to update the behavior name
+  updateBehaviorName(name: string) {
+    this.behaviorNameSubject.next(name);
+  }
+
+  // Method to get the current behavior name as an Observable
+  getBehaviorName(): Observable<string> {
+    return this.behaviorNameSubject.asObservable();
+  }
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -22,44 +34,34 @@ export class UserService {
     return this.cookie.get('token') !== '';
   }
   emailEntered: any = '';
-  private saveurl = environment.saveurl;
-  private loginurl = environment.loginurl;
-  private Forgoturl = environment.Forgoturl;
-  private Reseturl = environment.Reseturl;
-  private resetpwdaccount = environment.resetpwdaccount
-  private url = environment.url;
-  private auth = environment.auth;
-  private  emailurl = environment.getemail
-  private personaldataupdate = environment.updatepersonaldata
-  private addpersonaldata = environment.addpersonalurl
-  private getpersonaldata = environment.getpersonaldata
 
+  private prefix = environment.v1;
 
   getData(email: string) {
-    const url = `${this.emailurl}/${email}`;
+    const url = `${this.prefix+"getemails/email"}/${email}`;
     return this.http.get(url);
   }
 
   saveUser(data: any) {
     this.isLoggedIn.next(true);
-    return this.http.post(this.saveurl, data);
+    return this.http.post(this.prefix+"signup", data);
   }
 
   updatepersonals(email: any, data: any){
-    const url = `${this.personaldataupdate}/${email}`;
+    const url = `${this.prefix+"updatepersonal"}/${email}`;
     return this.http.patch(url, data);
   }
   addpersonals(email: any, data: any){
-    const url = `${this.addpersonaldata}/${email}`;
+    const url = `${this.prefix+"putpersonal"}/${email}`;
     return this.http.put(url, data);
   }
 
   ForgotEmail(data: any) {
-    return this.http.post(this.Forgoturl, data);
+    return this.http.post(this.prefix+"forgotpassword", data);
   }
 
   getpersonals(email: any){
-    return this.http.get(`${this.getpersonaldata}/${email}`);
+    return this.http.get(`${this.prefix+"getpersonaldata"}/${email}`);
   }
 
   newpwd(data: any, token: any) {
@@ -68,12 +70,12 @@ export class UserService {
       'auth-token': token,
       Accept: 'application/json',
     });
-    return this.http.post(this.Reseturl, data, { headers });
+    return this.http.post(this.prefix+"resetpassword", data, { headers });
   }
 
   newpwdaccount(email: any ,data: any) {
 
-    return this.http.post(`${this.resetpwdaccount}/${email}`, data);
+    return this.http.post(`${this.prefix+"resetpasswordaccount"}/${email}`, data);
   }
 
 
@@ -90,7 +92,7 @@ export class UserService {
 
   // }
   users(data:any){
-    return this.http.post(this.loginurl,data)
+    return this.http.post(this.prefix+"login",data)
   }
 
 
@@ -98,7 +100,7 @@ export class UserService {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get(this.url, { headers }).pipe(
+    return this.http.get(this.prefix+"user-profile", { headers }).pipe(
       map((response: any) => {
         return response;
       })
@@ -115,7 +117,7 @@ export class UserService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get(this.auth, { headers }).subscribe(
+    this.http.get(this.prefix+"auth", { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
         this.router.navigate(['']);
@@ -136,7 +138,7 @@ export class UserService {
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    this.http.get(this.auth, { headers }).subscribe(
+    this.http.get(this.prefix+"auth", { headers }).subscribe(
       (res: any) => {
         this.isLoggedIn.next(true);
         // this.router.navigate(['dashboard']);

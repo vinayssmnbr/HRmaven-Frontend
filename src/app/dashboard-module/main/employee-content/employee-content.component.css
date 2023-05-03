@@ -16,7 +16,8 @@
     display: flex;
     width: 100%;
     align-items: center;
-    column-gap: 70px;
+    /* column-gap: 50px; */
+
 }
 
 .list_nav p {
@@ -29,10 +30,7 @@
     padding-bottom: 5px;
     padding-left: 15px;
 }
-.All{
-  width: 100%;
-  max-width: 38px;
-}
+
 .All.active{
   border-bottom: 3px solid #2F2C9F;
 }
@@ -50,10 +48,6 @@
   color: red;
   margin-top: 3px;
 }
-/* .All{
-  width: 100%;
-  max-width: 38px;
-  padding-left: 8px;
 
 .All,
 .Active,
@@ -89,7 +83,7 @@
   color: #2F2C9F;
     font-weight: 500;
     padding-bottom: 4px;
-    width: 60px;
+    /* width: 60px; */
   }
 .Resigned.active  {
   border-bottom: 3px solid #2F2C9F;
@@ -98,7 +92,7 @@
   color: #2F2C9F;
     font-weight: 500;
     padding-bottom: 4px;
-    width: 77px;
+    /* width: 77px; */
 }
 .Terminated.active{
   border-bottom: 3px solid #2F2C9F;
@@ -107,7 +101,7 @@
 color: #2F2C9F;
   font-weight: 500;
     padding-bottom: 4px;
-  width: 92px;
+  /* width: 92px; */
 }
 .Absconder.active {
   border-bottom: 3px solid #2F2C9F;
@@ -116,8 +110,8 @@ color: #2F2C9F;
 color: #2F2C9F;
   font-weight: 500;
     padding-bottom: 4px;
-  width: 88px;
-} */
+  /* width: 88px; */
+}
 .selection2{
   display: flex;
   justify-content: space-between;
@@ -620,11 +614,12 @@ background-color: rgba(255, 238, 82, 0.5);
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(34, 34, 34, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
@@ -1325,10 +1320,11 @@ input::placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background: rgba(34, 34, 10, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content2 {

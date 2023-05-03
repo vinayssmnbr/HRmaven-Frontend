@@ -43,8 +43,12 @@ export class AttendanceContentComponent implements OnInit {
   todayDate: string;
   totalDays: number;
   DayAttendance = [];
-  card:any=[];
-  constructor(public dashService: DashService, private datepipe: DatePipe,private http:HttpClient) {
+  card: any = [];
+  constructor(
+    public dashService: DashService,
+    private datepipe: DatePipe,
+    private http: HttpClient
+  ) {
     dashService.activeComponent = 'attendance';
     dashService.headerContent = '';
     this.getLeaveData();
@@ -116,6 +120,12 @@ export class AttendanceContentComponent implements OnInit {
             },
             {
               label: 'Leaves',
+              data: leave,
+              backgroundColor: ['#00C9FF'],
+              pointStyle: 'circle',
+            },
+            {
+              label: 'short leave',
               data: leave,
               backgroundColor: ['#00C9FF'],
               pointStyle: 'circle',
@@ -312,9 +322,11 @@ export class AttendanceContentComponent implements OnInit {
 // ----------------Profile table Girija----------------
 profilecard=false;
 attendence_main=true;
-profileview(){
+profile:any={};
+profileview(profile:any){
 this.profilecard=true;
 this.attendence_main=false;
+this.profile=profile;
 
 }
 back_profile(){
@@ -324,7 +336,10 @@ this.attendence_main=true;
 }
 
 
+getEmployeeData(){
+  this.dashService.getEmployee().subscribe((res)=>{
+    this.employee=res
+  })
 }
-function getCurrentDate() {
-  throw new Error('Function not implemented.');
+
 }

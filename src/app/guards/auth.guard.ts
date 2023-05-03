@@ -22,7 +22,9 @@ export class AuthGuard implements CanActivate {
     private cookie: CookieService,
     private http: HttpClient
   ) {}
-  private auth = environment.auth;
+
+
+  private prefix = environment.v1;
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
   canActivate(
@@ -47,7 +49,7 @@ export class AuthGuard implements CanActivate {
 
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-      return this.http.get(this.auth, { headers }).pipe(
+      return this.http.get(this.prefix+"auth", { headers }).pipe(
         map((res: any) => {
           this.isLoggedIn.next(true);
           //if(localStorage.getItem('userRole') == 'HR'){

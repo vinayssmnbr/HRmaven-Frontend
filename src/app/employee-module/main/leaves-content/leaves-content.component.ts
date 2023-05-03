@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 import * as moment from 'moment';
 
 import { EmpService } from '../../shared/emp.service';
@@ -12,31 +17,42 @@ export class LeavesContentComponent {
   // empleaveForm: FormGroup;
 
   leaves: any = [];
-  str = "";
+  str = '';
   obj = {
     casual: 1,
     earned: 2,
     urgent: 3,
-    medical: 4
+    medical: 4,
   };
 
   constructor(public empService: EmpService, private formBuilder: FormBuilder) {
     empService.activeComponent = 'leave';
     empService.headerContent = '';
     this.leavegraphcontent();
+    this.obj={
+      casual: 1,
+      earned: 2,
+      urgent: 3,
+      medical: 4
+    };
   }
 
   async leavegraphcontent() {
     await this.empService.leavegraph().subscribe((res: any) => {
       console.log(res.response[0]);
       this.obj = res.response[0];
-    })
+    });
 
     this.empService.leavehistory().subscribe((res: any) => {
+      console.log(res.response[0])
+      if(res.response[0].History==undefined)
+      {
+        console.log("undefined");
+      }
+      else{
       console.log(res.response[0].History);
       this.leaves = res.response[0].History;
-    })
-
+    }});
   }
 
   date = new Date();
@@ -49,29 +65,27 @@ export class LeavesContentComponent {
     this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
       console.log(res);
     })
-    console.log(this.leaves);
     this.leaves.push({
-      appliedOn:this.date.getDate(),
+      appliedOn:this.date.toISOString(),
       category:this.empleaveForm.value.category,
-      document:this.fileurl,
       from:this.empleaveForm.value.from,
       to:this.empleaveForm.value.to,
       reason:this.empleaveForm.value.reason,
       status:"pending",
+      duration:Number(this.str),
+      message:""
     })
+    console.log(this.leaves);
   }
-  cancel(){
+  cancel() {
     this.empleaveForm.reset();
-    this.Selectvariable="Category";
-    this.empleaveForm.value.category=this.Selectvariable;
-    this.str="0";
+    this.Selectvariable = 'Category';
+    this.empleaveForm.value.category = this.Selectvariable;
+    this.str = '0';
     this.empleaveForm.value.duration = this.str;
-
   }
 
-  onfileselect(event: any) {
-
-  }
+  onfileselect(event: any) {}
   selectedFile1: File | null = null;
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
@@ -84,19 +98,16 @@ export class LeavesContentComponent {
   //   });
   // }
 
-  ngOnIt() {
-
-  }
+  ngOnIt() {}
 
   empleaveForm = new FormGroup({
-    from: new FormControl("", [Validators.required]),
-    to: new FormControl("", [Validators.required]),
-    category: new FormControl("", [Validators.required]),
-    duration: new FormControl("", Validators.required),
-    url: new FormControl(""),
-    reason: new FormControl("")
-  })
-
+    from: new FormControl('', [Validators.required]),
+    to: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
+    duration: new FormControl('', Validators.required),
+    url: new FormControl(''),
+    reason: new FormControl(''),
+  });
 
   getDates() {
     const dateArray: string[] = [];
@@ -109,54 +120,117 @@ export class LeavesContentComponent {
       currentDate = moment(currentDate).add(1, 'days');
     }
     let len = dateArray.length;
-    this.str = len.toString()
+    this.str = len.toString();
     let obj = { duration: this.str };
     console.log(this.str);
     this.empleaveForm.value.duration = this.str;
-
-
   }
 
   array: any = [
-
     {
       id: 0,
-      name: 'casual',
+      name: 'Casual leave',
     },
     {
       id: 1,
-      name: 'medical',
+      name: ' Half day leave',
     },
     {
       id: 2,
-      name: 'urgent',
+      name: 'Compensatory leave',
     },
     {
       id: 3,
-      name: 'earned',
-    }
+      name: 'Short leave',
+    },
+    {
+      id: 4,
+      name: 'Medical leave',
+    },
   ];
-
-
-
-
-
-
-
+  halfdayleave:boolean=false;
+  shortleave: boolean = false;
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  Selectvariable: string = 'Category';
+  Selectvariable: string = 'Select';
   colorvariable: number = 0;
   Changeselect(arr: any) {
+    if (arr.id == 3) {
+      this.shortleave = true;
+    }
+    else{
+      this.shortleave=false;
+      this.halfdayleave=false;
+    }
+    if(arr.id ==1){
+      this.halfdayleave=true;
+    }
+   
+
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
     this.empleaveForm.value.category = arr.name;
-
   }
+
+  array1: any = [
+    {
+      id: 0,
+      name: '9 am - 11 am',
+    },
+    {
+      id: 1,
+      name: '10 am - 12 am',
+    },
+    {
+      id: 2,
+      name: '11 am - 1 am',
+    },
+    {
+      id: 3,
+      name: '12 am - 2 am',
+    },
+    {
+      id: 4,
+      name: '1 am - 3 am',
+    },
+    {
+      id: 5,
+      name: '2 am - 4 am',
+    },
+    {
+      id: 6,
+      name: '3 am - 5 am',
+    },
+  ];
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable1: string = '9 am - 11 am';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    this.Selectvariable1 = arr1.name;
+    this.colorvariable1 = arr1.id;
+    this.contentdropdown1 = false;
+    console.log(arr1.name);
+    this.empleaveForm.value.category = arr1.name;
+  }
+ 
+
+
+
+
+
+
+
+
+
+
+
   leaveshistory = false;
   employeemaintable = true;
   tablehistory() {
@@ -200,8 +274,4 @@ export class LeavesContentComponent {
       this.empleaveForm.value.url = this.empService.fileUrl;
     });
   }
-
 }
-
-
-
