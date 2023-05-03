@@ -256,9 +256,9 @@
 
     <!-- <div *ngIf="isFromSignupPage"> -->
         <div *ngIf="!empname">   
-        <div class="Modal_form">
+        <div class="Modal_form" *ngIf=" !formSubmitted">
 
-            <div class="Modal_modal"  *ngIf=" !formSubmitted">
+            <div class="Modal_modal"  >
 
                 <div class="edit-profile-heading">
                     <h3>Required Details </h3>

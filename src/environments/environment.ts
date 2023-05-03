@@ -4,10 +4,10 @@ export const environment = {
   saveurl: 'https://hrmaven.works/signup',
   loginurl: 'https://hrmaven.works/login',
   Forgoturl: 'https://hrmaven.works/forgotpassword',
-  Reseturl: 'https://hrmaven.works/resetpassword',
-  addpersonalurl: 'https://hrmaven.works/putpersonal',
-  updatepersonaldata: 'https://hrmaven.works/updatepersonal',
-  getpersonaldata: 'https://hrmaven.works/getpersonalsdata',
+  // Reseturl: 'https://hrmaven.works/resetpassword',
+  // addpersonalurl: 'https://hrmaven.works/putpersonal',
+  // updatepersonaldata: 'https://hrmaven.works/updatepersonal',
+  // getpersonaldata: 'https://hrmaven.works/getpersonalsdata',
   resetpwdaccount: 'https://hrmaven.works/resetpasswordaccount',
   url: 'https://hrmaven.works/user-profile',
   auth: 'https://hrmaven.works/auth',
@@ -33,12 +33,7 @@ export const environment = {
   patchleave: 'https://hrmaven.works/api/leave/update/leave',
   getempRecord: 'https://hrmaven.works/api/detail/fetch',
 baseUrl:'https://hrmaven.works/user/export',
-<<<<<<< HEAD
-checkemail : 'http://localhost:3000/api/checkemail'
-
-=======
-checkemail:'https://hrmaven.works/checkemail'
->>>>>>> 111645c30ebd33e7f35e98a6e9b148fdb269e35f
+checkemail:'https://hrmaven.works/checkemail',
 
 
 
@@ -54,10 +49,10 @@ checkemail:'https://hrmaven.works/checkemail'
   // saveurl: 'http://localhost:3000/signup',
   // loginurl: 'http://localhost:3000/login',
   // Forgoturl: 'http://localhost:3000/forgotpassword',
-  // Reseturl: 'http://localhost:3000/resetpassword',
-  // updatepersonaldata :'http://localhost:3000/updatepersonal',
-  // addpersonalurl: 'http://localhost:3000/putpersonal',
-  // getpersonaldata :'http://localhost:3000/getpersonalsdata',
+  Reseturl: 'http://localhost:3000/resetpassword',
+  updatepersonaldata :'http://localhost:3000/updatepersonal',
+  addpersonalurl: 'http://localhost:3000/putpersonal',
+  getpersonaldata :'http://localhost:3000/getpersonalsdata',
   // resetpwdaccount : 'http://localhost:3000/resetpasswordaccount',
   // url: 'http://localhost:3000/user-profile',
   // auth: 'http://localhost:3000/auth',

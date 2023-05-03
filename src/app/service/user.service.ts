@@ -93,12 +93,12 @@ export class UserService {
 
   Role=localStorage.getItem('role')
   users(data: any) {
-      if (this.Role === 'HR') {
+      // if (this.Role === 'HR') {
         return this.http.post(this.loginurl, data);
-      } else {
-        window.location.href = '/login';
-        return null
-      }
+      // } else {
+      //   window.location.href = '/login';
+      //   return null
+      // }
 
   }
   // users(data:any){
