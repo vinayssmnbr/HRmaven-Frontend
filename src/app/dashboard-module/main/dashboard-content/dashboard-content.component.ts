@@ -123,7 +123,7 @@ export class DashboardContentComponent implements OnInit {
 
       console.log("res account settings personaldata: ", res.useridd);
 
-      this.empname = res.personaldata.noOfEmployee;
+      this.empname = res.personaldata.name;
       localStorage.setItem('empname', this.empname)
       // this.employeename = res.personaldata.name;
       // this.totalemployee = res.personaldata.noOfEmployee;
