@@ -38,6 +38,7 @@ export class EmployeeContentComponent implements OnInit {
   selectAll: boolean = false;
   parentSelector: boolean = false;
   employee: any = [];
+  statusFilter: string = 'all';
   selectedEmployess: any[] = [];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
@@ -53,7 +54,8 @@ export class EmployeeContentComponent implements OnInit {
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
-    @Inject(DOCUMENT) public document: Document,private cookie:CookieService
+    @Inject(DOCUMENT) public document: Document,
+    private cookie: CookieService
   ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
@@ -149,7 +151,7 @@ export class EmployeeContentComponent implements OnInit {
     if (this.form.invalid) return;
     console.log(this.form.value);
     let data = this.form.value;
-    data['hrid']=this.cookie.get('hr_id');
+    data['hrid'] = this.cookie.get('hr_id');
     this.showModalContent = false;
     this.fourthStep = true;
     this.thirdStep = false;
@@ -212,34 +214,33 @@ export class EmployeeContentComponent implements OnInit {
   opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
+    this.employeefilter();
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
 
     // })
   }
-  abc: any = "Harpreetsingh@yahoo.com"
+  abc: any = 'Harpreetsingh@yahoo.com';
 
   emailExists = false;
 
-  emailId: any = this.form.controls['email'].value;
-
+  emailId: any;
   checkEmailExists() {
+    this.emailId = this.form.controls['email'].value;
+
     console.log('sh', this.emailId);
-    // this.dashService.getEmployeeEmail(this.emailId).subscribe(
-    //   (response: any) => {
-    //     console.log('check',response)
-    //     if(response.email===this.emailId){
-    //     this.emailExists = true;
-    //   }else{
-    //     this.emailExists = false;
-    //   }
-    // },
-    // );
     this.dashService
       .getEmployeeEmail(this.emailId)
       .subscribe((response: any) => {
-        console.log('hello',response);
+        console.log('check', response);
+        if (response.flag) {
+          this.emailExists = true;
+          console.log(response.message);
+        } else {
+          this.emailExists = false;
+          console.log(response.message);
+        }
       });
   }
 
@@ -1039,5 +1040,16 @@ export class EmployeeContentComponent implements OnInit {
       type: 'text/csv;charset=utf-8;',
     });
     FileSaver.saveAs(blob, 'sample.csv');
+  }
+
+  //FILTER STATUS USING CUSTOM PIPE
+  setStatusFilter(status: string) {
+    this.statusFilter = status;
+  }
+
+  employeefilter() {
+    this.dashService.getEmployee().subscribe((data: any[]) => {
+      this.employee = data;
+    });
   }
 }

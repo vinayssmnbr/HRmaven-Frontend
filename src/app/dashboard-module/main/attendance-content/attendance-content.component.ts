@@ -5,7 +5,7 @@ import { DashService } from '../../shared/dash.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-attendance-content',
   templateUrl: './attendance-content.component.html',
@@ -44,6 +44,8 @@ export class AttendanceContentComponent implements OnInit {
   totalDays: number;
   DayAttendance = [];
   card: any = [];
+
+  fileName = 'ExcelSheet.xlsx';
   constructor(
     public dashService: DashService,
     private datepipe: DatePipe,
@@ -319,27 +321,35 @@ export class AttendanceContentComponent implements OnInit {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
-// ----------------Profile table Girija----------------
-profilecard=false;
-attendence_main=true;
-profile:any={};
-profileview(profile:any){
-this.profilecard=true;
-this.attendence_main=false;
-this.profile=profile;
+  // ----------------Profile table Girija----------------
+  profilecard = false;
+  attendence_main = true;
+  profile: any = {};
+  profileview(profile: any) {
+    this.profilecard = true;
+    this.attendence_main = false;
+    this.profile = profile;
+  }
+  back_profile() {
+    this.profilecard = false;
+    this.attendence_main = true;
+  }
 
-}
-back_profile(){
-  this.profilecard=false;
-this.attendence_main=true;
+  getEmployeeData() {
+    this.dashService.getEmployee().subscribe((res) => {
+      this.employee = res;
+    });
+  }
 
-}
+  exportData() {
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-getEmployeeData(){
-  this.dashService.getEmployee().subscribe((res)=>{
-    this.employee=res
-  })
-}
-
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+  }
 }
