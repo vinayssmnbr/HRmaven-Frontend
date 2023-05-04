@@ -22,13 +22,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboard-module/dashboard-module.module').then(
         (m) => m.DashboardModuleModule
-      ),canActivate: [AuthGuard],
+      )
 
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
   {path:'t&c',component:TermConditionComponent},
-  { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule),
-canActivate:[EmpGuard], },
+  { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule)},
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }
 ];
 

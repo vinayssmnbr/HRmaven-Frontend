@@ -33,12 +33,14 @@ export class EmployeeContentComponent implements OnInit {
   // isChecked1:boolean=true;
   // parentSelector: boolean = false;
 
+  public list: string[] = [];
+
+  flag: any;
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
   parentSelector: boolean = false;
   employee: any = [];
-  statusFilter: string = 'all';
   selectedEmployess: any[] = [];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
@@ -50,11 +52,12 @@ export class EmployeeContentComponent implements OnInit {
   emailValidationMessage: string = '';
   mobile: number;
 
+
+  checkMobileNoExists(mobile: number) { }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
-    @Inject(DOCUMENT) public document: Document,
-    private cookie: CookieService
+    @Inject(DOCUMENT) public document: Document, private cookie: CookieService
   ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
@@ -170,7 +173,7 @@ export class EmployeeContentComponent implements OnInit {
   //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
-      console.log('data', res);
+      console.log('data1', res);
       this.employee = res;
       if (res.length > 0) {
         this.emptybox = false;
@@ -213,56 +216,38 @@ export class EmployeeContentComponent implements OnInit {
   opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
-    this.employeefilter();
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
 
     // })
   }
-  abc: any = 'Harpreetsingh@yahoo.com';
+  abc: any = "Harpreetsingh@yahoo.com"
 
   emailExists = false;
 
-  emailId: any;
-  checkEmailExists() {
-    this.emailId = this.form.controls['email'].value;
+  emailId: any = this.form.controls['email'].value;
 
+  checkEmailExists() {
     console.log('sh', this.emailId);
+    // this.dashService.getEmployeeEmail(this.emailId).subscribe(
+    //   (response: any) => {
+    //     console.log('check',response)
+    //     if(response.email===this.emailId){
+    //     this.emailExists = true;
+    //   }else{
+    //     this.emailExists = false;
+    //   }
+    // },
+    // );
     this.dashService
       .getEmployeeEmail(this.emailId)
-      .subscribe((response: any) => {
-        console.log('check', response);
-        if (response.flag) {
-          this.emailExists = true;
-          console.log(response.message);
-        } else {
-          this.emailExists = false;
-          console.log(response.message);
-        }
-      });
+    // .subscribe((response: any) => {
+    //   console.log('hello',response);
+    // });
   }
 
-  mobileExists = false;
 
-  mobileNo: any;
-  checkmobileExists() {
-    this.mobileNo = this.form.controls['mobile'].value;
-
-    console.log('sh', this.mobileNo);
-    this.dashService
-      .getEmployeeMobile(this.mobileNo)
-      .subscribe((response: any) => {
-        console.log('check', response);
-        if (response.flag) {
-          this.mobileExists = true;
-          console.log(response.message);
-        } else {
-          this.mobileExists = false;
-          console.log(response.message);
-        }
-      });
-  }
 
   changeColor() {
     this.buttonbackgroundColor =
@@ -364,7 +349,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() {}
+  nextForm2() { }
   array: any = [
     {
       id: 0,
@@ -711,9 +696,9 @@ export class EmployeeContentComponent implements OnInit {
       }
       case 'resigned': {
         this.optionStyle = {
-          'background-color': '#2f2c9f',
+          'background-color': 'rgba(255, 238, 82, 0.5)',
           color: '#CE524A',
-          border: '#2f2c9f',
+          border: 'rgba(255, 238, 82, 0.5)',
         };
         break;
       }
@@ -742,11 +727,6 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-
-  // const index: number = this.data.indexOf(msg);
-  // if (index !== -1) {
-  //     this.data.splice(index, 1);
-  // }
 
   selectUser(user) {
     this.selectedUser = user;
@@ -809,7 +789,10 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  download1(): void {
+
+
+  download(): void {
+    // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
     this.dashService.exportUsers(this.selectedEmployess).subscribe(
       (data: Blob) => {
         const downloadUrl = window.URL.createObjectURL(data);
@@ -820,22 +803,12 @@ export class EmployeeContentComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+    // }
   }
 
-  download(): void {
-    if (this.selectedEmployess && this.selectedEmployess.length > 0) {
-      this.dashService.exportUsers(this.selectedEmployess).subscribe(
-        (data: Blob) => {
-          const downloadUrl = window.URL.createObjectURL(data);
-          const link = document.createElement('a');
-          link.href = downloadUrl;
-          link.download = 'users.csv';
-          link.click();
-        },
-        (error) => console.log(error)
-      );
-    }
-  }
+
+
+
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
@@ -881,6 +854,7 @@ export class EmployeeContentComponent implements OnInit {
   //onFIleSelectedream
 
   onFileSelectedrem(event: any): void {
+
     const file: File = event.target.files[0];
 
     if (!file) {
@@ -914,6 +888,11 @@ export class EmployeeContentComponent implements OnInit {
 
     // Parse CSV file
     const reader: FileReader = new FileReader();
+
+    reader.onloadstart = () => {
+      console.log('Please wait, file is uploading...');
+    };
+
     reader.onload = (e: any) => {
       const csv: string = e.target.result;
       const lines: string[] = csv.split(/\r\n|\n/);
@@ -932,15 +911,28 @@ export class EmployeeContentComponent implements OnInit {
       }
 
       console.log(data, 'parsed CSV data');
+      let uid: number = -1;;
+      this.dashService.getEmployeeUid().subscribe((res: any) => {
+        // 
+        uid = res.uid;
+        console.log(res, 'uid response')
+        if (uid == -1) return 'there is an error while getting uid'
+        data.forEach((employee) => {
+          console.log('Adding employee:', employee);
+          // console.log('Please wait, employee is being added...');
+          employee['uid'] = uid++;
+          this.dashService.addEmployee(employee).subscribe((res: any) => {
+            console.log('Response:', res);
+            console.log('Data:', res.data);
 
-      // Add each employee to system using dashService
-      data.forEach((employee) => {
-        console.log('Adding employee:', employee);
-        this.dashService.addEmployee(employee).subscribe((res: any) => {
-          console.log('Response:', res);
-          console.log('Data:', res.data);
+          });
         });
-      });
+       
+        return 'employees added'
+
+      })
+
+
     };
 
     reader.readAsText(file);
@@ -1004,6 +996,7 @@ export class EmployeeContentComponent implements OnInit {
     }
   }
 
+
   toggleAllCheckboxes() {
     let checkboxes = document.getElementsByTagName('input');
     for (let i = 0; i < checkboxes.length; i++) {
@@ -1024,41 +1017,13 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   generateSampleCsvFile() {
+
     const csvData = [
-      [
-        'Uid',
-        'Name',
-        'DateOfJoining',
-        'Mobile',
-        'E-mail',
-        'Timing',
-        'Gender',
-        'Designation',
-        'Location',
-        'Ctc',
-        'Job_Type',
-        'Url',
-        'City',
-        'Bankname',
-        'Ifsc',
-      ],
-      [
-        '2986',
-        'John kumar',
-        '9/28/93',
-        '8825167890',
-        'john1v5@gmail.com',
-        '10.00am to 6:00pm',
-        'Male',
-        'Full Stack Developer',
-        'Mohali',
-        '8LPA',
-        'Internship',
-        'https://cdn.finlmnoataktackcontent.com',
-        'Mohali',
-        'Punjab National Bank',
-        'PNB7906456',
-      ],
+      ['name', 'dateOfJoining', 'mobile', ' email', 'timing', 'Gender', 'designation', 'location', 'ctc', 'job_Type', 'City', 'bankname', 'ifsc'],
+      ['John kumar', '9/28/93', '8825167890', 'john1v5@gmail.com', '10.00am to 6:00pm', 'Male', 'Full Stack Developer', 'Mohali', '8LPA', 'Internship', 'Mohali', 'Punjab National Bank', 'PNB7906456'],
+      ['Ramanujan kumar', '9/28/94', '8815167990', 'ramanujan7t5@gmail.com', '10.00am to 6:00pm', 'Male', 'Full Stack Developer', 'Mohali', '8LPA', 'Internship', 'Mohali', 'Punjab National Bank', 'PNB7906465'],
+      ['Ravi kumar', '9/28/95', '8837167880', 'ravi2p5@gmail.com', '10.00am to 6:00pm', 'Male', 'Full Stack Developer', 'Mohali', '8LPA', 'Internship', 'Mohali', 'Punjab National Bank', 'PNB9706386'],
+
     ];
 
     const blob = new Blob([csvData.join('\n')], {
@@ -1067,19 +1032,5 @@ export class EmployeeContentComponent implements OnInit {
     FileSaver.saveAs(blob, 'sample.csv');
   }
 
-  //FILTER STATUS USING CUSTOM PIPE
-  setStatusFilter(status: string) {
-    this.statusFilter = status;
 
-    this.fetchdata();
-  }
-
-  employeefilter() {
-    this.dashService.getEmployee().subscribe((data: any[]) => {
-      this.employee = data;
-    });
-    this.fetchdata();
-  }
-
-  ngOnChange() {}
 }
