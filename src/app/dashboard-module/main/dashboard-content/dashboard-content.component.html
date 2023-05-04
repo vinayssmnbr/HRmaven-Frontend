@@ -66,7 +66,7 @@
                         new</p>
                 </div>
                 <div class="meeting-scrollbar">
-                    <div class="all-meetings" *ngFor="let option of options let index = index" (click)="openModal11()">
+                    <div class="all-meetings" *ngFor="let option of options let index = index" >
                         <div class="interview-area">
                             <div class="date">
                                 <p>{{option.day}}</p>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="interview-timings">
                                 <div class="interview-dots">
-                                    <h3>{{option.head}}</h3>
+                                    <h3 (click)="openModal11()">{{option.head}}</h3>
                                     <p>{{option.time}}</p>
                                 </div>
                                 <div class="dots">
