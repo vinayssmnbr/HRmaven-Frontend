@@ -162,22 +162,7 @@
 
 /*--------------------------------------------------*/
 
-.leave_balance {
-  margin: 20px 0px;
-  width: 100%;
-  background-color: #FFFFFF;
-  height: 420px;
-  border-radius: 8px;
-}
-.balance{
-  width: 40%;
-}
-.leave_balance h1 {
-  font-weight: 500;
-  font-size: 18px;
-  color: #222222;
-  padding: 19px 25px;
-}
+
 
 .job-post-summary-area {
   background-color: #FFFFFF;
@@ -292,7 +277,7 @@
   border-radius: 8px;
 }
 
-.leave {
+.leave:hover {
   background-color: #F7F7FB;
 }
 
@@ -465,38 +450,52 @@
 
 /*---------------------------Leave-Balance------------------------*/
 
-.casual_medical_urgent{
+.casual-leave{
   display: flex;
-  flex-direction: row;
-  text-align: center;
-  margin: 14px 14px;
-  justify-content: space-between;
+  /* margin-top: 20px; */
+ justify-content: space-between;
+  width: 260px;
+  height: 92px;
+  background-color: #FAFAFA;
+  border-radius: 10px;
+  align-items: center;
+  padding: 23px 20px;
+}
+
+.leave_balance {
+  margin: 20px 0px;
+  width: 100%;
+  background-color: #FFFFFF;
+  height: 420px;
+  border-radius: 8px;
+  padding: 24px 19px;
+}
+.balance{
+  width: 40%;
+}
+.leave_balance h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #222222;
 
 }
-.casual_leave{
-  width: 130px;
-height: 146px;
-background-color: #FAFAFA;
-border-radius: 10px;
-padding: 6px 6px;
-}
-.casual_leave_text p{
+.casual-heading h3{
   font-weight: 400;
 font-size: 14px;
 color: #666666;
 }
-.casual_leave_text h2{
+.casual-heading h4{
   font-weight: 700;
 font-size: 22px;
 color: #444444;
 }
-.progress_bar {
-  margin-top: 30px;
-}
-.casual_medical_urgent_earned{
+.casual_medical_compensatory {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
+  gap: 25px;
 }
+
 
 /*-----------------------------Leave Balance End---------------------*/
 .attendance-area {
@@ -1040,7 +1039,7 @@ input[type="radio"] {
 .meeting-scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 545px;
+  height: 481px;
   padding-right: 4px;
 }
 
