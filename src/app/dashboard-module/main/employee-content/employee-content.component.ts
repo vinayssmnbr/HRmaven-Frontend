@@ -41,7 +41,6 @@ export class EmployeeContentComponent implements OnInit {
   selectAll: boolean = false;
   parentSelector: boolean = false;
   employee: any = [];
-  statusFilter: string = 'all';
   selectedEmployess: any[] = [];
   selectedEmployee: any;
   designationdropdownOption: boolean = false;
@@ -53,11 +52,12 @@ export class EmployeeContentComponent implements OnInit {
   emailValidationMessage: string = '';
   mobile: number;
 
-  checkMobileNoExists(mobile: number) {}
+
+  checkMobileNoExists(mobile: number) { }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
-    @Inject(DOCUMENT) public document: Document,private cookie:CookieService
+    @Inject(DOCUMENT) public document: Document, private cookie: CookieService
   ) {
     dashService.activeComponent = 'employees';
     dashService.headerContent = '';
@@ -173,6 +173,7 @@ export class EmployeeContentComponent implements OnInit {
   //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
+
       console.log('data1', res);
       this.employee = res;
       if (res.length > 0) {
@@ -216,28 +217,35 @@ export class EmployeeContentComponent implements OnInit {
   opendpdtn = false;
   ngOnInit() {
     this.fetchdata();
-    this.employeefilter();
-
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
 
     // })
   }
-  abc: any = 'Harpreetsingh@yahoo.com';
+  abc: any = "Harpreetsingh@yahoo.com"
 
   emailExists = false;
 
-  emailId: any;
-  checkEmailExists() {
-    this.emailId = this.form.controls['email'].value;
+  emailId: any = this.form.controls['email'].value;
 
+  checkEmailExists() {
     console.log('sh', this.emailId);
+    // this.dashService.getEmployeeEmail(this.emailId).subscribe(
+    //   (response: any) => {
+    //     console.log('check',response)
+    //     if(response.email===this.emailId){
+    //     this.emailExists = true;
+    //   }else{
+    //     this.emailExists = false;
+    //   }
+    // },
+    // );
     this.dashService
       .getEmployeeEmail(this.emailId)
-      .subscribe((response: any) => {
-        console.log('hello',response);
-      });
+    // .subscribe((response: any) => {
+    //   console.log('hello',response);
+    // });
   }
 
 
@@ -554,14 +562,11 @@ export class EmployeeContentComponent implements OnInit {
   }
   selectedFile: File | null = null;
   selectedFile1: File | null = null;
+
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     const maxAllowedSize = 5 * 1024 * 1024;
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    if (!allowedTypes.includes(this.selectedFile.type)) {
-      this.fileName = null;
-    }
     if (this.selectedFile.size > maxAllowedSize) {
       this.fileName = '';
     }
@@ -584,18 +589,10 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-  selectedfile: boolean = false
+
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
-    const allowedTypes1=[".csv"];
     this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-    if (!allowedTypes1.includes(this.selectedFile.type)) {
-      this.fileName1 = null;
-    }
-    if(this.fileName1!=null){
-      this.selectedfile=true;
-    }
-
   }
 
   selectall: boolean = false;
@@ -700,9 +697,9 @@ export class EmployeeContentComponent implements OnInit {
       }
       case 'resigned': {
         this.optionStyle = {
-          'background-color': '#2f2c9f',
+          'background-color': 'rgba(255, 238, 82, 0.5)',
           color: '#CE524A',
-          border: '#2f2c9f',
+          border: 'rgba(255, 238, 82, 0.5)',
         };
         break;
       }
@@ -731,11 +728,6 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-
-  // const index: number = this.data.indexOf(msg);
-  // if (index !== -1) {
-  //     this.data.splice(index, 1);
-  // }
 
   selectUser(user) {
     this.selectedUser = user;
@@ -932,7 +924,8 @@ export class EmployeeContentComponent implements OnInit {
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe((res: any) => {
             console.log('Response:', res);
-        
+            // let data1 = this.form.value;
+            // data['hrid'] = this.cookie.get('hr_id');
             console.log('Data:', res.data);
 
           });
@@ -1041,4 +1034,6 @@ export class EmployeeContentComponent implements OnInit {
     });
     FileSaver.saveAs(blob, 'sample.csv');
   }
+
+
 }
