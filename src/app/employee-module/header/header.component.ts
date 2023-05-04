@@ -65,8 +65,8 @@ toggleSearchBox(){
 
 getProfileData(){
   this.empService.getUserProfile().subscribe((res: any)=>{
-    this.userEmail=res.email.split("@")[0];
-    this.name=res.username.charAt(0).toUpperCase() + res.username.slice(1);
+    this.userEmail=res[0].professionalemail;
+    this.name=res[0].name
   });
 }
 

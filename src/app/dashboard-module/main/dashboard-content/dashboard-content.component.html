@@ -254,7 +254,7 @@
     <!---------------------------dashboard Modal------------------------------>
 
     <!-- <div *ngIf="isFromSignupPage"> -->
-        <div *ngIf="!empname">   
+        <div *ngIf="!empname">
         <div class="Modal_form" *ngIf=" !formSubmitted">
 
             <div class="Modal_modal"  >
@@ -269,32 +269,38 @@
                         <div class="form__group">
                             <label for="name">Name</label>
                             <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name"
-                                formControlName="name" required />
+                                formControlName="name" required
+
+                                [ngClass]="{'ng_invalid':personaldataForm.controls.name.invalid && personaldataForm.controls.name.dirty,'ng_valid':personaldataForm.controls.name.valid}"/>
                         </div>
                         <div class="form__group">
                             <label for="noOfEmployee">Domain</label>
                             <input type="text" class="form_input" placeholder='Specify your domain' formControlName="domain"
-                                id="name" required />
+                                id="name0" required
+                                [ngClass]="{'ng_invalid':personaldataForm.controls.domain.invalid && personaldataForm.controls.domain.dirty,'ng_valid':personaldataForm.controls.domain.valid}"/>
+                                 
                         </div>
                     </div>
                     <div class="email-phone">
                         <div class="form__group">
                             <label for="name">Phone no.</label>
                             <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
-                                id="name" required />
+                                id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
                         </div>
                         <div class="form__group">
                             <label for="email">Head Office</label>
                             <input type="text" class="form_input" placeholder='Eg. Leeds, America'
-                                formControlName="headOffice" id="email" required />
+                                formControlName="headOffice" id="office" required
+                                 [ngClass]="{'ng_invalid':personaldataForm.controls.headOffice && personaldataForm.controls.headOffice.dirty,'ng_valid':personaldataForm.controls.headOffice.valid}"/>
                         </div>
                     </div>
                     <div class="edit-profile-footer">
-                        <button class="done-btn" type="submit">Done</button>
+                        <button class="done-btn" type="submit" [disabled]="personaldataForm.controls['headOffice'||'phone'||'domain'||'name'].invalid " (click)="submitPersonalData(personaldataForm.value)">Done</button>
+                        <!-- <button type="submit" [disabled]="form01.controls['email' || 'DoB' || 'gender'].invalid" (click)="functionForm01()">Click</button> -->
                     </div>
                 </form>
-                
-                
+
+
             </div>
         </div>
     </div>
@@ -432,17 +438,17 @@
                             <h5>UI/UX designer</h5>
                         </div>
                     </div>
-    
-    
+
+
                 </div>
-    
-    
+
+
                 <div class="discard-save">
                     <div class="discard"><button (click)="closeModal10()">Discard</button></div>
                     <div class="save"><button type="submit"   (click)="closeModal10()" >Save</button> </div>
                 </div>
             </form>
-          
+
         </div>
 
 

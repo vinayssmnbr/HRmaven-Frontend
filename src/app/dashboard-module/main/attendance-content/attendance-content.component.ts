@@ -227,7 +227,7 @@ export class AttendanceContentComponent implements OnInit {
   toggleTable1() {
     this.showCard = true;
     this.showTable = false;
-    this.table1Visible = !this.table1Visible;
+    this.table1Visible = true;
     this.table2Visible = false; // ensure other table is hidden
     this.calender = false;
     this.dropdown = true;
@@ -242,7 +242,7 @@ export class AttendanceContentComponent implements OnInit {
     this.calender = true;
     this.showCard = false;
     this.showTable = true;
-    this.table2Visible = !this.table2Visible;
+    this.table2Visible = true;
     this.table1Visible = false;
   }
 
