@@ -712,6 +712,7 @@ input[type="file"]{
     border-radius: 8px;
     margin-top: 5px;
     border: none;
+    color: black;
 }
 
 .modal-text textarea {

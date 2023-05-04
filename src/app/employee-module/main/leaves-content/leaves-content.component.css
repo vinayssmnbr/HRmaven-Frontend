@@ -425,7 +425,6 @@ td {
 }
 
 .reason textarea {
-    /* min-width: 500px; */
     height: 217px;
     width: 100%;
     resize: none;
@@ -473,6 +472,7 @@ td {
     color: #777777;
 }
 
+/* 
 .choose-btn input[type="file"] {
     color: #878787;
     padding-top: 25px;
@@ -496,15 +496,136 @@ td {
     border: 1px solid #2F2C9F;
     color: #000;
 }
-
-
 .choose-btn {
     margin-top: 30px;
     margin-left: 120px;
     cursor: pointer;
+} */
+/* --------------------File Upload Progress bar custom---------------------- */
+.upload_progress_bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid #99999982;
+    width: 410px;
+    height: 60px;
+    border-radius: 8px;
+    padding: 0 10px;
+    background-color: #FFFFFF;
+    margin-left: 50px;
+}
+
+.file_upload {
+    margin-left: 150px;
+    padding: 5px 10px;
+
+}
+
+.file_upload .file {
+    font-weight: 400;
+    font-size: 12px;
+    color: #2F2C9F;
+    padding: 5px 10px;
+    background: #EFEFF8;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.file_size p {
+    font-weight: 400;
+    font-size: 12px;
+    color: #999999;
+    padding: 10px 150px;
+}
+
+.progress-bar {
+    width: 180%;
+    height: 6px;
+    border-radius: 8px;
+    background-color: #ddd;
+}
+
+.progress_upload {
+    border-radius: 8px;
+    width: 0%;
+    height: 100%;
+    background-color: #2F2C9F;
+    margin-top: 5px;
+}
+
+.progress-text-input {
+    position: absolute;
+    margin-top: -5px;
+    margin-left: 340px;
+    transform: translate(-50%, -50%);
+    color: #999999;
+    font-size: 11px;
+}
+
+.file_upload input[type="file"]::-webkit-file-upload-button {
+    outline: none;
+    padding: 10px 25px;
+    transition: all 1s ease;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2F2C9F;
+    padding: 5px 10px;
+    background-color: #EFEFF8;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.file_upload [type="file"]::-webkit-file-upload-button:hover {
+    border: 2px solid #2F2C9F;
+    color: #000;
 }
 
 
+.pdf_file {
+    background: #CB1E0F;
+    text-align: center;
+    width: 25px;
+    height: 20px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.pdf_file h4 {
+    padding: 4px;
+    color: white;
+    border-radius: 5px;
+    font-size: 9px;
+    text-align: center;
+}
+
+.input_upload input[type="file"] {
+    display: none;
+}
+
+.input_upload input[type="text"] {
+    outline: none;
+    border: none;
+}
+
+
+.pdf_file {
+    background: #CB1E0F;
+    text-align: center;
+    width: 25px;
+    height: 20px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+.pdf_file h4 {
+    padding: 4px;
+    color: white;
+    border-radius: 5px;
+    font-size: 9px;
+    text-align: center;
+}
 
 
 /* -------------------My Leave History Table---------------------- */
@@ -766,24 +887,36 @@ td {
 .progress_bar_loader {
     /* margin-left: 80px; */
     width: 165px;
-    max-width:80%;
+    max-width: 80%;
     height: 8px;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
-  }
-  .progress_bar_loader:before {
-      content: '';
-      width: 200%;
-      height: 100%;
-      position: absolute;
-      animation: progress-anime 10s ease-out infinite;
-      background: linear-gradient(to right, #2F2C9F 0%,#2F2C9F 50%,#d2d2d2 50%,#d2d2d2 100%);
-  }
-  
-  @keyframes progress-anime {
-      0% {left: -100%;}
-      75% {left: -5%;}
-      85% {left: -5%;}
-      100% {left: 0;}
-  }
+}
+
+.progress_bar_loader:before {
+    content: '';
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    animation: progress-anime 10s ease-out infinite;
+    background: linear-gradient(to right, #2F2C9F 0%, #2F2C9F 50%, #d2d2d2 50%, #d2d2d2 100%);
+}
+
+@keyframes progress-anime {
+    0% {
+        left: -100%;
+    }
+
+    75% {
+        left: -5%;
+    }
+
+    85% {
+        left: -5%;
+    }
+
+    100% {
+        left: 0;
+    }
+}

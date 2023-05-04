@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
   {path:'t&c',component:TermConditionComponent},
-  { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule) },
+  { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule)},
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }
 ];
 
