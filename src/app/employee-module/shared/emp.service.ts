@@ -26,21 +26,27 @@ export class EmpService {
 
 
   getUserProfile(): Observable<any> {
+    const id = this.cookie.get('id');
+    const role = this.cookie.get('role');
     const token = this.cookie.get('emp-token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(this.prefix+"user-profile", { headers }).pipe(
-      map((response: any) => {
-        console.log('yyy', response);
-        return response;
-      })
-    );
+    let headers = new HttpHeaders({
+      'id': id.toString(),
+      'authorization':`Bearer ${token}`,
+      'role':role
+    });
+    return this.http.get(this.prefix+"user-profile", { headers });
   }
+
 
   getEmployeeRecord(): Observable<any> {
     const token = this.cookie.get('emp-token');
+    const id = this.cookie.get('id');
     console.log(token);
-    // const email = localStorage.getItem('email');
-    const headers = new HttpHeaders().set('authorization', `Bearer ${token}`);
+
+    let headers = new HttpHeaders({
+      'authorization':`Bearer ${token}`,
+      'id': id.toString()
+    });
     return this.http.get(this.prefix+"api/detail/fetch", { headers });
   }
 
@@ -134,16 +140,16 @@ export class EmpService {
   }
 
 
-  punch(action:any) {
+  punchin() {
+    console.log('dvfoivemvvmrv');
     const id = this.cookie.get('id');
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'id': id,
-        'in':action
+        'id': id.toString(),
       }
     )
-    return this.http.patch(this.prefix+'attendance/update/time', { headers });
+    return this.http.patch(this.prefix+'attendance/emp/punchin', { headers });
 
   }
 

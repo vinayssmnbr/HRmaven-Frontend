@@ -221,7 +221,7 @@ obj:any
 
         console.log(res._id);
         this.cookie.set('hr_id',res._id);
-        // localStorage.setItem('userId', userId);
+        this.cookie.set('role','hr');
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');

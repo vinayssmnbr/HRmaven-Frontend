@@ -183,6 +183,7 @@ onSubmit(data:any){
   console.log("object_id:",result.user._id)
     localStorage.setItem('email', this.sigupform.controls['email'].value);
     this.cookie.set('hr_id',result.id);
+    this.cookie.set('role',result.role);
 
   })
 }

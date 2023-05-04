@@ -13,18 +13,17 @@ export class AttendanceComponent implements OnInit {
     empService.activeComponent = 'attendance';
     empService.headerContent = '';
     this.attendance();
-    this.punchin();
   }
   obj: any;
-  total:any=0;
-  leave:any=0;
-  present:any=0;
-  absent:any=0;
+  total: any = 0;
+  leave: any = 0;
+  present: any = 0;
+  absent: any = 0;
 
-   today:any;
-   tomorrow:any;
-   in:any;
-   out:any;
+  today: any;
+  tomorrow: any;
+  in: any;
+  out: any;
 
   attendance() {
     this.empService.attendanceload().subscribe((res: any) => {
@@ -39,19 +38,19 @@ export class AttendanceComponent implements OnInit {
         if (month == m) {
           if (d.status == 'present') {
             this.present = this.present + 1;
-            this.total=this.total+1
+            this.total = this.total + 1
           }
           if (d.status == 'absent') {
             this.absent = this.absent + 1;
-            this.total=this.total+1
+            this.total = this.total + 1
           }
           if (d.status == 'leave') {
             this.leave = this.leave + 1;
-            this.total=this.total+1
+            this.total = this.total + 1
           }
         }
       })
-      console.log(typeof(this.leave));
+      console.log(typeof (this.leave));
     })
     // this.total = this.leave + this.absent + this.present;
     // this.total = Number(this.total);
@@ -61,66 +60,51 @@ export class AttendanceComponent implements OnInit {
     // console.log(this.total);
   }
 
-  punchin(){
-    // this.empService.punch("in").subscribe((res)=>{
-      //   console.log(res);
-      // })
+  punchin() {
+    navigator.geolocation.getCurrentPosition(this.showLoc, this.errHand);
+  }
 
+   showLoc(pos: any) {
+    console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
 
-      navigator.geolocation.getCurrentPosition(showLoc, errHand);
+    const lat = pos.coords.latitude
+    const lon = pos.coords.longitude
+    const lat1 = 31.2521879;
+    const lon1 = 75.7033441;
+    const R = 63710;
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
 
-      function showLoc(pos:any) {
-      console.log('lat'+pos.coords.latitude,'long'+pos.coords.longitude);
-
-        const lat = pos.coords.latitude
-        const lon = pos.coords.longitude
-        const lat1 = 31.2521879;
-        const lon1 = 75.7033441;
-        const R = 63710;
-          if((Math.acos(Math.sin(lat1)*Math.sin(lat) + Math.cos(lat1)*Math.cos(lat) *Math.cos(lon-lon1)) * R < 1000)){
-
-          console.log(lat);
-          console.log(lon);
-        }
-        else{
-          console.log("out of range")
-        }
+      console.log(lat);
+      console.log(lon);
     }
-    function errHand(err:any) {
-      switch (err.code) {
-        case err.PERMISSION_DENIED:
-          alert('you dont have right to mark the attendance until location is share')
-          break;
-        }
-      }
+    else {
+      console.log("out of range")
+      this.empService.punchin().subscribe((res: any)=>{
+      })
+    }
+  }
+
+  errHand(err: any) {
+    switch (err.code) {
+      case err.PERMISSION_DENIED:
+        alert('you dont have right to mark the attendance until location is share')
+        break;
+    }
+  }
 
 
-
-      }
-
-        // inside(lat2:any, lon2:any,lat1:any,lon1:any,radius:any):any {
-
-
-
-        //   return Math.acos(Math.sin(lat1)*Math.sin(lat2) +
-        //                    Math.cos(lat1)*Math.cos(lat2) *
-        //                    Math.cos(lon2-lon1)) * R < radius;
-        // }
-
-
-
-  punchout(){
+  punchout() {
 
   }
   ngOnInit(): void {
-    this.empService.attendanceTime().subscribe((res:any)=>{
-      if(res.in=='----')
-      {
-      this.in="";
-      this.out ="";
+    this.empService.attendanceTime().subscribe((res: any) => {
+      if (res.in == '----') {
+        this.in = "";
+        this.out = "";
       }
-      else{
-        this.in=res.in;
+      else {
+        this.in = res.in;
+        this.out = res.out;
       }
       console.log(res);
     })
