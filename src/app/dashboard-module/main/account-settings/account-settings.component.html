@@ -60,7 +60,7 @@
                         <p>HRMaven</p>
                     </div>
                     <div class="employee-text">
-                        <h6>No. of employees</h6>
+                        <h6>Domain Name</h6>
                         <p> {{totalemployee}} </p>
                     </div>
                     <div class="head-office-text">
@@ -81,11 +81,16 @@
                 <div class="description-pen">
                     <div class="description-heading">
                         <h6>Description</h6>
+                        <p>{{description}}</p>
                     </div>
+
+                    <!-- <div class="paragraph-text"> -->
+
+                        <!-- <textarea placeholder="{{description}}">{{description}}</textarea> -->
+                        <!-- {{description}} -->
+                    <!-- </div> -->
                 </div>
-                <div class="paragraph-text">
-                    <textarea placeholder="{{description}}"></textarea>
-                </div>
+                
             </div>
         </div>
 
@@ -218,7 +223,7 @@
                             <!-- <input type="text" [readonly]="true"
                               placeholder=""  > -->
                             <textarea class="textarea-2" formControlName="description"
-                                placeholder="{{description}}"></textarea>
+                                placeholder="{{description}}">{{description}}</textarea>
                         </div>
                     </div>
 
