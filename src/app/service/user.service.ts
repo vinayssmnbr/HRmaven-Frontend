@@ -20,7 +20,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class UserService {
-  
+
   isFromSignupPage = false;
 
   private behaviorNameSubject: BehaviorSubject<string> =
@@ -169,13 +169,13 @@ export class UserService {
   // }
 
 
-  getCompanyName(username:any){
-    // return this.http.get('{this.usernames}/${username}');
-    return this.http.get(`${this.prefix + 'username'}?type=${username}`)
-  }
-  getRegisteredEmail(email:any){
-    // return this.http.get('{this.emails}/${email}');
-    return this.http.get(`${this.prefix + 'email'}?type=${email}`)
-  }
+  // getCompanyName(username:any){
+  //   // return this.http.get('{this.usernames}/${username}');
+  //   return this.http.get(`${this.prefix + 'username'}?type=${username}`)
+  // }
+  // getRegisteredEmail(email:any){
+  //   // return this.http.get('{this.emails}/${email}');
+  //   return this.http.get(`${this.prefix + 'email'}?type=${email}`)
+  // }
 
 }

@@ -19,7 +19,7 @@
                     <input type="email" placeholder="Enter your email address" formControlName="email">
                      <div  [ngClass]="{'open' :EmailSent||  !usernotfound , 'close':!EmailSent && !usernotfound }">
                         <span *ngIf="usernotfound">Email id not Found!! Check again your mail-id!!</span>
-                    </div> 
+                    </div>
                         <span *ngIf="emailforgot && emailforgot.invalid && emailforgot.touched && emailforgot.dirty"
                         class="emailwrg"><i class="fa-solid fa-circle-info"></i>Input Valid Email
                         Id</span>
@@ -61,7 +61,7 @@
                     <button class="done_btn" (click)="toggleForgot1()">Done</button>
                 </div>
             </div>
-   </div> 
+   </div>
 
 
     <!----------------------- Login Section------------------ -->
@@ -150,7 +150,7 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Email</label>
                     <input type="email" class="form-control email" formControlName="email"
-                        placeholder="Enter your email" />
+                        placeholder="Enter your email" (keyup)="onKeyUp($event)"/>
                     <span *ngIf="emaill && emaill.invalid && emaill.touched && emaill.dirty" class="emailwrg">
                         <img src="assets/images/valid_error.svg" alt=""> Invalid email address</span>
                 </div>
@@ -160,7 +160,7 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Password</label>
                     <input type="password" placeholder="Enter your password" class="password" #passwordInput
-                        formControlName="password" />
+                        formControlName="password" (keyup)="onKeyUp($event)"/>
                     <span *ngIf="pwd && pwd.invalid && pwd.touched  && emaill.dirty" class="pwddwrg"> <img
                             src="assets/images/valid_error.svg" alt=""> Invalid Password </span>
                 </div>

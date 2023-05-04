@@ -51,7 +51,7 @@ export class DashboardContentComponent implements OnInit {
 
   personaldataForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    domain: new FormControl(''),
+    domain: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
     phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
   })
@@ -140,7 +140,7 @@ export class DashboardContentComponent implements OnInit {
     } else {
       this.formSubmitted = true;
     }
-  
+
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
@@ -253,7 +253,7 @@ export class DashboardContentComponent implements OnInit {
     // Create a chart object
   }
 
-  
+
 
   // clickClose() {
   //   this.closeModal = false;
@@ -327,7 +327,7 @@ export class DashboardContentComponent implements OnInit {
     this.showModal10 = true;
     this.showModalContent=true
   }
-  
+
   closeModal10(){
     this.showModal10 = false;
     this.showModalContent=false;
@@ -338,12 +338,12 @@ export class DashboardContentComponent implements OnInit {
     this.showModal11 = true;
     this.showModalContent=true
   }
-  
+
   closeModal11(){
     this.showModal11 = false;
     this.showModalContent=false;
   }
- 
+
 
   array1: any = [
     {
@@ -372,14 +372,14 @@ export class DashboardContentComponent implements OnInit {
       this.Venuelink=true;
       this.Meetinglink=false;
     }
-    
+
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
   }
 
-  /**/ 
+  /**/
   meetingForm=new FormGroup({
     meetingtitle:new FormControl(''),
     mode:new FormControl(''),
