@@ -21,8 +21,7 @@
                         <span *ngIf="usernotfound">Email id not Found!! Check again your mail-id!!</span>
                     </div>
                         <span *ngIf="emailforgot && emailforgot.invalid && emailforgot.touched && emailforgot.dirty"
-                        class="emailwrg"><i class="fa-solid fa-circle-info"></i>Input Valid Email
-                        Id</span>
+                        class="emailwrg"><i class="fa-solid fa-circle-info"></i>No account associated with this email</span>
 
                     <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification
                         Email</button>
