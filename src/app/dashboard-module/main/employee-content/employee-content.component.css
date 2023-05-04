@@ -27,7 +27,7 @@
   font-size: 14px;
   color: #666666;
   padding-bottom: 5px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
 }
 
 .All.active {
@@ -54,7 +54,7 @@
 .Terminated,
 .Absconder {
   padding: 3px 50px;
-  border: 3px solid transparent;
+  border-bottom: 3px solid transparent;
   border-radius: 3px;
 }
 .All.active,
@@ -1715,13 +1715,21 @@ input::placeholder {
 }
 
 .modal-content5 {
-  width: 540px;
-  height: 430px;
-  background-color: white;
-  border-radius: 8px;
-  position: relative;
+    width: 540px;
+    height: 490px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
 }
-
+.card{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbcbcb;
+    border-radius: 8px;
+    padding-top: 0px;
+}
 .modal-header5 {
   background-color: #ffffff;
   border-radius: 8px;
@@ -1746,19 +1754,19 @@ input::placeholder {
 }
 
 .modal-body5 .file-content {
-  border: 2px dashed #cbcbcb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-  padding-top: 35px;
-  padding-bottom: 10px;
-  height: 235px;
+    border: 2px dashed #cbcbcb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+     padding-top: 30px;
+padding-bottom: 10px;
+    height: 210px;
 }
 
-.modal-body5 .file-content input[type="file"] {
-  /* position: absolute;
+.modal-body5 .card input[type="file"] {
+    /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1768,11 +1776,11 @@ input::placeholder {
   z-index: -1;
 }
 
-.modal-body5 .file-content input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.modal-body5 .card input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 .modal-body5 .file-content .choose {
@@ -1841,18 +1849,18 @@ input::placeholder {
   /* width: 4px;
   height: 37px; */
   background: #ffffff;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  box-shadow: none;
-  font-style: normal;
-  font-family: "Outfit", sans-serif;
-  font-weight: 400;
-  outline: none;
-  padding: 10px 15px;
-  font-size: 13px;
-  color: #999999;
-  /* cursor: pointer; */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    /* margin-bottom: 10px; */
+    box-shadow: none;
+    padding: 6px 40px;
+    font-style: normal;
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    outline: none;
+    /* padding: 10px 15px; */
+    font-size: 13px;
+    color: #999999;
 }
 
 .import-btns {
@@ -1946,3 +1954,44 @@ input::placeholder {
   padding: 20px 0;
   text-align: center;
 }
+.progress_bar {
+  /* margin: auto; */
+width: 450px;
+  max-width: 80%;
+  height: 8px;
+  box-shadow: 0px 0px 4px #ffffffd1;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -7px;
+  margin-bottom: 35px;
+}
+
+.progress_bar:before {
+  content: '';
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: progress-anime 10s ease-out ;
+  animation-iteration-count: 2;
+  background: linear-gradient(to right, #2f2c9f 0%, #2f2c9f 50%, #d2d2d2 50%, #d2d2d2 100%);
+}
+
+@keyframes progress-anime {
+  0% {
+    left: -100%;
+  }
+
+  75% {
+    left: -5%;
+  }
+
+  85% {
+    left: -5%;
+  }
+
+  95% {
+    left: 0;
+  }
+}
+

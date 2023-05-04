@@ -245,13 +245,22 @@
                 exists</div>
             </div>
 
-            <div class="input">
+            <!-- <div class="input">
               <label>Mobile No.</label>
               <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
                 (keydown)="validatePhoneNumber($event)"
                 [ngClass]="{'ng_invalid': registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty,'ng_valid': registrationFormControl.mobile.valid}">
               <div class="validation-message" *ngIf="checkMobileNoExists(mobile)"><i
                   class="fa-solid fa-circle-info"></i>Mobile No. already exists</div>
+            </div> -->
+
+            <div class="input">
+              <label>Mobile No.</label>
+              <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
+                (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
+                [ngClass]="{'ng_invalid': mobileExists , 'ng_valid': !mobileExists}">
+              <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-info"></i>Mobile No.
+                already exists</div>
             </div>
           </div>
         </form>
@@ -375,8 +384,8 @@
 
 
           <a (click)="fileInput.click()" class="choose">Choose File</a>
-          <input type="text" id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
+          <!-- <input type="text"  id="text18" readonly [value]="fileName1">
+          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 
         </div>
         <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
@@ -387,8 +396,12 @@
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >
           <a  class="choose">Choose File</a>
-
         </div> -->
+        <div class="card">
+          <input type="text" id="text18" readonly [value]="fileName1" (change)="onFileSelected1($event)" formControlName="csv">
+          <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)" accept=".csv" formControlName="csv">
+        <div class="progress_bar"></div>
+        </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
           <button class="imp-btn" (click)="employeecsv()">Import</button>

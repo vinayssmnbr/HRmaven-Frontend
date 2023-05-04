@@ -62,13 +62,13 @@ export class EmployeeProfileComponent implements OnInit{
   job_type: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl('',[ Validators.pattern('/^[a-zA-Z]+$/')]),
+    name: new FormControl('',[ Validators.pattern(/^[a-zA-Z]+$/)]),
     designation: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl('',[ Validators.pattern('/^[a-zA-Z]+$/')]),
-    motherName: new FormControl('',[ Validators.pattern('/^[a-zA-Z]+$/')]),
+    fatherName: new FormControl('',[ Validators.pattern(/^[a-zA-Z]+$/)]),
+    motherName: new FormControl('',[ Validators.pattern(/^[a-zA-Z]+$/)]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
@@ -99,13 +99,13 @@ export class EmployeeProfileComponent implements OnInit{
     bankname: new FormControl(''),
     adhaarno: new FormControl('',[ Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
     accountno: new FormControl(''),
-    ifsc: new FormControl('', [ Validators.pattern('/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/')]),
+    ifsc: new FormControl('', [ Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/)]),
     passport: new FormControl('', [ Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$')]),
     panno: new FormControl('', [ Validators.pattern('/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/')]),
     mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}')]),
     email: new FormControl('', [Validators.email,Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$')]),
     state: new FormControl(''),
-    postalCode: new FormControl('',Validators.pattern('/^[0-9]{6}$/')),
+    postalCode: new FormControl('',Validators.pattern(/^[0-9]{6}$/)),
     city: new FormControl(''),
     address: new FormControl(''),
     profemail:new FormControl(''),
@@ -299,11 +299,26 @@ export class EmployeeProfileComponent implements OnInit{
       name: 'Internship',
     },
   ];
+  array9: any=[
+    {
+    id:0,
+    name: 'Graduation Details',
+  },
+  {
+    id:1,
+    name: 'Post-Graduation Details'
+  },
+  {
+    id:2,
+    name: 'Phd-Details'
+  }
 
+]
 
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
+  contentdropdown10: boolean=false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
@@ -312,6 +327,10 @@ export class EmployeeProfileComponent implements OnInit{
   }
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
+  }
+  dropdownOpen10(){
+    this.contentdropdown10= !this.contentdropdown10;
+    console.log('working', this.contentdropdown10)
   }
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
@@ -322,6 +341,14 @@ export class EmployeeProfileComponent implements OnInit{
     console.log(arr.name);
     // this.jobdesignation = arr.name;
     this.user.designation = arr.name;
+  }
+  Selectvariable9: string='';
+  colorvariable9:number=0;
+  Changeselect9(arr9: any)
+  {
+    this.Selectvariable9=arr9.name;
+    this.colorvariable9=arr9.id;
+    this.contentdropdown10=false;
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -648,6 +675,9 @@ export class EmployeeProfileComponent implements OnInit{
   }
   dropdownClose5() {
     this.contentdropdown5 = false;
+  }
+  dropdownClose10(){
+    this.contentdropdown10=false;
   }
 
   selectedFile: File | null = null;

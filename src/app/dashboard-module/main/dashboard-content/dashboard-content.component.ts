@@ -51,7 +51,7 @@ export class DashboardContentComponent implements OnInit {
 
   personaldataForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    noOfEmployee: new FormControl(''),
+    domain: new FormControl(''),
     phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
   })
@@ -343,6 +343,8 @@ export class DashboardContentComponent implements OnInit {
     this.showModal11 = false;
     this.showModalContent=false;
   }
+ 
+
   array1: any = [
     {
       id: 0,
@@ -377,5 +379,19 @@ export class DashboardContentComponent implements OnInit {
     console.log(arr1.name);
   }
 
-
+  /**/ 
+  meetingForm=new FormGroup({
+    meetingtitle:new FormControl(''),
+    mode:new FormControl(''),
+    date:new FormControl(''),
+    starttime:new FormControl(''),
+    endtime:new FormControl(''),
+    meetinglink:new FormControl(''),
+    venue:new FormControl(''),
+    inviteanemplyee:new FormControl(''),
+  })
+  meetingdetail()
+{
+  console.warn(this.meetingForm.value);
+}
 }

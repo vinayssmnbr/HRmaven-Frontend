@@ -8,10 +8,12 @@ import { EmpService } from '../../shared/emp.service';
 })
 export class AttendanceComponent implements OnInit {
 
+
   constructor(public empService: EmpService) {
     empService.activeComponent = 'attendance';
     empService.headerContent = '';
     this.attendance();
+    this.punchin();
   }
   obj: any;
   total:any=0;
@@ -60,9 +62,51 @@ export class AttendanceComponent implements OnInit {
   }
 
   punchin(){
-    this.empService.punch("in").subscribe((res)=>{
-      console.log(res);
-    })
+    // this.empService.punch("in").subscribe((res)=>{
+    //   console.log(res);
+    // })
+
+    //   navigator.geolocation.getCurrentPosition(showLoc, errHand);
+    // function showLoc(pos:any) {
+    //   console.log('lat'+pos.coords.latitude,'long'+pos.coords.longitude);
+    // }
+
+    // function errHand(err:any) {
+    //   switch (err.code) {
+    //     case err.PERMISSION_DENIED:
+    //       alert('you dont have right to mark the attendance until location is share')
+    //       break;
+    //   }
+    // }
+    function inside(lat2, lon2,lat1,lon1,radius) {
+      // const lat1 = this.latitude
+      // const lon1 = this.longitude
+          const R = 63710;
+
+      return Math.acos(Math.sin(lat1)*Math.sin(lat2) +
+                       Math.cos(lat1)*Math.cos(lat2) *
+                       Math.cos(lon2-lon1)) * R < radius;
+    }
+
+  navigator.geolocation.watchPosition(({coords}) => {
+
+      const lat = coords.latitude
+      const lon = coords.longitude
+      const lat1 = 59.345635;
+      const lon1 = 18.059707
+      if (inside(lat, lon,lat1,lon1,1000)) {
+        console.log(lat);
+        console.log(lon);
+      }
+      else{
+          console.log("out of range")
+      }
+  })
+
+}
+
+  punchout(){
+
   }
   ngOnInit(): void {
     this.empService.attendanceTime().subscribe((res:any)=>{
