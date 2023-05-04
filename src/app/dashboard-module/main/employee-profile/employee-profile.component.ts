@@ -15,27 +15,16 @@ import { DashService } from '../../shared/dash.service';
   templateUrl: './employee-profile.component.html',
   styleUrls: ['./employee-profile.component.css'],
 })
-export class EmployeeProfileComponent implements OnInit{
+export class EmployeeProfileComponent implements OnInit {
   @Input() user: any;
   empForm: FormGroup;
-  constructor(private dashService: DashService,private fb: FormBuilder,private http:DashService) {
+  constructor(
+    private dashService: DashService,
+    private fb: FormBuilder,
+    private http: DashService
+  ) {
+    console.log(this.user);
   }
-  // employees(): FormArray {
-  //   return this.empForm.get("employees") as FormArray
-  // }
-  // newEmployee(): FormGroup {
-  //   return this.fb.group({
-  //     excompany: '',
-  //     exdesignation: '',
-  //     exlocation:'',
-  //     exduration:'',
-  //   })
-  // }
-  // addEmployee() {
-  //   console.log("Adding a employee");
-  //   this.employees().push(this.newEmployee());
-  // }
-
 
   employeeExperience: any[] = [];
   employeeId: string;
@@ -62,27 +51,29 @@ export class EmployeeProfileComponent implements OnInit{
   job_type: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl('',[ Validators.pattern(/^[a-zA-Z]+$/)]),
+    name: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
     designation: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl('',[ Validators.pattern(/^[a-zA-Z]+$/)]),
-    motherName: new FormControl('',[ Validators.pattern(/^[a-zA-Z]+$/)]),
+    fatherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
+    motherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
-    inter: new FormControl(''),
-    interPercent: new FormControl(''),
+    inter: new FormControl('', [Validators.pattern(/^\d+(\.\d{1,2})?%?$/)]),
+    interPercent: new FormControl('', [
+      Validators.pattern(/^\d+(\.\d{1,2})?%?$/),
+    ]),
     graduation: new FormControl(''),
     graduationStream: new FormControl(''),
     graduationCgpa: new FormControl(''),
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
-    employees:new FormArray([]),
+    employees: new FormArray([]),
     expcompany: new FormControl(''),
     expduration: new FormControl(''),
     explocation: new FormControl(''),
@@ -97,20 +88,29 @@ export class EmployeeProfileComponent implements OnInit{
     ctc: new FormControl(''),
     job_type: new FormControl(''),
     bankname: new FormControl(''),
-    adhaarno: new FormControl('',[ Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
+    adhaarno: new FormControl('', [Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
     accountno: new FormControl(''),
-    ifsc: new FormControl('', [ Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/)]),
-    passport: new FormControl('', [ Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$')]),
-    panno: new FormControl('', [ Validators.pattern('/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/')]),
+    ifsc: new FormControl('', [
+      Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
+    ]),
+    passport: new FormControl('', [
+      Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
+    ]),
+    panno: new FormControl('', [
+      Validators.pattern(/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/),
+    ]),
     mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}')]),
-    email: new FormControl('', [Validators.email,Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$')]),
+    email: new FormControl('', [
+      Validators.email,
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+    ]),
     state: new FormControl(''),
-    postalCode: new FormControl('',Validators.pattern(/^[0-9]{6}$/)),
+    postalCode: new FormControl('', Validators.pattern(/^[0-9]{6}$/)),
     city: new FormControl(''),
     address: new FormControl(''),
-    profemail:new FormControl(''),
-    matricpassing:new FormControl(''),
-    interpassing:new FormControl(''),
+    profemail: new FormControl(''),
+    matricpassing: new FormControl(''),
+    interpassing: new FormControl(''),
   });
 
   experienceForm: FormGroup;
@@ -118,26 +118,19 @@ export class EmployeeProfileComponent implements OnInit{
     return this.form.controls;
   }
   ngOnInit() {
-
     this.user = this.dashService.getSelectedEmployee();
+    console.log('select', this.user);
     this.experienceForm = new FormGroup({
-      experienceItems: new FormArray([
-        this.createExperienceItem()
-
-      ])
+      experienceItems: new FormArray([this.createExperienceItem()]),
     });
-
-
-
   }
-
 
   createExperienceItem(): FormGroup {
     return new FormGroup({
       expcompany: new FormControl(''),
       expduration: new FormControl(''),
       explocation: new FormControl(''),
-      exdesignation: new FormControl('')
+      exdesignation: new FormControl(''),
     });
   }
 
@@ -147,6 +140,7 @@ export class EmployeeProfileComponent implements OnInit{
 
   addItem() {
     this.experienceItems.push(this.createExperienceItem());
+    console.log(this.experienceForm.value);
   }
 
   removeItem(index: number) {
@@ -155,11 +149,20 @@ export class EmployeeProfileComponent implements OnInit{
 
   onSubmit() {
     console.log(this.experienceForm.value);
+    const updatedData = this.experienceForm.value;
+    console.log('exp', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe((res) => {
+      console.log('experience', res);
+    });
+
+    // const updatedData = this.form.value;
+    // console.log('abc', data, this.user);
+    // updatedData['_id'] = this.user._id;
+    // this.dashService.updateEmployee(this.user).subscribe(() => {
+    //   console.log('Data updated successfully');
+    // });
   }
-
-
-
-
 
   array1: any = [
     {
@@ -299,26 +302,25 @@ export class EmployeeProfileComponent implements OnInit{
       name: 'Internship',
     },
   ];
-  array9: any=[
+  array9: any = [
     {
-    id:0,
-    name: 'Graduation Details',
-  },
-  {
-    id:1,
-    name: 'Post-Graduation Details'
-  },
-  {
-    id:2,
-    name: 'Phd-Details'
-  }
-
-]
+      id: 0,
+      name: 'Graduation Details',
+    },
+    {
+      id: 1,
+      name: 'Post-Graduation Details',
+    },
+    {
+      id: 2,
+      name: 'Phd-Details',
+    },
+  ];
 
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
-  contentdropdown10: boolean=false;
+  contentdropdown10: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
@@ -328,9 +330,9 @@ export class EmployeeProfileComponent implements OnInit{
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  dropdownOpen10(){
-    this.contentdropdown10= !this.contentdropdown10;
-    console.log('working', this.contentdropdown10)
+  dropdownOpen10() {
+    this.contentdropdown10 = !this.contentdropdown10;
+    console.log('working', this.contentdropdown10);
   }
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
@@ -342,13 +344,12 @@ export class EmployeeProfileComponent implements OnInit{
     // this.jobdesignation = arr.name;
     this.user.designation = arr.name;
   }
-  Selectvariable9: string='';
-  colorvariable9:number=0;
-  Changeselect9(arr9: any)
-  {
-    this.Selectvariable9=arr9.name;
-    this.colorvariable9=arr9.id;
-    this.contentdropdown10=false;
+  Selectvariable9: string = '';
+  colorvariable9: number = 0;
+  Changeselect9(arr9: any) {
+    this.Selectvariable9 = arr9.name;
+    this.colorvariable9 = arr9.id;
+    this.contentdropdown10 = false;
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -359,9 +360,8 @@ export class EmployeeProfileComponent implements OnInit{
     console.log(arr2.name);
     this.bankname = arr2.name;
     this.user.bankname = arr2.name;
-    if(this.colorvariable2===5)
-    {
-      this.Selectvariable2='Others';
+    if (this.colorvariable2 === 5) {
+      this.Selectvariable2 = 'Others';
     }
   }
   Selectvariable3: string = 'Select';
@@ -676,8 +676,8 @@ export class EmployeeProfileComponent implements OnInit{
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
-  dropdownClose10(){
-    this.contentdropdown10=false;
+  dropdownClose10() {
+    this.contentdropdown10 = false;
   }
 
   selectedFile: File | null = null;
@@ -687,31 +687,28 @@ export class EmployeeProfileComponent implements OnInit{
       console.error('Invalid file type. Please select an image.');
       return;
     }
-    this.onUpload(this.user)
-
+    this.onUpload(this.user);
   }
 
-  upload:boolean=false
-  imageurl:any;
-  onUpload(user){
+  upload: boolean = false;
+  imageurl: any;
+  onUpload(user) {
     user['_id'] = this.user._id;
-    this.dashService.upload(this.selectedFile, user._id).then((res:any)=>{
-      this.upload=true;
-      this.imageurl=this.dashService.fileUrl
-      console.log("img",this.imageurl)
-
-
-    })
+    this.dashService.upload(this.selectedFile, user._id).then((res: any) => {
+      this.upload = true;
+      this.imageurl = this.dashService.fileUrl;
+      console.log('img', this.imageurl);
+    });
   }
-  viewMore:boolean=false;
-  showbutton:boolean=true;
-  showMoredata(){
-    this.viewMore=!this.viewMore;
-    this.showbutton=!this.showbutton;
+  viewMore: boolean = false;
+  showbutton: boolean = true;
+  showMoredata() {
+    this.viewMore = !this.viewMore;
+    this.showbutton = !this.showbutton;
   }
-  hidedata(){
-    this.viewMore=false;
-    this.showbutton=true;
+  hidedata() {
+    this.viewMore = false;
+    this.showbutton = true;
   }
   // openotherinput:boolean=false;
   // openInput() {
@@ -719,49 +716,26 @@ export class EmployeeProfileComponent implements OnInit{
   //      this.openotherinput=true;
   //   }
   // }
-  showpgdetails:boolean=false;
-  showpgdet(){
-    this.showpgdetails=true;
+  showpgdetails: boolean = false;
+  showpgdet() {
+    this.showpgdetails = true;
   }
 
-//Validation
-allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
-validatePincode(event: KeyboardEvent) {
-  const pincode = (event.target as HTMLInputElement).value;
-  if (!this.allowedKeys.includes(event.key) && !/^\d{0,5}$/.test(pincode)) {
-    event.preventDefault();
-  }
-}
-validatePanNumber(event) {
-  const panno = (event.target as HTMLInputElement).value;
-  if (!this.allowedKeys.includes(event.key) && !/^[a-zA-Z]{0,5}\d{0,5}$/.test(panno)) {
-    event.preventDefault();
-  } else if (/^[a-zA-Z]{0,5}\d{0,4}$/.test(panno)) {
-    event.target.value = panno.toUpperCase();
-  }
-}
-
-validatePassport(event: KeyboardEvent) {
-  const passport = (event.target as HTMLInputElement).value;
-  if (!this.allowedKeys.includes(event.key) && !/^\d{0,8}$/.test(passport)) {
-    event.preventDefault();
+  //Validation
+  allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+  validatePincode(event: KeyboardEvent) {
+    const pincode = (event.target as HTMLInputElement).value;
+    if (!this.allowedKeys.includes(event.key) && !/^\d{0,5}$/.test(pincode)) {
+      event.preventDefault();
+    }
   }
 
-}
-validateIfsc(event: KeyboardEvent) {
-  const ifsc = (event.target as HTMLInputElement).value;
-  if (!this.allowedKeys.includes(event.key) && !/^\d{0,10}$/.test(ifsc)) {
-    event.preventDefault();
+  validateAddhar(event: KeyboardEvent) {
+    const adhaarno = (event.target as HTMLInputElement).value;
+    if (!this.allowedKeys.includes(event.key) && !/^\d{0,11}$/.test(adhaarno)) {
+      event.preventDefault();
+    }
   }
 
-}
-validateAddhar(event: KeyboardEvent) {
-  const adhaarno = (event.target as HTMLInputElement).value;
-  if (!this.allowedKeys.includes(event.key) && !/^\d{0,11}$/.test(adhaarno)) {
-    event.preventDefault();
-
-}
-
-}
-
+  //ARRAY Form
 }

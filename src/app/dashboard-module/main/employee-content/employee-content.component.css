@@ -579,7 +579,10 @@ table {
   font-size: 14px;
   appearance: none;
 }
-
+.icons .select option {
+  background-color: #fff;
+  color: #444444;
+}
 /* .select {
   -webkit-appearance: none;
   appearance: none;
@@ -1715,13 +1718,13 @@ input::placeholder {
 }
 
 .modal-content5 {
-    width: 540px;
-    height: 490px;
-    background-color: white;
-    border-radius: 8px;
-    position: relative;
+  width: 540px;
+  height: 490px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
 }
-.card{
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1755,19 +1758,19 @@ input::placeholder {
 }
 
 .modal-body5 .file-content {
-    border: 2px dashed #cbcbcb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-     padding-top: 30px;
-padding-bottom: 10px;
-    height: 210px;
+  border: 2px dashed #cbcbcb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  height: 210px;
 }
 
 .modal-body5 .card input[type="file"] {
-    /* position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1778,10 +1781,10 @@ padding-bottom: 10px;
 }
 
 .modal-body5 .card input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .modal-body5 .file-content .choose {
@@ -1967,12 +1970,18 @@ padding-bottom: 10px;
 }
 
 .progress_bar:before {
-  content: '';
+  content: "";
   width: 200%;
   height: 100%;
   position: absolute;
   animation: progress-anime 10s ease-out infinite;
-  background: linear-gradient(to right, #7ff224 0%, #4c6f12 50%, #d2d2d2 50%, #d2d2d2 100%);
+  background: linear-gradient(
+    to right,
+    #7ff224 0%,
+    #4c6f12 50%,
+    #d2d2d2 50%,
+    #d2d2d2 100%
+  );
 }
 
 @keyframes progress-anime {

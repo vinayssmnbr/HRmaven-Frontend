@@ -1070,6 +1070,8 @@ export class EmployeeContentComponent implements OnInit {
   //FILTER STATUS USING CUSTOM PIPE
   setStatusFilter(status: string) {
     this.statusFilter = status;
+
+    this.fetchdata();
   }
 
   employeefilter() {
@@ -1078,4 +1080,6 @@ export class EmployeeContentComponent implements OnInit {
     });
     this.fetchdata();
   }
+
+  ngOnChange() {}
 }
