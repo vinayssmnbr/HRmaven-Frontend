@@ -66,7 +66,6 @@
               <th>Status</th>
               <th>PUNCH IN</th>
               <th>PUNCH OUT</th>
-              <!-- <th>Action</th> -->
             </tr>
           </thead>
           <tbody>
@@ -151,6 +150,9 @@
                                 <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                                 <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                             </svg> -->
+                            <!-- <div class="progress-circle-container">
+                                <div class="progress-circle progress-40"><span></span></div>  
+                              </div>              -->
 
     <!-- <div class="progress-circle-container">
                 <div class="progress-circle progress-40"><span></span></div>
@@ -171,7 +173,7 @@
       <div class="row">
         <div class="col-3" *ngFor="let user of card | attendanceFilter : employeename">
           <div class="card" (click)="profileview(user)" *ngIf="!user.found">
-            <img src={{user._id.url}} alt="logo" onError="this.src='./assets/images/Ellipse 98.svg'"/>
+            <img src="{{ user._id.url }}" alt="logo" onError="this.src='./assets/images/Ellipse 98.svg'" />
 
             <h2>{{ user._id.name }}</h2>
 
@@ -181,7 +183,9 @@
                 <p>{{ user.presentcount }}/{{ user.totalcount }}</p>
               </div>
               <div class="progress-circle-container">
-                <div class="progress-circle progress-{{user.percent}}"><span></span></div>
+                <div class="progress-circle progress-{{ user.percent }}">
+                  <span></span>
+                </div>
               </div>
             </div>
           </div>
@@ -189,7 +193,7 @@
             <p>
               <img src="assets/images/no_record.png" alt="" class="center" />
             </p>
-            <h2>No Record Found!</h2>
+            <p>No Record Found!</p>
           </div>
         </div>
       </div>
@@ -201,27 +205,30 @@
     <div class="card_profile_main">
       <div class="card_profile_heading">
         <div class="back_icon" (click)="back_profile()">
-          <i class="fa-sharp fa-solid fa-less-than"></i>
+          <i class="fa-solid fa-less-than"></i>
         </div>
         <div class="profile_logo">
-          <img src={{profile._id.url}} alt="" onError="this.src='./assets/images/Ellipse 98.svg'"/>
+          <img src="{{ profile._id.url }}" alt="" onError="this.src='./assets/images/Ellipse 98.svg'" />
         </div>
         <div class="bar">
           <img src="assets/images/Rectangle 580.png" alt="" />
         </div>
         <div class="profile_modal_title">
-          <h2>{{profile._id.name}}</h2>
-          <p>{{profile._id.uid}}</p>
+          <h2>{{ profile._id.name }}</h2>
+          <p>{{ profile._id.uid }}</p>
         </div>
         <div class="profile_card_btn">
-          <button class="profile_logo_btn">{{profile._id.designation}}</button>
+          <button class="profile_logo_btn">
+            {{ profile._id.designation }}
+          </button>
         </div>
       </div>
       <div class="car_profile_right">
         <div class="export_btn">
           <img src="assets/images/export.png" alt="export.logo" />
-          <button class="export_card_btn">Export</button>
+          <button class="export_card_btn" (click)="exportData()">Export</button>
         </div>
+
         <div class="dropdown_container" (mouseleave)="contentdropdown = false">
           <div class="dropdwon_select1" (click)="dropdownOpen()">
             <p>{{ Selectvariable }}</p>
@@ -240,7 +247,7 @@
     </div>
     <div class="attendence_table">
       <div class="table_data1">
-        <table class="table_text">
+        <table class="table_text" id="excel-table">
           <thead>
             <tr class="table_heading">
               <th>Date</th>
@@ -251,10 +258,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let i of profile.attendance">
-              <td>{{i.date | date:'shortDate'}}</td>
-              <td>{{i.status}}</td>
-              <td>{{i.in==null?'----':i.in }}</td>
-              <td>{{i.out==null?'----':i.out }}</td>
+              <td>{{ i.date | date : "shortDate" }}</td>
+              <td>{{ i.status }}</td>
+              <td>{{ i.in == null ? "----" : i.in }}</td>
+              <td>{{ i.out == null ? "----" : i.out }}</td>
             </tr>
           </tbody>
         </table>

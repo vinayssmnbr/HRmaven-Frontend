@@ -36,23 +36,12 @@ export class DashboardContentComponent implements OnInit {
     setTimeout(() => {
       this.loadermain = false;
     }, 3000);
-
-    this.dashService.getLeaves().subscribe((res: any) => {
-      console.log('data', res);
-      this.leaves = res;
-      this.leaves = this.leaves.sort((a, b) => {
-        if (a.status > b.status) return 1;
-        if (a.status < b.status) return -1;
-        return 1;
-      });
-      console.log(this.leaves);
-    });
   }
 
   personaldataForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    noOfEmployee: new FormControl(''),
-    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    domain: new FormControl('', [Validators.required, Validators.pattern(/\.com$/)]),
+        phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
   })
   email = localStorage.getItem('email');
@@ -123,7 +112,7 @@ export class DashboardContentComponent implements OnInit {
 
       console.log("res account settings personaldata: ", res.useridd);
 
-      this.empname = res.personaldata.noOfEmployee;
+      this.empname = res.personaldata.name;
       localStorage.setItem('empname', this.empname)
       // this.employeename = res.personaldata.name;
       // this.totalemployee = res.personaldata.noOfEmployee;
@@ -140,7 +129,7 @@ export class DashboardContentComponent implements OnInit {
     } else {
       this.formSubmitted = true;
     }
-  
+
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);
     this.isFromSignupPage = this.userService.isFromSignupPage;
@@ -253,7 +242,7 @@ export class DashboardContentComponent implements OnInit {
     // Create a chart object
   }
 
-  
+
 
   // clickClose() {
   //   this.closeModal = false;
@@ -327,7 +316,7 @@ export class DashboardContentComponent implements OnInit {
     this.showModal10 = true;
     this.showModalContent=true
   }
-  
+
   closeModal10(){
     this.showModal10 = false;
     this.showModalContent=false;
@@ -338,11 +327,13 @@ export class DashboardContentComponent implements OnInit {
     this.showModal11 = true;
     this.showModalContent=true
   }
-  
+
   closeModal11(){
     this.showModal11 = false;
     this.showModalContent=false;
   }
+
+
   array1: any = [
     {
       id: 0,
@@ -370,12 +361,26 @@ export class DashboardContentComponent implements OnInit {
       this.Venuelink=true;
       this.Meetinglink=false;
     }
-    
+
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
   }
 
-
+  /**/
+  meetingForm=new FormGroup({
+    meetingtitle:new FormControl(''),
+    mode:new FormControl(''),
+    date:new FormControl(''),
+    starttime:new FormControl(''),
+    endtime:new FormControl(''),
+    meetinglink:new FormControl(''),
+    venue:new FormControl(''),
+    inviteanemplyee:new FormControl(''),
+  })
+  meetingdetail()
+{
+  console.warn(this.meetingForm.value);
+}
 }

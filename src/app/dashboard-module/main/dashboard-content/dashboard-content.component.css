@@ -287,6 +287,7 @@ a {
 
 .all-meetings {
   margin-top: 18px;
+  position: relative;
 }
 
 .date h5 {
@@ -769,7 +770,9 @@ align-items: center;
 }
 
 .form {
-  padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .form__group{
   display: flex;
@@ -1003,6 +1006,22 @@ cursor: pointer;
 }
 #office.ng_valid{
   border:1px solid green;
+
+}
+/* #name0.ng_valid{
+  border:1px solid green;
+} */
+#name0.ng_invalid{
+  border:1px solid red;
+}
+#name0.ng_invalid:hover{
+  border:1px solid red;
+}
+#name0.ng_valid:hover{
+  border:1px solid green;
+}
+#name0.ng_valid{
+  border:1px solid green;
 }
 
 input:hover,
@@ -1217,7 +1236,7 @@ color: #2F2C9F;
 .discard-save{
   display: flex;
   gap: 20px;
- 
+
 }
 .discard-save .discard button{
   color: #2F2C9F;
@@ -1256,7 +1275,7 @@ font-size: 14px;
 
 /*-------------------Interview-Modal----------------*/
 .interview-modal {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1265,7 +1284,7 @@ font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 10;
   /* backdrop-filter: blur(5px); */
 }
 

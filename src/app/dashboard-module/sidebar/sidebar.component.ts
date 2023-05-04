@@ -71,6 +71,7 @@ export class SidebarComponent implements OnInit {
     this.cookie.delete('token');
     this.cookie.deleteAll();
     localStorage.removeItem('empname');
+    localStorage.removeItem('password');
     this.router.navigate(['./login']);
     // window.open('http://localhost:4200/login');
 
