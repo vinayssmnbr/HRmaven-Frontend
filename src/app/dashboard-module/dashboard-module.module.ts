@@ -23,40 +23,35 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
 import { LeavefilterPipe } from './pipe/leavefilter.pipe';
 import { EmployeefilterPipe } from './pipe/employeefilter.pipe';
 import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
-import { FilterByStatusPipe } from './pipe/employeestatus';
-
-
-
-
+import { EmpstatusPipe } from './pipe/empstatus.pipe';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-           HeaderComponent,
-           SidebarComponent,
-           DashboardContentComponent,
-           EmployeeContentComponent,
-           LeavesContentComponent,
-           AttendanceContentComponent,
-           PayrollContentComponent,
-           RecruitmentContentComponent,
-           ReportContentComponent,
-           SearchPipe,
-           AttendanceFilterPipe,
-           SortingPipe,
-           DropdownComponent,
-           JobDetailsComponent,
-           EmployeeProfileComponent,
-           LeavefilterPipe,
-           EmployeefilterPipe,
-           AccountSettingsComponent,
-           TimesheetComponent,
-           CalendarComponent,
-           FilterByStatusPipe
-
+    HeaderComponent,
+    SidebarComponent,
+    DashboardContentComponent,
+    EmployeeContentComponent,
+    LeavesContentComponent,
+    AttendanceContentComponent,
+    PayrollContentComponent,
+    RecruitmentContentComponent,
+    ReportContentComponent,
+    SearchPipe,
+    AttendanceFilterPipe,
+    SortingPipe,
+    DropdownComponent,
+    JobDetailsComponent,
+    EmployeeProfileComponent,
+    LeavefilterPipe,
+    EmployeefilterPipe,
+    AccountSettingsComponent,
+    TimesheetComponent,
+    CalendarComponent,
+    EmpstatusPipe,
   ],
   imports: [
     CommonModule,
@@ -65,17 +60,17 @@ import { FilterByStatusPipe } from './pipe/employeestatus';
     FormsModule,
     ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
-      "animateTitle": false,
-      "animationDuration": 1000,
+      animateTitle: false,
+      animationDuration: 1000,
       // "showTitle": false,
       // "showSubtitle": false,
       // "showUnits": false,
-      "showBackground": false,
-      "clockwise": false,
-      "startFromZero": false,
-      "lazy": true}),
+      showBackground: false,
+      clockwise: false,
+      startFromZero: false,
+      lazy: true,
+    }),
   ],
-  providers: [SearchPipe,DatePipe
-  ]
+  providers: [SearchPipe, DatePipe],
 })
 export class DashboardModuleModule {}

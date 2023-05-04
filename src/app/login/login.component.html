@@ -154,7 +154,7 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Email</label>
                     <input type="email" class="form-control email" formControlName="email"
-                        placeholder="Enter your email" />
+                        placeholder="Enter your email" (keyup)="onKeyUp($event)"/>
                     <span *ngIf="emaill && emaill.invalid && emaill.touched && emaill.dirty" class="emailwrg">
                         <img src="assets/images/valid_error.svg" alt=""> Invalid email address</span>
                 </div>
@@ -164,7 +164,7 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Password</label>
                     <input type="password" placeholder="Enter your password" class="password" #passwordInput
-                        formControlName="password" />
+                        formControlName="password" (keyup)="onKeyUp($event)"/>
                     <span *ngIf="pwd && pwd.invalid && pwd.touched  && emaill.dirty" class="pwddwrg"> <img
                             src="assets/images/valid_error.svg" alt=""> Invalid Password </span>
                 </div>

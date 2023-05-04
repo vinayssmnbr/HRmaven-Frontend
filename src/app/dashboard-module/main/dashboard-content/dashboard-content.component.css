@@ -1006,6 +1006,22 @@ cursor: pointer;
 }
 #office.ng_valid{
   border:1px solid green;
+
+}
+/* #name0.ng_valid{
+  border:1px solid green;
+} */
+#name0.ng_invalid{
+  border:1px solid red;
+}
+#name0.ng_invalid:hover{
+  border:1px solid red;
+}
+#name0.ng_valid:hover{
+  border:1px solid green;
+}
+#name0.ng_valid{
+  border:1px solid green;
 }
 
 input:hover,
@@ -1220,7 +1236,7 @@ color: #2F2C9F;
 .discard-save{
   display: flex;
   gap: 20px;
- 
+
 }
 .discard-save .discard button{
   color: #2F2C9F;

@@ -300,7 +300,7 @@
 .content1 li a {
   font-weight: 400;
   font-size: 14px;
-  color: #222222;
+  color: #999999;
   cursor: pointer;
   padding-left: 25px;
 }
@@ -1283,19 +1283,19 @@ input[type='number']:hover {
 .text:hover {
   border: 1px solid #2F2C9F !important;
 } */
-.text.ng_invalid {
-  border: 1px solid red !important;
+.text.invalid {
+  border: 1px solid red ;
 }
 
-.text.ng_invalid:hover {
-  border: 1px solid red !important;
+.text.invalid:hover {
+  border: 1px solid red;
 }
 
-.text.ng_valid {
-  border: 1px solid green !important ;
+.text.valid {
+  border: 1px solid green;
 }
 
-.text.ng_valid:hover {
+.text.valid:hover {
   border: 1px solid green ;
 }
 
@@ -1304,4 +1304,19 @@ input[type='number']:hover {
 }
 input[type='text']:hover{
   border: 1px solid #2F2C9F;
+}
+.text.ng_invalid {
+  border: 1px solid red ;
+}
+
+.text.ng_invalid:hover {
+  border: 1px solid red ;
+}
+
+.text.ng_valid {
+  border: 1px solid green ;
+}
+
+.text.ng_valid:hover {
+  border: 1px solid green;
 }
