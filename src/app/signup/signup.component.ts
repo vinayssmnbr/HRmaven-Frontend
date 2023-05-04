@@ -5,6 +5,7 @@ import { UserService} from '../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject, } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
 // import { DashService } from '../../app/dashboard-module/shared/dash.service';
 // import { DashService } from '../dashboard-module/shared/dash.service';
 @Component({
@@ -26,6 +27,7 @@ export class SignupComponent {
 
   is_visible = false;
   password = '';
+
 
   checkPassword() {
     const input = this.password.trim();
@@ -101,7 +103,7 @@ export class SignupComponent {
 
 
 
-  constructor(public userService:UserService, private router : Router, private route: ActivatedRoute){}
+  constructor(public userService:UserService, private router : Router, private route: ActivatedRoute,private cookie: CookieService,){}
 
   noSpaces(control: FormControl) {
     if (control.value && control.value.trim().length === 0) {
@@ -181,7 +183,9 @@ onSubmit(data:any){
       document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
   console.log("result:",result)
   console.log("object_id:",result.user._id)
-    localStorage.setItem('email', this.sigupform.controls['email'].value)
+    localStorage.setItem('email', this.sigupform.controls['email'].value);
+    this.cookie.set('hr_id',result.id);
+    this.cookie.set('role',result.role);
 
   })
 }

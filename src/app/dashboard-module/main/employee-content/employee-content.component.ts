@@ -49,7 +49,10 @@ export class EmployeeContentComponent implements OnInit {
   isSelectDisabled = false;
   emailValidationMessage: string = '';
   mobile: number;
-
+  progressBar: any;
+  progressText: any;
+  progress: number = 0;
+  interval: any;
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -214,6 +217,7 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
+
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
@@ -576,11 +580,14 @@ export class EmployeeContentComponent implements OnInit {
   }
   selectedFile: File | null = null;
   selectedFile1: File | null = null;
-
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     const maxAllowedSize = 5 * 1024 * 1024;
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
+    if (!allowedTypes.includes(this.selectedFile.type)) {
+      this.fileName = null;
+    }
     if (this.selectedFile.size > maxAllowedSize) {
       this.fileName = '';
     }
@@ -603,10 +610,18 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-
+  selectedfile: boolean = false
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
+    const allowedTypes1=[".csv"];
     this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+    if (!allowedTypes1.includes(this.selectedFile.type)) {
+      this.fileName1 = null;
+    }
+    if(this.fileName1!=null){
+      this.selectedfile=true;
+    }
+
   }
 
   selectall: boolean = false;
@@ -1070,6 +1085,8 @@ export class EmployeeContentComponent implements OnInit {
   //FILTER STATUS USING CUSTOM PIPE
   setStatusFilter(status: string) {
     this.statusFilter = status;
+
+    this.fetchdata();
   }
 
   employeefilter() {
@@ -1078,4 +1095,6 @@ export class EmployeeContentComponent implements OnInit {
     });
     this.fetchdata();
   }
+
+  ngOnChange() {}
 }

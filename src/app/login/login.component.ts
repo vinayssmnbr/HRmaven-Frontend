@@ -151,11 +151,14 @@ export class LoginComponent {
 
   toggleForgot() {
     this.Forgotshow = !this.Forgotshow;
-    this.userNotFound !== true
 
   }
+  // toggleForgot1() {
+  //   this.EmailSent = !this.EmailSent;
+  // }
+
   toggleForgot1() {
-    this.EmailSent = !this.EmailSent;
+    this.emailSent = !this.emailSent;
   }
 
   closeInvalid() {
@@ -221,7 +224,7 @@ obj:any
 
         console.log(res._id);
         this.cookie.set('hr_id',res._id);
-        // localStorage.setItem('userId', userId);
+        this.cookie.set('role','hr');
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
@@ -246,46 +249,72 @@ obj:any
   }
   personalData: any = '';
   formSubmitted: any = '';
-
+  emailSent: boolean = false
   userNotFound: boolean = false;
+  // ForgetEmailSubmit(data: any) {
+  //   console.log('Forget Password Email');
+  //   console.log(data);
+
+  //   this.userService.getData(data.email).subscribe((res: any) => {
+  //     console.log("message: ", res.message);
+
+  //     if (res.message === 'user-found') {
+  //       this.userService.ForgotEmail(data).subscribe((res: any) => {
+  //         this.userService.ForgotEmail(this.forgotPassword);
+  //         console.log('response:' + Object.values(res));
+  //       });
+  //       this.Forgotshow = !this.Forgotshow;
+  //       setTimeout(() => {
+  //         this.EmailSent = !this.EmailSent;
+  //       }, 500);
+  //       // this.emailSent = true;
+  //     } if (res.message === 'email-id not found') {
+  //       this.usernotfound = res.message;
+  //       console.log("usernotfound: ",this.usernotfound)
+  //               this.usernotfound = true;
+
+  //     }
+
+  //     this.employeemail = res;
+
+  //     console.log('Response from API:', this.employeemail);
+  //   });
+
+  //   this.userService.ForgotEmail(data).subscribe((res: any) => {
+  //     this.userService.ForgotEmail(this.forgotPassword);
+  //     console.log('response:' + res);
+  //   });
+  //   if(!this.userNotFound){
+  //   this.Forgotshow = !this.Forgotshow;
+  //   setTimeout(() => {
+  //     this.EmailSent = !this.EmailSent;
+  //   }, 500);
+  // }
+  // }
   ForgetEmailSubmit(data: any) {
     console.log('Forget Password Email');
     console.log(data);
-
+  
     this.userService.getData(data.email).subscribe((res: any) => {
       console.log("message: ", res.message);
-
+  
       if (res.message === 'user-found') {
         this.userService.ForgotEmail(data).subscribe((res: any) => {
           this.userService.ForgotEmail(this.forgotPassword);
           console.log('response:' + Object.values(res));
+          this.Forgotshow = false; // Close the "Forgot Password" modal
+          this.emailSent = true; // Display the "Reset Password Link Sent" message
         });
-        this.Forgotshow = !this.Forgotshow;
-        setTimeout(() => {
-          this.EmailSent = !this.EmailSent;
-        }, 500);
-      } if (res.message === 'email-id not found') {
+      } else if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
-        console.log("usernotfound: ",this.usernotfound)
-                this.usernotfound = true;
-
+        console.log("usernotfound: ", this.usernotfound)
+        this.usernotfound = true;
       }
-
+  
       this.employeemail = res;
-
+  
       console.log('Response from API:', this.employeemail);
     });
-
-    this.userService.ForgotEmail(data).subscribe((res: any) => {
-      this.userService.ForgotEmail(this.forgotPassword);
-      console.log('response:' + res);
-    });
-    if(!this.userNotFound){
-    this.Forgotshow = !this.Forgotshow;
-    setTimeout(() => {
-      this.EmailSent = !this.EmailSent;
-    }, 500);
-  }
   }
 //   Space(event:any){
 //     if(event.target.selectionStart === 0  && event.code == "Space"){

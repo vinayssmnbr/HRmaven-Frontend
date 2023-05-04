@@ -36,23 +36,12 @@ export class DashboardContentComponent implements OnInit {
     setTimeout(() => {
       this.loadermain = false;
     }, 3000);
-
-    this.dashService.getLeaves().subscribe((res: any) => {
-      console.log('data', res);
-      this.leaves = res;
-      this.leaves = this.leaves.sort((a, b) => {
-        if (a.status > b.status) return 1;
-        if (a.status < b.status) return -1;
-        return 1;
-      });
-      console.log(this.leaves);
-    });
   }
 
   personaldataForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    domain: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    domain: new FormControl('', [Validators.required, Validators.pattern(/\.com$/)]),
+        phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
   })
   email = localStorage.getItem('email');
