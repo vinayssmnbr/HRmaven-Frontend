@@ -13,8 +13,11 @@ import { CookieService} from 'ngx-cookie-service'
 export class DashService {
   public headerContent: string;
   public activeComponent: string;
+ 
 
 private prefix = environment.v1;
+private baseUrl= environment.v1;
+private baseUrl1=environment.v1;
    constructor(
     private http: HttpClient,
     private router: Router,
@@ -23,6 +26,7 @@ private prefix = environment.v1;
     this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
   }
 
+  
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -40,9 +44,19 @@ private prefix = environment.v1;
   // }
 
   //ADD  Employee Data
-  addEmployee(data) {
+  
+  addEmployee(data:any) {
+    const id = this.cookie.get('hr_id');
+    data['hrid']=id;
     return this.http.post(this.prefix+'api/create', data);
   }
+  // addEmployee(data) {
+  //   return this.http.post('http://localhost:3000/api/create', data);
+    
+
+  // }
+  
+  
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
@@ -256,13 +270,27 @@ async upload(file:File, userId?:string){
   }
 
   exportUsers(data:any[]){
-    const url = `${this.prefix}`;
+    const url = `${this.prefix}user/export`;
+   
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'text/csv'
     });
     return this.http.post(url,{data}, { headers, responseType: 'blob' });
   }
+
+
+  // exportUsers(data:any[]): Observable<Blob> {
+  //   const url = `${this.baseUrl}user/export`;
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Accept': 'text/csv'
+  //   });
+  //   return this.http.post(url,{data}, { headers, responseType: 'blob' });
+  // }
+
+
+
 
   updateEmpStatus(id,status):Observable<any>{
     const url = `${this.prefix+'api/update'}/${id}`;

@@ -323,7 +323,7 @@
       </div>
       <hr>
       <div class="modal-body5">
-        <div class="file-content" >
+        <div class="file-content">
           <img src="./assets/images/Vector (4).png" alt="">
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
@@ -332,13 +332,10 @@
           <a (click)="fileInput.click()" class="choose" >Choose File</a>
           <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv">
-
+         
         </div>
          
-        <!-- <div class="file-content" *ngIf="!flag">
-          <h1>Please wait........</h1>
-          <h2>Uploading........</h2>
-        </div> -->
+      
         <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
             <!-- (click)=" generateSampleCsvFile()" -->
         <h5>Download <a class="csv" href="assets/csv/Sample.csv" [download]> Sample CSV File</a> for Reference</h5>
