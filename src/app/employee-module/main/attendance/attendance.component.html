@@ -12,16 +12,16 @@
               <p>Punch in timing</p>
               <h1>{{in | date:'shortTime'}}</h1>
             </div>
-            <div class="card_logo">
+            <div class="card_logo" *ngIf="in==''">
               <img src="assets/images/punch_inpng.png" (click)="punchin()" alt="">
             </div>
           </div>
           <div class="card_content">
             <div class="card_text">
               <p>Punch in timing</p>
-              <h1>{{out}}</h1>
+              <h1>{{out | date:'shortTime'}}</h1>
             </div>
-            <div class="card_logo">
+            <div class="card_logo" *ngIf="in==''">
               <img src="assets/images/punch_out.svg" alt="" (click)='punchout()'>
             </div>
           </div>

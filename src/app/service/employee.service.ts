@@ -58,7 +58,7 @@ export class EmployeeService {
 
   // }
 users(data:any){
-  return this.http.post(this.prefix+"login",data)
+  return this.http.post(this.prefix+"login/emp",data)
 }
 
 

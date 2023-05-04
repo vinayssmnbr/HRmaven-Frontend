@@ -5,6 +5,9 @@ import { UserService} from '../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject, } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
+// import { DashService } from '../../app/dashboard-module/shared/dash.service';
+// import { DashService } from '../dashboard-module/shared/dash.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -24,6 +27,7 @@ export class SignupComponent {
 
   is_visible = false;
   password = '';
+
 
   checkPassword() {
     const input = this.password.trim();
@@ -99,7 +103,7 @@ export class SignupComponent {
 
 
 
-  constructor(public userService:UserService, private router : Router, private route: ActivatedRoute){}
+  constructor(public userService:UserService, private router : Router, private route: ActivatedRoute,private cookie: CookieService,){}
 
   noSpaces(control: FormControl) {
     if (control.value && control.value.trim().length === 0) {
@@ -179,7 +183,9 @@ onSubmit(data:any){
       document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
   console.log("result:",result)
   console.log("object_id:",result.user._id)
-    localStorage.setItem('email', this.sigupform.controls['email'].value)
+    localStorage.setItem('email', this.sigupform.controls['email'].value);
+    this.cookie.set('hr_id',result.id);
+    this.cookie.set('role',result.role);
 
   })
 }
@@ -210,6 +216,50 @@ Space(event:any){
     event.preventDefault();
    }
 }
+
+// onOrgNameInput(){
+//   this.checkOrganizationNameExists(this.organizationName).subscribe((response)=>{
+//     this.orgNameExists = response.exists;
+//   })
+// }
+
+// usernameExists = false;
+// username:any;
+// checkUsernameExists(){
+//   this.username = this.formGroup.controls['username'].value;
+//   console.log('us',this.username);
+//   this.userService.getCompanyName(this.username)
+//   .subscribe((response:any) =>{
+//     console.log('check',response);
+//     if(response.flag){
+//       this.usernameExists = true;
+//       console.log(response.message);
+//     }else{
+//       this.usernameExists = false;
+//       console.log(response.message)
+//     }
+//   });
+
+// }
+
+// emailExists = false;
+// email:any;
+// checkEmailExists(){
+//   this.email = this.formGroup.controls['email'].value;
+//   console.log('we',this.email);
+//   this.userService.getRegisteredEmail(this.email)
+//   .subscribe((response:any)=>{
+//     console.log('checkemail',response);
+//     if(response.flag){
+//       this.emailExists = true;
+//       console.log(response.message)
+//     }else{
+//       this.emailExists = false;
+//       console.log(response.message)
+//     }
+//   });
+// }
+
 
 
 

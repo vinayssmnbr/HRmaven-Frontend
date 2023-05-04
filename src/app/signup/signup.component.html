@@ -97,6 +97,8 @@
                         <input type="text" placeholder="Enter your Organization Name" class="username"
                             [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
                             formControlName="username" (keydown)="Space($event)" />
+                            <!-- formControlName="username" (keydown)="Space($event)" [(ngModel)]="organizationName" (input)="onOrgNameInput()" /> -->
+
                         <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
 
 
@@ -123,7 +125,7 @@
                         <label for="email" class="text-label">Email</label>
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email"
                             [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
-                            class="form-control is-invalid" (keyup)="onKeyUp($event)" />
+                            class="form-control is-invalid" (keyup)="onKeyUp($event)"/>
                         <!-- <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span> -->
 
                         <div *ngIf="
@@ -201,6 +203,17 @@
                                         </ul>
                                     </span>
                                 </div>
+                                <!-- <span
+                                *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><img
+                                src="assets/images/valid_error.svg" alt="">Password didn't match</span> -->
+                                <!-- <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
+                                  <i class="far fa-check-circle"
+                                      [style.color]="lengthCheck ? 'green' : 'red'"></i><span
+                                      [style.color]="lengthCheck ? 'green' : 'red'">Length
+                                      Should be at least8.</span>
+                              </li> -->
+
+
                             </label>
                             <div style="position: relative;">
                                 <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password"
@@ -215,8 +228,13 @@
                             </div>
                             <!-- <span *ngIf="password && password.invalid && password.touched "><i class="fa-solid fa-circle-info"></i>Invalid Password</span> -->
                             <!-- <span *ngIf="password && password.invalid && password.touched "> -->
-
+                              <span *ngIf="fun['password'].errors && fun['password'].errors['pattern']"><img
+                                src="assets/images/valid_error.svg" alt="">
+                            Password must be of 8 character
+                        </span>
                         </div>
+
+
                     </div>
                 </div>
 

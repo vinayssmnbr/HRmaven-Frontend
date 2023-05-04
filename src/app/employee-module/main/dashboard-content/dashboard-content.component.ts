@@ -11,6 +11,8 @@ export class DashboardContentComponent  {
     empService.headerContent='';
 
   }
+  in: any;
+  out: any;
 
   array: any = [
     {
@@ -61,11 +63,11 @@ export class DashboardContentComponent  {
       id: 11,
       name: 'December',
     },
-    
+
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
-  
+
     this.contentdropdown = !this.contentdropdown;
   }
   Selectvariable: string = 'January';
@@ -76,6 +78,18 @@ export class DashboardContentComponent  {
     this.contentdropdown=false;
     console.log(arr.name);
   }
-  
+  ngOnInit(){
+    this.empService.attendanceTime().subscribe((res: any) => {
+      if (res.in == '----') {
+        this.in = "";
+        this.out = "";
+      }
+      else {
+        this.in = res.in;
+        this.out = res.out;
+      }
+      console.log(res);
+    })
+  }
 }
 
