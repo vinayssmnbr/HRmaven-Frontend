@@ -81,7 +81,6 @@ export class EmployeeProfileComponent implements OnInit {
     expduration1: new FormControl(''),
     explocation1: new FormControl(''),
     expdesignation: new FormControl(''),
-    expdesignation1: new FormControl(''),
     jobdesignation: new FormControl(''),
     location: new FormControl(''),
     timing: new FormControl(''),
@@ -130,7 +129,7 @@ export class EmployeeProfileComponent implements OnInit {
       expcompany: new FormControl(''),
       expduration: new FormControl(''),
       explocation: new FormControl(''),
-      exdesignation: new FormControl(''),
+      expdesignation: new FormControl(''),
     });
   }
 
@@ -155,13 +154,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.dashService.updateEmployee(updatedData).subscribe((res) => {
       console.log('experience', res);
     });
-
-    // const updatedData = this.form.value;
-    // console.log('abc', data, this.user);
-    // updatedData['_id'] = this.user._id;
-    // this.dashService.updateEmployee(this.user).subscribe(() => {
-    //   console.log('Data updated successfully');
-    // });
+    this.user = updatedData;
   }
 
   array1: any = [
@@ -571,7 +564,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent6 = false;
     this.modalContent7 = true;
     this.selectedUser = { _id: user._id };
-    this.form.patchValue(user);
+    this.experienceForm.patchValue(user);
   }
   closeModal6(data) {
     this.fourthStep = true;
