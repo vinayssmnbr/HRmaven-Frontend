@@ -325,7 +325,7 @@
             <div class="input">
               <label>Name</label>
               <input type="text" placeholder="Ashish" formControlName="name" class="text"
-               [ngClass]="{'ng_invalid': registrationFormControl.name.invalid && registrationFormControl.name.dirty,'ng_valid': registrationFormControl.name.valid}">
+              [ngClass]="{'invalid': form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched), 'valid': form.controls.name.valid}">
             </div>
             <div class="input">
               <label>Employee ID</label>
