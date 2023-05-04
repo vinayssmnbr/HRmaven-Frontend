@@ -730,7 +730,7 @@ export class EmployeeContentComponent implements OnInit {
         break;
       }
     }
-
+    user.status = event.target.value;
     this.selectedUser = user._id;
 
     this.dashService.updateEmpStatus(user._id, event.target.value).subscribe(
@@ -968,7 +968,7 @@ export class EmployeeContentComponent implements OnInit {
       } else {
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
-            this.employee['checked'] = true;
+            this.employee[i]['checked'] = true;
             return;
           }
         });
@@ -992,7 +992,7 @@ export class EmployeeContentComponent implements OnInit {
         });
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
-            this.employee['checked'] = false;
+            this.employee[i]['checked'] = false;
             return;
           }
         });
