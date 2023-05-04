@@ -123,7 +123,7 @@ export class LoginComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -287,6 +287,15 @@ obj:any
     }, 500);
   }
   }
+//   Space(event:any){
+//     if(event.target.selectionStart === 0  && event.code == "Space"){
+//      event.preventDefault();
+//     }
+//  }
+ onKeyUp(event): void {
+  event.target.value = event.target.value.trim()
+
+}
 
 
 

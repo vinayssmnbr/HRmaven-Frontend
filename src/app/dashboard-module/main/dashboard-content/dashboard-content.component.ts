@@ -40,7 +40,7 @@ export class DashboardContentComponent implements OnInit {
 
   personaldataForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    domain: new FormControl(''),
+    domain: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
     phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
   })
