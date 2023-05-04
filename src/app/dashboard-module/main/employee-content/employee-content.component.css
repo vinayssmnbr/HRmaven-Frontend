@@ -1728,20 +1728,22 @@ input::placeholder {
 
 .modal-content5 {
   width: 540px;
-  height: 490px;
+  height: 465px;
   background-color: white;
   border-radius: 8px;
   position: relative;
 }
 .card {
-  display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #999999;
-    width: 420px;
-    height: 80px;
-    border-radius: 8px;
+display: flex;
+  gap: 10px;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px solid #999999;
+  width: 420px;
+  height: 60px;
+  /* height: 79px; */
+  border-radius: 8px;
+  padding-bottom: 10px;
 }
 .card h4{
   padding: 4px;
@@ -1786,14 +1788,11 @@ input::placeholder {
 }
 
 .modal-body5 .card input[type="file"] {
-  /* position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; */
-  opacity: 0;
+opacity: 0;
   cursor: pointer;
   z-index: -1;
+  height: 0;
+  width: 0;
 }
 
 .modal-body5 .card input[type="text"] {
@@ -1868,17 +1867,15 @@ input::placeholder {
 #text18 {
   /* width: 4px;
   height: 37px; */
-  background: #ffffff;
+background: #ffffff;
   border: 1px solid transparent;
   border-radius: 8px;
-  /* margin-bottom: 10px; */
   box-shadow: none;
-  padding: 6px 40px;
+  /* padding: 6px 40px; */
   font-style: normal;
   font-family: "Outfit", sans-serif;
   font-weight: 400;
   outline: none;
-  /* padding: 10px 15px; */
   font-size: 13px;
   color: #999999;
 }
@@ -2038,10 +2035,11 @@ font-family: 'Outfit';
   margin-top:3px;
 }
 .progress-bar {
-  width: 100%;
-  height: 8px;
-  border-radius: 8px;
-  background-color: #ddd;
+  width: 87%;
+    height: 5px;
+    border-radius: 8px;
+    background-color: #ddd;
+    margin-left: 7px;
 }
 
 .progress {
@@ -2049,24 +2047,32 @@ font-family: 'Outfit';
   width: 0%;
   height: 100%;
   background-color: #2F2C9F;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 .progress-text {
   position: absolute;
   margin-top: -5px;
-  margin-left: 320px;
+  margin-left: 357px;
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    color: #999999;
   transform: translate(-50%, -50%);
 }
 .pdf_file {
-  text-align: center;
+text-align: center;
   width: 25px;
   height: 20px;
   border-radius: 4px;
   margin-top: 8px;
-  padding-left: 5px;
+  padding-left: 7px;
 }
 .file_upload {
   margin-left: 220px;
   margin-bottom: 50px;
+}
+.input-upload {
+  width: 100%;
 }
