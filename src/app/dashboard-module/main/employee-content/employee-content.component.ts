@@ -173,7 +173,6 @@ export class EmployeeContentComponent implements OnInit {
   //GET DATA
   fetchdata() {
     this.dashService.getEmployee().subscribe((res: any) => {
-
       console.log('data1', res);
       this.employee = res;
       if (res.length > 0) {
@@ -924,8 +923,6 @@ export class EmployeeContentComponent implements OnInit {
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe((res: any) => {
             console.log('Response:', res);
-            // let data1 = this.form.value;
-            // data['hrid'] = this.cookie.get('hr_id');
             console.log('Data:', res.data);
 
           });
