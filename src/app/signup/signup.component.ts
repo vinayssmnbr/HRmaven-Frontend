@@ -5,12 +5,9 @@ import { UserService} from '../service/user.service';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subject, } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-<<<<<<< HEAD
 import { CookieService } from 'ngx-cookie-service';
-=======
 // import { DashService } from '../../app/dashboard-module/shared/dash.service';
 // import { DashService } from '../dashboard-module/shared/dash.service';
->>>>>>> 3915c5f227bf4419b7200913eef1f05f60d60b4b
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
