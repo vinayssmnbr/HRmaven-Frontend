@@ -592,7 +592,7 @@ span.emailwrg {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     color: #CB1E0F;
     font-weight: 400;
     font-size: 13px;
