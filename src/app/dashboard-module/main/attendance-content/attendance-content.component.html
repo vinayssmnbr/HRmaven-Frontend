@@ -108,6 +108,67 @@
       </div>
     </div>
 
+    <!-- <div class="attendence-card" *ngIf="showCard">
+      <div class="row">
+        <div
+          class="col-3"
+          *ngFor="let user of card | attendanceFilter : employeename"
+        >
+          <div class="card" (click)="profileview()" *ngIf="!user.found">
+            <img src="assets\images\attendec-logo.png " alt="logo " />
+
+            <h2>{{ user._id.name }}</h2>
+
+            <p>{{ user._id.designation }} | {{ user._id.uid }}</p>
+            <div class="attendence-percent">
+              <div class="percent-text">
+                <p>{{ user.presentcount }}/{{ user.totalcount }}</p>
+              </div> -->
+
+    <!-- <div role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+                            style="--value:{{user.percent}}"> -->
+
+    <!-- <div class="progressbar-inner" ></div></div> -->
+    <!-- {{user.percent}} per -->
+    <!-- <div class="progressbar-outer" style="background: conic-gradient(crimson 57deg, black 0deg)">
+                                <div class="progressbar-inner" ></div> -->
+
+    <!-- <svg
+                class="progress"
+                data-progress="50"
+                x="0px"
+                y="0px"
+                viewBox="0 0 80 80"
+              >
+                <path
+                  class="track"
+                  d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"
+                />
+                <path
+                  class="fill"
+                  d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0"
+                                <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+                                <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+                            </svg> -->
+                            <!-- <div class="progress-circle-container">
+                                <div class="progress-circle progress-40"><span></span></div>  
+                              </div>              -->
+
+    <!-- <div class="progress-circle-container">
+                <div class="progress-circle progress-40"><span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="empty-card" *ngIf="user.found === true">
+            <p>
+              <img src="assets/images/no_record.png" alt="" class="center" />
+            </p>
+            <h2>No Record Found!</h2>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
     <div class="attendence-card" *ngIf="showCard">
       <div class="row">
         <div class="col-3" *ngFor="let user of card | attendanceFilter : employeename">
