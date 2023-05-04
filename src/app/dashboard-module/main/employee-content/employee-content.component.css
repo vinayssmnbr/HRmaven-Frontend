@@ -588,7 +588,10 @@ tbody, tr{
   font-size: 14px;
   appearance: none;
 }
-
+.icons .select option {
+  background-color: #fff;
+  color: #444444;
+}
 /* .select {
   -webkit-appearance: none;
   appearance: none;
@@ -1724,13 +1727,13 @@ input::placeholder {
 }
 
 .modal-content5 {
-    width: 540px;
-    height: 490px;
-    background-color: white;
-    border-radius: 8px;
-    position: relative;
+  width: 540px;
+  height: 490px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
 }
-.card{
+.card {
   display: flex;
     gap: 10px;
     justify-content: center;
@@ -1771,19 +1774,19 @@ input::placeholder {
 }
 
 .modal-body5 .file-content {
-    border: 2px dashed #cbcbcb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-     padding-top: 30px;
-padding-bottom: 10px;
-    height: 210px;
+  border: 2px dashed #cbcbcb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  height: 210px;
 }
 
 .modal-body5 .card input[type="file"] {
-    /* position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1794,10 +1797,10 @@ padding-bottom: 10px;
 }
 
 .modal-body5 .card input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .modal-body5 .file-content .choose {
@@ -1866,18 +1869,18 @@ padding-bottom: 10px;
   /* width: 4px;
   height: 37px; */
   background: #ffffff;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    /* margin-bottom: 10px; */
-    box-shadow: none;
-    padding: 6px 40px;
-    font-style: normal;
-    font-family: "Outfit", sans-serif;
-    font-weight: 400;
-    outline: none;
-    /* padding: 10px 15px; */
-    font-size: 13px;
-    color: #999999;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  /* margin-bottom: 10px; */
+  box-shadow: none;
+  padding: 6px 40px;
+  font-style: normal;
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  outline: none;
+  /* padding: 10px 15px; */
+  font-size: 13px;
+  color: #999999;
 }
 
 .import-btns {
@@ -1985,13 +1988,19 @@ width: 450px;
 }
 
 .progress_bar:before {
-  content: '';
+  content: "";
   width: 200%;
   height: 100%;
   position: absolute;
-  animation: progress-anime 10s ease-out ;
+  animation: progress-anime 10s ease-out;
   animation-iteration-count: 2;
-  background: linear-gradient(to right, #2f2c9f 0%, #2f2c9f 50%, #d2d2d2 50%, #d2d2d2 100%);
+  background: linear-gradient(
+    to right,
+    #2f2c9f 0%,
+    #2f2c9f 50%,
+    #d2d2d2 50%,
+    #d2d2d2 100%
+  );
 }
 
 @keyframes progress-anime {
@@ -2061,4 +2070,3 @@ font-family: 'Outfit';
   margin-left: 220px;
   margin-bottom: 50px;
 }
-

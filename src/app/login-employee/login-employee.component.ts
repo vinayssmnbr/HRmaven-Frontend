@@ -191,6 +191,7 @@ obj:any
         console.log(res);
         this.cookie.set('token', res.token);
         this.cookie.set('id',res.empId);
+        this.cookie.set('role','employee');
 
 
         this.submit();
