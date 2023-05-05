@@ -225,8 +225,8 @@ export class EmployeeContentComponent implements OnInit {
       if (this.progress > 100) {
         this.progress = 0;
       }
-      this.progressBar[0].style.width = `${ this.progress }%`;
-      this.progressText[0].innerText = `${ this.progress }%`;
+      this.progressBar[0].style.width = `${this.progress}%`;
+      this.progressText[0].innerText = `${this.progress}%`;
     }, 50);
 
 
@@ -756,7 +756,7 @@ export class EmployeeContentComponent implements OnInit {
         break;
       }
     }
-
+    user.status = event.target.value;
     this.selectedUser = user._id;
 
     this.dashService.updateEmpStatus(user._id, event.target.value).subscribe(
@@ -849,7 +849,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   download(): void {
-    if (this.selectedEmployess && this.selectedEmployess.length > 0) {
+    // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
       this.dashService.exportUsers(this.selectedEmployess).subscribe(
         (data: Blob) => {
           const downloadUrl = window.URL.createObjectURL(data);
@@ -860,7 +860,7 @@ export class EmployeeContentComponent implements OnInit {
         },
         (error) => console.log(error)
       );
-    }
+    // }
   }
 
   // onFileSelectedrem(event: any): void {
@@ -906,7 +906,75 @@ export class EmployeeContentComponent implements OnInit {
 
   //onFIleSelectedream
 
+  // onFileSelectedrem(event: any): void {
+  //   const file: File = event.target.files[0];
+
+  //   if (!file) {
+  //     console.log('No file selected.');
+  //     return;
+  //   }
+
+  //   if (!validateCsvFile(file)) {
+  //     alert('Invalid file type. Please select a CSV file.');
+  //     return;
+  //   }
+
+  //   function validateCsvFile(file: File): boolean {
+  //     const allowedExtensions = /(\.csv)$/i;
+
+  //     if (!allowedExtensions.exec(file.name)) {
+  //       return false;
+  //     }
+
+  //     return true;
+  //   }
+
+  //   // const file: File = event.target.files[0];
+
+  //   // Check file size
+  //   const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
+  //   if (file.size > MAX_FILE_SIZE_BYTES) {
+  //     console.log('Selected file is too large.');
+  //     return;
+  //   }
+
+  //   // Parse CSV file
+  //   const reader: FileReader = new FileReader();
+  //   reader.onload = (e: any) => {
+  //     const csv: string = e.target.result;
+  //     const lines: string[] = csv.split(/\r\n|\n/);
+  //     const headers: string[] = lines[0].split(',');
+  //     const data: any[] = [];
+
+  //     for (let i = 1; i < lines.length - 1; i++) {
+  //       const values: string[] = lines[i].split(',');
+  //       const item: any = {};
+
+  //       for (let j = 0; j < headers.length; j++) {
+  //         item[headers[j]] = values[j];
+  //       }
+
+  //       data.push(item);
+  //     }
+
+  //     console.log(data, 'parsed CSV data');
+
+  //     // Add each employee to system using dashService
+  //     data.forEach((employee) => {
+  //       console.log('Adding employee:', employee);
+  //       this.dashService.addEmployee(employee).subscribe((res: any) => {
+  //         console.log('Response:', res);
+  //         console.log('Data:', res.data);
+  //       });
+  //     });
+  //   };
+
+  //   reader.readAsText(file);
+  // }
+
+
   onFileSelectedrem(event: any): void {
+
     const file: File = event.target.files[0];
 
     if (!file) {
@@ -940,6 +1008,11 @@ export class EmployeeContentComponent implements OnInit {
 
     // Parse CSV file
     const reader: FileReader = new FileReader();
+
+    reader.onloadstart = () => {
+      console.log('Please wait, file is uploading...');
+    };
+
     reader.onload = (e: any) => {
       const csv: string = e.target.result;
       const lines: string[] = csv.split(/\r\n|\n/);
@@ -958,19 +1031,33 @@ export class EmployeeContentComponent implements OnInit {
       }
 
       console.log(data, 'parsed CSV data');
+      let uid: number = -1;;
+      this.dashService.getEmployeeUid().subscribe((res: any) => {
+        // 
+        uid = res.uid;
+        console.log(res, 'uid response')
+        if (uid == -1) return 'there is an error while getting uid'
+        data.forEach((employee) => {
+          console.log('Adding employee:', employee);
+          // console.log('Please wait, employee is being added...');
+          employee['uid'] = uid++;
+          this.dashService.addEmployee(employee).subscribe((res: any) => {
+            console.log('Response:', res);
+            console.log('Data:', res.data);
 
-      // Add each employee to system using dashService
-      data.forEach((employee) => {
-        console.log('Adding employee:', employee);
-        this.dashService.addEmployee(employee).subscribe((res: any) => {
-          console.log('Response:', res);
-          console.log('Data:', res.data);
+          });
         });
-      });
+        return 'employees added'
+
+      })
+
+
     };
 
     reader.readAsText(file);
   }
+
+
 
   // importFile() {
   //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
@@ -994,7 +1081,7 @@ export class EmployeeContentComponent implements OnInit {
       } else {
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
-            this.employee['checked'] = true;
+            this.employee[i]['checked'] = true;
             return;
           }
         });
@@ -1018,7 +1105,7 @@ export class EmployeeContentComponent implements OnInit {
         });
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
-            this.employee['checked'] = false;
+            this.employee[i]['checked'] = false;
             return;
           }
         });

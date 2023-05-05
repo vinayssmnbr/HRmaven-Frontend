@@ -14,7 +14,8 @@ import {
 } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService} from 'ngx-cookie-service'
+// import * as bcrypt from 'bcryptjs';
 
 @Injectable({
   providedIn: 'root',
