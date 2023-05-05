@@ -228,9 +228,9 @@
               <label>Profile Picture</label>
               <div class="custom-file-picker">
                 <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName"
-                  id="text4" readonly accept=".jpeg,.jpg,.png, image/*" formControlName="url">
+                  id="text4" readonly accept="image/*" formControlName="url">
                 <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url"
-                  accept=".jpeg,.jpg,.png,image/*">
+                  accept="image/*">
                 <a (click)="fileInput.click()">Choose File</a>
               </div>
             </div>
