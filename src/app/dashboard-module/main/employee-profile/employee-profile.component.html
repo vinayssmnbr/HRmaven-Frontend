@@ -10,7 +10,7 @@
     <div class="card2">
       <span class="profile_pic">
         <!-- <img src="{{user.url}}"> -->
-        <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="!user.url || !upload" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
         <div class="profile-content" *ngIf="!user.url">
@@ -176,7 +176,7 @@
           <span class="sgpa">Cgpa</span>
           <p *ngIf="!user.graduationCgpa">----------</p>
           <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p>
-          <span class="pgsgpa">PgCgpa</span>
+          <span class="pgsgpa">Cgpa</span>
           <p *ngIf="!user.pgCgpa">-----------</p>
           <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
         </div>
@@ -202,7 +202,7 @@
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
         <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
-      <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+      <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
 
       <div class="row1" *ngFor="let item of user.experienceItems">
         <div class="column1">
