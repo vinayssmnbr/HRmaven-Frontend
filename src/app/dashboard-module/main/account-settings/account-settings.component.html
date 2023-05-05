@@ -142,7 +142,7 @@
 
         <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
             <div class="company-name-headoffice-desc-area">
-                <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd)">
+                <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password" placeholder="Type your old password">

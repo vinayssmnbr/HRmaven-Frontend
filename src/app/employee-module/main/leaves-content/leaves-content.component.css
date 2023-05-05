@@ -146,17 +146,17 @@ div[role="progressbar3"]::before {
     color: #8b8b8b;
 }
 
-.leaves .progress-circle-container.CasualProgress .progress-circle:after {
+/* .progress-circle-container.CasualProgress .progress-circle:after {
     background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
 }
 
-.leaves .progress-circle-container.MedicalProgress .progress-circle:after {
+ .progress-circle-container.MedicalProgress .progress-circle:after {
     background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
 }
 
-.leaves .progress-circle-container.CompensatoryProgress .progress-circle:after {
+ .progress-circle-container.CompensatoryProgress .progress-circle:after {
     background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
-}
+} */
 
 /*-----------------------Leave-status--------------------*/
 .leave-status-area {
@@ -536,7 +536,7 @@ td {
     font-weight: 400;
     font-size: 12px;
     color: #999999;
-    padding: 10px 150px;
+    padding: 5px 150px;
 }
 
 .progress-bar {
@@ -626,7 +626,6 @@ td {
     font-size: 9px;
     text-align: center;
 }
-
 
 /* -------------------My Leave History Table---------------------- */
 .attendence_history_table {
@@ -885,9 +884,9 @@ td {
 
 /* -----------------Loader Progress bar girija--------------------- */
 .progress_bar_loader {
-    /* margin-left: 80px; */
+    margin-left: 150px;
     width: 165px;
-    max-width: 80%;
+    max-width: 90%;
     height: 8px;
     border-radius: 20px;
     position: relative;

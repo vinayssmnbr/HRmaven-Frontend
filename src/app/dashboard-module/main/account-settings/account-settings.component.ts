@@ -39,16 +39,13 @@ export class AccountSettingsComponent implements OnInit {
  personalDetailsForm: FormGroup;
 
  specific_domain = "hrmaven.com"
-
-email_id = this.employeeemail.split("@")
-professional_email_id = this.email_id[0] + "@" + this.specific_domain
+ professional_email_id: any = ''
+ email_id: any = ''
+// email_id = this.employeeemail.split("@")
+// professional_email_id = this.email_id[0] + "@" + this.organisationn
 organisationn: any = '';
  ngOnInit(){
   this.organisationn =  localStorage.getItem('companyname');
-  // this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
-
-  //   console.log('response account:' +res.useridd);
-  // });
   this.companyDetailsForm = this.formBuilder.group({
 
     headOffice: [''],
@@ -77,8 +74,11 @@ organisationn: any = '';
         this.phone = res.personaldata.phone;
         this.description = res.personaldata.description;
         this.profileimage = res.personaldata.profileimage;
-
+        this.email_id = this.employeeemail.split("@")
+      this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
+  
       });
+   
     }
 
     updateData(data: any){
@@ -109,19 +109,19 @@ organisationn: any = '';
     newpassword(data:any)
     {
       console.log(data.value);
-      // this.userService.newpwdaccount(this.objectid,data.value).subscribe((res:any)=>{
-      //   if(res=="changeit"){
-      //     console.log(res);
-      //   }
+      this.userService.newpwdaccount(this.objectuserid,data).subscribe((res:any)=>{
+        if(res=="changeit"){
+          console.log(res);
+        }
 
-      // });
+      });
 
   }
 
 
 
 
-    objectid = localStorage.getItem('email');
+    objectid = localStorage.getItem('emailid');
 
     updateProfile(data: any){
       this.userService.updatepersonals(this.objectid,data).subscribe((res: any)=>{
