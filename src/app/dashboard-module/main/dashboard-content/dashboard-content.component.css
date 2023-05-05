@@ -217,7 +217,7 @@ a {
 
 .dots ul {
   position: absolute;
-  right: 0px;
+  right: -50px;
 }
 
 .dots i {
@@ -398,7 +398,7 @@ a {
 
 .john-image {
   display: flex;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   gap: 10px;
 }
 

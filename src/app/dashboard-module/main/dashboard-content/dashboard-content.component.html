@@ -12,7 +12,7 @@
             </div>
             <div class="text-image">
                 <p>Total Applications</p>
-                <h1>--:--</h1>
+                <h1>00</h1>
             </div>
         </div>
         <div class="col-3">
@@ -21,7 +21,7 @@
             </div>
             <div class="text-image">
                 <p>Shortlisted Candidates</p>
-                <h1>--:--</h1>
+                <h1>00</h1>
             </div>
         </div>
         <div class="col-3">
@@ -30,7 +30,7 @@
             </div>
             <div class="text-image">
                 <p>Rejected Candidates</p>
-                <h1>--:--</h1>
+                <h1>00</h1>
             </div>
         </div>
         <div class="col-3">
@@ -39,7 +39,7 @@
             </div>
             <div class="text-image">
                 <p>Hired Candidates</p>
-                <h1>--:--</h1>
+                <h1>00</h1>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
                         new</p>
                 </div>
                 <div class="meeting-scrollbar">
-                    <div class="all-meetings" *ngFor="let option of options let index = index" (click)="openModal11()">
+                    <div class="all-meetings" *ngFor="let option of options let index = index" >
                         <div class="interview-area">
                             <div class="date">
                                 <p>{{option.day}}</p>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="interview-timings">
                                 <div class="interview-dots">
-                                    <h3>{{option.head}}</h3>
+                                    <h3 (click)="openModal11()">{{option.head}}</h3>
                                     <p>{{option.time}}</p>
                                 </div>
                                 <div class="dots">
@@ -107,10 +107,10 @@
                             <tr class="table_heading">
                                 <th>EMPLOYEE ID</th>
                                 <th>EMPLOYEE NAME</th>
+                                <th>APPLIED ON</th>
                                 <th>FROM</th>
                                 <th>TO</th>
-                                <th>REASON</th>
-                                <th>ACTION</th>
+                                <th>DURATION</th>
                             </tr>
                         </thead>
                         <tbody>

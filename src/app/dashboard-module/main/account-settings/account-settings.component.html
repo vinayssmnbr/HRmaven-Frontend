@@ -59,10 +59,10 @@
                         <h6>Company name</h6>
                         <p>HRMaven</p>
                     </div>
-                    <div class="employee-text">
-                        <h6>Domain Name</h6>
+                    <!-- <div class="employee-text">
+                        <h6>No. of employees</h6>
                         <p> {{totalemployee}} </p>
-                    </div>
+                    </div>  -->
                     <div class="head-office-text">
                         <h6>Head Office</h6>
                         <p>{{headOffice}}</p>
@@ -192,21 +192,20 @@
         <div class="company_modal">
             <i class="fa-solid fa-xmark" (click)="closeModal1()"></i>
             <div class="edit-company-heading">
-                <h3>Edit Company Details </h3>
+                <h3>Update Company Details  </h3>
             </div>
 
             <form class="form" [formGroup]="companyDetailsForm" (ngSubmit)="updateData(companyDetailsForm.value)">
                 <div class="name-email">
                     <div class="form__group">
                         <label for="name">Company Name</label>
-                        <input type="text" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder='HRMaven' id="name" disabled />
+                        <input type="text" class="form_input"  placeholder='HRMaven' id="name" disabled />
                     </div>
-                    <div class="form__group">
-                        <label for="employeeno">Domain name</label>
+                    <!-- <div class="form__group">
+                        <label for="employeeno">No. of employees</label>
                         <input type="number" class="form_input" style=" background-color: #f4f4f4;
                         color: #aaa;" placeholder="{{totalemployee}}" id="employeeno" disabled />
-                    </div>
+                    </div>  -->
                     <div class="form__group">
                         <label for="email">Head Office</label>
                         <input type="text" class="form_input" placeholder='{{headOffice}}' formControlName="headOffice"
