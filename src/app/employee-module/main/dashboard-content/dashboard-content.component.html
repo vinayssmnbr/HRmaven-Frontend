@@ -27,128 +27,130 @@
                     </div>
                 </div>
 
+                    <!-- <div class="card">
+                        <div class="text-image">
+                            <p>Punch out timing</p>
+                            <h1>--:-- pm</h1>
+                        </div>
+                        <div class="text-image-icon">
+                            <img src="assets/images/punch_out.svg" alt="">
+                        </div>
+                    </div> -->
 
-                <div class="quick-action">
-                    <p>Quick actions</p>
-                    <div class="leave-profile">
-                        <div class="leave">
-                            <img src="assets/images/Group 1248-leave.png" alt="">
-                            <p>Leave</p>
+
+                    <div class="quick-action">
+                        <p>Quick actions</p>
+                        <div class="leave-profile">
+                            <div class="leave">
+                                <img src="assets/images/Group 1248-leave.png" alt="">
+                                <p>Leave</p>
+                            </div>
+                            <div class="profile">
+                                <img src="assets/images/Group 1248-profile.png" alt="">
+                                <p>Profile</p>
+                            </div>
+
                         </div>
-                        <div class="profile">
-                            <img src="assets/images/Group 1248-profile.png" alt="">
-                            <p>Profile</p>
-                        </div>
+
+
 
                     </div>
-
-
-
                 </div>
-            </div>
-            <div class="chart-balance">
-                <div class="attendance">
-                    <div class="attendance-chart">
-                        <div class="attendance-heading">
-                            <h5>Attendance</h5>
-                            <div class="dropdown_container">
-                                <div class="dropdwon_select" (click)="dropdownOpen()">
-                                    <p>{{Selectvariable}}</p>
-                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                                </div>
-                                <div class="select_content" *ngIf="contentdropdown">
-                                    <ul>
-                                        <li *ngFor="let arr of array; index as i"
-                                            [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
-                                            {{arr.name}}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart_leaves">
-                            <div class="chart">
-                                <img src="assets/images/Group 1329.png" alt="">
-                            </div>
-                            <div class="present_leave_absent">
-                                <div class="present">
-                                    <img src="assets/images/fluent_person-available-24-regular.png" alt="">
-                                    <div class="present_percentage">
-                                        <h5>Present</h5>
-                                        <h6>76%</h6>
+                <div class="chart-balance">
+                    <div class="attendance">
+                        <div class="attendance-chart">
+                            <div class="attendance-heading">
+                                <h5>Attendance</h5>
+                                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                                    <div class="dropdwon_select" (click)="dropdownOpen()">
+                                        <p>{{Selectvariable}}</p>
+                                        <i class="fa-sharp fa-solid fa-caret-down"></i>
+                                    </div>
+                                    <div class="select_content" *ngIf="contentdropdown">
+                                        <ul>
+                                            <li *ngFor="let arr of array; index as i"
+                                                [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                                {{arr.name}}</li>
+                                        </ul>
                                     </div>
                                 </div>
-
-                                <div class="present">
-                                    <img src="assets/images/fluent_person-clock-24-regular.svg" alt="">
-                                    <div class="present_percentage">
-                                        <h5>Leave</h5>
-                                        <h6>20%</h6>
-                                    </div>
-                                </div>
-                                <div class="present">
-                                    <img src="assets/images/fluent-person-cross.svg" alt="">
-                                    <div class="present_percentage">
-                                        <h5>Absent</h5>
-                                        <h6>4%</h6>
-                                    </div>
-                                </div>
-                                <!-- <div class="leave"></div> -->
                             </div>
+                            <div class="chart_leaves">
+                                <!-- <div class="chart">
+                                    <img src="assets/images/Group 1329.png" alt="">
+                                </div> -->
+                                <!-- <div class="pie">
+                                    <canvas id="myChart"></canvas>
+                                </div> -->
+                                <div class="pie">
+                                <canvas id="oilChart"></canvas>
+                            </div>
+                                <div class="present_leave_absent">
+                                    <div class="present">
+                                        <img src="assets/images/fluent_person-available-24-regular.png" alt="">
+                                        <div class="present_percentage">
+                                            <h5>Present</h5>
+                                            <h6>76%</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="present">
+                                        <img src="assets/images/fluent_person-clock-24-regular.svg" alt="">
+                                        <div class="present_percentage">
+                                            <h5>Leave</h5>
+                                            <h6>20%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="present">
+                                        <img src="assets/images/fluent-person-cross.svg" alt="">
+                                        <div class="present_percentage">
+                                            <h5>Absent</h5>
+                                            <h6>4%</h6>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="leave"></div> -->
+                                </div>
 
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="balance">
-                    <div class="leave_balance">
-                        <h1>Leave balance</h1>
-                        <div class="casual_medical_urgent_earned">
-                            <div class="casual_medical_urgent">
-                                <div class="casual_leave">
-                                    <div class="casual_leave_text">
-                                        <p>Casual Leave</p>
-                                        <h2>05</h2>
+                    <div class="balance">
+                        <div class="leave_balance">
+                            <h1>Leave balance</h1>
+                            <div class="casual_medical_compensatory">
+                                <div class="casual-leave">
+                                    <div class="casual-heading">
+                                        <h3>Casual Leave</h3>
+                                        <h4>05</h4>
                                     </div>
                                     <div class="progress_bar">
                                         <img src="assets/images/Ellipse 100.svg" alt="">
                                     </div>
                                 </div>
-                                <div class="casual_leave">
-                                    <div class="casual_leave_text">
-                                        <p>Medical Leave</p>
-                                        <h2>05</h2>
+                                <div class="casual-leave">
+                                    <div class="casual-heading">
+                                        <h3>Medical Leave</h3>
+                                        <h4>05</h4>
                                     </div>
                                     <div class="progress_bar">
                                         <img src="assets/images/Ellipse 100-green.svg" alt="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="casual_medical_urgent">
-                                <div class="casual_leave">
-                                    <div class="casual_leave_text">
-                                        <p>Urgent Leave</p>
-                                        <h2>04</h2>
+                                <div class="casual-leave">
+                                    <div class="casual-heading">
+                                        <h3>Compensatory Leave</h3>
+                                        <h4>10</h4>
                                     </div>
                                     <div class="progress_bar">
-                                        <img src="assets/images/Group 229.svg" alt="">
-                                    </div>
-                                </div>
-                                <div class="casual_leave">
-                                    <div class="casual_leave_text">
-                                        <p>Earned Leave</p>
-                                        <h2>10</h2>
-                                    </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Group 229-red.svg" alt="">
+                                        <img src="assets/images/Ellipse 100-red.svg" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
+                        
                     </div>
                 </div>
-            </div>
             </div>
         </div>
         <div class="right_side">

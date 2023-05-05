@@ -96,7 +96,7 @@
                         <label for="username">Organization Name</label>
                         <input type="text" placeholder="Enter your Organization Name" class="username"
                             [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
-                            formControlName="username" (keydown)="Space($event)" />
+                            formControlName="username" (keydown)="Space($event)"/>
                             <!-- formControlName="username" (keydown)="Space($event)" [(ngModel)]="organizationName" (input)="onOrgNameInput()" /> -->
 
                         <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
@@ -154,7 +154,7 @@
 
                                 <div class="iconWrap password_required">
 
-                                    <img src="assets/images/valid_error.png" alt="">
+                                    <img src="assets/images/valid_error.svg" alt="">
                                     <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
                                     <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
 
@@ -255,7 +255,7 @@
                         </div>
                         <span
                             *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><img
-                                src="assets/images/valid_error.svg" alt="">Password didn't match</span>
+                            src="assets/images/valid_error.svg" alt="">Password didn't match</span>
 
                     </div>
 

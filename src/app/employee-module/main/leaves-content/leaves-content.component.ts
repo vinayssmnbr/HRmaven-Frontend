@@ -15,7 +15,32 @@ import { EmpService } from '../../shared/emp.service';
 })
 export class LeavesContentComponent {
   // empleaveForm: FormGroup;
+  // ----------Input file custom girija----------------------
+  progressBar: any;
+  progressText: any;
+  progress: number = 0;
+  interval: any;
+  ngOnInit() {
+    this.progressBar = document.getElementsByClassName('progress_upload');
+    this.progressText = document.getElementsByClassName('progress-text-input');
 
+    this.interval = setInterval(() => {
+      this.progress++;
+      if (this.progress > 100) {
+        this.progress = 0;
+      }
+      this.progressBar[0].style.width = `${this.progress}%`;
+      this.progressText[0].innerText = `${this.progress}%`;
+    }, 50);
+  }
+  inputfilename: boolean = false;
+  fileName: string = '';
+  onfileselected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.fileName = this.selectedFile ? this.selectedFile.name : '';
+  }
+
+  // ----------------------------------------------------
   leaves: any = [];
   str = '';
   obj = {
@@ -96,8 +121,6 @@ export class LeavesContentComponent {
   //     console.log(res)
   //   });
   // }
-
-  ngOnIt() {}
 
   empleaveForm = new FormGroup({
     from: new FormControl('', [Validators.required]),

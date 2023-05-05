@@ -14,6 +14,7 @@ export class DashService {
   public headerContent: string;
   public activeComponent: string;
 
+
   private prefix = environment.v1;
   constructor(
     private http: HttpClient,
@@ -22,6 +23,7 @@ export class DashService {
   ) {
     this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
   }
+
 
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
@@ -45,6 +47,13 @@ export class DashService {
     data['hrid']=id;
     return this.http.post(this.prefix + 'api/create', data);
   }
+  // addEmployee(data) {
+  //   return this.http.post('http://localhost:3000/api/create', data);
+
+
+  // }
+
+
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
@@ -240,8 +249,9 @@ export class DashService {
     return this.client.upload(file);
   }
 
-  exportUsers(data: any[]) {
-    const url = `${this.prefix}`;
+  exportUsers(data:any[]){
+    const url = `${this.prefix}user/export`;
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'text/csv',
@@ -249,9 +259,22 @@ export class DashService {
     return this.http.post(url, { data }, { headers, responseType: 'blob' });
   }
 
-  updateEmpStatus(id, status): Observable<any> {
-    const url = `${this.prefix + 'api/update'}/${id}`;
-    return this.http.patch(url, { status });
+
+  // exportUsers(data:any[]): Observable<Blob> {
+  //   const url = `${this.baseUrl}user/export`;
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Accept': 'text/csv'
+  //   });
+  //   return this.http.post(url,{data}, { headers, responseType: 'blob' });
+  // }
+
+
+
+
+  updateEmpStatus(id,status):Observable<any>{
+    const url = `${this.prefix+'api/update'}/${id}`;
+    return this.http.patch(url,{status})
   }
 
 

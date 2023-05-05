@@ -64,15 +64,17 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
 
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
+        console.log("res account settings personaldata: ", res.personaldata.description);
+
 
         console.log("res account settings personaldata: ", res.useridd);
 
 
         this.employeename = res.personaldata.name;
-        this.totalemployee = res.personaldata.noOfEmployee;
+        this.totalemployee = res.personaldata.domain;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
-        this.description = res.personaldata.description
+        this.description = res.personaldata.description;
         this.profileimage = res.personaldata.profileimage;
 
       });
@@ -87,7 +89,8 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
 
 
         this.employeename = res.personaldata.name;
-        this.totalemployee = res.personaldata.noOfEmployee;
+        // this.totalemployee = res.personaldata.noOfEmployee;
+        this.description = res.personaldata.description;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
 

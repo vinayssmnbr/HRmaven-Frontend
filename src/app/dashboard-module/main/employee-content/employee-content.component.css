@@ -25,7 +25,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: #666666;
+  color: #999999;
   padding-bottom: 5px;
   /* padding-left: 15px; */
 }
@@ -306,13 +306,16 @@ tbody {
 .table-wrapper {
   margin-top: 19px;
   width: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto;
   min-height: 60px;
-  height: calc(100vh - 236px);
+  height: calc(100vh - 236px); */
 }
 
 tbody {
   overflow-y: auto;
+  width: 100%;
+  display: block;
+  height: 600px;
 }
 
 .image_record {
@@ -331,7 +334,7 @@ tbody {
   font-size: 20px;
 }
 
-.table-wrapper::-webkit-scrollbar {
+tbody::-webkit-scrollbar {
   width: 6px;
   cursor: pointer;
 }
@@ -343,7 +346,7 @@ th {
   z-index: 10;
 }
 
-.table-wrapper::-webkit-scrollbar-track {
+tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
@@ -354,7 +357,7 @@ i.fa-solid.fa-chevron-down {
   font-size: 12px;
 }
 
-.table-wrapper::-webkit-scrollbar-thumb {
+tbody::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #88888861;
 }
@@ -558,7 +561,13 @@ tr:hover {
 
 table {
   width: 100%;
+  border-collapse: collapse;
   /* border-spacing: 2px 5px; */
+}
+tbody, tr{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .icons {
@@ -579,7 +588,10 @@ table {
   font-size: 14px;
   appearance: none;
 }
-
+.icons .select option {
+  background-color: #fff;
+  color: #444444;
+}
 /* .select {
   -webkit-appearance: none;
   appearance: none;
@@ -741,11 +753,11 @@ label {
 }
 
 #text6.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 
 #text6.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 
 #text6.ng_valid {
@@ -757,11 +769,11 @@ label {
 }
 
 #text7.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 
 #text7.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 
 #text7.ng_valid {
@@ -1715,20 +1727,30 @@ input::placeholder {
 }
 
 .modal-content5 {
-    width: 540px;
-    height: 490px;
-    background-color: white;
-    border-radius: 8px;
-    position: relative;
+  width: 540px;
+  height: 465px;
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
 }
-.card{
-  display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #cbcbcb;
-    border-radius: 8px;
-    padding-top: 0px;
+.card {
+display: flex;
+  gap: 10px;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px solid #999999;
+  width: 420px;
+  height: 60px;
+  /* height: 79px; */
+  border-radius: 8px;
+  padding-bottom: 10px;
+}
+.card h4{
+  padding: 4px;
+    color: white;
+    border-radius: 5px;
+    font-size: 9px;
+    text-align: center;
 }
 .modal-header5 {
   background-color: #ffffff;
@@ -1754,33 +1776,30 @@ input::placeholder {
 }
 
 .modal-body5 .file-content {
-    border: 2px dashed #cbcbcb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-     padding-top: 30px;
-padding-bottom: 10px;
-    height: 210px;
+  border: 2px dashed #cbcbcb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  height: 210px;
 }
 
 .modal-body5 .card input[type="file"] {
-    /* position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; */
-  opacity: 0;
+opacity: 0;
   cursor: pointer;
   z-index: -1;
+  height: 0;
+  width: 0;
 }
 
 .modal-body5 .card input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .modal-body5 .file-content .choose {
@@ -1824,7 +1843,7 @@ padding-bottom: 10px;
   font-weight: 400;
   font-size: 14px;
   color: #333333;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   margin-bottom: 10px;
 }
 
@@ -1848,19 +1867,17 @@ padding-bottom: 10px;
 #text18 {
   /* width: 4px;
   height: 37px; */
-  background: #ffffff;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    /* margin-bottom: 10px; */
-    box-shadow: none;
-    padding: 6px 40px;
-    font-style: normal;
-    font-family: "Outfit", sans-serif;
-    font-weight: 400;
-    outline: none;
-    /* padding: 10px 15px; */
-    font-size: 13px;
-    color: #999999;
+background: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: none;
+  /* padding: 6px 40px; */
+  font-style: normal;
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  outline: none;
+  font-size: 13px;
+  color: #999999;
 }
 
 .import-btns {
@@ -1954,8 +1971,8 @@ padding-bottom: 10px;
   padding: 20px 0;
   text-align: center;
 }
-.progress_bar {
-  /* margin: auto; */
+
+/* .progress_bar {
 width: 450px;
   max-width: 80%;
   height: 8px;
@@ -1968,13 +1985,19 @@ width: 450px;
 }
 
 .progress_bar:before {
-  content: '';
+  content: "";
   width: 200%;
   height: 100%;
   position: absolute;
-  animation: progress-anime 10s ease-out ;
+  animation: progress-anime 10s ease-out;
   animation-iteration-count: 2;
-  background: linear-gradient(to right, #2f2c9f 0%, #2f2c9f 50%, #d2d2d2 50%, #d2d2d2 100%);
+  background: linear-gradient(
+    to right,
+    #2f2c9f 0%,
+    #2f2c9f 50%,
+    #d2d2d2 50%,
+    #d2d2d2 100%
+  );
 }
 
 @keyframes progress-anime {
@@ -1993,5 +2016,63 @@ width: 450px;
   95% {
     left: 0;
   }
+} */
+
+.content3{
+  display: flex;
+  gap: 44px;
+  margin-top: 10px;
+}
+.content3 h3{
+  /* margin-top: -10px; */
+}
+.content3 p{
+font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+  margin-top:3px;
+}
+.progress-bar {
+  width: 87%;
+    height: 5px;
+    border-radius: 8px;
+    background-color: #ddd;
+    margin-left: 7px;
 }
 
+.progress {
+  border-radius: 8px;
+  width: 0%;
+  height: 100%;
+  background-color: #2F2C9F;
+  /* margin-top: 5px; */
+}
+
+.progress-text {
+  position: absolute;
+  margin-top: -5px;
+  margin-left: 357px;
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    color: #999999;
+  transform: translate(-50%, -50%);
+}
+.pdf_file {
+text-align: center;
+  width: 25px;
+  height: 20px;
+  border-radius: 4px;
+  margin-top: 8px;
+  padding-left: 7px;
+}
+.file_upload {
+  margin-left: 220px;
+  margin-bottom: 50px;
+}
+.input-upload {
+  width: 100%;
+}
