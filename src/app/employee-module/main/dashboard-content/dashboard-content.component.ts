@@ -268,6 +268,22 @@ export class DashboardContentComponent {
     });
   }
 
+  showModal = false;
+  showModalContent = false;
+  closeModal() {
+    this.showModal = false;
+    this.showModalContent=false;
+  }
+
+  openModal() {
+    this.showModal = true;
+    this.showModalContent = true;
+    
+
+
+  }
+
+
 }
 
 

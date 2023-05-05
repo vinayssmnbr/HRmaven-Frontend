@@ -50,9 +50,6 @@
                                 <p>Profile</p>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
                 <div class="chart-balance">
@@ -123,8 +120,11 @@
                                         <h3>Casual Leave</h3>
                                         <h4>{{obj.casual+obj.urgent}}</h4>
                                     </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Ellipse 100.svg" alt="">
+                                    <div class="progress_circle">
+                                        <circle-progress [percent]="70" [space]="-11" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
@@ -132,8 +132,11 @@
                                         <h3>Medical Leave</h3>
                                         <h4>{{obj.medical}}</h4>
                                     </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Ellipse 100-green.svg" alt="">
+                                    <div class="progress_circle">
+                                        <circle-progress [percent]="100" [space]="-10" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
@@ -141,8 +144,11 @@
                                         <h3>Compensatory Leave</h3>
                                         <h4>{{obj.earned}}</h4>
                                     </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Ellipse 100-red.svg" alt="">
+                                    <div class="progress_circle">
+                                        <circle-progress [percent]="70" [space]="-11" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                             </div>
@@ -394,4 +400,18 @@
 
 
     </div>
+
+    <!------------------Location-Modal------------->
+
+    <div class="modal-content" *ngIf="showModalContent">
+
+        <div class="access-location">
+            <div class="access-location-text">
+            <h3>Allow “HRMaven” to access your location?</h3>
+            <p>You’ll only be able to mark your attendance after the access has been allowed.</p>
+            <button (click)="closeModal()">OK</button>
+        </div>
+        </div>
+      </div>
+
 </div>

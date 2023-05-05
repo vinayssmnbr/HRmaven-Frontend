@@ -30,6 +30,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .casual-leaves {
@@ -38,125 +39,6 @@
     width: 100%;
 }
 
-/* -------------------Progress Bar------------------------- */
-/* 
-@keyframes growProgressBar {
-
-    0%,
-    33% {
-        --pgPercentage: 0;
-    }
-
-    100% {
-        --pgPercentage: var(--value);
-    }
-}
-
-@property --pgPercentage {
-    syntax: '<number>';
-    inherits: false;
-    initial-value: 0;
-}
-
-div[role="progressbar"],
-div[role="progressbar1"],
-div[role="progressbar2"],
-div[role="progressbar3"] {
-    --pgPercentage: var(--value);
-    animation: growProgressBar 3s 1 forwards;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 12px;
-}
-
-div[role="progressbar"] {
-    color: #8BAFFF;
-    background:
-        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-        conic-gradient(#8BAFFF calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-div[role="progressbar1"] {
-    color: #7BD36D;
-    background:
-        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-        conic-gradient(#7BD36D calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-div[role="progressbar2"] {
-    color: #369;
-    background:
-        radial-gradient(closest-side, white 70%, transparent 0 99.9%, white 0),
-        conic-gradient(#FA9796 calc(var(--pgPercentage) * 1%), #def 0);
-}
-
-
-div[role="progressbar"]::before,
-div[role="progressbar1"]::before,
-div[role="progressbar2"]::before,
-div[role="progressbar3"]::before {
-    counter-reset: percentage var(--value);
-    content: counter(percentage) '%';
-} */
-
-/* -------------------circular Progress Bar Girija------------------------- */
-.progress-circle {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #ebebeb;
-}
-
-.progress-circle:after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    -webkit-animation: colorload 2s;
-    animation: colorload 2s;
-}
-
-.progress-circle span {
-    font-size: 1rem;
-    color: #8b8b8b;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    display: block;
-    width: 40px;
-    height: 40px;
-    line-height: 60px;
-    margin-left: -20px;
-    margin-top: -20px;
-    text-align: center;
-    border-radius: 50%;
-    background: #fff;
-    z-index: 1;
-}
-
-.progress-circle span:after {
-    content: "";
-    font-weight: 600;
-    color: #8b8b8b;
-}
-
-.leaves .progress-circle-container.CasualProgress .progress-circle:after {
-    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #8BAFFF 50%, #ebebeb 50%, #ebebeb) !important;
-}
-
-.leaves .progress-circle-container.MedicalProgress .progress-circle:after {
-    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #7BD36D 50%, #ebebeb 50%, #ebebeb) !important;
-}
-
-.leaves .progress-circle-container.CompensatoryProgress .progress-circle:after {
-    background-image: linear-gradient(90deg, #ebebeb 50%, transparent 50%, transparent), linear-gradient(140.4deg, #FA9796 50%, #ebebeb 50%, #ebebeb) !important;
-}
 
 /*-----------------------Leave-status--------------------*/
 .leave-status-area {
@@ -536,7 +418,7 @@ td {
     font-weight: 400;
     font-size: 12px;
     color: #999999;
-    padding: 10px 150px;
+    padding: 5px 150px;
 }
 
 .progress-bar {
@@ -626,7 +508,6 @@ td {
     font-size: 9px;
     text-align: center;
 }
-
 
 /* -------------------My Leave History Table---------------------- */
 .attendence_history_table {
@@ -885,9 +766,9 @@ td {
 
 /* -----------------Loader Progress bar girija--------------------- */
 .progress_bar_loader {
-    /* margin-left: 80px; */
+    margin-left: 150px;
     width: 165px;
-    max-width: 80%;
+    max-width: 90%;
     height: 8px;
     border-radius: 20px;
     position: relative;
