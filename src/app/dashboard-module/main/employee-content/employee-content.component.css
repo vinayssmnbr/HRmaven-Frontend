@@ -2077,3 +2077,7 @@ text-align: center;
 .input-upload {
   width: 100%;
 }
+
+.disabledBtn{
+  cursor: not-allowed;
+}
