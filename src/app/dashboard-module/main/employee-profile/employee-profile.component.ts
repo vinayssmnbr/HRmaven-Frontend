@@ -177,16 +177,16 @@ export class EmployeeProfileComponent implements OnInit {
     this.experienceItems.removeAt(index);
   }
 
-  onSubmit() {
-    console.log(this.experienceForm.value);
-    const updatedData = this.experienceForm.value;
-    console.log('exp', updatedData);
-    updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe((res) => {
-      console.log('experience', res);
-    });
-    this.user = updatedData;
-  }
+  // onSubmit() {
+  //   console.log(this.experienceForm.value);
+  //   const updatedData = this.experienceForm.value;
+  //   console.log('exp', updatedData);
+  //   updatedData['_id'] = this.user._id;
+  //   this.dashService.updateEmployee(updatedData).subscribe((res) => {
+  //     console.log('experience', res);
+  //   });
+  //   this.user = updatedData;
+  // }
 
   array1: any = [
     {
@@ -605,17 +605,22 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = false;
-    const updatedData = this.form.value;
-    // const updatedData1=this.formArrayName.value;
-    console.log('abc', updatedData);
-    updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
-      console.log('Data updated successfully');
-    });
-
-    // this.dashService.updateEmployeeExperiences(updatedData).subscribe((data: any) => {
-    //   console.log(data.message);
+    // const updatedData = this.form.value;
+    // // const updatedData1=this.formArrayName.value;
+    // console.log('abc', updatedData);
+    // updatedData['_id'] = this.user._id;
+    // this.dashService.updateEmployee(updatedData).subscribe(() => {
+    //   console.log('Data updated successfully');
     // });
+
+    console.log(this.experienceForm.value);
+    const updatedData = this.experienceForm.value;
+    console.log('exp', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe((res) => {
+      console.log('experience', res);
+    });
+    this.user = updatedData;
 
     this.user = updatedData;
   }
@@ -711,19 +716,24 @@ export class EmployeeProfileComponent implements OnInit {
       console.error('Invalid file type. Please select an image.');
       return;
     }
+    this.progress = true;
     this.onUpload(this.user);
   }
 
   upload: boolean = false;
+  progress: boolean = false;
   imageurl: any;
   onUpload(user) {
     user['_id'] = this.user._id;
     this.dashService.upload(this.selectedFile, user._id).then((res: any) => {
       this.upload = true;
+      this.progress = false;
+
       this.imageurl = this.dashService.fileUrl;
       console.log('img', this.imageurl);
     });
   }
+
   viewMore: boolean = false;
   showbutton: boolean = true;
   showMoredata() {
