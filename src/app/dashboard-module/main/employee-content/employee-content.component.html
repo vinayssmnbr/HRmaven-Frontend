@@ -228,9 +228,8 @@
               <label>Profile Picture</label>
               <div class="custom-file-picker">
                 <input type="text" placeholder="No File Choosen" (click)="fileInput.click()" [value]="fileName"
-                  id="text4" readonly accept=".jpeg,.jpg,.png, image/*" formControlName="url">
-                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url"
-                  accept=".jpeg,.jpg,.png,image/*">
+                  id="text4" readonly accept="image/*" formControlName="url">
+                <input type="file" #fileInput (change)="onFileSelected($event)" formControlName="url" accept="image/*">
                 <a (click)="fileInput.click()">Choose File</a>
               </div>
             </div>
@@ -339,7 +338,7 @@
 
       <div class="modal-footer">
         <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url)">
+          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url && emailExists)">
           Next </button>
         <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
@@ -444,6 +443,3 @@
       </div>
     </div>
   </div>
-  apps-fileview.texmex_20230427.01_p0
-  employee_html.txt
-  Displaying employee_html.txt.

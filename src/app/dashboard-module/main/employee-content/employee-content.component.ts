@@ -229,7 +229,6 @@ export class EmployeeContentComponent implements OnInit {
       this.progressText[0].innerText = `${this.progress}%`;
     }, 50);
 
-
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
 
@@ -379,7 +378,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -621,10 +620,10 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-  selectedfile: boolean = false
+  selectedfile: boolean = false;
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
-    const allowedTypes1 = [".csv"];
+    const allowedTypes1 = ['.csv'];
     this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
     if (!allowedTypes1.includes(this.selectedFile.type)) {
       this.fileName1 = null;
@@ -632,7 +631,6 @@ export class EmployeeContentComponent implements OnInit {
     if (this.fileName1 != null) {
       this.selectedfile = true;
     }
-
   }
 
   selectall: boolean = false;
@@ -1107,5 +1105,5 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  ngOnChange() { }
+  ngOnChange() {}
 }
