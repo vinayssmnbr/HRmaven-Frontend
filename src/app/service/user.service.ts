@@ -56,6 +56,11 @@ export class UserService {
     return this.http.get(url);
   }
 
+  getUsernameData(username: any) {
+    const url = `${this.prefix + 'getusername/username'}/${username}`;
+    return this.http.get(url);
+  }
+
   saveUser(data: any) {
     this.isLoggedIn.next(true);
     return this.http.post(this.prefix + 'signup', data);
