@@ -620,7 +620,7 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-  selectedfile: boolean = false;
+  loader: boolean = false;
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
     const allowedTypes1 = ['.csv'];
@@ -629,7 +629,7 @@ export class EmployeeContentComponent implements OnInit {
       this.fileName1 = null;
     }
     if (this.fileName1 != null) {
-      this.selectedfile = true;
+      this.loader = true;
     }
   }
 
