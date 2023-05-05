@@ -19,6 +19,7 @@ import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodayattendancePipe } from './pipe/todayattendance.pipe';
 import { FilterattendancePipe } from './pipe/filterattendance.pipe';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -40,7 +41,20 @@ import { FilterattendancePipe } from './pipe/filterattendance.pipe';
     CommonModule,
     EmployeeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgCircleProgressModule.forRoot({
+      "outerStrokeGradient": false,
+      "innerStrokeWidth": 10,
+      "title": "UI",
+      "animateTitle": false,
+      "animationDuration": 1000,
+      "showTitle": false,
+      "showSubtitle": false,
+      "showUnits": false,
+      "showBackground": false,
+      "clockwise": false,
+      "startFromZero": false,
+      "lazy": true})
+  ],
 })
-export class EmployeeModule { }
+export class EmployeeModule {}
