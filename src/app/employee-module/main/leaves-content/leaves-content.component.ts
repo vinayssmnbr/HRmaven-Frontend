@@ -16,22 +16,22 @@ import { EmpService } from '../../shared/emp.service';
 export class LeavesContentComponent {
   // empleaveForm: FormGroup;
   // ----------Input file custom girija----------------------
-  progressBar: any;
-  progressText: any;
-  progress: number = 0;
-  interval: any;
+  // progressBar: any;
+  // progressText: any;
+  // progress: number = 0;
+  // interval: any;
   ngOnInit() {
-    this.progressBar = document.getElementsByClassName('progress_upload');
-    this.progressText = document.getElementsByClassName('progress-text-input');
+    // this.progressBar = document.getElementsByClassName('progress_upload');
+    // this.progressText = document.getElementsByClassName('progress-text-input');
 
-    this.interval = setInterval(() => {
-      this.progress++;
-      if (this.progress > 100) {
-        this.progress = 0;
-      }
-      this.progressBar[0].style.width = `${this.progress}%`;
-      this.progressText[0].innerText = `${this.progress}%`;
-    }, 50);
+    // this.interval = setInterval(() => {
+    //   this.progress++;
+    //   if (this.progress > 100) {
+    //     this.progress = 0;
+    //   }
+    //   this.progressBar[0].style.width = `${this.progress}%`;
+    //   this.progressText[0].innerText = `${this.progress}%`;
+    // }, 50);
   }
   inputfilename: boolean = false;
   fileName: string = '';
