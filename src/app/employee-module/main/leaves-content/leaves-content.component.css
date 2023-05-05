@@ -744,9 +744,7 @@ td {
 
 .loader {
     border: 5px solid #f3f3f3;
-    /* Light grey */
     border-top: 5px solid #2F2C9F;
-    /* Blue */
     border-radius: 50%;
     width: 30px;
     height: 30px;

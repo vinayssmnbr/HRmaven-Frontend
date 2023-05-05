@@ -9,8 +9,6 @@
 .row {
   display: flex;
   justify-content: space-between;
-
-  /* background-color: red; */
 }
 
 .left_side {
@@ -112,75 +110,6 @@
   color: #222222;
 }
 
-/*-------------------------Attendance-dropdown-------------*/
-/* .dropdwon_select {
-  background-color: #fff;
-  width: 172px;
-  height: 40px;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
-  color: #444444;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 10px;
-}
-
-.dropdwon_select:hover,
-.dropdwon_select:focus {
-  border: 1px solid #2F2C9F;
-  border-radius: 8px;
-}
-
-.dropdwon_select p {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.dropdwon_select i {
-  font-size: 14px;
-  color: #444444;
-  padding: 3px 7px;
-}
-
-.select_content {
-  background-color: #fff;
-  cursor: pointer;
-  width: 172px;
-  cursor: pointer;
-  padding: 10px;
-  position: absolute;
-  color: #444444;
-}
-
-.select_content ul {
-  padding: 0;
-  margin: 0;
-}
-
-.select_content ul li {
-  list-style: none;
-  padding: 10px 10px;
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-.select_content ul li:hover {
-  background-color: #ECECEC;
-  border-radius: 8px;
-}
-
-.select_active {
-  background-color: #ECECEC;
-  border-radius: 8px;
-
-} */
-
-/*--------------------------------------------------*/
-
-
-
 .job-post-summary-area {
   background-color: #FFFFFF;
   padding: 25px 25px;
@@ -259,7 +188,6 @@
 
 .skill-require-ul li {
   padding: 4px 8px;
-  /* width: 50px; */
   height: 25px;
   background-color: #EFEFF8;
   border-radius: 12px;
@@ -284,7 +212,6 @@
 
 .leave,
 .profile {
-  /* width: 101px; */
   height: 40px;
   display: flex;
   align-items: center;
@@ -351,15 +278,6 @@
 .text-image-icon {
   cursor: pointer;
 }
-
-
-/* .chart {
-  border-radius: 1rem;
-  background-color: #FFFFFF;
-  width: 746px;
-  height: 363px;
-  background-color: green;
-} */
 
 .chart h6 {
   font-size: 18px;
@@ -466,8 +384,6 @@
   border-radius: 8px;
   background-color: #f7f7f7;
 }
-
-/* ----------Drop Down END--------------- */
 
 /*---------------------------Leave-Balance------------------------*/
 
@@ -904,10 +820,6 @@ td {
   margin-top: 10px;
 }
 
-
-
-
-
 .action_button {
   display: flex;
   gap: 16px;
@@ -944,7 +856,6 @@ input[type="radio"] {
 #outline1 {
   outline: 2px solid #e8e8e8;
 }
-
 
 
 #outline1:checked {
@@ -997,8 +908,6 @@ input[type="radio"] {
 }
 
 
-/* ------------------ */
-
 .three-dots {
   position: relative;
 }
@@ -1026,17 +935,20 @@ input[type="radio"] {
   display: block;
 }
 
-/*Activity area Scroll bar*/
+/*----Activity area Scroll bar-----*/
 
-.scrollbar-start::-webkit-scrollbar {
+.scrollbar-start::-webkit-scrollbar,
+.meeting-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
 
-.scrollbar-start::-webkit-scrollbar-track {
+.scrollbar-start::-webkit-scrollbar-track,
+.meeting-scrollbar::-webkit-scrollbar-track {
   background-color: #EFEFF8;
 }
 
-.scrollbar-start::-webkit-scrollbar-thumb {
+.scrollbar-start::-webkit-scrollbar-thumb,
+.meeting-scrollbar::-webkit-scrollbar-thumb {
   background-color: #888888de;
   border-radius: 6px;
   height: 10px;
@@ -1051,24 +963,7 @@ input[type="radio"] {
   padding-right: 4px;
 }
 
-/*All meeting Scrollbar*/
-
-.meeting-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.meeting-scrollbar::-webkit-scrollbar-track {
-  background-color: #EFEFF8;
-}
-
-.meeting-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #888888de;
-  border-radius: 6px;
-  height: 10px;
-}
-
-
-/*meeting Scrollbar*/
+/*---------------meeting Scrollbar--------------*/
 .meeting-scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
@@ -1084,16 +979,13 @@ input[type="radio"] {
   width: 50px !important;
   height: 50px !important;
   border-width: 10px;
-  /* transform: translate(50%); */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-
-/*Location-Modal*/
-
+/*-----------Location-Modal----------------*/
 .modal-content {
   position: fixed;
   top: 0;
