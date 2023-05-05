@@ -44,8 +44,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
       "outerStrokeGradient": false,
-      "innerStrokeWidth": 10,
-      "title": "UI",
+      "outerStrokeLinecap": "butt",
       "animateTitle": false,
       "animationDuration": 1000,
       "showTitle": false,
