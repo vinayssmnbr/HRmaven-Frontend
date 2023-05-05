@@ -710,7 +710,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.dashService.upload(this.selectedFile, user._id).then((res: any) => {
       this.upload = true;
       this.progress = false;
-
       this.imageurl = this.dashService.fileUrl;
       console.log('img', this.imageurl);
     });
