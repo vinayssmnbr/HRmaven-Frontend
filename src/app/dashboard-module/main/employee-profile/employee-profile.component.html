@@ -202,6 +202,8 @@
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
         <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
+      <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+
       <div class="row1" *ngFor="let item of user.experienceItems">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
@@ -209,18 +211,18 @@
           <p *ngIf="!item.expcompany">----------</p>
           <p class="orgname" *ngIf="item.expcompany">{{item.expcompany}}</p>
           <span class="location2">Location</span>
-          <p *ngIf="!user.explocation">----------</p>
-          <p class="location2" *ngIf="user.explocation">{{item.explocation}}</p>
+          <p *ngIf="!item.explocation">----------</p>
+          <p class="location2" *ngIf="item.explocation">{{item.explocation}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p *ngIf="!user.expduration">----------</p>
-          <p class="duration2" *ngIf="user.expduration">{{item.expduration}}</p>
+          <p *ngIf="!item.expduration">----------</p>
+          <p class="duration2" *ngIf="item.expduration">{{item.expduration}}</p>
         </div>
         <div class="column3">
           <span class="designation">Designation</span>
-          <p *ngIf="!user.expdesignation">----------</p>
-          <p class="designation" *ngIf="user.expdesignation">{{user.expdesignation}}</p>
+          <p *ngIf="!item.expdesignation">----------</p>
+          <p class="designation" *ngIf="item.expdesignation">{{item.expdesignation}}</p>
         </div>
       </div>
       <hr>

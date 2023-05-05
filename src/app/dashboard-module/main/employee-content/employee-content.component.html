@@ -86,7 +86,7 @@
         <i class="fa-solid fa-list"></i>
         <img src="./assets/images/Vector (1).svg" alt="">
       </div>
-      <button class="import" (click)="download()" [disabled]="true"><img
+      <button class="import" (click)="download()" ><img
           src="./assets/images/prime_file-import.svg">Export</button>
       <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
@@ -110,44 +110,51 @@
       <tbody>
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
+          <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
+
+
           <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
             <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
           </td>
+          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
 
-          <td *ngIf="user.found!='true'">
-            <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
-                (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
-            <!-- <div class="employee1"><input type="checkbox" [ngModel]=" isChecked" (click)="toggleAllCheckboxes()" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div> -->
-          </td>
+            <td *ngIf="user.found!='true'">
+              <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
+                  (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
+              <!-- <div class="employee1"><input type="checkbox" [ngModel]=" isChecked" (click)="toggleAllCheckboxes()" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div> -->
+            </td>
 
-          <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
+            <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
+              <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
+                routerLink="/employee-profile">
+              <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
+                routerLink="/employee-profile" onError="this.src='./assets/images/Ellipse 98.svg'">
+              <p>{{user.name}} </p>
+            </td>
+            <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
+              routerLink="/employee-profile">{{user.designation}}</td>
+            <td *ngIf="user.found!='true'" class="email1" (click)="selectEmployee(user)" routerLink="/employee-profile">
+              {{user.email}}</td>
+            <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)"
               routerLink="/employee-profile">
-            <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
-              routerLink="/employee-profile" onError="this.src='./assets/images/Ellipse 98.svg'">
-            <p>{{user.name}} </p>
-          </td>
-          <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
-            routerLink="/employee-profile">{{user.designation}}</td>
-          <td *ngIf="user.found!='true'" class="email1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            {{user.email}}</td>
-          <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-            {{user.mobile}}</td>
-          <td *ngIf="user.found!='true'" class="action1">
-            <div class="icons">
-              <select class="select" id="myselect" [class.active]="user.status==='active'" [disabled]="isSelectDisabled"
-                (change)="onSelectChange($event, user)" [value]="user.status"
-                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                <option value="active" class="activated">Active</option>
-                <option value="terminated" class="terminate">Terminated</option>
-                <option value="resigned" class="resign">Resigned</option>
-                <option value="absconder" class="abscond">Absconder</option>
-              </select>
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
+              {{user.mobile}}</td>
+            <td *ngIf="user.found!='true'" class="action1">
+              <div class="icons">
+                <select class="select" id="myselect" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
 
-          </td>
+            </td>
+          </ng-container>
+
         </tr>
       </tbody>
 
@@ -437,3 +444,6 @@
       </div>
     </div>
   </div>
+  <!-- apps-fileview.texmex_20230427.01_p0
+  employee_html.txt
+  Displaying employee_html.txt. -->
