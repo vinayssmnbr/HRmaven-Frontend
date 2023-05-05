@@ -849,7 +849,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   download(): void {
-    if (this.selectedEmployess && this.selectedEmployess.length > 0) {
+    // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
       this.dashService.exportUsers(this.selectedEmployess).subscribe(
         (data: Blob) => {
           const downloadUrl = window.URL.createObjectURL(data);
@@ -860,7 +860,7 @@ export class EmployeeContentComponent implements OnInit {
         },
         (error) => console.log(error)
       );
-    }
+    // }
   }
 
   // onFileSelectedrem(event: any): void {
