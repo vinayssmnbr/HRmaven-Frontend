@@ -128,6 +128,22 @@ var pieChart = new Chart(this.oilCanvas, {
   }
 
 
+  showModal = false;
+  showModalContent = false;
+  closeModal() {
+    this.showModal = false;
+    this.showModalContent=false;
+  }
+
+  openModal() {
+    this.showModal = true;
+    this.showModalContent = true;
+    
+
+
+  }
+
+
 }
 
 
