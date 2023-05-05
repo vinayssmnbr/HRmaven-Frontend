@@ -20,7 +20,7 @@
 }
 .left-side-content{
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
 }
 .col-9 .col-4 {
   padding-right: 20px;
@@ -34,7 +34,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
-  width: 263px;
+  width: 30%;
 }
 
 .card p {
@@ -55,7 +55,7 @@
   height: 100px;
   background-color: #ffffff;
   border-radius: 8px;
-  width: 263px;
+  width: 30%;
 }
 .quick-action p{
   font-size: 14px;
@@ -373,7 +373,7 @@
 /* -------------Drop Down -------- */
 .dropdwon_select {
   background-color: #F7F7FB;
-  width: 94px;
+  width: 130px;
   height: 40px;
   cursor: pointer;
   padding: 8px;
@@ -405,7 +405,7 @@
 .select_content {
   background-color: #fff;
   cursor: pointer;
-  width: 94px;
+  width: 130px;
   cursor: pointer;
   height: 250px;
     overflow-y: auto;

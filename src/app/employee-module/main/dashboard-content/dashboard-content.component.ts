@@ -210,32 +210,38 @@ var pieChart = new Chart(this.oilCanvas, {
   //   }
   // });
 
-   myChart = new Chart("myChart", {
+  //  myChart = new Chart("myChart", {
   
-    type: 'pie',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3],
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-        // borderWidth: 1
+  //   type: 'pie',
+  //   data: {
+  //     labels: ['Red', 'Blue', 'Yellow'],
+  //     datasets: [{
+  //       label: '# of Votes',
+  //       data: [12, 19, 3],
+  //       backgroundColor: [
+  //         'rgb(255, 99, 132)',
+  //         'rgb(54, 162, 235)',
+  //         'rgb(255, 205, 86)'
+  //       ],
+  //       hoverOffset: 4
+  //       // borderWidth: 1
 
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
-    }
-  });
+  //     }]
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true
+  //       }
+  //     },
+  //   }
+  // });
+
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+
 
 }
 
