@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class DashService {
   public headerContent: string;
   public activeComponent: string;
- 
 
   private prefix = environment.v1;
   constructor(
@@ -21,10 +20,9 @@ export class DashService {
     private router: Router,
     private cookie: CookieService
   ) {
-    this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
+    this.client = filestack.init('AB44AFy9OQuq7ikzhoJ59z');
   }
 
-  
   getUserProfile(): Observable<any> {
     const token = this.cookie.get('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -42,19 +40,18 @@ export class DashService {
   // }
 
   //ADD  Employee Data
-  
   addEmployee(data:any) {
     const id = this.cookie.get('hr_id');
     data['hrid']=id;
-    return this.http.post(this.prefix+'api/create', data);
+    return this.http.post(this.prefix + 'api/create', data);
   }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
-    
+
 
   // }
-  
-  
+
+
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
@@ -250,16 +247,15 @@ export class DashService {
     return this.client.upload(file);
   }
 
-  exportUsers(data:any[]){
+  exportUsers(data: any[]) {
     const url = `${this.prefix}user/export`;
-   
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'text/csv',
     });
     return this.http.post(url, { data }, { headers, responseType: 'blob' });
   }
-
 
   // exportUsers(data:any[]): Observable<Blob> {
   //   const url = `${this.baseUrl}user/export`;
@@ -270,15 +266,12 @@ export class DashService {
   //   return this.http.post(url,{data}, { headers, responseType: 'blob' });
   // }
 
-
-
-
-  updateEmpStatus(id,status):Observable<any>{
-    const url = `${this.prefix+'api/update'}/${id}`;
-    return this.http.patch(url,{status})
+  updateEmpStatus(id, status): Observable<any> {
+    const url = `${this.prefix + 'api/update'}/${id}`;
+    return this.http.patch(url, { status });
   }
 
- 
+
 
 
 }
