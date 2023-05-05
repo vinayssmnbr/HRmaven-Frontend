@@ -186,15 +186,20 @@ form .input-field {
     margin-top: 6px;
     margin-bottom: 7px;
 }
-.name-field .input-field span,.email-field .input-field span,.confirm-password .input-field span{
+
+.name-field .input-field span,
+.email-field .input-field span,
+.confirm-password .input-field span {
     color: #CB1E0F;
     font-size: 14px;
     display: flex;
     align-items: center;
 }
-.input-field span img{
+
+.input-field span img {
     padding-right: 5px;
 }
+
 .input-field input::placeholder {
     color: #B4B4B4;
     font-weight: 400;
@@ -211,7 +216,7 @@ input:hover,
 input:focus {
     border: 1px solid #2F2C9F;
     border-color: #2F2C9F !important;
-    
+
 }
 
 .email {
@@ -225,6 +230,7 @@ input:focus {
 .check-text {
     display: flex;
     gap: 5px;
+    align-items: center;
 
 }
 
@@ -472,6 +478,7 @@ form.ng-invalid.ng-touched #submit {
 .input-field i {
     padding-right: 5px;
 }
+
 span.password-toggle.icon_eye {
     padding-top: 9px !important;
 }
@@ -542,14 +549,17 @@ form.ng-invalid #submit {
     transform: translateX(5px);
     opacity: 1;
 }
-.input-field:hover .tooltip{
+
+.input-field:hover .tooltip {
     transform: translateX(5px);
     opacity: 1;
     visibility: visible;
 }
+
 .tooltip span {
     margin-top: 0;
 }
+
 .create-password label.text-label {
     display: flex;
     justify-content: space-between;
@@ -645,4 +655,79 @@ form.ng-invalid #submit {
 .done-btn2:hover {
     background-color: #3D9130;
     opacity: 0.7;
+}
+
+
+/* --------------Responsive For Tablet------------------ */
+
+@media only screen and (min-width: 481px) and (max-width: 850px) {
+    .row {
+        height: 100%;
+    }
+
+    .left-side {
+        display: none;
+    }
+
+    .right-side {
+        width: 100%;
+
+    }
+
+    form {
+        padding-top: 204px;
+
+    }
+
+}
+
+/* --------------For Mobile------------------ */
+@media only screen and (max-width: 480px) {
+    .row {
+        height: 100%;
+    }
+
+    .left-side {
+        display: none;
+    }
+
+    .right-side {
+        width: 100%;
+        padding-top: 100px;
+    }
+
+    form {
+        width: 100%;
+        padding: 0 40px;
+        margin-left: 20px;
+
+    }
+
+    .input-field {
+        width: 100% !important;
+    }
+
+    .password-toggle i {
+        margin-left: 250px !important;
+    }
+
+    .check-text {
+        width: 100%;
+    }
+
+    .check-text .forgot-text {
+        margin-left: -1px !important;
+    }
+
+    .or_bar::before,
+    .or_bar::after {
+        width: 130px;
+    }
+
+    .tooltip {
+        position: absolute;
+        z-index: 999;
+        left: -180px !important;
+
+    }
 }
