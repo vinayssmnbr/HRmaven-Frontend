@@ -10,7 +10,8 @@
     <div class="card2">
       <span class="profile_pic">
         <!-- <img src="{{user.url}}"> -->
-        <div role="progressbar" aria-valuenow="65" aria-valuemin="0" (change)="onFileSelected($event)" aria-valuemax="100" style="--value:100"></div>
+        <!-- <div role="progressbar" aria-valuenow="65" aria-valuemin="0" (change)="onFileSelected($event)" aria-valuemax="100" style="--value:100"></div> -->
+        <div class="loader"></div>
         <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
@@ -206,7 +207,7 @@
         <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
       <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
-
+       <div>
       <div class="row1" *ngFor="let item of user.experienceItems">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
@@ -229,6 +230,7 @@
         </div>
       </div>
       <hr>
+
       <div class="cnt-btn">
         <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
             class="fa-solid fa-angle-down"></i></button>
@@ -277,11 +279,11 @@
           <p *ngIf="!user.expdesignation1">----------</p>
           <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
         </div>
-      </div>
+      </div> -->
       <div class="cnt-btn">
         <button class="hide" (click)="hidedata()" *ngIf="viewMore">View less<i
             class="fa-solid fa-angle-up"></i></button>
-      </div> -->
+      </div>
     </div>
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
