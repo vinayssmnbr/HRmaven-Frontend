@@ -62,6 +62,16 @@ export class EmpService {
     return dateArray;
   }
 
+  attendancedonut(){
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    return this.http.get(this.prefix+"attendance/emp/donut", { headers });
+  }
 
   leavegraph() {
     const id = this.cookie.get('id');

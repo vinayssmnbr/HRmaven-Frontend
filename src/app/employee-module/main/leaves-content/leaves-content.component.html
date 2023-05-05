@@ -8,10 +8,10 @@
                 <div class="leaves">
                     <div class="leave-text">
                         <h6>Casual Leave</h6>
-                        <h4>{{obj.casual}}</h4>
+                        <h4>{{obj.casual + obj.urgent}}</h4>
                     </div>
                     <div class="progress-circle-container CasualProgress">
-                        <div class="progress-circle progress-20">
+                        <div class="progress-circle progress-{{(obj.casual + obj.urgent)/(obj.casual+obj.earned+obj.medical+obj.urgent)}}">
                             <span></span>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                         <h4>{{obj.medical}}</h4>
                     </div>
                     <div class="progress-circle-container MedicalProgress">
-                        <div class="progress-circle progress-18">
+                        <div class="progress-circle progress-{{(obj.medical)/(obj.casual+obj.earned+obj.medical+obj.urgent)}}">
                             <span></span>
                         </div>
                     </div>
@@ -30,10 +30,10 @@
                 <div class="leaves">
                     <div class="leave-text">
                         <h6>Compensatory Leave</h6>
-                        <h4>{{obj.urgent}}</h4>
+                        <h4>{{obj.earned}}</h4>
                     </div>
                     <div class="progress-circle-container CompensatoryProgress">
-                        <div class="progress-circle progress-18">
+                        <div class="progress-circle progress-{{(obj.earned)/(obj.casual+obj.earned+obj.medical+obj.urgent)}}">
                             <span></span>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                                 <!-- <p class="first">Select a file or drag and drop here</p> -->
                                 <p class="second">Supported formats: pdf, jpg, png</p>
                                 <div class="choose-btn">
-                                    
+
                                     <!-- <div class="progress_bar_loader" *ngIf="loader"></div> -->
                                     <!-- <input type="file" (change)="onFileSelected($event)"> -->
                                     <div class="file_upload">
