@@ -86,7 +86,7 @@
         <i class="fa-solid fa-list"></i>
         <img src="./assets/images/Vector (1).svg" alt="">
       </div>
-      <button class="import" (click)="download()" ><img
+      <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}" [disabled]="selectedEmployess.length==0"><img
           src="./assets/images/prime_file-import.svg">Export</button>
       <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
@@ -97,7 +97,7 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+          <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length" (change)="onCheckboxChange($event, 'All')">Employee ID</th>
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -339,9 +339,9 @@
 
       <div class="modal-footer">
         <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url)">
+          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && (form.value.email || !emailExists) && (form.value.mobile || !mobileExists) && form.value.url)">
           Next </button>
-        <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
+        <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
           [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">Done</button>
       </div>
@@ -417,10 +417,12 @@
               formControlName="csv">
             <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)"
               accept=".csv" formControlName="csv">
+  
             <div class="progress-bar">
               <div class="progress"></div>
               <div class="progress-text">0%</div>
             </div>
+           
           </div>
         </div>
         <div class="import-btns">

@@ -217,17 +217,17 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
-    this.progressBar = document.getElementsByClassName('progress');
-    this.progressText = document.getElementsByClassName('progress-text');
+    // this.progressBar = document.getElementsByClassName('progress');
+    // this.progressText = document.getElementsByClassName('progress-text');
 
-    this.interval = setInterval(() => {
-      this.progress++;
-      if (this.progress > 100) {
-        this.progress = 0;
-      }
-      this.progressBar[0].style.width = `${this.progress}%`;
-      this.progressText[0].innerText = `${this.progress}%`;
-    }, 50);
+    // this.interval = setInterval(() => {
+    //   this.progress++;
+    //   if (this.progress > 100) {
+    //     this.progress = 0;
+    //   }
+    //   this.progressBar[0].style.width = `${this.progress}%`;
+    //   this.progressText[0].innerText = `${this.progress}%`;
+    // }, 50);
 
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
@@ -1033,7 +1033,7 @@ export class EmployeeContentComponent implements OnInit {
       console.log(data, 'parsed CSV data');
       let uid: number = -1;;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
-        // 
+        //
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'
@@ -1195,4 +1195,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   ngOnChange() { }
+
+
+
 }

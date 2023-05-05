@@ -639,6 +639,7 @@ background-color: rgba(255, 238, 82, 0.5);
   width: 100%;
   max-width: 647px;
   height: 505px;
+  z-index: 9999;
   border-radius: 8px;
 }
 
@@ -2075,4 +2076,8 @@ text-align: center;
 }
 .input-upload {
   width: 100%;
+}
+
+.disabledBtn{
+  cursor: not-allowed;
 }

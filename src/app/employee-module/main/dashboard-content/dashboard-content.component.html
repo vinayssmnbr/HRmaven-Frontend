@@ -11,7 +11,7 @@
                             <p>Punch in timing</p>
                             <h1>{{in | date:'shortTime'}}</h1>
                         </div>
-                        <div class="text-image-icon">
+                        <div class="text-image-icon" (click)="openModal()">
                             <img src="assets/images/punch_inpng.png" alt="">
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                         <p>Punch out timing</p>
                         <h1>{{out | date:'shortTime'}}</h1>
                     </div>
-                    <div class="text-image-icon" >
+                    <div class="text-image-icon" (click)="openModal()">
                         <img src="assets/images/punch_out.svg" alt="">
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         <div class="attendance-chart">
                             <div class="attendance-heading">
                                 <h5>Attendance</h5>
-                                <div class="dropdown_container">
+                                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                                     <div class="dropdwon_select" (click)="dropdownOpen()">
                                         <p>{{Selectvariable}}</p>
                                         <i class="fa-sharp fa-solid fa-caret-down"></i>
@@ -395,4 +395,18 @@
 
 
     </div>
+
+    <!------------------Location-Modal------------->
+
+    <div class="modal-content" *ngIf="showModalContent">
+        
+        <div class="access-location">
+            <div class="access-location-text">
+            <h3>Allow “HRMaven” to access your location?</h3>
+            <p>You’ll only be able to mark your attendance after the access has been allowed.</p>
+            <button (click)="closeModal()">OK</button>
+        </div>
+        </div>
+      </div>
+    
 </div>

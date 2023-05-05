@@ -87,7 +87,7 @@ export class DashboardContentComponent {
     this.oilCanvas = document.getElementById("oilChart");
 
 
-var oilData = {
+const data = {
     labels: [
         // "Saudi Arabia",
         // "Russia",
@@ -106,8 +106,8 @@ var oilData = {
 };
 
 var pieChart = new Chart(this.oilCanvas, {
-  type: 'pie',
-  data: oilData
+  type: 'doughnut',
+  data: data
 });
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
@@ -121,121 +121,28 @@ var pieChart = new Chart(this.oilCanvas, {
       console.log(res);
     })
   }
-  // const ctx5 = document.getElementById('doughnut');
-  // const doughnut = new Chart(ctx5, {
-  //   type: 'doughnut',
-  //   data: {
-  //     labels: [
-  //       'Jan',
-  //       'Feb',
-  //       'Mar',
-  //       'Apr',
-  //       'May',
-  //       'Jun',
-  //       'Jul',
-  //       'Aug',
-  //       'Sept',
-  //       'Oct',
-  //       'Nov',
-  //       'Dec',
-  //     ],
-  //     datasets: [
-  //       {
-  //         label: 'Present',
-  //         data: 'present',
-  //         backgroundColor: ['#2D11FA'],
 
-  //         borderColor: [
-  //           // 'rgba(255, 99, 132, 1)',
-  //           // 'rgba(54, 162, 235, 1)',
-  //           // 'rgba(255, 206, 86, 1)',
-  //           // 'rgba(75, 192, 192, 1)',
-  //           // 'rgba(153, 102, 255, 1)',
-  //           // 'rgba(255, 159, 64, 1)',
-  //           // 'rgba(255, 99, 132, 1)'
-  //         ],
-  //         // borderWidth: 1
-  //       },
-  //       {
-  //         label: 'Absent',
-  //         data: 'absent',
-  //         backgroundColor: ['#FDA75A'],
-  //         // pointStyle: 'circle',
-  //         borderColor: [
-  //           // 'rgba(255, 99, 132, 1)',
-  //           // 'rgba(54, 162, 235, 1)',
-  //           // 'rgba(255, 206, 86, 1)',
-  //           // 'rgba(75, 192, 192, 1)',
-  //           // 'rgba(153, 102, 255, 1)',
-  //           // 'rgba(255, 159, 64, 1)',
-  //           // 'rgba(255, 99, 132, 1)'
-  //         ],
-  //         // borderWidth: 1
-  //       },
-  //       {
-  //         label: 'Leaves',
-  //         data: 'leave',
-  //         backgroundColor: ['#00C9FF'],
-  //         // pointStyle: 'circle',
-  //         borderColor: [
-  //           // 'rgba(255, 99, 132, 1)',
-  //           // 'rgba(54, 162, 235, 1)',
-  //           // 'rgba(255, 206, 86, 1)',
-  //           // 'rgba(75, 192, 192, 1)',
-  //           // 'rgba(153, 102, 255, 1)',
-  //           // 'rgba(255, 159, 64, 1)',
-  //           // 'rgba(255, 99, 132, 1)'
-  //         ],
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     responsive: true,
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //     plugins: {
-  //       legend: {
-  //         labels: {
-  //           padding: 40,
-  //           usePointStyle: true,
-  //           font: {
-  //             size: 10,
-  //           },
-  //         },
-  //       },
-  //     }
-  //   }
-  // });
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown = !this.contentdropdown;
+  }
 
-   myChart = new Chart("myChart", {
-  
-    type: 'pie',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3],
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-        // borderWidth: 1
 
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
-    }
-  });
+  showModal = false;
+  showModalContent = false;
+  closeModal() {
+    this.showModal = false;
+    this.showModalContent=false;
+  }
+
+  openModal() {
+    this.showModal = true;
+    this.showModalContent = true;
+    
+
+
+  }
+
 
 }
 

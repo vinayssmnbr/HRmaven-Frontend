@@ -10,14 +10,17 @@
     <div class="card2">
       <span class="profile_pic">
         <!-- <img src="{{user.url}}"> -->
+        <div role="progressbar" aria-valuenow="65" aria-valuemin="0" (change)="onFileSelected($event)" aria-valuemax="100" style="--value:100"></div>
         <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
+
         <div class="profile-content" *ngIf="!user.url">
           <!-- <div >
             <input type="file" (change)="onFileSelected($event)">
           </div> -->
           <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
+
           <!-- <img src="./assets/images/upload.png" alt=""> -->
           <i class="fa-solid fa-arrow-up"></i>
           <h2>Upload</h2>
@@ -176,7 +179,7 @@
           <span class="sgpa">Cgpa</span>
           <p *ngIf="!user.graduationCgpa">----------</p>
           <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p>
-          <span class="pgsgpa">PgCgpa</span>
+          <span class="pgsgpa">Cgpa</span>
           <p *ngIf="!user.pgCgpa">-----------</p>
           <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
         </div>
@@ -202,7 +205,7 @@
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
         <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
-      <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+      <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
 
       <div class="row1" *ngFor="let item of user.experienceItems">
         <div class="column1">
@@ -450,7 +453,8 @@
           <div class="form-row">
             <div class="input">
               <label>City</label>
-              <input type="text" placeholder="Ludhiana" formControlName="city">
+              <input type="text" placeholder="Ludhiana" formControlName="city"
+              [ngClass]="{'ng_invalid': registrationFormControl.city.invalid && registrationFormControl.city.dirty,'ng_valid': registrationFormControl.city.valid}">
             </div>
             <div class="input">
               <label>Postal Code</label>
@@ -460,7 +464,8 @@
             </div>
             <div class="input">
               <label>State</label>
-              <input type="text" placeholder="Punjab" formControlName="state">
+              <input type="text" placeholder="Punjab" formControlName="state"
+              [ngClass]="{'ng_invalid': registrationFormControl.state.invalid && registrationFormControl.state.dirty,'ng_valid': registrationFormControl.state.valid}">
             </div>
           </div>
         </form>

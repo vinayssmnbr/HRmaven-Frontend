@@ -236,4 +236,9 @@ obj:any
 
 
 }
+
+onKeyUp(event): void {
+  event.target.value = event.target.value.trim()
+
+}
 }
