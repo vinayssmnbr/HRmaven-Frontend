@@ -126,12 +126,12 @@ export class AttendanceContentComponent implements OnInit {
               backgroundColor: ['#00C9FF'],
               pointStyle: 'circle',
             },
-            {
-              label: 'short leave',
-              data: leave,
-              backgroundColor: ['#00C9FF'],
-              pointStyle: 'circle',
-            },
+            // {
+            //   label: 'short leave',
+            //   data: leave,
+            //   backgroundColor: ['#00C9FF'],
+            //   pointStyle: 'circle',
+            // },
           ],
         },
         options: {

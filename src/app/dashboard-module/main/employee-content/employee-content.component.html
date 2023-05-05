@@ -392,7 +392,10 @@
           <!-- <p>or drag and drop it here</p> -->
 
 
-          <a (click)="fileInput.click()" class="choose">Choose File</a>
+          <div class="file_upload">
+            <input type="file" (change)="onFileSelected1($event)" accept=".csv">
+          </div>
+
           <!-- <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 
@@ -408,7 +411,7 @@
           <input type="file" >
           <a  class="choose">Choose File</a>
         </div> -->
-        <div class="card">
+        <div class="card" >
           <div class="pdf_file">
             <img src="./assets/images/Vector (8).png" alt="">
           </div>
@@ -418,10 +421,10 @@
             <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)"
               accept=".csv" formControlName="csv">
 
-            <div class="progress-bar">
+            <!-- <div class="progress-bar">
               <div class="progress"></div>
               <div class="progress-text">0%</div>
-            </div>
+            </div> -->
 
           </div>
         </div>
