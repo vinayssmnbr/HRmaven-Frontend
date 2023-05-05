@@ -177,17 +177,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.experienceItems.removeAt(index);
   }
 
-  // onSubmit() {
-  //   console.log(this.experienceForm.value);
-  //   const updatedData = this.experienceForm.value;
-  //   console.log('exp', updatedData);
-  //   updatedData['_id'] = this.user._id;
-  //   this.dashService.updateEmployee(updatedData).subscribe((res) => {
-  //     console.log('experience', res);
-  //   });
-  //   this.user = updatedData;
-  // }
-
   array1: any = [
     {
       id: 0,
@@ -605,13 +594,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = false;
-    // const updatedData = this.form.value;
-    // // const updatedData1=this.formArrayName.value;
-    // console.log('abc', updatedData);
-    // updatedData['_id'] = this.user._id;
-    // this.dashService.updateEmployee(updatedData).subscribe(() => {
-    //   console.log('Data updated successfully');
-    // });
 
     console.log(this.experienceForm.value);
     const updatedData = this.experienceForm.value;
