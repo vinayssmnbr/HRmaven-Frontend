@@ -224,54 +224,9 @@
         <hr>
 
         <div class="cnt-btn">
-          <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+          <button class="view" (click)="showMoredata()" *ngIf="!viewMore">View More<i
               class="fa-solid fa-angle-down"></i></button>
         </div>
-        <!-- <div class="row1" *ngIf="viewMore">
-        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
-
-        <div class="column1">
-          <span class="orgname">Company/Organisation Name</span>
-          <p *ngIf="!user.expcompany1">----------</p>
-          <p class="orgname" *ngIf="user.expcompany1">{{user.expcompany1}}</p>
-          <span class="location2">Location</span>
-          <p *ngIf="!user.explocation1">----------</p>
-          <p class="location2" *ngIf="user.explocation1">{{user.explocation1}}</p>
-        </div>
-        <div class="column2">
-          <span class="duration2">Duration</span>
-          <p *ngIf="!user.expduration1">----------</p>
-          <p class="duration2" *ngIf="user.expduration1">{{user.expduration1}}</p>
-        </div>
-        <div class="column3">
-          <span class="designation2">Designation</span>
-          <p *ngIf="!user.expdesignation1">----------</p>
-          <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
-        </div>
-      </div>
-      <hr *ngIf="viewMore">
-      <div class="row1" *ngIf="viewMore">
-        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
-
-        <div class="column1">
-          <span class="orgname">Company/Organisation Name</span>
-          <p *ngIf="!user.expcompany1">----------</p>
-          <p class="orgname" *ngIf="user.expcompany1">{{user.expcompany1}}</p>
-          <span class="location2">Location</span>
-          <p *ngIf="!user.explocation1">----------</p>
-          <p class="location2" *ngIf="user.explocation1">{{user.explocation1}}</p>
-        </div>
-        <div class="column2">
-          <span class="duration2">Duration</span>
-          <p *ngIf="!user.expduration1">----------</p>
-          <p class="duration2" *ngIf="user.expduration1">{{user.expduration1}}</p>
-        </div>
-        <div class="column3">
-          <span class="designation2">Designation</span>
-          <p *ngIf="!user.expdesignation1">----------</p>
-          <p class="designation2" *ngIf="user.expdesignation1">{{user.expdesignation1}}</p>
-        </div>
-      </div> -->
         <div class="cnt-btn">
           <button class="hide" (click)="hidedata()" *ngIf="viewMore">View less<i
               class="fa-solid fa-angle-up"></i></button>
@@ -682,7 +637,6 @@
             </div>
             <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
               More</button>
-            <button type="submit">Submit</button>
           </form>
 
 

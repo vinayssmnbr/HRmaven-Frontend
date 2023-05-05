@@ -714,16 +714,17 @@ export class EmployeeProfileComponent implements OnInit {
       console.log('img', this.imageurl);
     });
   }
-
+  maxItems = 1;
   viewMore: boolean = false;
   showbutton: boolean = true;
   showMoredata() {
-    this.viewMore = !this.viewMore;
-    this.showbutton = !this.showbutton;
+    // this.viewMore = !this.viewMore;
+    // this.showbutton = !this.showbutton;
+    this.viewMore = true;
   }
   hidedata() {
     this.viewMore = false;
-    this.showbutton = true;
+    // this.showbutton = true;
   }
   // openotherinput:boolean=false;
   // openInput() {
