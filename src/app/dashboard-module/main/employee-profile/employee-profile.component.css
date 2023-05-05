@@ -1344,14 +1344,17 @@ input[type='number']:hover {
 }
 
 div[role="progressbar"] {
-  --size: 12rem;
-  --fg: #369;
+  --size: 2.9rem;
+  --fg: #2f2c9f;
   --bg: #def;
   --pgPercentage: var(--value);
-  animation: growProgressBar 3s 1 forwards;
+  animation: growProgressBar 5s 1 forwards;
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 30px;
   display: grid;
   place-items: center;
   background:
