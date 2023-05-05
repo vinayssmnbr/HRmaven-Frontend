@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="meeting-area">
+            <div class="meeting-area" >
                 <div class="meeting-text">
                     <h2>Meetings</h2>
                     <p (click)="openModal10()"><i class="fa-solid fa-circle-plus" (click)="openModal10()"></i> Create
@@ -72,9 +72,9 @@
                                 <p>{{option.day}}</p>
                                 <h5>{{option.Date}}</h5>
                             </div>
-                            <div class="interview-timings">
-                                <div class="interview-dots">
-                                    <h3 (click)="openModal11()">{{option.head}}</h3>
+                            <div class="interview-timings" >
+                                <div class="interview-dots" (click)="openModal11()">
+                                    <h3>{{option.head}}</h3>
                                     <p>{{option.time}}</p>
                                 </div>
                                 <div class="dots">
@@ -88,7 +88,50 @@
                             </div>
                         </div>
                     </div>
+                    <div class="interview-modal-content" *ngIf="showModalContent" >
+                        <div class="tag-date-notes">
+                            <div class="tag-interview-cross">
+                                <div class="tag-interview">
+                                    <div class="tag">
+                                        <img src="assets/images/tag.svg" alt="">
+                                    </div>
+                                    <h4>Inteview</h4>
+                                </div>
+                                <i class="fa-solid fa-xmark interview-cross" (click)="closeModal11()"></i>
+                            </div>
+                            <div class="calender-date-time">
+                                <div class="calender">
+                                    <img src="assets/images/calender-date.png" alt="">
+                                </div>
+                                <div class="date-time">
+                                    <h4>22nd January 2023</h4>
+                                    <p>9:00 am - 11:00 am</p>
+                                </div>
+            
+                            </div>
+                            <div class="notes-text">
+                                <div class="notes">
+                                    <img src="assets/images/Group 214.svg" alt="">
+                                </div>
+                                <div class="notes-para">
+                                    <h4>Latest notes</h4>
+                                    <p>posted on 9 january, 2023</p>
+                                    <div class="notes-para-text">
+                                        <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing
+                                            projects </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="join-meeting-button">
+                            <button class="join" (click)="closeModal11()">Join meeting</button>
+                        </div>
+                    </div>
                 </div>
+             
+                    
+               
             </div>
         </div>
     </div>
@@ -458,48 +501,7 @@
 
 
     <!----------------------Meetings-modal------------------>
-    <div class="interview-modal" *ngIf="showModal11">
-        <div class="interview-modal-content" *ngIf="showModalContent">
-            <div class="tag-date-notes">
-                <div class="tag-interview-cross">
-                    <div class="tag-interview">
-                        <div class="tag">
-                            <img src="assets/images/tag.svg" alt="">
-                        </div>
-                        <h4>Inteview</h4>
-                    </div>
-                    <i class="fa-solid fa-xmark interview-cross" (click)="closeModal11()"></i>
-                </div>
-                <div class="calender-date-time">
-                    <div class="calender">
-                        <img src="assets/images/calender-date.png" alt="">
-                    </div>
-                    <div class="date-time">
-                        <h4>22nd January 2023</h4>
-                        <p>9:00 am - 11:00 am</p>
-                    </div>
-
-                </div>
-                <div class="notes-text">
-                    <div class="notes">
-                        <img src="assets/images/Group 214.svg" alt="">
-                    </div>
-                    <div class="notes-para">
-                        <h4>Latest notes</h4>
-                        <p>posted on 9 january, 2023</p>
-                        <div class="notes-para-text">
-                            <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing
-                                projects </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="join-meeting-button">
-                <button class="join" (click)="closeModal11()">Join meeting</button>
-            </div>
-        </div>
-    </div>
+   
 
 
 </div>
