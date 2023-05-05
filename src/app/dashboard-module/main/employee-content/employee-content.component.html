@@ -338,7 +338,7 @@
 
       <div class="modal-footer">
         <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
-          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url && emailExists)">
+          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && form.value.email && form.value.mobile && form.value.url)">
           Next </button>
         <button *ngIf="secondStep" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
