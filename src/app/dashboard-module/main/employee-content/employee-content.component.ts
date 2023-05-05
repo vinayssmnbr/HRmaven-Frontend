@@ -21,7 +21,7 @@ import { error, log } from 'console';
 import { CookieService } from 'ngx-cookie-service';
 
 import * as FileSaver from 'file-saver';
-
+import {saveAs} from 'file-saver'
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -30,8 +30,7 @@ import * as FileSaver from 'file-saver';
 export class EmployeeContentComponent implements OnInit {
   // user:any;
   isChecked: boolean = true;
-  // isChecked1:boolean=true;
-  // parentSelector: boolean = false;
+ 
 
   users: any[] = [];
   selected: any[] = [];
@@ -56,6 +55,7 @@ export class EmployeeContentComponent implements OnInit {
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
+    
     @Inject(DOCUMENT) public document: Document,
     private cookie: CookieService
   ) {
@@ -220,14 +220,14 @@ export class EmployeeContentComponent implements OnInit {
     this.progressBar = document.getElementsByClassName('progress');
     this.progressText = document.getElementsByClassName('progress-text');
 
-    this.interval = setInterval(() => {
-      this.progress++;
-      if (this.progress > 100) {
-        this.progress = 0;
-      }
-      this.progressBar[0].style.width = `${this.progress}%`;
-      this.progressText[0].innerText = `${this.progress}%`;
-    }, 50);
+    // this.interval = setInterval(() => {
+    //   this.progress++;
+    //   if (this.progress > 100) {
+    //     this.progress = 0;
+    //   }
+    //   this.progressBar[0].style.width = `${this.progress}%`;
+    //   this.progressText[0].innerText = `${this.progress}%`;
+    // }, 50);
 
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
@@ -1031,12 +1031,14 @@ export class EmployeeContentComponent implements OnInit {
       }
 
       console.log(data, 'parsed CSV data');
-      let uid: number = -1;;
+      // if(data.length==0) return 'no user selected'
+      let uid: number = -1;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         // 
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'
+        let increaseBy:number = 100/(data.length); 
         data.forEach((employee) => {
           console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
@@ -1044,6 +1046,9 @@ export class EmployeeContentComponent implements OnInit {
           this.dashService.addEmployee(employee).subscribe((res: any) => {
             console.log('Response:', res);
             console.log('Data:', res.data);
+            this.progress+= increaseBy;
+            this.progressBar[0].style.width = `${this.progress}%`;
+            this.progressText[0].innerText = `${this.progress}%`;
 
           });
         });
@@ -1194,8 +1199,14 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
+
+  
+
   ngOnChange() { }
 
+ 
+ 
+ 
 
 
 }

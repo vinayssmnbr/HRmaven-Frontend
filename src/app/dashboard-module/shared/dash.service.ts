@@ -279,6 +279,9 @@ export class DashService {
   }
 
  
-
+download(){
+  return this.http.get('http://localhost:3000',
+  {responseType:"blob",reportProgress:true,observe:"events"})
+}
 
 }

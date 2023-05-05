@@ -86,8 +86,8 @@
         <i class="fa-solid fa-list"></i>
         <img src="./assets/images/Vector (1).svg" alt="">
       </div>
-      <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}" [disabled]="selectedEmployess.length==0"><img
-          src="./assets/images/prime_file-import.svg">Export</button>
+      <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
+        [disabled]="selectedEmployess.length==0"><img src="./assets/images/prime_file-import.svg">Export</button>
       <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
@@ -97,7 +97,8 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length" (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+          <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
+              (change)="onCheckboxChange($event, 'All')">Employee ID</th>
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -417,12 +418,12 @@
               formControlName="csv">
             <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)"
               accept=".csv" formControlName="csv">
-  
+
             <div class="progress-bar">
               <div class="progress"></div>
               <div class="progress-text">0%</div>
-            </div>
-           
+            </div> 
+            
           </div>
         </div>
         <div class="import-btns">
