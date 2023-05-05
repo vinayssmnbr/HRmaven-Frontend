@@ -165,8 +165,7 @@
                                 <!-- <p class="first">Select a file or drag and drop here</p> -->
                                 <p class="second">Supported formats: pdf, jpg, png</p>
                                 <div class="choose-btn">
-                                    
-                                    <!-- <div class="progress_bar_loader" *ngIf="loader"></div> -->
+
                                     <!-- <input type="file" (change)="onFileSelected($event)"> -->
                                     <div class="file_upload">
                                         <input type="file" (change)="onFileSelected($event)">
@@ -174,7 +173,8 @@
                                     <div class="file_size">
                                         <p>Maximum Size : 5 MB</p>
                                     </div>
-                                    <div class="upload_progress_bar" *ngIf="loader">
+                                    <div class="progress_bar_loader" *ngIf="loader"></div>
+                                    <!-- <div class="upload_progress_bar" *ngIf="loader">
                                         <div class="pdf_file">
                                             <h4>PDF</h4>
                                         </div>
@@ -185,7 +185,7 @@
                                                 <div class="progress-text-input">0%</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
