@@ -89,19 +89,18 @@ export class DashboardContentComponent {
 
 var oilData = {
     labels: [
-        "Saudi Arabia",
-        "Russia",
-        "Canada"
+        // "Saudi Arabia",
+        // "Russia",
+        // "Canada"
     ],
     datasets: [
         {
-            data: [133.3, 86.2, 52.2, 51.2, 50.2],
+            data: [76 ,4 , 20],
             backgroundColor: [
-                "#FF6384",
-                "#63FF84",
-                "#84FF63",
-                "#8463FF",
-                "#6384FF"
+                "#5AB452",
+                "#EA6565",
+                "#FBB642"
+               
             ]
         }]
 };

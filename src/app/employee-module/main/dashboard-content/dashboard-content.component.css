@@ -75,7 +75,7 @@
   margin-right: 25px;
 }
 .attendance{
-  width: 60%;
+  width: 70%;
 }
 .leave-balance {
   padding: 27px 25px;
@@ -459,9 +459,8 @@
 
 .casual-leave{
   display: flex;
-  /* margin-top: 20px; */
  justify-content: space-between;
-  width: 260px;
+  width: 100%;
   height: 92px;
   background-color: #FAFAFA;
   border-radius: 10px;
@@ -478,7 +477,7 @@
   padding: 24px 19px;
 }
 .balance{
-  width: 40%;
+  width: 30%;
 }
 .leave_balance h1 {
   font-weight: 500;
@@ -522,6 +521,10 @@ color: #444444;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.pie{
+     height: 240px !important;
+    width: 240px !important;
 }
 .present {
   display: flex;
