@@ -228,7 +228,7 @@ onSubmit(data:any){
     this.cookie.set('role',result.role);
     localStorage.setItem('emailid', this.sigupform.controls['email'].value);
     this.orgnisation = this.sigupform.controls['username'].value;
-    localStorage.setItem('organisation', this.orgnisation);
+    localStorage.setItem('companyname', this.sigupform.controls['username'].value);  
 
   })
 }

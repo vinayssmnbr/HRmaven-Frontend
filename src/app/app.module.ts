@@ -13,7 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TermConditionComponent } from './term-condition/term-condition.component';
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
 // import { DashboardComponent } from './main/dashboard/dashboard.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +31,10 @@ import { LoginEmployeeComponent } from './login-employee/login-employee.componen
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
+   
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
+  
 })
 export class AppModule {}
