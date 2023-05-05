@@ -720,32 +720,32 @@ export class EmployeeContentComponent implements OnInit {
       case 'active': {
         this.optionStyle = {
           'background-color': 'rgba(123, 211, 109, 0.3)',
-          color: '#3D9030',
-          border: 'rgba(123, 211, 109, 0.3)',
+          'color': '#3D9030',
+          'border': 'rgba(123, 211, 109, 0.3)',
         };
         break;
       }
       case 'terminated': {
         this.optionStyle = {
           'background-color': 'rgba(250, 151, 150, 0.2)',
-          color: '#CB1E0F',
-          border: 'rgba(250, 151, 150, 0.2)',
+          'color': '#CB1E0F',
+          'border': 'rgba(250, 151, 150, 0.2)',
         };
         break;
       }
       case 'resigned': {
         this.optionStyle = {
-          'background-color': '#2f2c9f',
-          color: '#CE524A',
-          border: '#2f2c9f',
+          'background-color': '#EFEFF8',
+          'color': '#2f2c9f',
+          'border': '#EFEFF8',
         };
         break;
       }
       case 'absconder': {
         this.optionStyle = {
           'background-color': 'rgba(248, 187, 111, 0.4)',
-          color: '#DB771D',
-          border: 'rgba(248, 187, 111, 0.4)',
+          'color': '#DB771D',
+          'border': 'rgba(248, 187, 111, 0.4)',
         };
         break;
       }

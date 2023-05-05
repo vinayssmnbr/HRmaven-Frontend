@@ -45,6 +45,7 @@ export class LeavesContentComponent {
     await this.empService.leavegraph().subscribe((res: any) => {
       console.log(res.response[0]);
       this.obj = res.response[0];
+      console.log(this.obj);
     });
 
     this.empService.leavehistory().subscribe((res: any) => {
@@ -130,7 +131,7 @@ export class LeavesContentComponent {
   array: any = [
     {
       id: 0,
-      name: 'Casual leave',
+      name: 'casual',
     },
     {
       id: 1,
