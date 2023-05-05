@@ -410,13 +410,14 @@
 }
 
 .form__group .form_input {
-    width: 270px;
+    width: 100%;
     padding: 10px 17px;
     height: 40px;
     background-color: #FFFFFF;
     border: 1px solid #CBCBCB;
     border-radius: 8px;
     margin-top: 5px;
+    outline: none;
 }
 
 .name-email {
@@ -711,6 +712,7 @@ input[type="file"]{
     border-radius: 8px;
     margin-top: 5px;
     border: none;
+    color: black;
 }
 
 .modal-text textarea {
