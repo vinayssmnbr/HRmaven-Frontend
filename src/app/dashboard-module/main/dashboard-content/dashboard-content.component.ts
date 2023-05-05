@@ -39,12 +39,14 @@ export class DashboardContentComponent implements OnInit {
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    domain: new FormControl('', [Validators.required, Validators.pattern(/\.com$/)]),
-        phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-    headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
+    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    domain: new FormControl('', [Validators.required, Validators.pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$")]),
+    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
+
   })
-  email = localStorage.getItem('email');
+  email = localStorage.getItem('emailid');
   submitPersonalData(data: any){
     console.log("personal data: ", data);
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
@@ -100,7 +102,7 @@ export class DashboardContentComponent implements OnInit {
   ]
   personalData: any =''
   empname: any = ''
-  objectuserid = localStorage.getItem('email')
+  objectuserid = localStorage.getItem('emailid')
 
   ngOnInit()
    {

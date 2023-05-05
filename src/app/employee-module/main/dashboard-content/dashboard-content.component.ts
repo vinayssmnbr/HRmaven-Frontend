@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../shared/emp.service';
-
+import { Chart, registerables } from 'node_modules/chart.js';
+Chart.register(...registerables);
+// import {Chart} from 'chart.js/auto';
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
   styleUrls: ['./dashboard-content.component.css']
 })
 export class DashboardContentComponent {
-  constructor(private empService:EmpService){
-    empService.activeComponent='dashboard';
-    empService.headerContent='';
+  
+  oilCanvas: any = '';
+  constructor(private empService: EmpService) {
+    empService.activeComponent = 'dashboard';
+    empService.headerContent = '';
 
   }
   in: any;
@@ -72,14 +76,39 @@ export class DashboardContentComponent {
     this.contentdropdown = !this.contentdropdown;
   }
   Selectvariable: string = 'January';
-  colorvariable: number =  0;
+  colorvariable: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
-    this.contentdropdown=false;
+    this.contentdropdown = false;
     console.log(arr.name);
   }
-  ngOnInit(){
+  ngOnInit() {
+    this.oilCanvas = document.getElementById("oilChart");
+
+
+const data = {
+    labels: [
+        // "Saudi Arabia",
+        // "Russia",
+        // "Canada"
+    ],
+    datasets: [
+        {
+            data: [76 ,4 , 20],
+            backgroundColor: [
+                "#5AB452",
+                "#EA6565",
+                "#FBB642"
+               
+            ]
+        }]
+};
+
+var pieChart = new Chart(this.oilCanvas, {
+  type: 'doughnut',
+  data: data
+});
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
         this.in = "";
@@ -92,5 +121,14 @@ export class DashboardContentComponent {
       console.log(res);
     })
   }
+
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+
+
 }
+
+
 

@@ -168,6 +168,45 @@ togglePassword(passwordInpu: any) {
   this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
   passwordInpu.type = this.showPassword1 ? 'password' : 'text';
 }
+emailId: any = '';
+orgname: any = '';
+emailExists: boolean = false;
+emailnotExists: boolean = false;
+usernameExists: boolean = false;
+
+checkUsernameInput() {
+  this.orgname = this.sigupform.controls['username'].value;
+  this.userService.getUsernameData(this.orgname).subscribe((res: any) => {
+    console.log("message: ", res);
+    console.log("message email: ", res.message);
+    console.log("message email: ", res.email);
+    if (res.message === 'user-found') {
+      this.usernameExists = true;
+      this.fun['username'].setErrors({ 'usernameExists': true });
+    } else {
+      this.usernameExists = false;
+      this.fun['username'].setErrors(null);
+      this.fun['username'].markAsTouched(); // Mark the control as touched to trigger validation messages
+    }
+  });
+}
+
+checkEmailInput() {
+  this.emailId = this.sigupform.controls['email'].value;
+  this.userService.getData(this.emailId).subscribe((res: any) => {
+   
+    console.log("message: ", res);
+    console.log("message email: ", res.message);
+    console.log("message email: ", res.email);
+    if (res.message === 'user-found') {
+      this.fun['email'].setErrors({ 'emailExists': true });
+    } else {
+      this.fun['email'].setErrors(null);
+      this.fun['email'].markAsTouched(); // Mark the control as touched to trigger validation messages
+    }
+  });
+}
+
 
 onSubmit(data:any){
   console.log(this.sigupform.value);
@@ -183,10 +222,10 @@ onSubmit(data:any){
       document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
   console.log("result:",result)
   console.log("object_id:",result.user._id)
-    localStorage.setItem('email', this.sigupform.controls['email'].value);
+    // localStorage.setItem('email', this.sigupform.controls['email'].value);
     this.cookie.set('hr_id',result.id);
     this.cookie.set('role',result.role);
-
+    localStorage.setItem('emailid', this.sigupform.controls['email'].value);
   })
 }
 submit(){

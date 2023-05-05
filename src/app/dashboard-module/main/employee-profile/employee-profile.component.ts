@@ -51,19 +51,19 @@ export class EmployeeProfileComponent implements OnInit {
   job_type: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
+    name: new FormControl('', [Validators.pattern('[a-zA-Z ]+'), Validators.required]),
     designation: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
-    motherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
+    fatherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+'), Validators.required]),
+    motherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+'), Validators.required]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
-    inter: new FormControl('', [Validators.pattern(/^\d+(\.\d{1,2})?%?$/)]),
+    inter: new FormControl('', [Validators.pattern(/^\d+(\.\d{1,2})?%?$/), Validators.required]),
     interPercent: new FormControl('', [
       Validators.pattern(/^\d+(\.\d{1,2})?%?$/),
     ]),
@@ -87,24 +87,25 @@ export class EmployeeProfileComponent implements OnInit {
     ctc: new FormControl(''),
     job_type: new FormControl(''),
     bankname: new FormControl(''),
-    adhaarno: new FormControl('', [Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
+    adhaarno: new FormControl('', [Validators.pattern(/^[2-9]{1}[0-9]{11}$/), Validators.required]),
     accountno: new FormControl(''),
     ifsc: new FormControl('', [
-      Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
+      Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/), Validators.required
     ]),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
+      Validators.required
     ]),
     panno: new FormControl('', [
-      Validators.pattern(/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/),
+      Validators.pattern(/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/), Validators.required
     ]),
-    mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}')]),
+    mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}'), Validators.required]),
     email: new FormControl('', [
       Validators.email,
-      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'), Validators.required
     ]),
     state: new FormControl(''),
-    postalCode: new FormControl('', Validators.pattern(/^[0-9]{6}$/)),
+    postalCode: new FormControl('', [Validators.pattern(/^[0-9]{6}$/), Validators.required]),
     city: new FormControl(''),
     address: new FormControl(''),
     profemail: new FormControl(''),
