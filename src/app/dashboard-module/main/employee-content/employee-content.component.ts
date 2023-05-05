@@ -783,26 +783,26 @@ export class EmployeeContentComponent implements OnInit {
     if (user.status === 'active') {
       return {
         'background-color': 'rgba(123, 211, 109, 0.3)',
-        color: '#3D9030',
-        border: 'rgba(123, 211, 109, 0.3)',
+        'color': '#3D9030',
+       'border': 'rgba(123, 211, 109, 0.3)',
       };
     } else if (user.status === 'terminated') {
       return {
         'background-color': 'rgba(250, 151, 150, 0.2)',
-        color: '#CB1E0F',
-        border: 'rgba(250, 151, 150, 0.2)',
+        'color': '#CB1E0F',
+        'border': 'rgba(250, 151, 150, 0.2)',
       };
     } else if (user.status === 'resigned') {
       return {
-        'background-color': 'rgba(255, 238, 82, 0.5)',
-        color: '#CE524A',
-        border: 'rgba(255, 238, 82, 0.5)',
+        'background-color': '#EFEFF8',
+        'color': '#2f2c9f',
+        'border': '#EFEFF8',
       };
     } else if (user.status === 'absconder') {
       return {
         'background-color': 'rgba(248, 187, 111, 0.4)',
-        color: '#DB771D',
-        border: 'rgba(248, 187, 111, 0.4)',
+        'color': '#DB771D',
+        'border': 'rgba(248, 187, 111, 0.4)',
       };
     } else {
       return {};

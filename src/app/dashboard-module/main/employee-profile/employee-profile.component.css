@@ -727,6 +727,10 @@ hr {
   border: 1px solid #2F2C9F;
 }
 
+.form-row .input .text{
+  border: 1px solid #cbcbcb ;
+}
+
 label {
   font-weight: 400;
   font-size: 14px;
@@ -1284,7 +1288,7 @@ input[type='number']:hover {
   border: 1px solid #2F2C9F !important;
 } */
 .text.invalid {
-  border: 1px solid red ;
+  border: 1px solid red  ;
 }
 
 .text.invalid:hover {
@@ -1302,21 +1306,21 @@ input[type='number']:hover {
 .dropdwon_select:hover{
   border: 1px solid #2F2C9F !important;
 }
-input[type='text']:hover{
+/* input[type='text']:hover{
   border: 1px solid #2F2C9F;
-}
+} */
 .text.ng_invalid {
-  border: 1px solid red ;
+  border: 1px solid red !important ;
 }
 
 .text.ng_invalid:hover {
-  border: 1px solid red ;
+  border: 1px solid red !important;
 }
 
 .text.ng_valid {
-  border: 1px solid green ;
+  border: 1px solid green !important;
 }
 
 .text.ng_valid:hover {
-  border: 1px solid green;
+  border: 1px solid green !important;
 }
