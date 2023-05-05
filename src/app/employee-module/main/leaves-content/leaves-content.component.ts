@@ -128,7 +128,7 @@ export class LeavesContentComponent {
   array: any = [
     {
       id: 0,
-      name: 'Casual leave',
+      name: 'casual',
     },
     {
       id: 1,

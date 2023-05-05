@@ -140,16 +140,33 @@ export class EmpService {
   }
 
 
-  punchin() {
+  punchin(ip:any) {
     console.log('dvfoivemvvmrv');
     const id = this.cookie.get('id');
+
     const headers = new HttpHeaders(
       {
         'Content-Type': 'application/json',
-        'id': id.toString(),
+        'id': id
       }
     )
-    return this.http.patch(this.prefix+'attendance/emp/punchin', { headers });
+    console.log(id);
+    return this.http.post('http://localhost:3000/attendance/emp/punchin',{id,ip},{ headers });
+
+  }
+
+  punchout(ip:any) {
+    console.log('dvfoivemvvmrv');
+    const id = this.cookie.get('id');
+
+    const headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'id': id
+      }
+    )
+    console.log(id);
+    return this.http.post('http://localhost:3000/attendance/emp/punchout',{id,ip},{ headers });
 
   }
 

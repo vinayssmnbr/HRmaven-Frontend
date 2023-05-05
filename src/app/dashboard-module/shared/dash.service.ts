@@ -40,7 +40,9 @@ export class DashService {
   // }
 
   //ADD  Employee Data
-  addEmployee(data) {
+  addEmployee(data:any) {
+    const id = this.cookie.get('hr_id');
+    data['hrid']=id;
     return this.http.post(this.prefix + 'api/create', data);
   }
 
@@ -252,7 +254,7 @@ export class DashService {
     return this.http.patch(url, { status });
   }
 
- 
+
 
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../shared/emp.service';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
@@ -9,7 +9,7 @@ import { EmpService } from '../../shared/emp.service';
 export class AttendanceComponent implements OnInit {
 
 
-  constructor(public empService: EmpService) {
+  constructor(public empService: EmpService, private http: HttpClient) {
     empService.activeComponent = 'attendance';
     empService.headerContent = '';
     this.attendance();
@@ -24,7 +24,7 @@ export class AttendanceComponent implements OnInit {
   tomorrow: any;
   in: any;
   out: any;
-
+  ipAddress = '';
   attendance() {
     this.empService.attendanceload().subscribe((res: any) => {
       // current date
@@ -59,12 +59,12 @@ export class AttendanceComponent implements OnInit {
     // this.leave=(this.leave/this.total)*100;
     // console.log(this.total);
   }
-
-  punchin() {
+  ip: any;
+  async punchin() {
     navigator.geolocation.getCurrentPosition(this.showLoc, this.errHand);
   }
 
-   showLoc(pos: any) {
+  showLoc = async (pos: any) => {
     console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
 
     const lat = pos.coords.latitude
@@ -76,11 +76,19 @@ export class AttendanceComponent implements OnInit {
 
       console.log(lat);
       console.log(lon);
+      if (this.ipAddress != '') {
+        this.empService.punchin(this.ipAddress).
+          subscribe((res: any) => {
+            console.log(res.time);
+            console.log(this.ipAddress);
+            this.in = res.time;
+          })
+      }
     }
     else {
       console.log("out of range")
-      this.empService.punchin().subscribe((res: any)=>{
-      })
+
+
     }
   }
 
@@ -94,8 +102,43 @@ export class AttendanceComponent implements OnInit {
 
 
   punchout() {
-
+    navigator.geolocation.getCurrentPosition(this.showLocation, this.error);
   }
+
+  showLocation = async (pos: any) => {
+    console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
+
+    const lat = pos.coords.latitude
+    const lon = pos.coords.longitude
+    const lat1 = 31.2521879;
+    const lon1 = 75.7033441;
+    const R = 63710;
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+
+      console.log(lat);
+      console.log(lon);
+      if (this.ipAddress != '') {
+        this.empService.punchout(this.ipAddress).
+          subscribe((res: any) => {
+            console.log(res.time);
+            console.log(this.ipAddress);
+            this.out = res.time;
+          })
+      }
+    }
+    else {
+      console.log("out of range")
+    }
+  }
+
+  error(err: any) {
+    switch (err.code) {
+      case err.PERMISSION_DENIED:
+        alert('you dont have right to mark the attendance until location is share')
+        break;
+    }
+  }
+
   ngOnInit(): void {
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
@@ -108,8 +151,20 @@ export class AttendanceComponent implements OnInit {
       }
       console.log(res);
     })
+
+    this.getIPAddress();
   }
 
+  getIPAddress() {
+
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
+
+      this.ipAddress = res.ip;
+      console.log(this.ipAddress);
+
+    });
+
+  }
 
   array: any = [
     {
