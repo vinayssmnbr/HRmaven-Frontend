@@ -206,6 +206,7 @@ checkEmailInput() {
     }
   });
 }
+orgnisation: any = '';
 
 
 onSubmit(data:any){
@@ -226,6 +227,9 @@ onSubmit(data:any){
     this.cookie.set('hr_id',result.id);
     this.cookie.set('role',result.role);
     localStorage.setItem('emailid', this.sigupform.controls['email'].value);
+    this.orgnisation = this.sigupform.controls['username'].value;
+    localStorage.setItem('organisation', this.orgnisation);
+
   })
 }
 submit(){

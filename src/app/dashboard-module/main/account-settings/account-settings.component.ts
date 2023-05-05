@@ -23,7 +23,7 @@ export class AccountSettingsComponent implements OnInit {
  readonly= false;
 
  constructor(private userService:UserService, private formBuilder: FormBuilder){}
-  objectuserid = localStorage.getItem('email')
+  objectuserid = localStorage.getItem('emailid')
   // loginobjectid:any = ''
 
  data: any = ''
@@ -42,8 +42,9 @@ export class AccountSettingsComponent implements OnInit {
 
 email_id = this.employeeemail.split("@")
 professional_email_id = this.email_id[0] + "@" + this.specific_domain
-
+organisationn: any = '';
  ngOnInit(){
+  this.organisationn =  localStorage.getItem('companyname');
   // this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
 
   //   console.log('response account:' +res.useridd);
@@ -60,7 +61,7 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
     phone: ['']
   });
       this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-        console.log("res account settings personaldata: ", res);
+        console.log("res account settings personaldataaaaa: ", res);
 
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
