@@ -783,4 +783,9 @@ input:disabled{
   border:1px solid green !important;
 }
 
-
+.password-matches {
+    border-color: green;
+  }
+  .green-border {
+    border: 2px solid green;
+  }  
