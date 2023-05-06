@@ -235,7 +235,8 @@ obj:any
         this.loginForm.controls['email'].value
       );
 
-      localStorage.setItem('emailid', this.loginForm.controls['email'].value);  
+      localStorage.setItem('emailid', this.loginForm.controls['email'].value);
+      localStorage.setItem('companyname', res.username);  
     });
     // this.personalData = localStorage.getItem('totalemployee');
     // this.userService.isnotFromSignupPage = true;

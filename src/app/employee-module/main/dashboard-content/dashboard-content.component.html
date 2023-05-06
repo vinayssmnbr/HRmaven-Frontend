@@ -11,8 +11,8 @@
                             <p>Punch in timing</p>
                             <h1>{{in | date:'shortTime'}}</h1>
                         </div>
-                        <div class="text-image-icon">
-                            <img src="assets/images/punch_inpng.png" alt="">
+                        <div class="text-image-icon" *ngIf="in=='' || in==null">
+                            <img src="assets/images/punch_inpng.png" alt="" (click)="punchin()">
                         </div>
                     </div>
 
@@ -22,8 +22,8 @@
                         <p>Punch out timing</p>
                         <h1>{{out | date:'shortTime'}}</h1>
                     </div>
-                    <div class="text-image-icon" >
-                        <img src="assets/images/punch_out.svg" alt="">
+                    <div class="text-image-icon" *ngIf="out=='' || out==null">
+                        <img src="assets/images/punch_out.svg" alt="" (click)="punchout()">
                     </div>
                 </div>
 
@@ -40,20 +40,16 @@
 
                     <div class="quick-action">
                         <p>Quick actions</p>
-                        <div class="leave-profile">
-                            <div class="leave">
+                        <div class="leave-profile" >
+                            <div class="leave" routerLink="/emp-leave">
                                 <img src="assets/images/Group 1248-leave.png" alt="">
                                 <p>Leave</p>
                             </div>
-                            <div class="profile">
+                            <div class="profile" routerLink="/emp-profile">
                                 <img src="assets/images/Group 1248-profile.png" alt="">
                                 <p>Profile</p>
                             </div>
-
                         </div>
-
-
-
                     </div>
                 </div>
                 <div class="chart-balance">
@@ -90,7 +86,7 @@
                                         <img src="assets/images/fluent_person-available-24-regular.png" alt="">
                                         <div class="present_percentage">
                                             <h5>Present</h5>
-                                            <h6>76%</h6>
+                                            <h6>{{(present/total)*100}}%</h6>
                                         </div>
                                     </div>
 
@@ -98,14 +94,14 @@
                                         <img src="assets/images/fluent_person-clock-24-regular.svg" alt="">
                                         <div class="present_percentage">
                                             <h5>Leave</h5>
-                                            <h6>20%</h6>
+                                            <h6>{{(leave/total)*100}}%</h6>
                                         </div>
                                     </div>
                                     <div class="present">
                                         <img src="assets/images/fluent-person-cross.svg" alt="">
                                         <div class="present_percentage">
                                             <h5>Absent</h5>
-                                            <h6>4%</h6>
+                                            <h6>{{(absent/total)*100}}%</h6>
                                         </div>
                                     </div>
                                     <!-- <div class="leave"></div> -->
@@ -122,33 +118,42 @@
                                 <div class="casual-leave">
                                     <div class="casual-heading">
                                         <h3>Casual Leave</h3>
-                                        <h4>05</h4>
+                                        <h4>{{obj.casual+obj.urgent}}</h4>
                                     </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Ellipse 100.svg" alt="">
+                                    <div class="progress_circle">
+                                        <circle-progress [percent]="70" [space]="-11" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
                                     <div class="casual-heading">
                                         <h3>Medical Leave</h3>
-                                        <h4>05</h4>
+                                        <h4>{{obj.medical}}</h4>
                                     </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Ellipse 100-green.svg" alt="">
+                                    <div class="progress_circle">
+                                        <circle-progress [percent]="100" [space]="-10" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
                                     <div class="casual-heading">
                                         <h3>Compensatory Leave</h3>
-                                        <h4>10</h4>
+                                        <h4>{{obj.earned}}</h4>
                                     </div>
-                                    <div class="progress_bar">
-                                        <img src="assets/images/Ellipse 100-red.svg" alt="">
+                                    <div class="progress_circle">
+                                        <circle-progress [percent]="70" [space]="-11" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -395,4 +400,18 @@
 
 
     </div>
+
+    <!------------------Location-Modal------------->
+
+    <div class="modal-content" *ngIf="showModalContent">
+
+        <div class="access-location">
+            <div class="access-location-text">
+            <h3>Allow “HRMaven” to access your location?</h3>
+            <p>You’ll only be able to mark your attendance after the access has been allowed.</p>
+            <button (click)="closeModal()">OK</button>
+        </div>
+        </div>
+      </div>
+
 </div>

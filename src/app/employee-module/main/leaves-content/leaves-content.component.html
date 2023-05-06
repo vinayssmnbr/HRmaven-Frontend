@@ -10,10 +10,11 @@
                         <h6>Casual Leave</h6>
                         <h4>{{obj.casual}}</h4>
                     </div>
-                    <div class="progress-circle-container CasualProgress">
-                        <div class="progress-circle progress-20">
-                            <span></span>
-                        </div>
+                    <div class="progress_circle">
+                        <circle-progress [percent]="70" [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                            [backgroundStrokeWidth]="4"></circle-progress>
                     </div>
                 </div>
                 <div class="leaves">
@@ -21,10 +22,11 @@
                         <h6>Medical Leave</h6>
                         <h4>{{obj.medical}}</h4>
                     </div>
-                    <div class="progress-circle-container MedicalProgress">
-                        <div class="progress-circle progress-18">
-                            <span></span>
-                        </div>
+                    <div class="progress_circle">
+                        <circle-progress [percent]="70" [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                            [backgroundStrokeWidth]="4"></circle-progress>
                     </div>
                 </div>
                 <div class="leaves">
@@ -32,10 +34,11 @@
                         <h6>Compensatory Leave</h6>
                         <h4>{{obj.urgent}}</h4>
                     </div>
-                    <div class="progress-circle-container CompensatoryProgress">
-                        <div class="progress-circle progress-18">
-                            <span></span>
-                        </div>
+                    <div class="progress_circle">
+                        <circle-progress [percent]="70" [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                            [backgroundStrokeWidth]="4"></circle-progress>
                     </div>
                 </div>
             </div>
@@ -165,8 +168,7 @@
                                 <!-- <p class="first">Select a file or drag and drop here</p> -->
                                 <p class="second">Supported formats: pdf, jpg, png</p>
                                 <div class="choose-btn">
-                                    
-                                    <!-- <div class="progress_bar_loader" *ngIf="loader"></div> -->
+
                                     <!-- <input type="file" (change)="onFileSelected($event)"> -->
                                     <div class="file_upload">
                                         <input type="file" (change)="onFileSelected($event)">
@@ -174,7 +176,8 @@
                                     <div class="file_size">
                                         <p>Maximum Size : 5 MB</p>
                                     </div>
-                                    <div class="upload_progress_bar" *ngIf="loader">
+                                    <div class="progress_bar_loader" *ngIf="loader"></div>
+                                    <!-- <div class="upload_progress_bar" *ngIf="loader">
                                         <div class="pdf_file">
                                             <h4>PDF</h4>
                                         </div>
@@ -185,7 +188,7 @@
                                                 <div class="progress-text-input">0%</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

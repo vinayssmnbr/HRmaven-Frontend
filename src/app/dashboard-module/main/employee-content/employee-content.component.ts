@@ -217,8 +217,8 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
-    this.progressBar = document.getElementsByClassName('progress');
-    this.progressText = document.getElementsByClassName('progress-text');
+    // this.progressBar = document.getElementsByClassName('progress');
+    // this.progressText = document.getElementsByClassName('progress-text');
 
     // this.interval = setInterval(() => {
     //   this.progress++;
@@ -228,7 +228,6 @@ export class EmployeeContentComponent implements OnInit {
     //   this.progressBar[0].style.width = `${this.progress}%`;
     //   this.progressText[0].innerText = `${this.progress}%`;
     // }, 50);
-
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
@@ -379,7 +378,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -621,18 +620,11 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-  selectedfile: boolean = false
-  onFileSelected1(event: any) {
+  loader: boolean = false;
+  onFileSelected1(event: any) : void {
     this.selectedFile1 = event.target.files[0];
-    const allowedTypes1 = [".csv"];
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-    if (!allowedTypes1.includes(this.selectedFile.type)) {
-      this.fileName1 = null;
-    }
-    if (this.fileName1 != null) {
-      this.selectedfile = true;
-    }
-
+    // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+    this.loader=true;
   }
 
   selectall: boolean = false;
@@ -722,32 +714,32 @@ export class EmployeeContentComponent implements OnInit {
       case 'active': {
         this.optionStyle = {
           'background-color': 'rgba(123, 211, 109, 0.3)',
-          color: '#3D9030',
-          border: 'rgba(123, 211, 109, 0.3)',
+          'color': '#3D9030',
+          'border': 'rgba(123, 211, 109, 0.3)',
         };
         break;
       }
       case 'terminated': {
         this.optionStyle = {
           'background-color': 'rgba(250, 151, 150, 0.2)',
-          color: '#CB1E0F',
-          border: 'rgba(250, 151, 150, 0.2)',
+          'color': '#CB1E0F',
+          'border': 'rgba(250, 151, 150, 0.2)',
         };
         break;
       }
       case 'resigned': {
         this.optionStyle = {
-          'background-color': '#2f2c9f',
-          color: '#CE524A',
-          border: '#2f2c9f',
+          'background-color': '#EFEFF8',
+          'color': '#2f2c9f',
+          'border': '#EFEFF8',
         };
         break;
       }
       case 'absconder': {
         this.optionStyle = {
           'background-color': 'rgba(248, 187, 111, 0.4)',
-          color: '#DB771D',
-          border: 'rgba(248, 187, 111, 0.4)',
+          'color': '#DB771D',
+          'border': 'rgba(248, 187, 111, 0.4)',
         };
         break;
       }
@@ -783,26 +775,26 @@ export class EmployeeContentComponent implements OnInit {
     if (user.status === 'active') {
       return {
         'background-color': 'rgba(123, 211, 109, 0.3)',
-        'color': '#3D9030',
-       'border': 'rgba(123, 211, 109, 0.3)',
+        color: '#3D9030',
+        border: 'rgba(123, 211, 109, 0.3)',
       };
     } else if (user.status === 'terminated') {
       return {
         'background-color': 'rgba(250, 151, 150, 0.2)',
-        'color': '#CB1E0F',
-        'border': 'rgba(250, 151, 150, 0.2)',
+        color: '#CB1E0F',
+        border: 'rgba(250, 151, 150, 0.2)',
       };
     } else if (user.status === 'resigned') {
       return {
         'background-color': '#EFEFF8',
-        'color': '#2f2c9f',
-        'border': '#EFEFF8',
+        color: '#2f2c9f',
+        border: '#EFEFF8',
       };
     } else if (user.status === 'absconder') {
       return {
         'background-color': 'rgba(248, 187, 111, 0.4)',
-        'color': '#DB771D',
-        'border': 'rgba(248, 187, 111, 0.4)',
+        color: '#DB771D',
+        border: 'rgba(248, 187, 111, 0.4)',
       };
     } else {
       return {};
@@ -850,16 +842,16 @@ export class EmployeeContentComponent implements OnInit {
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
-      this.dashService.exportUsers(this.selectedEmployess).subscribe(
-        (data: Blob) => {
-          const downloadUrl = window.URL.createObjectURL(data);
-          const link = document.createElement('a');
-          link.href = downloadUrl;
-          link.download = 'users.csv';
-          link.click();
-        },
-        (error) => console.log(error)
-      );
+    this.dashService.exportUsers(this.selectedEmployess).subscribe(
+      (data: Blob) => {
+        const downloadUrl = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'users.csv';
+        link.click();
+      },
+      (error) => console.log(error)
+    );
     // }
   }
 
@@ -972,9 +964,7 @@ export class EmployeeContentComponent implements OnInit {
   //   reader.readAsText(file);
   // }
 
-
   onFileSelectedrem(event: any): void {
-
     const file: File = event.target.files[0];
 
     if (!file) {
@@ -1034,7 +1024,7 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
       let uid: number = -1;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
-        // 
+        //
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'
@@ -1052,17 +1042,12 @@ export class EmployeeContentComponent implements OnInit {
 
           });
         });
-        return 'employees added'
-
-      })
-
-
+        return 'employees added';
+      });
     };
 
     reader.readAsText(file);
   }
-
-
 
   // importFile() {
   //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;

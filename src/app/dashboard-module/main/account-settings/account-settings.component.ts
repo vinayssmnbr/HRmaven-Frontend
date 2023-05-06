@@ -23,7 +23,7 @@ export class AccountSettingsComponent implements OnInit {
  readonly= false;
 
  constructor(private userService:UserService, private formBuilder: FormBuilder){}
-  objectuserid = localStorage.getItem('email')
+  objectuserid = localStorage.getItem('emailid')
   // loginobjectid:any = ''
 
  data: any = ''
@@ -34,20 +34,18 @@ export class AccountSettingsComponent implements OnInit {
  description: any = '';
  phone : any = '';
  profileimage: any = '';
- employeeemail = localStorage.getItem('email');
+ employeeemail = localStorage.getItem('emailid');
  companyDetailsForm: FormGroup;
  personalDetailsForm: FormGroup;
 
  specific_domain = "hrmaven.com"
-
-email_id = this.employeeemail.split("@")
-professional_email_id = this.email_id[0] + "@" + this.specific_domain
-
+ professional_email_id: any = ''
+ email_id: any = ''
+// email_id = this.employeeemail.split("@")
+// professional_email_id = this.email_id[0] + "@" + this.organisationn
+organisationn: any = '';
  ngOnInit(){
-  // this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
-
-  //   console.log('response account:' +res.useridd);
-  // });
+  this.organisationn =  localStorage.getItem('companyname');
   this.companyDetailsForm = this.formBuilder.group({
 
     headOffice: [''],
@@ -60,7 +58,7 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
     phone: ['']
   });
       this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-        console.log("res account settings personaldata: ", res);
+        console.log("res account settings personaldataaaaa: ", res);
 
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
@@ -76,8 +74,11 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
         this.phone = res.personaldata.phone;
         this.description = res.personaldata.description;
         this.profileimage = res.personaldata.profileimage;
-
+        this.email_id = this.employeeemail.split("@")
+      this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
+  
       });
+   
     }
 
     updateData(data: any){
@@ -108,19 +109,19 @@ professional_email_id = this.email_id[0] + "@" + this.specific_domain
     newpassword(data:any)
     {
       console.log(data.value);
-      // this.userService.newpwdaccount(this.objectid,data.value).subscribe((res:any)=>{
-      //   if(res=="changeit"){
-      //     console.log(res);
-      //   }
+      this.userService.newpwdaccount(this.objectuserid,data).subscribe((res:any)=>{
+        if(res=="changeit"){
+          console.log(res);
+        }
 
-      // });
+      });
 
   }
 
 
 
 
-    objectid = localStorage.getItem('email');
+    objectid = localStorage.getItem('emailid');
 
     updateProfile(data: any){
       this.userService.updatepersonals(this.objectid,data).subscribe((res: any)=>{
