@@ -118,8 +118,12 @@ ul.todo-list li {
   border-radius: 16px;
   text-align: center;
 }
-.todo-list i{
-position: absolute;
+.input_list_li i{
+  position: relative;
+  cursor: pointer;
+}
+.input_list li{
+  display: inline-block;
 }
 
 .skills li {

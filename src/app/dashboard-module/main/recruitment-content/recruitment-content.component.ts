@@ -187,6 +187,7 @@ console.warn(this.list);
 }
 removetask(id:number){
   console.warn(id);
+  this.list=this.list.filter(item=>item.id!==id);
 }
   }
 

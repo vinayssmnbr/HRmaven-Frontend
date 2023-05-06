@@ -532,11 +532,11 @@
                                                 
                                               
                                                 <button (click)="addtask(task.value)">click</button>
-                                                <ul *ngFor="let item of list">
-                                                    <li>{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
+                                                <ul  class="input_list">
+                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> 
 
 
 
