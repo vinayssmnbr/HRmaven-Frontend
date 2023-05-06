@@ -1816,10 +1816,63 @@ opacity: 0;
   font-weight: 400;
   font-size: 12px;
   border: 1px solid #efeff8;
-  padding: 3px 10px;
+  /* padding: 3px 10px; */
   cursor: pointer;
 }
+.file_upload input[type="file"]::-webkit-file-upload-button {
+  outline: none;
+  padding: 10px 25px;
+  transition: all 1s ease;
+  font-weight: 400;
+  font-size: 12px;
+  color: #2F2C9F;
+  padding: 5px 10px;
+  background-color: #EFEFF8;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+.progress_bar_loader {
+  margin-left: 20px;
+  margin-top: 15px;
+  width: 320px;
+  max-width: 90%;
+  height: 6px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
 
+.progress_bar_loader:before {
+  content: '';
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: progress-anime 10s ease-out infinite;
+  background: linear-gradient(to right, #2F2C9F 0%, #2F2C9F 50%, #d2d2d2 50%, #d2d2d2 100%);
+}
+
+@keyframes progress-anime {
+  0% {
+    left: -100%;
+  }
+
+  75% {
+    left: -5%;
+  }
+
+  85% {
+    left: -5%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+.file_upload [type="file"]::-webkit-file-upload-button:hover {
+  border: 2px solid #2F2C9F;
+  color: #000;
+}
 .modal-body5 .file-content h3 {
   font-family: "Outfit", sans-serif;
   font-style: normal;
@@ -2035,41 +2088,4 @@ text-align: center;
 
 .disabledBtn{
   cursor: not-allowed;
-}
-/* -----------------Loader Progress bar girija--------------------- */
-.progress_bar_loader {
-  margin-left: 150px;
-  width: 165px;
-  max-width: 90%;
-  height: 8px;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress_bar_loader:before {
-  content: '';
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  animation: progress-anime 10s ease-out infinite;
-  background: linear-gradient(to right, #2F2C9F 0%, #2F2C9F 50%, #d2d2d2 50%, #d2d2d2 100%);
-}
-
-@keyframes progress-anime {
-  0% {
-      left: -100%;
-  }
-
-  75% {
-      left: -5%;
-  }
-
-  85% {
-      left: -5%;
-  }
-
-  100% {
-      left: 0;
-  }
 }

@@ -620,11 +620,11 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-  selectedfile: boolean = false;
-  onFileSelected1(event: any) {
+  loader: boolean = false;
+  onFileSelected1(event: any) : void {
     this.selectedFile1 = event.target.files[0];
-
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+    // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+    this.loader=true;
   }
 
   selectall: boolean = false;
