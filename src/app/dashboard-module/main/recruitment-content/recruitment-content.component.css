@@ -122,6 +122,9 @@ ul.todo-list li {
   position: relative;
   cursor: pointer;
 }
+.meeting-text-area button{
+  opacity: 0;
+}
 .input_list li{
   display: inline-block;
 }
