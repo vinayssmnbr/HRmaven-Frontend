@@ -21,6 +21,9 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class UserService {
+  setFormSubmitted(formSubmitted: boolean) {
+    throw new Error('Method not implemented.');
+  }
 
   isFromSignupPage = false;
 
