@@ -623,14 +623,8 @@ export class EmployeeContentComponent implements OnInit {
   selectedfile: boolean = false;
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
-    const allowedTypes1 = ['.csv'];
+
     this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-    if (!allowedTypes1.includes(this.selectedFile.type)) {
-      this.fileName1 = null;
-    }
-    if (this.fileName1 != null) {
-      this.selectedfile = true;
-    }
   }
 
   selectall: boolean = false;
@@ -1183,4 +1177,5 @@ export class EmployeeContentComponent implements OnInit {
     });
     this.fetchdata();
   }
+  
 }
