@@ -296,7 +296,7 @@ input:focus {
 }
 
 tbody {
-  background-color: #fff !important;
+  background-color: #f9f9f9 !important;
 }
 
 .icons .fa-trash-can:hover {
@@ -2027,60 +2027,15 @@ background: #ffffff;
   text-align: center;
 }
 
-/* .progress_bar {
-width: 450px;
-  max-width: 80%;
-  height: 8px;
-  box-shadow: 0px 0px 4px #ffffffd1;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  margin-top: -7px;
-  margin-bottom: 35px;
-}
 
-.progress_bar:before {
-  content: "";
-  width: 200%;
-  height: 100%;
-  position: absolute;
-  animation: progress-anime 10s ease-out;
-  animation-iteration-count: 2;
-  background: linear-gradient(
-    to right,
-    #2f2c9f 0%,
-    #2f2c9f 50%,
-    #d2d2d2 50%,
-    #d2d2d2 100%
-  );
-}
 
-@keyframes progress-anime {
-  0% {
-    left: -100%;
-  }
-
-  75% {
-    left: -5%;
-  }
-
-  85% {
-    left: -5%;
-  }
-
-  95% {
-    left: 0;
-  }
-} */
 
 .content3{
   display: flex;
   gap: 44px;
   margin-top: 10px;
 }
-.content3 h3{
-  /* margin-top: -10px; */
-}
+
 .content3 p{
 font-family: 'Outfit';
   font-style: normal;

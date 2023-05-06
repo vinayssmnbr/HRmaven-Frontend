@@ -21,8 +21,15 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class UserService {
+  // opacityValue = 1;
+
+  // updateOpacityValue(formSubmitted: boolean) {
+  //   this.opacityValue = formSubmitted ? 0 : 1;
+  // }
 
   isFromSignupPage = false;
+
+
 
   private behaviorNameSubject: BehaviorSubject<string> =
     new BehaviorSubject<string>('default');
@@ -54,6 +61,11 @@ export class UserService {
   getData(email: string) {
     const url = `${this.prefix + 'getemails/email'}/${email}`;
     return this.http.get(url);
+  }
+  //old password match or not
+  getpwdmgt(email: any, oldpassword: any) {
+    const url = `${this.prefix + 'pwdmgt'}/${email}`;
+    return this.http.post(url, {oldpassword});
   }
 
   getUsernameData(username: any) {
@@ -182,6 +194,11 @@ export class UserService {
   // getRegisteredEmail(email:any){
   //   // return this.http.get('{this.emails}/${email}');
   //   return this.http.get(`${this.prefix + 'email'}?type=${email}`)
+  // }
+
+  // getOldpassword(oldpassword: any) {
+  //   const url = `${this.prefix + 'getOldpasssword/oldpassword'}/${oldpassword}`;
+  //   return this.http.get(url);
   // }
 
 }
