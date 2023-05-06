@@ -34,7 +34,7 @@ export class AccountSettingsComponent implements OnInit {
  description: any = '';
  phone : any = '';
  profileimage: any = '';
- employeeemail = localStorage.getItem('email');
+ employeeemail = localStorage.getItem('emailid');
  companyDetailsForm: FormGroup;
  personalDetailsForm: FormGroup;
 

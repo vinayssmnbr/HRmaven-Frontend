@@ -226,9 +226,12 @@ onSubmit(data:any){
     // localStorage.setItem('email', this.sigupform.controls['email'].value);
     this.cookie.set('hr_id',result.id);
     this.cookie.set('role',result.role);
-    localStorage.setItem('emailid', this.sigupform.controls['email'].value);
+    localStorage.setItem('emailid',this.sigupform.controls['email'].value);
+    this.orgnisation = result.username
+    localStorage.setItem('companyname', this.orgnisation);  
+    // localStorage.setItem('emailid', this.sigupform.controls['email'].value);
     this.orgnisation = this.sigupform.controls['username'].value;
-    localStorage.setItem('organisation', this.orgnisation);
+    localStorage.setItem('companyname', this.sigupform.controls['username'].value);  
 
   })
 }

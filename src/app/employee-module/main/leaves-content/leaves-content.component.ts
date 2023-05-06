@@ -6,7 +6,6 @@ import {
   FormControl,
 } from '@angular/forms';
 import * as moment from 'moment';
-
 import { EmpService } from '../../shared/emp.service';
 @Component({
   selector: 'app-leaves-content',
@@ -14,33 +13,13 @@ import { EmpService } from '../../shared/emp.service';
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
-  // empleaveForm: FormGroup;
-  // ----------Input file custom girija----------------------
-  // progressBar: any;
-  // progressText: any;
-  // progress: number = 0;
-  // interval: any;
-  ngOnInit() {
-    // this.progressBar = document.getElementsByClassName('progress_upload');
-    // this.progressText = document.getElementsByClassName('progress-text-input');
-
-    // this.interval = setInterval(() => {
-    //   this.progress++;
-    //   if (this.progress > 100) {
-    //     this.progress = 0;
-    //   }
-    //   this.progressBar[0].style.width = `${this.progress}%`;
-    //   this.progressText[0].innerText = `${this.progress}%`;
-    // }, 50);
-  }
+  ngOnInit() {}
   inputfilename: boolean = false;
   fileName: string = '';
   onfileselected(event: any) {
     this.selectedFile = event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
   }
-
-  // ----------------------------------------------------
   leaves: any = [];
   str = '';
   obj = {
@@ -66,6 +45,7 @@ export class LeavesContentComponent {
     await this.empService.leavegraph().subscribe((res: any) => {
       console.log(res.response[0]);
       this.obj = res.response[0];
+      console.log(this.obj);
     });
 
     this.empService.leavehistory().subscribe((res: any) => {
@@ -151,7 +131,7 @@ export class LeavesContentComponent {
   array: any = [
     {
       id: 0,
-      name: 'Casual leave',
+      name: 'casual',
     },
     {
       id: 1,
@@ -283,4 +263,5 @@ export class LeavesContentComponent {
       this.empleaveForm.value.url = this.empService.fileUrl;
     });
   }
+  
 }
