@@ -20,7 +20,7 @@ export class EmpService {
     private router: Router,
     private cookie: CookieService
   ) {
-    this.client = filestack.init('AVzXOahQTzuCkUOe7NUeXz');
+    this.client = filestack.init('AB44AFy9OQuq7ikzhoJ59z');
   }
   private prefix = environment.v1;
 
