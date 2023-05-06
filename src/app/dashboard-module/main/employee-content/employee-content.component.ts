@@ -620,6 +620,7 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
+
   loader: boolean = false;
   onFileSelected1(event: any) : void {
     this.selectedFile1 = event.target.files[0];
@@ -896,76 +897,19 @@ export class EmployeeContentComponent implements OnInit {
   //   fileInput.click();
   // }
 
-  //onFIleSelectedream
 
-  // onFileSelectedrem(event: any): void {
-  //   const file: File = event.target.files[0];
-
-  //   if (!file) {
-  //     console.log('No file selected.');
-  //     return;
-  //   }
-
-  //   if (!validateCsvFile(file)) {
-  //     alert('Invalid file type. Please select a CSV file.');
-  //     return;
-  //   }
-
-  //   function validateCsvFile(file: File): boolean {
-  //     const allowedExtensions = /(\.csv)$/i;
-
-  //     if (!allowedExtensions.exec(file.name)) {
-  //       return false;
-  //     }
-
-  //     return true;
-  //   }
-
-  //   // const file: File = event.target.files[0];
-
-  //   // Check file size
-  //   const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
-  //   if (file.size > MAX_FILE_SIZE_BYTES) {
-  //     console.log('Selected file is too large.');
-  //     return;
-  //   }
-
-  //   // Parse CSV file
-  //   const reader: FileReader = new FileReader();
-  //   reader.onload = (e: any) => {
-  //     const csv: string = e.target.result;
-  //     const lines: string[] = csv.split(/\r\n|\n/);
-  //     const headers: string[] = lines[0].split(',');
-  //     const data: any[] = [];
-
-  //     for (let i = 1; i < lines.length - 1; i++) {
-  //       const values: string[] = lines[i].split(',');
-  //       const item: any = {};
-
-  //       for (let j = 0; j < headers.length; j++) {
-  //         item[headers[j]] = values[j];
-  //       }
-
-  //       data.push(item);
-  //     }
-
-  //     console.log(data, 'parsed CSV data');
-
-  //     // Add each employee to system using dashService
-  //     data.forEach((employee) => {
-  //       console.log('Adding employee:', employee);
-  //       this.dashService.addEmployee(employee).subscribe((res: any) => {
-  //         console.log('Response:', res);
-  //         console.log('Data:', res.data);
-  //       });
-  //     });
-  //   };
-
-  //   reader.readAsText(file);
-  // }
-
-  onFileSelectedrem(event: any): void {
-    const file: File = event.target.files[0];
+  waitThreeSeconds(){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Done!');
+      }, 6000);
+    });
+  };
+  
+  async onFileSelectedrem(event: any) {
+   
+    const file: File = event.files[0];
+    this.loader=true;
 
     if (!file) {
       console.log('No file selected.');
@@ -1023,6 +967,7 @@ export class EmployeeContentComponent implements OnInit {
       console.log(data, 'parsed CSV data');
       // if(data.length==0) return 'no user selected'
       let uid: number = -1;
+      let  responseArr = [];
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         //
         uid = res.uid;
@@ -1033,9 +978,17 @@ export class EmployeeContentComponent implements OnInit {
           console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
-          this.dashService.addEmployee(employee).subscribe((res: any) => {
+          this.dashService.addEmployee(employee).subscribe(async (res: any) => {
             console.log('Response:', res);
-            console.log('Data:', res.data);
+            this.loader=true
+            responseArr.push(res);
+            if(responseArr.length== data.length){
+              await this.waitThreeSeconds();
+              this.loader = false;
+              this.csvadded = true;
+              this.importfile = false;
+            }
+            // console.log('Data:', res.data);
             this.progress+= increaseBy;
             this.progressBar[0].style.width = `${this.progress}%`;
             this.progressText[0].innerText = `${this.progress}%`;
@@ -1044,6 +997,7 @@ export class EmployeeContentComponent implements OnInit {
         });
         return 'employees added';
       });
+     
     };
 
     reader.readAsText(file);
