@@ -782,5 +782,8 @@ input:disabled{
 #confirmp.ng_valid{
   border:1px solid green !important;
 }
+#confirmp.ng_invalid.errors{
+  border:1px solid red !important;
+}
 
 

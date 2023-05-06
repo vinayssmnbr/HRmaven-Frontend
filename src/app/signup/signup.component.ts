@@ -194,7 +194,7 @@ checkUsernameInput() {
 checkEmailInput() {
   this.emailId = this.sigupform.controls['email'].value;
   this.userService.getData(this.emailId).subscribe((res: any) => {
-   
+
     console.log("message: ", res);
     console.log("message email: ", res.message);
     console.log("message email: ", res.email);
@@ -228,10 +228,10 @@ onSubmit(data:any){
     this.cookie.set('role',result.role);
     localStorage.setItem('emailid',this.sigupform.controls['email'].value);
     this.orgnisation = result.username
-    localStorage.setItem('companyname', this.orgnisation);  
+    localStorage.setItem('companyname', this.orgnisation);
     // localStorage.setItem('emailid', this.sigupform.controls['email'].value);
     this.orgnisation = this.sigupform.controls['username'].value;
-    localStorage.setItem('companyname', this.sigupform.controls['username'].value);  
+    localStorage.setItem('companyname', this.sigupform.controls['username'].value);
 
   })
 }
