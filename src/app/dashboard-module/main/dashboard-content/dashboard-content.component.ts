@@ -53,6 +53,8 @@ export class DashboardContentComponent implements OnInit {
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
       this.formSubmitted = true;
+      localStorage.setItem('empname', this.formData.name);
+      this.showForm = false;
         });
   }
 
@@ -103,9 +105,51 @@ export class DashboardContentComponent implements OnInit {
   personalData: any =''
   empname: any = ''
   objectuserid = localStorage.getItem('emailid')
-
+  showModal: boolean = false
+  formData: any = ''
+  opacityValue : any = '';
+  public  showForm = false
   ngOnInit()
    {
+    
+    this.opacityValue = 0;
+
+    // this.empname = localStorage.getItem('empname');
+  
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+  
+    //   // Update the opacityValue to 1 if the user has not submitted the form
+    //   this.opacityValue = 1;
+    // }
+    // this.empname = localStorage.getItem('empname');
+
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    //   this.opacityValue = 0;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+    //   this.opacityValue = 1;
+    // }
+    this.empname = localStorage.getItem('empname');
+  
+    if (this.empname) {
+      this.formSubmitted = true;
+      this.showForm = false;
+      this.opacityValue = 0;
+    } else {
+      this.formSubmitted = false;
+      this.showForm = true;
+      this.opacityValue = 1;
+    }
+
+  
     this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
       console.log("res account settings personaldata: ", res);
 
@@ -114,23 +158,48 @@ export class DashboardContentComponent implements OnInit {
 
       console.log("res account settings personaldata: ", res.useridd);
 
-      this.empname = res.personaldata.name;
-      localStorage.setItem('empname', this.empname)
+      // this.empname = res.personaldata.name;
+      // localStorage.setItem('empname', this.empname)
       // this.employeename = res.personaldata.name;
       // this.totalemployee = res.personaldata.noOfEmployee;
       // this.headOffice = res.personaldata.headOffice;
       // this.phone = res.personaldata.phone;
       // this.description = res.personaldata.description
       // this.profileimage = res.personaldata.profileimage;
+      // -----------------
+
+    // this.empname = res.personaldata.name;
+    // localStorage.setItem('empname', this.empname);
+
+    // // Update the formSubmitted and showForm variables based on empname
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+
+    //   // Update the opacityValue to 1 if the user has not submitted the form
+    //   this.opacityValue = 1;
+    // }
+    this.empname = res.personaldata.name;
+    localStorage.setItem('empname', this.empname);
+
+    // Update the formSubmitted and showForm variables based on empname
+    if (this.empname) {
+      this.formSubmitted = true;
+      this.showForm = false;
+      this.opacityValue = 0;
+    } else {
+      this.formSubmitted = false;
+      this.showForm = true;
+      this.opacityValue = 1;
+    }
+    
 
     });
-
-    this.personalData = localStorage.getItem('empname');
-    if (this.personalData === null) {
-      this.formSubmitted = false;
-    } else {
-      this.formSubmitted = true;
-    }
+    
+ 
 
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);

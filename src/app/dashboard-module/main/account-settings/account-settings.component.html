@@ -62,7 +62,7 @@
                     <div class="employee-text">
                         <h6>Domain Name</h6>
                         <p> {{totalemployee}} </p>
-                    </div> 
+                    </div>
                     <div class="head-office-text">
                         <h6>Head Office</h6>
                         <p>{{headOffice}}</p>
@@ -89,7 +89,7 @@
                         <!-- {{description}} -->
                     <!-- </div> -->
                 </div>
-                
+
             </div>
         </div>
 
@@ -145,27 +145,39 @@
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
-                        <input type="password" placeholder="Type your old password">
+                        <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)" class="form-control password" required id="oldp" formControlName="oldpassword"
+                      [ngClass]="{'ng_invalid':forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty,'ng_valid':forgetpwd.controls.oldpassword.valid}">
+
+
 
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
-                            <input type="password" placeholder="Type a new password" formControlName="password">
+                            <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
+                        [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
+
+
 
                         </div>
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">Confirm Password</label>
-                            <input type="password" placeholder="Re-enter your password" formControlName="confirm">
+                            <input type="password" placeholder="Re-enter your password" formControlName="confirm" class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp"
+                         [ngClass]="{'ng_invalid':forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty,'ng_valid':forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
+                         <!-- <span *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)">Password didn't match
+
+                         </span> -->
+
+
 
                         </div>
                     </div>
                     <!-- </form> -->
                     <div class="clear-update-button">
-                        <button class="clear-btn">Clear</button>
-                        <button class="update-btn" (click)="openModal3()" type="submit">Update Password</button>
+                        <button class="clear-btn" (click)="clearForm()">Clear</button>
+                        <button class="update-btn" (click)="openModal3()" type="submit" [disabled]="forgetpwd.invalid">Update Password</button>
 
                     </div>
                 </form>
@@ -261,8 +273,8 @@
                     </div>
                     <div class="form__group">
                         <label >Personal Email</label>
-                        <input type="email" class="form_input"  placeholder='{{employeeemail}}' 
-                        formControlName="personalemail"   
+                        <input type="email" class="form_input"  placeholder='{{employeeemail}}'
+                        formControlName="personalemail"
                         required />
                     </div>
                 </div>

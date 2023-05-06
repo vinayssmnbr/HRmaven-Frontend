@@ -21,6 +21,9 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class UserService {
+  setFormSubmitted(formSubmitted: boolean) {
+    throw new Error('Method not implemented.');
+  }
 
   isFromSignupPage = false;
 
@@ -182,6 +185,11 @@ export class UserService {
   // getRegisteredEmail(email:any){
   //   // return this.http.get('{this.emails}/${email}');
   //   return this.http.get(`${this.prefix + 'email'}?type=${email}`)
+  // }
+
+  // getOldpassword(oldpassword: any) {
+  //   const url = `${this.prefix + 'getOldpasssword/oldpassword'}/${oldpassword}`;
+  //   return this.http.get(url);
   // }
 
 }
