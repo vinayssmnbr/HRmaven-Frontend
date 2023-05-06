@@ -177,6 +177,17 @@ Changeselect2(arr2: any) {
   this.contentdropdown2=false;
   console.log(arr2.name);
 }
+
+
+list:any[]=[];
+addtask(item:string){
+
+this.list.push({id:this.list.length,name:item})
+console.warn(this.list);
+}
+removetask(id:number){
+  console.warn(id);
+}
   }
 
 
