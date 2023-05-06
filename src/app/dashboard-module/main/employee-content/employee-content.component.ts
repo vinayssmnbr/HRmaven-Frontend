@@ -621,16 +621,10 @@ export class EmployeeContentComponent implements OnInit {
     );
   }
   loader: boolean = false;
-  onFileSelected1(event: any) {
+  onFileSelected1(event: any) : void {
     this.selectedFile1 = event.target.files[0];
-    const allowedTypes1 = ['.csv'];
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-    if (!allowedTypes1.includes(this.selectedFile.type)) {
-      this.fileName1 = null;
-    }
-    if (this.fileName1 != null) {
-      this.loader = true;
-    }
+    // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+    this.loader=true;
   }
 
   selectall: boolean = false;
