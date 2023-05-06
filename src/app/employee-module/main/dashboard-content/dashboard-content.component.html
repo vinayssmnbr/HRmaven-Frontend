@@ -17,15 +17,15 @@
                     </div>
 
 
-                <div class="card">
-                    <div class="text-image">
-                        <p>Punch out timing</p>
-                        <h1>{{out | date:'shortTime'}}</h1>
+                    <div class="card">
+                        <div class="text-image">
+                            <p>Punch out timing</p>
+                            <h1>{{out | date:'shortTime'}}</h1>
+                        </div>
+                        <div class="text-image-icon" *ngIf="out=='' || out==null">
+                            <img src="assets/images/punch_out.svg" alt="" (click)="punchout()">
+                        </div>
                     </div>
-                    <div class="text-image-icon" *ngIf="out=='' || out==null">
-                        <img src="assets/images/punch_out.svg" alt="" (click)="punchout()">
-                    </div>
-                </div>
 
                     <!-- <div class="card">
                         <div class="text-image">
@@ -40,7 +40,7 @@
 
                     <div class="quick-action">
                         <p>Quick actions</p>
-                        <div class="leave-profile" >
+                        <div class="leave-profile">
                             <div class="leave" routerLink="/emp-leave">
                                 <img src="assets/images/Group 1248-leave.png" alt="">
                                 <p>Leave</p>
@@ -72,15 +72,11 @@
                                 </div>
                             </div>
                             <div class="chart_leaves">
-                                <!-- <div class="chart">
-                                    <img src="assets/images/Group 1329.png" alt="">
-                                </div> -->
-                                <!-- <div class="pie">
-                                    <canvas id="myChart"></canvas>
-                                </div> -->
+                                <div class="grey-doughnut">
+                                </div>
                                 <div class="pie">
-                                <canvas id="oilChart"></canvas>
-                            </div>
+                                    <canvas id="oilChart"></canvas>
+                                </div>
                                 <div class="present_leave_absent">
                                     <div class="present">
                                         <img src="assets/images/fluent_person-available-24-regular.png" alt="">
@@ -121,10 +117,10 @@
                                         <h4>{{obj.casual+obj.urgent}}</h4>
                                     </div>
                                     <div class="progress_circle">
-                                        <circle-progress [percent]="70" [space]="-11" [radius]="25" [outerStrokeWidth]="10"
-                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
-                                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
-                                            [backgroundStrokeWidth]="3"></circle-progress>
+                                        <circle-progress [percent]="70" [space]="-11" [radius]="25"
+                                            [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                                            [animationDuration]="1000" [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
@@ -133,10 +129,10 @@
                                         <h4>{{obj.medical}}</h4>
                                     </div>
                                     <div class="progress_circle">
-                                        <circle-progress [percent]="100" [space]="-10" [radius]="25" [outerStrokeWidth]="10"
-                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
-                                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
-                                            [backgroundStrokeWidth]="3"></circle-progress>
+                                        <circle-progress [percent]="100" [space]="-10" [radius]="25"
+                                            [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                                            [animationDuration]="1000" [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
@@ -145,10 +141,10 @@
                                         <h4>{{obj.earned}}</h4>
                                     </div>
                                     <div class="progress_circle">
-                                        <circle-progress [percent]="70" [space]="-11" [radius]="25" [outerStrokeWidth]="10"
-                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
-                                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
-                                            [backgroundStrokeWidth]="3"></circle-progress>
+                                        <circle-progress [percent]="70" [space]="-11" [radius]="25"
+                                            [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                                            [animationDuration]="1000" [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                             </div>
@@ -407,11 +403,11 @@
 
         <div class="access-location">
             <div class="access-location-text">
-            <h3>Allow “HRMaven” to access your location?</h3>
-            <p>You’ll only be able to mark your attendance after the access has been allowed.</p>
-            <button (click)="closeModal()">OK</button>
+                <h3>Allow “HRMaven” to access your location?</h3>
+                <p>You’ll only be able to mark your attendance after the access has been allowed.</p>
+                <button (click)="closeModal()">OK</button>
+            </div>
         </div>
-        </div>
-      </div>
+    </div>
 
 </div>
