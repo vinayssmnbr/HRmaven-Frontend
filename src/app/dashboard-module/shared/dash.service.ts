@@ -50,7 +50,12 @@ export class DashService {
 
 
   // }
-
+  showModal = true;
+  setFormSubmitted(isFormSubmitted: boolean) {
+    if (isFormSubmitted) {
+      this.showModal = false;
+    }
+  }
 
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE

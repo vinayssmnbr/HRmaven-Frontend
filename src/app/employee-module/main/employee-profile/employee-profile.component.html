@@ -264,30 +264,35 @@
     </div>
     <div class="company-name-headoffice-desc" *ngIf="isPasswordManagement">
       <div class="company-name-headoffice-desc-area">
-        <form action="submit">
+        <form  [formGroup] = "passwordform" (ngSubmit)="onSubmit(passwordform.value)" action="submit" >
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
-            <input type="password" placeholder="Type your old password">
+            <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)" class="form-control password" required
+            [ngClass]="{'ng_invalid':passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty,'ng_valid':passwordform.controls.oldpassword.valid}">
+            >
 
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">New Password</label>
-              <input type="password" placeholder="Type a new password" formControlName="password">
+              <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" formControlName="password" (keyup)="onKeyUp($event)" required
+              [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
 
             </div>
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
-              <input type="password" placeholder="Re-enter your password" formControlName="confirm">
+              <input type="password" placeholder="Re-enter your password" formControlName="confirm" class="form-control password" (keyup)="onKeyUp($event)" required
+              [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
+              >
 
             </div>
           </div>
           <!-- </form> -->
           <div class="clear-update-button">
-            <button class="clear-btn">Clear</button>
-            <button class="update-btn" type="submit" (click)="openModal3()">Update Password</button>
+            <button class="clear-btn" (click)="clearSearch()">Clear</button>
+            <button class="update-btn" type="submit" (click)="openModal3()" [disabled]="passwordform.controls['oldpassword' || 'password' || 'confirm'].invalid" >Update Password</button>
 
           </div>
         </form>

@@ -188,8 +188,15 @@ export class EmployeeProfileComponent {
   ];
 
   passwordform = new FormGroup({
-    password: new FormControl(''),
-    confirm: new FormControl(''),
+    oldpassword:new FormControl('',[Validators.required,Validators.pattern(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+    )]),
+    password: new FormControl('',[Validators.required,Validators.pattern(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+    )]),
+    confirm: new FormControl('',[Validators.required,Validators.pattern(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+    )]),
   });
 
   empform1 = new FormGroup({
@@ -424,4 +431,20 @@ export class EmployeeProfileComponent {
     this.showModal3 = false;
     this.showModal = false;
   }
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim()
+
+  }
+   get pwd(){
+    return this.passwordform.get("password");
+   }
+   get confirmpwd(){
+    return this.passwordform.get("confirm")
+   }
+   searchValue:string = '';
+   clearSearch() {
+     this.searchValue = '';
+   }
+
+
 }
