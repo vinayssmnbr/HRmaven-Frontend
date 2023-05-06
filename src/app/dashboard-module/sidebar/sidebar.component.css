@@ -1,23 +1,21 @@
-.sidebar {
+.sidebar{
   background-color: #2F2C9F;
-  width: 223px;
+  width:223px;
   height: 100vh;
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
   position: fixed;
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
+  /* padding: 16px 20px; */
 }
-
-
-.sidebar img {
+.sidebar img{
   width: 30px;
 }
-
-.sidebar a {
+.sidebar a{
   color: white;
   cursor: pointer;
   font-size: 24px;
@@ -25,42 +23,35 @@
   line-height: 100%;
 
 }
-
-.side1 {
+.side1{
   display: flex;
   flex-direction: column;
 }
-
-.logo {
+.logo{
   padding-top: 23px;
   padding-left: 18px;
 
 }
-
-p {
-  color: rgba(255, 255, 255, 0.6);
+ p{
+  color: rgba(255, 255, 255, 0.6) ;
   padding-left: 18px;
-  padding-top: 43px;
+  padding-top:43px;
   font-size: 12px;
   font-weight: 400;
   line-height: 100%;
   text-transform: uppercase;
 }
-
-ul.navigation li,
-ul.navigation2 li {
+ul.navigation li, ul.navigation2 li{
   display: flex;
   flex-direction: column;
   margin-top: 15px;
   /* text-align: center; */
 }
-
 li.ulDropdown {
   position: relative;
   width: calc(100% - 46px);
   margin-left: auto;
 }
-
 li.ulDropdown:before {
   content: '';
   position: absolute;
@@ -82,16 +73,14 @@ li.ulDropdown:after {
   /* background: rgba(255, 255, 255, 0.5); */
   border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
-
-li.ulDropdown.lastDropdown::before {
+li.ulDropdown.lastDropdown::before{
   height: calc(100% - 11px);
 }
 
 li.ulDropdown a {
   width: 100% !important;
 }
-
-ul.navigation li a {
+ul.navigation li a{
   display: flex;
   gap: 20px;
   font-style: normal;
@@ -103,77 +92,63 @@ ul.navigation li a {
   padding: 15px 18px;
   color: #ECECEC;
 }
-
-ul.navigation li a img {
+ul.navigation li a img{
   width: 18px;
   height: 18px;
-  margin-top: -2px;
+  margin-top:-2px;
 }
-
 ul.navigation2 li a img {
   width: 18px;
   height: 18px;
   /* margin-top: -2px; */
 }
-
-ul.navigation li.active {
+ul.navigation li.active{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
-
-ul.navigation li.active .home_img1 {
+ul.navigation li.active .home_img1{
   display: block;
 }
-
 ul.navigation li.active .calendar_img1 {
   display: block;
 }
-
-ul.navigation li.active .home_img {
+ul.navigation li.active .home_img{
   display: none;
 }
-
 ul.navigation li.active .calendar_img {
   display: none;
 }
-
 ul.navigation li.active .timesheet_img1 {
   display: block;
 }
-
 ul.navigation li.active .timesheet_img {
   display: none;
 }
-
 ul.navigation li.active .employee_img1 {
   display: block;
 }
-
 ul.navigation li.active .employee_img {
   display: none;
 }
-
 ul.navigation li.active .recruitment_img1 {
   display: block;
 }
-
 ul.navigation li.active .recruitment_img {
   display: none;
 }
 
-ul.navigation li:hover {
+ul.navigation li:hover{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 
 }
-
-.select-btn {
+.select-btn{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.select-btn i {
+.select-btn i{
   position: absolute;
   right: 30px;
   margin-top: 3px;
@@ -182,131 +157,100 @@ ul.navigation li:hover {
   font-size: 20px;
   cursor: pointer;
 }
-
 li.active .select-btn i {
   transform: rotate(-180deg);
 }
-
-.home_img1 {
+.home_img1{
   display: none;
 }
 
-.employee_img1 {
+.employee_img1{
   display: none;
 }
-
-.attendance_img1 {
+.attendance_img1{
   display: none;
 }
-
-.payroll_img1 {
+.payroll_img1{
   display: none;
 }
-
-.leaves_img1 {
+.leaves_img1{
   display: none;
 }
-
-.recruitment_img1 {
+.recruitment_img1{
   display: none;
 }
-
-.report_img1 {
+.report_img1{
   display: none;
 }
-
-.signout1 {
+.signout1{
   display: none;
 }
-
-.help1 {
+.help1{
   display: none;
 }
-
-ul.navigation2 li:hover .help {
+ul.navigation2 li:hover .help{
   display: none;
 }
-
-ul.navigation2 li:hover .help1 {
+ul.navigation2 li:hover .help1{
   display: block;
 }
-
-ul.navigation2 li:hover .signout {
+ul.navigation2 li:hover .signout{
   display: none;
 }
-
-ul.navigation2 li:hover .signout1 {
+ul.navigation2 li:hover .signout1{
   display: block;
 }
-
-ul.navigation li:hover .home_img {
+ul.navigation li:hover .home_img{
   display: none;
 }
-
-ul.navigation li:hover .employee_img {
+ul.navigation li:hover .employee_img{
   display: none;
 }
-
-ul.navigation li:hover .attendance_img {
+ul.navigation li:hover .attendance_img{
   display: none;
 }
-
-ul.navigation li:hover .payroll_img {
+ul.navigation li:hover .payroll_img{
   display: none;
 }
-
-ul.navigation li:hover .leaves_img {
+ul.navigation li:hover .leaves_img{
   display: none;
 }
-
-ul.navigation li:hover .recruitment_img {
+ul.navigation li:hover .recruitment_img{
   display: none;
 }
-
 ul.navigation li:hover .report_img {
   display: none;
 }
-
-ul.navigation li:hover .home_img1 {
+ul.navigation li:hover .home_img1{
   display: block;
 }
-
-ul.navigation li:hover .employee_img1 {
+ul.navigation li:hover .employee_img1{
   display: block;
 }
-
-ul.navigation li:hover .attendance_img1 {
+ul.navigation li:hover .attendance_img1{
   display: block;
 }
-
-ul.navigation li:hover .payroll_img1 {
+ul.navigation li:hover .payroll_img1{
   display: block;
 }
-
-ul.navigation li:hover .leaves_img1 {
+ul.navigation li:hover .leaves_img1{
   display: block;
 }
-
-ul.navigation li:hover .recruitment_img1 {
+ul.navigation li:hover .recruitment_img1{
   display: block;
 }
-
 ul.navigation li:hover .report_img1 {
   display: block;
 }
-
-.calendar_img1 {
+.calendar_img1{
   display: none;
 }
-
-ul.navigation li:hover .calendar_img {
+ul.navigation li:hover .calendar_img{
   display: none;
 }
-
 ul.navigation li:hover .calendar_img1 {
   display: block;
 }
-
 .timesheet_img1 {
   display: none;
 }
@@ -318,24 +262,21 @@ ul.navigation li:hover .timesheet_img {
 ul.navigation li:hover .timesheet_img1 {
   display: block;
 }
-
 .side2 {
   display: flex;
   flex-direction: column;
   min-height: 25vh;
 }
-
-.side2 p {
+.side2 p{
   /* margin-left: 22px; */
 }
-
 ul.navigation2 {
   display: flex;
   flex-direction: column;
 
 }
 
-ul.navigation2 li a {
+ul.navigation2 li a{
   font-size: 16px;
   font-weight: 500;
   line-height: 16px;
@@ -348,11 +289,16 @@ ul.navigation2 li a {
   height: 44px;
   padding: 15px 18px;
 }
-
-ul.navigation2 li:hover {
+ul.navigation2 li:hover{
   background: rgba(255, 255, 255, 0.3);
   border-radius: 8px;
 }
+
+
+
+
+
+
 
 /* ----------------------- nav-toggler css start ------------------------------------------------ */
 .nav-toggler {
@@ -397,11 +343,12 @@ ul.navigation2 li:hover {
 }
 
 /* --------------Responsive------------------ */
-@media (min-width:851px){
-  .menu-items{
+@media (min-width:851px) {
+  .menu-items {
     display: none;
   }
 }
+
 /* --------------Responsive For Tablet------------------ */
 
 @media only screen and (min-width: 481px) and (max-width: 850px) {
@@ -556,7 +503,8 @@ ul.navigation2 li:hover {
   .ulDropdown.lastDropdown {
     margin-top: -40px;
   }
-  .navigation3{
+
+  .navigation3 {
     margin-top: 80px;
   }
 }
@@ -714,7 +662,8 @@ ul.navigation2 li:hover {
   .ulDropdown.lastDropdown {
     margin-top: -40px;
   }
-  .navigation3{
+
+  .navigation3 {
     margin-top: 80px;
   }
 }

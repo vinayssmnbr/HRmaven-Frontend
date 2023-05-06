@@ -21,11 +21,15 @@ import { CookieService} from 'ngx-cookie-service'
   providedIn: 'root',
 })
 export class UserService {
-  setFormSubmitted(formSubmitted: boolean) {
-    throw new Error('Method not implemented.');
-  }
+  // opacityValue = 1;
+
+  // updateOpacityValue(formSubmitted: boolean) {
+  //   this.opacityValue = formSubmitted ? 0 : 1;
+  // }
 
   isFromSignupPage = false;
+
+
 
   private behaviorNameSubject: BehaviorSubject<string> =
     new BehaviorSubject<string>('default');
@@ -57,6 +61,11 @@ export class UserService {
   getData(email: string) {
     const url = `${this.prefix + 'getemails/email'}/${email}`;
     return this.http.get(url);
+  }
+  //old password match or not
+  getpwdmgt(email: any, oldpassword: any) {
+    const url = `${this.prefix + 'pwdmgt'}/${email}`;
+    return this.http.post(url, {oldpassword});
   }
 
   getUsernameData(username: any) {
