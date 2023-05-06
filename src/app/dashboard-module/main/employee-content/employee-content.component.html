@@ -392,7 +392,10 @@
           <!-- <p>or drag and drop it here</p> -->
 
 
-          <a (click)="fileInput.click()" class="choose">Choose File</a>
+          <div class="file_upload">
+            <input type="file" (change)="onFileSelected1($event)" accept=".csv">
+          </div>
+
           <!-- <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 
@@ -403,16 +406,18 @@
           <h5>Download <a class="csv" href="assets/csv/Sample.csv" [download]> Sample CSV File</a> for Reference</h5>
           <p>Maximum file size:5MB</p>
         </div>
+
         <!-- <div class="custom-file-picker">
           <input type="text" placeholder="Add the file URL" id="text14" >
           <input type="file" >
           <a  class="choose">Choose File</a>
         </div> -->
-        <div class="card">
+        <div class="card" *ngIf="loader">
           <div class="pdf_file">
             <img src="./assets/images/Vector (8).png" alt="">
           </div>
-          <div class="input-upload">
+          <div class="progress_bar_loader" *ngIf="loader"></div>
+          <!-- <div class="input-upload">
             <input type="text" id="text18" readonly [value]="fileName1" (change)="onFileSelected1($event)"
               formControlName="csv">
             <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)"
@@ -423,7 +428,7 @@
               <div class="progress-text">0%</div>
             </div>
 
-          </div>
+          </div> -->
         </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>

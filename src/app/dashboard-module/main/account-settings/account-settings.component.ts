@@ -76,9 +76,9 @@ organisationn: any = '';
         this.profileimage = res.personaldata.profileimage;
         this.email_id = this.employeeemail.split("@")
       this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
-  
+
       });
-   
+
     }
 
     updateData(data: any){
@@ -101,8 +101,17 @@ organisationn: any = '';
 
 
     forgetpwd = new FormGroup({
-      password: new FormControl("", [Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/)]),
-      confirm: new FormControl("", [Validators.required])
+
+      oldpassword:new FormControl('',[Validators.required,Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      )]),
+      password: new FormControl('',[Validators.required,Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      )]),
+      confirm: new FormControl('',[Validators.required,Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      )]),
+
     }
     );
 
@@ -177,6 +186,25 @@ organisationn: any = '';
   closeModal3(){
     this.showModal3 = false;
   }
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim()
+
+  }
+
+  // forgetpwd: FormGroup;
+  // get forgotformControl(){
+  //   return this.forgetpwd.controls;
+  //  }
+  // //  get confirmpwd(){
+  //   return this.forgetpwd.get("confirm")
+  //  }
+
+  //  get oldpwd(){
+  //   return this.forgetpwd.get("oldpassword")
+  //  }
+   clearForm(){
+    this.forgetpwd.reset();
+   }
 
 
 
