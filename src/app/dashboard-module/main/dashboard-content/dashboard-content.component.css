@@ -778,6 +778,7 @@ align-items: center;
   display: flex;
   flex-direction: column;
 }
+
 .form__group .form_input{
   width: 270px;
 padding: 10px 17px;
@@ -1386,4 +1387,8 @@ right: 20px;
   color: #FFFFFF;
   outline: none;
   border: none;
+}
+
+.hidden {
+  display: none;
 }
