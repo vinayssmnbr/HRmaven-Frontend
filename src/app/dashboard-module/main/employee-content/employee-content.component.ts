@@ -1177,4 +1177,5 @@ export class EmployeeContentComponent implements OnInit {
     });
     this.fetchdata();
   }
+  
 }

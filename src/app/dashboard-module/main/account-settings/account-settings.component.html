@@ -182,7 +182,10 @@
                         <div class="old-new-confirm-password">
                             <label for="">Confirm Password</label>
                             <input type="password" placeholder="Re-enter your password" formControlName="confirm" class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp"
-                         [ngClass]="{'ng_invalid':forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty,'ng_valid':forgetpwd.controls.confirm.valid}">
+                         [ngClass]="{'ng_invalid':forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty,'ng_valid':forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
+                         <!-- <span *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)">Password didn't match
+
+                         </span> -->
 
 
 

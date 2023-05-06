@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { matchpassword } from './custom.validator';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -108,10 +108,10 @@ organisationn: any = '';
       password: new FormControl('',[Validators.required,Validators.pattern(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
       )]),
-      confirm: new FormControl('',[Validators.required,Validators.pattern(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
-      )]),
+      confirm: new FormControl('',[Validators.required]),
 
+    },{
+      validators:matchpassword
     }
     );
     
@@ -249,7 +249,26 @@ organisationn: any = '';
    clearForm(){
     this.forgetpwd.reset();
    }
+  //    oldpass:any ='';
+  //   oldpasswordExists: boolean = false;
+
+  //  checkPasswordInput() {
+  //   this.oldpass = this.forgetpwd.controls['oldpassword'].value;
+  //   this.userService.getOldpassword(this.oldpass).subscribe((res: any) => {
+  //     console.log("message: ", res);
+  //     console.log("message email: ", res.message);
+  //     console.log("message email: ", res.email);
+  //     if (res.message === 'user-found') {
+  //       this.oldpasswordExists = true;
+  //       this.forgetpwd.controls.oldpassword.setErrors({ 'oldpasswordExists': true });
+  //     } else {
+  //       this.oldpasswordExists = false;
+  //       this.forgetpwd.controls.oldpassword.setErrors(null);
+  //       this.forgetpwd.controls.oldpassword.markAsTouched(); // Mark the control as touched to trigger validation messages
+  //     }
+  //   });
+  }
 
 
 
-}
+

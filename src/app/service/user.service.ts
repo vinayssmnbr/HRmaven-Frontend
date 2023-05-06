@@ -196,4 +196,9 @@ export class UserService {
   //   return this.http.get(`${this.prefix + 'email'}?type=${email}`)
   // }
 
+  // getOldpassword(oldpassword: any) {
+  //   const url = `${this.prefix + 'getOldpasssword/oldpassword'}/${oldpassword}`;
+  //   return this.http.get(url);
+  // }
+
 }
