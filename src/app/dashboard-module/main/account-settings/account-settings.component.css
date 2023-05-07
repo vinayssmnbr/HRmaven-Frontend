@@ -782,5 +782,13 @@ input:disabled{
 #confirmp.ng_valid{
   border:1px solid green !important;
 }
+#confirmp.ng_invalid.errors{
+  border:1px solid red !important;
+}
 
-
+.password-matches {
+    border-color: green;
+  }
+  .green-border {
+    border: 2px solid green;
+  }  
