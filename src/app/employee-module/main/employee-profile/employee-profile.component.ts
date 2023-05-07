@@ -29,6 +29,7 @@ export class EmployeeProfileComponent {
   modalContent2: boolean = false;
   modalContent4: boolean = false;
   modalContent5: boolean = false;
+  success:boolean=false;
   contentdropdown: boolean = false;
   contentdropdown1: boolean = false;
   contentdropdown2: boolean = false;
@@ -213,29 +214,59 @@ export class EmployeeProfileComponent {
     name: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl(''),
-    motherName: new FormControl(''),
+    fatherName: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    motherName: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
   });
 
   empform2 = new FormGroup({
-    mobile: new FormControl(''),
+    mobile: new FormControl('', [
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+      Validators.required,
+    ]),
     email: new FormControl(''),
-    state: new FormControl(''),
-    postalCode: new FormControl(''),
-    city: new FormControl(''),
+    state: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    postalCode: new FormControl('', [
+      Validators.pattern(/^[0-9]{6}$/),
+      Validators.required,
+    ]),
+    city: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     address: new FormControl(''),
   });
 
   empform3 = new FormGroup({
     bankname: new FormControl(''),
-    adhaarno: new FormControl(''),
+    adhaarno: new FormControl('', [
+      Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
+      Validators.required,
+    ]),
     accountno: new FormControl(''),
-    ifsc: new FormControl(''),
-    passport: new FormControl(''),
-    panno: new FormControl(''),
+    ifsc: new FormControl('', [
+      Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
+      Validators.required,
+    ]),
+    passport: new FormControl('', [
+      Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
+      Validators.required,
+    ]),
+    panno: new FormControl('', [
+      Validators.pattern(/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/),
+      Validators.required,
+    ]),
   });
 
   empform6 = new FormGroup({
@@ -395,6 +426,7 @@ export class EmployeeProfileComponent {
   openModal(obj: any) {
     this.modalContent1 = true;
     this.showModal = true;
+    this.success=false;
     this.modalContent4 = false;
     this.modalContent5 = false;
     // this.selectedUser = { _id: obj._id };
@@ -406,6 +438,7 @@ export class EmployeeProfileComponent {
   openModal2(obj: any) {
     this.modalContent4 = true;
     this.showModal = true;
+    this.success=false;
     this.modalContent1 = false;
     this.modalContent5 = false;
     // this.selectedUser = { _id: obj._id };
@@ -413,39 +446,54 @@ export class EmployeeProfileComponent {
   }
   closeModal() {
     this.showModal = false;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
   }
   closeModal1() {
-    this.showModal = false;
+    this.success = true;
+    this.modalContent1=false;
+    this.modalContent5=false;
+    this.modalContent4=false;
   }
   closeModal2() {
     this.showModal = false;
   }
   closeModal3() {
-    this.showModal = false;
+    this.success=true;
+    this.showModal = true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
     const updatedData = this.empform2.value;
     updatedData['_id'] = this.obj._id;
-    this.empdashService
-      .updateEmployeeRecord(updatedData)
-      .subscribe((res: any) => {
-        this.obj = res;
-        console.log('update', res);
-      });
-    this.obj = updatedData;
+    // this.empdashService
+    //   .updateEmployeeRecord(updatedData)
+    //   .subscribe((res: any) => {
+    //     this.obj = res;
+    //     console.log('update', res);
+    //   });
+    // this.obj = updatedData;
   }
   closeModal4() {
-    this.showModal = false;
-    const updatedData = this.empform3.value;
-    updatedData['_id'] = this.obj._id;
-    this.empdashService
-      .updateEmployeeRecord(updatedData)
-      .subscribe((res: any) => {
-        this.obj = res;
-        console.log('update', res);
-      });
-    this.obj = updatedData;
+    this.showModal = true;
+    this.success=true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
+    // const updatedData = this.empform3.value;
+    // updatedData['_id'] = this.obj._id;
+    // this.empdashService
+    //   .updateEmployeeRecord(updatedData)
+    //   .subscribe((res: any) => {
+    //     this.obj = res;
+    //     console.log('update', res);
+    //   });
+    // this.obj = updatedData;
   }
   openModal4(obj: any) {
     this.showModal = true;
+    this.success=false;
     this.modalContent5 = true;
     this.modalContent1 = false;
     this.modalContent4 = false;
