@@ -392,6 +392,9 @@ export class EmployeeProfileComponent {
   closeModal() {
     this.showModal = false;
   }
+  closeModal1(){
+    this.showModal=false;
+  }
   closeModal2() {
     this.showModal = false;
   }

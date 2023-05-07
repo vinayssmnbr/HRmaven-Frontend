@@ -18,6 +18,7 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent implements OnInit {
   @Input() user: any;
   empForm: FormGroup;
+  educationItems: any;
   constructor(
     private dashService: DashService,
     private fb: FormBuilder,
@@ -144,6 +145,9 @@ export class EmployeeProfileComponent implements OnInit {
   });
 
   experienceForm: FormGroup;
+  educationForm: FormGroup;
+
+
   get registrationFormControl() {
     return this.form.controls;
   }
@@ -153,7 +157,31 @@ export class EmployeeProfileComponent implements OnInit {
     this.experienceForm = new FormGroup({
       experienceItems: new FormArray([this.createExperienceItem()]),
     });
+    this.educationForm = new FormGroup({
+      educationItems: new FormArray([this.createEducationItem()]),
+    })
   }
+
+  createEducationItem(): FormGroup{
+    return new FormGroup({
+     graduation: new FormControl(''),
+     graduationStream: new FormControl(''),
+     graduationCgpa: new FormControl(''),
+     pg: new FormControl(''),
+     pgStream: new FormControl(''),
+     pgCgpa: new FormControl(''),
+    })
+  }
+
+  get EducationItems(){
+    return this.educationForm.get('educationItems') as FormArray;
+  }
+
+  addItem1() {
+    this.educationItems.push(this.createEducationItem());
+    console.log(this.educationForm.value);
+  }
+
 
   createExperienceItem(): FormGroup {
     return new FormGroup({
