@@ -196,42 +196,48 @@
       <div class="details">
         <h3>Experience</h3>
         <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
-        <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
-      <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       <div>
-        <div class="row1" *ngFor="let item of user.experienceItems">
+        <div class="row1" *ngIf="!showAllData">
           <div class="column1">
             <span class="orgname">Company/Organisation Name</span>
-            <!-- {{user |json}} -->
-            <p *ngIf="!item.expcompany">----------</p>
-            <p class="orgname" *ngIf="item.expcompany">{{item.expcompany}}</p>
+            <p class="orgname">{{user.experienceItems[0]?.expcompany || '--------'}}</p>
             <span class="location2">Location</span>
-            <p *ngIf="!item.explocation">----------</p>
-            <p class="location2" *ngIf="item.explocation">{{item.explocation}}</p>
+            <p class="location2">{{user.experienceItems[0]?.explocation || '--------'}}</p>
           </div>
           <div class="column2">
             <span class="duration2">Duration</span>
-            <p *ngIf="!item.expduration">----------</p>
-            <p class="duration2" *ngIf="item.expduration">{{item.expduration}}</p>
+            <p class="duration2">{{user.experienceItems[0]?.expduration || '--------'}}</p>
           </div>
           <div class="column3">
             <span class="designation">Designation</span>
-            <p *ngIf="!item.expdesignation">----------</p>
-            <p class="designation" *ngIf="item.expdesignation">{{item.expdesignation}}</p>
+            <p class="designation">{{user.experienceItems[0]?.expdesignation || '--------'}}</p>
           </div>
         </div>
-        <hr>
-
-        <div class="cnt-btn">
-          <button class="view" (click)="showMoredata()" *ngIf="!viewMore">View More<i
-              class="fa-solid fa-angle-down"></i></button>
+        <div *ngFor="let item of user.experienceItems; let i=index">
+          <div class="row1" *ngIf="showAllData">
+            <div class="column1">
+              <span class="orgname">Company/Organisation Name</span>
+              <p class="orgname">{{item.expcompany || '--------'}}</p>
+              <span class="location2">Location</span>
+              <p class="location2">{{item.explocation || '--------'}}</p>
+            </div>
+            <div class="column2">
+              <span class="duration2">Duration</span>
+              <p class="duration2">{{item.expduration || '--------'}}</p>
+            </div>
+            <div class="column3">
+              <span class="designation">Designation</span>
+              <p class="designation">{{item.expdesignation || '--------'}}</p>
+            </div>
+          </div>
         </div>
         <div class="cnt-btn">
-          <button class="hide" (click)="hidedata()" *ngIf="viewMore">View less<i
+          <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+              class="fa-solid fa-angle-down"></i></button>
+          <button class="hide" (click)="hidedata()" *ngIf="!showbutton && showAllData">View less<i
               class="fa-solid fa-angle-up"></i></button>
         </div>
-      </div>
       </div>
       <div class="card8" *ngIf="jobdetail">
         <div class="details">

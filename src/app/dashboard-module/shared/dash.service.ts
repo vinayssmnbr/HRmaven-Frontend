@@ -20,7 +20,7 @@ export class DashService {
     private router: Router,
     private cookie: CookieService
   ) {
-    this.client = filestack.init('AB44AFy9OQuq7ikzhoJ59z');
+    this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
   }
 
   getUserProfile(): Observable<any> {
@@ -40,18 +40,15 @@ export class DashService {
   // }
 
   //ADD  Employee Data
-  addEmployee(data:any) {
+  addEmployee(data: any) {
     const id = this.cookie.get('hr_id');
-    data['hrid']=id;
+    data['hrid'] = id;
     return this.http.post(this.prefix + 'api/create', data);
   }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
 
-
   // }
-
-
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
@@ -270,8 +267,4 @@ export class DashService {
     const url = `${this.prefix + 'api/update'}/${id}`;
     return this.http.patch(url, { status });
   }
-
-
-
-
 }

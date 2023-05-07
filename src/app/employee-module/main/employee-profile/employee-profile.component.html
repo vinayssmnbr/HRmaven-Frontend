@@ -9,7 +9,8 @@
     <div class="card2">
       <span class="profile_pic">
         <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
-        <img *ngIf="obj.url" src="{{obj.url}}" alt="">
+        <img *ngIf="obj.url  && !upload" src="{{obj.url}}" alt="">
+        <img *ngIf="upload" src="{{imageurl}}" alt="">
         <!-- <img  alt=""> -->
         <div class="profile-content">
           <input type="file" accept="image/*" id="file-input">
@@ -17,13 +18,13 @@
           <h2>Upload</h2>
           <p>Profile Picture</p>
         </div>
-        <!-- <div class="profile-content1" *ngIf="user.url">
+        <div class="profile-content1" *ngIf="obj.url">
           <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
           <i class="fa-solid fa-camera"></i>
 
           <h2>Change</h2>
           <p>Profile Picture</p>
-        </div> -->
+        </div>
       </span>
       <div class="content">
 
@@ -42,7 +43,7 @@
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openModal()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal(obj)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -80,20 +81,21 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openModal2()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal2(obj)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="cno">Contact No.</span>
-          <p class="cno">{{obj.mobile}}</p>
-          <!-- <p class="cno">{{obj.mobile}}</p> -->
+          <p *ngIf="!obj.mobile">----------</p>
+          <p class="cno" *ngIf="obj.mobile">{{obj.mobile}}</p>
           <span class="city">City</span>
           <p *ngIf="!obj.city">----------</p>
           <p class="city" *ngIf="obj.city">{{obj.city}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
-          <p class="address">{{obj.address}}</p>
+          <p *ngIf="!obj.address">----------</p>
+          <p class="address" *ngIf="obj.address">{{obj.address}}</p>
           <span class="pcode">Postal Code</span>
           <p *ngIf="!obj.postalCode">----------</p>
           <p class="pcode" *ngIf="obj.postalCode">{{obj.postalCode}}</p>
@@ -110,7 +112,7 @@
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
-        <button class="edit1" (click)="openModal4()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal4(obj)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -121,11 +123,11 @@
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
-          <p class="bno">{{obj.accountno}}</p>
-          <!-- <p class="bno">{{obj.accountno}}</p> -->
+          <p *ngIf="!obj.accountno" class="bno">-------</p>
+          <p class="bno" *ngIf="obj.accountno">{{obj.accountno}}</p>
           <span class="panno">Pan Number</span>
           <p *ngIf="!obj.panno" class="panno">-------</p>
-          <p *ngIf="obj.ifsc" class="panno">{{obj.panno}}</p>
+          <p *ngIf="obj.panno" class="panno">{{obj.panno}}</p>
 
         </div>
         <div class="column3">
@@ -206,10 +208,9 @@
         <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p class="orgname">{{obj.expcompany}}</p>
-
-          <!-- <p *ngIf="!obj.experienceItems.expcompany">----------</p>
-          <p class="orgname" *ngIf="obj.experienceItems.expcompany">{{obj | json}}</p> -->
+          <!-- <p class="orgname">{{obj.experienceItems.expcompany}}</p> -->
+          <p *ngIf="!obj.experienceItems.expcompany">----------</p>
+          <p class="orgname" *ngIf="!obj.experienceItems.expcompany">{{obj.experienceItems.expcompany}}</p>
           <!-- <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p> -->
           <span class="location2">Location</span>
           <p *ngIf="!obj.explocation">----------</p>
@@ -344,7 +345,6 @@
                 </div>
               </div>
             </div>
-
           </div>
           <div class="form-row">
             <div class="input">
@@ -434,7 +434,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3()">Update</button>
+        <button class="save" (click)="closeModal3(empform2.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
@@ -493,7 +493,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4()">Update</button>
+        <button class="save" (click)="closeModal4(empform3.value)">Update</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="modalContent2">

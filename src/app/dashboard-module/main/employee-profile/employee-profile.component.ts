@@ -385,7 +385,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
-    // this.user['martialStatus'] = arr3.name;
     this.user.maritalStatus = arr3.name;
   }
   // Changeselect3(arr3: any) {
@@ -714,24 +713,28 @@ export class EmployeeProfileComponent implements OnInit {
       console.log('img', this.imageurl);
     });
   }
-  maxItems = 1;
-  viewMore: boolean = false;
-  showbutton: boolean = true;
-  showMoredata() {
-    // this.viewMore = !this.viewMore;
-    // this.showbutton = !this.showbutton;
-    this.viewMore = true;
-  }
-  hidedata() {
-    this.viewMore = false;
-    // this.showbutton = true;
-  }
+
   // openotherinput:boolean=false;
   // openInput() {
   //   if (this.array2.name==="Others"){
   //      this.openotherinput=true;
   //   }
   // }
+
+  //VIEW MORE AND VIEW LESS
+  showbutton: boolean = true;
+  showAllData: boolean = false;
+
+  showMoredata() {
+    this.showAllData = true;
+    this.showbutton = false;
+  }
+
+  hidedata() {
+    this.showAllData = false;
+    this.showbutton = true;
+  }
+
   showpgdetails: boolean = false;
   showpgdet() {
     this.showpgdetails = true;

@@ -264,8 +264,6 @@ export class EmployeeProfileComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
-    // this.jobdesignation = arr.name;
-    // this.user.jobdesignation = arr.name;
   }
 
   Selectvariable3: string = 'Select';
@@ -275,8 +273,7 @@ export class EmployeeProfileComponent {
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
-    // this.user['martialStatus'] = arr3.name;
-    // this.user.maritalStatus = arr3.name;
+    this.obj.maritalStatus = arr3.name;
   }
   dropdownOpen4() {
     this.contentdropdown4 = !this.contentdropdown4;
@@ -288,7 +285,7 @@ export class EmployeeProfileComponent {
     this.colorvariable4 = arr4.id;
     this.contentdropdown4 = false;
     console.log(arr4.name);
-    // this.user.bloodGroup = arr4.name;
+    this.obj.bloodGroup = arr4.name;
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -297,8 +294,7 @@ export class EmployeeProfileComponent {
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
-    // this.bankname = arr2.name;
-    // this.user.bankname = arr2.name;
+    this.obj.bankname = arr2.name;
   }
   dropdownOpen5() {
     this.contentdropdown5 = !this.contentdropdown5;
@@ -323,7 +319,7 @@ export class EmployeeProfileComponent {
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
-    // this.user.gender = arr1.name;
+    this.obj.gender = arr1.name;
   }
 
   dropdownOpen8() {
@@ -336,8 +332,6 @@ export class EmployeeProfileComponent {
     this.colorvariable8 = arr8.id;
     this.contentdropdown8 = false;
     console.log(arr8.name);
-    // this.jobempstatus=arr8.name
-    // this.user.jobempstatus = arr8.name;
   }
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
@@ -369,18 +363,37 @@ export class EmployeeProfileComponent {
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
-  basicUpdate(data: any) {}
-  openModal() {
+  basicUpdate(data: any) {
+    this.obj.motherName = data.motherName;
+    this.obj.fatherName = data.fatherName;
+    this.obj.name = data.name;
+    this.obj.dateOfBirth = data.dateOfBirth;
+    this.obj.nationality = data.nationality;
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe((res: any) => {
+      this.obj = res;
+      console.log('update', res);
+    });
+  }
+  selectedobj: any = {};
+
+  openModal(obj: any) {
     this.modalContent1 = true;
     this.showModal = true;
     this.modalContent4 = false;
     this.modalContent5 = false;
+    // this.selectedUser = { _id: obj._id };
+    this.empform1.patchValue(this.obj);
+    this.Selectvariable1 = obj.gender;
+    this.Selectvariable3 = obj.maritalStatus;
+    this.Selectvariable4 = obj.bloodGroup;
   }
-  openModal2() {
+  openModal2(obj: any) {
     this.modalContent4 = true;
     this.showModal = true;
     this.modalContent1 = false;
     this.modalContent5 = false;
+    // this.selectedUser = { _id: obj._id };
+    this.empform2.patchValue(this.obj);
   }
   closeModal() {
     this.showModal = false;
@@ -390,15 +403,36 @@ export class EmployeeProfileComponent {
   }
   closeModal3() {
     this.showModal = false;
+    const updatedData = this.empform2.value;
+    updatedData['_id'] = this.obj._id;
+    this.empdashService
+      .updateEmployeeRecord(updatedData)
+      .subscribe((res: any) => {
+        this.obj = res;
+        console.log('update', res);
+      });
+    this.obj = updatedData;
   }
   closeModal4() {
     this.showModal = false;
+    const updatedData = this.empform3.value;
+    updatedData['_id'] = this.obj._id;
+    this.empdashService
+      .updateEmployeeRecord(updatedData)
+      .subscribe((res: any) => {
+        this.obj = res;
+        console.log('update', res);
+      });
+    this.obj = updatedData;
   }
-  openModal4() {
+  openModal4(obj: any) {
     this.showModal = true;
     this.modalContent5 = true;
     this.modalContent1 = false;
     this.modalContent4 = false;
+    // this.selectedUser = { _id: obj._id };
+    this.empform3.patchValue(obj);
+    this.Selectvariable2 = obj.bankname;
   }
   openModal5() {
     this.showModal = true;
@@ -423,5 +457,31 @@ export class EmployeeProfileComponent {
   closeModal8() {
     this.showModal3 = false;
     this.showModal = false;
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    this.progress = true;
+    this.onUpload(this.obj);
+  }
+
+  upload: boolean = false;
+  progress: boolean = false;
+  imageurl: any;
+  onUpload(obj) {
+    obj['_id'] = this.obj._id;
+    this.empdashService
+      .uploadImage(this.selectedFile, obj._id)
+      .then((res: any) => {
+        this.upload = true;
+        this.progress = false;
+        this.imageurl = this.empdashService.fileUrl;
+        console.log('img', this.imageurl);
+      });
   }
 }
