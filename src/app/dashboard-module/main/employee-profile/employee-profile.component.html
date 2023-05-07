@@ -414,13 +414,13 @@
               </div>
               <div class="input">
                 <label>Postal Code</label>
-                <input type="number" placeholder="141002" formControlName="postalCode"
+                <input type="number" placeholder="141002" formControlName="postalCode" class="text"
                   (keydown)="validatePincode($event)" class="text no-spin"
                   [ngClass]="{'ng_invalid': registrationFormControl.postalCode.invalid && registrationFormControl.postalCode.dirty,'ng_valid': registrationFormControl.postalCode.valid}">
               </div>
               <div class="input">
                 <label>State</label>
-                <input type="text" placeholder="Punjab" formControlName="state"
+                <input type="text" placeholder="Punjab" formControlName="state" class="text"
                   [ngClass]="{'ng_invalid': registrationFormControl.state.invalid && registrationFormControl.state.dirty,'ng_valid': registrationFormControl.state.valid}">
               </div>
             </div>
@@ -744,7 +744,7 @@
             <div class="form-row">
               <div class="input">
                 <label>Professional Email</label>
-                <input type="email" placeholder="zonah123@gmail.com" formControlName="professionalemail">
+                <input type="email" placeholder="zonah123@gmail.com" formControlName="professionalemail" class="profemail">
               </div>
             </div>
           </form>

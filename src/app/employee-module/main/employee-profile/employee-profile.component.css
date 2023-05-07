@@ -314,28 +314,26 @@
   font-size: 14px;
   color: #222222;
   cursor: pointer;
+  /* padding-left: 20px; */
 }
 
 .content1 li {
   cursor: pointer;
   padding-bottom: 10px;
-  padding-left: 20px;
-
 }
 
 .content1 li.active {
   border-bottom: 2px solid #2F2C9F;
-  width: 12%;
 }
 
-.content1 #job.active {
+/* .content1 #job.active {
   width: 10%;
   padding-left: 25px;
 }
 .content1 #Password.active {
   width: 16%;
   padding-left: 25px;
-}
+} */
 
 .content1 li.active a {
   font-weight: 500;

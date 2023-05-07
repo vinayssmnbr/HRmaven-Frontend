@@ -189,6 +189,8 @@ input:focus {
 .check-text {
   display: flex;
   gap: 5px;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 45px !important;
 }
 
@@ -214,7 +216,10 @@ input:focus {
   margin-top: 5px;
   cursor: pointer;
 }
+.input_check{
+  display: flex;
 
+}
 .button input {
   color: #fff;
   font-size: 16px;
@@ -727,4 +732,65 @@ form.ng-invalid input[type="submit"] {
   margin-top: 30px;
   margin-bottom: 30px;
   color: #444444;
+}
+/* --------------Responsive For Tablet------------------ */
+
+@media only screen and (min-width: 481px) and (max-width: 850px) {
+  .row {
+      height: 100%;
+  }
+
+  .left-side {
+      display: none;
+  }
+
+  .right-side {
+      width: 100%;
+
+  }
+
+}
+
+/* --------------For Mobile------------------ */
+@media only screen and (max-width: 480px) {
+  .row {
+      height: 100%;
+  }
+
+  .left-side {
+      display: none;
+  }
+
+  .right-side {
+      width: 100%;
+  }
+
+  form {
+      width: 100%;
+      padding: 0 40px;
+      margin-left: 20px;
+
+  }
+
+  .input-field {
+      width: 100% !important;
+  }
+
+  .password-toggle i {
+      margin-left: 280px !important;
+  }
+
+  .check-text {
+      width: 100%;
+  }
+
+  .check-text .forgot-text {
+      margin-left: -1px !important;
+  }
+
+  .or_bar::before,
+  .or_bar::after {
+      width: 130px;
+  }
+
 }

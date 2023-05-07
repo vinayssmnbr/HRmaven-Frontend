@@ -188,8 +188,24 @@ export class EmployeeProfileComponent {
   ];
 
   passwordform = new FormGroup({
-    password: new FormControl(''),
-    confirm: new FormControl(''),
+    oldpassword: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
+    confirm: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
   });
 
   empform1 = new FormGroup({
@@ -398,6 +414,9 @@ export class EmployeeProfileComponent {
   closeModal() {
     this.showModal = false;
   }
+  closeModal1() {
+    this.showModal = false;
+  }
   closeModal2() {
     this.showModal = false;
   }
@@ -483,5 +502,18 @@ export class EmployeeProfileComponent {
         this.imageurl = this.empdashService.fileUrl;
         console.log('img', this.imageurl);
       });
+  }
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim();
+  }
+  get pwd() {
+    return this.passwordform.get('password');
+  }
+  get confirmpwd() {
+    return this.passwordform.get('confirm');
+  }
+  searchValue: string = '';
+  clearSearch() {
+    this.searchValue = '';
   }
 }

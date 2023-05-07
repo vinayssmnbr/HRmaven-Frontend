@@ -49,6 +49,12 @@ export class DashService {
   //   return this.http.post('http://localhost:3000/api/create', data);
 
   // }
+  showModal = true;
+  setFormSubmitted(isFormSubmitted: boolean) {
+    if (isFormSubmitted) {
+      this.showModal = false;
+    }
+  }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
