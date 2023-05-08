@@ -20,8 +20,9 @@
                     <!-- <img class="content-image" src="{{profileimage}}" alt=""> -->
                     <div class="content-details fadeIn-bottom">
                         <!-- <img  src="assets/images/upload.png" alt=""> -->
+                        <input type="file" id="file-input">
                         <div class="upload_title">
-                            <input type="file" accept="image/*" />
+                            <input type="file" accept="image/*" (change)="onFileSelected($event)" id="file-input"/>
                             <span>UPLOAD </span>
                         <p class="content-text">PROFILE PICTURE</p>
                         </div>

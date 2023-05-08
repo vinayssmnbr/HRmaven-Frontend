@@ -111,6 +111,23 @@
 .Skills-required {
   margin-top: 18px;
 }
+ul.todo-list li {
+  width: 80px;
+  height: 32px;
+  background-color: #EFEFF8;
+  border-radius: 16px;
+  text-align: center;
+}
+.input_list_li i{
+  position: relative;
+  cursor: pointer;
+}
+.meeting-text-area button{
+  opacity: 0;
+}
+.input_list li{
+  display: inline-block;
+}
 
 .skills li {
   background-color: #EFEFF8;

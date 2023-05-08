@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchpassword } from './custom.validator';
+import { DashService } from '../../shared/dash.service';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -22,7 +23,7 @@ export class AccountSettingsComponent implements OnInit {
   hideNotifications = false;
  readonly= false;
 
- constructor(private userService:UserService, private formBuilder: FormBuilder){}
+ constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService){}
   objectuserid = localStorage.getItem('emailid')
   // loginobjectid:any = ''
 
@@ -108,13 +109,13 @@ organisationn: any = '';
       password: new FormControl('',[Validators.required,Validators.pattern(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
       )]),
-      confirm: new FormControl('',[Validators.required]),
+      confirm: new FormControl('',[Validators.required,]),
 
     },{
       validators:matchpassword
     }
     );
-    
+
     newpassword(data:any)
     {
       console.log(data.value);
@@ -249,6 +250,29 @@ organisationn: any = '';
   //       this.forgetpwd.controls.oldpassword.markAsTouched(); // Mark the control as touched to trigger validation messages
   //     }
   //   });
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    this.onUpload(this.profileimage);
+  }
+
+  upload: boolean = false;
+  progress: boolean = false;
+  imageurl: any;
+  onUpload(profileimage) {
+    profileimage['email'] = this.profileimage.email;
+    // profileimage['email'] = localStorage.getItem('emailId')
+    this.userService.upload(this.selectedFile, profileimage.email).then((res: any) => {
+      this.imageurl = this.userService.fileUrl;
+      console.log('img', this.imageurl);
+    });
+  }
+
   }
 
 
