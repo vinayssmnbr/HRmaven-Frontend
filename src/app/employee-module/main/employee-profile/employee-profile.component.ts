@@ -29,7 +29,7 @@ export class EmployeeProfileComponent {
   modalContent2: boolean = false;
   modalContent4: boolean = false;
   modalContent5: boolean = false;
-  success:boolean=false;
+  success: boolean = false;
   contentdropdown: boolean = false;
   contentdropdown1: boolean = false;
   contentdropdown2: boolean = false;
@@ -411,6 +411,11 @@ export class EmployeeProfileComponent {
     this.contentdropdown5 = false;
   }
   basicUpdate(data: any) {
+    this.success = true;
+    this.showModal = true;
+    this.modalContent1 = false;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
     this.obj.motherName = data.motherName;
     this.obj.fatherName = data.fatherName;
     this.obj.name = data.name;
@@ -421,15 +426,15 @@ export class EmployeeProfileComponent {
       console.log('update', res);
     });
   }
-  selectedobj: any = {};
+  selectedUser: any = {};
 
   openModal(obj: any) {
     this.modalContent1 = true;
     this.showModal = true;
-    this.success=false;
+    this.success = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
-    // this.selectedUser = { _id: obj._id };
+    this.selectedUser = { _id: obj._id };
     this.empform1.patchValue(this.obj);
     this.Selectvariable1 = obj.gender;
     this.Selectvariable3 = obj.maritalStatus;
@@ -438,7 +443,7 @@ export class EmployeeProfileComponent {
   openModal2(obj: any) {
     this.modalContent4 = true;
     this.showModal = true;
-    this.success=false;
+    this.success = false;
     this.modalContent1 = false;
     this.modalContent5 = false;
     // this.selectedUser = { _id: obj._id };
@@ -452,48 +457,47 @@ export class EmployeeProfileComponent {
   }
   closeModal1() {
     this.success = true;
-    this.modalContent1=false;
-    this.modalContent5=false;
-    this.modalContent4=false;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
   }
   closeModal2() {
     this.showModal = false;
   }
   closeModal3() {
-    this.success=true;
+    this.success = true;
     this.showModal = true;
     this.modalContent1 = false;
     this.modalContent5 = false;
     this.modalContent4 = false;
     const updatedData = this.empform2.value;
     updatedData['_id'] = this.obj._id;
-    // this.empdashService
-    //   .updateEmployeeRecord(updatedData)
-    //   .subscribe((res: any) => {
-    //     this.obj = res;
-    //     console.log('update', res);
-    //   });
+    this.empdashService
+      .updateEmployeeRecord(updatedData)
+      .subscribe((res: any) => {
+        this.obj = res;
+        console.log('update', res);
+      });
     // this.obj = updatedData;
   }
-  closeModal4() {
+  closeModal4(data: any) {
     this.showModal = true;
-    this.success=true;
+    this.success = true;
     this.modalContent1 = false;
     this.modalContent5 = false;
     this.modalContent4 = false;
-    // const updatedData = this.empform3.value;
-    // updatedData['_id'] = this.obj._id;
-    // this.empdashService
-    //   .updateEmployeeRecord(updatedData)
-    //   .subscribe((res: any) => {
-    //     this.obj = res;
-    //     console.log('update', res);
-    //   });
-    // this.obj = updatedData;
+    this.obj.accountno = data.accountno;
+    this.obj.ifsc = data.ifsc;
+    this.obj.adhaarno = data.adhaarno;
+    this.obj.panno = data.panno;
+    this.obj.passport = data.passport;
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe(() => {
+      console.log('Data updated successfully');
+    });
   }
   openModal4(obj: any) {
     this.showModal = true;
-    this.success=false;
+    this.success = false;
     this.modalContent5 = true;
     this.modalContent1 = false;
     this.modalContent4 = false;
@@ -563,5 +567,46 @@ export class EmployeeProfileComponent {
   searchValue: string = '';
   clearSearch() {
     this.searchValue = '';
+  }
+  //RESET PASSWORD AND MATCH OLD PASSWORD
+  email: any = '';
+  newpassword(data: any) {
+    this.email = localStorage.getItem('LoggedInName');
+    if (!this.email) {
+      console.error('User email not found in local storage');
+      return;
+    }
+    this.empdashService.ResetPassword(this.email, data).subscribe(
+      (res: any) => {
+        if (res == 'Password Changes Successfully') {
+          console.log('Password reset successful');
+        } else {
+          console.error('Invalid response from API:', res);
+        }
+      },
+      (err: any) => {
+        console.error('Error occurred while resetting password:', err);
+      }
+    );
+  }
+  empEmail: any = localStorage.getItem('LoggedInName');
+  oldpassword: any = '';
+  isPasswordmatched: boolean = false;
+
+  matchpwdEmployee() {
+    const email = this.empEmail;
+    const oldpassword = this.passwordform.controls['oldpassword'].value;
+    this.empdashService
+      .oldpasswordEmployee(email, oldpassword)
+      .subscribe((res: any) => {
+        if (res.message === 'Password matches') {
+          this.isPasswordmatched = true;
+          console.log('password matches');
+        } else {
+          this.isPasswordmatched = false;
+          console.log('password mismatch');
+        }
+        this.oldpassword = oldpassword;
+      });
   }
 }

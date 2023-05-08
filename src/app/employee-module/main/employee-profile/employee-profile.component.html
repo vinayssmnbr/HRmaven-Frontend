@@ -259,11 +259,11 @@
     </div>
     <div class="company-name-headoffice-desc" *ngIf="isPasswordManagement">
       <div class="company-name-headoffice-desc-area">
-        <form [formGroup]="passwordform" (ngSubmit)="onSubmit(passwordform.value)" action="submit">
+        <form [formGroup]="passwordform" (ngSubmit)="newpassword(passwordform.value)" action="submit">
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
             <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)"
-              class="form-control password" required
+              class="form-control password" required (blur)="matchpwdEmployee()" formControlName="oldpassword"
               [ngClass]="{'ng_invalid':passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty,'ng_valid':passwordform.controls.oldpassword.valid}">
             >
 
@@ -327,15 +327,13 @@
           <div class="form-row">
             <div class="input">
               <label>Father's Name</label>
-              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName"
-              class="text"
-              [ngClass]="{'ng_invalid': empform1.controls.fatherName.invalid && empform1.controls.fatherName.dirty,'ng_valid': empform1.controls.fatherName.valid}">
+              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName" class="text"
+                [ngClass]="{'ng_invalid': empform1.controls.fatherName.invalid && empform1.controls.fatherName.dirty,'ng_valid': empform1.controls.fatherName.valid}">
             </div>
             <div class="input">
               <label>Mother's Name</label>
-              <input type="text" placeholder="Vinita Sharma" formControlName="motherName"
-               class="text"
-              [ngClass]="{'ng_invalid': empform1.controls.motherName.invalid && empform1.controls.motherName.dirty,'ng_valid': empform1.controls.motherName.valid}">
+              <input type="text" placeholder="Vinita Sharma" formControlName="motherName" class="text"
+                [ngClass]="{'ng_invalid': empform1.controls.motherName.invalid && empform1.controls.motherName.dirty,'ng_valid': empform1.controls.motherName.valid}">
             </div>
             <div class="input">
               <label>Marital Status</label>
@@ -400,7 +398,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal1()">Update</button>
+        <button class="save" (click)="basicUpdate(empform1.value)">Update</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -413,9 +411,8 @@
           <div class="form-row">
             <div class="input">
               <label>Contact No.</label>
-              <input type="number" placeholder="9836327872" formControlName="mobile"
-               class="text no-spin"
-              [ngClass]="{'ng_invalid': empform2.controls.mobile.invalid && empform2.controls.mobile.dirty,'ng_valid': empform2.controls.mobile.valid}">
+              <input type="number" placeholder="9836327872" formControlName="mobile" class="text no-spin"
+                [ngClass]="{'ng_invalid': empform2.controls.mobile.invalid && empform2.controls.mobile.dirty,'ng_valid': empform2.controls.mobile.valid}">
             </div>
             <div class="input">
               <label>Address</label>
@@ -430,21 +427,18 @@
           <div class="form-row">
             <div class="input">
               <label>City</label>
-              <input type="text" placeholder="Ludhiana" formControlName="city"
-               class="text"
-              [ngClass]="{'ng_invalid': empform2.controls.city.invalid && empform2.controls.city.dirty,'ng_valid': empform2.controls.city.valid}">
+              <input type="text" placeholder="Ludhiana" formControlName="city" class="text"
+                [ngClass]="{'ng_invalid': empform2.controls.city.invalid && empform2.controls.city.dirty,'ng_valid': empform2.controls.city.valid}">
             </div>
             <div class="input">
               <label>Postal Code</label>
-              <input type="number" placeholder="141002" formControlName="postalCode"
-               class="text no-spin"
-              [ngClass]="{'ng_invalid': empform2.controls.postalCode.invalid && empform2.controls.postalCode.dirty,'ng_valid': empform1.controls.postalCode.valid}">
+              <input type="number" placeholder="141002" formControlName="postalCode" class="text no-spin"
+                [ngClass]="{'ng_invalid': empform2.controls.postalCode.invalid && empform2.controls.postalCode.dirty,'ng_valid': empform1.controls.postalCode.valid}">
             </div>
             <div class="input">
               <label>State</label>
-              <input type="text" placeholder="Punjab" formControlName="state"
-               class="text"
-              [ngClass]="{'ng_invalid': empform2.controls.state.invalid && empform2.controls.state.dirty,'ng_valid': empform2.controls.state.valid}">
+              <input type="text" placeholder="Punjab" formControlName="state" class="text"
+                [ngClass]="{'ng_invalid': empform2.controls.state.invalid && empform2.controls.state.dirty,'ng_valid': empform2.controls.state.valid}">
             </div>
           </div>
         </form>
@@ -489,29 +483,25 @@
             </div>
             <div class="input">
               <label>IFSC Code</label>
-              <input type="text" placeholder="PUNB0125412" formControlName="ifsc"
-               class="text"
-              [ngClass]="{'ng_invalid': empform3.controls.ifsc.invalid && empform3.controls.ifsc.dirty,'ng_valid': empform3.controls.ifsc.valid}">
+              <input type="text" placeholder="PUNB0125412" formControlName="ifsc" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.ifsc.invalid && empform3.controls.ifsc.dirty,'ng_valid': empform3.controls.ifsc.valid}">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Adhaar Card Number</label>
-              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno"
-               class="text"
-              [ngClass]="{'ng_invalid': empform3.controls.adhaarno.invalid && empform3.controls.adhaarno.dirty,'ng_valid': empform3.controls.adhaarno.valid}">
+              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.adhaarno.invalid && empform3.controls.adhaarno.dirty,'ng_valid': empform3.controls.adhaarno.valid}">
             </div>
             <div class="input">
               <label>PAN Number</label>
-              <input type="text" placeholder="ABCTY1234D" formControlName="panno"
-               class="text"
-              [ngClass]="{'ng_invalid': empform3.controls.panno.invalid && empform3.controls.panno.dirty,'ng_valid': empform3.controls.panno.valid}">
+              <input type="text" placeholder="ABCTY1234D" formControlName="panno" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.panno.invalid && empform3.controls.panno.dirty,'ng_valid': empform3.controls.panno.valid}">
             </div>
             <div class="input">
               <label>Passport Number</label>
-              <input type="text" placeholder="M5425189" formControlName="passport"
-               class="text"
-              [ngClass]="{'ng_invalid': empform3.controls.passport.invalid && empform3.controls.passport.dirty,'ng_valid': empform3.controls.passport.valid}">
+              <input type="text" placeholder="M5425189" formControlName="passport" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.passport.invalid && empform3.controls.passport.dirty,'ng_valid': empform3.controls.passport.valid}">
             </div>
           </div>
         </form>
