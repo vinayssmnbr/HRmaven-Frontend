@@ -189,6 +189,44 @@ removetask(id:number){
   console.warn(id);
   this.list=this.list.filter(item=>item.id!==id);
 }
+
+
+
+
+
+
+
+list1:any[]=[];
+addtask1(item1:string){
+
+this.list.push({id:this.list.length,name:item1})
+console.warn(this.list1);
+}
+removetask1(id:number){
+  console.warn(id);
+  this.list1=this.list1.filter(item1=>item1.id!==id);
+}
+
+
+
+
+
+
+
+jobvacancyform= new FormGroup({
+  jobtitle:new FormControl(''),
+  datetitle:new FormControl('')
+
+})
+jobvacancydetail(){
+  console.warn(this.vacancyForm.value);
+}
+
+
+forget_email_send_content:boolean=false;
+shownewjobmodal(){
+  this.forget_email_send_content=true;
+}
   }
 
 
