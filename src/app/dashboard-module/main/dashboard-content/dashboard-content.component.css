@@ -434,7 +434,7 @@ a {
 table {
   border-collapse: collapse;
   width: 100%;
-  height: calc(100% - 12px);
+  /* height: calc(100% - 12px); */
 }
 
 

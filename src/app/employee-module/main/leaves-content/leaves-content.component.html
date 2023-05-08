@@ -8,10 +8,10 @@
                 <div class="leaves">
                     <div class="leave-text">
                         <h6>Casual Leave</h6>
-                        <h4>{{obj.casual+obj.urgent}}</h4>
+                        <h4>{{obj.casual}}</h4>
                     </div>
                     <div class="progress_circle">
-                        <circle-progress [percent]='((obj.casual+obj.urgent)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                        <circle-progress [percent]='((obj.casual)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
                             [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
                             [backgroundStrokeWidth]="4"></circle-progress>
@@ -32,10 +32,10 @@
                 <div class="leaves">
                     <div class="leave-text">
                         <h6>Compensatory Leave</h6>
-                        <h4>{{obj.earned}}</h4>
+                        <h4>{{obj.compensatory}}</h4>
                     </div>
                     <div class="progress_circle">
-                        <circle-progress [percent]='((obj.earned)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                        <circle-progress [percent]='((obj.compensatory)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
                             [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
                             [backgroundStrokeWidth]="4"></circle-progress>
@@ -196,7 +196,7 @@
                 </div>
                 <div class="clear-apply-button">
                     <button type="reset" class="clear" (click)="cancel()">Clear</button>
-                    <button type="submit" class="apply">Apply </button>
+                    <button type="submit" class="apply" [disabled]="empleaveForm.invalid">Apply </button>
                     <!-- <div class="loader" *ngIf="loader"></div> -->
                 </div>
             </form>

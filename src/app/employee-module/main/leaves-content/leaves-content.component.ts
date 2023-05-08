@@ -30,8 +30,7 @@ export class LeavesContentComponent {
     this.leavegraphcontent();
     this.obj = {
       casual: 1,
-      earned: 2,
-      urgent: 3,
+      compensatory: 2,
       medical: 4,
     };
   }
@@ -52,25 +51,13 @@ export class LeavesContentComponent {
         this.leaves = res.response[0].History;
       }
     });
-  }
+  }s
 
   date = new Date();
 
     async Submit() {
-    this.empleaveForm.value.category = this.Selectvariable;
-    this.empleaveForm.value.duration = this.str;
-    this.empleaveForm.value.url = this.fileurl;
-    this.empleaveForm.value.shortime = this.Selectvariable1;
-    if (this.Selectvariable == 'short') {
-      this.empleaveForm.value.category = this.Selectvariable;
-      this.empleaveForm.value.duration = this.Selectvariable1;
-    }
-    console.log(this.empleaveForm.value);
-    this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
-      console.log(res)
-      this.leaves.push(res);
-      this.leavegraphcontent();
-    });
+      console.log(this.empleaveForm.value);
+
      this.onUpload();
 
   }
@@ -83,6 +70,7 @@ export class LeavesContentComponent {
     this.str = '0';
     this.empleaveForm.value.duration = this.str;
     this.Selectvariable1 = 'select'
+    this.selectedFile1=null;
 
   }
 
@@ -266,17 +254,42 @@ export class LeavesContentComponent {
   }
   fileurl: any;
    onUpload(){
-    this.loader=true;
     console.log(this.selectedFile);
-    this.empService.upload(this.selectedFile).then(() => {
+    if(this.selectedFile!=null){
+      this.loader=true;
+      this.empService.upload(this.selectedFile).then(() => {
       console.log('File uploaded successfully.', this.empService.fileUrl);
       this.empService.fileUrl;
       this.fileurl = this.empService.fileUrl;
-      this.loader = false;
       this.empleaveForm.value.url = this.empService.fileUrl;
       this.leave_approved_form = true;
+      this.uploadform();
       this.cancel();
       console.log(this.leaves);
+
+    });
+  }
+    else{
+      this.uploadform();
+      this.leave_approved_form=true;
+      this.cancel();
+    }
+  }
+  uploadform(){
+    this.empleaveForm.value.category = this.Selectvariable;
+    this.empleaveForm.value.duration = this.str;
+    this.empleaveForm.value.url = this.fileurl;
+    this.empleaveForm.value.shortime = this.Selectvariable1;
+    if (this.Selectvariable == 'short') {
+      this.empleaveForm.value.category = this.Selectvariable;
+      this.empleaveForm.value.duration = this.Selectvariable1;
+    }
+    console.log(this.empleaveForm.value);
+    this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
+      console.log(res)
+      this.loader=false;
+      this.leaves.push(res);
+      this.leavegraphcontent();
     });
   }
 

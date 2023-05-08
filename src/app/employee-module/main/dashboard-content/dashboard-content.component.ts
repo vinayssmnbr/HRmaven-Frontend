@@ -22,10 +22,10 @@ export class DashboardContentComponent {
   ipAddress: any;
   obj: any;
   donutdata: any;
-  present:number = 50;
-  absent :number = 25;
-  leave :number = 25;
-  total :number = 0;
+  present: number = 0;
+  absent: number = 0;
+  leave: number = 0;
+  total: number = 0;
 
 
 
@@ -92,59 +92,36 @@ export class DashboardContentComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
-    this.donutdata.map((item)=>{
-      if((item.month-1)==arr.id)
-      {
+    this.donutdata.map((item) => {
+      if ((item.month - 1) == arr.id) {
         this.present = item.present,
-        this.total= item.total,
-        this.leave = item.leave,
-        this.absent = item.absent
+          this.total = item.total,
+          this.leave = item.leave,
+          this.absent = item.absent
+        this.blank = false;
       }
-      else{
-        this.present=this.absent=this.leave=0;
-        this.total=0;
+      else {
+        this.present = this.absent = this.leave = 0;
+        this.total = 0;
+        this.blank = true;
       }
     })
+
     this.pieChart.destroy();
     this.piechart();
   }
   ngOnInit() {
     this.obj = {
       casual: 0,
-      earned: 0,
-      urgent: 0,
+      compensatory: 0,
       medical: 0
     }
     // this.present=0
     // this.absent=0;
     // this.leave=0;
-    this.total=0;
+    this.total = 0;
     this.donut();
     this.leavegraphcontent();
-
-    // this.oilCanvas = document.getElementById("oilChart");
-
-    // const data = {
-    //   labels: [
-
-    //   ],
-    //   datasets: [
-    //     {
-    //       data: [this.present,this.absent,this.leave],
-    //       backgroundColor: [
-    //         "#5AB452",
-    //         "#EA6565",
-    //         "#FBB642"
-
-    //       ]
-    //     }]
-    // };
-
-    // var pieChart = new Chart(this.oilCanvas, {
-    //   type: 'doughnut',
-    //   data: data
-    // });
-
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
         this.in = "";
@@ -166,9 +143,35 @@ export class DashboardContentComponent {
 
   //  attendance // punchin
   donut() {
+
     this.empService.attendancedonut().subscribe((res) => {
       console.log(res);
-      this.donutdata=res;
+      this.donutdata = res;
+      this.aa()
+
+    })
+
+  }
+
+  aa(){
+    const d = new Date();
+    const month = d.getMonth() + 1;
+    this.Selectvariable = this.array[d.getMonth()].name;
+    this.donutdata.map((item: any) => {
+      if ((item.month) == month) {
+        this.present = item.present,
+          this.total = item.total,
+          this.leave = item.leave,
+          this.absent = item.absent
+        this.blank = false;
+      }
+      else {
+        this.present = this.absent = this.leave = 0;
+        this.total = 0;
+        this.blank = true;
+      }
+      this.pieChart.destroy();
+    this.piechart();
     })
   }
 
@@ -284,7 +287,7 @@ export class DashboardContentComponent {
   showModalContent = false;
   closeModal() {
     this.showModal = false;
-    this.showModalContent=false;
+    this.showModalContent = false;
   }
 
   openModal() {
@@ -297,16 +300,16 @@ export class DashboardContentComponent {
     this.piechart();
 
   }
-
-  pieChart:any;
-  piechart =()=>{
+  blank: boolean = false;
+  pieChart: any;
+  piechart = () => {
     const data = {
       labels: [
 
       ],
       datasets: [
         {
-          data: [this.present,this.absent,this.leave],
+          data: [this.present, this.absent, this.leave],
           backgroundColor: [
             "#5AB452",
             "#EA6565",
@@ -320,6 +323,7 @@ export class DashboardContentComponent {
       data: data
     });
   }
+
 
 }
 

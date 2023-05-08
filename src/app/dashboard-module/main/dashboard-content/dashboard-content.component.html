@@ -107,7 +107,7 @@
                                     <h4>22nd January 2023</h4>
                                     <p>9:00 am - 11:00 am</p>
                                 </div>
-            
+
                             </div>
                             <div class="notes-text">
                                 <div class="notes">
@@ -123,15 +123,15 @@
                                 </div>
                             </div>
                         </div>
-            
+
                         <div class="join-meeting-button">
                             <button class="join" (click)="closeModal11()">Join meeting</button>
                         </div>
                     </div>
                 </div>
-             
-                    
-               
+
+
+
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@
         <div class="col-8">
             <div class="leave-request-area">
                 <div class="leave-request-heading">
-                    <h2>Leave request</h2>
+                    <h2> Pending Leave request</h2>
                     <p><a routerLink="/leaves"> View All </a></p>
                 </div>
 
@@ -148,22 +148,29 @@
                     <table class="table_text">
                         <thead>
                             <tr class="table_heading">
-                                <th>EMPLOYEE ID</th>
-                                <th>EMPLOYEE NAME</th>
-                                <th>APPLIED ON</th>
-                                <th>FROM</th>
-                                <th>TO</th>
-                                <th>DURATION</th>
+                                <th>Employee id</th>
+                                <th>Employee name</th>
+                                <th>Applied on </th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Duration</th>
+                                <th>Category</th>
+                                <th>Reason</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let leave of leaves ">
-                                <td>{{leave.employeeId}}</td>
-                                <td>{{leave.employeeName}}</td>
+                            <tr *ngFor="let leave of leaves" routerLink="/leaves" >
+                                <td>{{leave.uid}}</td>
+                                <td>{{leave.name}}</td>
+                                <td>{{leave.appliedOn | date:'shortDate'}}</td>
                                 <td>{{leave.from | date:'shortDate'}}</td>
                                 <td>{{leave.to | date:'shortDate'}}</td>
+                                <td>{{leave.duration}}</td>
+                                <td>{{leave.category}}</td>
                                 <td>{{leave.reason}}</td>
-                                <td>
+
+
+                                <!-- <td>
                                     <div class="action_button">
                                         <div class="action_btn">
                                             <input type="radio" [checked]="leave.status=='accept'"
@@ -180,7 +187,7 @@
                                             <label for="outline" class="outline">Reject</label>
                                         </div>
                                     </div>
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -300,7 +307,7 @@
     <!-- <div *ngIf="!formSubmitted"  > -->
       <!-- <div *ngIf="!formSubmitted" [ngStyle]="{'opacity': (formSubmitted ? '0.0' : '1.0')}" > -->
         <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" >
-           
+
           <div >
                 <div class="Modal_form" >
 
@@ -350,7 +357,7 @@
 
                     </div>
                 </div>
-            </div>    
+            </div>
     </div>
 
 
@@ -506,7 +513,7 @@
 
 
     <!----------------------Meetings-modal------------------>
-   
+
 
 
 </div>

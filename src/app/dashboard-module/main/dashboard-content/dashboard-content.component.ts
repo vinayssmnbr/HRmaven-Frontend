@@ -111,18 +111,25 @@ export class DashboardContentComponent implements OnInit {
   public  showForm = false
   ngOnInit()
    {
-    
+
+    this.dashService.getleavecontent().subscribe((res:any)=>{
+      res.map((d: any) => {
+        if (d._id == 'pending') {
+          this.leaves = d.pending;
+        }
+      });
+    });
     this.opacityValue = 0;
 
     // this.empname = localStorage.getItem('empname');
-  
+
     // if (this.empname) {
     //   this.formSubmitted = true;
     //   this.showForm = false;
     // } else {
     //   this.formSubmitted = false;
     //   this.showForm = true;
-  
+
     //   // Update the opacityValue to 1 if the user has not submitted the form
     //   this.opacityValue = 1;
     // }
@@ -138,7 +145,7 @@ export class DashboardContentComponent implements OnInit {
     //   this.opacityValue = 1;
     // }
     this.empname = localStorage.getItem('empname');
-  
+
     if (this.empname) {
       this.formSubmitted = true;
       this.showForm = false;
@@ -149,7 +156,7 @@ export class DashboardContentComponent implements OnInit {
       this.opacityValue = 1;
     }
 
-  
+
     this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
       console.log("res account settings personaldata: ", res);
 
@@ -195,11 +202,11 @@ export class DashboardContentComponent implements OnInit {
       this.showForm = true;
       this.opacityValue = 1;
     }
-    
+
 
     });
-    
- 
+
+
 
 
     console.log("isFromSignupPage: ", this.isFromSignupPage);
