@@ -263,10 +263,10 @@
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
             <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)"
-              class="form-control password" required
+              class="form-control password" required formControlName="oldpassword"
               [ngClass]="{'ng_invalid':passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty,'ng_valid':passwordform.controls.oldpassword.valid}">
-            >
-
+          </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Your old password was entered incorrectly
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
@@ -277,15 +277,18 @@
 
             </div>
           </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>New Password cannot be same as old password
+          </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
                 class="form-control password" (keyup)="onKeyUp($event)" required
                 [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
-              >
 
             </div>
+          </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Password didn't match
           </div>
           <!-- </form> -->
           <div class="clear-update-button">
@@ -618,7 +621,7 @@
       </div>
     </div>
     <form class="leave_approved_form" *ngIf="showModal3">
-      <div class="leave_approved_modal">
+      <div class="leave_approved_modal" >
         <i class="fa-solid fa-xmark" (click)="closeModal8()"></i>
         <div class="logo_bg">
           <img src="assets/images/tick.png" alt="image">
