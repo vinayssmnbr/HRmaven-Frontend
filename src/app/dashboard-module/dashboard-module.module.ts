@@ -27,6 +27,7 @@ import { DatePipe } from '@angular/common';
 import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { EmpstatusPipe } from './pipe/empstatus.pipe';
+import { NoPageFoundComponent } from './main/no-page-found/no-page-found.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { EmpstatusPipe } from './pipe/empstatus.pipe';
     TimesheetComponent,
     CalendarComponent,
     EmpstatusPipe,
+    NoPageFoundComponent,
   ],
   imports: [
     CommonModule,
