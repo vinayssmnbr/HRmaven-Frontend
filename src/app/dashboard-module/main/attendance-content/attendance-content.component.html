@@ -66,6 +66,8 @@
               <th>Status</th>
               <th>PUNCH IN</th>
               <th>PUNCH OUT</th>
+              <th>IP in</th>
+              <th>IP out</th>
             </tr>
           </thead>
           <tbody>
@@ -97,6 +99,8 @@
                 : (user.out | date : "shortTime")
                 }}
               </td>
+              <td>{{user.ip_in}}</td>
+              <td>{{user.ip_out}}</td>
               <!-- <td *ngIf="user.found!='true'" class="action1">
                             <div class="icons">
                                 <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
@@ -151,7 +155,7 @@
                                 <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                             </svg> -->
                             <!-- <div class="progress-circle-container">
-                                <div class="progress-circle progress-40"><span></span></div>  
+                                <div class="progress-circle progress-40"><span></span></div>
                               </div>              -->
 
     <!-- <div class="progress-circle-container">
@@ -254,14 +258,18 @@
               <th>Status</th>
               <th>PUNCH IN</th>
               <th>PUNCH OUT</th>
+              <th>IP in</th>
+              <th>IP out</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let i of profile.attendance">
+            <tr *ngFor="let i of profile.attendance | monthwisefilter:active">
               <td>{{ i.date | date : "shortDate" }}</td>
               <td>{{ i.status }}</td>
               <td>{{ i.in == null ? "----" : i.in }}</td>
               <td>{{ i.out == null ? "----" : i.out }}</td>
+              <td>{{i.ip_in}}</td>
+              <td>{{i.ip_out}}</td>
             </tr>
           </tbody>
         </table>

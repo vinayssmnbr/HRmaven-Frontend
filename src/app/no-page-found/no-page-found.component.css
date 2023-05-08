@@ -1,7 +1,7 @@
 .section{
   width: 100%;
   background-color: #ffffff ;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   min-height: 100%;
   overflow: hidden;
   /* padding: 0 15px; */
@@ -11,6 +11,7 @@
   margin-top: 30px;
   margin-left: 30px;
   gap: 6px;
+  width: 100%;
 }
 
 .logo h2{
@@ -25,8 +26,9 @@ font-family: 'Outfit',sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left:100px;
+  /* margin-left:100px; */
   flex-direction: column;
+  width: 100%;
 }
 .containers img{
   width: 500px;

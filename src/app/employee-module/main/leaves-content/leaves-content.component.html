@@ -11,7 +11,7 @@
                         <h4>{{obj.casual}}</h4>
                     </div>
                     <div class="progress_circle">
-                        <circle-progress [percent]="70" [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                        <circle-progress [percent]='((obj.casual)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
                             [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
                             [backgroundStrokeWidth]="4"></circle-progress>
@@ -23,7 +23,7 @@
                         <h4>{{obj.medical}}</h4>
                     </div>
                     <div class="progress_circle">
-                        <circle-progress [percent]="70" [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                        <circle-progress [percent]='((obj.medical)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
                             [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
                             [backgroundStrokeWidth]="4"></circle-progress>
@@ -32,10 +32,10 @@
                 <div class="leaves">
                     <div class="leave-text">
                         <h6>Compensatory Leave</h6>
-                        <h4>{{obj.urgent}}</h4>
+                        <h4>{{obj.compensatory}}</h4>
                     </div>
                     <div class="progress_circle">
-                        <circle-progress [percent]="70" [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+                        <circle-progress [percent]='((obj.compensatory)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
                             [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
                             [backgroundStrokeWidth]="4"></circle-progress>
@@ -85,7 +85,7 @@
         <!--------------------Apply for leaves------------------->
         <div class="apply-for-leaves">
             <h6>Apply For Leave </h6>
-            <form [formGroup]="empleaveForm">
+            <form [formGroup]="empleaveForm" (ngSubmit)="applyleaves()">
                 <div class="form">
                     <div class="col-3">
                         <div class="form-group">
@@ -110,23 +110,23 @@
                             <label for="">Category</label><br>
                             <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                                 <div class="dropdwon_select" (click)="dropdownOpen()">
-                                    <input type="text" formControlName="category" style="display:none"
-                                        [value]="Selectvariable">
+                                    <input type="text" formControlName="category" *ngIf="fasle"
+                                        (value)="Selectvariable">
                                     <p>{{Selectvariable}}</p>
                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                 </div>
                                 <div class="select_content" *ngIf="contentdropdown">
                                     <ul>
                                         <li *ngFor="let arr of array; index as i"
-                                            [class.select_active]="i === colorvariable" (click)="Changeselect(arr)">
+                                            [class.select_active]="i === colorvariable" (click)="Changeselect(arr)" ng-mouseover='halfdayleave=true'>
                                             {{arr.name}}</li>
                                     </ul>
                                     <!-------- Side dropdown--------------- -->
-                                    <div class="half_day_leave" *ngIf="halfdayleave"
+                                    <!-- <div class="half_day_leave" *ngIf="halfdayleave"
                                         (mouseleave)="halfdayleave = false">
-                                        <p class="First_Half">First Half</p>
-                                        <p class="Second_Half">Second Half</p>
-                                    </div>
+                                        <p class="First_Half" (click)="Selectvariable3='First Half'">First Half</p>
+                                        <p class="Second_Half" (click)="Selectvariable3='Second Half'">Second Half</p>
+                                    </div> -->
                                 </div>
 
                             </div>
@@ -138,7 +138,7 @@
                     <label for="">Time Duration</label><br>
                     <div class="dropdown_container drop_down_input" (mouseleave)="contentdropdown1 = false">
                         <div class="dropdwon_select" (click)="dropdownOpen1()">
-                            <input type="text" formControlName="category" style="display:none"
+                            <input type="text" formControlName="shortime" style="display:none"
                                 [value]="Selectvariable1">
                             <p>{{Selectvariable1}}</p>
                             <i class="fa-sharp fa-solid fa-caret-down"></i>
@@ -171,7 +171,7 @@
 
                                     <!-- <input type="file" (change)="onFileSelected($event)"> -->
                                     <div class="file_upload">
-                                        <input type="file" (change)="onFileSelected($event)">
+                                        <input type="file" (change)="onFileSelected($event)" id="doc">
                                     </div>
                                     <div class="file_size">
                                         <p>Maximum Size : 5 MB</p>
@@ -195,8 +195,8 @@
                     </div>
                 </div>
                 <div class="clear-apply-button">
-                    <button class="clear" (click)="cancel()">Clear</button>
-                    <button class="apply" (click)="applyleaves()">Apply </button>
+                    <button type="reset" class="clear" (click)="cancel()">Clear</button>
+                    <button type="submit" class="apply" [disabled]="empleaveForm.invalid">Apply </button>
                     <!-- <div class="loader" *ngIf="loader"></div> -->
                 </div>
             </form>
