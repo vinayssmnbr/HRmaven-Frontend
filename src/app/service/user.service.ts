@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as filestack from 'filestack-js';
 import {
   HttpClient,
   HttpHeaders,
@@ -47,7 +48,10 @@ export class UserService {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService
-  ) {}
+  ) {
+  this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
+
+  }
 
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
@@ -200,5 +204,30 @@ export class UserService {
   //   const url = `${this.prefix + 'getOldpasssword/oldpassword'}/${oldpassword}`;
   //   return this.http.get(url);
   // }
+
+
+
+  private client: filestack.Client;
+  fileUrl: any;
+emailId = localStorage.getItem('emailid') 
+  async upload( emailId:any,file: File) {
+    try {
+      const res = await this.client.upload(file);
+      this.fileUrl = res.url;
+      console.log("email user service:",emailId)
+      const user = await this.updatepersonals(emailId ,     { url: res.url},
+      ).subscribe((result:any) => {
+        console.log('update user service', result);
+        console.log('file', this.fileUrl);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  
+  
+
 
 }
