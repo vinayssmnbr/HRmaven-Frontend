@@ -24,19 +24,17 @@ export class EmpService {
   }
   private prefix = environment.v1;
 
-
   getUserProfile(): Observable<any> {
     const id = this.cookie.get('id');
     const role = this.cookie.get('role');
     const token = this.cookie.get('emp-token');
     let headers = new HttpHeaders({
-      'id': id.toString(),
-      'authorization':`Bearer ${token}`,
-      'role':role
+      id: id.toString(),
+      authorization: `Bearer ${token}`,
+      role: role,
     });
-    return this.http.get(this.prefix+"user-profile", { headers });
+    return this.http.get(this.prefix + 'user-profile', { headers });
   }
-
 
   getEmployeeRecord(): Observable<any> {
     const token = this.cookie.get('emp-token');
@@ -44,13 +42,19 @@ export class EmpService {
     console.log(token);
 
     let headers = new HttpHeaders({
-      'authorization':`Bearer ${token}`,
-      'id': id.toString()
+      authorization: `Bearer ${token}`,
+      id: id.toString(),
     });
-    return this.http.get(this.prefix+"api/detail/fetch", { headers });
+    return this.http.get(this.prefix + 'api/detail/fetch', { headers });
   }
 
-
+  updateEmployeeRecord(obj: any) {
+    console.log(obj._id);
+    return this.http.patch(
+      `${this.prefix + 'api/empsideupdate'}/${obj._id}`,
+      obj
+    );
+  }
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
     let currentDate = moment(startDate);
@@ -62,53 +66,43 @@ export class EmpService {
     return dateArray;
   }
 
-  attendancedonut(){
+  attendancedonut() {
     const id = this.cookie.get('id');
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
-    return this.http.get(this.prefix+"attendance/emp/donut", { headers });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(this.prefix + 'attendance/emp/donut', { headers });
   }
 
   leavegraph() {
     const id = this.cookie.get('id');
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
-    return this.http.get(this.prefix+"api/leave/emp/leave", { headers });
-
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(this.prefix + 'api/leave/emp/leave', { headers });
   }
 
   leavehistory() {
     const id = this.cookie.get('id');
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
-    return this.http.get(this.prefix+'api/leave/emp/history', { headers });
-
-
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(this.prefix + 'api/leave/emp/history', { headers });
   }
 
   attendanceload() {
     const id = this.cookie.get('id');
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
-    return this.http.get(this.prefix+'attendance/emp/attendance', { headers });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(this.prefix + 'attendance/emp/attendance', {
+      headers,
+    });
   }
-
 
   private client: filestack.Client;
 
@@ -126,62 +120,69 @@ export class EmpService {
 
   createleave(data: any) {
     const id = this.cookie.get('id');
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'data': data
-      }
-    )
-    data['id']=id;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      data: data,
+    });
+    data['id'] = id;
     const d = new Date();
-    data['appliedon']=d;
-    return this.http.post(this.prefix+'api/leave/add/leave', data);
+    data['appliedon'] = d;
+    return this.http.post(this.prefix + 'api/leave/add/leave', data);
   }
 
   attendanceTime() {
     const id = this.cookie.get('id');
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
-    return this.http.get(this.prefix+'attendance/check/empattendance', { headers });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(this.prefix + 'attendance/check/empattendance', {
+      headers,
+    });
   }
 
-
-  punchin(ip:any) {
+  punchin(ip: any) {
     console.log('dvfoivemvvmrv');
     const id = this.cookie.get('id');
 
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
     console.log(id);
     return this.http.post(this.prefix+'attendance/emp/punchin',{id,ip},{ headers });
 
   }
 
-  punchout(ip:any) {
+  punchout(ip: any) {
     console.log('dvfoivemvvmrv');
     const id = this.cookie.get('id');
 
-    const headers = new HttpHeaders(
-      {
-        'Content-Type': 'application/json',
-        'id': id
-      }
-    )
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
     console.log(id);
     return this.http.post(this.prefix+'attendance/emp/punchout',{id,ip},{ headers });
 
   }
 
   getEmployee() {
-    return this.http.get(this.prefix+'api/find');
+    return this.http.get(this.prefix + 'api/find');
   }
 
+  async uploadImage(file: File, userId?: string) {
+    try {
+      const res = await this.client.upload(file);
+      this.fileUrl = res.url;
+      const user = await this.updateEmployeeRecord({
+        _id: userId,
+        url: res.url,
+      }).subscribe((result) => {
+        console.log('update', result);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

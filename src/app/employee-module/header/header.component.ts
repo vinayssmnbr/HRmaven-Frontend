@@ -8,10 +8,10 @@ import { EmployeeService } from 'src/app/service/employee.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  showSearchBox=false;
+  showSearchBox = false;
   date: any;
   greeting: any;
   employee: string;
@@ -23,86 +23,90 @@ export class HeaderComponent {
   showNotifications = true;
   profileDisplayNot: boolean;
   hideNotifications = false;
+  obj: any;
 
+  constructor(
+    public empService: EmpService,
+    private employeeService: EmployeeService,
+    private router: Router,
+    private cookie: CookieService,
+    private elementRef: ElementRef,
+    private http: HttpClient
+  ) {
+    this.getProfileData();
 
-constructor(public empService:EmpService,private employeeService:EmployeeService,private router:Router,private cookie:CookieService,private elementRef :ElementRef, private http:HttpClient){
-  this.getProfileData();
-}
-hide : boolean = true;
-ngOnInit() {
-  const today = new Date();
-  this.date = today.toLocaleString('default', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
+    this.empService.getEmployeeRecord().subscribe((res) => {
+      console.log('pro', res);
+      this.obj = res.response;
+      console.log('xyz', this.obj);
+    });
+  }
+  hide: boolean = true;
+  ngOnInit() {
+    const today = new Date();
+    this.date = today.toLocaleString('default', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
 
-  const currentHour = today.getHours();
-  if (currentHour < 12) {
-    this.greeting = 'GOOD MORNING';
-  } else if (currentHour < 18) {
-    this.greeting = 'GOOD AFTERNOON';
-  } else {
-    this.greeting = 'GOOD EVENING';
+    const currentHour = today.getHours();
+    if (currentHour < 12) {
+      this.greeting = 'GOOD MORNING';
+    } else if (currentHour < 18) {
+      this.greeting = 'GOOD AFTERNOON';
+    } else {
+      this.greeting = 'GOOD EVENING';
+    }
+
+    this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+      this.profileDisplay = false;
+    });
+    this.elementRef.nativeElement.addEventListener('mouseleave', () => {
+      this.visible = false;
+    });
   }
 
-
-  this.elementRef.nativeElement.addEventListener('mouseleave', () => {
-    this.profileDisplay = false;
-  });
-  this.elementRef.nativeElement.addEventListener('mouseleave', () => {
-    this.visible = false;
-  });
-
-
-}
-
-
-
-toggleSearchBox(){
-  this.showSearchBox=!this.showSearchBox;
-}
-
-getProfileData(){
-  this.empService.getUserProfile().subscribe((res: any)=>{
-    this.userEmail=res[0].professionalemail;
-    this.name=res[0].name
-  });
-}
-
-profileToggle() {
-  if (this.hideNotifications) {
-    this.visible = false;
-  } else if(!this.hideNotifications){
-    this.visible = false;
+  toggleSearchBox() {
+    this.showSearchBox = !this.showSearchBox;
   }
 
-      // this.hideNotifications = true;
-
-  this.profileDisplay = !this.profileDisplay;
-}
-
-
-logout() {
-  this.cookie.delete('token');
-  this.router.navigate(['./loginemp']);
-}
-
-ReadMore: boolean = true;
-visible: boolean = false;
-onclick() {
-  this.ReadMore = !this.ReadMore;
-  this.visible = !this.visible;
-   if(!this.hideNotifications){
-    this.profileDisplay= false
+  getProfileData() {
+    this.empService.getUserProfile().subscribe((res: any) => {
+      this.userEmail = res[0].professionalemail;
+      this.name = res[0].name;
+    });
   }
-}
-id: any = 'all';
-tabChange(ids: any) {
-  this.id = ids;
-  console.log(this.id);
-}
 
+  profileToggle() {
+    if (this.hideNotifications) {
+      this.visible = false;
+    } else if (!this.hideNotifications) {
+      this.visible = false;
+    }
 
+    // this.hideNotifications = true;
 
+    this.profileDisplay = !this.profileDisplay;
+  }
+
+  logout() {
+    this.cookie.delete('token');
+    this.router.navigate(['./loginemp']);
+  }
+
+  ReadMore: boolean = true;
+  visible: boolean = false;
+  onclick() {
+    this.ReadMore = !this.ReadMore;
+    this.visible = !this.visible;
+    if (!this.hideNotifications) {
+      this.profileDisplay = false;
+    }
+  }
+  id: any = 'all';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
+  }
 }

@@ -13,21 +13,38 @@
             </div>
         </div>
         <div class="profile-name">
-            <div class="profile-image">
+            <!-- <div class="profile-image">
                 <div class="upload_content">
                     <div class="content-overlay"></div>
-                    <img class="content-image" src="assets/images/user 1.svg" alt="">
-                    <!-- <img class="content-image" src="{{profileimage}}" alt=""> -->
-                    <div class="content-details fadeIn-bottom">
+                    <img *ngIf="!profileimage" class="content-image" src="assets/images/user 1.svg" alt="">
+                    <img *ngIf="profileimage" class="content-image" src="{{profileimage}}" alt="">
+                    <div class="content-details fadeIn-bottom"> -->
                         <!-- <img  src="assets/images/upload.png" alt=""> -->
+                        <!-- <input type="file" id="file-input">
                         <div class="upload_title">
-                            <input type="file" accept="image/*" />
+                            <input type="file" accept="image/*" (change)="onFileSelected($event)" id="file-input"/>
                             <span>UPLOAD </span>
                         <p class="content-text">PROFILE PICTURE</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <div class="profile-image">
+                <div class="upload_content">
+                  <div class="content-overlay"></div>
+                  <img *ngIf="!profileimage" class="content-image" src="assets/images/user 1.svg" alt="">
+                  <img *ngIf="profileimage" class="content-image" src="{{profileimage}}" alt="">
+                  <div class="content-details fadeIn-bottom">
+                    <button (click)="fileInput.click()">UPLOAD</button> <!-- add click event to trigger file selection -->
+                    <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" /> <!-- remove duplicate id attribute -->
+                    <!-- <div class="upload_title">
+                      <span>UPLOAD </span>
+                      <p class="content-text">PROFILE PICTURE</p>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              
 
             <div class="name-text">
                 <!-- <h5>Abhishek Sharma</h5> -->
@@ -143,14 +160,26 @@
         <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
             <div class="company-name-headoffice-desc-area">
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
-                    <div class="old-new-confirm-password">
+                 
+                
+                      <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
-                        <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)" class="form-control password" required id="oldp" formControlName="oldpassword"
-                      [ngClass]="{'ng_invalid':forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty,'ng_valid':forgetpwd.controls.oldpassword.valid}">
-
-
-
-                    </div>
+                        <input type="password"
+                        placeholder="Type your old password"
+                        class="form-control password"
+                        required
+                        id="oldp"
+                        formControlName="oldpassword"
+                        (blur)="matchpwd()"
+                        (input)="isInputDirty = true">
+                      
+                        <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
+                        <ng-template #notMatched>
+                            <p *ngIf="isInputDirty" style="color: red;">This is not your old password.</p>
+                          </ng-template>
+                          
+                      </div>
+                      
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
@@ -161,23 +190,23 @@
 
                         </div>
                     </div>
+                  
                     <div class="new-reenter">
-                        <div class="old-new-confirm-password">
-                            <label for="">Confirm Password</label>
-                            <input type="password" placeholder="Re-enter your password" formControlName="confirm" class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp"
-                         [ngClass]="{'ng_invalid':forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty,'ng_valid':forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
-                         <!-- <span *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)">Password didn't match
-
-                         </span> -->
-
-
-
-                        </div>
+                    <div class="old-new-confirm-password">
+                        <label for="">Confirm Password</label>
+                        <input type="password" placeholder="Re-enter your password" formControlName="confirm" class="form-control password"
+                        (keyup)="onKeyUp($event)" required id="confirmp"
+                        [ngClass]="{'ng_invalid': forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty, 'ng_valid': forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
+                        <span *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)" class="error-message">
+                        Passwords do not match
+                        </span>
                     </div>
+                    </div>
+
                     <!-- </form> -->
                     <div class="clear-update-button">
                         <button class="clear-btn" (click)="clearForm()">Clear</button>
-                        <button class="update-btn" (click)="openModal3()" type="submit" [disabled]="forgetpwd.invalid">Update Password</button>
+                        <button class="update-btn" (click)="openModal3()" type="submit" [disabled]="!isPasswordMatched || forgetpwd.invalid">Update Password</button>
 
                     </div>
                 </form>

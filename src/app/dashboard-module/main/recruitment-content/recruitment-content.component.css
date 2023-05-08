@@ -111,6 +111,83 @@
 .Skills-required {
   margin-top: 18px;
 }
+ul.todo-list li {
+  width: 80px;
+  height: 32px;
+  background-color: #EFEFF8;
+  border-radius: 16px;
+  text-align: center;
+  
+}
+.input_list_li i{
+  position: relative;
+  cursor: pointer;
+  color: #777777;
+  font-size: 12px;
+  
+}
+.meeting-text-area button{
+  opacity: 0;
+}
+.input_list li{
+  border-radius: 16px;
+  /* text-align: center; */
+  font-weight: 400;
+  padding-left: 10px;
+  font-size: 14px;
+  padding-right: 10px;
+  width: 537px;
+  height: 32px;
+  align-items: center;
+  display: flex;
+}
+.input_list li:hover{
+  background-color: #EFEFF8;
+cursor: pointer;
+}
+ul.input_list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  height: 75px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* background-color: #FFFFFF;
+box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+border-radius: 8px; */
+
+}
+ul.input_list::after{
+  content: '';
+  background-color: #FFFFFF;
+box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+border-radius: 8px;
+position: absolute;
+}
+
+/*---------------------Scrollbar---------------*/
+/* width */
+ul.input_list::-webkit-scrollbar {
+  width: 5px;
+  
+}
+
+/* Track */
+ul.input_list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+ul.input_list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+ul.input_list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .skills li {
   background-color: #EFEFF8;
@@ -589,11 +666,20 @@ resize: none;
   border: none;
   outline: none;
   padding: 6px 8px;
-  width: 140px;
+  width: 530px;
   height: 20px;
 }
 .meeting-text-area ::placeholder{
   color: rgba(136, 136, 136, 0.6);
+}
+.job-description textarea{
+  width: 574px;
+height: 40px;
+background-color: #FFFFFF;
+border: 1px solid #CBCBCB;
+border-radius: 6px;
+padding: 10px 17px;
+outline: none;
 }
 
 .date-input{
@@ -726,6 +812,40 @@ font-size: 14px;
   outline: none;
   border: none;
 }
+
+/*-----------------------More Detail Modal--------------------*/
+.Back-Add{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+}
+.Back-Add .back button{
+  color: #2F2C9F;
+  background-color: #FFFFFF;
+border: 1px solid #2F2C9F;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 400;
+font-size: 14px;
+}
+.Back-Add .add button{
+  color: #FFFFFF;
+  background-color: #2F2C9F;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 400;
+font-size: 14px;
+}
+.Back-Add button{
+  width: 90px;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+}
+
+
 .fa-xmark {
   position: absolute;
   top: -4%;
@@ -802,4 +922,77 @@ font-size: 14px;
   background-color: #ECECEC;
   border-radius: 8px;
 
+}
+
+
+/**/
+.forget_email_send_content {
+  padding: 20px 20px;
+  width: 430px;
+height: 349px;
+}
+.forget_text{
+background: rgba(123, 211, 109, 0.3);
+border-radius: 8px;
+width: 390px;
+height: 130px;
+justify-content: center;
+display: flex;
+align-items: center;
+}
+.forget_text img{
+  width: 56px;
+height: 56px;
+}
+.forget_content button{
+  width: 82px;
+height: 38px;
+background-color: #3D9130;
+border-radius: 8px;
+color: #FFFFFF;
+padding: 9px 24px;
+font-weight: 500;
+font-size: 14px;
+border: none;
+outline: none;
+cursor: pointer;
+margin-top: 28px;
+}
+.forget_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.forget_content h1 {
+  /* font-size: 15px; */
+  font-weight: 500;
+  font-size: 18px;
+  color: #444444;
+  padding-top: 33px;
+}
+.forget_content p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #777777;
+}
+
+.shownewjobmodal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.shownewjobmodal {
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 8px;
+  width: 684px;
 }
