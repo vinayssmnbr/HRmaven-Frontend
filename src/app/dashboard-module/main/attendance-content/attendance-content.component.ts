@@ -78,7 +78,7 @@ export class AttendanceContentComponent implements OnInit {
     punch_in: new FormControl(''),
     punch_out: new FormControl(''),
   });
-
+  myChart:any;
   async getreport() {
     await this.dashService.graphcontent().subscribe((res: any) => {
       console.log(res);
@@ -90,7 +90,7 @@ export class AttendanceContentComponent implements OnInit {
         absent[d.month] = d.absent;
         leave[d.month] = d.leave;
       });
-      const myChart = new Chart('barChart', {
+       this.myChart = new Chart('barChart', {
         type: 'bar',
         data: {
           labels: [
@@ -301,7 +301,10 @@ export class AttendanceContentComponent implements OnInit {
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
+  active:number = new Date().getMonth();
+
   Selectvariable: string = 'Months';
+
   colorvariable: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -309,6 +312,7 @@ export class AttendanceContentComponent implements OnInit {
     this.contentdropdown = false;
     console.log(arr.id);
     this.loadcarddata(arr.id);
+    this.active = arr.id;
   }
 
   loadcarddata(month: any) {
@@ -329,10 +333,21 @@ export class AttendanceContentComponent implements OnInit {
     this.profilecard = true;
     this.attendence_main = false;
     this.profile = profile;
+    this.dashService.getemprecord(profile._id.empId).subscribe((res:any)=>{
+        this.profile.attendance=res.response;
+    })
   }
   back_profile() {
+    this.Selectvariable =  this.array[new Date().getMonth()].name;
+    this.myChart.destroy();
+    this.getreport();
+
     this.profilecard = false;
     this.attendence_main = true;
+    this.showCard=true;
+    this.loadcarddata(new Date().getMonth());
+
+
   }
 
   getEmployeeData() {

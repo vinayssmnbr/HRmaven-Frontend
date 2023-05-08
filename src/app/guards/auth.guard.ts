@@ -39,6 +39,10 @@ export class AuthGuard implements CanActivate {
     if (this.userService.isLoggedIn.value) {
       // this.userService.mainAuth();
       const token = this.cookie.get('token');
+      if(this.cookie.get('role')!='hr')
+      {
+        this.router.navigate(['']);
+      }
 
       if (!token || token == '') {
         // this.router.createUrlTree(['login']);

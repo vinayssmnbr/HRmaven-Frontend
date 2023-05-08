@@ -20,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodayattendancePipe } from './pipe/todayattendance.pipe';
 import { FilterattendancePipe } from './pipe/filterattendance.pipe';
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { NoPageFoundComponent } from './main/no-page-found/no-page-found.component';
+
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -37,7 +37,6 @@ import { NoPageFoundComponent } from './main/no-page-found/no-page-found.compone
     TimesheetComponent,
     TodayattendancePipe,
     FilterattendancePipe,
-    NoPageFoundComponent,
   ],
   imports: [
     CommonModule,
