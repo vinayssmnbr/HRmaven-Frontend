@@ -35,12 +35,15 @@
 }
 
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -35px;
-  justify-content: space-between;
+  align-items: start;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(372.33px, 1fr));
 }
-
+.col-4 {
+  display: inline-block;
+  width: 100%;
+}
 .job-btn {
   display: flex;
   gap: 20px;
