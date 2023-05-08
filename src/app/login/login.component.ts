@@ -213,6 +213,7 @@ export class LoginComponent {
         if (this.loginForm.value.Remember) {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
+          
         }
 
         console.log(res._id);

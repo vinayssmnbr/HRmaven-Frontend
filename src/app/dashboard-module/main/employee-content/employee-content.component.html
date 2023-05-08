@@ -176,8 +176,9 @@
       </div>
     </div>
    </div>
+   <div class="view2">
    <div class="card-view">
-   <div class="col-3">
+    <div class="column3">
    <div class="card-detail">
     <div class="first-detail">
       <input type="checkbox">
@@ -210,44 +211,9 @@
     </div>
    </div>
    </div>
-   </div>
-  <div class="card-view">
-    <div class="col-3">
-      <div class="card-detail">
-        <div class="first-detail">
-          <input type="checkbox">
-          <div class="icons1">
-            <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-              (change)="onSelectChange($event, user)" [value]="user.status"
-              [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-              <option value="active" class="activated">Active</option>
-              <option value="terminated" class="terminate">Terminated</option>
-              <option value="resigned" class="resign">Resigned</option>
-              <option value="absconder" class="abscond">Absconder</option>
-            </select>
-            <img src="./assets/images/down-arrow.png" alt="">
-          </div>
-        </div>
-        <div class="image-detail">
-          <span>
-            <img src="./assets/images/Ellipse 98.svg" alt="no-user">
-          </span>
-        </div>
-        <div class="per-detail">
-          <h3>Emily Cooper</h3>
-          <div class="per-detail1">
-            <p>Front End Developer <span>| 25984</span></p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <p>9870541231</p>
-          <span>emilycooper@gmail.com</span>
-        </div>
-      </div>
-    </div>
   </div>
   <div class="card-view">
-    <div class="col-3">
+    <div class="column3">
       <div class="card-detail">
         <div class="first-detail">
           <input type="checkbox">
@@ -279,10 +245,10 @@
           <span>emilycooper@gmail.com</span>
         </div>
       </div>
-    </div>
+      </div>
   </div>
   <div class="card-view">
-    <div class="col-3">
+    <div class="column3">
       <div class="card-detail">
         <div class="first-detail">
           <input type="checkbox">
@@ -314,7 +280,43 @@
           <span>emilycooper@gmail.com</span>
         </div>
       </div>
-    </div>
+      </div>
+  </div>
+  <div class="card-view">
+    <div class="column3">
+      <div class="card-detail">
+        <div class="first-detail">
+          <input type="checkbox">
+          <div class="icons1">
+            <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+              (change)="onSelectChange($event, user)" [value]="user.status"
+              [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+              <option value="active" class="activated">Active</option>
+              <option value="terminated" class="terminate">Terminated</option>
+              <option value="resigned" class="resign">Resigned</option>
+              <option value="absconder" class="abscond">Absconder</option>
+            </select>
+            <img src="./assets/images/down-arrow.png" alt="">
+          </div>
+        </div>
+        <div class="image-detail">
+          <span>
+            <img src="./assets/images/Ellipse 98.svg" alt="no-user">
+          </span>
+        </div>
+        <div class="per-detail">
+          <h3>Emily Cooper</h3>
+          <div class="per-detail1">
+            <p>Front End Developer <span>| 25984</span></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <p>9870541231</p>
+          <span>emilycooper@gmail.com</span>
+        </div>
+      </div>
+  </div>
+  </div>
   </div>
   </div>
   <div class="modal" *ngIf="showModal">

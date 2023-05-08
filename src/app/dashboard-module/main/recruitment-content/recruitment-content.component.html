@@ -403,7 +403,7 @@
             </div>
 
 
-            <!--Modal Starts-->
+            <!-------------------------Modal Starts--------------------------->
 
             <div class="modal" *ngIf="showModal5">
                 <div class="modal-content" *ngIf="showModalContent">
@@ -422,14 +422,14 @@
 
                     </div>
                     <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
-                        <form class="vacancy-form">
+                        <form class="vacancy-form" [FormGroup]="jobvacancyform">
                             <div class="job-title-date">
-                                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="vacancydetail()">
+                                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="jobvacancydetail()">
                                     <div class="meeting-mode">
                                         <div class="form-group">
                                             <label>Job Title <span>*</span></label> <br>
                                             <input type="text" placeholder="Type a job title here..."
-                                                class="meeting-input" formControlName="jobtitle">
+                                                class="meeting-input" formControlName="jobtitle" formControlName="jobtitle">
                                         </div>
                                         <div class="form-group">
                                             <label>Date <span>*</span></label> <br>
@@ -536,6 +536,47 @@
                                                     <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
                                                 </ul>
                                             </div>
+
+
+                                            
+                                        </div> 
+
+
+
+                                    </div>
+                                    <div class="skill-required-mode">
+                                        <div class="form-group">
+                                            <label>Recruiter's name <span>*</span></label> <br>
+                                          
+                                            <div class="meeting-text-area">
+                                                <input type="text" placeholder="Amanda Kerry" class="todo-list"
+                                                #task>
+                                                
+                                              
+                                                <button (click)="addtask1(task1.value1)">click</button>
+                                                <ul  class="input_list">
+                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
+                                                </ul>
+                                            </div>
+
+
+                                            
+                                        </div> 
+
+
+
+                                    </div>
+
+                                    <div class="skill-required-mode">
+                                        <div class="form-group">
+                                            <label>Job description:</label> <br>
+                                          
+                                        <div class="job-description">
+                                              <textarea name="" id="" placeholder="Enter description..."></textarea>
+                                            </div>
+
+
+                                            
                                         </div> 
 
 
@@ -546,21 +587,32 @@
 
 
 
-
-
-
-                                    <div class="discard-save">
-                                        <div class="save"><button type="submit" (click)="closeModal10()">Next</button>
+                                    <div class="Back-Add">
+                                        <div class="back"><button type="submit" (click)="closeModal5()">Back</button>
+                                        </div>
+                                        <div class="add"><button type="submit" (click)="shownewjobmodal()" >Add</button>
                                         </div>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </form>
                     </div>
                 </div>
+<!-----------------------------New-Job-Added-Modal---------------------------------->
 
 
+            </div>
 
+            <div class="forget_email_send_content" *ngIf="shownewjobmodal()">
+                <div class="forget_content">
+                    <div class="forget_text">
+                        <img src="./assets/images/tick.png" alt="img">
+                    </div>
+                    <h1>New job vacancies added successfully!</h1>
+                    <p>You can add more job vacancies in a similar way.</p>
+                    <button class="done_btn" (click)="closeModal5()">Done</button>
+                </div>
             </div>
         </div>
     </div>

@@ -1049,7 +1049,7 @@ input[type='number']:hover {
   padding-left: 17px;
   padding-right: 17px;
   outline: none;
-
+ margin-left: -84px;
 }
 
 .old-new-confirm-password {
@@ -1057,7 +1057,6 @@ input[type='number']:hover {
   display: flex;
   text-align: center;
   align-items: center;
-
 }
 
 .new-reenter {
@@ -1250,14 +1249,31 @@ input[type='number']:hover {
   color: #ECECEC;
   cursor: pointer;
 }
-.text.ng_invalid {
-  border: 1px solid red !important;
+.password.ng_invalid {
+  border: 1px solid #CB1E0F !important;
 }
 
-.text.ng_invalid:hover {
-  border: 1px solid red !important;
+.password.ng_invalid:hover {
+  border: 1px solid #CB1E0F !important;
 }
 
-.text.ng_valid {
+.password.ng_valid {
   border: 1px solid green !important;
+}
+.validation-message {
+  color: #CB1E0F;
+  display: flex;
+  gap: 6px;
+  /* margin-top: -15px; */
+  font-family: "Outfit", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 218px;
+  margin-top: 10px;
+}
+
+.fa-circle-info {
+  color: #CB1E0F;
+  margin-top: 3px;
 }
