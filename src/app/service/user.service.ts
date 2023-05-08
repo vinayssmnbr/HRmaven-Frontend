@@ -209,22 +209,25 @@ export class UserService {
 
   private client: filestack.Client;
   fileUrl: any;
-emailId = localStorage.getItem('emailId') 
-  async upload(file: File, emailId?:any) {
+emailId = localStorage.getItem('emailid') 
+  async upload( emailId:any,file: File) {
     try {
       const res = await this.client.upload(file);
       this.fileUrl = res.url;
-      console.log(emailId)
-      const user = await this.updatepersonals({
-      email:emailId},
-       { url: res.url},
-      ).subscribe((result) => {
-        console.log('update', result);
+      console.log("email user service:",emailId)
+      const user = await this.updatepersonals(emailId ,     { url: res.url},
+      ).subscribe((result:any) => {
+        console.log('update user service', result);
+        console.log('file', this.fileUrl);
       });
     } catch (error) {
       console.log(error);
     }
   }
+
+
+  
+  
 
 
 }

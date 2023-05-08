@@ -469,15 +469,15 @@ export class EmployeeContentComponent implements OnInit {
       name: '9.00am to 5:00pm',
     },
     {
-      id: 0,
+      id: 1,
       name: '9.00am to 6:00pm',
     },
     {
-      id: 0,
+      id: 2,
       name: '10.00am to 5:00pm',
     },
     {
-      id: 0,
+      id: 3,
       name: '10.00am to 6:00pm',
     },
   ];
