@@ -11,6 +11,7 @@
   margin-top: 30px;
   margin-left: 30px;
   gap: 6px;
+  width: 100%;
 }
 
 .logo h2{
@@ -27,6 +28,7 @@ font-family: 'Outfit',sans-serif;
   align-items: center;
   margin-left:100px;
   flex-direction: column;
+  width: 100%;
 }
 .containers img{
   width: 500px;
