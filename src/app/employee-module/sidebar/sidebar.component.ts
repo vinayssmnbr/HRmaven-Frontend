@@ -78,7 +78,7 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['./login-emp'])
     // window.location.href='http://localhost:4200/login-emp'
     // window.open('https://turneazy.com/login', '_blank');
-
+  
 
   }
   active: string = 'dashboard';

@@ -1392,3 +1392,7 @@ right: 20px;
 .hidden {
   display: none;
 }
+
+.visible {
+  display: block;
+}

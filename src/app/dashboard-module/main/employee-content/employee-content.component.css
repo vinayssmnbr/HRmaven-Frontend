@@ -1956,6 +1956,10 @@ input::placeholder {
   background-color: #f9f9f9;
   padding: 20px 0;
   text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
 }
 
 
@@ -2082,15 +2086,18 @@ input::placeholder {
     color: #999999;
 }
 .card-view{
-  margin-top: 25px;
-  gap: 25px;
+ margin-top: 25px;
+  /* gap: 25px; */
   display: flex;
+  width: 25%;
+}
+.column3{
   width: 100%;
 }
 .card-detail{
   padding: 15px 15px;
-  max-width: 270px;
-  height: 280px;
+  /* max-width: 270px; */
+  height: 290px;
   background-color: #FFFFFF;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -2186,4 +2193,8 @@ cursor: pointer;
     font-weight: 400;
     font-size: 13px;
     color: #2f2c9f;
+}
+.view2{
+  display: flex;
+  gap: 25px;
 }

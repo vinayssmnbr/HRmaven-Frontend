@@ -24,8 +24,9 @@
       <img *ngIf="!user" src="./assets/images/Ellipse 98.svg" alt="user-icon" class="header-icon"
         (click)="getProfileData();profileToggle()">
 
-        <img *ngIf="user" src="{{header}}" alt="user-icon" class="header-icon"
+        <img *ngIf="user;profileimage" src="{{profileimage}}" alt="user-icon" class="header-icon"
         (click)="getProfileData();profileToggle()">
+        <!-- <img *ngIf="profileimage" [src]="profileimage" alt="Profile Image"> -->
 
 
     </div>
