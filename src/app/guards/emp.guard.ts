@@ -22,6 +22,10 @@ export class EmpGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (this.employeeService.isLoggedIn.value) {
         // this.userService.mainAuth();
+        if(this.cookie.get('role')!='employee')
+        {
+          this.router.navigate(['/nofound']);
+        }
         const token = this.cookie.get('emp-token');
         // console.log(token);
 
