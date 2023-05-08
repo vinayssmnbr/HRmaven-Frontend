@@ -56,6 +56,8 @@ export class RecruitmentContentComponent {
     this.id = ids;
     console.log(this.id);
   }
+
+
   showModal5=false;
   openModal5(){
     this.showModal5 = true;
@@ -226,6 +228,11 @@ jobvacancydetail(){
 forget_email_send_content:boolean=false;
 shownewjobmodal(){
   this.forget_email_send_content=true;
+}
+
+
+tabchange(){
+
 }
   }
 
