@@ -68,6 +68,12 @@ header:any
     
   }
 
+  profileimage: any = '';
+
+  // receiveProfileImage(profileimage: string) {
+  //   this.profileimage = profileimage;
+  // }
+
 
   toggleSearchBox() {
     this.showSearchBox = !this.showSearchBox;
@@ -77,6 +83,7 @@ header:any
     this.dashService.getUserProfile().subscribe((res: any) => {
       this.userEmail = res.email.split('@')[0];
       this.name = res.username.charAt(0).toUpperCase() + res.username.slice(1);
+      this.profileimage = res.personaldata.url
     });
   }
   loginobjectid: any ='';
@@ -92,7 +99,8 @@ header:any
     this.profileDisplay = !this.profileDisplay;
     this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
 
-      console.log('response account:' +res.personaldata.headOffice);
+      // console.log('response account:' +res.personaldata.headOffice);
+
     });
   }
 

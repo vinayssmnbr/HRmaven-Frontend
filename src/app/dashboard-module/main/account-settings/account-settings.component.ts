@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchpassword } from './custom.validator';
 import { DashService } from '../../shared/dash.service';
+// import { EventEmitter } from 'stream';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -74,7 +75,7 @@ organisationn: any = '';
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.description = res.personaldata.description;
-        this.profileimage = res.personaldata.profileimage;
+        this.profileimage = res.personaldata.url;
         this.email_id = this.employeeemail.split("@")
       this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
 
@@ -82,22 +83,44 @@ organisationn: any = '';
 
     }
 
+    // updateData(data: any){
+    //   this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
+    //     console.log("res account settings personaldata: ", res.personaldata);
+    //     console.log("res account settings personaldata: ", res.personaldata.headOffice);
+
+    //     console.log("res account settings personaldata: ", res.useridd);
+
+
+    //     this.employeename = res.personaldata.name;
+    //     // this.totalemployee = res.personaldata.noOfEmployee;
+    //     this.description = res.personaldata.description;
+    //     this.headOffice = res.personaldata.headOffice;
+    //     this.phone = res.personaldata.phone;
+    //     this.profileimage = res.personaldata.url;
+
+    //   });
+    // }
     updateData(data: any){
       this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
-
         console.log("res account settings personaldata: ", res.useridd);
-
-
+    
         this.employeename = res.personaldata.name;
-        // this.totalemployee = res.personaldata.noOfEmployee;
         this.description = res.personaldata.description;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
-
+        this.profileimage = res.personaldata.url; // update profile image
+    
+        // Update the profile image in the UI
+        const img = new Image();
+        img.onload = () => {
+          this.imageurl = this.profileimage;
+        };
+        img.src = this.profileimage;
       });
     }
+    
 
     
 
@@ -251,6 +274,27 @@ organisationn: any = '';
   //     }
   //   });
 
+  // selectedFile: File | null = null;
+  // onFileSelected(event: any): void {
+  //   this.selectedFile = event.target.files[0];
+  //   if (this.selectedFile.type.split('/')[0] !== 'image') {
+  //     console.error('Invalid file type. Please select an image.');
+  //     return;
+  //   }
+  //   this.onUpload(this.profileimage);
+  // }
+
+  // upload: boolean = false;
+  // progress: boolean = false;
+  // imageurl: any;
+  // onUpload(profileimage) {
+  //   profileimage['email'] = this.profileimage.email;
+  //   // profileimage['email'] = localStorage.getItem('emailId')
+  //   this.userService.upload(this.selectedFile, profileimage.email).then((res: any) => {
+  //     this.imageurl = this.userService.fileUrl;
+  //     console.log('img', this.imageurl);
+  //   });
+  // }
   selectedFile: File | null = null;
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
@@ -258,21 +302,43 @@ organisationn: any = '';
       console.error('Invalid file type. Please select an image.');
       return;
     }
-    this.onUpload(this.profileimage);
+    this.onUpload();
   }
-
+  
   upload: boolean = false;
   progress: boolean = false;
   imageurl: any;
-  onUpload(profileimage) {
-    profileimage['email'] = this.profileimage.email;
-    // profileimage['email'] = localStorage.getItem('emailId')
-    this.userService.upload(this.selectedFile, profileimage.email).then((res: any) => {
+  // @Output() profileImageEmitter = new EventEmitter<string>();
+
+  onUpload() {
+    const email = localStorage.getItem('emailid');
+    console.log("email onUpload: ", email);
+    const profileimage = { email: email };
+    console.log("profileimage onUpload: ", profileimage);
+    console.log("email after profileimage onUpload: ", email);
+
+    profileimage['email'] = profileimage.email;
+    console.log("profileimage['email'] onUpload: ", profileimage['email']);
+    this.userService.upload(email,this.selectedFile).then((res: any) => {
+      console.log("after upload userService email:",email)
+      console.log("after upload userService this.selectedFile:",this.selectedFile)
+
       this.imageurl = this.userService.fileUrl;
       console.log('img', this.imageurl);
+      this.profileimage = this.userService.fileUrl;
+      // this.profileImageEmitter.emit(this.profileimage); // emit profileimage variable
     });
-  }
 
+  }
+  // onUpload() {
+  //   const email = localStorage.getItem('emailid');
+  //   this.userService.upload(this.selectedFile).then((res: any) => {
+  //     this.imageurl = this.userService.fileUrl;
+  //     console.log('img', this.imageurl);
+  //   });
+  // }
+  
+  
   }
 
 

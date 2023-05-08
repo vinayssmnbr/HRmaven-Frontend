@@ -13,14 +13,14 @@
             </div>
         </div>
         <div class="profile-name">
-            <div class="profile-image">
+            <!-- <div class="profile-image">
                 <div class="upload_content">
                     <div class="content-overlay"></div>
-                    <img class="content-image" src="assets/images/user 1.svg" alt="">
-                    <!-- <img class="content-image" src="{{profileimage}}" alt=""> -->
-                    <div class="content-details fadeIn-bottom">
+                    <img *ngIf="!profileimage" class="content-image" src="assets/images/user 1.svg" alt="">
+                    <img *ngIf="profileimage" class="content-image" src="{{profileimage}}" alt="">
+                    <div class="content-details fadeIn-bottom"> -->
                         <!-- <img  src="assets/images/upload.png" alt=""> -->
-                        <input type="file" id="file-input">
+                        <!-- <input type="file" id="file-input">
                         <div class="upload_title">
                             <input type="file" accept="image/*" (change)="onFileSelected($event)" id="file-input"/>
                             <span>UPLOAD </span>
@@ -28,7 +28,23 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <div class="profile-image">
+                <div class="upload_content">
+                  <div class="content-overlay"></div>
+                  <img *ngIf="!profileimage" class="content-image" src="assets/images/user 1.svg" alt="">
+                  <img *ngIf="profileimage" class="content-image" src="{{profileimage}}" alt="">
+                  <div class="content-details fadeIn-bottom">
+                    <button (click)="fileInput.click()">UPLOAD</button> <!-- add click event to trigger file selection -->
+                    <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" /> <!-- remove duplicate id attribute -->
+                    <!-- <div class="upload_title">
+                      <span>UPLOAD </span>
+                      <p class="content-text">PROFILE PICTURE</p>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              
 
             <div class="name-text">
                 <!-- <h5>Abhishek Sharma</h5> -->

@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../../service/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,8 @@ export class DashService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private userService: UserService,
   ) {
     this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
   }
@@ -273,6 +275,5 @@ export class DashService {
     const url = `${this.prefix + 'api/update'}/${id}`;
     return this.http.patch(url, { status });
   }
-
 
 }
