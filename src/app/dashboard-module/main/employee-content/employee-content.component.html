@@ -99,8 +99,11 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
-              (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+          <!-- <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
+              (change)="onCheckboxChange($event, 'All')">Employee ID</th> -->
+              <th class="employee"><input type="checkbox" [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
+                (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+  
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
