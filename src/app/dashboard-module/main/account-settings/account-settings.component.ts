@@ -108,7 +108,7 @@ organisationn: any = '';
       password: new FormControl('',[Validators.required,Validators.pattern(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
       )]),
-      confirm: new FormControl('',[Validators.required]),
+      confirm: new FormControl('',[Validators.required,]),
 
     },{
       validators:matchpassword
