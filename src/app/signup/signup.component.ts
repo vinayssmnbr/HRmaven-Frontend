@@ -122,7 +122,7 @@ export class SignupComponent {
     // password : new FormControl("",[Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*\d).{8,}$/)]),
     // password : new FormControl(""),
 
-    confirm : new FormControl("",[Validators.required]),
+    // confirm : new FormControl("",[Validators.required]),
     // confirm : new FormControl(""),
     // username: new FormControl("",[Validators.required,Validators.pattern('[a-zA-Z]*')]),
     username: new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9. ]+$")]),
