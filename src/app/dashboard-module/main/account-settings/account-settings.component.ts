@@ -98,7 +98,7 @@ organisationn: any = '';
       });
     }
 
-
+    
 
     forgetpwd = new FormGroup({
 
@@ -132,42 +132,24 @@ organisationn: any = '';
   isPasswordMatched = false;
   oldpassword: any = '';
     emailidd: any =''
-    matchpwd() {
-      // this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
-      const email = this.employeeemail;
-      // const password = this.forgetpwd.controls['password'].value;
-      
-      // if (!email || !password) {
-      //   return;
-      // }
     
-      this.userService.getpwdmgt(email, this.forgetpwd.controls['oldpassword'].value).subscribe((res: any) => {
+
+    matchpwd() {
+      const email = this.employeeemail;
+      const oldPassword = this.forgetpwd.controls['oldpassword'].value;
+      this.isPasswordMatched = false;
+    
+      this.userService.getpwdmgt(email, oldPassword).subscribe((res: any) => {
         console.log("message: ", res);
         console.log("message email: ", res.message);
-        // if (res.message === 'Password matches') {
-        //   if (this.func['oldpassword']) {
-        //     this.func['oldpassword'].setErrors({ 'passwordExists': true });
-        //   }
-        // } else {
-        //   if (this.func['oldpassword']) {
-        //     this.func['oldpassword'].setErrors(null);
-        //     this.func['oldpassword'].markAsTouched(); // Mark the control as touched to trigger validation messages
-        //   }
-        // }
+    
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
-          if (this.func['oldpassword']) {
-            this.func['oldpassword'].setErrors({ 'passwordExists': true });
-          }
-        } else {
-          this.isPasswordMatched = false;
-          if (this.func['oldpassword']) {
-            this.func['oldpassword'].setErrors(null);
-            this.func['oldpassword'].markAsTouched(); // Mark the control as touched to trigger validation messages
-          }
         }
+        this.oldpassword = oldPassword;
       });
     }
+    
     
   
 

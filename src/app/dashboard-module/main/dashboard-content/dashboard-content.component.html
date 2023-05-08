@@ -299,10 +299,10 @@
     <!-- <div *ngIf="isFromSignupPage"> -->
     <!-- <div *ngIf="!formSubmitted"  > -->
       <!-- <div *ngIf="!formSubmitted" [ngStyle]="{'opacity': (formSubmitted ? '0.0' : '1.0')}" > -->
-        <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" >
-            <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': userService.opacityValue}" > -->
-
-           
+        <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
+     <!-- <div *ngIf="showForm" [ngStyle]="{ opacity: opacityValue }"> -->
+        <!-- <div [ngClass]="{ 'hidden': !showForm, 'visible': showForm }" [style.opacity]="opacityValue"> -->
+            <div [hidden]="!showForm" [style.opacity]="opacityValue">           
           <div >
                 <div class="Modal_form" >
 
