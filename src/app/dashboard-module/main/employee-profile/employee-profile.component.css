@@ -479,7 +479,10 @@
   color: #444444;
   margin-bottom: 17px;
 }
-
+.profemail{
+  background-color: #f1f1f1 !important;
+  cursor: not-allowed;
+}
 .modal {
   position: fixed;
   top: 0;
@@ -1384,13 +1387,13 @@ div[role="progressbar"]::before {
 .parent .content3 {
   background-color: #fff;
   cursor: pointer;
-  width: 260px;
+  width: 180px;
   max-height: 250px;
   overflow-y: auto;
   cursor: pointer;
   padding: 10px;
   position: absolute;
-  bottom: -45px;
+  bottom: -65px;
   z-index: 9999;
   color: #444444;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);

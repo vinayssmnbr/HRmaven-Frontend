@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 declare var $:any;
 declare var checkboxOptions:any;
@@ -65,6 +66,129 @@ export class RecruitmentContentComponent {
     this.showModal5 = false;
     this.showModalContent=false;
   }
+unread:boolean=false;
+all:boolean=false;
+  next(){
+  this.unread=true;
+  this.all=false;
+  }
+
+  vacancyForm=new FormGroup({
+    jobtitle:new FormControl(''),
+    datetitle:new FormControl(''),
+    date:new FormControl(''),
+    ctctitle:new FormControl(''),
+    
+  })
+  vacancydetail()
+{
+  console.warn(this.vacancyForm.value);
+}
+
+
+
+
+
+array: any = [
+  {
+    id: 0,
+    name: 'Jalandhar',
+  },
+  {
+    id: 1,
+    name: 'Gurugram',
+  },
+  {
+    id: 2,
+    name: 'Chandigarh',
+  },
+];
+contentdropdown: boolean = false;
+dropdownOpen() {
+
+  this.contentdropdown = !this.contentdropdown;
+}
+Selectvariable: string = '-Select-';
+colorvariable: number =  0;
+Changeselect(arr: any) {
+  this.Selectvariable = arr.name;
+  this.colorvariable = arr.id;
+  this.contentdropdown=false;
+  console.log(arr.name);
+}
+
+
+/*-------------------Experience-dropdown--------------*/
+
+
+
+
+array1: any = [
+  {
+    id: 0,
+    name: '0 Experience',
+  },
+  {
+    id: 1,
+    name: '1-2 Years',
+  },
+  {
+    id: 2,
+    name: '2-3 Years',
+  },
+];
+contentdropdown1: boolean = false;
+dropdownOpen1() {
+
+  this.contentdropdown1 = !this.contentdropdown1;
+}
+Selectvariable1: string = '-Select-';
+colorvariable1: number =  0;
+Changeselect1(arr1: any) {
+  this.Selectvariable1 = arr1.name;
+  this.colorvariable1 = arr1.id;
+  this.contentdropdown1=false;
+  console.log(arr1.name);
+}
+
+
+
+array2: any = [
+  {
+    id: 0,
+    name: 'Full Time',
+  },
+  {
+    id: 1,
+    name: 'Internship',
+  },
+  
+];
+contentdropdown2: boolean = false;
+dropdownOpen2() {
+
+  this.contentdropdown2 = !this.contentdropdown2;
+}
+Selectvariable2: string = '-Select-';
+colorvariable2: number =  0;
+Changeselect2(arr2: any) {
+  this.Selectvariable2 = arr2.name;
+  this.colorvariable2 = arr2.id;
+  this.contentdropdown2=false;
+  console.log(arr2.name);
+}
+
+
+list:any[]=[];
+addtask(item:string){
+
+this.list.push({id:this.list.length,name:item})
+console.warn(this.list);
+}
+removetask(id:number){
+  console.warn(id);
+  this.list=this.list.filter(item=>item.id!==id);
+}
   }
 
 

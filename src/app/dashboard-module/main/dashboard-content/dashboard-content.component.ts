@@ -107,45 +107,25 @@ export class DashboardContentComponent implements OnInit {
   objectuserid = localStorage.getItem('emailid')
   showModal: boolean = false
   formData: any = ''
-  opacityValue : any = '';
+  opacityValue =0;
   public  showForm = false
   ngOnInit()
    {
     
-    this.opacityValue = 0;
+    // this.opacityValue = 0;
 
-    // this.empname = localStorage.getItem('empname');
-  
-    // if (this.empname) {
-    //   this.formSubmitted = true;
-    //   this.showForm = false;
-    // } else {
-    //   this.formSubmitted = false;
-    //   this.showForm = true;
-  
-    //   // Update the opacityValue to 1 if the user has not submitted the form
-    //   this.opacityValue = 1;
-    // }
-    // this.empname = localStorage.getItem('empname');
 
-    // if (this.empname) {
-    //   this.formSubmitted = true;
-    //   this.showForm = false;
-    //   this.opacityValue = 0;
-    // } else {
-    //   this.formSubmitted = false;
-    //   this.showForm = true;
-    //   this.opacityValue = 1;
-    // }
     this.empname = localStorage.getItem('empname');
   
     if (this.empname) {
       this.formSubmitted = true;
       this.showForm = false;
+      // this.userService.opacityValue = 0
       this.opacityValue = 0;
-    } else {
+    } else if(!this.empname) {
       this.formSubmitted = false;
       this.showForm = true;
+      // this.userService.opacityValue = 1
       this.opacityValue = 1;
     }
 
@@ -166,22 +146,8 @@ export class DashboardContentComponent implements OnInit {
       // this.phone = res.personaldata.phone;
       // this.description = res.personaldata.description
       // this.profileimage = res.personaldata.profileimage;
-      // -----------------
 
-    // this.empname = res.personaldata.name;
-    // localStorage.setItem('empname', this.empname);
 
-    // // Update the formSubmitted and showForm variables based on empname
-    // if (this.empname) {
-    //   this.formSubmitted = true;
-    //   this.showForm = false;
-    // } else {
-    //   this.formSubmitted = false;
-    //   this.showForm = true;
-
-    //   // Update the opacityValue to 1 if the user has not submitted the form
-    //   this.opacityValue = 1;
-    // }
     this.empname = res.personaldata.name;
     localStorage.setItem('empname', this.empname);
 
@@ -189,22 +155,24 @@ export class DashboardContentComponent implements OnInit {
     if (this.empname) {
       this.formSubmitted = true;
       this.showForm = false;
+      // this.userService.opacityValue = 0;
       this.opacityValue = 0;
-    } else {
+    } else if(!this.empname) {
       this.formSubmitted = false;
       this.showForm = true;
+      // this.userService.opacityValue = 1;
       this.opacityValue = 1;
     }
     
-
+    // this.userService.updateOpacityValue(this.formSubmitted);
     });
     
  
 
 
-    console.log("isFromSignupPage: ", this.isFromSignupPage);
-    this.isFromSignupPage = this.userService.isFromSignupPage;
-    console.log("isFromSignupPage: ", this.isFromSignupPage);
+    // console.log("isFromSignupPage: ", this.isFromSignupPage);
+    // this.isFromSignupPage = this.userService.isFromSignupPage;
+    // console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.graphcontent().subscribe((res: any) => {
       if (res) {
@@ -439,7 +407,7 @@ export class DashboardContentComponent implements OnInit {
     console.log(arr1.name);
   }
 
-  /**/
+  /*--------------------Create New Modal----------------------*/
   meetingForm=new FormGroup({
     meetingtitle:new FormControl(''),
     mode:new FormControl(''),

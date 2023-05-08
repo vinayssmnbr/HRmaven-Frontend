@@ -1,7 +1,7 @@
 <header id="header">
   <div class="content">
     <div class="content-left">
-       <h2 *ngIf="empService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p>
+      <h2 *ngIf="empService.activeComponent === 'dashboard'">{{this.greeting}}<p>{{this.date}}</p>
       </h2>
       <!-- <h2 *ngIf="dashService.activeComponent === 'employees'">Employee Management</h2> -->
       <!-- <h2 *ngIf="dashService.activeComponent === 'leaves'">Leaves Management</h2> -->
@@ -24,11 +24,11 @@
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-      <img src="./assets/images/gg_profile.svg" alt="" class="header-icon"
+      <img *ngIf="!obj.url" src="./assets/images/gg_profile.svg" alt="" class="header-icon"
         (click)="getProfileData();profileToggle()"><br>
+      <img *ngIf="obj.url" src="{{obj.url}}" alt="" class="header-icon" (click)="getProfileData();profileToggle()"><br>
     </div>
   </div>
-
 </header>
 <ng-container *ngIf="visible">
   <div class="notification-area">
@@ -280,7 +280,9 @@
   <div class="profile-content">
     <div class="profile-title">
       <div class="profile-logo">
-        <img src="./assets/images/gg_profile.svg" alt="" class="header-icon">
+        <img *ngIf="!obj.url" src="./assets/images/gg_profile.svg" alt="" class="header-icon">
+        <img *ngIf="obj.url" src="{{obj.url}}" alt="" class="header-icon">
+
       </div>
       <div class="profile-text">
         <h2> {{name}} </h2>
@@ -292,7 +294,7 @@
     </div>
     <div class="profile-account">
       <div class="account" routerLink="/emp-profile">
-        <button class="account-btn" ><i class="fa-solid fa-user-gear" ></i> <span>My Profile</span></button>
+        <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>My Profile</span></button>
       </div>
     </div>
     <div class="profile-account disable-btn">

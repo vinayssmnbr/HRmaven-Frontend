@@ -5,7 +5,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router, NavigationEnd, NavigationStart } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  NavigationEnd,
+  NavigationStart,
+} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from '../service/user.service';
@@ -16,7 +21,6 @@ import { BehaviorSubject, filter } from 'rxjs';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
   employeemail: any[] = [];
   emailEntered: any = '';
   //  emailExists: any[] = [];
@@ -33,9 +37,6 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
-
-
-
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
     if (storedemail && storedPassword) {
@@ -60,9 +61,6 @@ export class LoginComponent {
     // }, 8000);
     //GOOGLE LOGIN
 
-
-
-
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
       const token = params['token'];
@@ -77,44 +75,38 @@ export class LoginComponent {
       }
     });
 
-
-
-
     if (this.userService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
       // this.router.navigateByUrl('dashboard')
     }
     // this.userService.allDataLogin();
-
   }
   userdetail: any = '';
   usernotfound: any = '';
 
-  checkEmail(){
-
-      this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
+  checkEmail() {
+    this.userService
+      .getData(this.forgotPassword.controls['email'].value)
+      .subscribe((res: any) => {
         // this.emailExists = false;
-          console.log("message: ",res.message);
+        console.log('message: ', res.message);
 
-        if(res.message === 'user-found'){
+        if (res.message === 'user-found') {
           // this.userdetail = this.forgotPassword.controls['email'].value
-          this.userdetail = res.message
-        } else if(res.message === 'user-not-found'){
+          this.userdetail = res.message;
+        } else if (res.message === 'user-not-found') {
           this.usernotfound = res.message;
         }
 
         this.employeemail = res;
 
-
         console.log('Response from API:', this.employeemail);
       });
 
-    this.cookie.deleteAll()
-
+    this.cookie.deleteAll();
   }
 
   email_data: any = '';
-
 
   //GOOGLE LOGIN
   loginwithGoogle() {
@@ -123,7 +115,13 @@ export class LoginComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern(
+        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+      ),
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -151,7 +149,6 @@ export class LoginComponent {
 
   toggleForgot() {
     this.Forgotshow = !this.Forgotshow;
-
   }
   // toggleForgot1() {
   //   this.EmailSent = !this.EmailSent;
@@ -173,15 +170,15 @@ export class LoginComponent {
     return this.forgotPassword.get('email');
   }
 
-  get emaill(){
-    return this.loginForm.get("email");
+  get emaill() {
+    return this.loginForm.get('email');
   }
 
-  get pwd(){
-    return this.loginForm.get("password");
+  get pwd() {
+    return this.loginForm.get('password');
   }
 
-  loader=false;
+  loader = false;
   submit() {
     this.loader = true;
     setTimeout(() => {
@@ -190,7 +187,7 @@ export class LoginComponent {
   }
 
   // submissions
-obj:any
+
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
@@ -198,14 +195,10 @@ obj:any
       this.userService.users(this.loginForm);
       console.log('login User: ', res);
       console.log('login User: ', res.noOfEmployee);
-      this.personalData = res.noOfEmployee
-      console.log('login personalData: ',this.personalData);
-      this.obj=res.role
-      localStorage.setItem('role',this.obj)
-      console.log("obj",this.obj)
+      this.personalData = res.noOfEmployee;
+      console.log('login personalData: ', this.personalData);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
-
         var today = new Date();
         var expire = new Date();
 
@@ -223,8 +216,8 @@ obj:any
         }
 
         console.log(res._id);
-        this.cookie.set('hr_id',res._id);
-        this.cookie.set('role','hr');
+        this.cookie.set('hr_id', res._id);
+        this.cookie.set('role', 'hr');
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');
@@ -236,7 +229,7 @@ obj:any
       );
 
       localStorage.setItem('emailid', this.loginForm.controls['email'].value);
-      localStorage.setItem('companyname', res.username);  
+      localStorage.setItem('companyname', res.username);
     });
     // this.personalData = localStorage.getItem('totalemployee');
     // this.userService.isnotFromSignupPage = true;
@@ -250,7 +243,7 @@ obj:any
   }
   personalData: any = '';
   formSubmitted: any = '';
-  emailSent: boolean = false
+  emailSent: boolean = false;
   userNotFound: boolean = false;
   // ForgetEmailSubmit(data: any) {
   //   console.log('Forget Password Email');
@@ -295,10 +288,10 @@ obj:any
   ForgetEmailSubmit(data: any) {
     console.log('Forget Password Email');
     console.log(data);
-  
+
     this.userService.getData(data.email).subscribe((res: any) => {
-      console.log("message: ", res.message);
-  
+      console.log('message: ', res.message);
+
       if (res.message === 'user-found') {
         this.userService.ForgotEmail(data).subscribe((res: any) => {
           this.userService.ForgotEmail(this.forgotPassword);
@@ -308,25 +301,21 @@ obj:any
         });
       } else if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
-        console.log("usernotfound: ", this.usernotfound)
+        console.log('usernotfound: ', this.usernotfound);
         this.usernotfound = true;
       }
-  
+
       this.employeemail = res;
-  
+
       console.log('Response from API:', this.employeemail);
     });
   }
-//   Space(event:any){
-//     if(event.target.selectionStart === 0  && event.code == "Space"){
-//      event.preventDefault();
-//     }
-//  }
- onKeyUp(event): void {
-  event.target.value = event.target.value.trim()
-
-}
-
-
-
+  //   Space(event:any){
+  //     if(event.target.selectionStart === 0  && event.code == "Space"){
+  //      event.preventDefault();
+  //     }
+  //  }
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim();
+  }
 }
