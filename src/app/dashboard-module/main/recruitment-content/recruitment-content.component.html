@@ -403,7 +403,7 @@
             </div>
 
 
-            <!--Modal Starts-->
+            <!-------------------------Modal Starts--------------------------->
 
             <div class="modal" *ngIf="showModal5">
                 <div class="modal-content" *ngIf="showModalContent">
@@ -422,19 +422,197 @@
 
                     </div>
                     <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
+                        <form class="vacancy-form" [FormGroup]="jobvacancyform">
+                            <div class="job-title-date">
+                                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="jobvacancydetail()">
+                                    <div class="meeting-mode">
+                                        <div class="form-group">
+                                            <label>Job Title <span>*</span></label> <br>
+                                            <input type="text" placeholder="Type a job title here..."
+                                                class="meeting-input" formControlName="jobtitle" formControlName="jobtitle">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date <span>*</span></label> <br>
+                                            <input type="date" placeholder="23/04/2023" class="meeting-input"
+                                                formControlName="datetitle">
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="meeting-mode">
+                                        <div class="form-group">
+                                            <label>Location <span>*</span></label> <br>
+                                            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                                                <div class="dropdwon_select" (click)="dropdownOpen()">
+                                                    <p>{{Selectvariable}}</p>
+                                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                                                </div>
+                                                <div class="select_content" *ngIf="contentdropdown">
+                                                    <ul>
+                                                        <li *ngFor="let arr of array; index as i"
+                                                            [class.select_active]="i === colorvariable"
+                                                            (click)="Changeselect(arr)">
+                                                            {{arr.name}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>CTC <span>*</span></label> <br>
+                                            <input type="text" placeholder="Specify CTC here..." class="meeting-input"
+                                                formControlName="ctctitle">
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="meeting-mode">
+                                        <div class="form-group">
+                                            <label>Experience <span>*</span></label> <br>
+                                            <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                                                <div class="dropdwon_select" (click)="dropdownOpen1()">
+                                                    <p>{{Selectvariable1}}</p>
+                                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                                                </div>
+                                                <div class="select_content" *ngIf="contentdropdown1">
+                                                    <ul>
+                                                        <li *ngFor="let arr1 of array1; index as i"
+                                                            [class.select_active]="i === colorvariable1"
+                                                            (click)="Changeselect1(arr1)">
+                                                            {{arr1.name}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Job Type <span>*</span></label> <br>
+                                            <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+                                                <div class="dropdwon_select" (click)="dropdownOpen2()">
+                                                    <p>{{Selectvariable2}}</p>
+                                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                                                </div>
+                                                <div class="select_content" *ngIf="contentdropdown2">
+                                                    <ul>
+                                                        <li *ngFor="let arr2 of array2; index as i"
+                                                            [class.select_active]="i === colorvariable2"
+                                                            (click)="Changeselect2(arr2)">
+                                                            {{arr2.name}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+                                    <div class="discard-save">
+                                        <div class="save"><button type="submit" (click)="tabChange()">Next</button> </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
                         <form class="vacancy-form">
                             <div class="job-title-date">
-                                <div class="form-group">
-                                    <label>Job Title <span>*</span></label>
-                                    <input type="text" class="form_input" placeholder='Eg. Venturepact' id="name" required />
-                                </div>
+                                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="vacancydetail()">
+                                    <div class="skill-required-mode">
+                                        <div class="form-group">
+                                            <label>Skills required <span>*</span></label> <br>
+                                          
+                                            <div class="meeting-text-area">
+                                                <input type="text" placeholder="Type skill name..." class="todo-list"
+                                                #task>
+                                                
+                                              
+                                                <button (click)="addtask(task.value)">click</button>
+                                                <ul  class="input_list">
+                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
+                                                </ul>
+                                            </div>
+
+
+                                            
+                                        </div> 
+
+
+
+                                    </div>
+                                    <div class="skill-required-mode">
+                                        <div class="form-group">
+                                            <label>Recruiter's name <span>*</span></label> <br>
+                                          
+                                            <div class="meeting-text-area">
+                                                <input type="text" placeholder="Amanda Kerry" class="todo-list"
+                                                #task>
+                                                
+                                              
+                                                <button (click)="addtask1(task1.value1)">click</button>
+                                                <ul  class="input_list">
+                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
+                                                </ul>
+                                            </div>
+
+
+                                            
+                                        </div> 
+
+
+
+                                    </div>
+
+                                    <div class="skill-required-mode">
+                                        <div class="form-group">
+                                            <label>Job description:</label> <br>
+                                          
+                                        <div class="job-description">
+                                              <textarea name="" id="" placeholder="Enter description..."></textarea>
+                                            </div>
+
+
+                                            
+                                        </div> 
+
+
+
+                                    </div>
+
+
+
+
+
+                                    <div class="Back-Add">
+                                        <div class="back"><button type="submit" (click)="closeModal5()">Back</button>
+                                        </div>
+                                        <div class="add"><button type="submit" (click)="shownewjobmodal()" >Add</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
                             </div>
                         </form>
                     </div>
                 </div>
+<!-----------------------------New-Job-Added-Modal---------------------------------->
 
 
+            </div>
 
+            <div class="forget_email_send_content" *ngIf="shownewjobmodal()">
+                <div class="forget_content">
+                    <div class="forget_text">
+                        <img src="./assets/images/tick.png" alt="img">
+                    </div>
+                    <h1>New job vacancies added successfully!</h1>
+                    <p>You can add more job vacancies in a similar way.</p>
+                    <button class="done_btn" (click)="closeModal5()">Done</button>
+                </div>
             </div>
         </div>
     </div>

@@ -6,7 +6,6 @@ import {
   FormControl,
 } from '@angular/forms';
 import * as moment from 'moment';
-
 import { EmpService } from '../../shared/emp.service';
 @Component({
   selector: 'app-leaves-content',
@@ -14,50 +13,24 @@ import { EmpService } from '../../shared/emp.service';
   styleUrls: ['./leaves-content.component.css'],
 })
 export class LeavesContentComponent {
-  // empleaveForm: FormGroup;
-  // ----------Input file custom girija----------------------
-  progressBar: any;
-  progressText: any;
-  progress: number = 0;
-  interval: any;
-  ngOnInit() {
-    this.progressBar = document.getElementsByClassName('progress_upload');
-    this.progressText = document.getElementsByClassName('progress-text-input');
-
-    this.interval = setInterval(() => {
-      this.progress++;
-      if (this.progress > 100) {
-        this.progress = 0;
-      }
-      this.progressBar[0].style.width = `${this.progress}%`;
-      this.progressText[0].innerText = `${this.progress}%`;
-    }, 50);
-  }
+  ngOnInit() { }
   inputfilename: boolean = false;
   fileName: string = '';
   onfileselected(event: any) {
     this.selectedFile = event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
   }
-
-  // ----------------------------------------------------
   leaves: any = [];
   str = '';
-  obj = {
-    casual: 1,
-    earned: 2,
-    urgent: 3,
-    medical: 4,
-  };
-
+  obj: any;
+  Selectvariable3: any = '';
   constructor(public empService: EmpService, private formBuilder: FormBuilder) {
     empService.activeComponent = 'leave';
     empService.headerContent = '';
     this.leavegraphcontent();
     this.obj = {
       casual: 1,
-      earned: 2,
-      urgent: 3,
+      compensatory: 2,
       medical: 4,
     };
   }
@@ -66,6 +39,7 @@ export class LeavesContentComponent {
     await this.empService.leavegraph().subscribe((res: any) => {
       console.log(res.response[0]);
       this.obj = res.response[0];
+      console.log(this.obj);
     });
 
     this.empService.leavehistory().subscribe((res: any) => {
@@ -77,39 +51,30 @@ export class LeavesContentComponent {
         this.leaves = res.response[0].History;
       }
     });
-  }
+  }s
 
   date = new Date();
 
-  Submit() {
-    this.empleaveForm.value.category = this.Selectvariable;
-    this.empleaveForm.value.duration = this.str;
-    this.empleaveForm.value.url = this.fileurl;
-    console.log(this.empleaveForm.value);
-    this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
-      console.log(res);
-    });
-    this.leaves.push({
-      appliedOn: this.date.toISOString(),
-      category: this.empleaveForm.value.category,
-      from: this.empleaveForm.value.from,
-      to: this.empleaveForm.value.to,
-      reason: this.empleaveForm.value.reason,
-      status: 'pending',
-      duration: Number(this.str),
-      message: '',
-    });
-    console.log(this.leaves);
+    async Submit() {
+      console.log(this.empleaveForm.value);
+
+     this.onUpload();
+
   }
+
+
   cancel() {
     this.empleaveForm.reset();
-    this.Selectvariable = 'Category';
+    this.Selectvariable = 'casual';
     this.empleaveForm.value.category = this.Selectvariable;
     this.str = '0';
     this.empleaveForm.value.duration = this.str;
+    this.Selectvariable1 = 'select'
+    this.selectedFile1=null;
+
   }
 
-  onfileselect(event: any) {}
+  onfileselect(event: any) { }
   selectedFile1: File | null = null;
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
@@ -125,10 +90,11 @@ export class LeavesContentComponent {
   empleaveForm = new FormGroup({
     from: new FormControl('', [Validators.required]),
     to: new FormControl('', [Validators.required]),
-    category: new FormControl('', [Validators.required]),
-    duration: new FormControl('', Validators.required),
+    category: new FormControl(''),
+    duration: new FormControl(''),
     url: new FormControl(''),
     reason: new FormControl(''),
+    shortime: new FormControl('')
   });
 
   getDates() {
@@ -151,23 +117,27 @@ export class LeavesContentComponent {
   array: any = [
     {
       id: 0,
-      name: 'Casual leave',
+      name: 'casual',
     },
     {
       id: 1,
-      name: ' Half day leave',
+      name: 'half 1',
     },
     {
       id: 2,
-      name: 'Compensatory leave',
+      name: 'half 2',
     },
     {
       id: 3,
-      name: 'Short leave',
+      name: 'compensatory',
     },
     {
       id: 4,
-      name: 'Medical leave',
+      name: 'short',
+    },
+    {
+      id: 5,
+      name: 'medical',
     },
   ];
   halfdayleave: boolean = false;
@@ -179,7 +149,7 @@ export class LeavesContentComponent {
   Selectvariable: string = 'Select';
   colorvariable: number = 0;
   Changeselect(arr: any) {
-    if (arr.id == 3) {
+    if (arr.id == 4) {
       this.shortleave = true;
     } else {
       this.shortleave = false;
@@ -230,14 +200,14 @@ export class LeavesContentComponent {
   dropdownOpen1() {
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  Selectvariable1: string = '9 am - 11 am';
+  Selectvariable1: string = 'select';
   colorvariable1: number = 0;
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
-    this.empleaveForm.value.category = arr1.name;
+    this.empleaveForm.value.shortime = arr1.name;
   }
 
   leaveshistory = false;
@@ -254,7 +224,6 @@ export class LeavesContentComponent {
   // ---------Modal popoup----------
   leave_approved_form = false;
   applyleaves() {
-    this.leave_approved_form = true;
     this.Submit();
   }
   closemodal() {
@@ -269,18 +238,59 @@ export class LeavesContentComponent {
   loader = false;
   selectedFile: File | null = null;
   onFileSelected(event: any): void {
-    this.loader = true;
     this.selectedFile = event.target.files[0];
-    this.onUpload();
+    var filename = event.target.files[0].name;
+    filename = filename.toLowerCase();
+    console.log(filename);
+    var ext = filename.substring(filename.lastIndexOf('.') + 1);
+
+    if (ext == "jpg" || ext == "gif" || ext == 'jpeg' || ext == 'png' || ext == 'pdf') {
+      // alert('acceptable file extension');
+      return;
+    } else {
+      alert("file is not acceptable");
+      return;
+    }
   }
   fileurl: any;
-  onUpload(): void {
-    this.empService.upload(this.selectedFile).then(() => {
+   onUpload(){
+    console.log(this.selectedFile);
+    if(this.selectedFile!=null){
+      this.loader=true;
+      this.empService.upload(this.selectedFile).then(() => {
       console.log('File uploaded successfully.', this.empService.fileUrl);
       this.empService.fileUrl;
       this.fileurl = this.empService.fileUrl;
-      this.loader = false;
       this.empleaveForm.value.url = this.empService.fileUrl;
+      this.leave_approved_form = true;
+      this.uploadform();
+      this.cancel();
+      console.log(this.leaves);
+
     });
   }
+    else{
+      this.uploadform();
+      this.leave_approved_form=true;
+      this.cancel();
+    }
+  }
+  uploadform(){
+    this.empleaveForm.value.category = this.Selectvariable;
+    this.empleaveForm.value.duration = this.str;
+    this.empleaveForm.value.url = this.fileurl;
+    this.empleaveForm.value.shortime = this.Selectvariable1;
+    if (this.Selectvariable == 'short') {
+      this.empleaveForm.value.category = this.Selectvariable;
+      this.empleaveForm.value.duration = this.Selectvariable1;
+    }
+    console.log(this.empleaveForm.value);
+    this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
+      console.log(res)
+      this.loader=false;
+      this.leaves.push(res);
+      this.leavegraphcontent();
+    });
+  }
+
 }

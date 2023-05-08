@@ -141,13 +141,12 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Email</label>
                     <input type="email" class="form-control email" formControlName="email"
-                        placeholder="Enter your email" />
+                        placeholder="Enter your email" (keyup)="onKeyUp($event)" />
                     <div *ngIf="emaill.invalid && emaill.touched || emaill.dirty">
                         <!-- <span *ngIf="emaill && emaill.invalid && emaill.touched && emaill.dirty" class="emailwrg">
                             <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>Invalid Email</span> -->
                         <span *ngIf="emaill.errors" class="emailwrg">
-                            <img
-                            src="assets/images/valid_error.svg" alt="">Invalid email address
+                            <img src="assets/images/valid_error.svg" alt="">Invalid email address
                         </span>
                     </div>
                 </div>
@@ -157,9 +156,9 @@
                 <div class="input-field">
                     <label for="name" class="text-label">Password</label>
                     <input type="password" placeholder="Enter your password" class="password" #passwordInput
-                        formControlName="password" />
+                        formControlName="password" (keyup)="onKeyUp($event)" />
                     <span *ngIf="pwd && pwd.invalid && pwd.touched  && emaill.dirty" class="pwddwrg"><img
-                        src="assets/images/valid_error.svg" alt="">Invalid Password </span>
+                            src="assets/images/valid_error.svg" alt="">Invalid Password </span>
                 </div>
                 <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
                     <i class="fa {{ showPasswordIcon }}"></i>
@@ -167,14 +166,18 @@
             </div>
 
             <div class="check-text">
-                <input type="checkbox" class="check_box" id="checkbox" formControlName="Remember">
-                <label for="checkbox" class="checkbox-text"><a>Remember me</a></label>
-                <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
+                <div class="input_check">
+                    <input type="checkbox" class="check_box" id="checkbox" formControlName="Remember">
+                    <label for="checkbox" class="checkbox-text"><a>Remember me</a></label>
+                </div>
+                <div>
+                    <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
+                </div>
             </div>
             <div class="input-field button">
                 <input type="submit" value="Login" [disabled]="loginForm.invalid" />
             </div>
-            <div class="input-field">
+            <!-- <div class="input-field">
                 <p class="or_bar">OR</p>
             </div>
             <div class="social_btn">
@@ -182,7 +185,7 @@
                     <img class="google_logo" src="assets/images/google-logo.png" alt="google">
                     <a> Login with Google</a>
                 </div>
-            </div>
+            </div> -->
         </form>
         <div class="logo">
             <img src="assets/images/hrr 2.png" alt="logo">

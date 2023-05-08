@@ -9,21 +9,22 @@
     <div class="card2">
       <span class="profile_pic">
         <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
-        <img *ngIf="obj.url" src="{{obj.url}}" alt="">
+        <img *ngIf="obj.url  && !upload" src="{{obj.url}}" alt="">
+        <img *ngIf="upload" src="{{imageurl}}" alt="">
         <!-- <img  alt=""> -->
-        <div class="profile-content" >
+        <div class="profile-content">
           <input type="file" accept="image/*" id="file-input">
           <i class="fa-solid fa-arrow-up"></i>
           <h2>Upload</h2>
           <p>Profile Picture</p>
         </div>
-        <!-- <div class="profile-content1" *ngIf="user.url">
+        <div class="profile-content1" *ngIf="obj.url">
           <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
           <i class="fa-solid fa-camera"></i>
 
           <h2>Change</h2>
           <p>Profile Picture</p>
-        </div> -->
+        </div>
       </span>
       <div class="content">
 
@@ -35,13 +36,14 @@
     <ul class="content1">
       <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
       <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
-      <li id="Password"[ngClass]="{'active': isPasswordManagement}"><a (click)="managePassword()">Password Management</a></li>
+      <li id="Password" [ngClass]="{'active': isPasswordManagement}"><a (click)="managePassword()">Password
+          Management</a></li>
       <span></span>
     </ul>
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openModal()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal(obj)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -79,20 +81,21 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openModal2()" >Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal2(obj)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
           <span class="cno">Contact No.</span>
-          <p class="cno">{{obj.mobile}}</p>
-          <!-- <p class="cno">{{obj.mobile}}</p> -->
+          <p *ngIf="!obj.mobile">----------</p>
+          <p class="cno" *ngIf="obj.mobile">{{obj.mobile}}</p>
           <span class="city">City</span>
           <p *ngIf="!obj.city">----------</p>
           <p class="city" *ngIf="obj.city">{{obj.city}}</p>
         </div>
         <div class="column2">
           <span class="address">Address</span>
-          <p class="address">{{obj.address}}</p>
+          <p *ngIf="!obj.address">----------</p>
+          <p class="address" *ngIf="obj.address">{{obj.address}}</p>
           <span class="pcode">Postal Code</span>
           <p *ngIf="!obj.postalCode">----------</p>
           <p class="pcode" *ngIf="obj.postalCode">{{obj.postalCode}}</p>
@@ -109,7 +112,7 @@
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
-        <button class="edit1" (click)="openModal4()">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal4(obj)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -120,11 +123,11 @@
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
-          <p class="bno">{{obj.accountno}}</p>
-          <!-- <p class="bno">{{obj.accountno}}</p> -->
+          <p *ngIf="!obj.accountno" class="bno">-------</p>
+          <p class="bno" *ngIf="obj.accountno">{{obj.accountno}}</p>
           <span class="panno">Pan Number</span>
           <p *ngIf="!obj.panno" class="panno">-------</p>
-          <p *ngIf="obj.ifsc" class="panno">{{obj.panno}}</p>
+          <p *ngIf="obj.panno" class="panno">{{obj.panno}}</p>
 
         </div>
         <div class="column3">
@@ -154,8 +157,8 @@
           <p *ngIf="!obj.graduation">----------</p>
           <p class="gcol" *ngIf="obj.graduation">{{obj.graduation}}</p>
           <span class="pgcol" *ngIf="showdata">Post Graduation College/University</span>
-          <p *ngIf="!obj.pg">----------</p>
-          <p class="pgcol" *ngIf="obj.pg">{{obj.pg}}</p>
+          <p *ngIf="!obj.pg && showdata">----------</p>
+          <p class="pgcol" *ngIf="obj.pg && showdata">{{obj.pg}}</p>
         </div>
         <div class="column2">
           <span class="mper">Matriculation Percentage</span>
@@ -168,8 +171,8 @@
           <p *ngIf="!obj.graduationCgpa">----------</p>
           <p class="sgpa" *ngIf="obj.graduationCgpa">{{obj.graduationCgpa}}</p>
           <span class="pgsgpa" *ngIf="showdata">PgCgpa</span>
-          <p *ngIf="!obj.pgCgpa">-----------</p>
-          <p class="pgsgpa" *ngIf="obj.pgCgpa">{{obj.pgCgpa}}</p>
+          <p *ngIf="!obj.pgCgpa && showdata">-----------</p>
+          <p class="pgsgpa" *ngIf="obj.pgCgpa && showdata">{{obj.pgCgpa}}</p>
         </div>
         <div class="column3">
           <span class="yop">Year of Passing</span>
@@ -182,8 +185,8 @@
           <p *ngIf="!obj.graduationStream">----------</p>
           <p class="stream" *ngIf="obj.pgStream">{{obj.graduationStream}}</p>
           <span class="pgstream" *ngIf="showdata">Post Graduation Stream</span>
-          <p *ngIf="!obj.pgStream">----------</p>
-          <p class="pgstream" *ngIf="obj.pgStream">{{obj.pgStream}}</p>
+          <p *ngIf="!obj.pgStream && showdata">----------</p>
+          <p class="pgstream" *ngIf="obj.pgStream && showdata">{{obj.pgStream}}</p>
         </div>
       </div>
       <hr>
@@ -192,7 +195,8 @@
             class="fa-solid fa-angle-down"></i></button>
       </div>
       <div class="cnt-btn">
-        <button class="hide" (click)="hidedata()" *ngIf="viewless">View less<i class="fa-solid fa-angle-up"></i></button>
+        <button class="hide" (click)="hidedata()" *ngIf="viewless">View less<i
+            class="fa-solid fa-angle-up"></i></button>
       </div>
     </div>
     <div class="card7" *ngIf="personaldetail">
@@ -204,22 +208,17 @@
         <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
-          <p *ngIf="!obj.expcompany">----------</p>
-          <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p>
-          <!-- <p class="orgname" *ngIf="obj.expcompany">{{obj.expcompany}}</p> -->
+          <p class="orgname">{{obj.experienceItems[0]?.expcompany || '--------'}}</p>
           <span class="location2">Location</span>
-          <p *ngIf="!obj.explocation">----------</p>
-          <p class="location2" *ngIf="obj.explocation">{{obj.explocation}}</p>
+          <p class="orgname">{{obj.experienceItems[0]?.explocation || '--------'}}</p>
         </div>
         <div class="column2">
           <span class="duration2">Duration</span>
-          <p *ngIf="!obj.expduration">----------</p>
-          <p class="duration2" *ngIf="obj.expduration">{{obj.expduration}}</p>
+          <p class="orgname">{{obj.experienceItems[0]?.expduration || '--------'}}</p>
         </div>
         <div class="column3">
           <span class="designation">Designation</span>
-          <p *ngIf="!obj.expdesignation">----------</p>
-          <p class="designation" *ngIf="obj.expdesignation">{{obj.expdesignation}}</p>
+          <p class="orgname">{{obj.experienceItems[0]?.expdesignation || '--------'}}</p>
         </div>
       </div>
     </div>
@@ -260,30 +259,45 @@
     </div>
     <div class="company-name-headoffice-desc" *ngIf="isPasswordManagement">
       <div class="company-name-headoffice-desc-area">
-        <form action="submit">
+        <form [formGroup]="passwordform" (ngSubmit)="newpassword(passwordform.value)" action="submit">
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
-            <input type="password" placeholder="Type your old password">
-
+            <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)"
+              class="form-control password" required (blur)="matchpwdEmployee()" formControlName="oldpassword"
+              [ngClass]="{'ng_invalid':passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty,'ng_valid':passwordform.controls.oldpassword.valid}">
+          </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Your old password was entered
+            incorrectly
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">New Password</label>
-              <input type="password" placeholder="Type a new password" formControlName="password">
+              <input type="password" placeholder="Type a new password" formControlName="password"
+                class="form-control password" formControlName="password" (keyup)="onKeyUp($event)" required
+                [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
 
             </div>
+          </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>New Password cannot be same as old
+            password
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
-              <input type="password" placeholder="Re-enter your password" formControlName="confirm">
+              <input type="password" placeholder="Re-enter your password" formControlName="confirm"
+                class="form-control password" (keyup)="onKeyUp($event)" required
+                [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
 
             </div>
           </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Password didn't match
+          </div>
           <!-- </form> -->
           <div class="clear-update-button">
-            <button class="clear-btn">Clear</button>
-            <button class="update-btn" type="submit" (click)="openModal3()">Update Password</button>
+            <button class="clear-btn" (click)="clearSearch()">Clear</button>
+            <button class="update-btn" type="submit" (click)="openModal3()"
+              [disabled]="passwordform.controls['oldpassword' || 'password' || 'confirm'].invalid">Update
+              Password</button>
 
           </div>
         </form>
@@ -291,305 +305,326 @@
       </div>
     </div>
 
-    </div>
-    <div class="modal" *ngIf="showModal">
-      <div class="modal-content" *ngIf="modalContent1">
-        <div class="modal-header">
-          <h4 class="modal-title">Update Personal Details</h4>
-          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-        </div>
-        <div class="modal-body">
-          <form class="form-container" id="form1" [formGroup]="empform1">
-            <div class="form-row">
-              <div class="input">
-                <label>Name</label>
-                <input type="text" id="name" placeholder="Ashish" formControlName="name" [disabled]="true" readonly>
-              </div>
-              <div class="input">
-                <label>Employee ID</label>
-                <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid" [disabled]="true"
-                  readonly>
-              </div>
-              <div class="input">
-                <label>Date of birth</label>
-                <input type="date" placeholder="06/04/1997" formControlName="dateOfBirth">
-              </div>
+  </div>
+  <div class="modal" *ngIf="showModal">
+    <div class="modal-content" *ngIf="modalContent1">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Personal Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form class="form-container" id="form1" [formGroup]="empform1">
+          <div class="form-row">
+            <div class="input">
+              <label>Name</label>
+              <input type="text" id="name" placeholder="Ashish" formControlName="name" [disabled]="true" readonly>
             </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Father's Name</label>
-                <input type="text" placeholder="Rahul Sharma" formControlName="fatherName">
-              </div>
-              <div class="input">
-                <label>Mother's Name</label>
-                <input type="text" placeholder="Vinita Sharma" formControlName="motherName">
-              </div>
-              <div class="input">
-                <label>Marital Status</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
-                    <p>{{Selectvariable3}}</p>
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
-                    <ul>
-                      <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
-                        (click)="Changeselect3(arr3)">
-                        {{arr3.name}}</li>
-                    </ul>
-                  </div>
+            <div class="input">
+              <label>Employee ID</label>
+              <input type="number" placeholder="28563" class="employe-id no-spin" formControlName="uid"
+                [disabled]="true" readonly>
+            </div>
+            <div class="input">
+              <label>Date of birth</label>
+              <input type="date" placeholder="06/04/1997" formControlName="dateOfBirth">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Father's Name</label>
+              <input type="text" placeholder="Rahul Sharma" formControlName="fatherName" class="text"
+                [ngClass]="{'ng_invalid': empform1.controls.fatherName.invalid && empform1.controls.fatherName.dirty,'ng_valid': empform1.controls.fatherName.valid}">
+            </div>
+            <div class="input">
+              <label>Mother's Name</label>
+              <input type="text" placeholder="Vinita Sharma" formControlName="motherName" class="text"
+                [ngClass]="{'ng_invalid': empform1.controls.motherName.invalid && empform1.controls.motherName.dirty,'ng_valid': empform1.controls.motherName.valid}">
+            </div>
+            <div class="input">
+              <label>Marital Status</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown3 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen3()" id="slt2">
+                  <p>{{Selectvariable3}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown3" (mouseleave)="dropdownClose3()">
+                  <ul>
+                    <li *ngFor="let arr3 of array3; index as i" [class.select_active]="i === colorvariable3"
+                      (click)="Changeselect3(arr3)">
+                      {{arr3.name}}</li>
+                  </ul>
                 </div>
               </div>
-
             </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Blood Group</label>
-                <div class="dropdown_container">
-                  <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
-                    <p>{{Selectvariable4}}</p>
-                    <!-- <input type="text"  formControlName="designation" id="text9" readonly> -->
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown4" (mouseleave)="dropdownClose4()">
-                    <ul>
-                      <li *ngFor="let arr4 of array4; index as i" [class.select_active]="i === colorvariable4"
-                        (click)="Changeselect4(arr4)">
-                        {{arr4.name}}</li>
-                    </ul>
-                  </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Blood Group</label>
+              <div class="dropdown_container">
+                <div class="dropdwon_select" (click)="dropdownOpen4()" id="slt1">
+                  <p>{{Selectvariable4}}</p>
+                  <!-- <input type="text"  formControlName="designation" id="text9" readonly> -->
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown4" (mouseleave)="dropdownClose4()">
+                  <ul>
+                    <li *ngFor="let arr4 of array4; index as i" [class.select_active]="i === colorvariable4"
+                      (click)="Changeselect4(arr4)">
+                      {{arr4.name}}</li>
+                  </ul>
                 </div>
               </div>
-              <div class="input">
-                <label>Gender</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
-                    <p>{{Selectvariable1}}</p>
-                    <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
-                    <ul>
-                      <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
-                        (click)="Changeselect1(arr1)">
-                        {{arr1.name}}</li>
-                    </ul>
-                  </div>
+            </div>
+            <div class="input">
+              <label>Gender</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen1()" id="slt1">
+                  <p>{{Selectvariable1}}</p>
+                  <!-- <input type="text"  formControlName="gender" id="text10" readonly> -->
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown1" (mouseleave)="dropdownClose1()">
+                  <ul>
+                    <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
+                      (click)="Changeselect1(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
                 </div>
               </div>
-              <div class="input">
-                <label>Nationality</label>
-                <input type="text" placeholder="Indian" formControlName="nationality">
-              </div>
             </div>
-            <!-- <div class="modal-footer">
-                <button class="save">Update</button>
+            <div class="input">
+              <label>Nationality</label>
+              <input type="text" placeholder="Indian" formControlName="nationality">
+            </div>
+          </div>
+          <!-- <div class="modal-footer">
+                <button class="save">Update</button>basicUpdate(empform1.value)
               </div> -->
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="save" (click)="basicUpdate(empform1.value)">Update</button>
-        </div>
+        </form>
       </div>
-      <div class="modal-content" *ngIf="modalContent4">
-        <div class="modal-header">
-          <h4 class="modal-title">Update Contact Details</h4>
-          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-        </div>
-        <div class="modal-body">
-          <form class="form-container" id="form2" [formGroup]="empform2">
-            <div class="form-row">
-              <div class="input">
-                <label>Contact No.</label>
-                <input type="number" placeholder="9836327872" class="no-spin" formControlName="mobile">
-              </div>
-              <div class="input">
-                <label>Address</label>
-                <input type="text" placeholder="129-B, Model Town" formControlName="address">
-              </div>
-              <div class="input">
-                <label>Email</label>
-                <input type="text" placeholder="harshit123@gmail.com" formControlName="email" id="email" [disabled]="true" readonly>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>City</label>
-                <input type="text" placeholder="Ludhiana" formControlName="city">
-              </div>
-              <div class="input">
-                <label>Postal Code</label>
-                <input type="number" placeholder="141002" formControlName="postalCode" class=" no-spin">
-              </div>
-              <div class="input">
-                <label>State</label>
-                <input type="text" placeholder="Punjab" formControlName="state">
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="save" (click)="closeModal3()">Update</button>
-        </div>
+      <div class="modal-footer">
+        <button class="save" (click)="basicUpdate(empform1.value)">Update</button>
       </div>
-      <div class="modal-content" *ngIf="modalContent5">
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Personal Particulars</h4>
-          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-        </div>
-        <div class="modal-body">
-          <form class="form-container" id="form3" [formGroup]="empform3">
-            <div class="form-row">
-              <div class="input">
-                <label>Bank Name</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
-                    <p>{{Selectvariable2}}</p>
-                    <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
-                  </div>
-                  <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
-                    <ul>
-                      <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
-                        (click)="Changeselect2(arr2)">
-                        {{arr2.name}}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="input bank">
-                <label>Other Bank Name</label>
-                <input type="text" placeholder="Specify Bank Name" formControlName="bankname">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Bank Account No.</label>
-                <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
-              </div>
-              <div class="input">
-                <label>IFSC Code</label>
-                <input type="text" placeholder="PUNB0125412" formControlName="ifsc">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Adhaar Card Number</label>
-                <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno">
-              </div>
-              <div class="input">
-                <label>PAN Number</label>
-                <input type="text" placeholder="4512 3200 7456" formControlName="panno">
-              </div>
-              <div class="input">
-                <label>Passport Number</label>
-                <input type="text" placeholder="M5425189" formControlName="passport">
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="save" (click)="closeModal4()">Update</button>
-        </div>
+    </div>
+    <div class="modal-content" *ngIf="modalContent4">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Contact Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
-      <div class="modal-content2" *ngIf="modalContent2">
-        <div class="modal-header">
-          <h4 class="modal-title">Update Job Details</h4>
-          <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
-        </div>
-        <div class="modal-body2">
-          <form class="form-container" id="form6" [formGroup]="empform6">
-
-            <div class="form-row">
-              <div class="input">
-                <label>Designation</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen()">
-                    <p>{{Selectvariable}}</p>
-                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                  </div>
-                  <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
-                    <ul>
-                      <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                        (click)="Changeselect(arr)">
-                        {{arr.name}}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="input">
-                <label>Job Type</label>
-                <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="jobempstatus"> -->
-                <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
-                <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen8()">
-                    <p>{{Selectvariable8}}</p>
-                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                  </div>
-                  <div class="select_content" *ngIf="contentdropdown8" (mouseleave)="dropdownClose8()">
-                    <ul>
-                      <li *ngFor="let arr8 of array8; index as i" [class.select_active]="i === colorvariable8"
-                        (click)="Changeselect8(arr8)">
-                        {{arr8.name}}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="input">
-                <label>Joining Date</label>
-                <input type="date" placeholder="1 April,2023" formControlName="joiningdate">
-              </div>
+      <div class="modal-body">
+        <form class="form-container" id="form2" [formGroup]="empform2">
+          <div class="form-row">
+            <div class="input">
+              <label>Contact No.</label>
+              <input type="number" placeholder="9836327872" formControlName="mobile" class="text no-spin"
+                [ngClass]="{'ng_invalid': empform2.controls.mobile.invalid && empform2.controls.mobile.dirty,'ng_valid': empform2.controls.mobile.valid}">
             </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Location</label>
-                <input type="text" placeholder="Pune, India" formControlName="joblocation1">
-              </div>
-              <div class="input">
-                <label>Timings</label>
-                <div class="dropdown_container" (mouseleave)="contentdropdown5 = false">
-                  <div class="dropdwon_select" (click)="dropdownOpen5()">
-                    <p>{{Selectvariable5}}</p>
-                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                  </div>
-                  <div class="select_content" *ngIf="contentdropdown5" (mouseleave)="dropdownClose5()">
-                    <ul>
-                      <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5"
-                        (click)="Changeselect5(arr5)">
-                        {{arr5.name}}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="input">
-                <label>CTC</label>
-                <input type="text" placeholder="8LPA" formControlName="jobctc">
-              </div>
+            <div class="input">
+              <label>Address</label>
+              <input type="text" placeholder="129-B, Model Town" formControlName="address">
             </div>
-            <div class="form-row">
-              <div class="input">
-                <label>Professional Email</label>
-                <input type="email" placeholder="zonah123@gmail.com" formControlName="profemail">
-              </div>
+            <div class="input">
+              <label>Email</label>
+              <input type="text" placeholder="harshit123@gmail.com" formControlName="email" id="email" [disabled]="true"
+                readonly>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="save" (click)="closeModal2()">Update</button>
-        </div>
-      </div>
-      <form class="leave_approved_form" *ngIf="showModal3">
-        <div class="leave_approved_modal">
-          <i class="fa-solid fa-xmark" (click)="closeModal8()"></i>
-          <div class="logo_bg">
-            <img src="assets/images/tick.png" alt="image">
           </div>
-          <h4>Password Changed Successfully!</h4>
-          <p>Your password has been updated.</p>
-          <div class="Done_form_btn">
-            <button class="Done_btn" (click)="closeModal8()">Done</button>
+          <div class="form-row">
+            <div class="input">
+              <label>City</label>
+              <input type="text" placeholder="Ludhiana" formControlName="city" class="text"
+                [ngClass]="{'ng_invalid': empform2.controls.city.invalid && empform2.controls.city.dirty,'ng_valid': empform2.controls.city.valid}">
+            </div>
+            <div class="input">
+              <label>Postal Code</label>
+              <input type="number" placeholder="141002" formControlName="postalCode" class="text no-spin"
+                [ngClass]="{'ng_invalid': empform2.controls.postalCode.invalid && empform2.controls.postalCode.dirty,'ng_valid': empform1.controls.postalCode.valid}">
+            </div>
+            <div class="input">
+              <label>State</label>
+              <input type="text" placeholder="Punjab" formControlName="state" class="text"
+                [ngClass]="{'ng_invalid': empform2.controls.state.invalid && empform2.controls.state.dirty,'ng_valid': empform2.controls.state.valid}">
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal3(empform2.value)">Update</button>
+      </div>
+    </div>
+    <div class="modal-content" *ngIf="modalContent5">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Personal Particulars</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body">
+        <form class="form-container" id="form3" [formGroup]="empform3">
+          <div class="form-row">
+            <div class="input">
+              <label>Bank Name</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt2">
+                  <p>{{Selectvariable2}}</p>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                  <ul>
+                    <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                      (click)="Changeselect2(arr2)">
+                      {{arr2.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input bank">
+              <label>Other Bank Name</label>
+              <input type="text" placeholder="Specify Bank Name" formControlName="bankname">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Bank Account No.</label>
+              <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
+            </div>
+            <div class="input">
+              <label>IFSC Code</label>
+              <input type="text" placeholder="PUNB0125412" formControlName="ifsc" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.ifsc.invalid && empform3.controls.ifsc.dirty,'ng_valid': empform3.controls.ifsc.valid}">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Adhaar Card Number</label>
+              <input type="text" placeholder="4512 3200 7456" formControlName="adhaarno" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.adhaarno.invalid && empform3.controls.adhaarno.dirty,'ng_valid': empform3.controls.adhaarno.valid}">
+            </div>
+            <div class="input">
+              <label>PAN Number</label>
+              <input type="text" placeholder="ABCTY1234D" formControlName="panno" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.panno.invalid && empform3.controls.panno.dirty,'ng_valid': empform3.controls.panno.valid}">
+            </div>
+            <div class="input">
+              <label>Passport Number</label>
+              <input type="text" placeholder="M5425189" formControlName="passport" class="text"
+                [ngClass]="{'ng_invalid': empform3.controls.passport.invalid && empform3.controls.passport.dirty,'ng_valid': empform3.controls.passport.valid}">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal4(empform3.value)">Update</button>
+      </div>
+    </div>
+    <div class="modal-content2" *ngIf="modalContent2">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Job Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body2">
+        <form class="form-container" id="form6" [formGroup]="empform6">
 
-</div>
+          <div class="form-row">
+            <div class="input">
+              <label>Designation</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                  <p>{{Selectvariable}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
+                  <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                      (click)="Changeselect(arr)">
+                      {{arr.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Job Type</label>
+              <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="jobempstatus"> -->
+              <!-- <input type="text" placeholder="Full- Time Permanent" formControlName="estatus"> -->
+              <div class="dropdown_container" (mouseleave)="contentdropdown8 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen8()">
+                  <p>{{Selectvariable8}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown8" (mouseleave)="dropdownClose8()">
+                  <ul>
+                    <li *ngFor="let arr8 of array8; index as i" [class.select_active]="i === colorvariable8"
+                      (click)="Changeselect8(arr8)">
+                      {{arr8.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>Joining Date</label>
+              <input type="date" placeholder="1 April,2023" formControlName="joiningdate">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Location</label>
+              <input type="text" placeholder="Pune, India" formControlName="joblocation1">
+            </div>
+            <div class="input">
+              <label>Timings</label>
+              <div class="dropdown_container" (mouseleave)="contentdropdown5 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen5()">
+                  <p>{{Selectvariable5}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown5" (mouseleave)="dropdownClose5()">
+                  <ul>
+                    <li *ngFor="let arr5 of array5; index as i" [class.select_active]="i === colorvariable5"
+                      (click)="Changeselect5(arr5)">
+                      {{arr5.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="input">
+              <label>CTC</label>
+              <input type="text" placeholder="8LPA" formControlName="jobctc">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input">
+              <label>Professional Email</label>
+              <input type="email" placeholder="zonah123@gmail.com" formControlName="profemail">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="save" (click)="closeModal2()">Update</button>
+      </div>
+    </div>
+    <div class="modal-content3" *ngIf="success">
+      <div class="modal-header2">
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+        <img src="assets/images/tick.png" alt="image">
+      </div>
+      <div class="modal-body3">
+        <h3>Successful</h3>
+        <p>Employee details updated successfully</p>
+        <button class="done-btn2" (click)="closeModal()">Done</button>
+      </div>
+    </div>
+    <form class="leave_approved_form" *ngIf="showModal3">
+      <div class="leave_approved_modal">
+        <i class="fa-solid fa-xmark" (click)="closeModal8()"></i>
+        <div class="logo_bg">
+          <img src="assets/images/tick.png" alt="image">
+        </div>
+        <h4>Password Changed Successfully!</h4>
+        <p>Your password has been updated.</p>
+        <div class="Done_form_btn">
+          <button class="Done_btn" (click)="closeModal8()">Done</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
 </div>

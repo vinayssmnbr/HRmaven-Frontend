@@ -42,10 +42,10 @@ export class LeavesContentComponent {
     this.graphleave();
     this.leavecontentload();
   }
-  total = 0;
-  pendingcount = 0;
-  acceptcount = 0;
-  rejectcount = 0;
+  total: number = 0;
+  pendingcount: number = 0;
+  acceptcount: number = 0;
+  rejectcount: number = 0;
 
   // //////////////////////////////////////////////////////////////////////
 
@@ -81,7 +81,7 @@ export class LeavesContentComponent {
   }
   allchecked = false;
   count = 0;
-  fetchPendingLeave() {}
+  fetchPendingLeave() { }
   onChange($event) {
     const id = $event.target.value;
     const ischecked = $event.target.checked;
@@ -89,11 +89,17 @@ export class LeavesContentComponent {
       if (d._id == id) {
         if (ischecked == true) {
           this.count++;
+          if ((this.pendingleave.length == this.count)) {
+            this.parentSelector = true;
+            d.select = ischecked;
+            return d;
+          }
         } else {
           this.count--;
         }
         d.select = ischecked;
         this.parentSelector = false;
+
         return d;
       }
       if (id == -1) {
@@ -148,6 +154,9 @@ export class LeavesContentComponent {
     this.filter.value.category = this.Selectvariable;
 
     this.dashService.filterleave(this.filter.value).subscribe((res: any) => {
+      this.pendingleave=[];
+      this.rejectleave=[];
+      this.acceptleave=[];
       res.result.map((d: any) => {
         if (d._id == 'pending') {
           this.pendingleave = d.pending;
@@ -189,41 +198,7 @@ export class LeavesContentComponent {
     selectBtn.addEventListener('click', () =>
       optionMenu.classList.toggle('active')
     );
-    //------------ Progress Bar Girija----------
-    // const max = -219.99078369140625;
-    // const progressElements = document.querySelectorAll('.progress');
-    // progressElements.forEach((value, index) => {
-    //   const percent = parseFloat(value.getAttribute('data-progress'));
-    //   value
-    //     .querySelector('.fill')
-    //     .setAttribute(
-    //       'style',
-    //       `stroke-dashoffset: ${((100 - percent) / 100) * max}`
-    //     );
-    // });
   }
-
-  // async updatereload() {
-  //   this.dashService.getLeaves().subscribe((res: any) => {
-
-  //     this.leaves = res;
-  //     this.totalCount = this.getTotal();
-  //     this.acceptCount = this.getCount('accept');
-  //     this.rejectCount = this.getCount1('reject');
-  //     this.pendingCount = this.getCount3('pending');
-
-  //     this.accept_graph = this.acceptCalculate();
-  //     this.reject_graph = this.rejectCalculate();
-  //     this.pending_graph = this.pendingCalculate();
-
-  //     this.leaves = this.leaves.sort((a, b) => {
-  //       if (a.status > b.status) return 1;
-  //       if (a.status < b.status) return -1;
-  //       return 1;
-  //     });
-
-  //   });
-  // }
 
   updateafteraction() {
     this.dashService.getLeaves().subscribe((res: any) => {
@@ -294,12 +269,9 @@ export class LeavesContentComponent {
     },
     {
       id: 3,
-      name: 'urgent',
+      name: 'compensatory',
     },
-    {
-      id: 4,
-      name: 'earned',
-    },
+
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
@@ -371,21 +343,22 @@ export class LeavesContentComponent {
     if (this.acceptall == false) {
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
-      this.pendingcount--;
-      this.acceptcount++;
+      this.pendingcount = this.pendingcount - 1;
+      this.acceptcount = this.acceptcount + 1;
 
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'accept', this.acceptmessage)
-        .subscribe((res) => {});
+        .subscribe((res) => { });
 
-      this.dashService
-        .updateleave(
-          this.acceptdata.uid,
-          this.acceptdata.from,
-          this.acceptdata.to
-        )
-        .subscribe((res: any) => {});
-
+      if (this.acceptdata.category == 'casual' || this.acceptdata.category == 'compensatory' || this.acceptdata.category == 'medical') {
+        this.dashService
+          .updateleave(
+            this.acceptdata.empId,
+            this.acceptdata.from,
+            this.acceptdata.to
+          )
+          .subscribe((res: any) => { });
+      }
       this.acceptleave.push(row);
       this.acceptmessage = '';
       this.graphleave();
@@ -394,16 +367,17 @@ export class LeavesContentComponent {
     } else {
       this.acceptdata.map((data: any, index: any, arr) => {
         if (data.select == true) {
+
           this.dashService
             .updateleavestatus(data._id, 'accept', this.acceptmessage)
-            .subscribe((res) => {});
+            .subscribe((res) => { });
           const row = this.acceptdata[index];
           this.acceptleave.push(row);
-          this.dashService
-            .updateleave(data.uid, data.from, data.to)
-            .subscribe((res: any) => {});
-          this.pendingcount--;
-          this.acceptcount++;
+          if (data.category == 'casual' || data.category == 'compensatory' || data.category == 'medical') {
+            this.dashService.updateleave(data.empId, data.from, data.to).subscribe((res: any) => { });
+          }
+          this.pendingcount = this.pendingcount - 1;
+          this.acceptcount = this.acceptcount + 1;
         } else {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
@@ -426,12 +400,11 @@ export class LeavesContentComponent {
       this.showModal1 = false;
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
-      this.rejectcount = this.rejectcount + 1;
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'reject', this.acceptmessage)
-        .subscribe((res) => {});
-      this.pendingcount--;
-      this.rejectcount++;
+        .subscribe((res) => { });
+      this.pendingcount = this.pendingcount - 1;
+      this.rejectcount = this.rejectcount + 1;
       this.acceptmessage = '';
       this.rejectleave.push(row);
       this.graphleave();
@@ -442,9 +415,9 @@ export class LeavesContentComponent {
         if (data.select == true) {
           this.dashService
             .updateleavestatus(data._id, 'reject', this.acceptmessage)
-            .subscribe((res) => {});
-          this.pendingcount--;
-          this.rejectcount++;
+            .subscribe((res) => { });
+          this.pendingcount = this.pendingcount - 1;
+          this.rejectcount = this.rejectcount + 1;
           const row = this.acceptdata[index];
           this.rejectleave.push(row);
         } else {

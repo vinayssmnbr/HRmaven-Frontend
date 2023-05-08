@@ -650,7 +650,7 @@
     padding-left: 1em;
     padding-right: 1em;
     width: 100%;
-    top: 20%;
+    top: 40%;
     left: 50%;
     opacity: 0;
     -webkit-transform: translate(-50%, -50%);
@@ -674,7 +674,7 @@
     font-size: 9px;
     width: 100%;
     color: #fff;
-    
+
 }
 
 input[type="file"]{
@@ -687,7 +687,7 @@ input[type="file"]{
 
 .upload_title{
     margin-top: -35px;
-   
+
 }
 
 .content-text {
@@ -744,3 +744,51 @@ input:focus {
 input:disabled{
     cursor: not-allowed;
 }
+
+#oldp.ng_invalid{
+  border:1px solid red !important;
+}
+#oldp.ng_invalid:hover{
+  border:1px solid red !important;
+}
+#oldp.ng_valid:hover{
+  border:1px solid green !important;
+}
+#oldp.ng_valid{
+  border:1px solid green !important;
+}
+
+#passwordp.ng_invalid{
+  border:1px solid red !important;
+}
+#passwordp.ng_invalid:hover{
+  border:1px solid red !important;
+}
+#passwordp.ng_valid:hover{
+  border:1px solid green !important;
+}
+#passwordp.ng_valid{
+  border:1px solid green !important;
+}
+#confirmp.ng_invalid{
+  border:1px solid red !important;
+}
+#confirmp.ng_invalid:hover{
+  border:1px solid red !important;
+}
+#confirmp.ng_valid:hover{
+  border:1px solid green !important;
+}
+#confirmp.ng_valid{
+  border:1px solid green !important;
+}
+#confirmp.ng_invalid.errors{
+  border:1px solid red !important;
+}
+
+.password-matches {
+    border-color: green;
+  }
+  .green-border {
+    border: 2px solid green;
+  }  

@@ -18,6 +18,7 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent implements OnInit {
   @Input() user: any;
   empForm: FormGroup;
+  educationItems: any;
   constructor(
     private dashService: DashService,
     private fb: FormBuilder,
@@ -51,19 +52,31 @@ export class EmployeeProfileComponent implements OnInit {
   job_type: string = '';
   form = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
+    name: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     designation: new FormControl(''),
     dateOfJoining: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
-    motherName: new FormControl('', [Validators.pattern('[a-zA-Z ]+')]),
+    fatherName: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    motherName: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
-    inter: new FormControl('', [Validators.pattern(/^\d+(\.\d{1,2})?%?$/)]),
+    inter: new FormControl('', [
+      Validators.pattern(/^\d+(\.\d{1,2})?%?$/),
+      Validators.required,
+    ]),
     interPercent: new FormControl('', [
       Validators.pattern(/^\d+(\.\d{1,2})?%?$/),
     ]),
@@ -87,25 +100,44 @@ export class EmployeeProfileComponent implements OnInit {
     ctc: new FormControl(''),
     job_type: new FormControl(''),
     bankname: new FormControl(''),
-    adhaarno: new FormControl('', [Validators.pattern(/^[2-9]{1}[0-9]{11}$/)]),
+    adhaarno: new FormControl('', [
+      Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
+      Validators.required,
+    ]),
     accountno: new FormControl(''),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
+      Validators.required,
     ]),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
+      Validators.required,
     ]),
     panno: new FormControl('', [
       Validators.pattern(/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/),
+      Validators.required,
     ]),
-    mobile: new FormControl('', [Validators.pattern('[6-9]{1}[0-9]{9}')]),
+    mobile: new FormControl('', [
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+      Validators.required,
+    ]),
     email: new FormControl('', [
       Validators.email,
       Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+      Validators.required,
     ]),
-    state: new FormControl(''),
-    postalCode: new FormControl('', Validators.pattern(/^[0-9]{6}$/)),
-    city: new FormControl(''),
+    state: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    postalCode: new FormControl('', [
+      Validators.pattern(/^[0-9]{6}$/),
+      Validators.required,
+    ]),
+    city: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     address: new FormControl(''),
     profemail: new FormControl(''),
     matricpassing: new FormControl(''),
@@ -113,6 +145,9 @@ export class EmployeeProfileComponent implements OnInit {
   });
 
   experienceForm: FormGroup;
+  educationForm: FormGroup;
+
+
   get registrationFormControl() {
     return this.form.controls;
   }
@@ -122,7 +157,31 @@ export class EmployeeProfileComponent implements OnInit {
     this.experienceForm = new FormGroup({
       experienceItems: new FormArray([this.createExperienceItem()]),
     });
+    this.educationForm = new FormGroup({
+      educationItems: new FormArray([this.createEducationItem()]),
+    })
   }
+
+  createEducationItem(): FormGroup{
+    return new FormGroup({
+     graduation: new FormControl(''),
+     graduationStream: new FormControl(''),
+     graduationCgpa: new FormControl(''),
+     pg: new FormControl(''),
+     pgStream: new FormControl(''),
+     pgCgpa: new FormControl(''),
+    })
+  }
+
+  get EducationItems(){
+    return this.educationForm.get('educationItems') as FormArray;
+  }
+
+  addItem1() {
+    this.educationItems.push(this.createEducationItem());
+    console.log(this.educationForm.value);
+  }
+
 
   createExperienceItem(): FormGroup {
     return new FormGroup({
@@ -144,17 +203,6 @@ export class EmployeeProfileComponent implements OnInit {
 
   removeItem(index: number) {
     this.experienceItems.removeAt(index);
-  }
-
-  onSubmit() {
-    console.log(this.experienceForm.value);
-    const updatedData = this.experienceForm.value;
-    console.log('exp', updatedData);
-    updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe((res) => {
-      console.log('experience', res);
-    });
-    this.user = updatedData;
   }
 
   array1: any = [
@@ -365,7 +413,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
-    // this.user['martialStatus'] = arr3.name;
     this.user.maritalStatus = arr3.name;
   }
   // Changeselect3(arr3: any) {
@@ -574,17 +621,15 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = false;
-    const updatedData = this.form.value;
-    // const updatedData1=this.formArrayName.value;
-    console.log('abc', updatedData);
-    updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
-      console.log('Data updated successfully');
-    });
 
-    // this.dashService.updateEmployeeExperiences(updatedData).subscribe((data: any) => {
-    //   console.log(data.message);
-    // });
+    console.log(this.experienceForm.value);
+    const updatedData = this.experienceForm.value;
+    console.log('exp', updatedData);
+    updatedData['_id'] = this.user._id;
+    this.dashService.updateEmployee(updatedData).subscribe((res) => {
+      console.log('experience', res);
+    });
+    this.user = updatedData;
 
     this.user = updatedData;
   }
@@ -680,35 +725,44 @@ export class EmployeeProfileComponent implements OnInit {
       console.error('Invalid file type. Please select an image.');
       return;
     }
+    this.progress = true;
     this.onUpload(this.user);
   }
 
   upload: boolean = false;
+  progress: boolean = false;
   imageurl: any;
   onUpload(user) {
     user['_id'] = this.user._id;
     this.dashService.upload(this.selectedFile, user._id).then((res: any) => {
       this.upload = true;
+      this.progress = false;
       this.imageurl = this.dashService.fileUrl;
       console.log('img', this.imageurl);
     });
   }
-  viewMore: boolean = false;
-  showbutton: boolean = true;
-  showMoredata() {
-    this.viewMore = !this.viewMore;
-    this.showbutton = !this.showbutton;
-  }
-  hidedata() {
-    this.viewMore = false;
-    this.showbutton = true;
-  }
+
   // openotherinput:boolean=false;
   // openInput() {
   //   if (this.array2.name==="Others"){
   //      this.openotherinput=true;
   //   }
   // }
+
+  //VIEW MORE AND VIEW LESS
+  showbutton: boolean = true;
+  showAllData: boolean = false;
+
+  showMoredata() {
+    this.showAllData = true;
+    this.showbutton = false;
+  }
+
+  hidedata() {
+    this.showAllData = false;
+    this.showbutton = true;
+  }
+
   showpgdetails: boolean = false;
   showpgdet() {
     this.showpgdetails = true;

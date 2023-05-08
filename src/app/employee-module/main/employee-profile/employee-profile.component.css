@@ -314,28 +314,26 @@
   font-size: 14px;
   color: #222222;
   cursor: pointer;
+  /* padding-left: 20px; */
 }
 
 .content1 li {
   cursor: pointer;
   padding-bottom: 10px;
-  padding-left: 20px;
-
 }
 
 .content1 li.active {
   border-bottom: 2px solid #2F2C9F;
-  width: 12%;
 }
 
-.content1 #job.active {
+/* .content1 #job.active {
   width: 10%;
   padding-left: 25px;
 }
 .content1 #Password.active {
   width: 16%;
   padding-left: 25px;
-}
+} */
 
 .content1 li.active a {
   font-weight: 500;
@@ -783,6 +781,7 @@ input[type='date'] {
 }
 
 .modal-header2 {
+  position: relative;
   width: 390px;
   height: 150px;
   background: rgba(123, 211, 109, 0.3);
@@ -792,6 +791,14 @@ input[type='date'] {
   align-items: center;
 }
 
+.modal-header2 .fa-xmark{
+  position: absolute;
+    top: -18%;
+    right: -12%;
+    cursor: pointer;
+    color: #ECECEC;
+    font-size: 20px;
+}
 .modal-body3 {
   display: flex;
   align-items: center;
@@ -888,7 +895,7 @@ input[type='date'] {
 }
 
 input[type='number']:hover {
-  border: 1px solid #2F2C9F !important;
+  border: 1px solid #2F2C9F;
 }
 
 .name1 img {
@@ -1042,7 +1049,7 @@ input[type='number']:hover {
   padding-left: 17px;
   padding-right: 17px;
   outline: none;
-
+ margin-left: -84px;
 }
 
 .old-new-confirm-password {
@@ -1050,7 +1057,6 @@ input[type='number']:hover {
   display: flex;
   text-align: center;
   align-items: center;
-
 }
 
 .new-reenter {
@@ -1242,4 +1248,32 @@ input[type='number']:hover {
   cursor: pointer;
   color: #ECECEC;
   cursor: pointer;
+}
+.password.ng_invalid {
+  border: 1px solid #CB1E0F !important;
+}
+
+.password.ng_invalid:hover {
+  border: 1px solid #CB1E0F !important;
+}
+
+.password.ng_valid {
+  border: 1px solid green !important;
+}
+.validation-message {
+  color: #CB1E0F;
+  display: flex;
+  gap: 6px;
+  /* margin-top: -15px; */
+  font-family: "Outfit", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 218px;
+  margin-top: 10px;
+}
+
+.fa-circle-info {
+  color: #CB1E0F;
+  margin-top: 3px;
 }

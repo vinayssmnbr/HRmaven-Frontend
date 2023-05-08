@@ -94,9 +94,20 @@
                 <div class="field name-field">
                     <div class="input-field">
                         <label for="username">Organization Name</label>
-                        <input type="text" placeholder="Enter your Organization Name" class="username"
+                        <!-- <input type="text" placeholder="Enter your Organization Name" class="username"
                             [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
-                            formControlName="username" (keydown)="Space($event)"/>
+                            formControlName="username" (keydown)="Space($event)" (blur)="checkUsernameInput()" />
+                            <span *ngIf="fun['username'].errors && fun['username'].errors['usernameExists'] && usernameExists">
+                                <img src="assets/images/valid_error.svg" alt=""> Username already exists!
+                              </span> -->
+                              <input type="text" placeholder="Enter your Organization Name" class="username"
+  [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
+  formControlName="username" (keydown)="Space($event)" (blur)="checkUsernameInput()" />
+
+<span *ngIf="fun['username'].errors && fun['username'].errors['usernameExists'] && usernameExists">
+  <img src="assets/images/valid_error.svg" alt=""> Organization Name already exists!
+</span>
+
                             <!-- formControlName="username" (keydown)="Space($event)" [(ngModel)]="organizationName" (input)="onOrgNameInput()" /> -->
 
                         <!-- <span *ngIf="username && username.invalid  &&  username.dirty "><i class="fa-solid fa-circle-info"></i>Invalid Organization Name</span> -->
@@ -121,12 +132,13 @@
                     </div>
                 </div>
                 <div class="field email-field">
-                    <div class="input-field">
+                    <!-- <div class="input-field">
                         <label for="email" class="text-label">Email</label>
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email"
                             [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
-                            class="form-control is-invalid" (keyup)="onKeyUp($event)"/>
-                        <!-- <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span> -->
+                            class="form-control is-invalid" (keyup)="onKeyUp($event)"(blur)="checkEmailInput()" />
+                         <span *ngIf="email && email.invalid && email.touched "><i class="fa-solid fa-circle-info"></i>Invalid Email</span> -->
+                        <!-- <div *ngIf="emailExists" style="color: red"> Email already exists!  </div>
 
                         <div *ngIf="
               fun['email'].invalid &&
@@ -145,7 +157,31 @@
                                 Enter Valid Email Pattern
                             </span>
                         </div>
-                    </div>
+                    </div>  -->
+                    <div class="input-field">
+                        <label for="email" class="text-label">Email</label>
+                        <input type="email" placeholder="Enter your email" class="email" formControlName="email"
+                          [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
+                          class="form-control is-invalid" (keyup)="onKeyUp($event)" (blur)="checkEmailInput()" />
+                      
+                        <div *ngIf="fun['email'].invalid && (fun['email'].touched || fun['email'].dirty)">
+                          <span *ngIf="fun['email'].errors && fun['email'].errors['required']">
+                            <img src="assets/images/valid_error.svg" alt=""> Email is required
+                          </span>
+                          <span *ngIf="fun['email'].errors && fun['email'].errors['email']">
+                            <img src="assets/images/valid_error.svg" alt=""> Invalid Email
+                          </span>
+                          <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']">
+                            <img src="assets/images/valid_error.svg" alt=""> Enter Valid Email Pattern
+                          </span>
+                          <span *ngIf="fun['email'].errors && fun['email'].errors['emailExists']">
+                            <img src="assets/images/valid_error.svg" alt=""> Email already exists!
+                          </span>
+                        </div>
+                      </div>
+                      
+                                            
+                    
                 </div>
                 <div class="field create-password">
                     <div class="password-tooltip">
@@ -154,7 +190,7 @@
 
                                 <div class="iconWrap password_required">
 
-                                    <img src="assets/images/valid_error.svg" alt="">
+                                    <img src="assets/images/valid_error.png" alt="">
                                     <!-- <span class="tooltip">Uppercase character <br> Special character<br> Password -->
                                     <!-- match<br>Lowercase character<br>Minimum 8 character</span> -->
 
@@ -238,7 +274,7 @@
                     </div>
                 </div>
 
-                <div class="field confirm-password">
+                <!-- <div class="field confirm-password">
                     <div class="input-field">
                         <label for="name" class="text-label">Confirm your Password</label>
                         <div style="position: relative;">
@@ -253,14 +289,14 @@
                                 <i class="fa {{showPasswordIcon1}}"></i>
                             </span>
                         </div>
-                        <span
+                        <span>
                             *ngIf="sigupform.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><img
                             src="assets/images/valid_error.svg" alt="">Password didn't match</span>
 
                     </div>
 
 
-                </div>
+                </div> -->
                 <div class="check-text">
                     <input type="checkbox" class="check_box" formControlName="check" required />
                     <label for="checkbox" class="checkbox-text"><span>I agree to </span> <a routerLink="/t&c"> terms &

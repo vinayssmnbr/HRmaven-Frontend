@@ -29,6 +29,7 @@ export class EmployeeProfileComponent {
   modalContent2: boolean = false;
   modalContent4: boolean = false;
   modalContent5: boolean = false;
+  success: boolean = false;
   contentdropdown: boolean = false;
   contentdropdown1: boolean = false;
   contentdropdown2: boolean = false;
@@ -188,8 +189,24 @@ export class EmployeeProfileComponent {
   ];
 
   passwordform = new FormGroup({
-    password: new FormControl(''),
-    confirm: new FormControl(''),
+    oldpassword: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
+    confirm: new FormControl('', [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_-]).{8,}$/
+      ),
+    ]),
   });
 
   empform1 = new FormGroup({
@@ -197,29 +214,59 @@ export class EmployeeProfileComponent {
     name: new FormControl(''),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
-    fatherName: new FormControl(''),
-    motherName: new FormControl(''),
+    fatherName: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    motherName: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
     nationality: new FormControl(''),
   });
 
   empform2 = new FormGroup({
-    mobile: new FormControl(''),
+    mobile: new FormControl('', [
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+      Validators.required,
+    ]),
     email: new FormControl(''),
-    state: new FormControl(''),
-    postalCode: new FormControl(''),
-    city: new FormControl(''),
+    state: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    postalCode: new FormControl('', [
+      Validators.pattern(/^[0-9]{6}$/),
+      Validators.required,
+    ]),
+    city: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     address: new FormControl(''),
   });
 
   empform3 = new FormGroup({
     bankname: new FormControl(''),
-    adhaarno: new FormControl(''),
+    adhaarno: new FormControl('', [
+      Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
+      Validators.required,
+    ]),
     accountno: new FormControl(''),
-    ifsc: new FormControl(''),
-    passport: new FormControl(''),
-    panno: new FormControl(''),
+    ifsc: new FormControl('', [
+      Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
+      Validators.required,
+    ]),
+    passport: new FormControl('', [
+      Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
+      Validators.required,
+    ]),
+    panno: new FormControl('', [
+      Validators.pattern(/^([A-Z]){5}([0-9]){4}([A-Z]){1}?$/),
+      Validators.required,
+    ]),
   });
 
   empform6 = new FormGroup({
@@ -264,8 +311,6 @@ export class EmployeeProfileComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
-    // this.jobdesignation = arr.name;
-    // this.user.jobdesignation = arr.name;
   }
 
   Selectvariable3: string = 'Select';
@@ -275,8 +320,7 @@ export class EmployeeProfileComponent {
     this.colorvariable3 = arr3.id;
     this.contentdropdown3 = false;
     console.log(arr3.name);
-    // this.user['martialStatus'] = arr3.name;
-    // this.user.maritalStatus = arr3.name;
+    this.obj.maritalStatus = arr3.name;
   }
   dropdownOpen4() {
     this.contentdropdown4 = !this.contentdropdown4;
@@ -288,7 +332,7 @@ export class EmployeeProfileComponent {
     this.colorvariable4 = arr4.id;
     this.contentdropdown4 = false;
     console.log(arr4.name);
-    // this.user.bloodGroup = arr4.name;
+    this.obj.bloodGroup = arr4.name;
   }
   Selectvariable2: string = 'Select Bank';
   colorvariable2: number = 0;
@@ -297,8 +341,7 @@ export class EmployeeProfileComponent {
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
     console.log(arr2.name);
-    // this.bankname = arr2.name;
-    // this.user.bankname = arr2.name;
+    this.obj.bankname = arr2.name;
   }
   dropdownOpen5() {
     this.contentdropdown5 = !this.contentdropdown5;
@@ -323,7 +366,7 @@ export class EmployeeProfileComponent {
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
-    // this.user.gender = arr1.name;
+    this.obj.gender = arr1.name;
   }
 
   dropdownOpen8() {
@@ -336,8 +379,6 @@ export class EmployeeProfileComponent {
     this.colorvariable8 = arr8.id;
     this.contentdropdown8 = false;
     console.log(arr8.name);
-    // this.jobempstatus=arr8.name
-    // this.user.jobempstatus = arr8.name;
   }
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
@@ -369,36 +410,100 @@ export class EmployeeProfileComponent {
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
-  basicUpdate(data: any) {}
-  openModal() {
-    this.modalContent1 = true;
-    this.showModal = true;
-    this.modalContent4 = false;
-    this.modalContent5 = false;
-  }
-  openModal2() {
-    this.modalContent4 = true;
+  basicUpdate(data: any) {
+    this.success = true;
     this.showModal = true;
     this.modalContent1 = false;
+    this.modalContent4 = false;
     this.modalContent5 = false;
+    this.obj.motherName = data.motherName;
+    this.obj.fatherName = data.fatherName;
+    this.obj.name = data.name;
+    this.obj.dateOfBirth = data.dateOfBirth;
+    this.obj.nationality = data.nationality;
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe((res: any) => {
+      this.obj = res;
+      console.log('update', res);
+    });
+  }
+  selectedUser: any = {};
+
+  openModal(obj: any) {
+    this.modalContent1 = true;
+    this.showModal = true;
+    this.success = false;
+    this.modalContent4 = false;
+    this.modalContent5 = false;
+    this.selectedUser = { _id: obj._id };
+    this.empform1.patchValue(this.obj);
+    this.Selectvariable1 = obj.gender;
+    this.Selectvariable3 = obj.maritalStatus;
+    this.Selectvariable4 = obj.bloodGroup;
+  }
+  openModal2(obj: any) {
+    this.modalContent4 = true;
+    this.showModal = true;
+    this.success = false;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    // this.selectedUser = { _id: obj._id };
+    this.empform2.patchValue(this.obj);
   }
   closeModal() {
     this.showModal = false;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
+  }
+  closeModal1() {
+    this.success = true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
   }
   closeModal2() {
     this.showModal = false;
   }
   closeModal3() {
-    this.showModal = false;
-  }
-  closeModal4() {
-    this.showModal = false;
-  }
-  openModal4() {
+    this.success = true;
     this.showModal = true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
+    const updatedData = this.empform2.value;
+    updatedData['_id'] = this.obj._id;
+    this.empdashService
+      .updateEmployeeRecord(updatedData)
+      .subscribe((res: any) => {
+        this.obj = res;
+        console.log('update', res);
+      });
+    // this.obj = updatedData;
+  }
+  closeModal4(data: any) {
+    this.showModal = true;
+    this.success = true;
+    this.modalContent1 = false;
+    this.modalContent5 = false;
+    this.modalContent4 = false;
+    this.obj.accountno = data.accountno;
+    this.obj.ifsc = data.ifsc;
+    this.obj.adhaarno = data.adhaarno;
+    this.obj.panno = data.panno;
+    this.obj.passport = data.passport;
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe(() => {
+      console.log('Data updated successfully');
+    });
+  }
+  openModal4(obj: any) {
+    this.showModal = true;
+    this.success = false;
     this.modalContent5 = true;
     this.modalContent1 = false;
     this.modalContent4 = false;
+    // this.selectedUser = { _id: obj._id };
+    this.empform3.patchValue(obj);
+    this.Selectvariable2 = obj.bankname;
   }
   openModal5() {
     this.showModal = true;
@@ -423,5 +528,85 @@ export class EmployeeProfileComponent {
   closeModal8() {
     this.showModal3 = false;
     this.showModal = false;
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile.type.split('/')[0] !== 'image') {
+      console.error('Invalid file type. Please select an image.');
+      return;
+    }
+    this.progress = true;
+    this.onUpload(this.obj);
+  }
+
+  upload: boolean = false;
+  progress: boolean = false;
+  imageurl: any;
+  onUpload(obj) {
+    obj['_id'] = this.obj._id;
+    this.empdashService
+      .uploadImage(this.selectedFile, obj._id)
+      .then((res: any) => {
+        this.upload = true;
+        this.progress = false;
+        this.imageurl = this.empdashService.fileUrl;
+        console.log('img', this.imageurl);
+      });
+  }
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim();
+  }
+  get pwd() {
+    return this.passwordform.get('password');
+  }
+  get confirmpwd() {
+    return this.passwordform.get('confirm');
+  }
+  searchValue: string = '';
+  clearSearch() {
+    this.searchValue = '';
+  }
+  //RESET PASSWORD AND MATCH OLD PASSWORD
+  email: any = '';
+  newpassword(data: any) {
+    this.email = localStorage.getItem('LoggedInName');
+    if (!this.email) {
+      console.error('User email not found in local storage');
+      return;
+    }
+    this.empdashService.ResetPassword(this.email, data).subscribe(
+      (res: any) => {
+        if (res == 'Password Changes Successfully') {
+          console.log('Password reset successful');
+        } else {
+          console.error('Invalid response from API:', res);
+        }
+      },
+      (err: any) => {
+        console.error('Error occurred while resetting password:', err);
+      }
+    );
+  }
+  empEmail: any = localStorage.getItem('LoggedInName');
+  oldpassword: any = '';
+  isPasswordmatched: boolean = false;
+
+  matchpwdEmployee() {
+    const email = this.empEmail;
+    const oldpassword = this.passwordform.controls['oldpassword'].value;
+    this.empdashService
+      .oldpasswordEmployee(email, oldpassword)
+      .subscribe((res: any) => {
+        if (res.message === 'Password matches') {
+          this.isPasswordmatched = true;
+          console.log('password matches');
+        } else {
+          this.isPasswordmatched = false;
+          console.log('password mismatch');
+        }
+        this.oldpassword = oldpassword;
+      });
   }
 }

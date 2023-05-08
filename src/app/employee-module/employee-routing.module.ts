@@ -10,6 +10,7 @@ import { ReportComponent } from './main/report/report.component';
 import { LeavesContentComponent } from './main/leaves-content/leaves-content.component';
 import { EmployeeProfileComponent } from './main/employee-profile/employee-profile.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
+
 const routes: Routes = [
     {path:'emp-dashboard',component:DashboardContentComponent},
 
@@ -34,7 +35,7 @@ const routes: Routes = [
   },
   {
     path:'emp-calendar',component:CalendarComponent
-  }
+  },
 ];
 
 @NgModule({

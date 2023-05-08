@@ -24,8 +24,9 @@
       <img *ngIf="!user" src="./assets/images/Ellipse 98.svg" alt="user-icon" class="header-icon"
         (click)="getProfileData();profileToggle()">
 
-        <img *ngIf="user" src="{{header}}" alt="user-icon" class="header-icon"
+        <img *ngIf="user;profileimage" src="{{profileimage}}" alt="user-icon" class="header-icon"
         (click)="getProfileData();profileToggle()">
+        <!-- <img *ngIf="profileimage" [src]="profileimage" alt="Profile Image"> -->
 
 
     </div>
@@ -287,7 +288,7 @@
     </div>
   </div>
 </ng-container>
-<div class="profile_div" *ngIf="profileDisplay">
+<div class="profile_div" *ngIf="profileDisplay">  
   <div class="profile-content">
     <div class="profile-title">
       <div class="profile-logo">
@@ -298,7 +299,7 @@
         <p>{{userEmail}}</p>
       </div>
       <div class="head-btn">
-        <button class="btn-head">paid</button>
+        <button class="btn-head">HEAD</button>
       </div>
     </div>
     <div class="profile-account">

@@ -21,7 +21,7 @@ import { error, log } from 'console';
 import { CookieService } from 'ngx-cookie-service';
 
 import * as FileSaver from 'file-saver';
-
+import {saveAs} from 'file-saver'
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -30,8 +30,7 @@ import * as FileSaver from 'file-saver';
 export class EmployeeContentComponent implements OnInit {
   // user:any;
   isChecked: boolean = true;
-  // isChecked1:boolean=true;
-  // parentSelector: boolean = false;
+
 
   users: any[] = [];
   selected: any[] = [];
@@ -56,6 +55,7 @@ export class EmployeeContentComponent implements OnInit {
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
+
     @Inject(DOCUMENT) public document: Document,
     private cookie: CookieService
   ) {
@@ -217,18 +217,17 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
-    this.progressBar = document.getElementsByClassName('progress');
-    this.progressText = document.getElementsByClassName('progress-text');
+    // this.progressBar = document.getElementsByClassName('progress');
+    // this.progressText = document.getElementsByClassName('progress-text');
 
-    this.interval = setInterval(() => {
-      this.progress++;
-      if (this.progress > 100) {
-        this.progress = 0;
-      }
-      this.progressBar[0].style.width = `${this.progress}%`;
-      this.progressText[0].innerText = `${this.progress}%`;
-    }, 50);
-
+    // this.interval = setInterval(() => {
+    //   this.progress++;
+    //   if (this.progress > 100) {
+    //     this.progress = 0;
+    //   }
+    //   this.progressBar[0].style.width = `${this.progress}%`;
+    //   this.progressText[0].innerText = `${this.progress}%`;
+    // }, 50);
 
     // this.dashService.getEmployeeEmail(this.abc).subscribe((response:any)=>{
     //   console.log("hello",response)
@@ -379,7 +378,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -470,15 +469,15 @@ export class EmployeeContentComponent implements OnInit {
       name: '9.00am to 5:00pm',
     },
     {
-      id: 0,
+      id: 1,
       name: '9.00am to 6:00pm',
     },
     {
-      id: 0,
+      id: 2,
       name: '10.00am to 5:00pm',
     },
     {
-      id: 0,
+      id: 3,
       name: '10.00am to 6:00pm',
     },
   ];
@@ -621,20 +620,23 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-  selectedfile: boolean = false
-  onFileSelected1(event: any) {
+
+  loader: boolean = false;
+  onFileSelected1(event: any) : void {
     this.selectedFile1 = event.target.files[0];
-    const allowedTypes1 = [".csv"];
-    this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-    if (!allowedTypes1.includes(this.selectedFile.type)) {
-      this.fileName1 = null;
-    }
-    if (this.fileName1 != null) {
-      this.selectedfile = true;
-    }
-
+    // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
+    this.loader=true;
   }
-
+  tableview:boolean=true;
+tableviewcall(){
+  this.tableview=!this.tableview;
+  this.cardview=false;
+}
+cardview:boolean=false;
+cardviewcall(){
+  this.cardview=true;
+  this.tableview=false;
+}
   selectall: boolean = false;
   selectboxes() {
     this.selectall = !this.selectall;
@@ -722,32 +724,32 @@ export class EmployeeContentComponent implements OnInit {
       case 'active': {
         this.optionStyle = {
           'background-color': 'rgba(123, 211, 109, 0.3)',
-          color: '#3D9030',
-          border: 'rgba(123, 211, 109, 0.3)',
+          'color': '#3D9030',
+          'border': 'rgba(123, 211, 109, 0.3)',
         };
         break;
       }
       case 'terminated': {
         this.optionStyle = {
           'background-color': 'rgba(250, 151, 150, 0.2)',
-          color: '#CB1E0F',
-          border: 'rgba(250, 151, 150, 0.2)',
+          'color': '#CB1E0F',
+          'border': 'rgba(250, 151, 150, 0.2)',
         };
         break;
       }
       case 'resigned': {
         this.optionStyle = {
-          'background-color': '#2f2c9f',
-          color: '#CE524A',
-          border: '#2f2c9f',
+          'background-color': '#EFEFF8',
+          'color': '#2f2c9f',
+          'border': '#EFEFF8',
         };
         break;
       }
       case 'absconder': {
         this.optionStyle = {
           'background-color': 'rgba(248, 187, 111, 0.4)',
-          color: '#DB771D',
-          border: 'rgba(248, 187, 111, 0.4)',
+          'color': '#DB771D',
+          'border': 'rgba(248, 187, 111, 0.4)',
         };
         break;
       }
@@ -783,26 +785,26 @@ export class EmployeeContentComponent implements OnInit {
     if (user.status === 'active') {
       return {
         'background-color': 'rgba(123, 211, 109, 0.3)',
-        'color': '#3D9030',
-       'border': 'rgba(123, 211, 109, 0.3)',
+        color: '#3D9030',
+        border: 'rgba(123, 211, 109, 0.3)',
       };
     } else if (user.status === 'terminated') {
       return {
         'background-color': 'rgba(250, 151, 150, 0.2)',
-        'color': '#CB1E0F',
-        'border': 'rgba(250, 151, 150, 0.2)',
+        color: '#CB1E0F',
+        border: 'rgba(250, 151, 150, 0.2)',
       };
     } else if (user.status === 'resigned') {
       return {
         'background-color': '#EFEFF8',
-        'color': '#2f2c9f',
-        'border': '#EFEFF8',
+        color: '#2f2c9f',
+        border: '#EFEFF8',
       };
     } else if (user.status === 'absconder') {
       return {
         'background-color': 'rgba(248, 187, 111, 0.4)',
-        'color': '#DB771D',
-        'border': 'rgba(248, 187, 111, 0.4)',
+        color: '#DB771D',
+        border: 'rgba(248, 187, 111, 0.4)',
       };
     } else {
       return {};
@@ -850,16 +852,16 @@ export class EmployeeContentComponent implements OnInit {
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
-      this.dashService.exportUsers(this.selectedEmployess).subscribe(
-        (data: Blob) => {
-          const downloadUrl = window.URL.createObjectURL(data);
-          const link = document.createElement('a');
-          link.href = downloadUrl;
-          link.download = 'users.csv';
-          link.click();
-        },
-        (error) => console.log(error)
-      );
+    this.dashService.exportUsers(this.selectedEmployess).subscribe(
+      (data: Blob) => {
+        const downloadUrl = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'users.csv';
+        link.click();
+      },
+      (error) => console.log(error)
+    );
     // }
   }
 
@@ -904,78 +906,19 @@ export class EmployeeContentComponent implements OnInit {
   //   fileInput.click();
   // }
 
-  //onFIleSelectedream
 
-  // onFileSelectedrem(event: any): void {
-  //   const file: File = event.target.files[0];
+  waitThreeSeconds(){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Done!');
+      }, 6000);
+    });
+  };
 
-  //   if (!file) {
-  //     console.log('No file selected.');
-  //     return;
-  //   }
+  async onFileSelectedrem(event: any) {
 
-  //   if (!validateCsvFile(file)) {
-  //     alert('Invalid file type. Please select a CSV file.');
-  //     return;
-  //   }
-
-  //   function validateCsvFile(file: File): boolean {
-  //     const allowedExtensions = /(\.csv)$/i;
-
-  //     if (!allowedExtensions.exec(file.name)) {
-  //       return false;
-  //     }
-
-  //     return true;
-  //   }
-
-  //   // const file: File = event.target.files[0];
-
-  //   // Check file size
-  //   const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
-  //   if (file.size > MAX_FILE_SIZE_BYTES) {
-  //     console.log('Selected file is too large.');
-  //     return;
-  //   }
-
-  //   // Parse CSV file
-  //   const reader: FileReader = new FileReader();
-  //   reader.onload = (e: any) => {
-  //     const csv: string = e.target.result;
-  //     const lines: string[] = csv.split(/\r\n|\n/);
-  //     const headers: string[] = lines[0].split(',');
-  //     const data: any[] = [];
-
-  //     for (let i = 1; i < lines.length - 1; i++) {
-  //       const values: string[] = lines[i].split(',');
-  //       const item: any = {};
-
-  //       for (let j = 0; j < headers.length; j++) {
-  //         item[headers[j]] = values[j];
-  //       }
-
-  //       data.push(item);
-  //     }
-
-  //     console.log(data, 'parsed CSV data');
-
-  //     // Add each employee to system using dashService
-  //     data.forEach((employee) => {
-  //       console.log('Adding employee:', employee);
-  //       this.dashService.addEmployee(employee).subscribe((res: any) => {
-  //         console.log('Response:', res);
-  //         console.log('Data:', res.data);
-  //       });
-  //     });
-  //   };
-
-  //   reader.readAsText(file);
-  // }
-
-
-  onFileSelectedrem(event: any): void {
-
-    const file: File = event.target.files[0];
+    const file: File = event.files[0];
+    this.loader=true;
 
     if (!file) {
       console.log('No file selected.');
@@ -1031,33 +974,43 @@ export class EmployeeContentComponent implements OnInit {
       }
 
       console.log(data, 'parsed CSV data');
-      let uid: number = -1;;
+      // if(data.length==0) return 'no user selected'
+      let uid: number = -1;
+      let  responseArr = [];
       this.dashService.getEmployeeUid().subscribe((res: any) => {
-        // 
+        //
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'
+        let increaseBy:number = 100/(data.length);
         data.forEach((employee) => {
           console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
-          this.dashService.addEmployee(employee).subscribe((res: any) => {
+          this.dashService.addEmployee(employee).subscribe(async (res: any) => {
             console.log('Response:', res);
-            console.log('Data:', res.data);
+            this.loader=true
+            responseArr.push(res);
+            if(responseArr.length== data.length){
+              await this.waitThreeSeconds();
+              this.loader = false;
+              this.csvadded = true;
+              this.importfile = false;
+            }
+            // console.log('Data:', res.data);
+            this.progress+= increaseBy;
+            this.progressBar[0].style.width = `${this.progress}%`;
+            this.progressText[0].innerText = `${this.progress}%`;
 
           });
         });
-        return 'employees added'
-
-      })
-
+        return 'employees added';
+      });
 
     };
 
     reader.readAsText(file);
   }
-
-
 
   // importFile() {
   //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
@@ -1194,5 +1147,14 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
+
+
+
   ngOnChange() { }
+
+
+
+
+
+
 }

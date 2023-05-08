@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../shared/emp.service';
 import { Chart, registerables } from 'node_modules/chart.js';
+import { HttpClient } from '@angular/common/http';
 Chart.register(...registerables);
 // import {Chart} from 'chart.js/auto';
 @Component({
@@ -9,15 +10,24 @@ Chart.register(...registerables);
   styleUrls: ['./dashboard-content.component.css']
 })
 export class DashboardContentComponent {
-  
+
   oilCanvas: any = '';
-  constructor(private empService: EmpService) {
+  constructor(private empService: EmpService, private http: HttpClient) {
     empService.activeComponent = 'dashboard';
     empService.headerContent = '';
 
   }
   in: any;
   out: any;
+  ipAddress: any;
+  obj: any;
+  donutdata: any;
+  present: number = 0;
+  absent: number = 0;
+  leave: number = 0;
+  total: number = 0;
+
+
 
   array: any = [
     {
@@ -82,33 +92,36 @@ export class DashboardContentComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
+    this.donutdata.map((item) => {
+      if ((item.month - 1) == arr.id) {
+        this.present = item.present,
+          this.total = item.total,
+          this.leave = item.leave,
+          this.absent = item.absent
+        this.blank = false;
+      }
+      else {
+        this.present = this.absent = this.leave = 0;
+        this.total = 0;
+        this.blank = true;
+      }
+    })
+
+    this.pieChart.destroy();
+    this.piechart();
   }
   ngOnInit() {
-    this.oilCanvas = document.getElementById("oilChart");
-
-
-var oilData = {
-    labels: [
-        // "Saudi Arabia",
-        // "Russia",
-        // "Canada"
-    ],
-    datasets: [
-        {
-            data: [76 ,4 , 20],
-            backgroundColor: [
-                "#5AB452",
-                "#EA6565",
-                "#FBB642"
-               
-            ]
-        }]
-};
-
-var pieChart = new Chart(this.oilCanvas, {
-  type: 'pie',
-  data: oilData
-});
+    this.obj = {
+      casual: 0,
+      compensatory: 0,
+      medical: 0
+    }
+    // this.present=0
+    // this.absent=0;
+    // this.leave=0;
+    this.total = 0;
+    this.donut();
+    this.leavegraphcontent();
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
         this.in = "";
@@ -120,124 +133,198 @@ var pieChart = new Chart(this.oilCanvas, {
       }
       console.log(res);
     })
+    this.getIPAddress();
   }
-  // const ctx5 = document.getElementById('doughnut');
-  // const doughnut = new Chart(ctx5, {
-  //   type: 'doughnut',
-  //   data: {
-  //     labels: [
-  //       'Jan',
-  //       'Feb',
-  //       'Mar',
-  //       'Apr',
-  //       'May',
-  //       'Jun',
-  //       'Jul',
-  //       'Aug',
-  //       'Sept',
-  //       'Oct',
-  //       'Nov',
-  //       'Dec',
-  //     ],
-  //     datasets: [
-  //       {
-  //         label: 'Present',
-  //         data: 'present',
-  //         backgroundColor: ['#2D11FA'],
 
-  //         borderColor: [
-  //           // 'rgba(255, 99, 132, 1)',
-  //           // 'rgba(54, 162, 235, 1)',
-  //           // 'rgba(255, 206, 86, 1)',
-  //           // 'rgba(75, 192, 192, 1)',
-  //           // 'rgba(153, 102, 255, 1)',
-  //           // 'rgba(255, 159, 64, 1)',
-  //           // 'rgba(255, 99, 132, 1)'
-  //         ],
-  //         // borderWidth: 1
-  //       },
-  //       {
-  //         label: 'Absent',
-  //         data: 'absent',
-  //         backgroundColor: ['#FDA75A'],
-  //         // pointStyle: 'circle',
-  //         borderColor: [
-  //           // 'rgba(255, 99, 132, 1)',
-  //           // 'rgba(54, 162, 235, 1)',
-  //           // 'rgba(255, 206, 86, 1)',
-  //           // 'rgba(75, 192, 192, 1)',
-  //           // 'rgba(153, 102, 255, 1)',
-  //           // 'rgba(255, 159, 64, 1)',
-  //           // 'rgba(255, 99, 132, 1)'
-  //         ],
-  //         // borderWidth: 1
-  //       },
-  //       {
-  //         label: 'Leaves',
-  //         data: 'leave',
-  //         backgroundColor: ['#00C9FF'],
-  //         // pointStyle: 'circle',
-  //         borderColor: [
-  //           // 'rgba(255, 99, 132, 1)',
-  //           // 'rgba(54, 162, 235, 1)',
-  //           // 'rgba(255, 206, 86, 1)',
-  //           // 'rgba(75, 192, 192, 1)',
-  //           // 'rgba(153, 102, 255, 1)',
-  //           // 'rgba(255, 159, 64, 1)',
-  //           // 'rgba(255, 99, 132, 1)'
-  //         ],
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     responsive: true,
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //     plugins: {
-  //       legend: {
-  //         labels: {
-  //           padding: 40,
-  //           usePointStyle: true,
-  //           font: {
-  //             size: 10,
-  //           },
-  //         },
-  //       },
-  //     }
-  //   }
-  // });
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown = !this.contentdropdown;
+  }
 
-   myChart = new Chart("myChart", {
-  
-    type: 'pie',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3],
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
-        ],
-        hoverOffset: 4
-        // borderWidth: 1
+  //  attendance // punchin
+  donut() {
 
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      },
+    this.empService.attendancedonut().subscribe((res) => {
+      console.log(res);
+      this.donutdata = res;
+      this.aa()
+
+    })
+
+  }
+
+  aa(){
+    const d = new Date();
+    const month = d.getMonth() + 1;
+    this.Selectvariable = this.array[d.getMonth()].name;
+    this.donutdata.map((item: any) => {
+      if ((item.month) == month) {
+        this.present = item.present,
+          this.total = item.total,
+          this.leave = item.leave,
+          this.absent = item.absent
+        this.blank = false;
+      }
+      else {
+        this.present = this.absent = this.leave = 0;
+        this.total = 0;
+        this.blank = true;
+      }
+      this.pieChart.destroy();
+    this.piechart();
+    })
+  }
+
+
+
+  ip: any;
+  async punchin() {
+    navigator.geolocation.getCurrentPosition(this.showLoc, this.errHand);
+  }
+
+  showLoc = async (pos: any) => {
+    console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
+
+    const lat = pos.coords.latitude
+    const lon = pos.coords.longitude
+    const lat1 = 31.2521879;
+    const lon1 = 75.7033441;
+    // const lat1=31.280317;
+    // const lon1=75.575594;
+    const R = 63710;
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+
+      console.log(lat);
+      console.log(lon);
+      if (this.ipAddress != '') {
+        this.empService.punchin(this.ipAddress).
+          subscribe((res: any) => {
+            console.log(res.time);
+            console.log(this.ipAddress);
+            this.in = res.time;
+          })
+      }
     }
-  });
+    else {
+      console.log("out of range")
+
+
+    }
+  }
+
+  errHand(err: any) {
+    switch (err.code) {
+      case err.PERMISSION_DENIED:
+        alert('you dont have right to mark the attendance until location is share')
+        break;
+    }
+  }
+
+
+  punchout() {
+    navigator.geolocation.getCurrentPosition(this.showLocation, this.error);
+  }
+
+  showLocation = async (pos: any) => {
+    console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
+
+    const lat = pos.coords.latitude
+    const lon = pos.coords.longitude
+    const lat1 = 31.2521879;
+    const lon1 = 75.7033441;
+    // const lat1=31.280317;
+    // const lon1=75.575594;
+    const R = 63710;
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+
+      console.log(lat);
+      console.log(lon);
+      if (this.ipAddress != '') {
+        this.empService.punchout(this.ipAddress).
+          subscribe((res: any) => {
+            console.log(res.time);
+            console.log(this.ipAddress);
+            this.out = new Date();
+
+          })
+      }
+    }
+    else {
+      console.log("out of range")
+    }
+  }
+
+  error(err: any) {
+    switch (err.code) {
+      case err.PERMISSION_DENIED:
+        alert('you dont have right to mark the attendance until location is share')
+        break;
+    }
+  }
+
+  getIPAddress() {
+
+    this.http.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
+
+      this.ipAddress = res.ip;
+      console.log(this.ipAddress);
+
+    });
+
+  }
+
+
+
+  async leavegraphcontent() {
+    await this.empService.leavegraph().subscribe((res: any) => {
+      console.log(res.response[0]);
+      this.obj = res.response[0];
+      console.log(this.obj);
+    });
+  }
+
+  showModal = false;
+  showModalContent = false;
+  closeModal() {
+    this.showModal = false;
+    this.showModalContent = false;
+  }
+
+  openModal() {
+    this.showModal = true;
+    this.showModalContent = true;
+  }
+
+  ngAfterViewInit() {
+    this.oilCanvas = document.getElementById("oilChart");
+    this.piechart();
+
+  }
+  blank: boolean = false;
+  pieChart: any;
+  piechart = () => {
+    const data = {
+      labels: [
+
+      ],
+      datasets: [
+        {
+          data: [this.present, this.absent, this.leave],
+          backgroundColor: [
+            "#5AB452",
+            "#EA6565",
+            "#FBB642"
+          ]
+        }]
+    };
+
+    this.pieChart = new Chart(this.oilCanvas, {
+      type: 'doughnut',
+      data: data
+    });
+  }
+
 
 }
-
 
 

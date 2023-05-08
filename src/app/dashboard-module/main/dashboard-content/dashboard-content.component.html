@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="col-4">
-            <div class="meeting-area">
+            <div class="meeting-area" >
                 <div class="meeting-text">
                     <h2>Meetings</h2>
                     <p (click)="openModal10()"><i class="fa-solid fa-circle-plus" (click)="openModal10()"></i> Create
@@ -72,9 +72,9 @@
                                 <p>{{option.day}}</p>
                                 <h5>{{option.Date}}</h5>
                             </div>
-                            <div class="interview-timings">
-                                <div class="interview-dots">
-                                    <h3 (click)="openModal11()">{{option.head}}</h3>
+                            <div class="interview-timings" >
+                                <div class="interview-dots" (click)="openModal11()">
+                                    <h3>{{option.head}}</h3>
                                     <p>{{option.time}}</p>
                                 </div>
                                 <div class="dots">
@@ -88,7 +88,50 @@
                             </div>
                         </div>
                     </div>
+                    <div class="interview-modal-content" *ngIf="showModalContent" >
+                        <div class="tag-date-notes">
+                            <div class="tag-interview-cross">
+                                <div class="tag-interview">
+                                    <div class="tag">
+                                        <img src="assets/images/tag.svg" alt="">
+                                    </div>
+                                    <h4>Inteview</h4>
+                                </div>
+                                <i class="fa-solid fa-xmark interview-cross" (click)="closeModal11()"></i>
+                            </div>
+                            <div class="calender-date-time">
+                                <div class="calender">
+                                    <img src="assets/images/calender-date.png" alt="">
+                                </div>
+                                <div class="date-time">
+                                    <h4>22nd January 2023</h4>
+                                    <p>9:00 am - 11:00 am</p>
+                                </div>
+
+                            </div>
+                            <div class="notes-text">
+                                <div class="notes">
+                                    <img src="assets/images/Group 214.svg" alt="">
+                                </div>
+                                <div class="notes-para">
+                                    <h4>Latest notes</h4>
+                                    <p>posted on 9 january, 2023</p>
+                                    <div class="notes-para-text">
+                                        <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing
+                                            projects </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="join-meeting-button">
+                            <button class="join" (click)="closeModal11()">Join meeting</button>
+                        </div>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>
@@ -97,7 +140,7 @@
         <div class="col-8">
             <div class="leave-request-area">
                 <div class="leave-request-heading">
-                    <h2>Leave request</h2>
+                    <h2> Pending Leave request</h2>
                     <p><a routerLink="/leaves"> View All </a></p>
                 </div>
 
@@ -105,22 +148,29 @@
                     <table class="table_text">
                         <thead>
                             <tr class="table_heading">
-                                <th>EMPLOYEE ID</th>
-                                <th>EMPLOYEE NAME</th>
-                                <th>APPLIED ON</th>
-                                <th>FROM</th>
-                                <th>TO</th>
-                                <th>DURATION</th>
+                                <th>Employee id</th>
+                                <th>Employee name</th>
+                                <th>Applied on </th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Duration</th>
+                                <th>Category</th>
+                                <th>Reason</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let leave of leaves ">
-                                <td>{{leave.employeeId}}</td>
-                                <td>{{leave.employeeName}}</td>
+                            <tr *ngFor="let leave of leaves" routerLink="/leaves" >
+                                <td>{{leave.uid}}</td>
+                                <td>{{leave.name}}</td>
+                                <td>{{leave.appliedOn | date:'shortDate'}}</td>
                                 <td>{{leave.from | date:'shortDate'}}</td>
                                 <td>{{leave.to | date:'shortDate'}}</td>
+                                <td>{{leave.duration}}</td>
+                                <td>{{leave.category}}</td>
                                 <td>{{leave.reason}}</td>
-                                <td>
+
+
+                                <!-- <td>
                                     <div class="action_button">
                                         <div class="action_btn">
                                             <input type="radio" [checked]="leave.status=='accept'"
@@ -137,7 +187,7 @@
                                             <label for="outline" class="outline">Reject</label>
                                         </div>
                                     </div>
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -254,55 +304,64 @@
     <!---------------------------dashboard Modal------------------------------>
 
     <!-- <div *ngIf="isFromSignupPage"> -->
-        <div *ngIf="!empname">
-        <div class="Modal_form" *ngIf=" !formSubmitted">
+    <!-- <div *ngIf="!formSubmitted"  > -->
+      <!-- <div *ngIf="!formSubmitted" [ngStyle]="{'opacity': (formSubmitted ? '0.0' : '1.0')}" > -->
+        <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
 
-            <div class="Modal_modal"  >
+        <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
+     <!-- <div *ngIf="showForm" [ngStyle]="{ opacity: opacityValue }"> -->
+        <!-- <div [ngClass]="{ 'hidden': !showForm, 'visible': showForm }" [style.opacity]="opacityValue"> -->
+            <div [hidden]="!showForm" [style.opacity]="opacityValue">
+          <div >
+                <div class="Modal_form" >
 
-                <div class="edit-profile-heading">
-                    <h3>Required Details </h3>
+                    <div class="Modal_modal"  >
+
+                        <div class="edit-profile-heading">
+                            <h3>Required Details </h3>
+                        </div>
+
+                        <form class="form" [formGroup]="personaldataForm"
+                            (ngSubmit)="submitPersonalData(personaldataForm.value)">
+                            <div class="name-email">
+                                <div class="form__group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name"
+                                        formControlName="name" required
+
+                                        [ngClass]="{'ng_invalid':personaldataForm.controls.name.invalid && personaldataForm.controls.name.dirty,'ng_valid':personaldataForm.controls.name.valid}"/>
+                                </div>
+                                <div class="form__group">
+                                    <label for="noOfEmployee">Domain</label>
+                                    <input type="text" class="form_input" placeholder='Specify your domain' formControlName="domain"
+                                        id="name0" required
+                                        [ngClass]="{'ng_invalid':personaldataForm.controls.domain.invalid && personaldataForm.controls.domain.dirty,'ng_valid':personaldataForm.controls.domain.valid}"/>
+
+                                </div>
+                            </div>
+                            <div class="email-phone">
+                                <div class="form__group">
+                                    <label for="name">Phone no.</label>
+                                    <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
+                                        id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
+                                </div>
+                                <div class="form__group">
+                                    <label for="email">Head Office</label>
+                                    <input type="text" class="form_input" placeholder='Eg. Leeds, America'
+                                        formControlName="headOffice" id="office" required
+                                        [ngClass]="{'ng_invalid':personaldataForm.controls.headOffice && personaldataForm.controls.headOffice.dirty,'ng_valid':personaldataForm.controls.headOffice.valid}"/>
+                                </div>
+                            </div>
+                            <div class="edit-profile-footer">
+                                <button class="done-btn" type="submit" [disabled]="personaldataForm.controls['headOffice'||'phone'||'domain'||'name'].invalid " (click)="submitPersonalData(personaldataForm.value)">Done</button>
+                                <!-- <button type="submit" [disabled]="form01.controls['email' || 'DoB' || 'gender'].invalid" (click)="functionForm01()">Click</button> -->
+                            </div>
+                        </form>
+
+
+                    </div>
                 </div>
-
-                <form class="form" [formGroup]="personaldataForm"
-                    (ngSubmit)="submitPersonalData(personaldataForm.value)">
-                    <div class="name-email">
-                        <div class="form__group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form_input" placeholder='Eg. Abhishek Sharma' id="name"
-                                formControlName="name" required
-
-                                [ngClass]="{'ng_invalid':personaldataForm.controls.name.invalid && personaldataForm.controls.name.dirty,'ng_valid':personaldataForm.controls.name.valid}"/>
-                        </div>
-                        <div class="form__group">
-                            <label for="noOfEmployee">Domain</label>
-                            <input type="text" class="form_input" placeholder='Specify your domain' formControlName="domain"
-                                id="name0" required
-                                [ngClass]="{'ng_invalid':personaldataForm.controls.domain.invalid && personaldataForm.controls.domain.dirty,'ng_valid':personaldataForm.controls.domain.valid}"/>
-                                 
-                        </div>
-                    </div>
-                    <div class="email-phone">
-                        <div class="form__group">
-                            <label for="name">Phone no.</label>
-                            <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
-                                id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
-                        </div>
-                        <div class="form__group">
-                            <label for="email">Head Office</label>
-                            <input type="text" class="form_input" placeholder='Eg. Leeds, America'
-                                formControlName="headOffice" id="office" required
-                                 [ngClass]="{'ng_invalid':personaldataForm.controls.headOffice && personaldataForm.controls.headOffice.dirty,'ng_valid':personaldataForm.controls.headOffice.valid}"/>
-                        </div>
-                    </div>
-                    <div class="edit-profile-footer">
-                        <button class="done-btn" type="submit" [disabled]="personaldataForm.controls['headOffice'||'phone'||'domain'||'name'].invalid " (click)="submitPersonalData(personaldataForm.value)">Done</button>
-                        <!-- <button type="submit" [disabled]="form01.controls['email' || 'DoB' || 'gender'].invalid" (click)="functionForm01()">Click</button> -->
-                    </div>
-                </form>
-
-
             </div>
-        </div>
     </div>
 
 
@@ -458,48 +517,7 @@
 
 
     <!----------------------Meetings-modal------------------>
-    <div class="interview-modal" *ngIf="showModal11">
-        <div class="interview-modal-content" *ngIf="showModalContent">
-            <div class="tag-date-notes">
-                <div class="tag-interview-cross">
-                    <div class="tag-interview">
-                        <div class="tag">
-                            <img src="assets/images/tag.svg" alt="">
-                        </div>
-                        <h4>Inteview</h4>
-                    </div>
-                    <i class="fa-solid fa-xmark interview-cross" (click)="closeModal11()"></i>
-                </div>
-                <div class="calender-date-time">
-                    <div class="calender">
-                        <img src="assets/images/calender-date.png" alt="">
-                    </div>
-                    <div class="date-time">
-                        <h4>22nd January 2023</h4>
-                        <p>9:00 am - 11:00 am</p>
-                    </div>
 
-                </div>
-                <div class="notes-text">
-                    <div class="notes">
-                        <img src="assets/images/Group 214.svg" alt="">
-                    </div>
-                    <div class="notes-para">
-                        <h4>Latest notes</h4>
-                        <p>posted on 9 january, 2023</p>
-                        <div class="notes-para-text">
-                            <p>Meeting with the manager through google meet. Regarding upcoming projects and ongoing
-                                projects </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="join-meeting-button">
-                <button class="join" (click)="closeModal11()">Join meeting</button>
-            </div>
-        </div>
-    </div>
 
 
 </div>

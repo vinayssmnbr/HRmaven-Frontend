@@ -479,7 +479,10 @@
   color: #444444;
   margin-bottom: 17px;
 }
-
+.profemail{
+  background-color: #f1f1f1 !important;
+  cursor: not-allowed;
+}
 .modal {
   position: fixed;
   top: 0;
@@ -1120,23 +1123,8 @@ input[type='number']:hover {
 .select_content1::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
-.parent{
-  position: relative;
-}
-.parent .content3{
-  background-color: #fff;
-    cursor: pointer;
-    width: 260px;
-    max-height: 250px;
-    overflow-y: auto;
-    cursor: pointer;
-    padding: 10px;
-    position: absolute;
-    top: 30px;
-    z-index: 9999;
-    color: #444444;
-    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);
-}
+
+
 .no-spin::-webkit-inner-spin-button,
 .no-spin::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -1321,6 +1309,92 @@ input[type='number']:hover {
   border: 1px solid green !important;
 }
 
-.text.ng_valid:hover {
+/* .text.ng_valid:hover {
   border: 1px solid green !important;
+} */
+
+/* @keyframes growProgressBar {
+
+  0%,
+  33% {
+    --pgPercentage: 0;
+  }
+
+  100% {
+    --pgPercentage: var(--value);
+  }
+}
+
+@property --pgPercentage {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+div[role="progressbar"] {
+  --size: 2.9rem;
+  --fg: #2f2c9f;
+  --bg: #def;
+  --pgPercentage: var(--value);
+  animation: growProgressBar 5s 1 forwards;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 30px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
+    conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: calc(var(--size) / 5);
+  color: var(--fg);
+}
+
+div[role="progressbar"]::before {
+  counter-reset: percentage var(--value);
+  content: counter(percentage) '%';
+} */
+
+.loader {
+  border: 8px solid #f3f3f3;
+  /* Light grey */
+  border-top: 8px solid #2f2c9f;
+  /* Blue */
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 34px;
+  width: 35px;
+  height: 35px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.parent {
+  /* position: relative; */
+}
+.parent .content3 {
+  background-color: #fff;
+  cursor: pointer;
+  width: 180px;
+  max-height: 250px;
+  overflow-y: auto;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  bottom: -65px;
+  z-index: 9999;
+  color: #444444;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.4);
 }

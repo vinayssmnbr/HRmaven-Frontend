@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl,FormGroup, Validators} from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
@@ -9,7 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-login-employee',
   templateUrl: './login-employee.component.html',
-  styleUrls: ['./login-employee.component.css']
+  styleUrls: ['./login-employee.component.css'],
 })
 export class LoginEmployeeComponent {
   employeemail: any[] = [];
@@ -24,8 +29,7 @@ export class LoginEmployeeComponent {
     private http: HttpClient,
     private router: Router,
     public cookie: CookieService,
-    public employeeService:EmployeeService,
-    // public userService: UserService
+    public employeeService: EmployeeService // public userService: UserService
   ) {}
 
   ngOnInit() {
@@ -38,10 +42,6 @@ export class LoginEmployeeComponent {
         Remember: true,
       });
     }
-
-
-
-
 
     // this.activatedRoute.queryParams.subscribe((params) => {
     // //   // console.log(params);
@@ -56,42 +56,33 @@ export class LoginEmployeeComponent {
     //   }
     // });
 
-
-
-
-
     if (this.employeeService.isUserLoggedIn()) {
       this.router.navigate(['emp-dashboard']);
     }
 
-    this.cookie.deleteAll()
+    this.cookie.deleteAll();
     // this.userService.allDataLogin();
   }
   userdetail: any = '';
   usernotfound: any = '';
 
-  checkEmail(){
+  checkEmail() {
     // this.userService.getData('atulgupta.kr7@gmail.com').subscribe((res: any) => {
-      // this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
-        // this.emailExists = false;
-          // console.log("message: ",res.message);
-
-        // if(res.message === 'user-found'){
-          // this.userdetail = this.forgotPassword.controls['email'].value
-          // this.userdetail = res.message
-        // } else if(res.message === 'user-not-found'){
-          // this.usernotfound = res.message;
-        // }
-
-        // this.employeemail = res;
-
-
-        // console.log('Response from API:', this.employeemail);
-      // });
+    // this.userService.getData(this.forgotPassword.controls['email'].value).subscribe((res: any) => {
+    // this.emailExists = false;
+    // console.log("message: ",res.message);
+    // if(res.message === 'user-found'){
+    // this.userdetail = this.forgotPassword.controls['email'].value
+    // this.userdetail = res.message
+    // } else if(res.message === 'user-not-found'){
+    // this.usernotfound = res.message;
+    // }
+    // this.employeemail = res;
+    // console.log('Response from API:', this.employeemail);
+    // });
   }
 
   email_data: any = '';
-
 
   //GOOGLE LOGIN
   loginwithGoogle() {
@@ -100,7 +91,13 @@ export class LoginEmployeeComponent {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern(
+        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+      ),
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -145,15 +142,15 @@ export class LoginEmployeeComponent {
     return this.forgotPassword.get('email');
   }
 
-  get emaill(){
-    return this.loginForm.get("email");
+  get emaill() {
+    return this.loginForm.get('email');
   }
 
-  get pwd(){
-    return this.loginForm.get("password");
+  get pwd() {
+    return this.loginForm.get('password');
   }
 
-  loader=false;
+  loader = false;
   submit() {
     this.loader = true;
     setTimeout(() => {
@@ -162,14 +159,14 @@ export class LoginEmployeeComponent {
   }
 
   // submissions
-obj:any
+  obj: any;
   onSubmit(data: any) {
     console.log(this.loginForm.value);
 
     this.employeeService.users(data).subscribe((res: any) => {
       this.employeeService.users(this.loginForm);
-      this.obj=res.role
-      localStorage.setItem('role',this.obj)
+      this.obj = res.role;
+      localStorage.setItem('role', this.obj);
       console.log('login User: ', res);
       console.log('login User email: ', this.loginForm.controls['email'].value);
       if (res.message == 'login successful') {
@@ -190,9 +187,8 @@ obj:any
         }
         console.log(res);
         this.cookie.set('token', res.token);
-        this.cookie.set('id',res.empId);
-        this.cookie.set('role','employee');
-
+        this.cookie.set('id', res.empId);
+        this.cookie.set('role', 'employee');
 
         this.submit();
       } else if (res.message == 'Invalid') {
@@ -200,7 +196,7 @@ obj:any
         this.Invalid = !this.Invalid;
       }
       localStorage.setItem(
-        'LoggedInName: ',
+        'LoggedInName',
         this.loginForm.controls['email'].value
       );
     });
@@ -227,13 +223,11 @@ obj:any
 
     //   this.employeemail = res;
 
-
     //   console.log('Response from API:', this.employeemail);
     // });
+  }
 
-
-
-
-
-}
+  onKeyUp(event): void {
+    event.target.value = event.target.value.trim();
+  }
 }

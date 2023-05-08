@@ -39,10 +39,12 @@ export class DashboardContentComponent implements OnInit {
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
-    domain: new FormControl('', [Validators.required, Validators.pattern(/\.com$/)]),
-        phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-    headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
+    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    domain: new FormControl('', [Validators.required, Validators.pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$")]),
+    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
+
   })
   email = localStorage.getItem('emailid');
   submitPersonalData(data: any){
@@ -50,7 +52,9 @@ export class DashboardContentComponent implements OnInit {
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
-      this.formSubmitted = true;
+      // this.formSubmitted = true;
+      localStorage.setItem('empname', this.formData.name);
+      this.showForm = false;
         });
   }
 
@@ -101,9 +105,64 @@ export class DashboardContentComponent implements OnInit {
   personalData: any =''
   empname: any = ''
   objectuserid = localStorage.getItem('emailid')
-
+  showModal: boolean = false
+  formData: any = ''
+  opacityValue =0;
+  // public opacityValue = 0;
+    showForm = false
   ngOnInit()
    {
+
+    this.dashService.getleavecontent().subscribe((res:any)=>{
+      res.map((d: any) => {
+        if (d._id == 'pending') {
+          this.leaves = d.pending;
+        }
+      });
+    });
+    this.opacityValue = 0;
+
+    // this.empname = localStorage.getItem('empname');
+
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+
+    //   // Update the opacityValue to 1 if the user has not submitted the form
+    //   this.opacityValue = 1;
+    // }
+    // this.empname = localStorage.getItem('empname');
+
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    //   this.opacityValue = 0;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+    //   this.opacityValue = 1;
+    // }
+
+    this.opacityValue = 0
+    this.empname = localStorage.getItem('empname');
+
+    if (this.empname) {
+      this.formSubmitted = true;
+      this.showForm = false;
+      // this.userService.opacityValue = 0
+      this.opacityValue = 0;
+    } else {
+      this.formSubmitted = false;
+      this.showForm = true;
+      // this.userService.opacityValue = 1
+      this.opacityValue = 1;
+    }
+
+
+
     this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
       console.log("res account settings personaldata: ", res);
 
@@ -112,8 +171,8 @@ export class DashboardContentComponent implements OnInit {
 
       console.log("res account settings personaldata: ", res.useridd);
 
-      this.empname = res.personaldata.name;
-      localStorage.setItem('empname', this.empname)
+      // this.empname = res.personaldata.name;
+      // localStorage.setItem('empname', this.empname)
       // this.employeename = res.personaldata.name;
       // this.totalemployee = res.personaldata.noOfEmployee;
       // this.headOffice = res.personaldata.headOffice;
@@ -121,19 +180,29 @@ export class DashboardContentComponent implements OnInit {
       // this.description = res.personaldata.description
       // this.profileimage = res.personaldata.profileimage;
 
-    });
 
-    this.personalData = localStorage.getItem('empname');
-    if (this.personalData === null) {
-      this.formSubmitted = false;
-    } else {
+    this.empname = res.personaldata.name;
+    localStorage.setItem('empname', this.empname);
+
+    // // Update the formSubmitted and showForm variables based on empname
+    if (this.empname) {
       this.formSubmitted = true;
+      this.showForm = false;
+      // this.userService.opacityValue = 0;
+      this.opacityValue = 0;
+    } else  {
+      this.formSubmitted = false;
+      this.showForm = true;
+      // this.userService.opacityValue = 1;
+      this.opacityValue = 1;
     }
 
+    });
 
-    console.log("isFromSignupPage: ", this.isFromSignupPage);
-    this.isFromSignupPage = this.userService.isFromSignupPage;
-    console.log("isFromSignupPage: ", this.isFromSignupPage);
+
+    // console.log("isFromSignupPage: ", this.isFromSignupPage);
+    // this.isFromSignupPage = this.userService.isFromSignupPage;
+    // console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.graphcontent().subscribe((res: any) => {
       if (res) {
@@ -368,7 +437,7 @@ export class DashboardContentComponent implements OnInit {
     console.log(arr1.name);
   }
 
-  /**/
+  /*--------------------Create New Modal----------------------*/
   meetingForm=new FormGroup({
     meetingtitle:new FormControl(''),
     mode:new FormControl(''),
