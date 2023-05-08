@@ -265,8 +265,9 @@
             <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)"
               class="form-control password" required (blur)="matchpwdEmployee()" formControlName="oldpassword"
               [ngClass]="{'ng_invalid':passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty,'ng_valid':passwordform.controls.oldpassword.valid}">
-            >
-
+          </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Your old password was entered
+            incorrectly
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
@@ -277,15 +278,19 @@
 
             </div>
           </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>New Password cannot be same as old
+            password
+          </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
                 class="form-control password" (keyup)="onKeyUp($event)" required
                 [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
-              >
 
             </div>
+          </div>
+          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Password didn't match
           </div>
           <!-- </form> -->
           <div class="clear-update-button">
