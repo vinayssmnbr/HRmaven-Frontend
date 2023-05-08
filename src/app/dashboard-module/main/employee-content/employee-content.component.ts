@@ -30,7 +30,7 @@ import {saveAs} from 'file-saver'
 export class EmployeeContentComponent implements OnInit {
   // user:any;
   isChecked: boolean = true;
- 
+
 
   users: any[] = [];
   selected: any[] = [];
@@ -55,7 +55,7 @@ export class EmployeeContentComponent implements OnInit {
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
-    
+
     @Inject(DOCUMENT) public document: Document,
     private cookie: CookieService
   ) {
@@ -469,15 +469,15 @@ export class EmployeeContentComponent implements OnInit {
       name: '9.00am to 5:00pm',
     },
     {
-      id: 0,
+      id: 1,
       name: '9.00am to 6:00pm',
     },
     {
-      id: 0,
+      id: 2,
       name: '10.00am to 5:00pm',
     },
     {
-      id: 0,
+      id: 3,
       name: '10.00am to 6:00pm',
     },
   ];
@@ -627,7 +627,16 @@ export class EmployeeContentComponent implements OnInit {
     // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
     this.loader=true;
   }
-
+  tableview:boolean=true;
+tableviewcall(){
+  this.tableview=!this.tableview;
+  this.cardview=false;
+}
+cardview:boolean=false;
+cardviewcall(){
+  this.cardview=true;
+  this.tableview=false;
+}
   selectall: boolean = false;
   selectboxes() {
     this.selectall = !this.selectall;
@@ -905,9 +914,9 @@ export class EmployeeContentComponent implements OnInit {
       }, 6000);
     });
   };
-  
+
   async onFileSelectedrem(event: any) {
-   
+
     const file: File = event.files[0];
     this.loader=true;
 
@@ -978,7 +987,7 @@ export class EmployeeContentComponent implements OnInit {
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'
-        let increaseBy:number = 100/(data.length); 
+        let increaseBy:number = 100/(data.length);
         data.forEach((employee) => {
           console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
@@ -1002,7 +1011,7 @@ export class EmployeeContentComponent implements OnInit {
         });
         return 'employees added';
       });
-     
+
     };
 
     reader.readAsText(file);
@@ -1144,13 +1153,13 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-  
+
 
   ngOnChange() { }
 
- 
- 
- 
+
+
+
 
 
 }

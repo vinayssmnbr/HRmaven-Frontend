@@ -83,8 +83,9 @@
     </div>
     <div class="input_right">
       <div class="view">
-        <i class="fa-solid fa-list"></i>
-        <img src="./assets/images/Vector (1).svg" alt="">
+        <i class="fa-solid fa-list" [ngClass]="{'active':tableview}" (click)="tableviewcall()"></i>
+        <img src="./assets/images/Vector (1).svg" alt="" [ngClass]="{'active':cardview}" (click)="cardviewcall()">
+        <!-- <i class="fa-solid fa-grid-2" [ngClass]="{'active':cardview}" (click)="cardviewcall()"></i> -->
       </div>
       <!-- <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0"><img src="./assets/images/prime_file-import.svg">Export</button> -->
@@ -95,7 +96,7 @@
     </div>
   </div>
 
-  <div class="table-wrapper">
+  <div class="table-wrapper" *ngIf="tableview">
     <table>
       <thead>
         <tr class="table-row">
@@ -165,6 +166,162 @@
       </tbody>
 
     </table>
+  </div>
+  <div class="card-wrapper" *ngIf="cardview">
+    <div class="show-select">
+      <div class="show">
+        <div class="show-left">
+          <input type="checkbox">
+          <p>Select All</p>
+        </div>
+        <div class="show-right">
+          <span>1</span>
+          <p>Selected</p>
+        </div>
+      </div>
+    </div>
+    <div class="view2">
+      <div class="card-view">
+        <div class="column3">
+          <div class="card-detail">
+            <div class="first-detail">
+              <input type="checkbox">
+              <div class="icons1">
+                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <img src="./assets/images/down-arrow.png" alt="">
+              </div>
+            </div>
+            <div class="image-detail">
+              <span>
+                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>Emily Cooper</h3>
+              <div class="per-detail1">
+                <p>Front End Developer <span>| 25984</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>9870541231</p>
+              <span>emilycooper@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-view">
+        <div class="column3">
+          <div class="card-detail">
+            <div class="first-detail">
+              <input type="checkbox">
+              <div class="icons1">
+                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <img src="./assets/images/down-arrow.png" alt="">
+              </div>
+            </div>
+            <div class="image-detail">
+              <span>
+                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>Emily Cooper</h3>
+              <div class="per-detail1">
+                <p>Front End Developer <span>| 25984</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>9870541231</p>
+              <span>emilycooper@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-view">
+        <div class="column3">
+          <div class="card-detail">
+            <div class="first-detail">
+              <input type="checkbox">
+              <div class="icons1">
+                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <img src="./assets/images/down-arrow.png" alt="">
+              </div>
+            </div>
+            <div class="image-detail">
+              <span>
+                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>Emily Cooper</h3>
+              <div class="per-detail1">
+                <p>Front End Developer <span>| 25984</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>9870541231</p>
+              <span>emilycooper@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-view">
+        <div class="column3">
+          <div class="card-detail">
+            <div class="first-detail">
+              <input type="checkbox">
+              <div class="icons1">
+                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <img src="./assets/images/down-arrow.png" alt="">
+              </div>
+            </div>
+            <div class="image-detail">
+              <span>
+                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>Emily Cooper</h3>
+              <div class="per-detail1">
+                <p>Front End Developer <span>| 25984</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>9870541231</p>
+              <span>emilycooper@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal" *ngIf="showModal">
     <div class="modal-content" *ngIf="showModalContent">
@@ -437,7 +594,7 @@
         </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
-          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)" >Import</button>
+          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)">Import</button>
           <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
 
 
@@ -456,3 +613,4 @@
       </div>
     </div>
   </div>
+</div>

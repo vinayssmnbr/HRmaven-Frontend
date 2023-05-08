@@ -18,6 +18,8 @@
 .all,
 .unread {
     height: 100%;
+    width: 73px;
+    text-align: center;
 }
 
 #header .content-left h2 {
@@ -392,7 +394,7 @@ input[type='search'] {
     height: 28px;
     align-items: center;
     margin-top: 20px;
-    padding-left: 13px;
+    /* padding-left: 13px; */
     column-gap: 40px;
     border-bottom: 1px solid #E0E0E0;
 }
@@ -440,14 +442,9 @@ input[type='search'] {
 }
 
 .notification-lower {
-    /* height: 328px; */
-    /* width: 320px; */
+ 
     padding-right: 20px;
-    /* width: 100%;
-    max-height: 550px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-top: 4px; */
+   
 }
 
 .robert-image img {

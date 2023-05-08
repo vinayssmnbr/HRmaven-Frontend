@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import * as filestack from 'filestack-js';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../../service/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,10 @@ export class DashService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private cookie: CookieService
+    private cookie: CookieService,
+    private userService: UserService,
   ) {
-    this.client = filestack.init('AB44AFy9OQuq7ikzhoJ59z');
+    this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
   }
 
   getUserProfile(): Observable<any> {
@@ -40,14 +42,13 @@ export class DashService {
   // }
 
   //ADD  Employee Data
-  addEmployee(data:any) {
+  addEmployee(data: any) {
     const id = this.cookie.get('hr_id');
-    data['hrid']=id;
+    data['hrid'] = id;
     return this.http.post(this.prefix + 'api/create', data);
   }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
-
 
   // }
   showModal = true;
@@ -56,7 +57,6 @@ export class DashService {
       this.showModal = false;
     }
   }
-
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
@@ -138,11 +138,14 @@ export class DashService {
   }
 
   filterleave(data: any) {
+    const id = this.cookie.get('hr_id');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       from: data.from,
       to: data.to,
       category: data.category,
+      hrid: id.toString(),
+
     });
     return this.http.get(this.prefix + 'api/leave/filter/leave', { headers });
   }
@@ -212,6 +215,13 @@ export class DashService {
   return this.http.get(this.prefix + 'api/uid',{headers});
   }
 
+  getemprecord(id:any){
+    const headers = new HttpHeaders({
+      'id':id.toString()
+    });
+    return this.http.get(this.prefix + 'attendance/emp/attendance',{ headers });
+  }
+
   getDates(startDate: string, stopDate: string): string[] {
     const dateArray: string[] = [];
     let currentDate = moment(startDate);
@@ -223,11 +233,11 @@ export class DashService {
     return dateArray;
   }
 
-  updateleave(uid: any, from: any, to: any) {
+  updateleave(empId: any, from: any, to: any) {
     const Array = this.getDates(from, to);
     const body = {};
     body['Array'] = Array;
-    body['uid'] = uid;
+    body['empId'] = empId;
 
     return this.http.post(this.prefix + 'attendance/update/leave', body, {
       headers: { 'content-type': 'application/json' },
@@ -279,8 +289,5 @@ export class DashService {
     const url = `${this.prefix + 'api/update'}/${id}`;
     return this.http.patch(url, { status });
   }
-
-
-
 
 }

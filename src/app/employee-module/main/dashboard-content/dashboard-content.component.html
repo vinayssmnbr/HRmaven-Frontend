@@ -72,9 +72,8 @@
                                 </div>
                             </div>
                             <div class="chart_leaves">
-                                <div class="grey-doughnut">
-                                </div>
                                 <div class="pie">
+                                  <div class="grey-doughnut" *ngIf="blank"></div>
                                     <canvas id="oilChart"></canvas>
                                 </div>
                                 <div class="present_leave_absent">
@@ -82,7 +81,7 @@
                                         <img src="assets/images/fluent_person-available-24-regular.png" alt="">
                                         <div class="present_percentage">
                                             <h5>Present</h5>
-                                            <h6>{{(present/total)*100}}%</h6>
+                                            <h6>{{(total==0?0:(present/total)*100 | number:'1.0-0')}}%</h6>
                                         </div>
                                     </div>
 
@@ -90,14 +89,14 @@
                                         <img src="assets/images/fluent_person-clock-24-regular.svg" alt="">
                                         <div class="present_percentage">
                                             <h5>Leave</h5>
-                                            <h6>{{(leave/total)*100}}%</h6>
+                                            <h6>{{(total==0?0:(leave/total)*100) | number:'1.0-0'}}%</h6>
                                         </div>
                                     </div>
                                     <div class="present">
                                         <img src="assets/images/fluent-person-cross.svg" alt="">
                                         <div class="present_percentage">
                                             <h5>Absent</h5>
-                                            <h6>{{(absent/total)*100}}%</h6>
+                                            <h6>{{(total==0?0:(absent/total)*100 | number:'1.0-0')}}%</h6>
                                         </div>
                                     </div>
                                     <!-- <div class="leave"></div> -->
@@ -114,13 +113,13 @@
                                 <div class="casual-leave">
                                     <div class="casual-heading">
                                         <h3>Casual Leave</h3>
-                                        <h4>{{obj.casual+obj.urgent}}</h4>
+                                        <h4>{{obj.casual}}</h4>
                                     </div>
                                     <div class="progress_circle">
-                                        <circle-progress [percent]="70" [space]="-11" [radius]="25"
-                                            [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
-                                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                                            [animationDuration]="1000" [backgroundStrokeWidth]="3"></circle-progress>
+                                        <circle-progress [percent]='((obj.casual)/(20))*100' [space]="-11" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
@@ -129,22 +128,22 @@
                                         <h4>{{obj.medical}}</h4>
                                     </div>
                                     <div class="progress_circle">
-                                        <circle-progress [percent]="100" [space]="-10" [radius]="25"
-                                            [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
-                                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                                            [animationDuration]="1000" [backgroundStrokeWidth]="3"></circle-progress>
+                                        <circle-progress [percent]='((obj.medical)/(20))*100' [space]="-10" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                                 <div class="casual-leave">
                                     <div class="casual-heading">
                                         <h3>Compensatory Leave</h3>
-                                        <h4>{{obj.earned}}</h4>
+                                        <h4>{{obj.compensatory}}</h4>
                                     </div>
                                     <div class="progress_circle">
-                                        <circle-progress [percent]="70" [space]="-11" [radius]="25"
-                                            [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
-                                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
-                                            [animationDuration]="1000" [backgroundStrokeWidth]="3"></circle-progress>
+                                        <circle-progress [percent]='((obj.compensatory)/(20))*100'[space]="-11" [radius]="25" [outerStrokeWidth]="10"
+                                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+                                            #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
+                                            [backgroundStrokeWidth]="3"></circle-progress>
                                     </div>
                                 </div>
                             </div>

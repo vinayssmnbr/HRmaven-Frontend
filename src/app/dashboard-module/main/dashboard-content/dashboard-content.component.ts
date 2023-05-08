@@ -52,7 +52,7 @@ export class DashboardContentComponent implements OnInit {
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
-      this.formSubmitted = true;
+      // this.formSubmitted = true;
       localStorage.setItem('empname', this.formData.name);
       this.showForm = false;
         });
@@ -108,28 +108,61 @@ export class DashboardContentComponent implements OnInit {
   showModal: boolean = false
   formData: any = ''
   opacityValue =0;
-  public  showForm = false
+  // public opacityValue = 0;
+    showForm = false
   ngOnInit()
    {
-    
-    // this.opacityValue = 0;
 
+    this.dashService.getleavecontent().subscribe((res:any)=>{
+      res.map((d: any) => {
+        if (d._id == 'pending') {
+          this.leaves = d.pending;
+        }
+      });
+    });
+    this.opacityValue = 0;
 
+    // this.empname = localStorage.getItem('empname');
+
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+
+    //   // Update the opacityValue to 1 if the user has not submitted the form
+    //   this.opacityValue = 1;
+    // }
+    // this.empname = localStorage.getItem('empname');
+
+    // if (this.empname) {
+    //   this.formSubmitted = true;
+    //   this.showForm = false;
+    //   this.opacityValue = 0;
+    // } else {
+    //   this.formSubmitted = false;
+    //   this.showForm = true;
+    //   this.opacityValue = 1;
+    // }
+
+    this.opacityValue = 0
     this.empname = localStorage.getItem('empname');
-  
+
     if (this.empname) {
       this.formSubmitted = true;
       this.showForm = false;
       // this.userService.opacityValue = 0
       this.opacityValue = 0;
-    } else if(!this.empname) {
+    } else {
       this.formSubmitted = false;
       this.showForm = true;
       // this.userService.opacityValue = 1
       this.opacityValue = 1;
     }
 
-  
+
+
     this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
       console.log("res account settings personaldata: ", res);
 
@@ -151,23 +184,20 @@ export class DashboardContentComponent implements OnInit {
     this.empname = res.personaldata.name;
     localStorage.setItem('empname', this.empname);
 
-    // Update the formSubmitted and showForm variables based on empname
+    // // Update the formSubmitted and showForm variables based on empname
     if (this.empname) {
       this.formSubmitted = true;
       this.showForm = false;
       // this.userService.opacityValue = 0;
       this.opacityValue = 0;
-    } else if(!this.empname) {
+    } else  {
       this.formSubmitted = false;
       this.showForm = true;
       // this.userService.opacityValue = 1;
       this.opacityValue = 1;
     }
-    
-    // this.userService.updateOpacityValue(this.formSubmitted);
+
     });
-    
- 
 
 
     // console.log("isFromSignupPage: ", this.isFromSignupPage);

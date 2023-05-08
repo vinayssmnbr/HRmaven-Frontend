@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodayattendancePipe } from './pipe/todayattendance.pipe';
 import { FilterattendancePipe } from './pipe/filterattendance.pipe';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @NgModule({
   declarations: [
     SidebarComponent,

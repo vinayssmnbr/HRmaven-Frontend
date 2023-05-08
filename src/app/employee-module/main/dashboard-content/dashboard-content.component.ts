@@ -22,10 +22,10 @@ export class DashboardContentComponent {
   ipAddress: any;
   obj: any;
   donutdata: any;
-  present:number = 50;
-  absent :number = 25;
-  leave :number = 25;
-  total :number = 0;
+  present: number = 0;
+  absent: number = 0;
+  leave: number = 0;
+  total: number = 0;
 
 
 
@@ -92,52 +92,36 @@ export class DashboardContentComponent {
     this.colorvariable = arr.id;
     this.contentdropdown = false;
     console.log(arr.name);
-    this.donutdata.map((item)=>{
-      if((item.month-1)==arr.id)
-      {
+    this.donutdata.map((item) => {
+      if ((item.month - 1) == arr.id) {
         this.present = item.present,
-        this.total= item.total,
-        this.leave = item.leave,
-        this.absent = item.absent
+          this.total = item.total,
+          this.leave = item.leave,
+          this.absent = item.absent
+        this.blank = false;
+      }
+      else {
+        this.present = this.absent = this.leave = 0;
+        this.total = 0;
+        this.blank = true;
       }
     })
+
+    this.pieChart.destroy();
+    this.piechart();
   }
   ngOnInit() {
     this.obj = {
       casual: 0,
-      earned: 0,
-      urgent: 0,
+      compensatory: 0,
       medical: 0
     }
     // this.present=0
     // this.absent=0;
     // this.leave=0;
-    this.total=0;
+    this.total = 0;
     this.donut();
     this.leavegraphcontent();
-    this.oilCanvas = document.getElementById("oilChart");
-
-    let a = 50,b=20,c=30;
-    const data = {
-      labels: [
-
-      ],
-      datasets: [
-        {
-          data: [this.present,this.absent,this.leave],
-          backgroundColor: [
-            "#5AB452",
-            "#EA6565",
-            "#FBB642"
-
-          ]
-        }]
-    };
-
-    var pieChart = new Chart(this.oilCanvas, {
-      type: 'doughnut',
-      data: data
-    });
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
         this.in = "";
@@ -159,9 +143,35 @@ export class DashboardContentComponent {
 
   //  attendance // punchin
   donut() {
+
     this.empService.attendancedonut().subscribe((res) => {
       console.log(res);
-      this.donutdata=res;
+      this.donutdata = res;
+      this.aa()
+
+    })
+
+  }
+
+  aa(){
+    const d = new Date();
+    const month = d.getMonth() + 1;
+    this.Selectvariable = this.array[d.getMonth()].name;
+    this.donutdata.map((item: any) => {
+      if ((item.month) == month) {
+        this.present = item.present,
+          this.total = item.total,
+          this.leave = item.leave,
+          this.absent = item.absent
+        this.blank = false;
+      }
+      else {
+        this.present = this.absent = this.leave = 0;
+        this.total = 0;
+        this.blank = true;
+      }
+      this.pieChart.destroy();
+    this.piechart();
     })
   }
 
@@ -179,6 +189,8 @@ export class DashboardContentComponent {
     const lon = pos.coords.longitude
     const lat1 = 31.2521879;
     const lon1 = 75.7033441;
+    // const lat1=31.280317;
+    // const lon1=75.575594;
     const R = 63710;
     if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
 
@@ -220,6 +232,8 @@ export class DashboardContentComponent {
     const lon = pos.coords.longitude
     const lat1 = 31.2521879;
     const lon1 = 75.7033441;
+    // const lat1=31.280317;
+    // const lon1=75.575594;
     const R = 63710;
     if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
 
@@ -230,7 +244,8 @@ export class DashboardContentComponent {
           subscribe((res: any) => {
             console.log(res.time);
             console.log(this.ipAddress);
-            this.out = res.time;
+            this.out = new Date();
+
           })
       }
     }
@@ -272,15 +287,41 @@ export class DashboardContentComponent {
   showModalContent = false;
   closeModal() {
     this.showModal = false;
-    this.showModalContent=false;
+    this.showModalContent = false;
   }
 
   openModal() {
     this.showModal = true;
     this.showModalContent = true;
-    
+  }
 
+  ngAfterViewInit() {
+    this.oilCanvas = document.getElementById("oilChart");
+    this.piechart();
 
+  }
+  blank: boolean = false;
+  pieChart: any;
+  piechart = () => {
+    const data = {
+      labels: [
+
+      ],
+      datasets: [
+        {
+          data: [this.present, this.absent, this.leave],
+          backgroundColor: [
+            "#5AB452",
+            "#EA6565",
+            "#FBB642"
+          ]
+        }]
+    };
+
+    this.pieChart = new Chart(this.oilCanvas, {
+      type: 'doughnut',
+      data: data
+    });
   }
 
 

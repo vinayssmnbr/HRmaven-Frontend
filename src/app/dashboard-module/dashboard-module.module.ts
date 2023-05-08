@@ -27,6 +27,8 @@ import { DatePipe } from '@angular/common';
 import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { EmpstatusPipe } from './pipe/empstatus.pipe';
+import { MonthwisefilterPipe } from './pipe/monthwisefilter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { EmpstatusPipe } from './pipe/empstatus.pipe';
     TimesheetComponent,
     CalendarComponent,
     EmpstatusPipe,
+    MonthwisefilterPipe,
   ],
   imports: [
     CommonModule,
