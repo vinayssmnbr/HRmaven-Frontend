@@ -20,8 +20,9 @@
                     <!-- <img class="content-image" src="{{profileimage}}" alt=""> -->
                     <div class="content-details fadeIn-bottom">
                         <!-- <img  src="assets/images/upload.png" alt=""> -->
+                        <input type="file" id="file-input">
                         <div class="upload_title">
-                            <input type="file" accept="image/*" />
+                            <input type="file" accept="image/*" (change)="onFileSelected($event)" id="file-input"/>
                             <span>UPLOAD </span>
                         <p class="content-text">PROFILE PICTURE</p>
                         </div>
@@ -146,11 +147,11 @@
                     <!-- <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password" placeholder="Type your old password" (keyup)="onKeyUp($event)" class="form-control password" required id="oldp" formControlName="oldpassword"
-                      [ngClass]="{'ng_invalid':forgetpwd.controls.oldpassword.invalid 
+                      [ngClass]="{'ng_invalid':forgetpwd.controls.oldpassword.invalid
                       && forgetpwd.controls.oldpassword.dirty,'ng_valid':forgetpwd.controls.oldpassword.valid}" (blur)="matchpwd()">
                       <span *ngIf="func['oldpassword'].errors && func['oldpassword'].errors['passwordExists']">
                         <img src="assets/images/valid_error.svg" alt=""> this password matches with old password!
-                      </span> 
+                      </span>
 
 
                     </div> -->
@@ -166,7 +167,7 @@
 
                         <span style="color: green;"  *ngIf="func['oldpassword'].errors && func['oldpassword'].errors['passwordExists']">
                            this password is your current password!
-                        </span> 
+                        </span>
                     </div>
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
