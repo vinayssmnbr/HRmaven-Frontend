@@ -251,43 +251,9 @@ export class SignupComponent {
     window.location.href = 'https://hrmaven.works/auth/google';
   }
 
-<<<<<<< HEAD
-  expire.setTime(today.getTime() + 12*60*60*60*1000);
-  console.log('inside');
-      document.cookie ="token= "  + result.token + ";path=/" + ";expires=" + expire.toUTCString();
-  console.log("result:",result)
-  console.log("object_id:",result.user._id)
-    // localStorage.setItem('email', this.sigupform.controls['email'].value);
-    this.cookie.set('hr_id',result._id);
-    this.cookie.set('role',result.role);
-    localStorage.setItem('emailid',this.sigupform.controls['email'].value);
-    this.orgnisation = result.username
-    localStorage.setItem('companyname', this.orgnisation);
-    // localStorage.setItem('emailid', this.sigupform.controls['email'].value);
-    this.orgnisation = this.sigupform.controls['username'].value;
-    localStorage.setItem('companyname', this.sigupform.controls['username'].value);
-
-  })
-}
-submit(){
-  this.router.navigate(['/dashboard']) //your router URL need to pass it here
-}
-
-SignupByGoogle() {
-  console.log('google');
-  window.location.href = 'https://hrmaven.works/auth/google';
-}
-
-
-onKeyUp(event): void {
-  event.target.value = event.target.value.trim()
-
-}
-=======
   onKeyUp(event): void {
     event.target.value = event.target.value.trim();
   }
->>>>>>> d769500bd0222c061c440157e0afdb3b131d7a73
   // event.target.value.replace(/[^A-Za-z0-9-,.;'&/.() ]|^ /g,'').trim()
 
   onKeyDown(): void {
