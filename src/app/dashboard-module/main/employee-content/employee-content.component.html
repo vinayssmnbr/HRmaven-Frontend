@@ -100,8 +100,11 @@
     <table>
       <thead>
         <tr class="table-row">
-          <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
-              (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+          <!-- <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
+              (change)="onCheckboxChange($event, 'All')">Employee ID</th> -->
+              <th class="employee"><input type="checkbox" [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
+                (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+  
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -118,7 +121,7 @@
 
 
           <td colspan="7" class="nodata" class="no_data" *ngIf="user.found=='true'">
-            <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
+            <p> <img src="assets/images/no_record.png" alt="" class="center"></p>
             <h2>No Record Found!</h2>
           </td>
           <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">

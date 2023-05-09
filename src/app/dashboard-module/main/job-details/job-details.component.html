@@ -2,83 +2,439 @@
 <app-sidebar></app-sidebar>
 
 <div class="row">
-    <div class="col-4">
+    <div class="card_content">
         <div class="card" routerLink="/job-details">
             <div class="card-outer">
                 <div class="card-head">
                     <div class="card-logo">
-                        <img src="assets/images/Ellipse 70.png" alt="">
-                        <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
+                        <div class="back_icon">
+                            <img src="assets/images/back_icon.png" alt="">
+                        </div>
                         <div class="card-text">
                             <h5>UI/UX Designer</h5>
-                            <p>Date: 05 Jul 2023</p>
                         </div>
                     </div>
                     <div class="progress-btn">
                         <button class="progres">Inprogress</button>
                     </div>
-                    <div class="job-interview">
-                        <img src="assests/images/Ellipse 133.svg" alt="">
-                        <img src="assests/images/Ellipse 134.svg" alt="">
-                        <img src="assests/images/Ellipse 135.svg" alt="">
-                        <img src="assests/images/+5.png" alt="">
-                    </div>
+
                 </div>
             </div>
             <span class="line"></span>
             <div class="Skills-required">
-                <div class="Skills-head">
+                <div class="skill_content">
                     <h6>Skills Required:</h6>
-                    <ul class="skills">
-                        <li>Figma</li>
-                        <li>3D Design</li>
-                        <li>After Effects</li>
-                        <li>Illustrations</li>
-                    </ul>
+                    <div class="Skills-head">
+                        <ul class="skills">
+                            <li>Figma</li>
+                            <li>3D Design</li>
+                            <li>After Effects</li>
+                            <li>Illustrations</li>
+                        </ul>
+                        <div class="interview_details">
+                            <h3>Interview Details</h3>
+                        </div>
+                    </div>
                 </div>
                 <div class="Description">
                     <div class="description-heading">
-                        <h6>Description:</h6>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                            Ipsum has been the industry's standard dummy text ever since....</p>
+                        <div class="descript_title">
+                            <h6>Description:</h6>
+                        </div>
+                        <div class="job-interview">
+                            <img src="assets/images/Ellipse 133.svg" alt="">
+                            <img src="assets/images/Ellipse.png" alt="">
+                            <img src="assets/images/Ellipse 135.svg" alt="">
+                            <img src="assets/images/Group 1229.png" alt="">
+                        </div>
                     </div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                        Ipsum has been the industry's standard dummy text ever since....</p>
                 </div>
             </div>
 
             <div class="card-bottom">
-
                 <div class="location">
-                    <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                    <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                    <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                    <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                    <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
+                    <li>
+                        <img src="assets/images/material-symbols_location-on-outline.png" alt="">
+                        <p>Mohali,
+                            Punjab</p>
+                    </li>
+                    <li>
+                        <img src="assets/images/lpa_logo.png" alt="">
+                        <p>Rs. 4.5 - 5.4L</p>
+                    </li>
+                    <li>
+                        <img src="assets/images/material-symbols_partly-cloudy-day-outline.png" alt="">
+                        <p>Day Shift</p>
+                    </li>
+                    <li>
+                        <img src="assets/images/solar_case-round-outline.png" alt="">
+                        <p> 1-2 year</p>
+                    </li>
+                    <li>
+                        <img src="assets/images/ic_outline-person-add-alt.png" alt="">
+                        <p> 24 more applied</p>
+                    </li>
                 </div>
-                <!-- <div class="year">
-                    <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                    <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-                </div> -->
+                <div class="view_btn" (click)="viewbtn()">
+                    <button><u>View more </u></button>
+                </div>
 
 
             </div>
+
+
+            <div class="recruiters_nav">
+                <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')">
+                    <p>All</p>
+                </div>
+                <div class="all" [class.color]="id ==='Resume_received'" (click)="tabChange('Resume_received')">
+                    <p>Resume received</p>
+                </div>
+                <div class="all" [class.color]="id ==='Shortlisted'" (click)="tabChange('Shortlisted')">
+                    <p>Shortlisted</p>
+                </div>
+                <div class="all" [class.color]="id ==='Interview'" (click)="tabChange('Interview')">
+                    <p>Interview</p>
+                </div>
+                <div class="all" [class.color]="id ==='Hired'" (click)="tabChange('Hired')">
+                    <p>Hired</p>
+                </div>
+                <div class="all" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+                    <p>Rejected</p>
+                </div>
+                <div class="all" [class.color]="id ==='Archive'" (click)="tabChange('Archive')">
+                    <p>Archive</p>
+                </div>
+            </div>
+
+
         </div>
     </div>
+
+    <div class="regquirement_table">
+        <div class="Candiddate">
+            <div class="Candiddate_input">
+                <i class="fa fa-search" aria-hidden="true" id="ico"></i>
+                <input type="text" placeholder="Enter Candiddate Id" />
+            </div>
+            <div class="Candiddate_input_btn">
+                <div class="Export_btn">
+                    <button class="export"><img src="assets/images/prime_file-export.png" alt="">
+                        <p>Export</p>
+                    </button>
+                </div>
+                <div class="Export_btn">
+                    <button class="Import"><img src="assets/images/prime_file-import.png" alt="">
+                        <p>Import</p>
+                    </button>
+                </div>
+                <div class="Export_btn">
+                    <button class="Filters" (click)="dropdownOpen()">
+                        <img src="assets/images/Group (1).png" alt="">
+                        <p>Filters</p>
+                    </button>
+                    <div class="dropdown_container">
+                        <div class="select_content" *ngIf="contentdropdown" (mouseleave)="contentdropdown = false">
+                            <p class="Stages">Stages</p>
+                            <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                    (click)="Changeselect(arr)"> <input type="checkbox">
+                                    <p>{{arr.name}}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="Add_Candidate_btn">
+                    <button class="Add_Candidate"><img src="assets/images/material-symbols_add-circle-rounded.png"
+                            alt="">
+                        <p>Add Candidate</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="attendence_table">
+            <div class="table_data">
+                <table class="table_text">
+                    <thead>
+                        <tr class="table_heading">
+                            <th class="input_check">
+                                <input type="checkbox">
+                                <p>Candidate ID</p>
+                            </th>
+                            <th>Candidate Name</th>
+                            <th>Email</th>
+                            <th>Contact number</th>
+                            <th>Applied Date</th>
+                            <th>Status</th>
+                            <th class="Resume">Resume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td colspan="7" class="nodata" class="no_data">
+                      <p>
+                        <img src="assets/images/no_record.png" alt="" class="center" />
+                      </p>
+                      <h2>No Record Found!</h2>
+                    </td> -->
+                            <td class="input_check">
+                                <input type="checkbox">
+                                <p>29591</p>
+                            </td>
+                            <td>Cameron Williamson</td>
+                            <td>Cameron@gmail.com</td>
+                            <td>987654321</td>
+                            <td>01 Mar, 2023</td>
+                            <td>
+                                <select class="table_option">
+                                    <option value="">Resume Received</option>
+                                    <option value="">Shortlisted</option>
+                                    <option value="">Interview</option>
+                                    <option value="">Hired</option>
+                                    <option value="">Rejected</option>
+                                    <option value="">Archive</option>
+                                </select>
+                            </td>
+                            <td class="pdf_logo">
+                                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="input_check">
+                                <input type="checkbox">
+                                <p>29591</p>
+                            </td>
+                            <td>Cameron Williamson</td>
+                            <td>Cameron@gmail.com</td>
+                            <td>987654321</td>
+                            <td>01 Mar, 2023</td>
+                            <td>
+                                <select class="table_option">
+                                    <option value="">Resume Received</option>
+                                    <option value="">Shortlisted</option>
+                                    <option value="">Interview</option>
+                                    <option value="">Hired</option>
+                                    <option value="">Rejected</option>
+                                    <option value="">Archive</option>
+                                </select>
+                            </td>
+                            <td class="pdf_logo">
+                                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input_check">
+                                <input type="checkbox">
+                                <p>29591</p>
+                            </td>
+                            <td>Cameron Williamson</td>
+                            <td>Cameron@gmail.com</td>
+                            <td>987654321</td>
+                            <td>01 Mar, 2023</td>
+                            <td>
+                                <select class="table_option">
+                                    <option value="">Resume Received</option>
+                                    <option value="">Shortlisted</option>
+                                    <option value="">Interview</option>
+                                    <option value="">Hired</option>
+                                    <option value="">Rejected</option>
+                                    <option value="">Archive</option>
+                                </select>
+                            </td>
+                            <td class="pdf_logo">
+                                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input_check">
+                                <input type="checkbox">
+                                <p>29591</p>
+                            </td>
+                            <td>Cameron Williamson</td>
+                            <td>Cameron@gmail.com</td>
+                            <td>987654321</td>
+                            <td>01 Mar, 2023</td>
+                            <td>
+                                <select class="table_option">
+                                    <option value="">Resume Received</option>
+                                    <option value="">Shortlisted</option>
+                                    <option value="">Interview</option>
+                                    <option value="">Hired</option>
+                                    <option value="">Rejected</option>
+                                    <option value="">Archive</option>
+                                </select>
+                            </td>
+                            <td class="pdf_logo">
+                                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="input_check">
+                                <input type="checkbox">
+                                <p>29591</p>
+                            </td>
+                            <td>Cameron Williamson</td>
+                            <td>Cameron@gmail.com</td>
+                            <td>987654321</td>
+                            <td>01 Mar, 2023</td>
+                            <td>
+                                <select class="table_option">
+                                    <option value="">Resume Received</option>
+                                    <option value="">Shortlisted</option>
+                                    <option value="">Interview</option>
+                                    <option value="">Hired</option>
+                                    <option value="">Rejected</option>
+                                    <option value="">Archive</option>
+                                </select>
+                            </td>
+                            <td class="pdf_logo">
+                                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+    <!-- ---------------Job details modal--------------------------- -->
+    <div class="Job_details" *ngIf="Jobdetails">
+        <div class="Job_details_content">
+            <div class="Job_details_title">
+                <div class="Job_details_heading">
+                    <div class="Job_details_logo">
+                        <div class="job_icon">
+                            <img src="assets/images/solar_case-round-outline (1).png" alt="">
+                        </div>
+                        <h1>Job details</h1>
+                    </div>
+                    <div class="cross_icon" (click)="close_modal()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="General_information">
+                <h1>General information</h1>
+                <div class="General_information_content">
+                    <div class="information_content">
+                        <h1>Spotify</h1>
+                        <p>hr@spotify.com</p>
+                    </div>
+                    <div class="gmail_icom">
+                        <img src="assets/images/mail.png" alt="">
+                    </div>
+                </div>
+                <div class="job_card_content_main">
+                    <div class="job_card_content">
+                        <div class="job_card_content_title">
+                            <p>Job Title</p>
+                            <h3>UI/UX designer</h3>
+                        </div>
+                        <div class="job_card_content_title">
+                            <p>Dated</p>
+                            <h3>Feb 24, 2023</h3>
+                        </div>
+                        <div class="job_card_content_title">
+                            <p>CTC</p>
+                            <h3>Rs. 4.50 - 5.40</h3>
+                        </div>
+                    </div>
+                    <div class="job_card_content">
+                        <div class="job_card_content_title">
+                            <p>Location</p>
+                            <h3>Chandigarh, punjab</h3>
+                        </div>
+                        <div class="job_card_content_title">
+                            <p>Experience required</p>
+                            <h3>1 - 2 years</h3>
+                        </div>
+                        <div class="job_card_content_title">
+                            <p>Skills required</p>
+                            <h3 class="job_card_content_title_para">Figma, After Effects, Illustration, 3D design</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="Recruiters_List">
+                <h1>Recruiters List</h1>
+                <div class="Recruiters_List_para">
+                    <p>Amanda kerry</p>
+                    <p>Cameron williamson</p>
+                    <p>Jason Billy</p>
+                </div>
+            </div>
+
+            <div class="Job_Description">
+                <h1>Job Description</h1>
+                <div class="Job_Description_para">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since. There are many variations of passages of Lorem
+                        Ipsum available, but the majority have suffered alteration in some form, by injected humour, or
+                        randomised words which don't look even slightly believable. If you are going to use a passage
+                        of.
+                    </p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since. There are many variations of passages of Lorem
+                        Ipsum available, but the majority have suffered alteration in some form, by injected humour, or
+                        randomised words which don't look even slightly believable. If you are going to use a passage
+                        of.
+                    </p>
+                </div>
+            </div>
+            <div class="Share_job_btn">
+                <button>Share a job vacancy</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
 </div>
 
 
-    <ng-container *ngIf="visible">
-        <div class="job-popup">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ng-container *ngIf="visible">
+    <div class="job-popup">
         <div class="wrapper">
             <div class="job_details">
-            <div class="left">
-                <div>
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
+                <div class="left">
+                    <div>
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
                     <h2>Job details</h2>
-            </div>
-            <div class="right">
-                <i class="fa-solid fa-circle-xmark"></i>
-            </div>
+                </div>
+                <div class="right">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
 
 
             </div>
@@ -88,52 +444,52 @@
                 <h6>General information</h6>
             </div>
 
-           <div class="info_parent">
-            <div class="info_left">
-                <div class="icon"><i class="fa-brands fa-spotify"></i></div>
-                <div class="info_text">
-                <h2>Spotify</h2>
-                <p>hr@spotify.com</p>
+            <div class="info_parent">
+                <div class="info_left">
+                    <div class="icon"><i class="fa-brands fa-spotify"></i></div>
+                    <div class="info_text">
+                        <h2>Spotify</h2>
+                        <p>hr@spotify.com</p>
+                    </div>
+                </div>
+                <div class="info_right">
+                    <i class="fa-solid fa-square-share-nodes"></i>
+                    <i class="fa-solid fa-envelope"></i>
                 </div>
             </div>
-            <div class="info_right">
-                <i class="fa-solid fa-square-share-nodes"></i>
-                <i class="fa-solid fa-envelope"></i>
-            </div>
         </div>
-        </div>
-           <div class="wrapper">
+        <div class="wrapper">
             <div class="job">
-            <div class="job_title">
-                <h6>Job Title</h6>
-                <p>UI/UX designer</p>
+                <div class="job_title">
+                    <h6>Job Title</h6>
+                    <p>UI/UX designer</p>
+                </div>
+                <div class="dated">
+                    <h6>Dated</h6>
+                    <p>Feb 24,2023</p>
+                </div>
             </div>
-            <div class="dated">
-                <h6>Dated</h6>
-                <p>Feb 24,2023</p>
-            </div>
-           </div>
 
-           <div class="location_a">
-            <div class="location">
-                <h6>Location</h6>
-                <p>Chandigarh,punjab</p>
+            <div class="location_a">
+                <div class="location">
+                    <h6>Location</h6>
+                    <p>Chandigarh,punjab</p>
+                </div>
+                <div class="ctc">
+                    <h6>CTC</h6>
+                    <p>Rs. 4.5-5.40</p>
+                </div>
             </div>
-            <div class="ctc">
-                <h6>CTC</h6>
-                <p>Rs. 4.5-5.40</p>
-            </div>
-           </div>
 
             <div class="experience">
-            <div class="experience_required">
-                <h6>Experience required</h6>
-                <p>1-2years</p>
-            </div>
-            <div class="skill_required">
-                <h6>Skills required</h6>
-                <p>Figma, After Effects,Illustration,3D design</p>
-            </div>
+                <div class="experience_required">
+                    <h6>Experience required</h6>
+                    <p>1-2years</p>
+                </div>
+                <div class="skill_required">
+                    <h6>Skills required</h6>
+                    <p>Figma, After Effects,Illustration,3D design</p>
+                </div>
             </div>
 
 
@@ -146,7 +502,7 @@
 
         <div class="wrapper">
             <div class="recruiter_content">
-               <h2>Recruiters List</h2>
+                <h2>Recruiters List</h2>
                 <ul class="recruiters_list">
                     <li>Amanda Kerry</li>
                     <li>Cameron williamson</li>
@@ -159,17 +515,24 @@
             <div class="job_description_heading">
                 <h2>Job Description</h2>
 
-            <div class="job_description_content">
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
-                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since....</p>
+                <div class="job_description_content">
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
+                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since....</p>
 
 
-            </div>
+                </div>
             </div>
 
 
@@ -181,11 +544,10 @@
             </div>
         </div>
     </div>
-     </ng-container>
+</ng-container> -->
 
 
-<!-- saacekt code end -->
-<div class="jobs">
+<!-- <div class="jobs">
     <div class="employe_input">
         <input type="text" placeholder="Candidate Name...">
         <button class="btn2" (click)="onclick()" [style.background-color]="buttonbackgroundColor2"
@@ -341,22 +703,4 @@
             </tbody>
         </table>
     </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--Saacket-->
-<!--job detail Popup-->
-<!-- <button class="job" (click)="onclick()">Job details</button> -->
-
+</div> -->

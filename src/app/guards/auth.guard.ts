@@ -41,7 +41,8 @@ export class AuthGuard implements CanActivate {
       const token = this.cookie.get('token');
       if(this.cookie.get('role')!='hr')
       {
-        this.router.navigate(['']);
+        this.router.navigate(['/nofound']);
+
       }
 
       if (!token || token == '') {

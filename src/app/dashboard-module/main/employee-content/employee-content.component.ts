@@ -928,6 +928,10 @@ cardviewcall(){
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
+      // const errorMessage = document.createElement('p');
+      // errorMessage.innerText = 'Invalid file type. Please select a CSV file.';
+      // document.body.appendChild(errorMessage);
+      // return;
     }
 
     function validateCsvFile(file: File): boolean {
@@ -977,8 +981,9 @@ cardviewcall(){
       // if(data.length==0) return 'no user selected'
       let uid: number = -1;
       let  responseArr = [];
+      // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
-        //
+      
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'

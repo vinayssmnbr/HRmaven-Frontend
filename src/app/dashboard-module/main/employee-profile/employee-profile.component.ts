@@ -142,6 +142,9 @@ export class EmployeeProfileComponent implements OnInit {
     profemail: new FormControl(''),
     matricpassing: new FormControl(''),
     interpassing: new FormControl(''),
+    phdcol: new FormControl(''),
+    phdstream: new FormControl(''),
+    phdsgpa: new FormControl(''),
   });
 
   experienceForm: FormGroup;
