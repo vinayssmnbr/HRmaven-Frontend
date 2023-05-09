@@ -234,6 +234,11 @@ shownewjobmodal(){
 // nextform(){
 //   this.firststep=false;
 //   this.seconstep=true;
+
+successmodal:boolean=false;
+successfulmodal(){
+this.successmodal=true;
+}
 }
 
 
