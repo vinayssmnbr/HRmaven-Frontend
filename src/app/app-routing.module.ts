@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule),canActivate:[EmpGuard]},
   {path:'nofound', component:NoPageFoundComponent },
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }
+ 
 ];
 
 @NgModule({

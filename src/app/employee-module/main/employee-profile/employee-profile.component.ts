@@ -340,6 +340,9 @@ export class EmployeeProfileComponent {
     this.Selectvariable2 = arr2.name;
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
+    if (this.colorvariable2 === 5) {
+      this.Selectvariable2 = 'Others';
+    }
     console.log(arr2.name);
     this.obj.bankname = arr2.name;
   }
@@ -599,12 +602,12 @@ export class EmployeeProfileComponent {
     this.empdashService
       .oldpasswordEmployee(email, oldpassword)
       .subscribe((res: any) => {
-        if (res.message === 'Password matches') {
+        if (res.flag) {
           this.isPasswordmatched = true;
-          console.log('password matches');
+          console.log(res.message);
         } else {
           this.isPasswordmatched = false;
-          console.log('password mismatch');
+          console.log(res.message);
         }
         this.oldpassword = oldpassword;
       });

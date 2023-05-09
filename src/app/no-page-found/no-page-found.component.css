@@ -34,6 +34,7 @@ font-family: 'Outfit',sans-serif;
 .containers img{
   width: 500px;
   height: 500px;
+  margin-top: -50px;
 }
 .containers h3{
 font-family: 'Outfit';
@@ -41,6 +42,7 @@ font-family: 'Outfit';
   font-weight: 400;
   font-size: 32px;
   color: #000000;
+  margin-top: -40px;
 }
 .btn{
   margin-top: 20px;

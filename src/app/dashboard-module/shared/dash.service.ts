@@ -20,7 +20,7 @@ export class DashService {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService,
-    private userService: UserService,
+    private userService: UserService
   ) {
     this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
   }
@@ -145,7 +145,6 @@ export class DashService {
       to: data.to,
       category: data.category,
       hrid: id.toString(),
-
     });
     return this.http.get(this.prefix + 'api/leave/filter/leave', { headers });
   }
@@ -208,14 +207,20 @@ export class DashService {
   }
   //GET EMPLOYEE CUSTOM UID
   getEmployeeUid() {
-    return this.http.get(this.prefix + 'api/uid');
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'api/uid', { headers });
   }
 
-  getemprecord(id:any){
+  getemprecord(id: any) {
     const headers = new HttpHeaders({
-      'id':id.toString()
+      id: id.toString(),
     });
-    return this.http.get(this.prefix + 'attendance/emp/attendance',{ headers });
+    return this.http.get(this.prefix + 'attendance/emp/attendance', {
+      headers,
+    });
   }
 
   getDates(startDate: string, stopDate: string): string[] {
@@ -285,5 +290,4 @@ export class DashService {
     const url = `${this.prefix + 'api/update'}/${id}`;
     return this.http.patch(url, { status });
   }
-
 }

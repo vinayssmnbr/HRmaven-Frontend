@@ -121,7 +121,7 @@
   padding-bottom: 4px;
   /* width: 88px; */
 }
-
+/* --------------------------------- */
 .selection2 {
   display: flex;
   justify-content: space-between;
@@ -327,7 +327,7 @@ input:focus {
 }
 
 tbody {
-  background-color: #f9f9f9 !important;
+  background-color: #ffffff !important;
 }
 
 .icons .fa-trash-can:hover {
@@ -436,13 +436,14 @@ input[type="checkbox"] {
 .employee1 {
   display: flex;
   gap: 10px;
-  padding: 15px 20px;
+  padding: 22px 20px;
   white-space: nowrap;
   text-align: justify;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   color: #555555;
+  border: 1px solid #f9f9f9;
 }
 
 .name1 {
