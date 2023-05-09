@@ -599,9 +599,8 @@ export class EmployeeProfileComponent {
   matchpwdEmployee() {
     const email = this.empEmail;
     const oldpassword = this.passwordform.controls['oldpassword'].value;
-    this.empdashService
-      .oldpasswordEmployee(email, oldpassword)
-      .subscribe((res: any) => {
+    this.empdashService.oldpasswordEmployee(email, oldpassword).subscribe(
+      (res: any) => {
         if (res.flag) {
           this.isPasswordmatched = true;
           console.log(res.message);
@@ -609,7 +608,12 @@ export class EmployeeProfileComponent {
           this.isPasswordmatched = false;
           console.log(res.message);
         }
+
         this.oldpassword = oldpassword;
-      });
+      },
+      (error: any) => {
+        this.isPasswordmatched = false;
+      }
+    );
   }
 }
