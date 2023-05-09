@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup , Validators} from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 declare var $:any;
 declare var checkboxOptions:any;
@@ -63,7 +63,7 @@ export class RecruitmentContentComponent {
     this.showModal5 = true;
     this.showModalContent=true
   }
-  
+
   closeModal5(){
     this.showModal5 = false;
     this.showModalContent=false;
@@ -80,7 +80,7 @@ all:boolean=false;
     datetitle:new FormControl(''),
     date:new FormControl(''),
     ctctitle:new FormControl(''),
-    
+
   })
   vacancydetail()
 {
@@ -164,7 +164,7 @@ array2: any = [
     id: 1,
     name: 'Internship',
   },
-  
+
 ];
 contentdropdown2: boolean = false;
 dropdownOpen2() {
@@ -216,7 +216,7 @@ removetask1(id:number){
 
 
 jobvacancyform= new FormGroup({
-  jobtitle:new FormControl(''),
+  jobtitle:new FormControl('',[Validators.required]),
   datetitle:new FormControl('')
 
 })
@@ -229,11 +229,26 @@ forget_email_send_content:boolean=false;
 shownewjobmodal(){
   this.forget_email_send_content=true;
 }
+// firststep:boolean=false;
+// seconstep:boolean=false;
+// nextform(){
+//   this.firststep=false;
+//   this.seconstep=true;
 
+successmodal:boolean=false;
+successfulmodal(){
+this.successmodal=true;
+this.showModal5 = false;
 
-tabchange(){
 
 }
-  }
+
+closesuccessmodal(){
+  this.successmodal = false;
+}
+}
+
+
+
 
 
