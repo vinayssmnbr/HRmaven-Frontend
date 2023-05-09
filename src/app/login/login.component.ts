@@ -37,6 +37,8 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+    // this.userService.isFromLoginPage = true;
+    this.userService.isFromLoginPage = false;
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
     if (storedemail && storedPassword) {

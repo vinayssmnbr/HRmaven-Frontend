@@ -187,7 +187,6 @@
                                required
                                id="oldp"
                                formControlName="oldpassword"
-                               (blur)="onBlur()"
                                (input)="onInput()">
                         <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
@@ -339,8 +338,11 @@
                     </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required [maxlength]="personalDetailsForm.get('phone').errors?.invalidPhone ? 10 : null" [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
+                        <input type="text" class="form_input" placeholder="{{phone}}" formControlName="phone" id="phone" required 
+                               (input)="onInput($event)" [maxlength]="10" [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
                       </div>
+                      
+                      
                 </div>
 
 

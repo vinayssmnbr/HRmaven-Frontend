@@ -24,7 +24,7 @@ export class DashboardContentComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService,
+    public userService: UserService,
     public dashService: DashService,
     private http: HttpClient,
     @Inject(DOCUMENT) public document: Document,
@@ -46,6 +46,24 @@ export class DashboardContentComponent implements OnInit {
     // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
 
   })
+  phoneValidator(control: FormControl) {
+    const value = control.value;
+    if (value && value.toString().length > 10) {
+      control.setValue(value.toString().substring(0, 10)); // set the value to the first 10 digits
+    }
+    return null;
+  }
+  
+  onInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    if (input.value && input.value.length > 10) {
+      input.value = input.value.substring(0, 10); // restrict the input to the first 10 digits
+    }
+    this.isInputDirty = true;
+  }
+  
+  isInputDirty = false;
+  
   email = localStorage.getItem('emailid');
   submitPersonalData(data: any){
     console.log("personal data: ", data);

@@ -306,13 +306,10 @@
     <!-- <div *ngIf="isFromSignupPage"> -->
     <!-- <div *ngIf="!formSubmitted"  > -->
       <!-- <div *ngIf="!formSubmitted" [ngStyle]="{'opacity': (formSubmitted ? '0.0' : '1.0')}" > -->
-        <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" >
-
         <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
-     <!-- <div *ngIf="showForm" [ngStyle]="{ opacity: opacityValue }"> -->
-        <!-- <div [ngClass]="{ 'hidden': !showForm, 'visible': showForm }" [style.opacity]="opacityValue"> -->
-            <!-- <div [hidden]="!showForm" [style.opacity]="opacityValue"> -->
-          <div >
+            <!-- <div *ngIf="!formSubmitted  && userService.isFromLoginPage"  > -->
+        <div *ngIf="!userService.isFromLoginPage && !formSubmitted && showForm" [ngStyle]="{'opacity': opacityValue}">
+              <div >
                 <div class="Modal_form" >
 
                     <div class="Modal_modal"  >
@@ -342,8 +339,14 @@
                             <div class="email-phone">
                                 <div class="form__group">
                                     <label for="name">Phone no.</label>
-                                    <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
+                                    <!-- <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
                                         id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
+                                     -->
+                                     <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required 
+    [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
+    [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value"
+    (input)="onInput($event)" />
+
                                 </div>
                                 <div class="form__group">
                                     <label for="email">Head Office</label>

@@ -50,23 +50,29 @@ organisationn: any = '';
 phoneValidator(control: FormControl) {
   const value = control.value;
   if (value && value.toString().length > 10) {
-    return { invalidPhone: true };
+    control.setValue(value.toString().substring(0, 10)); // set the value to the first 10 digits
   }
   return null;
 }
 
-onInput() {
+onInput(event: any) {
+  const input = event.target as HTMLInputElement;
+  if (input.value && input.value.length > 10) {
+    input.value = input.value.substring(0, 10); // restrict the input to the first 10 digits
+  }
   this.isInputDirty = true;
 }
-isInputDirty = false
-onBlur() {
-  const oldPassword = this.personalDetailsForm.get('oldpassword');
-  if (!oldPassword.value) {
-    this.isInputDirty = false;
-  }
-}
+
+isInputDirty = false;
+// onBlur() {
+//   const oldPassword = this.personalDetailsForm.get('oldpassword');
+//   if (!oldPassword.value) {
+//     this.isInputDirty = false;
+//   }
+// }
 
  ngOnInit(){
+  console.log("objectuserid: ",this.objectuserid)
   const oldPassword = this.personalDetailsForm.get('oldpassword');
   oldPassword.valueChanges.subscribe(() => {
     this.isInputDirty = true;

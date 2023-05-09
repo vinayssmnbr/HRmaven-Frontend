@@ -28,7 +28,7 @@ export class UserService {
   //   this.opacityValue = formSubmitted ? 0 : 1;
   // }
 
-  isFromSignupPage = false;
+  isFromLoginPage = false;
 
 
 
