@@ -1,16 +1,18 @@
 .section{
   width: 100%;
   background-color: #ffffff ;
-  max-width: 1440px;
   min-height: 100%;
   overflow: hidden;
-  /* padding: 0 15px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .logo{
   display: flex;
   margin-top: 30px;
   margin-left: 30px;
   gap: 6px;
+  /* width: 100%; */
 }
 
 .logo h2{
@@ -25,12 +27,14 @@ font-family: 'Outfit',sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left:80px;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 .containers img{
   width: 500px;
   height: 500px;
+  margin-top: -50px;
 }
 .containers h3{
 font-family: 'Outfit';
@@ -38,6 +42,7 @@ font-family: 'Outfit';
   font-weight: 400;
   font-size: 32px;
   color: #000000;
+  margin-top: -40px;
 }
 .btn{
   margin-top: 20px;

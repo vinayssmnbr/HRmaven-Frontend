@@ -150,11 +150,8 @@ export class EmpService {
       id: id,
     });
     console.log(id);
-    return this.http.post(
-      'http://localhost:3000/attendance/emp/punchin',
-      { id, ip },
-      { headers }
-    );
+    return this.http.post(this.prefix+'attendance/emp/punchin',{id,ip},{ headers });
+
   }
 
   punchout(ip: any) {
@@ -166,11 +163,8 @@ export class EmpService {
       id: id,
     });
     console.log(id);
-    return this.http.post(
-      'http://localhost:3000/attendance/emp/punchout',
-      { id, ip },
-      { headers }
-    );
+    return this.http.post(this.prefix+'attendance/emp/punchout',{id,ip},{ headers });
+
   }
 
   getEmployee() {
@@ -190,5 +184,18 @@ export class EmpService {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  //RECOVER PASSWORD IN EMPLOYEE PROFILE
+  ResetPassword(email: any, data: any) {
+    console.log(data);
+    const apiUrl = `${this.prefix}api/emppwd/${email}`;
+    return this.http.post(apiUrl, data);
+  }
+
+  oldpasswordEmployee(email: any, oldpassword: any) {
+    return this.http.post(`${this.prefix + 'api/empoldpwd'}/${email}`, {
+      oldpassword,
+    });
   }
 }

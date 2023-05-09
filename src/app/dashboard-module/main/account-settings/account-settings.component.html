@@ -206,7 +206,7 @@
                     <!-- </form> -->
                     <div class="clear-update-button">
                         <button class="clear-btn" (click)="clearForm()">Clear</button>
-                        <button class="update-btn" (click)="openModal3()" type="submit" [disabled]="forgetpwd.invalid">Update Password</button>
+                        <button class="update-btn" (click)="openModal3()" type="submit" [disabled]="!isPasswordMatched || forgetpwd.invalid">Update Password</button>
 
                     </div>
                 </form>

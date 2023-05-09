@@ -6,12 +6,10 @@
       <div class="card">
         <div class="progress-text">
           <h3>Total Leaves</h3>
-          <h1>{{ total }}</h1>
+          <h1>{{ acceptcount+pendingcount+rejectcount }}</h1>
         </div>
         <div class="progress-circle-container">
-          <div class="progress-circle progress-{{ (total / total) * 100 }}">
-            <!-- <div class="progress-circle-container totalleavesProgress">
-          <div class="progress-circle progress-18"> -->
+          <div class="progress-circle progress-100">
             <span></span>
           </div>
         </div>
@@ -26,14 +24,8 @@
 
         <div class="progress-circle-container">
           <div
-            class="progress-circle progress-{{ (acceptcount / total) * 100 }}"
+            class="progress-circle progress-{{ (acceptcount / total) * 100 | number:'1.0-0' }}"
           >
-            <!-- <svg class="progress circular1" data-progress="50" x="0px" y="0px" viewBox="0 0 80 80">
-          <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-          <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
-        </svg> -->
-            <!-- <div class="progress-circle-container aproveleavesProgress">
-          <div class="progress-circle progress-18"> -->
             <span></span>
           </div>
         </div>
@@ -47,7 +39,7 @@
         </div>
         <div class="progress-circle-container">
           <div
-            class="progress-circle progress-{{ (rejectcount / total) * 100 }}"
+            class="progress-circle progress-{{ (rejectcount / total) * 100  | number:'1.0-0'  }}"
           >
             <!-- <div class="progress-circle-container rejectleavesProgress">
           <div class="progress-circle progress-58"> -->
@@ -64,7 +56,7 @@
         </div>
         <div class="progress-circle-container">
           <div
-            class="progress-circle progress-{{ (pendingcount / total) * 100 }}"
+            class="progress-circle progress-{{ (pendingcount / total) * 100  | number:'1.0-0' }}"
           >
             <!-- <div class="progress-circle-container pendingleavesProgress">
           <div class="progress-circle progress-88"> -->
@@ -217,8 +209,12 @@
               >
             </p>
           </td>
-          <td>4/6</td>
-          <td><a href="https://google.com" target="_blank">Document</a></td>
+          <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
+          <td *ngIf="n.category=='compensatory'">{{n.balance.compensatory}}</td>
+          <td *ngIf="n.category=='medical'">{{n.balance.medical}}</td>
+          <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
+          <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
+          <td *ngIf="n.url==''">---</td>
           <td class="table_slide">
             <div class="check_box_icon" *ngIf="!n.select">
               <div class="thick_round">
@@ -283,15 +279,19 @@
             <p class="mt20">
               <span
                 class="tooltip"
-                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                data-tooltip=""
                 data-tooltip-pos="right"
                 data-tooltip-length="medium"
-                >I have to attend some family f...</span
+                >{{ n.reason }}</span
               >
             </p>
           </td>
-          <td>4/6</td>
-          <td><a href="https://google.com" target="_blank">Document</a></td>
+        <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
+        <td *ngIf="n.category=='compensatory'">{{n.balance.compensatory}}</td>
+        <td *ngIf="n.category=='medical'">{{n.balance.medical}}</td>
+        <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
+          <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
+          <td *ngIf="n.url==''">---</td>
         </tr>
         <ng-container
           *ngIf="rejectleave.length == 0 || rejectleave == undefined"
@@ -345,15 +345,19 @@
             <p class="mt20">
               <span
                 class="tooltip"
-                data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                data-tooltip=""
                 data-tooltip-pos="right"
                 data-tooltip-length="medium"
-                >I have to attend some family f...</span
+                >{{ n.reason }}</span
               >
             </p>
           </td>
-          <td>4/6</td>
-          <td><a href="https://google.com" target="_blank">Document</a></td>
+          <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
+          <td *ngIf="n.category=='compensatory'">{{n.balance.compensatory}}</td>
+          <td *ngIf="n.category=='medical'">{{n.balance.medical}}</td>
+          <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
+          <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
+          <td *ngIf="n.url==''">---</td>
         </tr>
         <ng-container
           *ngIf="acceptleave.length == 0 || acceptleave == undefined"
@@ -361,7 +365,7 @@
           <tr>
             <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
               <p>
-                <img src="assets/images/no_record.png" alt="" class="center" />
+                <img src="assets/images/no_record.png" alt="" class="center"/>
               </p>
               <h2>No Record Found!</h2>
             </td>
