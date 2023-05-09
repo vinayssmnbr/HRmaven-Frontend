@@ -224,7 +224,7 @@ onSubmit(data:any){
   console.log("result:",result)
   console.log("object_id:",result.user._id)
     // localStorage.setItem('email', this.sigupform.controls['email'].value);
-    this.cookie.set('hr_id',result.id);
+    this.cookie.set('hr_id',result._id);
     this.cookie.set('role',result.role);
     localStorage.setItem('emailid',this.sigupform.controls['email'].value);
     this.orgnisation = result.username
