@@ -264,6 +264,8 @@ export class DashService {
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file);
+
+    
   }
 
   exportUsers(data: any[]) {

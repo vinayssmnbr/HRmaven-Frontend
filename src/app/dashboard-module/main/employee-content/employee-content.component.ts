@@ -924,7 +924,7 @@ cardviewcall(){
       console.log('No file selected.');
       return;
     }
-
+    let errors = [];
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
@@ -989,11 +989,11 @@ cardviewcall(){
         if (uid == -1) return 'there is an error while getting uid'
         let increaseBy:number = 100/(data.length);
         data.forEach((employee) => {
-          console.log('Adding employee:', employee);
+          // console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(async (res: any) => {
-            console.log('Response:', res);
+            // console.log('Response:', res);
             this.loader=true
             responseArr.push(res);
             if(responseArr.length== data.length){
@@ -1001,12 +1001,19 @@ cardviewcall(){
               this.loader = false;
               this.csvadded = true;
               this.importfile = false;
+              console.log('not uploaded files', errors)
             }
             // console.log('Data:', res.data);
             this.progress+= increaseBy;
             this.progressBar[0].style.width = `${this.progress}%`;
             this.progressText[0].innerText = `${this.progress}%`;
+            console.log(res, 'response')
+            if(res.status=='failed'){
+              errors.push({...employee, error: res.message})
+            }
 
+          }, (error: any)=>{
+            errors.push({...employee,error});
           });
         });
         return 'employees added';
@@ -1156,7 +1163,6 @@ cardviewcall(){
 
 
   ngOnChange() { }
-
 
 
 
