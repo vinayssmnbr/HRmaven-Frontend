@@ -46,7 +46,31 @@ export class AccountSettingsComponent implements OnInit {
 // email_id = this.employeeemail.split("@")
 // professional_email_id = this.email_id[0] + "@" + this.organisationn
 organisationn: any = '';
+
+phoneValidator(control: FormControl) {
+  const value = control.value;
+  if (value && value.toString().length > 10) {
+    return { invalidPhone: true };
+  }
+  return null;
+}
+
+onInput() {
+  this.isInputDirty = true;
+}
+isInputDirty = false
+onBlur() {
+  const oldPassword = this.personalDetailsForm.get('oldpassword');
+  if (!oldPassword.value) {
+    this.isInputDirty = false;
+  }
+}
+
  ngOnInit(){
+  const oldPassword = this.personalDetailsForm.get('oldpassword');
+  oldPassword.valueChanges.subscribe(() => {
+    this.isInputDirty = true;
+  });
   this.organisationn =  localStorage.getItem('companyname');
   this.companyDetailsForm = this.formBuilder.group({
 
@@ -57,7 +81,7 @@ organisationn: any = '';
   this.personalDetailsForm = this.formBuilder.group({
     name:[''],
     personalemail: [''],
-    phone: ['']
+    phone: ['', [Validators.required, this.phoneValidator]]
   });
       this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
         console.log("res account settings personaldataaaaa: ", res);

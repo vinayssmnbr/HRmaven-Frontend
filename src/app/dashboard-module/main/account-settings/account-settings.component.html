@@ -162,7 +162,7 @@
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
                  
                 
-                      <div class="old-new-confirm-password">
+                      <!-- <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
                         placeholder="Type your old password"
@@ -178,8 +178,23 @@
                             <p *ngIf="isInputDirty" style="color: red;">This is not your old password.</p>
                           </ng-template>
                           
+                      </div> -->
+                      <div class="old-new-confirm-password">
+                        <label for="">Old Password</label>
+                        <input type="password"
+                               placeholder="Type your old password"
+                               class="form-control password"
+                               required
+                               id="oldp"
+                               formControlName="oldpassword"
+                               (blur)="onBlur()"
+                               (input)="onInput()">
+                        <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
+                        <ng-template #notMatched>
+                          <p *ngIf="isInputDirty" style="color: red;">This is not your old password.</p>
+                        </ng-template>
                       </div>
-                      
+                                            
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
@@ -317,10 +332,15 @@
                         style=" background-color: #f4f4f4;
                         color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
                     </div>
+                    <!-- <div class="form__group">
+                        <label for="phone">Phone no.</label>
+                        <input type="number" class="form_input" placeholder='Enter Phone Number' formControlName="phone" id="phone" required maxlength="10"[disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
+                        <div *ngIf="personalDetailsForm.get('phone').errors?.invalidPhone">Please enter a valid phone number</div>
+                    </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required />
-                    </div>
+                        <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required [maxlength]="personalDetailsForm.get('phone').errors?.invalidPhone ? 10 : null" [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
+                      </div>
                 </div>
 
 
