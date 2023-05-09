@@ -105,13 +105,13 @@ organisationn: any = '';
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
         console.log("res account settings personaldata: ", res.useridd);
-    
+
         this.employeename = res.personaldata.name;
         this.description = res.personaldata.description;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image
-    
+
         // Update the profile image in the UI
         const img = new Image();
         img.onload = () => {
@@ -120,9 +120,9 @@ organisationn: any = '';
         img.src = this.profileimage;
       });
     }
-    
 
-    
+
+
 
     forgetpwd = new FormGroup({
 
@@ -138,7 +138,7 @@ organisationn: any = '';
       validators:matchpassword
     }
     );
-    
+
 
     newpassword(data:any)
     {
@@ -157,26 +157,26 @@ organisationn: any = '';
   isPasswordMatched = false;
   oldpassword: any = '';
     emailidd: any =''
-    
+
 
     matchpwd() {
       const email = this.employeeemail;
       const oldPassword = this.forgetpwd.controls['oldpassword'].value;
       this.isPasswordMatched = false;
-    
+
       this.userService.getpwdmgt(email, oldPassword).subscribe((res: any) => {
         console.log("message: ", res);
         console.log("message email: ", res.message);
-    
+
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
         }
         this.oldpassword = oldPassword;
       });
     }
-    
-    
-  
+
+
+
 
 
 
@@ -213,6 +213,7 @@ organisationn: any = '';
   showModal1=false;
   openModal1(){
     this.showModal1 = true;
+
   }
 
   closeModal1(){
@@ -236,11 +237,15 @@ organisationn: any = '';
 
   closeModal3(){
     this.showModal3 = false;
+    this.forgetpwd.reset();
+    
+
   }
   onKeyUp(event): void {
     event.target.value = event.target.value.trim()
 
   }
+
 
   // forgetpwd: FormGroup;
   // get forgotformControl(){
@@ -305,7 +310,7 @@ organisationn: any = '';
     }
     this.onUpload();
   }
-  
+
   upload: boolean = false;
   progress: boolean = false;
   imageurl: any;
@@ -338,8 +343,8 @@ organisationn: any = '';
   //     console.log('img', this.imageurl);
   //   });
   // }
-  
-  
+
+
   }
 
 
