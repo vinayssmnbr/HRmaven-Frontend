@@ -726,6 +726,7 @@ cardviewcall(){
           'background-color': 'rgba(123, 211, 109, 0.3)',
           'color': '#3D9030',
           'border': 'rgba(123, 211, 109, 0.3)',
+          // 'width':'90px',
         };
         break;
       }
@@ -734,6 +735,7 @@ cardviewcall(){
           'background-color': 'rgba(250, 151, 150, 0.2)',
           'color': '#CB1E0F',
           'border': 'rgba(250, 151, 150, 0.2)',
+          // 'width':'120px',
         };
         break;
       }
@@ -742,6 +744,8 @@ cardviewcall(){
           'background-color': '#EFEFF8',
           'color': '#2f2c9f',
           'border': '#EFEFF8',
+          // 'width':'93px',
+
         };
         break;
       }
@@ -750,11 +754,14 @@ cardviewcall(){
           'background-color': 'rgba(248, 187, 111, 0.4)',
           'color': '#DB771D',
           'border': 'rgba(248, 187, 111, 0.4)',
+          // 'width':'104px',
         };
         break;
       }
       default: {
-        this.optionStyle = {};
+        this.optionStyle = {
+          // 'width':'110px',
+        };
         break;
       }
     }
@@ -983,7 +990,7 @@ cardviewcall(){
       let  responseArr = [];
       // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
-      
+
         uid = res.uid;
         console.log(res, 'uid response')
         if (uid == -1) return 'there is an error while getting uid'
