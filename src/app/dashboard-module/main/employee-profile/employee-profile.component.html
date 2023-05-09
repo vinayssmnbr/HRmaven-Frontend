@@ -161,6 +161,8 @@
           <span class="pgcol">Post Graduation College/University</span>
           <p *ngIf="!user.pg">----------</p>
           <p class="pgcol" *ngIf="user.pg">{{user.pg}}</p>
+          <span class="phdcol">Phd College/University</span>
+          <p>---------</p>
         </div>
         <div class="column2">
           <span class="mper">Matriculation Percentage</span>
@@ -175,6 +177,8 @@
           <span class="pgsgpa">Cgpa</span>
           <p *ngIf="!user.pgCgpa">-----------</p>
           <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
+          <span class="phdsgpa">Cgpa</span>
+          <p>---------</p>
         </div>
         <div class="column3">
           <span class="yop">Year of Passing</span>
@@ -189,6 +193,8 @@
           <span class="pgstream">Post Graduation Stream</span>
           <p *ngIf="!user.pgStream">----------</p>
           <p class="pgstream" *ngIf="user.pgStream">{{user.pgStream}}</p>
+          <span class="phdstram">Phd.Stream</span>
+          <p>--------</p>
         </div>
       </div>
     </div>
@@ -562,6 +568,21 @@
               <div class="input">
                 <label>CGPA</label>
                 <input type="number" class="no-spin" placeholder="8.8" formControlName="pgCgpa">
+              </div>
+            </div>
+            <h3 *ngIf="Selectvariable9==='Phd-Details'">Phd Details</h3>
+            <div class="form-row card10" *ngIf="Selectvariable9==='Phd-Details'">
+              <div class="input">
+                <label>Phd College/University</label>
+                <input type="text" placeholder="LPU" formControlName="phdcol">
+              </div>
+              <div class="input">
+                <label>Stream</label>
+                <input type="text" placeholder="Sociology" formControlName="phdstream">
+              </div>
+              <div class="input">
+                <label>CGPA</label>
+                <input type="number" class="no-spin" placeholder="9" formControlName="phdsgpa">
               </div>
             </div>
             <div class="parent">

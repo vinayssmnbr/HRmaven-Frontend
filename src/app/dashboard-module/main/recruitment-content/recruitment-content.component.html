@@ -411,7 +411,7 @@
                     <div class="modal-header">
                         <h6>Add Job Vacancies</h6>
                         <div class="all-read-important">
-                            <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')">
+                            <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')" >
                                 <p>1. General Details</p>
                             </div>
                             <div class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">
@@ -430,14 +430,13 @@
                                             <label>Job Title <span>*</span></label> <br>
                                             <input type="text" placeholder="Type a job title here..."
                                                 class="meeting-input" formControlName="jobtitle" formControlName="jobtitle">
+                                              
                                         </div>
                                         <div class="form-group">
                                             <label>Date <span>*</span></label> <br>
-                                            <input type="date" placeholder="23/04/2023" class="meeting-input"
+                                            <input type="date" placeholder="23/04/2023" class="meeting-input "
                                                 formControlName="datetitle">
                                         </div>
-
-
                                     </div>
 
                                     <div class="meeting-mode">
@@ -463,8 +462,6 @@
                                             <input type="text" placeholder="Specify CTC here..." class="meeting-input"
                                                 formControlName="ctctitle">
                                         </div>
-
-
                                     </div>
 
                                     <div class="meeting-mode">
@@ -502,15 +499,9 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
-
-
-
                                     <div class="discard-save">
-                                        <div class="save"><button type="submit" (click)="tabChange()">Next</button> </div>
+                                        <div class="save"><button type="submit">Next</button> </div>
                                     </div>
                                 </form>
                             </div>
@@ -528,10 +519,10 @@
                                           
                                             <div class="meeting-text-area">
                                                 <input type="text" placeholder="Type skill name..." class="todo-list"
-                                                #task>
+                                                #task  ><button (click)="addtask(task.value)">click</button>
                                                 
                                               
-                                                <button (click)="addtask(task.value)">click</button>
+                                               
                                                 <ul  class="input_list">
                                                     <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
                                                 </ul>
@@ -590,7 +581,7 @@
                                     <div class="Back-Add">
                                         <div class="back"><button type="submit" (click)="closeModal5()">Back</button>
                                         </div>
-                                        <div class="add"><button type="submit" (click)="shownewjobmodal()" >Add</button>
+                                        <div class="add"><button type="submit" (click)="successfulmodal()" >Add</button>
                                         </div>
                                     </div>
                                     
@@ -604,7 +595,7 @@
 
             </div>
 
-            <div class="forget_email_send_content" *ngIf="shownewjobmodal()">
+            <div class="forget_email_send_content" *ngIf="successmodal">
                 <div class="forget_content">
                     <div class="forget_text">
                         <img src="./assets/images/tick.png" alt="img">
