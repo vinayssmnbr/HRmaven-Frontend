@@ -268,11 +268,13 @@
           </div>
 
 
-          <div class="validation-message" *ngIf="!isPasswordExists">
+          <div class="validation-message" *ngIf="!isPasswordExists"><i class="fa-solid fa-circle-info"></i>
+            Your old password was entered incorrectly
           </div>
-          <div class="validation-message" *ngIf="!isPasswordmatched && isPasswordExists">
-            <i class="fa-solid fa-circle-info"></i>Your old password was entered incorrectly
+          <div class="validation-message" *ngIf="isPasswordmatched">
+
           </div>
+
 
           <div class="new-reenter">
             <div class="old-new-confirm-password">
