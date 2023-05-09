@@ -430,7 +430,7 @@
                                             <label>Job Title <span>*</span></label> <br>
                                             <input type="text" placeholder="Type a job title here..."
                                                 class="meeting-input" formControlName="jobtitle" formControlName="jobtitle">
-                                              
+
                                         </div>
                                         <div class="form-group">
                                             <label>Date <span>*</span></label> <br>
@@ -501,7 +501,7 @@
                                         </div>
                                     </div>
                                     <div class="discard-save">
-                                        <div class="save"><button type="submit">Next</button> </div>
+                                        <div class="save"><button type="submit" (click)="tabChange('unread')">Next</button> </div>
                                     </div>
                                 </form>
                             </div>
@@ -516,21 +516,21 @@
                                     <div class="skill-required-mode">
                                         <div class="form-group">
                                             <label>Skills required <span>*</span></label> <br>
-                                          
+
                                             <div class="meeting-text-area">
                                                 <input type="text" placeholder="Type skill name..." class="todo-list"
                                                 #task  ><button (click)="addtask(task.value)">click</button>
-                                                
-                                              
-                                               
+
+
+
                                                 <ul  class="input_list">
                                                     <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
                                                 </ul>
                                             </div>
 
 
-                                            
-                                        </div> 
+
+                                        </div>
 
 
 
@@ -538,12 +538,12 @@
                                     <div class="skill-required-mode">
                                         <div class="form-group">
                                             <label>Recruiter's name <span>*</span></label> <br>
-                                          
+
                                             <div class="meeting-text-area">
                                                 <input type="text" placeholder="Amanda Kerry" class="todo-list"
                                                 #task>
-                                                
-                                              
+
+
                                                 <button (click)="addtask1(task1.value1)">click</button>
                                                 <ul  class="input_list">
                                                     <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
@@ -551,8 +551,8 @@
                                             </div>
 
 
-                                            
-                                        </div> 
+
+                                        </div>
 
 
 
@@ -561,14 +561,14 @@
                                     <div class="skill-required-mode">
                                         <div class="form-group">
                                             <label>Job description:</label> <br>
-                                          
+
                                         <div class="job-description">
                                               <textarea name="" id="" placeholder="Enter description..."></textarea>
                                             </div>
 
 
-                                            
-                                        </div> 
+
+                                        </div>
 
 
 
@@ -584,7 +584,7 @@
                                         <div class="add"><button type="submit" (click)="successfulmodal()" >Add</button>
                                         </div>
                                     </div>
-                                    
+
                                 </form>
                             </div>
                         </form>
