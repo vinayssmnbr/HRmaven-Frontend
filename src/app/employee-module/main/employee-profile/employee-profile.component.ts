@@ -599,12 +599,12 @@ export class EmployeeProfileComponent {
     this.empdashService
       .oldpasswordEmployee(email, oldpassword)
       .subscribe((res: any) => {
-        if (res.message === 'Password matches') {
+        if (res.flag) {
           this.isPasswordmatched = true;
-          console.log('password matches');
+          console.log(res.message);
         } else {
           this.isPasswordmatched = false;
-          console.log('password mismatch');
+          console.log(res.message);
         }
         this.oldpassword = oldpassword;
       });
