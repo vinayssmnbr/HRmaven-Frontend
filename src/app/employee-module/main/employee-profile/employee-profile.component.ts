@@ -340,6 +340,9 @@ export class EmployeeProfileComponent {
     this.Selectvariable2 = arr2.name;
     this.colorvariable2 = arr2.id;
     this.contentdropdown2 = false;
+    if (this.colorvariable2 === 5) {
+      this.Selectvariable2 = 'Others';
+    }
     console.log(arr2.name);
     this.obj.bankname = arr2.name;
   }

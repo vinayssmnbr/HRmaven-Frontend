@@ -208,7 +208,11 @@ export class DashService {
   }
   //GET EMPLOYEE CUSTOM UID
   getEmployeeUid() {
-    return this.http.get(this.prefix + 'api/uid');
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+  return this.http.get(this.prefix + 'api/uid',{headers});
   }
 
   getemprecord(id:any){
