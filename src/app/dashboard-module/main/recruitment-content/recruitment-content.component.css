@@ -131,13 +131,12 @@ ul.todo-list li {
 }
 .input_list li{
   border-radius: 16px;
-  /* text-align: center; */
   font-weight: 400;
   padding-left: 10px;
   font-size: 14px;
   padding-right: 10px;
-  width: 537px;
-  height: 32px;
+  width: auto;
+  /* height: 25px;  */
   align-items: center;
   display: flex;
 }
@@ -147,16 +146,14 @@ cursor: pointer;
 }
 ul.input_list{
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  /* flex-direction: column; */
+  /* gap: 8px; */
   position: relative;
-  height: 75px;
+  flex-wrap: wrap;
   overflow-y: auto;
   overflow-x: hidden;
-  /* background-color: #FFFFFF;
-box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
-border-radius: 8px; */
-
+  height: 32px;
+  margin-top: -15px;
 }
 ul.input_list::after{
   content: '';

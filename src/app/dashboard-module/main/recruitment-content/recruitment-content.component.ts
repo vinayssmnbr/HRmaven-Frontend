@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup , Validators} from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
 declare var $:any;
 declare var checkboxOptions:any;
@@ -216,7 +216,7 @@ removetask1(id:number){
 
 
 jobvacancyform= new FormGroup({
-  jobtitle:new FormControl(''),
+  jobtitle:new FormControl('',[Validators.required]),
   datetitle:new FormControl('')
 
 })
@@ -229,11 +229,14 @@ forget_email_send_content:boolean=false;
 shownewjobmodal(){
   this.forget_email_send_content=true;
 }
-
-
-tabchange(){
-
+// firststep:boolean=false;
+// seconstep:boolean=false;
+// nextform(){
+//   this.firststep=false;
+//   this.seconstep=true;
 }
-  }
+
+
+  
 
 
