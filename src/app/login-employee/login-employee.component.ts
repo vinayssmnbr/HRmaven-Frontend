@@ -22,6 +22,7 @@ export class LoginEmployeeComponent {
   //  emailExists: any[] = [];
   userEmail: any = '';
   emailExists = false;
+  emploginLoader:boolean = false;
 
   constructor(
     public fb1: FormBuilder,
@@ -161,6 +162,7 @@ export class LoginEmployeeComponent {
   // submissions
   obj: any;
   onSubmit(data: any) {
+    this.emploginLoader= true;
     console.log(this.loginForm.value);
 
     this.employeeService.users(data).subscribe((res: any) => {
@@ -199,6 +201,8 @@ export class LoginEmployeeComponent {
         'LoggedInName',
         this.loginForm.controls['email'].value
       );
+    this.emploginLoader= false;
+
     });
   }
   ForgetEmailSubmit(data: any) {

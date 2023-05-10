@@ -347,7 +347,7 @@
                             conditions</a></label>
                 </div>
                 <div class="input-field button">
-                    <input id="submit" type="submit" [disabled]="sigupform.invalid" value="Sign Up" />
+                    <input id="submit" type="submit" [disabled]="sigupform.invalid" [value]=" signupLoader? 'Loading...' : 'Sign Up'"/>
                 </div>
             </form>
             <div class="logo">

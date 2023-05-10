@@ -1399,3 +1399,9 @@ right: 20px;
 .visible {
   display: block;
 }
+div.form-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  /* opacity: 0 !important; */
+}

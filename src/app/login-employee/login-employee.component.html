@@ -175,7 +175,7 @@
                 </div>
             </div>
             <div class="input-field button">
-                <input type="submit" value="Login" [disabled]="loginForm.invalid" />
+                <input type="submit" [value]=" emploginLoader?'Loading...': 'Login'" [disabled]="loginForm.invalid" />
             </div>
             <!-- <div class="input-field">
                 <p class="or_bar">OR</p>
