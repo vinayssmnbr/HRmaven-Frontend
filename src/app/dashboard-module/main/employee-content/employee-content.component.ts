@@ -382,7 +382,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() {}
+  nextForm2() { }
   array: any = [
     {
       id: 0,
@@ -843,7 +843,7 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
- 
+
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
@@ -859,7 +859,7 @@ export class EmployeeContentComponent implements OnInit {
     );
     // }
   }
-     
+
 
   // download(): void {
   //   const selectedEmployee = this.employee.filter(emp => emp.checked);
@@ -867,12 +867,12 @@ export class EmployeeContentComponent implements OnInit {
   //     alert('Please select at least one employee to download.');
   //     return;
   //   }
-  
+
   //   const data = [
   //     ['EMPLOYEEID', 'NAME', 'DESIGNATION', 'EMAIL', 'CONTACT', 'STATUS'],
   //     ...selectedEmployee.map((employee) => [employee.uid, employee.name, employee.designation, employee.email, employee.mobile, employee.status])
   //   ];
-  
+
   //   const worksheet = XLSX.utils.aoa_to_sheet(data);
   //   const workbook = XLSX.utils.book_new();
   //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
@@ -881,7 +881,7 @@ export class EmployeeContentComponent implements OnInit {
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
-  
+
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
@@ -995,20 +995,36 @@ export class EmployeeContentComponent implements OnInit {
 
       console.log(data, 'parsed CSV data');
       // if(data.length==0) return 'no user selected'
+    
+      if (data.length === 0) {
+        alert('Your CSV file was not filled properly.');
+        return;
+      }
+
       let uid: number = -1;
       let responseArr = [];
       // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
+        console.log(res.message)
         if (uid == -1) return 'there is an error while getting uid';
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
-          // console.log('Adding employee:', employee);
+          console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
+              console.log('res',res)
+              console.log('messagge',res.message)
+              if(res.message=="Email already exists in the register"){
+                alert('emailAll ready exist')
+                console.log(' mhjiooig')
+              }
+            // if(res.msg=="some fields are missing"){
+            //     alert('some fields are missing')
+            //   }
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
@@ -1040,10 +1056,7 @@ export class EmployeeContentComponent implements OnInit {
     reader.readAsText(file);
   }
 
-  // importFile() {
-  //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
-  //  fileInput.click();
-  //  }
+ 
 
   //FOR CHECKING THE CHECK BOX
 
@@ -1175,5 +1188,5 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  ngOnChange() {}
+  ngOnChange() { }
 }
