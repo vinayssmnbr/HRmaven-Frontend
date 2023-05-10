@@ -37,6 +37,8 @@ export class HeaderComponent {
   }
   hide: boolean = true;
 header:any
+objectuserid = localStorage.getItem('emailid')
+
   ngOnInit() {
     const today = new Date();
     this.date = today.toLocaleString('default', {
@@ -65,7 +67,14 @@ header:any
     console.log('header xyz',this.user.url)
     this.header=this.user.url
     console.log('xyz',this.header)
-    
+    this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+      console.log("res account settings personaldataaaaa: ", res);
+
+
+     
+      this.profileimage = res.personaldata.url;
+
+    });
   }
 
   profileimage: any = '';
@@ -83,7 +92,7 @@ header:any
     this.dashService.getUserProfile().subscribe((res: any) => {
       this.userEmail = res.email.split('@')[0];
       this.name = res.username.charAt(0).toUpperCase() + res.username.slice(1);
-      this.profileimage = res.personaldata.url
+      // this.profileimage = res.personaldata.url
     });
   }
   loginobjectid: any ='';

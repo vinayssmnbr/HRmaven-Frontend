@@ -279,6 +279,7 @@
 <div class="profile_div" *ngIf="profileDisplay">
   <div class="profile-content">
     <div class="profile-title">
+      <div class="profile-logo-text">
       <div class="profile-logo">
         <img *ngIf="!obj.url" src="./assets/images/gg_profile.svg" alt="" class="header-icon">
         <img *ngIf="obj.url" src="{{obj.url}}" alt="" class="header-icon">
@@ -288,8 +289,9 @@
         <h2> {{name}} </h2>
         <p>{{userEmail}}</p>
       </div>
+    </div>
       <div class="head-btn">
-
+        <button class="btn-head">EMPLOYEE</button>
       </div>
     </div>
     <div class="profile-account">
@@ -297,12 +299,12 @@
         <button class="account-btn"><i class="fa-solid fa-user-gear"></i> <span>My Profile</span></button>
       </div>
     </div>
-    <div class="profile-account disable-btn">
+    <!-- <div class="profile-account disable-btn">
       <div class="account1">
         <button class="account-btn" disabled><img src="./assets/images/subs.svg" alt="">
           <a>Subsciption</a></button>
       </div>
-    </div>
+    </div> -->
   </div>
 
 </div>

@@ -311,7 +311,7 @@
   font-size: 14px;
   color: #222222;
   cursor: pointer;
-  /* padding-left: 20px; */
+  padding: 0px 33px;
 }
 
 .content1 li {
@@ -1035,6 +1035,7 @@ input[type="number"]:hover {
 
 .old-new-confirm-password input {
   width: 300px;
+  margin-top: 7px;
   min-height: 42px;
   background-color: #ffffff;
   border: 1px solid #b4b4b4;
@@ -1050,6 +1051,70 @@ input[type="number"]:hover {
   display: flex;
   text-align: center;
   align-items: center;
+}
+.tooltip {
+  position: relative;
+  margin-top: 8px;
+  margin-left: -90px;
+  cursor: pointer;
+}
+.on-hover {
+  position: absolute;
+  width: 170px;
+  height: 105px;
+  background: #f7f7fb;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-top: -10px;
+  margin-left: 5px;
+  transform: translateX(-5px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
+}
+.tooltip .on-hover::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f7f7fb;
+  left: 0px;
+  top: 20px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 1px;
+}
+.on-hover ul {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+}
+.on-hover ul li {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #888888;
+  text-align: left;
+}
+/* .password:focus .on-hover{
+  transform: translate(5px);
+  opacity: 1;
+} */
+#tool:hover .on-hover {
+  opacity: 1 !important;
+}
+.tooltip:hover .on-hover {
+  transform: translate(5px);
+  opacity: 1;
+  visibility: visible;
+}
+.old-new-confirm-password:hover .on-hover {
+  transform: translate(5px);
+  opacity: 1;
+  visibility: visible;
+}
+.old-new-confirm-password [type="password"]:hover {
+  border: 1px solid #2f2c9f;
 }
 
 .new-reenter {
@@ -1194,7 +1259,41 @@ input[type="number"]:hover {
   text-align: center;
   padding: 16px 66px;
 }
-
+#text9 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text10 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text11 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+#text8 {
+  margin-top: -10px;
+  margin-left: -15px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+.content3 {
+  margin-top: -40px;
+}
 .Done_form_btn {
   padding-top: 20px;
   display: flex;
@@ -1253,20 +1352,31 @@ input[type="number"]:hover {
 .password.ng_valid {
   border: 1px solid green !important;
 }
+.text.ng_invalid {
+  border: 1px solid red !important;
+}
+
+.text.ng_invalid:hover {
+  border: 1px solid red;
+}
+
+.text.ng_valid {
+  border: 1px solid green !important;
+}
 .validation-message {
   color: #cb1e0f;
   display: flex;
   gap: 6px;
-  /* margin-top: -15px; */
   font-family: "Outfit", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   margin-left: 218px;
-  margin-top: 10px;
+  margin-top: 6px;
+  position: absolute;
 }
 
-.fa-circle-info {
+.fa-circle-exclamation {
   color: #cb1e0f;
   margin-top: 3px;
 }

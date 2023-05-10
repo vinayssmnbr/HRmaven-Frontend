@@ -1970,13 +1970,18 @@ input::placeholder {
 }
 
 .no_data {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   padding: 20px 0;
   text-align: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
   margin-top: 150px;
+  background-color: transparent;
+}
+
+.no_data:hover {
+  background-color: transparent !important;
 }
 
 .content3 {

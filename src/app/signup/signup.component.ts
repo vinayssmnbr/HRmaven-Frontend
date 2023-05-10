@@ -28,6 +28,7 @@ export class SignupComponent {
   capitalCheck: boolean = false;
   smallCheck: boolean = false;
   numericalCheck: boolean = false;
+  signupLoader:boolean = false;
 
   is_visible = false;
   password = '';
@@ -62,7 +63,7 @@ export class SignupComponent {
 
   ngOnInit() {
     // this.userService.isFromSignupPage = this.route.snapshot.url[0].path === 'signup';
-    this.userService.isFromSignupPage = true;
+    // this.userService.isFromSignupPage = true;
 
     this.subject.pipe(debounceTime(3000)).subscribe(() => {
       // this.formGroup.controls['username'].setValidators([Validators.pattern('^[A-Z]\'?[- a-zA-Z]( [a-zA-Z]*')])
@@ -210,8 +211,13 @@ export class SignupComponent {
   orgnisation: any = '';
 
   onSubmit(data: any) {
+    this.signupLoader = true;
     console.log(this.sigupform.value);
     this.userService.saveUser(data).subscribe((result: any) => {
+      console.log('personal true or not: ',result.personalDataSubmitted)
+      // if (result.personalDataSubmitted) {
+        localStorage.setItem('personalDataSubmitted', JSON.stringify(result.personalDataSubmitted));
+      // }
       this.userService.saveUser(this.sigupform);
       console.log(result);
       this.submit();
