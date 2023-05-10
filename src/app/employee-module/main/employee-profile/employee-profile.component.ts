@@ -222,7 +222,10 @@ export class EmployeeProfileComponent {
 
   empform1 = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl(''),
+    name: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
     fatherName: new FormControl('', [
@@ -424,21 +427,29 @@ export class EmployeeProfileComponent {
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
+  loader: boolean = false;
   basicUpdate(data: any) {
-    this.success = true;
+    this.loader = true;
     this.showModal = true;
-    this.modalContent1 = false;
-    this.modalContent4 = false;
-    this.modalContent5 = false;
+    this.modalContent1 = true;
+    this.modalContent2 = false;
+    // this.modalContent5 = false;
     this.obj.motherName = data.motherName;
     this.obj.fatherName = data.fatherName;
     this.obj.name = data.name;
     this.obj.dateOfBirth = data.dateOfBirth;
     this.obj.nationality = data.nationality;
-    this.empdashService.updateEmployeeRecord(this.obj).subscribe((res: any) => {
-      this.obj = res;
-      console.log('update', res);
-    });
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe(
+      (res: any) => {
+        console.log('update successfully');
+        this.loader = false;
+        this.modalContent1 = false;
+        this.success = true;
+      },
+      (error: any) => {
+        console.log('error', error);
+      }
+    );
   }
   selectedUser: any = {};
 
@@ -478,27 +489,33 @@ export class EmployeeProfileComponent {
   closeModal2() {
     this.showModal = false;
   }
-  closeModal3() {
-    this.success = true;
+
+  closeModal3(data: any) {
     this.showModal = true;
+    this.loader = true;
     this.modalContent1 = false;
-    this.modalContent5 = false;
-    this.modalContent4 = false;
+    this.modalContent2 = false;
+    this.modalContent4 = true;
+    this.obj.state = data.state;
+    this.obj.address = data.address;
+    this.obj.postalCode = data.postalCode;
+    this.obj.email = data.email;
+    this.obj.mobile = data.mobile;
+    this.obj.city = data.city;
     const updatedData = this.empform2.value;
     updatedData['_id'] = this.obj._id;
-    this.empdashService
-      .updateEmployeeRecord(updatedData)
-      .subscribe((res: any) => {
-        this.obj = res;
-        console.log('update', res);
-      });
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe((res: any) => {
+      this.loader = false;
+      this.modalContent4 = false;
+      this.success = true;
+    });
     // this.obj = updatedData;
   }
   closeModal4(data: any) {
     this.showModal = true;
-    this.success = true;
     this.modalContent1 = false;
-    this.modalContent5 = false;
+    this.modalContent5 = true;
+    this.loader = true;
     this.modalContent4 = false;
     this.obj.accountno = data.accountno;
     this.obj.ifsc = data.ifsc;
@@ -507,6 +524,9 @@ export class EmployeeProfileComponent {
     this.obj.passport = data.passport;
     this.empdashService.updateEmployeeRecord(this.obj).subscribe(() => {
       console.log('Data updated successfully');
+      this.modalContent5 = false;
+      this.loader = false;
+      this.success = true;
     });
   }
   openModal4(obj: any) {
@@ -535,8 +555,8 @@ export class EmployeeProfileComponent {
   }
   showModal3: boolean = false;
   openModal3() {
-    this.showModal3 = true;
-    this.showModal = true;
+    // this.showModal3 = true;
+    // this.showModal = true;
   }
 
   closeModal8() {
