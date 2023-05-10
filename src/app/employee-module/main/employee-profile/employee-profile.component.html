@@ -117,9 +117,11 @@
       <div class="row1">
         <div class="column1">
           <span class="bname">Bank Name</span>
-          <p class="bname">{{obj.bankname}}</p>
+          <p *ngIf="!obj.bankname" class="bname">-------</p>
+          <p *ngIf="obj.bankname" class="bname">{{obj.bankname}}</p>
           <span class="adhaarno">Aadhaar Card Number</span>
-          <p class="adhaarno">{{obj.adhaarno}}</p>
+          <p *ngIf="!obj.adhaarno" class="adhaarno">-------</p>
+          <p *ngIf="obj.adhaarno" class="adhaarno">{{obj.adhaarno}}</p>
         </div>
         <div class="column2">
           <span class="bno">Bank Account No.</span>
@@ -264,42 +266,36 @@
             <label for="">Old Password</label>
             <input type="password" placeholder="Type your old password" class="form-control password" required
               (blur)="matchpwdEmployee()" formControlName="oldpassword"
-              [ngClass]="{'ng_invalid':!isPasswordmatched || (passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty),'ng_valid': isPasswordmatched && passwordform.controls.oldpassword.valid,'ng_error': !isPasswordmatched && isPasswordExists}">
+              [ngClass]="{'ng_invalid':isPasswordmatched || (passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty),'ng_valid': !isPasswordmatched && passwordform.controls.oldpassword.valid}">
           </div>
 
 
-          <div class="validation-message" *ngIf="!isPasswordExists"><i class="fa-solid fa-circle-info"></i>
+          <span class="validation-message" *ngIf="isPasswordmatched"><i class="fa-solid fa-circle-info"></i>
             Your old password was entered incorrectly
-          </div>
-          <div class="validation-message" *ngIf="isPasswordmatched">
+          </span>
 
-          </div>
 
 
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">New Password</label>
               <input type="password" placeholder="Type a new password" formControlName="password"
-                class="form-control password" formControlName="password" (keyup)="onKeyUp($event)" required
+                class="form-control password" formControlName="password" required (keyup)="checkConfirmPassword()"
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
 
             </div>
-          </div>
-          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>New Password cannot be same as old
-            password
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
-                class="form-control password" (keyup)="onKeyUp($event)" required
+                class="form-control password" (keyup)="checkConfirmPassword()" required
                 [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
 
             </div>
           </div>
-          <div class="validation-message"><i class="fa-solid fa-circle-info"></i>Password didn't match
-          </div>
-          <!-- </form> -->
+          <div class="validation-message" *ngIf="isConfirmPasswordInvalid"><i
+              class="fa-solid fa-circle-info"></i>Password does n't match</div>
           <div class="clear-update-button">
             <button class="clear-btn" (click)="clearSearch()">Clear</button>
             <button class="update-btn" type="submit" (click)="openModal3()"

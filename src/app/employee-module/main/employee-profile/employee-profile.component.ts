@@ -7,6 +7,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
   FormArray,
+  AbstractControl,
 } from '@angular/forms';
 import { EmpService } from '../../shared/emp.service';
 
@@ -187,7 +188,17 @@ export class EmployeeProfileComponent {
       name: 'Internship',
     },
   ];
-
+  isConfirmPasswordInvalid: boolean = false;
+  checkConfirmPassword() {
+    if (
+      this.passwordform.controls.password.value !==
+      this.passwordform.controls.confirm.value
+    ) {
+      this.isConfirmPasswordInvalid = true;
+    } else {
+      this.isConfirmPasswordInvalid = false;
+    }
+  }
   passwordform = new FormGroup({
     oldpassword: new FormControl('', [
       Validators.required,
@@ -570,10 +581,12 @@ export class EmployeeProfileComponent {
   searchValue: string = '';
   clearSearch() {
     this.searchValue = '';
+    this.passwordform.reset();
   }
   //RESET PASSWORD AND MATCH OLD PASSWORD
   email: any = '';
   newpassword(data: any) {
+    this.passwordform.reset();
     this.email = localStorage.getItem('LoggedInName');
     if (!this.email) {
       console.error('User email not found in local storage');
@@ -602,17 +615,17 @@ export class EmployeeProfileComponent {
     this.empdashService.oldpasswordEmployee(email, oldpassword).subscribe(
       (res: any) => {
         if (res.flag) {
-          this.isPasswordmatched = true;
+          this.isPasswordmatched = false;
           console.log(res.message);
         } else {
-          this.isPasswordmatched = false;
+          this.isPasswordmatched = true;
           console.log(res.message);
         }
 
         this.oldpassword = oldpassword;
       },
       (error: any) => {
-        this.isPasswordmatched = false;
+        this.isPasswordmatched = true;
       }
     );
   }

@@ -411,10 +411,10 @@
                     <div class="modal-header">
                         <h6>Add Job Vacancies</h6>
                         <div class="all-read-important">
-                            <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')" >
+                            <div class="all" [class.color]="id ==='all'" >
                                 <p>1. General Details</p>
                             </div>
-                            <div class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">
+                            <div class="unread" [class.color]="id ==='unread'">
                                 <p>2. More Details</p>
                             </div>
 
@@ -579,7 +579,7 @@
 
 
                                     <div class="Back-Add">
-                                        <div class="back"><button type="submit" (click)="closeModal5()">Back</button>
+                                        <div class="back"><button type="submit" (click)="tabChange('all')">Back</button>
                                         </div>
                                         <div class="add"><button type="submit" (click)="successfulmodal()" >Add</button>
                                         </div>
@@ -602,7 +602,7 @@
                     </div>
                     <h1>New job vacancies added successfully!</h1>
                     <p>You can add more job vacancies in a similar way.</p>
-                    <button class="done_btn" (click)="closeModal5()">Done</button>
+                    <button class="done_btn" (click)="closesuccessmodal()">Done</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,8 @@
+<div class="parent loaderLogo" *ngIf="loader">
+  <img id=loader src="../../assets/images/logo.ico">
+</div>
 <header>
-    <div class="row">
+    <div class="row" *ngIf="!loader">
         <div class="left-side">
             <div class="leftContent">
                 <div class="logo_part">
@@ -167,7 +170,7 @@
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email"
                           [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
                           class="form-control is-invalid" (keyup)="onKeyUp($event)" (blur)="checkEmailInput()" />
-                      
+
                         <div *ngIf="fun['email'].invalid && (fun['email'].touched || fun['email'].dirty)">
                           <span *ngIf="fun['email'].errors && fun['email'].errors['required']">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -191,9 +194,9 @@
                           </span>
                         </div>
                       </div>
-                      
-                                            
-                    
+
+
+
                 </div>
                 <div class="field create-password">
                     <div class="password-tooltip">

@@ -353,7 +353,7 @@
                                 </div>
                             </div>
                             <div class="edit-profile-footer">
-                                <button class="done-btn" type="submit" [disabled]="personaldataForm.controls['headOffice'||'phone'||'domain'||'name'].invalid " (click)="submitPersonalData(personaldataForm.value)">Done</button>
+                                <button class="done-btn" type="submit" [disabled]="personaldataForm.controls['headOffice'].invalid|| personaldataForm.controls['phone'].invalid || personaldataForm.controls['domain'].invalid || personaldataForm.controls['name'].invalid " (click)="submitPersonalData(personaldataForm.value)">{{signupLoader? 'Loading...': 'Done'}}</button>
                                 <!-- <button type="submit" [disabled]="form01.controls['email' || 'DoB' || 'gender'].invalid" (click)="functionForm01()">Click</button> -->
                             </div>
                         </form>
