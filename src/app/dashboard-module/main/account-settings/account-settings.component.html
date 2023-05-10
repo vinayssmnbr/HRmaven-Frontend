@@ -44,7 +44,7 @@
                   </div>
                 </div>
               </div>
-              
+
 
             <div class="name-text">
                 <!-- <h5>Abhishek Sharma</h5> -->
@@ -160,8 +160,8 @@
         <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
             <div class="company-name-headoffice-desc-area">
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
-                 
-                
+
+
                       <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
@@ -172,14 +172,14 @@
                         formControlName="oldpassword"
                         (blur)="matchpwd()"
                         (input)="isInputDirty = true">
-                      
+
                         <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
                             <p *ngIf="isInputDirty" style="color: red;">This is not your old password.</p>
                           </ng-template>
-                          
+
                       </div>
-                      
+
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
@@ -190,7 +190,7 @@
 
                         </div>
                     </div>
-                  
+
                     <div class="new-reenter">
                     <div class="old-new-confirm-password">
                         <label for="">Confirm Password</label>
@@ -251,6 +251,12 @@
                         <label for="email">Head Office</label>
                         <input type="text" class="form_input" placeholder='{{headOffice}}' formControlName="headOffice"
                             id="email" required />
+
+
+
+
+
+
                     </div>
                 </div>
 
@@ -274,7 +280,7 @@
 
 
             <div class="company-details-footer">
-                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">Done</button>
+                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">{{doneLoader1? 'Loading....':'Done'}}</button>
             </div>
         </div>
         <!-- </form> -->
@@ -328,7 +334,7 @@
 
 
             <div class="edit-profile-footer">
-                <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
+                <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)"> {{doneLoader1? 'Loading....':'Done'}}</button>
             </div>
         </div>
         <!-- </form> -->

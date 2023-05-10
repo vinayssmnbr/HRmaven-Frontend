@@ -23,6 +23,7 @@ export class AccountSettingsComponent implements OnInit {
   profileDisplayNot: boolean;
   hideNotifications = false;
  readonly= false;
+ doneLoader1:boolean = false;
 
  constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService){}
   objectuserid = localStorage.getItem('emailid')
@@ -50,14 +51,16 @@ organisationn: any = '';
   this.organisationn =  localStorage.getItem('companyname');
   this.companyDetailsForm = this.formBuilder.group({
 
-    headOffice: [''],
-    description: ['']
+    headOffice: ['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
+    description: ['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')]
   });
 
   this.personalDetailsForm = this.formBuilder.group({
-    name:[''],
-    personalemail: [''],
-    phone: ['']
+        name:['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
+    personalemail: ['',[Validators.required,Validators.email, Validators.pattern(
+      '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+    )]],
+    phone: ['',[Validators.required, Validators.pattern('^[0-9]+$')]]
   });
       this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
         console.log("res account settings personaldataaaaa: ", res);
@@ -101,6 +104,7 @@ organisationn: any = '';
     //   });
     // }
     updateData(data: any){
+      this.doneLoader1 = true;
       this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
@@ -118,6 +122,7 @@ organisationn: any = '';
           this.imageurl = this.profileimage;
         };
         img.src = this.profileimage;
+        this.doneLoader1 = false;
       });
     }
 
@@ -238,7 +243,7 @@ organisationn: any = '';
   closeModal3(){
     this.showModal3 = false;
     this.forgetpwd.reset();
-    
+
 
   }
   onKeyUp(event): void {
