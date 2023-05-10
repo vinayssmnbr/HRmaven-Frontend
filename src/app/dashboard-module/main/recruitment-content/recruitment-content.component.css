@@ -120,14 +120,14 @@ ul.todo-list li {
   background-color: #EFEFF8;
   border-radius: 16px;
   text-align: center;
-  
+
 }
 .input_list_li i{
   position: relative;
   cursor: pointer;
   color: #777777;
   font-size: 12px;
-  
+
 }
 .meeting-text-area button{
   opacity: 0;
@@ -170,7 +170,7 @@ position: absolute;
 /* width */
 ul.input_list::-webkit-scrollbar {
   width: 5px;
-  
+
 }
 
 /* Track */
@@ -522,11 +522,11 @@ margin-top: 20px;
 }
 
 .all:hover {
-  border-bottom: 2px solid #2F2C9F;
+  /* border-bottom: 2px solid #2F2C9F; */
 }
 
 .unread:hover {
-  border-bottom: 2px solid #2F2C9F;
+  /* border-bottom: 2px solid #2F2C9F; */
 }
 
 .Important:hover {

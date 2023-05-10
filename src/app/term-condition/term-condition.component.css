@@ -132,6 +132,10 @@ h3 {
 .term_condition_btn {
     height: 87px;
     background-color: #EFEFF8;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     
 }
 

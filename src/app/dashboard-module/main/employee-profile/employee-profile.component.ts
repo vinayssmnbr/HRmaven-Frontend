@@ -80,9 +80,9 @@ export class EmployeeProfileComponent implements OnInit {
     interPercent: new FormControl('', [
       Validators.pattern(/^\d+(\.\d{1,2})?%?$/),
     ]),
-    graduation: new FormControl(''),
-    graduationStream: new FormControl(''),
-    graduationCgpa: new FormControl(''),
+    // graduation: new FormControl(''),
+    // graduationStream: new FormControl(''),
+    // graduationCgpa: new FormControl(''),
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
@@ -150,7 +150,6 @@ export class EmployeeProfileComponent implements OnInit {
   experienceForm: FormGroup;
   educationForm: FormGroup;
 
-
   get registrationFormControl() {
     return this.form.controls;
   }
@@ -162,29 +161,32 @@ export class EmployeeProfileComponent implements OnInit {
     });
     this.educationForm = new FormGroup({
       educationItems: new FormArray([this.createEducationItem()]),
-    })
+    });
   }
 
-  createEducationItem(): FormGroup{
+  createEducationItem(): FormGroup {
     return new FormGroup({
-     graduation: new FormControl(''),
-     graduationStream: new FormControl(''),
-     graduationCgpa: new FormControl(''),
-     pg: new FormControl(''),
-     pgStream: new FormControl(''),
-     pgCgpa: new FormControl(''),
-    })
+      graduation: new FormControl(''),
+      graduationCgpa: new FormControl(''),
+      graduationStream: new FormControl(''),
+      //  pg: new FormControl(''),
+      //  pgStream: new FormControl(''),
+      //  pgCgpa: new FormControl(''),
+    });
   }
 
-  get EducationItems(){
-    return this.educationForm.get('educationItems') as FormArray;
+  get EducationItems() {
+    return this.educationForm.get('EducationItems') as FormArray;
   }
 
   addItem1() {
-    this.educationItems.push(this.createEducationItem());
+    this.EducationItems.push(this.createEducationItem());
     console.log(this.educationForm.value);
   }
 
+  education() {
+    console.log(this.educationForm.value);
+  }
 
   createExperienceItem(): FormGroup {
     return new FormGroup({
@@ -632,8 +634,6 @@ export class EmployeeProfileComponent implements OnInit {
     this.dashService.updateEmployee(updatedData).subscribe((res) => {
       console.log('experience', res);
     });
-    this.user = updatedData;
-
     this.user = updatedData;
   }
   contentdropdown1: boolean = false;

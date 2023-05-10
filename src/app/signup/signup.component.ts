@@ -246,8 +246,14 @@ export class SignupComponent {
       );
     });
   }
+  loader = false;
+
   submit() {
-    this.router.navigate(['/dashboard']); //your router URL need to pass it here
+    this.loader=true;
+    setTimeout(()=>{
+      this.router.navigate(['/dashboard']); //your router URL need to pass it here
+
+    })
   }
 
   SignupByGoogle() {

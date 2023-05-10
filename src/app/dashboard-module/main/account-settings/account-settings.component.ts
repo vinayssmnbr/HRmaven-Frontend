@@ -167,20 +167,20 @@ isInputDirty = false;
         console.log("res account settings personaldata222: ", res.personaldata);
         console.log("res account settings personaldata222: ", res.personaldata.headOffice);
         console.log("res account settings personaldata: ", res.useridd);
-    
+
         this.employeename = res.personaldata.name;
         this.description = res.personaldata.description;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image
-    
+
         // Update the profile image in the UI
     
       });
     }
-    
 
-    
+
+
 
     forgetpwd = new FormGroup({
 
@@ -196,7 +196,7 @@ isInputDirty = false;
       validators:matchpassword
     }
     );
-    
+
 
     newpassword(data:any)
     {
@@ -215,26 +215,26 @@ isInputDirty = false;
   isPasswordMatched = false;
   oldpassword: any = '';
     emailidd: any =''
-    
+
 
     matchpwd() {
       const email = this.employeeemail;
       const oldPassword = this.forgetpwd.controls['oldpassword'].value;
       this.isPasswordMatched = false;
-    
+
       this.userService.getpwdmgt(email, oldPassword).subscribe((res: any) => {
         console.log("message: ", res);
         console.log("message email: ", res.message);
-    
+
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
         }
         this.oldpassword = oldPassword;
       });
     }
-    
-    
-  
+
+
+
 
 
 
@@ -271,6 +271,7 @@ isInputDirty = false;
   showModal1=false;
   openModal1(){
     this.showModal1 = true;
+
   }
 
   closeModal1(){
@@ -294,11 +295,15 @@ isInputDirty = false;
 
   closeModal3(){
     this.showModal3 = false;
+    this.forgetpwd.reset();
+    
+
   }
   onKeyUp(event): void {
     event.target.value = event.target.value.trim()
 
   }
+
 
   // forgetpwd: FormGroup;
   // get forgotformControl(){
@@ -363,7 +368,7 @@ isInputDirty = false;
     }
     this.onUpload();
   }
-  
+
   upload: boolean = false;
   progress: boolean = false;
   imageurl: any;
@@ -396,8 +401,8 @@ isInputDirty = false;
   //     console.log('img', this.imageurl);
   //   });
   // }
-  
-  
+
+
   }
 
 

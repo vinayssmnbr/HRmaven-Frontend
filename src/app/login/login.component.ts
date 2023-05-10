@@ -26,6 +26,8 @@ export class LoginComponent {
   //  emailExists: any[] = [];
   userEmail: any = '';
   emailExists = false;
+  Invalid = false;
+
 
   constructor(
     public fb1: FormBuilder,
@@ -33,7 +35,8 @@ export class LoginComponent {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService,
-    public userService: UserService
+    public userService: UserService,
+    // private cdRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -98,6 +101,7 @@ export class LoginComponent {
           this.userdetail = res.message;
         } else if (res.message === 'user-not-found') {
           this.usernotfound = res.message;
+
         }
 
         this.employeemail = res;
@@ -141,7 +145,6 @@ export class LoginComponent {
   showPasswordIcon = 'fa-eye-slash';
   Forgotshow = false;
   EmailSent = false;
-  Invalid = false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -163,6 +166,7 @@ export class LoginComponent {
   closeInvalid() {
     this.Invalid = !this.Invalid;
     this.loginForm.reset();
+    // this.cdRef.detectChanges();
   }
 
   // LOGIN
@@ -225,16 +229,17 @@ ress: any =''
         if (this.loginForm.value.Remember) {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
-          
+
         }
 
         console.log(res._id);
         this.cookie.set('hr_id', res._id);
         this.cookie.set('role', 'hr');
         this.submit();
-      } else if (res.message == 'Invalid') {
+      } else if (res.message == 'Invalid' || res.message == "Employee email or status invalid") {
         console.log('haha');
         this.Invalid = !this.Invalid;
+        // this.cdRef.detectChanges();
       }
       localStorage.setItem(
         'LoggedInName: ',
@@ -316,6 +321,7 @@ ress: any =''
         this.usernotfound = res.message;
         console.log('usernotfound: ', this.usernotfound);
         this.usernotfound = true;
+
       }
 
       this.employeemail = res;

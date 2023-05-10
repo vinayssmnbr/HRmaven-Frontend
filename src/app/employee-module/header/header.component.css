@@ -66,15 +66,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 199px;
+  /* align-items: center; */
+  /* height: 199px; */
   background-color: #FFFFFF;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   position: absolute;
   right: 30px;
   margin-top: 65px;
-  padding: 25px 20px;
+  padding: 10px 20px;
   z-index: 9999;
   position: fixed;
 }
@@ -87,14 +87,16 @@
 }
 
 .profile-content .profile-text {
-  margin-left: -10px;
+  /* margin-left: -10px; */
 }
 
 .profile-title {
   display: flex;
-  margin-top: 10px;
-  align-items: center;
+  /* margin-top: 10px; */
+  /* align-items: center; */
   width: 100%;
+  padding: 12px 0;
+  border-bottom: 1px solid #F7F7FB;
 }
 
 .profile-text h1 {
@@ -107,10 +109,15 @@
   font-size: 14px;
   color: #B4B4B4;
 }
+.profile-logo-text{
+  display: flex;
+  /* gap: 10px; */
+  align-items: center;
+}
 
 .btn-head {
-  width: 51px;
-  height: 21px;
+  /* width: 51px;
+  height: 21px; */
   background: rgba(47, 44, 159, 0.1);
   border-radius: 50px;
   border: none;
@@ -118,8 +125,9 @@
   font-weight: 500;
   font-size: 11px;
   color: #2F2C9F;
-  cursor: pointer;
-  margin-left: 50px;
+  /* cursor: pointer; */
+  padding: 3px 10px;
+  /* margin-left: 50px; */
 }
 
 .profile-account {
@@ -136,13 +144,13 @@
   width: 40px;
 }
 
-.head-btn {
+/* .head-btn {
   margin-top: -10px;
-}
+} */
 
 .account {
   height: 46px;
-  width: 230px;
+  /* width: 230px; */
   background-color: #F7F7FB;
   border-radius: 8px;
   outline: none;
@@ -152,7 +160,7 @@
 
 .account1 {
   height: 46px;
-  width: 230px;
+  /* width: 230px; */
   background-color: #F7F7FB;
   border-radius: 8px;
   outline: none;

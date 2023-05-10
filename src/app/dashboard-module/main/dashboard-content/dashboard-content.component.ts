@@ -17,6 +17,7 @@ export class DashboardContentComponent implements OnInit {
   // loader=false;
   loadermain: boolean = true;
   loader: boolean = false;
+  signupLoader:boolean = false;
   isFromSignupPage = false;
   formSubmitted = false;
   showModalContent: boolean;
@@ -73,6 +74,7 @@ export class DashboardContentComponent implements OnInit {
 
 
   submitPersonalData(data: any){
+    this.signupLoader = true;
     console.log("personal data: ", data);
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);

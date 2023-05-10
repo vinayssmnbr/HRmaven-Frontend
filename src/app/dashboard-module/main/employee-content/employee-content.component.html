@@ -83,8 +83,9 @@
     </div>
     <div class="input_right">
       <div class="view">
-        <i class="fa-solid fa-list" [ngClass]="{'active':tableview}" (click)="tableviewcall()"></i>
-        <img src="./assets/images/Vector (1).svg" alt="" [ngClass]="{'active':cardview}" (click)="cardviewcall()">
+        <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
+        <span [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/Vector (1).svg"
+            alt=""></span>
         <!-- <i class="fa-solid fa-grid-2" [ngClass]="{'active':cardview}" (click)="cardviewcall()"></i> -->
       </div>
       <!-- <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
@@ -102,9 +103,10 @@
         <tr class="table-row">
           <!-- <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
               (change)="onCheckboxChange($event, 'All')">Employee ID</th> -->
-              <th class="employee"><input type="checkbox" [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
-                (change)="onCheckboxChange($event, 'All')">Employee ID</th>
-  
+          <th class="employee"><input type="checkbox"
+              [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
+              (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -126,7 +128,7 @@
           </td>
           <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
 
-            <td *ngIf="user.found!='true'">
+            <td *ngIf="user.found!='true'" [ngClass]="{'active':user.found=='!true','inactive':user.found=='true'}">
               <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
                   (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
               <!-- <div class="employee1"><input type="checkbox" [ngModel]=" isChecked" (click)="toggleAllCheckboxes()" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div> -->
@@ -183,44 +185,41 @@
     <div class="view2">
       <div class="card-view"
         *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
-        <div class="column3">
-          <div class="card-detail">
-            <div class="first-detail">
-              <input type="checkbox">
-              <div class="icons1">
-                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <img src="./assets/images/down-arrow.png" alt="">
-              </div>
+        <div class="card-detail">
+          <div class="first-detail">
+            <input type="checkbox">
+            <div class="icons1">
+              <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                (change)="onSelectChange($event, user)" [value]="user.status"
+                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                <option value="active" class="activated">Active</option>
+                <option value="terminated" class="terminate">Terminated</option>
+                <option value="resigned" class="resign">Resigned</option>
+                <option value="absconder" class="abscond">Absconder</option>
+              </select>
+              <img src="./assets/images/down-arrow.png" alt="">
             </div>
-            <div class="image-detail">
-              <span>
-                <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
-                <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
+          </div>
+          <div class="image-detail">
+            <span>
+              <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
+              <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
 
-              </span>
+            </span>
+          </div>
+          <div class="per-detail">
+            <h3>{{user.name}}</h3>
+            <div class="per-detail1">
+              <p>{{user.designation}}<span> | {{user.uid}}</span></p>
             </div>
-            <div class="per-detail">
-              <h3>{{user.name}}</h3>
-              <div class="per-detail1">
-                <p>{{user.designation}}<span>| {{user.uid}}</span></p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <p>{{user.mobile}}</p>
-              <span>{{user.email}}</span>
-            </div>
+          </div>
+          <div class="contact-detail">
+            <p>{{user.mobile}}</p>
+            <span>{{user.email}}</span>
           </div>
         </div>
       </div>
       <!-- <div class="card-view">
-        <div class="column3">
           <div class="card-detail">
             <div class="first-detail">
               <input type="checkbox">
@@ -252,10 +251,8 @@
               <span>emilycooper@gmail.com</span>
             </div>
           </div>
-        </div>
       </div>
       <div class="card-view">
-        <div class="column3">
           <div class="card-detail">
             <div class="first-detail">
               <input type="checkbox">
@@ -287,10 +284,8 @@
               <span>emilycooper@gmail.com</span>
             </div>
           </div>
-        </div>
       </div>
       <div class="card-view">
-        <div class="column3">
           <div class="card-detail">
             <div class="first-detail">
               <input type="checkbox">
@@ -322,7 +317,40 @@
               <span>emilycooper@gmail.com</span>
             </div>
           </div>
-        </div>
+      </div>
+
+      <div class="card-view">
+          <div class="card-detail">
+            <div class="first-detail">
+              <input type="checkbox">
+              <div class="icons1">
+                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <img src="./assets/images/down-arrow.png" alt="">
+              </div>
+            </div>
+            <div class="image-detail">
+              <span>
+                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>Emily Cooper</h3>
+              <div class="per-detail1">
+                <p>Front End Developer <span>| 25984</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>9870541231</p>
+              <span>emilycooper@gmail.com</span>
+            </div>
+          </div>
       </div> -->
     </div>
   </div>
@@ -508,7 +536,7 @@
           Next </button>
         <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
-          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">Done</button>
+          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">{{loading?'Loading...':'Done'}}</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">
