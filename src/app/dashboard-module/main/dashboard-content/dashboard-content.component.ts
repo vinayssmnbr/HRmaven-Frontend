@@ -21,7 +21,7 @@ export class DashboardContentComponent implements OnInit {
   isFromSignupPage = false;
   formSubmitted = false;
   showModalContent: boolean;
-  
+
 
   constructor(
     private router: Router,
@@ -41,14 +41,11 @@ export class DashboardContentComponent implements OnInit {
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),Validators.minLength(2),
+  ]),
     domain: new FormControl('', [Validators.required, Validators.pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$")]),
-    phone: new FormControl('', [
-      Validators.required,
-      Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$"),
-      this.phoneValidator
-    ]),
-    headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),Validators.minLength(2)]),
     // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
 
   })
@@ -59,7 +56,7 @@ export class DashboardContentComponent implements OnInit {
     }
     return null;
   }
-  
+
   onInput(event: any) {
     const input = event.target as HTMLInputElement;
     if (input.value && input.value.length > 10) {
@@ -67,9 +64,9 @@ export class DashboardContentComponent implements OnInit {
     }
     this.isInputDirty = true;
   }
-  
+
   isInputDirty = false;
- 
+
   email = localStorage.getItem('emailid');
 
 
@@ -82,9 +79,9 @@ export class DashboardContentComponent implements OnInit {
       this.formSubmitted = true;
       // localStorage.setItem('empname', this.formData.name);
       // this.showForm = false;
-      localStorage.setItem('personalDataSubmitted', 'true'); 
+      localStorage.setItem('personalDataSubmitted', 'true');
         });
-  
+
       }
 
   options: any = [
@@ -141,7 +138,7 @@ export class DashboardContentComponent implements OnInit {
     showForm = true
     isFromLoginPage = false;
     showPersonalDataForm = true; // show the personal data form by default
-    
+
     loading = true;
 
     ngOnInit() {
@@ -194,9 +191,9 @@ export class DashboardContentComponent implements OnInit {
 
     this.empname = res.personaldata.name;
     localStorage.setItem('empname', this.empname);
-  
+
       this.loading = false;
-  
+
     });
 
 

@@ -332,7 +332,21 @@
                                         formControlName="name" required
 
                                         [ngClass]="{'ng_invalid':personaldataForm.controls.name.invalid && personaldataForm.controls.name.dirty,'ng_valid':personaldataForm.controls.name.valid}"/>
-                                </div>
+
+
+                                        <span *ngIf="personaldataForm.controls.name.invalid && personaldataForm.controls.name.touched">
+                                          <span *ngIf="personaldataForm.controls.name.errors.required">
+                                            *Name is required.
+                                          </span>
+                                          <span *ngIf="personaldataForm.controls.name.errors.pattern">
+                                            *Must start with a capital letter.
+                                          </span>
+                                          <span *ngIf="personaldataForm.get('name').errors?.minlength && personaldataForm.get('name').touched">
+                                            *Must be at least 2 characters long.
+                                          </span>
+                                        </span>
+
+                                      </div>
                                 <div class="form__group">
                                     <label for="noOfEmployee">Domain</label>
                                     <input type="text" class="form_input" placeholder='Specify your domain' formControlName="domain"
@@ -358,6 +372,17 @@
                                     <input type="text" class="form_input" placeholder='Eg. Leeds, America'
                                         formControlName="headOffice" id="office" required
                                         [ngClass]="{'ng_invalid':personaldataForm.controls.headOffice && personaldataForm.controls.headOffice.dirty,'ng_valid':personaldataForm.controls.headOffice.valid}"/>
+                                        <span *ngIf="personaldataForm.controls.headOffice.invalid && personaldataForm.controls.headOffice.touched">
+                                          <span *ngIf="personaldataForm.controls.headOffice.errors.required">
+                                            *Name is required.
+                                          </span>
+                                          <span *ngIf="personaldataForm.controls.headOffice.errors.pattern">
+                                            *Must start with a capital letter.
+                                          </span>
+                                          <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
+                                            *Must be at least 2 characters.
+                                          </span>
+                                        </span>
                                 </div>
                             </div>
                             <div class="edit-profile-footer">
