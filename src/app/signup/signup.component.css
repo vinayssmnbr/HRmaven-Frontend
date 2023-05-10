@@ -486,6 +486,8 @@ span.password-toggle.icon_eye {
     color: #CB1E0F;
     font-size: 14px;
     position: absolute;
+    /* display: flex;
+    flex-direction: row; */
 }
 
 
@@ -526,7 +528,13 @@ form.ng-invalid #submit {
     pointer-events: none;
     transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
 }
-
+.password-must-be{
+    display: flex;
+    align-items: center;
+}
+div span {
+    gap: 10px;
+}
 .iconWrap .tooltip::before {
     content: '';
     position: absolute;

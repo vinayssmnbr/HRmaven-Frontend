@@ -66,7 +66,8 @@
         <div class="all-area">
           <div class="image-and-text">
             <div class="robert-image">
-              <img src="assets/images/Rectangle.png" alt="hlo" />
+              <!-- <img src="assets/images/Rectangle.png" alt="hlo" /> -->
+              <img src="{{profileimage}}" alt="hlo" />
             </div>
 
             <div class="robert-text">
@@ -291,6 +292,7 @@
 <div class="profile_div" *ngIf="profileDisplay">  
   <div class="profile-content">
     <div class="profile-title">
+      <div class="profile-logo-text">
       <div class="profile-logo">
         <img src="./assets/images/Ellipse 98.svg" alt="" class="header-icon">
       </div>
@@ -298,8 +300,9 @@
         <h2> {{name}} </h2>
         <p>{{userEmail}}</p>
       </div>
+    </div>
       <div class="head-btn">
-        <button class="btn-head">HEAD</button>
+        <button class="btn-head">ADMIN</button>
       </div>
     </div>
     <div class="profile-account">

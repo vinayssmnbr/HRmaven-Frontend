@@ -3,7 +3,7 @@
 <!-- <div *ngIf="isFromSignupPage" style="margin-left: 50%;margin-top: 50%;">
     This div will only be shown if the user is coming from the signup page.
   </div> -->
-
+<div >
 <div class="main">
     <div class="row">
         <div class="col-3">
@@ -307,12 +307,14 @@
     <!-- <div *ngIf="!formSubmitted"  > -->
       <!-- <div *ngIf="!formSubmitted" [ngStyle]="{'opacity': (formSubmitted ? '0.0' : '1.0')}" > -->
         <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
-
-        <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
-     <!-- <div *ngIf="showForm" [ngStyle]="{ opacity: opacityValue }"> -->
-        <!-- <div [ngClass]="{ 'hidden': !showForm, 'visible': showForm }" [style.opacity]="opacityValue"> -->
-            <div [hidden]="!showForm" [style.opacity]="opacityValue">
-          <div >
+            <!-- <div *ngIf="!formSubmitted  && userService.isFromLoginPage"  > -->
+        <!-- <div *ngIf="!showPersonalDataForm  || !formSubmitted  || showPersonalDataForm=== true"> -->
+            <!-- <div *ngIf="loading">
+                <div class="loader"></div>
+            </div> -->
+            <div >
+            <!-- <div  class="form-container" [style.opacity]="opacityValue">                          -->
+               <div  class="form-container" *ngIf="showForm && !formSubmitted" [style.opacity]="opacityValue" >
                 <div class="Modal_form" >
 
                     <div class="Modal_modal"  >
@@ -330,7 +332,21 @@
                                         formControlName="name" required
 
                                         [ngClass]="{'ng_invalid':personaldataForm.controls.name.invalid && personaldataForm.controls.name.dirty,'ng_valid':personaldataForm.controls.name.valid}"/>
-                                </div>
+
+
+                                        <span *ngIf="personaldataForm.controls.name.invalid && personaldataForm.controls.name.touched">
+                                          <span *ngIf="personaldataForm.controls.name.errors.required">
+                                            *Name is required.
+                                          </span>
+                                          <span *ngIf="personaldataForm.controls.name.errors.pattern">
+                                            *Must start with a capital letter.
+                                          </span>
+                                          <!-- <span *ngIf="personaldataForm.get('name').errors?.minlength && personaldataForm.get('name').touched">
+                                            *Must be at least 2 characters long.
+                                          </span> -->
+                                        </span>
+
+                                      </div>
                                 <div class="form__group">
                                     <label for="noOfEmployee">Domain</label>
                                     <input type="text" class="form_input" placeholder='Specify your domain' formControlName="domain"
@@ -344,12 +360,33 @@
                                     <label for="name">Phone no.</label>
                                     <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
                                         id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
+<!-- <span *ngIf="personaldataForm.controls.phone.errors"
+  [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
+    [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value " (input)="onInput($event)">
+</span> -->
+
+    <!-- <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="name1" required
+    [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
+    [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value"
+    (input)="onInput($event)" /> -->
+
                                 </div>
                                 <div class="form__group">
                                     <label for="email">Head Office</label>
                                     <input type="text" class="form_input" placeholder='Eg. Leeds, America'
                                         formControlName="headOffice" id="office" required
                                         [ngClass]="{'ng_invalid':personaldataForm.controls.headOffice && personaldataForm.controls.headOffice.dirty,'ng_valid':personaldataForm.controls.headOffice.valid}"/>
+                                        <span *ngIf="personaldataForm.controls.headOffice.invalid && personaldataForm.controls.headOffice.touched">
+                                          <span *ngIf="personaldataForm.controls.headOffice.errors.required">
+                                            *Name is required.
+                                          </span>
+                                          <span *ngIf="personaldataForm.controls.headOffice.errors.pattern">
+                                            *Must start with a capital letter.
+                                          </span>
+                                          <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
+                                            *Must be at least 2 characters.
+                                          </span> -->
+                                        </span>
                                 </div>
                             </div>
                             <div class="edit-profile-footer">
@@ -520,4 +557,5 @@
 
 
 
+</div>
 </div>
