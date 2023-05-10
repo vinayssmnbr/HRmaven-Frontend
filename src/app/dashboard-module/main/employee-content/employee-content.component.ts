@@ -21,7 +21,7 @@ import { error, log } from 'console';
 import { CookieService } from 'ngx-cookie-service';
 
 import * as FileSaver from 'file-saver';
-import {saveAs} from 'file-saver'
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -30,7 +30,6 @@ import {saveAs} from 'file-saver'
 export class EmployeeContentComponent implements OnInit {
   // user:any;
   isChecked: boolean = true;
-
 
   users: any[] = [];
   selected: any[] = [];
@@ -149,7 +148,10 @@ export class EmployeeContentComponent implements OnInit {
   }
   //ADD DATA
   // file: File | null = null;
+  progress1: boolean = true;
+  loading: boolean = false;
   submit() {
+    this.loading = true;
     if (this.form.invalid) return;
     console.log(this.form.value);
     let data = this.form.value;
@@ -622,21 +624,21 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   loader: boolean = false;
-  onFileSelected1(event: any) : void {
+  onFileSelected1(event: any): void {
     this.selectedFile1 = event.target.files[0];
     // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
-    this.loader=true;
+    this.loader = true;
   }
-  tableview:boolean=true;
-tableviewcall(){
-  this.tableview=!this.tableview;
-  this.cardview=false;
-}
-cardview:boolean=false;
-cardviewcall(){
-  this.cardview=true;
-  this.tableview=false;
-}
+  tableview: boolean = true;
+  tableviewcall() {
+    this.tableview = !this.tableview;
+    this.cardview = false;
+  }
+  cardview: boolean = false;
+  cardviewcall() {
+    this.cardview = true;
+    this.tableview = false;
+  }
   selectall: boolean = false;
   selectboxes() {
     this.selectall = !this.selectall;
@@ -724,32 +726,32 @@ cardviewcall(){
       case 'active': {
         this.optionStyle = {
           'background-color': 'rgba(123, 211, 109, 0.3)',
-          'color': '#3D9030',
-          'border': 'rgba(123, 211, 109, 0.3)',
+          color: '#3D9030',
+          border: 'rgba(123, 211, 109, 0.3)',
         };
         break;
       }
       case 'terminated': {
         this.optionStyle = {
           'background-color': 'rgba(250, 151, 150, 0.2)',
-          'color': '#CB1E0F',
-          'border': 'rgba(250, 151, 150, 0.2)',
+          color: '#CB1E0F',
+          border: 'rgba(250, 151, 150, 0.2)',
         };
         break;
       }
       case 'resigned': {
         this.optionStyle = {
           'background-color': '#EFEFF8',
-          'color': '#2f2c9f',
-          'border': '#EFEFF8',
+          color: '#2f2c9f',
+          border: '#EFEFF8',
         };
         break;
       }
       case 'absconder': {
         this.optionStyle = {
           'background-color': 'rgba(248, 187, 111, 0.4)',
-          'color': '#DB771D',
-          'border': 'rgba(248, 187, 111, 0.4)',
+          color: '#DB771D',
+          border: 'rgba(248, 187, 111, 0.4)',
         };
         break;
       }
@@ -906,19 +908,17 @@ cardviewcall(){
   //   fileInput.click();
   // }
 
-
-  waitThreeSeconds(){
+  waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve('Done!');
       }, 6000);
     });
-  };
+  }
 
   async onFileSelectedrem(event: any) {
-
     const file: File = event.files[0];
-    this.loader=true;
+    this.loader = true;
 
     if (!file) {
       console.log('No file selected.');
@@ -980,45 +980,45 @@ cardviewcall(){
       console.log(data, 'parsed CSV data');
       // if(data.length==0) return 'no user selected'
       let uid: number = -1;
-      let  responseArr = [];
+      let responseArr = [];
       // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
-      
         uid = res.uid;
-        console.log(res, 'uid response')
-        if (uid == -1) return 'there is an error while getting uid'
-        let increaseBy:number = 100/(data.length);
+        console.log(res, 'uid response');
+        if (uid == -1) return 'there is an error while getting uid';
+        let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
           // console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
-          this.dashService.addEmployee(employee).subscribe(async (res: any) => {
-            // console.log('Response:', res);
-            this.loader=true
-            responseArr.push(res);
-            if(responseArr.length== data.length){
-              await this.waitThreeSeconds();
-              this.loader = false;
-              this.csvadded = true;
-              this.importfile = false;
-              console.log('not uploaded files', errors)
+          this.dashService.addEmployee(employee).subscribe(
+            async (res: any) => {
+              // console.log('Response:', res);
+              this.loader = true;
+              responseArr.push(res);
+              if (responseArr.length == data.length) {
+                await this.waitThreeSeconds();
+                this.loader = false;
+                this.csvadded = true;
+                this.importfile = false;
+                console.log('not uploaded files', errors);
+              }
+              // console.log('Data:', res.data);
+              this.progress += increaseBy;
+              this.progressBar[0].style.width = `${this.progress}%`;
+              this.progressText[0].innerText = `${this.progress}%`;
+              console.log(res, 'response');
+              if (res.status == 'failed') {
+                errors.push({ ...employee, error: res.message });
+              }
+            },
+            (error: any) => {
+              errors.push({ ...employee, error });
             }
-            // console.log('Data:', res.data);
-            this.progress+= increaseBy;
-            this.progressBar[0].style.width = `${this.progress}%`;
-            this.progressText[0].innerText = `${this.progress}%`;
-            console.log(res, 'response')
-            if(res.status=='failed'){
-              errors.push({...employee, error: res.message})
-            }
-
-          }, (error: any)=>{
-            errors.push({...employee,error});
-          });
+          );
         });
         return 'employees added';
       });
-
     };
 
     reader.readAsText(file);
@@ -1159,13 +1159,5 @@ cardviewcall(){
     this.fetchdata();
   }
 
-
-
-
-  ngOnChange() { }
-
-
-
-
-
+  ngOnChange() {}
 }

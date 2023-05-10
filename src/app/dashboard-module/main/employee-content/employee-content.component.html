@@ -102,9 +102,10 @@
         <tr class="table-row">
           <!-- <th class="employee"><input type="checkbox" [checked]="selectedEmployess.length==employee.length"
               (change)="onCheckboxChange($event, 'All')">Employee ID</th> -->
-              <th class="employee"><input type="checkbox" [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
-                (change)="onCheckboxChange($event, 'All')">Employee ID</th>
-  
+          <th class="employee"><input type="checkbox"
+              [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
+              (change)="onCheckboxChange($event, 'All')">Employee ID</th>
+
           <!-- <th class="employee"><input type="checkbox"  [(ngModel)]=" isChecked"  (change)="onCheckboxChange($event, 'All')" >Employee ID</th> -->
           <th class="name">Name</th>
           <th class="email">Designation</th>
@@ -508,7 +509,7 @@
           Next </button>
         <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
-          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">Done</button>
+          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">{{loading?'Loading...':'Done'}}</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">

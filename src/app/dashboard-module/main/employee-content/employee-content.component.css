@@ -2207,3 +2207,26 @@ cursor: pointer;
   display: flex;
   gap: 25px;
 }
+.loader {
+  border: 8px solid #f3f3f3;
+  /* Light grey */
+  border-top: 8px solid #2f2c9f;
+  /* Blue */
+  border-radius: 50%;
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 34px;
+  width: 35px;
+  height: 35px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
