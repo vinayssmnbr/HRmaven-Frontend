@@ -63,7 +63,7 @@ export class RecruitmentContentComponent {
     this.showModal5 = true;
     this.showModalContent=true
   }
-  
+
   closeModal5(){
     this.showModal5 = false;
     this.showModalContent=false;
@@ -80,7 +80,7 @@ all:boolean=false;
     datetitle:new FormControl(''),
     date:new FormControl(''),
     ctctitle:new FormControl(''),
-    
+
   })
   vacancydetail()
 {
@@ -164,7 +164,7 @@ array2: any = [
     id: 1,
     name: 'Internship',
   },
-  
+
 ];
 contentdropdown2: boolean = false;
 dropdownOpen2() {
@@ -238,10 +238,17 @@ shownewjobmodal(){
 successmodal:boolean=false;
 successfulmodal(){
 this.successmodal=true;
+this.showModal5 = false;
+
+
+}
+
+closesuccessmodal(){
+  this.successmodal = false;
 }
 }
 
 
-  
+
 
 

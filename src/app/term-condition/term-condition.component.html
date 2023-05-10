@@ -22,7 +22,7 @@
                 <img src="assets/images/termside.png" alt="">
             </div>
             <div class="term_rightside">
-                <div class="General_term" id="General_term">
+                <div class="General_term" id="General_term" [hidden]="!term1Visible">
                     <div class="term_heading">
                         <h3>General terms & Conditions</h3>
                     </div>
@@ -111,7 +111,7 @@
                 </div>
 
 
-                <div class="use_policy" id="use_policy">
+                <div class="use_policy" id="use_policy" [hidden]="!term2Visible">
                     <h3>Acceptable Use Policy</h3>
                     <div class="term_text">
                         <p><span>1.</span><b>Introduction:</b>Welcome to HRMaven! These Terms of Service (“Terms”) are a
@@ -204,7 +204,7 @@
                     </div>
                 </div>
 
-                <div class="Cancellation_Policy">
+                <div class="Cancellation_Policy" [hidden]="!term3Visible">
                     <div class="Cancellation">
                         <h3>Cancellation Policy</h3>
                     </div>
@@ -255,7 +255,7 @@
                     </p>
                 </div>
 
-                <div class="Privacy_Policy">
+                <div class="Privacy_Policy" [hidden]="!term4Visible">
 
                     <div class="Privacy_title">
                         <h3>Privacy Policy</h3>

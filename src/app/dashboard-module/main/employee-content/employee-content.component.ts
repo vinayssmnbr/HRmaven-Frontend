@@ -756,7 +756,9 @@ export class EmployeeContentComponent implements OnInit {
         break;
       }
       default: {
-        this.optionStyle = {};
+        this.optionStyle = {
+          // 'width':'110px',
+        };
         break;
       }
     }
