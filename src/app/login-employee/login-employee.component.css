@@ -175,7 +175,7 @@ input:focus {
     font-size: 14px;
     display: flex;
     align-items: center;
-    padding-top: 3px;
+    padding-top: 4px;
 }
 .input-field span img{
   padding-right: 5px;
