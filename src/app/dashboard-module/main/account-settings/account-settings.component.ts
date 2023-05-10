@@ -3,6 +3,7 @@ import { UserService } from '../../../service/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchpassword } from './custom.validator';
 import { DashService } from '../../shared/dash.service';
+import { CookieService } from 'ngx-cookie-service';
 // import { EventEmitter } from 'stream';
 @Component({
   selector: 'app-account-settings',
@@ -24,9 +25,18 @@ export class AccountSettingsComponent implements OnInit {
   hideNotifications = false;
  readonly= false;
 
- constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService){}
+ constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService){
+  this.companyDetailsForm = this.formBuilder.group({
+    headOffice: [''],
+    description: ['']
+  });
+  this.personalDetailsForm = this.formBuilder.group({
+    name:[''],
+    personalemail: [''],
+    phone: ['', [Validators.required, this.phoneValidator]]
+  });
+ }
   objectuserid = localStorage.getItem('emailid')
-  // loginobjectid:any = ''
 
  data: any = ''
  employeename: any = '';
@@ -62,6 +72,13 @@ onInput(event: any) {
   }
   this.isInputDirty = true;
 }
+isEmptyInput = false;
+
+  onFocusout() {
+    const inputField = document.getElementById('oldp') as HTMLInputElement;
+    this.isEmptyInput = inputField.value === '';
+  }
+
 
 isInputDirty = false;
 // onBlur() {
@@ -71,69 +88,84 @@ isInputDirty = false;
 //   }
 // }
 
+
+
  ngOnInit(){
+
+  this.organisationn =  localStorage.getItem('companyname');
+  console.log('this.organisationn:',this.organisationn)
+
+  console.log('before getpersonals!! company name:', this.organisationn);
+  this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+    console.log("res account settings personaldataaaaa: ", res);
+
+    console.log("res account settings personaldata: ", res.personaldata);
+    console.log("res account settings personaldata: ", res.personaldata.headOffice);
+    console.log("res account settings personaldata description: ", res.personaldata.description);
+
+
+    console.log("res account settings personaldata: ", res.useridd);
+
+
+    this.employeename = res.personaldata.name;
+    this.totalemployee = res.personaldata.domain;
+    this.headOffice = res.personaldata.headOffice;
+    this.phone = res.personaldata.phone;
+    this.description = res.personaldata.description;
+    this.profileimage = res.personaldata.url;
+    this.email_id = this.employeeemail.split("@")
+  this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
+
+  });
   console.log("objectuserid: ",this.objectuserid)
   const oldPassword = this.personalDetailsForm.get('oldpassword');
   oldPassword.valueChanges.subscribe(() => {
     this.isInputDirty = true;
   });
-  this.organisationn =  localStorage.getItem('companyname');
-  this.companyDetailsForm = this.formBuilder.group({
+  // this.organisationn =  this.cookie.get('company');
+  // this.companyDetailsForm = this.formBuilder.group({
 
-    headOffice: [''],
-    description: ['']
-  });
+  //   headOffice: [''],
+  //   description: ['']
+  // });
 
-  this.personalDetailsForm = this.formBuilder.group({
-    name:[''],
-    personalemail: [''],
-    phone: ['', [Validators.required, this.phoneValidator]]
-  });
+  // this.personalDetailsForm = this.formBuilder.group({
+  //   name:[''],
+  //   personalemail: [''],
+  //   phone: ['', [Validators.required, this.phoneValidator]]
+  // });
+  console.log('before getpersonals!!');
       this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-        console.log("res account settings personaldataaaaa: ", res);
+        // console.log("res account settings personaldataaaaa: ", res);
 
-        console.log("res account settings personaldata: ", res.personaldata);
-        console.log("res account settings personaldata: ", res.personaldata.headOffice);
-        console.log("res account settings personaldata: ", res.personaldata.description);
-
-
-        console.log("res account settings personaldata: ", res.useridd);
+        // console.log("res account settings personaldata: ", res.personaldata);
+        // console.log("res account settings personaldata: ", res.personaldata.headOffice);
+        console.log("res account settings personaldatawww: ", res.personaldata.description);
 
 
-        this.employeename = res.personaldata.name;
-        this.totalemployee = res.personaldata.domain;
-        this.headOffice = res.personaldata.headOffice;
-        this.phone = res.personaldata.phone;
+        // console.log("res account settings personaldata: ", res.useridd);
+
+
+        // this.employeename = res.personaldata.name;
+        // this.totalemployee = res.personaldata.domain;
+        // this.headOffice = res.personaldata.headOffice;
+        // this.phone = res.personaldata.phone;
         this.description = res.personaldata.description;
-        this.profileimage = res.personaldata.url;
-        this.email_id = this.employeeemail.split("@")
-      this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
+      //   this.profileimage = res.personaldata.url;
+      //   this.email_id = this.employeeemail.split("@")
+      // this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
 
       });
+    
 
     }
 
-    // updateData(data: any){
-    //   this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
-    //     console.log("res account settings personaldata: ", res.personaldata);
-    //     console.log("res account settings personaldata: ", res.personaldata.headOffice);
-
-    //     console.log("res account settings personaldata: ", res.useridd);
-
-
-    //     this.employeename = res.personaldata.name;
-    //     // this.totalemployee = res.personaldata.noOfEmployee;
-    //     this.description = res.personaldata.description;
-    //     this.headOffice = res.personaldata.headOffice;
-    //     this.phone = res.personaldata.phone;
-    //     this.profileimage = res.personaldata.url;
-
-    //   });
-    // }
+   
     updateData(data: any){
+      console.log('objectuserid2222: ', this.objectuserid)
       this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
-        console.log("res account settings personaldata: ", res.personaldata);
-        console.log("res account settings personaldata: ", res.personaldata.headOffice);
+        console.log("res account settings personaldata222: ", res.personaldata);
+        console.log("res account settings personaldata222: ", res.personaldata.headOffice);
         console.log("res account settings personaldata: ", res.useridd);
     
         this.employeename = res.personaldata.name;
@@ -143,11 +175,7 @@ isInputDirty = false;
         this.profileimage = res.personaldata.url; // update profile image
     
         // Update the profile image in the UI
-        const img = new Image();
-        img.onload = () => {
-          this.imageurl = this.profileimage;
-        };
-        img.src = this.profileimage;
+    
       });
     }
     
@@ -211,14 +239,14 @@ isInputDirty = false;
 
 
 
-    objectid = localStorage.getItem('emailid');
+    // objectid = localStorage.getItem('emailid');
 
-    updateProfile(data: any){
-      this.userService.updatepersonals(this.objectid,data).subscribe((res: any)=>{
-        console.log("personaldataForm.value res: ", res);
-        console.log("personaldataForm.value data: ", data);
-       });
-    }
+    // updateProfile(data: any){
+    //   this.userService.updatepersonals(this.objectid,data).subscribe((res: any)=>{
+    //     console.log("personaldataForm.value res: ", res);
+    //     console.log("personaldataForm.value data: ", data);
+    //    });
+    // }
 
 
   ReadMore: boolean = true;

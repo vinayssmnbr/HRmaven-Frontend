@@ -3,7 +3,7 @@
 <!-- <div *ngIf="isFromSignupPage" style="margin-left: 50%;margin-top: 50%;">
     This div will only be shown if the user is coming from the signup page.
   </div> -->
-
+<div >
 <div class="main">
     <div class="row">
         <div class="col-3">
@@ -308,8 +308,13 @@
       <!-- <div *ngIf="!formSubmitted" [ngStyle]="{'opacity': (formSubmitted ? '0.0' : '1.0')}" > -->
         <!-- <div *ngIf="!formSubmitted && showForm"  [ngStyle]="{'opacity': opacityValue}" > -->
             <!-- <div *ngIf="!formSubmitted  && userService.isFromLoginPage"  > -->
-        <div *ngIf="!userService.isFromLoginPage && !formSubmitted && showForm" [ngStyle]="{'opacity': opacityValue}">
-              <div >
+        <!-- <div *ngIf="!showPersonalDataForm  || !formSubmitted  || showPersonalDataForm=== true"> -->
+            <!-- <div *ngIf="loading">
+                <div class="loader"></div>
+            </div> -->
+            <div >
+            <!-- <div  class="form-container" [style.opacity]="opacityValue">                          -->
+               <div  class="form-container" *ngIf="showForm && !formSubmitted" [style.opacity]="opacityValue" >
                 <div class="Modal_form" >
 
                     <div class="Modal_modal"  >
@@ -523,4 +528,5 @@
 
 
 
+</div>
 </div>

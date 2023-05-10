@@ -127,9 +127,15 @@ export class UserService {
   //     }
 
   // }
+
+  
   users(data: any) {
     return this.http.post(this.prefix + 'login', data);
   }
+  // users(data: any, isFromLoginPage: boolean) {
+  //   // pass isFromLoginPage as a parameter
+  //   return this.http.post(this.prefix + 'login', { ...data, isFromLoginPage });
+  // }
 
   getUserProfileById(): Observable<any> {
     const token = this.cookie.get('token');

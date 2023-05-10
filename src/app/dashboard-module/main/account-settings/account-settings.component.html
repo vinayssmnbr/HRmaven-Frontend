@@ -162,24 +162,7 @@
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
                  
                 
-                      <!-- <div class="old-new-confirm-password">
-                        <label for="">Old Password</label>
-                        <input type="password"
-                        placeholder="Type your old password"
-                        class="form-control password"
-                        required
-                        id="oldp"
-                        formControlName="oldpassword"
-                        (blur)="matchpwd()"
-                        (input)="isInputDirty = true">
-                      
-                        <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
-                        <ng-template #notMatched>
-                            <p *ngIf="isInputDirty" style="color: red;">This is not your old password.</p>
-                          </ng-template>
-                          
-                      </div> -->
-                      <div class="old-new-confirm-password">
+                    <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
                                placeholder="Type your old password"
@@ -187,13 +170,22 @@
                                required
                                id="oldp"
                                formControlName="oldpassword"
-                               (input)="onInput()">
+                               (blur)="matchpwd()"
+                               (input)="isInputDirty = true"
+                               (focusout)="onFocusout()">
+                                            
                         <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
-                          <p *ngIf="isInputDirty" style="color: red;">This is not your old password.</p>
+                          <p *ngIf="isInputDirty && !isEmptyInput" style="color: red;">This is not your old password.</p>
                         </ng-template>
                       </div>
-                                            
+                      
+                  
+                    
+                      
+                      
+                      
+                                                                
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
@@ -250,7 +242,7 @@
                 <h3>Update Company Details  </h3>
             </div>
 
-            <form class="form" [formGroup]="companyDetailsForm" (ngSubmit)="updateData(companyDetailsForm.value)">
+            <form action="submit" class="form" [formGroup]="companyDetailsForm" (ngSubmit)="updateData(companyDetailsForm.value)">
                 <div class="name-email">
                     <div class="form__group">
                         <label for="name">Company Name</label>
@@ -263,7 +255,7 @@
                     </div>  -->
                     <div class="form__group">
                         <label for="email">Head Office</label>
-                        <input type="text" class="form_input" placeholder='{{headOffice}}' formControlName="headOffice"
+                        <input type="text" class="form_input" placeholder='head office' formControlName="headOffice"
                             id="email" required />
                     </div>
                 </div>
@@ -276,12 +268,13 @@
                             <!-- <input type="text" [readonly]="true"
                               placeholder=""  > -->
                             <textarea class="textarea-2" formControlName="description"
-                                placeholder="{{description}}">{{description}}</textarea>
+                                placeholder="Enter description">{{description}}</textarea>
                         </div>
                     </div>
 
                 </div>
 
+            
 
 
             </form>
@@ -316,7 +309,7 @@
                     </div>
                     <div class="form__group">
                         <label >Personal Email</label>
-                        <input type="email" class="form_input"  placeholder='{{employeeemail}}'
+                        <input type="email" class="form_input"  placeholder='Enter Email'
                         formControlName="personalemail"
                         required />
                     </div>
@@ -338,20 +331,23 @@
                     </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="text" class="form_input" placeholder="{{phone}}" formControlName="phone" id="phone" required 
+                        <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone" required 
                                (input)="onInput($event)" [maxlength]="10" [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
                       </div>
                       
                       
+                </div>
+                <div class="edit-profile-footer">
+                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
                 </div>
 
 
             </form>
 
 
-            <div class="edit-profile-footer">
+            <!-- <div class="edit-profile-footer">
                 <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
-            </div>
+            </div> -->
         </div>
         <!-- </form> -->
     </div>
