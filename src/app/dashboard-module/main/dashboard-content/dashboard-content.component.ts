@@ -17,6 +17,7 @@ export class DashboardContentComponent implements OnInit {
   // loader=false;
   loadermain: boolean = true;
   loader: boolean = false;
+  signupLoader:boolean = false;
   isFromSignupPage = false;
   formSubmitted = false;
   showModalContent: boolean;
@@ -48,6 +49,7 @@ export class DashboardContentComponent implements OnInit {
   })
   email = localStorage.getItem('emailid');
   submitPersonalData(data: any){
+    this.signupLoader = true;
     console.log("personal data: ", data);
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);
@@ -55,6 +57,8 @@ export class DashboardContentComponent implements OnInit {
       // this.formSubmitted = true;
       localStorage.setItem('empname', this.formData.name);
       this.showForm = false;
+      this.signupLoader = false;
+
         });
   }
 
