@@ -1,14 +1,13 @@
 .main {
   width: calc(100% - 223px);
   margin-left: 223px;
-  border: 1px solid #f9f9f9;
-  background-color: #f9f9f9;
-  padding-top: 84px;
+  padding: 105px 30px 25px 30px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
+  column-gap: 22px;
 }
 
 .left_side {
@@ -113,7 +112,6 @@
 .job-post-summary-area {
   background-color: #FFFFFF;
   padding: 25px 25px;
-  margin: 30px;
   border-radius: 8px;
 }
 
@@ -286,11 +284,7 @@
   padding-left: 33.5px;
 }
 
-.row {
-  display: flex;
-  margin: 30px;
-  column-gap: 25px;
-}
+
 
 .attendance h2 {
   font-size: 18px;
