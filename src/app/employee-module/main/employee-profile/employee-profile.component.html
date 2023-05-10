@@ -8,6 +8,7 @@
     </div>
     <div class="card2">
       <span class="profile_pic">
+        <div class="loader" *ngIf="progress"></div>
         <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="obj.url  && !upload" src="{{obj.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
@@ -299,8 +300,8 @@
           <div class="clear-update-button">
             <button class="clear-btn" (click)="clearSearch()">Clear</button>
             <button class="update-btn" type="submit" (click)="openModal3()"
-              [disabled]="passwordform.controls['oldpassword' || 'password' || 'confirm'].invalid">Update
-              Password</button>
+              [disabled]="passwordform.controls['oldpassword' || 'password' || 'confirm'].invalid">{{loader?'Updating...':'Update
+              Password'}}</button>
 
           </div>
         </form>
@@ -406,7 +407,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="basicUpdate(empform1.value)">Update</button>
+        <button class="save" (click)="basicUpdate(empform1.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -452,7 +453,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3(empform2.value)">Update</button>
+        <button class="save" (click)="closeModal3(empform2.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
@@ -515,7 +516,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4(empform3.value)">Update</button>
+        <button class="save" (click)="closeModal4(empform3.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="modalContent2">

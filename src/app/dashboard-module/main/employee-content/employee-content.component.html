@@ -96,7 +96,6 @@
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
-
   <div class="table-wrapper" *ngIf="tableview">
     <table>
       <thead>
@@ -117,6 +116,8 @@
       </thead>
 
       <tbody>
+        <div class="loader" *ngIf="employee.length==0"></div>
+
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
           <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->

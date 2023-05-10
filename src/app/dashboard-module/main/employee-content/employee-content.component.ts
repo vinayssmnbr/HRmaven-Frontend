@@ -156,7 +156,7 @@ export class EmployeeContentComponent implements OnInit {
     console.log(this.form.value);
     let data = this.form.value;
     data['hrid'] = this.cookie.get('hr_id');
-    this.showModalContent = false;
+    this.showModalContent = true;
     this.fourthStep = true;
     this.thirdStep = false;
     data.designation = this.designation;
@@ -165,6 +165,9 @@ export class EmployeeContentComponent implements OnInit {
     data.job_type = this.job_type;
     this.dashService.addEmployee(data).subscribe((result) => {
       this.dashService.addEmployee(this.form);
+      this.loading = false;
+      this.showModalContent = false;
+
       this.fetchdata();
       this.form.reset();
     });
