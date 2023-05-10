@@ -40,6 +40,8 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+    this.userService.isFromLoginPage = false;
+    // this.userService.isFromLoginPage = false;
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
     if (storedemail && storedPassword) {
@@ -191,11 +193,21 @@ export class LoginComponent {
   }
 
   // submissions
-
+ress: any =''
   onSubmit(data: any) {
     console.log(this.loginForm.value);
-
+    // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
+      console.log("personalDataSubmitted value: ", res.personalDataSubmitted); // Debugging statement
+      if (res.personalDataSubmitted) {
+        localStorage.setItem('personalDataSubmitted', 'true');
+      }
+      console.log("ress: ", res.username)
+      this.cookie.set("company",res.username)
+      localStorage.setItem('companyname', res.username);
+      // console.log("isFromLoginPage: ", isFromLoginPage);
+      // localStorage.setItem("isFromLoginPage",JSON.stringify(isFromLoginPage))
+
       this.userService.users(this.loginForm);
       console.log('login User: ', res);
       console.log('login User: ', res.noOfEmployee);
@@ -235,7 +247,7 @@ export class LoginComponent {
       );
 
       localStorage.setItem('emailid', this.loginForm.controls['email'].value);
-      localStorage.setItem('companyname', res.username);
+      // localStorage.setItem('companyname', res.username);
     });
     // this.personalData = localStorage.getItem('totalemployee');
     // this.userService.isnotFromSignupPage = true;

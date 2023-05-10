@@ -236,7 +236,7 @@
                 <h3>Update Company Details  </h3>
             </div>
 
-            <form class="form" [formGroup]="companyDetailsForm" (ngSubmit)="updateData(companyDetailsForm.value)">
+            <form action="submit" class="form" [formGroup]="companyDetailsForm" (ngSubmit)="updateData(companyDetailsForm.value)">
                 <div class="name-email">
                     <div class="form__group">
                         <label for="name">Company Name</label>
@@ -249,7 +249,7 @@
                     </div>  -->
                     <div class="form__group">
                         <label for="email">Head Office</label>
-                        <input type="text" class="form_input" placeholder='{{headOffice}}' formControlName="headOffice"
+                        <input type="text" class="form_input" placeholder='head office' formControlName="headOffice"
                             id="email" required />
 
 
@@ -268,11 +268,12 @@
                             <!-- <input type="text" [readonly]="true"
                               placeholder=""  > -->
                             <textarea class="textarea-2" formControlName="description"
-                                placeholder="{{description}}">{{description}}</textarea>
+                                placeholder="Enter description">{{description}}</textarea>
                         </div>
                     </div>
 
                 </div>
+
 
 
 
@@ -308,7 +309,7 @@
                     </div>
                     <div class="form__group">
                         <label >Personal Email</label>
-                        <input type="email" class="form_input"  placeholder='{{employeeemail}}'
+                        <input type="email" class="form_input"  placeholder='Enter Email'
                         formControlName="personalemail"
                         required />
                     </div>
@@ -323,10 +324,21 @@
                         style=" background-color: #f4f4f4;
                         color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
                     </div>
+                    <!-- <div class="form__group">
+                        <label for="phone">Phone no.</label>
+                        <input type="number" class="form_input" placeholder='Enter Phone Number' formControlName="phone" id="phone" required maxlength="10"[disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
+                        <div *ngIf="personalDetailsForm.get('phone').errors?.invalidPhone">Please enter a valid phone number</div>
+                    </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required />
-                    </div>
+                        <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone" required
+                               (input)="onInput($event)" [maxlength]="10" [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
+                      </div>
+
+
+                </div>
+                <div class="edit-profile-footer">
+                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
                 </div>
 
 
@@ -334,7 +346,7 @@
 
 
             <div class="edit-profile-footer">
-                <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)"> {{doneLoader1? 'Loading....':'Done'}}</button>
+                <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
             </div>
         </div>
         <!-- </form> -->

@@ -4,7 +4,7 @@
     background-color: #f9f9f9;
     padding-top: 76px;
     height: 100%;
-    padding: 76px 30px;
+    padding: 78px 30px 0 30px;
 }
 
 .row {
@@ -139,6 +139,7 @@ div[role="progressbar2"]::before {
 
 .attendence_history {
     margin-top: 25px;
+    margin-bottom: 25px;
     background-color: #FFFFFF;
      border-radius: 8px;
 }
@@ -146,7 +147,7 @@ div[role="progressbar2"]::before {
 .attendence_title {
     display: flex;
     justify-content: space-between;
-    padding: 31px 20px;
+    padding: 25px 20px;
     align-items: center;
 }
 
@@ -249,7 +250,7 @@ div[role="progressbar2"]::before {
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
-    padding: 0 20px;
+    padding: 20px 20px;
 }
 .attendence_history_card .col-4{
     display: inline-block;
