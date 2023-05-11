@@ -287,10 +287,10 @@
                 <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
                   <ul>
-                    <li>Uppercase character</li>
-                    <li>Special Character</li>
-                    <li>Lowercase Character</li>
-                    <li>Minimum 8 Character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Uppercase character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Special Character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Lowercase Character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Minimum 8 Character</li>
                   </ul>
                 </span>
               </div>
