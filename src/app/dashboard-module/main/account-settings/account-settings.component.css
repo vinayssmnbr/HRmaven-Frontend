@@ -293,9 +293,20 @@
     align-items: center;
 
 }
-
+ .account-password,.error-message{
+    color: #CB1E0F;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    left: 620px;
+    margin-top: 4px;
+    font-weight: 400;
+    font-size: 12px;
+}
 .new-reenter {
-    margin-top: 25px;
+    margin-top: 31px;
 }
 
 .clear-update-button {

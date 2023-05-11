@@ -385,7 +385,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() {}
+  nextForm2() { }
   array: any = [
     {
       id: 0,
@@ -1001,20 +1001,38 @@ this.showModal=false;
 
       console.log(data, 'parsed CSV data');
       // if(data.length==0) return 'no user selected'
+
+      if (data.length === 0) {
+        alert('Your CSV file was not filled properly.');
+        return;
+      }
+
       let uid: number = -1;
       let responseArr = [];
       // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
+        console.log(res.message)
         if (uid == -1) return 'there is an error while getting uid';
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
-          // console.log('Adding employee:', employee);
+          console.log('Adding employee:', employee);
           // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
+              console.log('res',res)
+              console.log('messagge',res.message)
+
+
+              // if(res.message=="Email already exists in the register"){
+              //   alert('emailAll ready exist')
+              //   console.log(' mhjiooig')
+              // }
+            // if(res.msg=="some fields are missing"){
+            //     alert('some fields are missing')
+            //   }
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
@@ -1046,10 +1064,8 @@ this.showModal=false;
     reader.readAsText(file);
   }
 
-  // importFile() {
-  //  const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
-  //  fileInput.click();
-  //  }
+
+
 
   //FOR CHECKING THE CHECK BOX
 
@@ -1181,5 +1197,5 @@ this.showModal=false;
     this.fetchdata();
   }
 
-  ngOnChange() {}
+  ngOnChange() { }
 }

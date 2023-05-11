@@ -668,6 +668,9 @@ input[type="radio"] {
   overflow-x: hidden;
   margin-top: 27px;
   padding-right: 4px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*All meeting Scrollbar*/
@@ -693,6 +696,9 @@ input[type="radio"] {
   overflow-x: hidden;
   height: 400px;
   padding-right: 4px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hidden {
