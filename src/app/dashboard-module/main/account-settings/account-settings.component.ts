@@ -24,6 +24,7 @@ export class AccountSettingsComponent implements OnInit {
   profileDisplayNot: boolean;
   hideNotifications = false;
  readonly= false;
+ doneLoader1:boolean = false;
 
  constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService){
   this.companyDetailsForm = this.formBuilder.group({
@@ -95,28 +96,17 @@ isInputDirty = false;
   this.organisationn =  localStorage.getItem('companyname');
   console.log('this.organisationn:',this.organisationn)
 
-  console.log('before getpersonals!! company name:', this.organisationn);
-  this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-    console.log("res account settings personaldataaaaa: ", res);
+  //   headOffice: ['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
+  //   description: ['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')]
+  // });
 
-    console.log("res account settings personaldata: ", res.personaldata);
-    console.log("res account settings personaldata: ", res.personaldata.headOffice);
-    console.log("res account settings personaldata description: ", res.personaldata.description);
-
-
-    console.log("res account settings personaldata: ", res.useridd);
-
-
-    this.employeename = res.personaldata.name;
-    this.totalemployee = res.personaldata.domain;
-    this.headOffice = res.personaldata.headOffice;
-    this.phone = res.personaldata.phone;
-    this.description = res.personaldata.description;
-    this.profileimage = res.personaldata.url;
-    this.email_id = this.employeeemail.split("@")
-  this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
-
-  });
+  // this.personalDetailsForm = this.formBuilder.group({
+  //       name:['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
+  //   personalemail: ['',[Validators.required,Validators.email, Validators.pattern(
+  //     '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+  //   )]],
+  //   phone: ['',[Validators.required, Validators.pattern('^[0-9]+$')]]
+  // });
   console.log("objectuserid: ",this.objectuserid)
   const oldPassword = this.personalDetailsForm.get('oldpassword');
   oldPassword.valueChanges.subscribe(() => {
@@ -156,13 +146,13 @@ isInputDirty = false;
       // this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
 
       });
-    
+
 
     }
 
-   
+
     updateData(data: any){
-      console.log('objectuserid2222: ', this.objectuserid)
+      this.doneLoader1 = true;
       this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
         console.log("res account settings personaldata222: ", res.personaldata);
         console.log("res account settings personaldata222: ", res.personaldata.headOffice);
@@ -175,7 +165,6 @@ isInputDirty = false;
         this.profileimage = res.personaldata.url; // update profile image
 
         // Update the profile image in the UI
-    
       });
     }
 
@@ -301,7 +290,7 @@ isInputDirty = false;
   closeModal3(){
     this.showModal3 = false;
     this.forgetpwd.reset();
-    
+
 
   }
   onKeyUp(event): void {

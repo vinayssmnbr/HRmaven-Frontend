@@ -28,6 +28,7 @@ export class SignupComponent {
   capitalCheck: boolean = false;
   smallCheck: boolean = false;
   numericalCheck: boolean = false;
+  signupLoader:boolean = false;
 
   is_visible = false;
   password = '';
@@ -210,6 +211,7 @@ export class SignupComponent {
   orgnisation: any = '';
 
   onSubmit(data: any) {
+    this.signupLoader = true;
     console.log(this.sigupform.value);
     this.userService.saveUser(data).subscribe((result: any) => {
       console.log('personal true or not: ',result.personalDataSubmitted)

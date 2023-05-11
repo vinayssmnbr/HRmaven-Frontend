@@ -177,12 +177,11 @@
   cursor: pointer;
   /* display: none; */
 }
-.view span{
+.view span {
   width: 25px;
   /* height: 21px; */
   padding: 0px 5px;
-  background-color: #FFFFFF;
-
+  background-color: #ffffff;
 }
 .view span:hover {
   background-color: #ebeaf6;
@@ -328,7 +327,7 @@ input:focus {
   background-color: #f7f7f7 !important;
 }
 
-tbody{
+tbody {
   background-color: #ffffff !important;
 }
 /* tbody td.active {
@@ -530,7 +529,7 @@ tr:hover {
 }
 
 table {
-width: 100%;
+  width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -1765,9 +1764,9 @@ input::placeholder {
   transition: all 1s ease;
   font-weight: 400;
   font-size: 12px;
-  color: #2F2C9F;
+  color: #2f2c9f;
   padding: 5px 10px;
-  background-color: #EFEFF8;
+  background-color: #efeff8;
   border-radius: 6px;
   border: 2px solid transparent;
   cursor: pointer;
@@ -1785,13 +1784,19 @@ input::placeholder {
 }
 
 .progress_bar_loader:before {
-  content: '';
+  content: "";
   width: 200%;
   height: 100%;
   position: absolute;
   animation: progress-anime 10s ease-out;
   animation-iteration-count: 1;
-  background: linear-gradient(to right, #2F2C9F 0%, #2F2C9F 50%, #d2d2d2 50%, #d2d2d2 100%);
+  background: linear-gradient(
+    to right,
+    #2f2c9f 0%,
+    #2f2c9f 50%,
+    #d2d2d2 50%,
+    #d2d2d2 100%
+  );
 }
 
 @keyframes progress-anime {
@@ -1813,7 +1818,7 @@ input::placeholder {
 }
 
 .file_upload [type="file"]::-webkit-file-upload-button:hover {
-  border: 2px solid #2F2C9F;
+  border: 2px solid #2f2c9f;
   color: #000;
 }
 
@@ -1965,17 +1970,19 @@ input::placeholder {
 }
 
 .no_data {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   padding: 20px 0;
   text-align: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
   margin-top: 150px;
+  background-color: transparent;
 }
 
-
-
+.no_data:hover {
+  background-color: transparent !important;
+}
 
 .content3 {
   display: flex;
@@ -1984,7 +1991,7 @@ input::placeholder {
 }
 
 .content3 p {
-  font-family: 'Outfit';
+  font-family: "Outfit";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -2004,7 +2011,7 @@ input::placeholder {
   border-radius: 8px;
   width: 0%;
   height: 100%;
-  background-color: #2F2C9F;
+  background-color: #2f2c9f;
   /* margin-top: 5px; */
 }
 
@@ -2012,7 +2019,7 @@ input::placeholder {
   position: absolute;
   margin-top: -5px;
   margin-left: 357px;
-  font-family: 'Outfit';
+  font-family: "Outfit";
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -2031,7 +2038,7 @@ input::placeholder {
 
 .file_upload {
   margin-left: 140px;
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .input-upload {
@@ -2043,85 +2050,85 @@ input::placeholder {
   opacity: 0.7;
 }
 
-.card-wrapper{
- margin-top: 25px;
- width: 100%;
-}
-.show-select{
+.card-wrapper {
+  margin-top: 25px;
   width: 100%;
-  height:40px;
 }
-.show{
+.show-select {
+  width: 100%;
+  height: 40px;
+}
+.show {
   display: flex;
   justify-content: space-between;
   border: 1px solid #fff;
   padding: 12px 16px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 8px;
 }
-.show-left{
- display: flex;
- gap: 10px;
- align-items: center;
- justify-content: center;
+.show-left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.show-left input[type='checkbox']:checked{
-  background-color:  #FFFFFF;
-    border: 2px solid #999999;
-    border-radius: 4px;;
+.show-left input[type="checkbox"]:checked {
+  background-color: #ffffff;
+  border: 2px solid #999999;
+  border-radius: 4px;
 }
 
-.show-left p{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    color: #2f2c9f;
+.show-left p {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #2f2c9f;
 }
-.show-right{
+.show-right {
   display: flex;
   gap: 5px;
 }
-.show-right p{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    color: #999999;
+.show-right p {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #999999;
 }
-.show-right span{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    color: #999999;
+.show-right span {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #999999;
 }
 .view2 {
   display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 25px;
-    width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+  width: 100%;
 }
-.card-view{
- margin-top: 25px;
- width: 23%;
+.card-view {
+  margin-top: 25px;
+  width: 23%;
 }
-.card-detail{
+.card-detail {
   padding: 15px 15px;
   /* max-width: 270px; */
   width: 100%;
   height: 290px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
-.card-detail .first-detail{
+.card-detail .first-detail {
   display: flex;
   justify-content: space-between;
 }
-.icons1{
+.icons1 {
   position: relative;
   width: 105px;
 }
@@ -2141,14 +2148,14 @@ input::placeholder {
   background-color: #fff;
   color: #444444;
 }
-.first-detail img{
+.first-detail img {
   height: 26px;
   width: 26px;
   position: absolute;
   left: 72%;
   cursor: pointer;
 }
-.image-detail{
+.image-detail {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2161,60 +2168,60 @@ input::placeholder {
   height: 80px;
   width: 80px;
 } */
-.image-detail span img{
-height: 80px;
-width: 80px;
-cursor: pointer;
-border-radius: 50%;
+.image-detail span img {
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+  border-radius: 50%;
 }
-.per-detail{
+.per-detail {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
-.per-detail h3{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    color: #555555;
+.per-detail h3 {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #555555;
 }
-.per-detail .per-detail1 p{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    color: #777777;
-    /* margin-top: 4px; */
+.per-detail .per-detail1 p {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #777777;
+  /* margin-top: 4px; */
 }
-.contact-detail{
-  display: flex ;
+.contact-detail {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
-.contact-detail p{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    color: #777777;
+.contact-detail p {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #777777;
 }
-.contact-detail span{
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    color: #2f2c9f;
+.contact-detail span {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: #2f2c9f;
 }
-.view2{
+.view2 {
   display: flex;
   justify-content: space-between;
-  gap:25px;
-  width:100%
+  gap: 25px;
+  width: 100%;
 }
 .loader {
   border: 8px solid #f3f3f3;
@@ -2223,11 +2230,15 @@ border-radius: 50%;
   /* Blue */
   border-radius: 50%;
   position: absolute;
-  margin-top: 34px;
-  margin-left: 34px;
-  width: 35px;
-  height: 35px;
+  margin-top: 134px;
+  margin-left: 134px;
+  width: 100px;
+  height: 100px;
   animation: spin 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 auto; */
 }
 
 @keyframes spin {

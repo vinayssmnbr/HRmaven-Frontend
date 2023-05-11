@@ -387,7 +387,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="basicUpdate(form.value)">Update</button>
+        <button class="save" (click)="basicUpdate(form.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -434,7 +434,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3(form.value)">Update</button>
+        <button class="save" (click)="closeModal3(form.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
@@ -500,7 +500,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4(form.value)">Update</button>
+        <button class="save" (click)="closeModal4(form.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content5" *ngIf="modalContent6">
@@ -600,7 +600,7 @@
 
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal5(form.value)">Update</button>
+        <button class="save" (click)="closeModal5(form.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content4" *ngIf="modalContent7">
@@ -675,7 +675,7 @@
 
       </div>
       <div class="modal-footer4">
-        <button class="save" (click)="closeModal6(experienceForm.value)">Update</button>
+        <button class="save" (click)="closeModal6(experienceForm.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <!-- <div class="modal-footer">
@@ -744,7 +744,7 @@
               <div class="dropdown_container" (mouseleave)="contentdropdown5 = false">
                 <div class="dropdwon_select" (click)="dropdownOpen5()">
                   <!-- <p>{{Selectvariable5}}</p> -->
-                  <input type="text" [(ngModel)]="Selectvariable5" formControlName="timings" id="text5"
+                  <input type="text" [(ngModel)]="Selectvariable5" formControlName="timing" id="text5"
                     placeholder="Select" readonly>
                   <i class="fa-sharp fa-solid fa-caret-down"></i>
                 </div>
@@ -765,14 +765,14 @@
           <div class="form-row">
             <div class="input">
               <label>Professional Email</label>
-              <input type="email" placeholder="zonah123@gmail.com" formControlName="professionalemail"
-                class="profemail">
+              <input type="email" placeholder="zonah123@gmail.com" formControlName="professionalemail" class="profemail"
+                readonly>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal2(form.value)">Update</button>
+        <button class="save" (click)="closeModal2(form.value)">{{loader?'Loading...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content3" *ngIf="fourthStep">
@@ -787,4 +787,3 @@
     </div>
   </div>
 </div>
-<div class="loader" *ngIf="progress"></div>

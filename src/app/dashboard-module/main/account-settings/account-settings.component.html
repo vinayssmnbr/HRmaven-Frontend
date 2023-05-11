@@ -44,7 +44,7 @@
                   </div>
                 </div>
               </div>
-              
+
 
             <div class="name-text">
                 <!-- <h5>Abhishek Sharma</h5> -->
@@ -165,15 +165,14 @@
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
-                               placeholder="Type your old password"
-                               class="form-control password"
-                               required
-                               id="oldp"
-                               formControlName="oldpassword"
-                               (blur)="matchpwd()"
-                               (input)="isInputDirty = true"
-                               (focusout)="onFocusout()">
-                                            
+                        placeholder="Type your old password"
+                        class="form-control password"
+                        required
+                        id="oldp"
+                        formControlName="oldpassword"
+                        (blur)="matchpwd()"
+                        (input)="isInputDirty = true">
+
                         <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
                           <p *ngIf="isInputDirty && !isEmptyInput" style="color: red;">This is not your old password.</p>
@@ -214,7 +213,7 @@
 
                         </div>
                     </div>
-                  
+
                     <div class="new-reenter">
                     <div class="old-new-confirm-password">
                         <label for="">Confirm Password</label>
@@ -275,6 +274,12 @@
                         <label for="email">Head Office</label>
                         <input type="text" class="form_input" placeholder='head office' formControlName="headOffice"
                             id="email" required />
+
+
+
+
+
+
                     </div>
                 </div>
 
@@ -292,14 +297,14 @@
 
                 </div>
 
-            
+
 
 
             </form>
 
 
             <div class="company-details-footer">
-                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">Done</button>
+                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">{{doneLoader1? 'Loading....':'Done'}}</button>
             </div>
         </div>
         <!-- </form> -->
@@ -349,14 +354,14 @@
                     </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone" required 
+                        <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone" required
                                (input)="onInput($event)" [maxlength]="10" [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
                       </div>
-                      
-                      
+
+
                 </div>
                 <div class="edit-profile-footer">
-                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
+                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1? 'Loading....':'Done'}}</button>
                 </div>
 
 

@@ -22,6 +22,8 @@ import { CookieService } from 'ngx-cookie-service';
 
 import * as FileSaver from 'file-saver';
 import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
+
 @Component({
   selector: 'app-employee-content',
   templateUrl: './employee-content.component.html',
@@ -156,7 +158,7 @@ export class EmployeeContentComponent implements OnInit {
     console.log(this.form.value);
     let data = this.form.value;
     data['hrid'] = this.cookie.get('hr_id');
-    this.showModalContent = false;
+    this.showModalContent = true;
     this.fourthStep = true;
     this.thirdStep = false;
     data.designation = this.designation;
@@ -165,6 +167,9 @@ export class EmployeeContentComponent implements OnInit {
     data.job_type = this.job_type;
     this.dashService.addEmployee(data).subscribe((result) => {
       this.dashService.addEmployee(this.form);
+      this.loading = false;
+      this.showModalContent = false;
+
       this.fetchdata();
       this.form.reset();
     });
@@ -841,18 +846,7 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  download1(): void {
-    this.dashService.exportUsers(this.selectedEmployess).subscribe(
-      (data: Blob) => {
-        const downloadUrl = window.URL.createObjectURL(data);
-        const link = document.createElement('a');
-        link.href = downloadUrl;
-        link.download = 'users.csv';
-        link.click();
-      },
-      (error) => console.log(error)
-    );
-  }
+ 
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
@@ -868,6 +862,29 @@ export class EmployeeContentComponent implements OnInit {
     );
     // }
   }
+     
+
+  // download(): void {
+  //   const selectedEmployee = this.employee.filter(emp => emp.checked);
+  //   if (selectedEmployee.length === 0) {
+  //     alert('Please select at least one employee to download.');
+  //     return;
+  //   }
+  
+  //   const data = [
+  //     ['EMPLOYEEID', 'NAME', 'DESIGNATION', 'EMAIL', 'CONTACT', 'STATUS'],
+  //     ...selectedEmployee.map((employee) => [employee.uid, employee.name, employee.designation, employee.email, employee.mobile, employee.status])
+  //   ];
+  
+  //   const worksheet = XLSX.utils.aoa_to_sheet(data);
+  //   const workbook = XLSX.utils.book_new();
+  //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
+  //   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  //   const filename = 'data.xlsx'; 
+  //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  //   saveAs(blob, filename);
+  // }
+  
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
