@@ -95,6 +95,30 @@ isInputDirty = false;
 
   this.organisationn =  localStorage.getItem('companyname');
   console.log('this.organisationn:',this.organisationn)
+  console.log('before getpersonals!!');
+      this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+        console.log("res account settings personaldataaaaa: ", res);
+
+        console.log("res account settings personaldata: ", res.personaldata);
+        console.log("res account settings personaldata: ", res.personaldata.headOffice);
+        console.log("res account settings personaldatawww: ", res.personaldata.description);
+
+
+        console.log("res account settings personaldata: ", res.useridd);
+
+
+        this.employeename = res.personaldata.name;
+        this.totalemployee = res.personaldata.domain;
+        this.headOffice = res.personaldata.headOffice;
+        this.phone = res.personaldata.phone;
+        this.description = res.personaldata.description;
+        this.profileimage = res.personaldata.url;
+        this.email_id = this.employeeemail.split("@")
+      this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
+
+      });
+
+
 
   //   headOffice: ['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
   //   description: ['',Validators.required, Validators.pattern('^[a-zA-Z ]+$')]
@@ -124,30 +148,7 @@ isInputDirty = false;
   //   personalemail: [''],
   //   phone: ['', [Validators.required, this.phoneValidator]]
   // });
-  console.log('before getpersonals!!');
-      this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-        // console.log("res account settings personaldataaaaa: ", res);
-
-        // console.log("res account settings personaldata: ", res.personaldata);
-        // console.log("res account settings personaldata: ", res.personaldata.headOffice);
-        console.log("res account settings personaldatawww: ", res.personaldata.description);
-
-
-        // console.log("res account settings personaldata: ", res.useridd);
-
-
-        // this.employeename = res.personaldata.name;
-        // this.totalemployee = res.personaldata.domain;
-        // this.headOffice = res.personaldata.headOffice;
-        // this.phone = res.personaldata.phone;
-        this.description = res.personaldata.description;
-      //   this.profileimage = res.personaldata.url;
-      //   this.email_id = this.employeeemail.split("@")
-      // this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
-
-      });
-
-
+  
     }
 
 
