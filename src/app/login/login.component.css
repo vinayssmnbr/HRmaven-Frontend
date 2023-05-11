@@ -190,7 +190,11 @@ input:focus {
     justify-content: space-between;
     align-items: center;
 }
-
+.input_check_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .checkbox-text {
     padding-top: 1px;
     padding-left: 5px;
@@ -210,7 +214,6 @@ input:focus {
 .check-text .check_box {
     width: 15px;
     height: 15px;
-    margin-top: 5px;
     cursor: pointer;
 }
 
@@ -590,7 +593,7 @@ input:focus {
     color: #ffffff;
     border: none;
     outline: none;
-    margin-top: 20px;
+    margin-top: 30px;
     cursor: pointer;
 }
 
@@ -614,8 +617,10 @@ span.forgot-email-validation {
     gap: 10px;
     color: #CB1E0F;
     font-weight: 400;
-    margin-top: 12px;
+    margin-top: 68px;
     font-size: 13px;
+    position: absolute;
+
 }
 
 /* -----------------------Forget Reset Send Email------------------------------------ */

@@ -9,6 +9,9 @@
   justify-content: space-between;
   column-gap: 22px;
 }
+.already_punch {
+  cursor:not-allowed;
+}
 
 .left_side {
   width: 70%;

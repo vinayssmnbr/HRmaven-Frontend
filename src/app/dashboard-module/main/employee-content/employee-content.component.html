@@ -91,11 +91,13 @@
       <!-- <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0"><img src="./assets/images/prime_file-import.svg">Export</button> -->
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
-        [disabled]="selectedEmployess.length==0"><img src="./assets/images/prime_file-import.svg">Export</button>
+        [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img
+          src="./assets/images/prime_file-import.svg">Export</button>
       <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
+
   <div class="table-wrapper" *ngIf="tableview">
     <table>
       <thead>
@@ -116,7 +118,6 @@
       </thead>
 
       <tbody>
-        <div class="loader" *ngIf="employee.length==0"></div>
 
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
@@ -752,17 +753,21 @@
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
     </div>
-    <div class="modal-content7" *ngIf="invalidModal">
+    <!-- <div class="modal-content7" *ngIf="invalidModal">
       <div class="modal-header7">
         <img src="./assets/images/Vector (4).svg" alt="img1">
-      </div>
-      <div class="modal-body7">
-        <h3>Warning !</h3>
-        <p>Enter Valid Input Fields</p>
-        <!-- <span>CSV File contains existing data</span> -->
-        <!-- <p>CSV File cannot be empty</p> -->
-        <button class="ok-btn" (click)="closeModal5()">OK</button>
+        </div>
+        <div class="modal-body7">
+          <h3>Warning !</h3>
+          <p>Enter Valid Input Fields</p>
+          <span>CSV File contains existing data</span>
+          <p>CSV File cannot be empty</p>
+         <button class="ok-btn" (click)="closeModal5()">OK</button>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->
+
+    <div class="loader-main" *ngIf="employee.length==0">
+      <div class="loader"></div>
+    </div>
