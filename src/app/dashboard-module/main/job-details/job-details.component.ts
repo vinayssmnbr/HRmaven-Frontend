@@ -62,4 +62,21 @@ export class JobDetailsComponent {
   close_modal(){
     this.Jobdetails = false;
   }
+  addcandidate:boolean=false;
+  closemodal(){
+    this.addcandidate=false;
+  }
+  openmodal(){
+    this.addcandidate=true;
+
+  }
+  Newcandidate:boolean=false;
+  openaddmodal(){
+  this.Newcandidate=true;
+  this.addcandidate=false;
+
+  }
+  closedone(){
+    this.Newcandidate=false;
+  }
 }
