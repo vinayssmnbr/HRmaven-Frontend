@@ -10,6 +10,9 @@
   display: flex;
   justify-content: space-between;
 }
+.already_punch {
+  cursor:not-allowed;
+}
 
 .left_side {
   width: 70%;

@@ -176,7 +176,7 @@
     <div class="attendence-card" *ngIf="showCard">
       <div class="row">
         <div class="col-3" *ngFor="let user of card | attendanceFilter : employeename">
-          <div class="card" (click)="profileview(user)" *ngIf="!user.found">
+          <div class="card" (click)="profileview(user)" *ngIf="user!='true'">
             <img src="{{ user._id.url }}" alt="logo" onError="this.src='./assets/images/Ellipse 98.svg'" />
 
             <h2>{{ user._id.name }}</h2>
@@ -193,7 +193,7 @@
               </div>
             </div>
           </div>
-          <div class="empty-card" *ngIf="user.found">
+          <div class="empty-card" *ngIf="user=='true' || norecord">
             <p>
               <img src="assets/images/no_record.png" alt="" class="center" />
             </p>

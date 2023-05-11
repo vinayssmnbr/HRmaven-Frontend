@@ -213,9 +213,9 @@ export class DashboardContentComponent implements OnInit {
       const absent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       const leave = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       res.map((d) => {
-        present[d.month] = d.present;
-        absent[d.month] = d.absent;
-        leave[d.month] = d.leave;
+        present[d.month-1] = d.present;
+        absent[d.month-1] = d.absent;
+        leave[d.month-1] = d.leave;
       });
       let chart = this.elementRef.nativeElement.querySelector(`#myChart`);
 
