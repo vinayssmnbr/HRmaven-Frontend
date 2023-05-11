@@ -845,8 +845,11 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
-
- 
+inavlidModal:boolean=false;
+ closeseModal5(){
+this.inavlidModal=false;
+this.showModal=false;
+ }
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
@@ -862,7 +865,7 @@ export class EmployeeContentComponent implements OnInit {
     );
     // }
   }
-     
+
 
   // download(): void {
   //   const selectedEmployee = this.employee.filter(emp => emp.checked);
@@ -870,21 +873,21 @@ export class EmployeeContentComponent implements OnInit {
   //     alert('Please select at least one employee to download.');
   //     return;
   //   }
-  
+
   //   const data = [
   //     ['EMPLOYEEID', 'NAME', 'DESIGNATION', 'EMAIL', 'CONTACT', 'STATUS'],
   //     ...selectedEmployee.map((employee) => [employee.uid, employee.name, employee.designation, employee.email, employee.mobile, employee.status])
   //   ];
-  
+
   //   const worksheet = XLSX.utils.aoa_to_sheet(data);
   //   const workbook = XLSX.utils.book_new();
   //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
   //   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-  //   const filename = 'data.xlsx'; 
+  //   const filename = 'data.xlsx';
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
-  
+
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
