@@ -636,7 +636,8 @@ export class EmployeeContentComponent implements OnInit {
   }
   tableview: boolean = true;
   tableviewcall() {
-    this.tableview = !this.tableview;
+    // this.tableview = !this.tableview;
+    this.tableview=true;
     this.cardview = false;
   }
   cardview: boolean = false;
