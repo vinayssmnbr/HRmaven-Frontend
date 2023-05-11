@@ -13,41 +13,27 @@
             </div>
         </div>
         <div class="profile-name">
-            <!-- <div class="profile-image">
-                <div class="upload_content">
+            <div class="profile-pic-wrapper">
+                <div class="pic-holder">
                     <div class="content-overlay"></div>
-                    <img *ngIf="!profileimage" class="content-image" src="assets/images/user 1.svg" alt="">
-                    <img *ngIf="profileimage" class="content-image" src="{{profileimage}}" alt="">
-                    <div class="content-details fadeIn-bottom"> -->
-            <!-- <img  src="assets/images/upload.png" alt=""> -->
-            <!-- <input type="file" id="file-input">
-                        <div class="upload_title">
-                            <input type="file" accept="image/*" (change)="onFileSelected($event)" id="file-input"/>
-                            <span>UPLOAD </span>
-                        <p class="content-text">PROFILE PICTURE</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div class="profile-image">
-                <div class="upload_content">
-                    <div class="content-overlay"></div>
-                    <img *ngIf="!profileimage" class="content-image" src="assets/images/user 1.svg" alt="">
+                    <img *ngIf="!profileimage" class="content-image" src="assets/images/user1.svg" alt="">
                     <img *ngIf="profileimage" class="content-image" src="{{profileimage}}" alt="">
                     <div class="content-details fadeIn-bottom">
-                        <button (click)="fileInput.click()">UPLOAD</button>
-                        <!-- add click event to trigger file selection -->
-                        <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" />
-                        <!-- remove duplicate id attribute -->
-                        <!-- <div class="upload_title">
-                      <span>UPLOAD </span>
-                      <p class="content-text">PROFILE PICTURE</p>
-                    </div> -->
+                        <label class="upload-file-block" (click)="fileInput.click()">
+                            <div class="text-center">
+                                <div class="mb-2">
+                                    <i class="fa fa-camera fa-2x"></i>
+                                </div>
+                                <div class="text-uppercase">
+                                    Update <br /> Profile Photo
+                                </div>
+                            </div>
+                        </label>
+                        <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)"
+                            style="opacity: 0;" />
                     </div>
                 </div>
             </div>
-
-
             <div class="name-text">
                 <!-- <h5>Abhishek Sharma</h5> -->
                 <h5> {{employeename}} </h5>
@@ -162,8 +148,8 @@
         <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
             <div class="company-name-headoffice-desc-area">
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
-                 
-<!--                 
+
+                    <!--                 
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
@@ -180,41 +166,40 @@
                           <p *ngIf="isInputDirty && !isEmptyInput" style="color: red;">This is not your old password.</p>
                         </ng-template>
                       </div> -->
-                      <div class="old-new-confirm-password">
+                    <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
-                        <input type="password"
-                               placeholder="Type your old password"
-                               class="form-control password"
-                               required
-                               id="oldp"
-                               formControlName="oldpassword"
-                               (blur)="matchpwd()"
-                               (input)="isInputDirty = true"
-                               (focusout)="onFocusout()">
-                                                            
-                      
+                        <input type="password" placeholder="Type your old password" class="form-control password"
+                            required id="oldp" formControlName="oldpassword" (blur)="matchpwd()"
+                            (input)="isInputDirty = true" (focusout)="onFocusout()">
+
+
                     </div>
-                    
+
                     <span *ngIf="isPasswordMatched; else notMatched" style="color: green;" class="error-message">
                         This is your old password.</span>
-                            <ng-template #notMatched>
-                                <span *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && !isEmptyInput"  class="error-message">
-                                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z" fill="#CB1E0F"/>
-                                      </svg>This is not your old password.</span>
-                              </ng-template>
-                  
-                    
-                      
-                      
-                      
-                                                                
+                    <ng-template #notMatched>
+                        <span *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && !isEmptyInput"
+                            class="error-message">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                    fill="#CB1E0F" />
+                            </svg>This is not your old password.</span>
+                    </ng-template>
+
+
+
+
+
+
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
-                            <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
-                        [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
-                            
+                            <input type="password" placeholder="Type a new password" formControlName="password"
+                                class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
+                                [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
+
 
 
                         </div>
@@ -226,17 +211,20 @@
                             <input type="password" placeholder="Re-enter your password" formControlName="confirm"
                                 class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp"
                                 [ngClass]="{'ng_invalid': forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty, 'ng_valid': forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
-                           
+
                         </div>
                         <span
-                        *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)"
-                        class="error-message"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z" fill="#CB1E0F"/>
+                            *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)"
+                            class="error-message"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                    fill="#CB1E0F" />
                             </svg>
-                        Passwords do not match
-                    </span>
+                            Passwords do not match
+                        </span>
                     </div>
-                   
+
                     <!-- </form> -->
                     <div class="clear-update-button">
                         <button class="clear-btn" (click)="clearForm()">Clear</button>
@@ -374,7 +362,9 @@
 
                 </div>
                 <div class="edit-profile-footer">
-                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1? 'Loading....':'Done'}}</button>
+                    <button type="submit" class="done-btn"
+                        (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1?
+                        'Loading....':'Done'}}</button>
                 </div>
 
 
