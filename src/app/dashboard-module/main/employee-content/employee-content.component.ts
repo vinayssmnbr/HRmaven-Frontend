@@ -1021,10 +1021,12 @@ export class EmployeeContentComponent implements OnInit {
             async (res: any) => {
               console.log('res',res)
               console.log('messagge',res.message)
-              if(res.message=="Email already exists in the register"){
-                alert('emailAll ready exist')
-                console.log(' mhjiooig')
-              }
+
+              
+              // if(res.message=="Email already exists in the register"){
+              //   alert('emailAll ready exist')
+              //   console.log(' mhjiooig')
+              // }
             // if(res.msg=="some fields are missing"){
             //     alert('some fields are missing')
             //   }
@@ -1059,7 +1061,8 @@ export class EmployeeContentComponent implements OnInit {
     reader.readAsText(file);
   }
 
- 
+
+  
 
   //FOR CHECKING THE CHECK BOX
 
