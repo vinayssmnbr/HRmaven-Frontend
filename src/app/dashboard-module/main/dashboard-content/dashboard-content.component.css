@@ -821,7 +821,7 @@ height: 75px;
 justify-content: center;
 display: flex;
 align-items: center;
-
+margin-top: 10px;
 }
 .edit-profile-footer .done-btn{
   width: 89px;

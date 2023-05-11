@@ -387,7 +387,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="basicUpdate(form.value)">{{loader?'Loading...':'Update'}}</button>
+        <button class="save" (click)="basicUpdate(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -434,7 +434,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3(form.value)">{{loader?'Loading...':'Update'}}</button>
+        <button class="save" (click)="closeModal3(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
@@ -500,10 +500,10 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4(form.value)">{{loader?'Loading...':'Update'}}</button>
+        <button class="save" (click)="closeModal4(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
-    <div class="modal-content5" *ngIf="modalContent6">
+    <!-- <div class="modal-content5" *ngIf="modalContent6">
       <div class="modal-header5">
         <h4 class="modal-title">Edit Education Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
@@ -600,44 +600,76 @@
 
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal5(form.value)">{{loader?'Loading...':'Update'}}</button>
+        <button class="save" (click)="closeModal5(form.value)">{{loader?'Updating...':'Update'}}</button>
+      </div>
+    </div> -->
+
+    <div class="modal-content4" *ngIf="modalContent6">
+      <div class="modal-header4">
+        <h4 class="modal-title">Edit Education Details</h4>
+        <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
+      </div>
+      <div class="modal-body4">
+        <form [formGroup]="educationForm" id="form5" (ngSubmit)="onSubmit()">
+          <div formArrayName="educationItems">
+            <div *ngFor="let item of educationItems.controls; let i = index;" [formGroupName]="i">
+              <div class="form-row">
+                <div class="input">
+                  <label>Company/Organisation Name</label>
+                  <input type="text" formControlName="expcompany" placeholder="Company Name">
+                </div>
+                <div class="input">
+                  <label>Duration</label>
+                  <input type="text" formControlName="expduration" placeholder="Duration">
+                </div>
+                <div class="input">
+                  <label>Designation</label>
+                  <input type="text" formControlName="expdesignation" placeholder="Designation">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="input">
+                  <label>Location</label>
+                  <input type="text" formControlName="explocation" placeholder="Location">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
+            More</button>
+        </form>
+      </div>
+      <div class="modal-footer4">
+        <button class="save" (click)="closeModal5(experienceForm.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="modal-content4" *ngIf="modalContent7">
       <div class="modal-header4">
         <h4 class="modal-title">Edit Experience Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body4">
-
-
-
-        <!-- <form class="form-container" id="form5" [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
-          <div *ngFor="let item of experienceItems.controls; let i = index" [formGroupName]="i">
-            <div class="form-row" formArrayName="experienceItems">
-              <div class="input">
-                <label>Company/Organisation Name</label>
-                <input type="text" placeholder="Infosys" formControlName="expcompany">
-              </div>
-              <div class="input">
-                <label>Duration</label>
-                <input type="text" placeholder="May 2020 - April 2023" formControlName="expduration">
-              </div>
-              <div class="input">
-                <label>Designation</label>
-                <input type="text" placeholder="Lead- front end developer" formControlName="expdesignation">
-              </div>
-            </div>
-            <div class="form-row" formArrayName="experienceItems">
-              <div class="input">
-                <label>Location</label>
-                <input type="text" placeholder="Pune, India" formControlName="explocation">
-              </div>
-            </div>
-            <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
-              more</button>
-          </div>
-        </form> -->
         <form [formGroup]="experienceForm" id="form5" (ngSubmit)="onSubmit()">
           <div formArrayName="experienceItems">
             <div *ngFor="let item of experienceItems.controls; let i = index;" [formGroupName]="i">
@@ -666,16 +698,9 @@
           <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
             More</button>
         </form>
-
-
-
-
-
-
-
       </div>
       <div class="modal-footer4">
-        <button class="save" (click)="closeModal6(experienceForm.value)">{{loader?'Loading...':'Update'}}</button>
+        <button class="save" (click)="closeModal6(experienceForm.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <!-- <div class="modal-footer">
@@ -772,7 +797,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal2(form.value)">{{loader?'Loading...':'Update'}}</button>
+        <button class="save" (click)="closeModal2(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content3" *ngIf="fourthStep">
