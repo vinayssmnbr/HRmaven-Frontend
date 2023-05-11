@@ -387,6 +387,7 @@ input:focus {
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
+    background: rgba(217, 217, 217, 0.4);
 }
 
 .manual-btn:not(:last-child) {

@@ -651,6 +651,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent7 = true;
     this.selectedUser = { _id: user._id };
     this.experienceForm.patchValue(user);
+    this.user();
   }
   closeModal6(data) {
     this.modalContent1 = false;
