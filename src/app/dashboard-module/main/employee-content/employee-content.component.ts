@@ -385,7 +385,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -437,11 +437,11 @@ export class EmployeeContentComponent implements OnInit {
   array1: any = [
     {
       id: 0,
-      name: 'Full-Time Permanent',
+      name: 'Full-Time',
     },
     {
       id: 1,
-      name: 'Part-Time Employement',
+      name: 'Part-Time',
     },
     {
       id: 2,
@@ -845,11 +845,11 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
-inavlidModal:boolean=false;
- closeseModal5(){
-this.inavlidModal=false;
-this.showModal=false;
- }
+  inavlidModal: boolean = false;
+  closeseModal5() {
+    this.inavlidModal = false;
+    this.showModal = false;
+  }
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
@@ -865,7 +865,6 @@ this.showModal=false;
     );
     // }
   }
-
 
   // download(): void {
   //   const selectedEmployee = this.employee.filter(emp => emp.checked);
@@ -887,7 +886,6 @@ this.showModal=false;
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
-
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
@@ -1013,7 +1011,7 @@ this.showModal=false;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
-        console.log(res.message)
+        console.log(res.message);
         if (uid == -1) return 'there is an error while getting uid';
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
@@ -1022,17 +1020,16 @@ this.showModal=false;
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
-              console.log('res',res)
-              console.log('messagge',res.message)
-
+              console.log('res', res);
+              console.log('messagge', res.message);
 
               // if(res.message=="Email already exists in the register"){
               //   alert('emailAll ready exist')
               //   console.log(' mhjiooig')
               // }
-            // if(res.msg=="some fields are missing"){
-            //     alert('some fields are missing')
-            //   }
+              // if(res.msg=="some fields are missing"){
+              //     alert('some fields are missing')
+              //   }
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
@@ -1063,9 +1060,6 @@ this.showModal=false;
 
     reader.readAsText(file);
   }
-
-
-
 
   //FOR CHECKING THE CHECK BOX
 
@@ -1197,5 +1191,5 @@ this.showModal=false;
     this.fetchdata();
   }
 
-  ngOnChange() { }
+  ngOnChange() {}
 }
