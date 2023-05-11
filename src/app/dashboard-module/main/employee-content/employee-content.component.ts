@@ -845,8 +845,11 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
-
-
+inavlidModal:boolean=false;
+ closeseModal5(){
+this.inavlidModal=false;
+this.showModal=false;
+ }
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
@@ -880,7 +883,7 @@ export class EmployeeContentComponent implements OnInit {
   //   const workbook = XLSX.utils.book_new();
   //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
   //   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-  //   const filename = 'data.xlsx'; 
+  //   const filename = 'data.xlsx';
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
@@ -998,7 +1001,7 @@ export class EmployeeContentComponent implements OnInit {
 
       console.log(data, 'parsed CSV data');
       // if(data.length==0) return 'no user selected'
-    
+
       if (data.length === 0) {
         alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
@@ -1022,7 +1025,7 @@ export class EmployeeContentComponent implements OnInit {
               console.log('res',res)
               console.log('messagge',res.message)
 
-              
+
               // if(res.message=="Email already exists in the register"){
               //   alert('emailAll ready exist')
               //   console.log(' mhjiooig')
@@ -1062,7 +1065,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
 
-  
+
 
   //FOR CHECKING THE CHECK BOX
 
