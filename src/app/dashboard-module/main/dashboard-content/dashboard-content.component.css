@@ -668,6 +668,9 @@ input[type="radio"] {
   overflow-x: hidden;
   margin-top: 27px;
   padding-right: 4px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*All meeting Scrollbar*/
@@ -693,6 +696,9 @@ input[type="radio"] {
   overflow-x: hidden;
   height: 400px;
   padding-right: 4px;
+  display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hidden {
@@ -821,7 +827,7 @@ height: 75px;
 justify-content: center;
 display: flex;
 align-items: center;
-
+margin-top: 10px;
 }
 .edit-profile-footer .done-btn{
   width: 89px;

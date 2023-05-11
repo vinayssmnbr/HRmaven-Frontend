@@ -190,7 +190,11 @@ input:focus {
     justify-content: space-between;
     align-items: center;
 }
-
+.input_check_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .checkbox-text {
     padding-top: 1px;
     padding-left: 5px;
@@ -210,7 +214,6 @@ input:focus {
 .check-text .check_box {
     width: 15px;
     height: 15px;
-    margin-top: 5px;
     cursor: pointer;
 }
 
@@ -477,13 +480,17 @@ input:focus {
 .forget_modal {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    
 }
 
 .forget_modal .modal {
@@ -601,6 +608,16 @@ span.emailwrg {
     /* margin-top: 10px; */
     color: #CB1E0F;
     font-weight: 400;
+    font-size: 13px;
+}
+
+span.forgot-email-validation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #CB1E0F;
+    font-weight: 400;
+    margin-top: 12px;
     font-size: 13px;
 }
 

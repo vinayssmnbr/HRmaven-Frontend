@@ -1359,7 +1359,12 @@ input[type="number"]:hover {
 .text.ng_invalid:hover {
   border: 1px solid red;
 }
-
+.list.ng_valid{
+border: 1px solid green;
+}
+.list.ng_invalid{
+  border: 1px solid red;
+}
 .text.ng_valid {
   border: 1px solid green !important;
 }
