@@ -1000,7 +1000,7 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
     
       if (data.length === 0) {
-        alert('Your CSV file was not filled properly.');
+        alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
       }
 
