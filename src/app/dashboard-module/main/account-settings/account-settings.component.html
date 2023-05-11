@@ -365,8 +365,8 @@
                         <label for="phone">Phone no.</label>
                                <input type="text" class="form_input" placeholder="Enter Phone number" 
                                formControlName="phone" id="phone" required
-       pattern="\d*" maxlength="10"  (input)="onInput($event)"  />
-       <div *ngIf="isInputDirty && isPhoneInvalid">Please enter a valid phone number</div>
+                        pattern="\d*" maxlength="10"  (input)="onInput($event)"  />
+                        <div *ngIf="isInputDirty && isPhoneInvalid">Please enter a valid phone number</div>
                       </div>
 
 
