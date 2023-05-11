@@ -28,7 +28,7 @@ export class UserService {
   //   this.opacityValue = formSubmitted ? 0 : 1;
   // }
 
-  isFromSignupPage = false;
+  isFromLoginPage = false;
 
 
 
@@ -115,6 +115,15 @@ export class UserService {
     );
   }
 
+  newpwdemp(data: any, token: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'auth-token': token,
+      Accept: 'application/json',
+    });
+    return this.http.post(this.prefix + 'resetpasswordemp', data, { headers });
+  }
+
   //LOGIN AND VERIFY DASHBOARD
 
   // Role=localStorage.getItem('role')
@@ -127,9 +136,15 @@ export class UserService {
   //     }
 
   // }
+
+  
   users(data: any) {
     return this.http.post(this.prefix + 'login', data);
   }
+  // users(data: any, isFromLoginPage: boolean) {
+  //   // pass isFromLoginPage as a parameter
+  //   return this.http.post(this.prefix + 'login', { ...data, isFromLoginPage });
+  // }
 
   getUserProfileById(): Observable<any> {
     const token = this.cookie.get('token');

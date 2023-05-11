@@ -80,9 +80,9 @@ export class EmployeeProfileComponent implements OnInit {
     interPercent: new FormControl('', [
       Validators.pattern(/^\d+(\.\d{1,2})?%?$/),
     ]),
-    graduation: new FormControl(''),
-    graduationStream: new FormControl(''),
-    graduationCgpa: new FormControl(''),
+    // graduation: new FormControl(''),
+    // graduationStream: new FormControl(''),
+    // graduationCgpa: new FormControl(''),
     pg: new FormControl(''),
     pgStream: new FormControl(''),
     pgCgpa: new FormControl(''),
@@ -139,7 +139,7 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.required,
     ]),
     address: new FormControl(''),
-    profemail: new FormControl(''),
+    professionalemail: new FormControl(''),
     matricpassing: new FormControl(''),
     interpassing: new FormControl(''),
     phdcol: new FormControl(''),
@@ -149,7 +149,6 @@ export class EmployeeProfileComponent implements OnInit {
 
   experienceForm: FormGroup;
   educationForm: FormGroup;
-
 
   get registrationFormControl() {
     return this.form.controls;
@@ -162,29 +161,32 @@ export class EmployeeProfileComponent implements OnInit {
     });
     this.educationForm = new FormGroup({
       educationItems: new FormArray([this.createEducationItem()]),
-    })
+    });
   }
 
-  createEducationItem(): FormGroup{
+  createEducationItem(): FormGroup {
     return new FormGroup({
-     graduation: new FormControl(''),
-     graduationStream: new FormControl(''),
-     graduationCgpa: new FormControl(''),
-     pg: new FormControl(''),
-     pgStream: new FormControl(''),
-     pgCgpa: new FormControl(''),
-    })
+      graduation: new FormControl(''),
+      graduationCgpa: new FormControl(''),
+      graduationStream: new FormControl(''),
+      //  pg: new FormControl(''),
+      //  pgStream: new FormControl(''),
+      //  pgCgpa: new FormControl(''),
+    });
   }
 
-  get EducationItems(){
-    return this.educationForm.get('educationItems') as FormArray;
+  get EducationItems() {
+    return this.educationForm.get('EducationItems') as FormArray;
   }
 
   addItem1() {
-    this.educationItems.push(this.createEducationItem());
+    this.EducationItems.push(this.createEducationItem());
     console.log(this.educationForm.value);
   }
 
+  education() {
+    console.log(this.educationForm.value);
+  }
 
   createExperienceItem(): FormGroup {
     return new FormGroup({
@@ -486,54 +488,83 @@ export class EmployeeProfileComponent implements OnInit {
     this.showModal = false;
   }
   fourthStep: boolean = false;
-
+  loader: boolean = false;
   successMessage: string;
   basicUpdate(data: any) {
     this.fourthStep = true;
+    this.loader = true;
     this.modalContent2 = false;
-    this.modalContent1 = false;
     this.user.motherName = data.motherName;
     this.user.fatherName = data.fatherName;
     this.user.name = data.name;
     this.user.dateOfBirth = data.dateOfBirth;
     this.user.nationality = data.nationality;
-
+    this.modalContent1 = true;
     const updatedData = this.form.value;
     console.log('abc', data, this.user);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(this.user).subscribe(() => {
-      console.log('Data updated successfully');
-    });
-    // this.user = updatedData;
+    this.dashService.updateEmployee(this.user).subscribe(
+      (res: any) => {
+        console.log('Data updated successfully');
+        this.loader = false;
+        this.modalContent1 = false;
+      },
+      (error: any) => {
+        console.log('error', error);
+      }
+    );
   }
   closeModal2(data) {
-    this.fourthStep = true;
-    this.modalContent2 = false;
+    this.loader = true;
+    // this.fourthStep = true;
+    this.modalContent2 = true;
     this.modalContent1 = false;
     this.user.location = data.location;
     this.user.ctc = data.ctc;
-
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(this.user).subscribe(() => {
-      console.log('Data updated successfully');
-    });
-    this.user = updatedData;
+    this.dashService.updateEmployee(this.user).subscribe(
+      () => {
+        console.log('Data updated successfully');
+        this.loader = false;
+        this.modalContent2 = false;
+        this.fourthStep = true;
+      },
+      (error: any) => {
+        console.log('error', error);
+      }
+    );
+    // this.user = updatedData;
   }
 
-  closeModal3(user: any) {
-    this.fourthStep = true;
+  closeModal3(data: any) {
+    // this.fourthStep = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
-    this.modalContent4 = false;
+    this.modalContent4 = true;
+    this.loader = true;
+    this.user.state = data.state;
+    this.user.address = data.address;
+    this.user.postalCode = data.postalCode;
+    this.user.email = data.email;
+    this.user.mobile = data.mobile;
+    this.user.city = data.city;
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(updatedData).subscribe(() => {
-      console.log('Data updated successfully');
-    });
-    this.user = updatedData;
+    this.dashService.updateEmployee(this.user).subscribe(
+      () => {
+        console.log('Data updated successfully');
+        this.loader = false;
+        this.modalContent4 = false;
+        this.fourthStep = true;
+      },
+      (error: any) => {
+        console.log('error', error);
+      }
+    );
+    // this.user = updatedData;
   }
   openModal3(user) {
     this.fourthStep = false;
@@ -547,13 +578,13 @@ export class EmployeeProfileComponent implements OnInit {
     this.form.patchValue(user);
     this.Selectvariable2 = user.bankname;
   }
-
   closeModal4(data) {
     this.fourthStep = true;
+    this.loader = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
     this.modalContent4 = false;
-    this.modalContent5 = false;
+    this.modalContent5 = true;
     this.user.accountno = data.accountno;
     this.user.ifsc = data.ifsc;
     this.user.adhaarno = data.adhaarno;
@@ -562,8 +593,10 @@ export class EmployeeProfileComponent implements OnInit {
     const updatedData = this.form.value;
     console.log('abc', updatedData);
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(this.user).subscribe(() => {
+    this.dashService.updateEmployee(this.user).subscribe((res) => {
       console.log('Data updated successfully');
+      this.loader = false;
+      this.modalContent5 = false;
     });
     // this.user = updatedData;
   }
@@ -579,12 +612,12 @@ export class EmployeeProfileComponent implements OnInit {
     this.form.patchValue(user);
   }
   closeModal5(data) {
-    this.fourthStep = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
-    this.modalContent6 = false;
+    this.modalContent6 = true;
+    this.loader = true;
     this.user.matric = data.accountno;
     this.user.matricPercent = data.matricPercent;
     this.user.inter = data.inter;
@@ -602,6 +635,9 @@ export class EmployeeProfileComponent implements OnInit {
     updatedData['_id'] = this.user._id;
     this.dashService.updateEmployee(this.user).subscribe(() => {
       console.log('Data updated successfully');
+      this.modalContent6 = false;
+      this.loader = false;
+      this.fourthStep = true;
     });
     // this.user = updatedData;
   }
@@ -617,13 +653,13 @@ export class EmployeeProfileComponent implements OnInit {
     this.experienceForm.patchValue(user);
   }
   closeModal6(data) {
-    this.fourthStep = true;
     this.modalContent1 = false;
     this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent5 = false;
     this.modalContent6 = false;
-    this.modalContent7 = false;
+    this.modalContent7 = true;
+    this.loader = true;
 
     console.log(this.experienceForm.value);
     const updatedData = this.experienceForm.value;
@@ -631,9 +667,10 @@ export class EmployeeProfileComponent implements OnInit {
     updatedData['_id'] = this.user._id;
     this.dashService.updateEmployee(updatedData).subscribe((res) => {
       console.log('experience', res);
+      this.modalContent7 = false;
+      this.loader = false;
+      this.fourthStep = true;
     });
-    this.user = updatedData;
-
     this.user = updatedData;
   }
   contentdropdown1: boolean = false;

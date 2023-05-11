@@ -242,9 +242,7 @@ input:focus {
     color: var(--primary-color);
 }
 
-.checkbox-text {
-    padding-top: 2px;
-}
+
 
 .checkbox-text a {
     border-bottom: 1px solid #0d0ae4;
@@ -253,6 +251,7 @@ input:focus {
 .check-text .check_box {
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 
 .button input {
@@ -486,6 +485,8 @@ span.password-toggle.icon_eye {
     color: #CB1E0F;
     font-size: 14px;
     position: absolute;
+    /* display: flex;
+    flex-direction: row; */
 }
 
 
@@ -526,7 +527,13 @@ form.ng-invalid #submit {
     pointer-events: none;
     transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
 }
-
+.password-must-be{
+    display: flex;
+    align-items: center;
+}
+div span {
+    gap: 10px;
+}
 .iconWrap .tooltip::before {
     content: '';
     position: absolute;

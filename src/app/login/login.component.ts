@@ -26,6 +26,9 @@ export class LoginComponent {
   //  emailExists: any[] = [];
   userEmail: any = '';
   emailExists = false;
+  Invalid = false;
+  loginLoader:boolean = false;
+
 
   constructor(
     public fb1: FormBuilder,
@@ -33,10 +36,13 @@ export class LoginComponent {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService,
-    public userService: UserService
+    public userService: UserService,
+    // private cdRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
+    this.userService.isFromLoginPage = false;
+    // this.userService.isFromLoginPage = false;
     const storedemail = localStorage.getItem('email');
     const storedPassword = localStorage.getItem('password');
     if (storedemail && storedPassword) {
@@ -96,6 +102,7 @@ export class LoginComponent {
           this.userdetail = res.message;
         } else if (res.message === 'user-not-found') {
           this.usernotfound = res.message;
+
         }
 
         this.employeemail = res;
@@ -139,7 +146,6 @@ export class LoginComponent {
   showPasswordIcon = 'fa-eye-slash';
   Forgotshow = false;
   EmailSent = false;
-  Invalid = false;
 
   togglePasswordVisibility(passwordInput: any) {
     this.showPassword = !this.showPassword;
@@ -161,6 +167,7 @@ export class LoginComponent {
   closeInvalid() {
     this.Invalid = !this.Invalid;
     this.loginForm.reset();
+    // this.cdRef.detectChanges();
   }
 
   // LOGIN
@@ -180,6 +187,7 @@ export class LoginComponent {
 
   loader = false;
   submit() {
+
     this.loader = true;
     setTimeout(() => {
       this.router.navigate(['/dashboard']);
@@ -187,11 +195,22 @@ export class LoginComponent {
   }
 
   // submissions
-
+ress: any =''
   onSubmit(data: any) {
+    this.loginLoader = true;
     console.log(this.loginForm.value);
-
+    // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
+      console.log("personalDataSubmitted value: ", res.personalDataSubmitted); // Debugging statement
+      if (res.personalDataSubmitted) {
+        localStorage.setItem('personalDataSubmitted', 'true');
+      }
+      console.log("ress: ", res.username)
+      this.cookie.set("company",res.username)
+      localStorage.setItem('companyname', res.username);
+      // console.log("isFromLoginPage: ", isFromLoginPage);
+      // localStorage.setItem("isFromLoginPage",JSON.stringify(isFromLoginPage))
+
       this.userService.users(this.loginForm);
       console.log('login User: ', res);
       console.log('login User: ', res.noOfEmployee);
@@ -213,16 +232,17 @@ export class LoginComponent {
         if (this.loginForm.value.Remember) {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
-          
+
         }
 
         console.log(res._id);
         this.cookie.set('hr_id', res._id);
         this.cookie.set('role', 'hr');
         this.submit();
-      } else if (res.message == 'Invalid') {
+      } else if (res.message == 'Invalid' || res.message == "Employee email or status invalid") {
         console.log('haha');
         this.Invalid = !this.Invalid;
+        // this.cdRef.detectChanges();
       }
       localStorage.setItem(
         'LoggedInName: ',
@@ -230,7 +250,8 @@ export class LoginComponent {
       );
 
       localStorage.setItem('emailid', this.loginForm.controls['email'].value);
-      localStorage.setItem('companyname', res.username);
+      // localStorage.setItem('companyname', res.username);
+      this.loginLoader = false;
     });
     // this.personalData = localStorage.getItem('totalemployee');
     // this.userService.isnotFromSignupPage = true;
@@ -304,6 +325,7 @@ export class LoginComponent {
         this.usernotfound = res.message;
         console.log('usernotfound: ', this.usernotfound);
         this.usernotfound = true;
+
       }
 
       this.employeemail = res;
