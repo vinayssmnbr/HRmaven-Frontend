@@ -12,19 +12,21 @@ export class AttendanceComponent implements OnInit {
   constructor(public empService: EmpService, private http: HttpClient) {
     empService.activeComponent = 'attendance';
     empService.headerContent = '';
-    this.attendance();
+
   }
   obj: any;
   total: any = 0;
   leave: any = 0;
   present: any = 0;
   absent: any = 0;
-
+  loader:boolean=true;
   today: any;
   tomorrow: any;
   in: any;
   out: any;
   ipAddress = '';
+  done_punch_in:boolean=false;
+  done_punch_out:boolean=false;
   attendance() {
     this.empService.attendanceload().subscribe((res: any) => {
       // current date
@@ -38,18 +40,19 @@ export class AttendanceComponent implements OnInit {
         if (month == m) {
           if (d.status == 'present') {
             this.present = this.present + 1;
-            this.total = this.total + 1
+
           }
           if (d.status == 'absent') {
             this.absent = this.absent + 1;
-            this.total = this.total + 1
+
           }
           if (d.status == 'leave') {
             this.leave = this.leave + 1;
-            this.total = this.total + 1
+
           }
         }
       })
+
       console.log(typeof (this.leave));
     })
     // this.total = this.leave + this.absent + this.present;
@@ -81,12 +84,14 @@ export class AttendanceComponent implements OnInit {
           subscribe((res: any) => {
             console.log(res.time);
             console.log(this.ipAddress);
-            this.in = res.time;
+            this.in = new Date();
+            this.done_punch_in=true;
           })
       }
     }
     else {
-      console.log("out of range")
+      console.log("out of range");
+      alert('out of rangeout of range');
 
 
     }
@@ -122,12 +127,14 @@ export class AttendanceComponent implements OnInit {
           subscribe((res: any) => {
             console.log(res.time);
             console.log(this.ipAddress);
-            this.out = res.time;
+            this.out = new Date();
+            this.done_punch_out=true;
           })
       }
     }
     else {
-      console.log("out of range")
+      console.log("out of range");
+      alert('out of rangeout of range');
     }
   }
 
@@ -140,6 +147,10 @@ export class AttendanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const d = new Date();
+    this.total = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+    this.attendance();
+
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
         this.in = "";
@@ -150,6 +161,7 @@ export class AttendanceComponent implements OnInit {
         this.out = res.out;
       }
       console.log(res);
+
     })
 
     this.getIPAddress();
@@ -161,6 +173,7 @@ export class AttendanceComponent implements OnInit {
 
       this.ipAddress = res.ip;
       console.log(this.ipAddress);
+      this.loader=false;
 
     });
 

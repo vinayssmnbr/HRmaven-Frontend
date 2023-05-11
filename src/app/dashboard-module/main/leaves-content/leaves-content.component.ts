@@ -261,15 +261,15 @@ export class LeavesContentComponent {
     },
     {
       id: 1,
-      name: 'casual',
+      name: 'Casual Leave',
     },
     {
       id: 2,
-      name: 'medical',
+      name: 'Medical Leave',
     },
     {
       id: 3,
-      name: 'compensatory',
+      name: 'Compensatory Leave',
     },
 
   ];
@@ -343,14 +343,13 @@ export class LeavesContentComponent {
     if (this.acceptall == false) {
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
-      this.pendingcount = this.pendingcount - 1;
-      this.acceptcount = this.acceptcount + 1;
-
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'accept', this.acceptmessage)
-        .subscribe((res) => { });
+        .subscribe((res:any) => {
+          this.graphleave();
+         });
 
-      if (this.acceptdata.category == 'casual' || this.acceptdata.category == 'compensatory' || this.acceptdata.category == 'medical') {
+      if (this.acceptdata.type="Full Day Leave") {
         this.dashService
           .updateleave(
             this.acceptdata.empId,
@@ -361,7 +360,7 @@ export class LeavesContentComponent {
       }
       this.acceptleave.push(row);
       this.acceptmessage = '';
-      this.graphleave();
+
       this.showModal2 = true;
       this.showModal = false;
     } else {
@@ -370,19 +369,19 @@ export class LeavesContentComponent {
 
           this.dashService
             .updateleavestatus(data._id, 'accept', this.acceptmessage)
-            .subscribe((res) => { });
+            .subscribe((res:any) => { });
           const row = this.acceptdata[index];
           this.acceptleave.push(row);
-          if (data.category == 'casual' || data.category == 'compensatory' || data.category == 'medical') {
+          if (data.type="Full Day Leave") {
             this.dashService.updateleave(data.empId, data.from, data.to).subscribe((res: any) => { });
           }
-          this.pendingcount = this.pendingcount - 1;
-          this.acceptcount = this.acceptcount + 1;
         } else {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
         }
+        this.graphleave();
       });
+
       //////////////////////////////////////////
       this.pendingleave = pendingtemp;
       this.showModal2 = true;
@@ -402,12 +401,9 @@ export class LeavesContentComponent {
       this.pendingleave.splice(this.index, 1);
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'reject', this.acceptmessage)
-        .subscribe((res) => { });
-      this.pendingcount = this.pendingcount - 1;
-      this.rejectcount = this.rejectcount + 1;
+        .subscribe((res:any) => { this.graphleave(); });
       this.acceptmessage = '';
       this.rejectleave.push(row);
-      this.graphleave();
     } else {
       this.showModal3 = true;
       this.showModal1 = false;
@@ -415,15 +411,15 @@ export class LeavesContentComponent {
         if (data.select == true) {
           this.dashService
             .updateleavestatus(data._id, 'reject', this.acceptmessage)
-            .subscribe((res) => { });
-          this.pendingcount = this.pendingcount - 1;
-          this.rejectcount = this.rejectcount + 1;
+            .subscribe((res:any) => {  this.graphleave(); });
           const row = this.acceptdata[index];
           this.rejectleave.push(row);
         } else {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
         }
+        this.graphleave();
+
       });
       this.pendingleave = pendingtemp;
       this.rejectall = false;

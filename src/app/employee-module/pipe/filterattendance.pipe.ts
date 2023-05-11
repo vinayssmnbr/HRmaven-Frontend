@@ -21,8 +21,14 @@ export class FilterattendancePipe implements PipeTransform {
               filter.push(value[i]);
         }
     }
+    if(filter.length==0)
+    {
+       filter.push('nofound');
+       return filter;
+    }
     console.log(filter);
     return filter;
+
   }
   }
 

@@ -287,15 +287,19 @@
                 <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
                   <ul>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Uppercase character</li>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Special Character</li>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Lowercase Character</li>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Minimum 8 Character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Uppercase
+                      character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Special
+                      Character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Lowercase
+                      Character</li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Minimum 8
+                      Character</li>
                   </ul>
                 </span>
               </div>
             </div>
-            <span class="validation-message"><i class="fa-solid fa-circle-exclamation"></i>
+            <span class="validation-message" *ngIf=""><i class="fa-solid fa-circle-exclamation"></i>
               New Password cannot be same as old password
             </span>
           </div>
