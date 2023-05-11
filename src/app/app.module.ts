@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TermConditionComponent } from './term-condition/term-condition.component';
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
+import { ForgetempComponent } from './forgetemp/forgetemp.component';
 // import { DashboardComponent } from './main/dashboard/dashboard.component';
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginEmployeeComponent } from './login-employee/login-employee.componen
     LoginComponent,
     TermConditionComponent,
     LoginEmployeeComponent,
+    ForgetempComponent,
     // DashboardComponent,
   ],
   imports: [
