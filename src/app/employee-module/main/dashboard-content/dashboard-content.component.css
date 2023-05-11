@@ -978,6 +978,9 @@ input[type="radio"] {
   overflow-x: hidden;
   height: 481px;
   padding-right: 4px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hidden {
@@ -1046,4 +1049,11 @@ input[type="radio"] {
   cursor: pointer;
   border: none;
 
+}
+
+
+.no-jobs-to-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
