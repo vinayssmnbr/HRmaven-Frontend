@@ -27,6 +27,7 @@ export class LoginComponent {
   userEmail: any = '';
   emailExists = false;
   Invalid = false;
+  loginLoader:boolean = false;
 
 
   constructor(
@@ -186,6 +187,7 @@ export class LoginComponent {
 
   loader = false;
   submit() {
+
     this.loader = true;
     setTimeout(() => {
       this.router.navigate(['/dashboard']);
@@ -195,6 +197,7 @@ export class LoginComponent {
   // submissions
 ress: any =''
   onSubmit(data: any) {
+    this.loginLoader = true;
     console.log(this.loginForm.value);
     // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
@@ -248,6 +251,7 @@ ress: any =''
 
       localStorage.setItem('emailid', this.loginForm.controls['email'].value);
       // localStorage.setItem('companyname', res.username);
+      this.loginLoader = false;
     });
     // this.personalData = localStorage.getItem('totalemployee');
     // this.userService.isnotFromSignupPage = true;

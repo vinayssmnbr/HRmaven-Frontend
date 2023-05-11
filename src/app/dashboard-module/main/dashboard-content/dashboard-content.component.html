@@ -341,9 +341,9 @@
                                           <span *ngIf="personaldataForm.controls.name.errors.pattern">
                                             *Must start with a capital letter.
                                           </span>
-                                          <span *ngIf="personaldataForm.get('name').errors?.minlength && personaldataForm.get('name').touched">
+                                          <!-- <span *ngIf="personaldataForm.get('name').errors?.minlength && personaldataForm.get('name').touched">
                                             *Must be at least 2 characters long.
-                                          </span>
+                                          </span> -->
                                         </span>
 
                                       </div>
@@ -358,13 +358,17 @@
                             <div class="email-phone">
                                 <div class="form__group">
                                     <label for="name">Phone no.</label>
-                                    <!-- <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
+                                    <input type="number" class="form_input" placeholder='+91 4512639870' formControlName="phone"
                                         id="name1" required [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}"/>
-                                     -->
-                                     <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="phone" required 
+<!-- <span *ngIf="personaldataForm.controls.phone.errors"
+  [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
+    [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value " (input)="onInput($event)">
+</span> -->
+
+    <!-- <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="name1" required
     [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
     [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value"
-    (input)="onInput($event)" />
+    (input)="onInput($event)" /> -->
 
                                 </div>
                                 <div class="form__group">
@@ -379,9 +383,9 @@
                                           <span *ngIf="personaldataForm.controls.headOffice.errors.pattern">
                                             *Must start with a capital letter.
                                           </span>
-                                          <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
+                                          <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
                                             *Must be at least 2 characters.
-                                          </span>
+                                          </span> -->
                                         </span>
                                 </div>
                             </div>

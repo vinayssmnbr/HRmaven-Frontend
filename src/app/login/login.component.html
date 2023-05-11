@@ -191,7 +191,7 @@
                 <a class="forgot-text" (click)="toggleForgot()">Forgot password?</a>
             </div>
             <div class="input-field button">
-                <input type="submit" value="Login" [disabled]="loginForm.invalid" />
+                <input type="submit" [value]=" loginLoader?'Loading...': 'Login'" [disabled]="loginForm.invalid" />
             </div>
             <div class="input-field">
                 <p class="or_bar">OR</p>

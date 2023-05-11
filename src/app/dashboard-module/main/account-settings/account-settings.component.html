@@ -346,17 +346,16 @@
 
                 </div>
                 <div class="edit-profile-footer">
-                    <button type="submit" class="done-btn"
-                        (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
+                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1? 'Loading....':'Done'}}</button>
                 </div>
 
 
             </form>
 
 
-            <div class="edit-profile-footer">
+            <!-- <div class="edit-profile-footer">
                 <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
-            </div>
+            </div> -->
         </div>
         <!-- </form> -->
     </div>
