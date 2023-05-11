@@ -115,6 +115,15 @@ export class UserService {
     );
   }
 
+  newpwdemp(data: any, token: any) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'auth-token': token,
+      Accept: 'application/json',
+    });
+    return this.http.post(this.prefix + 'resetpasswordemp', data, { headers });
+  }
+
   //LOGIN AND VERIFY DASHBOARD
 
   // Role=localStorage.getItem('role')

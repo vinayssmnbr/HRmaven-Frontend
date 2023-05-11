@@ -209,6 +209,7 @@ isInputDirty = false;
       });
 
   }
+ 
   get func(){
     return this.forgetpwd.controls;
   }
@@ -219,21 +220,25 @@ isInputDirty = false;
 
     matchpwd() {
       const email = this.employeeemail;
-      const oldPassword = this.forgetpwd.controls['oldpassword'].value;
+       this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
       this.isPasswordMatched = false;
 
-      this.userService.getpwdmgt(email, oldPassword).subscribe((res: any) => {
+      this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
         console.log("message: ", res);
         console.log("message email: ", res.message);
 
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
-        }
-        this.oldpassword = oldPassword;
-      });
+        } 
+        
+        this.oldpassword = this.oldpassword;
+      },
+      //  (error: any) => {
+      //   this.isPasswordMatched = true
+      // }
+      );
     }
-
-
+ 
 
 
 
