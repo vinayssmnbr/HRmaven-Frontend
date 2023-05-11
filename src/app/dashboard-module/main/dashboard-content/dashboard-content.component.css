@@ -709,6 +709,12 @@ input[type="radio"] {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.doaminurl{
+  font-size: 11px;
+  position: absolute;
+  font-weight: bold;
+  margin-left: 5px;
+}
 
 /* ------------------Media Query----------------------- */
 @media (max-width:1920px) {

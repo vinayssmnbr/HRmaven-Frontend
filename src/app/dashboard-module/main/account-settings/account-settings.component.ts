@@ -25,8 +25,10 @@ export class AccountSettingsComponent implements OnInit {
   hideNotifications = false;
  readonly= false;
  doneLoader1:boolean = false;
+ personalLoader:boolean = false
 
- constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService){
+ constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService)
+ {
   this.companyDetailsForm = this.formBuilder.group({
     headOffice: [''],
     description: ['']
@@ -37,6 +39,12 @@ export class AccountSettingsComponent implements OnInit {
     phone: ['', [Validators.required, this.phoneValidator]]
   });
  }
+ phoneValidatorr(control: FormControl) {
+  const value = control.value;
+  const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+  return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
+}
+
   objectuserid = localStorage.getItem('emailid')
 
  data: any = ''
@@ -60,19 +68,22 @@ organisationn: any = '';
 
 phoneValidator(control: FormControl) {
   const value = control.value;
-  if (value && value.toString().length > 10) {
-    control.setValue(value.toString().substring(0, 10)); // set the value to the first 10 digits
-  }
-  return null;
+  const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+  return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
 }
 
 onInput(event: any) {
   const input = event.target as HTMLInputElement;
-  if (input.value && input.value.length > 10) {
-    input.value = input.value.substring(0, 10); // restrict the input to the first 10 digits
+  const value = input.value.replace(/\D/g, ''); // remove any non-numeric characters
+  if (value && value.length > 10) {
+    input.value = value.substring(0, 10); // restrict the input to the first 10 digits
+  } else {
+    input.value = value;
   }
   this.isInputDirty = true;
 }
+
+
 isEmptyInput = false;
 
   onFocusout() {
@@ -150,10 +161,14 @@ isInputDirty = false;
   // });
   
     }
+    get isPhoneInvalid() {
+      return this.personalDetailsForm.get('phone').invalid;
+    }
 
 
     updateData(data: any){
-      this.doneLoader1 = true;
+      // this.personalLoader = true
+      // this.doneLoader1 = true;
       this.userService.updatepersonals(this.objectuserid, data).subscribe((res: any) => {
         console.log("res account settings personaldata222: ", res.personaldata);
         console.log("res account settings personaldata222: ", res.personaldata.headOffice);
@@ -166,6 +181,7 @@ isInputDirty = false;
         this.profileimage = res.personaldata.url; // update profile image
 
         // Update the profile image in the UI
+        // this.personalLoader = false
       });
     }
 
@@ -206,28 +222,82 @@ isInputDirty = false;
   isPasswordMatched = false;
   oldpassword: any = '';
     emailidd: any =''
+    isSamePassword: boolean = false
+oldpwd: any = ''
+isNewPasswordSame: boolean = false;
+    // matchpwd() {
+    //   const email = this.employeeemail;
+    //    this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
+    //   this.isPasswordMatched = false;
+      
+    //   this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
+    //     console.log("message: ", res);
+    //     console.log("message email: ", res.message);
+    //     console.log("message pwd email: ", res.password);
 
 
+    //     if (res.message === 'Password matches') {
+    //       this.isPasswordMatched = true;
+    //       this.oldpwd = res.password;
+    //       this.isSamePassword = true;
+    //     } else{
+    //       this.isSamePassword = false
+    //     } 
+        
+    //     // this.oldpassword = this.oldpassword;
+    //       // Check if new password is the same as the old password
+    // // if (this.forgetpwd.controls['password'].value === this.oldpassword) {
+    // //   console.log('inside forgore isSamePassword')
+    // //   this.isSamePassword = true;
+    // // } else {
+    // //   this.isSamePassword = false;
+    // // }
+    //   },
+      
+    //   );
+    // }
     matchpwd() {
       const email = this.employeeemail;
-       this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
+      this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
       this.isPasswordMatched = false;
-
+    
       this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
         console.log("message: ", res);
         console.log("message email: ", res.message);
-
+        console.log("message pwd email: ", res.password);
+    
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
-        } 
-        
-        this.oldpassword = this.oldpassword;
-      },
-      //  (error: any) => {
-      //   this.isPasswordMatched = true
-      // }
-      );
+          this.oldpwd = res.password;
+          const newPassword = this.forgetpwd.controls['password'].value;
+          this.isSamePassword = newPassword === this.oldpwd;
+        } else {
+          this.isSamePassword = false;
+        }
+      });
     }
+    
+    isPasswordInput: boolean = false;
+    // matchpwd() {
+    //   const email = this.employeeemail;
+    //   this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
+    
+    //   this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
+    //     console.log("message: ", res);
+    //     console.log("message email: ", res.message);
+    //     console.log("message pwd email: ", res.password);
+    
+    //     if (res.message === 'Password matches') {
+    //       this.oldpwd = res.password;
+    //       this.func['password'].setErrors({isPasswordMatched: true});
+    //     } 
+    //     else{
+    //       this.func['password'].setErrors(null);
+    //       this.func['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
+    //     }
+    //   });
+    // }
+    
  
 
 
