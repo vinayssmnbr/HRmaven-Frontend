@@ -12,6 +12,7 @@ import { TermConditionComponent } from './term-condition/term-condition.componen
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
 // import { AuthGuard } from './guards/auth.guard';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component'
+import { ForgetempComponent } from './forgetemp/forgetemp.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
 
   },
   { path: 'resetpassword/:token', component: ForgetComponent },
+  { path: 'resetpasswordemp/:token', component: ForgetempComponent },
   {path:'t&c',component:TermConditionComponent},
   { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule),canActivate:[EmpGuard]},
   {path:'nofound', component:NoPageFoundComponent },

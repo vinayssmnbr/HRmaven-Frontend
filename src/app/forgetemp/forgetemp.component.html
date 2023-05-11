@@ -1,0 +1,105 @@
+<ng-template #hideLink>
+    <div>
+    <!-- <div *ngIf="expired && errorMessage"> -->
+        <br>
+         <a routerLink="/login-emp">{{errorMessage}}!! Click here to go to Login Page again</a>
+      </div>
+    </ng-template> 
+     <div class="forget-content" *ngIf="!expired && !errorMessage ; else hideLink">
+      <!-- <div class="forget-content" *ngIf="!expired && !errorMessage ">   -->
+      <div class="forget-text">
+        <div class="logo">
+          <a href="#"><img src="assets/images/resetlogo.png" alt=""></a>
+        </div>
+        <h1>Create a new password</h1>
+        <p>Almost done. Enter your new password and you’re all set.</p>
+      </div>
+    
+      <form [formGroup]="forgetformemp" class="form"(ngSubmit)="newpasswordemp(forgetformemp.value)"  *ngIf="!expired && !errorMessage ">
+        <div class="field create-password">
+          <div class="password-tooltip">
+            <div class="input-field">
+    
+              <label for="name" class="text-label">New Password
+    
+                <div class="iconWrap password_required">
+    
+                  <i class="fa-solid fa-circle-info"></i>
+                  <span class="tooltip">
+                    <ul>
+                      <ul id="set">
+                        <li id="count">Length: 0</li>
+                      </ul>
+                      <li id="check0" [style.color]="lengthCheck ? 'green' : 'red'">
+                        <i class="far fa-check-circle" [style.color]="lengthCheck ? 'green' : 'red'"></i><span [style.color]="lengthCheck ? 'green' : 'red'">Length
+                          Should be at least8.</span>
+                      </li>
+    
+                      <li id="check2">
+                        <i class="far fa-check-circle" [style.color]="numericalCheck ? 'green' : 'red'"></i><span [style.color]="numericalCheck ? 'green' : 'red'">Contains
+                          numerical character.</span>
+                      </li>
+                      <li id="check3">
+                        <i class="far fa-check-circle" [style.color]="specialCharCheck ? 'green' : 'red'"></i><span [style.color]="specialCharCheck ? 'green' : 'red'">Contains
+                          special character.</span>
+                      </li>
+                      <li id="check5">
+                        <i class="far fa-check-circle" [style.color]="capitalCheck ? 'green' : 'red'"></i><span [style.color]="capitalCheck ? 'green' : 'red'">Should
+                          contain at least one Capital letter</span>
+                      </li>
+                      <li id="check6">
+                        <i class="far fa-check-circle" [style.color]="smallCheck ? 'green' : 'red'"></i><span [style.color]="smallCheck ? 'green' : 'red'">Should
+                          contain at least one small letter</span>
+                      </li>
+                    </ul>
+                  </span>
+                </div>
+              </label>
+              <div  style="position: relative">
+                <input type="{{ is_visible ? 'text' : 'password' }}" (input)="checkPassword()" [(ngModel)]="password"
+                  placeholder="Enter your password" class="password" [class.is-invalid]="
+                          fun['password'].invalid && fun['password'].touched
+                        " formControlName="password" #passwordInput class="form-control is-invalid" id="password"
+                  (keyup)="onKeyUp($event)" (keydown.space)="$event.preventDefault()" />
+    
+                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)"><i
+                    class="fa {{ showPasswordIcon }}"></i></span>
+              </div>
+            </div>
+    
+    
+    
+          </div>
+          <div class="field confirm-password">
+            <div class="input-field">
+              <label for="name" class="text-label">Confirm your Password</label>
+              <div  style="position: relative;">
+    
+                <input type="password" placeholder="Confirm your password" class="cPassword" formControlName="confirm"
+                  #passwordInpu (keyup)="onKeyUp($event)" />
+    
+    
+    
+    
+                <span class="password-toggle" (click)="togglePassword(passwordInpu)">
+                  <i class="fa {{showPasswordIcon1}}"></i>
+                </span>
+              </div>
+              <span *ngIf="forgetformemp.errors?.['passwordmatcherror'] && (fun['confirm'].touched || fun['confirm'].dirty)"><i
+                  class="fa-solid fa-circle-info"></i>Password didn't match</span>
+    
+            </div>
+          </div>
+    
+        </div>
+    
+    
+    
+        <div class="input-field button">
+          <input type="submit" id="submit" [disabled]="forgetformemp.invalid" value="Reset Password" />
+        </div>
+    
+    
+      </form>
+    </div>
+    
