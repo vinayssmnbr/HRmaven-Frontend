@@ -16,14 +16,36 @@ export class LeavesContentComponent {
   ngOnInit() { }
   inputfilename: boolean = false;
   fileName: string = '';
-  onfileselected(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.fileName = this.selectedFile ? this.selectedFile.name : '';
-  }
   leaves: any = [];
   str = '';
   obj: any;
   Selectvariable3: any = '';
+  date = new Date();
+  onfileselect(event: any) { }
+  selectedFile1: File | null = null;
+  halfdayleave: boolean = false;
+  shortleave: boolean = false;
+  Selectvariable: string = 'Select';
+  colorvariable: number = 0;
+  contentdropdown: boolean = false;
+  contentdropdown1: boolean = false;
+  Selectvariable1: string = 'select';
+  colorvariable1: number = 0;
+  leaveshistory = false;
+  employeemaintable = true;
+  leave_approved_form = false;
+  designationdropdownOption: boolean = false;
+  loader = false;
+  selectedFile: File | null = null;
+  fileurl: any;
+  loaderz:boolean=true;
+  loadersuccess:boolean=false;
+
+  onfileselected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.fileName = this.selectedFile ? this.selectedFile.name : null;
+  }
+
   constructor(public empService: EmpService, private formBuilder: FormBuilder) {
     empService.activeComponent = 'leave';
     empService.headerContent = '';
@@ -49,15 +71,16 @@ export class LeavesContentComponent {
       } else {
         console.log(res.response[0].History);
         this.leaves = res.response[0].History;
+
       }
+      this.loaderz=false;
     });
   }s
 
-  date = new Date();
 
     async Submit() {
       console.log(this.empleaveForm.value);
-
+      this.loadersuccess=true;
      this.onUpload();
 
   }
@@ -65,27 +88,25 @@ export class LeavesContentComponent {
 
   cancel() {
     this.empleaveForm.reset();
-    this.Selectvariable = 'casual';
+    this.Selectvariable = 'Select';
     this.empleaveForm.value.category = this.Selectvariable;
     this.str = '0';
     this.empleaveForm.value.duration = this.str;
-    this.Selectvariable1 = 'select'
-    this.selectedFile1=null;
+    this.Selectvariable1 = 'Select',
+    this.typevariable="Select";
+    this.shorttime="Select",
+    this.halftime="Select"
+    this.selectedFile=null;
+
 
   }
 
-  onfileselect(event: any) { }
-  selectedFile1: File | null = null;
+
   onFileSelected1(event: any) {
     this.selectedFile1 = event.target.files[0];
     // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
   }
-  // onUpload(file:any) {
-  //   console.log('fdjkhf');
-  //   this.empService.upload1(file).then((res) => {
-  //     console.log(res)
-  //   });
-  // }
+
 
   empleaveForm = new FormGroup({
     from: new FormControl('', [Validators.required]),
@@ -94,10 +115,14 @@ export class LeavesContentComponent {
     duration: new FormControl(''),
     url: new FormControl(''),
     reason: new FormControl(''),
-    shortime: new FormControl('')
+    type:new FormControl(''),
   });
 
+  len:number=0;
   getDates() {
+    this.typedtn=false;
+    this.shorttimedtn = false;
+    this.halftimedtn=false;
     const dateArray: string[] = [];
     let startDate = this.empleaveForm.value.from;
     let stopDate = this.empleaveForm.value.to;
@@ -107,56 +132,25 @@ export class LeavesContentComponent {
       dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
       currentDate = moment(currentDate).add(1, 'days');
     }
-    let len = dateArray.length;
-    this.str = len.toString();
+    this.len = dateArray.length;
+    this.str = this.len.toString();
     let obj = { duration: this.str };
     console.log(this.str);
     this.empleaveForm.value.duration = this.str;
   }
 
-  array: any = [
-    {
-      id: 0,
-      name: 'casual',
-    },
-    {
-      id: 1,
-      name: 'half 1',
-    },
-    {
-      id: 2,
-      name: 'half 2',
-    },
-    {
-      id: 3,
-      name: 'compensatory',
-    },
-    {
-      id: 4,
-      name: 'short',
-    },
-    {
-      id: 5,
-      name: 'medical',
-    },
-  ];
-  halfdayleave: boolean = false;
-  shortleave: boolean = false;
-  contentdropdown: boolean = false;
+
+
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  Selectvariable: string = 'Select';
-  colorvariable: number = 0;
+
   Changeselect(arr: any) {
-    if (arr.id == 4) {
-      this.shortleave = true;
-    } else {
-      this.shortleave = false;
-      this.halfdayleave = false;
-    }
-    if (arr.id == 1) {
-      this.halfdayleave = true;
+    this.typedtn=false;
+    this.shorttimedtn = false;
+    this.halftimedtn=false;
+    if (arr.id == 0 && this.len<=1) {
+      this.typedtn=true;
     }
 
     this.Selectvariable = arr.name;
@@ -165,7 +159,6 @@ export class LeavesContentComponent {
     console.log(arr.name);
     this.empleaveForm.value.category = arr.name;
   }
-
   array1: any = [
     {
       id: 0,
@@ -196,22 +189,32 @@ export class LeavesContentComponent {
       name: '3 am - 5 am',
     },
   ];
-  contentdropdown1: boolean = false;
+  array: any = [
+    {
+      id: 0,
+      name: 'Casual',
+    },
+    {
+      id: 1,
+      name: 'Compensatory',
+    },
+    {
+      id: 2,
+      name: 'Medical',
+    },
+  ];
+
+
   dropdownOpen1() {
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  Selectvariable1: string = 'select';
-  colorvariable1: number = 0;
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
     this.colorvariable1 = arr1.id;
     this.contentdropdown1 = false;
     console.log(arr1.name);
-    this.empleaveForm.value.shortime = arr1.name;
+    // this.empleaveForm.value.shortime = arr1.name;
   }
-
-  leaveshistory = false;
-  employeemaintable = true;
   tablehistory() {
     this.leaveshistory = true;
     this.employeemaintable = false;
@@ -220,23 +223,15 @@ export class LeavesContentComponent {
     this.leaveshistory = false;
     this.employeemaintable = true;
   }
-
-  // ---------Modal popoup----------
-  leave_approved_form = false;
   applyleaves() {
     this.Submit();
   }
   closemodal() {
     this.leave_approved_form = false;
   }
-  designationdropdownOption: boolean = false;
-
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
-
-  loader = false;
-  selectedFile: File | null = null;
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
     var filename = event.target.files[0].name;
@@ -252,7 +247,6 @@ export class LeavesContentComponent {
       return;
     }
   }
-  fileurl: any;
    onUpload(){
     console.log(this.selectedFile);
     if(this.selectedFile!=null){
@@ -262,7 +256,6 @@ export class LeavesContentComponent {
       this.empService.fileUrl;
       this.fileurl = this.empService.fileUrl;
       this.empleaveForm.value.url = this.empService.fileUrl;
-      this.leave_approved_form = true;
       this.uploadform();
       this.cancel();
       console.log(this.leaves);
@@ -271,18 +264,36 @@ export class LeavesContentComponent {
   }
     else{
       this.uploadform();
-      this.leave_approved_form=true;
       this.cancel();
     }
   }
   uploadform(){
+    this.loaderz=true;
     this.empleaveForm.value.category = this.Selectvariable;
     this.empleaveForm.value.duration = this.str;
     this.empleaveForm.value.url = this.fileurl;
-    this.empleaveForm.value.shortime = this.Selectvariable1;
-    if (this.Selectvariable == 'short') {
-      this.empleaveForm.value.category = this.Selectvariable;
-      this.empleaveForm.value.duration = this.Selectvariable1;
+    // this.empleaveForm.value.shortime = this.Selectvariable1;
+    if (this.Selectvariable == 'Casual' && this.typevariable=='Short') {
+      this.empleaveForm.value.category = 'Casual Leave';
+      this.empleaveForm.value.type="Short Leave"
+      this.empleaveForm.value.duration = this.shorttime;
+    }
+    else if(this.Selectvariable == 'Casual' && this.typevariable=='Half Day') {
+      this.empleaveForm.value.category = 'Casual Leave';
+      this.empleaveForm.value.type="Half Day Leave"
+      this.empleaveForm.value.duration = this.halftime;
+    }
+    else if(this.Selectvariable == 'Medical' ||  this.Selectvariable=='Compensatory' || this.typevariable=='Full Day' )
+    {
+      this.empleaveForm.value.category = this.Selectvariable+' Leave';
+      this.empleaveForm.value.type="Full Day Leave"
+      this.empleaveForm.value.duration = this.str;
+    }
+    else if(this.Selectvariable=='Casual' && this.len>1){
+      this.empleaveForm.value.category = 'Casual Leave';
+      this.empleaveForm.value.type="Full Day Leave"
+      this.empleaveForm.value.duration = this.str;
+
     }
     console.log(this.empleaveForm.value);
     this.empService.createleave(this.empleaveForm.value).subscribe((res) => {
@@ -290,7 +301,89 @@ export class LeavesContentComponent {
       this.loader=false;
       this.leaves.push(res);
       this.leavegraphcontent();
+      this.loadersuccess=false;
+      this.leave_approved_form=true;
+      this.cancel();
+      this.loaderz=false;
     });
+  }
+
+  // /// drop down code by harpreet Singh
+  arr3:any=[
+    {
+      id: 0,
+      name: 'Short',
+    },
+    {
+      id: 1,
+      name: 'Half Day',
+    },
+    {
+      id: 2,
+      name: 'Full Day',
+    },
+  ];
+  typedtn:boolean=false;
+  typedropdown:boolean=false;
+  typevariable:any='Select';
+  dropdownOpentype(){
+    this.typedropdown=!this.typedropdown;
+  }
+
+
+  Changeselecttype(arr:any)
+  {
+      if(arr.id=='0')
+      {
+        this.halftimedtn=false;
+        this.shorttimedtn=true;
+      }
+      else if(arr.id==1)
+      {
+        this.halftimedtn=true;
+          this.shorttimedtn=false;
+      }
+      else{
+          this.halftimedtn=false;
+          this.shorttimedtn=false;
+      }
+      this.typevariable=arr.name;
+  }
+
+  shorttimedtn:boolean=false
+  shortdtn:boolean=false;
+  shorttime:any='Select';
+  dropdownOpenshort(){
+    this.shortdtn=true;
+  }
+  Changeselectshort(arr){
+    this.shorttime=arr.name;
+    this.shortdtn=false;
+  }
+
+  array4:any=[
+    {
+      id: 0,
+      name: 'First Half',
+    },
+    {
+      id: 1,
+      name: 'Second Half',
+    },
+
+  ];
+
+  halftimedtn:boolean=false;
+  halfdtn:boolean=false;
+  halftime:any="Select";
+  dropdownOpenhalf(){
+    this.halfdtn=true;
+  }
+
+  Changeselecthalf(arr){
+    this.halftime=arr.name;
+    this.halfdtn=false;
+
   }
 
 }

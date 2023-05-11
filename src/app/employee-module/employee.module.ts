@@ -52,7 +52,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       "showSubtitle": false,
       "showUnits": false,
       "showBackground": false,
-      "clockwise": false,
+      "clockwise": true,
       "startFromZero": false,
       "lazy": true})
   ],

@@ -91,7 +91,8 @@
       <!-- <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0"><img src="./assets/images/prime_file-import.svg">Export</button> -->
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
-        [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img src="./assets/images/prime_file-import.svg">Export</button>
+        [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img
+          src="./assets/images/prime_file-import.svg">Export</button>
       <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
@@ -124,7 +125,188 @@
 
 
           <td colspan="7" class="no_data" *ngIf="user.found=='true'">
-            <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+            <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect width="209" height="176" fill="" />
+                <path
+                  d="M-6183 -1857C-6183 -1858.1 -6182.1 -1859 -6181 -1859H7186C7187.1 -1859 7188 -1858.1 7188 -1857V9306C7188 9307.1 7187.1 9308 7186 9308H-6181C-6182.1 9308 -6183 9307.1 -6183 9306V-1857Z"
+                  fill="" />
+                <g clip-path="url(#clip0_3210_46238)">
+                  <rect width="1440" height="823" transform="translate(-727 -429)" fill="" />
+                  <path
+                    d="M175.078 89.6304L175 89.2585C175.242 89.2064 175.48 89.1506 175.718 89.0874L175.811 89.4593C175.558 89.5225 175.324 89.5783 175.078 89.6304Z"
+                    fill="#263238" />
+                  <path
+                    d="M177.252 89.0317L177.133 88.6821C177.598 88.5222 178.062 88.3474 178.512 88.1577L178.657 88.4999C178.2 88.6933 177.728 88.8718 177.252 89.0317ZM180.022 87.8454L179.855 87.5181C180.29 87.2912 180.725 87.0458 181.138 86.7743L181.331 87.0904C180.907 87.3842 180.465 87.6334 180.022 87.8454ZM182.581 86.2723L182.361 85.971C182.763 85.6773 183.15 85.3686 183.514 85.0525L183.76 85.3314C183.369 85.6698 182.997 85.9859 182.577 86.2871L182.581 86.2723ZM184.849 84.2938L184.578 84.0372C184.92 83.6653 185.244 83.2935 185.541 82.9216L185.835 83.1484C185.526 83.5575 185.195 83.9405 184.857 84.3087L184.849 84.2938ZM186.69 81.9137L186.374 81.7166C186.631 81.3012 186.86 80.8688 187.058 80.4225L187.401 80.575C187.19 81.0403 186.952 81.4923 186.686 81.9286L186.69 81.9137ZM187.921 79.1543L187.549 79.0502C187.685 78.5836 187.786 78.1075 187.85 77.6259L188.222 77.6742C188.161 78.1799 188.059 78.6798 187.917 79.1692L187.921 79.1543ZM188.334 76.1792H187.962V76.0714C187.962 75.6214 187.936 75.164 187.891 74.714L188.263 74.6768C188.312 75.1401 188.337 75.6056 188.338 76.0714L188.334 76.1792ZM187.665 73.2673C187.564 72.7879 187.44 72.3138 187.293 71.8467L187.665 71.7352C187.817 72.2186 187.947 72.7095 188.036 73.1893L187.665 73.2673ZM186.783 70.467C186.605 70.0282 186.411 69.5782 186.173 69.1245L186.508 68.9572C186.735 69.4183 186.943 69.8795 187.125 70.3257L186.783 70.467ZM185.482 67.8155C185.251 67.4101 184.998 66.9824 184.738 66.5436L185.054 66.3465C185.325 66.7891 185.582 67.2205 185.798 67.6333L185.482 67.8155ZM183.927 65.2904C183.656 64.8813 183.38 64.4685 183.098 64.0557L183.406 63.8474C183.689 64.2602 183.964 64.673 184.236 65.0895L183.927 65.2904ZM182.254 62.8285C181.975 62.4194 181.692 62.0066 181.417 61.5975L181.725 61.3893C182.001 61.7983 182.28 62.2111 182.559 62.6165L182.254 62.8285ZM180.591 60.3517C180.32 59.9352 180.056 59.5112 179.795 59.0873L180.111 58.8939C180.372 59.3178 180.636 59.7344 180.904 60.1509L180.591 60.3517ZM179.04 57.7968C178.788 57.3468 178.553 56.9006 178.341 56.4729L178.676 56.3055C178.884 56.7295 179.119 57.1683 179.364 57.6146L179.04 57.7968ZM177.72 55.1192C177.523 54.6544 177.348 54.1821 177.185 53.7209L177.557 53.6019C177.713 54.0519 177.888 54.5168 178.081 54.9742L177.72 55.1192ZM176.753 52.2817C176.631 51.7983 176.523 51.3037 176.441 50.7942L176.813 50.7347C176.895 51.2107 176.995 51.6941 177.118 52.1702L176.753 52.2817ZM176.255 49.3066C176.218 48.8492 176.199 48.3881 176.199 47.9269V47.8042H176.571V47.9232C176.571 48.3732 176.571 48.8269 176.627 49.2731L176.255 49.3066ZM176.627 46.3315L176.255 46.2943C176.255 46.1939 176.274 46.0898 176.285 45.9819C176.329 45.584 176.385 45.1861 176.452 44.8068L176.824 44.87C176.761 45.2419 176.705 45.6324 176.66 46.0228C176.675 46.1381 176.675 46.2385 176.645 46.3427L176.627 46.3315ZM177.144 43.4382L176.772 43.3378C176.91 42.8469 177.069 42.3672 177.248 41.9098L177.594 42.0436C177.425 42.5041 177.281 42.9734 177.162 43.4494L177.144 43.4382ZM195.675 41.2701C195.467 41.2701 195.251 41.2404 195.039 41.2106C194.749 41.1697 194.459 41.1214 194.173 41.0656L194.247 40.6937C194.522 40.7458 194.809 40.7941 195.091 40.835C195.292 40.861 195.496 40.8796 195.694 40.8908L195.675 41.2701ZM197.203 41.1548L197.125 40.7829C197.592 40.6866 198.04 40.5131 198.449 40.2697L198.643 40.5858C198.205 40.8569 197.725 41.053 197.222 41.166L197.203 41.1548ZM178.215 40.7123L177.884 40.5375C178.121 40.094 178.383 39.6644 178.669 39.2508L178.974 39.4627C178.702 39.8677 178.455 40.2887 178.233 40.7234L178.215 40.7123ZM192.718 40.69C192.238 40.5377 191.767 40.3602 191.305 40.1582L191.458 39.816C191.905 40.0147 192.363 40.1873 192.83 40.333L192.718 40.69ZM199.784 39.5297L199.476 39.3214C199.741 38.9373 199.897 38.489 199.929 38.0235L200.301 38.0496C200.27 38.5831 200.095 39.0982 199.796 39.5408L199.784 39.5297ZM189.967 39.4739C189.531 39.2209 189.11 38.9441 188.706 38.6446L188.925 38.3471C189.319 38.6375 189.729 38.9057 190.152 39.1504L189.967 39.4739ZM179.888 38.3136L179.613 38.0644C179.95 37.6899 180.309 37.336 180.688 37.0046L180.933 37.2835C180.569 37.6099 180.223 37.9576 179.9 38.3248L179.888 38.3136ZM187.546 37.6851C187.175 37.3439 186.824 36.9826 186.493 36.6029L186.772 36.3575C187.094 36.7263 187.435 37.0776 187.795 37.4099L187.546 37.6851ZM199.65 36.6773C199.437 36.2523 199.143 35.8733 198.784 35.5616L199.029 35.2827C199.425 35.6245 199.749 36.0401 199.985 36.5062L199.65 36.6773ZM182.09 36.3835L181.878 36.0786C182.294 35.7945 182.725 35.5326 183.168 35.2939L183.343 35.6211C182.916 35.8572 182.501 36.1154 182.101 36.3947L182.09 36.3835ZM185.563 35.4166C185.422 35.2158 185.284 35.0112 185.154 34.7993L184.671 34.9889L184.53 34.6468L184.957 34.4757C184.89 34.3642 184.823 34.2526 184.76 34.141L185.084 33.9588C185.158 34.089 185.232 34.2191 185.31 34.3307C185.519 34.2563 185.731 34.1857 185.946 34.1187L186.054 34.4906C185.872 34.5464 185.682 34.6059 185.511 34.6691C185.627 34.8513 185.746 35.041 185.883 35.2009L185.563 35.4166ZM197.586 34.777C197.227 34.5976 196.854 34.446 196.471 34.3233L196.225 34.2452L196.333 33.8733L196.586 33.9551C196.985 34.0821 197.373 34.24 197.746 34.4274L197.586 34.777ZM187.479 34.1113L187.401 33.7394C187.88 33.6315 188.379 33.5423 188.888 33.4716L188.944 33.8435C188.453 33.9216 187.966 34.0146 187.49 34.1224L187.479 34.1113ZM194.805 33.9105C194.34 33.8286 193.849 33.7654 193.347 33.7208L193.377 33.3489C193.894 33.3935 194.396 33.4568 194.864 33.5423L194.805 33.9105ZM190.398 33.6948L190.372 33.3229C190.814 33.2968 191.257 33.282 191.696 33.282H191.878V33.6539H191.7C191.279 33.665 190.84 33.6762 190.409 33.7059L190.398 33.6948ZM184.113 32.806C183.912 32.3522 183.741 31.88 183.574 31.4002L183.946 31.2849C184.102 31.7535 184.277 32.2147 184.47 32.6572L184.113 32.806ZM183.172 29.9499C183.061 29.4701 182.968 28.9718 182.897 28.4623L183.269 28.4102C183.339 28.9011 183.429 29.3883 183.537 29.8606L183.172 29.9499ZM182.756 26.9748C182.737 26.6401 182.726 26.2979 182.726 25.9558C182.726 25.7959 182.726 25.6322 182.726 25.4723H183.098C183.098 25.6322 183.098 25.7884 183.098 25.9483C183.098 26.283 183.098 26.6215 183.124 26.945L182.756 26.9748ZM183.198 23.9996L182.826 23.9625C182.878 23.4716 182.949 22.9695 183.035 22.4749L183.406 22.5381C183.306 23.0327 183.235 23.5088 183.187 24.0071L183.198 23.9996ZM183.708 21.0952L183.336 21.006C183.455 20.5262 183.592 20.0428 183.745 19.5593L184.117 19.6746C183.949 20.1618 183.812 20.6341 183.696 21.1026L183.708 21.0952ZM184.6 18.28L184.254 18.1461C184.437 17.6813 184.626 17.2164 184.853 16.7664L185.188 16.9301C184.965 17.3763 184.768 17.83 184.589 18.3023L184.6 18.28ZM185.879 15.6284L185.556 15.4388C185.809 15.0111 186.08 14.5834 186.363 14.1744L186.668 14.3863C186.378 14.7954 186.114 15.2119 185.868 15.6359L185.879 15.6284ZM187.557 13.2075L187.267 12.9732C187.579 12.6013 187.914 12.2071 188.26 11.8575L188.527 12.1141C188.178 12.4637 187.85 12.8356 187.546 13.2149L187.557 13.2075ZM189.58 11.0654L189.331 10.7902C189.702 10.4592 190.074 10.1319 190.472 9.81584L190.703 10.1096C190.305 10.4257 189.926 10.7493 189.569 11.0728L189.58 11.0654ZM191.889 9.22826L191.677 8.91959C192.083 8.64068 192.507 8.36548 192.938 8.10516L193.128 8.42126C192.696 8.6853 192.295 8.95678 191.878 9.2357L191.889 9.22826ZM194.414 7.69236L194.24 7.3651C194.678 7.13081 195.132 6.90768 195.586 6.69942L195.742 7.03784C195.27 7.24982 194.835 7.47295 194.403 7.6998L194.414 7.69236ZM197.103 6.4577L196.965 6.10812C197.434 5.9259 197.906 5.73623 198.375 5.59863L198.494 5.97052C198.022 6.11184 197.553 6.28291 197.092 6.46513L197.103 6.4577Z"
+                    fill="#263238" />
+                  <path
+                    d="M199.968 5.51683L199.875 5.14495C200.336 5.02594 200.619 4.97388 200.619 4.97388L200.686 5.34576C200.686 5.34576 200.418 5.40155 199.968 5.51683Z"
+                    fill="#263238" />
+                  <path
+                    d="M206.545 3.1143C205.597 0.176387 199.245 1.23255 200.484 5.07415C201.722 8.91575 207.494 6.05593 206.545 3.1143Z"
+                    fill="#263238" />
+                  <path
+                    d="M197.028 1.93918C197.077 0.648726 198.869 -0.344216 201.405 0.113206C203.942 0.570628 206.326 2.28131 206.326 2.28131C206.326 2.28131 203.823 3.79862 201.26 4.07753C198.698 4.35645 196.98 3.22591 197.028 1.93918Z"
+                    fill="#EBEBEB" />
+                  <path
+                    d="M206.325 2.27396C205.009 2.27396 203.696 2.23677 202.383 2.19586C201.071 2.15496 199.754 2.08802 198.441 1.98389C199.758 1.98389 201.074 2.01736 202.387 2.05826C203.7 2.09917 205.016 2.16611 206.325 2.27396Z"
+                    fill="#263238" />
+                  <path
+                    d="M199.574 0.790039C200.322 1.14758 201.026 1.58793 201.675 2.1028C201.301 1.9273 200.939 1.72857 200.589 1.50778C200.237 1.28851 199.898 1.04886 199.574 0.790039Z"
+                    fill="#263238" />
+                  <path
+                    d="M203.023 2.15112C202.351 2.69635 201.621 3.16764 200.848 3.55686C201.524 3.01096 202.257 2.53965 203.034 2.15112H203.023Z"
+                    fill="#263238" />
+                  <path
+                    d="M203.406 1.42603C203.782 1.60622 204.11 1.87099 204.366 2.19955C204.178 2.11099 204.002 1.99984 203.841 1.86857C203.68 1.73812 203.534 1.58965 203.406 1.42603Z"
+                    fill="#263238" />
+                  <path
+                    d="M199.445 9.58164C200.238 10.6006 202.272 10.3552 204.061 8.50317C205.849 6.65116 206.798 3.86572 206.798 3.86572C206.798 3.86572 203.867 4.08886 201.632 5.35327C199.397 6.61769 198.65 8.55895 199.445 9.58164Z"
+                    fill="#EBEBEB" />
+                  <path
+                    d="M206.796 3.86572C205.725 4.6095 204.683 5.43509 203.638 6.23465C202.593 7.03421 201.571 7.8598 200.57 8.71142C201.641 7.96765 202.683 7.14577 203.724 6.34621C204.765 5.54666 205.78 4.72106 206.796 3.86572Z"
+                    fill="#263238" />
+                  <path
+                    d="M202.176 9.00494C202.375 8.6437 202.552 8.27118 202.708 7.88928C202.866 7.50631 203 7.11382 203.109 6.71411C202.91 7.07505 202.732 7.4476 202.577 7.82977C202.421 8.21332 202.287 8.60571 202.176 9.00494Z"
+                    fill="#263238" />
+                  <path
+                    d="M204.193 5.89619C203.323 5.84967 202.45 5.8958 201.59 6.03379C202.023 6.05982 202.458 6.05982 202.891 6.03379C203.328 6.01252 203.762 5.96658 204.193 5.89619Z"
+                    fill="#263238" />
+                  <path
+                    d="M204.91 6.26432C205.01 6.08066 205.087 5.88594 205.141 5.68417C205.196 5.48389 205.228 5.27806 205.237 5.07056C205.04 5.4387 204.928 5.84681 204.91 6.26432Z"
+                    fill="#263238" />
+                  <path
+                    d="M206.542 3.11429C206.332 3.18249 206.107 3.18682 205.894 3.12675C205.682 3.06668 205.492 2.9449 205.349 2.77684C205.205 2.60877 205.115 2.40198 205.09 2.18266C205.064 1.96333 205.104 1.74133 205.205 1.54476C205.305 1.3482 205.462 1.18592 205.655 1.07848C205.848 0.971031 206.068 0.923251 206.288 0.941187C206.508 0.959124 206.718 1.04197 206.891 1.17923C207.064 1.3165 207.193 1.50201 207.26 1.71227C207.35 1.99337 207.325 2.29877 207.191 2.56156C207.056 2.82435 206.823 3.02311 206.542 3.11429Z"
+                    fill="#455A64" />
+                  <path
+                    d="M207.229 5.23793C207.019 5.30585 206.793 5.31002 206.581 5.24989C206.369 5.18977 206.179 5.06806 206.036 4.90015C205.893 4.73224 205.803 4.52567 205.777 4.30656C205.751 4.08744 205.791 3.86561 205.892 3.66912C205.992 3.47263 206.148 3.31029 206.341 3.20264C206.533 3.09498 206.754 3.04683 206.973 3.06429C207.193 3.08174 207.403 3.16401 207.576 3.30069C207.75 3.43738 207.878 3.62234 207.946 3.83219C207.992 3.97162 208.009 4.11859 207.997 4.26472C207.986 4.41084 207.945 4.55324 207.879 4.68379C207.812 4.81434 207.72 4.93047 207.609 5.02555C207.497 5.12063 207.368 5.1928 207.229 5.23793Z"
+                    fill="#455A64" />
+                  <path d="M184.872 176H23.543L46.8676 43.7034H208.197L184.872 176Z" fill="#E2E2E2" />
+                  <path d="M102.084 30H49.287L46.8672 43.7035H103.371L102.084 30Z" fill="#E2E2E2" />
+                  <g opacity="0.1">
+                    <path d="M184.868 176H23.5391L46.8637 43.7034H208.193L184.868 176Z" fill="#222222" />
+                    <path d="M102.08 30H49.2831L46.8633 43.7035H103.367L102.08 30Z" fill="#222222" />
+                  </g>
+                  <path
+                    d="M43.589 35.5916C43.236 34.0763 43.236 32.5001 43.589 30.9849C43.9421 32.5001 43.9421 34.0763 43.589 35.5916Z"
+                    fill="#263238" />
+                  <path
+                    d="M38.8946 36.9472C38.3554 36.3881 37.8909 35.7617 37.5126 35.0833C37.1157 34.4192 36.8044 33.7075 36.5859 32.9653C37.1267 33.5211 37.5914 34.1461 37.968 34.8239C38.3639 35.4904 38.6752 36.2037 38.8946 36.9472Z"
+                    fill="#263238" />
+                  <path
+                    d="M35.5106 40.4681C34.0227 40.0157 32.6586 39.2277 31.5234 38.1648C32.2658 38.3806 32.9775 38.6902 33.6415 39.0861C34.3198 39.4669 34.9477 39.9312 35.5106 40.4681Z"
+                    fill="#263238" />
+                  <path
+                    d="M34.3215 45.2125C32.8063 45.5656 31.2301 45.5656 29.7148 45.2125C31.2301 44.8595 32.8063 44.8595 34.3215 45.2125Z"
+                    fill="#263238" />
+                  <path
+                    d="M35.7006 49.9041C35.1392 50.4404 34.5131 50.9046 33.8368 51.2861C33.1728 51.682 32.4611 51.9916 31.7188 52.2074C32.2778 51.6682 32.9043 51.2037 33.5826 50.8254C34.2456 50.4275 34.9576 50.1178 35.7006 49.9041Z"
+                    fill="#263238" />
+                  <path
+                    d="M39.2174 53.2876C38.7666 54.7777 37.9784 56.1439 36.9141 57.2801C37.1297 56.5368 37.4412 55.8248 37.8407 55.162C38.2181 54.4813 38.6808 53.8514 39.2174 53.2876Z"
+                    fill="#263238" />
+                  <path
+                    d="M43.9576 54.4578C44.1422 55.2114 44.2312 55.9853 44.2223 56.7611C44.2338 57.5371 44.1448 58.3113 43.9576 59.0645C43.7678 58.3118 43.6788 57.5372 43.6928 56.7611C43.684 55.9853 43.773 55.2114 43.9576 54.4578Z"
+                    fill="#263238" />
+                  <path
+                    d="M48.6484 53.1288C49.1876 53.6878 49.6521 54.3143 50.0305 54.9926C50.4283 55.6556 50.738 56.3676 50.9518 57.1106C49.8874 55.9745 49.0992 54.6083 48.6484 53.1182V53.1288Z"
+                    fill="#263238" />
+                  <path
+                    d="M52.0312 49.5811C52.7743 49.7948 53.4863 50.1045 54.1493 50.5024C54.8276 50.8807 55.454 51.3452 56.0131 51.8844C55.2701 51.6706 54.5581 51.3609 53.8951 50.9631C53.2168 50.5847 52.5903 50.1202 52.0312 49.5811Z"
+                    fill="#263238" />
+                  <path
+                    d="M53.2031 44.8367C54.7202 44.4838 56.298 44.4838 57.8151 44.8367C56.298 45.1896 54.7202 45.1896 53.2031 44.8367Z"
+                    fill="#263238" />
+                  <path
+                    d="M51.8465 40.1454C52.4071 39.6095 53.0334 39.1469 53.7104 38.7687C54.3721 38.367 55.0843 38.0554 55.8284 37.842C54.6923 38.9064 53.3261 39.6946 51.8359 40.1454H51.8465Z"
+                    fill="#263238" />
+                  <path
+                    d="M48.3281 36.7616C48.5461 36.0201 48.8556 35.3086 49.2495 34.6436C49.6278 33.9653 50.0923 33.3388 50.6315 32.7798C50.4177 33.5228 50.108 34.2348 49.7101 34.8978C49.3318 35.5761 48.8673 36.2026 48.3281 36.7616Z"
+                    fill="#263238" />
+                  <path d="M184.633 176H22.9593L0 48.5061H161.679L184.633 176Z" fill="#E2E2E2" />
+                  <path
+                    d="M56.0241 126.444C59.7351 126.444 62.7435 123.435 62.7435 119.724C62.7435 116.013 59.7351 113.005 56.0241 113.005C52.3131 113.005 49.3047 116.013 49.3047 119.724C49.3047 123.435 52.3131 126.444 56.0241 126.444Z"
+                    fill="#263238" />
+                  <path
+                    d="M109.149 126.444C112.86 126.444 115.868 123.435 115.868 119.724C115.868 116.013 112.86 113.005 109.149 113.005C105.438 113.005 102.43 116.013 102.43 119.724C102.43 123.435 105.438 126.444 109.149 126.444Z"
+                    fill="#263238" />
+                  <path
+                    d="M92.2406 127.519L91.8699 126.815C91.8381 126.751 88.3646 120.333 81.3805 120.333C75.0264 120.333 73.4379 126.375 73.3955 126.634L73.2049 127.402L71.6641 127.032L71.8494 126.259C71.8494 126.184 73.745 118.745 81.3805 118.745C89.323 118.745 93.1195 125.777 93.2784 126.078L93.6491 126.777L92.2406 127.519Z"
+                    fill="#263238" />
+                </g>
+                <path
+                  d="M-6181 -1858H7186V-1860H-6181V-1858ZM7187 -1857V9306H7189V-1857H7187ZM7186 9307H-6181V9309H7186V9307ZM-6182 9306V-1857H-6184V9306H-6182ZM-6181 9307C-6181.55 9307 -6182 9306.55 -6182 9306H-6184C-6184 9307.66 -6182.66 9309 -6181 9309V9307ZM7187 9306C7187 9306.55 7186.55 9307 7186 9307V9309C7187.66 9309 7189 9307.66 7189 9306H7187ZM7186 -1858C7186.55 -1858 7187 -1857.55 7187 -1857H7189C7189 -1858.66 7187.66 -1860 7186 -1860V-1858ZM-6181 -1860C-6182.66 -1860 -6184 -1858.66 -6184 -1857H-6182C-6182 -1857.55 -6181.55 -1858 -6181 -1858V-1860Z"
+                  fill="black" fill-opacity="0.1" />
+                <defs>
+                  <clipPath id="clip0_3210_46238">
+                    <rect width="1440" height="823" fill="" transform="translate(-727 -429)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </p>
+            <h2>No Record Found!</h2>
+          </td>
+          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
+
+            <td *ngIf="user.found!='true'" [ngClass]="{'active':user.found=='!true','inactive':user.found=='true'}">
+              <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
+                  (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
+              <!-- <div class="employee1"><input type="checkbox" [ngModel]=" isChecked" (click)="toggleAllCheckboxes()" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div> -->
+            </td>
+
+            <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
+              <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
+                routerLink="/employee-profile">
+              <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
+                routerLink="/employee-profile" onError="this.src='./assets/images/Ellipse 98.svg'">
+              <p>{{user.name}} </p>
+            </td>
+            <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
+              routerLink="/employee-profile">{{user.designation}}</td>
+            <td *ngIf="user.found!='true'" class="email1" (click)="selectEmployee(user)" routerLink="/employee-profile">
+              {{user.email}}</td>
+            <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)"
+              routerLink="/employee-profile">
+              {{user.mobile}}</td>
+            <td *ngIf="user.found!='true'" class="action1">
+              <div class="icons">
+                <select class="select" id="myselect" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+
+            </td>
+          </ng-container>
+
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="card-wrapper" *ngIf="cardview">
+    <div class="show-select">
+      <div class="show">
+        <div class="show-left">
+          <input type="checkbox">
+          <p>Select All</p>
+        </div>
+        <div class="show-right">
+          <span>1</span>
+          <p>Selected</p>
+        </div>
+      </div>
+    </div>
+    <div class="view2">
+      <div class="card-view"
+        *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
+        <td colspan="7" class="no_data" *ngIf="user.found=='true'">
+          <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent" xmlns="http://www.w3.org/2000/svg">
               <rect width="209" height="176" fill="" />
               <path
                 d="M-6183 -1857C-6183 -1858.1 -6182.1 -1859 -6181 -1859H7186C7187.1 -1859 7188 -1858.1 7188 -1857V9306C7188 9307.1 7187.1 9308 7186 9308H-6181C-6182.1 9308 -6183 9307.1 -6183 9306V-1857Z"
@@ -241,103 +423,10 @@
                 </clipPath>
               </defs>
             </svg>
-</p>
-            <h2>No Record Found!</h2>
-          </td>
-          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-
-            <td *ngIf="user.found!='true'" [ngClass]="{'active':user.found=='!true','inactive':user.found=='true'}">
-              <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
-                  (change)="onCheckboxChange($event, user)">{{user.uid}}</div>
-              <!-- <div class="employee1"><input type="checkbox" [ngModel]=" isChecked" (click)="toggleAllCheckboxes()" [value]="user.id" [checked]="user.select" (change)="onCheckboxChange($event, user)">{{user.uid}}</div> -->
-            </td>
-
-            <td *ngIf="user.found!='true'" class="name1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-              <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="" (click)="selectEmployee(user)"
-                routerLink="/employee-profile">
-              <img *ngIf="user.url" src="{{user.url}}" alt="" (click)="selectEmployee(user)"
-                routerLink="/employee-profile" onError="this.src='./assets/images/Ellipse 98.svg'">
-              <p>{{user.name}} </p>
-            </td>
-            <td *ngIf="user.found!='true'" class="designation1" (click)="selectEmployee(user)"
-              routerLink="/employee-profile">{{user.designation}}</td>
-            <td *ngIf="user.found!='true'" class="email1" (click)="selectEmployee(user)" routerLink="/employee-profile">
-              {{user.email}}</td>
-            <td *ngIf="user.found!='true'" class="contact1" (click)="selectEmployee(user)"
-              routerLink="/employee-profile">
-              {{user.mobile}}</td>
-            <td *ngIf="user.found!='true'" class="action1">
-              <div class="icons">
-                <select class="select" id="myselect" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <i class="fa-solid fa-chevron-down"></i>
-              </div>
-
-            </td>
-          </ng-container>
-
-        </tr>
-      </tbody>
-
-    </table>
-  </div>
-  <div class="card-wrapper" *ngIf="cardview">
-    <div class="show-select">
-      <div class="show">
-        <div class="show-left">
-          <input type="checkbox">
-          <p>Select All</p>
-        </div>
-        <div class="show-right">
-          <span>1</span>
-          <p>Selected</p>
-        </div>
-      </div>
-    </div>
-    <div class="view2">
-      <div class="card-view"
-        *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
-        <div class="card-detail">
-          <div class="first-detail">
-            <input type="checkbox">
-            <div class="icons1">
-              <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                (change)="onSelectChange($event, user)" [value]="user.status"
-                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                <option value="active" class="activated">Active</option>
-                <option value="terminated" class="terminate">Terminated</option>
-                <option value="resigned" class="resign">Resigned</option>
-                <option value="absconder" class="abscond">Absconder</option>
-              </select>
-              <img src="./assets/images/down-arrow.png" alt="">
-            </div>
-          </div>
-          <div class="image-detail">
-            <span>
-              <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
-              <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
-
-            </span>
-          </div>
-          <div class="per-detail">
-            <h3>{{user.name}}</h3>
-            <div class="per-detail1">
-              <p>{{user.designation}}<span> | {{user.uid}}</span></p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <p>{{user.mobile}}</p>
-            <span>{{user.email}}</span>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="card-view">
+          </p>
+          <h2>No Record Found!</h2>
+        </td>
+        <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
           <div class="card-detail">
             <div class="first-detail">
               <input type="checkbox">
@@ -355,121 +444,24 @@
             </div>
             <div class="image-detail">
               <span>
-                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
-              </span>
-            </div>
-            <div class="per-detail">
-              <h3>Emily Cooper</h3>
-              <div class="per-detail1">
-                <p>Front End Developer <span>| 25984</span></p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <p>9870541231</p>
-              <span>emilycooper@gmail.com</span>
-            </div>
-          </div>
-      </div>
-      <div class="card-view">
-          <div class="card-detail">
-            <div class="first-detail">
-              <input type="checkbox">
-              <div class="icons1">
-                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <img src="./assets/images/down-arrow.png" alt="">
-              </div>
-            </div>
-            <div class="image-detail">
-              <span>
-                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
-              </span>
-            </div>
-            <div class="per-detail">
-              <h3>Emily Cooper</h3>
-              <div class="per-detail1">
-                <p>Front End Developer <span>| 25984</span></p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <p>9870541231</p>
-              <span>emilycooper@gmail.com</span>
-            </div>
-          </div>
-      </div>
-      <div class="card-view">
-          <div class="card-detail">
-            <div class="first-detail">
-              <input type="checkbox">
-              <div class="icons1">
-                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <img src="./assets/images/down-arrow.png" alt="">
-              </div>
-            </div>
-            <div class="image-detail">
-              <span>
-                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
-              </span>
-            </div>
-            <div class="per-detail">
-              <h3>Emily Cooper</h3>
-              <div class="per-detail1">
-                <p>Front End Developer <span>| 25984</span></p>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <p>9870541231</p>
-              <span>emilycooper@gmail.com</span>
-            </div>
-          </div>
-      </div>
+                <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
+                <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
 
-      <div class="card-view">
-          <div class="card-detail">
-            <div class="first-detail">
-              <input type="checkbox">
-              <div class="icons1">
-                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <img src="./assets/images/down-arrow.png" alt="">
-              </div>
-            </div>
-            <div class="image-detail">
-              <span>
-                <img src="./assets/images/Ellipse 98.svg" alt="no-user">
               </span>
             </div>
             <div class="per-detail">
-              <h3>Emily Cooper</h3>
+              <h3>{{user.name}}</h3>
               <div class="per-detail1">
-                <p>Front End Developer <span>| 25984</span></p>
+                <p>{{user.designation}}<span> | {{user.uid}}</span></p>
               </div>
             </div>
             <div class="contact-detail">
-              <p>9870541231</p>
-              <span>emilycooper@gmail.com</span>
+              <p>{{user.mobile}}</p>
+              <span>{{user.email}}</span>
             </div>
           </div>
-      </div> -->
+        </ng-container>
+      </div>
     </div>
   </div>
   <div class="modal" *ngIf="showModal">
@@ -776,6 +768,6 @@
     </div>
   </div>
 
-<div class="loader-main" *ngIf="employee.length==0" >
-  <div class="loader" ></div>
-</div>
+    <div class="loader-main" *ngIf="employee.length==0">
+      <div class="loader"></div>
+    </div>
