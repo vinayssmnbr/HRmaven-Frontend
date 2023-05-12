@@ -44,28 +44,52 @@ export class DashboardContentComponent implements OnInit {
     name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),
   ]),
     domain: new FormControl('', [Validators.required, Validators.pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$")]),
-    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    phone: new FormControl('', [Validators.required, this.phoneValidator]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
     // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
 
   })
+  
   phoneValidator(control: FormControl) {
     const value = control.value;
-    if (value && value.toString().length > 10) {
-      control.setValue(value.toString().substring(0, 10)); // set the value to the first 10 digits
-    }
-    return null;
+    const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+    return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
   }
-
+  
   onInput(event: any) {
     const input = event.target as HTMLInputElement;
-    if (input.value && input.value.length > 10) {
-      input.value = input.value.substring(0, 10); // restrict the input to the first 10 digits
+    const value = input.value.replace(/\D/g, ''); // remove any non-numeric characters
+    if (value && value.length > 10) {
+      input.value = value.substring(0, 10); // restrict the input to the first 10 digits
+    } else {
+      input.value = value;
     }
     this.isInputDirty = true;
   }
-
+  
+  
+  isEmptyInput = false;
   isInputDirty = false;
+
+  get isPhoneInvalid() {
+    return this.personaldataForm.get('phone').invalid;
+  }
+  // phoneValidator(control: FormControl) {
+  //   const value = control.value;
+  //   if (value && value.toString().length > 10) {
+  //     control.setValue(value.toString().substring(0, 10)); // set the value to the first 10 digits
+  //   }
+  //   return null;
+  // }
+
+  // onInput(event: any) {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.value && input.value.length > 10) {
+  //     input.value = input.value.substring(0, 10); // restrict the input to the first 10 digits
+  //   }
+  //   this.isInputDirty = true;
+  // }
+
 
   email = localStorage.getItem('emailid');
 
