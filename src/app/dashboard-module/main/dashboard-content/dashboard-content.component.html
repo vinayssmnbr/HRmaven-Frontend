@@ -442,27 +442,31 @@
                                 </div>
                                 <div class="form__group">
                                     <label for="noOfEmployee">Domain</label>
-                                    <input type="text" class="form_input" placeholder='Specify your domain'
-                                        formControlName="domain" id="name0" required
-                                        [ngClass]="{'ng_invalid':personaldataForm.controls.domain.invalid && personaldataForm.controls.domain.dirty,'ng_valid':personaldataForm.controls.domain.valid}" />
-
+                                    <input type="text" class="form_input" placeholder='Specify your domain (e.g. example.com or.in)' formControlName="domain"
+                                        id="name0" required
+                                        [ngClass]="{'ng_invalid':personaldataForm.controls.domain.invalid && personaldataForm.controls.domain.dirty,'ng_valid':personaldataForm.controls.domain.valid}"/>
+                                        <div *ngIf="personaldataForm.controls.domain.invalid && (personaldataForm.controls.domain.dirty || personaldataForm.controls.domain.touched)">
+                                            <span *ngIf="personaldataForm.controls.domain.errors.required">
+                                              *Domain name is required.
+                                            </span>
+                                            <!-- <span class="doaminurl" *ngIf="personaldataForm.controls.domain.errors.pattern && (personaldataForm.controls.domain.dirty || personaldataForm.controls.domain.touched)">
+                                              *Domain name must be a valid URL, ending in like .com, .in etc...
+                                            </span> -->
+                                          </div>
+                                          
                                 </div>
                             </div>
                             <div class="email-phone">
                                 <div class="form__group">
                                     <label for="name">Phone no.</label>
-                                    <input type="number" class="form_input" placeholder='+91 4512639870'
-                                        formControlName="phone" id="name1" required
-                                        [ngClass]="{'ng_invalid':personaldataForm.controls.phone.invalid && personaldataForm.controls.phone.dirty,'ng_valid':personaldataForm.controls.phone.valid}" />
-                                    <!-- <span *ngIf="personaldataForm.controls.phone.errors"
-  [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
-    [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value " (input)="onInput($event)">
-</span> -->
-
-                                    <!-- <input type="text" class="form_input" placeholder='{{phone}}' formControlName="phone" id="name1" required
-    [maxlength]="personaldataForm.get('phone').errors?.invalidPhone ? 10 : null"
-    [value]="personaldataForm.get('phone').errors?.invalidPhone ? personaldataForm.get('phone').errors.value : personaldataForm.get('phone').value"
-    (input)="onInput($event)" /> -->
+                                    <input type="text" class="form_input" placeholder='+91 4512639870' formControlName="phone"
+                                        id="name1" required 
+                                        [ngClass]="{'ng_invalid': personaldataForm.controls.phone.dirty && personaldataForm.controls.phone.invalid,
+                                                    'ng_valid': personaldataForm.controls.phone.valid}"
+                                        (input)="onInput($event)" />
+                                    <div *ngIf="isPhoneInvalid && personaldataForm.controls.phone.dirty">
+                                        Please enter a valid phone number
+                                    </div>
 
                                 </div>
                                 <div class="form__group">
@@ -474,8 +478,8 @@
                                         *ngIf="personaldataForm.controls.headOffice.invalid && personaldataForm.controls.headOffice.touched">
                                         <span *ngIf="personaldataForm.controls.headOffice.errors.required">
                                             *Name is required.
-                                        </span>
-                                        <span *ngIf="personaldataForm.controls.headOffice.errors.pattern">
+                                          </span>
+                                          <span *ngIf="personaldataForm.controls.headOffice.errors.pattern && personaldataForm.controls.headOffice.dirty && personaldataForm.controls.headOffice.touched">
                                             *Must start with a capital letter.
                                         </span>
                                         <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
@@ -486,7 +490,7 @@
                             </div>
                             <div class="edit-profile-footer">
                                 <button class="done-btn" type="submit"
-                                    [disabled]="personaldataForm.controls['headOffice'].invalid || personaldataForm.controls['domain'].invalid || personaldataForm.controls['name'].invalid "
+                                    [disabled]="isPhoneInvalid || personaldataForm.controls['headOffice'].invalid || personaldataForm.controls['domain'].invalid || personaldataForm.controls['name'].invalid "
                                     (click)="submitPersonalData(personaldataForm.value)">{{signupLoader? 'Loading...':
                                     'Done'}}</button>
                                 <!-- <button type="submit" [disabled]="form01.controls['email' || 'DoB' || 'gender'].invalid" (click)="functionForm01()">Click</button> -->
