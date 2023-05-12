@@ -53,6 +53,7 @@ export class EmployeeContentComponent implements OnInit {
   progressText: any;
   progress: number = 0;
   interval: any;
+  importFileResponse: any = { success: [], fail: [] }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -845,11 +846,11 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
-inavlidModal:boolean=false;
- closeseModal5(){
-this.inavlidModal=false;
-this.showModal=false;
- }
+  inavlidModal: boolean = false;
+  closeseModal5() {
+    this.inavlidModal = false;
+    this.showModal = false;
+  }
 
   download(): void {
     // if (this.selectedEmployess && this.selectedEmployess.length > 0) {
@@ -947,6 +948,7 @@ this.showModal=false;
       return;
     }
     let errors = [];
+    let sucesses = []
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
@@ -965,8 +967,6 @@ this.showModal=false;
 
       return true;
     }
-
-    // const file: File = event.target.files[0];
 
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
@@ -995,7 +995,6 @@ this.showModal=false;
         for (let j = 0; j < headers.length; j++) {
           item[headers[j]] = values[j];
         }
-
         data.push(item);
       }
 
@@ -1022,34 +1021,35 @@ this.showModal=false;
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
-              console.log('res',res)
-              console.log('messagge',res.message)
+              console.log('res', res)
+              console.log('messagge', res.message)
 
-
-              // if(res.message=="Email already exists in the register"){
-              //   alert('emailAll ready exist')
-              //   console.log(' mhjiooig')
-              // }
-            // if(res.msg=="some fields are missing"){
-            //     alert('some fields are missing')
-            //   }
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
+              console.log(responseArr.push(res));
+
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
                 this.loader = false;
                 this.csvadded = true;
                 this.importfile = false;
                 console.log('not uploaded files', errors);
+                this.importFileResponse.error = [...errors];
+                this.importFileResponse.sucess = [...sucesses];
               }
-              // console.log('Data:', res.data);
+              console.log('Data:', res.data);
               this.progress += increaseBy;
               this.progressBar[0].style.width = `${this.progress}%`;
               this.progressText[0].innerText = `${this.progress}%`;
               console.log(res, 'response');
               if (res.status == 'failed') {
-                errors.push({ ...employee, error: res.message });
+                // errors.push({ ...employee, error: res.message });
+                console.log(errors.push({ ...employee, error: res.message }));
+              }
+              if (res.status == "Success") {
+                // sucesses.push(res);
+                console.log( sucesses.push(res));
               }
             },
             (error: any) => {
