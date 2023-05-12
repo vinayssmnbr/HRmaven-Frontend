@@ -280,23 +280,31 @@
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">New Password</label>
-              <input type="password" placeholder="Type a new password" formControlName="password" class="password"
+              <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password"
+              (input)="checkPassword()" placeholder="Type a new password" formControlName="password" class="password"
                 id="form-control" required (keyup)="checkConfirmPassword()"
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
               <div class="tooltip">
                 <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
                   <ul>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Uppercase
-                      character</li>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Special
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}" [style.color]="capitalCheck ? 'green' : 'red'"
+                    [style.color]="capitalCheck ? 'green' : 'red'">Uppercase Character
+                     </li>
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}"  [style.color]="specialCharCheck ? 'green' : 'red'"
+                    [style.color]="specialCharCheck ? 'green' : 'red'">Special
                       Character</li>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Lowercase
+                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}" [style.color]="smallCheck ? 'green' : 'red'"
+                      [style.color]="smallCheck ? 'green' : 'red'">Lowercase
                       Character</li>
-                    <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}">Minimum 8
-                      Character</li>
+                      <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}" [style.color]="numericalCheck ? 'green' : 'red'"
+                    [style.color]="numericalCheck ? 'green' : 'red'">Numerical character.</li>
+                    <!-- <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}" [style.color]="lengthCheck ? 'green' : 'red'"
+                    [style.color]="lengthCheck ? 'green' : 'red'">Minimum 8
+                      Character</li> -->
                   </ul>
                 </span>
+
               </div>
             </div>
             <span class="validation-message" *ngIf=""><i class="fa-solid fa-circle-exclamation"></i>
