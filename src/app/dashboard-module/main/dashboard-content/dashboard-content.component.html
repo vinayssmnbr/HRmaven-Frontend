@@ -62,10 +62,9 @@
                 <div class="meeting-area">
                     <div class="meeting-text">
                         <h2>Meetings</h2>
-                        <p (click)="openModal10()">
-                            <i class="fa-solid fa-circle-plus" (click)="openModal10()"></i>
-                            <span>Create new</span>
-                        </p>
+                        <p (click)="openModal10()"><i class="fa-solid fa-circle-plus" (click)="openModal10()"></i>
+                            Create
+                            new</p>
                     </div>
                     <div class="meeting-scrollbar">
                         <!-- <div class="all-meetings" *ngFor="let option of options let index = index" >
@@ -654,9 +653,20 @@
 
 
 
-        <!----------------------Meetings-modal------------------>
-
-
+        <!----------------------Welcome-modal------------------>
+        <div class="welcome_modal" *ngIf="showhrmaven">
+        <div class="welcome-modal">
+            <div class="welcome-to-hrmaven">
+                <img src="assets/images/Frame 2077.svg" alt="">
+            </div>
+            <div class="welcome-text">
+                <h4>Welcome to HRMaven!</h4>
+                <p>With HRMaven, it's easier to access your most important
+                    stuff.</p>
+                <button (click)="closewelcome()" routerLink="/dashboard">Get Started</button>
+            </div>
+        </div>
+    </div>
 
     </div>
 </div>

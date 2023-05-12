@@ -12,7 +12,7 @@ Chart.register(...registerables);
 export class DashboardContentComponent {
 
   oilCanvas: any = '';
-  constructor(private empService: EmpService, private http: HttpClient) {
+  constructor(public  empService: EmpService, private http: HttpClient) {
     empService.activeComponent = 'dashboard';
     empService.headerContent = '';
 
@@ -29,6 +29,7 @@ export class DashboardContentComponent {
   done_punch_in:boolean=false;
   done_punch_out:boolean=false;
   loaderz:boolean=false;
+
 
 
   array: any = [
