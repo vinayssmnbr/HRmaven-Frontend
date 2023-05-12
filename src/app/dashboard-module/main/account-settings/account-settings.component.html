@@ -86,8 +86,10 @@
                     <div class="description-heading">
                         <h6>Description</h6>
                         <!-- <p *ngIf="description">{{description}}</p> -->
-                        <p *ngIf="description">{{ companyDetailsForm.controls.description.value }}</p>
-                        <p *ngIf="!description">--------</p>
+                        <!-- <p *ngIf="description">{{ companyDetailsForm.controls.description.value }}</p>
+                        <p *ngIf="!description">--------</p> -->
+                                                <p> {{ companyDetailsForm.controls['description'].value }} </p>
+
 
 
                     </div>
@@ -181,7 +183,7 @@
                                (blur)="matchpwd()"
                                (input)="isInputDirty = true"
                                (input)="onFocusout()">
-                        
+
                         <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
                           <span  *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched" class="old-message"> <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
@@ -191,7 +193,7 @@
                                 fill="#CB1E0F" />
                         </svg> This is not your old password.</span>
                         </ng-template>
-                        <!-- <ng-template #notMatched> 
+                        <!-- <ng-template #notMatched>
                         <span
                         *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.oldpasswordtouched || forgetpwd.controls.oldpassworddirty)
                         && isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched"
@@ -205,13 +207,13 @@
                     </span>
                     </ng-template> -->
                       </div>
-                      
-                      
-                  
-                    
-                      
-                      
-                      
+
+
+
+
+
+
+
                       <div class="new-reenter">
                         <div class="old-new-confirm-password">
                           <label for="">New Password</label>
@@ -235,25 +237,25 @@
                           </p>
                         </div>
                       </div>
-                      
-                                                                   
+
+
                     <!-- <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
                             <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
                         [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
-                            
+
 
 
                         </div>
                       </div> -->
-                      
-                      
 
-                            
+
+
+
                         <!-- <p *ngIf="isSamePassword ; else notpwdMatched" style="color: green;">New password cannot be same as old password</p>
                         <ng-template #notpwdMatched>
-                      
+
                           <p  style="color: black;">New password.</p>
                         </ng-template> -->
                         <!-- </div>
@@ -409,7 +411,7 @@
                     </div>
                     <div class="form__group">
                         <label>Personal Email</label>
-                        <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
+                        <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail" 
                             required />
                             <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
                               <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
@@ -447,7 +449,7 @@
                     </div> -->
                     <div class="form__group" >
                         <label for="phone">Phone no.</label>
-                               <input type="text" class="form_input" placeholder="Enter Phone number" 
+                               <input type="text" class="form_input" placeholder="Enter Phone number"
                                formControlName="phone" id="phone" required
                         pattern="\d*" maxlength="10"  (input)="onInput($event)" />
                         <span *ngIf="isInputDirty && isPhoneInvalid" class="phone-error-message"> <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
