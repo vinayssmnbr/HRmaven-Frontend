@@ -288,15 +288,15 @@
 
         </tr>
       </tbody>
-     <div class="status-card">
-      <div class="status-detail">
-        <img src="./assets/images/tick.png" alt="">
-        <div class="success-message">
-          <h2>Success</h2>
-          <p>Status changed to Absconder</p>
+      <div class="status-card" *ngIf="isstatus">
+        <div class="status-detail">
+          <img src="./assets/images/tick.png" alt="">
+          <div class="success-message">
+            <h2>Success</h2>
+            <p>{{showpopup}}</p>
+          </div>
         </div>
       </div>
-     </div>
     </table>
   </div>
   <div class="card-wrapper" *ngIf="cardview">
@@ -563,7 +563,8 @@
               <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
                 (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
                 [ngClass]="{'ng_invalid': (emailExists || registrationFormControl.email.invalid && registrationFormControl.email.dirty ), 'ng_valid': !emailExists &&  registrationFormControl.email.valid}">
-              <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email already
+              <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
+                already
                 exists</div>
             </div>
 
@@ -581,7 +582,8 @@
               <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
                 (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
                 [ngClass]="{'ng_invalid': (mobileExists ||  registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty ), 'ng_valid': !mobileExists && registrationFormControl.mobile.valid}">
-              <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile No.
+              <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
+                No.
                 already exists</div>
             </div>
           </div>
@@ -759,11 +761,13 @@
       </div>
       <div class="modal-body6">
         <h3>Succesful</h3>
-        <p>Csv File Imported Successfully!</p>
+        <!-- <p>Csv File Imported Successfully!</p> -->
+        <p style="color:#3D9030">{{importFileResponse.success.length}} Records Imported Successfully!</p>
+        <p style="color:red">{{importFileResponse.error.length}} Records are not imported</p>
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
     </div>
-    <!-- <div class="modal-content7" *ngIf="invalidModal">
+    <!--  <div class="modal-content7" *ngIf="invalidModal">
       <div class="modal-header7">
         <img src="./assets/images/Vector (4).svg" alt="img1">
         </div>
@@ -775,8 +779,10 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
+       
+    </div>
   </div>
-</div>
+<!-- </div> -->
 
 <!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">
   <div class="loader"></div>
