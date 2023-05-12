@@ -347,7 +347,7 @@
                     <div class="form__group">
                         <label>Personal Email</label>
                         <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
-                            required />
+                            required (keyup)="onKeyUp($event)"/>
                             <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
                               <span *ngIf="personalDetailsForm.controls.personalemail.errors.required">
                                 *Personal Email is required.
@@ -374,8 +374,8 @@
                     </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone"
-                            id="phone" required (input)="onInput($event)" [maxlength]="10"
+                        <input type="number" class="form_input" placeholder="Enter Phone number" formControlName="phone"
+                            id="phone" required (input)="onInput($event)" [maxlength]="10" (keyup)="onKeyUp($event)"
                             [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
                     </div>
 
