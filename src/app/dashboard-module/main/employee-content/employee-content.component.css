@@ -35,7 +35,7 @@
 }
 
 .validation-message {
-  color: red;
+  color: #CB1E0F;
   display: flex;
   gap: 6px;
   margin-top: -15px;
@@ -45,8 +45,8 @@
   font-size: 12px;
 }
 
-.fa-circle-info {
-  color: red;
+.fa-circle-exclamation {
+  color: #CB1E0F;
   margin-top: 3px;
 }
 
@@ -346,13 +346,14 @@ tbody td.inactive{
 .table-wrapper {
   margin-top: 25px;
   width: 100%;
+  position: relative;
 }
 
 tbody {
   overflow-y: auto;
   width: 100%;
   display: block;
-  height: 600px;
+  height: 422px;
 }
 
 .image_record {
@@ -600,7 +601,7 @@ tr {
 
 .modal-title {
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 18px;
   color: #444444;
   padding-top: 20px;
@@ -680,11 +681,11 @@ label {
 }
 
 #text1.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text1.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text1.ng_valid {
@@ -696,11 +697,11 @@ label {
 }
 
 #text6.ng_invalid {
-  border: 1px solid red !important;
+  border: 1px solid #CB1E0F !important;
 }
 
 #text6.ng_invalid:hover {
-  border: 1px solid red !important;
+  border: 1px solid #CB1E0F !important;
 }
 
 #text6.ng_valid {
@@ -712,11 +713,11 @@ label {
 }
 
 #text7.ng_invalid {
-  border: 1px solid red !important;
+  border: 1px solid #CB1E0F !important;
 }
 
 #text7.ng_invalid:hover {
-  border: 1px solid red !important;
+  border: 1px solid #CB1E0F !important;
 }
 
 #text7.ng_valid {
@@ -732,11 +733,11 @@ label {
 }
 
 #text10.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text10.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text10.ng_valid {
@@ -748,11 +749,11 @@ label {
 }
 
 #text11.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text11.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text11.ng_valid {
@@ -764,11 +765,11 @@ label {
 }
 
 #text12.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text12.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text12.ng_valid {
@@ -780,11 +781,11 @@ label {
 }
 
 #text13.ng_invalid {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text13.ng_invalid:hover {
-  border: 1px solid red;
+  border: 1px solid #CB1E0F;
 }
 
 #text13.ng_valid {
@@ -865,7 +866,8 @@ label {
   width: 260px;
   height: 40px;
   padding-left: 15px;
-  background: #f1f1f1;
+  background-color: #f1f1f1;
+  color: #666666;
   outline: none;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
@@ -2118,7 +2120,7 @@ input::placeholder {
 }
 .card-view {
   margin-top: 25px;
-  width: 23%;
+  width: calc(25% - 19px);
 }
 .card-detail {
   padding: 15px 15px;
@@ -2322,3 +2324,38 @@ input::placeholder {
     margin-bottom: 20px;
 }
 
+.status-card{
+  width: 243px;
+  height: 80px;
+  background-color: #D8F2D4;
+  box-shadow: 0px 6px 50px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 20px;
+  position: absolute;
+  margin-top: -70px;
+  /* transform: translateX(-10px); */
+  /* transition: 2s ease-in; */
+}
+.status-detail{
+  display: flex;
+  gap: 14px;
+}
+.status-detail img{
+  height: 30px;
+  width: 30px;
+  margin-top: 5px;
+}
+.success-message h2{
+  font-family: 'Outfit',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #333333;
+}
+.success-message p{
+  font-family: 'Outfit',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #777777;
+}

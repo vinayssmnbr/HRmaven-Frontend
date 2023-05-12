@@ -341,6 +341,11 @@
 .company-name-headoffice-desc-area:hover .edit-password-button {
     visibility: visible;
 }
+.description-heading p {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(136, 136, 136, 0.6);
+}
 
 /* Company details done button*/
 .done-btn {
@@ -412,7 +417,7 @@
 }
 
 .form {
-    padding: 40px 60px;
+    padding: 40px 60px 0px 60px;
 }
 
 .form__group {
@@ -779,6 +784,11 @@ textarea::placeholder {
     font-weight: 400;
     font-size: 15px;
     color: #777777;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* input:disabled {
