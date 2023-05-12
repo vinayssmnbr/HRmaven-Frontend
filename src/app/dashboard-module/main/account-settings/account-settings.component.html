@@ -85,7 +85,8 @@
                 <div class="description-pen">
                     <div class="description-heading">
                         <h6>Description</h6>
-                        <p>{{description}}</p>
+                        <p *ngIf="!description">--------</p>
+                        <p *ngIf="description">{{description}}</p>
                     </div>
 
                     <!-- <div class="paragraph-text"> -->
@@ -149,7 +150,7 @@
             <div class="company-name-headoffice-desc-area">
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
 
-                    <!--                 
+                    <!--
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
@@ -185,7 +186,7 @@
                                 <path
                                     d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
                                     fill="#CB1E0F" />
-                            </svg>This is not your old password.</span>
+                            </svg>Your old password was entered incorrectly.</span>
                     </ng-template>
 
 
@@ -221,7 +222,7 @@
                                     d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
                                     fill="#CB1E0F" />
                             </svg>
-                            Passwords do not match
+                            Password didn't match
                         </span>
                     </div>
 
@@ -277,6 +278,17 @@
                             id="email" required />
 
 
+                            <span *ngIf="companyDetailsForm.controls.headOffice.invalid && companyDetailsForm.controls.headOffice.touched">
+                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.required">
+                                *Name is required.
+                              </span>
+                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.pattern">
+                                *Must start with a capital letter.
+                              </span>
+                              <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
+                                *Must be at least 2 characters.
+                              </span> -->
+                              </span>
 
 
 
@@ -305,7 +317,7 @@
 
 
             <div class="company-details-footer">
-                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">{{doneLoader1?
+                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)" [disabled]="companyDetailsForm.invalid">{{doneLoader1?
                     'Loading....':'Done'}}</button>
             </div>
         </div>
@@ -335,7 +347,15 @@
                     <div class="form__group">
                         <label>Personal Email</label>
                         <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
-                            required />
+                            required (keyup)="onKeyUp($event)"/>
+                            <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
+                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.required">
+                                *Personal Email is required.
+                              </span>
+                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.pattern">
+                                *Enter Valid Pattern.
+                              </span>
+                              </span>
                     </div>
                 </div>
 
@@ -354,8 +374,8 @@
                     </div> -->
                     <div class="form__group">
                         <label for="phone">Phone no.</label>
-                        <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone"
-                            id="phone" required (input)="onInput($event)" [maxlength]="10"
+                        <input type="number" class="form_input" placeholder="Enter Phone number" formControlName="phone"
+                            id="phone" required (input)="onInput($event)" [maxlength]="10" (keyup)="onKeyUp($event)"
                             [disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
                     </div>
 
@@ -363,7 +383,7 @@
                 </div>
                 <div class="edit-profile-footer">
                     <button type="submit" class="done-btn"
-                        (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1?
+                        (click)="closeModal2();updateData(personalDetailsForm.value)" [disabled]="personalDetailsForm.invalid">{{doneLoader1?
                         'Loading....':'Done'}}</button>
                 </div>
 

@@ -32,7 +32,7 @@ import * as XLSX from 'xlsx';
 export class EmployeeContentComponent implements OnInit {
   // user:any;
   isChecked: boolean = true;
-
+  isfetched: boolean = false;
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -182,6 +182,7 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      this.isfetched = true;
       if (res.length > 0) {
         this.emptybox = false;
       }
@@ -637,7 +638,7 @@ export class EmployeeContentComponent implements OnInit {
   tableview: boolean = true;
   tableviewcall() {
     // this.tableview = !this.tableview;
-    this.tableview=true;
+    this.tableview = true;
     this.cardview = false;
   }
   cardview: boolean = false;
@@ -726,8 +727,13 @@ export class EmployeeContentComponent implements OnInit {
 
   selectedUser: any;
   optionStyle: any;
-
+  isstatus: boolean = false;
+  showpopup: string = '';
   onSelectChange(event: any, user: any) {
+    this.isstatus = true;
+    setTimeout(() => {
+      this.isstatus = false;
+    }, 3000);
     switch (event.target.value) {
       case 'active': {
         this.optionStyle = {
@@ -735,6 +741,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#3D9030',
           border: 'rgba(123, 211, 109, 0.3)',
         };
+        this.showpopup = 'Status changed to active';
         break;
       }
       case 'terminated': {
@@ -743,6 +750,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#CB1E0F',
           border: 'rgba(250, 151, 150, 0.2)',
         };
+        this.showpopup = 'Status changed to terminated';
         break;
       }
       case 'resigned': {
@@ -751,6 +759,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#2f2c9f',
           border: '#EFEFF8',
         };
+        this.showpopup = 'Status changed to resigned';
         break;
       }
       case 'absconder': {
@@ -759,12 +768,14 @@ export class EmployeeContentComponent implements OnInit {
           color: '#DB771D',
           border: 'rgba(248, 187, 111, 0.4)',
         };
+        this.showpopup = 'Status changed to absconder';
         break;
       }
       default: {
         this.optionStyle = {
           // 'width':'110px',
         };
+        this.showpopup = '';
         break;
       }
     }
@@ -780,7 +791,6 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-
   // const index: number = this.data.indexOf(msg);
   // if (index !== -1) {
   //     this.data.splice(index, 1);

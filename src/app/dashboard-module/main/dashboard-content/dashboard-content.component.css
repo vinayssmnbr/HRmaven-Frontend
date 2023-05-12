@@ -34,8 +34,8 @@
 }
 
 .iconCenter.list {
-  color: #7BD36D;
-  background-color: rgba(141, 220, 128, 0.2);
+  color: #8BAFFF;
+  background-color: rgba(221, 232, 255, 0.3);
 }
 
 .iconCenter.reject {
@@ -44,8 +44,8 @@
 }
 
 .iconCenter.clock {
-  color: #8BAFFF;
-  background: rgba(221, 232, 255, 0.29);
+  color: #7BD36D;
+  background: rgba(141, 220, 128, 0.2);
 }
 
 .text-image p {
@@ -175,6 +175,7 @@
 .meeting-text {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .meeting-text h2 {
@@ -183,6 +184,10 @@
 }
 .meeting-text p{
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
 a {
   color: #2F2C9F;

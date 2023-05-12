@@ -28,13 +28,20 @@ export class AccountSettingsComponent implements OnInit {
 
  constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService){
   this.companyDetailsForm = this.formBuilder.group({
-    headOffice: [''],
-    description: ['']
+    headOffice: ['',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),
+  ]],
+    description: ['',[Validators.required]]
   });
   this.personalDetailsForm = this.formBuilder.group({
     name:[''],
-    personalemail: [''],
-    phone: ['', [Validators.required, this.phoneValidator]]
+    personalemail: ['',[
+      Validators.required,
+      Validators.email,
+      Validators.pattern(
+        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+      ),
+    ]],
+    phone: ['', [Validators.required, this.phoneValidator,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
   });
  }
   objectuserid = localStorage.getItem('emailid')
@@ -148,7 +155,7 @@ isInputDirty = false;
   //   personalemail: [''],
   //   phone: ['', [Validators.required, this.phoneValidator]]
   // });
-  
+
     }
 
 
@@ -164,6 +171,7 @@ isInputDirty = false;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image
+      this.doneLoader1 = false;
 
         // Update the profile image in the UI
       });
@@ -199,7 +207,7 @@ isInputDirty = false;
       });
 
   }
- 
+
   get func(){
     return this.forgetpwd.controls;
   }
@@ -219,8 +227,8 @@ isInputDirty = false;
 
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
-        } 
-        
+        }
+
         this.oldpassword = this.oldpassword;
       },
       //  (error: any) => {
@@ -228,7 +236,7 @@ isInputDirty = false;
       // }
       );
     }
- 
+
 
 
 
@@ -271,6 +279,9 @@ isInputDirty = false;
 
   closeModal1(){
     this.showModal1 = false;
+    // this.headOffice = this.personaldata.headOffice;
+    // this.description = this.personaldata.description
+
   }
 
   showModal2=false;
@@ -280,6 +291,9 @@ isInputDirty = false;
 
   closeModal2(){
     this.showModal2 = false;
+    // this.phone = this.personaldata.phone;
+
+
   }
 
 
@@ -395,6 +409,10 @@ isInputDirty = false;
   //     this.imageurl = this.userService.fileUrl;
   //     console.log('img', this.imageurl);
   //   });
+  // }
+
+  // onKeyUp(event): void {
+  //   event.target.value = event.target.value.trim();
   // }
 
 

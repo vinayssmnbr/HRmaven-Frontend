@@ -122,9 +122,11 @@
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
           <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
+          <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found=='true'">
+            <div class="loader"></div>
+          </div>
 
-
-          <td colspan="7" class="no_data" *ngIf="user.found=='true'">
+          <td colspan="7" class="no_data" *ngIf=" user.found=='true' && employee.length>0">
             <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect width="209" height="176" fill="" />
@@ -286,7 +288,15 @@
 
         </tr>
       </tbody>
-
+      <div class="status-card" *ngIf="isstatus">
+        <div class="status-detail">
+          <img src="./assets/images/tick.png" alt="">
+          <div class="success-message">
+            <h2>Success</h2>
+            <p>{{showpopup}}</p>
+          </div>
+        </div>
+      </div>
     </table>
   </div>
   <div class="card-wrapper" *ngIf="cardview">
@@ -553,7 +563,8 @@
               <input type="email" id="text7" placeholder="zones123@gmail.com" formControlName="email"
                 (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
                 [ngClass]="{'ng_invalid': (emailExists || registrationFormControl.email.invalid && registrationFormControl.email.dirty ), 'ng_valid': !emailExists &&  registrationFormControl.email.valid}">
-              <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-info"></i>Email already
+              <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
+                already
                 exists</div>
             </div>
 
@@ -571,7 +582,8 @@
               <input type="number" class="no-spin" id="text6" placeholder="XXXXXX0652" formControlName="mobile"
                 (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
                 [ngClass]="{'ng_invalid': (mobileExists ||  registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty ), 'ng_valid': !mobileExists && registrationFormControl.mobile.valid}">
-              <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-info"></i>Mobile No.
+              <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
+                No.
                 already exists</div>
             </div>
           </div>
@@ -765,9 +777,9 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
-    </div>
   </div>
+</div>
 
-    <div class="loader-main" *ngIf="employee.length==0">
-      <div class="loader"></div>
-    </div>
+<!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">
+  <div class="loader"></div>
+</div> -->

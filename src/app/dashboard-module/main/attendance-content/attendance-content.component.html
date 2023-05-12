@@ -75,7 +75,7 @@
                 let user of DayAttendance | attendanceFilter : employeename
               ">
               <!-- | attendanceFilter:employeename:datez -->
-              <td colspan="7" class="nodata" class="no_data" *ngIf="user.found == 'true'">
+              <td colspan="7" class="no_data" *ngIf="user.found == 'true'">
                 <p>
                   <img src="assets/images/no_record.png" alt="" class="center" />
                 </p>
@@ -99,8 +99,8 @@
                 : (user.out | date : "shortTime")
                 }}
               </td>
-              <td>{{user.ip_in}}</td>
-              <td>{{user.ip_out}}</td>
+              <td *ngIf="user.found != 'true'">{{user.ip_in}}</td>
+              <td *ngIf="user.found != 'true'">{{user.ip_out}}</td>
               <!-- <td *ngIf="user.found!='true'" class="action1">
                             <div class="icons">
                                 <i class="fa-solid fa-pencil" (click)="openModal(user)"></i>
@@ -154,7 +154,7 @@
                                 <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                                 <path class="fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
                             </svg> -->
-                            <!-- <div class="progress-circle-container">
+    <!-- <div class="progress-circle-container">
                                 <div class="progress-circle progress-40"><span></span></div>
                               </div>              -->
 
@@ -265,15 +265,15 @@
           </thead>
           <tbody>
             <tr *ngFor="let i of profile.attendance | monthwisefilter:active">
-              <td colspan=6 *ngIf="i==0" class="no_record" style="background-color: #f9f9f9;"><img src="../../../../assets/images/Norecord.svg"></td>
+              <td colspan=8 *ngIf="i==0" class="no_record"><img src="../../../../assets/images/Norecord.svg"></td>
               <ng-container *ngIf="i!=0">
-              <td>{{ i.date | date : "shortDate" }}</td>
-              <td>{{ i.status }}</td>
-              <td>{{ i.in == null ? "----" : i.in }}</td>
-              <td>{{ i.out == null ? "----" : i.out }}</td>
-              <td>{{i.ip_in}}</td>
-              <td>{{i.ip_out}}</td>
-            </ng-container>
+                <td>{{ i.date | date : "shortDate" }}</td>
+                <td>{{ i.status }}</td>
+                <td>{{ i.in == null ? "----" : i.in }}</td>
+                <td>{{ i.out == null ? "----" : i.out }}</td>
+                <td>{{i.ip_in}}</td>
+                <td>{{i.ip_out}}</td>
+              </ng-container>
             </tr>
           </tbody>
         </table>
