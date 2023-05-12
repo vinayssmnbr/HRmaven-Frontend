@@ -1575,3 +1575,15 @@ div.form-container {
   left: 0;
 
 }
+
+.dashboard-validation{
+  color: #CB1E0F;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 12px;
+}
