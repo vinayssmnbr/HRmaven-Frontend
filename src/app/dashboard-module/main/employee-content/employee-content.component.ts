@@ -53,7 +53,7 @@ export class EmployeeContentComponent implements OnInit {
   progressText: any;
   progress: number = 0;
   interval: any;
-  importFileResponse: any = { success: [], fail: [] }
+  importFileResponse: any = { success: [], error: [] }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -1028,8 +1028,20 @@ export class EmployeeContentComponent implements OnInit {
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
-              console.log(responseArr.push(res));
-
+              
+              console.log('Data:', res.data);
+              // this.progress += increaseBy;
+              // this.progressBar[0].style.width = `${this.progress}%`;
+              // this.progressText[0].innerText = `${this.progress}%`;
+              // console.log(res, 'response');
+              if (res.status == 'failed') {
+                errors.push({ ...employee, error: res.message });
+                // console.log(errors.push({ ...employee, error: res.message }));
+              }
+              if (res.status == "Success") {
+                sucesses.push(res);
+              
+              }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
                 this.loader = false;
@@ -1039,22 +1051,19 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
               }
-              console.log('Data:', res.data);
-              this.progress += increaseBy;
-              this.progressBar[0].style.width = `${this.progress}%`;
-              this.progressText[0].innerText = `${this.progress}%`;
-              console.log(res, 'response');
-              if (res.status == 'failed') {
-                errors.push({ ...employee, error: res.message });
-                // console.log(errors.push({ ...employee, error: res.message }));
-              }
-              if (res.status == "Success") {
-                // sucesses.push(res);
-                console.log( sucesses.push(res));
-              }
             },
-            (error: any) => {
+            async(error: any) => {
               errors.push({ ...employee, error });
+              responseArr.push(employee)
+              if (responseArr.length == data.length) {
+                await this.waitThreeSeconds();
+                this.loader = false;
+                this.csvadded = true;
+                this.importfile = false;
+                console.log('not uploaded files', errors);
+                this.importFileResponse.error = [...errors];
+                this.importFileResponse.sucess = [...sucesses];
+              }
             }
           );
         });
