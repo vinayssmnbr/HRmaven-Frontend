@@ -180,7 +180,7 @@
                           <p *ngIf="isInputDirty && !isEmptyInput" style="color: red;">This is not your old password.</p>
                         </ng-template>
                       </div> -->
-                      <div class="old-new-confirm-password">
+                      <!-- <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
                                placeholder="Type your old password"
@@ -206,7 +206,46 @@
                             <label for="">New Password</label>
                             <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
                         [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}"
-                    >
+                    > -->
+                    <div class="old-new-confirm-password">
+                        <label for="">Old Password</label>
+                        <input type="password"
+                               placeholder="Type your old password"
+                               class="form-control password"
+                               required
+                               id="oldp"
+                               formControlName="oldpassword"
+                               (blur)="matchpwd()"
+                               (input)="isInputDirty = true"
+                               (focusout)="onFocusout()"
+                               (input)="onFocusout()">
+                      
+                        <p *ngIf="isPasswordMatched && !isSamePassword; else notMatched" style="color: green;">This is your old password.</p>
+                        <ng-template #notMatched>
+                          <!-- <p *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && !isEmptyInput" style="color: red;">This is not your old password.</p> -->
+                          <p *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== ''" style="color: red;">This is not your old password.</p>
+
+                        </ng-template>
+                      </div>
+                      
+                      <div class="new-reenter">
+                        <div class="old-new-confirm-password">
+                          <label for="">New Password</label>
+                          <input type="password"
+                                 placeholder="Type a new password"
+                                 formControlName="password"
+                                 class="form-control password"
+                                 (keyup)="onKeyUp($event)"
+                                 (input)="onNewPasswordChange()"
+                                 required
+                                 id="passwordp"
+                                 [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
+                          
+                          <p *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched" style="color: red;">New password must be different from the old password.</p>
+                        </div>
+                      </div>
+                      
+                      
 
                             
                         <!-- <p *ngIf="isSamePassword ; else notpwdMatched" style="color: green;">New password cannot be same as old password</p>
@@ -214,8 +253,8 @@
                       
                           <p  style="color: black;">New password.</p>
                         </ng-template> -->
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
 
                     <div class="new-reenter">
                         <div class="old-new-confirm-password">
@@ -238,7 +277,7 @@
                     <div class="clear-update-button">
                         <button class="clear-btn" (click)="clearForm()">Clear</button>
                         <button class="update-btn" (click)="openModal3()" type="submit"
-                            [disabled]="!isPasswordMatched || forgetpwd.invalid">Update Password</button>
+                            [disabled]="!isPasswordMatched || forgetpwd.invalid || isFormDisabled()">Update Password</button>
 
                     </div>
                 </form>

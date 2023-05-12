@@ -256,26 +256,92 @@ isNewPasswordSame: boolean = false;
       
     //   );
     // }
-    matchpwd() {
-      const email = this.employeeemail;
-      this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
-      this.isPasswordMatched = false;
+//     matchpwd() {
+//       const email = this.employeeemail;
+//       this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
+//       this.isPasswordMatched = false;
     
-      this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
-        console.log("message: ", res);
-        console.log("message email: ", res.message);
-        console.log("message pwd email: ", res.password);
+//       // this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
+//       //   console.log("message: ", res);
+//       //   console.log("message email: ", res.message);
+//       //   console.log("message pwd email: ", res.password);
     
-        if (res.message === 'Password matches') {
-          this.isPasswordMatched = true;
-          this.oldpwd = res.password;
-          const newPassword = this.forgetpwd.controls['password'].value;
-          this.isSamePassword = newPassword === this.oldpwd;
-        } else {
-          this.isSamePassword = false;
-        }
-      });
+//       //   if (res.message === 'Password matches') {
+//       //     this.isPasswordMatched = true;
+//       //     this.oldpwd = res.password;
+//       //     const newPassword = this.forgetpwd.controls['password'].value;
+//       //     this.isSamePassword = newPassword === this.oldpwd;
+//       //   } else {
+//       //     this.isSamePassword = false;
+//       //   }
+//       // });
+//       // Assuming you have a form group named 'forgetpwd' containing the form controls
+
+// this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
+//   console.log("message: ", res);
+//   console.log("message email: ", res.message);
+//   console.log("message pwd email: ", res.password);
+
+//   if (res.message === 'Password matches') {
+//     this.isPasswordMatched = true;
+//     this.oldpwd = res.password;
+//     const newPassword = this.forgetpwd.controls['password'].value;
+//     this.isSamePassword = newPassword === this.oldpwd;
+
+//     if (this.isSamePassword) {
+//       this.forgetpwd.controls['password'].setErrors({ isPasswordMatched: true });
+//     } else {
+//       this.forgetpwd.controls['password'].setErrors(null);
+//     }
+//   } else {
+//     this.isSamePassword = false;
+//     this.forgetpwd.controls['password'].setErrors(null);
+//     this.forgetpwd.controls['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
+//   }
+// });
+
+//     }
+matchpwd() {
+  const email = this.employeeemail;
+  this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
+  this.isPasswordMatched = false;
+
+  this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
+    console.log("message: ", res);
+    console.log("message email: ", res.message);
+    console.log("message pwd email: ", res.password);
+
+    if (res.message === 'Password matches') {
+      this.isPasswordMatched = true;
+      this.oldpwd = res.password;
+      const newPassword = this.forgetpwd.controls['password'].value;
+      this.isSamePassword = newPassword === this.oldpwd;
+
+      if (this.isSamePassword) {
+        this.forgetpwd.controls['password'].setErrors({ isPasswordMatched: true });
+      } else {
+        this.forgetpwd.controls['password'].setErrors(null);
+      }
+    } else {
+      this.isSamePassword = false;
+      this.forgetpwd.controls['password'].setErrors(null);
+      this.forgetpwd.controls['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
     }
+  });
+}
+onNewPasswordChange() {
+  const newPassword = this.forgetpwd.controls['password'].value;
+  this.isSamePassword = newPassword === this.oldpwd;
+
+  if (this.isSamePassword) {
+    this.forgetpwd.controls['password'].setErrors({ isPasswordMatched: true });
+  } else {
+    this.forgetpwd.controls['password'].setErrors(null);
+  }
+}
+isFormDisabled() {
+  return !this.isPasswordMatched || this.forgetpwd.invalid;
+}
     
     isPasswordInput: boolean = false;
     // matchpwd() {
@@ -287,14 +353,14 @@ isNewPasswordSame: boolean = false;
     //     console.log("message email: ", res.message);
     //     console.log("message pwd email: ", res.password);
     
-    //     if (res.message === 'Password matches') {
-    //       this.oldpwd = res.password;
-    //       this.func['password'].setErrors({isPasswordMatched: true});
-    //     } 
-    //     else{
-    //       this.func['password'].setErrors(null);
-    //       this.func['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
-    //     }
+        // if (res.message === 'Password matches') {
+        //   this.oldpwd = res.password;
+        //   this.func['password'].setErrors({isPasswordMatched: true});
+        // } 
+        // else{
+        //   this.func['password'].setErrors(null);
+        //   this.func['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
+        // }
     //   });
     // }
     
