@@ -238,6 +238,7 @@ ress: any =''
         console.log(res._id);
         this.cookie.set('hr_id', res._id);
         this.cookie.set('role', 'hr');
+              localStorage.setItem('personalDataSubmitted', 'true');
         this.submit();
       } else if (res.message == 'Invalid' || res.message == "Employee email or status invalid") {
         console.log('haha');
