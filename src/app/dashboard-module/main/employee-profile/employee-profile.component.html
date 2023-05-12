@@ -119,7 +119,7 @@
         <div class="column1">
           <span class="bname">Bank Name</span>
           <p *ngIf="!user.bankname">----------</p>
-          <p class="bname">{{user.bankname}}</p>
+          <p *ngIf="user.bankname" class="bname">{{user.bankname}}</p>
           <span class="adhaarno">Aadhaar Card Number</span>
           <p *ngIf="!user.adhaarno">----------</p>
           <p class="adhaarno">{{user.adhaarno}}</p>
@@ -465,7 +465,7 @@
             </div>
             <div class="input" *ngIf="Selectvariable2=== 'Others'">
               <label>Other Bank Name</label>
-              <input type="text" placeholder="Specify Bank Name" formControlName="bankname">
+              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname">
             </div>
           </div>
           <div class="form-row">
