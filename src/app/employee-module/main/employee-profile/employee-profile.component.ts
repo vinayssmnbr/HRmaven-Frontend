@@ -42,6 +42,29 @@ export class EmployeeProfileComponent {
   contentdropdown8: boolean = false;
   employee: any[] = [];
   obj: any;
+  lengthCheck: boolean = false;
+  specialCharCheck: boolean = false;
+  spaceCheck: boolean = false;
+  capitalCheck: boolean = false;
+  smallCheck: boolean = false;
+  numericalCheck: boolean = false;
+  signupLoader:boolean = false;
+
+  is_visible = false;
+  password = '';
+
+  checkPassword() {
+    const input = this.password.trim();
+    this.lengthCheck = input.length >= 8;
+    // const lengthCheck2 = input.length <= 10;
+    this.numericalCheck = input.match(/[0-9]/i) ? true : false;
+    this.specialCharCheck = input.match(/[^A-Za-z0-9-' ']/i) ? true : false;
+    this.spaceCheck = input.match(' ') ? true : false;
+    this.capitalCheck = input.match(/[A-Z]/) ? true : false;
+    this.smallCheck = input.match(/[a-z]/) ? true : false;
+    //  console.log(numericalCheck,  this.specialCharCheck, spaceCheck, capitalCheck, smallCheck)
+    document.getElementById('count').innerText = `Length: ${input.length}`;
+  }
   constructor(private empdashService: EmpService) {
     this.empdashService.getEmployeeRecord().subscribe((res) => {
       console.log('pro', res);

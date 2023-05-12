@@ -26,6 +26,7 @@ export class AccountSettingsComponent implements OnInit {
  readonly= false;
  doneLoader1:boolean = false;
 
+
  constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService){
   this.companyDetailsForm = this.formBuilder.group({
     headOffice: ['',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),
@@ -277,8 +278,9 @@ isInputDirty = false;
 
   }
 
-  closeModal1(){
+  closeModal1(data:any){
     this.showModal1 = false;
+    // this.companyDetailsForm.patchValue(data)
     // this.headOffice = this.personaldata.headOffice;
     // this.description = this.personaldata.description
 
