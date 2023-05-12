@@ -86,9 +86,9 @@ export class AttendanceContentComponent implements OnInit {
       const absent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       const leave = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       res.map((d) => {
-        present[d.month] = d.present;
-        absent[d.month] = d.absent;
-        leave[d.month] = d.leave;
+        present[d.month-1] = d.present;
+        absent[d.month-1] = d.absent;
+        leave[d.month-1] = d.leave;
       });
        this.myChart = new Chart('barChart', {
         type: 'bar',
@@ -314,11 +314,18 @@ export class AttendanceContentComponent implements OnInit {
     this.loadcarddata(arr.id);
     this.active = arr.id;
   }
-
+  norecord:boolean=false;
   loadcarddata(month: any) {
+    this.norecord=false;
     this.dashService.getAttendancecard(month).subscribe((res) => {
       console.log(res);
       this.card = res;
+      if(this.card.length==0)
+      {
+        console.log('true');
+        this.norecord=true;
+      }
+
     });
   }
 

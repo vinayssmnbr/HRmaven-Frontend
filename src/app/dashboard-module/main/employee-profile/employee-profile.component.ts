@@ -109,6 +109,7 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
     ]),
+    otherbankname: new FormControl(''),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
       Validators.required,
@@ -587,6 +588,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = true;
     this.user.accountno = data.accountno;
     this.user.ifsc = data.ifsc;
+    this.user.otherbankname = data.otherbankname;
     this.user.adhaarno = data.adhaarno;
     this.user.panno = data.panno;
     this.user.passport = data.passport;
@@ -651,6 +653,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent7 = true;
     this.selectedUser = { _id: user._id };
     this.experienceForm.patchValue(user);
+    this.user();
   }
   closeModal6(data) {
     this.modalContent1 = false;

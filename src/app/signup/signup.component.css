@@ -236,10 +236,14 @@ input:focus {
 
 .check-text span {
     color: #999999;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .check-text a {
     color: var(--primary-color);
+    font-weight: 400;
+    font-size: 14px;
 }
 
 
@@ -252,6 +256,7 @@ input:focus {
     width: 15px;
     height: 15px;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .button input {
@@ -387,6 +392,7 @@ input:focus {
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
+    background: rgba(217, 217, 217, 0.4);
 }
 
 .manual-btn:not(:last-child) {

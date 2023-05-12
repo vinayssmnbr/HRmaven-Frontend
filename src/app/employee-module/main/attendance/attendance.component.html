@@ -1,7 +1,10 @@
 <app-sidebar>
 </app-sidebar>
 <app-header></app-header>
-<div class="employee-attendance">
+<div class="loader-parent" *ngIf="loader">
+  <div class="loader"></div>
+</div>
+<div class="employee-attendance" *ngIf="!loader">
   <div class="row">
     <div class="col-5">
       <div class="attendence_card">
@@ -14,15 +17,17 @@
             </div>
             <div class="card_logo" *ngIf="in=='' || in==null">
               <img src="assets/images/punch_inpng.png" (click)="punchin()" alt="">
+              <img src="assets/images/punch_inpng.png" alt="" class="already_punch" *ngIf="done_punch_in">
             </div>
           </div>
           <div class="card_content">
             <div class="card_text">
-              <p>Punch in timing</p>
+              <p>Punch out timing</p>
               <h1>{{out | date:'shortTime'}}</h1>
             </div>
             <div class="card_logo" *ngIf="out=='' || out==null">
               <img src="assets/images/punch_out.svg" alt="" (click)='punchout()'>
+              <img src="assets/images/punch_out.svg" alt="" class="already_punch" *ngIf="done_punch_out">
             </div>
           </div>
         </div>
@@ -84,31 +89,40 @@
 
     <div class="attendence_history_card">
       <div class="col-4" *ngFor="let i of obj | filterattendance:month">
-        <div class="card">
-          <div class="card_date">
-            <div class="left_date">
-              <img src="assets/images/date.png" alt="">
-              <p>{{i.date | date}}</p>
-            </div>
-            <div class="card_btn">
-              <button *ngIf="i.status=='present'" class="present_btn">{{i.status | uppercase}}</button>
-              <button *ngIf="i.status=='absent'" class="absent_btn">{{i.status | uppercase}}</button>
-              <button *ngIf="i.status=='leave'" class="leave_btn">{{i.status | uppercase}}</button>
-              <button *ngIf="i.status=='odd'" class="odd_btn">{{i.status | uppercase}}</button>
-            </div>
-          </div>
-          <div class="punching_timing">
-            <div class="punching_in" *ngIf="i.status=='present' || i.status=='odd'">
-              <p>Punch in timing</p>
-              <h6>{{i.punch_in | date:'shortTime'}}</h6>
-            </div>
-            <div class="punching_out" *ngIf="i.status=='present' || i.status=='odd'">
-              <p>Punch in timing</p>
-              <h6>{{i.punch_out | date:'shortTime'}}</h6>
-            </div>
-          </div>
-
+        <div *ngIf="i=='nofound'">
+          <h1>no record found</h1>
         </div>
+        <ng-container *ngIf="i!='nofound'">
+          <div class="card">
+            <div class="card_date">
+              <div class="left_date">
+                <img src="assets/images/date.png" alt="">
+                <p>{{i.date | date}}</p>
+              </div>
+              <div class="card_btn">
+                <button *ngIf="i.status=='present'" class="present_btn">{{i.status | uppercase}}</button>
+                <button *ngIf="i.status=='absent'" class="absent_btn">{{i.status | uppercase}}</button>
+                <button *ngIf="i.status=='leave'" class="leave_btn">{{i.status | uppercase}}</button>
+                <button *ngIf="i.status=='odd'" class="odd_btn">{{i.status | uppercase}}</button>
+                <button *ngIf="i.status=='X'" class="X_btn">{{'X' | uppercase}}</button>
+              </div>
+            </div>
+            <div class="punching_timing">
+              <div class="punching_in">
+                <p>Punch in timing</p>
+                <h6 *ngIf="i.status=='present' || i.status=='odd'">{{i.punch_in | date:'shortTime'}}</h6>
+                <h6 *ngIf="i.status=='X' || i.status=='absent' || i.status=='leave'">--:--</h6>
+                <!-- <h6>--:--</h6> -->
+              </div>
+              <div class="punching_out">
+                <p>Punch in timing</p>
+                <h6 *ngIf="i.status=='present' || i.status=='odd'">{{i.punch_out | date:'shortTime'}}</h6>
+                <h6 *ngIf="i.status=='X' || i.status=='absent' || i.status=='leave'">--:--</h6>
+              </div>
+            </div>
+
+          </div>
+        </ng-container>
       </div>
     </div>
 

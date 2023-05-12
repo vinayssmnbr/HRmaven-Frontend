@@ -34,8 +34,8 @@
 }
 
 .iconCenter.list {
-  color: #7BD36D;
-  background-color: rgba(141, 220, 128, 0.2);
+  color: #8BAFFF;
+  background-color: rgba(221, 232, 255, 0.3);
 }
 
 .iconCenter.reject {
@@ -44,8 +44,8 @@
 }
 
 .iconCenter.clock {
-  color: #8BAFFF;
-  background: rgba(221, 232, 255, 0.29);
+  color: #7BD36D;
+  background: rgba(141, 220, 128, 0.2);
 }
 
 .text-image p {
@@ -1416,4 +1416,11 @@ div.form-container {
   visibility: visible !important;
   opacity: 1 !important;
   /* opacity: 0 !important; */
+}
+.no_record{
+display:flex;
+width:100%;
+height:100%;
+justify-content: center;
+align-items: center;
 }
