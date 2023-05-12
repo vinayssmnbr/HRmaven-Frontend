@@ -638,7 +638,7 @@ export class EmployeeContentComponent implements OnInit {
   }
   tableview: boolean = true;
   tableviewcall() {
-    this.tableview = !this.tableview;
+    this.tableview = true;
     this.cardview = false;
   }
   cardview: boolean = false;
@@ -1037,7 +1037,7 @@ export class EmployeeContentComponent implements OnInit {
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
-              
+
               console.log('Data:', res.data);
               // this.progress += increaseBy;
               // this.progressBar[0].style.width = `${this.progress}%`;
@@ -1049,7 +1049,7 @@ export class EmployeeContentComponent implements OnInit {
               }
               if (res.status == "Success") {
                 sucesses.push(res);
-              
+
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
