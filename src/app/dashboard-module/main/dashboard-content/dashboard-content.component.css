@@ -1418,3 +1418,66 @@ height:100%;
 justify-content: center;
 align-items: center;
 }
+
+
+/*--------------------------------welcome-modal--------------------*/
+.welcome-modal{
+  width: 417px;
+  background-color: #FFFFFF;
+border-radius: 8px;
+display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 50px;
+}
+.welcome-text{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.welcome-text h4{
+  font-weight: 500;
+font-size: 18px;
+color: #2F2C9F;
+}
+.welcome-text p{
+  font-weight: 400;
+  font-size: 12px;
+  color: #888888;
+}
+.welcome-text button{
+ padding: 9px 27px;
+ background-color: #2F2C9F;
+border-radius: 8px;
+text-align: center;
+width: 125px;
+border: none;
+outline: none;
+font-weight: 600;
+font-size: 13px;
+color: #FFFFFF;
+cursor: pointer;
+}
+.welcome-text button:hover{
+  background: #2f2c9f;
+    opacity: 0.7;
+}
+
+.welcome_modal{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(34, 34, 34, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+}
