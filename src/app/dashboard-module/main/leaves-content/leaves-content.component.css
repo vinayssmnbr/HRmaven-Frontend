@@ -318,11 +318,11 @@ p.reason:hover>span {
  /* border: 3px solid transparent; */
 }
 
-.Pending:hover,
+/* .Pending:hover,
 .Approved:hover,
 .Rejected:hover {
   border-bottom: 3px solid #2F2C9F;
-}
+} */
 
 .color {
   color: #2F2C9F;
