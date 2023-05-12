@@ -85,7 +85,8 @@
                 <div class="description-pen">
                     <div class="description-heading">
                         <h6>Description</h6>
-                        <p>{{description}}</p>
+                        <p *ngIf="!description">--------</p>
+                        <p *ngIf="description">{{description}}</p>
                     </div>
 
                     <!-- <div class="paragraph-text"> -->
