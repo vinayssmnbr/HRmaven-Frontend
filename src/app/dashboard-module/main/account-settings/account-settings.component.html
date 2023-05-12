@@ -149,7 +149,7 @@
             <div class="company-name-headoffice-desc-area">
                 <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
 
-                    <!--                 
+                    <!--
                     <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
                         <input type="password"
@@ -277,6 +277,17 @@
                             id="email" required />
 
 
+                            <span *ngIf="companyDetailsForm.controls.headOffice.invalid && companyDetailsForm.controls.headOffice.touched">
+                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.required">
+                                *Name is required.
+                              </span>
+                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.pattern">
+                                *Must start with a capital letter.
+                              </span>
+                              <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
+                                *Must be at least 2 characters.
+                              </span> -->
+                              </span>
 
 
 
@@ -305,7 +316,7 @@
 
 
             <div class="company-details-footer">
-                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)">{{doneLoader1?
+                <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)" [disabled]="companyDetailsForm.invalid">{{doneLoader1?
                     'Loading....':'Done'}}</button>
             </div>
         </div>
@@ -336,6 +347,14 @@
                         <label>Personal Email</label>
                         <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
                             required />
+                            <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
+                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.required">
+                                *Personal Email is required.
+                              </span>
+                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.pattern">
+                                *Enter Valid Pattern.
+                              </span>
+                              </span>
                     </div>
                 </div>
 
@@ -363,7 +382,7 @@
                 </div>
                 <div class="edit-profile-footer">
                     <button type="submit" class="done-btn"
-                        (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1?
+                        (click)="closeModal2();updateData(personalDetailsForm.value)" [disabled]="personalDetailsForm.invalid">{{doneLoader1?
                         'Loading....':'Done'}}</button>
                 </div>
 

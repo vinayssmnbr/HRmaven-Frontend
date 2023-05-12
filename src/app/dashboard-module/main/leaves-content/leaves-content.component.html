@@ -330,7 +330,7 @@
           <th>Duration</th>
           <th>Category</th>
           <th>Type</th>
-          <th>REASON</th>
+          <th class="reason">REASON</th>
           <th>Balance</th>
           <th>Attachment</th>
         </tr>
@@ -347,21 +347,26 @@
           <td>{{ n.duration }}</td>
           <td>{{ n.category }}</td>
           <td>{{n.type}}</td>
-          <td>
-            <p class="mt20">
+          <td class="tool">
+            <!-- <p class="mt20 reason">
               <span
-                class="tooltip"
-                data-tooltip=""
+                class="tooltip reason"
+                data-tooltip="fffmvovemveivmeveoijmeigemibmeim"
                 data-tooltip-pos="right"
-                data-tooltip-length="medium"
-                >{{ n.reason }}</span
-              >
+                data-tooltip-length="medium">{{n.reason}}</span>
+                {{n.reason}}
+            </p> -->
+            <p class="mt20 reason">
+              <span>{{n.reason}}</span>
+                {{n.reason}}
             </p>
+
+
           </td>
-          <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
-          <td *ngIf="n.category=='compensatory'">{{n.balance.compensatory}}</td>
-          <td *ngIf="n.category=='medical'">{{n.balance.medical}}</td>
-          <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
+          <td *ngIf="n.category=='Casual Leave'">{{n.balance.casual}}</td>
+          <td *ngIf="n.category=='Compensatory Leave'">{{n.balance.compensatory}}</td>
+          <td *ngIf="n.category=='Medical Leave'">{{n.balance.medical}}</td>
+          <!-- <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td> -->
           <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
           <td *ngIf="n.url==''">---</td>
         </tr>
