@@ -32,7 +32,7 @@ import * as XLSX from 'xlsx';
 export class EmployeeContentComponent implements OnInit {
   // user:any;
   isChecked: boolean = true;
-
+  isfetched: boolean = false;
   users: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
@@ -183,6 +183,7 @@ export class EmployeeContentComponent implements OnInit {
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      this.isfetched = true;
       if (res.length > 0) {
         this.emptybox = false;
       }
