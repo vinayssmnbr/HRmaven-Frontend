@@ -733,7 +733,7 @@ export class EmployeeContentComponent implements OnInit {
     this.isstatus = true;
     setTimeout(() => {
       this.isstatus = false;
-    }, 3000);
+    },3000);
     switch (event.target.value) {
       case 'active': {
         this.optionStyle = {
@@ -741,7 +741,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#3D9030',
           border: 'rgba(123, 211, 109, 0.3)',
         };
-        this.showpopup = 'Status changed to active';
+        this.showpopup = 'Status changed to Active';
         break;
       }
       case 'terminated': {
@@ -750,7 +750,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#CB1E0F',
           border: 'rgba(250, 151, 150, 0.2)',
         };
-        this.showpopup = 'Status changed to terminated';
+        this.showpopup = 'Status changed to Terminated';
         break;
       }
       case 'resigned': {
@@ -759,7 +759,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#2f2c9f',
           border: '#EFEFF8',
         };
-        this.showpopup = 'Status changed to resigned';
+        this.showpopup = 'Status changed to Resigned';
         break;
       }
       case 'absconder': {
@@ -768,7 +768,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#DB771D',
           border: 'rgba(248, 187, 111, 0.4)',
         };
-        this.showpopup = 'Status changed to absconder';
+        this.showpopup = 'Status changed to Absconder';
         break;
       }
       default: {
