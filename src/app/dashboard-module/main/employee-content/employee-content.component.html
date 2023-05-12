@@ -122,9 +122,11 @@
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
           <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
+          <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found=='true'">
+            <div class="loader"></div>
+          </div>
 
-
-          <td colspan="7" class="no_data" *ngIf="user.found=='true'">
+          <td colspan="7" class="no_data" *ngIf=" user.found=='true' && employee.length>0">
             <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect width="209" height="176" fill="" />
@@ -765,9 +767,9 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
-    </div>
   </div>
+</div>
 
-    <div class="loader-main" *ngIf="employee.length==0">
-      <div class="loader"></div>
-    </div>
+<!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">
+  <div class="loader"></div>
+</div> -->
