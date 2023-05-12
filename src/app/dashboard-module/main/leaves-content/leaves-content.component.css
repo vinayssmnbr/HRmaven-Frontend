@@ -45,7 +45,7 @@ p.reason:hover>span {
   white-space: pre-line;
   overflow: hidden;
   text-overflow: ellipsis;
-  z-index: 9999;
+
 }
 
 .reason {
@@ -54,6 +54,7 @@ p.reason:hover>span {
   width: 70px !important;
   overflow: hidden;
   text-overflow: ellipsis;
+  z-index: 9999 !important;
 }
 
 
