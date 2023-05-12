@@ -206,7 +206,9 @@ input:focus {
 .check-text .forgot-text {
   margin-left: 133px;
   text-decoration: none;
-  color: var(--primary-color);
+  color: #0036BF;
+  font-weight: 400;
+  font-size: 14px;
   cursor: pointer;
 }
 
