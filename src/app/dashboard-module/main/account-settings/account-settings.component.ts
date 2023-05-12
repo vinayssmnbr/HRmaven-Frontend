@@ -127,10 +127,15 @@ isInputDirty = false;
 
         this.employeename = res.personaldata.name;
         this.totalemployee = res.personaldata.domain;
-        this.headOffice = res.personaldata.headOffice;
-        this.phone = res.personaldata.phone;
-        this.description = res.personaldata.description;
-        this.profileimage = res.personaldata.url;
+        this.companyDetailsForm.patchValue({
+          headOffice: res.personaldata.headOffice
+        });
+                this.phone = res.personaldata.phone;
+                this.companyDetailsForm.patchValue({
+                  description : res.personaldata.description
+
+                });
+                this.profileimage = res.personaldata.url;
         this.email_id = this.employeeemail.split("@")
       this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
 
@@ -228,6 +233,7 @@ isInputDirty = false;
     return this.forgetpwd.controls;
   }
   isPasswordMatched = false;
+  isNotPasswordMatched = false;
   oldpassword: any = '';
     emailidd: any =''
     isSamePassword: boolean = false
@@ -236,7 +242,7 @@ isNewPasswordSame: boolean = false;
     // matchpwd() {
     //   const email = this.employeeemail;
     //    this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
-    //   this.isPasswordMatched = false;
+    //   // this.isPasswordMatched = false;
       
     //   this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
     //     console.log("message: ", res);
@@ -244,15 +250,19 @@ isNewPasswordSame: boolean = false;
     //     console.log("message pwd email: ", res.password);
 
 
-    //     if (res.message === 'Password matches') {
-    //       this.isPasswordMatched = true;
-    //       this.oldpwd = res.password;
-    //       this.isSamePassword = true;
+    //     if (res.flag) {
+    //       this.isSamePassword = false;
+    //       console.log(res.message)
+    //       // this.oldpwd = res.password;
+    //       // this.isSamePassword = true;
     //     } else{
-    //       this.isSamePassword = false
+    //       this.isSamePassword = true
+    //       console.log(res.message)
+
     //     } 
         
-    //     // this.oldpassword = this.oldpassword;
+    //     this.oldpassword = this.oldpassword;
+
     //       // Check if new password is the same as the old password
     // // if (this.forgetpwd.controls['password'].value === this.oldpassword) {
     // //   console.log('inside forgore isSamePassword')
@@ -261,6 +271,9 @@ isNewPasswordSame: boolean = false;
     // //   this.isSamePassword = false;
     // // }
     //   },
+    //   (error:any)=>{
+    //     this.isSamePassword=true
+    //   }
       
     //   );
     // }
@@ -309,6 +322,7 @@ isNewPasswordSame: boolean = false;
 // });
 
 //     }
+isOldPasswordIncorrect = false
 matchpwd() {
   const email = this.employeeemail;
   this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
@@ -334,6 +348,7 @@ matchpwd() {
       this.isSamePassword = false;
       this.forgetpwd.controls['password'].setErrors(null);
       this.forgetpwd.controls['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
+      this.isOldPasswordIncorrect = true;
     }
   });
 }
@@ -344,7 +359,7 @@ onNewPasswordChange() {
   if (this.isSamePassword) {
     this.forgetpwd.controls['password'].setErrors({ isPasswordMatched: true });
   } else {
-    this.forgetpwd.controls['password'].setErrors(null);
+    this.forgetpwd.controls['password'].setErrors({isNotPasswordMatched: true});
   }
 }
 isFormDisabled() {

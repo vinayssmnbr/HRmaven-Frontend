@@ -70,7 +70,7 @@
                     </div>
                     <div class="head-office-text">
                         <h6>Head Office</h6>
-                        <p>{{headOffice}}</p>
+                        <p>{{ companyDetailsForm.controls.headOffice.value }}</p>
                     </div>
                     <div class="edit-password-button">
                         <div class="text">
@@ -86,7 +86,9 @@
                     <div class="description-heading">
                         <h6>Description</h6>
                         <p *ngIf="!description">--------</p>
-                        <p *ngIf="description">{{description}}</p>
+                        <!-- <p *ngIf="description">{{description}}</p> -->
+                        <p>{{ companyDetailsForm.controls.description.value }}</p>
+
                     </div>
 
                     <!-- <div class="paragraph-text"> -->
@@ -169,21 +171,46 @@
                       </div> -->
                       <div class="old-new-confirm-password">
                         <label for="">Old Password</label>
-                        <input type="password" placeholder="Type your old password" class="form-control password"
-                            required id="oldp" formControlName="oldpassword" (blur)="matchpwd()"
-                            (input)="isInputDirty = true" (focusout)="onFocusout()">
-
-
-                    </div>
-                    
+                        <input type="password"
+                               placeholder="Type your old password"
+                               class="form-control password"
+                               required
+                               id="oldp"
+                               formControlName="oldpassword"
+                               (blur)="matchpwd()"
+                               (input)="isInputDirty = true"
+                               (input)="onFocusout()">
+                        
+                        <p *ngIf="isPasswordMatched === true && isSamePassword; else notMatched" style="color: green;">This is your old password.</p>
+                        <ng-template #notMatched>
+                          <p  *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched" class="error-message">This is not your old password.</p>
+                        </ng-template>
+                      </div>
+                      
                       
                   
                     
                       
                       
                       
-                                                                
-                    <div class="new-reenter">
+                      <div class="new-reenter">
+                        <div class="old-new-confirm-password">
+                          <label for="">New Password</label>
+                          <input type="password"
+                                 placeholder="Type a new password"
+                                 formControlName="password"
+                                 class="form-control password"
+                                 (keyup)="onKeyUp($event)"
+                                 (input)="onNewPasswordChange()"
+                                 required
+                                 id="passwordp"
+                                 [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
+                          
+                          <p class="error-message" *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched" >New password must be different from the old password.</p>
+                        </div>
+                      </div>
+                                                                   
+                    <!-- <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
                             <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
@@ -192,7 +219,7 @@
 
 
                         </div>
-                      </div>
+                      </div> -->
                       
                       
 
