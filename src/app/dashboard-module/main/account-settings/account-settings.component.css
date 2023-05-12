@@ -316,6 +316,18 @@
     font-weight: 400;
     font-size: 12px;
 }
+.phone-error-message{
+    color: #CB1E0F;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    margin-top: 68px;
+    font-weight: 400;
+    font-size: 12px;
+  
+}
 .company-error-message{
     color: #CB1E0F;
     align-items: center;
@@ -327,7 +339,21 @@
     font-weight: 400;
     font-size: 12px;
 }
-
+.old-message{
+    color: #CB1E0F;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    margin-left: 300px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: 64px;
+    font-weight: 400;
+    display: flex;
+    font-size: 12px;
+}
 .new-reenter {
     margin-top: 31px;
 }
