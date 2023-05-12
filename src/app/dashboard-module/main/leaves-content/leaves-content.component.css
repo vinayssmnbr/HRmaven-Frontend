@@ -20,6 +20,41 @@
   padding-top: 30px;
 }
 
+p.reason>span {
+  visibility: hidden;
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  left: 10px;
+  color: red;
+  background-color: #15e01c;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tool{
+  position: relative;
+}
+p.reason:hover>span {
+  visibility: visible;
+  width: 218px;
+  padding: 10px;
+  position: absolute;
+  transform: translateX(-105%);
+  color: red;
+  background-color: #15e01c;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 9999;
+}
+
+.reason {
+  /* position: relative; */
+  white-space: nowrap;
+  width: 70px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 .card {
@@ -694,10 +729,10 @@ input[type="radio"] {
 }
 
 .leave_modal h3 {
-      font-size: 15px;
-    color: #333333;
-    font-weight: 400;
-    padding-top: 10px;
+  font-size: 15px;
+  color: #333333;
+  font-weight: 400;
+  padding-top: 10px;
 }
 
 .leave_modal textarea {

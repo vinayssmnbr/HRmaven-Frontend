@@ -13,7 +13,11 @@ export class MonthwisefilterPipe implements PipeTransform {
       filter.push(item);
     }
     })
-
+    if(filter.length==0)
+    {
+      filter.push(0);
+      return filter;
+    }
     return filter;
   }
 
