@@ -2333,13 +2333,8 @@ input::placeholder {
   padding: 20px;
   position: absolute;
   margin-top: -70px;
-  /* transform: translateX(-10px);
-  transition: 10s ease-in; */
-  /* transition: all 0.5s ease; */
   animation-name: example;
   animation-duration: 3s;
-  /* animation-delay: 2s; */
-  /* left: 300px; */
 }
 @keyframes example{
   0% {

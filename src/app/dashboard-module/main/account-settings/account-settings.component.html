@@ -322,11 +322,21 @@
 
 
                             <span *ngIf="companyDetailsForm.controls.headOffice.invalid && companyDetailsForm.controls.headOffice.touched">
-                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.required">
-                                *Name is required.
+                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.required" class="company-error-message">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                    fill="#CB1E0F" />
+                            </svg> Name is required.
                               </span>
-                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.pattern">
-                                *Must start with a capital letter.
+                              <span *ngIf="companyDetailsForm.controls.headOffice.errors.pattern" class="company-error-message">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                    fill="#CB1E0F" />
+                            </svg> Must start with a capital letter.
                               </span>
                               <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
                                 *Must be at least 2 characters.
@@ -392,11 +402,21 @@
                         <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
                             required />
                             <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
-                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.required">
-                                *Personal Email is required.
+                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                    fill="#CB1E0F" />
+                            </svg> Personal Email is required.
                               </span>
-                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.pattern">
-                                *Enter Valid Pattern.
+                              <span *ngIf="personalDetailsForm.controls.personalemail.errors.pattern" class="modal-error-message">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                    fill="#CB1E0F" />
+                            </svg> Enter Valid Pattern.
                               </span>
                               </span>
                     </div>
@@ -419,8 +439,13 @@
                         <label for="phone">Phone no.</label>
                                <input type="text" class="form_input" placeholder="Enter Phone number" 
                                formControlName="phone" id="phone" required
-                        pattern="\d*" maxlength="10"  (input)="onInput($event)"  />
-                        <div *ngIf="isInputDirty && isPhoneInvalid" class="error-message">Please enter a valid phone number</div>
+                        pattern="\d*" maxlength="10"  (input)="onInput($event)" />
+                        <span *ngIf="isInputDirty && isPhoneInvalid" class="phone-error-message"> <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                fill="#CB1E0F" />
+                        </svg>Please enter a valid phone number</span>
                       </div>
 
 
