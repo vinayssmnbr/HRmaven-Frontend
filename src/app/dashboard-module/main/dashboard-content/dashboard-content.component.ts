@@ -471,8 +471,8 @@ export class DashboardContentComponent implements OnInit {
   console.warn(this.meetingForm.value);
 }
 
-showhrmaven:boolean=true;
+showhrmaven1:boolean=true;
 closewelcome(){
-  this.showhrmaven=false;
+  this.showhrmaven1=false;
 }
 }
