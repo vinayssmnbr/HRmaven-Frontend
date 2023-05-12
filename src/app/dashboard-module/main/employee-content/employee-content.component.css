@@ -2120,7 +2120,7 @@ input::placeholder {
 }
 .card-view {
   margin-top: 25px;
-  width: 23%;
+  width: calc(25% - 19px);
 }
 .card-detail {
   padding: 15px 15px;
@@ -2333,6 +2333,8 @@ input::placeholder {
   padding: 20px;
   position: absolute;
   margin-top: -70px;
+  /* transform: translateX(-10px); */
+  /* transition: 2s ease-in; */
 }
 .status-detail{
   display: flex;
