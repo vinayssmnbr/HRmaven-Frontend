@@ -14,7 +14,7 @@ import { UserService } from '../../service/user.service';
 export class DashService {
   public headerContent: string;
   public activeComponent: string;
-
+  welcome:boolean=true;
   private prefix = environment.v1;
   constructor(
     private http: HttpClient,

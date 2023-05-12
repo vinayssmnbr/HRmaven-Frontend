@@ -654,19 +654,20 @@
 
 
         <!----------------------Welcome-modal------------------>
-        <div class="welcome_modal" *ngIf="showhrmaven">
-        <div class="welcome-modal">
-            <div class="welcome-to-hrmaven">
-                <img src="assets/images/Frame 2077.svg" alt="">
-            </div>
-            <div class="welcome-text">
-                <h4>Welcome to HRMaven!</h4>
-                <p>With HRMaven, it's easier to access your most important
-                    stuff.</p>
-                <button (click)="closewelcome()" routerLink="/dashboard">Get Started</button>
+
+        <div class="welcome_modal" *ngIf="this.dashService.welcome">
+            <div class="welcome-modal">
+                <div class="welcome-to-hrmaven">
+                    <img src="assets/images/Frame 2077.svg" alt="">
+                </div>
+                <div class="welcome-text">
+                    <h4>Welcome to HRMaven!</h4>
+                    <p>With HRMaven, it's easier to access your most important
+                        stuff.</p>
+                    <button (click)="this.dashService.welcome=false">Get Started</button>
+                </div>
             </div>
         </div>
-    </div>
 
     </div>
 </div>
