@@ -149,26 +149,26 @@
       </div>
       <div class="row1">
         <div class="column1">
-          <span class="inst1">10th Grade Institute</span>
+          <span class="inst1">School/College</span>
           <p *ngIf="!user.matric">----------</p>
           <p class="inst1" *ngIf="user.matric">{{user.matric}}</p>
-          <span class="inst2">12th Grade Institute</span>
-          <p *ngIf="!user.inter">----------</p>
-          <p class="inst2" *ngIf="user.inter">{{user.inter}}</p>
-          <span class="gcol">Graduation College/University</span>
+          <span class="yop">Year of Passing</span>
+          <p *ngIf="!user.matricpassing">----------</p>
+          <p class="yop" *ngIf="user.matricpassing">{{user.matricpassing}}</p>
+          <!-- <span class="gcol">Graduation College/University</span>
           <p *ngIf="!user.graduation">----------</p>
           <p class="gcol" *ngIf="user.graduation">{{user.graduation}}</p>
           <span class="pgcol">Post Graduation College/University</span>
           <p *ngIf="!user.pg">----------</p>
           <p class="pgcol" *ngIf="user.pg">{{user.pg}}</p>
           <span class="phdcol">Phd College/University</span>
-          <p>---------</p>
+          <p>---------</p> -->
         </div>
         <div class="column2">
-          <span class="mper">Matriculation Percentage</span>
+          <span class="mper">Cgpa/Percentage</span>
           <p *ngIf="!user.matricPercent">----------</p>
           <p class="mper" *ngIf="user.matricPercent">{{user.matricPercent}}%</p>
-          <span class="dper">12th Grade/Diploma Percentage</span>
+          <!-- <span class="dper">12th Grade/Diploma Percentage</span>
           <p *ngIf="!user.interPercent">----------</p>
           <p class="dper" *ngIf="user.interPercent">{{user.interPercent}}%</p>
           <span class="sgpa">Cgpa</span>
@@ -178,13 +178,13 @@
           <p *ngIf="!user.pgCgpa">-----------</p>
           <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
           <span class="phdsgpa">Cgpa</span>
-          <p>---------</p>
+          <p>---------</p> -->
         </div>
         <div class="column3">
-          <span class="yop">Year of Passing</span>
+          <span class="stream">Stream</span>
           <p *ngIf="!user.matricpassing">----------</p>
           <p class="yop" *ngIf="user.matricpassing">{{user.matricpassing}}</p>
-          <span class="yop1">Year of Passing</span>
+          <!-- <span class="yop1">Year of Passing</span>
           <p *ngIf="!user.interpassing">----------</p>
           <p class="yop1" *ngIf="user.interpassing">{{user.interpassing}}</p>
           <span class="stream">Graduation Stream</span>
@@ -193,9 +193,16 @@
           <span class="pgstream">Post Graduation Stream</span>
           <p *ngIf="!user.pgStream">----------</p>
           <p class="pgstream" *ngIf="user.pgStream">{{user.pgStream}}</p>
-          <span class="phdstram">Phd.Stream</span>
-          <p>--------</p>
+          <span class="phdstram">Phd.Stream</span> -->
+          <!-- <p>--------</p> -->
         </div>
+      </div>
+      <hr>
+      <div class="cnt-btn">
+        <button class="view">View More<i
+            class="fa-solid fa-angle-down"></i></button>
+        <!-- <button class="hide">View less<i
+            class="fa-solid fa-angle-up"></i></button> -->
       </div>
     </div>
     <div class="card7" *ngIf="personaldetail">

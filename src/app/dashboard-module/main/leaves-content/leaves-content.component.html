@@ -23,9 +23,7 @@
         </div>
 
         <div class="progress-circle-container">
-          <div
-            class="progress-circle progress-{{ (acceptcount / total) * 100 | number:'1.0-0' }}"
-          >
+          <div class="progress-circle progress-{{ (acceptcount / total) * 100 | number:'1.0-0' }}">
             <span></span>
           </div>
         </div>
@@ -38,9 +36,7 @@
           <h1>{{ rejectcount }}</h1>
         </div>
         <div class="progress-circle-container">
-          <div
-            class="progress-circle progress-{{ (rejectcount / total) * 100  | number:'1.0-0'  }}"
-          >
+          <div class="progress-circle progress-{{ (rejectcount / total) * 100  | number:'1.0-0'  }}">
             <!-- <div class="progress-circle-container rejectleavesProgress">
           <div class="progress-circle progress-58"> -->
             <span></span>
@@ -55,9 +51,7 @@
           <h1>{{ pendingcount }}</h1>
         </div>
         <div class="progress-circle-container">
-          <div
-            class="progress-circle progress-{{ (pendingcount / total) * 100  | number:'1.0-0' }}"
-          >
+          <div class="progress-circle progress-{{ (pendingcount / total) * 100  | number:'1.0-0' }}">
             <!-- <div class="progress-circle-container pendingleavesProgress">
           <div class="progress-circle progress-88"> -->
             <span></span>
@@ -92,26 +86,16 @@
         <div class="col-3">
           <div class="form__group">
             <label for="dropdown_container">Category</label>
-            <div
-              class="dropdown_container"
-              (mouseleave)="contentdropdown = false"
-            >
-              <input
-                type="text"
-                formControlName="category"
-                style="display: none"
-              />
+            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+              <input type="text" formControlName="category" style="display: none" />
               <div class="dropdwon_select" (click)="dropdownOpen()">
                 <p>{{ Selectvariable }}</p>
                 <i class="fa-sharp fa-solid fa-caret-down"></i>
               </div>
               <div class="select_content" *ngIf="contentdropdown">
                 <ul>
-                  <li
-                    *ngFor="let arr of array; index as i"
-                    [class.select_active]="i === colorvariable"
-                    (click)="Changeselect(arr)"
-                  >
+                  <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                    (click)="Changeselect(arr)">
                     {{ arr.name }}
                   </li>
                 </ul>
@@ -130,26 +114,14 @@
   </div>
   <!--------------------- List Item----------------- -->
   <div class="list_nav">
-    <div
-      class="Pending"
-      [class.color]="id === 'Pending'"
-      (click)="tabChange('Pending')"
-    >
-      <p>Pending</p>
+    <div class="Pending" [class.color]="id === 'Pending'" (click)="tabChange('Pending')">
+      <p class="list_para">Pending</p>
     </div>
-    <div
-      class="Approved"
-      [class.color]="id === 'Approved'"
-      (click)="tabChange('Approved')"
-    >
-      <p>Approved</p>
+    <div class="Approved" [class.color]="id === 'Approved'" (click)="tabChange('Approved')">
+      <p class="list_para">Approved</p>
     </div>
-    <div
-      class="Rejected"
-      [class.color]="id === 'Rejected'"
-      (click)="tabChange('Rejected')"
-    >
-      <p>Rejected</p>
+    <div class="Rejected" [class.color]="id === 'Rejected'" (click)="tabChange('Rejected')">
+      <p class="list_para">Rejected</p>
     </div>
   </div>
   <!-- -----------------------Table--------------------- -->
@@ -159,13 +131,8 @@
         <tr class="table_heading">
           <th>
             <div class="check_box">
-              <input
-                type="checkbox"
-                [(ngModel)]="parentSelector"
-                [value]="-1"
-                (change)="onChange($event)"
-                *ngIf="pendingleave.length > 0 || pendingleave == undefined"
-              />
+              <input type="checkbox" [(ngModel)]="parentSelector" [value]="-1" (change)="onChange($event)"
+                *ngIf="pendingleave.length > 0 || pendingleave == undefined" />
               <span>EMPLOYEE ID</span>
             </div>
           </th>
@@ -185,13 +152,8 @@
       <tbody>
         <tr *ngFor="let n of pendingleave; let index = index">
           <td scope="row">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              [value]="n._id"
-              [checked]="n.select"
-              (change)="onChange($event)"
-            /><span> {{ n.uid }}</span>
+            <input class="form-check-input" type="checkbox" [value]="n._id" [checked]="n.select"
+              (change)="onChange($event)" /><span> {{ n.uid }}</span>
           </td>
           <td>{{ n.name }}</td>
           <td>{{ n.appliedOn | date : "shortDate" }}</td>
@@ -202,13 +164,8 @@
           <td>{{n.type}}</td>
           <td>
             <p class="mt20">
-              <span
-                class="tooltip"
-                data-tooltip="n.reason"
-                data-tooltip-pos="right"
-                data-tooltip-length="medium"
-                >{{ n.reason }}</span
-              >
+              <span class="tooltip" data-tooltip={{ n.reason }} data-tooltip-pos="right" data-tooltip-length="medium">{{
+                n.reason }}</span>
             </p>
           </td>
           <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
@@ -228,9 +185,7 @@
             </div>
           </td>
         </tr>
-        <ng-container
-          *ngIf="pendingleave.length == 0 || pendingleave == undefined"
-        >
+        <ng-container *ngIf="pendingleave.length == 0 || pendingleave == undefined">
           <tr>
             <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
               <p>
@@ -281,25 +236,18 @@
           <td>{{n.type}}</td>
           <td>
             <p class="mt20">
-              <span
-                class="tooltip"
-                data-tooltip=""
-                data-tooltip-pos="right"
-                data-tooltip-length="medium"
-                >{{ n.reason }}</span
-              >
+              <span class="tooltip" data-tooltip="" data-tooltip-pos="right" data-tooltip-length="medium">{{ n.reason
+                }}</span>
             </p>
           </td>
-        <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
-        <td *ngIf="n.category=='compensatory'">{{n.balance.compensatory}}</td>
-        <td *ngIf="n.category=='medical'">{{n.balance.medical}}</td>
-        <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
+          <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
+          <td *ngIf="n.category=='compensatory'">{{n.balance.compensatory}}</td>
+          <td *ngIf="n.category=='medical'">{{n.balance.medical}}</td>
+          <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
           <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
           <td *ngIf="n.url==''">---</td>
         </tr>
-        <ng-container
-          *ngIf="rejectleave.length == 0 || rejectleave == undefined"
-        >
+        <ng-container *ngIf="rejectleave.length == 0 || rejectleave == undefined">
           <tr>
             <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
               <p>
@@ -348,20 +296,18 @@
           <td>{{ n.category }}</td>
           <td>{{n.type}}</td>
           <td class="tool">
-            <!-- <p class="mt20 reason">
+            <!-- <p class="mt20">
               <span
-                class="tooltip reason"
+                class="tooltip"
                 data-tooltip="fffmvovemveivmeveoijmeigemibmeim"
                 data-tooltip-pos="right"
                 data-tooltip-length="medium">{{n.reason}}</span>
                 {{n.reason}}
             </p> -->
-            <p class="mt20 reason">
+            <p class="reason">
               <span>{{n.reason}}</span>
-                {{n.reason}}
+              {{n.reason}}
             </p>
-
-
           </td>
           <td *ngIf="n.category=='Casual Leave'">{{n.balance.casual}}</td>
           <td *ngIf="n.category=='Compensatory Leave'">{{n.balance.compensatory}}</td>
@@ -370,13 +316,11 @@
           <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
           <td *ngIf="n.url==''">---</td>
         </tr>
-        <ng-container
-          *ngIf="acceptleave.length == 0 || acceptleave == undefined"
-        >
+        <ng-container *ngIf="acceptleave.length == 0 || acceptleave == undefined">
           <tr>
             <td colspan="11" style="background: #f9f9f9" class="nodata no_data">
               <p>
-                <img src="assets/images/no_record.png" alt="" class="center"/>
+                <img src="assets/images/no_record.png" alt="" class="center" />
               </p>
               <h2>No Record Found!</h2>
             </td>
@@ -400,11 +344,8 @@
     <div class="leave_modal" style="height: 300px">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <h3>Leave a comment</h3>
-      <textarea
-        placeholder="Type your reason here..."
-        [(ngModel)]="acceptmessage"
-        [ngModelOptions]="{ standalone: true }"
-      ></textarea>
+      <textarea placeholder="Type your reason here..." [(ngModel)]="acceptmessage"
+        [ngModelOptions]="{ standalone: true }"></textarea>
       <div class="leave_form_btn">
         <button class="cancel_btn" (click)="closeModal()">Cancel</button>
         <button class="Done_btn" (click)="openModal2()">Done</button>
@@ -416,11 +357,8 @@
     <div class="leave_modal" style="height: 300px">
       <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       <h3>Leave a comment</h3>
-      <textarea
-        placeholder="Type your reason here..."
-        [(ngModel)]="acceptmessage"
-        [ngModelOptions]="{ standalone: true }"
-      ></textarea>
+      <textarea placeholder="Type your reason here..." [(ngModel)]="acceptmessage"
+        [ngModelOptions]="{ standalone: true }"></textarea>
       <div class="leave_form_btn">
         <button class="cancel_btn" (click)="closeModal()">Cancel</button>
         <button class="Done_btn" (click)="openModal3()">Done</button>

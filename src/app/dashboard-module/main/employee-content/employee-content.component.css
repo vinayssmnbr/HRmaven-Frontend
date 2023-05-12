@@ -209,12 +209,12 @@
 
 .input_field i {
   position: absolute;
-  margin-left: -240px;
+  margin-left: -233px;
   margin-top: 17px;
 }
 
 .number1 {
-  padding: 20px 32px;
+  padding: 20px 38px;
   width: 250px;
   height: 44px;
   background: #ffffff;
@@ -1975,14 +1975,35 @@ input::placeholder {
 }
 
 .no_data {
-  /* background-color: #f9f9f9; */
   padding: 20px 0;
   text-align: center;
   justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 150px;
   background-color: transparent;
+  /* position: absolute;
+  left: 50%; */
+}
+.no-data {
+  padding: 20px 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+}
+.no-data h2{
+  margin-top: 15px;
+  color: #444444;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
 }
 /* tbody img{
   background-color: #ffffff;
@@ -2325,7 +2346,7 @@ input::placeholder {
 }
 
 .status-card{
-  width: 243px;
+  width: 250px;
   height: 80px;
   background-color: #D8F2D4;
   box-shadow: 0px 6px 50px rgba(0, 0, 0, 0.12);
@@ -2333,8 +2354,19 @@ input::placeholder {
   padding: 20px;
   position: absolute;
   margin-top: -70px;
-  /* transform: translateX(-10px); */
-  /* transition: 2s ease-in; */
+  animation-name: example;
+  animation-duration: 3s;
+}
+@keyframes example{
+  0% {
+    left:-30px;
+  }
+  50%{
+    left: 100px;
+  }
+  100%{
+    left:-30px
+  }
 }
 .status-detail{
   display: flex;
