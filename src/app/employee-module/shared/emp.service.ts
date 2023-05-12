@@ -15,6 +15,7 @@ export class EmpService {
   }
   public headerContent: string;
   public activeComponent: string;
+  welcome:boolean=true;
   constructor(
     private http: HttpClient,
     private router: Router,

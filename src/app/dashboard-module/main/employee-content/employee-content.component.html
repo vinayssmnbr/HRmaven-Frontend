@@ -761,11 +761,13 @@
       </div>
       <div class="modal-body6">
         <h3>Succesful</h3>
-        <p>Csv File Imported Successfully!</p>
+        <!-- <p>Csv File Imported Successfully!</p> -->
+        <p style="color:#3D9030">{{importFileResponse.success.length}} Records Imported Successfully!</p>
+        <p style="color:red">{{importFileResponse.error.length}} Records are not imported</p>
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
     </div>
-    <!-- <div class="modal-content7" *ngIf="invalidModal">
+    <!--  <div class="modal-content7" *ngIf="invalidModal">
       <div class="modal-header7">
         <img src="./assets/images/Vector (4).svg" alt="img1">
         </div>
@@ -777,8 +779,10 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
+       
+    </div>
   </div>
-</div>
+<!-- </div> -->
 
 <!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">
   <div class="loader"></div>
