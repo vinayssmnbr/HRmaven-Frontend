@@ -1,183 +1,227 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-<div class="employee_leaves">
-    <div class="employee_leaves_main" *ngIf="employeemaintable">
-        <div class="available-balance-area">
-            <h6>Available Leave Balance (On Annual basis)</h6>
-            <div class="casual-leaves">
-                <div class="leaves">
-                    <div class="leave-text">
-                        <h6>Casual Leave</h6>
-                        <h4>{{obj.casual}}</h4>
-                    </div>
-                    <div class="progress_circle">
-                        <circle-progress [percent]='((obj.casual)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
-                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+<div class="loader-parent" *ngIf="loaderz">
+  <div class="loader"></div>
+</div>
+<div class="employee_leaves" *ngIf="!loaderz">
+  <div class="employee_leaves_main" *ngIf="employeemaintable">
+    <div class="available-balance-area">
+      <h6>Available Leave Balance (On Annual basis)</h6>
+      <div class="casual-leaves">
+        <div class="leaves">
+          <div class="leave-text">
+            <h6>Casual Leave</h6>
+            <h4>{{obj.casual}}</h4>
+          </div>
+          <div class="progress_circle">
+            <circle-progress [percent]='((obj.casual)/(10))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+              [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #8BAFFF'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
-                            [backgroundStrokeWidth]="4"></circle-progress>
-                    </div>
-                </div>
-                <div class="leaves">
-                    <div class="leave-text">
-                        <h6>Medical Leave</h6>
-                        <h4>{{obj.medical}}</h4>
-                    </div>
-                    <div class="progress_circle">
-                        <circle-progress [percent]='((obj.medical)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
-                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+              [backgroundStrokeWidth]="4"></circle-progress>
+          </div>
+        </div>
+        <div class="leaves">
+          <div class="leave-text">
+            <h6>Medical Leave</h6>
+            <h4>{{obj.medical}}</h4>
+          </div>
+          <div class="progress_circle">
+            <circle-progress [percent]='((obj.medical)/(10))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
+              [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #7BD36D'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
-                            [backgroundStrokeWidth]="4"></circle-progress>
-                    </div>
-                </div>
-                <div class="leaves">
-                    <div class="leave-text">
-                        <h6>Compensatory Leave</h6>
-                        <h4>{{obj.compensatory}}</h4>
-                    </div>
-                    <div class="progress_circle">
-                        <circle-progress [percent]='((obj.compensatory)/(20))*100' [space]="-11" [radius]="30" [outerStrokeWidth]="10"
-                            [innerStrokeWidth]="10" [outerStrokeColor]="'
+              [backgroundStrokeWidth]="4"></circle-progress>
+          </div>
+        </div>
+        <div class="leaves">
+          <div class="leave-text">
+            <h6>Compensatory Leave</h6>
+            <h4>{{obj.compensatory}}</h4>
+          </div>
+          <div class="progress_circle">
+            <circle-progress [percent]='((obj.compensatory)/(5))*100' [space]="-11" [radius]="30"
+              [outerStrokeWidth]="10" [innerStrokeWidth]="10" [outerStrokeColor]="'
                             #FA9796'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="1000"
-                            [backgroundStrokeWidth]="4"></circle-progress>
-                    </div>
-                </div>
-            </div>
+              [backgroundStrokeWidth]="4"></circle-progress>
+          </div>
         </div>
-        <div class="leave-status-area">
-            <div class="Leave-status">
-                <h6>Leave Status (This Month)</h6>
-                <a (click)="tablehistory()"><u>My Leave History</u></a>
-            </div>
-            <div class="attendence_table">
-                <div class="table_data">
-                    <table class="table_text">
-                        <thead>
-                            <tr class="table_heading">
-                                <th>APPLIED ON</th>
-                                <th>FROM</th>
-                                <th>TO</th>
-                                <th>DURATION</th>
-                                <th>CATEGORY</th>
-                                <th>REASON</th>
-                                <th>STATUS</th>
-                                <th>COMMENT (BY HR)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor=" let item of leaves | todayattendance ">
-                                <!-- <td>{{n}}</td> -->
-                                <td>{{item.appliedOn | date:"shortDate"}}</td>
-                                <td>{{item.from | date:"shortDate"}}</td>
-                                <td>{{item.to | date:"shortDate"}}</td>
-                                <td>{{item.duration}}</td>
-                                <td>{{item.category}}</td>
-                                <td>{{item.reason}}</td>
-                                <td>{{item.status}}</td>
-                                <td>{{item.message}}</td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-
+      </div>
+    </div>
+    <div class="leave-status-area">
+      <div class="Leave-status">
+        <h6>Leave Status (This Month)</h6>
+        <a (click)="tablehistory()"><u>My Leave History</u></a>
+      </div>
+      <div class="attendence_table">
+        <div class="table_data">
+          <table class="table_text">
+            <thead>
+              <tr class="table_heading">
+                <th>APPLIED ON</th>
+                <th>FROM</th>
+                <th>TO</th>
+                <th>DURATION</th>
+                <th>CATEGORY</th>
+                <th>Type</th>
+                <th>REASON</th>
+                <th>STATUS</th>
+                <th>COMMENT (BY HR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor=" let item of leaves | todayattendance ">
+                <div *ngIf="item=='nofound'">
+                  <h1>no record found</h1>
                 </div>
-            </div>
+                <ng-container *ngIf="item!='nofound'">
+                <!-- <td>{{n}}</td> -->
+                <td>{{item.appliedOn | date:"shortDate"}}</td>
+                <td>{{item.from | date:"shortDate"}}</td>
+                <td>{{item.to | date:"shortDate"}}</td>
+                <td>{{item.duration}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.reason}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.message}}</td>
+              </ng-container>
+              </tr>
+            </tbody>
+
+          </table>
+
         </div>
-        <!--------------------Apply for leaves------------------->
-        <div class="apply-for-leaves">
-            <h6>Apply For Leave </h6>
-            <form [formGroup]="empleaveForm" (ngSubmit)="applyleaves()">
-                <div class="form">
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="">From</label><br>
-                            <input type="date" placeholder="29/04/2023" formControlName="from">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="">To</label><br>
-                            <input type="date" placeholder="29/04/2023" formControlName="to" (change)="getDates()">
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="">Duration</label><br>
-                            <input type="text" placeholder="1 day" [value]="str" formControlName="duration" readonly>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="">Category</label><br>
-                            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                                <div class="dropdwon_select" (click)="dropdownOpen()">
-                                    <input type="text" formControlName="category" *ngIf="fasle"
-                                        (value)="Selectvariable">
-                                    <p>{{Selectvariable}}</p>
-                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                                </div>
-                                <div class="select_content" *ngIf="contentdropdown">
-                                    <ul>
-                                        <li *ngFor="let arr of array; index as i"
-                                            [class.select_active]="i === colorvariable" (click)="Changeselect(arr)" ng-mouseover='halfdayleave=true'>
-                                            {{arr.name}}</li>
-                                    </ul>
-                                    <!-------- Side dropdown--------------- -->
-                                    <!-- <div class="half_day_leave" *ngIf="halfdayleave"
-                                        (mouseleave)="halfdayleave = false">
-                                        <p class="First_Half" (click)="Selectvariable3='First Half'">First Half</p>
-                                        <p class="Second_Half" (click)="Selectvariable3='Second Half'">Second Half</p>
-                                    </div> -->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+      </div>
+    </div>
+    <!--------------------Apply for leaves------------------->
+    <div class="apply-for-leaves">
+      <h6>Apply For Leave </h6>
+      <form [formGroup]="empleaveForm" (ngSubmit)="applyleaves()" class="formapply">
+        <div class="form">
+          <div class="col-3">
+            <div class="form-group">
+              <label for="">From</label><br>
+              <input type="date" placeholder="29/04/2023" formControlName="from">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="">To</label><br>
+              <input type="date" placeholder="29/04/2023" formControlName="to" (change)="getDates()">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="">Duration</label><br>
+              <input type="text" placeholder="1 day" [value]="str" formControlName="duration" readonly>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="">Category</label><br>
+              <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                <div class="dropdwon_select" (click)="dropdownOpen()">
+                  <input type="text" formControlName="category" *ngIf="fasle" (value)="Selectvariable">
+                  <p>{{Selectvariable}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="contentdropdown">
+                  <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                      (click)="Changeselect(arr)" ng-mouseover='halfdayleave=true'>
+                      {{arr.name}}</li>
+                  </ul>
                 </div>
 
-                <div class="form-group short_leave" *ngIf="shortleave">
-                    <label for="">Time Duration</label><br>
-                    <div class="dropdown_container drop_down_input" (mouseleave)="contentdropdown1 = false">
-                        <div class="dropdwon_select" (click)="dropdownOpen1()">
-                            <input type="text" formControlName="shortime" style="display:none"
-                                [value]="Selectvariable1">
-                            <p>{{Selectvariable1}}</p>
-                            <i class="fa-sharp fa-solid fa-caret-down"></i>
-                        </div>
-                        <div class="select_content" *ngIf="contentdropdown1">
-                            <ul>
-                                <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
-                                    (click)="Changeselect1(arr1)">
-                                    {{arr1.name}}</li>
-                            </ul>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3" id="type" *ngIf="typedtn">
+            <div class="form-group">
+              <label for="">Type</label><br>
+              <div class="dropdown_container" (mouseleave)="typedropdown = false">
+                <div class="dropdwon_select" (click)="dropdownOpentype()">
+                  <input type="text" formControlName="category" *ngIf="false" (value)="Selectvariable">
+                  <p>{{typevariable}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="typedropdown">
+                  <ul>
+                    <li *ngFor="let arr of arr3; index as i" [class.select_active]="i === colorvariable"
+                      (click)="Changeselecttype(arr)">
+                      <span *ngIf="str!=''">{{arr.name}} </span></li>
+                  </ul>
                 </div>
 
-                <div class="reason-attachments">
-                    <div class="col-6">
-                        <div class="reason">
-                            <label for="">Reason</label>
-                            <textarea placeholder="Type your reason here..." formControlName="reason"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="reason">
-                            <label for="">Attachments(Optional)</label>
-                            <div class="textarea">
-                                <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
-                                <!-- <p class="first">Select a file or drag and drop here</p> -->
-                                <p class="second">Supported formats: pdf, jpg, png</p>
-                                <div class="choose-btn">
+              </div>
+            </div>
+          </div>
+          <div class="col-3" *ngIf="shorttimedtn">
+            <div class="form-group">
+              <label for="">Short leave Timing</label><br>
+              <div class="dropdown_container" (mouseleave)="shortdtn = false">
+                <div class="dropdwon_select" (click)="dropdownOpenshort()">
+                  <input type="text" formControlName="type" *ngIf="fasle" (value)="typevariable">
+                  <p>{{shorttime}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="shortdtn">
+                  <ul>
+                    <li *ngFor="let arr of array1; index as i" [class.select_active]="i === colorvariable"
+                      (click)="Changeselectshort(arr)" ng-mouseover='halfdayleave=true'>
+                      {{arr.name}}</li>
+                  </ul>
+                </div>
 
-                                    <!-- <input type="file" (change)="onFileSelected($event)"> -->
-                                    <div class="file_upload">
-                                        <input type="file" (change)="onFileSelected($event)" id="doc">
-                                    </div>
-                                    <div class="file_size">
-                                        <p>Maximum Size : 5 MB</p>
-                                    </div>
-                                    <div class="progress_bar_loader" *ngIf="loader"></div>
-                                    <!-- <div class="upload_progress_bar" *ngIf="loader">
+              </div>
+            </div>
+          </div>
+          <div class="col-3" *ngIf="halftimedtn">
+            <div class="form-group">
+              <label for="">Half Day Time</label><br>
+              <div class="dropdown_container drop_down_input" (mouseleave)="halfdtn=false">
+                <div class="dropdwon_select" (click)="dropdownOpenhalf()">
+                  <input type="text" formControlName="shortime" style="display:none" [value]="Selectvariable1">
+                  <p>{{halftime}}</p>
+                  <i class="fa-sharp fa-solid fa-caret-down"></i>
+                </div>
+                <div class="select_content" *ngIf="halfdtn">
+                  <ul>
+                    <li *ngFor="let arr1 of array4; index as i" [class.select_active]="i === colorvariable1"
+                      (click)="Changeselecthalf(arr1)">
+                      {{arr1.name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="reason-attachments">
+          <div class="col-6">
+            <div class="reason">
+              <label for="">Reason</label>
+              <textarea placeholder="Type your reason here..." formControlName="reason"></textarea>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="reason">
+              <label for="">Attachments(Optional)</label>
+              <div class="textarea">
+                <img src="assets/images/ant-design_cloud-upload-outlined.svg" alt="">
+                <!-- <p class="first">Select a file or drag and drop here</p> -->
+                <p class="second">Supported formats: pdf, jpg, png</p>
+                <div class="choose-btn">
+
+                  <!-- <input type="file" (change)="onFileSelected($event)"> -->
+                  <div class="file_upload">
+                    <input type="file" (change)="onFileSelected($event)" id="doc">
+                  </div>
+                  <div class="file_size">
+                    <p>Maximum Size : 5 MB</p>
+                  </div>
+                  <div class="progress_bar_loader" *ngIf="loader"></div>
+                  <!-- <div class="upload_progress_bar" *ngIf="loader">
                                         <div class="pdf_file">
                                             <h4>PDF</h4>
                                         </div>
@@ -189,94 +233,99 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="clear-apply-button">
-                    <button type="reset" class="clear" (click)="cancel()">Clear</button>
-                    <button type="submit" class="apply" [disabled]="empleaveForm.invalid">Apply </button>
-                    <!-- <div class="loader" *ngIf="loader"></div> -->
-                </div>
-            </form>
+              </div>
+            </div>
+          </div>
         </div>
-
+        <div class="clear-apply-button">
+          <button type="reset" class="clear" (click)="cancel()">Clear</button>
+          <button type="submit" class="apply" [disabled]="empleaveForm.invalid">Apply </button>
+          <!-- <div class="loader" *ngIf="loader"></div> -->
+        </div>
+      </form>
     </div>
 
+  </div>
 
-    <!-- -------------My Leave History Table----------------- -->
+
+  <!-- -------------My Leave History Table----------------- -->
 
 
-    <div class="leave-History-area" *ngIf="leaveshistory">
-        <div class="Leave-History">
-            <div class="leaves_history_icon">
-                <i class="fa-sharp fa-solid fa-angle-left" (click)="employee_leaves()"></i>
-            </div>
-            <h6>My Leave History</h6>
-        </div>
-        <div class="attendence_history_table">
-            <div class="table_data">
-                <table class="table_text">
-                    <thead>
-                        <tr class="table_heading">
-                            <th>APPLIED ON</th>
-                            <th>FROM</th>
-                            <th>TO</th>
-                            <th>DURATION</th>
-                            <th>CATEGORY</th>
-                            <th>REASON</th>
-                            <th>STATUS</th>
-                            <th>COMMENT (BY HR)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor=" let n of leaves;">
-                            <td>{{n.appliedOn | date:'shortDate'}}</td>
-                            <td>{{n.from | date:'shortDate'}}</td>
-                            <td>{{n.to | date:'shortDate'}}</td>
-                            <td>{{n.duration}}</td>
-                            <td>{{n.category}}</td>
-                            <td>
-                                <p class="mt20">
-                                    <span class="tooltip"
-                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}
-                                    </span>
-                                </p>
-
-                            </td>
-                            <td>{{n.status}}</td>
-                            <td>
-                                <p class="mt20">
-                                    <span class="tooltip"
-                                        data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                                        data-tooltip-pos="right" data-tooltip-length="medium">{{n.message}}</span>
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </div>
-        </div>
+  <div class="leave-History-area" *ngIf="leaveshistory">
+    <div class="Leave-History">
+      <div class="leaves_history_icon">
+        <i class="fa-sharp fa-solid fa-angle-left" (click)="employee_leaves()"></i>
+      </div>
+      <h6>My Leave History</h6>
     </div>
+    <div class="attendence_history_table">
+      <div class="table_data">
+        <table class="table_text">
+          <thead>
+            <tr class="table_heading">
+              <th>APPLIED ON</th>
+              <th>FROM</th>
+              <th>TO</th>
+              <th>DURATION</th>
+              <th>CATEGORY</th>
+              <th>Type</th>
+              <th>REASON</th>
+              <th>STATUS</th>
+              <th>COMMENT (BY HR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor=" let n of leaves;">
+              <td>{{n.appliedOn | date:'shortDate'}}</td>
+              <td>{{n.from | date:'shortDate'}}</td>
+              <td>{{n.to | date:'shortDate'}}</td>
+              <td>{{n.duration}}</td>
+              <td>{{n.category}}</td>
+              <td>{{n.type}}</td>
+              <td>
+                <p class="mt20">
+                  <span class="tooltip"
+                    data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                    data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}
+                  </span>
+                </p>
+
+              </td>
+              <td>{{n.status}}</td>
+              <td>
+                <p class="mt20">
+                  <span class="tooltip"
+                    data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
+                    data-tooltip-pos="right" data-tooltip-length="medium">{{n.message}}</span>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
 
 
-    <!-- ----------------------Leave applied successfully! Modal------------------------ -->
+  <!-- ----------------------Leave applied successfully! Modal------------------------ -->
+  <div class="success"  *ngIf="loadersuccess">
+    <div class="loader" ></div>
+  </div>
 
-    <form class="leave_approved_form" *ngIf="leave_approved_form">
-        <div class="leave_approved_modal">
-            <i class="fa-solid fa-xmark" (click)="closemodal()"></i>
-            <div class="logo_bg">
-                <img src="assets/images/tick.png" alt="image">
-            </div>
-            <h4>Leave applied successfully!</h4>
-            <p>You’ll be notified about the decision of HR regarding your leave.</p>
-            <div class="Done_form_btn">
-                <button class="Done_btn" (click)="closemodal()">Done</button>
-            </div>
-        </div>
-    </form>
+  <form class="leave_approved_form" *ngIf="leave_approved_form">
+    <div class="leave_approved_modal">
+      <i class="fa-solid fa-xmark" (click)="closemodal()"></i>
+      <div class="logo_bg">
+        <img src="assets/images/tick.png" alt="image">
+      </div>
+      <h4>Leave applied successfully!</h4>
+      <p>You’ll be notified about the decision of HR regarding your leave.</p>
+      <div class="Done_form_btn">
+        <button class="Done_btn" (click)="closemodal()">Done</button>
+      </div>
+    </div>
+  </form>
 </div>

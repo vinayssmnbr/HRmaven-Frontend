@@ -21,12 +21,12 @@
         <span class="material-icons">notifications</span>
         <span class="icon-button__badge"></span>
       </button>
-      <img *ngIf="!user" src="./assets/images/Ellipse 98.svg" alt="user-icon" class="header-icon"
+      <img src="./assets/images/Ellipse 98.svg" alt="user-icon" class="header-icon"
         (click)="getProfileData();profileToggle()">
 
-        <img *ngIf="user;profileimage" src="{{profileimage}}" alt="user-icon" class="header-icon"
-        (click)="getProfileData();profileToggle()">
-        <!-- <img *ngIf="profileimage" [src]="profileimage" alt="Profile Image"> -->
+      <!-- <img *ngIf="user;profileimage" src="{{profileimage}}" alt="user-icon" class="header-icon"
+        (click)="getProfileData();profileToggle()"> -->
+      <!-- <img *ngIf="profileimage" [src]="profileimage" alt="Profile Image"> -->
 
 
     </div>
@@ -96,7 +96,7 @@
         </div>
 
 
-        
+
 
 
 
@@ -289,18 +289,18 @@
     </div>
   </div>
 </ng-container>
-<div class="profile_div" *ngIf="profileDisplay">  
+<div class="profile_div" *ngIf="profileDisplay">
   <div class="profile-content">
     <div class="profile-title">
       <div class="profile-logo-text">
-      <div class="profile-logo">
-        <img src="./assets/images/Ellipse 98.svg" alt="" class="header-icon">
+        <div class="profile-logo">
+          <img src="./assets/images/Ellipse 98.svg" alt="" class="header-icon">
+        </div>
+        <div class="profile-text">
+          <h2> {{name}} </h2>
+          <p>{{userEmail}}</p>
+        </div>
       </div>
-      <div class="profile-text">
-        <h2> {{name}} </h2>
-        <p>{{userEmail}}</p>
-      </div>
-    </div>
       <div class="head-btn">
         <button class="btn-head">ADMIN</button>
       </div>

@@ -148,7 +148,7 @@
                         </clipPath>
                         </defs>
                         </svg>
-                        
+
                 </div>
 
 
@@ -167,7 +167,8 @@
                 </div>
 
                 <div class="table_data">
-                    <table class="table_text">
+                    <div *ngIf="leaves.length==0" class="no_record"><img src="../../../../assets/images/Norecord.svg" alt="no record found"></div>
+                    <table class="table_text" *ngIf="leaves.length!=0">
                         <thead>
                             <tr class="table_heading">
                                 <th>Employee id</th>
@@ -182,6 +183,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let leave of leaves" routerLink="/leaves" >
+                              <ng-container *ngIf='leaves.length!=0'>
                                 <td>{{leave.uid}}</td>
                                 <td>{{leave.name}}</td>
                                 <td>{{leave.appliedOn | date:'shortDate'}}</td>
@@ -190,7 +192,7 @@
                                 <td>{{leave.duration}}</td>
                                 <td>{{leave.category}}</td>
                                 <td>{{leave.reason}}</td>
-
+                              </ng-container>
 
                                 <!-- <td>
                                     <div class="action_button">

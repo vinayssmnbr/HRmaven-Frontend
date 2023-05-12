@@ -1044,8 +1044,8 @@ export class EmployeeContentComponent implements OnInit {
               this.progressText[0].innerText = `${this.progress}%`;
               console.log(res, 'response');
               if (res.status == 'failed') {
-                // errors.push({ ...employee, error: res.message });
-                console.log(errors.push({ ...employee, error: res.message }));
+                errors.push({ ...employee, error: res.message });
+                // console.log(errors.push({ ...employee, error: res.message }));
               }
               if (res.status == "Success") {
                 // sucesses.push(res);

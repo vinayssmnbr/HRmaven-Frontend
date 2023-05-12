@@ -9,6 +9,9 @@
   justify-content: space-between;
   column-gap: 22px;
 }
+.already_punch {
+  cursor:not-allowed;
+}
 
 .left_side {
   width: 70%;
@@ -1056,4 +1059,6 @@ input[type="radio"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
 }
