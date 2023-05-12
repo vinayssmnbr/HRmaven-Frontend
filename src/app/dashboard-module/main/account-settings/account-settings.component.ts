@@ -148,7 +148,7 @@ isInputDirty = false;
   //   personalemail: [''],
   //   phone: ['', [Validators.required, this.phoneValidator]]
   // });
-  
+
     }
 
 
@@ -164,6 +164,7 @@ isInputDirty = false;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image
+      this.doneLoader1 = false;
 
         // Update the profile image in the UI
       });
@@ -199,7 +200,7 @@ isInputDirty = false;
       });
 
   }
- 
+
   get func(){
     return this.forgetpwd.controls;
   }
@@ -219,8 +220,8 @@ isInputDirty = false;
 
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
-        } 
-        
+        }
+
         this.oldpassword = this.oldpassword;
       },
       //  (error: any) => {
@@ -228,7 +229,7 @@ isInputDirty = false;
       // }
       );
     }
- 
+
 
 
 
