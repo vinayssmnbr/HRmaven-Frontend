@@ -346,12 +346,13 @@ matchpwd() {
       }
     } else {
       this.isSamePassword = false;
-      this.forgetpwd.controls['password'].setErrors(null);
+      this.forgetpwd.controls['password'].setErrors({ isPasswordMatched: true });
       this.forgetpwd.controls['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
       this.isOldPasswordIncorrect = true;
     }
   });
 }
+
 onNewPasswordChange() {
   const newPassword = this.forgetpwd.controls['password'].value;
   this.isSamePassword = newPassword === this.oldpwd;
@@ -359,7 +360,7 @@ onNewPasswordChange() {
   if (this.isSamePassword) {
     this.forgetpwd.controls['password'].setErrors({ isPasswordMatched: true });
   } else {
-    this.forgetpwd.controls['password'].setErrors({isNotPasswordMatched: true});
+    this.forgetpwd.controls['password'].setErrors(null);
   }
 }
 isFormDisabled() {
