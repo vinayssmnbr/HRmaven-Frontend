@@ -28,13 +28,20 @@ export class AccountSettingsComponent implements OnInit {
 
  constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService){
   this.companyDetailsForm = this.formBuilder.group({
-    headOffice: [''],
-    description: ['']
+    headOffice: ['',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),
+  ]],
+    description: ['',[Validators.required]]
   });
   this.personalDetailsForm = this.formBuilder.group({
     name:[''],
-    personalemail: [''],
-    phone: ['', [Validators.required, this.phoneValidator]]
+    personalemail: ['',[
+      Validators.required,
+      Validators.email,
+      Validators.pattern(
+        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+      ),
+    ]],
+    phone: ['', [Validators.required, this.phoneValidator,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
   });
  }
   objectuserid = localStorage.getItem('emailid')
@@ -148,7 +155,7 @@ isInputDirty = false;
   //   personalemail: [''],
   //   phone: ['', [Validators.required, this.phoneValidator]]
   // });
-  
+
     }
 
 
@@ -164,6 +171,7 @@ isInputDirty = false;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image
+      this.doneLoader1 = false;
 
         // Update the profile image in the UI
       });
@@ -199,7 +207,7 @@ isInputDirty = false;
       });
 
   }
- 
+
   get func(){
     return this.forgetpwd.controls;
   }
@@ -219,8 +227,8 @@ isInputDirty = false;
 
         if (res.message === 'Password matches') {
           this.isPasswordMatched = true;
-        } 
-        
+        }
+
         this.oldpassword = this.oldpassword;
       },
       //  (error: any) => {
@@ -228,7 +236,7 @@ isInputDirty = false;
       // }
       );
     }
- 
+
 
 
 
