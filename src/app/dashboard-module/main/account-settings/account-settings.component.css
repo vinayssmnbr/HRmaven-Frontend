@@ -291,7 +291,11 @@
     align-items: center;
 
 }
-
+li.active {
+    color: #2F2C9F;
+    font-weight: 500;
+    font-size: 13px;
+}
 .account-password,
 .error-message {
     color: #CB1E0F;

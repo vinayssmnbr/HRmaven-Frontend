@@ -49,11 +49,11 @@
         <div class="all-read-important">
             <div class="toggle">
                 <ul>
-                    <li class="all" [class.color]="id ==='all'" (click)="tabChange('all')">Company Details</li>
-                    <li class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">Personal Details
+                    <li class="all" [class.color]="id ==='all'" [ngClass]="{'active':id==='all'}"(click)="tabChange('all')"><a>Company Details</a></li>
+                    <li class="unread " [class.color]="id ==='unread'" [ngClass]="{'active':id==='unread'}" (click)="tabChange('unread')"><a>Personal Details</a>
                     </li>
-                    <li class="all" [class.color]="id ==='important'" (click)="tabChange('important')">Password
-                        Management</li>
+                    <li class="all" [class.color]="id ==='important'"  [ngClass]="{'active':id==='important'}" (click)="tabChange('important')"><a>Password
+                        Management</a></li>
                 </ul>
             </div>
         </div>
