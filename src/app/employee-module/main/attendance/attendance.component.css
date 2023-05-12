@@ -1,13 +1,14 @@
-div.loader-parent{
-  width: calc(100% - 223px);
-  margin-left: 223px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height:100%;
+div.loader-parent {
+    width: calc(100% - 223px);
+    margin-left: 223px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
 
 }
+
 .employee-attendance {
     width: calc(100% - 223px);
     margin-left: 223px;
@@ -151,8 +152,8 @@ div[role="progressbar2"]::before {
     margin-top: 25px;
     margin-bottom: 25px;
     background-color: #FFFFFF;
-     border-radius: 8px;
-     min-height: 75%;
+    border-radius: 8px;
+    min-height: 75%;
 }
 
 .attendence_title {
@@ -233,7 +234,8 @@ div[role="progressbar2"]::before {
     background-color: #ECECEC;
     border-radius: 8px;
 }
-.select_content::-webkit-scrollbar{
+
+.select_content::-webkit-scrollbar {
     width: 6px;
     height: 200px;
     cursor: pointer;
@@ -263,10 +265,12 @@ div[role="progressbar2"]::before {
     grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
     padding: 30px 20px;
 }
-.attendence_history_card .col-4{
+
+.attendence_history_card .col-4 {
     display: inline-block;
     width: 100%;
 }
+
 .attendence_history_card .col-4 .card {
     width: 380px;
     height: 130px;
@@ -275,6 +279,19 @@ div[role="progressbar2"]::before {
     border-radius: 8px;
     padding: 26px 32px;
     display: inline-block;
+}
+
+.no_data_found {
+    position: absolute;
+    left: 50%;
+}
+
+.no_data_found h1 {
+    font-weight: 500;
+    font-size: 20px;
+    color: #444444;
+    text-align: center;
+    padding-top: 21px;
 }
 
 .card_date {
@@ -307,20 +324,21 @@ div[role="progressbar2"]::before {
     padding: 3px 10px 10px 10px;
     border: none;
     outline: none;
-    color:#3D8037;
-}
-.X_btn {
-  width: 82px;
-  height: 22px;
-  background-color: rgba(19, 225, 222, 0.3);
-  border-radius: 16px;
-  padding: 3px 10px 10px 10px;
-  border: none;
-  outline: none;
-  color:#05204f;
+    color: #3D8037;
 }
 
-.absent_btn{
+.X_btn {
+    width: 82px;
+    height: 22px;
+    background-color: rgba(19, 225, 222, 0.3);
+    border-radius: 16px;
+    padding: 3px 10px 10px 10px;
+    border: none;
+    outline: none;
+    color: #05204f;
+}
+
+.absent_btn {
     width: 82px;
     height: 22px;
     background-color: rgba(207, 52, 52, 0.2);
@@ -330,17 +348,19 @@ div[role="progressbar2"]::before {
     outline: none;
     color: #CF3434;
 }
-.odd_btn{
-  width: 82px;
+
+.odd_btn {
+    width: 82px;
     height: 22px;
-    background-color:#B7B7B7 30%;
+    background-color: #B7B7B7 30%;
     border-radius: 16px;
     padding: 3px 10px 10px 10px;
     border: none;
     outline: none;
     color: #706D6D;
 }
-.leave_btn{
+
+.leave_btn {
     width: 82px;
     height: 22px;
     background-color: rgba(234, 149, 8, 0.3);
@@ -349,8 +369,9 @@ div[role="progressbar2"]::before {
     border: none;
     outline: none;
     color:
-    #EE9B11;
+        #EE9B11;
 }
+
 .punching_timing {
     display: flex;
     justify-content: space-between;
