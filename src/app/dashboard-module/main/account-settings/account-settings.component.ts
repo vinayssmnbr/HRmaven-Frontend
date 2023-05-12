@@ -430,6 +430,9 @@ isFormDisabled() {
 
   closeModal1(){
     this.showModal1 = false;
+    // this.headOffice = this.personaldata.headOffice;
+    // this.description = this.personaldata.description
+
   }
 
   showModal2=false;
@@ -439,6 +442,9 @@ isFormDisabled() {
 
   closeModal2(){
     this.showModal2 = false;
+    // this.phone = this.personaldata.phone;
+
+
   }
 
 
@@ -554,6 +560,10 @@ isFormDisabled() {
   //     this.imageurl = this.userService.fileUrl;
   //     console.log('img', this.imageurl);
   //   });
+  // }
+
+  // onKeyUp(event): void {
+  //   event.target.value = event.target.value.trim();
   // }
 
 

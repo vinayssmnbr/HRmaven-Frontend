@@ -12,7 +12,7 @@ div.loader-parent {
   margin-left: 223px;
   background-color: #f9f9f9;
   padding: 78px 30px;
-  position:relative;
+  position: relative;
 }
 
 .available-balance-area {
@@ -164,6 +164,31 @@ td {
 .attendence_table {
   margin-top: 20px;
 
+}
+
+.no_data_found p {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 200px;
+}
+
+.no_data_found:hover {
+  background-color: #ffff;
+}
+
+.no_data_found h1 {
+  align-items: center;
+  padding-top: 21px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #444444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 200px;
+  width: 100%;
 }
 
 /*--------------Apply for leaves----------------------*/

@@ -3,7 +3,9 @@
 <!-- <div class="loader-parent">
   <div class="loader"></div>
 </div> -->
-<div class="main">
+
+
+<div class="main" >
 
   <div class="row">
     <div class="left_side">
@@ -166,8 +168,8 @@
             <p><a href=""><i class="fa-solid fa-circle-plus"></i> Create new</a></p>
           </div>
 
-       <div class="no-jobs-to-display"> 
-         <img src="assets/images/Frame 2076.svg" alt="">       
+       <div class="no-jobs-to-display">
+         <img src="assets/images/Frame 2076.svg" alt="">
             </div>
           <!-- <div class="meeting-scrollbar">
             <div class="all-meetings">
@@ -402,8 +404,8 @@
 <div class="no-jobs-to-display">
     <img src="assets/images/Frame 2075.svg" alt="">
 </div>
-   
-        
+
+
 
 
   </div>
@@ -418,6 +420,17 @@
         <p>You’ll only be able to mark your attendance after the access has been allowed.</p>
         <button (click)="closeModal()">OK</button>
       </div>
+    </div>
+  </div>
+
+  <div class="welcome" *ngIf="this.empService.welcome">
+    <div class="welcome_modal">
+      <img src="../../../../assets/images/welcome.png.png">
+      <h1>Welcome to HRMaven!</h1>
+      <p>With HRMaven, it’s easier to access your most important
+        stuff.</p>
+        <button (click)="this.empService.welcome=false;">Get Started</button>
+
     </div>
   </div>
 

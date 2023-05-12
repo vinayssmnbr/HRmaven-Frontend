@@ -373,7 +373,7 @@
                     <div class="form__group">
                         <label>Personal Email</label>
                         <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
-                            required />
+                            required (keyup)="onKeyUp($event)"/>
                             <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
                               <span *ngIf="personalDetailsForm.controls.personalemail.errors.required">
                                 *Personal Email is required.

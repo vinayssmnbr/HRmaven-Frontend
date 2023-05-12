@@ -53,6 +53,7 @@ export class EmployeeContentComponent implements OnInit {
   progressText: any;
   progress: number = 0;
   interval: any;
+  importFileResponse: any = { success: [], error: [] }
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -386,7 +387,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() {}
+  nextForm2() { }
   array: any = [
     {
       id: 0,
@@ -438,11 +439,11 @@ export class EmployeeContentComponent implements OnInit {
   array1: any = [
     {
       id: 0,
-      name: 'Full-Time',
+      name: 'Full-Time Permanent',
     },
     {
       id: 1,
-      name: 'Part-Time',
+      name: 'Part-Time Employement',
     },
     {
       id: 2,
@@ -637,8 +638,7 @@ export class EmployeeContentComponent implements OnInit {
   }
   tableview: boolean = true;
   tableviewcall() {
-    // this.tableview = !this.tableview;
-    this.tableview = true;
+    this.tableview = !this.tableview;
     this.cardview = false;
   }
   cardview: boolean = false;
@@ -727,8 +727,13 @@ export class EmployeeContentComponent implements OnInit {
 
   selectedUser: any;
   optionStyle: any;
-
+  isstatus: boolean = false;
+  showpopup: string = '';
   onSelectChange(event: any, user: any) {
+    this.isstatus = true;
+    setTimeout(() => {
+      this.isstatus = false;
+    },3000);
     switch (event.target.value) {
       case 'active': {
         this.optionStyle = {
@@ -736,6 +741,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#3D9030',
           border: 'rgba(123, 211, 109, 0.3)',
         };
+        this.showpopup = 'Status changed to Active';
         break;
       }
       case 'terminated': {
@@ -744,6 +750,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#CB1E0F',
           border: 'rgba(250, 151, 150, 0.2)',
         };
+        this.showpopup = 'Status changed to Terminated';
         break;
       }
       case 'resigned': {
@@ -752,6 +759,7 @@ export class EmployeeContentComponent implements OnInit {
           color: '#2f2c9f',
           border: '#EFEFF8',
         };
+        this.showpopup = 'Status changed to Resigned';
         break;
       }
       case 'absconder': {
@@ -760,12 +768,14 @@ export class EmployeeContentComponent implements OnInit {
           color: '#DB771D',
           border: 'rgba(248, 187, 111, 0.4)',
         };
+        this.showpopup = 'Status changed to Absconder';
         break;
       }
       default: {
         this.optionStyle = {
           // 'width':'110px',
         };
+        this.showpopup = '';
         break;
       }
     }
@@ -781,7 +791,6 @@ export class EmployeeContentComponent implements OnInit {
       }
     );
   }
-
   // const index: number = this.data.indexOf(msg);
   // if (index !== -1) {
   //     this.data.splice(index, 1);
@@ -868,6 +877,7 @@ export class EmployeeContentComponent implements OnInit {
     // }
   }
 
+
   // download(): void {
   //   const selectedEmployee = this.employee.filter(emp => emp.checked);
   //   if (selectedEmployee.length === 0) {
@@ -888,6 +898,7 @@ export class EmployeeContentComponent implements OnInit {
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
+
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
@@ -947,6 +958,7 @@ export class EmployeeContentComponent implements OnInit {
       return;
     }
     let errors = [];
+    let sucesses = []
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
@@ -965,8 +977,6 @@ export class EmployeeContentComponent implements OnInit {
 
       return true;
     }
-
-    // const file: File = event.target.files[0];
 
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
@@ -995,7 +1005,6 @@ export class EmployeeContentComponent implements OnInit {
         for (let j = 0; j < headers.length; j++) {
           item[headers[j]] = values[j];
         }
-
         data.push(item);
       }
 
@@ -1003,7 +1012,7 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
 
       if (data.length === 0) {
-        alert('Your CSV file was not filled properly.');
+        alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
       }
 
@@ -1013,7 +1022,7 @@ export class EmployeeContentComponent implements OnInit {
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
-        console.log(res.message);
+        console.log(res.message)
         if (uid == -1) return 'there is an error while getting uid';
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
@@ -1022,37 +1031,48 @@ export class EmployeeContentComponent implements OnInit {
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
-              console.log('res', res);
-              console.log('messagge', res.message);
+              console.log('res', res)
+              console.log('messagge', res.message)
 
-              // if(res.message=="Email already exists in the register"){
-              //   alert('emailAll ready exist')
-              //   console.log(' mhjiooig')
-              // }
-              // if(res.msg=="some fields are missing"){
-              //     alert('some fields are missing')
-              //   }
               // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
+              
+              console.log('Data:', res.data);
+              // this.progress += increaseBy;
+              // this.progressBar[0].style.width = `${this.progress}%`;
+              // this.progressText[0].innerText = `${this.progress}%`;
+              // console.log(res, 'response');
+              if (res.status == 'failed') {
+                errors.push({ ...employee, error: res.message });
+                // console.log(errors.push({ ...employee, error: res.message }));
+              }
+              if (res.status == "Success") {
+                sucesses.push(res);
+              
+              }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
                 this.loader = false;
                 this.csvadded = true;
                 this.importfile = false;
                 console.log('not uploaded files', errors);
-              }
-              // console.log('Data:', res.data);
-              this.progress += increaseBy;
-              this.progressBar[0].style.width = `${this.progress}%`;
-              this.progressText[0].innerText = `${this.progress}%`;
-              console.log(res, 'response');
-              if (res.status == 'failed') {
-                errors.push({ ...employee, error: res.message });
+                this.importFileResponse.error = [...errors];
+                this.importFileResponse.sucess = [...sucesses];
               }
             },
-            (error: any) => {
+            async(error: any) => {
               errors.push({ ...employee, error });
+              responseArr.push(employee)
+              if (responseArr.length == data.length) {
+                await this.waitThreeSeconds();
+                this.loader = false;
+                this.csvadded = true;
+                this.importfile = false;
+                console.log('not uploaded files', errors);
+                this.importFileResponse.error = [...errors];
+                this.importFileResponse.sucess = [...sucesses];
+              }
             }
           );
         });
@@ -1062,6 +1082,9 @@ export class EmployeeContentComponent implements OnInit {
 
     reader.readAsText(file);
   }
+
+
+
 
   //FOR CHECKING THE CHECK BOX
 
@@ -1193,5 +1216,5 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  ngOnChange() {}
+  ngOnChange() { }
 }
