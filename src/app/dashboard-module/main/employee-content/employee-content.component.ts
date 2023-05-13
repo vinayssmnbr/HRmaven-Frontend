@@ -439,11 +439,11 @@ export class EmployeeContentComponent implements OnInit {
   array1: any = [
     {
       id: 0,
-      name: 'Full-Time Permanent',
+      name: 'Full-Time',
     },
     {
       id: 1,
-      name: 'Part-Time Employement',
+      name: 'Part-Time',
     },
     {
       id: 2,

@@ -654,7 +654,7 @@
 
 
         <!----------------------Welcome-modal------------------>
-        <div class="welcome_modal" *ngIf="showhrmaven">
+        <div class="welcome_modal" *ngIf="this.userService.welcome">
         <div class="welcome-modal">
             <div class="welcome-to-hrmaven">
                 <img src="assets/images/Frame 2077.svg" alt="">
@@ -663,7 +663,7 @@
                 <h4>Welcome to HRMaven!</h4>
                 <p>With HRMaven, it's easier to access your most important
                     stuff.</p>
-                <button (click)="closewelcome()" routerLink="/dashboard">Get Started</button>
+                <button (click)="this.userService.welcome=false" routerLink="/dashboard">Get Started</button>
             </div>
         </div>
     </div>
