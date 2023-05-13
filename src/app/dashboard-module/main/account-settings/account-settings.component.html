@@ -87,7 +87,7 @@
                       <h6>Description</h6>
                       <p *ngIf="!description; else descriptionValue">---------</p>
                       <ng-template #descriptionValue>
-                        <p style="color: #777777;>{{ description }}</p>
+                        <p style="color: #777777;">{{ description }}</p>
                       </ng-template>
                     </div>
                   </div>
@@ -110,7 +110,7 @@
                           <p>{{ personalDetailsForm.controls.personalemail.value }}</p>
                         </ng-template>
                       </div>
-                      
+
                     <div class="head-office-edit">
                         <div class="head-office-text">
                             <h6>Professional Email</h6>
@@ -369,7 +369,7 @@
                     </div>
                 </div>
 
- 
+
                 <!-- <div class="name-email">
                     <div class="form__group">
                         <label for="name" class="company-descrip">Description</label>
@@ -380,7 +380,7 @@
                                 <ng-template #descriptionValue>
                                   <p>{{ personalDetailsForm.controls.description.value }}</p>
                                 </ng-template>
-        
+
                         </div>
                     </div>
 

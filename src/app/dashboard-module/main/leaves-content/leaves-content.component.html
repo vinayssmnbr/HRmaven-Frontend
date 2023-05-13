@@ -143,7 +143,7 @@
           <th>Duration</th>
           <th>Category</th>
           <th>Type</th>
-          <th>REASON</th>
+          <th class="reason">REASON</th>
           <th>Balance</th>
           <th>Attachment</th>
           <th class="table_slide">Action</th>
@@ -162,10 +162,10 @@
           <td>{{ n.duration }}</td>
           <td>{{ n.category }}</td>
           <td>{{n.type}}</td>
-          <td>
-            <p class="mt20">
-              <span class="tooltip" data-tooltip="n.reason" data-tooltip-pos="right" data-tooltip-length="medium">{{
-                n.reason }}</span>
+          <td class="tool">
+            <p class="reason">
+              <span>{{n.reason}}</span>
+              {{n.reason}}
             </p>
           </td>
           <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
@@ -217,7 +217,7 @@
           <th>Duration</th>
           <th>Category</th>
           <th>Type</th>
-          <th>REASON</th>
+          <th class="reason">REASON</th>
           <th>Balance</th>
           <th>Attachment</th>
         </tr>
@@ -234,10 +234,10 @@
           <td>{{ n.duration }}</td>
           <td>{{ n.category }}</td>
           <td>{{n.type}}</td>
-          <td>
-            <p class="mt20">
-              <span class="tooltip" data-tooltip="" data-tooltip-pos="right" data-tooltip-length="medium">{{ n.reason
-                }}</span>
+          <td class="tool">
+            <p class="reason">
+              <span>{{n.reason}}</span>
+              {{n.reason}}
             </p>
           </td>
           <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
