@@ -179,10 +179,13 @@
                                class="form-control password"
                                required
                                id="oldp"
+                               #passwordInput2
                                formControlName="oldpassword"
                                (blur)="matchpwd()"
                                (input)="isInputDirty = true"
-                               (input)="onFocusout()">
+                               (input)="onFocusout()"
+                               [ngClass]="{'ng_invalid': forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty ,
+                               'ng_valid': forgetpwd.controls.oldpassword.valid}">
 
                         <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
@@ -193,6 +196,9 @@
                                 fill="#CB1E0F" />
                         </svg> This is not your old password.</span>
                         </ng-template>
+                        <span class="password-toggle" (click)="togglePasswordVisibility2(passwordInput2)">
+                          <i class="fa {{ showPasswordIcon2 }}"></i>
+                      </span>
                         <!-- <ng-template #notMatched>
                         <span
                         *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.oldpasswordtouched || forgetpwd.controls.oldpassworddirty)
@@ -225,8 +231,11 @@
                                  (input)="onNewPasswordChange()"
                                  required
                                  id="passwordp"
+                                 #passwordInput1
                                  [ngClass]="{'ng-invalid': forgetpwd.controls.password.errors?.isPasswordMatched && forgetpwd.controls.password.dirty,
-                                             'ng-valid': forgetpwd.controls.password.valid}">
+                                             'ng-valid': forgetpwd.controls.password.valid}"> <span class="password-toggle" (click)="togglePasswordVisibility1(passwordInput1)">
+                                              <i class="fa {{ showPasswordIcon1 }}"></i>
+                                          </span>
                           <p class="old-message" *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched">
                             <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -235,7 +244,9 @@
                                 fill="#CB1E0F" />
                         </svg> New password must be different from the old password.
                           </p>
+
                         </div>
+
                       </div>
 
 
@@ -265,9 +276,11 @@
                         <div class="old-new-confirm-password">
                             <label for="">Confirm Password</label>
                             <input type="password" placeholder="Re-enter your password" formControlName="confirm"
-                                class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp"
+                                class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp" #passwordInput
                                 [ngClass]="{'ng_invalid': forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty, 'ng_valid': forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
-
+                                <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+                                  <i class="fa {{ showPasswordIcon }}"></i>
+                              </span>
                         </div>
                         <span
                             *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)"
@@ -279,6 +292,7 @@
                             </svg>
                             Password didn't match
                         </span>
+
                     </div>
 
                     <!-- </form> -->
@@ -411,7 +425,7 @@
                     </div>
                     <div class="form__group">
                         <label>Personal Email</label>
-                        <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail" 
+                        <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
                             required />
                             <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
                               <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
