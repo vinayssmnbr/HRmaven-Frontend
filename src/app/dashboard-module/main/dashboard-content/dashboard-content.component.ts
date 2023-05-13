@@ -7,6 +7,7 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../../service/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmployeeService } from 'src/app/service/employee.service';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -17,18 +18,21 @@ export class DashboardContentComponent implements OnInit {
   // loader=false;
   loadermain: boolean = true;
   loader: boolean = false;
+  signupLoader:boolean = false;
   isFromSignupPage = false;
   formSubmitted = false;
   showModalContent: boolean;
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService,
+    public userService: UserService,
     public dashService: DashService,
+    public empService: EmployeeService,
     private http: HttpClient,
     @Inject(DOCUMENT) public document: Document,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
@@ -36,27 +40,78 @@ export class DashboardContentComponent implements OnInit {
     setTimeout(() => {
       this.loadermain = false;
     }, 3000);
+
+   this.empService.welcome
+
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),
+  ]),
     domain: new FormControl('', [Validators.required, Validators.pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$")]),
-    phone: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    phone: new FormControl('', [Validators.required, this.phoneValidator]),
     headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
     // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
 
   })
+
+  phoneValidator(control: FormControl) {
+    const value = control.value;
+    const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+    return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
+  }
+
+  onInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    const value = input.value.replace(/\D/g, ''); // remove any non-numeric characters
+    if (value && value.length > 10) {
+      input.value = value.substring(0, 10); // restrict the input to the first 10 digits
+    } else {
+      input.value = value;
+    }
+    this.isInputDirty = true;
+  }
+
+
+  isEmptyInput = false;
+  isInputDirty = false;
+
+  get isPhoneInvalid() {
+    return this.personaldataForm.get('phone').invalid;
+  }
+  // phoneValidator(control: FormControl) {
+  //   const value = control.value;
+  //   if (value && value.toString().length > 10) {
+  //     control.setValue(value.toString().substring(0, 10)); // set the value to the first 10 digits
+  //   }
+  //   return null;
+  // }
+
+  // onInput(event: any) {
+  //   const input = event.target as HTMLInputElement;
+  //   if (input.value && input.value.length > 10) {
+  //     input.value = input.value.substring(0, 10); // restrict the input to the first 10 digits
+  //   }
+  //   this.isInputDirty = true;
+  // }
+
+
   email = localStorage.getItem('emailid');
+
+
   submitPersonalData(data: any){
+    this.signupLoader = true;
     console.log("personal data: ", data);
     this.userService.addpersonals(this.email,data).subscribe((res: any)=>{
       console.log("personaldataForm.value res: ", res);
       console.log("personaldataForm.value data: ", data);
-      // this.formSubmitted = true;
-      localStorage.setItem('empname', this.formData.name);
-      this.showForm = false;
+      this.formSubmitted = true;
+      // localStorage.setItem('empname', this.formData.name);
+      // this.showForm = false;
+      localStorage.setItem('personalDataSubmitted', 'true');
         });
-  }
+
+      }
 
   options: any = [
     {
@@ -107,11 +162,16 @@ export class DashboardContentComponent implements OnInit {
   objectuserid = localStorage.getItem('emailid')
   showModal: boolean = false
   formData: any = ''
-  opacityValue =0;
+  opacityValue = 0;
   // public opacityValue = 0;
-    showForm = false
-  ngOnInit()
-   {
+    showForm = true
+    isFromLoginPage = false;
+    showPersonalDataForm = true; // show the personal data form by default
+
+    loading = true;
+
+    ngOnInit() {
+      this.loading = true;
 
     this.dashService.getleavecontent().subscribe((res:any)=>{
       res.map((d: any) => {
@@ -120,89 +180,52 @@ export class DashboardContentComponent implements OnInit {
         }
       });
     });
-    this.opacityValue = 0;
 
-    // this.empname = localStorage.getItem('empname');
+  this.opacityValue = 0;
 
-    // if (this.empname) {
-    //   this.formSubmitted = true;
-    //   this.showForm = false;
-    // } else {
-    //   this.formSubmitted = false;
-    //   this.showForm = true;
+  // Check if the user has already submitted the personal data
+  const personalDataSubmitted = localStorage.getItem('personalDataSubmitted');
+  if (personalDataSubmitted === 'true') {
+    this.formSubmitted = true;
+    this.showForm = false;
+  } else {
+    this.formSubmitted = false;
+    this.showForm = true;
+    // Set the opacity to 1 if the user has not yet submitted the personal data
+    this.opacityValue = 1;
+  }
 
-    //   // Update the opacityValue to 1 if the user has not submitted the form
-    //   this.opacityValue = 1;
-    // }
-    // this.empname = localStorage.getItem('empname');
+  this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
+    console.log("res account settings personaldata: ", res);
 
-    // if (this.empname) {
-    //   this.formSubmitted = true;
-    //   this.showForm = false;
-    //   this.opacityValue = 0;
-    // } else {
-    //   this.formSubmitted = false;
-    //   this.showForm = true;
-    //   this.opacityValue = 1;
-    // }
+    console.log("res account settings personaldata: ", res.personaldata);
+    console.log("res account settings personaldata: ", res.personaldata.headOffice);
 
-    this.opacityValue = 0
-    this.empname = localStorage.getItem('empname');
+    console.log("res account settings personaldata: ", res.useridd);
 
-    if (this.empname) {
+    console.log("personalDataSubmitted value: ", res.personalDataSubmitted); // Debugging statement
+
+    // Check if the personal data has been submitted or not
+    if (res.personalDataSubmitted === true) {
+      // If personal data has been submitted, hide the form
+      this.opacityValue = 0;
       this.formSubmitted = true;
       this.showForm = false;
-      // this.userService.opacityValue = 0
-      this.opacityValue = 0;
-    } else {
+    } else if (res.personalDataSubmitted === false) {
+      // If personal data has not been submitted, show the form
+      this.opacityValue = 1;
       this.formSubmitted = false;
       this.showForm = true;
-      // this.userService.opacityValue = 1
-      this.opacityValue = 1;
     }
-
-
-
-    this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-      console.log("res account settings personaldata: ", res);
-
-      console.log("res account settings personaldata: ", res.personaldata);
-      console.log("res account settings personaldata: ", res.personaldata.headOffice);
-
-      console.log("res account settings personaldata: ", res.useridd);
-
-      // this.empname = res.personaldata.name;
-      // localStorage.setItem('empname', this.empname)
-      // this.employeename = res.personaldata.name;
-      // this.totalemployee = res.personaldata.noOfEmployee;
-      // this.headOffice = res.personaldata.headOffice;
-      // this.phone = res.personaldata.phone;
-      // this.description = res.personaldata.description
-      // this.profileimage = res.personaldata.profileimage;
-
 
     this.empname = res.personaldata.name;
     localStorage.setItem('empname', this.empname);
 
-    // // Update the formSubmitted and showForm variables based on empname
-    if (this.empname) {
-      this.formSubmitted = true;
-      this.showForm = false;
-      // this.userService.opacityValue = 0;
-      this.opacityValue = 0;
-    } else  {
-      this.formSubmitted = false;
-      this.showForm = true;
-      // this.userService.opacityValue = 1;
-      this.opacityValue = 1;
-    }
+      this.loading = false;
 
     });
 
 
-    // console.log("isFromSignupPage: ", this.isFromSignupPage);
-    // this.isFromSignupPage = this.userService.isFromSignupPage;
-    // console.log("isFromSignupPage: ", this.isFromSignupPage);
 
     this.dashService.graphcontent().subscribe((res: any) => {
       if (res) {
@@ -213,9 +236,9 @@ export class DashboardContentComponent implements OnInit {
       const absent = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       const leave = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       res.map((d) => {
-        present[d.month] = d.present;
-        absent[d.month] = d.absent;
-        leave[d.month] = d.leave;
+        present[d.month-1] = d.present;
+        absent[d.month-1] = d.absent;
+        leave[d.month-1] = d.leave;
       });
       let chart = this.elementRef.nativeElement.querySelector(`#myChart`);
 
@@ -451,5 +474,10 @@ export class DashboardContentComponent implements OnInit {
   meetingdetail()
 {
   console.warn(this.meetingForm.value);
+}
+
+showhrmaven1:boolean=true;
+closewelcome(){
+  this.showhrmaven1=false;
 }
 }

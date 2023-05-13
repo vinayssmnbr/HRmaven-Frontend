@@ -7,6 +7,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
   FormArray,
+  AbstractControl,
 } from '@angular/forms';
 import { EmpService } from '../../shared/emp.service';
 
@@ -41,6 +42,29 @@ export class EmployeeProfileComponent {
   contentdropdown8: boolean = false;
   employee: any[] = [];
   obj: any;
+  lengthCheck: boolean = false;
+  specialCharCheck: boolean = false;
+  spaceCheck: boolean = false;
+  capitalCheck: boolean = false;
+  smallCheck: boolean = false;
+  numericalCheck: boolean = false;
+  signupLoader:boolean = false;
+
+  is_visible = false;
+  password = '';
+
+  checkPassword() {
+    const input = this.password.trim();
+    this.lengthCheck = input.length >= 8;
+    // const lengthCheck2 = input.length <= 10;
+    this.numericalCheck = input.match(/[0-9]/i) ? true : false;
+    this.specialCharCheck = input.match(/[^A-Za-z0-9-' ']/i) ? true : false;
+    this.spaceCheck = input.match(' ') ? true : false;
+    this.capitalCheck = input.match(/[A-Z]/) ? true : false;
+    this.smallCheck = input.match(/[a-z]/) ? true : false;
+    //  console.log(numericalCheck,  this.specialCharCheck, spaceCheck, capitalCheck, smallCheck)
+    document.getElementById('count').innerText = `Length: ${input.length}`;
+  }
   constructor(private empdashService: EmpService) {
     this.empdashService.getEmployeeRecord().subscribe((res) => {
       console.log('pro', res);
@@ -187,7 +211,17 @@ export class EmployeeProfileComponent {
       name: 'Internship',
     },
   ];
-
+  isConfirmPasswordInvalid: boolean = false;
+  checkConfirmPassword() {
+    if (
+      this.passwordform.controls.password.value !==
+      this.passwordform.controls.confirm.value
+    ) {
+      this.isConfirmPasswordInvalid = true;
+    } else {
+      this.isConfirmPasswordInvalid = false;
+    }
+  }
   passwordform = new FormGroup({
     oldpassword: new FormControl('', [
       Validators.required,
@@ -211,7 +245,10 @@ export class EmployeeProfileComponent {
 
   empform1 = new FormGroup({
     uid: new FormControl(''),
-    name: new FormControl(''),
+    name: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     dateOfBirth: new FormControl(''),
     gender: new FormControl(''),
     fatherName: new FormControl('', [
@@ -413,21 +450,29 @@ export class EmployeeProfileComponent {
   dropdownClose5() {
     this.contentdropdown5 = false;
   }
+  loader: boolean = false;
   basicUpdate(data: any) {
-    this.success = true;
+    this.loader = true;
     this.showModal = true;
-    this.modalContent1 = false;
-    this.modalContent4 = false;
-    this.modalContent5 = false;
+    this.modalContent1 = true;
+    this.modalContent2 = false;
+    // this.modalContent5 = false;
     this.obj.motherName = data.motherName;
     this.obj.fatherName = data.fatherName;
     this.obj.name = data.name;
     this.obj.dateOfBirth = data.dateOfBirth;
     this.obj.nationality = data.nationality;
-    this.empdashService.updateEmployeeRecord(this.obj).subscribe((res: any) => {
-      this.obj = res;
-      console.log('update', res);
-    });
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe(
+      (res: any) => {
+        console.log('update successfully');
+        this.loader = false;
+        this.modalContent1 = false;
+        this.success = true;
+      },
+      (error: any) => {
+        console.log('error', error);
+      }
+    );
   }
   selectedUser: any = {};
 
@@ -467,27 +512,33 @@ export class EmployeeProfileComponent {
   closeModal2() {
     this.showModal = false;
   }
-  closeModal3() {
-    this.success = true;
+
+  closeModal3(data: any) {
     this.showModal = true;
+    this.loader = true;
     this.modalContent1 = false;
-    this.modalContent5 = false;
-    this.modalContent4 = false;
+    this.modalContent2 = false;
+    this.modalContent4 = true;
+    this.obj.state = data.state;
+    this.obj.address = data.address;
+    this.obj.postalCode = data.postalCode;
+    this.obj.email = data.email;
+    this.obj.mobile = data.mobile;
+    this.obj.city = data.city;
     const updatedData = this.empform2.value;
     updatedData['_id'] = this.obj._id;
-    this.empdashService
-      .updateEmployeeRecord(updatedData)
-      .subscribe((res: any) => {
-        this.obj = res;
-        console.log('update', res);
-      });
+    this.empdashService.updateEmployeeRecord(this.obj).subscribe((res: any) => {
+      this.loader = false;
+      this.modalContent4 = false;
+      this.success = true;
+    });
     // this.obj = updatedData;
   }
   closeModal4(data: any) {
     this.showModal = true;
-    this.success = true;
     this.modalContent1 = false;
-    this.modalContent5 = false;
+    this.modalContent5 = true;
+    this.loader = true;
     this.modalContent4 = false;
     this.obj.accountno = data.accountno;
     this.obj.ifsc = data.ifsc;
@@ -496,6 +547,9 @@ export class EmployeeProfileComponent {
     this.obj.passport = data.passport;
     this.empdashService.updateEmployeeRecord(this.obj).subscribe(() => {
       console.log('Data updated successfully');
+      this.modalContent5 = false;
+      this.loader = false;
+      this.success = true;
     });
   }
   openModal4(obj: any) {
@@ -524,8 +578,8 @@ export class EmployeeProfileComponent {
   }
   showModal3: boolean = false;
   openModal3() {
-    this.showModal3 = true;
-    this.showModal = true;
+    // this.showModal3 = true;
+    // this.showModal = true;
   }
 
   closeModal8() {
@@ -570,10 +624,12 @@ export class EmployeeProfileComponent {
   searchValue: string = '';
   clearSearch() {
     this.searchValue = '';
+    this.passwordform.reset();
   }
   //RESET PASSWORD AND MATCH OLD PASSWORD
   email: any = '';
   newpassword(data: any) {
+    this.passwordform.reset();
     this.email = localStorage.getItem('LoggedInName');
     if (!this.email) {
       console.error('User email not found in local storage');
@@ -602,17 +658,17 @@ export class EmployeeProfileComponent {
     this.empdashService.oldpasswordEmployee(email, oldpassword).subscribe(
       (res: any) => {
         if (res.flag) {
-          this.isPasswordmatched = true;
+          this.isPasswordmatched = false;
           console.log(res.message);
         } else {
-          this.isPasswordmatched = false;
+          this.isPasswordmatched = true;
           console.log(res.message);
         }
 
         this.oldpassword = oldpassword;
       },
       (error: any) => {
-        this.isPasswordmatched = false;
+        this.isPasswordmatched = true;
       }
     );
   }

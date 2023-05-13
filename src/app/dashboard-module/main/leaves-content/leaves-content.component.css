@@ -20,6 +20,42 @@
   padding-top: 30px;
 }
 
+p.reason>span {
+  visibility: hidden;
+  width: 150px;
+  height: 50px;
+  position: absolute;
+  left: 10px;
+  color: red;
+  background-color: #15e01c;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tool{
+  position: relative;
+}
+p.reason:hover>span {
+  visibility: visible;
+  width: 218px;
+  padding: 10px;
+  position: absolute;
+  transform: translateX(-105%);
+  color: red;
+  background-color: #15e01c;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.reason {
+  /* position: relative; */
+  white-space: nowrap;
+  width: 70px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 9999 !important;
+}
 
 
 .card {
@@ -267,25 +303,26 @@
   margin-top: 20px;
   padding-left: 13px;
   column-gap: 40px;
+
 }
 
 .list_nav p {
-  cursor: pointer
+  cursor: pointer;
+  padding: 3px 50px;
+
 }
 
 .Pending,
 .Approved,
 .Rejected {
-  padding: 3px 50px;
-  border: 3px solid transparent;
-  border-radius: 3px;
+ /* border: 3px solid transparent; */
 }
 
-.Pending:hover,
+/* .Pending:hover,
 .Approved:hover,
 .Rejected:hover {
   border-bottom: 3px solid #2F2C9F;
-}
+} */
 
 .color {
   color: #2F2C9F;
@@ -694,10 +731,10 @@ input[type="radio"] {
 }
 
 .leave_modal h3 {
-      font-size: 15px;
-    color: #333333;
-    font-weight: 400;
-    padding-top: 10px;
+  font-size: 15px;
+  color: #333333;
+  font-weight: 400;
+  padding-top: 10px;
 }
 
 .leave_modal textarea {

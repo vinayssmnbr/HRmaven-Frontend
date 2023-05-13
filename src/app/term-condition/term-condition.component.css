@@ -111,6 +111,7 @@ h3 {
 .term_text {
     padding-top: 20px;
     font-size: 16px;
+    padding-bottom: 10px;
 }
 
 .term_text span,
@@ -122,17 +123,23 @@ h3 {
 .Cancellation_Policy,
 .Privacy_Policy {
     padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .Cancellation_Policy p,
 .Privacy_Policy p {
     padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .term_condition_btn {
     height: 87px;
     background-color: #EFEFF8;
-    
+    width: 100%;
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+
 }
 
 .term_condition_btn button {

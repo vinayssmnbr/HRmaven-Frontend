@@ -411,7 +411,7 @@
                     <div class="modal-header">
                         <h6>Add Job Vacancies</h6>
                         <div class="all-read-important">
-                            <div class="all" [class.color]="id ==='all'" >
+                            <div class="all" [class.color]="id ==='all'">
                                 <p>1. General Details</p>
                             </div>
                             <div class="unread" [class.color]="id ==='unread'">
@@ -424,12 +424,14 @@
                     <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
                         <form class="vacancy-form" [FormGroup]="jobvacancyform">
                             <div class="job-title-date">
-                                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="jobvacancydetail()">
+                                <form class="job-vacancy-form" [formGroup]="vacancyForm"
+                                    (ngSubmit)="jobvacancydetail()">
                                     <div class="meeting-mode">
                                         <div class="form-group">
                                             <label>Job Title <span>*</span></label> <br>
                                             <input type="text" placeholder="Type a job title here..."
-                                                class="meeting-input" formControlName="jobtitle" formControlName="jobtitle">
+                                                class="meeting-input" formControlName="jobtitle"
+                                                formControlName="jobtitle">
 
                                         </div>
                                         <div class="form-group">
@@ -501,7 +503,8 @@
                                         </div>
                                     </div>
                                     <div class="discard-save">
-                                        <div class="save"><button type="submit" (click)="tabChange('unread')">Next</button> </div>
+                                        <div class="save"><button type="submit"
+                                                (click)="tabChange('unread')">Next</button> </div>
                                     </div>
                                 </form>
                             </div>
@@ -519,12 +522,14 @@
 
                                             <div class="meeting-text-area">
                                                 <input type="text" placeholder="Type skill name..." class="todo-list"
-                                                #task  ><button (click)="addtask(task.value)">click</button>
+                                                    #task><button (click)="addtask(task.value)">click</button>
 
 
 
-                                                <ul  class="input_list">
-                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
+                                                <ul class="input_list">
+                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i
+                                                            class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
+                                                    </li>
                                                 </ul>
                                             </div>
 
@@ -540,13 +545,14 @@
                                             <label>Recruiter's name <span>*</span></label> <br>
 
                                             <div class="meeting-text-area">
-                                                <input type="text" placeholder="Amanda Kerry" class="todo-list"
-                                                #task>
+                                                <input type="text" placeholder="Amanda Kerry" class="todo-list" #task>
 
 
                                                 <button (click)="addtask1(task1.value1)">click</button>
-                                                <ul  class="input_list">
-                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i></li>
+                                                <ul class="input_list">
+                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i
+                                                            class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
+                                                    </li>
                                                 </ul>
                                             </div>
 
@@ -562,8 +568,8 @@
                                         <div class="form-group">
                                             <label>Job description:</label> <br>
 
-                                        <div class="job-description">
-                                              <textarea name="" id="" placeholder="Enter description..."></textarea>
+                                            <div class="job-description">
+                                                <textarea name="" id="" placeholder="Enter description..."></textarea>
                                             </div>
 
 
@@ -581,7 +587,7 @@
                                     <div class="Back-Add">
                                         <div class="back"><button type="submit" (click)="tabChange('all')">Back</button>
                                         </div>
-                                        <div class="add"><button type="submit" (click)="successfulmodal()" >Add</button>
+                                        <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
                                         </div>
                                     </div>
 
@@ -590,21 +596,25 @@
                         </form>
                     </div>
                 </div>
-<!-----------------------------New-Job-Added-Modal---------------------------------->
+                <!-----------------------------New-Job-Added-Modal---------------------------------->
 
 
             </div>
 
-            <div class="forget_email_send_content" *ngIf="successmodal">
-                <div class="forget_content">
-                    <div class="forget_text">
-                        <img src="./assets/images/tick.png" alt="img">
+
+            <div class="forget_email_send_content_main" *ngIf="successmodal">
+                <div class="forget_email_send_content">
+                    <div class="forget_content">
+                        <div class="forget_text">
+                            <img src="./assets/images/tick.png" alt="img">
+                        </div>
+                        <h1>New job vacancies added successfully!</h1>
+                        <p>You can add more job vacancies in a similar way.</p>
+                        <button class="done_btn" (click)="closesuccessmodal()">Done</button>
                     </div>
-                    <h1>New job vacancies added successfully!</h1>
-                    <p>You can add more job vacancies in a similar way.</p>
-                    <button class="done_btn" (click)="closeModal5()">Done</button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

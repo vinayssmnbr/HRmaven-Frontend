@@ -242,6 +242,10 @@ this.showModal5 = false;
 
 
 }
+
+closesuccessmodal(){
+  this.successmodal = false;
+}
 }
 
 

@@ -111,6 +111,7 @@ form h2 {
     color: #333333;
     font-weight: 500;
     font-family: 'Outfit', sans-serif;
+    margin-bottom: 28px;
 }
 
 form p {
@@ -118,6 +119,7 @@ form p {
     font-size: 14px;
     color: #999999;
     font-weight: 400;
+    margin-top: -30px;
 }
 
 form p a {
@@ -190,27 +192,32 @@ input:focus {
     justify-content: space-between;
     align-items: center;
 }
-
+.input_check_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .checkbox-text {
     padding-top: 1px;
     padding-left: 5px;
 }
 
 .checkbox-text a {
-    color: #B4B4B4;
+    color: #999999;
 }
 
 .check-text .forgot-text {
     margin-left: 133px;
     text-decoration: none;
-    color: var(--primary-color);
+    color: #0036BF;
+    font-weight: 400;
+    font-size: 14px;
     cursor: pointer;
 }
 
 .check-text .check_box {
     width: 15px;
     height: 15px;
-    margin-top: 5px;
     cursor: pointer;
 }
 
@@ -221,7 +228,7 @@ input:focus {
     background-color: var(--primary-color);
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 22px;
+    /* margin-top: 22px; */
 }
 
 .button input:hover {
@@ -268,6 +275,7 @@ input:focus {
     justify-content: center;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
     cursor: pointer;
+    margin-top: -15px;
 }
 
 .google a {
@@ -325,6 +333,7 @@ input:focus {
     border-radius: 10px;
     cursor: pointer;
     transition: 1s;
+    background: rgba(217, 217, 217, 0.4);
 }
 
 .manual-btn:not(:last-child) {
@@ -477,13 +486,17 @@ input:focus {
 .forget_modal {
     width: 100vw;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 0;
+    bottom: 0;
+    top: 0;
+
 }
 
 .forget_modal .modal {
@@ -586,7 +599,7 @@ input:focus {
     color: #ffffff;
     border: none;
     outline: none;
-    margin-top: 20px;
+    margin-top: 30px;
     cursor: pointer;
 }
 
@@ -602,6 +615,18 @@ span.emailwrg {
     color: #CB1E0F;
     font-weight: 400;
     font-size: 13px;
+}
+
+span.forgot-email-validation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #CB1E0F;
+    font-weight: 400;
+    margin-top: 68px;
+    font-size: 13px;
+    position: absolute;
+
 }
 
 /* -----------------------Forget Reset Send Email------------------------------------ */

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../shared/emp.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { HttpClient } from '@angular/common/http';
+import { EmployeeService } from 'src/app/service/employee.service';
 Chart.register(...registerables);
 // import {Chart} from 'chart.js/auto';
 @Component({
@@ -12,7 +13,7 @@ Chart.register(...registerables);
 export class DashboardContentComponent {
 
   oilCanvas: any = '';
-  constructor(private empService: EmpService, private http: HttpClient) {
+  constructor(public  empService: EmpService, private http: HttpClient,public login : EmployeeService) {
     empService.activeComponent = 'dashboard';
     empService.headerContent = '';
 
@@ -26,6 +27,9 @@ export class DashboardContentComponent {
   absent: number = 0;
   leave: number = 0;
   total: number = 0;
+  done_punch_in:boolean=false;
+  done_punch_out:boolean=false;
+  loaderz:boolean=false;
 
 
 
@@ -116,6 +120,7 @@ export class DashboardContentComponent {
       compensatory: 0,
       medical: 0
     }
+
     // this.present=0
     // this.absent=0;
     // this.leave=0;
@@ -147,8 +152,8 @@ export class DashboardContentComponent {
     this.empService.attendancedonut().subscribe((res) => {
       console.log(res);
       this.donutdata = res;
-      this.aa()
-
+      this.loaderz=false;
+      this.aa();
     })
 
   }
@@ -170,9 +175,8 @@ export class DashboardContentComponent {
         this.total = 0;
         this.blank = true;
       }
-      this.pieChart.destroy();
-    this.piechart();
     })
+    this.piechart()
   }
 
 
@@ -201,12 +205,14 @@ export class DashboardContentComponent {
           subscribe((res: any) => {
             console.log(res.time);
             console.log(this.ipAddress);
-            this.in = res.time;
+            this.in = new Date();
+            this.done_punch_in=true;
           })
       }
     }
     else {
       console.log("out of range")
+      alert('out of range');
 
 
     }
@@ -245,12 +251,14 @@ export class DashboardContentComponent {
             console.log(res.time);
             console.log(this.ipAddress);
             this.out = new Date();
+            this.done_punch_out=true;
 
           })
       }
     }
     else {
       console.log("out of range")
+      alert('out of range');
     }
   }
 
@@ -297,12 +305,14 @@ export class DashboardContentComponent {
 
   ngAfterViewInit() {
     this.oilCanvas = document.getElementById("oilChart");
-    this.piechart();
+    this.loaderz = false;
 
   }
   blank: boolean = false;
   pieChart: any;
   piechart = () => {
+
+
     const data = {
       labels: [
 

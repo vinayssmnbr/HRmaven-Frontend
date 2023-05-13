@@ -175,7 +175,7 @@ input:focus {
     font-size: 14px;
     display: flex;
     align-items: center;
-    padding-top: 3px;
+    padding-top: 4px;
 }
 .input-field span img{
   padding-right: 5px;
@@ -206,7 +206,9 @@ input:focus {
 .check-text .forgot-text {
   margin-left: 133px;
   text-decoration: none;
-  color: var(--primary-color);
+  color: #0036BF;
+  font-weight: 400;
+  font-size: 14px;
   cursor: pointer;
 }
 
