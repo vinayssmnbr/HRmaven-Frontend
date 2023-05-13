@@ -607,6 +607,32 @@ isFormDisabled() {
   // onKeyUp(event): void {
   //   event.target.value = event.target.value.trim();
   // }
+  showPassword = false;
+  showPasswordIcon = 'fa-eye-slash';
+  showPassword1 = false;
+  showPasswordIcon1 = 'fa-eye-slash';
+
+  showPassword2 = false;
+  showPasswordIcon2 = 'fa-eye-slash';
+
+
+  togglePasswordVisibility2(passwordInput2: any) {
+    this.showPassword2 = !this.showPassword2;
+    this.showPasswordIcon2 = this.showPassword2 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput2.type = this.showPassword2 ? 'password' : 'text';
+
+
+  }
+  togglePasswordVisibility1(passwordInput1: any) {
+    this.showPassword1 = !this.showPassword1;
+    this.showPasswordIcon1= this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput1.type = this.showPassword1? 'password' : 'text';
+  }
+  togglePasswordVisibility(passwordInput: any) {
+    this.showPassword = !this.showPassword;
+    this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput.type = this.showPassword ? 'password' : 'text';
+  }
 
 
   }
