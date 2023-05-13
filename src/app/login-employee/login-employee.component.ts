@@ -191,7 +191,7 @@ export class LoginEmployeeComponent {
         this.cookie.set('token', res.token);
         this.cookie.set('id', res.empId);
         this.cookie.set('role', 'employee');
-
+        this.employeeService.welcome =res.firstVisit;
         this.submit();
       } else if (res.message == 'Invalid') {
         console.log('haha');

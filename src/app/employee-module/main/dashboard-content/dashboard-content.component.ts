@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../shared/emp.service';
 import { Chart, registerables } from 'node_modules/chart.js';
 import { HttpClient } from '@angular/common/http';
+import { EmployeeService } from 'src/app/service/employee.service';
 Chart.register(...registerables);
 // import {Chart} from 'chart.js/auto';
 @Component({
@@ -12,7 +13,7 @@ Chart.register(...registerables);
 export class DashboardContentComponent {
 
   oilCanvas: any = '';
-  constructor(public  empService: EmpService, private http: HttpClient) {
+  constructor(public  empService: EmpService, private http: HttpClient,public login : EmployeeService) {
     empService.activeComponent = 'dashboard';
     empService.headerContent = '';
 
@@ -119,6 +120,7 @@ export class DashboardContentComponent {
       compensatory: 0,
       medical: 0
     }
+
     // this.present=0
     // this.absent=0;
     // this.leave=0;
