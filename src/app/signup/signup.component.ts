@@ -62,6 +62,7 @@ export class SignupComponent {
   }
 
   ngOnInit() {
+    localStorage.setItem('personalDataSubmitted', JSON.stringify(false));
     // this.userService.isFromSignupPage = this.route.snapshot.url[0].path === 'signup';
     // this.userService.isFromSignupPage = true;
 

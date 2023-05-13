@@ -84,21 +84,13 @@
 
                 <div class="description-pen">
                     <div class="description-heading">
-                        <h6>Description</h6>
-                        <!-- <p *ngIf="description">{{description}}</p> -->
-                        <!-- <p *ngIf="description">{{ description ? companyDetailsForm.controls.description.value : '------' }}</p> -->
-                        <p> {{ companyDetailsForm.controls['description'].value }} </p>
-                        <!-- <p *ngIf="!description">--------</p> -->
-
-
+                      <h6>Description</h6>
+                      <p *ngIf="!description; else descriptionValue">---------</p>
+                      <ng-template #descriptionValue>
+                        <p>{{ description }}</p>
+                      </ng-template>
                     </div>
-
-                    <!-- <div class="paragraph-text"> -->
-
-                    <!-- <textarea placeholder="{{description}}">{{description}}</textarea> -->
-                    <!-- {{description}} -->
-                    <!-- </div> -->
-                </div>
+                  </div>
 
             </div>
         </div>
@@ -377,14 +369,12 @@
                     </div>
                 </div>
 
-
-                <div class="name-email">
+ 
+                <!-- <div class="name-email">
                     <div class="form__group">
                         <label for="name" class="company-descrip">Description</label>
                         <div class="modal-text">
-                            <!-- <input type="text" [readonly]="true"
-                              placeholder=""  > -->
-                            <textarea class="textarea-2" formControlName="description"
+                           <textarea class="textarea-2" formControlName="description"
                                 placeholder="Enter description" *ngIf="!description; else descriptionValue ">------</textarea>
                                 <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
                                 <ng-template #descriptionValue>
@@ -394,7 +384,16 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
+                <div class="name-email">
+                    <div class="form__group">
+                      <label for="name" class="company-descrip">Description</label>
+                      <div class="modal-text">
+                        <textarea class="textarea-2" formControlName="description" placeholder="Enter description">{{ description || '------------' }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
 
 
 
