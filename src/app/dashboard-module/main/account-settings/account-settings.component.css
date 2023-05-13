@@ -327,7 +327,7 @@ li.active {
     display: flex;
     gap: 10px;
     position: absolute;
-    margin-top: 68px;
+    margin-top: 72px;
     font-weight: 400;
     font-size: 12px;
   
@@ -353,7 +353,7 @@ li.active {
     align-items: center;
     justify-content: center;
     position: absolute;
-    margin-top: 64px;
+    margin-top: 70px;
     font-weight: 400;
     display: flex;
     font-size: 12px;
@@ -514,7 +514,7 @@ li.active {
     justify-content: center;
     display: flex;
     align-items: center;
-
+    margin-top: 12px;
 }
 
 .edit-profile-footer .done-btn {
