@@ -18,7 +18,7 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent implements OnInit {
   @Input() user: any;
   empForm: FormGroup;
-  educationItems: any;
+  // educationItems: any;
   constructor(
     private dashService: DashService,
     private fb: FormBuilder,
@@ -167,28 +167,12 @@ export class EmployeeProfileComponent implements OnInit {
 
   createEducationItem(): FormGroup {
     return new FormGroup({
-      graduation: new FormControl(''),
-      graduationCgpa: new FormControl(''),
-      graduationStream: new FormControl(''),
-      //  pg: new FormControl(''),
-      //  pgStream: new FormControl(''),
-      //  pgCgpa: new FormControl(''),
+      college: new FormControl(''),
+      cgpa: new FormControl(''),
+      passing: new FormControl(''),
+      stream: new FormControl(''),
     });
   }
-
-  get EducationItems() {
-    return this.educationForm.get('EducationItems') as FormArray;
-  }
-
-  addItem1() {
-    this.EducationItems.push(this.createEducationItem());
-    console.log(this.educationForm.value);
-  }
-
-  education() {
-    console.log(this.educationForm.value);
-  }
-
   createExperienceItem(): FormGroup {
     return new FormGroup({
       expcompany: new FormControl(''),
@@ -198,15 +182,21 @@ export class EmployeeProfileComponent implements OnInit {
     });
   }
 
+  get educationItems() {
+    return this.educationForm.get('educationItems') as FormArray;
+  }
   get experienceItems() {
     return this.experienceForm.get('experienceItems') as FormArray;
   }
 
+  addeducation() {
+    this.educationItems.push(this.createEducationItem());
+    console.log(this.educationForm.value);
+  }
   addItem() {
     this.experienceItems.push(this.createExperienceItem());
     console.log(this.experienceForm.value);
   }
-
   removeItem(index: number) {
     this.experienceItems.removeAt(index);
   }
@@ -611,8 +601,9 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent6 = true;
     this.modalContent7 = false;
     this.selectedUser = { _id: user._id };
-    this.form.patchValue(user);
+    this.educationForm.patchValue(user);
   }
+
   closeModal5(data) {
     this.modalContent1 = false;
     this.modalContent2 = false;
@@ -620,22 +611,10 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = true;
     this.loader = true;
-    this.user.matric = data.accountno;
-    this.user.matricPercent = data.matricPercent;
-    this.user.inter = data.inter;
-    this.user.interPercent = data.interPercent;
-    this.user.pg = data.pg;
-    this.user.pgCgpa = data.pgCgpa;
-    this.user.pgStream = data.pgStream;
-    this.user.graduation = data.graduation;
-    this.user.graduationCgpa = data.graduationCgpa;
-    this.user.graduationStream = data.graduationStream;
-    this.user.matricpassing = data.matricpassing;
-    this.user.interpassing = data.interpassing;
-    const updatedData = this.form.value;
-    console.log('abc', updatedData);
+    console.log(this.educationForm.value);
+    const updatedData = this.educationForm.value;
     updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(this.user).subscribe(() => {
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
       this.modalContent6 = false;
       this.loader = false;
