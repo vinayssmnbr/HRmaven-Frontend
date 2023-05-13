@@ -127,7 +127,7 @@
           </div>
 
           <td colspan="7" class="no_data" *ngIf=" user.found=='true' && employee.length>0">
-            <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
+            <p > <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect width="209" height="176" fill="" />
                 <path
@@ -315,7 +315,7 @@
     <div class="view2">
       <div class="card-view"
         *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
-        <td colspan="7" class="no_data" *ngIf="user.found=='true'">
+        <div class="no-data" *ngIf="user.found=='true'">
           <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent" xmlns="http://www.w3.org/2000/svg">
               <rect width="209" height="176" fill="" />
               <path
@@ -435,7 +435,7 @@
             </svg>
           </p>
           <h2>No Record Found!</h2>
-        </td>
+        </div>
         <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
           <div class="card-detail">
             <div class="first-detail">
@@ -762,8 +762,8 @@
       <div class="modal-body6">
         <h3>Succesful</h3>
         <!-- <p>Csv File Imported Successfully!</p> -->
-        <p style="color:#3D9030">{{importFileResponse.success.length}} Records Imported Successfully!</p>
-        <p style="color:red">{{importFileResponse.error.length}} Records are not imported</p>
+        <p style="color:#3D9030">{{importFileResponse. numSuccesses }} Records Imported Successfully!</p>
+        <p style="color:red">{{importFileResponse.numFailures}} Records are not imported</p>
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
     </div>
@@ -779,7 +779,7 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
-       
+
     </div>
   </div>
 <!-- </div> -->

@@ -1017,6 +1017,8 @@ export class EmployeeContentComponent implements OnInit {
       }
 
       let uid: number = -1;
+      let numSuccesses = 0;
+      let numFailures = 0; 
       let responseArr = [];
       // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
@@ -1044,12 +1046,15 @@ export class EmployeeContentComponent implements OnInit {
               // this.progressText[0].innerText = `${this.progress}%`;
               // console.log(res, 'response');
               if (res.status == 'failed') {
-                errors.push({ ...employee, error: res.message });
+                numFailures++;
+                errors.push({ ...employee, error: res.message }); 
                 // console.log(errors.push({ ...employee, error: res.message }));
               }
-              if (res.status == "Success") {
-                sucesses.push(res);
-
+              else if (res.status == "Success") {
+                numSuccesses++;
+                sucesses.push(res)
+                // console.log( sucesses.push(res));
+              
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
@@ -1059,6 +1064,8 @@ export class EmployeeContentComponent implements OnInit {
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
+                this.importFileResponse.numSuccesses = numSuccesses;
+                this.importFileResponse.numFailures = numFailures;
               }
             },
             async(error: any) => {
@@ -1072,6 +1079,8 @@ export class EmployeeContentComponent implements OnInit {
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
+                this.importFileResponse.numSuccesses = numSuccesses;
+                this.importFileResponse.numFailures = numFailures;
               }
             }
           );

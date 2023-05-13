@@ -120,6 +120,10 @@
 .profile-text p {
     font-size: 14px;
     color: #B4B4B4;
+    width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .btn-head {

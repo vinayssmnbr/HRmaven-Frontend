@@ -41,7 +41,7 @@
                 <div class="location">
                     <img src="assets/images/Vector.png" alt="">
                     <!-- <p> Leeds, United Kingdom</p> -->
-                    <p> {{headOffice}} </p>
+                    <p>{{ companyDetailsForm.controls['headOffice'].value }}</p>
                 </div>
             </div>
         </div>
@@ -49,11 +49,11 @@
         <div class="all-read-important">
             <div class="toggle">
                 <ul>
-                    <li class="all" [class.color]="id ==='all'" (click)="tabChange('all')">Company Details</li>
-                    <li class="unread" [class.color]="id ==='unread'" (click)="tabChange('unread')">Personal Details
+                    <li class="all" [class.color]="id ==='all'" [ngClass]="{'active':id==='all'}"(click)="tabChange('all')"><a>Company Details</a></li>
+                    <li class="unread " [class.color]="id ==='unread'" [ngClass]="{'active':id==='unread'}" (click)="tabChange('unread')"><a>Personal Details</a>
                     </li>
-                    <li class="all" [class.color]="id ==='important'" (click)="tabChange('important')">Password
-                        Management</li>
+                    <li class="all" [class.color]="id ==='important'"  [ngClass]="{'active':id==='important'}" (click)="tabChange('important')"><a>Password
+                        Management</a></li>
                 </ul>
             </div>
         </div>
@@ -85,9 +85,12 @@
                 <div class="description-pen">
                     <div class="description-heading">
                         <h6>Description</h6>
-                        <p *ngIf="!description">--------</p>
                         <!-- <p *ngIf="description">{{description}}</p> -->
-                        <p>{{ companyDetailsForm.controls.description.value }}</p>
+                        <!-- <p *ngIf="description">{{ companyDetailsForm.controls.description.value }}</p>
+                        <p *ngIf="!description">--------</p> -->
+                                                <p> {{ companyDetailsForm.controls['description'].value }} </p>
+
+
 
                     </div>
 
@@ -180,24 +183,37 @@
                                (blur)="matchpwd()"
                                (input)="isInputDirty = true"
                                (input)="onFocusout()">
-                        
-                        <p *ngIf="isPasswordMatched === true && isSamePassword; else notMatched" style="color: green;">This is your old password.</p>
+
+                        <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your old password.</p>
                         <ng-template #notMatched>
-                            <p  *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched" class="old-message"> <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
-                                    fill="#CB1E0F" />
-                            </svg>This is not your old password.</p>
-                          </ng-template>
+                          <span  *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched" class="old-message"> <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                fill="#CB1E0F" />
+                        </svg> This is not your old password.</span>
+                        </ng-template>
+                        <!-- <ng-template #notMatched>
+                        <span
+                        *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.oldpasswordtouched || forgetpwd.controls.oldpassworddirty)
+                        && isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched"
+                        class="error-message"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                fill="#CB1E0F" />
+                        </svg>
+                        This is not your old password.
+                    </span>
+                    </ng-template> -->
                       </div>
-                      
-                      
-                  
-                    
-                      
-                      
-                      
+
+
+
+
+
+
+
                       <div class="new-reenter">
                         <div class="old-new-confirm-password">
                           <label for="">New Password</label>
@@ -209,29 +225,37 @@
                                  (input)="onNewPasswordChange()"
                                  required
                                  id="passwordp"
-                                 [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
-                          
-                          <p class="error-message" *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched" >New password must be different from the old password.</p>
+                                 [ngClass]="{'ng-invalid': forgetpwd.controls.password.errors?.isPasswordMatched && forgetpwd.controls.password.dirty,
+                                             'ng-valid': forgetpwd.controls.password.valid}">
+                          <p class="old-message" *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                                fill="#CB1E0F" />
+                        </svg> New password must be different from the old password.
+                          </p>
                         </div>
                       </div>
-                                                                   
+
+
                     <!-- <div class="new-reenter">
                         <div class="old-new-confirm-password">
                             <label for="">New Password</label>
                             <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
                         [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
-                            
+
 
 
                         </div>
                       </div> -->
-                      
-                      
 
-                            
+
+
+
                         <!-- <p *ngIf="isSamePassword ; else notpwdMatched" style="color: green;">New password cannot be same as old password</p>
                         <ng-template #notpwdMatched>
-                      
+
                           <p  style="color: black;">New password.</p>
                         </ng-template> -->
                         <!-- </div>
@@ -387,8 +411,8 @@
                     </div>
                     <div class="form__group">
                         <label>Personal Email</label>
-                        <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail"
-                            required (keyup)="onKeyUp($event)"/>
+                        <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail" 
+                            required />
                             <span *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
                               <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
                                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
@@ -425,7 +449,7 @@
                     </div> -->
                     <div class="form__group" >
                         <label for="phone">Phone no.</label>
-                               <input type="text" class="form_input" placeholder="Enter Phone number" 
+                               <input type="text" class="form_input" placeholder="Enter Phone number"
                                formControlName="phone" id="phone" required
                         pattern="\d*" maxlength="10"  (input)="onInput($event)" />
                         <span *ngIf="isInputDirty && isPhoneInvalid" class="phone-error-message"> <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
@@ -439,7 +463,7 @@
 
                 </div>
                 <div class="edit-profile-footer">
-                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">{{doneLoader1? 'Loading....':'Done'}}</button>
+                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)" [disabled]="personalDetailsForm.controls['phone'].invalid ">{{doneLoader1? 'Loading....':'Done'}}</button>
                 </div>
 
 
