@@ -161,7 +161,7 @@
         <h3>Education</h3>
         <button class="edit1" (click)="openModal4(user)">Edit <i class="fa-solid fa-pencil"></i></button>
       </div>
-      <div class="row1" *ngIf="!showAllData">
+      <div class="row1" *ngIf="!showAllData1">
         <div class="column1">
           <span class="orgname">School/College</span>
           <p class="orgname">{{user.educationItems[0]?.college || '--------'}}</p>
@@ -178,7 +178,7 @@
         </div>
       </div>
       <div *ngFor="let item of user.educationItems; let i=index">
-        <div class="row1" *ngIf="showAllData">
+        <div class="row1" *ngIf="showAllData1">
           <div class="column1">
             <span class="orgname">School/College</span>
             <p class="orgname">{{item.college || '--------'}}</p>
@@ -196,9 +196,9 @@
         </div>
       </div>
       <div class="cnt-btn">
-        <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+        <button class="view" (click)="showMoredata1()" *ngIf="showbutton1">View More<i
             class="fa-solid fa-angle-down"></i></button>
-        <button class="hide" (click)="hidedata()" *ngIf="!showbutton && showAllData">View less<i
+        <button class="hide" (click)="hidedata1()" *ngIf="!showbutton1 && showAllData1">View less<i
             class="fa-solid fa-angle-up"></i></button>
       </div>
     </div>

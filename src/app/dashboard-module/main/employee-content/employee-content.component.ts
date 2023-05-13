@@ -179,10 +179,13 @@ export class EmployeeContentComponent implements OnInit {
   form1Valid: boolean = this.form.controls.name.valid;
 
   //GET DATA
+  loaderz: boolean = false;
   fetchdata() {
+    this.loaderz = true;
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      this.loaderz = false;
       this.isfetched = true;
       if (res.length > 0) {
         this.emptybox = false;

@@ -1,6 +1,9 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-<div class="main">
+<div class="loader-parent" *ngIf="loaderz">
+  <div class="loader"></div>
+</div>
+<div class="main" *ngIf="!loaderz">
   <!-- <div class="selection">
     <div class="list_nav">
       <div class="All" [ngClass]="{'active': isallactive}">
@@ -41,19 +44,6 @@
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="employee.length===0">
-    <p>No records found.</p>
-  </div> -->
-  <!-- <div *ngIf="employee.length > 1">
-
-  </div> -->
-
-  <!-- <td  colspan="7" class="nodata" class="no_data"
-  *ngIf="name.found=='true'">
-  <p style="text-align:center;"> <img src="assets/images/no_record.png" alt="" class="center"></p>
-  <h2>No Record Found!</h2>
-</td> -->
-
 
   <div class="selection2">
     <div class="input_left">
@@ -122,12 +112,12 @@
         <tr *ngFor="let user of employee | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <!--  -->
           <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
-          <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found=='true'">
+          <!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found=='true'">
             <div class="loader"></div>
-          </div>
+          </div> -->
 
-          <td colspan="7" class="no_data" *ngIf=" user.found=='true' && employee.length>0">
-            <p > <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
+          <td colspan="7" class="no_data" *ngIf=" user.found=='true'">
+            <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect width="209" height="176" fill="" />
                 <path
@@ -248,7 +238,7 @@
             </p>
             <h2>No Record Found!</h2>
           </td>
-          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
+          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all' || user.found=='true'">
 
             <td *ngIf="user.found!='true'" [ngClass]="{'active':user.found=='!true','inactive':user.found=='true'}">
               <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
@@ -780,8 +770,8 @@
         </div>
       </div> -->
 
-    </div>
   </div>
+</div>
 <!-- </div> -->
 
 <!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">
