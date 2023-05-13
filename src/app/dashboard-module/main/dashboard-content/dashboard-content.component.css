@@ -1581,7 +1581,20 @@ div.form-container {
   display: inline-block;
   width: 120px;
   height: 145px;
-  background: #2F2C9F;
+  background: red;
+  border-radius: 80%;
+  box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
+  margin: 20px 30px;
+  animation-timing-function: ease-out;
+  will-change: transform, opacity;
+  position: absolute;
+}
+
+.balloon1 {
+  display: inline-block;
+  width: 120px;
+  height: 145px;
+  background: #FF8D27;
   border-radius: 80%;
   box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
   margin: 20px 30px;
@@ -1592,24 +1605,27 @@ div.form-container {
 
 .b1 {
   left: 20%;
-  animation-duration: 30s;
-  animation-delay: 0s;
-  bottom: -450px;
-  animation-name: downTopAnimation;
+  /* animation-duration: 30s; */
+  /* animation-delay: 0s; */
+  bottom: -250px;
+  /* animation-name: downTopAnimation; */
+  animation: downTopAnimation 30s infinite;
+
 }
 
 .b2 {
   left: 70%;
-  animation-duration: 30s;
-  animation-delay: 0s;
-  top: -490px;
-  animation-name: topDownAnimation;
+  /* animation-duration: 30s; */
+  /* animation-delay: 0s; */
+  top: -150px;
+  /* animation-name: topDownAnimation; */
+  animation: topDownAnimation 30s infinite;
 }
 
 .balloon:before {
   content: "▲";
   font-size: 20px;
-  color: #2F2C9F;
+  color: red;
   display: block;
   text-align: center;
   width: 100%;
@@ -1619,7 +1635,21 @@ div.form-container {
   transition: opacity 1s ease-in-out;
 }
 
-.balloon:after {
+.balloon1:before {
+  content: "▲";
+  font-size: 20px;
+  color: #FF8D27;
+  display: block;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: -20px;
+  z-index: -100;
+  transition: opacity 1s ease-in-out;
+}
+
+.balloon:after,
+.balloon1:after {
   display: inline-block;
   top: 153px;
   position: absolute;
@@ -1629,26 +1659,35 @@ div.form-container {
   left: 0;
   margin: 0 auto;
   content: "";
+  
   background: #fff;
 }
 
 @keyframes topDownAnimation {
   0% {
-    top: -390px;
+    top: -400px;
+  }
+
+  50% {
+    top: 100vh;
   }
 
   100% {
-    top: 152vh;
+    top: -300px;
   }
 }
 
 @keyframes downTopAnimation {
   0% {
-    bottom: -390px;
+    bottom: -400px;
+  }
+
+  50% {
+    bottom: 115vh;
   }
 
   100% {
-    bottom: 152vh;
+    bottom: -300px;
   }
 }
 
@@ -1714,7 +1753,8 @@ div.form-container {
     animation: none;
   }
 }
-.dashboard-validation{
+
+.dashboard-validation {
   color: #CB1E0F;
   align-items: center;
   text-align: center;
