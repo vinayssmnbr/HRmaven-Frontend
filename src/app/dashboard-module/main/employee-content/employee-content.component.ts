@@ -93,7 +93,9 @@ export class EmployeeContentComponent implements OnInit {
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
-
+  csvForm = new FormGroup({
+    csv: new FormControl('')
+  })
   form = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -387,7 +389,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() {}
+  nextForm2() { }
   array: any = [
     {
       id: 0,
@@ -856,7 +858,7 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
- 
+
   inavlidModal: boolean = true;
   closeModal5() {
     this.inavlidModal = false;
@@ -939,7 +941,6 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
-
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -1011,15 +1012,15 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
 
       if (data.length === 0) {
-        // alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
+        alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
       }
+
 
       let uid: number = -1;
       let numSuccesses = 0;
       let numFailures = 0;
       let responseArr = [];
-      // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
@@ -1028,31 +1029,21 @@ export class EmployeeContentComponent implements OnInit {
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
           console.log('Adding employee:', employee);
-          // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
               console.log('res', res);
               console.log('messagge', res.message);
-
-              // console.log('Response:', res);
               this.loader = true;
               responseArr.push(res);
-
               console.log('Data:', res.data);
-              // this.progress += increaseBy;
-              // this.progressBar[0].style.width = `${this.progress}%`;
-              // this.progressText[0].innerText = `${this.progress}%`;
-              // console.log(res, 'response');
               if (res.status == 'failed') {
                 numFailures++;
-                errors.push({ ...employee, error: res.message }); 
-                // errors.push(res); 
+                errors.push({ ...employee, error: res.message });
               }
               else if (res.status == "Success") {
                 numSuccesses++;
                 sucesses.push(res);
-                // console.log( sucesses.push(res));
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
@@ -1067,6 +1058,7 @@ export class EmployeeContentComponent implements OnInit {
               }
             },
             async (error: any) => {
+              numFailures++;
               errors.push({ ...employee, error });
               responseArr.push(employee);
               if (responseArr.length == data.length) {
@@ -1085,6 +1077,7 @@ export class EmployeeContentComponent implements OnInit {
         });
         return 'employees added';
       });
+
     };
 
     reader.readAsText(file);
@@ -1220,5 +1213,5 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  ngOnChange() {}
+  ngOnChange() { }
 }
