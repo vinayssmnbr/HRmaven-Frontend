@@ -44,7 +44,7 @@
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -83,7 +83,7 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openmodal2(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal2(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -113,7 +113,7 @@
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
-        <button class="edit1" (click)="openModal3(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal3(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -145,7 +145,10 @@
     <div class="card6" *ngIf="personaldetail">
       <div class="details">
         <h3>Education</h3>
-        <button class="edit1" (click)="openModal4(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <div class="btns">
+        <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button>
+        <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pencil"></i></button>
+        </div>
       </div>
       <div class="row1">
         <div class="column1">
@@ -155,46 +158,16 @@
           <span class="yop">Year of Passing</span>
           <p *ngIf="!user.matricpassing">----------</p>
           <p class="yop" *ngIf="user.matricpassing">{{user.matricpassing}}</p>
-          <!-- <span class="gcol">Graduation College/University</span>
-          <p *ngIf="!user.graduation">----------</p>
-          <p class="gcol" *ngIf="user.graduation">{{user.graduation}}</p>
-          <span class="pgcol">Post Graduation College/University</span>
-          <p *ngIf="!user.pg">----------</p>
-          <p class="pgcol" *ngIf="user.pg">{{user.pg}}</p>
-          <span class="phdcol">Phd College/University</span>
-          <p>---------</p> -->
         </div>
         <div class="column2">
           <span class="mper">Cgpa/Percentage</span>
           <p *ngIf="!user.matricPercent">----------</p>
           <p class="mper" *ngIf="user.matricPercent">{{user.matricPercent}}%</p>
-          <!-- <span class="dper">12th Grade/Diploma Percentage</span>
-          <p *ngIf="!user.interPercent">----------</p>
-          <p class="dper" *ngIf="user.interPercent">{{user.interPercent}}%</p>
-          <span class="sgpa">Cgpa</span>
-          <p *ngIf="!user.graduationCgpa">----------</p>
-          <p class="sgpa" *ngIf="user.graduationCgpa">{{user.graduationCgpa}}</p>
-          <span class="pgsgpa">Cgpa</span>
-          <p *ngIf="!user.pgCgpa">-----------</p>
-          <p class="pgsgpa" *ngIf="user.pgCgpa">{{user.pgCgpa}}</p>
-          <span class="phdsgpa">Cgpa</span>
-          <p>---------</p> -->
         </div>
         <div class="column3">
           <span class="stream">Stream</span>
           <p *ngIf="!user.matricpassing">----------</p>
           <p class="yop" *ngIf="user.matricpassing">{{user.matricpassing}}</p>
-          <!-- <span class="yop1">Year of Passing</span>
-          <p *ngIf="!user.interpassing">----------</p>
-          <p class="yop1" *ngIf="user.interpassing">{{user.interpassing}}</p>
-          <span class="stream">Graduation Stream</span>
-          <p *ngIf="!user.graduationStream">----------</p>
-          <p class="stream" *ngIf="user.pgStream">{{user.graduationStream}}</p>
-          <span class="pgstream">Post Graduation Stream</span>
-          <p *ngIf="!user.pgStream">----------</p>
-          <p class="pgstream" *ngIf="user.pgStream">{{user.pgStream}}</p>
-          <span class="phdstram">Phd.Stream</span> -->
-          <!-- <p>--------</p> -->
         </div>
       </div>
       <hr>
@@ -208,7 +181,8 @@
     <div class="card7" *ngIf="personaldetail">
       <div class="details">
         <h3>Experience</h3>
-        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button>
+        <button class="edit1" (click)="openModal5(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div>
         <div class="row1" *ngIf="!showAllData">
@@ -256,7 +230,7 @@
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
         <h3>Work Details</h3>
-        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
