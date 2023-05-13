@@ -84,22 +84,13 @@
 
                 <div class="description-pen">
                     <div class="description-heading">
-                        <h6>Description</h6>
-                        <!-- <p *ngIf="description">{{description}}</p> -->
-                        <!-- <p *ngIf="description">{{ companyDetailsForm.controls.description.value }}</p>
-                        <p *ngIf="!description">--------</p> -->
-                                                <p> {{ companyDetailsForm.controls['description'].value }} </p>
-
-
-
+                      <h6>Description</h6>
+                      <p *ngIf="!description; else descriptionValue">---------</p>
+                      <ng-template #descriptionValue>
+                        <p>{{ description }}</p>
+                      </ng-template>
                     </div>
-
-                    <!-- <div class="paragraph-text"> -->
-
-                    <!-- <textarea placeholder="{{description}}">{{description}}</textarea> -->
-                    <!-- {{description}} -->
-                    <!-- </div> -->
-                </div>
+                  </div>
 
             </div>
         </div>
@@ -114,9 +105,12 @@
                     </div>
                     <div class="employee-text">
                         <h6>Personal Email</h6>
-                        <!-- <p>abhishek1990@gmail.com</p> -->
-                        <p> {{employeeemail}} </p>
-                    </div>
+                        <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
+                        <ng-template #employeeEmailValue>
+                          <p>{{ personalDetailsForm.controls.personalemail.value }}</p>
+                        </ng-template>
+                      </div>
+                      
                     <div class="head-office-edit">
                         <div class="head-office-text">
                             <h6>Professional Email</h6>
@@ -375,19 +369,31 @@
                     </div>
                 </div>
 
-
-                <div class="name-email">
+ 
+                <!-- <div class="name-email">
                     <div class="form__group">
                         <label for="name" class="company-descrip">Description</label>
                         <div class="modal-text">
-                            <!-- <input type="text" [readonly]="true"
-                              placeholder=""  > -->
-                            <textarea class="textarea-2" formControlName="description"
-                                placeholder="Enter description">{{description}}</textarea>
+                           <textarea class="textarea-2" formControlName="description"
+                                placeholder="Enter description" *ngIf="!description; else descriptionValue ">------</textarea>
+                                <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
+                                <ng-template #descriptionValue>
+                                  <p>{{ personalDetailsForm.controls.description.value }}</p>
+                                </ng-template>
+        
                         </div>
                     </div>
 
-                </div>
+                </div> -->
+                <div class="name-email">
+                    <div class="form__group">
+                      <label for="name" class="company-descrip">Description</label>
+                      <div class="modal-text">
+                        <textarea class="textarea-2" formControlName="description" placeholder="Enter description">{{ description || '------------' }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+
 
 
 
@@ -456,11 +462,6 @@
                         <input type="email" class="form_input" style=" background-color: #f4f4f4;
                         color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
                     </div>
-                    <!-- <div class="form__group">
-                        <label for="phone">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='Enter Phone Number' formControlName="phone" id="phone" required maxlength="10"[disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
-                        <div *ngIf="personalDetailsForm.get('phone').errors?.invalidPhone">Please enter a valid phone number</div>
-                    </div> -->
                     <div class="form__group" >
                         <label for="phone">Phone no.</label>
                                <input type="text" class="form_input" placeholder="Enter Phone number"
@@ -477,7 +478,7 @@
 
                 </div>
                 <div class="edit-profile-footer">
-                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)" [disabled]="personalDetailsForm.controls['phone'].invalid ">{{doneLoader1? 'Loading....':'Done'}}</button>
+                    <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)" [disabled]="personalDetailsForm.controls['phone'].invalid ||  personalDetailsForm.controls['personalemail'].invalid">{{doneLoader1? 'Loading....':'Done'}}</button>
                 </div>
 
 
