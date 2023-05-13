@@ -909,10 +909,10 @@ input:disabled {
     border: 1px solid red !important;
 }
 
-.password-matches {
-    border-color: green;
-}
-
-.green-border {
+.valid-password {
     border: 2px solid green;
-}
+  }
+
+.invalid-password {
+    border: 2px solid red;
+  }  

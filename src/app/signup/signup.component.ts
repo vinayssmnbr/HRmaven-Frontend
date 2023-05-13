@@ -214,9 +214,10 @@ export class SignupComponent {
     this.signupLoader = true;
     console.log(this.sigupform.value);
     this.userService.saveUser(data).subscribe((result: any) => {
-      console.log('personal true or not: ',result.personalDataSubmitted)
+      // console.log('personal true or not: ',result.personalDataSubmitted)
       // if (result.personalDataSubmitted) {
         localStorage.setItem('personalDataSubmitted', JSON.stringify(result.personalDataSubmitted));
+        console.log('after stringify personal true or not: ',result.personalDataSubmitted)
       // }
       this.userService.saveUser(this.sigupform);
       console.log(result);

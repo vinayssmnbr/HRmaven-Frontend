@@ -201,8 +201,11 @@ ress: any =''
     console.log(this.loginForm.value);
     // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
-      console.log("personalDataSubmitted value: ", res.personalDataSubmitted); // Debugging statement
+      localStorage.setItem('personalDataSubmitted', 'true');
+      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); // Debugging statement
       if (res.personalDataSubmitted) {
+      
+      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); 
         localStorage.setItem('personalDataSubmitted', 'true');
       }
       console.log("ress: ", res.username)

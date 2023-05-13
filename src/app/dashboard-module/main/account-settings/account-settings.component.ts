@@ -26,6 +26,7 @@ export class AccountSettingsComponent implements OnInit {
  readonly= false;
  doneLoader1:boolean = false;
  personalLoader:boolean = false
+ proemail = localStorage.getItem('emailid')
 
  constructor(private userService:UserService, private formBuilder: FormBuilder,private dashService:DashService, private cookie:CookieService)
  {
@@ -62,7 +63,8 @@ export class AccountSettingsComponent implements OnInit {
  description: any = '';
  phone : any = '';
  profileimage: any = '';
- employeeemail = localStorage.getItem('emailid');
+ employeeemail: any = '';
+//  employeeemail = localStorage.getItem('emailid');
  companyDetailsForm: FormGroup;
  personalDetailsForm: FormGroup;
 
@@ -120,6 +122,8 @@ isInputDirty = false;
         console.log("res account settings personaldata: ", res.personaldata);
         console.log("res account settings personaldata: ", res.personaldata.headOffice);
         console.log("res account settings personaldatawww: ", res.personaldata.description);
+        console.log("res account settings personal email: ", res.personaldata.personalemail);
+
 
 
         console.log("res account settings personaldata: ", res.useridd);
@@ -127,16 +131,29 @@ isInputDirty = false;
 
         this.employeename = res.personaldata.name;
         this.totalemployee = res.personaldata.domain;
+        // this.employeeemail = res.personaldata.personalemail;
+        this.employeeemail = res.personaldata.personalemail;
+        this.personalDetailsForm.patchValue({
+          personalemail: this.employeeemail
+        });
+        this.phone = res.personaldata.phone;
+        this.personalDetailsForm.patchValue({
+            personalemail: this.employeeemail,
+            phone: this.phone
+        });
+        this.companyDetailsForm.patchValue({
+          description : res.personaldata.description
+        });
+
         this.companyDetailsForm.patchValue({
           headOffice: res.personaldata.headOffice
         });
-                this.phone = res.personaldata.phone;
+          this.phone = res.personaldata.phone;
                 this.companyDetailsForm.patchValue({
                   description : res.personaldata.description
-
                 });
                 this.profileimage = res.personaldata.url;
-        this.email_id = this.employeeemail.split("@")
+        this.email_id = this.proemail.split("@")
       this.professional_email_id = this.email_id[0] + "@" + this.totalemployee
 
       });
@@ -176,7 +193,7 @@ isInputDirty = false;
     get isPhoneInvalid() {
       return this.personalDetailsForm.get('phone').invalid;
     }
-
+    personalemail: any = ''
 
     updateData(data: any){
       // this.personalLoader = true
@@ -188,6 +205,7 @@ isInputDirty = false;
 
         this.employeename = res.personaldata.name;
         this.description = res.personaldata.description;
+        this.employeeemail = res.personaldata.personalemail;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image
