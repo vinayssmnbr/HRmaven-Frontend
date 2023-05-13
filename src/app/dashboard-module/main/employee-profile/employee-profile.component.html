@@ -41,6 +41,9 @@
       <li [ngClass]="{'active': isPersonalDetailsActive}"><a (click)="personaldetails()">Personal Details</a></li>
       <li id="job" [ngClass]="{'active': isJobDetailsActive}"><a (click)="jobdetails()">Job Details</a></li>
     </ul>
+
+    <!------------------------------------------------- BASIC DETAILS ----------------------------------------------------->
+
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
@@ -80,6 +83,10 @@
         </div>
       </div>
     </div>
+    <!------------------------------------------------- ************** ----------------------------------------------------->
+
+    <!------------------------------------------------- PERSONAL DETAILS ----------------------------------------------------->
+
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
@@ -110,6 +117,9 @@
         </div>
       </div>
     </div>
+    <!------------------------------------------------- ************** ----------------------------------------------------->
+
+    <!------------------------------------------------- PERSONAL DETAILS ----------------------------------------------------->
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
@@ -142,6 +152,8 @@
         </div>
       </div>
     </div>
+    <!------------------------------------------------- ************** ----------------------------------------------------->
+
     <!------------------------------------------------- EDUCATION FORM ----------------------------------------------------->
 
     <div class="card6" *ngIf="personaldetail">
@@ -245,6 +257,8 @@
     </div>
     <!------------------------------------------------- ************** ----------------------------------------------------->
 
+    <!------------------------------------------------- JOB DETAILS ----------------------------------------------------->
+
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
         <h3>Work Details</h3>
@@ -281,6 +295,11 @@
       </div>
     </div>
   </div>
+
+  <!------------------------------------------------- ************** ----------------------------------------------------->
+
+  <!------------------------------------------------- BASIC DETAILS ----------------------------------------------------->
+
   <div class="modal" *ngIf="showModal">
     <div class="modal-content" *ngIf="modalContent1">
       <div class="modal-header">
@@ -389,6 +408,11 @@
         <button class="save" (click)="basicUpdate(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
+
+    <!------------------------------------------------- ************** ----------------------------------------------------->
+
+    <!------------------------------------------------- CONTACT DETAILS ----------------------------------------------------->
+
     <div class="modal-content" *ngIf="modalContent4">
       <div class="modal-header">
         <h4 class="modal-title">Edit Contact Details</h4>
@@ -436,6 +460,11 @@
         <button class="save" (click)="closeModal3(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
+
+    <!------------------------------------------------- ************** ----------------------------------------------------->
+
+    <!------------------------------------------------- PERSONAL PARTICULAR ----------------------------------------------------->
+
     <div class="modal-content" *ngIf="modalContent5">
       <div class="modal-header">
         <h4 class="modal-title">Edit Personal Particulars</h4>
@@ -502,6 +531,8 @@
         <button class="save" (click)="closeModal4(form.value)">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
+    <!------------------------------------------------- ************** ----------------------------------------------------->
+
 
     <!------------------------------------------------- EDUCATION FORM ----------------------------------------------------->
 
@@ -590,7 +621,9 @@
     <!-- <div class="modal-footer">
     <button class="save" (click)="closeModal2()" >Save Changes</button>
   </div> -->
+    <!------------------------------------------------- ************** ----------------------------------------------------->
 
+    <!------------------------------------------------- JOB DETAILS----------------------------------------------------->
     <div class="modal-content2" *ngIf="modalContent2">
       <div class="modal-header">
         <h4 class="modal-title">Edit Job Details</h4>
