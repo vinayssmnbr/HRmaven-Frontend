@@ -40,6 +40,10 @@ export class EmployeeProfileComponent implements OnInit {
   modalContent5: boolean = false;
   modalContent6: boolean = false;
   modalContent7: boolean = false;
+  showbutton: boolean = true;
+  showAllData: boolean = false;
+  showbutton1: boolean = true;
+  showAllData1: boolean = false;
   isJobDetailsActive = false;
   isPersonalDetailsActive = true;
   employee: any = [];
@@ -150,6 +154,8 @@ export class EmployeeProfileComponent implements OnInit {
 
   experienceForm: FormGroup;
   educationForm: FormGroup;
+  experienceItems: FormArray;
+  educationItems: FormArray;
 
   get registrationFormControl() {
     return this.form.controls;
@@ -157,36 +163,63 @@ export class EmployeeProfileComponent implements OnInit {
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
     console.log('select', this.user);
+
+    // --------------------EXPERIENCE FORM ARRAY----------------------//
     this.experienceForm = new FormGroup({
-      experienceItems: new FormArray([this.createExperienceItem()]),
+      experienceItems: new FormArray([]),
     });
+
+    this.experienceItems = this.experienceForm.get(
+      'experienceItems'
+    ) as FormArray;
+
+    if (
+      this.user &&
+      this.user.experienceItems &&
+      this.user.experienceItems.length > 0
+    ) {
+      this.user.experienceItems.forEach((item) => {
+        this.addItem();
+      });
+    } else {
+      this.addItem();
+    }
+
+    // --------------------EDUCATION FORM ARRAY----------------------//
     this.educationForm = new FormGroup({
-      educationItems: new FormArray([this.createEducationItem()]),
+      educationItems: new FormArray([]),
     });
+
+    this.educationItems = this.educationForm.get('educationItems') as FormArray;
+
+    if (
+      this.user &&
+      this.user.educationItems &&
+      this.user.educationItems.length > 0
+    ) {
+      this.user.educationItems.forEach((item) => {
+        this.addeducation();
+      });
+    } else {
+      this.addeducation();
+    }
   }
 
-  createEducationItem(): FormGroup {
+  createEducationItem(item?: any): FormGroup {
     return new FormGroup({
-      college: new FormControl(''),
-      cgpa: new FormControl(''),
-      passing: new FormControl(''),
-      stream: new FormControl(''),
+      college: new FormControl(item?.college || ''),
+      cgpa: new FormControl(item?.cgpa || ''),
+      passing: new FormControl(item?.passing || ''),
+      stream: new FormControl(item?.stream || ''),
     });
   }
-  createExperienceItem(): FormGroup {
+  createExperienceItem(item?: any): FormGroup {
     return new FormGroup({
-      expcompany: new FormControl(''),
-      expduration: new FormControl(''),
-      explocation: new FormControl(''),
-      expdesignation: new FormControl(''),
+      expcompany: new FormControl(item?.expcompany || ''),
+      expduration: new FormControl(item?.expduration || ''),
+      explocation: new FormControl(item?.explocation || ''),
+      expdesignation: new FormControl(item?.expdesignation || ''),
     });
-  }
-
-  get educationItems() {
-    return this.educationForm.get('educationItems') as FormArray;
-  }
-  get experienceItems() {
-    return this.experienceForm.get('experienceItems') as FormArray;
   }
 
   addeducation() {
@@ -411,17 +444,6 @@ export class EmployeeProfileComponent implements OnInit {
     console.log(arr3.name);
     this.user.maritalStatus = arr3.name;
   }
-  // Changeselect3(arr3: any) {
-  //   this.Selectvariable3 = arr3.name;
-  //   this.colorvariable3 = arr3.id;
-  //   if (arr3.value === '') {
-  //     this.Selectvariable3 = this.form.controls['maritalStatus'].value;
-  //     this.colorvariable3 = this.array3.length; // Set the colorvariable3 to the index of the custom value in the array
-  //     this.array3[this.colorvariable3] = {id: this.colorvariable3, name: this.Selectvariable3, value: this.Selectvariable3};
-  //   }
-  //   this.form.controls['maritalStatus'].setValue(this.Selectvariable3);
-  //   this.form.controls['motherName'].setValue(this.form.controls['motherName'].value); // Set the value of the input field to itself to trigger change detection
-  // }
   personaldetails() {
     this.personaldetail = true;
     this.jobdetail = false;
@@ -611,9 +633,11 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = true;
     this.loader = true;
-    console.log(this.educationForm.value);
-    const updatedData = this.educationForm.value;
-    updatedData['_id'] = this.user._id;
+    this.user.educationItems = data.educationItems;
+    const updatedData = {
+      _id: this.user._id,
+      educationItems: this.user.educationItems,
+    };
     this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
       this.modalContent6 = false;
@@ -642,11 +666,11 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent6 = false;
     this.modalContent7 = true;
     this.loader = true;
-
-    console.log(this.experienceForm.value);
-    const updatedData = this.experienceForm.value;
-    console.log('exp', updatedData);
-    updatedData['_id'] = this.user._id;
+    this.user.experienceItems = data.experienceItems;
+    const updatedData = {
+      _id: this.user._id,
+      experienceItems: this.user.experienceItems,
+    };
     this.dashService.updateEmployee(updatedData).subscribe((res) => {
       console.log('experience', res);
       this.modalContent7 = false;
@@ -764,19 +788,7 @@ export class EmployeeProfileComponent implements OnInit {
     });
   }
 
-  // openotherinput:boolean=false;
-  // openInput() {
-  //   if (this.array2.name==="Others"){
-  //      this.openotherinput=true;
-  //   }
-  // }
-
   //VIEW MORE AND VIEW LESS
-  showbutton: boolean = true;
-  showAllData: boolean = false;
-  showbutton1: boolean = true;
-  showAllData1: boolean = false;
-
   showMoredata() {
     this.showAllData = true;
     this.showbutton = false;
