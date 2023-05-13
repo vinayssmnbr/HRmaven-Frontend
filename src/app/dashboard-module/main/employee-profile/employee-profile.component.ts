@@ -653,7 +653,7 @@ export class EmployeeProfileComponent implements OnInit {
       this.loader = false;
       this.fourthStep = true;
     });
-    this.user = updatedData;
+    // this.user = updatedData;
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
@@ -774,15 +774,25 @@ export class EmployeeProfileComponent implements OnInit {
   //VIEW MORE AND VIEW LESS
   showbutton: boolean = true;
   showAllData: boolean = false;
+  showbutton1: boolean = true;
+  showAllData1: boolean = false;
 
   showMoredata() {
     this.showAllData = true;
     this.showbutton = false;
   }
+  showMoredata1() {
+    this.showAllData1 = true;
+    this.showbutton1 = false;
+  }
 
   hidedata() {
     this.showAllData = false;
     this.showbutton = true;
+  }
+  hidedata1() {
+    this.showAllData1 = false;
+    this.showbutton1 = true;
   }
 
   showpgdetails: boolean = false;

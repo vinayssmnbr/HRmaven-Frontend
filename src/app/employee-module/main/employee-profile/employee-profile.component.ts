@@ -48,10 +48,11 @@ export class EmployeeProfileComponent {
   capitalCheck: boolean = false;
   smallCheck: boolean = false;
   numericalCheck: boolean = false;
-  signupLoader:boolean = false;
+  signupLoader: boolean = false;
 
   is_visible = false;
   password = '';
+  loaderz: boolean = false;
 
   checkPassword() {
     const input = this.password.trim();
@@ -66,9 +67,19 @@ export class EmployeeProfileComponent {
     document.getElementById('count').innerText = `Length: ${input.length}`;
   }
   constructor(private empdashService: EmpService) {
+    // this.empdashService.getEmployeeRecord().subscribe((res) => {
+    //   console.log('pro', res);
+    //   this.obj = res.response;
+    //   console.log('xyz', this.obj);
+    // });
+    this.getEmployeesideProfile();
+  }
+  getEmployeesideProfile() {
+    this.loaderz = true;
     this.empdashService.getEmployeeRecord().subscribe((res) => {
       console.log('pro', res);
       this.obj = res.response;
+      this.loaderz = false;
       console.log('xyz', this.obj);
     });
   }
