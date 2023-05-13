@@ -238,6 +238,7 @@ export class SignupComponent {
       // localStorage.setItem('email', this.sigupform.controls['email'].value);
       this.cookie.set('hr_id', result._id);
       this.cookie.set('role', result.role);
+      this.userService.welcome = result.first;
       localStorage.setItem('emailid', this.sigupform.controls['email'].value);
       this.orgnisation = result.username;
       localStorage.setItem('companyname', this.orgnisation);

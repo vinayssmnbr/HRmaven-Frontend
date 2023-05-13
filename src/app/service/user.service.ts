@@ -30,7 +30,7 @@ export class UserService {
 
   isFromLoginPage = false;
 
-
+  welcome:boolean=false;
 
   private behaviorNameSubject: BehaviorSubject<string> =
     new BehaviorSubject<string>('default');
@@ -137,7 +137,7 @@ export class UserService {
 
   // }
 
-  
+
   users(data: any) {
     return this.http.post(this.prefix + 'login', data);
   }
@@ -224,7 +224,7 @@ export class UserService {
 
   private client: filestack.Client;
   fileUrl: any;
-emailId = localStorage.getItem('emailid') 
+emailId = localStorage.getItem('emailid')
   async upload( emailId:any,file: File) {
     try {
       const res = await this.client.upload(file);
@@ -241,8 +241,8 @@ emailId = localStorage.getItem('emailid')
   }
 
 
-  
-  
+
+
 
 
 }

@@ -209,12 +209,12 @@
 
 .input_field i {
   position: absolute;
-  margin-left: -240px;
+  margin-left: -233px;
   margin-top: 17px;
 }
 
 .number1 {
-  padding: 20px 32px;
+  padding: 20px 38px;
   width: 250px;
   height: 44px;
   background: #ffffff;
@@ -1975,14 +1975,35 @@ input::placeholder {
 }
 
 .no_data {
-  /* background-color: #f9f9f9; */
   padding: 20px 0;
   text-align: center;
   justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 150px;
   background-color: transparent;
+  /* position: absolute;
+  left: 50%; */
+}
+.no-data {
+  padding: 20px 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+}
+.no-data h2{
+  margin-top: 15px;
+  color: #444444;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
 }
 /* tbody img{
   background-color: #ffffff;

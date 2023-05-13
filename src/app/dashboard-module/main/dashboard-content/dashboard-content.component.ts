@@ -7,6 +7,7 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../../../service/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmployeeService } from 'src/app/service/employee.service';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -28,9 +29,10 @@ export class DashboardContentComponent implements OnInit {
     private route: ActivatedRoute,
     public userService: UserService,
     public dashService: DashService,
+    public empService: EmployeeService,
     private http: HttpClient,
     @Inject(DOCUMENT) public document: Document,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
   ) {
     dashService.activeComponent = 'dashboard';
     dashService.headerContent = '';
@@ -38,6 +40,9 @@ export class DashboardContentComponent implements OnInit {
     setTimeout(() => {
       this.loadermain = false;
     }, 3000);
+
+   this.empService.welcome
+
   }
 
   personaldataForm = new FormGroup({
@@ -49,13 +54,13 @@ export class DashboardContentComponent implements OnInit {
     // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
 
   })
-  
+
   phoneValidator(control: FormControl) {
     const value = control.value;
     const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
     return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
   }
-  
+
   onInput(event: any) {
     const input = event.target as HTMLInputElement;
     const value = input.value.replace(/\D/g, ''); // remove any non-numeric characters
@@ -66,8 +71,8 @@ export class DashboardContentComponent implements OnInit {
     }
     this.isInputDirty = true;
   }
-  
-  
+
+
   isEmptyInput = false;
   isInputDirty = false;
 
@@ -471,8 +476,8 @@ export class DashboardContentComponent implements OnInit {
   console.warn(this.meetingForm.value);
 }
 
-showhrmaven:boolean=true;
+showhrmaven1:boolean=true;
 closewelcome(){
-  this.showhrmaven=false;
+  this.showhrmaven1=false;
 }
 }

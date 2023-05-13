@@ -261,7 +261,7 @@ isNewPasswordSame: boolean = false;
     //   const email = this.employeeemail;
     //    this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
     //   // this.isPasswordMatched = false;
-      
+
     //   this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
     //     console.log("message: ", res);
     //     console.log("message email: ", res.message);
@@ -277,8 +277,8 @@ isNewPasswordSame: boolean = false;
     //       this.isSamePassword = true
     //       console.log(res.message)
 
-    //     } 
-        
+    //     }
+
     //     this.oldpassword = this.oldpassword;
 
     //       // Check if new password is the same as the old password
@@ -292,19 +292,19 @@ isNewPasswordSame: boolean = false;
     //   (error:any)=>{
     //     this.isSamePassword=true
     //   }
-      
+
     //   );
     // }
 //     matchpwd() {
 //       const email = this.employeeemail;
 //       this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
 //       this.isPasswordMatched = false;
-    
+
 //       // this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
 //       //   console.log("message: ", res);
 //       //   console.log("message email: ", res.message);
 //       //   console.log("message pwd email: ", res.password);
-    
+
 //       //   if (res.message === 'Password matches') {
 //       //     this.isPasswordMatched = true;
 //       //     this.oldpwd = res.password;
@@ -424,29 +424,29 @@ onNewPasswordChange() {
 isFormDisabled() {
   return !this.isPasswordMatched || this.forgetpwd.invalid;
 }
-    
+
     isPasswordInput: boolean = false;
     // matchpwd() {
     //   const email = this.employeeemail;
     //   this.oldpassword = this.forgetpwd.controls['oldpassword'].value;
-    
+
     //   this.userService.getpwdmgt(email, this.oldpassword).subscribe((res: any) => {
     //     console.log("message: ", res);
     //     console.log("message email: ", res.message);
     //     console.log("message pwd email: ", res.password);
-    
+
         // if (res.message === 'Password matches') {
         //   this.oldpwd = res.password;
         //   this.func['password'].setErrors({isPasswordMatched: true});
-        // } 
+        // }
         // else{
         //   this.func['password'].setErrors(null);
         //   this.func['password'].markAsTouched(); // Mark the control as touched to trigger validation messages
         // }
     //   });
     // }
-    
- 
+
+
 
 
 
@@ -487,8 +487,9 @@ isFormDisabled() {
 
   }
 
-  closeModal1(){
+  closeModal1(data:any){
     this.showModal1 = false;
+    // this.companyDetailsForm.patchValue(data)
     // this.headOffice = this.personaldata.headOffice;
     // this.description = this.personaldata.description
 
@@ -624,6 +625,32 @@ isFormDisabled() {
   // onKeyUp(event): void {
   //   event.target.value = event.target.value.trim();
   // }
+  showPassword = false;
+  showPasswordIcon = 'fa-eye-slash';
+  showPassword1 = false;
+  showPasswordIcon1 = 'fa-eye-slash';
+
+  showPassword2 = false;
+  showPasswordIcon2 = 'fa-eye-slash';
+
+
+  togglePasswordVisibility2(passwordInput2: any) {
+    this.showPassword2 = !this.showPassword2;
+    this.showPasswordIcon2 = this.showPassword2 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput2.type = this.showPassword2 ? 'password' : 'text';
+
+
+  }
+  togglePasswordVisibility1(passwordInput1: any) {
+    this.showPassword1 = !this.showPassword1;
+    this.showPasswordIcon1= this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput1.type = this.showPassword1? 'password' : 'text';
+  }
+  togglePasswordVisibility(passwordInput: any) {
+    this.showPassword = !this.showPassword;
+    this.showPasswordIcon = this.showPassword ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput.type = this.showPassword ? 'password' : 'text';
+  }
 
 
   }
