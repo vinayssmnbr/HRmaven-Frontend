@@ -41,6 +41,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+    localStorage.setItem('personalDataSubmitted', JSON.stringify(true));
     this.userService.isFromLoginPage = false;
     // this.userService.isFromLoginPage = false;
     const storedemail = localStorage.getItem('email');
@@ -201,8 +202,11 @@ ress: any =''
     console.log(this.loginForm.value);
     // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
-      console.log("personalDataSubmitted value: ", res.personalDataSubmitted); // Debugging statement
+      localStorage.setItem('personalDataSubmitted', 'true');
+      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); // Debugging statement
       if (res.personalDataSubmitted) {
+      
+      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); 
         localStorage.setItem('personalDataSubmitted', 'true');
       }
       console.log("ress: ", res.username)
@@ -238,6 +242,7 @@ ress: any =''
         console.log(res._id);
         this.cookie.set('hr_id', res._id);
         this.cookie.set('role', 'hr');
+              localStorage.setItem('personalDataSubmitted', 'true');
         this.submit();
       } else if (res.message == 'Invalid' || res.message == "Employee email or status invalid") {
         console.log('haha');

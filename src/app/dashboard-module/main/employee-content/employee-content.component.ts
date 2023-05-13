@@ -53,7 +53,7 @@ export class EmployeeContentComponent implements OnInit {
   progressText: any;
   progress: number = 0;
   interval: any;
-  importFileResponse: any = { success: [], error: [] }
+  importFileResponse: any = { success: [], error: [] };
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -387,7 +387,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -439,11 +439,11 @@ export class EmployeeContentComponent implements OnInit {
   array1: any = [
     {
       id: 0,
-      name: 'Full-Time Permanent',
+      name: 'Full-Time',
     },
     {
       id: 1,
-      name: 'Part-Time Employement',
+      name: 'Part-Time',
     },
     {
       id: 2,
@@ -733,7 +733,7 @@ export class EmployeeContentComponent implements OnInit {
     this.isstatus = true;
     setTimeout(() => {
       this.isstatus = false;
-    },3000);
+    }, 3000);
     switch (event.target.value) {
       case 'active': {
         this.optionStyle = {
@@ -878,7 +878,6 @@ export class EmployeeContentComponent implements OnInit {
     // }
   }
 
-
   // download(): void {
   //   const selectedEmployee = this.employee.filter(emp => emp.checked);
   //   if (selectedEmployee.length === 0) {
@@ -899,7 +898,6 @@ export class EmployeeContentComponent implements OnInit {
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
-
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
@@ -959,7 +957,7 @@ export class EmployeeContentComponent implements OnInit {
       return;
     }
     let errors = [];
-    let sucesses = []
+    let sucesses = [];
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
@@ -1019,13 +1017,13 @@ export class EmployeeContentComponent implements OnInit {
 
       let uid: number = -1;
       let numSuccesses = 0;
-      let numFailures = 0; 
+      let numFailures = 0;
       let responseArr = [];
       // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
-        console.log(res.message)
+        console.log(res.message);
         if (uid == -1) return 'there is an error while getting uid';
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
@@ -1034,8 +1032,8 @@ export class EmployeeContentComponent implements OnInit {
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
-              console.log('res', res)
-              console.log('messagge', res.message)
+              console.log('res', res);
+              console.log('messagge', res.message);
 
               // console.log('Response:', res);
               this.loader = true;
@@ -1053,9 +1051,8 @@ export class EmployeeContentComponent implements OnInit {
               }
               else if (res.status == "Success") {
                 numSuccesses++;
-                sucesses.push(res)
+                sucesses.push(res);
                 // console.log( sucesses.push(res));
-              
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
@@ -1069,9 +1066,9 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.numFailures = numFailures;
               }
             },
-            async(error: any) => {
+            async (error: any) => {
               errors.push({ ...employee, error });
-              responseArr.push(employee)
+              responseArr.push(employee);
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
                 this.loader = false;
@@ -1092,9 +1089,6 @@ export class EmployeeContentComponent implements OnInit {
 
     reader.readAsText(file);
   }
-
-
-
 
   //FOR CHECKING THE CHECK BOX
 
@@ -1226,5 +1220,5 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  ngOnChange() { }
+  ngOnChange() {}
 }

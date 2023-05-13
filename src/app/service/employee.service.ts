@@ -43,7 +43,7 @@ export class EmployeeService {
 
     return this.http.post(this.prefix+"resetpassword", data, { headers });
   }
-
+  welcome:boolean=false;
 
 
   //LOGIN AND VERIFY DASHBOARD
@@ -57,6 +57,7 @@ export class EmployeeService {
   //     }
 
   // }
+
 users(data:any){
   return this.http.post(this.prefix+"login/emp",data)
 }

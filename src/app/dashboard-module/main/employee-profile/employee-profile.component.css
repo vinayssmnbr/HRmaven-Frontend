@@ -212,24 +212,48 @@
   position: absolute;
   right: 8%;
   display: none;
-  padding: 6px 14px;
+  /* padding: 5px 5px; */
   font-weight: 400;
   font-size: 12px;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  gap: 10px;
-  background: #FFFFFF;
+  width: 30px;
+    height: 30px;
+ border-radius: 50%;
+  background: #F0F0F0;
   border: 1px solid #E0E0E0;
-  border-radius: 22px;
   cursor: pointer;
   color: #333333;
   margin-bottom: 15px;
   margin-right: -20px;
 }
-
+.edit2 {
+  position: absolute;
+  right: 10.3%;
+  display: none;
+  /* padding: 5px 5px; */
+  font-weight: 400;
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #2F2C9F;
+  border: 1px solid #E0E0E0;
+  cursor: pointer;
+  color: #333333;
+  margin-bottom: 15px;
+  margin-right: -20px;
+}
+.edit2 .fa-circle-plus{
+  color: white;
+  background: #2F2C9F;
+}
+.btns{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .fa-pencil {
-  padding-left: 6px;
+  /* padding-left: 6px; */
+  color: #666666;
 }
 
 .card3:hover .edit1 {
@@ -247,7 +271,12 @@
 .card6:hover .edit1 {
   display: block;
 }
-
+.card6:hover .edit2{
+  display: block;
+}
+.card7:hover .edit2 {
+  display: block;
+}
 .card7:hover .edit1 {
   display: block;
 }
