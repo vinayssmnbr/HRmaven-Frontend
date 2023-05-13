@@ -423,13 +423,13 @@
     </div>
   </div>
 
-  <div class="welcome" *ngIf="this.empService.welcome">
+  <div class="welcome" *ngIf="this.login.welcome">
     <div class="welcome_modal">
       <img src="../../../../assets/images/welcome.png.png">
       <h1>Welcome to HRMaven!</h1>
       <p>With HRMaven, it’s easier to access your most important
         stuff.</p>
-        <button (click)="this.empService.welcome=false;">Get Started</button>
+        <button (click)="this.login.welcome=false;">Get Started</button>
 
     </div>
   </div>

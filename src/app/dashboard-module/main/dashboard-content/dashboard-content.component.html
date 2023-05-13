@@ -666,18 +666,16 @@
 
 
         <!----------------------Welcome-modal------------------>
-
-        <div class="welcome_modal" *ngIf="this.dashService.welcome">
-            <div class="welcome-modal">
-                <div class="welcome-to-hrmaven">
-                    <img src="assets/images/Frame 2077.svg" alt="">
-                </div>
-                <div class="welcome-text">
-                    <h4>Welcome to HRMaven!</h4>
-                    <p>With HRMaven, it's easier to access your most important
-                        stuff.</p>
-                    <button (click)="this.dashService.welcome=false">Get Started</button>
-                </div>
+        <div class="welcome_modal" *ngIf="this.userService.welcome">
+        <div class="welcome-modal">
+            <div class="welcome-to-hrmaven">
+                <img src="assets/images/Frame 2077.svg" alt="">
+            </div>
+            <div class="welcome-text">
+                <h4>Welcome to HRMaven!</h4>
+                <p>With HRMaven, it's easier to access your most important
+                    stuff.</p>
+                <button (click)="this.userService.welcome=false" routerLink="/dashboard">Get Started</button>
             </div>
             <label class="balloon b1"><span></span></label>
             <label class="balloon b2"><span></span></label>
