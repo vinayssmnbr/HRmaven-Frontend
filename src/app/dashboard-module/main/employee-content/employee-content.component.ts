@@ -856,8 +856,9 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
-  inavlidModal: boolean = false;
-  closeseModal5() {
+ 
+  inavlidModal: boolean = true;
+  closeModal5() {
     this.inavlidModal = false;
     this.showModal = false;
   }
@@ -1012,7 +1013,7 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
 
       if (data.length === 0) {
-        alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
+        // alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
       }
 
@@ -1048,7 +1049,7 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message }); 
-                // console.log(errors.push({ ...employee, error: res.message }));
+                // errors.push(res); 
               }
               else if (res.status == "Success") {
                 numSuccesses++;

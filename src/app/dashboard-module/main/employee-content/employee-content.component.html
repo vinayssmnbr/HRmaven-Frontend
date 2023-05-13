@@ -755,19 +755,18 @@
         </div>
       </div>
     </div>
-    <div class="modal-content6" *ngIf="csvadded">
+     <!-- <div class="modal-content6" *ngIf="csvadded">
       <div class="modal-header6">
         <img src="./assets/images/tick.png" alt="img">
       </div>
       <div class="modal-body6">
         <h3>Succesful</h3>
-        <!-- <p>Csv File Imported Successfully!</p> -->
         <p style="color:#3D9030">{{importFileResponse. numSuccesses }} Records Imported Successfully!</p>
         <p style="color:red">{{importFileResponse.numFailures}} Records are not imported</p>
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
-    </div>
-    <!--  <div class="modal-content7" *ngIf="invalidModal">
+    </div>  -->
+     <!-- <div class="modal-content7" *ngIf="invalidModal">
       <div class="modal-header7">
         <img src="./assets/images/Vector (4).svg" alt="img1">
         </div>
@@ -779,7 +778,34 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
+     
+      
+<div class="modal-content6" *ngIf="csvadded && importFileResponse.numSuccesses > 0">
+  <div class="modal-header6">
+    <img src="./assets/images/tick.png" alt="img">
+  </div>
+  <div class="modal-body6">
+    <h3>Successful</h3>
+    <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
+    <p style="color:red">{{importFileResponse.numFailures}} Records were not imported</p>
+    <button class="done-btn2" (click)="closecsvadded()">Done</button>
+  </div>
+</div>
 
+
+<div class="modal-content7" *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
+  <div class="modal-header7">
+    <img src="./assets/images/Vector (4).svg" alt="img1">
+  </div>
+  <div class="modal-body7">
+    <h3>Error!</h3>
+    <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
+    <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV file</p>
+    <button class="ok-btn" (click)="closeModal5()">OK</button>
+  </div>
+</div>
+
+    
     </div>
   </div>
 <!-- </div> -->
