@@ -330,7 +330,7 @@ li.active {
     margin-top: 72px;
     font-weight: 400;
     font-size: 12px;
-  
+
 }
 .company-error-message{
     color: #CB1E0F;
@@ -913,10 +913,32 @@ input:disabled {
     border: 1px solid red !important;
 }
 
-.password-matches {
-    border-color: green;
+.valid-password {
+    border: 2px solid green;
 }
 
-.green-border {
-    border: 2px solid green;
+/* .password-toggle i {
+  position: absolute;
+  margin-top: -64px;
+  margin-left: 360px;
+  color: #B4B4B4;
+  cursor: pointer;
+} */
+span.password-toggle  {
+  position: absolute;
+  margin-left: 567px;
+  color: #B4B4B4;
+  cursor: pointer;
+}
+span.password-toggle1  {
+  position: absolute;
+  margin-left: 560px;
+  color: #B4B4B4;
+  cursor: pointer;
+}
+span.password-toggle2  {
+  position: absolute;
+  margin-left: 560px;
+  color: #B4B4B4;
+  cursor: pointer;
 }

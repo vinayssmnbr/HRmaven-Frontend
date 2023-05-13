@@ -86,20 +86,11 @@
         <div class="description-pen">
           <div class="description-heading">
             <h6>Description</h6>
-            <!-- <p *ngIf="description">{{description}}</p> -->
-            <!-- <p *ngIf="description">{{ companyDetailsForm.controls.description.value }}</p>
-                        <p *ngIf="!description">--------</p> -->
-            <p> {{ companyDetailsForm.controls['description'].value }} </p>
-
-
-
+            <p *ngIf="!description; else descriptionValue">---------</p>
+            <ng-template #descriptionValue>
+              <p style="color: #777777;">{{ description }}</p>
+            </ng-template>
           </div>
-
-          <!-- <div class="paragraph-text"> -->
-
-          <!-- <textarea placeholder="{{description}}">{{description}}</textarea> -->
-          <!-- {{description}} -->
-          <!-- </div> -->
         </div>
 
       </div>
@@ -115,9 +106,12 @@
           </div>
           <div class="employee-text">
             <h6>Personal Email</h6>
-            <!-- <p>abhishek1990@gmail.com</p> -->
-            <p> {{employeeemail}} </p>
+            <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
+            <ng-template #employeeEmailValue>
+              <p>{{ personalDetailsForm.controls.personalemail.value }}</p>
+            </ng-template>
           </div>
+
           <div class="head-office-edit">
             <div class="head-office-text">
               <h6>Professional Email</h6>
@@ -151,6 +145,7 @@
     </div>
 
 
+
     <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
       <div class="company-name-headoffice-desc-area">
         <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
@@ -175,8 +170,8 @@
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
             <input type="password" placeholder="Type your old password" class="form-control password" required id="oldp"
-              formControlName="oldpassword" (blur)="matchpwd()" (input)="isInputDirty = true" (input)="onFocusout()"
-              [ngClass]="{'ng_invalid': forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty ,
+              #passwordInput2 formControlName="oldpassword" (blur)="matchpwd()" (input)="isInputDirty = true"
+              (input)="onFocusout()" [ngClass]="{'ng_invalid': forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty ,
                                'ng_valid': forgetpwd.controls.oldpassword.valid}">
 
             <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your old
@@ -191,6 +186,9 @@
                     fill="#CB1E0F" />
                 </svg> This is not your old password.</span>
             </ng-template>
+            <span class="password-toggle" (click)="togglePasswordVisibility2(passwordInput2)">
+              <i class="fa {{ showPasswordIcon2 }}"></i>
+            </span>
             <!-- <ng-template #notMatched>
                         <span
                         *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.oldpasswordtouched || forgetpwd.controls.oldpassworddirty)
@@ -217,8 +215,11 @@
               <label for="">New Password</label>
               <input type="password" placeholder="Type a new password" formControlName="password"
                 class="form-control password" (keyup)="onKeyUp($event)" (input)="onNewPasswordChange()" required
-                id="passwordp" [ngClass]="{'ng-invalid': forgetpwd.controls.password.errors?.isPasswordMatched && forgetpwd.controls.password.dirty,
-                                             'ng-valid': forgetpwd.controls.password.valid}">
+                id="passwordp" #passwordInput1 [ngClass]="{'ng-invalid': forgetpwd.controls.password.errors?.isPasswordMatched && forgetpwd.controls.password.dirty,
+                                             'ng-valid': forgetpwd.controls.password.valid}"> <span
+                class="password-toggle" (click)="togglePasswordVisibility1(passwordInput1)">
+                <i class="fa {{ showPasswordIcon1 }}"></i>
+              </span>
               <p class="old-message" *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -226,7 +227,9 @@
                     fill="#CB1E0F" />
                 </svg> New password must be different from the old password.
               </p>
+
             </div>
+
           </div>
 
 
@@ -256,9 +259,11 @@
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
-                class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp"
+                class="form-control password" (keyup)="onKeyUp($event)" required id="confirmp" #passwordInput
                 [ngClass]="{'ng_invalid': forgetpwd.controls.confirm.invalid && forgetpwd.controls.confirm.dirty, 'ng_valid': forgetpwd.controls.confirm.valid && forgetpwd.errors?.['passwordmatcherror']}">
-
+              <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+                <i class="fa {{ showPasswordIcon }}"></i>
+              </span>
             </div>
             <span
               *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.confirm.touched || forgetpwd.controls.confirm.dirty)"
@@ -270,6 +275,7 @@
               </svg>
               Password didn't match
             </span>
+
           </div>
 
           <!-- </form> -->
@@ -352,18 +358,31 @@
         </div>
 
 
+        <!-- <div class="name-email">
+                    <div class="form__group">
+                        <label for="name" class="company-descrip">Description</label>
+                        <div class="modal-text">
+                           <textarea class="textarea-2" formControlName="description"
+                                placeholder="Enter description" *ngIf="!description; else descriptionValue ">------</textarea>
+                                <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
+                                <ng-template #descriptionValue>
+                                  <p>{{ personalDetailsForm.controls.description.value }}</p>
+                                </ng-template>
+
+                        </div>
+                    </div>
+
+                </div> -->
         <div class="name-email">
           <div class="form__group">
             <label for="name" class="company-descrip">Description</label>
             <div class="modal-text">
-              <!-- <input type="text" [readonly]="true"
-                              placeholder=""  > -->
               <textarea class="textarea-2" formControlName="description"
-                placeholder="Enter description">{{description}}</textarea>
+                placeholder="Enter description">{{ description || '------------' }}</textarea>
             </div>
           </div>
-
         </div>
+
 
 
 
@@ -431,11 +450,6 @@
             <input type="email" class="form_input" style=" background-color: #f4f4f4;
                         color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
           </div>
-          <!-- <div class="form__group">
-                        <label for="phone">Phone no.</label>
-                        <input type="number" class="form_input" placeholder='Enter Phone Number' formControlName="phone" id="phone" required maxlength="10"[disabled]="personalDetailsForm.get('phone').errors?.invalidPhone" />
-                        <div *ngIf="personalDetailsForm.get('phone').errors?.invalidPhone">Please enter a valid phone number</div>
-                    </div> -->
           <div class="form__group">
             <label for="phone">Phone no.</label>
             <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone"
@@ -452,7 +466,8 @@
         </div>
         <div class="edit-profile-footer">
           <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)"
-            [disabled]="personalDetailsForm.controls['phone'].invalid ">{{doneLoader1? 'Loading....':'Done'}}</button>
+            [disabled]="personalDetailsForm.controls['phone'].invalid ||  personalDetailsForm.controls['personalemail'].invalid">{{doneLoader1?
+            'Loading....':'Done'}}</button>
         </div>
 
 

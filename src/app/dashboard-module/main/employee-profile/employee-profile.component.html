@@ -47,7 +47,7 @@
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -90,7 +90,7 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openmodal2(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal2(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -123,7 +123,7 @@
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
-        <button class="edit1" (click)="openModal3(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal3(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -159,7 +159,10 @@
     <div class="card6" *ngIf="personaldetail">
       <div class="details">
         <h3>Education</h3>
-        <button class="edit1" (click)="openModal4(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <div class="btns">
+        <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button>
+        <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pencil"></i></button>
+        </div>
       </div>
       <div class="row1" *ngIf="!showAllData1">
         <div class="column1">
@@ -210,7 +213,8 @@
     <div class="card7" *ngIf="personaldetail">
       <div class="details">
         <h3>Experience</h3>
-        <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button>
+        <button class="edit1" (click)="openModal5(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div>
         <div class="row1" *ngIf="!showAllData">
@@ -262,7 +266,7 @@
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
         <h3>Work Details</h3>
-        <button class="edit1" (click)="openmodal1(user)">Edit <i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
