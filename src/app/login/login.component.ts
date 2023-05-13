@@ -41,6 +41,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+    localStorage.setItem('personalDataSubmitted', JSON.stringify(true));
     this.userService.isFromLoginPage = false;
     // this.userService.isFromLoginPage = false;
     const storedemail = localStorage.getItem('email');
