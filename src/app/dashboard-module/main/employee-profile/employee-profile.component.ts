@@ -361,11 +361,11 @@ export class EmployeeProfileComponent implements OnInit {
   array8: any = [
     {
       id: 0,
-      name: 'Full-Time Permanent',
+      name: 'Full-Time',
     },
     {
       id: 1,
-      name: 'Part-Time Employement',
+      name: 'Part-Time',
     },
     {
       id: 2,
@@ -494,6 +494,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = false;
+    this.modalContent2 = false;
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
   }
@@ -582,6 +583,7 @@ export class EmployeeProfileComponent implements OnInit {
   openModal3(user) {
     this.fourthStep = false;
     this.showModal = true;
+    this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent1 = false;
     this.modalContent5 = true;
@@ -617,6 +619,7 @@ export class EmployeeProfileComponent implements OnInit {
   openModal4(user) {
     this.fourthStep = false;
     this.showModal = true;
+    this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent1 = false;
     this.modalContent5 = false;
@@ -649,6 +652,7 @@ export class EmployeeProfileComponent implements OnInit {
   openModal5(user) {
     this.fourthStep = false;
     this.showModal = true;
+    this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent1 = false;
     this.modalContent5 = false;

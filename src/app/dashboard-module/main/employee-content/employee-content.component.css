@@ -2398,3 +2398,6 @@ div.loader-parent {
   align-items: center;
   height: 100%;
 }
+.card-cursor {
+  cursor: pointer;
+}
