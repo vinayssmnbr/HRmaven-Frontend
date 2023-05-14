@@ -148,7 +148,6 @@ isInputDirty = false;
         this.companyDetailsForm.patchValue({
           headOffice: res.personaldata.headOffice
         });
-          this.phone = res.personaldata.phone;
           this.description  = res.personaldata.description
           this.description = res.personaldata.description;
 
