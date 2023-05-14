@@ -160,8 +160,8 @@
       <div class="details">
         <h3>Education</h3>
         <div class="btns">
-        <!-- <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button> -->
-        <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pencil"></i></button>
+          <!-- <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button> -->
+          <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pencil"></i></button>
         </div>
       </div>
       <div class="row1" *ngIf="!showAllData1">
@@ -557,8 +557,7 @@
                 </div>
                 <div class="input">
                   <label>Cgpa/Percentage</label>
-                  <input type="number" formControlName="cgpa" placeholder="9.0" class="text no-spin"
-                [ngClass]="{'ng_invalid': registrationFormControl.cgpa.invalid && registrationFormControl.cgpa.dirty,'ng_valid': registrationFormControl.cgpa.valid}">
+                  <input type="number" formControlName="cgpa" placeholder="9.0" class="text no-spin">
                 </div>
                 <div class="input">
                   <label>Stream</label>
@@ -568,8 +567,7 @@
               <div class="form-row">
                 <div class="input">
                   <label>Year of Passing</label>
-                  <input type="number" formControlName="passing" placeholder="2016" class="text no-spin"
-                [ngClass]="{'ng_invalid': registrationFormControl.passing.invalid && registrationFormControl.passing.dirty,'ng_valid': registrationFormControl.passing.valid}">
+                  <input type="number" formControlName="passing" placeholder="2016" class="text no-spin">
                 </div>
               </div>
             </div>

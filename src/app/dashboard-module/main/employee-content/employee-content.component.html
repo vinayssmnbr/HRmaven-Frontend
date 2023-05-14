@@ -84,7 +84,7 @@
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
-
+  <!------------------------------------------------------ TABLE VIEW ------------------------------------------------------------->
   <div class="table-wrapper" *ngIf="tableview">
     <table>
       <thead>
@@ -226,7 +226,7 @@
             </p>
             <h2>No Record Found!</h2>
           </td>
-          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all' || user.found=='true'">
+          <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
 
             <td *ngIf="user.found!='true'" [ngClass]="{'active':user.found=='!true','inactive':user.found=='true'}">
               <div class="employee1"><input type="checkbox" [value]="user.id" [checked]="user.checked"
@@ -276,15 +276,19 @@
       </div>
     </table>
   </div>
+
+  <!------------------------------------------------------ CARD VIEW ------------------------------------------------------------->
+
   <div class="card-wrapper" *ngIf="cardview">
-    <div class="show-select">
+    <div class="show-select" [ngClass]="{'disabledBtn1': selectedEmployess.length==0}">
       <div class="show">
         <div class="show-left">
-          <input type="checkbox">
+          <input type="checkbox" [checked]="employee.length > 0 && selectedEmployess.length == employee.length"
+            (change)="onCheckboxChange($event,'All')">
           <p>Select All</p>
         </div>
         <div class="show-right">
-          <span>1</span>
+          <span>{{SelectedCard()}}</span>
           <p>Selected</p>
         </div>
       </div>
@@ -414,9 +418,10 @@
           <h2>No Record Found!</h2>
         </div>
         <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail" (click)="selectEmployee(user)" routerLink="/employee-profile">
+          <div class="card-detail">
             <div class="first-detail">
-              <input type="checkbox">
+              <input type="checkbox" [value]="user.id" [checked]="user.checked"
+                (change)="onCheckboxChange($event, user)">
               <div class="icons1">
                 <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
                   (change)="onSelectChange($event, user)" [value]="user.status"
@@ -429,24 +434,24 @@
                 <img src="./assets/images/down-arrow.png" alt="">
               </div>
             </div>
-            <div class="image-detail">
-              <span>
-                <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
-                <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
+              <div class="image-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+                <span>
+                  <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
+                  <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
 
-              </span>
-            </div>
-            <div class="per-detail">
-              <h3>{{user.name}}</h3>
-              <div class="per-detail1">
-                <p>{{user.designation}}<span> | {{user.uid}}</span></p>
+                </span>
+              </div>
+              <div class="per-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+                <h3>{{user.name}}</h3>
+                <div class="per-detail1">
+                  <p>{{user.designation}}<span> | {{user.uid}}</span></p>
+                </div>
+              </div>
+              <div class="contact-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+                <p>{{user.mobile}}</p>
+                <span>{{user.email}}</span>
               </div>
             </div>
-            <div class="contact-detail">
-              <p>{{user.mobile}}</p>
-              <span>{{user.email}}</span>
-            </div>
-          </div>
         </ng-container>
       </div>
     </div>
