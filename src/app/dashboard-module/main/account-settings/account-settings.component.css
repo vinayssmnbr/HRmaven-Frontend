@@ -503,7 +503,15 @@ li.active {
     display: flex;
     gap: 25px;
     margin-top: 25px;
+    /* margin-left: -933px; */
 }
+/* .email-phone p {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+    margin-left: -62px;
+}
+ */
 
 .edit-profile-footer {
     background-color: #F7F7FB;
