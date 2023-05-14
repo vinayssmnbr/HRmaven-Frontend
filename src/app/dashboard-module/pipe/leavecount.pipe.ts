@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'leavecount',
-  pure:false
+  pure:true
 })
 export class LeavecountPipe implements PipeTransform {
 
