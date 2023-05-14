@@ -2,20 +2,20 @@
 <app-sidebar></app-sidebar>
 <div class="leaves">
   <div class="row">
-    <div class="col-3">
+    <div class="col-3" *ngFor="let i of leaves | leavecount">
       <div class="card">
         <div class="progress-text">
-          <h3>Total Leaves</h3>
-          <h1>{{ acceptcount+pendingcount+rejectcount }}</h1>
+          <h3>{{i.name}}</h3>
+          <h1>{{i.count}}</h1>
         </div>
         <div class="progress-circle-container">
-          <div class="progress-circle progress-100">
+          <div class="progress-circle progress-{{( i.count/i.total)*100 | number:'1.0-0'}}">
             <span></span>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <!-- <div class="col-3">
       <div class="card">
         <div class="progress-text">
           <h3>Accepted Leaves</h3>
@@ -39,12 +39,12 @@
           <div class="progress-circle progress-{{ (rejectcount / total) * 100  | number:'1.0-0'  }}">
             <!-- <div class="progress-circle-container rejectleavesProgress">
           <div class="progress-circle progress-58"> -->
-            <span></span>
+            <!-- <span></span>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-3">
+    </div> -->
+    <!-- <div class="col-3">
       <div class="card">
         <div class="progress-text">
           <h3>Pending Leaves</h3>
@@ -54,11 +54,11 @@
           <div class="progress-circle progress-{{ (pendingcount / total) * 100  | number:'1.0-0' }}">
             <!-- <div class="progress-circle-container pendingleavesProgress">
           <div class="progress-circle progress-88"> -->
-            <span></span>
+            <!-- <span></span>
           </div>
         </div>
       </div>
-    </div>
+    </div>   -->
   </div>
   <div class="search_form">
     <div class="search_heading">
@@ -150,7 +150,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let n of pendingleave; let index = index">
+        <tr *ngFor="let n of leaves | leavestatus:'pending' let index=index;">
+          <ng-container *ngIf="n!='nofound'">
           <td scope="row">
             <input class="form-check-input" type="checkbox" [value]="n._id" [checked]="n.select"
               (change)="onChange($event)" /><span> {{ n.uid }}</span>
@@ -184,6 +185,7 @@
               </div>
             </div>
           </td>
+        </ng-container>
         </tr>
         <ng-container *ngIf="pendingleave.length == 0 || pendingleave == undefined">
           <tr>
@@ -223,7 +225,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let n of rejectleave">
+        <tr *ngFor="let n of leaves | leavestatus:'reject'">
+          <ng-container *ngIf="n!='nofound'">
           <td scope="row">
             {{ n.uid }}
           </td>
@@ -246,6 +249,7 @@
           <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td>
           <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
           <td *ngIf="n.url==''">---</td>
+        </ng-container>
         </tr>
         <ng-container *ngIf="rejectleave.length == 0 || rejectleave == undefined">
           <tr>
@@ -284,7 +288,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let n of acceptleave">
+        <tr *ngFor="let n of leaves | leavestatus:'accept'">
+          <ng-container *ngIf="n!='nofound'">
           <td scope="row">
             {{ n.uid }}
           </td>
@@ -307,6 +312,7 @@
           <!-- <td *ngIf="n.category!='medical' && n.category!='compensatory' && n.category!='casual'">----</td> -->
           <td *ngIf="n.url!=''"><a href={{n.url}} target="_blank">view</a></td>
           <td *ngIf="n.url==''">---</td>
+        </ng-container>
         </tr>
         <ng-container *ngIf="acceptleave.length == 0 || acceptleave == undefined">
           <tr>
