@@ -21,30 +21,54 @@
 }
 
 p.reason>span {
-  visibility: hidden;
+  /* visibility: hidden;
   width: 150px;
   height: 50px;
   position: absolute;
   left: 10px;
-  color: red;
-  background-color: #15e01c;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* background: #333333;
+  border: 0.2px solid #999999;
+  color: #FEFEFE;  */
+  visibility: hidden;
+  width: 250px;
+  height: 46px;
+  position: absolute;
+  left: 10px;
+  white-space: break-spaces;
+  border-radius: 5px;
+  padding: 5px;
+  overflow-y: auto;
+  background: #333333;
+  border: 0.2px solid #999999;
+  color: #FEFEFE;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+
 }
-.tool{
+
+
+.tool {
   position: relative;
 }
+
 p.reason:hover>span {
   visibility: visible;
-  width: 218px;
-  padding: 10px;
+  transform: translateY(-120%);
+  transition-duration: 1s;
+}
+p.reason>span::-webkit-scrollbar {
+  width: 5px;
+}
+p.reason>span::before{
   position: absolute;
-  transform: translateX(-105%);
-  color: red;
-  background-color: #15e01c;
-  white-space: pre-line;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* content: '';
+  width:20px;
+  height: 20px;
+  background-color: #d81515;
+  bottom:+20px; */
 
 }
 
@@ -315,7 +339,7 @@ p.reason:hover>span {
 .Pending,
 .Approved,
 .Rejected {
- /* border: 3px solid transparent; */
+  /* border: 3px solid transparent; */
 }
 
 /* .Pending:hover,
