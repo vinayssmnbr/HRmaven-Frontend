@@ -434,7 +434,7 @@
                 <img src="./assets/images/down-arrow.png" alt="">
               </div>
             </div>
-            <div class="card-cursor" routerLink="/employee-profile" (click)="selectEmployee(user)">
+            <div class="card-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
               <div class="image-detail">
                 <span>
                   <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
@@ -457,10 +457,10 @@
         </ng-container>
       </div>
     </div>
-    <div class="status-card" *ngIf="isstatus">
-      <div class="status-detail">
+    <div class="status-card1" *ngIf="isstatus">
+      <div class="status-detail1">
         <img src="./assets/images/tick.png" alt="">
-        <div class="success-message">
+        <div class="success-message1">
           <h2>Success</h2>
           <p>{{showpopup}}</p>
         </div>

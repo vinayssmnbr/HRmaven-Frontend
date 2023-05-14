@@ -103,6 +103,10 @@ export class DashboardContentComponent {
           this.leave = item.leave,
           this.absent = item.absent
         this.blank = false;
+        if(this.total!=0 && this.leave==0 && this.absent==0 && this.present==0)
+        {
+          this.blank=true;
+        }
       }
       else {
         this.present = this.absent = this.leave = 0;
@@ -169,6 +173,10 @@ export class DashboardContentComponent {
           this.leave = item.leave,
           this.absent = item.absent
         this.blank = false;
+        if(this.total!=0 && this.leave==0 && this.absent==0 && this.present==0)
+        {
+          this.blank=true;
+        }
       }
       else {
         this.present = this.absent = this.leave = 0;
