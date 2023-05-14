@@ -28,6 +28,8 @@ import { TimesheetComponent } from './main/timesheet/timesheet.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { EmpstatusPipe } from './pipe/empstatus.pipe';
 import { MonthwisefilterPipe } from './pipe/monthwisefilter.pipe';
+import { LeavestatusPipe } from './pipe/leavestatus.pipe';
+import { LeavecountPipe } from './pipe/leavecount.pipe';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { MonthwisefilterPipe } from './pipe/monthwisefilter.pipe';
     CalendarComponent,
     EmpstatusPipe,
     MonthwisefilterPipe,
+    LeavestatusPipe,
+    LeavecountPipe,
   ],
   imports: [
     CommonModule,

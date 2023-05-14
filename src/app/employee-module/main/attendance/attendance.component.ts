@@ -34,6 +34,7 @@ export class AttendanceComponent implements OnInit {
       const m = d.getMonth();
       console.log(res.response);
       this.obj = res.response;
+      this.loader=false;
       res.response.map((d) => {
         let date = new Date(d.date);
         let month = date.getMonth();
@@ -91,7 +92,7 @@ export class AttendanceComponent implements OnInit {
     }
     else {
       console.log("out of range");
-      alert('out of rangeout of range');
+      alert('out of range');
 
 
     }
@@ -134,7 +135,7 @@ export class AttendanceComponent implements OnInit {
     }
     else {
       console.log("out of range");
-      alert('out of rangeout of range');
+      alert('out of range');
     }
   }
 
@@ -173,7 +174,7 @@ export class AttendanceComponent implements OnInit {
 
       this.ipAddress = res.ip;
       console.log(this.ipAddress);
-      this.loader=false;
+
 
     });
 

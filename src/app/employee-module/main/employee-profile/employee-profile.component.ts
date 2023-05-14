@@ -48,10 +48,11 @@ export class EmployeeProfileComponent {
   capitalCheck: boolean = false;
   smallCheck: boolean = false;
   numericalCheck: boolean = false;
-  signupLoader:boolean = false;
+  signupLoader: boolean = false;
 
   is_visible = false;
   password = '';
+  loaderz: boolean = false;
 
   checkPassword() {
     const input = this.password.trim();
@@ -66,9 +67,19 @@ export class EmployeeProfileComponent {
     document.getElementById('count').innerText = `Length: ${input.length}`;
   }
   constructor(private empdashService: EmpService) {
+    // this.empdashService.getEmployeeRecord().subscribe((res) => {
+    //   console.log('pro', res);
+    //   this.obj = res.response;
+    //   console.log('xyz', this.obj);
+    // });
+    this.getEmployeesideProfile();
+  }
+  getEmployeesideProfile() {
+    this.loaderz = true;
     this.empdashService.getEmployeeRecord().subscribe((res) => {
       console.log('pro', res);
       this.obj = res.response;
+      this.loaderz = false;
       console.log('xyz', this.obj);
     });
   }
@@ -330,17 +341,6 @@ export class EmployeeProfileComponent {
     this.isPersonalDetailsActive = false;
     this.isPasswordManagement = false;
   }
-  showMoredata() {
-    this.showdata = true;
-    this.showbutton = false;
-    this.viewless = true;
-  }
-  hidedata() {
-    this.showdata = false;
-    this.viewless = false;
-    this.showbutton = true;
-  }
-
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
   Changeselect(arr: any) {
@@ -671,5 +671,25 @@ export class EmployeeProfileComponent {
         this.isPasswordmatched = true;
       }
     );
+  }
+
+  showbutton1: boolean = true;
+  showAllData1: boolean = false;
+  showAllData: boolean = false;
+  showMoredata1() {
+    this.showAllData1 = true;
+    this.showbutton1 = false;
+  }
+  hidedata1() {
+    this.showAllData1 = false;
+    this.showbutton1 = true;
+  }
+  showMoredata() {
+    this.showAllData = true;
+    this.showbutton = false;
+  }
+  hidedata() {
+    this.showAllData = false;
+    this.showbutton = true;
   }
 }

@@ -53,6 +53,8 @@ export class EmployeeContentComponent implements OnInit {
   progressText: any;
   progress: number = 0;
   interval: any;
+  countCard = 0;
+  selectAllChecked: boolean = false;
   importFileResponse: any = { success: [], error: [] };
   constructor(
     public dashService: DashService,
@@ -179,10 +181,13 @@ export class EmployeeContentComponent implements OnInit {
   form1Valid: boolean = this.form.controls.name.valid;
 
   //GET DATA
+  loaderz: boolean = false;
   fetchdata() {
+    this.loaderz = true;
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      this.loaderz = false;
       this.isfetched = true;
       if (res.length > 0) {
         this.emptybox = false;
@@ -523,6 +528,7 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr.name);
     this.designation = arr.name;
     console.log('str', this.designation);
+
     // this.dashService
     //   .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
     //   .subscribe((res) => {
@@ -1096,14 +1102,15 @@ export class EmployeeContentComponent implements OnInit {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
     this.isSelectDisabled = $event.target.checked;
-
     if (isChecked) {
+      this.countCard++;
       if (user == 'All') {
         this.selectedEmployess = [...this.employee];
         // Check all checkboxes
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = true;
         });
+        this.countCard = this.employee.length;
       } else {
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
@@ -1115,12 +1122,14 @@ export class EmployeeContentComponent implements OnInit {
       }
       console.log(this.selectedEmployess, 'added employees');
     } else {
+      this.countCard--;
       if (user == 'All') {
         this.selectedEmployess = [];
         // Uncheck all checkboxes
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = false;
         });
+        this.countCard = 0;
       } else {
         let index: number = -1;
         this.selectedEmployess.forEach((el: any, i: number) => {
@@ -1221,4 +1230,29 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   ngOnChange() {}
+  searchFieldDisabled(): boolean {
+    return this.employee.length == 0;
+  }
+
+  // caardSelect() {
+  //   const checkbox = event.target as HTMLInputElement;
+  //   if (checkbox.checked) {
+  //     this.countCard++;
+  //   } else {
+  //     this.countCard--;
+  //   }
+  // }
+  SelectedCard() {
+    return this.countCard;
+  }
+  // SelectAll(event: Event, user: any): void {
+  //   const checkbox = event.target as HTMLInputElement;
+  //   this.selectAllChecked = checkbox.checked;
+
+  //   this.employee.forEach((user) => {
+  //     user.checked = checkbox.checked;
+  //   });
+
+  //   this.countCard = checkbox.checked ? this.employee.length : 0;
+  // }
 }

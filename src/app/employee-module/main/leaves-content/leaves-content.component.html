@@ -62,7 +62,7 @@
                 <th>DURATION</th>
                 <th>CATEGORY</th>
                 <th>Type</th>
-                <th>REASON</th>
+                <th class="reasonz">REASON</th>
                 <th>STATUS</th>
                 <th>COMMENT (BY HR)</th>
               </tr>
@@ -201,7 +201,12 @@
                   <td>{{item.duration}}</td>
                   <td>{{item.category}}</td>
                   <td>{{item.type}}</td>
-                  <td>{{item.reason}}</td>
+                  <td class="tool">
+                    <p class="reasonz">
+                      <span>{{item.reason}}</span>
+                      {{item.reason}}
+                    </p>
+                  </td>
                   <td>{{item.status}}</td>
                   <td>{{item.message}}</td>
                 </ng-container>
@@ -392,7 +397,7 @@
               <th>DURATION</th>
               <th>CATEGORY</th>
               <th>Type</th>
-              <th>REASON</th>
+              <th class="reasonz">REASON</th>
               <th>STATUS</th>
               <th>COMMENT (BY HR)</th>
             </tr>
@@ -405,14 +410,11 @@
               <td>{{n.duration}}</td>
               <td>{{n.category}}</td>
               <td>{{n.type}}</td>
-              <td>
-                <p class="mt20">
-                  <span class="tooltip"
-                    data-tooltip="I found what I need. And it's not friends, it's things  not friends, it's things not friends, it's things not friends, it's things not friends, it's things. I found what I need. And it's not friends, it's things  "
-                    data-tooltip-pos="right" data-tooltip-length="medium">{{n.reason}}
-                  </span>
+              <td class="tool">
+                <p class="reasonz">
+                  <span>{{n.reason}}</span>
+                  {{n.reason}}
                 </p>
-
               </td>
               <td>{{n.status}}</td>
               <td>

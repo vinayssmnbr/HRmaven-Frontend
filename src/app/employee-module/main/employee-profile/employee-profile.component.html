@@ -1,6 +1,9 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-<div class="main">
+<div class="loader-parent" *ngIf="loaderz">
+  <div class="loader"></div>
+</div>
+<div class="main" *ngIf="!loaderz">
   <div class="card">
     <div class="card1">
       <img src="./assets/images/left_arrow.svg" routerLink="/employee/dashboard" alt="">
@@ -143,53 +146,30 @@
         </div>
       </div>
     </div>
-    <div class="card6" *ngIf="personaldetail">
+    <!-- ---------------------------------------EDUCATION----------------------------------------------->
+
+    <!-- <div class="card6" *ngIf="personaldetail">
       <div class="details">
         <h3>Education</h3>
-        <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
       <div class="row1">
         <div class="column1">
-          <span class="inst1">10th Grade Institute</span>
+          <span class="inst1">School/College</span>
           <p *ngIf="!obj.matric">----------</p>
           <p class="inst1" *ngIf="obj.matric">{{obj.matric}}</p>
-          <span class="inst2">12th Grade Institute</span>
+          <span class="inst2">Passing Year</span>
           <p *ngIf="!obj.inter">----------</p>
           <p class="inst2" *ngIf="obj.inter">{{obj.inter}}</p>
-          <span class="gcol">Graduation College/University</span>
-          <p *ngIf="!obj.graduation">----------</p>
-          <p class="gcol" *ngIf="obj.graduation">{{obj.graduation}}</p>
-          <span class="pgcol" *ngIf="showdata">Post Graduation College/University</span>
-          <p *ngIf="!obj.pg && showdata">----------</p>
-          <p class="pgcol" *ngIf="obj.pg && showdata">{{obj.pg}}</p>
         </div>
         <div class="column2">
-          <span class="mper">Matriculation Percentage</span>
+          <span class="mper">Percentage/Cgpa</span>
           <p *ngIf="!obj.matricPercent">----------</p>
           <p class="mper" *ngIf="obj.matricPercent">{{obj.matricPercent}}</p>
-          <span class="dper">12th Grade/Diploma Percentage</span>
-          <p *ngIf="!obj.interPercent">----------</p>
-          <p class="dper" *ngIf="obj.interPercent">{{obj.interPercent}}</p>
-          <span class="sgpa">Cgpa</span>
-          <p *ngIf="!obj.graduationCgpa">----------</p>
-          <p class="sgpa" *ngIf="obj.graduationCgpa">{{obj.graduationCgpa}}</p>
-          <span class="pgsgpa" *ngIf="showdata">PgCgpa</span>
-          <p *ngIf="!obj.pgCgpa && showdata">-----------</p>
-          <p class="pgsgpa" *ngIf="obj.pgCgpa && showdata">{{obj.pgCgpa}}</p>
         </div>
         <div class="column3">
-          <span class="yop">Year of Passing</span>
+          <span class="yop">Stream</span>
           <p *ngIf="!obj.matricpassing">----------</p>
           <p class="yop" *ngIf="obj.matricpassing">{{obj.matricpassing}}</p>
-          <span class="yop1">Year of Passing</span>
-          <p *ngIf="!obj.interpassing">----------</p>
-          <p class="yop1" *ngIf="obj.interpassing">{{obj.interpassing}}</p>
-          <span class="stream">Graduation Stream</span>
-          <p *ngIf="!obj.graduationStream">----------</p>
-          <p class="stream" *ngIf="obj.pgStream">{{obj.graduationStream}}</p>
-          <span class="pgstream" *ngIf="showdata">Post Graduation Stream</span>
-          <p *ngIf="!obj.pgStream && showdata">----------</p>
-          <p class="pgstream" *ngIf="obj.pgStream && showdata">{{obj.pgStream}}</p>
         </div>
       </div>
       <hr>
@@ -201,14 +181,60 @@
         <button class="hide" (click)="hidedata()" *ngIf="viewless">View less<i
             class="fa-solid fa-angle-up"></i></button>
       </div>
+    </div> -->
+
+
+    <div class="card6" *ngIf="personaldetail">
+      <div class="details">
+        <h3>Education</h3>
+      </div>
+      <div class="row1" *ngIf="!showAllData1">
+        <div class="column1">
+          <span class="orgname">School/College</span>
+          <p class="orgname">{{obj.educationItems[0]?.college || '--------'}}</p>
+          <span class="designation">Passing Year</span>
+          <p class="designation">{{obj.educationItems[0]?.passing || '--------'}}</p>
+        </div>
+        <div class="column2">
+          <span class="location2">Percentage/Cgpa</span>
+          <p class="location2">{{obj.educationItems[0]?.cgpa || '--------'}}</p>
+        </div>
+        <div class="column3">
+          <span class="duration2">Stream</span>
+          <p class="duration2">{{obj.educationItems[0]?.stream || '--------'}}</p>
+        </div>
+      </div>
+      <div *ngFor="let item of obj.educationItems; let i=index">
+        <div class="row1" *ngIf="showAllData1">
+          <div class="column1">
+            <span class="orgname">School/College</span>
+            <p class="orgname">{{item.college || '--------'}}</p>
+            <span class="designation">Passing Year</span>
+            <p class="designation">{{item.passing || '--------'}}</p>
+          </div>
+          <div class="column2">
+            <span class="location2">Percentage/Cgpa</span>
+            <p class="location2">{{item.cgpa || '--------'}}</p>
+          </div>
+          <div class="column3">
+            <span class="duration2">Stream</span>
+            <p class="duration2">{{item.stream || '--------'}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="cnt-btn">
+        <button class="view" (click)="showMoredata1()" *ngIf="showbutton1">View More<i
+            class="fa-solid fa-angle-down"></i></button>
+        <button class="hide" (click)="hidedata1()" *ngIf="!showbutton1 && showAllData1">View less<i
+            class="fa-solid fa-angle-up"></i></button>
+      </div>
     </div>
+    <!-- ---------------------------------------EXPERIENCE ----------------------------------------------->
     <div class="card7" *ngIf="personaldetail">
       <div class="details">
         <h3>Experience</h3>
-        <!-- <button class="edit1" (click)="openModal5(user)">Edit <i class="fa-solid fa-pencil"></i></button> -->
       </div>
-      <div class="row1">
-        <!-- <button class="edit1">Edit <i class="fa-solid fa-pencil"></i></button> -->
+      <div class="row1" *ngIf="!showAllData">
         <div class="column1">
           <span class="orgname">Company/Organisation Name</span>
           <p class="orgname">{{obj.experienceItems[0]?.expcompany || '--------'}}</p>
@@ -224,7 +250,35 @@
           <p class="orgname">{{obj.experienceItems[0]?.expdesignation || '--------'}}</p>
         </div>
       </div>
+
+      <div *ngFor="let item of obj.experienceItems; let i=index">
+        <div class="row1" *ngIf="showAllData">
+          <div class="column1">
+            <span class="orgname">Company/Organisation Name</span>
+            <p class="orgname">{{item.expcompany || '--------'}}</p>
+            <span class="location2">Location</span>
+            <p class="location2">{{item.explocation || '--------'}}</p>
+          </div>
+          <div class="column2">
+            <span class="duration2">Duration</span>
+            <p class="duration2">{{item.expduration || '--------'}}</p>
+          </div>
+          <div class="column3">
+            <span class="designation">Designation</span>
+            <p class="designation">{{item.expdesignation || '--------'}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="cnt-btn">
+        <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+            class="fa-solid fa-angle-down"></i></button>
+        <button class="hide" (click)="hidedata()" *ngIf="!showbutton && showAllData">View less<i
+            class="fa-solid fa-angle-up"></i></button>
+      </div>
+
     </div>
+    <!-- ---------------------------------------******************** ----------------------------------------------->
+
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
         <h3>Work Details</h3>
@@ -285,7 +339,7 @@
                 (keyup)="checkConfirmPassword()"
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
               <div class="tooltip">
-                <!-- <img src="assets/images/valid_error.png" alt=""> -->
+                <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
                   <ul>
                     <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}"

@@ -1359,10 +1359,10 @@ input[type="number"]:hover {
 .text.ng_invalid:hover {
   border: 1px solid red;
 }
-.list.ng_valid{
-border: 1px solid green;
+.list.ng_valid {
+  border: 1px solid green;
 }
-.list.ng_invalid{
+.list.ng_invalid {
   border: 1px solid red;
 }
 .text.ng_valid {
@@ -1385,23 +1385,11 @@ border: 1px solid green;
   color: #cb1e0f;
   margin-top: 3px;
 }
-
-.loader {
-  border: 8px solid #f3f3f3;
-  /* Light grey */
-  border-top: 8px solid #2f2c9f;
-  /* Blue */
-  border-radius: 50%;
-  position: absolute;
-  margin-top: 34px;
-  margin-left: 34px;
-  width: 35px;
-  height: 35px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+div.loader-parent {
+  width: calc(100% - 223px);
+  margin-left: 223px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
