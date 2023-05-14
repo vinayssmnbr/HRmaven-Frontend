@@ -49,7 +49,8 @@
       <div class="toggle">
         <ul>
           <li class="all" [class.color]="id ==='all'" [ngClass]="{'active':id==='all'}" (click)="tabChange('all')">
-            <a>Company Details</a></li>
+            <a>Company Details</a>
+          </li>
           <li class="unread " [class.color]="id ==='unread'" [ngClass]="{'active':id==='unread'}"
             (click)="tabChange('unread')"><a>Personal Details</a>
           </li>
@@ -78,11 +79,8 @@
             <div class="text">
               <button class="edit" (click)="openModal1() ">Edit <img src="assets/images/pen.svg" alt=""></button>
             </div>
-
-
           </div>
         </div>
-
         <div class="description-pen">
           <div class="description-heading">
             <h6>Description</h6>
@@ -101,7 +99,6 @@
         <div class="company-name-headoffice">
           <div class="company-name">
             <h6>Name</h6>
-            <!-- <p>Abhishek Sharma</p> -->
             <p> {{employeename}} </p>
           </div>
           <div class="employee-text">
@@ -111,11 +108,9 @@
               <p>{{ personalDetailsForm.controls.personalemail.value }}</p>
             </ng-template>
           </div>
-
           <div class="head-office-edit">
             <div class="head-office-text">
               <h6>Professional Email</h6>
-              <!-- <p>hr@hrmaven.com</p> -->
               <p>{{professional_email_id}}</p>
             </div>
           </div>
@@ -123,86 +118,40 @@
             <div class="text">
               <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg" alt=""></button>
             </div>
-
-        <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
-            <div class="company-name-headoffice-desc-area">
-                <div class="company-name-headoffice">
-                    <div class="company-name">
-                        <h6>Name</h6>
-                        <!-- <p>Abhishek Sharma</p> -->
-                        <p> {{employeename}} </p>
-                    </div>
-                    <div class="employee-text">
-                        <h6>Personal Email</h6>
-                        <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
-                        <ng-template #employeeEmailValue>
-                          <p>{{ personalDetailsForm.controls.personalemail.value }}</p>
-                        </ng-template>
-                      </div>
-
-                    <div class="head-office-edit">
-                        <div class="head-office-text">
-                            <h6>Professional Email</h6>
-                            <!-- <p>hr@hrmaven.com</p> -->
-                            <p>{{professional_email_id}}</p>
-                        </div>
-                    </div>
-                    <div class="edit-password-button">
-                        <div class="text">
-                            <button class="edit" (click)="openModal2()">Edit <img src="assets/images/pen.svg"
-                                    alt=""></button>
-                        </div>
-
           </div>
-
         </div>
-
-
-        <div class="company-name-headoffice">
-          <div class="phone-number">
-            <h6>Phone Number</h6>
-            <!-- <p>+91 9825634510</p> -->
-            <p> {{phone}} </p>
-          </div>
-
-        </div>
-
-
       </div>
-
     </div>
-
-
-
     <div class="company-name-headoffice-desc" *ngIf="id ==='important' ">
       <div class="company-name-headoffice-desc-area">
         <form action="submit" [formGroup]="forgetpwd" (ngSubmit)="newpassword(forgetpwd.value)">
 
           <!--
-                    <div class="old-new-confirm-password">
-                        <label for="">Old Password</label>
-                        <input type="password"
-                        placeholder="Type your old password"
-                        class="form-control password"
-                        required
-                        id="oldp"
-                        formControlName="oldpassword"
-                        (blur)="matchpwd()"
-                        (input)="isInputDirty = true">
+            <div class="old-new-confirm-password">
+                <label for="">Old Password</label>
+                <input type="password"
+                placeholder="Type your old password"
+                class="form-control password"
+                required
+                id="oldp"
+                formControlName="oldpassword"
+                (blur)="matchpwd()"
+                (input)="isInputDirty = true">
 
-                        <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
-                        <ng-template #notMatched>
-                          <p *ngIf="isInputDirty && !isEmptyInput" style="color: red;">This is not your old password.</p>
-                        </ng-template>
-                      </div> -->
+                <p *ngIf="isPasswordMatched; else notMatched" style="color: green;">This is your old password.</p>
+                <ng-template #notMatched>
+                  <p *ngIf="isInputDirty && !isEmptyInput" style="color: red;">This is not your old password.</p>
+                </ng-template>
+              </div> -->
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
             <input type="password" placeholder="Type your old password" class="form-control password" required id="oldp"
               #passwordInput2 formControlName="oldpassword" (blur)="matchpwd()" (input)="isInputDirty = true"
               (input)="onFocusout()" [ngClass]="{'ng_invalid': forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty ,
-                               'ng_valid': forgetpwd.controls.oldpassword.valid}">
+                       'ng_valid': forgetpwd.controls.oldpassword.valid}">
 
-            <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your old
+            <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your
+              old
               password.</p>
             <ng-template #notMatched>
               <span
@@ -217,26 +166,7 @@
             <span class="password-toggle" (click)="togglePasswordVisibility2(passwordInput2)">
               <i class="fa {{ showPasswordIcon2 }}"></i>
             </span>
-            <!-- <ng-template #notMatched>
-                        <span
-                        *ngIf="forgetpwd.errors?.['passwordmatcherror'] && (forgetpwd.controls.oldpasswordtouched || forgetpwd.controls.oldpassworddirty)
-                        && isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched"
-                        class="error-message"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
-                                fill="#CB1E0F" />
-                        </svg>
-                        This is not your old password.
-                    </span>
-                    </ng-template> -->
           </div>
-
-
-
-
-
-
 
           <div class="new-reenter">
             <div class="old-new-confirm-password">
@@ -244,8 +174,8 @@
               <input type="password" placeholder="Type a new password" formControlName="password"
                 class="form-control password" (keyup)="onKeyUp($event)" (input)="onNewPasswordChange()" required
                 id="passwordp" #passwordInput1 [ngClass]="{'ng-invalid': forgetpwd.controls.password.errors?.isPasswordMatched && forgetpwd.controls.password.dirty,
-                                             'ng-valid': forgetpwd.controls.password.valid}"> <span
-                class="password-toggle" (click)="togglePasswordVisibility1(passwordInput1)">
+                                     'ng-valid': forgetpwd.controls.password.valid}"> <span class="password-toggle"
+                (click)="togglePasswordVisibility1(passwordInput1)">
                 <i class="fa {{ showPasswordIcon1 }}"></i>
               </span>
               <p class="old-message" *ngIf="forgetpwd.controls.password.errors?.isPasswordMatched">
@@ -255,34 +185,8 @@
                     fill="#CB1E0F" />
                 </svg> New password must be different from the old password.
               </p>
-
             </div>
-
           </div>
-
-
-          <!-- <div class="new-reenter">
-                        <div class="old-new-confirm-password">
-                            <label for="">New Password</label>
-                            <input type="password" placeholder="Type a new password" formControlName="password" class="form-control password" (keyup)="onKeyUp($event)" required id="passwordp"
-                        [ngClass]="{'ng_invalid':forgetpwd.controls.password.invalid && forgetpwd.controls.password.dirty,'ng_valid':forgetpwd.controls.password.valid}">
-
-
-
-                        </div>
-                      </div> -->
-
-
-
-
-          <!-- <p *ngIf="isSamePassword ; else notpwdMatched" style="color: green;">New password cannot be same as old password</p>
-                        <ng-template #notpwdMatched>
-
-                          <p  style="color: black;">New password.</p>
-                        </ng-template> -->
-          <!-- </div>
-                    </div> -->
-
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">Confirm Password</label>
@@ -303,232 +207,161 @@
               </svg>
               Password didn't match
             </span>
-
           </div>
-
-          <!-- </form> -->
           <div class="clear-update-button">
             <button class="clear-btn" (click)="clearForm()">Clear</button>
             <button class="update-btn" (click)="openModal3()" type="submit"
               [disabled]="!isPasswordMatched || forgetpwd.invalid || isFormDisabled()">Update Password</button>
-
           </div>
         </form>
 
       </div>
     </div>
   </div>
+</div>
 
 
 
 
 
 
-  <!--Modal 1-->
-
-
-
-
-
-
-
-  <!-- <form class="Modal_form" *ngIf="showModal1"> -->
-  <div class="Modal_form" *ngIf="showModal1">
-    <div class="company_modal">
-      <i class="fa-solid fa-xmark" (click)="closeModal1()"></i>
-      <div class="edit-company-heading">
-        <h3>Update Company Details </h3>
-      </div>
-
-      <form action="submit" class="form" [formGroup]="companyDetailsForm"
-        (ngSubmit)="updateData(companyDetailsForm.value)">
-        <div class="name-email">
-          <div class="form__group">
-            <label for="name">Company Name</label>
-            <input type="text" class="form_input" placeholder='{{organisationn}}' id="name" disabled />
-          </div>
-          <!-- <div class="form__group">
-                        <label for="employeeno">No. of employees</label>
-                        <input type="number" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder="{{totalemployee}}" id="employeeno" disabled />
-                    </div>  -->
-          <div class="form__group">
-            <label for="email">Head Office</label>
-            <input type="text" class="form_input" placeholder='head office' formControlName="headOffice" id="email"
-              required />
-
-
-            <span
-              *ngIf="companyDetailsForm.controls.headOffice.invalid && companyDetailsForm.controls.headOffice.touched">
-              <span *ngIf="companyDetailsForm.controls.headOffice.errors.required" class="company-error-message">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
-                    fill="#CB1E0F" />
-                </svg> Name is required.
-              </span>
-              <span *ngIf="companyDetailsForm.controls.headOffice.errors.pattern" class="company-error-message">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
-                    fill="#CB1E0F" />
-                </svg> Must start with a capital letter.
-              </span>
-              <!-- <span *ngIf="personaldataForm.get('headOffice').errors?.minlength && personaldataForm.get('headOffice').touched">
-                                *Must be at least 2 characters.
-                              </span> -->
-            </span>
-
-
-
-
-          </div>
-        </div>
-
-
-        <!-- <div class="name-email">
-                    <div class="form__group">
-                        <label for="name" class="company-descrip">Description</label>
-                        <div class="modal-text">
-                           <textarea class="textarea-2" formControlName="description"
-                                placeholder="Enter description" *ngIf="!description; else descriptionValue ">------</textarea>
-                                <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
-                                <ng-template #descriptionValue>
-                                  <p>{{ personalDetailsForm.controls.description.value }}</p>
-                                </ng-template>
-
-                        </div>
-                    </div>
-
-                </div> -->
-        <div class="name-email">
-          <div class="form__group">
-            <label for="name" class="company-descrip">Description</label>
-            <div class="modal-text">
-              <textarea class="textarea-2" formControlName="description"
-                placeholder="Enter description">{{ description || '------------' }}</textarea>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-      </form>
-
-
-      <div class="company-details-footer">
-        <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)"
-          [disabled]="companyDetailsForm.invalid">{{doneLoader1?
-          'Loading....':'Done'}}</button>
-      </div>
+<!--Modal 1-->
+<div class="Modal_form" *ngIf="showModal1">
+  <div class="company_modal">
+    <i class="fa-solid fa-xmark" (click)="closeModal1()"></i>
+    <div class="edit-company-heading">
+      <h3>Update Company Details </h3>
     </div>
-    <!-- </form> -->
-  </div>
 
-  <!--Modal 2-->
-
-
-
-  <!-- <form class="Modal_form" *ngIf="showModal2"> -->
-  <div class="Modal_form" *ngIf="showModal2">
-    <div class="Modal_modal">
-      <i class="fa-solid fa-xmark" (click)="closeModal2()"></i>
-      <div class="edit-profile-heading">
-        <h3>Edit Personal Details </h3>
-      </div>
-
-      <form class="form" [formGroup]="personalDetailsForm" (ngSubmit)="updateData(personalDetailsForm.value)">
-        <div class="name-email">
-          <div class="form__group">
-            <label for="empname">Name</label>
-            <input type="text" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder='{{employeename}}' id="empname" disabled />
-
-          </div>
-          <div class="form__group">
-            <label>Personal Email</label>
-            <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail" required />
-            <span
-              *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
-              <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
-                    fill="#CB1E0F" />
-                </svg> Personal Email is required.
-              </span>
-              <span *ngIf="personalDetailsForm.controls.personalemail.errors.pattern" class="modal-error-message">
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
-                    fill="#CB1E0F" />
-                </svg> Enter Valid Pattern.
-              </span>
-            </span>
-          </div>
+    <form action="submit" class="form" [formGroup]="companyDetailsForm"
+      (ngSubmit)="updateData(companyDetailsForm.value)">
+      <div class="name-email">
+        <div class="form__group">
+          <label for="name">Company Name</label>
+          <input type="text" class="form_input" placeholder='{{organisationn}}' id="name" disabled />
         </div>
+        <!-- <div class="form__group">
+              <label for="employeeno">No. of employees</label>
+              <input type="number" class="form_input" style=" background-color: #f4f4f4;
+              color: #aaa;" placeholder="{{totalemployee}}" id="employeeno" disabled />
+          </div>  -->
+        <div class="form__group">
+          <label for="email">Head Office</label>
+          <input type="text" class="form_input" placeholder='head office' formControlName="headOffice" id="email"
+            required />
 
 
-
-        <div class="email-phone">
-          <div class="form__group">
-            <label for="professionalemail">Professional Email</label>
-            <input type="email" class="form_input" style=" background-color: #f4f4f4;
-                        color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
-          </div>
-          <div class="form__group">
-            <label for="phone">Phone no.</label>
-            <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone"
-              required pattern="\d*" maxlength="10" (input)="onInput($event)" />
-            <span *ngIf="isInputDirty && isPhoneInvalid" class="phone-error-message"> <svg width="13" height="13"
-                viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <span
+            *ngIf="companyDetailsForm.controls.headOffice.invalid && companyDetailsForm.controls.headOffice.touched">
+            <span *ngIf="companyDetailsForm.controls.headOffice.errors.required" class="company-error-message">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
                   fill="#CB1E0F" />
-              </svg>Please enter a valid phone number</span>
+              </svg> Name is required.
+            </span>
+            <span *ngIf="companyDetailsForm.controls.headOffice.errors.pattern" class="company-error-message">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                  fill="#CB1E0F" />
+              </svg> Must start with a capital letter.
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="name-email">
+        <div class="form__group">
+          <label for="name" class="company-descrip">Description</label>
+          <div class="modal-text">
+            <textarea class="textarea-2" formControlName="description"
+              placeholder="Enter description">{{ description || '------------' }}</textarea>
           </div>
-
-
         </div>
-        <div class="edit-profile-footer">
-          <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)"
-            [disabled]="personalDetailsForm.controls['phone'].invalid ||  personalDetailsForm.controls['personalemail'].invalid">{{doneLoader1?
-            'Loading....':'Done'}}</button>
-        </div>
-
-
-      </form>
-
-
-      <!-- <div class="edit-profile-footer">
-                <button class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)">Done</button>
-            </div> -->
+      </div>
+    </form>
+    <div class="company-details-footer">
+      <button class="done-btn" (click)="closeModal1(); updateData(companyDetailsForm.value)"
+        [disabled]="companyDetailsForm.invalid">{{doneLoader1?
+        'Loading....':'Done'}}</button>
     </div>
-    <!-- </form> -->
   </div>
-
-
-
-
-  <!--Modal 3-->
-
-
-
-
-  <form class="leave_approved_form" *ngIf="showModal3">
-    <div class="leave_approved_modal">
-      <i class="fa-solid fa-xmark" (click)="closeModal3()"></i>
-      <div class="logo_bg">
-        <img src="assets/images/tick.png" alt="image">
-      </div>
-      <h4>Password Changed Successfully!</h4>
-      <p>Your password has been updated.</p>
-      <div class="Done_form_btn">
-        <button class="Done_btn" (click)="closeModal3()">Done</button>
-      </div>
-    </div>
-  </form>
-
 </div>
+<!--Modal 2-->
+<div class="Modal_form" *ngIf="showModal2">
+  <div class="Modal_modal">
+    <i class="fa-solid fa-xmark" (click)="closeModal2()"></i>
+    <div class="edit-profile-heading">
+      <h3>Edit Personal Details </h3>
+    </div>
+
+    <form class="form" [formGroup]="personalDetailsForm" (ngSubmit)="updateData(personalDetailsForm.value)">
+      <div class="name-email">
+        <div class="form__group">
+          <label for="empname">Name</label>
+          <input type="text" class="form_input" style=" background-color: #f4f4f4;
+              color: #aaa;" placeholder='{{employeename}}' id="empname" disabled />
+
+        </div>
+        <div class="form__group">
+          <label>Personal Email</label>
+          <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail" required />
+          <span
+            *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
+            <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                  fill="#CB1E0F" />
+              </svg> Personal Email is required.
+            </span>
+            <span *ngIf="personalDetailsForm.controls.personalemail.errors.pattern" class="modal-error-message">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                  fill="#CB1E0F" />
+              </svg> Enter Valid Pattern.
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="email-phone">
+        <div class="form__group">
+          <label for="professionalemail">Professional Email</label>
+          <input type="email" class="form_input" style=" background-color: #f4f4f4;
+              color: #aaa;" placeholder='{{professional_email_id}}' id="professionalemail" disabled />
+        </div>
+        <div class="form__group">
+          <label for="phone">Phone no.</label>
+          <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone"
+            required pattern="\d*" maxlength="10" (input)="onInput($event)" />
+          <span *ngIf="isInputDirty && isPhoneInvalid" class="phone-error-message"> <svg width="13" height="13"
+              viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z"
+                fill="#CB1E0F" />
+            </svg>Please enter a valid phone number</span>
+        </div>
+      </div>
+      <div class="edit-profile-footer">
+        <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)"
+          [disabled]="personalDetailsForm.controls['phone'].invalid ||  personalDetailsForm.controls['personalemail'].invalid">{{doneLoader1?
+          'Loading....':'Done'}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--Modal 3-->
+<form class="leave_approved_form" *ngIf="showModal3">
+  <div class="leave_approved_modal">
+    <i class="fa-solid fa-xmark" (click)="closeModal3()"></i>
+    <div class="logo_bg">
+      <img src="assets/images/tick.png" alt="image">
+    </div>
+    <h4>Password Changed Successfully!</h4>
+    <p>Your password has been updated.</p>
+    <div class="Done_form_btn">
+      <button class="Done_btn" (click)="closeModal3()">Done</button>
+    </div>
+  </div>
+</form>
