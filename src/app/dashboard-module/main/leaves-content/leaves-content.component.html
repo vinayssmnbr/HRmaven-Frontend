@@ -163,10 +163,10 @@
           <td>{{ n.duration }}</td>
           <td>{{ n.category }}</td>
           <td>{{n.type}}</td>
-          <td class="tool">
-            <p class="reason">
-              <span>{{n.reason}}</span>
-              {{n.reason}}
+          <td>
+            <p class="mt20">
+              <span class="tooltip" data-tooltip= 'n.reason' data-tooltip-pos="right" data-tooltip-length="medium">{{
+                n.reason }}</span>
             </p>
           </td>
           <td *ngIf="n.category=='casual'">{{n.balance.casual}}</td>
