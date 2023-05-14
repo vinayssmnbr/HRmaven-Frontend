@@ -526,6 +526,7 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr.name);
     this.designation = arr.name;
     console.log('str', this.designation);
+
     // this.dashService
     //   .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
     //   .subscribe((res) => {
@@ -1224,4 +1225,7 @@ export class EmployeeContentComponent implements OnInit {
   }
 
   ngOnChange() {}
+  searchFieldDisabled(): boolean {
+    return this.employee.length == 0;
+  }
 }
