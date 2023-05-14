@@ -414,7 +414,7 @@
           <h2>No Record Found!</h2>
         </div>
         <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail">
+          <div class="card-detail" (click)="selectEmployee(user)" routerLink="/employee-profile">
             <div class="first-detail">
               <input type="checkbox">
               <div class="icons1">
@@ -450,10 +450,10 @@
         </ng-container>
       </div>
     </div>
-    <div class="status-card" *ngIf="isstatus">
-      <div class="status-detail">
+    <div class="status-card1" *ngIf="isstatus">
+      <div class="status-detail1">
         <img src="./assets/images/tick.png" alt="">
-        <div class="success-message">
+        <div class="success-message1">
           <h2>Success</h2>
           <p>{{showpopup}}</p>
         </div>

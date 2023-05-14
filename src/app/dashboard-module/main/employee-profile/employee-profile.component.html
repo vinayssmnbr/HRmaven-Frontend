@@ -553,21 +553,23 @@
               <div class="form-row">
                 <div class="input">
                   <label>School/College</label>
-                  <input type="text" formControlName="college" placeholder="Company Name">
+                  <input type="text" formControlName="college" placeholder="Guru Nanak Public School">
                 </div>
                 <div class="input">
                   <label>Cgpa/Percentage</label>
-                  <input type="text" formControlName="cgpa" placeholder="Duration">
+                  <input type="number" formControlName="cgpa" placeholder="9.0" class="text no-spin"
+                [ngClass]="{'ng_invalid': registrationFormControl.cgpa.invalid && registrationFormControl.cgpa.dirty,'ng_valid': registrationFormControl.cgpa.valid}">
                 </div>
                 <div class="input">
                   <label>Stream</label>
-                  <input type="text" formControlName="stream" placeholder="Designation">
+                  <input type="text" formControlName="stream" placeholder="General">
                 </div>
               </div>
               <div class="form-row">
                 <div class="input">
                   <label>Year of Passing</label>
-                  <input type="text" formControlName="passing" placeholder="Location">
+                  <input type="number" formControlName="passing" placeholder="2016" class="text no-spin"
+                [ngClass]="{'ng_invalid': registrationFormControl.passing.invalid && registrationFormControl.passing.dirty,'ng_valid': registrationFormControl.passing.valid}">
                 </div>
               </div>
             </div>

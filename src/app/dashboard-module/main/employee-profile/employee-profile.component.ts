@@ -208,8 +208,14 @@ export class EmployeeProfileComponent implements OnInit {
   createEducationItem(item?: any): FormGroup {
     return new FormGroup({
       college: new FormControl(item?.college || ''),
-      cgpa: new FormControl(item?.cgpa || ''),
-      passing: new FormControl(item?.passing || ''),
+      cgpa: new FormControl(item?.cgpa || '',
+      [Validators.required,
+      Validators.pattern('^[0-9]{1,2}(?:\\.[0-9]{1,2})?$')
+    ]),
+      passing: new FormControl(item?.passing || '',
+      [Validators.required,
+      Validators.pattern('^20[0-9]{2}$')
+    ]),
       stream: new FormControl(item?.stream || ''),
     });
   }
