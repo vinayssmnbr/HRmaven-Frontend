@@ -558,7 +558,7 @@
                 <div class="input">
                   <label>Cgpa/Percentage</label>
                   <input type="number" formControlName="cgpa" placeholder="9.0" class="text no-spin"
-                [ngClass]="{'ng_invalid': registrationFormControl.cgpa.invalid && registrationFormControl.cgpa.dirty,'ng_valid': registrationFormControl.cgpa.valid}">
+                [ngClass]="{'ng_invalid': educationForm.controls.cgpa.invalid && educationForm.controls.cgpa.dirty,'ng_valid': educationForm.controls.cgpa.valid}">
                 </div>
                 <div class="input">
                   <label>Stream</label>
@@ -569,7 +569,7 @@
                 <div class="input">
                   <label>Year of Passing</label>
                   <input type="number" formControlName="passing" placeholder="2016" class="text no-spin"
-                [ngClass]="{'ng_invalid': registrationFormControl.passing.invalid && registrationFormControl.passing.dirty,'ng_valid': registrationFormControl.passing.valid}">
+                [ngClass]="{'ng_invalid': educationForm.controls.passing.invalid && educationForm.controls.passing.dirty,'ng_valid': educationForm.controls.passing.valid}">
                 </div>
               </div>
             </div>
