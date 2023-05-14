@@ -944,6 +944,7 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
+  
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -965,22 +966,18 @@ export class EmployeeContentComponent implements OnInit {
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-      // const errorMessage = document.createElement('p');
-      // errorMessage.innerText = 'Invalid file type. Please select a CSV file.';
-      // document.body.appendChild(errorMessage);
-      // return;
+    
     }
 
     function validateCsvFile(file: File): boolean {
       const allowedExtensions = /(\.csv)$/i;
-
-      if (!allowedExtensions.exec(file.name)) {
+      if (!allowedExtensions.test(file.name)) {
         return false;
       }
-
+    
       return true;
     }
-
+    
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -1015,7 +1012,7 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
 
       if (data.length === 0) {
-        alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
+        // alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
       }
 
@@ -1058,6 +1055,7 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
+                
               }
             },
             async (error: any) => {
