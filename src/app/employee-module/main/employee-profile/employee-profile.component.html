@@ -150,46 +150,22 @@
       </div>
       <div class="row1">
         <div class="column1">
-          <span class="inst1">10th Grade Institute</span>
+          <span class="inst1">School/College</span>
           <p *ngIf="!obj.matric">----------</p>
           <p class="inst1" *ngIf="obj.matric">{{obj.matric}}</p>
-          <span class="inst2">12th Grade Institute</span>
+          <span class="inst2">Passing Year</span>
           <p *ngIf="!obj.inter">----------</p>
           <p class="inst2" *ngIf="obj.inter">{{obj.inter}}</p>
-          <span class="gcol">Graduation College/University</span>
-          <p *ngIf="!obj.graduation">----------</p>
-          <p class="gcol" *ngIf="obj.graduation">{{obj.graduation}}</p>
-          <span class="pgcol" *ngIf="showdata">Post Graduation College/University</span>
-          <p *ngIf="!obj.pg && showdata">----------</p>
-          <p class="pgcol" *ngIf="obj.pg && showdata">{{obj.pg}}</p>
         </div>
         <div class="column2">
-          <span class="mper">Matriculation Percentage</span>
+          <span class="mper">Percentage/Cgpa</span>
           <p *ngIf="!obj.matricPercent">----------</p>
           <p class="mper" *ngIf="obj.matricPercent">{{obj.matricPercent}}</p>
-          <span class="dper">12th Grade/Diploma Percentage</span>
-          <p *ngIf="!obj.interPercent">----------</p>
-          <p class="dper" *ngIf="obj.interPercent">{{obj.interPercent}}</p>
-          <span class="sgpa">Cgpa</span>
-          <p *ngIf="!obj.graduationCgpa">----------</p>
-          <p class="sgpa" *ngIf="obj.graduationCgpa">{{obj.graduationCgpa}}</p>
-          <span class="pgsgpa" *ngIf="showdata">PgCgpa</span>
-          <p *ngIf="!obj.pgCgpa && showdata">-----------</p>
-          <p class="pgsgpa" *ngIf="obj.pgCgpa && showdata">{{obj.pgCgpa}}</p>
         </div>
         <div class="column3">
-          <span class="yop">Year of Passing</span>
+          <span class="yop">Stream</span>
           <p *ngIf="!obj.matricpassing">----------</p>
           <p class="yop" *ngIf="obj.matricpassing">{{obj.matricpassing}}</p>
-          <span class="yop1">Year of Passing</span>
-          <p *ngIf="!obj.interpassing">----------</p>
-          <p class="yop1" *ngIf="obj.interpassing">{{obj.interpassing}}</p>
-          <span class="stream">Graduation Stream</span>
-          <p *ngIf="!obj.graduationStream">----------</p>
-          <p class="stream" *ngIf="obj.pgStream">{{obj.graduationStream}}</p>
-          <span class="pgstream" *ngIf="showdata">Post Graduation Stream</span>
-          <p *ngIf="!obj.pgStream && showdata">----------</p>
-          <p class="pgstream" *ngIf="obj.pgStream && showdata">{{obj.pgStream}}</p>
         </div>
       </div>
       <hr>
@@ -285,7 +261,7 @@
                 (keyup)="checkConfirmPassword()"
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
               <div class="tooltip">
-                <!-- <img src="assets/images/valid_error.png" alt=""> -->
+                <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
                   <ul>
                     <li class="list" [ngClass]="{'ng_valid':password.valid,'ng_invalid':password.invalid}"
