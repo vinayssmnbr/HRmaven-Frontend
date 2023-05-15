@@ -32,8 +32,10 @@
   background-color: #F9F9F9;
   height: 24px;
   border-radius: 50%;
-  padding-left: 6px;
-
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 .Skills-head {
