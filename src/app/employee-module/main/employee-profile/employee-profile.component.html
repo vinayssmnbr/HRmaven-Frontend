@@ -12,7 +12,7 @@
     <div class="card2">
       <span class="profile_pic">
         <div class="loader" *ngIf="progress"></div>
-        <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="!obj.url && !upload" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="obj.url  && !upload" src="{{obj.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
         <!-- <img  alt=""> -->

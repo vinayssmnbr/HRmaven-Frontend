@@ -12,7 +12,7 @@
         <!-- <img src="{{user.url}}"> -->
         <!-- <div role="progressbar" aria-valuenow="65" aria-valuemin="0" (change)="onFileSelected($event)" aria-valuemax="100" style="--value:100"></div> -->
         <div class="loader" *ngIf="progress"></div>
-        <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="!user.url && !upload" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
 
@@ -130,6 +130,10 @@
           <span class="bname">Bank Name</span>
           <p *ngIf="!user.bankname">----------</p>
           <p *ngIf="user.bankname" class="bname">{{user.bankname}}</p>
+          <!-- <span class="bname">Bank Name</span>
+          <p *ngIf="!user.bankname && !user.otherbankname">----------</p>
+          <p *ngIf="user.bankname" class="bname">{{user.bankname}}</p>
+          <p *ngIf="user.otherbankname" class="bname">{{user.otherbankname}}</p> -->
           <span class="adhaarno">Aadhaar Card Number</span>
           <p *ngIf="!user.adhaarno">----------</p>
           <p class="adhaarno">{{user.adhaarno}}</p>

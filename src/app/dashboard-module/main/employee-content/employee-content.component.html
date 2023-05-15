@@ -434,24 +434,26 @@
                 <img src="./assets/images/down-arrow.png" alt="">
               </div>
             </div>
-              <div class="image-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+            <div routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="image-detail">
                 <span>
                   <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
                   <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
 
                 </span>
               </div>
-              <div class="per-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="per-detail">
                 <h3>{{user.name}}</h3>
                 <div class="per-detail1">
                   <p>{{user.designation}}<span> | {{user.uid}}</span></p>
                 </div>
               </div>
-              <div class="contact-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="contact-detail">
                 <p>{{user.mobile}}</p>
                 <span>{{user.email}}</span>
               </div>
             </div>
+          </div>
         </ng-container>
       </div>
     </div>
