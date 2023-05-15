@@ -183,6 +183,12 @@
   background-color: #ffffff;
   border-radius: 4px;
 }
+.view .table-icon {
+  width: 23px;
+  padding: 0px 6px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
 .view span:hover {
   background-color: #ebeaf6;
 }
@@ -197,7 +203,11 @@
 .view span.active {
   background-color: #ebeaf6;
 }
-
+.view span img{
+  margin-top: 5px;
+  height: 12px;
+  width: 12px;
+}
 /* .view img:active {
   background-color: #ebeaf6;
 } */
@@ -352,7 +362,7 @@ tbody {
   overflow-y: auto;
   width: 100%;
   display: block;
-  height: 422px;
+  height: 420px;
 }
 
 .image_record {
@@ -2013,10 +2023,19 @@ input::placeholder {
 
 .content3 {
   display: flex;
-  gap: 44px;
+  gap: 80px;
   margin-top: 10px;
 }
-
+.content3 h5{
+  font-size: 12px;
+  font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    color: #666666;
+}
+.content3 a{
+  font-size: 12px;
+}
 .content3 p {
   font-family: "Outfit";
   font-style: normal;
@@ -2156,6 +2175,10 @@ input::placeholder {
   background-color: #ffffff;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+.card-detail.disabled{
+  background-color: #ffffff;
+  opacity: 0.6;
 }
 .card-detail:hover {
   border: 1px solid #2f2c9f;
@@ -2420,7 +2443,7 @@ div.loader-parent {
   border-radius: 8px;
   padding: 20px;
   position: absolute;
-  margin-top: -70px;
+  /* margin-top: -70px; */
   animation-name: example1;
   animation-duration: 3s;
 }

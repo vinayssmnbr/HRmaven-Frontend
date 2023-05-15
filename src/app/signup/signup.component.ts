@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 // import { DashService } from '../dashboard-module/shared/dash.service';
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
+  templateUrl:'./signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
@@ -109,9 +109,12 @@ export class SignupComponent {
       // email : new FormControl("",[Validators.required,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
       email: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
-        ),
+        // Validators.pattern(
+        //   '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+        // ),
+        Validators.pattern('[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
+
+        )
       ]),
       // email : new FormControl("",[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]),
 
