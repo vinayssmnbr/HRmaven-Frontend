@@ -74,7 +74,10 @@ export class EmployeeProfileComponent implements OnInit {
     ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
-    nationality: new FormControl(''),
+    nationality: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
     inter: new FormControl('', [

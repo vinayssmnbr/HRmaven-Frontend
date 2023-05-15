@@ -404,7 +404,9 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nationality">
+              <input type="text" placeholder="Indian" formControlName="nationality"
+              class="text"
+                [ngClass]="{'ng_invalid': registrationFormControl.nationality.invalid && registrationFormControl.nationality.dirty,'ng_valid': registrationFormControl.nationality.valid}">
             </div>
           </div>
           <!-- <div class="modal-footer">
