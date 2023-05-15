@@ -413,7 +413,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="basicUpdate(form.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="basicUpdate(form.value)"
+          [disabled]="registrationFormControl.fatherName.invalid || registrationFormControl.motherName.invalid || registrationFormControl.nationality.invalid || registrationFormControl.name.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
 
@@ -465,7 +466,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3(form.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal3(form.value)"
+          [disabled]="registrationFormControl.email.invalid || registrationFormControl.mobile.invalid || registrationFormControl.state.invalid || registrationFormControl.postalCode.invalid || registrationFormControl.city.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
 
@@ -536,7 +538,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4(form.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal4(form.value)"
+          [disabled]="registrationFormControl.panno.invalid || registrationFormControl.ifsc.invalid || registrationFormControl.adhaarno.invalid || registrationFormControl.passport.invalid ">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <!------------------------------------------------- ************** ----------------------------------------------------->
