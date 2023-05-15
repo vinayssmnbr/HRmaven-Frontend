@@ -168,20 +168,20 @@
           <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pencil"></i></button>
         </div>
       </div>
-      <div class="row1" *ngIf="!showAllData1">
+      <div class="row1" *ngIf="!showAllData1 ">
         <div class="column1">
           <span class="orgname">School/College</span>
-          <p class="orgname">{{user.educationItems[0]?.college || '--------'}}</p>
+          <p class="orgname">{{user?.educationItems?.length>0 ? user?.educationItems[0]?.college :'--------' }}</p>
           <span class="designation">Passing Year</span>
-          <p class="designation">{{user.educationItems[0]?.passing || '--------'}}</p>
+          <p class="designation">{{user?.educationItems?.length>0 ? user?.educationItems[0]?.passing : '--------'}}</p>
         </div>
         <div class="column2">
           <span class="location2">Percentage/Cgpa</span>
-          <p class="location2">{{user.educationItems[0]?.cgpa || '--------'}}</p>
+          <p class="location2">{{user?.educationItems?.length>0 ? user?.educationItems[0]?.cgpa : '--------'}}</p>
         </div>
         <div class="column3">
           <span class="duration2">Stream</span>
-          <p class="duration2">{{user.educationItems[0]?.stream || '--------'}}</p>
+          <p class="duration2">{{user?.educationItems?.length>0 ? user?.educationItems[0]?.stream : '--------'}}</p>
         </div>
       </div>
       <div *ngFor="let item of user.educationItems; let i=index">
@@ -217,7 +217,7 @@
     <div class="card7" *ngIf="personaldetail">
       <div class="details">
         <h3>Experience</h3>
-        <!-- <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button> -->
+        <!-- <button class="edit2"><i class="fa-solid fa-circle-pçlass=lus"></i></button> -->
         <button class="edit1" (click)="openModal5(user)"><i class="fa-solid fa-pencil"></i></button>
       </div>
       <div>
