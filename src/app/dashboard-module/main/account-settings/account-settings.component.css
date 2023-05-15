@@ -509,11 +509,11 @@ li.active {
     gap: 25px;
 }
 
-.email-phone {
+/* .email-phone {
     display: flex;
     gap: 25px;
     
-}
+} */
 
 .email-phone h6 {
     font-weight: 400;
@@ -525,6 +525,7 @@ li.active {
     font-weight: 400;
     font-size: 14px;
     color: rgba(136, 136, 136, 0.6);
+    margin-top: -15px;
 }
 
 .edit-profile-footer {
