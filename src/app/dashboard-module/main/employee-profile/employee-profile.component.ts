@@ -111,7 +111,8 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl('',),
+    accountno: new FormControl('',
+      [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
