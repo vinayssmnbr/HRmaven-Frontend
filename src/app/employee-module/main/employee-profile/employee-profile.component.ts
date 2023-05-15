@@ -272,7 +272,10 @@ export class EmployeeProfileComponent {
     ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
-    nationality: new FormControl(''),
+    nationality: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
   });
 
   empform2 = new FormGroup({
@@ -302,7 +305,7 @@ export class EmployeeProfileComponent {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl(''),
+    accountno: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
@@ -578,8 +581,8 @@ export class EmployeeProfileComponent {
   }
   showModal3: boolean = false;
   openModal3() {
-    // this.showModal3 = true;
-    // this.showModal = true;
+    this.showModal3 = true;
+    this.showModal = true;
   }
 
   closeModal8() {
@@ -629,6 +632,7 @@ export class EmployeeProfileComponent {
   //RESET PASSWORD AND MATCH OLD PASSWORD
   email: any = '';
   newpassword(data: any) {
+    // this.loader = true;
     this.passwordform.reset();
     this.email = localStorage.getItem('LoggedInName');
     if (!this.email) {
@@ -639,6 +643,7 @@ export class EmployeeProfileComponent {
       (res: any) => {
         if (res == 'Password Changes Successfully') {
           console.log('Password reset successful');
+          // this.loader = false;
         } else {
           console.error('Invalid response from API:', res);
         }

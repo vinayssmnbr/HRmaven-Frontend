@@ -189,8 +189,8 @@
     justify-content: space-between;
 }
 
-.company-name-headoffice .phone-number {
-    margin-top: 30px;
+.phone-number {
+    padding-top: 30px;
 }
 
 .head-office-edit {
@@ -291,11 +291,13 @@
     align-items: center;
 
 }
+
 li.active {
     color: #2F2C9F;
     font-weight: 500;
     font-size: 13px;
 }
+
 .account-password,
 .error-message {
     color: #CB1E0F;
@@ -309,7 +311,8 @@ li.active {
     font-weight: 400;
     font-size: 12px;
 }
-.modal-error-message{
+
+.modal-error-message {
     color: #CB1E0F;
     align-items: center;
     text-align: center;
@@ -320,7 +323,8 @@ li.active {
     font-weight: 400;
     font-size: 12px;
 }
-.phone-error-message{
+
+.phone-error-message {
     color: #CB1E0F;
     align-items: center;
     text-align: center;
@@ -332,7 +336,8 @@ li.active {
     font-size: 12px;
 
 }
-.company-error-message{
+
+.company-error-message {
     color: #CB1E0F;
     align-items: center;
     text-align: center;
@@ -343,7 +348,8 @@ li.active {
     font-weight: 400;
     font-size: 12px;
 }
-.old-message{
+
+.old-message {
     color: #CB1E0F;
     align-items: center;
     text-align: center;
@@ -358,6 +364,7 @@ li.active {
     display: flex;
     font-size: 12px;
 }
+
 .new-reenter {
     margin-top: 31px;
 }
@@ -393,6 +400,7 @@ li.active {
 .company-name-headoffice-desc-area:hover .edit-password-button {
     visibility: visible;
 }
+
 .description-heading p {
     font-weight: 400;
     font-size: 14px;
@@ -462,7 +470,9 @@ li.active {
     display: flex;
     align-items: center;
 }
-.edit-profile-heading h3,.edit-company-heading h3{
+
+.edit-profile-heading h3,
+.edit-company-heading h3 {
     font-weight: 500;
     font-size: 18px;
     color: #000000;
@@ -499,19 +509,24 @@ li.active {
     gap: 25px;
 }
 
-.email-phone {
+/* .email-phone {
     display: flex;
     gap: 25px;
-    margin-top: 25px;
-    /* margin-left: -933px; */
+    
+} */
+
+.email-phone h6 {
+    font-weight: 400;
+    font-size: 13px;
+    color: #444444;
 }
-/* .email-phone p {
-    display: flex;
-    gap: 25px;
-    margin-top: 25px;
-    margin-left: -62px;
+
+.email-phone p {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(136, 136, 136, 0.6);
+    margin-top: -15px;
 }
- */
 
 .edit-profile-footer {
     background-color: #F7F7FB;
@@ -689,9 +704,10 @@ li.active {
 
 
 /*----------------------- profile upload ------------------*/
-.content-details input[type="file"]{
+.content-details input[type="file"] {
     cursor: pointer;
 }
+
 .pic-holder .upload-file-block {
     cursor: pointer;
 }
@@ -850,10 +866,11 @@ textarea::placeholder {
     font-size: 15px;
     color: #777777;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* input:disabled {
@@ -932,21 +949,23 @@ input:disabled {
   color: #B4B4B4;
   cursor: pointer;
 } */
-span.password-toggle  {
-  position: absolute;
-  margin-left: 567px;
-  color: #B4B4B4;
-  cursor: pointer;
+span.password-toggle {
+    position: absolute;
+    margin-left: 567px;
+    color: #B4B4B4;
+    cursor: pointer;
 }
-span.password-toggle1  {
-  position: absolute;
-  margin-left: 560px;
-  color: #B4B4B4;
-  cursor: pointer;
+
+span.password-toggle1 {
+    position: absolute;
+    margin-left: 560px;
+    color: #B4B4B4;
+    cursor: pointer;
 }
-span.password-toggle2  {
-  position: absolute;
-  margin-left: 560px;
-  color: #B4B4B4;
-  cursor: pointer;
+
+span.password-toggle2 {
+    position: absolute;
+    margin-left: 560px;
+    color: #B4B4B4;
+    cursor: pointer;
 }

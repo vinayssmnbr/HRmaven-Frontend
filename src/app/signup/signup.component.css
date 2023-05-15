@@ -2,6 +2,7 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
+    background-color: #fff !important;
 }
 
 /* .tooltip{
@@ -23,6 +24,10 @@
     pointer-events: none;
     transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
 } */
+#set {
+    padding-left: 8px;
+}
+
 .left-side {
     background-color: var(--primary-color);
     border-radius: 12px;
@@ -186,6 +191,13 @@ form .input-field {
     margin-top: 6px;
     margin-bottom: 7px;
 }
+
+.input-field .email,
+.input-field .username,
+.input-field .password {
+    background-color: #fff !important;
+}
+
 
 .name-field .input-field span,
 .email-field .input-field span,
@@ -525,7 +537,7 @@ form.ng-invalid #submit {
     color: #888888;
     background-color: #F7F7FB;
     padding: 8px 14px;
-    width: 295px;
+    width: 200px;
     /* height: 126px; */
     border-radius: 4px;
     transform: translateX(-5px);
@@ -533,13 +545,16 @@ form.ng-invalid #submit {
     pointer-events: none;
     transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
 }
-.password-must-be{
+
+.password-must-be {
     display: flex;
     align-items: center;
 }
+
 div span {
     gap: 10px;
 }
+
 .iconWrap .tooltip::before {
     content: '';
     position: absolute;
