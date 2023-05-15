@@ -111,12 +111,16 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl(''),
+    accountno: new FormControl('',),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
     ]),
-    otherbankname: new FormControl(''),
+    otherbankname: new FormControl('',
+      [
+        Validators.pattern('[a-zA-Z ]+'),
+        Validators.required,
+      ]),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
       Validators.required,

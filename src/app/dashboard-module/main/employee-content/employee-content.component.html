@@ -74,7 +74,7 @@
     <div class="input_right">
       <div class="view">
         <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
-        <span [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
+        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
             alt=""></span>
       </div>
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"

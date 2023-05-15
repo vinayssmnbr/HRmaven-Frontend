@@ -178,8 +178,14 @@
   /* display: none; */
 }
 .view span {
-  width: 25px;
+  width: 26px;
   padding: 0px 5px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+.view .table-icon {
+  width: 23px;
+  padding: 0px 6px;
   background-color: #ffffff;
   border-radius: 4px;
 }
@@ -199,8 +205,8 @@
 }
 .view span img{
   margin-top: 5px;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 12px;
 }
 /* .view img:active {
   background-color: #ebeaf6;
