@@ -578,8 +578,8 @@ export class EmployeeProfileComponent {
   }
   showModal3: boolean = false;
   openModal3() {
-    // this.showModal3 = true;
-    // this.showModal = true;
+    this.showModal3 = true;
+    this.showModal = true;
   }
 
   closeModal8() {
@@ -629,6 +629,7 @@ export class EmployeeProfileComponent {
   //RESET PASSWORD AND MATCH OLD PASSWORD
   email: any = '';
   newpassword(data: any) {
+    // this.loader = true;
     this.passwordform.reset();
     this.email = localStorage.getItem('LoggedInName');
     if (!this.email) {
@@ -639,6 +640,7 @@ export class EmployeeProfileComponent {
       (res: any) => {
         if (res == 'Password Changes Successfully') {
           console.log('Password reset successful');
+          // this.loader = false;
         } else {
           console.error('Invalid response from API:', res);
         }

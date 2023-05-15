@@ -202,7 +202,6 @@
           </div>
         </div>
       </div>
-      <hr>
       <div class="cnt-btn">
         <button class="view" (click)="showMoredata1()" *ngIf="showbutton1">View More<i
             class="fa-solid fa-angle-down"></i></button>
@@ -448,7 +447,7 @@
           <div class="form-row">
             <div class="input">
               <label>City</label>
-              <input type="text" placeholder="Ludhiana" formControlName="city"
+              <input type="text" placeholder="Ludhiana" formControlName="city" class="text"
                 [ngClass]="{'ng_invalid': registrationFormControl.city.invalid && registrationFormControl.city.dirty,'ng_valid': registrationFormControl.city.valid}">
             </div>
             <div class="input">
