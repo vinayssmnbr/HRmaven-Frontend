@@ -418,7 +418,7 @@
           <h2>No Record Found!</h2>
         </div>
         <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail">
+          <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
             <div class="first-detail">
               <input type="checkbox" [value]="user.id" [checked]="user.checked"
                 (change)="onCheckboxChange($event, user)">
@@ -699,7 +699,7 @@
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
 
-          
+
           <div class="file_upload">
             <input type="file" accept=".csv" #csvInput >
           </div>
@@ -771,8 +771,8 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
-     
-      
+
+
 <div class="modal-content6" *ngIf="csvadded && importFileResponse.numSuccesses > 0">
   <div class="modal-header6">
     <img src="./assets/images/tick.png" alt="img">
@@ -798,7 +798,7 @@
   </div>
 </div>
 
-    
+
     </div>
   </div>
 <!-- </div> -->
