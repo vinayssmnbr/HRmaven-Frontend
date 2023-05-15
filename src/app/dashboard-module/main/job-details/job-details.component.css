@@ -32,10 +32,10 @@
   background-color: #F9F9F9;
   height: 24px;
   border-radius: 50%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Skills-head {
@@ -449,9 +449,16 @@ thead .Resume {
 
 .table_option {
   cursor: pointer;
-
+  border: 1px solid transparent;
+  outline: none;
+  background: rgba(253, 167, 90, 0.1);
+  border-radius: 100px;
+  padding: 8px 15px;
 }
-
+ select.table_option::after{
+  content: '';
+  padding-right: 10px;
+ }
 .pdf_logo {
   display: flex;
   justify-content: center;
@@ -905,6 +912,7 @@ form .user__details .input__box {
   cursor: pointer;
 
 }
-.New_candidate .done_btn:hover{
+
+.New_candidate .done_btn:hover {
   background-color: #308723ab;
 }
