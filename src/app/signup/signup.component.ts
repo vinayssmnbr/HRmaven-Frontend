@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 // import { DashService } from '../dashboard-module/shared/dash.service';
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
+  templateUrl:'./signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {

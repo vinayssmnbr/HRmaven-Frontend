@@ -12,7 +12,7 @@
     <div class="card2">
       <span class="profile_pic">
         <div class="loader" *ngIf="progress"></div>
-        <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="!obj.url && !upload" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="obj.url  && !upload" src="{{obj.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
         <!-- <img  alt=""> -->
@@ -488,7 +488,9 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nationality">
+              <input type="text" placeholder="Indian" formControlName="nationality"
+              class="text"
+                [ngClass]="{'ng_invalid': empform1.controls.nationality.invalid && empform1.controls.nationality.dirty,'ng_valid': empform1.controls.nationality.valid}">
             </div>
           </div>
           <!-- <div class="modal-footer">
@@ -497,7 +499,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="basicUpdate(empform1.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="basicUpdate(empform1.value)"
+          [disabled]="empform1.controls.fatherName.invalid || empform1.controls.motherName.invalid || empform1.controls.nationality.invalid || empform1.controls.name.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent4">
@@ -543,7 +546,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3(empform2.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal3(empform2.value)"
+          [disabled]="empform2.controls.state.invalid || empform2.controls.city.invalid || empform2.controls.postalCode.invalid || empform2.controls.mobile.invalid || empform2.controls.email.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content" *ngIf="modalContent5">
@@ -581,7 +585,8 @@
           <div class="form-row">
             <div class="input">
               <label>Bank Account No.</label>
-              <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
+              <input type="number" placeholder="6412365874125425" class="no-spin text" formControlName="accountno"
+              [ngClass]="{'ng_invalid': empform3.controls.accountno.invalid && empform3.controls.accountno.dirty,'ng_valid': empform3.controls.accountno.valid}">
             </div>
             <div class="input">
               <label>IFSC Code</label>
@@ -609,7 +614,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4(empform3.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal4(empform3.value)"
+          [disabled]="empform3.controls.passport.invalid || empform3.controls.ifsc.invalid || empform3.controls.panno.invalid || empform3.controls.accountno.invalid || empform3.controls.adhaarno.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="modalContent2">

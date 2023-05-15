@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    left: 50%;
+    left: 44%;
     padding: 50px 0;
 }
 
@@ -175,7 +175,7 @@ td {
     gap: 10px;
     justify-content: center;
     align-items: center;
-    width: 281px;
+    width: 305px;
     height: 44px;
     background-color: #FFFFFF;
     border-radius: 4px;
@@ -189,7 +189,7 @@ td {
     border-color: #ffff;
     background-color: transparent;
     color: #B4B4B4;
-    padding: 0 4px;
+    padding: 5px 8px;
 
 }
 

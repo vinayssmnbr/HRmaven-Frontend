@@ -839,6 +839,14 @@ input[type='text'] {
   padding-top: 8px;
   cursor: pointer;
 }
+#text14 {
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding-top: 8px;
+  cursor: pointer;
+}
 
 
 

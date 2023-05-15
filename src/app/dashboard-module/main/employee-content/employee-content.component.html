@@ -74,7 +74,7 @@
     <div class="input_right">
       <div class="view">
         <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
-        <span [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/Vector (1).svg"
+        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
             alt=""></span>
       </div>
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
@@ -418,7 +418,7 @@
           <h2>No Record Found!</h2>
         </div>
         <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail">
+          <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
             <div class="first-detail">
               <input type="checkbox" [value]="user.id" [checked]="user.checked"
                 (change)="onCheckboxChange($event, user)">
@@ -434,24 +434,26 @@
                 <img src="./assets/images/down-arrow.png" alt="">
               </div>
             </div>
-              <div class="image-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+            <div routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="image-detail">
                 <span>
                   <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
                   <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
 
                 </span>
               </div>
-              <div class="per-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="per-detail">
                 <h3>{{user.name}}</h3>
                 <div class="per-detail1">
                   <p>{{user.designation}}<span> | {{user.uid}}</span></p>
                 </div>
               </div>
-              <div class="contact-detail" routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="contact-detail">
                 <p>{{user.mobile}}</p>
                 <span>{{user.email}}</span>
               </div>
             </div>
+          </div>
         </ng-container>
       </div>
     </div>
@@ -644,7 +646,7 @@
       </div>
 
       <div class="modal-footer">
-        <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
+        <button *ngIf="firstStep" (click)="emailExists || mobileExists ? null : onNextForm()" class="next-btn"
           [disabled]="!(form.value.name && form.value.job_type && form.value.designation && (form.value.email || !emailExists) && (form.value.mobile || !mobileExists) && form.value.url)">
           Next </button>
         <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
@@ -746,19 +748,18 @@
         </div>
       </div>
     </div>
-    <div class="modal-content6" *ngIf="csvadded">
+    <!-- <div class="modal-content6" *ngIf="csvadded">
       <div class="modal-header6">
         <img src="./assets/images/tick.png" alt="img">
       </div>
       <div class="modal-body6">
         <h3>Succesful</h3>
-        <!-- <p>Csv File Imported Successfully!</p> -->
         <p style="color:#3D9030">{{importFileResponse. numSuccesses }} Records Imported Successfully!</p>
         <p style="color:red">{{importFileResponse.numFailures}} Records are not imported</p>
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
-    </div>
-    <!--  <div class="modal-content7" *ngIf="invalidModal">
+    </div>  -->
+    <!-- <div class="modal-content7" *ngIf="invalidModal">
       <div class="modal-header7">
         <img src="./assets/images/Vector (4).svg" alt="img1">
         </div>
@@ -771,8 +772,56 @@
         </div>
       </div> -->
 
+
+    <div class="modal-content6" *ngIf="csvadded && importFileResponse.numSuccesses > 0">
+      <div class="modal-header6">
+        <img src="./assets/images/tick.png" alt="img">
+      </div>
+      <div class="modal-body6">
+        <h3>Successful</h3>
+        <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
+        <p style="color:red">{{importFileResponse.numFailures}} Records were not imported</p>
+        <button class="done-btn2" (click)="closecsvadded()">Done</button>
+      </div>
+    </div>
+
+
+    <div class="modal-content7"
+      *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
+      <div class="modal-header7">
+        <img src="./assets/images/Vector (4).svg" alt="img1">
+      </div>
+      <div class="modal-body7">
+        <h3>Error!</h3>
+        <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
+        <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV
+          file</p>
+        <button class="ok-btn" (click)="closeModal5()">OK</button>
+      </div>
+    </div>
+
+
   </div>
+
+
+  <div class="modal-content7"
+    *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
+    <div class="modal-header7">
+      <img src="./assets/images/Vector (4).svg" alt="img1">
+    </div>
+    <div class="modal-body7">
+      <h3>Error!</h3>
+      <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
+      <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV
+        file</p>
+      <button class="ok-btn" (click)="closeModal5()">OK</button>
+    </div>
+  </div>
+
+
 </div>
+
+<!-- </div> -->
 <!-- </div> -->
 
 <!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">

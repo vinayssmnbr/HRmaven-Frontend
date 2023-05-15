@@ -74,7 +74,10 @@ export class EmployeeProfileComponent implements OnInit {
     ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
-    nationality: new FormControl(''),
+    nationality: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
     inter: new FormControl('', [
@@ -108,12 +111,17 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl(''),
+    accountno: new FormControl('',
+      [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
     ]),
-    otherbankname: new FormControl(''),
+    otherbankname: new FormControl('',
+      [
+        Validators.pattern('[a-zA-Z ]+'),
+        Validators.required,
+      ]),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
       Validators.required,
@@ -386,7 +394,28 @@ export class EmployeeProfileComponent implements OnInit {
       name: 'Phd-Details',
     },
   ];
-
+  array10: any = [
+    {
+      id: 0,
+      name: 'Mohali',
+    },
+    {
+      id: 1,
+      name: 'Pune',
+    },
+    {
+      id: 2,
+      name: 'Gurugram',
+    },
+    {
+      id: 3,
+      name: 'Bangalore',
+    },
+    {
+      id: 4,
+      name: 'Noida',
+    },
+  ];
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
@@ -414,6 +443,17 @@ export class EmployeeProfileComponent implements OnInit {
     // this.jobdesignation = arr.name;
     this.user.designation = arr.name;
   }
+  Selectvariable10 : string='Location'
+  colorvariable10: number= 0;
+  Changeselect10(arr10: any) {
+    this.Selectvariable10 = arr10.name;
+    this.colorvariable10 = arr10.id;
+    this.contentdropdown = false;
+    console.log(arr10.name);
+    // this.jobdesignation = arr.name;
+    this.user.location = arr10.name;
+  }
+
   Selectvariable9: string = '';
   colorvariable9: number = 0;
   Changeselect9(arr9: any) {

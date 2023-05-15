@@ -12,7 +12,7 @@
         <!-- <img src="{{user.url}}"> -->
         <!-- <div role="progressbar" aria-valuenow="65" aria-valuemin="0" (change)="onFileSelected($event)" aria-valuemax="100" style="--value:100"></div> -->
         <div class="loader" *ngIf="progress"></div>
-        <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg">
+        <img *ngIf="!user.url && !upload" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="user.url  && !upload" src="{{user.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
 
@@ -130,6 +130,10 @@
           <span class="bname">Bank Name</span>
           <p *ngIf="!user.bankname">----------</p>
           <p *ngIf="user.bankname" class="bname">{{user.bankname}}</p>
+          <!-- <span class="bname">Bank Name</span>
+          <p *ngIf="!user.bankname && !user.otherbankname">----------</p>
+          <p *ngIf="user.bankname" class="bname">{{user.bankname}}</p>
+          <p *ngIf="user.otherbankname" class="bname">{{user.otherbankname}}</p> -->
           <span class="adhaarno">Aadhaar Card Number</span>
           <p *ngIf="!user.adhaarno">----------</p>
           <p class="adhaarno">{{user.adhaarno}}</p>
@@ -198,7 +202,6 @@
           </div>
         </div>
       </div>
-      <hr>
       <div class="cnt-btn">
         <button class="view" (click)="showMoredata1()" *ngIf="showbutton1">View More<i
             class="fa-solid fa-angle-down"></i></button>
@@ -401,7 +404,8 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nationality">
+              <input type="text" placeholder="Indian" formControlName="nationality" class="text"
+                [ngClass]="{'ng_invalid': registrationFormControl.nationality.invalid && registrationFormControl.nationality.dirty,'ng_valid': registrationFormControl.nationality.valid}">
             </div>
           </div>
           <!-- <div class="modal-footer">
@@ -410,7 +414,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="basicUpdate(form.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="basicUpdate(form.value)"
+          [disabled]="registrationFormControl.fatherName.invalid || registrationFormControl.motherName.invalid || registrationFormControl.nationality.invalid || registrationFormControl.name.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
 
@@ -444,7 +449,7 @@
           <div class="form-row">
             <div class="input">
               <label>City</label>
-              <input type="text" placeholder="Ludhiana" formControlName="city"
+              <input type="text" placeholder="Ludhiana" formControlName="city" class="text"
                 [ngClass]="{'ng_invalid': registrationFormControl.city.invalid && registrationFormControl.city.dirty,'ng_valid': registrationFormControl.city.valid}">
             </div>
             <div class="input">
@@ -462,7 +467,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal3(form.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal3(form.value)"
+          [disabled]="registrationFormControl.email.invalid || registrationFormControl.mobile.invalid || registrationFormControl.state.invalid || registrationFormControl.postalCode.invalid || registrationFormControl.city.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
 
@@ -498,13 +504,16 @@
             </div>
             <div class="input" *ngIf="Selectvariable2=== 'Others'">
               <label>Other Bank Name</label>
-              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname">
+              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname"
+               class="text"
+                [ngClass]="{'ng_invalid': registrationFormControl.otherbankname.invalid && registrationFormControl.otherbankname.dirty,'ng_valid': registrationFormControl.otherbankname.valid}">
             </div>
           </div>
           <div class="form-row">
             <div class="input">
               <label>Bank Account No.</label>
-              <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
+              <input type="number" placeholder="6412365874125425" class="no-spin text" formControlName="accountno"
+              [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
             </div>
             <div class="input">
               <label>IFSC Code</label>
@@ -533,7 +542,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button class="save" (click)="closeModal4(form.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal4(form.value)"
+          [disabled]="registrationFormControl.panno.invalid || registrationFormControl.ifsc.invalid || registrationFormControl.adhaarno.invalid || registrationFormControl.passport.invalid || registrationFormControl.accountno.invalid || registrationFormControl.otherbankname.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <!------------------------------------------------- ************** ----------------------------------------------------->
@@ -684,7 +694,22 @@
           <div class="form-row">
             <div class="input">
               <label>Location</label>
-              <input type="text" placeholder="Pune, India" formControlName="location">
+              <!-- <input type="text" placeholder="Pune, India" formControlName="location"> -->
+              <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+                <div class="dropdwon_select" (click)="dropdownOpen2()" id="slt1">
+
+                  <input type="text" [(ngModel)]="Selectvariable10" formControlName="location" id="text14"
+                    placeholder="Select" readonly>
+                  <span><i class="fa-sharp fa-solid fa-caret-down"></i></span>
+                </div>
+                <div class="select_content1" *ngIf="contentdropdown2" (mouseleave)="dropdownClose2()">
+                  <ul>
+                    <li *ngFor="let arr10 of array10; index as i" [class.select_active]="i === colorvariable10"
+                      (click)="Changeselect10(arr10)">
+                      {{arr10.name}}</li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="input">
               <label>Timings</label>
