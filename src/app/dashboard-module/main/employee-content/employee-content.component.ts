@@ -55,6 +55,7 @@ export class EmployeeContentComponent implements OnInit {
   interval: any;
   countCard = 0;
   selectAllChecked: boolean = false;
+  csvForm: FormGroup;
   importFileResponse: any = { success: [], error: [] };
   constructor(
     public dashService: DashService,
@@ -95,9 +96,6 @@ export class EmployeeContentComponent implements OnInit {
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
-  csvForm = new FormGroup({
-    csv: new FormControl(''),
-  });
   form = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -233,6 +231,10 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
+    this.csvForm = this.formBuilder.group({
+      csv: [''],
+    });
+
     // this.progressBar = document.getElementsByClassName('progress');
     // this.progressText = document.getElementsByClassName('progress-text');
 
@@ -947,7 +949,6 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
-
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -1055,6 +1056,7 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
+                this.csvForm.reset();
               }
             },
             async (error: any) => {
@@ -1136,6 +1138,7 @@ export class EmployeeContentComponent implements OnInit {
       }
       console.log(this.selectedEmployess, 'removed user');
     }
+    this.selectedEmployess.sort((a, b) => a.uid - b.uid);
   }
 
   toggleAllCheckboxes() {

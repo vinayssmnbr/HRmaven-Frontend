@@ -199,8 +199,8 @@ export class DashboardContentComponent {
 
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
-    const lat1 = 31.2521879;
-    const lon1 = 75.7033441;
+    const lat1 = 31.279581;
+    const lon1 = 75.782387;
     // const lat1=31.280317;
     // const lon1=75.575594;
     const R = 63710;
@@ -244,8 +244,8 @@ export class DashboardContentComponent {
 
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
-    const lat1 = 31.2521879;
-    const lon1 = 75.7033441;
+    const lat1 = 31.279581;
+    const lon1 = 75.782387;
     // const lat1=31.280317;
     // const lon1=75.575594;
     const R = 63710;
