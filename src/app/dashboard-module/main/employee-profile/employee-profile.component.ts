@@ -386,7 +386,28 @@ export class EmployeeProfileComponent implements OnInit {
       name: 'Phd-Details',
     },
   ];
-
+  array10: any = [
+    {
+      id: 0,
+      name: 'Mohali',
+    },
+    {
+      id: 1,
+      name: 'Pune',
+    },
+    {
+      id: 2,
+      name: 'Gurugram',
+    },
+    {
+      id: 3,
+      name: 'Bangalore',
+    },
+    {
+      id: 4,
+      name: 'Noida',
+    },
+  ];
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
@@ -414,6 +435,17 @@ export class EmployeeProfileComponent implements OnInit {
     // this.jobdesignation = arr.name;
     this.user.designation = arr.name;
   }
+  Selectvariable10 : string='Location'
+  colorvariable10: number= 0;
+  Changeselect10(arr10: any) {
+    this.Selectvariable10 = arr10.name;
+    this.colorvariable10 = arr10.id;
+    this.contentdropdown = false;
+    console.log(arr10.name);
+    // this.jobdesignation = arr.name;
+    this.user.location = arr10.name;
+  }
+
   Selectvariable9: string = '';
   colorvariable9: number = 0;
   Changeselect9(arr9: any) {

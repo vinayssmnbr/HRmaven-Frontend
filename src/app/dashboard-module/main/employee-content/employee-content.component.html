@@ -74,7 +74,7 @@
     <div class="input_right">
       <div class="view">
         <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
-        <span [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/Vector (1).svg"
+        <span [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
             alt=""></span>
       </div>
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
@@ -418,7 +418,7 @@
           <h2>No Record Found!</h2>
         </div>
         <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail">
+          <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
             <div class="first-detail">
               <input type="checkbox" [value]="user.id" [checked]="user.checked"
                 (change)="onCheckboxChange($event, user)">
@@ -646,7 +646,7 @@
       </div>
 
       <div class="modal-footer">
-        <button *ngIf="firstStep" (click)="onNextForm()" class="next-btn"
+        <button *ngIf="firstStep" (click)="emailExists || mobileExists ? null : onNextForm()" class="next-btn"
           [disabled]="!(form.value.name && form.value.job_type && form.value.designation && (form.value.email || !emailExists) && (form.value.mobile || !mobileExists) && form.value.url)">
           Next </button>
         <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
@@ -699,9 +699,9 @@
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
 
-          
+
           <div class="file_upload">
-            <input type="file" accept=".csv" #csvInput >
+            <input type="file" accept=".csv" #csvInput>
           </div>
 
           <!-- <input type="text"  id="text18" readonly [value]="fileName1">
@@ -748,7 +748,7 @@
         </div>
       </div>
     </div>
-     <!-- <div class="modal-content6" *ngIf="csvadded">
+    <!-- <div class="modal-content6" *ngIf="csvadded">
       <div class="modal-header6">
         <img src="./assets/images/tick.png" alt="img">
       </div>
@@ -759,7 +759,7 @@
         <button class="done-btn2" (click)="closecsvadded()">Done</button>
       </div>
     </div>  -->
-     <!-- <div class="modal-content7" *ngIf="invalidModal">
+    <!-- <div class="modal-content7" *ngIf="invalidModal">
       <div class="modal-header7">
         <img src="./assets/images/Vector (4).svg" alt="img1">
         </div>
@@ -771,36 +771,56 @@
          <button class="ok-btn" (click)="closeModal5()">OK</button>
         </div>
       </div> -->
-     
-      
-<div class="modal-content6" *ngIf="csvadded && importFileResponse.numSuccesses > 0">
-  <div class="modal-header6">
-    <img src="./assets/images/tick.png" alt="img">
-  </div>
-  <div class="modal-body6">
-    <h3>Successful</h3>
-    <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
-    <p style="color:red">{{importFileResponse.numFailures}} Records were not imported</p>
-    <button class="done-btn2" (click)="closecsvadded()">Done</button>
-  </div>
-</div>
 
 
-<div class="modal-content7" *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
-  <div class="modal-header7">
-    <img src="./assets/images/Vector (4).svg" alt="img1">
-  </div>
-  <div class="modal-body7">
-    <h3>Error!</h3>
-    <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
-    <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV file</p>
-    <button class="ok-btn" (click)="closeModal5()">OK</button>
-  </div>
-</div>
+    <div class="modal-content6" *ngIf="csvadded && importFileResponse.numSuccesses > 0">
+      <div class="modal-header6">
+        <img src="./assets/images/tick.png" alt="img">
+      </div>
+      <div class="modal-body6">
+        <h3>Successful</h3>
+        <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
+        <p style="color:red">{{importFileResponse.numFailures}} Records were not imported</p>
+        <button class="done-btn2" (click)="closecsvadded()">Done</button>
+      </div>
+    </div>
 
-    
+
+    <div class="modal-content7"
+      *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
+      <div class="modal-header7">
+        <img src="./assets/images/Vector (4).svg" alt="img1">
+      </div>
+      <div class="modal-body7">
+        <h3>Error!</h3>
+        <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
+        <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV
+          file</p>
+        <button class="ok-btn" (click)="closeModal5()">OK</button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="modal-content7"
+    *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
+    <div class="modal-header7">
+      <img src="./assets/images/Vector (4).svg" alt="img1">
+    </div>
+    <div class="modal-body7">
+      <h3>Error!</h3>
+      <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
+      <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV
+        file</p>
+      <button class="ok-btn" (click)="closeModal5()">OK</button>
     </div>
   </div>
+
+
+</div>
+
 <!-- </div> -->
 <!-- </div> -->
 
