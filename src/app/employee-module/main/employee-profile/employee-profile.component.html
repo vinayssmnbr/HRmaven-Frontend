@@ -488,7 +488,9 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nationality">
+              <input type="text" placeholder="Indian" formControlName="nationality"
+              class="text"
+                [ngClass]="{'ng_invalid': empform1.controls.nationality.invalid && empform1.controls.nationality.dirty,'ng_valid': empform1.controls.nationality.valid}">
             </div>
           </div>
           <!-- <div class="modal-footer">
@@ -583,7 +585,8 @@
           <div class="form-row">
             <div class="input">
               <label>Bank Account No.</label>
-              <input type="number" placeholder="6412365874125425" class="no-spin" formControlName="accountno">
+              <input type="number" placeholder="6412365874125425" class="no-spin text" formControlName="accountno"
+              [ngClass]="{'ng_invalid': empform3.controls.accountno.invalid && empform3.controls.accountno.dirty,'ng_valid': empform3.controls.accountno.valid}">
             </div>
             <div class="input">
               <label>IFSC Code</label>
