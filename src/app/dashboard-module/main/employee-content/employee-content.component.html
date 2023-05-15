@@ -74,8 +74,8 @@
     <div class="input_right">
       <div class="view">
         <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
-        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
-            alt=""></span>
+        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img
+            src="./assets/images/image23.png" alt=""></span>
       </div>
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img
@@ -699,11 +699,13 @@
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
 
+          <form [formGroup]="csvForm">
+            <div class="file_upload">
+              <input type="file" accept=".csv" #csvInput formControlName="csv">
+            </div>
+          </form>
 
-          <div class="file_upload">
-            <input type="file" accept=".csv" #csvInput>
-          </div>
-
+       
           <!-- <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 
@@ -740,7 +742,8 @@
         </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
-          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)">Import</button>
+          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)"
+            [disabled]="csvForm.controls.csv.pristine">Import</button>
           <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
 
 
