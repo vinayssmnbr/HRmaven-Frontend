@@ -23,6 +23,9 @@
     pointer-events: none;
     transition: opacity 250ms ease-in-out 0s, transform 300ms ease-in-out 0s;
 } */
+#set{
+  padding-left: 8px;
+}
 .left-side {
     background-color: var(--primary-color);
     border-radius: 12px;
