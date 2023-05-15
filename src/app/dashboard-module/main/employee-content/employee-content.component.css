@@ -2016,7 +2016,9 @@ input::placeholder {
   gap: 44px;
   margin-top: 10px;
 }
-
+.content3 a{
+  font-size: 12px;
+}
 .content3 p {
   font-family: "Outfit";
   font-style: normal;
