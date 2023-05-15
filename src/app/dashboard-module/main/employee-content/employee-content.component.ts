@@ -1141,6 +1141,7 @@ export class EmployeeContentComponent implements OnInit {
       }
       console.log(this.selectedEmployess, 'removed user');
     }
+    this.selectedEmployess.sort((a, b) => a.uid - b.uid);
   }
 
   toggleAllCheckboxes() {
