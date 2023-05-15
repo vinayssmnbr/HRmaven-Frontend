@@ -505,7 +505,9 @@
             </div>
             <div class="input" *ngIf="Selectvariable2=== 'Others'">
               <label>Other Bank Name</label>
-              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname">
+              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname"
+               class="text"
+                [ngClass]="{'ng_invalid': registrationFormControl.otherbankname.invalid && registrationFormControl.otherbankname.dirty,'ng_valid': registrationFormControl.otherbankname.valid}">
             </div>
           </div>
           <div class="form-row">
