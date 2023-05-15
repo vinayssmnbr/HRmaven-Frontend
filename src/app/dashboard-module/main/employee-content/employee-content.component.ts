@@ -96,8 +96,8 @@ export class EmployeeContentComponent implements OnInit {
     return valid ? null : { invalidName: true };
   }
   csvForm = new FormGroup({
-    csv: new FormControl('')
-  })
+    csv: new FormControl(''),
+  });
   form = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -394,7 +394,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -947,7 +947,7 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
-  
+
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -969,7 +969,6 @@ export class EmployeeContentComponent implements OnInit {
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-    
     }
 
     function validateCsvFile(file: File): boolean {
@@ -977,10 +976,10 @@ export class EmployeeContentComponent implements OnInit {
       if (!allowedExtensions.test(file.name)) {
         return false;
       }
-    
+
       return true;
     }
-    
+
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -1019,7 +1018,6 @@ export class EmployeeContentComponent implements OnInit {
         return;
       }
 
-
       let uid: number = -1;
       let numSuccesses = 0;
       let numFailures = 0;
@@ -1043,8 +1041,7 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
-              }
-              else if (res.status == "Success") {
+              } else if (res.status == 'Success') {
                 numSuccesses++;
                 sucesses.push(res);
               }
@@ -1058,7 +1055,6 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
-                
               }
             },
             async (error: any) => {
@@ -1081,7 +1077,6 @@ export class EmployeeContentComponent implements OnInit {
         });
         return 'employees added';
       });
-
     };
 
     reader.readAsText(file);
@@ -1224,26 +1219,18 @@ export class EmployeeContentComponent implements OnInit {
   searchFieldDisabled(): boolean {
     return this.employee.length == 0;
   }
-
-  // caardSelect() {
-  //   const checkbox = event.target as HTMLInputElement;
-  //   if (checkbox.checked) {
-  //     this.countCard++;
-  //   } else {
-  //     this.countCard--;
-  //   }
-  // }
   SelectedCard() {
     return this.countCard;
   }
-  // SelectAll(event: Event, user: any): void {
-  //   const checkbox = event.target as HTMLInputElement;
-  //   this.selectAllChecked = checkbox.checked;
 
-  //   this.employee.forEach((user) => {
-  //     user.checked = checkbox.checked;
-  //   });
+  onFileSelectedcsv(event: any) {
+    const file = event.target.files[0];
+    const fileName = file.name;
 
-  //   this.countCard = checkbox.checked ? this.employee.length : 0;
-  // }
+    // Check if the file extension is not CSV
+    if (!fileName.endsWith('.csv')) {
+      this.csvForm.controls['csv'].setValue(null); // Clear the file input value
+      alert('Please select a CSV file.');
+    }
+  }
 }

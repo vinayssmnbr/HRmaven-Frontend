@@ -74,13 +74,14 @@
     <div class="input_right">
       <div class="view">
         <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
-        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
-            alt=""></span>
+        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img
+            src="./assets/images/image23.png" alt=""></span>
       </div>
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img
           src="./assets/images/prime_file-import.svg">Export</button>
-      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
+      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg"
+          [disabled]="csvForm.invalid">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
@@ -589,12 +590,10 @@
               <label>Employee ID </label>
               <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid"
                 pattern="^[^\s]+$" [disabled]="true" readonly>
-
             </div>
             <div class="input">
               <label>Date of Joining</label>
               <input type="date" id="text5" placeholder="DD/MM/YYYY" formControlName="dateOfJoining">
-
             </div>
           </div>
           <div class="form-row">
@@ -699,49 +698,27 @@
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
 
-
-          <div class="file_upload">
-            <input type="file" accept=".csv" #csvInput>
-          </div>
-
-          <!-- <input type="text"  id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
-
+          <form action="" [formGroup]="csvForm">
+            <div class="file_upload">
+              <input type="file" accept=".csv" #csvInput formControlName="csv" (change)="onFileSelectedcsv($event)">
+            </div>
+          </form>
         </div>
-        <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
-        <!-- (click)=" generateSampleCsvFile()" -->
         <div class="content3">
           <h5>Download <a class="csv" href="assets/csv/Sample.csv" [download]> Sample CSV File</a> for Reference</h5>
           <p>Maximum file size:5MB</p>
         </div>
-
-        <!-- <div class="custom-file-picker">
-          <input type="text" placeholder="Add the file URL" id="text14" >
-          <input type="file" >
-          <a  class="choose">Choose File</a>
-        </div> -->
         <div class="card" *ngIf="loader">
           <div class="pdf_file">
             <img src="./assets/images/Vector (8).png" alt="">
           </div>
           <div class="progress_bar_loader" *ngIf="loader"></div>
-          <!-- <div class="input-upload">
-            <input type="text" id="text18" readonly [value]="fileName1" (change)="onFileSelected1($event)"
-              formControlName="csv">
-            <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)"
-              accept=".csv" formControlName="csv">
 
-            <div class="progress-bar">
-              <div class="progress"></div>
-              <div class="progress-text">0%</div>
-            </div>
-
-          </div> -->
         </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
-          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)">Import</button>
-          <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
+          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)"
+            [disabled]="csvForm.controls.csv.pristine">Import</button>
 
 
 
