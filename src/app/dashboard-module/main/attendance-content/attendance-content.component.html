@@ -87,17 +87,17 @@
               <td *ngIf="user.found != 'true'">{{ user.status }}</td>
               <td *ngIf="user.found != 'true'">
                 {{
-                user.status != "present"
-                ? "------"
-                : (user.in | date : "shortTime")
+                user.status == "present" || user.status=='odd'
+                ? (user.in | date : "shortTime")
+                : "------"
                 }}
               </td>
               <td *ngIf="user.found != 'true'">
                 {{
-                user.status != "present"
-                ? "------"
-                : (user.out | date : "shortTime")
-                }}
+                  user.status == "present" || user.status=='odd'
+                  ? (user.out | date : "shortTime")
+                  : "------"
+                  }}
               </td>
               <td *ngIf="user.found != 'true'">{{user.ip_in}}</td>
               <td *ngIf="user.found != 'true'">{{user.ip_out}}</td>
@@ -267,10 +267,10 @@
             <tr *ngFor="let i of profile.attendance | monthwisefilter:active">
               <td colspan=8 *ngIf="i==0" class="no_record"><img src="../../../../assets/images/Norecord.svg"></td>
               <ng-container *ngIf="i!=0">
-                <td>{{ i.date | date : "shortDate" }}</td>
+                <td>{{ i.date | date:'dd/MM/YYYY': 'UTC' }}</td>
                 <td>{{ i.status }}</td>
-                <td>{{ i.in == null ? "----" : i.in }}</td>
-                <td>{{ i.out == null ? "----" : i.out }}</td>
+                <td>{{ i.punch_in== null ? "----" : i.punch_in  | date : "shortTime" }}</td>
+                <td>{{ i.punch_out== null ? "----" : i.punch_out  | date : "shortTime" }}</td>
                 <td>{{i.ip_in}}</td>
                 <td>{{i.ip_out}}</td>
               </ng-container>
