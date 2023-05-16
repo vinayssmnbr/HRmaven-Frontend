@@ -418,44 +418,43 @@
           </p>
           <h2>No Record Found!</h2>
         </div>
-        <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
-            <div class="first-detail">
-              <input type="checkbox" [value]="user.id" [checked]="user.checked"
-                (change)="onCheckboxChange($event, user)">
-              <div class="icons1">
-                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <img src="./assets/images/down-arrow.png" alt="">
-              </div>
-            </div>
-            <div routerLink="/employee-profile" (click)="selectEmployee(user)">
-              <div class="image-detail">
-                <span>
-                  <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
-                  <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
-
-                </span>
-              </div>
-              <div class="per-detail">
-                <h3>{{user.name}}</h3>
-                <div class="per-detail1">
-                  <p>{{user.designation}}<span> | {{user.uid}}</span></p>
-                </div>
-              </div>
-              <div class="contact-detail">
-                <p>{{user.mobile}}</p>
-                <span>{{user.email}}</span>
-              </div>
+        <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
+        <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
+          <div class="first-detail">
+            <input type="checkbox" [value]="user.id" [checked]="user.checked" (change)="onCheckboxChange($event, user)">
+            <div class="icons1">
+              <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                (change)="onSelectChange($event, user)" [value]="user.status"
+                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                <option value="active" class="activated">Active</option>
+                <option value="terminated" class="terminate">Terminated</option>
+                <option value="resigned" class="resign">Resigned</option>
+                <option value="absconder" class="abscond">Absconder</option>
+              </select>
+              <img src="./assets/images/down-arrow.png" alt="">
             </div>
           </div>
-        </ng-container>
+          <div routerLink="/employee-profile" (click)="selectEmployee(user)">
+            <div class="image-detail">
+              <span>
+                <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
+                <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
+
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>{{user.name}}</h3>
+              <div class="per-detail1">
+                <p>{{user.designation}}<span> | {{user.uid}}</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>{{user.mobile}}</p>
+              <span>{{user.email}}</span>
+            </div>
+          </div>
+        </div>
+        <!-- </ng-container> -->
       </div>
     </div>
     <div class="status-card1" *ngIf="isstatus">
@@ -646,11 +645,11 @@
 
       <div class="modal-footer">
         <button *ngIf="firstStep" (click)="emailExists || mobileExists ? null : onNextForm()" class="next-btn"
-          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && (form.value.email || !emailExists) && (form.value.mobile || !mobileExists) && form.value.url)">
+          [disabled]="registrationFormControl.email.invalid || registrationFormControl.mobile.invalid || registrationFormControl.name.invalid || this.form.controls.url.invalid">
           Next </button>
-        <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
+        <button *ngIf="secondStep && !doneClicked" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
-          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">{{loading?'Loading...':'Done'}}</button>
+          [disabled]="registrationFormControl.ctc.invalid">{{loading?'Loading...':'Done'}}</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">

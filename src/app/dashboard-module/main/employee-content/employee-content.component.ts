@@ -55,6 +55,7 @@ export class EmployeeContentComponent implements OnInit {
   interval: any;
   countCard = 0;
   selectAllChecked: boolean = false;
+  doneClicked: boolean = false;
   csvForm: FormGroup;
   importFileResponse: any = { success: [], error: [] };
   constructor(
@@ -157,6 +158,7 @@ export class EmployeeContentComponent implements OnInit {
   loading: boolean = false;
   submit() {
     this.loading = true;
+    this.doneClicked = true;
     if (this.form.invalid) return;
     console.log(this.form.value);
     let data = this.form.value;
