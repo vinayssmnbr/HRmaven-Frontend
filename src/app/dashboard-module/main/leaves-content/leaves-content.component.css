@@ -339,7 +339,7 @@ p.reason>span::before{
 .Pending,
 .Approved,
 .Rejected {
-  /* border: 3px solid transparent; */
+  border: 3px solid transparent;
 }
 
 /* .Pending:hover,
