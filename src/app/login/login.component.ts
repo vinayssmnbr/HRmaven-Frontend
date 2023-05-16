@@ -127,8 +127,8 @@ export class LoginComponent {
       Validators.required,
       Validators.email,
       Validators.pattern(
-        // '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
-        '[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
+        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+        // '[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
         ),
     ]),
     password: new FormControl('', [
