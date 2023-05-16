@@ -322,6 +322,9 @@
             <input type="password" placeholder="Type your old password" class="form-control password" required
               (blur)="matchpwdEmployee()" formControlName="oldpassword"
               [ngClass]="{'ng_invalid':isPasswordmatched || (passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty),'ng_valid': !isPasswordmatched && passwordform.controls.oldpassword.valid}">
+              <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+                <i class="fa {{ showPasswordIcon }}"></i>
+              </span>
           </div>
 
 
@@ -338,6 +341,7 @@
                 placeholder="Type a new password" formControlName="password" class="password" id="form-control" required
                 (keyup)="checkConfirmPassword()"
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
+
               <div class="tooltip">
                 <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
@@ -375,7 +379,9 @@
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
                 class="form-control password" (keyup)="checkConfirmPassword()" required
                 [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
-
+            <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+              <i class="fa {{ showPasswordIcon }}"></i>
+            </span>
             </div>
             <span class="validation-message" *ngIf="isConfirmPasswordInvalid"><i
                 class="fa-solid fa-circle-exclamation"></i>Password
