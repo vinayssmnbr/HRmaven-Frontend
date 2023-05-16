@@ -222,7 +222,8 @@ removetask1(id:number){
 
 jobvacancyform= new FormGroup({
   jobtitle:new FormControl('',[Validators.required]),
-  datetitle:new FormControl('')
+  // datetitle:new FormControl('')
+  datetitle: new FormControl('', Validators.required),
 
 })
 jobvacancydetail(){
