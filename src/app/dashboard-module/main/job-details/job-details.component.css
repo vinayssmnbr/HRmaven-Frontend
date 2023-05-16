@@ -144,7 +144,6 @@ ul.skills {
   cursor: pointer;
   font-weight: 400;
   font-size: 14px;
-  color: #000000;
   padding: 4px 35px;
 
 }
@@ -455,10 +454,12 @@ thead .Resume {
   border-radius: 100px;
   padding: 8px 15px;
 }
- select.table_option::after{
+
+select.table_option::after {
   content: '';
   padding-right: 10px;
- }
+}
+
 .pdf_logo {
   display: flex;
   justify-content: center;
