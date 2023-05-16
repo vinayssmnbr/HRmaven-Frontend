@@ -157,9 +157,7 @@
               (input)="onFocusout()" [ngClass]="{'ng_invalid': forgetpwd.controls.oldpassword.invalid && forgetpwd.controls.oldpassword.dirty ,
                        'ng_valid': forgetpwd.controls.oldpassword.valid}">
 
-            <p *ngIf="isPasswordMatched && isSamePassword; else notMatched" style="color: green;">This is your
-              old
-              password.</p>
+            <p *ngIf="isPasswordMatched && isSamePassword; else notMatched"></p>
             <ng-template #notMatched>
               <span
                 *ngIf="isInputDirty && forgetpwd.controls.oldpassword.dirty && forgetpwd.controls.oldpassword.value !== '' && !isPasswordMatched"
