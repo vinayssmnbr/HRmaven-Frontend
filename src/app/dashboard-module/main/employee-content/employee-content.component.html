@@ -638,7 +638,7 @@
           <div class="form-row">
             <div class="input">
               <label>CTC</label>
-              <input type="text" id="text11" placeholder="8LPA" formControlName="ctc"
+              <input type="number" id="text11" placeholder="8LPA" formControlName="ctc" class="no-spin"
                 [ngClass]="{'ng_invalid': registrationFormControl.ctc.invalid && registrationFormControl.ctc.dirty,'ng_valid': registrationFormControl.ctc.valid}">
             </div>
           </div>
@@ -705,7 +705,7 @@
             </div>
           </form>
 
-       
+
           <!-- <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 

@@ -298,7 +298,7 @@
           <p class="jdate" *ngIf="user.dateOfJoining">{{user.dateOfJoining | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
           <p *ngIf="!user.ctc">----------</p>
-          <p class="ctc" *ngIf="user.ctc">{{user.ctc}}</p>
+          <p class="ctc" *ngIf="user.ctc">{{user.ctc}} LPA</p>
         </div>
       </div>
     </div>
@@ -731,7 +731,7 @@
             </div>
             <div class="input">
               <label>CTC</label>
-              <input type="text" placeholder="8LPA" formControlName="ctc">
+              <input type="number" placeholder="8LPA" formControlName="ctc">
             </div>
           </div>
           <div class="form-row">
