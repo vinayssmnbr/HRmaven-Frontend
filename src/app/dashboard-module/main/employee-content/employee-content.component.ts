@@ -1225,15 +1225,4 @@ export class EmployeeContentComponent implements OnInit {
   SelectedCard() {
     return this.countCard;
   }
-
-  onFileSelectedcsv(event: any) {
-    const file = event.target.files[0];
-    const fileName = file.name;
-
-    // Check if the file extension is not CSV
-    if (!fileName.endsWith('.csv')) {
-      this.csvForm.controls['csv'].setValue(null); // Clear the file input value
-      alert('Please select a CSV file.');
-    }
-  }
 }
