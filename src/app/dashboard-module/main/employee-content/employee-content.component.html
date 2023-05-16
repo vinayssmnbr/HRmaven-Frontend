@@ -127,7 +127,7 @@
           </div>
 
           <td colspan="7" class="no_data" *ngIf=" user.found=='true' && employee.length>0">
-            <p > <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
+            <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                 xmlns="http://www.w3.org/2000/svg">
                 <rect width="209" height="176" fill="" />
                 <path
@@ -780,8 +780,67 @@
         </div>
       </div> -->
 
-    </div>
   </div>
+</div>
+
+<!----------------------------Employee-Mail------------------->
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <div class="employee-login-mail">
+          <div class="hr-maven-mail-logo">
+            <a href=""><img src="assets/images/Frame 72.svg" alt=""></a>
+          </div>
+          <div class="mail-content">
+            <p>Dear [Employee Name],<br><br>
+
+              On behalf of the entire team at HRMaven, I would like to extend you a warm welcome to our organization! We
+              are thrilled to have you join our team and are looking forward to your contributions.
+              <br><br>
+              At HRMaven, we are committed to provide a supportive and inclusive work environment that fosters personal
+              and professional growth. We believe that our employees are our greatest asset, and we are dedicated to
+              ensure that you have the tools, resources, and support you need to succeed in your role.
+              <br><br>
+              As you settle into your new position, please know that we are here to help you at every step of the way.
+              Whether you have questions about your benefits, need assistance with a project, or simply want to connect
+              with your colleagues, our HR team is always here to help.
+              <br><br>
+              We believe that open communication and transparency are the keys to a successful workplace, and we
+              encourage you to share your ideas, feedback, and suggestions with us. Your input is essential to help us
+              continue to grow and improve as an organization.
+              <br><br><br>
+              <span class="credentials"> Kindly use the below given credentials for your login:
+                <br>
+                Username: name@venturepact.com
+                <br>
+                Password: 1234567890</span>
+              <br><br><br>
+
+              The credentials given to you are just default credentials. Kindly reset your password immediately by using
+              the link given below:
+              <br>
+              <a href="">reset link</a>
+              <br><br><br>
+
+              Best regards,
+              <br>
+              [Your Name] HR Manager at HRMaven
+              <br>
+              Contact no. +91 9875463210
+            </p>
+          </div>
+          <div class="login-now">
+            <button>LOGIN NOW</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
 <!-- </div> -->
 
 <!-- <div class="loader-main" *ngIf="employee.length==0 && !isfetched && user.found!='true'">
