@@ -41,6 +41,7 @@ export class LoginComponent {
   ) {}
 
   ngOnInit() {
+    localStorage.setItem('personalDataSubmitted', JSON.stringify(true));
     this.userService.isFromLoginPage = false;
     // this.userService.isFromLoginPage = false;
     const storedemail = localStorage.getItem('email');
@@ -126,8 +127,9 @@ export class LoginComponent {
       Validators.required,
       Validators.email,
       Validators.pattern(
-        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
-      ),
+        // '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+        '[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
+        ),
     ]),
     password: new FormControl('', [
       Validators.required,
@@ -201,8 +203,11 @@ ress: any =''
     console.log(this.loginForm.value);
     // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
-      console.log("personalDataSubmitted value: ", res.personalDataSubmitted); // Debugging statement
+      localStorage.setItem('personalDataSubmitted', 'true');
+      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); // Debugging statement
       if (res.personalDataSubmitted) {
+
+      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted));
         localStorage.setItem('personalDataSubmitted', 'true');
       }
       console.log("ress: ", res.username)

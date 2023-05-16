@@ -18,7 +18,7 @@ import { DashService } from '../../shared/dash.service';
 export class EmployeeProfileComponent implements OnInit {
   @Input() user: any;
   empForm: FormGroup;
-  educationItems: any;
+  // educationItems: any;
   constructor(
     private dashService: DashService,
     private fb: FormBuilder,
@@ -40,6 +40,10 @@ export class EmployeeProfileComponent implements OnInit {
   modalContent5: boolean = false;
   modalContent6: boolean = false;
   modalContent7: boolean = false;
+  showbutton: boolean = true;
+  showAllData: boolean = false;
+  showbutton1: boolean = true;
+  showAllData1: boolean = false;
   isJobDetailsActive = false;
   isPersonalDetailsActive = true;
   employee: any = [];
@@ -70,7 +74,10 @@ export class EmployeeProfileComponent implements OnInit {
     ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
-    nationality: new FormControl(''),
+    nationality: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     matric: new FormControl(''),
     matricPercent: new FormControl(''),
     inter: new FormControl('', [
@@ -104,12 +111,17 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl(''),
+    accountno: new FormControl('',
+      [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
     ]),
-    otherbankname: new FormControl(''),
+    otherbankname: new FormControl('',
+      [
+        Validators.pattern('[a-zA-Z ]+'),
+        Validators.required,
+      ]),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
       Validators.required,
@@ -150,6 +162,8 @@ export class EmployeeProfileComponent implements OnInit {
 
   experienceForm: FormGroup;
   educationForm: FormGroup;
+  experienceItems: FormArray;
+  educationItems: FormArray;
 
   get registrationFormControl() {
     return this.form.controls;
@@ -157,56 +171,73 @@ export class EmployeeProfileComponent implements OnInit {
   ngOnInit() {
     this.user = this.dashService.getSelectedEmployee();
     console.log('select', this.user);
+
+    // --------------------EXPERIENCE FORM ARRAY----------------------//
     this.experienceForm = new FormGroup({
-      experienceItems: new FormArray([this.createExperienceItem()]),
+      experienceItems: new FormArray([]),
     });
+
+    this.experienceItems = this.experienceForm.get(
+      'experienceItems'
+    ) as FormArray;
+
+    if (
+      this.user &&
+      this.user.experienceItems &&
+      this.user.experienceItems.length > 0
+    ) {
+      this.user.experienceItems.forEach((item) => {
+        this.addItem();
+      });
+    } else {
+      this.addItem();
+    }
+
+    // --------------------EDUCATION FORM ARRAY----------------------//
     this.educationForm = new FormGroup({
-      educationItems: new FormArray([this.createEducationItem()]),
+      educationItems: new FormArray([]),
     });
+
+    this.educationItems = this.educationForm.get('educationItems') as FormArray;
+
+    if (
+      this.user &&
+      this.user.educationItems &&
+      this.user.educationItems.length > 0
+    ) {
+      this.user.educationItems.forEach((item) => {
+        this.addeducation();
+      });
+    } else {
+      this.addeducation();
+    }
   }
 
-  createEducationItem(): FormGroup {
+  createEducationItem(item?: any): FormGroup {
     return new FormGroup({
-      graduation: new FormControl(''),
-      graduationCgpa: new FormControl(''),
-      graduationStream: new FormControl(''),
-      //  pg: new FormControl(''),
-      //  pgStream: new FormControl(''),
-      //  pgCgpa: new FormControl(''),
+      college: new FormControl(item?.college || ''),
+      cgpa: new FormControl(item?.cgpa || ''),
+      passing: new FormControl(item?.passing || ''),
+      stream: new FormControl(item?.stream || ''),
+    });
+  }
+  createExperienceItem(item?: any): FormGroup {
+    return new FormGroup({
+      expcompany: new FormControl(item?.expcompany || ''),
+      expduration: new FormControl(item?.expduration || ''),
+      explocation: new FormControl(item?.explocation || ''),
+      expdesignation: new FormControl(item?.expdesignation || ''),
     });
   }
 
-  get EducationItems() {
-    return this.educationForm.get('EducationItems') as FormArray;
-  }
-
-  addItem1() {
-    this.EducationItems.push(this.createEducationItem());
+  addeducation() {
+    this.educationItems.push(this.createEducationItem());
     console.log(this.educationForm.value);
   }
-
-  education() {
-    console.log(this.educationForm.value);
-  }
-
-  createExperienceItem(): FormGroup {
-    return new FormGroup({
-      expcompany: new FormControl(''),
-      expduration: new FormControl(''),
-      explocation: new FormControl(''),
-      expdesignation: new FormControl(''),
-    });
-  }
-
-  get experienceItems() {
-    return this.experienceForm.get('experienceItems') as FormArray;
-  }
-
   addItem() {
     this.experienceItems.push(this.createExperienceItem());
     console.log(this.experienceForm.value);
   }
-
   removeItem(index: number) {
     this.experienceItems.removeAt(index);
   }
@@ -338,11 +369,11 @@ export class EmployeeProfileComponent implements OnInit {
   array8: any = [
     {
       id: 0,
-      name: 'Full-Time Permanent',
+      name: 'Full-Time',
     },
     {
       id: 1,
-      name: 'Part-Time Employement',
+      name: 'Part-Time',
     },
     {
       id: 2,
@@ -363,7 +394,28 @@ export class EmployeeProfileComponent implements OnInit {
       name: 'Phd-Details',
     },
   ];
-
+  array10: any = [
+    {
+      id: 0,
+      name: 'Mohali',
+    },
+    {
+      id: 1,
+      name: 'Pune',
+    },
+    {
+      id: 2,
+      name: 'Gurugram',
+    },
+    {
+      id: 3,
+      name: 'Bangalore',
+    },
+    {
+      id: 4,
+      name: 'Noida',
+    },
+  ];
   contentdropdown: boolean = false;
   contentdropdown2: boolean = false;
   contentdropdown3: boolean = false;
@@ -391,6 +443,17 @@ export class EmployeeProfileComponent implements OnInit {
     // this.jobdesignation = arr.name;
     this.user.designation = arr.name;
   }
+  Selectvariable10 : string='Location'
+  colorvariable10: number= 0;
+  Changeselect10(arr10: any) {
+    this.Selectvariable10 = arr10.name;
+    this.colorvariable10 = arr10.id;
+    this.contentdropdown = false;
+    console.log(arr10.name);
+    // this.jobdesignation = arr.name;
+    this.user.location = arr10.name;
+  }
+
   Selectvariable9: string = '';
   colorvariable9: number = 0;
   Changeselect9(arr9: any) {
@@ -421,17 +484,6 @@ export class EmployeeProfileComponent implements OnInit {
     console.log(arr3.name);
     this.user.maritalStatus = arr3.name;
   }
-  // Changeselect3(arr3: any) {
-  //   this.Selectvariable3 = arr3.name;
-  //   this.colorvariable3 = arr3.id;
-  //   if (arr3.value === '') {
-  //     this.Selectvariable3 = this.form.controls['maritalStatus'].value;
-  //     this.colorvariable3 = this.array3.length; // Set the colorvariable3 to the index of the custom value in the array
-  //     this.array3[this.colorvariable3] = {id: this.colorvariable3, name: this.Selectvariable3, value: this.Selectvariable3};
-  //   }
-  //   this.form.controls['maritalStatus'].setValue(this.Selectvariable3);
-  //   this.form.controls['motherName'].setValue(this.form.controls['motherName'].value); // Set the value of the input field to itself to trigger change detection
-  // }
   personaldetails() {
     this.personaldetail = true;
     this.jobdetail = false;
@@ -482,6 +534,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = false;
     this.modalContent7 = false;
+    this.modalContent2 = false;
     this.selectedUser = { _id: user._id };
     this.form.patchValue(user);
   }
@@ -570,6 +623,7 @@ export class EmployeeProfileComponent implements OnInit {
   openModal3(user) {
     this.fourthStep = false;
     this.showModal = true;
+    this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent1 = false;
     this.modalContent5 = true;
@@ -605,14 +659,16 @@ export class EmployeeProfileComponent implements OnInit {
   openModal4(user) {
     this.fourthStep = false;
     this.showModal = true;
+    this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent1 = false;
     this.modalContent5 = false;
     this.modalContent6 = true;
     this.modalContent7 = false;
     this.selectedUser = { _id: user._id };
-    this.form.patchValue(user);
+    this.educationForm.patchValue(user);
   }
+
   closeModal5(data) {
     this.modalContent1 = false;
     this.modalContent2 = false;
@@ -620,22 +676,12 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent5 = false;
     this.modalContent6 = true;
     this.loader = true;
-    this.user.matric = data.accountno;
-    this.user.matricPercent = data.matricPercent;
-    this.user.inter = data.inter;
-    this.user.interPercent = data.interPercent;
-    this.user.pg = data.pg;
-    this.user.pgCgpa = data.pgCgpa;
-    this.user.pgStream = data.pgStream;
-    this.user.graduation = data.graduation;
-    this.user.graduationCgpa = data.graduationCgpa;
-    this.user.graduationStream = data.graduationStream;
-    this.user.matricpassing = data.matricpassing;
-    this.user.interpassing = data.interpassing;
-    const updatedData = this.form.value;
-    console.log('abc', updatedData);
-    updatedData['_id'] = this.user._id;
-    this.dashService.updateEmployee(this.user).subscribe(() => {
+    this.user.educationItems = data.educationItems;
+    const updatedData = {
+      _id: this.user._id,
+      educationItems: this.user.educationItems,
+    };
+    this.dashService.updateEmployee(updatedData).subscribe(() => {
       console.log('Data updated successfully');
       this.modalContent6 = false;
       this.loader = false;
@@ -646,6 +692,7 @@ export class EmployeeProfileComponent implements OnInit {
   openModal5(user) {
     this.fourthStep = false;
     this.showModal = true;
+    this.modalContent2 = false;
     this.modalContent4 = false;
     this.modalContent1 = false;
     this.modalContent5 = false;
@@ -663,18 +710,18 @@ export class EmployeeProfileComponent implements OnInit {
     this.modalContent6 = false;
     this.modalContent7 = true;
     this.loader = true;
-
-    console.log(this.experienceForm.value);
-    const updatedData = this.experienceForm.value;
-    console.log('exp', updatedData);
-    updatedData['_id'] = this.user._id;
+    this.user.experienceItems = data.experienceItems;
+    const updatedData = {
+      _id: this.user._id,
+      experienceItems: this.user.experienceItems,
+    };
     this.dashService.updateEmployee(updatedData).subscribe((res) => {
       console.log('experience', res);
       this.modalContent7 = false;
       this.loader = false;
       this.fourthStep = true;
     });
-    this.user = updatedData;
+    // this.user = updatedData;
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
@@ -785,25 +832,23 @@ export class EmployeeProfileComponent implements OnInit {
     });
   }
 
-  // openotherinput:boolean=false;
-  // openInput() {
-  //   if (this.array2.name==="Others"){
-  //      this.openotherinput=true;
-  //   }
-  // }
-
   //VIEW MORE AND VIEW LESS
-  showbutton: boolean = true;
-  showAllData: boolean = false;
-
   showMoredata() {
     this.showAllData = true;
     this.showbutton = false;
+  }
+  showMoredata1() {
+    this.showAllData1 = true;
+    this.showbutton1 = false;
   }
 
   hidedata() {
     this.showAllData = false;
     this.showbutton = true;
+  }
+  hidedata1() {
+    this.showAllData1 = false;
+    this.showbutton1 = true;
   }
 
   showpgdetails: boolean = false;

@@ -48,10 +48,11 @@ export class EmployeeProfileComponent {
   capitalCheck: boolean = false;
   smallCheck: boolean = false;
   numericalCheck: boolean = false;
-  signupLoader:boolean = false;
+  signupLoader: boolean = false;
 
   is_visible = false;
   password = '';
+  loaderz: boolean = false;
 
   checkPassword() {
     const input = this.password.trim();
@@ -66,9 +67,19 @@ export class EmployeeProfileComponent {
     document.getElementById('count').innerText = `Length: ${input.length}`;
   }
   constructor(private empdashService: EmpService) {
+    // this.empdashService.getEmployeeRecord().subscribe((res) => {
+    //   console.log('pro', res);
+    //   this.obj = res.response;
+    //   console.log('xyz', this.obj);
+    // });
+    this.getEmployeesideProfile();
+  }
+  getEmployeesideProfile() {
+    this.loaderz = true;
     this.empdashService.getEmployeeRecord().subscribe((res) => {
       console.log('pro', res);
       this.obj = res.response;
+      this.loaderz = false;
       console.log('xyz', this.obj);
     });
   }
@@ -261,7 +272,10 @@ export class EmployeeProfileComponent {
     ]),
     maritalStatus: new FormControl(''),
     bloodGroup: new FormControl(''),
-    nationality: new FormControl(''),
+    nationality: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
   });
 
   empform2 = new FormGroup({
@@ -291,7 +305,7 @@ export class EmployeeProfileComponent {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl(''),
+    accountno: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
@@ -330,17 +344,6 @@ export class EmployeeProfileComponent {
     this.isPersonalDetailsActive = false;
     this.isPasswordManagement = false;
   }
-  showMoredata() {
-    this.showdata = true;
-    this.showbutton = false;
-    this.viewless = true;
-  }
-  hidedata() {
-    this.showdata = false;
-    this.viewless = false;
-    this.showbutton = true;
-  }
-
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
   Changeselect(arr: any) {
@@ -578,8 +581,8 @@ export class EmployeeProfileComponent {
   }
   showModal3: boolean = false;
   openModal3() {
-    // this.showModal3 = true;
-    // this.showModal = true;
+    this.showModal3 = true;
+    this.showModal = true;
   }
 
   closeModal8() {
@@ -629,6 +632,7 @@ export class EmployeeProfileComponent {
   //RESET PASSWORD AND MATCH OLD PASSWORD
   email: any = '';
   newpassword(data: any) {
+    // this.loader = true;
     this.passwordform.reset();
     this.email = localStorage.getItem('LoggedInName');
     if (!this.email) {
@@ -639,6 +643,7 @@ export class EmployeeProfileComponent {
       (res: any) => {
         if (res == 'Password Changes Successfully') {
           console.log('Password reset successful');
+          // this.loader = false;
         } else {
           console.error('Invalid response from API:', res);
         }
@@ -671,5 +676,25 @@ export class EmployeeProfileComponent {
         this.isPasswordmatched = true;
       }
     );
+  }
+
+  showbutton1: boolean = true;
+  showAllData1: boolean = false;
+  showAllData: boolean = false;
+  showMoredata1() {
+    this.showAllData1 = true;
+    this.showbutton1 = false;
+  }
+  hidedata1() {
+    this.showAllData1 = false;
+    this.showbutton1 = true;
+  }
+  showMoredata() {
+    this.showAllData = true;
+    this.showbutton = false;
+  }
+  hidedata() {
+    this.showAllData = false;
+    this.showbutton = true;
   }
 }

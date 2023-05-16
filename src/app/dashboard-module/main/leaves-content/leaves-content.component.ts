@@ -19,7 +19,7 @@ export class LeavesContentComponent {
   test: any = 'All';
   // searchText: string;
   status: string;
-  leaves: any[] = [];
+  leaves: any = [];
   employeeid = '';
   employeename = '';
   totalCount = 0;
@@ -38,9 +38,7 @@ export class LeavesContentComponent {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
     this.Selectvariable = 'all';
-    this.fetchPendingLeave();
-    this.graphleave();
-    this.leavecontentload();
+
   }
   total: number = 0;
   pendingcount: number = 0;
@@ -128,6 +126,11 @@ export class LeavesContentComponent {
         }
       });
       console.log(res);
+      let temp=[];
+      temp = this.pendingleave.concat(this.rejectleave);
+      temp = temp.concat(this.acceptleave);
+      this.leaves=temp;
+      console.log(this.leaves);
     });
   }
 
@@ -166,6 +169,11 @@ export class LeavesContentComponent {
           this.acceptleave = d.leave;
         }
       });
+      let temp=[];
+      temp = this.pendingleave.concat(this.rejectleave);
+      temp = temp.concat(this.acceptleave);
+      this.leaves=temp;
+      console.log(this.leaves);
     });
   }
   cancel() {
@@ -185,6 +193,11 @@ export class LeavesContentComponent {
           }
         });
       });
+      let temp=[];
+      temp = this.pendingleave.concat(this.rejectleave);
+      temp = temp.concat(this.acceptleave);
+      this.leaves=temp;
+      console.log(this.leaves);
   }
 
   /////////////////////////////////////////////////////////////////////////
@@ -198,6 +211,9 @@ export class LeavesContentComponent {
     selectBtn.addEventListener('click', () =>
       optionMenu.classList.toggle('active')
     );
+    this.fetchPendingLeave();
+    this.graphleave();
+    this.leavecontentload();
   }
 
   updateafteraction() {
@@ -343,10 +359,18 @@ export class LeavesContentComponent {
     if (this.acceptall == false) {
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
+
+      this.leaves.map((item:any)=>{
+          if(item._id==this.acceptdata._id)
+          {
+            item.status='accept'
+          }
+      })
+
+
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'accept', this.acceptmessage)
         .subscribe((res:any) => {
-          this.graphleave();
          });
 
       if (this.acceptdata.type="Full Day Leave") {
@@ -366,6 +390,12 @@ export class LeavesContentComponent {
     } else {
       this.acceptdata.map((data: any, index: any, arr) => {
         if (data.select == true) {
+          this.leaves.map((item:any)=>{
+            if(item._id==data._id)
+            {
+              item.status='accept'
+            }
+        })
 
           this.dashService
             .updateleavestatus(data._id, 'accept', this.acceptmessage)
@@ -379,7 +409,6 @@ export class LeavesContentComponent {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
         }
-        this.graphleave();
       });
 
       //////////////////////////////////////////
@@ -399,9 +428,15 @@ export class LeavesContentComponent {
       this.showModal1 = false;
       let row = this.pendingleave[this.index];
       this.pendingleave.splice(this.index, 1);
+      this.leaves.map((item:any)=>{
+        if(item._id==this.acceptdata._id)
+        {
+          item.status='reject'
+        }
+    })
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'reject', this.acceptmessage)
-        .subscribe((res:any) => { this.graphleave(); });
+        .subscribe((res:any) => { });
       this.acceptmessage = '';
       this.rejectleave.push(row);
     } else {
@@ -409,6 +444,12 @@ export class LeavesContentComponent {
       this.showModal1 = false;
       this.acceptdata.map((data: any, index: any) => {
         if (data.select == true) {
+          this.leaves.map((item:any)=>{
+            if(item._id==data._id)
+            {
+              item.status='reject'
+            }
+        })
           this.dashService
             .updateleavestatus(data._id, 'reject', this.acceptmessage)
             .subscribe((res:any) => {  this.graphleave(); });
@@ -418,7 +459,6 @@ export class LeavesContentComponent {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
         }
-        this.graphleave();
 
       });
       this.pendingleave = pendingtemp;

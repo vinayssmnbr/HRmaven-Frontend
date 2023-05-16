@@ -53,7 +53,10 @@ export class EmployeeContentComponent implements OnInit {
   progressText: any;
   progress: number = 0;
   interval: any;
-  importFileResponse: any = { success: [], error: [] }
+  countCard = 0;
+  selectAllChecked: boolean = false;
+  csvForm:FormGroup
+  importFileResponse: any = { success: [], error: [] };
   constructor(
     public dashService: DashService,
     private formBuilder: FormBuilder,
@@ -93,7 +96,6 @@ export class EmployeeContentComponent implements OnInit {
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
-
   form = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -179,10 +181,13 @@ export class EmployeeContentComponent implements OnInit {
   form1Valid: boolean = this.form.controls.name.valid;
 
   //GET DATA
+  loaderz: boolean = false;
   fetchdata() {
+    this.loaderz = true;
     this.dashService.getEmployee().subscribe((res: any) => {
       console.log('data', res);
       this.employee = res;
+      this.loaderz = false;
       this.isfetched = true;
       if (res.length > 0) {
         this.emptybox = false;
@@ -226,6 +231,11 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
+    this.csvForm=this.formBuilder.group({
+      csv:['']
+    })
+
+    
     // this.progressBar = document.getElementsByClassName('progress');
     // this.progressText = document.getElementsByClassName('progress-text');
 
@@ -523,6 +533,7 @@ export class EmployeeContentComponent implements OnInit {
     console.log(arr.name);
     this.designation = arr.name;
     console.log('str', this.designation);
+
     // this.dashService
     //   .searchuid(this.query, this.designation == 'All' ? '' : this.designation)
     //   .subscribe((res) => {
@@ -733,7 +744,7 @@ export class EmployeeContentComponent implements OnInit {
     this.isstatus = true;
     setTimeout(() => {
       this.isstatus = false;
-    },3000);
+    }, 3000);
     switch (event.target.value) {
       case 'active': {
         this.optionStyle = {
@@ -856,8 +867,9 @@ export class EmployeeContentComponent implements OnInit {
     this.csvadded = false;
     this.fetchdata();
   }
-  inavlidModal: boolean = false;
-  closeseModal5() {
+
+  inavlidModal: boolean = true;
+  closeModal5() {
     this.inavlidModal = false;
     this.showModal = false;
   }
@@ -876,7 +888,6 @@ export class EmployeeContentComponent implements OnInit {
     );
     // }
   }
-
 
   // download(): void {
   //   const selectedEmployee = this.employee.filter(emp => emp.checked);
@@ -898,7 +909,6 @@ export class EmployeeContentComponent implements OnInit {
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   //   saveAs(blob, filename);
   // }
-
 
   // onFileSelectedrem(event: any): void {
   //   const file: File = event.target.files[0];
@@ -940,7 +950,8 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
-
+  
+  
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -958,26 +969,22 @@ export class EmployeeContentComponent implements OnInit {
       return;
     }
     let errors = [];
-    let sucesses = []
+    let sucesses = [];
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-      // const errorMessage = document.createElement('p');
-      // errorMessage.innerText = 'Invalid file type. Please select a CSV file.';
-      // document.body.appendChild(errorMessage);
-      // return;
+    
     }
 
     function validateCsvFile(file: File): boolean {
       const allowedExtensions = /(\.csv)$/i;
-
-      if (!allowedExtensions.exec(file.name)) {
+      if (!allowedExtensions.test(file.name)) {
         return false;
       }
-
+    
       return true;
     }
-
+    
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -1012,49 +1019,38 @@ export class EmployeeContentComponent implements OnInit {
       // if(data.length==0) return 'no user selected'
 
       if (data.length === 0) {
-        alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
+        // alert('Your CSV file was not filled properly,So user cannot selected this type of csv file');
         return;
       }
 
+
       let uid: number = -1;
       let numSuccesses = 0;
-      let numFailures = 0; 
+      let numFailures = 0;
       let responseArr = [];
-      // let hr_id = 12345;
       this.dashService.getEmployeeUid().subscribe((res: any) => {
         uid = res.uid;
         console.log(res, 'uid response');
-        console.log(res.message)
+        console.log(res.message);
         if (uid == -1) return 'there is an error while getting uid';
         let increaseBy: number = 100 / data.length;
         data.forEach((employee) => {
           console.log('Adding employee:', employee);
-          // console.log('Please wait, employee is being added...');
           employee['uid'] = uid++;
           this.dashService.addEmployee(employee).subscribe(
             async (res: any) => {
-              console.log('res', res)
-              console.log('messagge', res.message)
-
-              // console.log('Response:', res);
+              console.log('res', res);
+              console.log('messagge', res.message);
               this.loader = true;
               responseArr.push(res);
-
               console.log('Data:', res.data);
-              // this.progress += increaseBy;
-              // this.progressBar[0].style.width = `${this.progress}%`;
-              // this.progressText[0].innerText = `${this.progress}%`;
-              // console.log(res, 'response');
               if (res.status == 'failed') {
                 numFailures++;
-                errors.push({ ...employee, error: res.message }); 
-                // console.log(errors.push({ ...employee, error: res.message }));
+                errors.push({ ...employee, error: res.message });
               }
               else if (res.status == "Success") {
                 numSuccesses++;
-                sucesses.push(res)
-                // console.log( sucesses.push(res));
-              
+                sucesses.push(res);
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
@@ -1066,11 +1062,13 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
+                this.csvForm.reset()
               }
             },
-            async(error: any) => {
+            async (error: any) => {
+              numFailures++;
               errors.push({ ...employee, error });
-              responseArr.push(employee)
+              responseArr.push(employee);
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
                 this.loader = false;
@@ -1080,20 +1078,19 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
-                this.importFileResponse.numFailures = numFailures;
+                this.importFileResponse.numFailures = numFailures;             
               }
             }
           );
         });
         return 'employees added';
       });
+
     };
 
     reader.readAsText(file);
+
   }
-
-
-
 
   //FOR CHECKING THE CHECK BOX
 
@@ -1101,14 +1098,15 @@ export class EmployeeContentComponent implements OnInit {
     const id = $event.target.value;
     const isChecked = $event.target.checked;
     this.isSelectDisabled = $event.target.checked;
-
     if (isChecked) {
+      this.countCard++;
       if (user == 'All') {
         this.selectedEmployess = [...this.employee];
         // Check all checkboxes
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = true;
         });
+        this.countCard = this.employee.length;
       } else {
         this.employee.forEach((el: any, i: number) => {
           if (el._id == user._id) {
@@ -1120,12 +1118,14 @@ export class EmployeeContentComponent implements OnInit {
       }
       console.log(this.selectedEmployess, 'added employees');
     } else {
+      this.countCard--;
       if (user == 'All') {
         this.selectedEmployess = [];
         // Uncheck all checkboxes
         this.employee.forEach((el: any, i: number) => {
           el['checked'] = false;
         });
+        this.countCard = 0;
       } else {
         let index: number = -1;
         this.selectedEmployess.forEach((el: any, i: number) => {
@@ -1146,6 +1146,7 @@ export class EmployeeContentComponent implements OnInit {
       }
       console.log(this.selectedEmployess, 'removed user');
     }
+    this.selectedEmployess.sort((a, b) => a.uid - b.uid);
   }
 
   toggleAllCheckboxes() {
@@ -1156,6 +1157,8 @@ export class EmployeeContentComponent implements OnInit {
       }
     }
   }
+
+  
 
   validateCsvFile(file: File): boolean {
     const allowedExtensions = /(\.csv)$/i;
@@ -1225,5 +1228,30 @@ export class EmployeeContentComponent implements OnInit {
     this.fetchdata();
   }
 
-  ngOnChange() { }
+  ngOnChange() {}
+  searchFieldDisabled(): boolean {
+    return this.employee.length == 0;
+  }
+
+  // caardSelect() {
+  //   const checkbox = event.target as HTMLInputElement;
+  //   if (checkbox.checked) {
+  //     this.countCard++;
+  //   } else {
+  //     this.countCard--;
+  //   }
+  // }
+  SelectedCard() {
+    return this.countCard;
+  }
+  // SelectAll(event: Event, user: any): void {
+  //   const checkbox = event.target as HTMLInputElement;
+  //   this.selectAllChecked = checkbox.checked;
+
+  //   this.employee.forEach((user) => {
+  //     user.checked = checkbox.checked;
+  //   });
+
+  //   this.countCard = checkbox.checked ? this.employee.length : 0;
+  // }
 }
