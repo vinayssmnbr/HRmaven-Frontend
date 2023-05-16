@@ -74,8 +74,8 @@
     <div class="input_right">
       <div class="view">
         <span [ngClass]="{'active':tableview}" (click)="tableviewcall()"><i class="fa-solid fa-list"></i></span>
-        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img src="./assets/images/image23.png"
-            alt=""></span>
+        <span class="table-icon" [ngClass]="{'active':cardview}" (click)="cardviewcall()"><img
+            src="./assets/images/image23.png" alt=""></span>
       </div>
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img
@@ -699,11 +699,13 @@
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
 
+          <form [formGroup]="csvForm">
+            <div class="file_upload">
+              <input type="file" accept=".csv" #csvInput formControlName="csv">
+            </div>
+          </form>
 
-          <div class="file_upload">
-            <input type="file" accept=".csv" #csvInput>
-          </div>
-
+       
           <!-- <input type="text"  id="text18" readonly [value]="fileName1">
           <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
 
@@ -740,7 +742,8 @@
         </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
-          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)">Import</button>
+          <button class="imp-btn" (click)="onFileSelectedrem(csvInput)"
+            [disabled]="csvForm.controls.csv.pristine">Import</button>
           <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
 
 
@@ -802,22 +805,6 @@
 
 
   </div>
-
-
-  <div class="modal-content7"
-    *ngIf="csvadded && (importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === -1)">
-    <div class="modal-header7">
-      <img src="./assets/images/Vector (4).svg" alt="img1">
-    </div>
-    <div class="modal-body7">
-      <h3>Error!</h3>
-      <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
-      <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV
-        file</p>
-      <button class="ok-btn" (click)="closeModal5()">OK</button>
-    </div>
-  </div>
-
 
 </div>
 

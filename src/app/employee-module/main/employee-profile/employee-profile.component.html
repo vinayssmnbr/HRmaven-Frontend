@@ -188,7 +188,7 @@
       <div class="details">
         <h3>Education</h3>
       </div>
-      <div class="row1" *ngIf="!showAllData1">
+      <!-- <div class="row1" *ngIf="!showAllData1">
         <div class="column1">
           <span class="orgname">School/College</span>
           <p class="orgname">{{obj.educationItems[0]?.college || '--------'}}</p>
@@ -202,6 +202,22 @@
         <div class="column3">
           <span class="duration2">Stream</span>
           <p class="duration2">{{obj.educationItems[0]?.stream || '--------'}}</p>
+        </div>
+      </div> -->
+      <div class="row1" *ngIf="!showAllData1 ">
+        <div class="column1">
+          <span class="orgname">School/College</span>
+          <p class="orgname">{{obj?.educationItems?.length>0 ? obj?.educationItems[0]?.college :'--------' }}</p>
+          <span class="designation">Passing Year</span>
+          <p class="designation">{{obj?.educationItems?.length>0 ? obj?.educationItems[0]?.passing : '--------'}}</p>
+        </div>
+        <div class="column2">
+          <span class="location2">Percentage/Cgpa</span>
+          <p class="location2">{{obj?.educationItems?.length>0 ? obj?.educationItems[0]?.cgpa : '--------'}}</p>
+        </div>
+        <div class="column3">
+          <span class="duration2">Stream</span>
+          <p class="duration2">{{obj?.educationItems?.length>0 ? obj?.educationItems[0]?.stream : '--------'}}</p>
         </div>
       </div>
       <div *ngFor="let item of obj.educationItems; let i=index">
@@ -322,6 +338,9 @@
             <input type="password" placeholder="Type your old password" class="form-control password" required
               (blur)="matchpwdEmployee()" formControlName="oldpassword"
               [ngClass]="{'ng_invalid':isPasswordmatched || (passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty),'ng_valid': !isPasswordmatched && passwordform.controls.oldpassword.valid}">
+              <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+                <i class="fa {{ showPasswordIcon }}"></i>
+              </span>
           </div>
 
 
@@ -338,6 +357,7 @@
                 placeholder="Type a new password" formControlName="password" class="password" id="form-control" required
                 (keyup)="checkConfirmPassword()"
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
+
               <div class="tooltip">
                 <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
@@ -375,7 +395,9 @@
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
                 class="form-control password" (keyup)="checkConfirmPassword()" required
                 [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
-
+            <span class="password-toggle" (click)="togglePasswordVisibility(passwordInput)">
+              <i class="fa {{ showPasswordIcon }}"></i>
+            </span>
             </div>
             <span class="validation-message" *ngIf="isConfirmPasswordInvalid"><i
                 class="fa-solid fa-circle-exclamation"></i>Password
