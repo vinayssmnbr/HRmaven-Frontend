@@ -644,6 +644,7 @@ export class EmployeeContentComponent implements OnInit {
   loader: boolean = false;
   onFileSelected1(event: any): void {
     this.selectedFile1 = event.target.files[0];
+    console.log('yyyyy',this.selectedFile1)
     // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
     this.loader = true;
   }
@@ -962,27 +963,28 @@ export class EmployeeContentComponent implements OnInit {
 
   async onFileSelectedrem(event: any) {
     const file: File = event.files[0];
-    this.loader = true;
-
+    // this.loader = true;
     if (!file) {
       console.log('No file selected.');
       return;
     }
+  
     let errors = [];
     let sucesses = [];
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-    
+    }else{
+      this.loader = true;
     }
 
     function validateCsvFile(file: File): boolean {
-      const allowedExtensions = /(\.csv)$/i;
-      if (!allowedExtensions.test(file.name)) {
-        return false;
+      
+      if(file.name.toLowerCase().slice(-3) === 'csv'){
+        return true
+      }else{
+        return false
       }
-    
-      return true;
     }
     
     // Check file size
