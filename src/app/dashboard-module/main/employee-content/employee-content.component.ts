@@ -1227,4 +1227,9 @@ export class EmployeeContentComponent implements OnInit {
   SelectedCard() {
     return this.countCard;
   }
+  sortEmployeeByUid(data: any) {
+    data.sort((a: any, b: any) => +a.uid - +b.uid);
+    console.log(data, 'adarsh sort');
+    return data;
+  }
 }
