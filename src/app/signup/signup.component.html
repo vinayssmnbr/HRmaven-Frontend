@@ -117,7 +117,7 @@
                               </span> -->
                         <input type="text" placeholder="Enter your Organization Name" class="username"
                             [class.is-invalid]="fun['username'].invalid && fun['username'].touched" class="is-invalid"
-                            formControlName="username" (keydown)="Space($event)" (blur)="checkUsernameInput()" />
+                            formControlName="username" (keydown)="Space($event)" (onchange)="checkUsernameInput()" />
 
                         <span
                             *ngIf="fun['username'].errors && fun['username'].errors['usernameExists'] && usernameExists">
@@ -182,10 +182,15 @@
                         <label for="email" class="text-label">Email</label>
                         <input type="email" placeholder="Enter your email" class="email" formControlName="email"
                             [class.is-invalid]="fun['email'].invalid && fun['email'].touched"
-                            class="form-control is-invalid" (keyup)="onKeyUp($event)" (blur)="checkEmailInput()" />
+                            class="form-control is-invalid" (keyup)="onKeyUp($event)" (onchange)="checkEmailInput()" />
 
                         <div *ngIf="fun['email'].invalid && (fun['email'].touched || fun['email'].dirty)">
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['required']">
+                          <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']">
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z" fill="#CB1E0F"/>
+                                </svg> Enter Valid Email Pattern
+                        </span>
+                          <span *ngIf="fun['email'].errors && fun['email'].errors['required']">
                                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z" fill="#CB1E0F"/>
                                     </svg>Email is required
@@ -195,11 +200,7 @@
                                     <path d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z" fill="#CB1E0F"/>
                                     </svg>Invalid Email
                             </span>
-                            <span *ngIf="fun['email'].errors && fun['email'].errors['pattern']">
-                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.125 7.125H5.875V3.375H7.125M7.125 9.625H5.875V8.375H7.125M6.5 0.25C5.67924 0.25 4.86651 0.411661 4.10823 0.725753C3.34994 1.03984 2.66095 1.50022 2.08058 2.08058C0.90848 3.25269 0.25 4.8424 0.25 6.5C0.25 8.1576 0.90848 9.74732 2.08058 10.9194C2.66095 11.4998 3.34994 11.9602 4.10823 12.2742C4.86651 12.5883 5.67924 12.75 6.5 12.75C8.1576 12.75 9.74732 12.0915 10.9194 10.9194C12.0915 9.74732 12.75 8.1576 12.75 6.5C12.75 5.67924 12.5883 4.86651 12.2742 4.10823C11.9602 3.34994 11.4998 2.66095 10.9194 2.08058C10.3391 1.50022 9.65006 1.03984 8.89177 0.725753C8.13349 0.411661 7.32076 0.25 6.5 0.25Z" fill="#CB1E0F"/>
-                                    </svg> Enter Valid Email Pattern
-                            </span>
+
                             <span *ngIf="fun['email'].errors && fun['email'].errors['emailExists']">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

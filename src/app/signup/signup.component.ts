@@ -109,17 +109,17 @@ export class SignupComponent {
       // email : new FormControl("",[Validators.required,Validators.pattern('^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$')]),
       email: new FormControl('', [
         Validators.required,
-        // Validators.pattern(
-        //   '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
-        // // ),
+        Validators.pattern(
+          '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+        ),
         // Validators.pattern('[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
 
         // )
 
-        Validators.pattern(
-          '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
-        ),
-        Validators.pattern('^.*@\\w+\\.com\\s*$')
+        // Validators.pattern(
+        //   '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+        // ),
+        // Validators.pattern('^.*@\\w+\\.com\\s*$')
 
 
       ]),

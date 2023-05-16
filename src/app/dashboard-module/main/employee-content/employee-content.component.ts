@@ -55,7 +55,8 @@ export class EmployeeContentComponent implements OnInit {
   interval: any;
   countCard = 0;
   selectAllChecked: boolean = false;
-  csvForm:FormGroup
+  doneClicked: boolean = false;
+  csvForm: FormGroup;
   importFileResponse: any = { success: [], error: [] };
   constructor(
     public dashService: DashService,
@@ -157,6 +158,7 @@ export class EmployeeContentComponent implements OnInit {
   loading: boolean = false;
   submit() {
     this.loading = true;
+    this.doneClicked = true;
     if (this.form.invalid) return;
     console.log(this.form.value);
     let data = this.form.value;
@@ -231,11 +233,10 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
-    this.csvForm=this.formBuilder.group({
-      csv:['']
-    })
+    this.csvForm = this.formBuilder.group({
+      csv: [''],
+    });
 
-    
     // this.progressBar = document.getElementsByClassName('progress');
     // this.progressText = document.getElementsByClassName('progress-text');
 
@@ -397,7 +398,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -950,8 +951,6 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
-  
-  
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -973,7 +972,6 @@ export class EmployeeContentComponent implements OnInit {
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-    
     }
 
     function validateCsvFile(file: File): boolean {
@@ -981,10 +979,10 @@ export class EmployeeContentComponent implements OnInit {
       if (!allowedExtensions.test(file.name)) {
         return false;
       }
-    
+
       return true;
     }
-    
+
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -1023,7 +1021,6 @@ export class EmployeeContentComponent implements OnInit {
         return;
       }
 
-
       let uid: number = -1;
       let numSuccesses = 0;
       let numFailures = 0;
@@ -1047,8 +1044,7 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
-              }
-              else if (res.status == "Success") {
+              } else if (res.status == 'Success') {
                 numSuccesses++;
                 sucesses.push(res);
               }
@@ -1062,7 +1058,7 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
-                this.csvForm.reset()
+                this.csvForm.reset();
               }
             },
             async (error: any) => {
@@ -1078,18 +1074,16 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
-                this.importFileResponse.numFailures = numFailures;             
+                this.importFileResponse.numFailures = numFailures;
               }
             }
           );
         });
         return 'employees added';
       });
-
     };
 
     reader.readAsText(file);
-
   }
 
   //FOR CHECKING THE CHECK BOX
@@ -1157,8 +1151,6 @@ export class EmployeeContentComponent implements OnInit {
       }
     }
   }
-
-  
 
   validateCsvFile(file: File): boolean {
     const allowedExtensions = /(\.csv)$/i;
@@ -1232,26 +1224,12 @@ export class EmployeeContentComponent implements OnInit {
   searchFieldDisabled(): boolean {
     return this.employee.length == 0;
   }
-
-  // caardSelect() {
-  //   const checkbox = event.target as HTMLInputElement;
-  //   if (checkbox.checked) {
-  //     this.countCard++;
-  //   } else {
-  //     this.countCard--;
-  //   }
-  // }
   SelectedCard() {
     return this.countCard;
   }
-  // SelectAll(event: Event, user: any): void {
-  //   const checkbox = event.target as HTMLInputElement;
-  //   this.selectAllChecked = checkbox.checked;
-
-  //   this.employee.forEach((user) => {
-  //     user.checked = checkbox.checked;
-  //   });
-
-  //   this.countCard = checkbox.checked ? this.employee.length : 0;
-  // }
+  sortEmployeeByUid(data: any) {
+    data.sort((a: any, b: any) => +a.uid - +b.uid);
+    console.log(data, 'adarsh sort');
+    return data;
+  }
 }
