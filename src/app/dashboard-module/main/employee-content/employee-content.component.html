@@ -80,7 +80,8 @@
       <button class="import" (click)="download()" [ngClass]="{'disabledBtn': selectedEmployess.length==0}"
         [disabled]="selectedEmployess.length==0" [disabled]="csvform.invalid"><img
           src="./assets/images/prime_file-import.svg">Export</button>
-      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg">Import</button>
+      <button class="import" (click)="openImport()"><img src="./assets/images/prime_file-export.svg"
+          [disabled]="csvForm.invalid">Import</button>
       <button class="btn3" (click)="openModal()"><i class="fa-solid fa-circle-plus"></i>Add Employee</button>
     </div>
   </div>
@@ -417,44 +418,43 @@
           </p>
           <h2>No Record Found!</h2>
         </div>
-        <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'">
-          <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
-            <div class="first-detail">
-              <input type="checkbox" [value]="user.id" [checked]="user.checked"
-                (change)="onCheckboxChange($event, user)">
-              <div class="icons1">
-                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                  (change)="onSelectChange($event, user)" [value]="user.status"
-                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                  <option value="active" class="activated">Active</option>
-                  <option value="terminated" class="terminate">Terminated</option>
-                  <option value="resigned" class="resign">Resigned</option>
-                  <option value="absconder" class="abscond">Absconder</option>
-                </select>
-                <img src="./assets/images/down-arrow.png" alt="">
-              </div>
-            </div>
-            <div routerLink="/employee-profile" (click)="selectEmployee(user)">
-              <div class="image-detail">
-                <span>
-                  <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
-                  <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
-
-                </span>
-              </div>
-              <div class="per-detail">
-                <h3>{{user.name}}</h3>
-                <div class="per-detail1">
-                  <p>{{user.designation}}<span> | {{user.uid}}</span></p>
-                </div>
-              </div>
-              <div class="contact-detail">
-                <p>{{user.mobile}}</p>
-                <span>{{user.email}}</span>
-              </div>
+        <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
+        <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
+          <div class="first-detail">
+            <input type="checkbox" [value]="user.id" [checked]="user.checked" (change)="onCheckboxChange($event, user)">
+            <div class="icons1">
+              <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                (change)="onSelectChange($event, user)" [value]="user.status"
+                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                <option value="active" class="activated">Active</option>
+                <option value="terminated" class="terminate">Terminated</option>
+                <option value="resigned" class="resign">Resigned</option>
+                <option value="absconder" class="abscond">Absconder</option>
+              </select>
+              <img src="./assets/images/down-arrow.png" alt="">
             </div>
           </div>
-        </ng-container>
+          <div routerLink="/employee-profile" (click)="selectEmployee(user)">
+            <div class="image-detail">
+              <span>
+                <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
+                <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
+
+              </span>
+            </div>
+            <div class="per-detail">
+              <h3>{{user.name}}</h3>
+              <div class="per-detail1">
+                <p>{{user.designation}}<span> | {{user.uid}}</span></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <p>{{user.mobile}}</p>
+              <span>{{user.email}}</span>
+            </div>
+          </div>
+        </div>
+        <!-- </ng-container> -->
       </div>
     </div>
     <div class="status-card1" *ngIf="isstatus">
@@ -589,12 +589,10 @@
               <label>Employee ID </label>
               <input type="number" class="no-spin" id="text3" [(ngModel)]="currentEmployeeUid" formControlName="uid"
                 pattern="^[^\s]+$" [disabled]="true" readonly>
-
             </div>
             <div class="input">
               <label>Date of Joining</label>
               <input type="date" id="text5" placeholder="DD/MM/YYYY" formControlName="dateOfJoining">
-
             </div>
           </div>
           <div class="form-row">
@@ -638,7 +636,7 @@
           <div class="form-row">
             <div class="input">
               <label>CTC</label>
-              <input type="text" id="text11" placeholder="8LPA" formControlName="ctc"
+              <input type="number" id="text11" placeholder="8LPA" formControlName="ctc" class="no-spin"
                 [ngClass]="{'ng_invalid': registrationFormControl.ctc.invalid && registrationFormControl.ctc.dirty,'ng_valid': registrationFormControl.ctc.valid}">
             </div>
           </div>
@@ -647,11 +645,11 @@
 
       <div class="modal-footer">
         <button *ngIf="firstStep" (click)="emailExists || mobileExists ? null : onNextForm()" class="next-btn"
-          [disabled]="!(form.value.name && form.value.job_type && form.value.designation && (form.value.email || !emailExists) && (form.value.mobile || !mobileExists) && form.value.url)">
+          [disabled]="registrationFormControl.email.invalid || registrationFormControl.mobile.invalid || registrationFormControl.name.invalid || this.form.controls.url.invalid">
           Next </button>
-        <button *ngIf="secondStep " (click)="onPreviousForm()" class="back-btn">Back</button>
+        <button *ngIf="secondStep && !doneClicked" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
-          [disabled]="!(this.form.controls.dateOfJoining.valid  && this.form.controls.ctc.valid && this.form.controls.location.valid && this.form.controls.timing.valid)">{{loading?'Loading...':'Done'}}</button>
+          [disabled]="registrationFormControl.ctc.invalid">{{loading?'Loading...':'Done'}}</button>
       </div>
     </div>
     <div class="modal-content2" *ngIf="fourthStep">
@@ -699,52 +697,27 @@
           <h3>Select a CSV File to Upload</h3>
           <!-- <p>or drag and drop it here</p> -->
 
-          <form [formGroup]="csvForm">
+          <form action="" [formGroup]="csvForm">
             <div class="file_upload">
               <input type="file" accept=".csv" #csvInput formControlName="csv">
             </div>
           </form>
-
-       
-          <!-- <input type="text"  id="text18" readonly [value]="fileName1">
-          <input type="file" #fileInput (change)="onFileSelectedrem($event)" accept=".csv" formControlName="csv"> -->
-
         </div>
-        <!-- <h5>Download <a class="csv"  (click)=" download1()" >Sample CSV File</a> for Reference</h5> -->
-        <!-- (click)=" generateSampleCsvFile()" -->
         <div class="content3">
           <h5>Download <a class="csv" href="assets/csv/Sample.csv" [download]> Sample CSV File</a> for Reference</h5>
           <p>Maximum file size:5MB</p>
         </div>
-
-        <!-- <div class="custom-file-picker">
-          <input type="text" placeholder="Add the file URL" id="text14" >
-          <input type="file" >
-          <a  class="choose">Choose File</a>
-        </div> -->
         <div class="card" *ngIf="loader">
           <div class="pdf_file">
             <img src="./assets/images/Vector (8).png" alt="">
           </div>
           <div class="progress_bar_loader" *ngIf="loader"></div>
-          <!-- <div class="input-upload">
-            <input type="text" id="text18" readonly [value]="fileName1" (change)="onFileSelected1($event)"
-              formControlName="csv">
-            <input type="file" #fileInput (change)="onFileSelectedrem($event)" (change)="onFileSelected1($event)"
-              accept=".csv" formControlName="csv">
 
-            <div class="progress-bar">
-              <div class="progress"></div>
-              <div class="progress-text">0%</div>
-            </div>
-
-          </div> -->
         </div>
         <div class="import-btns">
           <button class="can-btn" (click)="closeFilepicker()">Cancel</button>
           <button class="imp-btn" (click)="onFileSelectedrem(csvInput)"
             [disabled]="csvForm.controls.csv.pristine">Import</button>
-          <!-- <button class="imp-btn" (click)="employeecsv()"  [disabled]="!fileInput.files || fileInput.files.length === 0">Import</button> -->
 
 
 
