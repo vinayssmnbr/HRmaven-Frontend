@@ -19,7 +19,7 @@ export class LeavesContentComponent {
   test: any = 'All';
   // searchText: string;
   status: string;
-  leaves: any[] = [];
+  leaves: any = [];
   employeeid = '';
   employeename = '';
   totalCount = 0;
@@ -38,9 +38,7 @@ export class LeavesContentComponent {
     dashService.activeComponent = 'leaves';
     dashService.headerContent = '';
     this.Selectvariable = 'all';
-    this.fetchPendingLeave();
-    this.graphleave();
-    this.leavecontentload();
+
   }
   total: number = 0;
   pendingcount: number = 0;
@@ -213,6 +211,9 @@ export class LeavesContentComponent {
     selectBtn.addEventListener('click', () =>
       optionMenu.classList.toggle('active')
     );
+    this.fetchPendingLeave();
+    this.graphleave();
+    this.leavecontentload();
   }
 
   updateafteraction() {
@@ -370,7 +371,6 @@ export class LeavesContentComponent {
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'accept', this.acceptmessage)
         .subscribe((res:any) => {
-          this.graphleave();
          });
 
       if (this.acceptdata.type="Full Day Leave") {
@@ -409,7 +409,6 @@ export class LeavesContentComponent {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
         }
-        this.graphleave();
       });
 
       //////////////////////////////////////////
@@ -437,7 +436,7 @@ export class LeavesContentComponent {
     })
       this.dashService
         .updateleavestatus(this.acceptdata._id, 'reject', this.acceptmessage)
-        .subscribe((res:any) => { this.graphleave(); });
+        .subscribe((res:any) => { });
       this.acceptmessage = '';
       this.rejectleave.push(row);
     } else {
@@ -460,7 +459,6 @@ export class LeavesContentComponent {
           const row = this.acceptdata[index];
           pendingtemp.push(row);
         }
-        this.graphleave();
 
       });
       this.pendingleave = pendingtemp;
