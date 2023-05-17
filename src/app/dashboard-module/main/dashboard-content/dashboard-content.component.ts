@@ -55,9 +55,12 @@ export class DashboardContentComponent implements OnInit {
 
   })
 
+  // ,Validators.pattern("^[6-9][0-9]{8}$")
   phoneValidator(control: FormControl) {
     const value = control.value;
-    const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+    // const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+    const valid = /^[6-9][0-9]{8}$/.test(value); // check if value contains only 10 digits
+
     return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
   }
 
