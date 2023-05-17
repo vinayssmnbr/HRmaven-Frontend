@@ -42,8 +42,7 @@
                         </span>
                     </ng-template>
 
-                    <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">Send Verification
-                        Email</button>
+                    <button id="submit1" type="submit" [disabled]="forgotPassword.invalid">{{loaderforget ? 'Sending... ': 'Send Verification Email'}}</button>
                 </form>
             </div>
         </div>
