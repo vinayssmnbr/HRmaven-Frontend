@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
-
+import { FormGroup,FormControl,Validators } from '@angular/forms';
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
@@ -71,12 +71,44 @@ export class JobDetailsComponent {
 
   }
   Newcandidate:boolean=false;
+
+
   openaddmodal(){
   this.Newcandidate=true;
   this.addcandidate=false;
+  console.log(this.newcandidateform.value)
+
 
   }
   closedone(){
     this.Newcandidate=false;
   }
+
+  newcandidateform = new FormGroup({
+    candidateName : new FormControl(''),
+    contactnumber:new FormControl(''),
+    email:new FormControl(''),
+
+    applieddate:new FormControl(''),
+
+    resume:new FormControl(''),
+
+
+
+
+
+  })
+
+  newcandidatedetail(){
+    console.warn(this.newcandidateform.value)
+  }
+
+
+
+
+
+
+
+
+  
 }
