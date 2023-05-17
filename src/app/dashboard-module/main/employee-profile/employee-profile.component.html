@@ -298,7 +298,7 @@
           <p class="jdate" *ngIf="user.dateOfJoining">{{user.dateOfJoining | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
           <p *ngIf="!user.ctc">----------</p>
-          <p class="ctc" *ngIf="user.ctc">{{user.ctc}}</p>
+          <p class="ctc" *ngIf="user.ctc">{{user.ctc}} LPA</p>
         </div>
       </div>
     </div>
@@ -504,8 +504,7 @@
             </div>
             <div class="input" *ngIf="Selectvariable2=== 'Others'">
               <label>Other Bank Name</label>
-              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname"
-               class="text"
+              <input type="text" placeholder="Specify Bank Name" formControlName="otherbankname" class="text"
                 [ngClass]="{'ng_invalid': registrationFormControl.otherbankname.invalid && registrationFormControl.otherbankname.dirty,'ng_valid': registrationFormControl.otherbankname.valid}">
             </div>
           </div>
@@ -513,7 +512,7 @@
             <div class="input">
               <label>Bank Account No.</label>
               <input type="number" placeholder="6412365874125425" class="no-spin text" formControlName="accountno"
-              [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
+                [ngClass]="{'ng_invalid': registrationFormControl.accountno.invalid && registrationFormControl.accountno.dirty,'ng_valid': registrationFormControl.accountno.valid}">
             </div>
             <div class="input">
               <label>IFSC Code</label>
@@ -543,7 +542,7 @@
       </div>
       <div class="modal-footer">
         <button class="save" (click)="closeModal4(form.value)"
-          [disabled]="registrationFormControl.panno.invalid || registrationFormControl.ifsc.invalid || registrationFormControl.adhaarno.invalid || registrationFormControl.passport.invalid || registrationFormControl.accountno.invalid || registrationFormControl.otherbankname.invalid">{{loader?'Updating...':'Update'}}</button>
+          [disabled]="registrationFormControl.panno.invalid || registrationFormControl.ifsc.invalid || registrationFormControl.adhaarno.invalid || registrationFormControl.passport.invalid || registrationFormControl.accountno.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
     <!------------------------------------------------- ************** ----------------------------------------------------->
@@ -731,7 +730,7 @@
             </div>
             <div class="input">
               <label>CTC</label>
-              <input type="text" placeholder="8LPA" formControlName="ctc">
+              <input type="number" placeholder="8LPA" formControlName="ctc">
             </div>
           </div>
           <div class="form-row">

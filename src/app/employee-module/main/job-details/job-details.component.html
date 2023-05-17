@@ -1,13 +1,12 @@
-<app-header></app-header>
 <app-sidebar></app-sidebar>
-
+<app-header></app-header>
 <div class="row">
     <div class="card_content">
         <div class="card" routerLink="/job-details">
             <div class="card-outer">
                 <div class="card-head">
                     <div class="card-logo">
-                        <div class="back_icon" routerLink="/recruitment">
+                        <div class="back_icon" routerLink="/emp-recruitment">
                             <img src="assets/images/material-symbols_arrow-back-ios-new-rounded.png" alt="">
                         </div>
                         <div class="card-text">
@@ -77,13 +76,10 @@
                         <p> 24 more applied</p>
                     </li>
                 </div>
-                <div class="view_btn" (click)="viewbtn()">
+                <div class="view_btn" (click)="moreview()">
                     <button><u>View more </u></button>
                 </div>
-
-
             </div>
-
 
             <div class="recruiters_nav">
                 <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')">
@@ -300,10 +296,6 @@
                 </table>
             </div>
         </div>
-
-
-
-
     </div>
 
 
@@ -364,8 +356,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="Recruiters_List">
                 <h1>Recruiters List</h1>
@@ -400,17 +390,12 @@
         </div>
     </div>
 
-
-
-
-
-
 </div>
 
 <!-- ------------------Add a  new candidate modal--------------- -->
 
 <div class="Add_candidate" *ngIf="addcandidate">
-    <form  [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
+    <form action="#">
         <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
         <div class="form_title">
             <h1>Add a new candidate</h1>
@@ -419,7 +404,7 @@
         <div class="user__details">
             <div class="input__box">
                 <span class="details">Candidate name</span>
-                <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
+                <input type="text" placeholder="Sahil Verma" required>
             </div>
             <div class="input__box">
                 <span class="details">Candidate id</span>
@@ -427,19 +412,19 @@
             </div>
             <div class="input__box">
                 <span class="details">Contact number</span>
-                <input type="text" placeholder="johnsmith@hotmail.com" required formControlName="contactnumber">
+                <input type="text" placeholder="johnsmith@hotmail.com" required>
             </div>
             <div class="input__box">
                 <span class="details">Email</span>
-                <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
+                <input type="email" placeholder="sahilverma@gmail.com" required>
             </div>
             <div class="input__box">
                 <span class="details">Applied date</span>
-                <input type="number" placeholder="23/04/2023" required  formControlName="applieddate">
+                <input type="number" placeholder="23/04/2023" required>
             </div>
             <div class="input__box">
                 <span class="details">Resume</span>
-                <input type="file" placeholder="No file choosen" required formControlName="resume">
+                <input type="file" placeholder="No file choosen" required>
             </div>
         </div>
         <div class="form_button" (click)="openaddmodal()">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DashService } from '../../shared/dash.service';
-import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { DashService } from 'src/app/dashboard-module/shared/dash.service';
+
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
@@ -55,60 +55,26 @@ export class JobDetailsComponent {
     console.log(arr.name);
   }
 
-  Jobdetails: boolean = false;
-  viewbtn(){
+  Jobdetails = false;
+  moreview() {
     this.Jobdetails = true;
   }
-  close_modal(){
+  close_modal() {
     this.Jobdetails = false;
   }
-  addcandidate:boolean=false;
-  closemodal(){
-    this.addcandidate=false;
+  addcandidate: boolean = false;
+  closemodal() {
+    this.addcandidate = false;
   }
-  openmodal(){
-    this.addcandidate=true;
-
+  openmodal() {
+    this.addcandidate = true;
   }
-  Newcandidate:boolean=false;
-
-
-  openaddmodal(){
-  this.Newcandidate=true;
-  this.addcandidate=false;
-  console.log(this.newcandidateform.value)
-
-
+  Newcandidate: boolean = false;
+  openaddmodal() {
+    this.Newcandidate = true;
+    this.addcandidate = false;
   }
-  closedone(){
-    this.Newcandidate=false;
+  closedone() {
+    this.Newcandidate = false;
   }
-
-  newcandidateform = new FormGroup({
-    candidateName : new FormControl(''),
-    contactnumber:new FormControl(''),
-    email:new FormControl(''),
-
-    applieddate:new FormControl(''),
-
-    resume:new FormControl(''),
-
-
-
-
-
-  })
-
-  newcandidatedetail(){
-    console.warn(this.newcandidateform.value)
-  }
-
-
-
-
-
-
-
-
-  
 }
