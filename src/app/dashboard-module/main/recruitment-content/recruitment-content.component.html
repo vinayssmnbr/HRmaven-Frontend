@@ -22,14 +22,14 @@
 
             <div class="jobs-completed">
                 <ul class="all-completed">
-                    <li class="active">All Jobs</li>
-                    <li>Completed</li>
+                    <li class="active" [class.color]="id ==='all'" (click)="tabChange('all')">All Jobs</li>
+                    <li [class.color]="id ==='unread'" (click)="tabChange('unread')">Completed</li>
                 </ul>
                 <span class="line"></span>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" >
             <div class="col-4">
                 <div class="card" routerLink="/job-details">
                     <div class="card-outer">
@@ -452,7 +452,7 @@
                                             <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                                                 <div class="dropdwon_select" (click)="dropdownOpen()">
                                                     <!-- <p>{{Selectvariable}}</p> -->
-                                                    <input type="text" [(ngModel)]="Selectvariable" formControlName="location" id="text11"
+                                                    <input class="none" type="text" [(ngModel)]="Selectvariable" formControlName="location" id="text11"
                                                     placeholder="Select" readonly>
                                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                                 </div>
@@ -481,7 +481,7 @@
                                             <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                                                 <div class="dropdwon_select" (click)="dropdownOpen1()">
                                                     <!-- <p>{{Selectvariable1}}</p> -->
-                                                    <input type="text" [(ngModel)]="Selectvariable1" formControlName="experience" id="text11"
+                                                    <input class="none" type="text" [(ngModel)]="Selectvariable1" formControlName="experience" id="text11"
                                                     placeholder="Select" readonly>
                                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                                 </div>
@@ -501,7 +501,7 @@
                                             <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                                                 <div class="dropdwon_select" (click)="dropdownOpen2()">
                                                     <!-- <p>{{Selectvariable2}}</p> -->
-                                                    <input type="text" [(ngModel)]="Selectvariable2" formControlName="jobtype" id="text11"
+                                                    <input class="none" type="text" [(ngModel)]="Selectvariable2" formControlName="jobtype" id="text11"
                                                     placeholder="Select" readonly>
                                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                                 </div>

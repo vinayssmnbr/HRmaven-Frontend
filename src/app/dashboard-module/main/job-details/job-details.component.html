@@ -410,7 +410,7 @@
 <!-- ------------------Add a  new candidate modal--------------- -->
 
 <div class="Add_candidate" *ngIf="addcandidate">
-    <form action="#">
+    <form  [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
         <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
         <div class="form_title">
             <h1>Add a new candidate</h1>
@@ -419,7 +419,7 @@
         <div class="user__details">
             <div class="input__box">
                 <span class="details">Candidate name</span>
-                <input type="text" placeholder="Sahil Verma" required>
+                <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
             </div>
             <div class="input__box">
                 <span class="details">Candidate id</span>
@@ -427,19 +427,19 @@
             </div>
             <div class="input__box">
                 <span class="details">Contact number</span>
-                <input type="text" placeholder="johnsmith@hotmail.com" required>
+                <input type="text" placeholder="johnsmith@hotmail.com" required formControlName="contactnumber">
             </div>
             <div class="input__box">
                 <span class="details">Email</span>
-                <input type="email" placeholder="sahilverma@gmail.com" required>
+                <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
             </div>
             <div class="input__box">
                 <span class="details">Applied date</span>
-                <input type="number" placeholder="23/04/2023" required>
+                <input type="number" placeholder="23/04/2023" required  formControlName="applieddate">
             </div>
             <div class="input__box">
                 <span class="details">Resume</span>
-                <input type="file" placeholder="No file choosen" required>
+                <input type="file" placeholder="No file choosen" required formControlName="resume">
             </div>
         </div>
         <div class="form_button" (click)="openaddmodal()">

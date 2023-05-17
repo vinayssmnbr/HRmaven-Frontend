@@ -114,7 +114,7 @@ dropdownOpen() {
 
   this.contentdropdown = !this.contentdropdown;
 }
-Selectvariable: string = '-Select-';
+Selectvariable: string = '';
 colorvariable: number =  0;
 Changeselect(arr: any) {
   this.Selectvariable = arr.name;
@@ -148,7 +148,7 @@ dropdownOpen1() {
 
   this.contentdropdown1 = !this.contentdropdown1;
 }
-Selectvariable1: string = '-Select-';
+Selectvariable1: string = '';
 colorvariable1: number =  0;
 Changeselect1(arr1: any) {
   this.Selectvariable1 = arr1.name;
@@ -175,7 +175,7 @@ dropdownOpen2() {
 
   this.contentdropdown2 = !this.contentdropdown2;
 }
-Selectvariable2: string = '-Select-';
+Selectvariable2: string = '';
 colorvariable2: number =  0;
 Changeselect2(arr2: any) {
   this.Selectvariable2 = arr2.name;
