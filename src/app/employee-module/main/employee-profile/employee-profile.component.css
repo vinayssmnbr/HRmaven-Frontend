@@ -313,7 +313,13 @@
   cursor: pointer;
   padding: 0px 33px;
 }
-
+.password-toggle {
+  position: absolute;
+  margin-top: 18px;
+  margin-left: 480px;
+  color: #B4B4B4;
+  cursor: pointer;
+}
 .content1 li {
   cursor: pointer;
   padding-bottom: 10px;
@@ -1031,6 +1037,7 @@ input[type="number"]:hover {
   text-align: left;
   width: 200px;
   min-height: 20px;
+  margin-top: 20px;
 }
 
 .old-new-confirm-password input {
@@ -1044,17 +1051,18 @@ input[type="number"]:hover {
   padding-right: 17px;
   outline: none;
   margin-left: -84px;
+  margin-bottom: 0 !important;
 }
 
 .old-new-confirm-password {
   gap: 100px;
   display: flex;
-  text-align: center;
-  align-items: center;
+  /* text-align: center;
+  align-items: center; */
 }
 .tooltip {
   position: relative;
-  margin-top: 8px;
+  margin-top: 18px;
   margin-left: -90px;
   cursor: pointer;
 }
@@ -1377,7 +1385,7 @@ input[type="number"]:hover {
   font-weight: 400;
   font-size: 12px;
   margin-left: 218px;
-  margin-top: 6px;
+  margin-top: 53px;
   position: absolute;
 }
 

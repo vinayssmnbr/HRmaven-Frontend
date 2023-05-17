@@ -319,6 +319,30 @@ export class EmployeeProfileComponent {
       Validators.required,
     ]),
   });
+  showPassword1 = false;
+  showPasswordIcon1 = 'fa-eye-slash';
+  showPassword2 = false;
+  showPasswordIcon2 = 'fa-eye-slash';
+  showPassword3 = false;
+  showPasswordIcon3 = 'fa-eye-slash';
+  togglePasswordVisibility1(passwordInput1: any) {
+    this.showPassword1 = !this.showPassword1;
+    this.showPasswordIcon1 = this.showPassword1 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput1.type = this.showPassword1 ? 'password' : 'text';
+  }
+
+  togglePasswordVisibility2(passwordInput2: any) {
+    this.showPassword2 = !this.showPassword2;
+    this.showPasswordIcon2 = this.showPassword2 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput2.type = this.showPassword2 ? 'password' : 'text';
+  }
+
+  togglePasswordVisibility3(passwordInput3: any) {
+    this.showPassword3 = !this.showPassword3;
+    this.showPasswordIcon3 = this.showPassword3 ? 'fa-eye-slash' : 'fa-eye';
+    passwordInput3.type = this.showPassword3 ? 'password' : 'text';
+  }
+
 
   empform6 = new FormGroup({
     jobdesignation: new FormControl(''),
