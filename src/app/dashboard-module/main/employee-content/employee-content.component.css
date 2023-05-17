@@ -2184,7 +2184,7 @@ input::placeholder {
 }
 .card-detail:hover {
   border: 1px solid #2f2c9f;
-  transform: translateY(-5px);
+  transform: translateY(10px);
   transition: 0.5s ease-in-out;
 }
 .card-detail .first-detail {

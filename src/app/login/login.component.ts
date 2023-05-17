@@ -313,6 +313,7 @@ ress: any =''
   //   }, 500);
   // }
   // }
+  loaderforget = false;
   ForgetEmailSubmit(data: any) {
     console.log('Forget Password Email');
     console.log(data);
@@ -321,11 +322,13 @@ ress: any =''
       console.log('message: ', res.message);
 
       if (res.message === 'user-found') {
+        this.loaderforget = true;
         this.userService.ForgotEmail(data).subscribe((res: any) => {
           this.userService.ForgotEmail(this.forgotPassword);
           console.log('response:' + Object.values(res));
           this.Forgotshow = false; // Close the "Forgot Password" modal
           this.emailSent = true; // Display the "Reset Password Link Sent" message
+          this.loaderforget = false;
         });
       } else if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
