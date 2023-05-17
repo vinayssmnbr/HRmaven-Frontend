@@ -20,14 +20,14 @@
         </div>
       </div>
 
-            <div class="jobs-completed">
-                <ul class="all-completed">
-                    <li class="active" [class.color]="id ==='all'" (click)="tabChange('all')">All Jobs</li>
-                    <li [class.color]="id ==='unread'" (click)="tabChange('unread')">Completed</li>
-                </ul>
-                <span class="line"></span>
-            </div>
-        </div>
+      <div class="jobs-completed">
+        <ul class="all-completed">
+          <li class="active" [class.color]="id ==='all'">All Jobs</li>
+          <li [class.color]="id ==='unread'">Completed</li>
+        </ul>
+        <span class="line"></span>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-4">
@@ -422,12 +422,12 @@
 
           </div>
 
-                    
-                    <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
-                        <form class="vacancy-form" [FormGroup]="jobvacancyform">
-                            <div class="job-title-date">
-                                <form class="job-vacancy-form" [formGroup]="vacancyForm"
-                                    (ngSubmit)="jobvacancydetail(vacancyForm.value)">
+
+          <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
+            <form class="vacancy-form" [FormGroup]="jobvacancyform">
+              <div class="job-title-date">
+                <form class="job-vacancy-form" [formGroup]="vacancyForm"
+                  (ngSubmit)="jobvacancydetail(vacancyForm.value)">
 
                   <div class="meeting-mode">
 
@@ -514,14 +514,13 @@
                     </div>
                   </div>
 
-                                    <div class="discard-save">
-                                        <div class="save"><button type="submit"
-                                                (click)="tabChange('unread')">Next</button> </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </form>
-                    </div>
+                  <div class="discard-save">
+                    <div class="save"><button type="submit" (click)="tabChange1('unread')">Next</button> </div>
+                  </div>
+                </form>
+              </div>
+            </form>
+          </div>
 
 
           <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
