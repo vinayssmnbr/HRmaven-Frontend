@@ -646,6 +646,7 @@ span.line {
 .none{
    outline: none;
    border:none;
+   cursor: pointer;
 }
 .none::placeholder{
   font-weight: 400;
