@@ -348,7 +348,7 @@
         <div class="form__group">
           <label for="phone">Phone no.</label>
           <input type="text" class="form_input" placeholder="Enter Phone number" formControlName="phone" id="phone"
-            required pattern="\d*" maxlength="10" (input)="onInput($event)" />
+            required pattern="\d*" (input)="onInput($event)" />
           <span *ngIf="isInputDirty && isPhoneInvalid" class="phone-error-message"> <svg width="13" height="13"
               viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
