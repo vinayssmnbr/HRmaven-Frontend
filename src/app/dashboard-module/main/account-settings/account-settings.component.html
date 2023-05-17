@@ -103,11 +103,12 @@
           </div>
           <div class="employee-text">
             <h6>Personal Email</h6>
-            <p *ngIf="!employeeemail; else employeeEmailValue">---------</p>
-            <ng-template #employeeEmailValue>
-              <p>{{ personalDetailsForm.controls.personalemail.value }}</p>
+
+            <p *ngIf="personalemail; else noEmail"> {{ personalemail }} </p>
+            <ng-template #noEmail>
+              <p>-------</p>
             </ng-template>
-          </div>
+                    </div>
           <div class="head-office-edit">
             <div class="head-office-text">
               <h6>Professional Email</h6>
@@ -124,7 +125,7 @@
         <div class="phone-number">
           <div class="email-phone">
             <h6>Phone</h6>
-            <p>{{phone}}</p>
+            <p style="color: #777777">{{phone}}</p>
           </div>
         </div>
       </div>
@@ -313,6 +314,12 @@
         <div class="form__group">
           <label>Personal Email</label>
           <input type="email" class="form_input" placeholder='Enter Email' formControlName="personalemail" required />
+                    
+            <!-- <p *ngIf="employeeemail; else noEmail"> {{ employeeemail }} </p>
+            <ng-template #noEmail>
+              <p>-------</p>
+            </ng-template> -->
+
           <span
             *ngIf="personalDetailsForm.controls.personalemail.invalid && personalDetailsForm.controls.personalemail.touched">
             <span *ngIf="personalDetailsForm.controls.personalemail.errors.required" class="modal-error-message">
@@ -352,7 +359,7 @@
       </div>
       <div class="edit-profile-footer">
         <button type="submit" class="done-btn" (click)="closeModal2();updateData(personalDetailsForm.value)"
-          [disabled]="personalDetailsForm.controls['phone'].invalid ||  personalDetailsForm.controls['personalemail'].invalid">{{doneLoader1?
+          [disabled]="personalDetailsForm.controls['phone'].invalid">{{doneLoader1?
           'Loading....':'Done'}}</button>
       </div>
     </form>
