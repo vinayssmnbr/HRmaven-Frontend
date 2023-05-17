@@ -22,14 +22,14 @@
 
             <div class="jobs-completed">
                 <ul class="all-completed">
-                    <li class="active">All Jobs</li>
-                    <li>Completed</li>
+                    <li class="active" [class.color]="id ==='all'" (click)="tabChange('all')">All Jobs</li>
+                    <li [class.color]="id ==='unread'" (click)="tabChange('unread')">Completed</li>
                 </ul>
                 <span class="line"></span>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" >
             <div class="col-4">
                 <div class="card" routerLink="/job-details">
                     <div class="card-outer">
@@ -421,32 +421,39 @@
                         </div>
 
                     </div>
+
+                    
                     <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
                         <form class="vacancy-form" [FormGroup]="jobvacancyform">
                             <div class="job-title-date">
                                 <form class="job-vacancy-form" [formGroup]="vacancyForm"
-                                    (ngSubmit)="jobvacancydetail()">
+                                    (ngSubmit)="jobvacancydetail(vacancyForm.value)">
+
                                     <div class="meeting-mode">
+
                                         <div class="form-group">
                                             <label>Job Title <span>*</span></label> <br>
                                             <input type="text" placeholder="Type a job title here..."
-                                                class="meeting-input" formControlName="jobtitle"
-                                                formControlName="jobtitle">
+                                                class="meeting-input" formControlName="jobtitle"  formControlName="jobtitle">
 
                                         </div>
+
                                         <div class="form-group">
                                             <label>Date <span>*</span></label> <br>
-                                            <input type="date" placeholder="23/04/2023" class="meeting-input "
-                                                formControlName="datetitle">
+                                            <input type="date" placeholder="23/04/2023" class="meeting-input " formControlName="date">
                                         </div>
+
                                     </div>
 
                                     <div class="meeting-mode">
+
                                         <div class="form-group">
                                             <label>Location <span>*</span></label> <br>
                                             <div class="dropdown_container" (mouseleave)="contentdropdown = false">
                                                 <div class="dropdwon_select" (click)="dropdownOpen()">
-                                                    <p>{{Selectvariable}}</p>
+                                                    <!-- <p>{{Selectvariable}}</p> -->
+                                                    <input class="none" type="text" [(ngModel)]="Selectvariable" formControlName="location" id="text11"
+                                                    placeholder="Select" readonly>
                                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                                 </div>
                                                 <div class="select_content" *ngIf="contentdropdown">
@@ -459,11 +466,13 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label>CTC <span>*</span></label> <br>
-                                            <input type="text" placeholder="Specify CTC here..." class="meeting-input"
+                                            <input type="text" placeholder="Specify CTC here..." class="meeting-input" [(ngModel)]="ctcTitle"
                                                 formControlName="ctctitle">
                                         </div>
+
                                     </div>
 
                                     <div class="meeting-mode">
@@ -471,7 +480,9 @@
                                             <label>Experience <span>*</span></label> <br>
                                             <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
                                                 <div class="dropdwon_select" (click)="dropdownOpen1()">
-                                                    <p>{{Selectvariable1}}</p>
+                                                    <!-- <p>{{Selectvariable1}}</p> -->
+                                                    <input class="none" type="text" [(ngModel)]="Selectvariable1" formControlName="experience" id="text11"
+                                                    placeholder="Select" readonly>
                                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                                 </div>
                                                 <div class="select_content" *ngIf="contentdropdown1">
@@ -484,11 +495,14 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label>Job Type <span>*</span></label> <br>
                                             <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
                                                 <div class="dropdwon_select" (click)="dropdownOpen2()">
-                                                    <p>{{Selectvariable2}}</p>
+                                                    <!-- <p>{{Selectvariable2}}</p> -->
+                                                    <input class="none" type="text" [(ngModel)]="Selectvariable2" formControlName="jobtype" id="text11"
+                                                    placeholder="Select" readonly>
                                                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                                                 </div>
                                                 <div class="select_content" *ngIf="contentdropdown2">
@@ -502,6 +516,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="discard-save">
                                         <div class="save"><button type="submit"
                                                 (click)="tabChange('unread')">Next</button> </div>

@@ -55,6 +55,7 @@ export class RecruitmentContentComponent {
   tabChange(ids: any) {
     this.id = ids;
     console.log(this.id);
+    console.log(this.vacancyForm.value)
   }
 
 
@@ -80,7 +81,10 @@ all:boolean=false;
     datetitle:new FormControl(''),
     date:new FormControl(''),
     ctctitle:new FormControl(''),
-
+    jobtype:new FormControl(''),
+    experience:new FormControl(''),
+    location:new FormControl(''),
+    
   })
   vacancydetail()
 {
@@ -110,7 +114,7 @@ dropdownOpen() {
 
   this.contentdropdown = !this.contentdropdown;
 }
-Selectvariable: string = '-Select-';
+Selectvariable: string = '';
 colorvariable: number =  0;
 Changeselect(arr: any) {
   this.Selectvariable = arr.name;
@@ -144,7 +148,7 @@ dropdownOpen1() {
 
   this.contentdropdown1 = !this.contentdropdown1;
 }
-Selectvariable1: string = '-Select-';
+Selectvariable1: string = '';
 colorvariable1: number =  0;
 Changeselect1(arr1: any) {
   this.Selectvariable1 = arr1.name;
@@ -171,13 +175,14 @@ dropdownOpen2() {
 
   this.contentdropdown2 = !this.contentdropdown2;
 }
-Selectvariable2: string = '-Select-';
+Selectvariable2: string = '';
 colorvariable2: number =  0;
 Changeselect2(arr2: any) {
   this.Selectvariable2 = arr2.name;
   this.colorvariable2 = arr2.id;
   this.contentdropdown2=false;
   console.log(arr2.name);
+  // this.user.jobtype=arr2.jobtype
 }
 
 
@@ -217,11 +222,12 @@ removetask1(id:number){
 
 jobvacancyform= new FormGroup({
   jobtitle:new FormControl('',[Validators.required]),
-  datetitle:new FormControl('')
+  // datetitle:new FormControl('')
+  datetitle: new FormControl('', Validators.required),
 
 })
 jobvacancydetail(){
-  console.warn(this.vacancyForm.value);
+  console.log(this.vacancyForm.value);
 }
 
 
