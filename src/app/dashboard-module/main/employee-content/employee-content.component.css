@@ -492,6 +492,8 @@ input[type="checkbox"] {
   text-align: justify;
   padding: 15px 20px;
   white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
   border: 1px solid #f9f9f9;
   font-style: normal;
   font-weight: 400;
