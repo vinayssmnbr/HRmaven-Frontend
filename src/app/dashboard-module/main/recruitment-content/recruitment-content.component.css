@@ -709,12 +709,13 @@ form.job-vacancy-form {
 
 .job-description textarea {
   width: 574px;
-  height: 40px;
+  height: 99px;
   background-color: #FFFFFF;
   border: 1px solid #CBCBCB;
   border-radius: 6px;
   padding: 10px 17px;
   outline: none;
+  resize: none;
 }
 
 .date-input {
