@@ -104,7 +104,8 @@
 
       <tbody>
 
-        <tr *ngFor="let user of sortEmployeeByUid(employee) | employeefilter:query:Selectvariable | employeestatus:statusFilter">
+        <tr
+          *ngFor="let user of sortEmployeeByUid(employee) | employeefilter:query:Selectvariable | employeestatus:statusFilter">
           <td colspan="7" class="no_data" *ngIf=" user.found=='true'">
             <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                 xmlns="http://www.w3.org/2000/svg">
@@ -418,43 +419,44 @@
           </p>
           <h2>No Record Found!</h2>
         </div>
-        <!-- <ng-container *ngIf="user.status==statusFilter || statusFilter=='all'"> -->
-        <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
-          <div class="first-detail">
-            <input type="checkbox" [value]="user.id" [checked]="user.checked" (change)="onCheckboxChange($event, user)">
-            <div class="icons1">
-              <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
-                (change)="onSelectChange($event, user)" [value]="user.status"
-                [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
-                <option value="active" class="activated">Active</option>
-                <option value="terminated" class="terminate">Terminated</option>
-                <option value="resigned" class="resign">Resigned</option>
-                <option value="absconder" class="abscond">Absconder</option>
-              </select>
-              <img src="./assets/images/down-arrow.png" alt="">
-            </div>
-          </div>
-          <div routerLink="/employee-profile" (click)="selectEmployee(user)">
-            <div class="image-detail">
-              <span>
-                <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
-                <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
-
-              </span>
-            </div>
-            <div class="per-detail">
-              <h3>{{user.name}}</h3>
-              <div class="per-detail1">
-                <p>{{user.designation}}<span> | {{user.uid}}</span></p>
+        <ng-container *ngIf="(user.status==statusFilter || statusFilter=='all') && user.found!='true'">
+          <div class="card-detail" [ngClass]="{'disabled':user.status!='active'}">
+            <div class="first-detail">
+              <input type="checkbox" [value]="user.id" [checked]="user.checked"
+                (change)="onCheckboxChange($event, user)">
+              <div class="icons1">
+                <select class="select1" id="myselect1" [class.active]="user.status==='active'" [disabled]="user.checked"
+                  (change)="onSelectChange($event, user)" [value]="user.status"
+                  [ngStyle]="selectedUser === user._id ? optionStyle : getStatusStyle(user)">
+                  <option value="active" class="activated">Active</option>
+                  <option value="terminated" class="terminate">Terminated</option>
+                  <option value="resigned" class="resign">Resigned</option>
+                  <option value="absconder" class="abscond">Absconder</option>
+                </select>
+                <img src="./assets/images/down-arrow.png" alt="">
               </div>
             </div>
-            <div class="contact-detail">
-              <p>{{user.mobile}}</p>
-              <span>{{user.email}}</span>
+            <div routerLink="/employee-profile" (click)="selectEmployee(user)">
+              <div class="image-detail">
+                <span>
+                  <img *ngIf="!user.url" src="./assets/images/Ellipse 98.svg" alt="no-user">
+                  <img *ngIf="user.url" src="{{user.url}}" alt="no-user">
+
+                </span>
+              </div>
+              <div class="per-detail">
+                <h3>{{user.name}}</h3>
+                <div class="per-detail1">
+                  <p>{{user.designation}}<span> | {{user.uid}}</span></p>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <p>{{user.mobile}}</p>
+                <span>{{user.email}}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- </ng-container> -->
+        </ng-container>
       </div>
     </div>
     <div class="status-card1" *ngIf="isstatus">
