@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
@@ -102,6 +103,41 @@ export class JobDetailsComponent {
   newcandidatedetail(){
     console.warn(this.newcandidateform.value)
   }
+  // fileName :string = '';
+  // selectedFile: File | null = null;
+  // onFileSelected(event:any){
+  //   this.selectedFile = event.target.files[0];
+  //   const maxAllowedSize = 5*1024*1024;
+  //   const allowedTypes = ['image/jpeg','image/jpg','image/png'];
+  //   this.fileName = this.selectedFile ? this.selectedFile.name : '';
+  //   if(!allowedTypes.includes(this.selectedFile.type)){
+  //     this.fileName = null;
+  //   }
+  //   if(this.selectedFile.size > maxAllowedSize){
+  //     this.fileName = '';
+  //   }
+  //   if(this.selectedFile.size > maxAllowedSize){
+  //     this.fileName = '';
+
+  //   }
+  //   if(this.selectedFile.type.split('/')[0] !== 'image'){
+  //     console.error('Invalid file type. Please select an image.');
+  //     return;
+  //   }
+
+  // }
+  // onUpload(file){
+  //   this.dashService.upload1(file).then(
+  //     (res)=>{
+  //       this.newcandidateform.patchValue({
+  //         resume:res && res.url,
+  //       });
+  //     },
+  //     (err)=>{
+  //       console.log(err);
+  //     }
+  //   )
+  // }
 
 
 
@@ -110,5 +146,4 @@ export class JobDetailsComponent {
 
 
 
-  
 }
