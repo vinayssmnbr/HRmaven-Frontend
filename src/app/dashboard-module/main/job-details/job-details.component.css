@@ -296,12 +296,14 @@ ul.skills {
 .select_content {
   background-color: #fff;
   cursor: pointer;
-  width: 140px;
+  width: 154px;
   cursor: pointer;
   padding: 6px 12px;
   position: absolute;
   color: #444444;
   z-index: 99;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
+border-radius: 8px;
 }
 
 .select_content ul {
@@ -446,13 +448,29 @@ thead .Resume {
   top: 0;
 }
 
-.table_option {
+/* .table_option {
   cursor: pointer;
   border: 1px solid transparent;
   outline: none;
   background: rgba(253, 167, 90, 0.1);
   border-radius: 100px;
   padding: 8px 15px;
+} */
+.dropdwon_select1{
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  width: 152px;
+  height: 34px;
+  position: relative;
+  background: rgba(253, 167, 90, 0.1);
+  border-radius: 100px;
+  padding: 8px 15px;
+}
+.designation-arrow{
+  position: absolute;
+    top: 26%;
+    right: 10%;
 }
 
 select.table_option::after {
@@ -916,4 +934,70 @@ form .user__details .input__box {
 
 .New_candidate .done_btn:hover {
   background-color: #308723ab;
+}
+
+
+/*------------------------Dropdown-Css--------------------*/
+.dropdwon_select {
+  background-color: #fff;
+  width: 172px;
+  height: 40px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+  color: #444444;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus{
+  border: 1px solid #2F2C9F;
+  border-radius: 8px;
+}
+
+.dropdwon_select p {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.dropdwon_select i {
+  font-size: 14px;
+  color: #444444;
+  padding: 3px 7px;
+}
+
+.select_content {
+  background-color: #fff;
+  cursor: pointer;
+  width: 154px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  color: #444444;
+}
+
+.select_content ul {
+  padding: 0;
+  margin: 0;
+}
+
+.select_content ul li {
+  list-style: none;
+  padding: 10px 10px;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.select_content ul li:hover {
+  background-color: #ECECEC;
+  border-radius: 8px;
+}
+
+.select_active {
+  background-color: #ECECEC;
+  border-radius: 8px;
+
 }

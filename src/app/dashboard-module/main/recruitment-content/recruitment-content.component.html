@@ -23,7 +23,7 @@
             <div class="jobs-completed">
                 <ul class="all-completed">
                     <li class="active" [class.color]="id ==='all'" (click)="tabChange('all')">All Jobs</li>
-                    <li [class.color]="id ==='unread'" (click)="tabChange('unread')">Completed</li>
+                    <li [class.color]="id ==='unread'">Completed</li>
                 </ul>
                 <span class="line"></span>
             </div>
@@ -424,7 +424,7 @@
 
                     
                     <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
-                        <form class="vacancy-form" [FormGroup]="jobvacancyform">
+                        <div class="vacancy-form" [FormGroup]="jobvacancyform">
                             <div class="job-title-date">
                                 <form class="job-vacancy-form" [formGroup]="vacancyForm"
                                     (ngSubmit)="jobvacancydetail(vacancyForm.value)">
@@ -523,7 +523,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
 

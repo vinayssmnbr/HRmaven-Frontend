@@ -22,7 +22,6 @@ export class JobDetailsComponent {
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
-
   array: any = [
     {
       id: 0,
@@ -45,16 +44,52 @@ export class JobDetailsComponent {
       name: 'Archive',
     },
   ];
+  array1: any = [
+    {
+      id: 0,
+      name: 'Resume Received',
+    },
+    {
+      id: 1,
+      name: 'Archive',
+    },
+    {
+      id: 2,
+      name: 'Hired',
+    },
+    {
+      id: 3,
+      name: 'Shortlisted',
+    },
+    {
+      id: 4,
+      name: 'Rejected',
+    },
+  ];
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
+  contentdropdown1: boolean = false;
+  dropdownOpen1() {
+    this.contentdropdown1 = !this.contentdropdown1;
+  }
+  Selectvariable: string = 'Designation';
   colorvariable: number = 0;
   Changeselect(arr: any) {
+    this.Selectvariable=arr.name;
     this.colorvariable = arr.id;
+    this.contentdropdown=false;
     console.log(arr.name);
   }
-
+  Selectvariable1: string = 'Designation';
+  colorvariable1: number = 0;
+  Changeselect1(arr1: any) {
+    this.Selectvariable1=arr1.name;
+this.contentdropdown1=false;
+    this.colorvariable1 = arr1.id;
+    console.log(arr1.name);
+  }
   Jobdetails: boolean = false;
   viewbtn(){
     this.Jobdetails = true;
@@ -104,6 +139,9 @@ export class JobDetailsComponent {
   }
 
 
+
+
+  
 
 
 
