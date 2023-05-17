@@ -55,6 +55,7 @@ export class RecruitmentContentComponent {
   tabChange(ids: any) {
     this.id = ids;
     console.log(this.id);
+    console.log(this.vacancyForm.value)
   }
 
 
@@ -80,7 +81,10 @@ all:boolean=false;
     datetitle:new FormControl(''),
     date:new FormControl(''),
     ctctitle:new FormControl(''),
-
+    jobtype:new FormControl(''),
+    experience:new FormControl(''),
+    location:new FormControl(''),
+    
   })
   vacancydetail()
 {
@@ -178,6 +182,7 @@ Changeselect2(arr2: any) {
   this.colorvariable2 = arr2.id;
   this.contentdropdown2=false;
   console.log(arr2.name);
+  // this.user.jobtype=arr2.jobtype
 }
 
 
@@ -217,11 +222,12 @@ removetask1(id:number){
 
 jobvacancyform= new FormGroup({
   jobtitle:new FormControl('',[Validators.required]),
-  datetitle:new FormControl('')
+  // datetitle:new FormControl('')
+  datetitle: new FormControl('', Validators.required),
 
 })
 jobvacancydetail(){
-  console.warn(this.vacancyForm.value);
+  console.log(this.vacancyForm.value);
 }
 
 
