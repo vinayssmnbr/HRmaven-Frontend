@@ -717,7 +717,11 @@ form.job-vacancy-form {
   outline: none;
   resize: none;
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .date-input {
   width: 180px;
   height: 40px;
