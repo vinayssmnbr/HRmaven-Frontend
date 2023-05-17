@@ -492,6 +492,8 @@ input[type="checkbox"] {
   text-align: justify;
   padding: 15px 20px;
   white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
   border: 1px solid #f9f9f9;
   font-style: normal;
   font-weight: 400;
@@ -1171,7 +1173,7 @@ input::placeholder {
 .next-btn {
   width: 90px;
   height: 40px;
-  padding: 10px 25px;
+  padding: 10px 20px;
   background: #2f2c9f;
   font-style: normal;
   font-family: "Outfit", sans-serif;
