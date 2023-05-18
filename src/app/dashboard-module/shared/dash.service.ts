@@ -14,7 +14,7 @@ import { UserService } from '../../service/user.service';
 export class DashService {
   public headerContent: string;
   public activeComponent: string;
-  welcome:boolean=true;
+  welcome: boolean = true;
   private prefix = environment.v1;
   constructor(
     private http: HttpClient,
@@ -46,6 +46,12 @@ export class DashService {
     const id = this.cookie.get('hr_id');
     data['hrid'] = id;
     return this.http.post(this.prefix + 'api/create', data);
+  }
+
+  addJobVacancies(data: any) {
+    const id = this.cookie.get('hr_id');
+    data['hrid'] = id;
+    return this.http.post(this.prefix + 'job/vacancies', data);
   }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
@@ -265,8 +271,6 @@ export class DashService {
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file);
-
-    
   }
 
   exportUsers(data: any[]) {
@@ -278,8 +282,6 @@ export class DashService {
     });
     return this.http.post(url, { data }, { headers, responseType: 'blob' });
   }
-    
-  
 
   updateEmpStatus(id, status): Observable<any> {
     const url = `${this.prefix + 'api/update'}/${id}`;

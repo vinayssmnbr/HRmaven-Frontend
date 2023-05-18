@@ -44,12 +44,12 @@ export class AccountSettingsComponent implements OnInit {
         '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
       ),
     ]],
-    phone: ['', [Validators.required, this.phoneValidator,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+    phone: ['', [Validators.required, this.phoneValidatorr]]
   });
  }
  phoneValidatorr(control: FormControl) {
   const value = control.value;
-  const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+  const valid = /^[6-9][0-9]{9}$/.test(value); // check if value contains only 10 digits
   return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
 }
 

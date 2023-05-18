@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DashService } from '../../shared/dash.service';
+import { CookieService } from 'ngx-cookie-service';
 declare var $: any;
 declare var checkboxOptions: any;
 @Component({
@@ -27,7 +28,7 @@ export class RecruitmentContentComponent {
       });
     });
   }
-  constructor(private dashService: DashService) {
+  constructor(private dashService: DashService, private cookie: CookieService) {
     dashService.activeComponent = 'recruitment';
     dashService.headerContent = '';
   }
@@ -52,10 +53,15 @@ export class RecruitmentContentComponent {
     this.fourthStep = false;
   }
   id: any = 'all';
-  tabChange(ids: any) {
+  tabChange1(ids: any) {
     this.id = ids;
     console.log(this.id);
+    let data = this.vacancyForm.value;
+    data['hrid'] = this.cookie.get('hr_id');
     console.log(this.vacancyForm.value);
+    this.dashService.addJobVacancies(data).subscribe((res) => {
+      console.log('job', res);
+    });
   }
 
   showModal5 = false;
@@ -76,11 +82,10 @@ export class RecruitmentContentComponent {
   }
 
   vacancyForm = new FormGroup({
-    jobtitle: new FormControl(''),
-    datetitle: new FormControl(''),
+    job_title: new FormControl(''),
     date: new FormControl(''),
-    ctctitle: new FormControl(''),
-    jobtype: new FormControl(''),
+    ctc: new FormControl(''),
+    job_type: new FormControl(''),
     experience: new FormControl(''),
     location: new FormControl(''),
   });
