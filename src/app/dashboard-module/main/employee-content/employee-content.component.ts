@@ -34,6 +34,7 @@ export class EmployeeContentComponent implements OnInit {
   isChecked: boolean = true;
   isfetched: boolean = false;
   users: any[] = [];
+  items: any[] = [];
   selected: any[] = [];
   selectAll: boolean = false;
   parentSelector: boolean = false;
@@ -535,8 +536,8 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  contentdropdown4: boolean=false;
-  dropdownOpen4(){
+  contentdropdown4: boolean = false;
+  dropdownOpen4() {
     this.contentdropdown4 = !this.contentdropdown4;
   }
   Selectvariable: any = 'Designation';
@@ -549,12 +550,12 @@ export class EmployeeContentComponent implements OnInit {
   colorvariable3: number = 0;
   Selectvariable6: string = '';
   colorvariable6: number = 0;
-  Selectvariable4: string= '';
-  colorvariable4: number=0;
-  Changeselect4(arr4: any){
-    this.Selectvariable4=arr4.name;
-    this.colorvariable4=arr4.id;
-    this.contentdropdown4=false;
+  Selectvariable4: string = '';
+  colorvariable4: number = 0;
+  Changeselect4(arr4: any) {
+    this.Selectvariable4 = arr4.name;
+    this.colorvariable4 = arr4.id;
+    this.contentdropdown4 = false;
   }
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -674,7 +675,7 @@ export class EmployeeContentComponent implements OnInit {
   loader: boolean = false;
   onFileSelected1(event: any): void {
     this.selectedFile1 = event.target.files[0];
-    console.log('yyyyy',this.selectedFile1)
+    console.log('yyyyy', this.selectedFile1);
     // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
     this.loader = true;
   }
@@ -1002,16 +1003,15 @@ export class EmployeeContentComponent implements OnInit {
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-    }else{
+    } else {
       this.loader = true;
     }
 
     function validateCsvFile(file: File): boolean {
-
-      if(file.name.toLowerCase().slice(-3) === 'csv'){
-        return true
-      }else{
-        return false
+      if (file.name.toLowerCase().slice(-3) === 'csv') {
+        return true;
+      } else {
+        return false;
       }
     }
 
@@ -1077,7 +1077,6 @@ export class EmployeeContentComponent implements OnInit {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
               } else if (res.status == 'Success') {
-
                 sucesses.push(res);
               }
               if (responseArr.length == data.length) {
