@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
 import { FormGroup, FormControl, Validators ,AbstractControl} from '@angular/forms';
 
@@ -14,6 +14,11 @@ export class JobDetailsComponent {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
+//  item:any;
+//   ngOnInit() {
+//     this.item = this.dashService.getselecteedJobDetail();
+//     console.log('select1', this.item);
+//   }
 
   id: any = 'all';
   tabChange(ids: any) {
@@ -106,17 +111,13 @@ export class JobDetailsComponent {
   }
   openmodal() {
     this.addcandidate = true;
-
   }
   Newcandidate: boolean = false;
-
 
   openaddmodal() {
     this.Newcandidate = true;
     this.addcandidate = false;
-    console.log(this.newcandidateform.value)
-
-
+    console.log(this.newcandidateform.value);
   }
   closedone() {
     this.Newcandidate = false;

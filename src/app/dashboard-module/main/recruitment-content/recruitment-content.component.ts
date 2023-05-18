@@ -27,10 +27,13 @@ export class RecruitmentContentComponent {
         optionMenu.classList.remove('active');
       });
     });
+    // this.fetchjobVacancies();
   }
   constructor(private dashService: DashService, private cookie: CookieService) {
     dashService.activeComponent = 'recruitment';
     dashService.headerContent = '';
+
+    this.fetchjobVacancies();
   }
   showModal: boolean = false;
   showModalContent: boolean = false;
@@ -39,6 +42,7 @@ export class RecruitmentContentComponent {
   thirdStep: boolean = false;
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
+  jobDetails: any = [];
   openModal() {
     this.showModal = true;
     this.showModalContent = true;
@@ -55,13 +59,7 @@ export class RecruitmentContentComponent {
   id: any = 'all';
   tabChange1(ids: any) {
     this.id = ids;
-    console.log(this.id);
     let data = this.vacancyForm.value;
-    data['hrid'] = this.cookie.get('hr_id');
-    console.log(this.vacancyForm.value);
-    this.dashService.addJobVacancies(data).subscribe((res) => {
-      console.log('job', res);
-    });
   }
 
   showModal5 = false;
@@ -82,12 +80,29 @@ export class RecruitmentContentComponent {
   }
 
   vacancyForm = new FormGroup({
-    job_title: new FormControl(''),
-    date: new FormControl(''),
-    ctc: new FormControl(''),
-    job_type: new FormControl(''),
-    experience: new FormControl(''),
-    location: new FormControl(''),
+    job_title: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
+    date: new FormControl('',[Validators.required]),
+    ctc: new FormControl('', [Validators.required]),
+    job_type: new FormControl('', [Validators.required]),
+    experience: new FormControl('',[Validators.required]),
+    location: new FormControl('', [Validators.required]),
+  });
+
+  vacancyForm1 = new FormGroup({
+    skill: new FormControl('', [Validators.required]),
+    // job_description: new FormControl(''),
+    // recruiter: new FormControl(''),
+  });
+
+  vacancyForm2 = new FormGroup({
+    job_description: new FormControl('',[Validators.required]),
+    recruiter: new FormControl('',[
+        Validators.pattern('[a-zA-Z ]+'),
+        Validators.required,
+      ]),
   });
   vacancydetail() {
     console.warn(this.vacancyForm.value);
@@ -174,23 +189,29 @@ export class RecruitmentContentComponent {
   }
 
   list: any[] = [];
+  item: string = '';
   addtask(item: string) {
-    this.list.push({ id: this.list.length, name: item });
-    console.warn(this.list);
+    if (this.item.trim() !== '') {
+      this.list.push({ id: this.list.length, name: this.item });
+      console.warn('list', this.list);
+      this.item = '';
+    }
   }
   removetask(id: number) {
     console.warn(id);
     this.list = this.list.filter((item) => item.id !== id);
   }
 
-  list1: any[] = [];
+  recruiter: any[] = [];
+  item1: string = '';
   addtask1(item1: string) {
-    this.list.push({ id: this.list.length, name: item1 });
-    console.warn(this.list1);
+    this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
+    console.warn('jijrgk', this.recruiter);
+    this.item1 = '';
   }
   removetask1(id: number) {
     console.warn(id);
-    this.list1 = this.list1.filter((item1) => item1.id !== id);
+    this.recruiter = this.recruiter.filter((item1) => item1.id !== id);
   }
 
   jobvacancyform = new FormGroup({
@@ -213,12 +234,32 @@ export class RecruitmentContentComponent {
   //   this.seconstep=true;
 
   successmodal: boolean = false;
+  // fetchjobVacancies() {
+  //   this.dashService.fetchJobVecancies().subscribe((res: any) => {
+  //     this.jobDetails = res;
+  //   });
+  // }
   successfulmodal() {
     this.successmodal = true;
     this.showModal5 = false;
+    const jobDescription = this.vacancyForm2.get('job_description')?.value;
+    let data = {
+      ...this.vacancyForm.value,
+      list: this.list,
+      recruiter: this.recruiter,
+      job_description: jobDescription,
+      hrid: this.cookie.get('hr_id'),
+    };
+    this.dashService.addJobVacancies(data).subscribe((res) => {
+      console.log('job', res);
+      this.fetchjobVacancies();
+    });
   }
-
   closesuccessmodal() {
     this.successmodal = false;
+  }
+  selecteedJobDetail: any;
+  selectjob(item: any) {
+    this.dashService.setselecteedJobDetail(item);
   }
 }

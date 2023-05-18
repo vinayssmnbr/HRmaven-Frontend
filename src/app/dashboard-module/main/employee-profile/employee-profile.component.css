@@ -1153,7 +1153,7 @@ input[type='number']:hover {
 }
 
 .select_content1::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
   height: 2px;
 }
 
@@ -1170,7 +1170,8 @@ input[type='number']:hover {
 
 /* Handle */
 .select_content1::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #999;
+  border-radius: 8px;
 }
 
 .select_content1 {
