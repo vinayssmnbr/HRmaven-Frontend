@@ -22,7 +22,8 @@ export class DashService {
     private cookie: CookieService,
     private userService: UserService
   ) {
-    this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
+    // this.client = filestack.init('Aj12noD8xTvmflkSZZHZGz');
+    this.client = filestack.init('AKNI8H7i1QuCSlSce9dlFz');
   }
 
   getUserProfile(): Observable<any> {
@@ -52,6 +53,13 @@ export class DashService {
     const id = this.cookie.get('hr_id');
     data['hrid'] = id;
     return this.http.post(this.prefix + 'job/vacancies', data);
+  }
+
+  addCandidate(data:any){
+    const id = this.cookie.get('hr_id');
+    data['hrid'] = id;
+    return this.http.post(this.prefix + 'candid/candidates', data);
+
   }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
@@ -185,6 +193,14 @@ export class DashService {
     return this.http.get(`${this.prefix + 'api/checkmobile'}/${mobile}`);
   }
 
+  getCandidateEmail(email: any) {
+    return this.http.get(`${this.prefix + 'api/checkedemail'}/${email}`);
+  }
+
+  getCandidateMobile(mobile: any) {
+    return this.http.get(`${this.prefix + 'api/checkedmobile'}/${mobile}`);
+  }
+
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);
@@ -269,7 +285,12 @@ export class DashService {
     }
   }
 
+
   upload1(file: File): Promise<any> {
+    return this.client.upload(file);
+  }
+
+  uploaded(file: File): Promise<any> {
     return this.client.upload(file);
   }
 

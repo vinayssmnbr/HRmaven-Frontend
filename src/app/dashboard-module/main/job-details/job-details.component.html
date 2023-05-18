@@ -439,23 +439,29 @@
             </div>
             <div class="input__box">
                 <span class="details">Contact number</span>
-                <input type="text" placeholder="johnsmith@hotmail.com" required formControlName="contactnumber">
+                <input type="text" placeholder="XXXXXX0652" required formControlName="contactnumber">
+                <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
+                    No.
+                    already exists</div>
             </div>
             <div class="input__box">
                 <span class="details">Email</span>
                 <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
+                <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
+                    already
+                    exists</div>
             </div>
             <div class="input__box">
                 <span class="details">Applied date</span>
-                <input type="number" placeholder="23/04/2023" required  formControlName="applieddate">
+                <input type="number" placeholder="23/04/2023"  class="meeting-input"  required  formControlName="applieddate">
             </div>
             <div class="input__box">
                 <span class="details">Resume</span>
-                <input type="file" placeholder="No file choosen" required formControlName="resume">
+                <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required formControlName="url"  accept=".pdf">
             </div>
         </div>
         <div class="form_button" (click)="openaddmodal()">
-            <button>Add a candidate</button>
+            <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
         </div>
     </form>
 </div>
