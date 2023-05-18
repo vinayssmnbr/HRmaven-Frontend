@@ -190,14 +190,26 @@
                             <td>987654321</td>
                             <td>01 Mar, 2023</td>
                             <td>
-                                <select class="table_option">
+                                <!-- <select class="table_option">
                                     <option value="">Resume Received</option>
                                     <option value="">Shortlisted</option>
                                     <option value="">Interview</option>
                                     <option value="">Hired</option>
                                     <option value="">Rejected</option>
                                     <option value="">Archive</option>
-                                </select>
+                                </select> -->
+                                <div class="dropdown_container">
+                                    <div class="dropdwon_select1" (click)="dropdownOpen1()">
+                                      <p>{{Selectvariable1}}</p>
+                                      <i class="fa-sharp fa-solid fa-caret-down designation-arrow" ></i>
+                                    </div>
+                                    <div class="select_content" *ngIf="contentdropdown1" (mouseleave)="contentdropdown1 = false">
+                                      <ul>
+                                        <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                                          {{arr1.name}}</li>
+                                      </ul>
+                                    </div>
+                                  </div>
                             </td>
                             <td class="pdf_logo">
                                 <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
@@ -410,7 +422,7 @@
 <!-- ------------------Add a  new candidate modal--------------- -->
 
 <div class="Add_candidate" *ngIf="addcandidate">
-    <form action="#">
+    <form  [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
         <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
         <div class="form_title">
             <h1>Add a new candidate</h1>
@@ -419,7 +431,7 @@
         <div class="user__details">
             <div class="input__box">
                 <span class="details">Candidate name</span>
-                <input type="text" placeholder="Sahil Verma" required>
+                <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
             </div>
             <div class="input__box">
                 <span class="details">Candidate id</span>
@@ -427,19 +439,19 @@
             </div>
             <div class="input__box">
                 <span class="details">Contact number</span>
-                <input type="text" placeholder="johnsmith@hotmail.com" required>
+                <input type="text" placeholder="johnsmith@hotmail.com" required formControlName="contactnumber">
             </div>
             <div class="input__box">
                 <span class="details">Email</span>
-                <input type="email" placeholder="sahilverma@gmail.com" required>
+                <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
             </div>
             <div class="input__box">
                 <span class="details">Applied date</span>
-                <input type="number" placeholder="23/04/2023" required>
+                <input type="number" placeholder="23/04/2023" required  formControlName="applieddate">
             </div>
             <div class="input__box">
                 <span class="details">Resume</span>
-                <input type="file" placeholder="No file choosen" required>
+                <input type="file" placeholder="No file choosen" required formControlName="resume">
             </div>
         </div>
         <div class="form_button" (click)="openaddmodal()">

@@ -492,6 +492,8 @@ input[type="checkbox"] {
   text-align: justify;
   padding: 15px 20px;
   white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
   border: 1px solid #f9f9f9;
   font-style: normal;
   font-weight: 400;
@@ -1171,7 +1173,7 @@ input::placeholder {
 .next-btn {
   width: 90px;
   height: 40px;
-  padding: 10px 25px;
+  padding: 10px 20px;
   background: #2f2c9f;
   font-style: normal;
   font-family: "Outfit", sans-serif;
@@ -2182,7 +2184,7 @@ input::placeholder {
 }
 .card-detail:hover {
   border: 1px solid #2f2c9f;
-  transform: translateY(-5px);
+  transform: translateY(10px);
   transition: 0.5s ease-in-out;
 }
 .card-detail .first-detail {
@@ -2489,48 +2491,3 @@ div.loader-parent {
 }
 
 
-
-/*-----------------Emplyee-Mail-------------------*/
-.employee-login-mail{
-  padding: 50px 40px;
-  background-color: #FFFFFF;
-  width: 660px;
-  margin-left: 223px;
-  font-family: 'Neuton';
-  font-style: normal;
-}
-.hr-maven-mail-logo{
-  display: flex;
-  justify-content: center;
-}
-.mail-content{
-  font-weight: 400;
-font-size: 14px;
-color: #444444;
-margin-top: 30px;
-}
-.mail-content .credentials{
-  color: #2F2C9F;
-}
-.mail-content a{
-  color: #8BAFFF;
-}
-.login-now {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-
-}
-.login-now button{
-  padding: 10px 16px;
-  background-color: #2F2C9F;
-border-radius: 6px;
-color: #FFFFFF;
-outline: none;
-border: none;
-cursor: pointer;
-font-weight: 700;
-font-size: 12px;
-font-family: 'Neuton';
-font-style: normal;
-}

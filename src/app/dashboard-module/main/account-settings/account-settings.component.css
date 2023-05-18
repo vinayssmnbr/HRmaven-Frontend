@@ -512,7 +512,7 @@ li.active {
 /* .email-phone {
     display: flex;
     gap: 25px;
-    
+
 } */
 
 .email-phone h6 {
@@ -885,7 +885,7 @@ input:focus {
 input:disabled {
     cursor: not-allowed;
 }
-
+/*
 #oldp.ng_invalid {
     border: 1px solid red !important;
 }
@@ -940,7 +940,7 @@ input:disabled {
 
 .valid-password {
     border: 2px solid green;
-}
+} */
 
 /* .password-toggle i {
   position: absolute;

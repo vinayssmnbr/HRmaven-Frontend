@@ -1048,7 +1048,7 @@ export class EmployeeContentComponent implements OnInit {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
               } else if (res.status == 'Success') {
-                numSuccesses++;
+
                 sucesses.push(res);
               }
               if (responseArr.length == data.length) {
