@@ -359,10 +359,6 @@ export class EmployeeProfileComponent implements OnInit {
     },
     {
       id: 2,
-      name: '10:00 am to 5:00pm',
-    },
-    {
-      id: 1,
       name: '10:00 am to 6:00pm',
     },
   ];

@@ -500,6 +500,12 @@
 
 a {
   color: #2F2C9F;
+  gap: 8px;
+  display: flex;
+  margin-top: 4px;
+}
+.meeting-text i{
+  margin-top: 4px;
 }
 
 .meeting-text p {
