@@ -54,11 +54,15 @@ export class DashService {
     data['hrid'] = id;
     return this.http.post(this.prefix + 'job/vacancies', data);
   }
+  fetchJobVecancies() {
+    return this.http.get(this.prefix + 'job/recdata');
+  }
 
   addCandidate(data:any){
     const id = this.cookie.get('hr_id');
     data['hrid'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
+    
 
   }
   // addEmployee(data) {
