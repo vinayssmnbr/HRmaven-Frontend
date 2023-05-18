@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
-import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-job-details',
@@ -8,9 +8,16 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
+  @Input() item: any;
+
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
+  }
+
+  ngOnInit() {
+    this.item = this.dashService.getselecteedJobDetail();
+    console.log('select1', this.item);
   }
 
   id: any = 'all';
@@ -57,51 +64,42 @@ export class JobDetailsComponent {
   }
 
   Jobdetails: boolean = false;
-  viewbtn(){
+  viewbtn() {
     this.Jobdetails = true;
   }
-  close_modal(){
+  close_modal() {
     this.Jobdetails = false;
   }
-  addcandidate:boolean=false;
-  closemodal(){
-    this.addcandidate=false;
+  addcandidate: boolean = false;
+  closemodal() {
+    this.addcandidate = false;
   }
-  openmodal(){
-    this.addcandidate=true;
-
+  openmodal() {
+    this.addcandidate = true;
   }
-  Newcandidate:boolean=false;
+  Newcandidate: boolean = false;
 
-
-  openaddmodal(){
-  this.Newcandidate=true;
-  this.addcandidate=false;
-  console.log(this.newcandidateform.value)
-
-
+  openaddmodal() {
+    this.Newcandidate = true;
+    this.addcandidate = false;
+    console.log(this.newcandidateform.value);
   }
-  closedone(){
-    this.Newcandidate=false;
+  closedone() {
+    this.Newcandidate = false;
   }
 
   newcandidateform = new FormGroup({
-    candidateName : new FormControl(''),
-    contactnumber:new FormControl(''),
-    email:new FormControl(''),
+    candidateName: new FormControl(''),
+    contactnumber: new FormControl(''),
+    email: new FormControl(''),
 
-    applieddate:new FormControl(''),
+    applieddate: new FormControl(''),
 
-    resume:new FormControl(''),
+    resume: new FormControl(''),
+  });
 
-
-
-
-
-  })
-
-  newcandidatedetail(){
-    console.warn(this.newcandidateform.value)
+  newcandidatedetail() {
+    console.warn(this.newcandidateform.value);
   }
   // fileName :string = '';
   // selectedFile: File | null = null;
@@ -138,12 +136,4 @@ export class JobDetailsComponent {
   //     }
   //   )
   // }
-
-
-
-
-
-
-
-
 }

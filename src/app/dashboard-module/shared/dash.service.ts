@@ -53,6 +53,10 @@ export class DashService {
     data['hrid'] = id;
     return this.http.post(this.prefix + 'job/vacancies', data);
   }
+
+  fetchJobVecancies() {
+    return this.http.get(this.prefix + 'job/recdata');
+  }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
 
@@ -66,11 +70,19 @@ export class DashService {
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
+  selecteedJobDetail: any;
   setSelectedEmployee(user: any) {
     this.selectedEmployee = user;
   }
   getSelectedEmployee() {
     return this.selectedEmployee;
+  }
+
+  setselecteedJobDetail(item: any) {
+    this.selecteedJobDetail = item;
+  }
+  getselecteedJobDetail() {
+    return this.selecteedJobDetail;
   }
 
   //DELETE DATA
