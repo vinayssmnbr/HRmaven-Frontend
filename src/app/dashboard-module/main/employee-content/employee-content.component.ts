@@ -501,6 +501,24 @@ export class EmployeeContentComponent implements OnInit {
       name: '10.00am to 6:00pm',
     },
   ];
+  array4: any = [
+    {
+      id: 0,
+      name: 'Active',
+    },
+    {
+      id: 1,
+      name: 'Terminated',
+    },
+    {
+      id: 2,
+      name: 'Resigned',
+    },
+    {
+      id: 3,
+      name: 'Absconder',
+    },
+  ];
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
@@ -517,6 +535,10 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
+  contentdropdown4: boolean=false;
+  dropdownOpen4(){
+    this.contentdropdown4 = !this.contentdropdown4;
+  }
   Selectvariable: any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = '';
@@ -527,6 +549,13 @@ export class EmployeeContentComponent implements OnInit {
   colorvariable3: number = 0;
   Selectvariable6: string = '';
   colorvariable6: number = 0;
+  Selectvariable4: string= '';
+  colorvariable4: number=0;
+  Changeselect4(arr4: any){
+    this.Selectvariable4=arr4.name;
+    this.colorvariable4=arr4.id;
+    this.contentdropdown4=false;
+  }
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -967,7 +996,7 @@ export class EmployeeContentComponent implements OnInit {
       console.log('No file selected.');
       return;
     }
-  
+
     let errors = [];
     let sucesses = [];
     if (!validateCsvFile(file)) {
@@ -978,7 +1007,7 @@ export class EmployeeContentComponent implements OnInit {
     }
 
     function validateCsvFile(file: File): boolean {
-      
+
       if(file.name.toLowerCase().slice(-3) === 'csv'){
         return true
       }else{
