@@ -492,6 +492,8 @@ input[type="checkbox"] {
   text-align: justify;
   padding: 15px 20px;
   white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
   border: 1px solid #f9f9f9;
   font-style: normal;
   font-weight: 400;
@@ -1171,7 +1173,7 @@ input::placeholder {
 .next-btn {
   width: 90px;
   height: 40px;
-  padding: 10px 25px;
+  padding: 10px 20px;
   background: #2f2c9f;
   font-style: normal;
   font-family: "Outfit", sans-serif;
@@ -2182,7 +2184,7 @@ input::placeholder {
 }
 .card-detail:hover {
   border: 1px solid #2f2c9f;
-  transform: translateY(-5px);
+  transform: translateY(10px);
   transition: 0.5s ease-in-out;
 }
 .card-detail .first-detail {
@@ -2486,4 +2488,17 @@ div.loader-parent {
   font-weight: 400;
   font-size: 12px;
   color: #777777;
+}
+
+.dropdwon_select3{
+  padding: 5px 10px;
+    border-radius: 12px;
+    width: 120px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    appearance: none;
 }

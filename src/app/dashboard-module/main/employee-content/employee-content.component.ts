@@ -55,6 +55,8 @@ export class EmployeeContentComponent implements OnInit {
   interval: any;
   countCard = 0;
   selectAllChecked: boolean = false;
+  doneClicked: boolean = false;
+  csvForm: FormGroup;
   importFileResponse: any = { success: [], error: [] };
   constructor(
     public dashService: DashService,
@@ -95,9 +97,6 @@ export class EmployeeContentComponent implements OnInit {
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
-  csvForm = new FormGroup({
-    csv: new FormControl('')
-  })
   form = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -159,6 +158,7 @@ export class EmployeeContentComponent implements OnInit {
   loading: boolean = false;
   submit() {
     this.loading = true;
+    this.doneClicked = true;
     if (this.form.invalid) return;
     console.log(this.form.value);
     let data = this.form.value;
@@ -233,6 +233,10 @@ export class EmployeeContentComponent implements OnInit {
   ngOnInit() {
     this.fetchdata();
     this.employeefilter();
+    this.csvForm = this.formBuilder.group({
+      csv: [''],
+    });
+
     // this.progressBar = document.getElementsByClassName('progress');
     // this.progressText = document.getElementsByClassName('progress-text');
 
@@ -394,7 +398,7 @@ export class EmployeeContentComponent implements OnInit {
   closeModal3() {
     this.showModal = false;
   }
-  nextForm2() { }
+  nextForm2() {}
   array: any = [
     {
       id: 0,
@@ -497,6 +501,24 @@ export class EmployeeContentComponent implements OnInit {
       name: '10.00am to 6:00pm',
     },
   ];
+  array4: any = [
+    {
+      id: 0,
+      name: 'Active',
+    },
+    {
+      id: 1,
+      name: 'Terminated',
+    },
+    {
+      id: 2,
+      name: 'Resigned',
+    },
+    {
+      id: 3,
+      name: 'Absconder',
+    },
+  ];
   contentdropdown: boolean = false;
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
@@ -513,6 +535,10 @@ export class EmployeeContentComponent implements OnInit {
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
+  contentdropdown4: boolean=false;
+  dropdownOpen4(){
+    this.contentdropdown4 = !this.contentdropdown4;
+  }
   Selectvariable: any = 'Designation';
   colorvariable: number = 0;
   Selectvariable1: string = '';
@@ -523,6 +549,13 @@ export class EmployeeContentComponent implements OnInit {
   colorvariable3: number = 0;
   Selectvariable6: string = '';
   colorvariable6: number = 0;
+  Selectvariable4: string= '';
+  colorvariable4: number=0;
+  Changeselect4(arr4: any){
+    this.Selectvariable4=arr4.name;
+    this.colorvariable4=arr4.id;
+    this.contentdropdown4=false;
+  }
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
@@ -641,6 +674,7 @@ export class EmployeeContentComponent implements OnInit {
   loader: boolean = false;
   onFileSelected1(event: any): void {
     this.selectedFile1 = event.target.files[0];
+    console.log('yyyyy',this.selectedFile1)
     // this.fileName1 = this.selectedFile1 ? this.selectedFile1.name : '';
     this.loader = true;
   }
@@ -947,7 +981,6 @@ export class EmployeeContentComponent implements OnInit {
   //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
   //   fileInput.click();
   // }
-  
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -958,29 +991,30 @@ export class EmployeeContentComponent implements OnInit {
 
   async onFileSelectedrem(event: any) {
     const file: File = event.files[0];
-    this.loader = true;
-
+    // this.loader = true;
     if (!file) {
       console.log('No file selected.');
       return;
     }
+
     let errors = [];
     let sucesses = [];
     if (!validateCsvFile(file)) {
       alert('Invalid file type. Please select a CSV file.');
       return;
-    
+    }else{
+      this.loader = true;
     }
 
     function validateCsvFile(file: File): boolean {
-      const allowedExtensions = /(\.csv)$/i;
-      if (!allowedExtensions.test(file.name)) {
-        return false;
+
+      if(file.name.toLowerCase().slice(-3) === 'csv'){
+        return true
+      }else{
+        return false
       }
-    
-      return true;
     }
-    
+
     // Check file size
     const MAX_FILE_SIZE_BYTES = 500000000; // 500MB in bytes
     if (file.size > MAX_FILE_SIZE_BYTES) {
@@ -1019,7 +1053,6 @@ export class EmployeeContentComponent implements OnInit {
         return;
       }
 
-
       let uid: number = -1;
       let numSuccesses = 0;
       let numFailures = 0;
@@ -1043,9 +1076,8 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
-              }
-              else if (res.status == "Success") {
-                numSuccesses++;
+              } else if (res.status == 'Success') {
+
                 sucesses.push(res);
               }
               if (responseArr.length == data.length) {
@@ -1058,7 +1090,7 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
-                
+                this.csvForm.reset();
               }
             },
             async (error: any) => {
@@ -1081,7 +1113,6 @@ export class EmployeeContentComponent implements OnInit {
         });
         return 'employees added';
       });
-
     };
 
     reader.readAsText(file);
@@ -1141,6 +1172,7 @@ export class EmployeeContentComponent implements OnInit {
       }
       console.log(this.selectedEmployess, 'removed user');
     }
+    this.selectedEmployess.sort((a, b) => a.uid - b.uid);
   }
 
   toggleAllCheckboxes() {
@@ -1224,26 +1256,12 @@ export class EmployeeContentComponent implements OnInit {
   searchFieldDisabled(): boolean {
     return this.employee.length == 0;
   }
-
-  // caardSelect() {
-  //   const checkbox = event.target as HTMLInputElement;
-  //   if (checkbox.checked) {
-  //     this.countCard++;
-  //   } else {
-  //     this.countCard--;
-  //   }
-  // }
   SelectedCard() {
     return this.countCard;
   }
-  // SelectAll(event: Event, user: any): void {
-  //   const checkbox = event.target as HTMLInputElement;
-  //   this.selectAllChecked = checkbox.checked;
-
-  //   this.employee.forEach((user) => {
-  //     user.checked = checkbox.checked;
-  //   });
-
-  //   this.countCard = checkbox.checked ? this.employee.length : 0;
-  // }
+  sortEmployeeByUid(data: any) {
+    data.sort((a: any, b: any) => +a.uid - +b.uid);
+    console.log(data, 'adarsh sort');
+    return data;
+  }
 }

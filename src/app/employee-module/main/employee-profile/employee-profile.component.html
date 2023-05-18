@@ -6,7 +6,7 @@
 <div class="main" *ngIf="!loaderz">
   <div class="card">
     <div class="card1">
-      <img src="./assets/images/left_arrow.svg" routerLink="/employee/dashboard" alt="">
+      <img src="./assets/images/left_arrow.svg"  routerLink="/emp-dashboard" alt="">
       <h2>My Profile</h2>
     </div>
     <div class="card2">
@@ -326,7 +326,7 @@
           <p class="jdate" *ngIf="obj.dateOfJoining">{{obj.dateOfJoining | date:"shortDate"}}</p>
           <span class="ctc">CTC</span>
           <p *ngIf="!obj.ctc">----------</p>
-          <p class="ctc" *ngIf="obj.ctc">{{obj.ctc}}</p>
+          <p class="ctc" *ngIf="obj.ctc">{{obj.ctc}} LPA</p>
         </div>
       </div>
     </div>
@@ -336,24 +336,25 @@
           <div class="old-new-confirm-password">
             <label for="">Old Password</label>
             <input type="password" placeholder="Type your old password" class="form-control password" required
-              (blur)="matchpwdEmployee()" formControlName="oldpassword"
+              (blur)="matchpwdEmployee()" formControlName="oldpassword" #passwordInput1
               [ngClass]="{'ng_invalid':isPasswordmatched || (passwordform.controls.oldpassword.invalid && passwordform.controls.oldpassword.dirty),'ng_valid': !isPasswordmatched && passwordform.controls.oldpassword.valid}">
+            <span class="password-toggle" (click)="togglePasswordVisibility1(passwordInput1)">
+              <i class="fa {{ showPasswordIcon1 }}"></i>
+            </span>
+            <span class="validation-message" *ngIf="isPasswordmatched"><i class="fa-solid fa-circle-exclamation"></i>
+              Your old password was entered incorrectly
+            </span>
           </div>
-
-
-          <span class="validation-message" *ngIf="isPasswordmatched"><i class="fa-solid fa-circle-exclamation"></i>
-            Your old password was entered incorrectly
-          </span>
-
-
-
           <div class="new-reenter">
             <div class="old-new-confirm-password">
               <label for="">New Password</label>
               <input type="{{ is_visible ? 'text' : 'password' }}" [(ngModel)]="password" (input)="checkPassword()"
                 placeholder="Type a new password" formControlName="password" class="password" id="form-control" required
-                (keyup)="checkConfirmPassword()"
+                (keyup)="checkConfirmPassword()" #passwordInput2
                 [ngClass]="{'ng_invalid':passwordform.controls.password.invalid && passwordform.controls.password.dirty,'ng_valid':passwordform.controls.password.valid}">
+              <span class="password-toggle" (click)="togglePasswordVisibility2(passwordInput2)">
+                <i class="fa {{ showPasswordIcon2 }}"></i>
+              </span>
               <div class="tooltip">
                 <img src="assets/images/valid_error.png" alt="">
                 <span class="on-hover">
@@ -380,22 +381,25 @@
                 </span>
 
               </div>
+              <span class="validation-message" *ngIf=""><i class="fa-solid fa-circle-exclamation"></i>
+                New Password cannot be same as old password
+              </span>
             </div>
-            <span class="validation-message" *ngIf=""><i class="fa-solid fa-circle-exclamation"></i>
-              New Password cannot be same as old password
-            </span>
           </div>
           <div class="new-reenter">
             <div class="old-new-confirm-password">
-              <label for="">Confirm Password</label>
+              <label for="password">Confirm Password</label>
               <input type="password" placeholder="Re-enter your password" formControlName="confirm"
-                class="form-control password" (keyup)="checkConfirmPassword()" required
+                class="form-control password" (keyup)="checkConfirmPassword()" required #passwordInput3
                 [ngClass]="{'ng_invalid':passwordform.controls.confirm.invalid && passwordform.controls.confirm.dirty,'ng_valid':passwordform.controls.confirm.valid}">
-
+              <span class="password-toggle" (click)="togglePasswordVisibility3(passwordInput3)">
+                <i class="fa {{ showPasswordIcon3 }}"></i>
+              </span>
+              <span class="validation-message" *ngIf="isConfirmPasswordInvalid"><i
+                  class="fa-solid fa-circle-exclamation"></i>Password
+                doesn't match</span>
             </div>
-            <span class="validation-message" *ngIf="isConfirmPasswordInvalid"><i
-                class="fa-solid fa-circle-exclamation"></i>Password
-              doesn't match</span>
+
           </div>
 
           <div class="clear-update-button">
@@ -504,8 +508,7 @@
             </div>
             <div class="input">
               <label>Nationality</label>
-              <input type="text" placeholder="Indian" formControlName="nationality"
-              class="text"
+              <input type="text" placeholder="Indian" formControlName="nationality" class="text"
                 [ngClass]="{'ng_invalid': empform1.controls.nationality.invalid && empform1.controls.nationality.dirty,'ng_valid': empform1.controls.nationality.valid}">
             </div>
           </div>
@@ -602,7 +605,7 @@
             <div class="input">
               <label>Bank Account No.</label>
               <input type="number" placeholder="6412365874125425" class="no-spin text" formControlName="accountno"
-              [ngClass]="{'ng_invalid': empform3.controls.accountno.invalid && empform3.controls.accountno.dirty,'ng_valid': empform3.controls.accountno.valid}">
+                [ngClass]="{'ng_invalid': empform3.controls.accountno.invalid && empform3.controls.accountno.dirty,'ng_valid': empform3.controls.accountno.valid}">
             </div>
             <div class="input">
               <label>IFSC Code</label>

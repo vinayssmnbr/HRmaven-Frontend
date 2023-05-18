@@ -1,0 +1,919 @@
+.row {
+    padding: 80px 30px;
+    margin-left: 223px;
+    background-color: #FFFFFF;
+  }
+  
+  .card_content {
+    padding-top: 30px;
+  }
+  
+  .card {
+    padding: 30px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+  }
+  
+  
+  .card-outer {
+    height: 59px;
+    width: 100%;
+  }
+  
+  .card-logo {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .back_icon {
+    cursor: pointer;
+    width: 24px;
+    background-color: #F9F9F9;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Skills-head {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .skill_content h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  .skills li {
+    background-color: #EFEFF8;
+    border-radius: 8px;
+    padding: 4px 8px;
+  }
+  
+  ul.skills {
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    color: #2F2C9F;
+  }
+  
+  .interview_details h3 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  .description-heading {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .description-heading .job-interview {
+    margin-top: -15px;
+  }
+  
+  .description-heading .job-interview img {
+    margin-left: -15px;
+  }
+  
+  .Description p {
+    padding-top: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #777777;
+    width: 746px;
+  }
+  
+  .descript_title h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  .card-head {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-bottom {
+    color: #555555;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-bottom .location {
+    display: flex;
+    font-size: 12px;
+    gap: 30px;
+    padding-top: 20px;
+  }
+  
+  .card-bottom .location li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .view_btn button {
+    border: none;
+    color: #2F2C9F;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  
+  .recruiters_nav {
+    display: flex;
+    height: 28px;
+    align-items: center;
+    margin-top: 20px;
+    column-gap: 40px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+  
+  .recruiters_nav p {
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 4px 35px;
+  
+  }
+  
+  .all {
+    border-bottom: 2px solid transparent;
+  }
+  
+  .all:hover {
+    border-bottom: 2px solid #2F2C9F;
+  }
+  
+  .unread:hover {
+    border-bottom: 2px solid #2F2C9F;
+  }
+  
+  .Important:hover {
+    border-bottom: 2px solid #2F2C9F;
+  }
+  
+  .color {
+    color: #2F2C9F;
+    border-bottom: 2px solid #2F2C9F;
+  }
+  
+  .card-text h5 {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .card-text p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+  }
+  
+  .progress-btn .progres {
+    width: 82px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+    background: rgba(253, 167, 90, 0.2);
+    border-radius: 1000px;
+    margin-left: 15px;
+  }
+  
+  .progress-btn .progres:hover {
+    border: 1px solid #7BD36D;
+  }
+  
+  .job-interview {
+    display: flex;
+  }
+  
+  
+  
+  
+  /* ----------------------Table---------------------------- */
+  .regquirement_table {
+    padding-top: 25px;
+  }
+  
+  .Candiddate {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .Candiddate_input input {
+    width: 250px;
+    height: 44px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    outline: none;
+    padding-left: 40px;
+    padding-right: 10px;
+  }
+  
+  .Candiddate_input i {
+    position: absolute;
+    padding: 15px 10px;
+    color: #888888;
+  }
+  
+  .Candiddate_input input::placeholder {
+    color: #CBCBCB;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  .Candiddate_input input:hover,
+  .Candiddate_input input:focus {
+    border: 1px solid #2F2C9F;
+  }
+  
+  .Candiddate_input_btn {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .Export_btn button,
+  .Add_Candidate_btn button {
+    display: flex;
+    gap: 10px;
+    color: #2F2C9F;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Export_btn button:hover,
+  .Export_btn button:focus,
+  .Add_Candidate_btn button:hover,
+  .Add_Candidate_btn button:focus {
+    border: 1px solid #2F2C9F;
+  }
+  
+  .Export_btn button {
+    width: 103px;
+    height: 44px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .Add_Candidate_btn button {
+    width: 142px;
+    height: 44px;
+    background-color: #2F2C9F;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  
+  /* -----------Drop down---------- */
+  
+  .select_content .Stages {
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #F0F0F0;
+    text-align: left;
+  }
+  
+  .select_content {
+    background-color: #fff;
+    cursor: pointer;
+    width: 140px;
+    cursor: pointer;
+    padding: 6px 12px;
+    position: absolute;
+    color: #444444;
+    z-index: 99;
+  }
+  
+  .select_content ul {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .select_content ul li {
+    list-style: none;
+    padding: 10px 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .select_content ul li p {
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  .select_content ul li:hover {
+    background-color: #EFEFF8;
+    border-radius: 8px;
+  }
+  
+  .select_active {
+    background-color: #ECECEC;
+    border-radius: 8px;
+  
+  }
+  
+  .attendence_table {
+    margin-top: 25px;
+  }
+  
+  .table_data {
+    width: 100%;
+  }
+  
+  .table_text {
+    width: 100%;
+  }
+  
+  .table_heading {
+    position: sticky;
+    top: 0;
+  }
+  
+  table {
+    border-spacing: 2px 5px;
+  }
+  
+  table,
+  th,
+  td {
+    font-size: 14px;
+  }
+  
+  .table_heading th {
+    text-align: left;
+  }
+  
+  tr:hover {
+    background-color: #f7f7f7f9 !important;
+  }
+  
+  th,
+  td {
+    padding: 15px;
+    white-space: nowrap;
+  }
+  
+  .table_data::-webkit-scrollbar {
+    width: 6px;
+    height: 35px;
+  }
+  
+  .table_data::-webkit-scrollbar-track {
+    background-color: #ffffff;
+  }
+  
+  .table_data::-webkit-scrollbar-thumb {
+    background-color: #B4B4B4;
+    border-radius: 6px;
+  }
+  
+  .table_data::-webkit-scrollbar-thumb:hover {
+    background-color: #b4b4b4;
+  }
+  
+  .table_text tr:nth-child(even) {
+    background-color: #FFFFFF;
+  }
+  
+  .table_text tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  
+  .table_text th {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #444444;
+    background-color: #EFEFF8;
+    height: 50px;
+  }
+  
+  .table_heading th {
+    text-transform: uppercase;
+  }
+  
+  .input_check {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #444444;
+  }
+  
+  .input_check input[type=checkbox] {
+    cursor: pointer;
+  }
+  
+  .table_data {
+    overflow-y: auto;
+    /* height: 78vh; */
+  }
+  
+  thead .Resume {
+    text-align: center;
+  }
+  
+  .table_data1 {
+    overflow-y: auto;
+    max-height: 68vh;
+    margin-top: 21px;
+  }
+  
+  
+  .table_text thead th {
+    position: sticky;
+    top: 0;
+  }
+  
+  .table_option {
+    cursor: pointer;
+    border: 1px solid transparent;
+    outline: none;
+    background: rgba(253, 167, 90, 0.1);
+    border-radius: 100px;
+    padding: 8px 15px;
+  }
+  
+  select.table_option::after {
+    content: '';
+    padding-right: 10px;
+  }
+  
+  .pdf_logo {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  /* ------------Job details modal----------------- */
+  .Job_details {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(34, 34, 34, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    display: flex;
+    top: 0;
+    left: 0;
+  }
+  
+  .Job_details_content {
+    width: 646px;
+    height: 899px;
+    position: absolute;
+    right: 20px;
+    top: 45px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px 40px;
+  }
+  
+  .Job_details_title {
+    border-bottom: 1px solid #F0F0F0;
+  }
+  
+  .Job_details_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+  
+  .Job_details_logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .Job_details_logo h1 {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  .cross_icon {
+    width: 18px;
+    height: 18px;
+    background-color: #EFEFF8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .cross_icon i {
+    color: #999999;
+    font-size: 12px;
+  
+  }
+  
+  .General_information {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #F0F0F0;
+  }
+  
+  .General_information h1 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  .General_information_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .information_content {
+    padding-top: 10px;
+  }
+  
+  .information_content h1 {
+    font-weight: 400;
+    font-size: 12px;
+    color: #555555;
+  }
+  
+  .information_content p {
+    font-weight: 400;
+    font-size: 10px;
+    color: #999999;
+  }
+  
+  .gmail_icom {
+    width: 24px;
+    height: 24px;
+    background-color: #EFEFF8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .job_card_content {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .job_card_content1 {
+    padding-top: 20px;
+    display: flex;
+    gap: 150px;
+    align-items: center;
+  }
+  
+  .job_card_content_title p {
+    font-weight: 400;
+    font-size: 10px;
+    color: #999999;
+  }
+  
+  .job_card_content_title h3 {
+    font-weight: 400;
+    font-size: 12px;
+    color: #555555;
+  }
+  
+  .job_card_content_title_p {
+    text-align: center;
+  }
+  
+  .job_card_content_title_para {
+    width: 115px;
+    text-align: center;
+  }
+  
+  .Recruiters_List {
+    padding-top: 20px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #F0F0F0;
+  }
+  
+  .Recruiters_List h1 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  .Recruiters_List_para {
+    padding-top: 14px;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .Recruiters_List_para p {
+    font-weight: 400;
+    font-size: 12px;
+    color: #555555;
+    background: #EFEFF8;
+    border-radius: 20px;
+    padding: 4px 8px;
+  }
+  
+  .Job_Description {
+    padding-top: 20px;
+  }
+  
+  .Job_Description h1 {
+    font-weight: 500;
+    font-size: 14px;
+    color: #555555;
+  }
+  
+  .Job_Description_para p {
+    font-weight: 400;
+    font-size: 12px;
+    color: #555555;
+    padding-top: 10px;
+  }
+  
+  .Job_Description_para {
+    /* height: 78vh; */
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+  
+  .Job_Description_para::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .Job_Description_para::-webkit-scrollbar-track {
+    background-color: #FFFFFF;
+  }
+  
+  .Job_Description_para::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 6px;
+  }
+  
+  .Job_Description_para::-webkit-scrollbar-thumb:hover {
+    background-color: #b4b4b4;
+  }
+  
+  .Share_job_btn {
+    width: 566px;
+    height: 32px;
+    background: #2F2C9F;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  
+  .Share_job_btn button {
+    font-weight: 400;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding-top: 6px;
+  }
+  
+  /* ------------------------Add a  new candidate modal------------------------------- */
+  .Add_candidate {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .8);
+    overflow: hidden;
+    transition: opacity linear .2s;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding: 0 30px;
+  }
+  
+  .form_title {
+    width: 700px;
+    height: 75px;
+    background-color: #F7F7FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 8px 0px 0px;
+  }
+  
+  .form_title h1 {
+    font-weight: 500;
+    font-size: 18px;
+    color: #444444;
+  }
+  
+  .Add_candidate form {
+    width: 700px;
+    height: 463px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+  }
+  
+  .Add_candidate form i {
+    padding-left: 720px;
+    position: absolute;
+    color: #fff;
+    font-size: 22px;
+    margin-top: -30px;
+    cursor: pointer;
+  }
+  
+  form .user__details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+    padding: 0 63px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  form .user__details .input__box {
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 15px;
+  }
+  
+  .user__details .input__box .details {
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .user__details .input__box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #CBCBCB;
+    padding-left: 15px;
+    font-size: 16px;
+    outline: none;
+    width: 277px;
+    height: 40px;
+  }
+  
+  .user__details .input__box input::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(136, 136, 136, 0.6);
+  
+  }
+  
+  .user__details .input__box input:focus,
+  .user__details .input__box input:hover {
+    border: 1px solid #2F2C9F;
+  }
+  
+  .user__details .input__box input::-webkit-inner-spin-button,
+  .user__details .input__box input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .user__details .input__box input:disabled {
+    background-color: #F1F1F1;
+    cursor: not-allowed;
+  }
+  
+  .user__details .input__box input[type="file"] {
+    cursor: pointer;
+    padding-left: 8px;
+    padding-top: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(136, 136, 136, 0.6);
+  }
+  
+  .user__details .input__box input[type="file"]::-webkit-file-upload-button {
+    position: absolute;
+    margin-left: 170px;
+    cursor: pointer;
+    height: 25px;
+    background-color: #EFEFF8;
+    border-radius: 6px;
+    color: #2F2C9F;
+    border: none;
+  }
+  
+  .form_button {
+    height: 76px;
+    background: #F7F7FB;
+    border-radius: 0px 0px 8px 8px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form_button button {
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    background: #2F2C9F;
+    border-radius: 8px;
+    padding: 10px 30px;
+    color: #FFFFFF;
+    cursor: pointer;
+  
+  }
+  
+  
+  /* --------------------------------New candidate added successfully!------------------------------------------- */
+  .New_candidate_main {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .8);
+    overflow: hidden;
+    transition: opacity linear .2s;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding: 0 30px;
+  }
+  
+  .New_candidate {
+    width: 430px;
+    height: 349px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .New_candidate_logo {
+    width: 390px;
+    height: 130px;
+    background: rgba(123, 211, 109, 0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .New_candidate h1 {
+    font-weight: 500;
+    font-size: 20px;
+    color: #444444;
+    text-align: center;
+    padding-top: 31px;
+  }
+  
+  .New_candidate p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #777777;
+    padding-top: 19px;
+    text-align: center;
+  }
+  
+  .New_candidate .done_btn {
+    padding: 9px 24px;
+    width: 82px;
+    height: 38px;
+    background-color: #3D9130;
+    border-radius: 8px;
+    color: #fff;
+    margin-top: 38px;
+    border: none;
+    cursor: pointer;
+  
+  }
+  
+  .New_candidate .done_btn:hover {
+    background-color: #308723ab;
+  }

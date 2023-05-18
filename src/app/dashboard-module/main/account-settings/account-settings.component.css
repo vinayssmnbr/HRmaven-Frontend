@@ -512,7 +512,7 @@ li.active {
 /* .email-phone {
     display: flex;
     gap: 25px;
-    
+
 } */
 
 .email-phone h6 {
@@ -525,7 +525,7 @@ li.active {
     font-weight: 400;
     font-size: 14px;
     color: rgba(136, 136, 136, 0.6);
-    margin-top: -15px;
+   padding-top: 3px;
 }
 
 .edit-profile-footer {
@@ -885,7 +885,7 @@ input:focus {
 input:disabled {
     cursor: not-allowed;
 }
-
+/*
 #oldp.ng_invalid {
     border: 1px solid red !important;
 }
@@ -940,7 +940,7 @@ input:disabled {
 
 .valid-password {
     border: 2px solid green;
-}
+} */
 
 /* .password-toggle i {
   position: absolute;

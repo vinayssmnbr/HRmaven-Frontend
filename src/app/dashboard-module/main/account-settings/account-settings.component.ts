@@ -38,18 +38,18 @@ export class AccountSettingsComponent implements OnInit {
   this.personalDetailsForm = this.formBuilder.group({
     name:[''],
     personalemail: ['',[
-      Validators.required,
-      Validators.email,
+      // Validators.required,
+      // Validators.email,
       Validators.pattern(
         '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
       ),
     ]],
-    phone: ['', [Validators.required, this.phoneValidator,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]]
+    phone: ['', [Validators.required, this.phoneValidatorr]]
   });
  }
  phoneValidatorr(control: FormControl) {
   const value = control.value;
-  const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
+  const valid = /^[6-9][0-9]{9}$/.test(value); // check if value contains only 10 digits
   return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
 }
 
@@ -109,7 +109,7 @@ isInputDirty = false;
 //   }
 // }
 
-
+email_data: any = ''
 
  ngOnInit(){
 
@@ -132,13 +132,13 @@ isInputDirty = false;
         this.employeename = res.personaldata.name;
         this.totalemployee = res.personaldata.domain;
         // this.employeeemail = res.personaldata.personalemail;
-        this.employeeemail = res.personaldata.personalemail;
+        this.personalemail = res.personaldata.personalemail;
         this.personalDetailsForm.patchValue({
-          personalemail: this.employeeemail
+          personalemail: this.personalemail,
         });
+        console.log("this.personalemail: ", this.personalemail);
         this.phone = res.personaldata.phone;
         this.personalDetailsForm.patchValue({
-            personalemail: this.employeeemail,
             phone: this.phone
         });
         this.companyDetailsForm.patchValue({
@@ -181,10 +181,12 @@ isInputDirty = false;
         console.log("res account settings personaldata222: ", res.personaldata);
         console.log("res account settings personaldata222: ", res.personaldata.headOffice);
         console.log("res account settings personaldata: ", res.useridd);
+        console.log("res account settings email: ", res.personaldata.personalemail);
+
 
         this.employeename = res.personaldata.name;
         this.description = res.personaldata.description;
-        this.employeeemail = res.personaldata.personalemail;
+        this.personalemail = res.personaldata.personalemail;
         this.headOffice = res.personaldata.headOffice;
         this.phone = res.personaldata.phone;
         this.profileimage = res.personaldata.url; // update profile image

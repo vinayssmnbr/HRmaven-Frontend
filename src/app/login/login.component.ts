@@ -127,8 +127,8 @@ export class LoginComponent {
       Validators.required,
       Validators.email,
       Validators.pattern(
-        // '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
-        '[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
+        '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
+        // '[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
         ),
     ]),
     password: new FormControl('', [
@@ -313,6 +313,7 @@ ress: any =''
   //   }, 500);
   // }
   // }
+  loaderforget = false;
   ForgetEmailSubmit(data: any) {
     console.log('Forget Password Email');
     console.log(data);
@@ -321,11 +322,13 @@ ress: any =''
       console.log('message: ', res.message);
 
       if (res.message === 'user-found') {
+        this.loaderforget = true;
         this.userService.ForgotEmail(data).subscribe((res: any) => {
           this.userService.ForgotEmail(this.forgotPassword);
           console.log('response:' + Object.values(res));
           this.Forgotshow = false; // Close the "Forgot Password" modal
           this.emailSent = true; // Display the "Reset Password Link Sent" message
+          this.loaderforget = false;
         });
       } else if (res.message === 'email-id not found') {
         this.usernotfound = res.message;
