@@ -1,0 +1,701 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@600&display=swap');
+
+.landing_page_img {
+    background-image: url(../../assets/images/image_2.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 728px;
+}
+
+.landing_main {
+    padding: 10px 134px;
+}
+
+.landing_navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing_logo {
+    display: flex;
+    gap: 10px;
+}
+
+.landing_logo img {
+    width: 36px;
+    height: 36px;
+}
+
+.landing_logo p {
+    margin-top: 18px;
+}
+
+.landing_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.landing_btn .login,
+.landing_btn .Signup {
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.landing_btn .login {
+    background-color: #FFFFFF;
+    color: #2F2C9F;
+}
+
+.landing_btn .login:hover {
+    background-color: #2F2C9F;
+    color: #fff;
+}
+
+.landing_btn .Signup {
+    background-color: #2F2C9F;
+    color: #fff;
+}
+
+.landing_btn .Signup:hover {
+    background-color: #1912d5;
+    color: #fff;
+}
+
+.landing_text {
+    padding-top: 68px;
+    text-align: center;
+}
+
+.landing_text h1 {
+    font-family: 'Outfit';
+    font-weight: 600;
+    font-size: 40px;
+    color: #333333;
+}
+
+.landing_text p {
+    padding-top: 20px;
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 18px;
+    color: #666666;
+}
+
+.input_search {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.input_search input {
+    width: 514px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 0 100px 0 20px;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.input_search input::placeholder {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+}
+
+.input_search input:hover,
+.input_search input:focus {
+    border: 1px solid #2F2C9F;
+}
+
+.input_search button {
+    margin-left: -90px;
+}
+
+.input_search .input_Signup {
+    width: 85px;
+    height: 40px;
+    background-color: #2F2C9F;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.input_search .input_Signup:hover {
+    background-color: #1a13d8;
+}
+
+.dashboard_img {
+    padding-top: 60px;
+
+}
+
+.dashboard_img img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 773px;
+    height: 432px;
+}
+
+.Features_product {
+    padding-top: 168px;
+}
+
+.Features_product h1 {
+    text-align: center;
+    font-family: 'Urbanist';
+    font-weight: 600;
+    font-size: 32px;
+    color: #000000;
+}
+
+.Features_product_content {
+    padding-top: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Features_product_content .Features_product_content_text h1 {
+    font-family: 'Urbanist';
+
+    font-weight: 600;
+    font-size: 32px;
+    color: #333333;
+}
+
+.Features_product_content .Features_product_content_text p {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 18px;
+    color: #666666;
+    padding-top: 20px;
+}
+
+.Attendance_marking {
+    padding-top: 138px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Attendance_marking .Attendance_marking_text h1 {
+    font-family: 'Urbanist';
+    font-weight: 600;
+    font-size: 32px;
+    color: #333333;
+}
+
+.Attendance_marking .Attendance_marking_text p {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 18px;
+    color: #666666;
+    padding-top: 20px;
+}
+
+.Candidate_recruitment {
+    padding-top: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Candidate_recruitment .Candidate_recruitment_text h1 {
+    font-family: 'Urbanist';
+    font-weight: 600;
+    font-size: 32px;
+    color: #333333;
+}
+
+.Candidate_recruitment .Candidate_recruitment_text p {
+    padding-top: 20px;
+    font-family: 'Outfit';
+    color: #666666;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.Subscription {
+    padding-top: 110px;
+}
+
+.Subscription h1 {
+    font-family: 'Urbanist';
+    color: #333333;
+    font-weight: 600;
+    font-size: 32px;
+    text-align: center;
+}
+
+.Subscription p {
+    font-family: 'Outfit';
+    color: #666666;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.Subscription_plan {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 72px;
+}
+
+.EMPLOYEE_MANAGEMENt {
+    background-color: #fff;
+    width: 448px;
+    border-radius: 8px;
+}
+
+.EMPLOYEE_MANAGEMENt .plan_images {
+    width: 100%;
+    height: 280px;
+    background-color: #EFEFF8;
+    box-shadow: 0px 6px 50px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+}
+
+.EMPLOYEE_MANAGEMENt_text {
+
+    height: 414px;
+
+}
+
+.Hiring_Portals h1 {
+    padding-top: 30px;
+    font-family: 'Outfit';
+    color: #2F2C9F;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.Hiring_Portals {
+    padding: 0 30px;
+}
+
+.Hiring_Portals h4 {
+    font-family: 'Outfit';
+    color: #222222;
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.Hiring_Portals h4 span {
+    font-size: 14px;
+}
+
+.Hiring_Portals p {
+    font-family: 'Outfit';
+    padding-top: 10px;
+    color: #777777;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.get_plan_btn,
+.get_plan_hr_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    padding: 12px 20px;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Outfit';
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.get_plan_btn {
+    background-color: #2F2C9F;
+    color: #fff;
+}
+
+.get_plan_hr_btn {
+    background-color: #fff;
+    border: 1px solid #2F2C9F;
+    color: #2F2C9F;
+}
+
+.get_plan_hr_btn:hover {
+    background-color: #2F2C9F;
+    color: #fff;
+}
+
+.get_plan_btn:hover {
+    background-color: #150edf;
+}
+
+.Features_included {
+    padding: 20px 30px 0 30px;
+}
+
+.Features_included h1 {
+    font-family: 'Outfit';
+    color: #111111;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.Features_included_list {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.Features_included_list_left,
+.Features_included_list_right {
+    width: 100%;
+}
+
+.Features_included_list_left li,
+.Features_included_list_right li {
+    display: flex;
+    gap: 5px;
+    padding-top: 10px;
+
+}
+
+.Features_included_list_left li img,
+.Features_included_list_right li img {
+    width: 12px;
+    height: 12px;
+    margin-top: 4px;
+}
+
+.Features_included_list_left li span,
+.Features_included_list_right li span {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 14px;
+    color: #444444;
+}
+
+.Testimonials {
+    padding-top: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Testimonials h1 {
+    font-family: 'Urbanist';
+    color: #333333;
+    font-weight: 600;
+    font-size: 32px;
+    text-align: center;
+}
+
+/* ---------------------------------------- */
+
+
+.slider {
+    height: 500px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding-top: 20px;
+
+}
+
+.slides {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 190px;
+
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+
+    transition: 2s;
+}
+
+.card1,
+.card2,
+.card3,
+.card4 {
+    width: 380px;
+    height: 197px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+.card_para {
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 16px;
+    padding: 30px 30px;
+    color: #4441A9;
+}
+
+.slide_content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.slide_content img {
+    width: 35px;
+    height: 35px;
+}
+
+.slide_content .slide_content_text h2 {
+    font-weight: 700;
+    font-size: 14px;
+    color: #4441A9;
+}
+
+.slide_content .slide_content_text p {
+    font-weight: 400;
+    font-size: 12px;
+    color: #4441A9;
+}
+
+.navigation-manual {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+    left: 50%;
+}
+
+.manual-btn {
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    background: rgba(217, 217, 217, 0.4);
+
+
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 10px;
+}
+
+.manual-btn:hover {
+    background: #4441A9;
+}
+
+#radio1:checked~.first {
+    margin-left: 0;
+}
+
+#radio2:checked~.first {
+    margin-left: -20%;
+}
+
+#radio3:checked~.first {
+    margin-left: -40%;
+}
+
+#radio4:checked~.first {
+    margin-left: -60%;
+}
+
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: 235px;
+    margin-right: 113px;
+    left: 50%;
+
+}
+
+.navigation-auto div {
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 10px;
+}
+
+#radio1:checked~.navigation-auto .auto-btn1,
+#radio1:checked~.slide .card1 {
+    background-color: #2F2C9F;
+
+
+}
+
+#radio2:checked~.navigation-auto .auto-btn2,
+#radio2:checked~.slide .card2 {
+    background: #2F2C9F;
+
+}
+
+#radio3:checked~.navigation-auto .auto-btn3,
+#radio3:checked~.slide .card3 {
+    background: #2F2C9F;
+
+}
+
+#radio4:checked~.navigation-auto .auto-btn4,
+#radio4:checked~.slide .card4 {
+    background: #2F2C9F;
+
+}
+
+#radio1:checked~.slide .card1 .card_para,
+#radio1:checked~.slide .card1 .slide_content_text h2,
+#radio1:checked~.slide .card1 .slide_content_text p {
+    color: #fff;
+}
+
+#radio2:checked~.slide .card2 .card_para,
+#radio2:checked~.slide .card2 .slide_content_text h2,
+#radio2:checked~.slide .card2 .slide_content_text p {
+    color: #fff;
+}
+
+#radio3:checked~.slide .card3 .card_para,
+#radio3:checked~.slide .card3 .slide_content_text h2,
+#radio3:checked~.slide .card3 .slide_content_text p {
+    color: #fff;
+}
+
+#radio4:checked~.slide .card4 .card_para,
+#radio4:checked~.slide .card4 .slide_content_text h2,
+#radio4:checked~.slide .card4 .slide_content_text p {
+    color: #fff;
+}
+
+footer {
+    background-image: url(../../assets/images/image3.png);
+    background-repeat: no-repeat;
+
+}
+
+.footer {
+    display: flex;
+    padding: 54px 165px;
+    justify-content: space-between;
+}
+
+.social_icon_text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.social_icon_text h3 {
+    padding-top: 15px;
+    font-family: 'Urbanist';
+    color: #2F2C9F;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.social_media p {
+    padding-top: 20px;
+    font-family: 'Outfit';
+    font-weight: 400;
+    font-size: 18px;
+    color: #2F2C9F;
+}
+
+.social_icon {
+    padding-top: 28px;
+    display: flex;
+    gap: 28px;
+}
+
+.social_icon i {
+    color: #2F2C9F;
+    cursor: pointer;
+}
+
+
+.footer_right h3 {
+    font-family: 'Urbanist';
+    color: #2F2C9F;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.footer_right_input {
+    padding-top: 20px;
+}
+
+.footer_right_input input {
+    padding: 4px 6px 4px 12px;
+    width: 335px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 0 100px 0 10px;
+}
+
+.footer_right_input input::placeholder {
+    color: #999999;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.footer_right_input button {
+    padding: 10px 20px;
+    width: 101px;
+    height: 40px;
+    background-color: #2F2C9F;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-left: -105px;
+}
+
+.footer_right_input button:hover {
+    background-color: #110aeb;
+}
+
+footer .copyright {
+    padding-left: 158px;
+    color: #2F2C9F;
+    font-weight: 400;
+    font-size: 14px;
+    padding-bottom: 20px;
+}

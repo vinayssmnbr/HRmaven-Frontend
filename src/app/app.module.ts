@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TermConditionComponent } from './term-condition/term-condition.component';
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
 import { ForgetempComponent } from './forgetemp/forgetemp.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 // import { DashboardComponent } from './main/dashboard/dashboard.component';
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ForgetempComponent } from './forgetemp/forgetemp.component';
     TermConditionComponent,
     LoginEmployeeComponent,
     ForgetempComponent,
+    LandingPageComponent,
     // DashboardComponent,
   ],
   imports: [
