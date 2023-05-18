@@ -46,11 +46,11 @@ export class DashboardContentComponent implements OnInit {
   }
 
   personaldataForm = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),
+    name: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),Validators.minLength(2),
   ]),
     domain: new FormControl('', [Validators.required, Validators.pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$")]),
     phone: new FormControl('', [Validators.required, this.phoneValidator]),
-    headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$")]),
+    headOffice: new FormControl('',[Validators.required,Validators.pattern("^[A-Z]+[a-zA-Z ]*$"),Validators.minLength(2)]),
     // headOffice: new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z ]+$/)]),
 
   })
@@ -59,7 +59,7 @@ export class DashboardContentComponent implements OnInit {
   phoneValidator(control: FormControl) {
     const value = control.value;
     // const valid = /^\d{10}$/.test(value); // check if value contains only 10 digits
-    const valid = /^[6-9][0-9]{8}$/.test(value); // check if value contains only 10 digits
+    const valid = /^[6-9][0-9]{9}$/.test(value); // check if value contains only 10 digits
 
     return valid ? null : { invalidPhone: true }; // return null if valid, otherwise return an error object
   }

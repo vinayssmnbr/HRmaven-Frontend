@@ -261,7 +261,22 @@
                 </select>
                 <i class="fa-solid fa-chevron-down"></i>
               </div>
-
+            <!-- <div class="dropdown_content" (mouseleave)="contentdropdown4 = false">
+              <div class="dropdwon_select" (click)="dropdownOpen4()">
+                <div class="drop-icon">
+                  <p>{{Selectvariable4}}</p>
+                  <div class="input_icon">
+                    <i class="fa-sharp fa-solid fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="select_content" *ngIf="contentdropdown4" (mouseleave)="dropdownClose4()">
+                <ul>
+                  <li *ngFor="let arr4 of array4; index as i" [class.select_active]="i === colorvariable4" (click)="Changeselect4(arr4)">
+                    {{arr4.name}}</li>
+                </ul>
+              </div>
+            </div> -->
             </td>
           </ng-container>
 

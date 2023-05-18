@@ -215,7 +215,7 @@
             <div class="card_date">
               <div class="left_date">
                 <img src="assets/images/date.png" alt="">
-                <p>{{i.date | date}}</p>
+                <p>{{i.date | date:'dd/MM/YYYY': 'UTC'}}</p>
               </div>
               <div class="card_btn">
                 <button *ngIf="i.status=='present'" class="present_btn">{{i.status | uppercase}}</button>
