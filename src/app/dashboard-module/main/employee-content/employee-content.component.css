@@ -2490,4 +2490,15 @@ div.loader-parent {
   color: #777777;
 }
 
-
+.dropdwon_select3{
+  padding: 5px 10px;
+    border-radius: 12px;
+    width: 120px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Outfit", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    appearance: none;
+}
