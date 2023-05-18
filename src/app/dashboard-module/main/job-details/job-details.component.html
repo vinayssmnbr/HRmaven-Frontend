@@ -190,14 +190,26 @@
                             <td>987654321</td>
                             <td>01 Mar, 2023</td>
                             <td>
-                                <select class="table_option">
+                                <!-- <select class="table_option">
                                     <option value="">Resume Received</option>
                                     <option value="">Shortlisted</option>
                                     <option value="">Interview</option>
                                     <option value="">Hired</option>
                                     <option value="">Rejected</option>
                                     <option value="">Archive</option>
-                                </select>
+                                </select> -->
+                                <div class="dropdown_container">
+                                    <div class="dropdwon_select1" (click)="dropdownOpen1()">
+                                      <p>{{Selectvariable1}}</p>
+                                      <i class="fa-sharp fa-solid fa-caret-down designation-arrow" ></i>
+                                    </div>
+                                    <div class="select_content" *ngIf="contentdropdown1" (mouseleave)="contentdropdown1 = false">
+                                      <ul>
+                                        <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                                          {{arr1.name}}</li>
+                                      </ul>
+                                    </div>
+                                  </div>
                             </td>
                             <td class="pdf_logo">
                                 <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
