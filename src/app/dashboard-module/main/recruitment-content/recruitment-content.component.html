@@ -115,7 +115,8 @@
                     <div class="form-group">
                       <label>Job Title <span>*</span></label> <br>
                       <input type="text" placeholder="Type a job title here..." class="meeting-input"
-                        formControlName="jobtitle" formControlName="job_title">
+                        formControlName="jobtitle" formControlName="job_title"
+                        [ngClass]="{'ng_invalid': vacancyForm.controls.job_title.invalid && vacancyForm.controls.job_title.dirty,'ng_valid': vacancyForm.controls.job_title.valid}">
 
                     </div>
 
@@ -150,7 +151,8 @@
                     <div class="form-group">
                       <label>CTC <span>*</span></label> <br>
                       <input type="number" placeholder="Specify CTC here..." class="meeting-input"
-                        [(ngModel)]="ctcTitle" formControlName="ctc">
+                        [(ngModel)]="ctcTitle" formControlName="ctc"
+                        [ngClass]="{'ng_invalid': vacancyForm.controls.ctc.invalid && vacancyForm.controls.ctc.dirty,'ng_valid': vacancyForm.controls.ctc.valid}">
                     </div>
 
                   </div>
@@ -196,7 +198,8 @@
                   </div>
 
                   <div class="discard-save">
-                    <div class="save"><button type="submit" (click)="tabChange1('unread')">Next</button> </div>
+                    <div class="save"><button type="submit" (click)="tabChange1('unread')"
+                      >Next</button> </div>
                   </div>
                 </form>
               </div>
@@ -236,7 +239,8 @@
 
                       <div class="meeting-text-area">
                         <input type="text" placeholder="Amanda Kerry" class="todo-list" #task1
-                          formControlName="recruiter" [(ngModel)]="item1">
+                          formControlName="recruiter" [(ngModel)]="item1"
+                           [ngClass]="{'ng_invalid': vacancyForm2.controls.recruiter.invalid && vacancyForm2.controls.recruiter.dirty,'ng_valid': vacancyForm2.controls.recruiter.valid}">
                         <button (click)="addtask1(task1.value)">click</button>
                         <ul class="input_list">
                           <li class="input_list_li" *ngFor="let user of recruiter">{{user.name}} <i

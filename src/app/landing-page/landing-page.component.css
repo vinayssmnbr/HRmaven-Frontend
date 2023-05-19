@@ -1095,7 +1095,9 @@ footer .copyright {
     .Candidate_recruitment_text {
         padding: 10px 50px;
     }
-    .Candidate_recruitment_text h1,.Candidate_recruitment_text p{
+
+    .Candidate_recruitment_text h1,
+    .Candidate_recruitment_text p {
         text-align: center;
     }
 
@@ -1108,18 +1110,20 @@ footer .copyright {
         padding: 0 70px !important;
     }
 
-   .Testimonials{
-    display: none;
-   }
+    .Testimonials {
+        display: none;
+    }
 
-.footer{
-    display: none;
-}
-.copyright{
-    margin-top: 220px;
-    
-}
-.copyright p{
-   margin-left: -20px !important;
-}
+    .footer {
+        display: none;
+    }
+
+    .copyright {
+        margin-top: 220px;
+
+    }
+
+    .copyright p {
+        margin-left: -20px !important;
+    }
 }
