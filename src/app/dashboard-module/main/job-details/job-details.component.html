@@ -135,15 +135,15 @@
           </button>
           <div class="dropdown_container">
             <div class="select_content" *ngIf="contentdropdown" (mouseleave)="contentdropdown = false">
-              <p class="Stages">Stages</p>
-              <ul>
-                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                  (click)="Changeselect(arr)"> <input type="checkbox">
-                  <p>{{arr.name}}</p>
-                </li>
-              </ul>
+                <p class="Stages">Stages</p>
+                <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                        (click)="Changeselect(arr)"> <input type="checkbox">
+                        <p>{{arr.name}}</p>
+                    </li>
+                </ul>
             </div>
-          </div>
+        </div>
         </div>
         <div class="Add_Candidate_btn" (click)="openmodal()">
           <button class="Add_Candidate">
@@ -405,37 +405,43 @@
       <h1>Add a new candidate</h1>
     </div>
 
-    <div class="user__details">
-      <div class="input__box">
-        <span class="details">Candidate name</span>
-        <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
-      </div>
-      <div class="input__box">
-        <span class="details">Candidate id</span>
-        <input type="text" placeholder="29591" disabled>
-      </div>
-      <div class="input__box">
-        <span class="details">Contact number</span>
-        <input type="text" placeholder="johnsmith@hotmail.com" required formControlName="contactnumber">
-      </div>
-      <div class="input__box">
-        <span class="details">Email</span>
-        <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
-      </div>
-      <div class="input__box">
-        <span class="details">Applied date</span>
-        <input type="number" placeholder="23/04/2023" required formControlName="applieddate">
-      </div>
-      <div class="input__box">
-        <span class="details">Resume</span>
-        <input type="file" placeholder="No file choosen" required formControlName="resume">
-      </div>
-    </div>
-    <div class="form_button" (click)="openaddmodal()">
-      <button>Add a candidate</button>
-    </div>
-  </form>
-</div>
+        <div class="user__details">
+            <div class="input__box">
+                <span class="details">Candidate name</span>
+                <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
+            </div>
+            <div class="input__box">
+                <span class="details">Candidate id</span>
+                <input type="text" placeholder="29591" disabled>
+            </div>
+            <div class="input__box">
+                <span class="details">Contact number</span>
+                <input type="text" placeholder="XXXXXX0652" required formControlName="contactnumber">
+                <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
+                    No.
+                    already exists</div>
+            </div>
+            <div class="input__box">
+                <span class="details">Email</span>
+                <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
+                <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
+                    already
+                    exists</div>
+            </div>
+            <div class="input__box">
+                <span class="details">Applied date</span>
+                <input type="number" placeholder="23/04/2023"  class="meeting-input"  required  formControlName="applieddate">
+            </div>
+            <div class="input__box">
+                <span class="details">Resume</span>
+                <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required formControlName="url"  accept=".pdf">
+            </div>
+        </div>
+        <div class="form_button" (click)="openaddmodal()">
+            <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
+        </div>
+    </form>
+s</div>
 
 
 <!-- ------------------------New candidate added successfully!------------------------------------- -->
