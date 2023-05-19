@@ -43,6 +43,7 @@ export class RecruitmentContentComponent {
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
   jobDetails: any = [];
+  loading: boolean = false;
   openModal() {
     this.showModal = true;
     this.showModalContent = true;
@@ -233,12 +234,12 @@ export class RecruitmentContentComponent {
   successmodal: boolean = false;
   fetchjobVacancies() {
     this.dashService.fetchJobVecancies().subscribe((res: any) => {
-      this.jobDetails = res;
+      this.jobDetails = res.response;
     });
   }
   successfulmodal() {
-    this.successmodal = true;
-    this.showModal5 = false;
+    this.loading = true;
+    this.showModal5 = true;
     const jobDescription = this.vacancyForm2.get('job_description')?.value;
     let data = {
       ...this.vacancyForm.value,
@@ -250,6 +251,9 @@ export class RecruitmentContentComponent {
     this.dashService.addJobVacancies(data).subscribe((res) => {
       console.log('job', res);
       this.fetchjobVacancies();
+      this.loading = false;
+      this.showModal5 = false;
+      this.successmodal = true;
     });
   }
   closesuccessmodal() {

@@ -55,7 +55,11 @@ export class DashService {
   }
 
   fetchJobVecancies() {
-    return this.http.get(this.prefix + 'job/recdata');
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'job/recdata', { headers });
   }
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);

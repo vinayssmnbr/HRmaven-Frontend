@@ -244,13 +244,7 @@
                           </li>
                         </ul>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
 
                   <div class="skill-required-mode">
@@ -261,23 +255,13 @@
                         <textarea name="" id="" placeholder="Enter description..."
                           formControlName="job_description"></textarea>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
-
-
-
-
-
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
-                    <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
+                    <div class="add"><button type="submit"
+                        (click)="successfulmodal()">{{loading?'Loading...':'Add'}}</button>
                     </div>
                   </div>
 
