@@ -8,17 +8,16 @@ import { FormGroup, FormControl, Validators ,AbstractControl} from '@angular/for
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
-
+@Input() item:any
   fileName: string = '';
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
-//  item:any;
-//   ngOnInit() {
-//     this.item = this.dashService.getselecteedJobDetail();
-//     console.log('select1', this.item);
-//   }
+  ngOnInit() {
+    this.item = this.dashService.getselecteedJobDetail();
+    console.log('select1', this.item);
+  }
 
   id: any = 'all';
   tabChange(ids: any) {

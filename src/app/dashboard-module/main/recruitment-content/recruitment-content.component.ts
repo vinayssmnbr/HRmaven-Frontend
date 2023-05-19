@@ -234,11 +234,11 @@ export class RecruitmentContentComponent {
   //   this.seconstep=true;
 
   successmodal: boolean = false;
-  // fetchjobVacancies() {
-  //   this.dashService.fetchJobVecancies().subscribe((res: any) => {
-  //     this.jobDetails = res;
-  //   });
-  // }
+  fetchjobVacancies() {
+    this.dashService.fetchJobVecancies().subscribe((res: any) => {
+      this.jobDetails = res;
+    });
+  }
   successfulmodal() {
     this.successmodal = true;
     this.showModal5 = false;

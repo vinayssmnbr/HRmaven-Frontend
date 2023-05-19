@@ -78,12 +78,21 @@ export class DashService {
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
   selectedEmployee: any;
+  selecteedJobDetail: any;
+
   setSelectedEmployee(user: any) {
     this.selectedEmployee = user;
   }
   getSelectedEmployee() {
     return this.selectedEmployee;
   }
+  setselecteedJobDetail(item: any) {
+    this.selecteedJobDetail = item;
+  }
+  getselecteedJobDetail(){
+    return this.selecteedJobDetail
+  }
+
 
   //DELETE DATA
   deleteStudent(id: string): Observable<void> {
