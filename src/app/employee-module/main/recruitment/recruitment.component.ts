@@ -56,7 +56,10 @@ export class RecruitmentComponent {
   }
   id: any = 'all';
   tabChange(ids: any) {
-    this.id = ids;
+    if(this.Selectvariable!='Select' && this.Selectvariable1!='Select' && this.Selectvariable2!='Select' )
+    {
+      this.id = ids;
+    }
     console.log(this.id);
   }
 
@@ -105,7 +108,7 @@ export class RecruitmentComponent {
   dropdownOpen() {
     this.contentdropdown = !this.contentdropdown;
   }
-  Selectvariable: string = '-Select-';
+  Selectvariable: string = 'Select';
   colorvariable: number = 0;
   Changeselect(arr: any) {
     this.Selectvariable = arr.name;
@@ -134,7 +137,7 @@ export class RecruitmentComponent {
   dropdownOpen1() {
     this.contentdropdown1 = !this.contentdropdown1;
   }
-  Selectvariable1: string = '-Select-';
+  Selectvariable1: string = 'Select';
   colorvariable1: number = 0;
   Changeselect1(arr1: any) {
     this.Selectvariable1 = arr1.name;
@@ -157,7 +160,7 @@ export class RecruitmentComponent {
   dropdownOpen2() {
     this.contentdropdown2 = !this.contentdropdown2;
   }
-  Selectvariable2: string = '-Select-';
+  Selectvariable2: string = 'Select';
   colorvariable2: number = 0;
   Changeselect2(arr2: any) {
     this.Selectvariable2 = arr2.name;

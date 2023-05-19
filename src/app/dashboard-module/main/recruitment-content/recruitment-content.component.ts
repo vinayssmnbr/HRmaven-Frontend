@@ -59,8 +59,14 @@ export class RecruitmentContentComponent {
   }
   id: any = 'all';
   tabChange1(ids: any) {
-    this.id = ids;
-    let data = this.vacancyForm.value;
+    console.log('yeahhhhhh');
+    if(this.Selectvariable!='' && this.Selectvariable1!='' && this.Selectvariable2!='' )
+    {
+      this.id = ids;
+      let data = this.vacancyForm.value;
+    }
+
+
   }
 
   showModal5 = false;
@@ -141,15 +147,15 @@ export class RecruitmentContentComponent {
   array1: any = [
     {
       id: 0,
-      name: '0 Experience',
+      name: '0-1 Year',
     },
     {
       id: 1,
-      name: '1-2 Years',
+      name: '1-2 Year',
     },
     {
       id: 2,
-      name: '2-3 Years',
+      name: '2-3 Year',
     },
   ];
   contentdropdown1: boolean = false;
