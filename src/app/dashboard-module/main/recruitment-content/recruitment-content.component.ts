@@ -195,7 +195,13 @@ export class RecruitmentContentComponent {
       this.list.push({ id: this.list.length, name: this.item });
       console.warn('list', this.list);
       this.item = '';
+      this.popupsearch=false;
     }
+  }
+  skilladd(item:any){
+    this.item=item;
+    this.addtask(item);
+
   }
   removetask(id: number) {
     console.warn(id);
@@ -262,4 +268,5 @@ export class RecruitmentContentComponent {
   selectjob(item: any) {
     this.dashService.setselecteedJobDetail(item);
   }
+  popupsearch = false;
 }
