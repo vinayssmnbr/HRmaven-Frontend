@@ -202,8 +202,6 @@
                       <button type="submit" (click)="tabChange1('unread')"
                         [disabled]="vacancyForm.job_title.invalid || vacancyForm.date.invalid || vacancyForm.location.invalid || vacancyForm.ctc.invalid || vacancyForm.experience.invalid || vacancyForm.job_type.invalid">Next</button>
                     </div>
-                    <div class="save"><button type="submit" (click)="tabChange1('unread')"
-                      >Next</button> </div>
                   </div>
                 </form>
               </div>
@@ -237,7 +235,7 @@
                       <div class="popup_search" *ngIf="popupsearch">
                         <p (click)="skilladd('Fig')">Fig</p>
                         <p (click)="skilladd('Figma')">Figma</p>
-                        <p>Figure</p>
+                        <p (click)="skilladd('Figure')">Figure</p>
                       </div>
                     </div>
                   </div>
@@ -250,7 +248,7 @@
 
                       <div class="meeting-text-area">
                         <input type="text" placeholder="Amanda Kerry" class="todo-list" #task1
-                          formControlName="recruiter" [(ngModel)]="item1"
+                          formControlName="recruiter" (keydown)="popupsearchemail=true" [(ngModel)]="item1"
                           [ngClass]="{'ng_invalid': vacancyForm2.controls.recruiter.invalid && vacancyForm2.controls.recruiter.dirty,'ng_valid': vacancyForm2.controls.recruiter.valid}">
                         <button (click)="addtask1(task1.value)">click</button>
                         <ul class="input_list">
@@ -259,7 +257,24 @@
                           </li>
                         </ul>
                       </div>
+                      <div class="popup_search" *ngIf="popupsearchemail">
+                        <div class="popup_email">
+                          <p (click)="skilladd1('Cameron.29598@gmail.com')">Cameron.29598@gmail.com</p>
+                          <span>UI/UX designer</span>
+                        </div>
+                        <div class="popup_email">
+                          <p (click)="skilladd1('harpreet@gmail.com')">harpreet@gmail.com</p>
+                          <span>Fullstack</span>
+                        </div>
+                        <div class="popup_email">
+                          <p (click)="skilladd1('girija@gmailcom')">girija@gmailcom</p>
+                          <span>FrontEnd</span>
+                        </div>
+                      </div>
                     </div>
+
+
+
                   </div>
 
                   <div class="skill-required-mode">
@@ -270,13 +285,23 @@
                         <textarea name="" id="" placeholder="Enter description..."
                           formControlName="job_description"></textarea>
                       </div>
+
+
+
                     </div>
+
+
+
                   </div>
+
+
+
+
+
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
-                    <div class="add"><button type="submit"
-                        (click)="successfulmodal()">{{loading?'Loading...':'Add'}}</button>
+                    <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
                     </div>
                   </div>
 
