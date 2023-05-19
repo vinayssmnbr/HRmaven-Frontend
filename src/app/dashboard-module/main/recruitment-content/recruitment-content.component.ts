@@ -12,21 +12,21 @@ declare var checkboxOptions: any;
 export class RecruitmentContentComponent {
   ngOnInit() {
     // ------------Drop Down Menu----------
-    const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
-      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    selectBtn.addEventListener('click', () =>
-      optionMenu.classList.toggle('active')
-    );
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        let selectedOption =
-          option.querySelector<HTMLElement>('.option-text')!.innerText;
-        sBtn_text.innerText = selectedOption;
-        optionMenu.classList.remove('active');
-      });
-    });
+    // const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
+    //   selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
+    //   options = optionMenu.querySelectorAll<HTMLElement>('.option'),
+    //   sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
+    // selectBtn.addEventListener('click', () =>
+    //   optionMenu.classList.toggle('active')
+    // );
+    // options.forEach((option) => {
+    //   option.addEventListener('click', () => {
+    //     let selectedOption =
+    //       option.querySelector<HTMLElement>('.option-text')!.innerText;
+    //     sBtn_text.innerText = selectedOption;
+    //     optionMenu.classList.remove('active');
+    //   });
+    // });
     // this.fetchjobVacancies();
   }
   constructor(private dashService: DashService, private cookie: CookieService) {
@@ -257,6 +257,7 @@ export class RecruitmentContentComponent {
   successmodal: boolean = false;
   fetchjobVacancies() {
     this.dashService.fetchJobVecancies().subscribe((res: any) => {
+      console.log('this.jobVacancies',res.length);
       this.jobDetails = res.response;
     });
   }
