@@ -30,16 +30,16 @@
     </div>
 
     <div class="row">
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
+      <div class="col-4" *ngFor="let item of jobDetails">
+        <div class="card" routerLink="/job-details" (click)="selectjob(item)">
           <div class="card-outer">
             <div class="card-head">
               <div class="card-logo">
                 <img src="assets/images/Ellipse 70.png" alt="">
                 <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
                 <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
+                  <h5>{{item.job_title}}</h5>
+                  <p>{{item.date | date:"shortDate"}}</p>
                 </div>
               </div>
               <div class="progress-btn">
@@ -52,17 +52,16 @@
             <div class="Skills-head">
               <h6>Skills Required:</h6>
               <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
+                <li>{{item.list[0]?.name}}</li>
+                <li>{{item.list[1]?.name}}</li>
+                <li>{{item.list[2]?.name}}</li>
+                <li>{{item.list[3]?.name}}</li>
               </ul>
             </div>
             <div class="Description">
               <div class="description-heading">
                 <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
+                <p>{{item.job_description}}</p>
               </div>
             </div>
           </div>
@@ -70,330 +69,12 @@
           <div class="card-bottom">
 
             <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
+              <li><i class="fa-solid fa-location-dot"></i><a href=""></a>{{item.location}}</li>
+              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. {{item.ctc}}L</li>
               <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
             </div>
             <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
-          <div class="card-outer">
-            <div class="card-head">
-              <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
-                <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
-                </div>
-              </div>
-              <div class="progress-btn">
-                <button class="progres">Inprogress</button>
-              </div>
-            </div>
-          </div>
-          <span class="line"></span>
-          <div class="Skills-required">
-            <div class="Skills-head">
-              <h6>Skills Required:</h6>
-              <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
-              </ul>
-            </div>
-            <div class="Description">
-              <div class="description-heading">
-                <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-
-            <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-            </div>
-            <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
-          <div class="card-outer">
-            <div class="card-head">
-              <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
-                <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
-                </div>
-              </div>
-              <div class="progress-btn">
-                <button class="progres">Inprogress</button>
-              </div>
-            </div>
-          </div>
-          <span class="line"></span>
-          <div class="Skills-required">
-            <div class="Skills-head">
-              <h6>Skills Required:</h6>
-              <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
-              </ul>
-            </div>
-            <div class="Description">
-              <div class="description-heading">
-                <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-
-            <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-            </div>
-            <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
-          <div class="card-outer">
-            <div class="card-head">
-              <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
-                <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
-                </div>
-              </div>
-              <div class="progress-btn">
-                <button class="progres">Inprogress</button>
-              </div>
-            </div>
-          </div>
-          <span class="line"></span>
-          <div class="Skills-required">
-            <div class="Skills-head">
-              <h6>Skills Required:</h6>
-              <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
-              </ul>
-            </div>
-            <div class="Description">
-              <div class="description-heading">
-                <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-
-            <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-            </div>
-            <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
-          <div class="card-outer">
-            <div class="card-head">
-              <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
-                <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
-                </div>
-              </div>
-              <div class="progress-btn">
-                <button class="progres">Inprogress</button>
-              </div>
-            </div>
-          </div>
-          <span class="line"></span>
-          <div class="Skills-required">
-            <div class="Skills-head">
-              <h6>Skills Required:</h6>
-              <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
-              </ul>
-            </div>
-            <div class="Description">
-              <div class="description-heading">
-                <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-
-            <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-            </div>
-            <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
-          <div class="card-outer">
-            <div class="card-head">
-              <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
-                <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
-                </div>
-              </div>
-              <div class="progress-btn">
-                <button class="progres">Inprogress</button>
-              </div>
-            </div>
-          </div>
-          <span class="line"></span>
-          <div class="Skills-required">
-            <div class="Skills-head">
-              <h6>Skills Required:</h6>
-              <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
-              </ul>
-            </div>
-            <div class="Description">
-              <div class="description-heading">
-                <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-
-            <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-            </div>
-            <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card" routerLink="/job-details">
-          <div class="card-outer">
-            <div class="card-head">
-              <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
-                <div class="card-text">
-                  <h5>UI/UX Designer</h5>
-                  <p>Date: 05 Jul 2023</p>
-                </div>
-              </div>
-              <div class="progress-btn">
-                <button class="progres">Inprogress</button>
-              </div>
-            </div>
-          </div>
-          <span class="line"></span>
-          <div class="Skills-required">
-            <div class="Skills-head">
-              <h6>Skills Required:</h6>
-              <ul class="skills">
-                <li>Figma</li>
-                <li>3D Design</li>
-                <li>After Effects</li>
-                <li>Illustrations</li>
-              </ul>
-            </div>
-            <div class="Description">
-              <div class="description-heading">
-                <h6>Description:</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since....</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-bottom">
-
-            <div class="location">
-              <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-              <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-            </div>
-            <div class="year">
-              <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
+              <li><i class="fa-solid fa-briefcase"></i><a href=""></a>{{item.experience}}</li>
               <li><i class="fa-solid fa-location-dot"></i><a href=""></a> 24 more applied</li>
             </div>
 
@@ -424,7 +105,7 @@
 
 
           <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
-            <form class="vacancy-form" [FormGroup]="jobvacancyform">
+            <div class="vacancy-form" [FormGroup]="jobvacancyform">
               <div class="job-title-date">
                 <form class="job-vacancy-form" [formGroup]="vacancyForm"
                   (ngSubmit)="jobvacancydetail(vacancyForm.value)">
@@ -434,7 +115,8 @@
                     <div class="form-group">
                       <label>Job Title <span>*</span></label> <br>
                       <input type="text" placeholder="Type a job title here..." class="meeting-input"
-                        formControlName="jobtitle" formControlName="job_title">
+                        formControlName="jobtitle" formControlName="job_title"
+                        [ngClass]="{'ng_invalid': vacancyForm.controls.job_title.invalid && vacancyForm.controls.job_title.dirty,'ng_valid': vacancyForm.controls.job_title.valid}">
 
                     </div>
 
@@ -469,7 +151,8 @@
                     <div class="form-group">
                       <label>CTC <span>*</span></label> <br>
                       <input type="number" placeholder="Specify CTC here..." class="meeting-input"
-                        [(ngModel)]="ctcTitle" formControlName="ctc">
+                        [(ngModel)]="ctcTitle" formControlName="ctc"
+                        [ngClass]="{'ng_invalid': vacancyForm.controls.ctc.invalid && vacancyForm.controls.ctc.dirty,'ng_valid': vacancyForm.controls.ctc.valid}">
                     </div>
 
                   </div>
@@ -481,7 +164,7 @@
                         <div class="dropdwon_select" (click)="dropdownOpen1()">
                           <!-- <p>{{Selectvariable1}}</p> -->
                           <input class="none" type="text" [(ngModel)]="Selectvariable1" formControlName="experience"
-                            id="text11" placeholder="Select" readonly>
+                            id="text11" placeholder="Select">
                           <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
                         <div class="select_content" *ngIf="contentdropdown1">
@@ -515,64 +198,57 @@
                   </div>
 
                   <div class="discard-save">
-                    <div class="save"><button type="submit" (click)="tabChange1('unread')">Next</button> </div>
+                    <div class="save"><button type="submit" (click)="tabChange1('unread')"
+                      >Next</button> </div>
                   </div>
                 </form>
               </div>
-            </form>
+            </div>
+
+
           </div>
 
 
           <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
-            <form class="vacancy-form">
+            <div class="vacancy-form">
               <div class="job-title-date">
-                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="vacancydetail()">
+                <form class="job-vacancy-form" [formGroup]="vacancyForm1"
+                  (ngSubmit)="vacancydetail(vacancyForm1.value)">
                   <div class="skill-required-mode">
                     <div class="form-group">
                       <label>Skills required <span>*</span></label> <br>
 
                       <div class="meeting-text-area">
-                        <input type="text" placeholder="Type skill name..." class="todo-list" #task><button
+                        <input type="text" placeholder="Type skill name..." class="todo-list" #task
+                          formControlName="skill" [(ngModel)]="item"><button
                           (click)="addtask(task.value)">click</button>
-
-
-
                         <ul class="input_list">
                           <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark"
                               (click)="removetask(item.id)"></i>
                           </li>
                         </ul>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
+                </form>
+                <form class="job-vacancy-form" [formGroup]="vacancyForm2">
+
                   <div class="skill-required-mode">
                     <div class="form-group">
                       <label>Recruiter's name <span>*</span></label> <br>
 
                       <div class="meeting-text-area">
-                        <input type="text" placeholder="Amanda Kerry" class="todo-list" #task>
-
-
-                        <button (click)="addtask1(task1.value1)">click</button>
+                        <input type="text" placeholder="Amanda Kerry" class="todo-list" #task1
+                          formControlName="recruiter" [(ngModel)]="item1"
+                           [ngClass]="{'ng_invalid': vacancyForm2.controls.recruiter.invalid && vacancyForm2.controls.recruiter.dirty,'ng_valid': vacancyForm2.controls.recruiter.valid}">
+                        <button (click)="addtask1(task1.value)">click</button>
                         <ul class="input_list">
-                          <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i class="fa-solid fa-xmark"
-                              (click)="removetask(item.id)"></i>
+                          <li class="input_list_li" *ngFor="let user of recruiter">{{user.name}} <i
+                              class="fa-solid fa-xmark" (click)="removetask1(user.id)"></i>
                           </li>
                         </ul>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
 
                   <div class="skill-required-mode">
@@ -580,31 +256,22 @@
                       <label>Job description:</label> <br>
 
                       <div class="job-description">
-                        <textarea name="" id="" placeholder="Enter description..."></textarea>
+                        <textarea name="" id="" placeholder="Enter description..."
+                          formControlName="job_description"></textarea>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
-
-
-
-
-
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
-                    <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
+                    <div class="add"><button type="submit"
+                        (click)="successfulmodal()">{{loading?'Loading...':'Add'}}</button>
                     </div>
                   </div>
 
                 </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
         <!-----------------------------New-Job-Added-Modal---------------------------------->

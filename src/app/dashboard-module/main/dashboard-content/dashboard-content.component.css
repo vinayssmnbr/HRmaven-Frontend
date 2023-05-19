@@ -198,6 +198,12 @@ a {
 .meeting-text p {
   color: #2F2C9F;
   font-size: 14px;
+  display: flex;
+  gap: 7px;
+}
+
+.meeting-text i{
+  margin-top: 3px;
 }
 
 .meeting-area {
@@ -1659,7 +1665,7 @@ div.form-container {
   left: 0;
   margin: 0 auto;
   content: "";
-  
+
   background: #fff;
 }
 

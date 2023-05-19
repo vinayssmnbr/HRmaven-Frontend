@@ -4,12 +4,10 @@
   background-color: #f9f9f9;
   padding: 30px 30px;
   /* min-height: 100%; */
-
 }
 
 .profile-container {
   padding-top: 76px;
-
 }
 
 .recruitment-area {
@@ -76,7 +74,6 @@
 .col-4 {
   padding-top: 30px;
   display: inline-block;
-
 }
 
 .card-head {
@@ -92,7 +89,7 @@
 .card {
   display: inline-block;
   padding: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
   width: 388px;
@@ -110,7 +107,7 @@
 .card-outer {
   height: 59px;
   width: 100%;
-  border-bottom: 1px solid #F0F0F0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .Skills-required {
@@ -120,10 +117,9 @@
 ul.todo-list li {
   width: 80px;
   height: 32px;
-  background-color: #EFEFF8;
+  background-color: #efeff8;
   border-radius: 16px;
   text-align: center;
-
 }
 
 .input_list_li i {
@@ -131,7 +127,6 @@ ul.todo-list li {
   cursor: pointer;
   color: #777777;
   font-size: 12px;
-
 }
 
 .meeting-text-area button {
@@ -151,7 +146,7 @@ ul.todo-list li {
 }
 
 .input_list li:hover {
-  background-color: #EFEFF8;
+  background-color: #efeff8;
   cursor: pointer;
 }
 
@@ -168,8 +163,8 @@ ul.input_list {
 }
 
 ul.input_list::after {
-  content: '';
-  background-color: #FFFFFF;
+  content: "";
+  background-color: #ffffff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   position: absolute;
@@ -179,7 +174,6 @@ ul.input_list::after {
 /* width */
 ul.input_list::-webkit-scrollbar {
   width: 5px;
-
 }
 
 /* Track */
@@ -199,7 +193,7 @@ ul.input_list::-webkit-scrollbar-thumb:hover {
 }
 
 .skills li {
-  background-color: #EFEFF8;
+  background-color: #efeff8;
   border-radius: 8px;
   padding: 4px 8px;
 }
@@ -215,7 +209,7 @@ ul.skills {
   padding-top: 5px;
   font-weight: 400;
   font-size: 12px;
-  color: #2F2C9F;
+  color: #2f2c9f;
 }
 
 .progress-btn {
@@ -224,7 +218,7 @@ ul.skills {
 }
 
 span.line {
-  height: 2px solid #F0F0F0;
+  height: 2px solid #f0f0f0;
   width: 100%;
   max-width: 332px;
 }
@@ -234,8 +228,8 @@ span.line {
 }
 
 .filter button {
-  background: #FFFFFF;
-  border: 1px solid #2F2C9F;
+  background: #ffffff;
+  border: 1px solid #2f2c9f;
   border-radius: 8px;
   width: 93px;
   height: 36px;
@@ -243,11 +237,10 @@ span.line {
 
 .jobs-completed ul {
   display: flex;
-
 }
 
 .jobs-completed {
-  border-bottom: 1px solid #F9F9F9;
+  border-bottom: 1px solid #f9f9f9;
 }
 
 .all-completed {
@@ -295,7 +288,6 @@ span.line {
   background: #fff;
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
   display: none;
-
 }
 
 .filter-menu.active .options {
@@ -313,7 +305,7 @@ span.line {
 }
 
 .options .option:hover {
-  background: #F2F2F2;
+  background: #f2f2f2;
 }
 
 .option i {
@@ -334,12 +326,12 @@ span.line {
 }
 
 .all-completed li.active {
-  border-bottom: 2px solid #2F2C9F;
+  border-bottom: 2px solid #2f2c9f;
   text-align: center;
 }
 
 .all-completed li:hover {
-  border-bottom: 2px solid #2F2C9F;
+  border-bottom: 2px solid #2f2c9f;
 }
 
 .progress-btn .progres {
@@ -352,9 +344,8 @@ span.line {
 }
 
 .progress-btn .progres:hover {
-  border: 1px solid #7BD36D;
+  border: 1px solid #7bd36d;
 }
-
 
 .card-text h5 {
   font-weight: 500;
@@ -394,6 +385,9 @@ span.line {
   font-size: 14px;
   color: #999999;
   text-align: justify;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .require-head h6 {
@@ -409,7 +403,7 @@ span.line {
 }
 
 .card-bottom {
-  background-color: #F7F7FD;
+  background-color: #f7f7fd;
   margin-top: 20px;
   border-radius: 10px;
   padding-bottom: 13px;
@@ -440,7 +434,6 @@ span.line {
   padding-right: 8.3px;
 }
 
-
 .card-images {
   display: flex;
   gap: 10px;
@@ -452,7 +445,6 @@ span.line {
   color: #999999;
   padding-top: 6px;
 }
-
 
 .card:hover {
   cursor: pointer;
@@ -500,7 +492,7 @@ span.line {
   width: 100%;
   display: flex;
   flex-direction: 110px;
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   border-radius: 8px;
   text-align: center;
   flex-direction: column;
@@ -519,10 +511,9 @@ span.line {
   top: -4%;
   right: -5%;
   cursor: pointer;
-  color: #ECECEC;
+  color: #ececec;
   font-size: 20px;
 }
-
 
 .all-read-important {
   display: flex;
@@ -533,7 +524,7 @@ span.line {
 }
 
 .all-read-important p {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .all:hover {
@@ -545,7 +536,7 @@ span.line {
 }
 
 .Important:hover {
-  border-bottom: 2px solid #2F2C9F;
+  border-bottom: 2px solid #2f2c9f;
 }
 
 .number p {
@@ -571,8 +562,8 @@ span.line {
 }
 
 .color {
-  color: #2F2C9F;
-  border-bottom: 2px solid #2F2C9F;
+  color: #2f2c9f;
+  border-bottom: 2px solid #2f2c9f;
 }
 
 .Modal_form {
@@ -587,7 +578,6 @@ span.line {
   align-items: center;
   top: 0;
   left: 0;
-
 }
 
 .Modal_modal {
@@ -600,20 +590,18 @@ span.line {
   width: 100%;
   max-width: 685px;
   width: 100%;
-
-
 }
 
 .Modal_modal i {
   position: absolute;
   right: -30px;
   top: -24px;
-  color: #ECECEC;
+  color: #ececec;
   cursor: pointer;
 }
 
 .edit-profile-heading {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   border-radius: 8px 8px 0px 0px;
   max-width: 685px;
   width: 100%;
@@ -623,7 +611,7 @@ span.line {
   align-items: center;
 }
 
-.name-section>label {
+.name-section > label {
   float: left;
   margin-bottom: 20px;
 }
@@ -633,25 +621,24 @@ span.line {
   padding: 39px 55px;
 }
 
-
 /*----------------------Add-Job-Vacancy-Modal-----------------*/
 .form-group span {
-  color: #CB1E0F;
+  color: #cb1e0f;
 }
 
 .meeting-mode {
   display: flex;
   gap: 20px;
 }
-.none{
-   outline: none;
-   border:none;
-   cursor: pointer;
+.none {
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
-.none::placeholder{
+.none::placeholder {
   font-weight: 400;
-    font-size: 14px;
-    color: #333333;
+  font-size: 14px;
+  color: #333333;
 }
 .skill-required-mode {
   display: flex;
@@ -673,7 +660,7 @@ form.job-vacancy-form {
 .meeting-input {
   width: 277px;
   height: 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 6px;
   padding: 10px 12px;
@@ -681,6 +668,21 @@ form.job-vacancy-form {
   /* border: none; */
 }
 
+.meeting-input.ng_invalid{
+  border:1px solid #cb1e0f;
+}
+
+.meeting-input.ng_valid {
+  border: 1px solid green;
+}
+
+.todo-list.ng_invalid {
+  border: 1px solid #cb1e0f;
+}
+
+.todo-list.ng_valid {
+  border: 1px solid green;
+}
 .meeting-input ::placeholder {
   opacity: 0.1;
 }
@@ -688,7 +690,7 @@ form.job-vacancy-form {
 .meeting-text-area {
   width: 574px;
   height: 99px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 6px;
   padding: 18.5px 20px;
@@ -710,12 +712,15 @@ form.job-vacancy-form {
 .job-description textarea {
   width: 574px;
   height: 99px;
-  background-color: #FFFFFF;
-  border: 1px solid #CBCBCB;
+  background-color: #ffffff;
+  border: 1px solid #cbcbcb;
   border-radius: 6px;
   padding: 10px 17px;
   outline: none;
   resize: none;
+  font-weight: 400;
+    font-size: 14px;
+    color: #333333;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -725,7 +730,7 @@ input::-webkit-inner-spin-button {
 .date-input {
   width: 180px;
   height: 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 8px;
   padding: 10px 12px;
@@ -735,7 +740,7 @@ input::-webkit-inner-spin-button {
 .meeting-link {
   width: 560px;
   height: 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 6px;
   padding-top: 10px;
@@ -743,7 +748,6 @@ input::-webkit-inner-spin-button {
   padding-right: 48px;
   padding-bottom: 10px;
   outline: none;
-
 }
 
 .link-image {
@@ -754,7 +758,7 @@ input::-webkit-inner-spin-button {
 }
 
 .invite {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 6px;
   width: 440px;
@@ -766,17 +770,16 @@ input::-webkit-inner-spin-button {
 .add-btn button {
   width: 110px;
   height: 40px;
-  background-color: #2F2C9F;
+  background-color: #2f2c9f;
   border: 1px solid rgba(180, 180, 180, 0.8);
   border-radius: 6px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
 .add-btn {
   margin-top: 33px;
   margin-left: 10px;
-
 }
 
 .invite-add {
@@ -828,27 +831,26 @@ input::-webkit-inner-spin-button {
 .designer-text {
   padding: 3px 10px;
   text-align: center;
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   border-radius: 50px;
 }
 
 .designer-text h5 {
   font-weight: 500;
   font-size: 11px;
-  color: #2F2C9F;
+  color: #2f2c9f;
 }
 
 .discard-save {
   display: flex;
   gap: 20px;
   justify-content: center;
-
 }
 
 .discard-save .discard button {
-  color: #2F2C9F;
-  background-color: #FFFFFF;
-  border: 1px solid #2F2C9F;
+  color: #2f2c9f;
+  background-color: #ffffff;
+  border: 1px solid #2f2c9f;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 400;
@@ -856,8 +858,8 @@ input::-webkit-inner-spin-button {
 }
 
 .discard-save .save button {
-  color: #FFFFFF;
-  background-color: #2F2C9F;
+  color: #ffffff;
+  background-color: #2f2c9f;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 400;
@@ -877,13 +879,12 @@ input::-webkit-inner-spin-button {
   display: flex;
   gap: 20px;
   justify-content: center;
-
 }
 
 .Back-Add .back button {
-  color: #2F2C9F;
-  background-color: #FFFFFF;
-  border: 1px solid #2F2C9F;
+  color: #2f2c9f;
+  background-color: #ffffff;
+  border: 1px solid #2f2c9f;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 400;
@@ -891,8 +892,8 @@ input::-webkit-inner-spin-button {
 }
 
 .Back-Add .add button {
-  color: #FFFFFF;
-  background-color: #2F2C9F;
+  color: #ffffff;
+  background-color: #2f2c9f;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 400;
@@ -907,17 +908,14 @@ input::-webkit-inner-spin-button {
   border: none;
 }
 
-
 .fa-xmark {
   position: absolute;
   top: -4%;
   right: -5%;
   cursor: pointer;
-  color: #ECECEC;
+  color: #ececec;
   font-size: 20px;
 }
-
-
 
 /*----------------------Drop-down-CSS------------------*/
 .dropdwon_select {
@@ -937,7 +935,7 @@ input::-webkit-inner-spin-button {
 
 .dropdwon_select:hover,
 .dropdwon_select:focus {
-  border: 1px solid #2F2C9F;
+  border: 1px solid #2f2c9f;
   border-radius: 8px;
 }
 
@@ -976,16 +974,14 @@ input::-webkit-inner-spin-button {
 }
 
 .select_content ul li:hover {
-  background-color: #ECECEC;
+  background-color: #ececec;
   border-radius: 8px;
 }
 
 .select_active {
-  background-color: #ECECEC;
+  background-color: #ececec;
   border-radius: 8px;
-
 }
-
 
 /*-------------------------------------------------*/
 
@@ -993,9 +989,9 @@ input::-webkit-inner-spin-button {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, .8);
+  background: rgba(0, 0, 0, 0.8);
   overflow: hidden;
-  transition: opacity linear .2s;
+  transition: opacity linear 0.2s;
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -1008,7 +1004,7 @@ input::-webkit-inner-spin-button {
 .forget_email_send_content {
   width: 430px;
   height: 349px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px 20px;
   display: flex;
@@ -1031,15 +1027,15 @@ input::-webkit-inner-spin-button {
   width: 56px;
   height: 56px;
 }
-.forget_content p{
+.forget_content p {
   padding-top: 5px;
 }
 .forget_content button {
   width: 82px;
   height: 38px;
-  background-color: #3D9130;
+  background-color: #3d9130;
   border-radius: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 9px 24px;
   font-weight: 500;
   font-size: 14px;
