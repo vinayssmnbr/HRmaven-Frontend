@@ -202,6 +202,8 @@
                       <button type="submit" (click)="tabChange1('unread')"
                         [disabled]="vacancyForm.job_title.invalid || vacancyForm.date.invalid || vacancyForm.location.invalid || vacancyForm.ctc.invalid || vacancyForm.experience.invalid || vacancyForm.job_type.invalid">Next</button>
                     </div>
+                    <div class="save"><button type="submit" (click)="tabChange1('unread')"
+                      >Next</button> </div>
                   </div>
                 </form>
               </div>
@@ -257,13 +259,7 @@
                           </li>
                         </ul>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
 
                   <div class="skill-required-mode">
@@ -274,23 +270,13 @@
                         <textarea name="" id="" placeholder="Enter description..."
                           formControlName="job_description"></textarea>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
-
-
-
-
-
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
-                    <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
+                    <div class="add"><button type="submit"
+                        (click)="successfulmodal()">{{loading?'Loading...':'Add'}}</button>
                     </div>
                   </div>
 

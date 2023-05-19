@@ -305,7 +305,11 @@ export class EmployeeProfileComponent {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+    accountno: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(16),
+    ]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
@@ -342,7 +346,6 @@ export class EmployeeProfileComponent {
     this.showPasswordIcon3 = this.showPassword3 ? 'fa-eye-slash' : 'fa-eye';
     passwordInput3.type = this.showPassword3 ? 'password' : 'text';
   }
-
 
   empform6 = new FormGroup({
     jobdesignation: new FormControl(''),
