@@ -84,11 +84,10 @@ export class JobDetailsComponent {
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
   Changeselect(arr: any) {
-    this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
-    this.contentdropdown = false;
     console.log(arr.name);
   }
+
   Selectvariable1: string = 'Designation';
   colorvariable1: number = 0;
   Changeselect1(arr1: any) {
@@ -116,10 +115,10 @@ export class JobDetailsComponent {
   openaddmodal() {
     this.Newcandidate = true;
     this.addcandidate = false;
-    console.log(this.newcandidateform.value);
-  }
+    }
   closedone() {
     this.Newcandidate = false;
+  
   }
 
   candidateNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
@@ -129,27 +128,22 @@ export class JobDetailsComponent {
   }
 
   newcandidateform = new FormGroup({
-    candidateName: new FormControl('', Validators.required),
-    contactnumber:new FormControl('', Validators.required),
-    email:new FormControl('', Validators.required),
+   
+    candidateName: new FormControl('', [
+      Validators.required,
+      this.candidateNameValidator,
+      Validators.pattern('[a-zA-Z ]+'),
+    ]),
+    contactnumber: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[6-9]{1}[0-9]{9}'),
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+    ]),
     applieddate:new FormControl('', Validators.required),
-
-
-    // candidateName: new FormControl('', [
-    //   Validators.required,
-    //   this.candidateNameValidator,
-    //   Validators.pattern('[a-zA-Z ]+'),
-    // ]),
-    // contactnumber: new FormControl('', [
-    //   Validators.required,
-    //   Validators.pattern('[6-9]{1}[0-9]{9}'),
-    // ]),
-    // email: new FormControl('', [
-    //   Validators.required,
-    //   Validators.email,
-    //   Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
-    // ]),
-    // applieddate:new FormControl('', Validators.required),
 
     url: new FormControl('', Validators.required),
     // url: new FormControl(''),
@@ -231,37 +225,44 @@ export class JobDetailsComponent {
     //   // this.newcandidateform.reset();
     // });
   }
-
+  progress:boolean=false
   selectedFile: File | null = null;
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
+    this.progress=true
     this.onUpload(this.selectedFile);
 
-
   }
+  
 
   onUpload(file) {
     console.log('adarsh');
     this.dashService.uploaded(file).then(
       (res) => {
+        this.progress = false;
         this.newcandidateform.patchValue({
           url: res && res.url,
         });
       },
       (err) => {
         console.log(err);
+        this.progress = false;
       }
     );
   }
 
+// loading:boolean=false
   tabChange1(data:any){
+    // this.loading=true
   this.dashService.addCandidate(data).subscribe((result) => {
     this.dashService.addCandidate(this.newcandidateform);
     // this.newcandidateform.reset();
-  });
-}
+    // this.loading=false
 
+  });
+  this.newcandidateform.reset()
+}
 
 
 
