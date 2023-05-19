@@ -135,15 +135,15 @@
           </button>
           <div class="dropdown_container">
             <div class="select_content" *ngIf="contentdropdown" (mouseleave)="contentdropdown = false">
-              <p class="Stages">Stages</p>
-              <ul>
-                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                  (click)="Changeselect(arr)"> <input type="checkbox">
-                  <p>{{arr.name}}</p>
-                </li>
-              </ul>
+                <p class="Stages">Stages</p>
+                <ul>
+                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                        (click)="Changeselect(arr)"> <input type="checkbox">
+                        <p>{{arr.name}}</p>
+                    </li>
+                </ul>
             </div>
-          </div>
+        </div>
         </div>
         <div class="Add_Candidate_btn" (click)="openmodal()">
           <button class="Add_Candidate">

@@ -202,7 +202,13 @@ export class RecruitmentContentComponent {
       this.list.push({ id: this.list.length, name: this.item });
       console.warn('list', this.list);
       this.item = '';
+      this.popupsearch=false;
     }
+  }
+  skilladd(item:any){
+    this.item=item;
+    this.addtask(item);
+
   }
   removetask(id: number) {
     console.warn(id);
@@ -215,7 +221,15 @@ export class RecruitmentContentComponent {
     this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
     console.warn('jijrgk', this.recruiter);
     this.item1 = '';
+    this.popupsearchemail=false;
   }
+
+  skilladd1(item1:any){
+    this.item1=item1;
+    this.addtask1(item1);
+
+  }
+
   removetask1(id: number) {
     console.warn(id);
     this.recruiter = this.recruiter.filter((item1) => item1.id !== id);
@@ -288,4 +302,6 @@ export class RecruitmentContentComponent {
   selectjob(item: any) {
     this.dashService.setselecteedJobDetail(item);
   }
+  popupsearch = false;
+  popupsearchemail=false;
 }

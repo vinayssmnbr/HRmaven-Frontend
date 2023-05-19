@@ -84,11 +84,10 @@ export class JobDetailsComponent {
   Selectvariable: string = 'Designation';
   colorvariable: number = 0;
   Changeselect(arr: any) {
-    this.Selectvariable = arr.name;
     this.colorvariable = arr.id;
-    this.contentdropdown = false;
     console.log(arr.name);
   }
+
   Selectvariable1: string = 'Designation';
   colorvariable1: number = 0;
   Changeselect1(arr1: any) {
