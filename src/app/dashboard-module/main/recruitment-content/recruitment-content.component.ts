@@ -247,6 +247,9 @@ export class RecruitmentContentComponent {
     });
   }
   successfulmodal() {
+    if(this.vacancyForm2.controls.job_description.valid && (this.recruiter.length > 0) && (this.list.length > 0))
+    {
+    console.log(this.vacancyForm2.controls.job_description.valid);
     this.loading = true;
     this.showModal5 = true;
     const jobDescription = this.vacancyForm2.get('job_description')?.value;
@@ -263,7 +266,20 @@ export class RecruitmentContentComponent {
       this.loading = false;
       this.showModal5 = false;
       this.successmodal = true;
+      this.Selectvariable=this.Selectvariable2=this.Selectvariable1='';
+      this.id='all'
+      this.recruiter=[];
+      this.list=[];
+      this.vacancyForm.reset();
+      this.vacancyForm1.reset();
+      this.vacancyForm2.reset();
+
+
     });
+  }
+  else {
+    alert('fill required fields');
+  }
   }
   closesuccessmodal() {
     this.successmodal = false;

@@ -231,7 +231,7 @@
                     </div>
                   </div>
                 </form>
-                <form class="job-vacancy-form" [formGroup]="vacancyForm2">
+                <form class="job-vacancy-form" [formGroup]="vacancyForm2" (ngSubmit)="successfulmodal()">
 
                   <div class="skill-required-mode">
                     <div class="form-group">
@@ -257,15 +257,14 @@
 
                       <div class="job-description">
                         <textarea name="" id="" placeholder="Enter description..."
-                          formControlName="job_description"></textarea>
+                          formControlName="job_description" required></textarea>
                       </div>
                     </div>
                   </div>
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
-                    <div class="add"><button type="submit"
-                        (click)="successfulmodal()">{{loading?'Loading...':'Add'}}</button>
+                    <div class="add"><button type="submit">{{loading?'Loading...':'Add'}}</button>
                     </div>
                   </div>
 
