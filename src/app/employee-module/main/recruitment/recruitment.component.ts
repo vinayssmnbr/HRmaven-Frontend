@@ -11,6 +11,7 @@ export class RecruitmentComponent {
     empService.activeComponent = 'recruitment';
     empService.headerContent = '';
   }
+  skill:any="";
   ngOnInit(): void {
     // ------------Drop Down Menu----------
     const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
@@ -167,6 +168,7 @@ export class RecruitmentComponent {
 
   list: any[] = [];
   addtask(item: string) {
+    this.skill='';
     this.list.push({ id: this.list.length, name: item });
     console.warn(this.list);
   }
@@ -212,5 +214,5 @@ export class RecruitmentComponent {
   closesuccessmodal() {
     this.successmodal = false;
   }
- 
+
 }
