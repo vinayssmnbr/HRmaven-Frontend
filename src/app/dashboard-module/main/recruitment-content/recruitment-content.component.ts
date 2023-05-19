@@ -84,22 +84,25 @@ export class RecruitmentContentComponent {
       Validators.pattern('[a-zA-Z ]+'),
       Validators.required,
     ]),
-    date: new FormControl(''),
-    ctc: new FormControl(''),
-    job_type: new FormControl(''),
-    experience: new FormControl(''),
-    location: new FormControl(''),
+    date: new FormControl('',[Validators.required]),
+    ctc: new FormControl('', [Validators.required]),
+    job_type: new FormControl('', [Validators.required]),
+    experience: new FormControl('',[Validators.required]),
+    location: new FormControl('', [Validators.required]),
   });
 
   vacancyForm1 = new FormGroup({
-    skill: new FormControl(''),
+    skill: new FormControl('', [Validators.required]),
     // job_description: new FormControl(''),
     // recruiter: new FormControl(''),
   });
 
   vacancyForm2 = new FormGroup({
-    job_description: new FormControl(''),
-    recruiter: new FormControl(''),
+    job_description: new FormControl('',[Validators.required]),
+    recruiter: new FormControl('',[
+        Validators.pattern('[a-zA-Z ]+'),
+        Validators.required,
+      ]),
   });
   vacancydetail() {
     console.warn(this.vacancyForm.value);

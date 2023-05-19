@@ -668,6 +668,21 @@ form.job-vacancy-form {
   /* border: none; */
 }
 
+.meeting-input.ng_invalid{
+  border:1px solid #cb1e0f;
+}
+
+.meeting-input.ng_valid {
+  border: 1px solid green;
+}
+
+.todo-list.ng_invalid {
+  border: 1px solid #cb1e0f;
+}
+
+.todo-list.ng_valid {
+  border: 1px solid green;
+}
 .meeting-input ::placeholder {
   opacity: 0.1;
 }
@@ -705,7 +720,7 @@ form.job-vacancy-form {
   resize: none;
   font-weight: 400;
     font-size: 14px;
-    color: #333333;                                                    
+    color: #333333;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

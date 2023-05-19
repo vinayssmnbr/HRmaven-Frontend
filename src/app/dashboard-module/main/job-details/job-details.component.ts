@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators ,AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'app-job-details',
@@ -8,13 +8,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
-  @Input() item: any;
-
+@Input() item:any
+  fileName: string = '';
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
-
   ngOnInit() {
     this.item = this.dashService.getselecteedJobDetail();
     console.log('select1', this.item);
@@ -122,52 +121,150 @@ export class JobDetailsComponent {
     this.Newcandidate = false;
   }
 
-  newcandidateform = new FormGroup({
-    candidateName: new FormControl(''),
-    contactnumber: new FormControl(''),
-    email: new FormControl(''),
-
-    applieddate: new FormControl(''),
-
-    resume: new FormControl(''),
-  });
-
-  newcandidatedetail() {
-    console.warn(this.newcandidateform.value);
+  candidateNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    const valid = nameRegex.test(control.value);
+    return valid ? null : { invalidName: true };
   }
-  // fileName :string = '';
-  // selectedFile: File | null = null;
-  // onFileSelected(event:any){
-  //   this.selectedFile = event.target.files[0];
-  //   const maxAllowedSize = 5*1024*1024;
-  //   const allowedTypes = ['image/jpeg','image/jpg','image/png'];
-  //   this.fileName = this.selectedFile ? this.selectedFile.name : '';
-  //   if(!allowedTypes.includes(this.selectedFile.type)){
-  //     this.fileName = null;
-  //   }
-  //   if(this.selectedFile.size > maxAllowedSize){
-  //     this.fileName = '';
-  //   }
-  //   if(this.selectedFile.size > maxAllowedSize){
-  //     this.fileName = '';
 
-  //   }
-  //   if(this.selectedFile.type.split('/')[0] !== 'image'){
-  //     console.error('Invalid file type. Please select an image.');
-  //     return;
-  //   }
+  newcandidateform = new FormGroup({
+    candidateName: new FormControl('', Validators.required),
+    contactnumber:new FormControl('', Validators.required),
+    email:new FormControl('', Validators.required),
+    applieddate:new FormControl('', Validators.required),
 
-  // }
-  // onUpload(file){
-  //   this.dashService.upload1(file).then(
-  //     (res)=>{
-  //       this.newcandidateform.patchValue({
-  //         resume:res && res.url,
-  //       });
-  //     },
-  //     (err)=>{
-  //       console.log(err);
-  //     }
-  //   )
-  // }
+
+    // candidateName: new FormControl('', [
+    //   Validators.required,
+    //   this.candidateNameValidator,
+    //   Validators.pattern('[a-zA-Z ]+'),
+    // ]),
+    // contactnumber: new FormControl('', [
+    //   Validators.required,
+    //   Validators.pattern('[6-9]{1}[0-9]{9}'),
+    // ]),
+    // email: new FormControl('', [
+    //   Validators.required,
+    //   Validators.email,
+    //   Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
+    // ]),
+    // applieddate:new FormControl('', Validators.required),
+
+    url: new FormControl('', Validators.required),
+    // url: new FormControl(''),
+
+  })
+
+  get registrationFormControl() {
+    return this.newcandidateform.controls;
+  }
+
+  Space(event: any) {
+    if (event.target.selectionStart === 0 && event.code == 'Space') {
+      event.preventDefault();
+    }
+  }
+
+  validateEmail(event: KeyboardEvent) {
+    const input = (event.target as HTMLInputElement).value.trim();
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+
+  validatePhoneNumber(event: KeyboardEvent) {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    const phoneNumber = (event.target as HTMLInputElement).value;
+    if (!allowedKeys.includes(event.key) && !/^\d{0,9}$/.test(phoneNumber)) {
+      event.preventDefault();
+    }
+  }
+
+  mobileExists = false;
+  mobileNo: any;
+  checkmobileExists() {
+    this.mobileNo = this.newcandidateform.controls['mobile'].value;
+
+    console.log('adarsh', this.mobileNo);
+    this.dashService
+      .getCandidateMobile(this.mobileNo)
+      .subscribe((response: any) => {
+        console.log('prince', response);
+        if (response.flag) {
+          this.mobileExists = true;
+          console.log(response.message);
+        } else {
+          this.mobileExists = false;
+          console.log(response.message);
+        }
+      });
+  }
+
+
+  emailExists = false;
+  emailId: any;
+
+  checkEmailExists() {
+    this.emailId = this.newcandidateform.controls['email'].value;
+
+    console.log('adarsh', this.emailId);
+    this.dashService
+      . getCandidateEmail(this.emailId)
+      .subscribe((response: any) => {
+        console.log('prince', response);
+        if (response.flag) {
+          this.emailExists = true;
+          console.log(response.message);
+        } else {
+          this.emailExists = false;
+          console.log(response.message);
+        }
+      });
+  }
+  
+
+  newcandidatedetail(data:any) {
+    // console.log(this.newcandidateform.value)
+    // this.dashService.addCandidate(data).subscribe((result) => {
+    //   this.dashService.addCandidate(this.newcandidateform);
+    //   // this.newcandidateform.reset();
+    // });
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.fileName = this.selectedFile ? this.selectedFile.name : '';
+    this.onUpload(this.selectedFile);
+
+
+  }
+
+  onUpload(file) {
+    console.log('adarsh');
+    this.dashService.uploaded(file).then(
+      (res) => {
+        this.newcandidateform.patchValue({
+          url: res && res.url,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  tabChange1(data:any){
+  this.dashService.addCandidate(data).subscribe((result) => {
+    this.dashService.addCandidate(this.newcandidateform);
+    // this.newcandidateform.reset();
+  });
+}
+
+
+
+
+
+
+
 }
