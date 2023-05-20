@@ -34,6 +34,7 @@ export class RecruitmentContentComponent {
     dashService.headerContent = '';
 
     this.fetchjobVacancies();
+    this.fetchrecruiteremail()
   }
   showModal: boolean = false;
   showModalContent: boolean = false;
@@ -43,6 +44,7 @@ export class RecruitmentContentComponent {
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
   jobDetails: any = [];
+  recruiters:any=[];
   loading: boolean = false;
   openModal() {
     this.showModal = true;
@@ -259,6 +261,12 @@ export class RecruitmentContentComponent {
     this.dashService.fetchJobVecancies().subscribe((res: any) => {
       console.log('this.jobVacancies',res.length);
       this.jobDetails = res.response;
+    });
+  }
+  fetchrecruiteremail() {
+    this.dashService.fetchrecruiterEmail().subscribe((res: any) => {
+      console.log('this.jobVacancies',res.length);
+      this.recruiters = res;
     });
   }
   successfulmodal() {
