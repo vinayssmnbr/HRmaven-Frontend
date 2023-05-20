@@ -85,10 +85,10 @@ export class RecruitmentContentComponent {
       Validators.pattern('[a-zA-Z ]+'),
       Validators.required,
     ]),
-    date: new FormControl('',Validators.required),
+    date: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
     job_type: new FormControl('', Validators.required),
-    experience: new FormControl('',Validators.required),
+    experience: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
   });
 
@@ -99,11 +99,11 @@ export class RecruitmentContentComponent {
   });
 
   vacancyForm2 = new FormGroup({
-    job_description: new FormControl('',Validators.required),
-    recruiter: new FormControl('',[
-        Validators.pattern('[a-zA-Z ]+'),
-        Validators.required,
-      ]),
+    job_description: new FormControl('', Validators.required),
+    recruiter: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
   });
   vacancydetail() {
     console.warn(this.vacancyForm.value);
@@ -196,13 +196,12 @@ export class RecruitmentContentComponent {
       this.list.push({ id: this.list.length, name: this.item });
       console.warn('list', this.list);
       this.item = '';
-      this.popupsearch=false;
+      this.popupsearch = false;
     }
   }
-  skilladd(item:any){
-    this.item=item;
+  skilladd(item: any) {
+    this.item = item;
     this.addtask(item);
-
   }
   removetask(id: number) {
     console.warn(id);
@@ -215,13 +214,12 @@ export class RecruitmentContentComponent {
     this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
     console.warn('jijrgk', this.recruiter);
     this.item1 = '';
-    this.popupsearchemail=false;
+    this.popupsearchemail = false;
   }
 
-  skilladd1(item1:any){
-    this.item1=item1;
+  skilladd1(item1: any) {
+    this.item1 = item1;
     this.addtask1(item1);
-
   }
 
   removetask1(id: number) {
@@ -278,8 +276,10 @@ export class RecruitmentContentComponent {
   }
   selecteedJobDetail: any;
   selectjob(item: any) {
-    this.dashService.setselecteedJobDetail(item);
+    this.dashService.setSelectedJobDetail(item);
+    const jobId = item._id; // Assuming `_id` is a property of `item`
+    this.cookie.set('_id', jobId);
   }
   popupsearch = false;
-  popupsearchemail=false;
+  popupsearchemail = false;
 }

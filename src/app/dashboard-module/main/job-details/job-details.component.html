@@ -64,7 +64,7 @@
           </li>
           <li>
             <img src="assets/images/material-symbols_partly-cloudy-day-outline.png" alt="">
-            <p>Day Shift</p>
+            <p>{{item.job_type}}</p>
           </li>
           <li>
             <img src="assets/images/solar_case-round-outline.png" alt="">
@@ -84,25 +84,32 @@
 
 
       <div class="recruiters_nav">
-        <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')">
+        <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>All</p>
         </div>
-        <div class="all" [class.color]="id ==='Resume_received'" (click)="tabChange('Resume_received')">
+        <div class="all" [class.color]="id ==='Resume_received'" (click)="tabChange('Resume_received')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>Resume received</p>
         </div>
-        <div class="all" [class.color]="id ==='Shortlisted'" (click)="tabChange('Shortlisted')">
+        <div class="all" [class.color]="id ==='Shortlisted'" (click)="tabChange('Shortlisted')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>Shortlisted</p>
         </div>
-        <div class="all" [class.color]="id ==='Interview'" (click)="tabChange('Interview')">
+        <div class="all" [class.color]="id ==='Interview'" (click)="tabChange('Interview')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>Interview</p>
         </div>
-        <div class="all" [class.color]="id ==='Hired'" (click)="tabChange('Hired')">
+        <div class="all" [class.color]="id ==='Hired'" (click)="tabChange('Hired')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>Hired</p>
         </div>
-        <div class="all" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')">
+        <div class="all" [class.color]="id ==='Rejected'" (click)="tabChange('Rejected')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>Rejected</p>
         </div>
-        <div class="all" [class.color]="id ==='Archive'" (click)="tabChange('Archive')">
+        <div class="all" [class.color]="id ==='Archive'" (click)="tabChange('Archive')"
+          [ngClass]="{'active': statusFilter === 'all'}">
           <p>Archive</p>
         </div>
       </div>
@@ -135,15 +142,15 @@
           </button>
           <div class="dropdown_container">
             <div class="select_content" *ngIf="contentdropdown" (mouseleave)="contentdropdown = false">
-                <p class="Stages">Stages</p>
-                <ul>
-                    <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
-                        (click)="Changeselect(arr)"> <input type="checkbox">
-                        <p>{{arr.name}}</p>
-                    </li>
-                </ul>
+              <p class="Stages">Stages</p>
+              <ul>
+                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                  (click)="Changeselect(arr)"> <input type="checkbox">
+                  <p>{{arr.name}}</p>
+                </li>
+              </ul>
             </div>
-        </div>
+          </div>
         </div>
         <div class="Add_Candidate_btn" (click)="openmodal()">
           <button class="Add_Candidate">
@@ -172,7 +179,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let item of jobrecord | jobstatus:statusFilter">
               <!-- <td colspan="7" class="nodata" class="no_data">
                       <p>
                         <img src="assets/images/no_record.png" alt="" class="center" />
@@ -405,44 +412,46 @@
       <h1>Add a new candidate</h1>
     </div>
 
-        <div class="user__details">
-            <div class="input__box">
-                <span class="details">Candidate name</span>
-                <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
-            </div>
-            <div class="input__box">
-                <span class="details">Candidate id</span>
-                <input type="text" placeholder="29591" disabled>
-            </div>
-            <div class="input__box">
-                <span class="details">Contact number</span>
-                <input type="text" placeholder="XXXXXX0652" required formControlName="contactnumber" >
-                <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
-                    No.
-                    already exists</div>
-            </div>
-            <div class="input__box">
-                <span class="details">Email</span>
-                <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
-                <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
-                    already
-                    exists</div>
-            </div>
-            <div class="input__box">
-                <span class="details">Applied date</span>
-                <input type="date" placeholder="23/04/2023"  class="meeting-input"  required  formControlName="applieddate">
-            </div>
-        <div class="loader" *ngIf="progress"></div>
-            <div class="input__box">
-                <span class="details">Resume</span>
-                <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required formControlName="url"  accept=".pdf">
-            </div>
-        </div>
-        <div class="form_button" (click)="openaddmodal()">
-            <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
-        </div>
-    </form>
-s</div>
+    <div class="user__details">
+      <div class="input__box">
+        <span class="details">Candidate name</span>
+        <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
+      </div>
+      <div class="input__box">
+        <span class="details">Candidate id</span>
+        <input type="text" placeholder="29591" disabled>
+      </div>
+      <div class="input__box">
+        <span class="details">Contact number</span>
+        <input type="text" placeholder="XXXXXX0652" required formControlName="contactnumber">
+        <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
+          No.
+          already exists</div>
+      </div>
+      <div class="input__box">
+        <span class="details">Email</span>
+        <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
+        <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
+          already
+          exists</div>
+      </div>
+      <div class="input__box">
+        <span class="details">Applied date</span>
+        <input type="date" placeholder="23/04/2023" class="meeting-input" required formControlName="applieddate">
+      </div>
+      <div class="loader" *ngIf="progress"></div>
+      <div class="input__box">
+        <span class="details">Resume</span>
+        <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required
+          formControlName="url" accept=".pdf">
+      </div>
+    </div>
+    <div class="form_button" (click)="openaddmodal()">
+      <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
+    </div>
+  </form>
+  s
+</div>
 
 
 <!-- ------------------------New candidate added successfully!------------------------------------- -->
