@@ -149,11 +149,7 @@ export class RecruitmentContentComponent {
   array1: any = [
     {
       id: 0,
-<<<<<<< HEAD
       name: '0-1 Year',
-=======
-      name: '0-1 Years',
->>>>>>> 625486865a780480d06a972a0a6a255209fd1af8
     },
     {
       id: 1,

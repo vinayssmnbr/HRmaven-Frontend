@@ -63,7 +63,6 @@ export class DashService {
     return this.http.get(this.prefix + 'job/recdata', { headers });
   }
 
-<<<<<<< HEAD
   fetchrecruiterEmail() {
     const id = this.cookie.get('hr_id');
     const headers = new HttpHeaders({
@@ -78,12 +77,6 @@ export class DashService {
     return this.http.post(this.prefix + 'candid/candidates', data);
 
 
-=======
-  addCandidate(data: any) {
-    const id = this.cookie.get('job_id');
-    data['jobId'] = id;
-    return this.http.post(this.prefix + 'candid/candidates', data);
->>>>>>> 625486865a780480d06a972a0a6a255209fd1af8
   }
 
   // addEmployee(data) {
