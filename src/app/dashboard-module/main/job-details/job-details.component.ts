@@ -268,7 +268,9 @@ export class JobDetailsComponent {
 // loading:boolean=false
   tabChange1(){
     // this.loading=true
-    let data = this.newcandidateform.value;
+    // let data = this.newcandidateform.value;
+    
+      let data={  ...this.newcandidateform.value}
   this.dashService.addCandidate(data).subscribe((result) => {
     this.dashService.addCandidate(this.newcandidateform);
     // this.newcandidateform.reset();
