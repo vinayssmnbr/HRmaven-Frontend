@@ -14,6 +14,7 @@ import { TermConditionComponent } from './term-condition/term-condition.componen
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
 import { ForgetempComponent } from './forgetemp/forgetemp.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RecruitersfilterPipe } from './dashboar-module/pipe/recruitersfilter.pipe';
 // import { DashboardComponent } from './main/dashboard/dashboard.component';
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     LoginEmployeeComponent,
     ForgetempComponent,
     LandingPageComponent,
+    RecruitersfilterPipe,
     // DashboardComponent,
   ],
   imports: [

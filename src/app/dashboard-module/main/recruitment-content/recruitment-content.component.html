@@ -52,10 +52,8 @@
             <div class="Skills-head">
               <h6>Skills Required:</h6>
               <ul class="skills">
-                <li>{{item.list[0]?.name}}</li>
-                <li>{{item.list[1]?.name}}</li>
-                <li>{{item.list[2]?.name}}</li>
-                <li>{{item.list[3]?.name}}</li>
+                <li *ngFor="let i of item.list">{{i.name}}</li>
+
               </ul>
             </div>
             <div class="Description">
@@ -230,7 +228,7 @@
 
                         </ul>
                       </div>
-                      <div class="popup_search" *ngIf="popupsearch">
+                      <div class="popup_search" *ngIf="false">
                         <p (click)="skilladd('Fig')">Fig</p>
                         <p (click)="skilladd('Figma')">Figma</p>
                         <p (click)="skilladd('Figure')">Figure</p>
@@ -251,23 +249,23 @@
                         <button (click)="addtask1(task1.value)">click</button>
                         <ul class="input_list">
                           <li class="input_list_li" *ngFor="let user of recruiter">{{user.name}} <i
-                              class="fa-solid fa-xmark" (click)="removetask1(user.id)"></i>
+                              class="fa-solid fa-xmark" (click)="removetask1(user._id)"></i>
                           </li>
                         </ul>
                       </div>
                       <div class="popup_search" *ngIf="popupsearchemail">
-                        <div class="popup_email">
-                          <p (click)="skilladd1('Cameron.29598@gmail.com')">Cameron.29598@gmail.com</p>
-                          <span>UI/UX designer</span>
+                        <div class="popup_email" *ngFor="let i of recruiters | recruiterfilter:item1">
+                          <p (click)="skilladd1(i)">{{i.professionalemail}}</p>
+                          <span>{{i.designation}}</span>
                         </div>
-                        <div class="popup_email">
+                        <!-- <div class="popup_email">
                           <p (click)="skilladd1('harpreet@gmail.com')">harpreet@gmail.com</p>
                           <span>Fullstack</span>
                         </div>
                         <div class="popup_email">
                           <p (click)="skilladd1('girija@gmailcom')">girija@gmailcom</p>
                           <span>FrontEnd</span>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
 

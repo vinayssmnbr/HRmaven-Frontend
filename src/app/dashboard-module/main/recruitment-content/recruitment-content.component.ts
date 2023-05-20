@@ -218,10 +218,12 @@ export class RecruitmentContentComponent {
   }
 
   recruiter: any[] = [];
+
   item1: string = '';
-  addtask1(item1: string) {
-    this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
-    console.warn('jijrgk', this.recruiter);
+  addtask1(item1: any) {
+    // this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
+    // console.warn('jijrgk', this.recruiter);
+    this.recruiter.push(item1);
     this.item1 = '';
     this.popupsearchemail=false;
   }
@@ -234,7 +236,7 @@ export class RecruitmentContentComponent {
 
   removetask1(id: number) {
     console.warn(id);
-    this.recruiter = this.recruiter.filter((item1) => item1.id !== id);
+    this.recruiter = this.recruiter.filter((item1) => item1._id !== id);
   }
 
   jobvacancyform = new FormGroup({
@@ -266,7 +268,7 @@ export class RecruitmentContentComponent {
   fetchrecruiteremail() {
     this.dashService.fetchrecruiterEmail().subscribe((res: any) => {
       console.log('this.jobVacancies',res.length);
-      this.recruiters = res;
+      this.recruiters = res.data;
     });
   }
   successfulmodal() {
