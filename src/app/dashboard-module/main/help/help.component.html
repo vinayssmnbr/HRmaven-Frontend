@@ -1,0 +1,87 @@
+<div class="section">
+  <div class="section-support">
+    <div class="content">
+      <h1>Welcome to HRMaven Support</h1>
+      <p>Need help? We've got your back.</p>
+      <!-- <img src="./assets/images/question1.svg" alt=""> -->
+    </div>
+  </div>
+  <div class="section1">
+    <div class="queries">
+      <h3>Queries</h3>
+      <div class="input">
+        <label for="">Name</label>
+        <input type="text" placeholder="John Doe">
+      </div>
+      <div class="input">
+        <label for="">Email</label>
+        <input type="email" placeholder="johndoe@gmail.com">
+      </div>
+      <div class="input">
+        <label for="">Query</label>
+        <textarea placeholder="Type your query..." rows="6" cols="10"></textarea>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+      <hr>
+      <div class="icons">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="frequently">
+      <h1>Frequently Asked Questions</h1>
+      <div class="main-content">
+      <div class="content1">
+        <h2>What is HRMaven?</h2>
+        <img src="./assets/images/addition.svg" alt="image" (click)="opencontent1()">
+        </div>
+        <div class="content2" *ngIf="content1">
+          <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources and
+          related processes throughout the employee lifecycle.</p>
+        </div>
+        <hr>
+        <div class="content1">
+          <h2>Can HRMaven support remote work and mobile access?</h2>
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent2()">
+        </div>
+        <div class="content2" *ngIf="content2">
+          <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
+            and
+            related processes throughout the employee lifecycle.</p>
+        </div>
+        <hr>
+        <div class="content1">
+          <h2>Is HRMaven suitable for small businesses?</h2>
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent3()">
+        </div>
+        <div class="content2" *ngIf="content3">
+          <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
+            and
+            related processes throughout the employee lifecycle.</p>
+        </div>
+        <hr>
+        <div class="content1">
+          <h2>What features are typically included in HRMaven?</h2>
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent4()">
+        </div>
+        <div class="content2" *ngIf="content4">
+          <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
+            and
+            related processes throughout the employee lifecycle.</p>
+        </div>
+        <hr>
+        <div class="content1">
+          <h2>How can HRMaven improve data accuracy?</h2>
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent5()">
+        </div>
+        <div class="content2" *ngIf="content5">
+          <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
+            and
+            related processes throughout the employee lifecycle.</p>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
