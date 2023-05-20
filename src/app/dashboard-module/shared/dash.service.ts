@@ -54,6 +54,7 @@ export class DashService {
     data['hrid'] = id;
     return this.http.post(this.prefix + 'job/vacancies', data);
   }
+
   fetchJobVecancies() {
     const id = this.cookie.get('hr_id');
     const headers = new HttpHeaders({
@@ -62,13 +63,22 @@ export class DashService {
     return this.http.get(this.prefix + 'job/recdata', { headers });
   }
 
+  fetchrecruiterEmail() {
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'job/jobemail', { headers });
+  }
+
   addCandidate(data:any){
     const id = this.cookie.get('hr_id');
     data['hrid'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
-    
+
 
   }
+
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
 
@@ -81,22 +91,25 @@ export class DashService {
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
-  selectedEmployee: any;
-  selecteedJobDetail: any;
+  private selecteEmployeeKey = 'selectedEmployee';
+  private selectedJobDetailKey = 'selectedJobDetail';
 
   setSelectedEmployee(user: any) {
-    this.selectedEmployee = user;
+    localStorage.setItem(this.selecteEmployeeKey, JSON.stringify(user));
   }
   getSelectedEmployee() {
-    return this.selectedEmployee;
-  }
-  setselecteedJobDetail(item: any) {
-    this.selecteedJobDetail = item;
-  }
-  getselecteedJobDetail(){
-    return this.selecteedJobDetail
+    const itemString = localStorage.getItem(this.selecteEmployeeKey);
+    return itemString ? JSON.parse(itemString) : null;
   }
 
+  setSelectedJobDetail(item: any) {
+    localStorage.setItem(this.selectedJobDetailKey, JSON.stringify(item));
+  }
+
+  getSelectedJobDetail() {
+    const itemString = localStorage.getItem(this.selectedJobDetailKey);
+    return itemString ? JSON.parse(itemString) : null;
+  }
 
   //DELETE DATA
   deleteStudent(id: string): Observable<void> {
@@ -218,6 +231,14 @@ export class DashService {
     return this.http.get(`${this.prefix + 'api/checkedmobile'}/${mobile}`);
   }
 
+  getCandidate() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/findcandidate', { headers });
+  }
+
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);
@@ -301,7 +322,6 @@ export class DashService {
       console.log(error);
     }
   }
-
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file);

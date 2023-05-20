@@ -52,10 +52,8 @@
             <div class="Skills-head">
               <h6>Skills Required:</h6>
               <ul class="skills">
-                <li>{{item.list[0]?.name}}</li>
-                <li>{{item.list[1]?.name}}</li>
-                <li>{{item.list[2]?.name}}</li>
-                <li>{{item.list[3]?.name}}</li>
+                <li *ngFor="let i of item.list">{{i.name}}</li>
+
               </ul>
             </div>
             <div class="Description">
@@ -71,7 +69,7 @@
             <div class="location">
               <li><i class="fa-solid fa-location-dot"></i><a href=""></a>{{item.location}}</li>
               <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. {{item.ctc}}L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
+              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>{{item.job_type}}</li>
             </div>
             <div class="year">
               <li><i class="fa-solid fa-briefcase"></i><a href=""></a>{{item.experience}}</li>
@@ -196,10 +194,8 @@
                   </div>
 
                   <div class="discard-save">
-                    <div class="save">
-                      <button type="submit" (click)="tabChange1('unread')"
-                        [disabled]="vacancyForm.job_title.invalid || vacancyForm.date.invalid || vacancyForm.location.invalid || vacancyForm.ctc.invalid || vacancyForm.experience.invalid || vacancyForm.job_type.invalid">Next</button>
-                    </div>
+                    <div class="save"><button type="submit" (click)="tabChange1('unread')"
+                      >Next</button> </div>
                   </div>
                 </form>
               </div>
@@ -226,15 +222,16 @@
                           </li>
                         </ul>
                       </div>
-                      <div class="popup_search" *ngIf="popupsearch">
-                        <p class="popup_search_para" (click)="skilladd('Fig')">Fig</p>
-                        <p class="popup_search_para" (click)="skilladd('Figma')">Figma</p>
-                        <p class="popup_search_para" (click)="skilladd('Figure')">Figure</p>
+                      <div class="popup_search" *ngIf="false">
+                        <p (click)="skilladd('Fig')">Fig</p>
+                        <p (click)="skilladd('Figma')">Figma</p>
+                        <p (click)="skilladd('Figure')">Figure</p>
                       </div>
                     </div>
                   </div>
                 </form>
-                <form class="job-vacancy-form" [formGroup]="vacancyForm2">
+                <form class="job-vacancy-form" [formGroup]="vacancyForm2" (ngSubmit)="successfulmodal()">
+
                   <div class="skill-required-mode">
                     <div class="form-group">
                       <label>Recruiter’s work email<span>*</span></label> <br>
@@ -246,23 +243,23 @@
                         <button (click)="addtask1(task1.value)">click</button>
                         <ul class="input_list">
                           <li class="input_list_li" *ngFor="let user of recruiter">{{user.name}} <i
-                              class="fa-solid fa-xmark" (click)="removetask1(user.id)"></i>
+                              class="fa-solid fa-xmark" (click)="removetask1(user._id)"></i>
                           </li>
                         </ul>
                       </div>
                       <div class="popup_search" *ngIf="popupsearchemail">
-                        <div class="popup_email">
-                          <p (click)="skilladd1('Cameron.29598@gmail.com')">Cameron.29598@gmail.com</p>
-                          <span>UI/UX designer</span>
+                        <div class="popup_email" *ngFor="let i of recruiters | recruiterfilter:item1">
+                          <p (click)="skilladd1(i)">{{i.professionalemail}}</p>
+                          <span>{{i.designation}}</span>
                         </div>
-                        <div class="popup_email">
+                        <!-- <div class="popup_email">
                           <p (click)="skilladd1('harpreet@gmail.com')">harpreet@gmail.com</p>
                           <span>Fullstack</span>
                         </div>
                         <div class="popup_email">
                           <p (click)="skilladd1('girija@gmailcom')">girija@gmailcom</p>
                           <span>FrontEnd</span>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -272,14 +269,15 @@
 
                       <div class="job-description">
                         <textarea name="" id="" placeholder="Enter description..."
-                          formControlName="job_description"></textarea>
+                          formControlName="job_description" required></textarea>
                       </div>
                     </div>
                   </div>
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
-                    <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
+                    <div class="add"><button type="submit"
+                        >{{loading?'Loading...':'Add'}}</button>
                     </div>
                   </div>
 

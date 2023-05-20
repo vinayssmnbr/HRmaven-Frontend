@@ -412,11 +412,12 @@ span.line {
 
 .No_jobs {
   margin-top: 88px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  visibility: hidden;
+
+  /* visibility: hidden; */
 }
 
 .No_jobs p {

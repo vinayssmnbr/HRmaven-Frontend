@@ -30,7 +30,8 @@ import { EmpstatusPipe } from './pipe/empstatus.pipe';
 import { MonthwisefilterPipe } from './pipe/monthwisefilter.pipe';
 import { LeavestatusPipe } from './pipe/leavestatus.pipe';
 import { LeavecountPipe } from './pipe/leavecount.pipe';
-
+import { RecruiterfilterPipe } from './pipe/recruiterfilter.pipe';
+import { JobstatusPipe } from './pipe/jobstatus.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,8 @@ import { LeavecountPipe } from './pipe/leavecount.pipe';
     MonthwisefilterPipe,
     LeavestatusPipe,
     LeavecountPipe,
+    RecruiterfilterPipe,
+    JobstatusPipe,
   ],
   imports: [
     CommonModule,

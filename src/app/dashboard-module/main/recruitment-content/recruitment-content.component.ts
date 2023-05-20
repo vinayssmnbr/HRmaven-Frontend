@@ -12,21 +12,21 @@ declare var checkboxOptions: any;
 export class RecruitmentContentComponent {
   ngOnInit() {
     // ------------Drop Down Menu----------
-    const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
-      selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
-      options = optionMenu.querySelectorAll<HTMLElement>('.option'),
-      sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
-    selectBtn.addEventListener('click', () =>
-      optionMenu.classList.toggle('active')
-    );
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        let selectedOption =
-          option.querySelector<HTMLElement>('.option-text')!.innerText;
-        sBtn_text.innerText = selectedOption;
-        optionMenu.classList.remove('active');
-      });
-    });
+    // const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
+    //   selectBtn = optionMenu.querySelector<HTMLElement>('.select-btn')!,
+    //   options = optionMenu.querySelectorAll<HTMLElement>('.option'),
+    //   sBtn_text = optionMenu.querySelector<HTMLElement>('.sBtn-text')!;
+    // selectBtn.addEventListener('click', () =>
+    //   optionMenu.classList.toggle('active')
+    // );
+    // options.forEach((option) => {
+    //   option.addEventListener('click', () => {
+    //     let selectedOption =
+    //       option.querySelector<HTMLElement>('.option-text')!.innerText;
+    //     sBtn_text.innerText = selectedOption;
+    //     optionMenu.classList.remove('active');
+    //   });
+    // });
     // this.fetchjobVacancies();
   }
   constructor(private dashService: DashService, private cookie: CookieService) {
@@ -34,6 +34,7 @@ export class RecruitmentContentComponent {
     dashService.headerContent = '';
 
     this.fetchjobVacancies();
+    this.fetchrecruiteremail()
   }
   showModal: boolean = false;
   showModalContent: boolean = false;
@@ -43,6 +44,7 @@ export class RecruitmentContentComponent {
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
   jobDetails: any = [];
+  recruiters:any=[];
   loading: boolean = false;
   openModal() {
     this.showModal = true;
@@ -59,8 +61,14 @@ export class RecruitmentContentComponent {
   }
   id: any = 'all';
   tabChange1(ids: any) {
-    this.id = ids;
-    let data = this.vacancyForm.value;
+    console.log('yeahhhhhh');
+    if(this.Selectvariable!='' && this.Selectvariable1!='' && this.Selectvariable2!='' )
+    {
+      this.id = ids;
+      let data = this.vacancyForm.value;
+    }
+
+
   }
 
   showModal5 = false;
@@ -85,10 +93,10 @@ export class RecruitmentContentComponent {
       Validators.pattern('[a-zA-Z ]+'),
       Validators.required,
     ]),
-    date: new FormControl('',Validators.required),
+    date: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
     job_type: new FormControl('', Validators.required),
-    experience: new FormControl('',Validators.required),
+    experience: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
   });
 
@@ -99,11 +107,11 @@ export class RecruitmentContentComponent {
   });
 
   vacancyForm2 = new FormGroup({
-    job_description: new FormControl('',Validators.required),
-    recruiter: new FormControl('',[
-        Validators.pattern('[a-zA-Z ]+'),
-        Validators.required,
-      ]),
+    job_description: new FormControl('', Validators.required),
+    recruiter: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
   });
   vacancydetail() {
     console.warn(this.vacancyForm.value);
@@ -141,15 +149,15 @@ export class RecruitmentContentComponent {
   array1: any = [
     {
       id: 0,
-      name: '0 Experience',
+      name: '0-1 Year',
     },
     {
       id: 1,
-      name: '1-2 Years',
+      name: '1-2 Year',
     },
     {
       id: 2,
-      name: '2-3 Years',
+      name: '2-3 Year',
     },
   ];
   contentdropdown1: boolean = false;
@@ -196,13 +204,12 @@ export class RecruitmentContentComponent {
       this.list.push({ id: this.list.length, name: this.item });
       console.warn('list', this.list);
       this.item = '';
-      this.popupsearch=false;
+      this.popupsearch = false;
     }
   }
-  skilladd(item:any){
-    this.item=item;
+  skilladd(item: any) {
+    this.item = item;
     this.addtask(item);
-
   }
   removetask(id: number) {
     console.warn(id);
@@ -210,23 +217,24 @@ export class RecruitmentContentComponent {
   }
 
   recruiter: any[] = [];
+
   item1: string = '';
-  addtask1(item1: string) {
-    this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
-    console.warn('jijrgk', this.recruiter);
+  addtask1(item1: any) {
+    // this.recruiter.push({ id: this.recruiter.length, name: this.item1 });
+    // console.warn('jijrgk', this.recruiter);
+    this.recruiter.push(item1);
     this.item1 = '';
-    this.popupsearchemail=false;
+    this.popupsearchemail = false;
   }
 
-  skilladd1(item1:any){
-    this.item1=item1;
+  skilladd1(item1: any) {
+    this.item1 = item1;
     this.addtask1(item1);
-
   }
 
   removetask1(id: number) {
     console.warn(id);
-    this.recruiter = this.recruiter.filter((item1) => item1.id !== id);
+    this.recruiter = this.recruiter.filter((item1) => item1._id !== id);
   }
 
   jobvacancyform = new FormGroup({
@@ -251,10 +259,20 @@ export class RecruitmentContentComponent {
   successmodal: boolean = false;
   fetchjobVacancies() {
     this.dashService.fetchJobVecancies().subscribe((res: any) => {
+      console.log('this.jobVacancies',res.length);
       this.jobDetails = res.response;
     });
   }
+  fetchrecruiteremail() {
+    this.dashService.fetchrecruiterEmail().subscribe((res: any) => {
+      console.log('this.jobVacancies',res.length);
+      this.recruiters = res.data;
+    });
+  }
   successfulmodal() {
+    if(this.vacancyForm2.controls.job_description.valid && (this.recruiter.length > 0) && (this.list.length > 0))
+    {
+    console.log(this.vacancyForm2.controls.job_description.valid);
     this.loading = true;
     this.showModal5 = true;
     const jobDescription = this.vacancyForm2.get('job_description')?.value;
@@ -271,15 +289,30 @@ export class RecruitmentContentComponent {
       this.loading = false;
       this.showModal5 = false;
       this.successmodal = true;
+      this.Selectvariable=this.Selectvariable2=this.Selectvariable1='';
+      this.id='all'
+      this.recruiter=[];
+      this.list=[];
+      this.vacancyForm.reset();
+      this.vacancyForm1.reset();
+      this.vacancyForm2.reset();
+
+
     });
+  }
+  else {
+    alert('fill required fields');
+  }
   }
   closesuccessmodal() {
     this.successmodal = false;
   }
   selecteedJobDetail: any;
   selectjob(item: any) {
-    this.dashService.setselecteedJobDetail(item);
+    this.dashService.setSelectedJobDetail(item);
+    const jobId = item._id;
+    this.cookie.set('job_id', jobId);
   }
   popupsearch = false;
-  popupsearchemail=false;
+  popupsearchemail = false;
 }

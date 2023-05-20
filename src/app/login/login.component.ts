@@ -39,7 +39,7 @@ export class LoginComponent {
     public userService: UserService,
     // private cdRef: ChangeDetectorRef,
   ) {}
-
+  incorrect:boolean=true;
   ngOnInit() {
     localStorage.setItem('personalDataSubmitted', JSON.stringify(true));
     this.userService.isFromLoginPage = false;
@@ -71,10 +71,22 @@ export class LoginComponent {
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
       const token = params['token'];
+      const id= params['hrid'];
+      const email = params['email'];
+      console.log(id,email);
       // console.log(token);
-
+      if(token == 'notfound')
+      {
+        this.cookie.delete('token');
+        this.Invalid=!this.Invalid;
+        this.incorrect=false;
+        return;
+      }
       if (token && token != 'undefined') {
         this.cookie.set('token', token);
+        this.cookie.set('hr_id',id)
+        this.cookie.set('email',email);
+        this.cookie.set('role','hr');
         this.router.navigate(['/dashboard']);
       } else {
         this.cookie.delete('token');
@@ -203,6 +215,7 @@ ress: any =''
     console.log(this.loginForm.value);
     // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
+      this.incorrect=true;
       localStorage.setItem('personalDataSubmitted', 'true');
       console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); // Debugging statement
       if (res.personalDataSubmitted) {
