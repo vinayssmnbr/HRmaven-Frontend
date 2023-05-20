@@ -250,27 +250,25 @@
 
 .edit1 {
   position: absolute;
-  right: 8%;
-  display: none;
-  padding: 6px 14px;
-  font-weight: 400;
-  font-size: 12px;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  gap: 10px;
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 22px;
-  cursor: pointer;
-  color: #333333;
-  margin-bottom: 15px;
-  margin-right: -20px;
+    right: 8%;
+    display: none;
+    /* padding: 5px 5px; */
+    font-weight: 400;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #F0F0F0;
+    border: 1px solid #E0E0E0;
+    cursor: pointer;
+    color: #333333;
+    margin-bottom: 15px;
+    margin-right: -20px;
 }
 
-.fa-pencil {
+/* .fa-pencil {
   padding-left: 6px;
-}
+} */
 
 .card3:hover .edit1 {
   display: block;

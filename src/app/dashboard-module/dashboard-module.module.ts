@@ -32,7 +32,6 @@ import { LeavestatusPipe } from './pipe/leavestatus.pipe';
 import { LeavecountPipe } from './pipe/leavecount.pipe';
 import { JobstatusPipe } from './pipe/jobstatus.pipe';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,

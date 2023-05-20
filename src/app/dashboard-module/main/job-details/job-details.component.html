@@ -179,7 +179,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of jobrecord | jobstatus:statusFilter">
+            <tr *ngFor="let item of candidate">
               <!-- <td colspan="7" class="nodata" class="no_data">
                       <p>
                         <img src="assets/images/no_record.png" alt="" class="center" />
@@ -190,10 +190,10 @@
                 <input type="checkbox">
                 <p>29591</p>
               </td>
-              <td>Cameron Williamson</td>
-              <td>Cameron@gmail.com</td>
-              <td>987654321</td>
-              <td>01 Mar, 2023</td>
+              <td>{{item.candidateName}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.contactnumber}}</td>
+              <td>{{item.applieddate}}</td>
               <td>
                 <select class="table_option">
                   <option value="">Resume Received</option>
@@ -205,11 +205,12 @@
                 </select>
               </td>
               <td class="pdf_logo">
-                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                <!-- <img src="assets/images/vscode-icons_file-type-pdf2.png" alt=""> -->
+                {{item.url}}
               </td>
 
             </tr>
-            <tr>
+            <!-- <tr>
               <td class="input_check">
                 <input type="checkbox">
                 <p>29591</p>
@@ -278,8 +279,8 @@
                 <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
               </td>
             </tr>
-            <tr>
-              <td class="input_check">
+            <tr> -->
+            <!-- <td class="input_check">
                 <input type="checkbox">
                 <p>29591</p>
               </td>
@@ -300,7 +301,7 @@
               <td class="pdf_logo">
                 <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>

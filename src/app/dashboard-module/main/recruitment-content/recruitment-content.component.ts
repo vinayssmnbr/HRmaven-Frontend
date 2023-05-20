@@ -141,7 +141,7 @@ export class RecruitmentContentComponent {
   array1: any = [
     {
       id: 0,
-      name: '0 Experience',
+      name: '0-1 Years',
     },
     {
       id: 1,
@@ -277,8 +277,8 @@ export class RecruitmentContentComponent {
   selecteedJobDetail: any;
   selectjob(item: any) {
     this.dashService.setSelectedJobDetail(item);
-    const jobId = item._id; // Assuming `_id` is a property of `item`
-    this.cookie.set('_id', jobId);
+    const jobId = item._id;
+    this.cookie.set('job_id', jobId);
   }
   popupsearch = false;
   popupsearchemail = false;

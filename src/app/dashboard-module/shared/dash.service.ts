@@ -54,6 +54,7 @@ export class DashService {
     data['hrid'] = id;
     return this.http.post(this.prefix + 'job/vacancies', data);
   }
+
   fetchJobVecancies() {
     const id = this.cookie.get('hr_id');
     const headers = new HttpHeaders({
@@ -63,10 +64,11 @@ export class DashService {
   }
 
   addCandidate(data: any) {
-    const id = this.cookie.get('hr_id');
-    data['hrid'] = id;
+    const id = this.cookie.get('job_id');
+    data['jobId'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
   }
+
   // addEmployee(data) {
   //   return this.http.post('http://localhost:3000/api/create', data);
 
@@ -217,6 +219,14 @@ export class DashService {
 
   getCandidateMobile(mobile: any) {
     return this.http.get(`${this.prefix + 'api/checkedmobile'}/${mobile}`);
+  }
+
+  getCandidate() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/findcandidate', { headers });
   }
 
   //UPDATE EMPLOYEE DATA
