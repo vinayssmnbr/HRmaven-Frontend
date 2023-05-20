@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-job-details',
@@ -10,12 +15,15 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 export class JobDetailsComponent {
   @Input() item: any
   fileName: string = '';
+  jobrecord: any[] = [];
+  statusFilter: string = 'all';
+
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
   ngOnInit() {
-    this.item = this.dashService.getselecteedJobDetail();
+    this.item = this.dashService.getSelectedJobDetail();
     console.log('select1', this.item);
 
     this.fetchJobVecancies();
@@ -134,18 +142,17 @@ export class JobDetailsComponent {
     //   this.fetchJobVecancies();
 
     // });
-
   }
 
-
-  candidateNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  candidateNameValidator(
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
     return valid ? null : { invalidName: true };
   }
 
   newcandidateform = new FormGroup({
-
     candidateName: new FormControl('', [
       Validators.required,
       this.candidateNameValidator,
@@ -164,8 +171,7 @@ export class JobDetailsComponent {
 
     url: new FormControl('', Validators.required),
     // url: new FormControl(''),
-
-  })
+  });
 
   get registrationFormControl() {
     return this.newcandidateform.controls;
@@ -212,7 +218,6 @@ export class JobDetailsComponent {
       });
   }
 
-
   emailExists = false;
   emailId: any;
 
@@ -234,7 +239,6 @@ export class JobDetailsComponent {
       });
   }
 
-
   newcandidatedetail(data: any) {
     // console.log(this.newcandidateform.value)
     // this.dashService.addCandidate(data).subscribe((result) => {
@@ -251,9 +255,7 @@ export class JobDetailsComponent {
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
     this.progress = true
     this.onUpload(this.selectedFile);
-
   }
-
 
   onUpload(file) {
     console.log('adarsh');
@@ -338,4 +340,19 @@ export class JobDetailsComponent {
 
 
 
+  //   let data = { ...this.newcandidateform.value };
+  //   this.dashService.addCandidate(data).subscribe((result) => {
+  //     this.dashService.addCandidate(this.newcandidateform);
+  //     // this.newcandidateform.reset();
+  //     // this.loading=false
+  //   });
+  //   this.newcandidateform.reset();
+  // }
+
+  // fetchJobVecancies() {
+  //   this.dashService.getCandidate().subscribe((data: any) => {
+  //     console.log('hbhvdhsdh', data);
+  //     this.candidate = data;
+  //   });
+  // }
 }

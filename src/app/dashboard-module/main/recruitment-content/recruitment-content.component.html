@@ -71,7 +71,7 @@
             <div class="location">
               <li><i class="fa-solid fa-location-dot"></i><a href=""></a>{{item.location}}</li>
               <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. {{item.ctc}}L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
+              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>{{item.job_type}}</li>
             </div>
             <div class="year">
               <li><i class="fa-solid fa-briefcase"></i><a href=""></a>{{item.experience}}</li>
@@ -197,8 +197,7 @@
 
                   <div class="discard-save">
                     <div class="save">
-                      <button type="submit" (click)="tabChange1('unread')"
-                        [disabled]="vacancyForm.job_title.invalid || vacancyForm.date.invalid || vacancyForm.location.invalid || vacancyForm.ctc.invalid || vacancyForm.experience.invalid || vacancyForm.job_type.invalid">Next</button>
+                      <button type="submit" (click)="tabChange1('unread')">Next</button>
                     </div>
                   </div>
                 </form>

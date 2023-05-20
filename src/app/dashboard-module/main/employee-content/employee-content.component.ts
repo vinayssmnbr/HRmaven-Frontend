@@ -640,7 +640,6 @@ export class EmployeeContentComponent implements OnInit {
     }
   }
 
-  
   selectedFile: File | null = null;
   selectedFile1: File | null = null;
   onFileSelected(event: any) {

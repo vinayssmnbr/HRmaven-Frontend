@@ -63,12 +63,10 @@ export class DashService {
     return this.http.get(this.prefix + 'job/recdata', { headers });
   }
 
-  addCandidate(data:any){
+  addCandidate(data: any) {
     const id = this.cookie.get('job_id');
     data['jobId'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
-    
-
   }
 
   // addEmployee(data) {
@@ -83,22 +81,25 @@ export class DashService {
   }
 
   //PASS DATA EMPLOYEE CONTENT TO EMPLOYEE PROFILE
-  selectedEmployee: any;
-  selecteedJobDetail: any;
+  private selecteEmployeeKey = 'selectedEmployee';
+  private selectedJobDetailKey = 'selectedJobDetail';
 
   setSelectedEmployee(user: any) {
-    this.selectedEmployee = user;
+    localStorage.setItem(this.selecteEmployeeKey, JSON.stringify(user));
   }
   getSelectedEmployee() {
-    return this.selectedEmployee;
-  }
-  setselecteedJobDetail(item: any) {
-    this.selecteedJobDetail = item;
-  }
-  getselecteedJobDetail(){
-    return this.selecteedJobDetail
+    const itemString = localStorage.getItem(this.selecteEmployeeKey);
+    return itemString ? JSON.parse(itemString) : null;
   }
 
+  setSelectedJobDetail(item: any) {
+    localStorage.setItem(this.selectedJobDetailKey, JSON.stringify(item));
+  }
+
+  getSelectedJobDetail() {
+    const itemString = localStorage.getItem(this.selectedJobDetailKey);
+    return itemString ? JSON.parse(itemString) : null;
+  }
 
   //DELETE DATA
   deleteStudent(id: string): Observable<void> {
@@ -220,12 +221,12 @@ export class DashService {
     return this.http.get(`${this.prefix + 'api/checkedmobile'}/${mobile}`);
   }
 
-  getCandidate(){
+  getCandidate() {
     const id = this.cookie.get('job_id');
     const headers = new HttpHeaders({
       jobid: id.toString(),
     });
-    return this.http.get(this.prefix + 'candid/findcandidate',{headers});
+    return this.http.get(this.prefix + 'candid/findcandidate', { headers });
   }
 
   //UPDATE EMPLOYEE DATA
@@ -311,7 +312,6 @@ export class DashService {
       console.log(error);
     }
   }
-
 
   upload1(file: File): Promise<any> {
     return this.client.upload(file);
