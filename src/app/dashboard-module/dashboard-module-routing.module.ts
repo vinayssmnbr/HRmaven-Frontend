@@ -13,6 +13,7 @@ import { EmployeeProfileComponent } from './main/employee-profile/employee-profi
 import { AccountSettingsComponent } from './main/account-settings/account-settings.component';
 import { CalendarComponent } from './main/calendar/calendar.component';
 import { NoPageFoundComponent } from '../no-page-found/no-page-found.component';
+import { HelpComponent } from './main/help/help.component';
 
 // const routes: Routes = [{path:'', component:DashboardComponent},{path:'leaves',component:LeavesContentComponent},{path:'employee',component:EmployeeContentComponent}];
 const routes: Routes = [
@@ -60,6 +61,9 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent,
+  },
+  {
+    path:'help', component: HelpComponent
   },
 ];
 

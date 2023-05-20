@@ -93,10 +93,10 @@ export class RecruitmentContentComponent {
       Validators.pattern('[a-zA-Z ]+'),
       Validators.required,
     ]),
-    date: new FormControl('',Validators.required),
+    date: new FormControl('', Validators.required),
     ctc: new FormControl('', Validators.required),
     job_type: new FormControl('', Validators.required),
-    experience: new FormControl('',Validators.required),
+    experience: new FormControl('', Validators.required),
     location: new FormControl('', Validators.required),
   });
 
@@ -107,11 +107,11 @@ export class RecruitmentContentComponent {
   });
 
   vacancyForm2 = new FormGroup({
-    job_description: new FormControl('',Validators.required),
-    recruiter: new FormControl('',[
-        Validators.pattern('[a-zA-Z ]+'),
-        Validators.required,
-      ]),
+    job_description: new FormControl('', Validators.required),
+    recruiter: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
   });
   vacancydetail() {
     console.warn(this.vacancyForm.value);
@@ -149,7 +149,11 @@ export class RecruitmentContentComponent {
   array1: any = [
     {
       id: 0,
+<<<<<<< HEAD
       name: '0-1 Year',
+=======
+      name: '0-1 Years',
+>>>>>>> 625486865a780480d06a972a0a6a255209fd1af8
     },
     {
       id: 1,
@@ -204,13 +208,12 @@ export class RecruitmentContentComponent {
       this.list.push({ id: this.list.length, name: this.item });
       console.warn('list', this.list);
       this.item = '';
-      this.popupsearch=false;
+      this.popupsearch = false;
     }
   }
-  skilladd(item:any){
-    this.item=item;
+  skilladd(item: any) {
+    this.item = item;
     this.addtask(item);
-
   }
   removetask(id: number) {
     console.warn(id);
@@ -225,13 +228,12 @@ export class RecruitmentContentComponent {
     // console.warn('jijrgk', this.recruiter);
     this.recruiter.push(item1);
     this.item1 = '';
-    this.popupsearchemail=false;
+    this.popupsearchemail = false;
   }
 
-  skilladd1(item1:any){
-    this.item1=item1;
+  skilladd1(item1: any) {
+    this.item1 = item1;
     this.addtask1(item1);
-
   }
 
   removetask1(id: number) {
@@ -311,8 +313,10 @@ export class RecruitmentContentComponent {
   }
   selecteedJobDetail: any;
   selectjob(item: any) {
-    this.dashService.setselecteedJobDetail(item);
+    this.dashService.setSelectedJobDetail(item);
+    const jobId = item._id;
+    this.cookie.set('job_id', jobId);
   }
   popupsearch = false;
-  popupsearchemail=false;
+  popupsearchemail = false;
 }

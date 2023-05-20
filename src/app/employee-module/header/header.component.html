@@ -25,7 +25,7 @@
         <span class="icon-button__badge"></span>
       </button>
       <img *ngIf="!obj.url" src="./assets/images/Ellipse 98.svg" alt="" class="header-icon"
-        (click)="getProfileData();profileToggle()"><br>
+        (click)="getProfileData();profileToggle()">
       <img *ngIf="obj.url" src="{{obj.url}}" alt="" class="header-icon" (click)="getProfileData();profileToggle()"><br>
     </div>
   </div>

@@ -261,7 +261,7 @@
                 </select>
                 <i class="fa-solid fa-chevron-down"></i>
               </div>
-            <!-- <div class="dropdown_content" (mouseleave)="contentdropdown4 = false">
+              <!-- <div class="dropdown_content" (mouseleave)="contentdropdown4 = false">
               <div class="dropdwon_select" (click)="dropdownOpen4()">
                 <div class="drop-icon">
                   <p>{{Selectvariable4}}</p>
@@ -663,7 +663,7 @@
       <div class="modal-footer">
         <button *ngIf="firstStep" (click)="emailExists || mobileExists ? null : onNextForm()" class="next-btn"
           [disabled]="registrationFormControl.email.invalid || registrationFormControl.mobile.invalid || registrationFormControl.name.invalid || this.form.controls.url.invalid">
-          Next </button>
+          Next</button>
         <button *ngIf="secondStep && !doneClicked" (click)="onPreviousForm()" class="back-btn">Back</button>
         <button *ngIf="secondStep" type="submit" (click)="submit()" class="next-btn"
           [disabled]="registrationFormControl.ctc.invalid">{{loading?'Loading...':'Done'}}</button>
@@ -787,7 +787,7 @@
       <div class="modal-body7">
         <h3>Error!</h3>
         <p *ngIf="importFileResponse.numFailures === -1">CSV file contains invalid data</p>
-        <p *ngIf="importFileResponse.numSuccesses === 0 || importFileResponse.numFailures === 0">Please fill in the CSV
+        <p *ngIf="importFileResponse.numSuccesses === 0 && importFileResponse.numFailures === 0">Please fill in the CSV
           file</p>
         <button class="ok-btn" (click)="closeModal5()">OK</button>
       </div>

@@ -69,7 +69,7 @@
             <div class="location">
               <li><i class="fa-solid fa-location-dot"></i><a href=""></a>{{item.location}}</li>
               <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. {{item.ctc}}L</li>
-              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
+              <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>{{item.job_type}}</li>
             </div>
             <div class="year">
               <li><i class="fa-solid fa-briefcase"></i><a href=""></a>{{item.experience}}</li>
@@ -152,9 +152,7 @@
                         [(ngModel)]="ctcTitle" formControlName="ctc"
                         [ngClass]="{'ng_invalid': vacancyForm.controls.ctc.invalid && vacancyForm.controls.ctc.dirty,'ng_valid': vacancyForm.controls.ctc.valid}">
                     </div>
-
                   </div>
-
                   <div class="meeting-mode">
                     <div class="form-group">
                       <label>Experience <span>*</span></label> <br>
@@ -196,15 +194,18 @@
                   </div>
 
                   <div class="discard-save">
+<<<<<<< HEAD
                     <div class="save"><button type="submit" (click)="tabChange1('unread')"
                       >Next</button> </div>
+=======
+                    <div class="save">
+                      <button type="submit" (click)="tabChange1('unread')">Next</button>
+                    </div>
+>>>>>>> 625486865a780480d06a972a0a6a255209fd1af8
                   </div>
                 </form>
               </div>
             </div>
-
-
-
           </div>
 
 
@@ -225,19 +226,29 @@
                           <li class="input_list_li" *ngFor="let item of list">{{item.name}}
                             <i class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
                           </li>
-
                         </ul>
                       </div>
+<<<<<<< HEAD
                       <div class="popup_search" *ngIf="false">
                         <p (click)="skilladd('Fig')">Fig</p>
                         <p (click)="skilladd('Figma')">Figma</p>
                         <p (click)="skilladd('Figure')">Figure</p>
+=======
+                      <div class="popup_search" *ngIf="popupsearch">
+                        <p class="popup_search_para" (click)="skilladd('Fig')">Fig</p>
+                        <p class="popup_search_para" (click)="skilladd('Figma')">Figma</p>
+                        <p class="popup_search_para" (click)="skilladd('Figure')">Figure</p>
+>>>>>>> 625486865a780480d06a972a0a6a255209fd1af8
                       </div>
                     </div>
                   </div>
                 </form>
+<<<<<<< HEAD
                 <form class="job-vacancy-form" [formGroup]="vacancyForm2" (ngSubmit)="successfulmodal()">
 
+=======
+                <form class="job-vacancy-form" [formGroup]="vacancyForm2">
+>>>>>>> 625486865a780480d06a972a0a6a255209fd1af8
                   <div class="skill-required-mode">
                     <div class="form-group">
                       <label>Recruiter’s work email<span>*</span></label> <br>
@@ -268,11 +279,7 @@
                         </div> -->
                       </div>
                     </div>
-
-
-
                   </div>
-
                   <div class="skill-required-mode">
                     <div class="form-group">
                       <label>Job description:</label> <br>
@@ -281,19 +288,8 @@
                         <textarea name="" id="" placeholder="Enter description..."
                           formControlName="job_description" required></textarea>
                       </div>
-
-
-
                     </div>
-
-
-
                   </div>
-
-
-
-
-
                   <div class="Back-Add">
                     <div class="back"><button type="submit" (click)="tabChange1('all')">Back</button>
                     </div>
@@ -308,8 +304,6 @@
           </div>
         </div>
         <!-----------------------------New-Job-Added-Modal---------------------------------->
-
-
       </div>
 
 
