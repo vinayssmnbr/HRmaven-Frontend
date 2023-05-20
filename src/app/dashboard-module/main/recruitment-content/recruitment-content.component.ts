@@ -279,6 +279,8 @@ export class RecruitmentContentComponent {
   selecteedJobDetail: any;
   selectjob(item: any) {
     this.dashService.setselecteedJobDetail(item);
+    const jobId=item._id
+    this.cookie.set('job_id',jobId)
   }
   popupsearch = false;
   popupsearchemail=false;

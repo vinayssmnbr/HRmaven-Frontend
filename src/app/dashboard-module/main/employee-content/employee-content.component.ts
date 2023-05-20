@@ -632,23 +632,14 @@ export class EmployeeContentComponent implements OnInit {
       event.preventDefault();
     }
   }
-  // validatePhoneNumber(event: KeyboardEvent) {
-  //   const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
-  //   const phoneNumber = (event.target as HTMLInputElement).value;
-  //   if (!allowedKeys.includes(event.key) && !/^\d{0,9}$/.test(phoneNumber)) {
-  //     event.preventDefault();
-  //   }
-  // }
   validatePhoneNumber(event: KeyboardEvent) {
     const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
     const phoneNumber = (event.target as HTMLInputElement).value;
-    if (!allowedKeys.includes(event.key)) {
-      const regex = /^[A-Z][A-Za-z0-9]{0,9}$/;
-      if (!regex.test(phoneNumber)) {
-        event.preventDefault();
-      }
+    if (!allowedKeys.includes(event.key) && !/^\d{0,9}$/.test(phoneNumber)) {
+      event.preventDefault();
     }
   }
+
   
   selectedFile: File | null = null;
   selectedFile1: File | null = null;

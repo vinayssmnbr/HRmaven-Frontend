@@ -17,9 +17,14 @@ export class JobDetailsComponent {
   ngOnInit() {
     this.item = this.dashService.getselecteedJobDetail();
     console.log('select1', this.item);
+
+    this.fetchJobVecancies();
+   
+
   }
 
   id: any = 'all';
+  candidate:any[]=[]
   tabChange(ids: any) {
     this.id = ids;
     console.log(this.id);
@@ -116,11 +121,19 @@ export class JobDetailsComponent {
     this.Newcandidate = true;
     this.addcandidate = false;
     }
-  closedone() {
+
+  closedone(data:any) {
     this.Newcandidate = false;
-  
+
+    // this.dashService.getCandidate(data).subscribe((result) => {
+    //   this.dashService.addCandidate(this.newcandidateform);
+    //   this.fetchJobVecancies();
+      
+    // });
+    
   }
 
+  
   candidateNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
@@ -253,8 +266,9 @@ export class JobDetailsComponent {
   }
 
 // loading:boolean=false
-  tabChange1(data:any){
+  tabChange1(){
     // this.loading=true
+    let data = this.newcandidateform.value;
   this.dashService.addCandidate(data).subscribe((result) => {
     this.dashService.addCandidate(this.newcandidateform);
     // this.newcandidateform.reset();
@@ -265,7 +279,12 @@ export class JobDetailsComponent {
 }
 
 
-
+fetchJobVecancies() {
+  this.dashService.getCandidate().subscribe((data: any) => {
+    console.log('hbhvdhsdh', data);
+    this.candidate=data
+  });
+}
 
 
 
