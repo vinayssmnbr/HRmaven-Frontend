@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DashService } from '../../shared/dash.service';
-import { FormGroup, FormControl, Validators ,AbstractControl} from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-job-details',
@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators ,AbstractControl} from '@angular/for
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
-@Input() item:any
+  @Input() item: any
   fileName: string = '';
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
@@ -19,21 +19,25 @@ export class JobDetailsComponent {
     console.log('select1', this.item);
 
     this.fetchJobVecancies();
-   
+
 
   }
 
   id: any = 'all';
-  candidate:any[]=[]
+
+  candidate: any[] = []
+
   tabChange(ids: any) {
     this.id = ids;
     console.log(this.id);
   }
+
   designationdropdownOption: boolean = false;
 
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
+
   array: any = [
     {
       id: 0,
@@ -120,20 +124,20 @@ export class JobDetailsComponent {
   openaddmodal() {
     this.Newcandidate = true;
     this.addcandidate = false;
-    }
+  }
 
-  closedone(data:any) {
+  closedone(data: any) {
     this.Newcandidate = false;
 
     // this.dashService.getCandidate(data).subscribe((result) => {
     //   this.dashService.addCandidate(this.newcandidateform);
     //   this.fetchJobVecancies();
-      
+
     // });
-    
+
   }
 
-  
+
   candidateNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const nameRegex = /^[a-zA-Z\s]*$/;
     const valid = nameRegex.test(control.value);
@@ -141,7 +145,7 @@ export class JobDetailsComponent {
   }
 
   newcandidateform = new FormGroup({
-   
+
     candidateName: new FormControl('', [
       Validators.required,
       this.candidateNameValidator,
@@ -156,7 +160,7 @@ export class JobDetailsComponent {
       Validators.email,
       Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{1,63}$'),
     ]),
-    applieddate:new FormControl('', Validators.required),
+    applieddate: new FormControl('', Validators.required),
 
     url: new FormControl('', Validators.required),
     // url: new FormControl(''),
@@ -217,7 +221,7 @@ export class JobDetailsComponent {
 
     console.log('adarsh', this.emailId);
     this.dashService
-      . getCandidateEmail(this.emailId)
+      .getCandidateEmail(this.emailId)
       .subscribe((response: any) => {
         console.log('prince', response);
         if (response.flag) {
@@ -229,25 +233,27 @@ export class JobDetailsComponent {
         }
       });
   }
-  
 
-  newcandidatedetail(data:any) {
+
+  newcandidatedetail(data: any) {
     // console.log(this.newcandidateform.value)
     // this.dashService.addCandidate(data).subscribe((result) => {
     //   this.dashService.addCandidate(this.newcandidateform);
     //   // this.newcandidateform.reset();
     // });
   }
-  progress:boolean=false
+  progress: boolean = false
   selectedFile: File | null = null;
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+  fileurl: any;
+
+  async onFileSelected(event: any) {
+    this.selectedFile = await event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    this.progress=true
+    this.progress = true
     this.onUpload(this.selectedFile);
 
   }
-  
+
 
   onUpload(file) {
     console.log('adarsh');
@@ -264,29 +270,71 @@ export class JobDetailsComponent {
       }
     );
   }
+  
+  //Another method 
 
-// loading:boolean=false
-  tabChange1(){
+  // onfileselected(event: any) {
+  //   this.selectedFile = event.target.files[0];
+  //   this.fileName = this.selectedFile ? this.selectedFile.name : null;
+  // }
+
+  // onUpload(){
+  //   console.log(this.selectedFile);
+  //   if(this.selectedFile!=null){
+  //     this.progress=true;
+  //     this.dashService.upload(this.selectedFile).then(() => {
+  //     console.log('File uploaded successfully.', this.dashService.fileUrl);
+  //     this.dashService.fileUrl;
+  //     this.fileurl = this.dashService.fileUrl;
+  //     this.newcandidateform.value.url = this.dashService.fileUrl;
+  //     this.uploadform();
+     
+  //   });
+  // }
+  //   else{
+  //     this.uploadform();
+      
+  //   }
+  // }
+
+
+  // uploadform(){
+  //   this.progress=true;
+  //   this.newcandidateform.value.url = this.fileurl;
+  
+  //   this.dashService.addCandidate(this.newcandidateform.value).subscribe((res) => {
+  //     console.log(res)
+  //     this.progress=false;
+  //   })
+  
+    
+  // }
+
+  // loading:boolean=false
+  tabChange1() {
     // this.loading=true
     // let data = this.newcandidateform.value;
-    
-      let data={  ...this.newcandidateform.value}
-  this.dashService.addCandidate(data).subscribe((result) => {
-    this.dashService.addCandidate(this.newcandidateform);
-    // this.newcandidateform.reset();
-    // this.loading=false
 
-  });
-  this.newcandidateform.reset()
-}
+    let data = { ...this.newcandidateform.value }
+    this.dashService.addCandidate(data).subscribe((result) => {
+      this.dashService.addCandidate(this.newcandidateform);
+      // this.newcandidateform.reset();
+      // this.loading=false
+      // this. fetchJobVecancies();
+
+    });
+    this.newcandidateform.reset()
+    this. fetchJobVecancies();
+    // this.onUpload();
+  }
 
 
-fetchJobVecancies() {
-  this.dashService.getCandidate().subscribe((data: any) => {
-    console.log('hbhvdhsdh', data);
-    this.candidate=data
-  });
-}
+  fetchJobVecancies() {
+    this.dashService.getCandidate().subscribe((data: any) => {
+      console.log('hbhvdhsdh', data);
+      this.candidate = data
+    });
+  }
 
 
 
