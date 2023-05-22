@@ -193,7 +193,7 @@
               <td>{{item.candidateName}}</td>
               <td>{{item.email}}</td>
               <td>{{item.contactnumber}}</td>
-              <td>{{item.applieddate}}</td>
+              <td>{{item.applieddate  | date:"shortDate"}}</td>
               <td>
                 <select class="table_option">
                   <option value="">Resume Received</option>
@@ -451,7 +451,7 @@
       <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
     </div>
   </form>
-  s
+  
 </div>
 
 

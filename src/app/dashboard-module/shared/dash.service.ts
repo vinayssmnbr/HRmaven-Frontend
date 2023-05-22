@@ -311,6 +311,7 @@ export class DashService {
   async upload(file: File, userId?: string) {
     try {
       const res = await this.client.upload(file);
+      console.log("res",res)
       this.fileUrl = res.url;
       const user = await this.updateEmployee({
         _id: userId,

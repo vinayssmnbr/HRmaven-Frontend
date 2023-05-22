@@ -6,6 +6,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { log } from 'console';
 
 @Component({
   selector: 'app-job-details',
@@ -13,7 +14,7 @@ import {
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
-  @Input() item: any;
+  @Input() item: any
   fileName: string = '';
   jobrecord: any[] = [];
   statusFilter: string = 'all';
@@ -27,20 +28,25 @@ export class JobDetailsComponent {
     console.log('select1', this.item);
 
     this.fetchJobVecancies();
+
+
   }
 
   id: any = 'all';
-  candidate: any[] = [];
-  tabChange(status: string) {
-    // this.id = ids;
-    // console.log(this.id);
-    this.statusFilter = status;
+
+  candidate: any[] = []
+  selectedPdfFile: any = '';
+  tabChange(ids: any) {
+    this.id = ids;
+    console.log(this.id);
   }
+
   designationdropdownOption: boolean = false;
 
   dropdownOpenOption() {
     this.designationdropdownOption = !this.designationdropdownOption;
   }
+
   array: any = [
     {
       id: 0,
@@ -130,7 +136,10 @@ export class JobDetailsComponent {
   }
 
   closedone(data: any) {
+  
     this.Newcandidate = false;
+    // this.onUpload();
+
 
     // this.dashService.getCandidate(data).subscribe((result) => {
     //   this.dashService.addCandidate(this.newcandidateform);
@@ -241,49 +250,64 @@ export class JobDetailsComponent {
     //   // this.newcandidateform.reset();
     // });
   }
-  progress: boolean = false;
-  selectedFile: File | null = null;
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+  progress: boolean = false
+  public selectedFile: File | null = null;
+  fileurl: any;
+
+  async onFileSelected(event: any) {
+    console.log(event.target.value);
+    
+    this.selectedFile = await event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    this.progress = true;
+    this.progress = true
+    console.log("test11")
     this.onUpload(this.selectedFile);
   }
 
-  onUpload(file) {
-    console.log('adarsh');
-    this.dashService.uploaded(file).then(
-      (res) => {
-        this.progress = false;
-        this.newcandidateform.patchValue({
-          url: res && res.url,
-        });
-      },
-      (err) => {
-        console.log(err);
-        this.progress = false;
-      }
-    );
+  async onUpload(file, changeFile = true) {
+    console.log('adarsh',file);
+    this.selectedPdfFile = file;
+    if(changeFile){
+       return 'file selected'
+    }
+    try{
+      let response = await this.dashService.uploaded(file);;
+      this.progress = false;
+      return response.url;
+    }catch(err){
+      console.log(err);
+      this.progress = false;
+    }
+   
   }
+  
 
   // loading:boolean=false
-  tabChange1() {
+  async tabChange1() {
     // this.loading=true
     // let data = this.newcandidateform.value;
-
-    let data = { ...this.newcandidateform.value };
+    let data = { ...this.newcandidateform.value }
+    let url=await this.onUpload(this.selectedPdfFile, false)
+    data['url']=url
     this.dashService.addCandidate(data).subscribe((result) => {
-      this.dashService.addCandidate(this.newcandidateform);
-      // this.newcandidateform.reset();
-      // this.loading=false
+      console.log(result, "candidate added>>>>")
+      
+
     });
-    this.newcandidateform.reset();
+    this.newcandidateform.reset()
+    this. fetchJobVecancies();
+    // this.onUpload();
   }
+
 
   fetchJobVecancies() {
     this.dashService.getCandidate().subscribe((data: any) => {
       console.log('hbhvdhsdh', data);
-      this.candidate = data;
+      this.candidate = data
     });
   }
+
+ 
+
+ 
 }
