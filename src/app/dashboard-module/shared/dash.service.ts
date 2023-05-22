@@ -72,8 +72,8 @@ export class DashService {
   }
 
   addCandidate(data:any){
-    const id = this.cookie.get('hr_id');
-    data['hrid'] = id;
+    const id = this.cookie.get('job_id');
+    data['jobId'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
 
 

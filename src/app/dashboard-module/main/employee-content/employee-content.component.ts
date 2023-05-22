@@ -1014,6 +1014,7 @@ export class EmployeeContentComponent implements OnInit {
       } else {
         return false;
       }
+      
     }
 
     // Check file size

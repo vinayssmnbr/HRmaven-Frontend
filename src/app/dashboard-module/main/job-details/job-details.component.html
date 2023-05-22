@@ -126,7 +126,7 @@
       </div>
       <div class="Candiddate_input_btn">
         <div class="Export_btn">
-          <button class="export"><img src="assets/images/prime_file-export.png" alt="">
+          <button class="export" (click)=" download()"><img src="assets/images/prime_file-export.png" alt="">
             <p>Export</p>
           </button>
         </div>
@@ -167,7 +167,8 @@
           <thead>
             <tr class="table_heading">
               <th class="input_check">
-                <input type="checkbox">
+                <input type="checkbox"  [checked]="candidate.length > 0 && selectedCandidate.length == candidate.length"
+                (change)="onCheckboxChange($event, 'All')">
                 <p>Candidate ID</p>
               </th>
               <th>Candidate Name</th>
@@ -179,7 +180,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of candidate">
+            <tr *ngFor="let user of  candidate">
               <!-- <td colspan="7" class="nodata" class="no_data">
                       <p>
                         <img src="assets/images/no_record.png" alt="" class="center" />
@@ -187,13 +188,15 @@
                       <h2>No Record Found!</h2>
                     </td> -->
               <td class="input_check">
-                <input type="checkbox">
+                <input type="checkbox"  [value]="user.id" [checked]="user.checked"
+                (change)="onCheckboxChange($event, user)">
                 <p>29591</p>
+                <!-- <p>{{user.uid}}</p> -->
               </td>
-              <td>{{item.candidateName}}</td>
-              <td>{{item.email}}</td>
-              <td>{{item.contactnumber}}</td>
-              <td>{{item.applieddate  | date:"shortDate"}}</td>
+              <td>{{user.candidateName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.contactnumber}}</td>
+              <td>{{user.applieddate  | date:"shortDate"}}</td>
               <td>
                 <select class="table_option">
                   <option value="">Resume Received</option>
@@ -205,8 +208,9 @@
                 </select>
               </td>
               <td class="pdf_logo">
-                <!-- <img src="assets/images/vscode-icons_file-type-pdf2.png" alt=""> -->
-                {{item.url}}
+                <a href="{{user.url}}" [download] target="_blank">
+                <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                </a>
               </td>
 
             </tr>
