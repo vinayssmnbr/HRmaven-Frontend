@@ -278,63 +278,9 @@ export class JobDetailsComponent {
       console.log(err);
       this.progress = false;
     }
-    // this.dashService.uploaded(file).then(
-    //   (res) => {
-    //     this.progress = false;
-    //     this.newcandidateform.patchValue({
-    //       url: res && res.url,
-    //     });
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //     this.progress = false;
-    //   }
-    // );
+   
   }
   
-  
-  
-
-   
-  //Another method 
-
-  // onfileselected(event: any) {
-  //   this.selectedFile = event.target.files[0];
-  //   this.fileName = this.selectedFile ? this.selectedFile.name : null;
-  // }
-
-  // onUpload(){
-  //   console.log(this.selectedFile);
-  //   if(this.selectedFile!=null){
-  //     this.progress=true;
-  //     this.dashService.uploaded(this.selectedFile).then(() => {
-  //     console.log('File uploaded successfully.', this.dashService.fileUrl);
-  //     this.dashService.fileUrl;
-  //     this.fileurl = this.dashService.fileUrl;
-  //     this.newcandidateform.value.url = this.dashService.fileUrl;
-  //     this.uploadform();
-     
-  //   });
-  // }
-  //   else{
-  //     this.uploadform();
-      
-  //   }
-  // }
-
-
-  // uploadform(){
-  //   this.progress=true;
-  //   this.newcandidateform.value.url = this.fileurl;
-  
-  //   this.dashService.addCandidate(this.newcandidateform.value).subscribe((res) => {
-  //     console.log(res)
-  //     this.progress=false;
-  //   })
-  
-    
-  // }
-
 
   // loading:boolean=false
   async tabChange1() {
@@ -345,9 +291,7 @@ export class JobDetailsComponent {
     data['url']=url
     this.dashService.addCandidate(data).subscribe((result) => {
       console.log(result, "candidate added>>>>")
-      // this.newcandidateform.reset();
-      // this.loading=false
-      // this. fetchJobVecancies();
+      
 
     });
     this.newcandidateform.reset()
