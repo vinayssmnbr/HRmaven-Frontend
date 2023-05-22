@@ -212,7 +212,6 @@
                 <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
                 </a>
               </td>
-
             </tr>
             <!-- <tr>
               <td class="input_check">
@@ -345,7 +344,7 @@
           </div>
         </div>
         <div class="job_card_content_main">
-          <div class="job_card_content">
+          <div class="job_card_content1">
             <div class="job_card_content_title">
               <p>Job Title</p>
               <h3>{{item.job_title}}</h3>
@@ -359,7 +358,7 @@
               <h3>Rs. {{item.ctc}}</h3>
             </div>
           </div>
-          <div class="job_card_content">
+          <div class="job_card_content1">
             <div class="job_card_content_title">
               <p>Location</p>
               <h3>{{item.location}}</h3>
@@ -428,7 +427,7 @@
       </div>
       <div class="input__box">
         <span class="details">Contact number</span>
-        <input type="text" placeholder="XXXXXX0652" required formControlName="contactnumber">
+        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber">
         <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
           No.
           already exists</div>
@@ -455,7 +454,7 @@
       <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
     </div>
   </form>
-  
+
 </div>
 
 

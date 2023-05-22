@@ -32,6 +32,7 @@ import { LeavestatusPipe } from './pipe/leavestatus.pipe';
 import { LeavecountPipe } from './pipe/leavecount.pipe';
 import { RecruiterfilterPipe } from './pipe/recruiterfilter.pipe';
 import { JobstatusPipe } from './pipe/jobstatus.pipe';
+import { HelpComponent } from './main/help/help.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { JobstatusPipe } from './pipe/jobstatus.pipe';
     AccountSettingsComponent,
     TimesheetComponent,
     CalendarComponent,
+    HelpComponent,
     EmpstatusPipe,
     MonthwisefilterPipe,
     LeavestatusPipe,
