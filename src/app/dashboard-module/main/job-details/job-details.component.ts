@@ -6,6 +6,7 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { log } from 'console';
 
 @Component({
   selector: 'app-job-details',
@@ -34,7 +35,7 @@ export class JobDetailsComponent {
   id: any = 'all';
 
   candidate: any[] = []
-
+  selectedPdfFile: any = '';
   tabChange(ids: any) {
     this.id = ids;
     console.log(this.id);
@@ -135,7 +136,10 @@ export class JobDetailsComponent {
   }
 
   closedone(data: any) {
+  
     this.Newcandidate = false;
+    // this.onUpload();
+
 
     // this.dashService.getCandidate(data).subscribe((result) => {
     //   this.dashService.addCandidate(this.newcandidateform);
@@ -247,32 +251,51 @@ export class JobDetailsComponent {
     // });
   }
   progress: boolean = false
-  selectedFile: File | null = null;
+  public selectedFile: File | null = null;
   fileurl: any;
 
   async onFileSelected(event: any) {
+    console.log(event.target.value);
+    
     this.selectedFile = await event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
     this.progress = true
+    console.log("test11")
     this.onUpload(this.selectedFile);
   }
 
-  onUpload(file) {
-    console.log('adarsh');
-    this.dashService.uploaded(file).then(
-      (res) => {
-        this.progress = false;
-        this.newcandidateform.patchValue({
-          url: res && res.url,
-        });
-      },
-      (err) => {
-        console.log(err);
-        this.progress = false;
-      }
-    );
+  async onUpload(file, changeFile = true) {
+    console.log('adarsh',file);
+    this.selectedPdfFile = file;
+    if(changeFile){
+       return 'file selected'
+    }
+    try{
+      let response = await this.dashService.uploaded(file);;
+      this.progress = false;
+      return response.url;
+    }catch(err){
+      console.log(err);
+      this.progress = false;
+    }
+    // this.dashService.uploaded(file).then(
+    //   (res) => {
+    //     this.progress = false;
+    //     this.newcandidateform.patchValue({
+    //       url: res && res.url,
+    //     });
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //     this.progress = false;
+    //   }
+    // );
   }
   
+  
+  
+
+   
   //Another method 
 
   // onfileselected(event: any) {
@@ -284,7 +307,7 @@ export class JobDetailsComponent {
   //   console.log(this.selectedFile);
   //   if(this.selectedFile!=null){
   //     this.progress=true;
-  //     this.dashService.upload(this.selectedFile).then(() => {
+  //     this.dashService.uploaded(this.selectedFile).then(() => {
   //     console.log('File uploaded successfully.', this.dashService.fileUrl);
   //     this.dashService.fileUrl;
   //     this.fileurl = this.dashService.fileUrl;
@@ -312,14 +335,16 @@ export class JobDetailsComponent {
     
   // }
 
+
   // loading:boolean=false
-  tabChange1() {
+  async tabChange1() {
     // this.loading=true
     // let data = this.newcandidateform.value;
-
     let data = { ...this.newcandidateform.value }
+    let url=await this.onUpload(this.selectedPdfFile, false)
+    data['url']=url
     this.dashService.addCandidate(data).subscribe((result) => {
-      this.dashService.addCandidate(this.newcandidateform);
+      console.log(result, "candidate added>>>>")
       // this.newcandidateform.reset();
       // this.loading=false
       // this. fetchJobVecancies();
@@ -338,21 +363,7 @@ export class JobDetailsComponent {
     });
   }
 
+ 
 
-
-  //   let data = { ...this.newcandidateform.value };
-  //   this.dashService.addCandidate(data).subscribe((result) => {
-  //     this.dashService.addCandidate(this.newcandidateform);
-  //     // this.newcandidateform.reset();
-  //     // this.loading=false
-  //   });
-  //   this.newcandidateform.reset();
-  // }
-
-  // fetchJobVecancies() {
-  //   this.dashService.getCandidate().subscribe((data: any) => {
-  //     console.log('hbhvdhsdh', data);
-  //     this.candidate = data;
-  //   });
-  // }
+ 
 }
