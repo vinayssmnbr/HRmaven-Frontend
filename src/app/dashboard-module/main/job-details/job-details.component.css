@@ -1025,3 +1025,15 @@ form .user__details .input__box {
     transform: rotate(360deg);
   }
 }
+
+.text.ng_invalid {
+  border: 1px solid red !important;
+}
+
+.text.ng_invalid:hover {
+  border: 1px solid red !important;
+}
+
+.text.ng_valid {
+  border: 1px solid green !important;
+}

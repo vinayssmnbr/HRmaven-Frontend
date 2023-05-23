@@ -21,6 +21,7 @@ export class JobDetailsComponent {
   fileName: string = '';
   jobrecord: any[] = [];
   statusFilter: string = 'All';
+  // currentCandidateUid: any = '';
 
   constructor(private dashService: DashService, private cookie: CookieService) {
     dashService.activeComponent = 'job-details';
@@ -169,6 +170,7 @@ export class JobDetailsComponent {
   }
 
   newcandidateform = new FormGroup({
+    uid: new FormControl(this.currentCandidateUid),
     candidateName: new FormControl('', [
       Validators.pattern('[a-zA-Z ]+'),
       Validators.required,
@@ -185,7 +187,6 @@ export class JobDetailsComponent {
     applieddate: new FormControl('', Validators.required),
 
     url: new FormControl('', Validators.required),
-    uid: new FormControl(this.currentCandidateUid),
 
     // url: new FormControl(''),
   });
