@@ -281,13 +281,14 @@
               </td>
               <ng-container *ngIf="(item.status==statusFilter || statusFilter=='All') && item.found!='true'">
                 <td class="input_check">
-                  <input type="checkbox">
+                  <input type="checkbox" [value]="item.id" [checked]="item.checked"
+                  (change)="onCheckboxChange($event, item)">
                   <p>{{item.uid}}</p>
                 </td>
                 <td>{{item.candidateName}}</td>
                 <td>{{item.email}}</td>
                 <td>{{item.contactnumber}}</td>
-                <td>{{item.applieddate}}</td>
+                <td>{{item.applieddate | date:"shortDate"}}</td>
                 <td>
                   <select class="table_option" [value]="item.status" [class.active]="item.status==='active'"
                     (change)="onSelectChange($event,item)">
