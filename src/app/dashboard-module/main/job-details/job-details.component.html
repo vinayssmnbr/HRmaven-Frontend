@@ -438,7 +438,7 @@
         <span class="details">Applied date</span>
         <input type="date" placeholder="23/04/2023" class="meeting-input" required formControlName="applieddate">
       </div>
-      <div class="loader" *ngIf="progress"></div>
+      <!-- <div class="loader" *ngIf="progress"></div> -->
       <div class="input__box">
         <span class="details">Resume</span>
         <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required
