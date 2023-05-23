@@ -5,16 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class JobstatusPipe implements PipeTransform {
   filteredJobRecord: any[];
-  transform(jobrecord: any[], statusFilter: string): any {
-    if (!statusFilter || statusFilter === 'all') {
-      console.log('xy', jobrecord);
-      if (!jobrecord || jobrecord.length === 0) {
+  transform(candidate: any[], statusFilter: string): any {
+    if (!statusFilter || statusFilter === 'All') {
+      console.log('xy', candidate);
+      if (!candidate || candidate.length === 0) {
         return [{ found: 'true' }];
       }
 
-      return jobrecord;
+      return candidate;
     }
-    const filteredJobRecord = jobrecord.filter(
+    const filteredJobRecord = candidate.filter(
       (employee) => employee.status === statusFilter
     );
 
