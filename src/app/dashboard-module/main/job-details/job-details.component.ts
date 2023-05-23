@@ -9,6 +9,7 @@ import {
 import { log } from 'console';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-job-details',
@@ -21,7 +22,7 @@ export class JobDetailsComponent {
   jobrecord: any[] = [];
   statusFilter: string = 'All';
 
-  constructor(private dashService: DashService) {
+  constructor(private dashService: DashService, private cookie: CookieService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
@@ -137,6 +138,10 @@ export class JobDetailsComponent {
   }
   openmodal() {
     this.addcandidate = true;
+    this.dashService.getCandidateUid().subscribe((res: any) => {
+      console.log('data', res);
+      this.currentCandidateUid = res.uid;
+    });
   }
   Newcandidate: boolean = false;
 
@@ -165,9 +170,8 @@ export class JobDetailsComponent {
 
   newcandidateform = new FormGroup({
     candidateName: new FormControl('', [
-      Validators.required,
-      this.candidateNameValidator,
       Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
     ]),
     contactnumber: new FormControl('', [
       Validators.required,
@@ -181,6 +185,8 @@ export class JobDetailsComponent {
     applieddate: new FormControl('', Validators.required),
 
     url: new FormControl('', Validators.required),
+    uid: new FormControl(this.currentCandidateUid),
+
     // url: new FormControl(''),
   });
 
@@ -287,7 +293,9 @@ export class JobDetailsComponent {
     // this.loading=true
     // let data = this.newcandidateform.value;
 
-    let data = { ...this.newcandidateform.value };
+    let data = {
+      ...this.newcandidateform.value,
+    };
     this.dashService.addCandidate(data).subscribe((result) => {
       this.dashService.addCandidate(this.newcandidateform);
       // this.newcandidateform.reset();
