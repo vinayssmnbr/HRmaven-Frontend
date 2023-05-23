@@ -6,6 +6,9 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { log } from 'console';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-job-details',
@@ -41,6 +44,9 @@ export class JobDetailsComponent {
 
   id: any = 'all';
   candidate: any[] = [];
+  selectedCandidate: any[] = [];
+  selectedPdfFile: any = '';
+  currentCandidateUid: any = '';
   tabChange(status: string) {
     // this.id = ids;
     // console.log(this.id);
@@ -311,5 +317,96 @@ export class JobDetailsComponent {
         }
       );
     }
+  }
+
+  download(): void {
+    const selectedCandidate = this.candidate.filter((emp) => emp.checked);
+    if (selectedCandidate.length === 0) {
+      alert('Please select at least one employee to download.');
+      return;
+    }
+
+    const data = [
+      [
+        'CANDIDATEID',
+        'CANDIDATENAME',
+        'APPLIEDDATE',
+        'EMAIL',
+        'STATUS',
+        'CONTACTNUMBER',
+      ],
+      ...selectedCandidate.map((candidate) => [
+        candidate.uid,
+        candidate.candidateName,
+        candidate.applieddate,
+        candidate.email,
+        candidate.status,
+        candidate.contactnumber,
+      ]),
+    ];
+
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
+    const filename = 'data.xlsx';
+    const blob = new Blob([excelBuffer], {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    });
+    saveAs(blob, filename);
+  }
+
+  onCheckboxChange($event, user: any) {
+    const id = $event.target.value;
+    const isChecked = $event.target.checked;
+
+    if (isChecked) {
+      if (user == 'All') {
+        this.selectedCandidate = [...this.candidate];
+        // Check all checkboxes
+        this.candidate.forEach((el: any, i: number) => {
+          el['checked'] = true;
+        });
+      } else {
+        this.candidate.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            this.candidate[i]['checked'] = true;
+            return;
+          }
+        });
+        this.selectedCandidate.push(user);
+      }
+      console.log(this.selectedCandidate, 'added employees');
+    } else {
+      if (user == 'All') {
+        this.selectedCandidate = [];
+        // Uncheck all checkboxes
+        this.candidate.forEach((el: any, i: number) => {
+          el['checked'] = false;
+        });
+      } else {
+        let index: number = -1;
+        this.selectedCandidate.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            index = i;
+            return;
+          }
+        });
+        this.candidate.forEach((el: any, i: number) => {
+          if (el._id == user._id) {
+            this.candidate[i]['checked'] = false;
+            return;
+          }
+        });
+        if (index >= 0) {
+          this.selectedCandidate.splice(index, 1);
+        }
+      }
+      console.log(this.selectedCandidate, 'removed user');
+    }
+    this.selectedCandidate.sort((a, b) => a.uid - b.uid);
   }
 }
