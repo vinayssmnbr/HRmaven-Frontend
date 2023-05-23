@@ -281,8 +281,7 @@
               </td>
               <ng-container *ngIf="(item.status==statusFilter || statusFilter=='All') && item.found!='true'">
                 <td class="input_check">
-                  <input type="checkbox" [value]="user.id" [checked]="user.checked"
-                  (change)="onCheckboxChange($event, user)">
+                  <input type="checkbox">
                   <p>{{item.uid}}</p>
                 </td>
                 <td>{{item.candidateName}}</td>
