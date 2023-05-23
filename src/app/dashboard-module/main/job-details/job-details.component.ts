@@ -264,30 +264,7 @@ export class JobDetailsComponent {
     //   // this.newcandidateform.reset();
     // });
   }
-  // progress: boolean = false;
-  // selectedFile: File | null = null;
-  // onFileSelected(event: any) {
-  //   this.selectedFile = event.target.files[0];
-  //   this.fileName = this.selectedFile ? this.selectedFile.name : '';
-  //   this.progress = true;
-  //   this.onUpload(this.selectedFile);
-  // }
-
-  // onUpload(file) {
-  //   console.log('adarsh');
-  //   this.dashService.uploaded(file).then(
-  //     (res) => {
-  //       this.progress = false;
-  //       this.newcandidateform.patchValue({
-  //         url: res && res.url,
-  //       });
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //       this.progress = false;
-  //     }
-  //   );
-  // }
+  
 
   progress: boolean = false
   public selectedFile: File | null = null;
