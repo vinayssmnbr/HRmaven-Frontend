@@ -257,82 +257,48 @@ export class JobDetailsComponent {
       });
   }
 
-  newcandidatedetail(data: any) {
-    // console.log(this.newcandidateform.value)
-    // this.dashService.addCandidate(data).subscribe((result) => {
-    //   this.dashService.addCandidate(this.newcandidateform);
-    //   // this.newcandidateform.reset();
-    // });
-  }
-  // progress: boolean = false;
-  // selectedFile: File | null = null;
-  // onFileSelected(event: any) {
-  //   this.selectedFile = event.target.files[0];
-  //   this.fileName = this.selectedFile ? this.selectedFile.name : '';
-  //   this.progress = true;
-  //   this.onUpload(this.selectedFile);
-  // }
-
-  // onUpload(file) {
-  //   console.log('adarsh');
-  //   this.dashService.uploaded(file).then(
-  //     (res) => {
-  //       this.progress = false;
-  //       this.newcandidateform.patchValue({
-  //         url: res && res.url,
-  //       });
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //       this.progress = false;
-  //     }
-  //   );
-  // }
-
-  progress: boolean = false
+  progress: boolean = false;
   public selectedFile: File | null = null;
   fileurl: any;
 
   async onFileSelected(event: any) {
     console.log(event.target.value);
-    
+
     this.selectedFile = await event.target.files[0];
     this.fileName = this.selectedFile ? this.selectedFile.name : '';
-    this.progress = true
-    console.log("test11")
+    this.progress = true;
+    console.log('test11');
     this.onUpload(this.selectedFile);
   }
 
   async onUpload(file, changeFile = true) {
-    console.log('adarsh',file);
+    console.log('adarsh', file);
     this.selectedPdfFile = file;
-    if(changeFile){
-       return 'file selected'
+    if (changeFile) {
+      return 'file selected';
     }
-    try{
-      let response = await this.dashService.uploaded(file);;
+    try {
+      let response = await this.dashService.uploaded(file);
       this.progress = false;
       return response.url;
-    }catch(err){
+    } catch (err) {
       console.log(err);
       this.progress = false;
     }
-   
   }
   // loading:boolean=false
   async tabChange1() {
     let data = {
       ...this.newcandidateform.value,
     };
-    let url= await this.onUpload(this.selectedPdfFile, false)
-    data['url']=url
-   
+    let url = await this.onUpload(this.selectedPdfFile, false);
+    data['url'] = url;
+
     this.dashService.addCandidate(data).subscribe((result) => {
       this.dashService.addCandidate(this.newcandidateform);
       // this.newcandidateform.reset();
       // this.loading=false
-    this.fetchJobVecancies();
-
+      this.fetchJobVecancies();
     });
 
     this.newcandidateform.reset();

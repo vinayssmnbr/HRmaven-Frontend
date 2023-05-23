@@ -419,7 +419,8 @@
     <div class="user__details">
       <div class="input__box">
         <span class="details">Candidate name</span>
-        <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
+        <input type="text" placeholder="Sahil Verma" required formControlName="candidateName" class="text"
+          [ngClass]="{'ng_invalid': newcandidateform.controls.candidateName.invalid && newcandidateform.controls.candidateName.dirty,'ng_valid': newcandidateform.controls.candidateName.valid}">
       </div>
       <div class="input__box">
         <span class="details">Candidate id</span>
@@ -427,16 +428,19 @@
       </div>
       <div class="input__box">
         <span class="details">Contact number</span>
-        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber">
+        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber" class="text"
+          (keydown)="validatePhoneNumber($event)"
+          [ngClass]="{'ng_invalid': newcandidateform.controls.contactnumber.invalid && newcandidateform.controls.contactnumber.dirty,'ng_valid': newcandidateform.controls.contactnumber.valid}">
 
       </div>
       <div class="input__box">
         <span class="details">Email</span>
-        <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
+        <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email" class="text"
+          [ngClass]="{'ng_invalid': newcandidateform.controls.email.invalid && newcandidateform.controls.email.dirty,'ng_valid': newcandidateform.controls.email.valid}">
       </div>
       <div class="input__box">
         <span class="details">Applied date</span>
-        <input type="date" placeholder="23/04/2023" class="meeting-input" required formControlName="applieddate">
+        <input type="date" placeholder="23/04/2023" class="text" required formControlName="applieddate">
       </div>
       <!-- <div class="loader" *ngIf="progress"></div> -->
       <div class="input__box">
@@ -446,7 +450,8 @@
       </div>
     </div>
     <div class="form_button" (click)="openaddmodal()">
-      <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
+      <button type="submit" (click)="tabChange1(newcandidateform.value)" [disabled]="!newcandidateform.valid">Add a
+        candidate</button>
     </div>
   </form>
 
