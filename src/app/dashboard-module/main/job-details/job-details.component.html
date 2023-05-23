@@ -430,9 +430,11 @@
       <div class="input__box">
         <span class="details">Contact number</span>
         <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber" class="text"
-          (keydown)="validatePhoneNumber($event)"
-          [ngClass]="{'ng_invalid': newcandidateform.controls.contactnumber.invalid && newcandidateform.controls.contactnumber.dirty,'ng_valid': newcandidateform.controls.contactnumber.valid}">
-
+          (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
+          [ngClass]="{'ng_invalid': (mobileExists || newcandidateform.controls.contactnumber.invalid && newcandidateform.controls.contactnumber.dirty),'ng_valid': !mobileExists && newcandidateform.controls.contactnumber.valid}">
+          <div class="validation-message" *ngIf="mobileExists">Mobile
+            No.
+            already exists</div>
       </div>
       <div class="input__box">
         <span class="details">Email</span>

@@ -225,8 +225,8 @@ export class DashService {
     return this.http.get(`${this.prefix + 'api/checkedemail'}/${email}`);
   }
 
-  getCandidateMobile(mobile: any) {
-    return this.http.get(`${this.prefix + 'api/checkedmobile'}/${mobile}`);
+  getCandidateMobile(contactnumber: any) {
+    return this.http.get(`${this.prefix + 'candid/checkedmobile'}/${contactnumber}`);
   }
 
   getCandidate() {
