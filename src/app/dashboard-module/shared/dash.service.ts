@@ -71,12 +71,10 @@ export class DashService {
     return this.http.get(this.prefix + 'job/jobemail', { headers });
   }
 
-  addCandidate(data:any){
+  addCandidate(data: any) {
     const id = this.cookie.get('job_id');
     data['jobId'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
-
-
   }
 
   // addEmployee(data) {
@@ -239,6 +237,14 @@ export class DashService {
     return this.http.get(this.prefix + 'candid/findcandidate', { headers });
   }
 
+  getCandidateUid() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/candiduid', { headers });
+  }
+
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);
@@ -311,7 +317,7 @@ export class DashService {
   async upload(file: File, userId?: string) {
     try {
       const res = await this.client.upload(file);
-      console.log("res",res)
+      console.log('res', res);
       this.fileUrl = res.url;
       const user = await this.updateEmployee({
         _id: userId,
@@ -342,8 +348,13 @@ export class DashService {
     return this.http.post(url, { data }, { headers, responseType: 'blob' });
   }
 
-  updateEmpStatus(id, status): Observable<any> {
+  updateEmpStatus(id: any, status: any): Observable<any> {
     const url = `${this.prefix + 'api/update'}/${id}`;
+    return this.http.patch(url, { status });
+  }
+
+  updateJobStatus(id: any, status: any) {
+    const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
     return this.http.patch(url, { status });
   }
 }
