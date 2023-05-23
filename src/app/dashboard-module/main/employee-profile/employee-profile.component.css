@@ -971,19 +971,21 @@ input[type='date'] {
 }
 
 .add-more {
-  margin-top: -15px;
+  /* margin-top: -15px; */
   display: flex;
   gap: 10px;
   text-align: center;
+  padding: 6px 12px;
   align-items: center;
   justify-content: center;
   font-family: 'Outfit';
   font-style: normal;
   font-weight: 500;
+  border-radius: 6px;
   font-size: 14px;
   color: #2F2C9F;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid #2F2C9F;
   margin-bottom: 15px;
   cursor: pointer;
 }
