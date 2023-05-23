@@ -222,7 +222,7 @@ export class DashService {
   }
 
   getCandidateEmail(email: any) {
-    return this.http.get(`${this.prefix + 'api/checkedemail'}/${email}`);
+    return this.http.get(`${this.prefix + 'candid/checkedmail'}/${email}`);
   }
 
   getCandidateMobile(contactnumber: any) {

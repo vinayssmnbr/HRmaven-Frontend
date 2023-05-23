@@ -439,8 +439,12 @@
       <div class="input__box">
         <span class="details">Email</span>
         <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email" class="text"
-          [ngClass]="{'ng_invalid': newcandidateform.controls.email.invalid && newcandidateform.controls.email.dirty,'ng_valid': newcandidateform.controls.email.valid}">
-      </div>
+        (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
+          [ngClass]="{'ng_invalid': (emailExists || newcandidateform.controls.email.invalid && newcandidateform.controls.email.dirty),'ng_valid':!emailExists && newcandidateform.controls.email.valid}">
+          <div class="validation-message" *ngIf="emailExists">Email
+            already
+            exists</div>
+        </div> 
       <div class="input__box">
         <span class="details">Applied date</span>
         <input type="date" placeholder="23/04/2023" class="text" required formControlName="applieddate">
