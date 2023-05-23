@@ -143,7 +143,7 @@
           <thead>
             <tr class="table_heading">
               <th class="input_check">
-                <input type="checkbox"  [checked]="candidate.length > 0 && selectedCandidate.length == candidate.length"
+                <input type="checkbox" [checked]="candidate.length > 0 && selectedCandidate.length == candidate.length"
                   (change)="onCheckboxChange($event, 'All')">
                 <p>Candidate ID</p>
               </th>
@@ -281,8 +281,7 @@
               </td>
               <ng-container *ngIf="(item.status==statusFilter || statusFilter=='All') && item.found!='true'">
                 <td class="input_check">
-                  <input type="checkbox" [value]="user.id" [checked]="user.checked"
-                  (change)="onCheckboxChange($event, user)">
+                  <input type="checkbox">
                   <p>{{item.uid}}</p>
                 </td>
                 <td>{{item.candidateName}}</td>
@@ -420,31 +419,20 @@
     <div class="user__details">
       <div class="input__box">
         <span class="details">Candidate name</span>
-        <input type="text" placeholder="Sahil Verma" required formControlName="candidateName"
-         class="text"
-        [ngClass]="{'ng_invalid': newcandidateform.candidateName.invalid && newcandidateform.candidateName.dirty,'ng_valid': newcandidateform.candidateName.valid}">
+        <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
       </div>
       <div class="input__box">
         <span class="details">Candidate id</span>
-        <input type="text" placeholder="29591" disabled [(ngModel)]="currentCandidateUid" formControlName="uid" >
+        <input type="text" placeholder="29591" disabled [(ngModel)]="currentCandidateUid" formControlName="uid">
       </div>
       <div class="input__box">
         <span class="details">Contact number</span>
-        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber"
-         class="text"
-        [ngClass]="{'ng_invalid': newcandidateform.contactnumber.invalid && newcandidateform.contactnumber.dirty,'ng_valid': newcandidateform.contactnumber.valid}">
-        <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
-          No.
-          already exists</div>
+        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber">
+
       </div>
       <div class="input__box">
         <span class="details">Email</span>
-        <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email"
-          class="text"
-        [ngClass]="{'ng_invalid': newcandidateform.email.invalid && newcandidateform.email.dirty,'ng_valid': newcandidateform.email.valid}">
-        <div class="validation-message" *ngIf="emailExists"><i class="fa-solid fa-circle-exclamation"></i>Email
-          already
-          exists</div>
+        <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
       </div>
       <div class="input__box">
         <span class="details">Applied date</span>
