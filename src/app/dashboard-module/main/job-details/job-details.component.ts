@@ -226,7 +226,7 @@ export class JobDetailsComponent {
   mobileExists = false;
   mobileNo: any;
   checkmobileExists() {
-    this.mobileNo = this.newcandidateform.controls['mobile'].value;
+    this.mobileNo = this.newcandidateform.controls['contactnumber'].value;
 
     console.log('adarsh', this.mobileNo);
     this.dashService

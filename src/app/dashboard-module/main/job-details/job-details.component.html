@@ -427,7 +427,7 @@
       </div>
       <div class="input__box">
         <span class="details">Contact number</span>
-        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber">
+        <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber"  (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"  [ngClass]="{'ng_invalid': (mobileExists ||  registrationFormControl.mobile.invalid && registrationFormControl.mobile.dirty ), 'ng_valid': !mobileExists && registrationFormControl.mobile.valid}">
         <div class="validation-message" *ngIf="mobileExists"><i class="fa-solid fa-circle-exclamation"></i>Mobile
           No.
           already exists</div>
