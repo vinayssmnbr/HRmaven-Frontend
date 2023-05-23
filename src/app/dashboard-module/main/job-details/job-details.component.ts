@@ -20,6 +20,7 @@ export class JobDetailsComponent {
   fileName: string = '';
   jobrecord: any[] = [];
   statusFilter: string = 'All';
+  // currentCandidateUid: any = '';
 
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
@@ -137,6 +138,11 @@ export class JobDetailsComponent {
   }
   openmodal() {
     this.addcandidate = true;
+    this.dashService. getCandidateUid().subscribe((res: any) => {
+      console.log('data', res);
+      this.currentCandidateUid = res.uid;
+    });
+
   }
   Newcandidate: boolean = false;
 
@@ -164,6 +170,7 @@ export class JobDetailsComponent {
   }
 
   newcandidateform = new FormGroup({
+    uid: new FormControl(this.currentCandidateUid),
     candidateName: new FormControl('', [
       Validators.required,
       this.candidateNameValidator,
@@ -212,7 +219,7 @@ export class JobDetailsComponent {
   mobileExists = false;
   mobileNo: any;
   checkmobileExists() {
-    this.mobileNo = this.newcandidateform.controls['mobile'].value;
+    this.mobileNo = this.newcandidateform.controls['contactnumber'].value;
 
     console.log('adarsh', this.mobileNo);
     this.dashService
