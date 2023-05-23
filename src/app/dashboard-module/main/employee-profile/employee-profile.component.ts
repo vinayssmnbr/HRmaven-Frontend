@@ -111,17 +111,19 @@ export class EmployeeProfileComponent implements OnInit {
       Validators.pattern(/^[2-9]{1}[0-9]{11}$/),
       Validators.required,
     ]),
-    accountno: new FormControl('',
-      [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+    accountno: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(16),
+    ]),
     ifsc: new FormControl('', [
       Validators.pattern(/^([A-Z]{4}[0]{1}[A-Z0-9]{6})$/),
       Validators.required,
     ]),
-    otherbankname: new FormControl('',
-      [
-        Validators.pattern('[a-zA-Z ]+'),
-        Validators.required,
-      ]),
+    otherbankname: new FormControl('', [
+      Validators.pattern('[a-zA-Z ]+'),
+      Validators.required,
+    ]),
     passport: new FormControl('', [
       Validators.pattern('[A-PR-WYa-pr-wy][1-9]\\d\\s?\\d{4}[1-9]$'),
       Validators.required,
@@ -439,8 +441,8 @@ export class EmployeeProfileComponent implements OnInit {
     // this.jobdesignation = arr.name;
     this.user.designation = arr.name;
   }
-  Selectvariable10 : string='Location'
-  colorvariable10: number= 0;
+  Selectvariable10: string = 'Location';
+  colorvariable10: number = 0;
   Changeselect10(arr10: any) {
     this.Selectvariable10 = arr10.name;
     this.colorvariable10 = arr10.id;
@@ -829,22 +831,28 @@ export class EmployeeProfileComponent implements OnInit {
   }
 
   //VIEW MORE AND VIEW LESS
-  showMoredata() {
-    this.showAllData = true;
-    this.showbutton = false;
-  }
-  showMoredata1() {
-    this.showAllData1 = true;
-    this.showbutton1 = false;
-  }
+  // showMoredata() {
+  //   this.showAllData = true;
+  //   this.showbutton = false;
+  // }
+  // showMoredata1() {
+  //   this.showAllData1 = true;
+  //   this.showbutton1 = false;
+  // }
 
-  hidedata() {
-    this.showAllData = false;
-    this.showbutton = true;
+  // hidedata() {
+  //   this.showAllData = false;
+  //   this.showbutton = true;
+  // }
+  // hidedata1() {
+  //   this.showAllData1 = false;
+  //   this.showbutton1 = true;
+  // }
+  toggleDataExp() {
+    this.showAllData = !this.showAllData;
   }
-  hidedata1() {
-    this.showAllData1 = false;
-    this.showbutton1 = true;
+  toggleDataView() {
+    this.showAllData1 = !this.showAllData1;
   }
 
   showpgdetails: boolean = false;
@@ -868,5 +876,12 @@ export class EmployeeProfileComponent implements OnInit {
     }
   }
 
+  validatepassingYear(event: KeyboardEvent) {
+    const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'];
+    const phoneNumber = (event.target as HTMLInputElement).value;
+    if (!allowedKeys.includes(event.key) && !/^\d{0,3}$/.test(phoneNumber)) {
+      event.preventDefault();
+    }
+  }
   //ARRAY Form
 }
