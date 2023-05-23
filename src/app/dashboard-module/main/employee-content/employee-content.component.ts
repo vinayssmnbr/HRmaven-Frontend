@@ -304,6 +304,7 @@ export class EmployeeContentComponent implements OnInit {
       this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor = this.buttonColor === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
+
   changeColor2() {
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
@@ -326,9 +327,11 @@ export class EmployeeContentComponent implements OnInit {
 
   emailvar: any;
   onNextForm() {
-    this.firstStep = false;
-    this.secondStep = true;
-    this.onUpload(this.selectedFile);
+    if (this.Selectvariable1 != '' && this.Selectvariable6 != '') {
+      this.firstStep = false;
+      this.secondStep = true;
+      this.onUpload(this.selectedFile);
+    }
     // this.dashService.getEmployeeEmail(this.form.controls['email'].value).subscribe((response:any)=>{
     //   console.log("response",this.emailAlreadyExists)
     //   this.emailvar=response.email

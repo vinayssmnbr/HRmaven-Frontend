@@ -16,7 +16,7 @@ export class JobDetailsComponent {
   @Input() item: any;
   fileName: string = '';
   jobrecord: any[] = [];
-  statusFilter: string = 'all';
+  statusFilter: string = 'All';
 
   constructor(private dashService: DashService) {
     dashService.activeComponent = 'job-details';
@@ -28,6 +28,16 @@ export class JobDetailsComponent {
 
     this.fetchJobVecancies();
   }
+
+  statusItem: string[] = [
+    'All',
+    'Resume Received',
+    'Shortlisted',
+    'Interview',
+    'Hired',
+    'Rejected',
+    'Archive',
+  ];
 
   id: any = 'all';
   candidate: any[] = [];
@@ -285,5 +295,21 @@ export class JobDetailsComponent {
       console.log('hbhvdhsdh', data);
       this.candidate = data;
     });
+  }
+  selecteditem: any;
+
+  onSelectChange(event: any, item: any) {
+    if (item) {
+      item.status = event.target.value;
+      this.selecteditem = item._id;
+      this.dashService.updateJobStatus(item._id, event.target.value).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }

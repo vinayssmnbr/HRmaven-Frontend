@@ -71,12 +71,10 @@ export class DashService {
     return this.http.get(this.prefix + 'job/jobemail', { headers });
   }
 
-  addCandidate(data:any){
+  addCandidate(data: any) {
     const id = this.cookie.get('hr_id');
     data['hrid'] = id;
     return this.http.post(this.prefix + 'candid/candidates', data);
-
-
   }
 
   // addEmployee(data) {
@@ -341,8 +339,13 @@ export class DashService {
     return this.http.post(url, { data }, { headers, responseType: 'blob' });
   }
 
-  updateEmpStatus(id, status): Observable<any> {
+  updateEmpStatus(id: any, status: any): Observable<any> {
     const url = `${this.prefix + 'api/update'}/${id}`;
+    return this.http.patch(url, { status });
+  }
+
+  updateJobStatus(id: any, status: any) {
+    const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
     return this.http.patch(url, { status });
   }
 }
