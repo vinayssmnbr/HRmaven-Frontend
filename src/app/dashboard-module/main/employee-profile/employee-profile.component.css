@@ -44,7 +44,7 @@
   margin-bottom: 15px;
 }
 
-.fa-pencil {
+.fa-pen {
   color: #b4b4b4;
   font-size: 11px;
 }
@@ -652,7 +652,7 @@
   margin-top: 90px;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 260px;
+  height: 420px;
 }
 
 .modal-body5 {
@@ -744,6 +744,15 @@ hr {
   opacity: 0.2;
 }
 
+input::placeholder{
+  color: #888888;
+  opacity:0.6;
+}
+.modal-body4 hr{
+  margin-bottom: 25px;
+  border: 1px solid #cbcbcb;
+  opacity: 0.5;
+}
 .form-row {
   display: flex;
   gap: 30px;
