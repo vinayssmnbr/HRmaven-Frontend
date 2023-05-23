@@ -190,8 +190,8 @@
               <td class="input_check">
                 <input type="checkbox"  [value]="user.id" [checked]="user.checked"
                 (change)="onCheckboxChange($event, user)">
-                <p>29591</p>
-                <!-- <p>{{user.uid}}</p> -->
+                <!-- <p>29591</p> -->
+                <p>{{user.uid}}</p>
               </td>
               <td>{{user.candidateName}}</td>
               <td>{{user.email}}</td>
@@ -423,7 +423,7 @@
       </div>
       <div class="input__box">
         <span class="details">Candidate id</span>
-        <input type="text" placeholder="29591" disabled>
+        <input type="text" placeholder="29591" disabled  [(ngModel)]="currentCandidateUid" formControlName="uid">
       </div>
       <div class="input__box">
         <span class="details">Contact number</span>

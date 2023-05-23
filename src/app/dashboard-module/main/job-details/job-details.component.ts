@@ -39,6 +39,8 @@ export class JobDetailsComponent {
   candidate: any[] = [];
   selectedCandidate:any[]=[];
   selectedPdfFile: any = '';
+  currentCandidateUid: any = '';
+
   tabChange(ids: any) {
     this.id = ids;
     console.log(this.id);
@@ -128,15 +130,30 @@ export class JobDetailsComponent {
   closemodal() {
     this.addcandidate = false;
   }
+
   openmodal() {
     this.addcandidate = true;
+    this.dashService.getCandidateUid().subscribe((res: any) => {
+      console.log('data', res);
+      this.currentCandidateUid = res.uid;
+    });
+
   }
+
   Newcandidate: boolean = false;
 
   openaddmodal() {
     this.Newcandidate = true;
     this.addcandidate = false;
   }
+
+  // openmodal1(){
+  //   this.dashService.getCandidateUid().subscribe((res: any) => {
+  //     console.log('data', res);
+  //     this.currentCandidateUid = res.uid;
+  //   });
+
+  // }
 
   closedone(data: any) {
   
@@ -160,6 +177,7 @@ export class JobDetailsComponent {
   }
 
   newcandidateform = new FormGroup({
+    uid: new FormControl(this.currentCandidateUid),
     candidateName: new FormControl('', [
       Validators.required,
       this.candidateNameValidator,
@@ -385,4 +403,5 @@ export class JobDetailsComponent {
       }
       this.selectedCandidate.sort((a, b) => a.uid - b.uid);
     }
+    
 }

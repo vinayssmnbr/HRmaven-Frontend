@@ -239,6 +239,16 @@ export class DashService {
     return this.http.get(this.prefix + 'candid/findcandidate', { headers });
   }
 
+  getCandidateUid(){
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/candiduid', { headers });
+
+
+  }
+
   //UPDATE EMPLOYEE DATA
   updateEmployee(user: any) {
     console.log('employee update id ', user);
