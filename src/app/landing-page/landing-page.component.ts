@@ -69,5 +69,12 @@ export class LandingPageComponent {
       }, 800);
     });
   }
-  
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.contentdropdown = false;
+  }
 }

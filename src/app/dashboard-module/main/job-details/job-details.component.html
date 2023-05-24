@@ -109,13 +109,13 @@
             <p>Import</p>
           </button>
         </div>
-        <div class="Export_btn">
+        <div class="Export_btn" (mouseleave)="contentdropdown = false">
           <button class="Filters" (click)="dropdownOpen()">
             <img src="assets/images/Group (1).png" alt="">
             <p>Filters</p>
           </button>
           <div class="dropdown_container">
-            <div class="select_content" *ngIf="contentdropdown" (mouseleave)="contentdropdown = false">
+            <div class="select_content" *ngIf="contentdropdown" >
               <p class="Stages">Stages</p>
               <ul>
                 <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
@@ -403,7 +403,7 @@
   </div>
 </div>
 
-<!-- ------------------Add a  new candidate modal--------------- -->
+<!--------------------Add a  new candidate modal------------------------------------------->
 
 <div class="Add_candidate" *ngIf="addcandidate">
   <form [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
@@ -459,8 +459,7 @@
 
 </div>
 
-
-<!-- ------------------------New candidate added successfully!------------------------------------- -->
+<!--------------------------New candidate added successfully!------------------------------->
 <div class="New_candidate_main" *ngIf="Newcandidate">
   <div class="New_candidate">
     <div class="New_candidate_logo">
@@ -471,7 +470,7 @@
     <button class="done_btn" (click)="closedone()">Done</button>
   </div>
 </div>
-<!-- -----------------------------------Import Modal-------------------------------------- -->
+<!-------------------------------------Import Modal----------------------------------------->
 <div class="import_modal_main" *ngIf="importmodal">
   <div class="import_modal">
     <div class="import_title">
