@@ -417,5 +417,11 @@ export class JobDetailsComponent {
     }
     this.selectedCandidate.sort((a, b) => a.uid - b.uid);
   }
-  
+  importmodal: boolean = false;
+  modalimp() {
+    this.importmodal = true;
+  }
+  closeinputmodal() {
+    this.importmodal = false;
+  }
 }
