@@ -43,6 +43,7 @@ export class JobDetailsComponent {
     'Rejected',
     'Archive',
   ];
+  loader: boolean = false;
   importFileResponse: any = { success: [], error: [] };
   id: any = 'all';
   candidate: any[] = [];
@@ -471,6 +472,7 @@ export class JobDetailsComponent {
 
   async onFileSelectedrem(event: any) {
     const file: File = event.files[0];
+    console.log(file)
     // this.loader = true;
     if (!file) {
       console.log('No file selected.');
@@ -483,7 +485,7 @@ export class JobDetailsComponent {
       alert('Invalid file type. Please select a CSV file.');
       return;
     } else {
-      // this.loader = true;
+      this.loader = true;
     }
 
     function validateCsvFile(file: File): boolean {
@@ -550,7 +552,7 @@ export class JobDetailsComponent {
             async (res: any) => {
               console.log('res', res);
               console.log('messagge', res.message);
-              // this.loader = true;
+              this.loader = true;
               responseArr.push(res);
               console.log('Data:', res.data);
               if (res.status == 'failed') {
@@ -563,7 +565,7 @@ export class JobDetailsComponent {
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                // this.loader = false;
+                this.loader = false;
                 // this.csvadded = true;
                 // this.importfile = false;
                 console.log('not uploaded files', errors);
@@ -579,7 +581,7 @@ export class JobDetailsComponent {
               responseArr.push(candidate);
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                // this.loader = false;
+                this.loader = false;
                 // this.csvadded = true;
                 // this.importfile = false;
                 console.log('not uploaded files', errors);
