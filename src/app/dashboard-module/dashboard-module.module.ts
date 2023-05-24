@@ -33,6 +33,7 @@ import { LeavecountPipe } from './pipe/leavecount.pipe';
 import { RecruiterfilterPipe } from './pipe/recruiterfilter.pipe';
 import { JobstatusPipe } from './pipe/jobstatus.pipe';
 import { HelpComponent } from './main/help/help.component';
+import { CandidatefilterPipe } from './pipe/candidatefilter.pipe';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { HelpComponent } from './main/help/help.component';
     LeavecountPipe,
     RecruiterfilterPipe,
     JobstatusPipe,
+    CandidatefilterPipe,
   ],
   imports: [
     CommonModule,
