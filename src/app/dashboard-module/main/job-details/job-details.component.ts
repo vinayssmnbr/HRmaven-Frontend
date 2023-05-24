@@ -417,4 +417,5 @@ export class JobDetailsComponent {
     }
     this.selectedCandidate.sort((a, b) => a.uid - b.uid);
   }
+  
 }
