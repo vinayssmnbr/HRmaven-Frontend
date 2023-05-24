@@ -47,7 +47,7 @@
     <div class="card3" *ngIf="personaldetail">
       <div class="details">
         <h3>Basic Details</h3>
-        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pen"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -90,7 +90,7 @@
     <div class="card4" *ngIf="personaldetail">
       <div class="details">
         <h3>Contact Details</h3>
-        <button class="edit1" (click)="openmodal2(user)"><i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal2(user)"><i class="fa-solid fa-pen"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -123,7 +123,7 @@
     <div class="card5" *ngIf="personaldetail">
       <div class="details">
         <h3>Personal Particulars</h3>
-        <button class="edit1" (click)="openModal3(user)"><i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal3(user)"><i class="fa-solid fa-pen"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -165,7 +165,7 @@
         <h3>Education</h3>
         <div class="btns">
           <!-- <button class="edit2"><i class="fa-solid fa-circle-plus"></i></button> -->
-          <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pencil"></i></button>
+          <button class="edit1" (click)="openModal4(user)"><i class="fa-solid fa-pen"></i></button>
         </div>
       </div>
       <div class="row1" *ngIf="!showAllData1 ">
@@ -201,11 +201,12 @@
             <p class="duration2">{{item.stream || '--------'}}</p>
           </div>
         </div>
+        <hr>
       </div>
       <div class="cnt-btn">
-        <button class="view" (click)="showMoredata1()" *ngIf="showbutton1">View More<i
-            class="fa-solid fa-angle-down"></i></button>
-        <button class="hide" (click)="hidedata1()" *ngIf="!showbutton1 && showAllData1">View less<i
+        <button class="view" (click)="toggleDataView()" *ngIf="!showAllData1 && user?.educationItems?.length > 1">View
+          More<i class="fa-solid fa-angle-down"></i></button>
+        <button class="hide" (click)="toggleDataView()" *ngIf="showAllData1">View less<i
             class="fa-solid fa-angle-up"></i></button>
       </div>
     </div>
@@ -218,7 +219,7 @@
       <div class="details">
         <h3>Experience</h3>
         <!-- <button class="edit2"><i class="fa-solid fa-circle-pçlass=lus"></i></button> -->
-        <button class="edit1" (click)="openModal5(user)"><i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openModal5(user)"><i class="fa-solid fa-pen"></i></button>
       </div>
       <div>
         <div class="row1" *ngIf="!showAllData">
@@ -254,11 +255,16 @@
               <p class="designation">{{item.expdesignation || '--------'}}</p>
             </div>
           </div>
+          <hr>
         </div>
         <div class="cnt-btn">
-          <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
+          <!-- <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
               class="fa-solid fa-angle-down"></i></button>
           <button class="hide" (click)="hidedata()" *ngIf="!showbutton && showAllData">View less<i
+              class="fa-solid fa-angle-up"></i></button> -->
+          <button class="view" (click)="toggleDataExp()" *ngIf="!showAllData && user?.experienceItems?.length > 1">View
+            More<i class="fa-solid fa-angle-down"></i></button>
+          <button class="hide" (click)="toggleDataExp()" *ngIf="showAllData">View less<i
               class="fa-solid fa-angle-up"></i></button>
         </div>
       </div>
@@ -270,7 +276,7 @@
     <div class="card8" *ngIf="jobdetail">
       <div class="details">
         <h3>Work Details</h3>
-        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pencil"></i></button>
+        <button class="edit1" (click)="openmodal1(user)"><i class="fa-solid fa-pen"></i></button>
       </div>
       <div class="row1">
         <div class="column1">
@@ -311,7 +317,7 @@
   <div class="modal" *ngIf="showModal">
     <div class="modal-content" *ngIf="modalContent1">
       <div class="modal-header">
-        <h4 class="modal-title">Edit Personal Details</h4>
+        <h4 class="modal-title">Update Personal Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
@@ -425,7 +431,7 @@
 
     <div class="modal-content" *ngIf="modalContent4">
       <div class="modal-header">
-        <h4 class="modal-title">Edit Contact Details</h4>
+        <h4 class="modal-title">Update Contact Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
@@ -478,7 +484,7 @@
 
     <div class="modal-content" *ngIf="modalContent5">
       <div class="modal-header">
-        <h4 class="modal-title">Edit Personal Particulars</h4>
+        <h4 class="modal-title">Update Personal Particulars</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body">
@@ -552,13 +558,13 @@
 
     <div class="modal-content4" *ngIf="modalContent6">
       <div class="modal-header4">
-        <h4 class="modal-title">Edit Education Details</h4>
+        <h4 class="modal-title">Update Education Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body4">
         <form [formGroup]="educationForm" id="form5" (ngSubmit)="onSubmit()">
           <div formArrayName="educationItems">
-            <div *ngFor="let item of educationItems.controls; let i = index;" [formGroupName]="i">
+            <div *ngFor="let item of educationItems.controls; let i = index;" [formGroupName]="i" class="items">
               <div class="form-row">
                 <div class="input">
                   <label>School/College</label>
@@ -576,12 +582,17 @@
               <div class="form-row">
                 <div class="input">
                   <label>Year of Passing</label>
-                  <input type="number" formControlName="passing" placeholder="2016" class="text no-spin">
+                  <input type="number" formControlName="passing" placeholder="2016" class="text no-spin"
+                    (keydown)="validatepassingYear($event)">
                 </div>
               </div>
+              <div class="delete-container">
+              <button class="delete"><i class="fa-solid fa-trash" style="color: #f74c4a;"></i>Delete</button>
+            </div>
+            <hr>
             </div>
           </div>
-          <button type="button" class="add-more" (click)="addeducation()"><i class="fa-solid fa-circle-plus"></i>Add
+          <button type="button" class="add-more" (click)="addeducation()"><img src="./assets/images/plus_icon.svg" alt="plus">Add
             More</button>
         </form>
       </div>
@@ -595,13 +606,13 @@
 
     <div class="modal-content4" *ngIf="modalContent7">
       <div class="modal-header4">
-        <h4 class="modal-title">Edit Experience Details</h4>
+        <h4 class="modal-title">Update Experience Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body4">
         <form [formGroup]="experienceForm" id="form5" (ngSubmit)="onSubmit()">
-          <div formArrayName="experienceItems">
-            <div *ngFor="let item of experienceItems.controls; let i = index;" [formGroupName]="i">
+          <div formArrayName="experienceItems" >
+            <div *ngFor="let item of experienceItems.controls; let i = index;" [formGroupName]="i" class="items">
               <div class="form-row">
                 <div class="input">
                   <label>Company/Organisation Name</label>
@@ -622,9 +633,13 @@
                   <input type="text" formControlName="explocation" placeholder="Location">
                 </div>
               </div>
+              <div class="delete-container">
+                <button class="delete"><i class="fa-solid fa-trash" style="color: #f74c4a;"></i>Delete</button>
+              </div>
+              <hr>
             </div>
           </div>
-          <button type="button" class="add-more" (click)="addItem()"><i class="fa-solid fa-circle-plus"></i>Add
+          <button type="button" class="add-more" (click)="addItem()"><img src="./assets/images/plus_icon.svg" alt="plus">Add
             More</button>
         </form>
       </div>
@@ -640,7 +655,7 @@
     <!------------------------------------------------- JOB DETAILS----------------------------------------------------->
     <div class="modal-content2" *ngIf="modalContent2">
       <div class="modal-header">
-        <h4 class="modal-title">Edit Job Details</h4>
+        <h4 class="modal-title">Update Job Details</h4>
         <i class="fa-solid fa-xmark" (click)="closeModal()"></i>
       </div>
       <div class="modal-body2">

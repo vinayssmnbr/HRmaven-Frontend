@@ -1,6 +1,6 @@
 .section{
   width: 100%;
-  height:auto;
+  /* height:100%; */
   background-color: #ffffff;
   padding: 22px;
 }
@@ -16,6 +16,7 @@
   flex-direction: column;
   padding: 47px 130px;
   text-align: justify;
+  position: relative;
 }
 .content h1{
   font-family: 'Outfit';
@@ -199,3 +200,89 @@ color: #555555;
  border: 1px solid #F0F0F0;
  width: 96%;
 }
+
+.position{
+  position: absolute;
+  right: 28%;
+  top: 5%;
+  transform: rotate(-22deg);
+}
+.position1{
+position: absolute;
+  top: 60%;
+  left: 5%;
+  transform: rotate(-12deg);
+}
+
+.position2{
+position: absolute;
+  left: 28%;
+  top: 50%;
+  transform: rotate(28deg);
+}
+
+.position3{
+ position: absolute;
+  top: -5%;
+  left: 16%;
+  transform: rotate(68deg);
+}
+
+.position4{
+position: absolute;
+  right: 45%;
+  top: 44%;
+  transform: rotate(108deg);
+
+}
+.position5{
+position: absolute;
+  top: 0%;
+  left: 44%;
+  transform: rotate(-62deg);
+}
+.position6{
+  position: absolute;
+    right: 3%;
+    top: 17%;
+    transform: rotate(58deg);
+}
+.mark{
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 126px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.mark1{
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.mark2{
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 58px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.mark3{
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 34px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.mark4{
+  font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 54px;
+    color: rgba(255, 255, 255, 0.05);
+  }

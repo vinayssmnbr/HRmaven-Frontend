@@ -304,6 +304,7 @@ export class EmployeeContentComponent implements OnInit {
       this.buttonbackgroundColor === '#2F2C9F' ? '#FFFFFF' : '#2F2C9F';
     this.buttonColor = this.buttonColor === '#FFFFFF' ? '#2F2C9F' : '#FFFFFF';
   }
+
   changeColor2() {
     this.buttonbackgroundColor2 =
       this.buttonbackgroundColor2 === '#ECECEC' ? '#2F2C9F' : '#ECECEC';
@@ -326,9 +327,11 @@ export class EmployeeContentComponent implements OnInit {
 
   emailvar: any;
   onNextForm() {
-    this.firstStep = false;
-    this.secondStep = true;
-    this.onUpload(this.selectedFile);
+    if (this.Selectvariable1 != '' && this.Selectvariable6 != '') {
+      this.firstStep = false;
+      this.secondStep = true;
+      this.onUpload(this.selectedFile);
+    }
     // this.dashService.getEmployeeEmail(this.form.controls['email'].value).subscribe((response:any)=>{
     //   console.log("response",this.emailAlreadyExists)
     //   this.emailvar=response.email
@@ -936,7 +939,7 @@ export class EmployeeContentComponent implements OnInit {
 
   //   const worksheet = XLSX.utils.aoa_to_sheet(data);
   //   const workbook = XLSX.utils.book_new();
-  //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');
+  //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');z
   //   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
   //   const filename = 'data.xlsx';
   //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -1014,6 +1017,7 @@ export class EmployeeContentComponent implements OnInit {
       } else {
         return false;
       }
+      
     }
 
     // Check file size
@@ -1077,7 +1081,9 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
-              } else if (res.status == 'Success') {
+              }
+              else if (res.status == "Success") {
+                numSuccesses++;
                 sucesses.push(res);
               }
               if (responseArr.length == data.length) {
@@ -1090,7 +1096,6 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
-                this.csvForm.reset();
               }
             },
             async (error: any) => {

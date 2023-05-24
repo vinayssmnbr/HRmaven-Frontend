@@ -31,7 +31,14 @@
                 </div>
                 <div class="landing_btn" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
                     data-aos-duration="1500">
-                    <button class="login" routerLink="/login">Login</button>
+                    <div class="login">
+                        <span>Login</span>
+                        <div class="dropdown-content">
+                            <button routerLink="/login"><a>Admin</a></button>
+                            <button routerLink="/login-emp"><a>Employee</a></button>
+
+                        </div>
+                    </div>
                     <button class="Signup" routerLink="/signup">Sign up</button>
                 </div>
             </div>
@@ -89,14 +96,17 @@
             <div class="dashboard_img" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
                 <img src="assets/images/dashboard 4.png" alt="">
             </div>
+            <!-- <div class="thumb" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000">
+                <a><span>HR Maven </span></a>
+            </div> -->
         </div>
 
         <div class="Features_product">
             <h1 data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Features of our product</h1>
         </div>
         <div class="Features_product_content">
-            <img data-aos="fade-left" data-aos-offset="200"
-            data-aos-easing="ease-in-sine"src="assets/images/employee table 1.png" alt="">
+            <img data-aos="fade-left" data-aos-offset="200" data-aos-easing="ease-in-sine"
+                src="assets/images/employee table 1.png" alt="">
             <div class="Features_product_content_text" data-aos="fade-right" data-aos-offset="200"
                 data-aos-easing="ease-in-sine">
                 <h1>Employee Experience and Management </h1>
@@ -316,9 +326,9 @@
                         </div>
                         <h3 data-aos="zoom-in-up">HRmaven</h3>
                     </div>
-                    <p data-aos="fade-up" data-aos-duration="3000">Hrmaven is the solution for hardworking <br>
+                    <p data-aos="fade-left" data-aos-duration="2000">Hrmaven is the solution for hardworking <br>
                         employees of your management or <br> company.</p>
-                    <div class="social_icon" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                    <div class="social_icon" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="800">
                         <i class="fa-brands fa-linkedin"></i>
                         <i class="fa-brands fa-square-facebook"></i>
                         <i class="fa-brands fa-instagram"></i>
@@ -338,5 +348,10 @@
         <p class="copyright">2023
             copyright: hrmaven.com</p>
     </footer>
+
+    <!-- --------------------Scroll To Top------------------ -->
+    <div class="Scroll">
+        <a id="rocketmeluncur" class="showrocket"><i></i></a>
+    </div>
 
 </div>
