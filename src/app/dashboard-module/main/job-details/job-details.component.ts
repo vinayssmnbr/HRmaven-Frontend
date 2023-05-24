@@ -492,7 +492,6 @@ export class JobDetailsComponent {
       } else {
         return false;
       }
-      
     }
 
     // Check file size
@@ -542,7 +541,7 @@ export class JobDetailsComponent {
         console.log(res, 'uid response');
         console.log(res.message);
         if (uid == -1) return 'there is an error while getting uid';
-       
+
         data.forEach((candidate) => {
           console.log('Adding employee:', candidate);
           candidate['uid'] = uid++;
@@ -556,8 +555,7 @@ export class JobDetailsComponent {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...candidate, error: res.message });
-              }
-              else if (res.status == "Success") {
+              } else if (res.status == 'Success') {
                 numSuccesses++;
                 sucesses.push(res);
               }
@@ -597,5 +595,8 @@ export class JobDetailsComponent {
 
     reader.readAsText(file);
   }
-
+  colseimportmod: boolean = false;
+  closeimportmodal() {
+    this.colseimportmod = false;
+  }
 }
