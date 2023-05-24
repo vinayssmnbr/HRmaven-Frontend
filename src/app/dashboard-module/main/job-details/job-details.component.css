@@ -303,7 +303,7 @@ ul.skills {
   color: #444444;
   z-index: 99;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.15);
-border-radius: 8px;
+  border-radius: 8px;
 }
 
 .select_content ul {
@@ -456,7 +456,7 @@ thead .Resume {
   border-radius: 100px;
   padding: 8px 15px;
 } */
-.dropdwon_select1{
+.dropdwon_select1 {
   cursor: pointer;
   border: 1px solid transparent;
   outline: none;
@@ -467,10 +467,11 @@ thead .Resume {
   border-radius: 100px;
   padding: 8px 15px;
 }
-.designation-arrow{
+
+.designation-arrow {
   position: absolute;
-    top: 26%;
-    right: 10%;
+  top: 26%;
+  right: 10%;
 }
 
 select.table_option::after {
@@ -954,7 +955,7 @@ form .user__details .input__box {
 }
 
 .dropdwon_select:hover,
-.dropdwon_select:focus{
+.dropdwon_select:focus {
   border: 1px solid #2F2C9F;
   border-radius: 8px;
 }
@@ -1002,6 +1003,7 @@ form .user__details .input__box {
   border-radius: 8px;
 
 }
+
 .loader {
   border: 8px solid #f3f3f3;
   /* Light grey */
@@ -1036,4 +1038,192 @@ form .user__details .input__box {
 
 .text.ng_valid {
   border: 1px solid green !important;
+}
+
+/* -------------------Import Modal---------------------------- */
+.import_modal_main {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .8);
+  overflow: hidden;
+  transition: opacity linear .2s;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  padding: 0 30px;
+}
+
+.import_modal {
+  z-index: 1;
+  background-color: rgba(250, 250, 250, 1);
+  border-radius: 16px;
+  position: relative;
+  width: 553px;
+  height: 414px;
+}
+
+.import_title {
+  display: flex;
+  border-bottom: 1px solid #D9D9D9;
+  width: 100%;
+}
+
+.import_title h4 {
+  font-weight: 500;
+  font-size: 16px;
+  color: #666666;
+  padding: 12px 30px;
+}
+
+.import_title i {
+  position: absolute;
+  right: -30px;
+  color: #ECECEC;
+  top: -20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.import_csv {
+  width: 493px;
+  height: 177px;
+  border: 1px dashed #CBCBCB;
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.import_csv h2 {
+  padding-top: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #666666;
+}
+
+.import_csv input {
+  padding-top: 10px;
+}
+
+.import_csv input[type="file"]::-webkit-file-upload-button {
+  color: #2f2c9f;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid transparent;
+  margin-left: 70px;
+}
+
+.import_csv input[type="file"]::-webkit-file-upload-button:hover {
+  background: #fff;
+  border: 1px solid #2F2C9F;
+  color: #000;
+}
+
+.sample_download {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.sample_download p {
+  font-weight: 400;
+  font-size: 12px;
+  color: #666666;
+}
+
+.sample_download p a {
+  color: #2F2C9F;
+  cursor: pointer;
+}
+
+.input_loader {
+  height: 50px;
+  border: 1px solid #CBCBCB;
+  margin: 10px 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.input_loader img {
+  padding-left: 20px;
+}
+
+/* -----------------Loader Progress bar --------------------- */
+.progress_bar_loader {
+  margin-left: 15px;
+  width: 410px;
+  max-width: 90%;
+  height: 4px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress_bar_loader:before {
+  content: '';
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: progress-anime 10s ease-out infinite;
+  background: linear-gradient(to right, #2F2C9F 0%, #2F2C9F 50%, #d2d2d2 50%, #d2d2d2 100%);
+}
+
+@keyframes progress-anime {
+  0% {
+    left: -100%;
+  }
+
+  75% {
+    left: -5%;
+  }
+
+  85% {
+    left: -5%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.input_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.input_btn button {
+  width: 111px;
+  height: 38px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.input_btn .cancel_btn {
+  border: 1px solid #2F2C9F;
+  color: #2F2C9F;
+}
+.input_btn .cancel_btn:hover{
+  background-color: #eae5e5;
+}
+
+.input_btn .Import_btn {
+  background-color: #2f2c9f;
+  color: #fff;
+}
+.input_btn .Import_btn:hover{
+  background-color: #1510a8;
 }

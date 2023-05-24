@@ -104,7 +104,7 @@
             <p>Export</p>
           </button>
         </div>
-        <div class="Export_btn">
+        <div class="Export_btn" (click)="modalimp()">
           <button class="Import"><img src="assets/images/prime_file-import.png" alt="">
             <p>Import</p>
           </button>
@@ -282,7 +282,7 @@
               <ng-container *ngIf="(item.status==statusFilter || statusFilter=='All') && item.found!='true'">
                 <td class="input_check">
                   <input type="checkbox" [value]="item.id" [checked]="item.checked"
-                  (change)="onCheckboxChange($event, item)">
+                    (change)="onCheckboxChange($event, item)">
                   <p>{{item.uid}}</p>
                 </td>
                 <td>{{item.candidateName}}</td>
@@ -301,8 +301,9 @@
                   </select>
                 </td>
                 <td class="pdf_logo">
-                  <!-- <img src="assets/images/vscode-icons_file-type-pdf2.png" alt=""> -->
-                  {{item.url}}
+                  <a href="{{item.url}}" target="_blank">
+                    <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                  </a>
                 </td>
               </ng-container>
             </tr>
@@ -400,12 +401,6 @@
 
     </div>
   </div>
-
-
-
-
-
-
 </div>
 
 <!-- ------------------Add a  new candidate modal--------------- -->
@@ -432,19 +427,19 @@
         <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber" class="text"
           (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
           [ngClass]="{'ng_invalid': (mobileExists || newcandidateform.controls.contactnumber.invalid && newcandidateform.controls.contactnumber.dirty),'ng_valid': !mobileExists && newcandidateform.controls.contactnumber.valid}">
-          <div class="validation-message" *ngIf="mobileExists">Mobile
-            No.
-            already exists</div>
+        <div class="validation-message" *ngIf="mobileExists">Mobile
+          No.
+          already exists</div>
       </div>
       <div class="input__box">
         <span class="details">Email</span>
         <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email" class="text"
-        (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
+          (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
           [ngClass]="{'ng_invalid': (emailExists || newcandidateform.controls.email.invalid && newcandidateform.controls.email.dirty),'ng_valid':!emailExists && newcandidateform.controls.email.valid}">
-          <div class="validation-message" *ngIf="emailExists">Email
-            already
-            exists</div>
-        </div> 
+        <div class="validation-message" *ngIf="emailExists">Email
+          already
+          exists</div>
+      </div>
       <div class="input__box">
         <span class="details">Applied date</span>
         <input type="date" placeholder="23/04/2023" class="text" required formControlName="applieddate">
@@ -474,5 +469,32 @@
     <h1>New candidate added successfully!</h1>
     <p>You can add more candidates in a similar way.</p>
     <button class="done_btn" (click)="closedone()">Done</button>
+  </div>
+</div>
+<!-- -----------------------------------Import Modal-------------------------------------- -->
+<div class="import_modal_main" *ngIf="importmodal">
+  <div class="import_modal">
+    <div class="import_title">
+      <h4>Upload CSV</h4>
+      <i class="fa-solid fa-xmark" (click)="closeinputmodal()"></i>
+    </div>
+
+    <div class="import_csv">
+      <img src="assets/images/Vector (4).png" alt="">
+      <h2>Select a CSV file to upload</h2>
+      <input type="file">
+    </div>
+    <div class="sample_download">
+      <p>Download <a href="assets/csv/Sample.csv" [download]><u>Sample CSV File</u></a> for reference.</p>
+      <p>Maximum Size : 5 MB</p>
+    </div>
+    <div class="input_loader">
+      <img src="assets/images/Vector (8).png" alt="">
+      <div class="progress_bar_loader"></div>
+    </div>
+    <div class="input_btn">
+      <button class="cancel_btn" (click)="closeinputmodal()">Cancel</button>
+      <button class="Import_btn">Import</button>
+    </div>
   </div>
 </div>
