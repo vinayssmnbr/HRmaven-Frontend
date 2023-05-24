@@ -201,6 +201,7 @@
             <p class="duration2">{{item.stream || '--------'}}</p>
           </div>
         </div>
+        <hr>
       </div>
       <div class="cnt-btn">
         <button class="view" (click)="toggleDataView()" *ngIf="!showAllData1 && user?.educationItems?.length > 1">View
@@ -563,7 +564,7 @@
       <div class="modal-body4">
         <form [formGroup]="educationForm" id="form5" (ngSubmit)="onSubmit()">
           <div formArrayName="educationItems">
-            <div *ngFor="let item of educationItems.controls; let i = index;" [formGroupName]="i">
+            <div *ngFor="let item of educationItems.controls; let i = index;" [formGroupName]="i" class="items">
               <div class="form-row">
                 <div class="input">
                   <label>School/College</label>
@@ -585,7 +586,10 @@
                     (keydown)="validatepassingYear($event)">
                 </div>
               </div>
-              <hr>
+              <div class="delete-container">
+              <button class="delete"><i class="fa-solid fa-trash" style="color: #f74c4a;"></i>Delete</button>
+            </div>
+            <hr>
             </div>
           </div>
           <button type="button" class="add-more" (click)="addeducation()"><img src="./assets/images/plus_icon.svg" alt="plus">Add
@@ -607,8 +611,8 @@
       </div>
       <div class="modal-body4">
         <form [formGroup]="experienceForm" id="form5" (ngSubmit)="onSubmit()">
-          <div formArrayName="experienceItems">
-            <div *ngFor="let item of experienceItems.controls; let i = index;" [formGroupName]="i">
+          <div formArrayName="experienceItems" >
+            <div *ngFor="let item of experienceItems.controls; let i = index;" [formGroupName]="i" class="items">
               <div class="form-row">
                 <div class="input">
                   <label>Company/Organisation Name</label>
@@ -629,6 +633,10 @@
                   <input type="text" formControlName="explocation" placeholder="Location">
                 </div>
               </div>
+              <div class="delete-container">
+                <button class="delete"><i class="fa-solid fa-trash" style="color: #f74c4a;"></i>Delete</button>
+              </div>
+              <hr>
             </div>
           </div>
           <button type="button" class="add-more" (click)="addItem()"><img src="./assets/images/plus_icon.svg" alt="plus">Add
