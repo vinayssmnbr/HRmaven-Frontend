@@ -1081,7 +1081,9 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
-              } else if (res.status == 'Success') {
+              }
+              else if (res.status == "Success") {
+                numSuccesses++;
                 sucesses.push(res);
               }
               if (responseArr.length == data.length) {
@@ -1094,7 +1096,6 @@ export class EmployeeContentComponent implements OnInit {
                 this.importFileResponse.sucess = [...sucesses];
                 this.importFileResponse.numSuccesses = numSuccesses;
                 this.importFileResponse.numFailures = numFailures;
-                this.csvForm.reset();
               }
             },
             async (error: any) => {
