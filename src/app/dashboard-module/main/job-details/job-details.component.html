@@ -482,7 +482,7 @@
     <div class="import_csv">
       <img src="assets/images/Vector (4).png" alt="">
       <h2>Select a CSV file to upload</h2>
-      <input type="file">
+      <input type="file" accept=".csv"  #csvInput>
     </div>
     <div class="sample_download">
       <p>Download <a href="assets/csv/Sample.csv" [download]><u>Sample CSV File</u></a> for reference.</p>
@@ -494,7 +494,7 @@
     </div>
     <div class="input_btn">
       <button class="cancel_btn" (click)="closeinputmodal()">Cancel</button>
-      <button class="Import_btn">Import</button>
+      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)">Import</button>
     </div>
   </div>
 </div>
