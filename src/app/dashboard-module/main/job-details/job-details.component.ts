@@ -43,6 +43,9 @@ export class JobDetailsComponent {
     'Rejected',
     'Archive',
   ];
+  importfile:boolean=false;
+  csvadded: boolean = false;
+  loader: boolean = false;
   importFileResponse: any = { success: [], error: [] };
   id: any = 'all';
   candidate: any[] = [];
@@ -421,8 +424,12 @@ export class JobDetailsComponent {
   modalimp() {
     this.importmodal = true;
   }
+
   closeinputmodal() {
     this.importmodal = false;
+    this.csvadded = false;
+    this. fetchJobVecancies();
+
   }
 
   // onFileSelectedrem(event: any): void {
@@ -471,6 +478,7 @@ export class JobDetailsComponent {
 
   async onFileSelectedrem(event: any) {
     const file: File = event.files[0];
+    console.log(file)
     // this.loader = true;
     if (!file) {
       console.log('No file selected.');
@@ -483,7 +491,7 @@ export class JobDetailsComponent {
       alert('Invalid file type. Please select a CSV file.');
       return;
     } else {
-      // this.loader = true;
+      this.loader = true;
     }
 
     function validateCsvFile(file: File): boolean {
@@ -549,7 +557,7 @@ export class JobDetailsComponent {
             async (res: any) => {
               console.log('res', res);
               console.log('messagge', res.message);
-              // this.loader = true;
+              this.loader = true;
               responseArr.push(res);
               console.log('Data:', res.data);
               if (res.status == 'failed') {
@@ -561,9 +569,10 @@ export class JobDetailsComponent {
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                // this.loader = false;
-                // this.csvadded = true;
-                // this.importfile = false;
+                this.loader = true;
+                this.csvadded = true;
+                this.importfile = false;
+                this.importmodal=false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -577,9 +586,9 @@ export class JobDetailsComponent {
               responseArr.push(candidate);
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                // this.loader = false;
-                // this.csvadded = true;
-                // this.importfile = false;
+                this.loader = false;
+                this.csvadded = true;
+                this.importfile = false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -597,6 +606,9 @@ export class JobDetailsComponent {
   }
   colseimportmod: boolean = false;
   closeimportmodal() {
-    this.colseimportmod = false;
+    this.importmodal=false;
+    this.csvadded=false;
+    this.colseimportmod = true;
+    this.fetchJobVecancies();
   }
 }
