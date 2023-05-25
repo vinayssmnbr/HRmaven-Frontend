@@ -54,7 +54,8 @@
       </div>
 
       <div class="dropdown_content" (mouseleave)="contentdropdown = false">
-        <div class="dropdwon_select" (click)="dropdownOpen()">
+        <div class="dropdwon_select" (click)="employee.length > 0 ? dropdownOpen() : null"
+          [disabled]="searchFieldDisabled()">
           <div class="drop-icon">
             <p>{{Selectvariable}}</p>
             <div class="input_icon">
@@ -62,7 +63,7 @@
             </div>
           </div>
         </div>
-        <div class="select_content" *ngIf="contentdropdown" (mouseleave)="dropdownClose()">
+        <div class="select_content" *ngIf="contentdropdown && employee.length > 0" (mouseleave)="dropdownClose()">
           <ul>
             <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
               (click)="Changeselect(arr)">

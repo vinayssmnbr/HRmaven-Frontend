@@ -201,7 +201,7 @@
             <p class="duration2">{{item.stream || '--------'}}</p>
           </div>
         </div>
-        <hr>
+        <hr *ngIf="Showhrline && i !== user.educationItems.length - 1">
       </div>
       <div class="cnt-btn">
         <button class="view" (click)="toggleDataView()" *ngIf="!showAllData1 && user?.educationItems?.length > 1">View
@@ -239,7 +239,7 @@
           </div>
         </div>
         <div *ngFor="let item of user.experienceItems; let i=index">
-          <div class="row1" *ngIf="showAllData">
+          <div class="row1" *ngIf="showAllData ">
             <div class="column1">
               <span class="orgname">Company/Organisation Name</span>
               <p class="orgname">{{item.expcompany || '--------'}}</p>
@@ -255,7 +255,8 @@
               <p class="designation">{{item.expdesignation || '--------'}}</p>
             </div>
           </div>
-          <hr>
+          <hr *ngIf="Showhrline1 && i !== user.experienceItems.length - i">
+
         </div>
         <div class="cnt-btn">
           <!-- <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i
@@ -587,17 +588,20 @@
                 </div>
               </div>
               <div class="delete-container">
-              <button class="delete"><i class="fa-solid fa-trash" style="color: #f74c4a;"></i>Delete</button>
-            </div>
-            <hr>
+                <button class="delete" (click)="removeEducation(i)"><i class="fa-solid fa-trash"
+                    style="color: #f74c4a;"></i>Delete</button>
+              </div>
+              <hr>
             </div>
           </div>
-          <button type="button" class="add-more" (click)="addeducation()"><img src="./assets/images/plus_icon.svg" alt="plus">Add
+          <button type="button" class="add-more" (click)="addeducation()"><img src="./assets/images/plus_icon.svg"
+              alt="plus">Add
             More</button>
         </form>
       </div>
       <div class="modal-footer4">
-        <button class="save" (click)="closeModal5(educationForm.value)">{{loader?'Updating...':'Update'}}</button>
+        <button class="save" (click)="closeModal5(educationForm.value)"
+          [disabled]="educationForm.invalid">{{loader?'Updating...':'Update'}}</button>
       </div>
     </div>
 
@@ -611,7 +615,7 @@
       </div>
       <div class="modal-body4">
         <form [formGroup]="experienceForm" id="form5" (ngSubmit)="onSubmit()">
-          <div formArrayName="experienceItems" >
+          <div formArrayName="experienceItems">
             <div *ngFor="let item of experienceItems.controls; let i = index;" [formGroupName]="i" class="items">
               <div class="form-row">
                 <div class="input">
@@ -634,12 +638,14 @@
                 </div>
               </div>
               <div class="delete-container">
-                <button class="delete"><i class="fa-solid fa-trash" style="color: #f74c4a;"></i>Delete</button>
+                <button class="delete" (click)="removeExprence(i)"><i class="fa-solid fa-trash"
+                    style="color: #f74c4a;"></i>Delete</button>
               </div>
               <hr>
             </div>
           </div>
-          <button type="button" class="add-more" (click)="addItem()"><img src="./assets/images/plus_icon.svg" alt="plus">Add
+          <button type="button" class="add-more" (click)="addItem()"><img src="./assets/images/plus_icon.svg"
+              alt="plus">Add
             More</button>
         </form>
       </div>

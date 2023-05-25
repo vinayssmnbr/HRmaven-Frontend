@@ -109,10 +109,10 @@ export class DashService {
     return itemString ? JSON.parse(itemString) : null;
   }
 
-  //DELETE DATA
-  deleteStudent(id: string): Observable<void> {
-    const url = `${this.prefix + 'api/'}/${id}`;
-    return this.http.delete<void>(url);
+  // DELETE DATA
+  deleteStudent(id: any) {
+    const url = `${this.prefix + 'api/delete'}/${id}`;
+    return this.http.delete(url);
   }
   getLeaves() {
     return this.http.get(this.prefix + 'api/leave//');
@@ -226,7 +226,9 @@ export class DashService {
   }
 
   getCandidateMobile(contactnumber: any) {
-    return this.http.get(`${this.prefix + 'candid/checkedmobile'}/${contactnumber}`);
+    return this.http.get(
+      `${this.prefix + 'candid/checkedmobile'}/${contactnumber}`
+    );
   }
 
   getCandidate() {
