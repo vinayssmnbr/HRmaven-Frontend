@@ -155,7 +155,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of candidate | jobstatus:statusFilter ">
+            <tr *ngFor="let item of sortEmployeeByUid(candidate) | jobstatus:statusFilter ">
               <td colspan="7" class="no_data" *ngIf=" item.found=='true'">
                 <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                     xmlns="http://www.w3.org/2000/svg">
@@ -486,7 +486,7 @@
    
     <div class="input_btn">
       <button class="cancel_btn" (click)="closeinputmodal()">Cancel</button>
-      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)" >Import</button>
+      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)" [disabled]="csvForm.controls.csv.pristine">Import</button>
     </div>
   </div>
 </div>
