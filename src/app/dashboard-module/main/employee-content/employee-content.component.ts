@@ -158,27 +158,29 @@ export class EmployeeContentComponent implements OnInit {
   progress1: boolean = true;
   loading: boolean = false;
   submit() {
-    this.loading = true;
-    this.doneClicked = true;
-    if (this.form.invalid) return;
-    console.log(this.form.value);
-    let data = this.form.value;
-    data['hrid'] = this.cookie.get('hr_id');
-    this.showModalContent = true;
-    this.fourthStep = true;
-    this.thirdStep = false;
-    data.designation = this.designation;
-    data.location = this.location;
-    data.timing = this.timing;
-    data.job_type = this.job_type;
-    this.dashService.addEmployee(data).subscribe((result) => {
-      this.dashService.addEmployee(this.form);
-      this.loading = false;
-      this.showModalContent = false;
+    if (this.Selectvariable2 != '' && this.Selectvariable3 != '') {
+      this.loading = true;
+      this.doneClicked = true;
+      if (this.form.invalid) return;
+      console.log(this.form.value);
+      let data = this.form.value;
+      data['hrid'] = this.cookie.get('hr_id');
+      this.showModalContent = true;
+      this.fourthStep = true;
+      this.thirdStep = false;
+      data.designation = this.designation;
+      data.location = this.location;
+      data.timing = this.timing;
+      data.job_type = this.job_type;
+      this.dashService.addEmployee(data).subscribe((result) => {
+        this.dashService.addEmployee(this.form);
+        this.loading = false;
+        this.showModalContent = false;
 
-      this.fetchdata();
-      this.form.reset();
-    });
+        this.fetchdata();
+        this.form.reset();
+      });
+    }
   }
 
   form1Valid: boolean = this.form.controls.name.valid;
@@ -1017,7 +1019,6 @@ export class EmployeeContentComponent implements OnInit {
       } else {
         return false;
       }
-      
     }
 
     // Check file size
@@ -1081,8 +1082,7 @@ export class EmployeeContentComponent implements OnInit {
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...employee, error: res.message });
-              }
-              else if (res.status == "Success") {
+              } else if (res.status == 'Success') {
                 numSuccesses++;
                 sucesses.push(res);
               }
