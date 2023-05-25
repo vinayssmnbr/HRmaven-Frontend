@@ -870,6 +870,84 @@ footer .copyright {
 
 }
 
+/* ----------------DropDown Menu----------------------------- */
+.dropdwon_select {
+    background-color: #fff;
+    width: 95px;
+    height: 40px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
+    color: #2F2C9F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+
+}
+
+.dropdwon_select:hover,
+.dropdwon_select:focus {
+    border: 1px solid #2F2C9F;
+    border-radius: 8px;
+}
+
+.dropdwon_select p {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.dropdwon_select i {
+    font-size: 14px;
+    color: #444444;
+    padding: 3px 7px;
+}
+
+/* 
+.select_content {
+    background-color: #2F2C9F;
+    cursor: pointer;
+    width: 95px;
+    cursor: pointer;
+    padding: 8px;
+    position: absolute;
+    color: #fff;
+    z-index: 99;
+    margin-left: 5px;
+    box-shadow: 0px 4px 14px rgba(124, 115, 115, 0.15);
+    border-radius: 8px;
+}
+
+.select_content ul {
+    padding: 0;
+    margin: 0;
+}
+
+.select_content ul li {
+    list-style: none;
+    padding: 6px 6px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+.select_content ul li:hover {
+    background-color: #ECECEC;
+    border-radius: 6px;
+    border: 1px solid #2F2C9F;
+    color: #2F2C9F;
+}
+
+.select_active {
+    background-color: #ECECEC;
+    border-radius: 8px;
+
+} */
+
+
+
+
 .navbar a {
     color: #fff;
     text-decoration: none;

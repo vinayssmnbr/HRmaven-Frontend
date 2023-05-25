@@ -31,7 +31,28 @@
                 </div>
                 <div class="landing_btn" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500"
                     data-aos-duration="1500">
-                    <button class="login" routerLink="/login">Login</button>
+                    <!-- <div class="login">
+                        <span>Login</span>
+                        <div class="dropdown-content">
+                            <button routerLink="/login"><a>Admin</a></button>
+                            <button routerLink="/login-emp"><a>Employee</a></button>
+
+                        </div>
+                    </div> -->
+                    <!-- <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                        <input type="text" formControlName="category" style="display: none" />
+                        <div class="dropdwon_select" (click)="dropdownOpen()">
+                            <p>Login</p>
+                        </div>
+                        <div class="select_content" *ngIf="contentdropdown">
+                            <ul>
+                                <li routerLink="/login"><a>Admin</a></li>
+                                <li routerLink="/login-emp"><a>Employee</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                    
+                    <button class="login" routerLink="/landing-login">Login</button>
                     <button class="Signup" routerLink="/signup">Sign up</button>
                 </div>
             </div>

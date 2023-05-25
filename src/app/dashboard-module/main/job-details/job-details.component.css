@@ -1041,7 +1041,8 @@ form .user__details .input__box {
 }
 
 /* -------------------Import Modal---------------------------- */
-.import_modal_main {
+.import_modal_main,
+.Successful_import {
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -1216,7 +1217,8 @@ form .user__details .input__box {
   border: 1px solid #2F2C9F;
   color: #2F2C9F;
 }
-.input_btn .cancel_btn:hover{
+
+.input_btn .cancel_btn:hover {
   background-color: #eae5e5;
 }
 
@@ -1224,6 +1226,71 @@ form .user__details .input__box {
   background-color: #2f2c9f;
   color: #fff;
 }
-.input_btn .Import_btn:hover{
+
+.input_btn .Import_btn:hover {
   background-color: #1510a8;
+}
+
+/* --------------------Import Modal Successfu------------------------ */
+.Successful_input_file {
+  width: 429px;
+  height: 336px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.Successful_input_file i {
+  position: absolute;
+  margin-left: 500px;
+  margin-top: -30px;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.Successful_box {
+  width: 390px;
+  height: 152px;
+  background: rgba(123, 211, 109, 0.3);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.Successful_input_file h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #444444;
+  padding-top: 30px;
+}
+
+.Successful_input_file p {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666666;
+  padding-top: 16px;
+}
+.Successful_input_file button{
+  margin-top: 20px;
+  cursor: pointer;
+}
+.done_btn_input{
+  font-weight: 500;
+font-size: 14px;
+color: #FFFFFF;
+padding: 9px 24px;
+background: #3D9130;
+border-radius: 8px;
+border: none;
+
+}
+.disabledBtn {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
