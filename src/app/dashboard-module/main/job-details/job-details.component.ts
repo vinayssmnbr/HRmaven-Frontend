@@ -628,4 +628,9 @@ export class JobDetailsComponent {
   searchFieldDisabled(): boolean {
     return this.candidate.length == 0;
   }
+  sortEmployeeByUid(data: any) {
+    data.sort((a: any, b: any) => +a.uid - +b.uid);
+    console.log(data, 'adarsh sort');
+    return data;
+  }
 }
