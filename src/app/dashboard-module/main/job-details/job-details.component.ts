@@ -3,6 +3,7 @@ import { DashService } from '../../shared/dash.service';
 import {
   FormGroup,
   FormControl,
+  FormBuilder,
   Validators,
   AbstractControl,
 } from '@angular/forms';
@@ -23,7 +24,7 @@ export class JobDetailsComponent {
   statusFilter: string = 'All';
   // currentCandidateUid: any = '';
 
-  constructor(private dashService: DashService, private cookie: CookieService) {
+  constructor(private dashService: DashService, private cookie: CookieService ,private formBuilder:FormBuilder) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
@@ -32,6 +33,9 @@ export class JobDetailsComponent {
     console.log('select1', this.item);
 
     this.fetchJobVecancies();
+    this.csvForm = this.formBuilder.group({
+      csv: [''],
+    });
   }
 
   statusItem: string[] = [
@@ -46,6 +50,7 @@ export class JobDetailsComponent {
   importfile:boolean=false;
   csvadded: boolean = false;
   loader: boolean = false;
+  csvForm: FormGroup;
   importFileResponse: any = { success: [], error: [] };
   id: any = 'all';
   candidate: any[] = [];
@@ -192,6 +197,10 @@ export class JobDetailsComponent {
     url: new FormControl('', Validators.required),
 
     // url: new FormControl(''),
+  });
+
+  csvform = new FormGroup({
+    csv: new FormControl('', Validators.required),
   });
 
   get registrationFormControl() {
@@ -586,7 +595,7 @@ export class JobDetailsComponent {
               responseArr.push(candidate);
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                this.loader = false;
+                this.loader = true;
                 this.csvadded = true;
                 this.importfile = false;
                 console.log('not uploaded files', errors);

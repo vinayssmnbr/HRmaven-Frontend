@@ -105,7 +105,7 @@
           </button>
         </div>
         <div class="Export_btn" (click)="modalimp()">
-          <button class="Import"><img src="assets/images/prime_file-import.png" alt="">
+          <button class="Import"  [disabled]="csvForm.invalid"><img src="assets/images/prime_file-import.png" alt="">
             <p>Import</p>
           </button>
         </div>
@@ -477,23 +477,26 @@
       <h4>Upload CSV</h4>
       <i class="fa-solid fa-xmark" (click)="closeinputmodal()"></i>
     </div>
-
+    <form action="" [formGroup]="csvForm">
     <div class="import_csv">
       <img src="assets/images/Vector (4).png" alt="">
       <h2>Select a CSV file to upload</h2>
-      <input type="file" accept=".csv" #csvInput>
+      <input type="file" accept=".csv" #csvInput formControlName="csv">
     </div>
+    </form>
     <div class="sample_download">
       <p>Download <a href="assets/csv/Sample.csv" [download]><u>Sample CSV File</u></a> for reference.</p>
       <p>Maximum Size : 5 MB</p>
     </div>
-    <div class="input_loader">
+    
+    <div class="input_loader" *ngIf="loader">
       <img src="assets/images/Vector (8).png" alt="">
-      <div class="progress_bar_loader"></div>
+      <div class="progress_bar_loader" ></div>
     </div>
+   
     <div class="input_btn">
       <button class="cancel_btn" (click)="closeinputmodal()">Cancel</button>
-      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)">Import</button>
+      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)" >Import</button>
     </div>
   </div>
 </div>
@@ -506,7 +509,8 @@
       <img src="assets/images/tick.png" alt="">
     </div>
     <h1>Successful</h1>
-    <p>CSV file imported successfully!</p>
+    <!-- <p>CSV file imported successfully!</p> -->
+    <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
     <button class="done_btn_input" (click)="closeimportmodal()">Done</button>
   </div>
 </div>
