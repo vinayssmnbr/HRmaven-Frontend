@@ -705,23 +705,35 @@ export class EmployeeProfileComponent {
     );
   }
 
-  showbutton1: boolean = true;
+  // showbutton1: boolean = true;
   showAllData1: boolean = false;
   showAllData: boolean = false;
-  showMoredata1() {
-    this.showAllData1 = true;
-    this.showbutton1 = false;
+  // showMoredata1() {
+  //   this.showAllData1 = true;
+  //   this.showbutton1 = false;
+  // }
+  // hidedata1() {
+  //   this.showAllData1 = false;
+  //   this.showbutton1 = true;
+  // }
+  // showMoredata() {
+  //   this.showAllData = true;
+  //   this.showbutton = false;
+  // }
+  // hidedata() {
+  //   this.showAllData = false;
+  //   this.showbutton = true;
+  // }
+
+  Showhrline: boolean = false;
+  Showhrline1: boolean = false;
+
+  toggleDataExp() {
+    this.showAllData = !this.showAllData;
+    this.Showhrline1 = this.showAllData;
   }
-  hidedata1() {
-    this.showAllData1 = false;
-    this.showbutton1 = true;
-  }
-  showMoredata() {
-    this.showAllData = true;
-    this.showbutton = false;
-  }
-  hidedata() {
-    this.showAllData = false;
-    this.showbutton = true;
+  toggleDataView() {
+    this.showAllData1 = !this.showAllData1;
+    this.Showhrline = this.showAllData1;
   }
 }

@@ -22,9 +22,14 @@ export class JobDetailsComponent {
   fileName: string = '';
   jobrecord: any[] = [];
   statusFilter: string = 'All';
+  Searchuid: any = '';
   // currentCandidateUid: any = '';
 
-  constructor(private dashService: DashService, private cookie: CookieService ,private formBuilder:FormBuilder) {
+  constructor(
+    private dashService: DashService,
+    private cookie: CookieService,
+    private formBuilder: FormBuilder
+  ) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
@@ -47,7 +52,7 @@ export class JobDetailsComponent {
     'Rejected',
     'Archive',
   ];
-  importfile:boolean=false;
+  importfile: boolean = false;
   csvadded: boolean = false;
   loader: boolean = false;
   csvForm: FormGroup;
@@ -437,8 +442,7 @@ export class JobDetailsComponent {
   closeinputmodal() {
     this.importmodal = false;
     this.csvadded = false;
-    this. fetchJobVecancies();
-
+    this.fetchJobVecancies();
   }
 
   // onFileSelectedrem(event: any): void {
@@ -487,7 +491,7 @@ export class JobDetailsComponent {
 
   async onFileSelectedrem(event: any) {
     const file: File = event.files[0];
-    console.log(file)
+    console.log(file);
     // this.loader = true;
     if (!file) {
       console.log('No file selected.');
@@ -581,7 +585,7 @@ export class JobDetailsComponent {
                 this.loader = true;
                 this.csvadded = true;
                 this.importfile = false;
-                this.importmodal=false;
+                this.importmodal = false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -615,9 +619,13 @@ export class JobDetailsComponent {
   }
   colseimportmod: boolean = false;
   closeimportmodal() {
-    this.importmodal=false;
-    this.csvadded=false;
+    this.importmodal = false;
+    this.csvadded = false;
     this.colseimportmod = true;
     this.fetchJobVecancies();
+  }
+
+  searchFieldDisabled(): boolean {
+    return this.candidate.length == 0;
   }
 }
