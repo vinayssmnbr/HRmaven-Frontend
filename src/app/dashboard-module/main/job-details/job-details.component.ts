@@ -600,5 +600,6 @@ export class JobDetailsComponent {
   colseimportmod: boolean = false;
   closeimportmodal() {
     this.colseimportmod = false;
+    this.fetchJobVecancies();
   }
 }
