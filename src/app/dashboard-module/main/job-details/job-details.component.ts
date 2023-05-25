@@ -43,6 +43,8 @@ export class JobDetailsComponent {
     'Rejected',
     'Archive',
   ];
+  importfile:boolean=false;
+  csvadded: boolean = false;
   loader: boolean = false;
   importFileResponse: any = { success: [], error: [] };
   id: any = 'all';
@@ -422,8 +424,12 @@ export class JobDetailsComponent {
   modalimp() {
     this.importmodal = true;
   }
+
   closeinputmodal() {
     this.importmodal = false;
+    this.csvadded = false;
+    this. fetchJobVecancies();
+
   }
 
   // onFileSelectedrem(event: any): void {
@@ -563,9 +569,10 @@ export class JobDetailsComponent {
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                this.loader = false;
-                // this.csvadded = true;
-                // this.importfile = false;
+                this.loader = true;
+                this.csvadded = true;
+                this.importfile = false;
+                this.importmodal=false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -580,8 +587,8 @@ export class JobDetailsComponent {
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
                 this.loader = false;
-                // this.csvadded = true;
-                // this.importfile = false;
+                this.csvadded = true;
+                this.importfile = false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -599,7 +606,9 @@ export class JobDetailsComponent {
   }
   colseimportmod: boolean = false;
   closeimportmodal() {
-    this.colseimportmod = false;
+    this.importmodal=false;
+    this.csvadded=false;
+    this.colseimportmod = true;
     this.fetchJobVecancies();
   }
 }

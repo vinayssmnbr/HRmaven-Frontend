@@ -100,7 +100,7 @@
       </div>
       <div class="Candiddate_input_btn">
         <div class="Export_btn">
-          <button class="export" (click)=" download()"><img src="assets/images/prime_file-export.png" alt="">
+          <button class="export" (click)=" download()" [ngClass]="{'disabledBtn': selectedCandidate.length==0}"  [disabled]="selectedCandidate.length==0"><img src="assets/images/prime_file-export.png" alt="">
             <p>Export</p>
           </button>
         </div>
@@ -499,7 +499,7 @@
 </div>
 
 <!-------------------------------------Import Modal Successful *ngIf="colseimportmod"----------------------------------------->
-<div class="Successful_import" *ngIf="colseimportmod">
+<div class="Successful_import" *ngIf="csvadded  && importFileResponse.numSuccesses > 0">
   <div class="Successful_input_file">
     <i class="fa-solid fa-xmark" (click)="closeimportmodal()"></i>
     <div class="Successful_box">
