@@ -14,6 +14,7 @@ import { LoginEmployeeComponent } from './login-employee/login-employee.componen
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component'
 import { ForgetempComponent } from './forgetemp/forgetemp.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LangingLoginComponent } from './landing-login/langing-login.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./employee-module/employee.module').then(m => m.EmployeeModule),canActivate:[EmpGuard]},
   {path:'nofound', component:NoPageFoundComponent },
   // { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) }
-  {path:'landing',component:LandingPageComponent}
+  {path:'landing',component:LandingPageComponent},
+  {path:'landing-login',component:LangingLoginComponent}
  
 ];
 

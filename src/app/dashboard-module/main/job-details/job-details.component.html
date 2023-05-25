@@ -82,7 +82,7 @@
 
       </div>
 
-      <!--------------------------------------------- TAB CHANGE ----------------------------------------------------------------------->
+      <!--------------------------------------------- TAB CHANGE ------------------------------------------------>
       <div class="recruiters_nav">
         <div *ngFor="let status of statusItem" class="all"
           [ngClass]="{'color': statusFilter === status, 'active': statusFilter === status}" (click)="tabChange(status)">
@@ -91,7 +91,6 @@
       </div>
     </div>
   </div>
-
   <div class="regquirement_table">
     <div class="Candiddate">
       <div class="Candiddate_input">
@@ -311,14 +310,8 @@
         </table>
       </div>
     </div>
-
-
-
-
   </div>
-
-
-  <!-- ---------------Job details modal--------------------------- -->
+  <!-- ---------------Job details modal----------------------------->
   <div class="Job_details" *ngIf="Jobdetails">
     <div class="Job_details_content">
       <div class="Job_details_title">
@@ -402,9 +395,7 @@
     </div>
   </div>
 </div>
-
-<!--------------------Add a  new candidate modal------------------------------------------->
-
+<!--------------------Add a  new candidate modal-------------------->
 <div class="Add_candidate" *ngIf="addcandidate">
   <form [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
     <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
@@ -458,8 +449,7 @@
   </form>
 
 </div>
-
-<!--------------------------New candidate added successfully!------------------------------->
+<!--------------------New candidate added successfully!------------>
 <div class="New_candidate_main" *ngIf="Newcandidate">
   <div class="New_candidate">
     <div class="New_candidate_logo">
@@ -470,7 +460,7 @@
     <button class="done_btn" (click)="closedone()">Done</button>
   </div>
 </div>
-<!-------------------------------------Import Modal----------------------------------------->
+<!------------------Import Modal----------------------------------->
 <div class="import_modal_main" *ngIf="importmodal">
   <div class="import_modal">
     <div class="import_title">
@@ -497,8 +487,7 @@
     </div>
   </div>
 </div>
-
-<!-------------------------------------Import Modal Successful----------------------------------------->
+<!-----------------Import Modal Successful------------------------->
 <div class="Successful_import" *ngIf="colseimportmod">
   <div class="Successful_input_file">
     <i class="fa-solid fa-xmark" (click)="closeimportmodal()"></i>
