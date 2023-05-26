@@ -30,6 +30,7 @@ export class DashboardContentComponent {
   done_punch_in:boolean=false;
   done_punch_out:boolean=false;
   loaderz:boolean=false;
+  jobs:any=[];
 
 
 
@@ -143,8 +144,16 @@ export class DashboardContentComponent {
       console.log(res);
     })
     this.getIPAddress();
+    this.fetchjob();
   }
 
+  fetchjob(){
+    this.empService.fetchjob().subscribe((res:any)=>{
+      this.jobs=res.data[0].job;
+      console.log(this.jobs);
+
+    })
+  }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
     this.contentdropdown = !this.contentdropdown;

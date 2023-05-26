@@ -233,7 +233,7 @@
                 <!-- <h6>--:--</h6> -->
               </div>
               <div class="punching_out">
-                <p>Punch in timing</p>
+                <p>Punch out timing</p>
                 <h6 *ngIf="i.status=='present' || i.status=='odd'">{{i.punch_out | date:'shortTime'}}</h6>
                 <h6 *ngIf="i.status=='X' || i.status=='absent' || i.status=='leave'">--:--</h6>
               </div>
