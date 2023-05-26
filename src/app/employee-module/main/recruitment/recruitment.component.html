@@ -7,16 +7,16 @@
             <div class="jobprofile-filter-add">
                 <div class="jobprofile">
                     <h3>Job Vacancies</h3>
-                    <p>Lorem Ipsum is simply dummy text </p>
+                    <p></p>
                 </div>
                 <div class="job-btn">
 
-                    <div class="add-job" (click)="openModal5()">
+                    <!-- <div class="add-job" (click)="openModal5()">
                         <div class="plus-icon">
                             <i class="fa-solid fa-circle-plus"></i>
                             <span>Add a job Vacancy</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -33,17 +33,18 @@
         </div>
 
         <div class="row">
-            <div class="col-4">
+          <ng-container *ngIf="jobs.length>0">
+            <div class="col-4" *ngFor="let i of jobs">
                 <div class="card" routerLink="/emp-job-details">
                     <div class="card-outer">
                         <div class="card-head">
                             <div class="card-logo">
                                 <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
+                                    <h5>{{i.job_title}}</h5>
+                                    <p>Till Date:{{i.date | date:'dd/MM/YYYY': 'UTC' }}</p>
                                 </div>
                                 <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
+                                    <button class="progres">{{i.status==''?'In Progress':'Complete'}}</button>
                                 </div>
                             </div>
                             <div class="save_btn">
@@ -56,27 +57,17 @@
                         <div class="Skills-head">
                             <h6>Skills Required:</h6>
                             <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
+                                <li *ngFor="let j of i.list">{{j.name}}</li>
                             </ul>
                         </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
+                       </div>
 
                     <div class="card-bottom">
                         <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
+                            <li><i class="fa-solid fa-location-dot"></i>{{i.location}}</li>
+                            <li><i class="fa-solid fa-coins"></i>{{i.ctc}}</li>
+                            <li><i class="fa-solid fa-cloud-sun"></i>{{i.job_type}}</li>
+                            <li><i class="fa-solid fa-briefcase"></i>{{i.job}}</li>
                             <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
                                 <p>24 more applied</p>
                             </li>
@@ -87,499 +78,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>UI/UX Designer</h5>
-                                    <p>Job Posted: 05 Jul 2023</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">Inprogress</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li>Figma</li>
-                                <li>3D Design</li>
-                                <li>After Effects</li>
-                                <li>Illustrations</li>
-                            </ul>
-                        </div>
-                        <!-- <div class="Description">
-                            <div class="description-heading">
-                                <h6>Description:</h6>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since....</p>
-                            </div>
-                        </div> -->
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i><a href=""></a> Mohali, Punjab</li>
-                            <li><i class="fa-solid fa-coins"></i><a href=""></a>Rs. 4.5 - 5.4L</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i><a href=""></a>Day Shift</li>
-                            <li><i class="fa-solid fa-briefcase"></i><a href=""></a> 1-2 year</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-           
-
-
+          </ng-container>
 
             <!-- ---------------No jobs to display! When any job post is added, you’ll see here.--------------------- -->
-            <div class="No_jobs">
+            <div class="No_jobs" *ngIf="jobs.length==0">
                 <img src="assets/images/Empty-rafiki 1.png" alt="">
                 <p>No jobs to display! When any job post is added, you’ll see here.</p>
             </div>
