@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  @Input() user:any
+  @Input() user: any;
   showSearchBox = false;
   date: any;
   greeting: any;
@@ -36,8 +36,8 @@ export class HeaderComponent {
     this.getProfileData();
   }
   hide: boolean = true;
-header:any
-objectuserid = localStorage.getItem('emailid')
+  header: any;
+  objectuserid = localStorage.getItem('emailid');
 
   ngOnInit() {
     const today = new Date();
@@ -63,17 +63,14 @@ objectuserid = localStorage.getItem('emailid')
       this.visible = false;
     });
 
-    this.user=this.dashService.getSelectedEmployee()
-    console.log('header xyz',this.user.url)
-    this.header=this.user.url
-    console.log('xyz',this.header)
+    this.user = this.dashService.getSelectedEmployee();
+    console.log('header xyz', this.user.url);
+    this.header = this.user.url;
+    console.log('xyz', this.header);
     this.userService.getpersonals(this.objectuserid).subscribe((res: any) => {
-      console.log("res account settings personaldataaaaa: ", res);
+      console.log('res account settings personaldataaaaa: ', res);
 
-
-     
       this.profileimage = res.personaldata.url;
-
     });
   }
 
@@ -82,7 +79,6 @@ objectuserid = localStorage.getItem('emailid')
   // receiveProfileImage(profileimage: string) {
   //   this.profileimage = profileimage;
   // }
-
 
   toggleSearchBox() {
     this.showSearchBox = !this.showSearchBox;
@@ -95,7 +91,7 @@ objectuserid = localStorage.getItem('emailid')
       // this.profileimage = res.personaldata.url
     });
   }
-  loginobjectid: any ='';
+  loginobjectid: any = '';
   profileToggle() {
     if (this.hideNotifications) {
       this.visible = false;
@@ -107,9 +103,7 @@ objectuserid = localStorage.getItem('emailid')
 
     this.profileDisplay = !this.profileDisplay;
     this.userService.getpersonals(this.loginobjectid).subscribe((res: any) => {
-
       // console.log('response account:' +res.personaldata.headOffice);
-
     });
   }
 
@@ -132,4 +126,5 @@ objectuserid = localStorage.getItem('emailid')
     this.id = ids;
     console.log(this.id);
   }
+
 }
