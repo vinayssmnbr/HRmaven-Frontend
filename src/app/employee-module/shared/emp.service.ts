@@ -256,6 +256,15 @@ export class EmpService {
     });
     return this.http.get(this.prefix + 'candid/candiduid', { headers });
   }
+  fetchjob() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(`${this.prefix + 'job/fetchjob'}`,{ headers})
+  }
+
 
   
 }
