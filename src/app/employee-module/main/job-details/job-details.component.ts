@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DashService } from 'src/app/dashboard-module/shared/dash.service';
+import { EmpService } from '../../shared/emp.service';
 
 @Component({
   selector: 'app-job-details',
@@ -7,16 +8,21 @@ import { DashService } from 'src/app/dashboard-module/shared/dash.service';
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
-  constructor(private dashService: DashService) {
+  @Input() i: any;
+
+  constructor(private dashService: EmpService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
 
-  id: any = 'all';
-  tabChange(ids: any) {
-    this.id = ids;
-    console.log(this.id);
+  ngOnInit() {
+    this.i = this.dashService.getSelectedJobDetail();
+    console.log('select1', this.i);
   }
+  id: any = 'all';
+  candidate: any = [];
+  statusFilter: string = 'All';
+
   designationdropdownOption: boolean = false;
 
   dropdownOpenOption() {
@@ -76,5 +82,25 @@ export class JobDetailsComponent {
   }
   closedone() {
     this.Newcandidate = false;
+  }
+  statusItem: string[] = [
+    'All',
+    'Resume Received',
+    'Shortlisted',
+    'Interview',
+    'Hired',
+    'Rejected',
+    'Archive',
+  ];
+
+  tabChange(status: string) {
+    this.statusFilter = status;
+  }
+
+  fetchJobVecancies() {
+    this.dashService.getCandidate().subscribe((data: any) => {
+      console.log('hbhvdhsdh', data);
+      this.candidate = data;
+    });
   }
 }

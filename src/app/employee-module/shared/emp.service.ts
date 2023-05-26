@@ -15,7 +15,7 @@ export class EmpService {
   }
   public headerContent: string;
   public activeComponent: string;
-  welcome:boolean=true;
+  welcome: boolean = true;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -151,8 +151,11 @@ export class EmpService {
       id: id,
     });
     console.log(id);
-    return this.http.post(this.prefix+'attendance/emp/punchin',{id,ip},{ headers });
-
+    return this.http.post(
+      this.prefix + 'attendance/emp/punchin',
+      { id, ip },
+      { headers }
+    );
   }
 
   punchout(ip: any) {
@@ -164,8 +167,11 @@ export class EmpService {
       id: id,
     });
     console.log(id);
-    return this.http.post(this.prefix+'attendance/emp/punchout',{id,ip},{ headers });
-
+    return this.http.post(
+      this.prefix + 'attendance/emp/punchout',
+      { id, ip },
+      { headers }
+    );
   }
 
   getEmployee() {
@@ -206,6 +212,25 @@ export class EmpService {
       'Content-Type': 'application/json',
       id: id,
     });
-    return this.http.get(`${this.prefix + 'job/fetchjob'}`,{ headers})
+    return this.http.get(`${this.prefix + 'job/fetchjob'}`, { headers });
+  }
+
+  private selectedJobDetailKey = 'selectedJobDetail';
+
+  setSelectedJobDetail(i: any) {
+    localStorage.setItem(this.selectedJobDetailKey, JSON.stringify(i));
+  }
+
+  getSelectedJobDetail() {
+    const itemString = localStorage.getItem(this.selectedJobDetailKey);
+    return itemString ? JSON.parse(itemString) : null;
+  }
+
+  getCandidate() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/findcandidate', { headers });
   }
 }
