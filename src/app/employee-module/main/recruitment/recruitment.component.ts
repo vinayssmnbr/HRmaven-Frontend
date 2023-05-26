@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpService } from '../../shared/emp.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-recruitment',
   templateUrl: './recruitment.component.html',
   styleUrls: ['./recruitment.component.css'],
 })
 export class RecruitmentComponent {
-  constructor(public empService: EmpService) {
+  constructor(public empService: EmpService, private cookie: CookieService) {
     empService.activeComponent = 'recruitment';
     empService.headerContent = '';
 
     this.fetchjob();
-
   }
-  skill:any="";
-  jobs:any=[];
+  skill: any = '';
+  jobs: any = [];
   ngOnInit(): void {
     // ------------Drop Down Menu----------
     const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
@@ -33,7 +33,6 @@ export class RecruitmentComponent {
         optionMenu.classList.remove('active');
       });
     });
-
   }
   // constructor(private dashService: DashService) {
   //   dashService.activeComponent = 'recruitment';
@@ -46,7 +45,7 @@ export class RecruitmentComponent {
   thirdStep: boolean = false;
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
-  job:any=[];
+  job: any = [];
   openModal() {
     this.showModal = true;
     this.showModalContent = true;
@@ -62,7 +61,11 @@ export class RecruitmentComponent {
   }
   id: any = 'all';
   tabChange(ids: any) {
-    if (this.Selectvariable != 'Select' && this.Selectvariable1 != 'Select' && this.Selectvariable2 != 'Select') {
+    if (
+      this.Selectvariable != 'Select' &&
+      this.Selectvariable1 != 'Select' &&
+      this.Selectvariable2 != 'Select'
+    ) {
       this.id = ids;
     }
     console.log(this.id);
@@ -228,12 +231,16 @@ export class RecruitmentComponent {
     console.log(this.id1);
   }
 
-  fetchjob(){
-    this.empService.fetchjob().subscribe((res:any)=>{
-      this.jobs=res.data[0].job;
+  fetchjob() {
+    this.empService.fetchjob().subscribe((res: any) => {
+      this.jobs = res.data[0].job;
       console.log(this.jobs);
-
-    })
+    });
   }
 
+  selectjob(i: any) {
+    this.empService.setSelectedJobDetail(i);
+    const jobId = i._id;
+    this.cookie.set('job_id', jobId);
+  }
 }

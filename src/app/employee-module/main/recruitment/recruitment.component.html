@@ -2,304 +2,305 @@
 </app-sidebar>
 <app-header></app-header>
 <div class="section">
-    <div class="profile-container">
-        <div class="recruitment-area">
-            <div class="jobprofile-filter-add">
-                <div class="jobprofile">
-                    <h3>Job Vacancies</h3>
-                    <p></p>
-                </div>
-                <div class="job-btn">
+  <div class="profile-container">
+    <div class="recruitment-area">
+      <div class="jobprofile-filter-add">
+        <div class="jobprofile">
+          <h3>Job Vacancies</h3>
+          <p></p>
+        </div>
+        <div class="job-btn">
 
-                    <!-- <div class="add-job" (click)="openModal5()">
+          <!-- <div class="add-job" (click)="openModal5()">
                         <div class="plus-icon">
                             <i class="fa-solid fa-circle-plus"></i>
                             <span>Add a job Vacancy</span>
                         </div>
                     </div> -->
-                </div>
-            </div>
-
-            <!----------------------------- Navbar--------------------------------------- -->
-            <div class="list_nav">
-                <div class="all" [class.color]="id1 ==='all'" (click)="tabChange1('all')">
-                    <p>All jobs</p>
-                </div>
-                <div class="completed" [class.color]="id1 ==='completed'" (click)="tabChange1('completed')">
-                    <p>Saved</p>
-                </div>
-            </div>
-
         </div>
+      </div>
 
+      <!----------------------------- Navbar--------------------------------------- -->
+      <div class="list_nav">
+        <div class="all" [class.color]="id ==='all'" (click)="tabChange('all')">
+          <p>All jobs</p>
+        </div>
+        <div class="all" [class.color]="id ==='Completed'" (click)="tabChange('Completed')">
+
+          <p>Saved</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!----------------------------- Navbar--------------------------------------- -->
+    <div class="list_nav">
+      <div class="all" [class.color]="id1 ==='all'" (click)="tabChange1('all')">
+        <p>All jobs</p>
+      </div>
+      <div class="completed" [class.color]="id1 ==='completed'" (click)="tabChange1('completed')">
+        <p>Saved</p>
         <div class="row">
           <ng-container *ngIf="jobs.length>0">
             <div class="col-4" *ngFor="let i of jobs">
-                <div class="card" routerLink="/emp-job-details">
-                    <div class="card-outer">
-                        <div class="card-head">
-                            <div class="card-logo">
-                                <div class="card-text">
-                                    <h5>{{i.job_title}}</h5>
-                                    <p>Till Date:{{i.date | date:'dd/MM/YYYY': 'UTC' }}</p>
-                                </div>
-                                <div class="progress-btn">
-                                    <button class="progres">{{i.status==''?'In Progress':'Complete'}}</button>
-                                </div>
-                            </div>
-                            <div class="save_btn">
-                                <img src="assets/images/Dark Color.png" alt="">
-                            </div>
-                        </div>
+              <div class="card" routerLink="/emp-job-details" (click)="selectjob(i)">
+                <div class="card-outer">
+                  <div class="card-head">
+                    <div class="card-logo">
+                      <div class="card-text">
+                        <h5>{{i.job_title}}</h5>
+                        <p>Till Date:{{i.date | date:'dd/MM/YYYY': 'UTC' }}</p>
+                      </div>
+                      <div class="progress-btn">
+                        <button class="progres">{{i.status==''?'In Progress':'Complete'}}</button>
+                      </div>
                     </div>
-                    <span class="line"></span>
-                    <div class="Skills-required">
-                        <div class="Skills-head">
-                            <h6>Skills Required:</h6>
-                            <ul class="skills">
-                                <li *ngFor="let j of i.list">{{j.name}}</li>
-                            </ul>
-                        </div>
-                       </div>
-
-                    <div class="card-bottom">
-                        <div class="location">
-                            <li><i class="fa-solid fa-location-dot"></i>{{i.location}}</li>
-                            <li><i class="fa-solid fa-coins"></i>{{i.ctc}}</li>
-                            <li><i class="fa-solid fa-cloud-sun"></i>{{i.job_type}}</li>
-                            <li><i class="fa-solid fa-briefcase"></i>{{i.job}}</li>
-                            <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
-                                <p>24 more applied</p>
-                            </li>
-                        </div>
-                        <div class="refer_text">
-                            <p><a href=""><u>Refer a candidate</u></a></p>
-                        </div>
+                    <div class="save_btn">
+                      <img src="assets/images/Dark Color.png" alt="">
                     </div>
+                  </div>
                 </div>
+                <span class="line"></span>
+                <div class="Skills-required">
+                  <div class="Skills-head">
+                    <h6>Skills Required:</h6>
+                    <ul class="skills">
+                      <li *ngFor="let j of i.list">{{j.name}}</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="card-bottom">
+                  <div class="location">
+                    <li><i class="fa-solid fa-location-dot"></i>{{i.location}}</li>
+                    <li><i class="fa-solid fa-coins"></i>{{i.ctc}}</li>
+                    <li><i class="fa-solid fa-cloud-sun"></i>{{i.job_type}}</li>
+                    <li><i class="fa-solid fa-briefcase"></i>{{i.job}}</li>
+                    <li class="edd_log_btn"><img src="assets/images/addemp.png" alt="">
+                      <p>24 more applied</p>
+                    </li>
+                  </div>
+                  <div class="refer_text">
+                    <p><a href=""><u>Refer a candidate</u></a></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </ng-container>
 
-            <!-- ---------------No jobs to display! When any job post is added, you’ll see here.--------------------- -->
-            <div class="No_jobs" *ngIf="jobs.length==0">
-                <img src="assets/images/Empty-rafiki 1.png" alt="">
-                <p>No jobs to display! When any job post is added, you’ll see here.</p>
-            </div>
+          <!-- ---------------No jobs to display! When any job post is added, you’ll see here.--------------------- -->
+          <div class="No_jobs" *ngIf="jobs.length==0">
+            <img src="assets/images/Empty-rafiki 1.png" alt="">
+            <p>No jobs to display! When any job post is added, you’ll see here.</p>
+          </div>
 
 
-            <!-------------------------Modal Starts--------------------------->
+          <!-------------------------Modal Starts--------------------------->
 
-            <div class="modal" *ngIf="showModal5">
-                <div class="modal-content" *ngIf="showModalContent">
-                    <i class="fa-solid fa-xmark" (click)="closeModal5()"></i>
-                    <div class="modal-header">
-                        <h6>Add Job Vacancies</h6>
-                        <div class="all-read-important">
-                            <div class="all" [class.color]="id ==='all'">
-                                <p>1. General Details</p>
+          <div class="modal" *ngIf="showModal5">
+            <div class="modal-content" *ngIf="showModalContent">
+              <i class="fa-solid fa-xmark" (click)="closeModal5()"></i>
+              <div class="modal-header">
+                <h6>Add Job Vacancies</h6>
+                <div class="all-read-important">
+                  <div class="all" [class.color]="id ==='all'">
+                    <p>1. General Details</p>
+                  </div>
+                  <div class="unread" [class.color]="id ==='unread'">
+                    <p>2. More Details</p>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
+                <form class="vacancy-form" [FormGroup]="jobvacancyform">
+                  <div class="job-title-date">
+                    <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="jobvacancydetail()">
+                      <div class="meeting-mode">
+                        <div class="form-group">
+                          <label>Job Title <span>*</span></label> <br>
+                          <input type="text" placeholder="Type a job title here..." class="meeting-input"
+                            formControlName="jobtitle" formControlName="jobtitle">
+
+                        </div>
+                        <div class="form-group">
+                          <label>Date <span>*</span></label> <br>
+                          <input type="date" placeholder="23/04/2023" class="meeting-input "
+                            formControlName="datetitle">
+                        </div>
+                      </div>
+
+                      <div class="meeting-mode">
+                        <div class="form-group">
+                          <label>Location <span>*</span></label> <br>
+                          <div class="dropdown_container" (mouseleave)="contentdropdown = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen()">
+                              <p>{{Selectvariable}}</p>
+                              <i class="fa-sharp fa-solid fa-caret-down"></i>
                             </div>
-                            <div class="unread" [class.color]="id ==='unread'">
-                                <p>2. More Details</p>
+                            <div class="select_content" *ngIf="contentdropdown">
+                              <ul>
+                                <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
+                                  (click)="Changeselect(arr)">
+                                  {{arr.name}}</li>
+                              </ul>
                             </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>CTC <span>*</span></label> <br>
+                          <input type="text" placeholder="Specify CTC here..." class="meeting-input"
+                            formControlName="ctctitle">
+                        </div>
+                      </div>
+
+                      <div class="meeting-mode">
+                        <div class="form-group">
+                          <label>Experience <span>*</span></label> <br>
+                          <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen1()">
+                              <p>{{Selectvariable1}}</p>
+                              <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown1">
+                              <ul>
+                                <li *ngFor="let arr1 of array1; index as i" [class.select_active]="i === colorvariable1"
+                                  (click)="Changeselect1(arr1)">
+                                  {{arr1.name}}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Job Type <span>*</span></label> <br>
+                          <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
+                            <div class="dropdwon_select" (click)="dropdownOpen2()">
+                              <p>{{Selectvariable2}}</p>
+                              <i class="fa-sharp fa-solid fa-caret-down"></i>
+                            </div>
+                            <div class="select_content" *ngIf="contentdropdown2">
+                              <ul>
+                                <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2"
+                                  (click)="Changeselect2(arr2)">
+                                  {{arr2.name}}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="discard-save">
+                        <div class="save"><button type="submit" (click)="tabChange('unread')">Next</button> </div>
+                      </div>
+                    </form>
+                  </div>
+                </form>
+              </div>
+
+
+              <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
+                <form class="vacancy-form">
+                  <div class="job-title-date">
+                    <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="vacancydetail()">
+                      <div class="skill-required-mode">
+                        <div class="form-group">
+                          <label>Skills required <span>*</span></label> <br>
+
+                          <div class="meeting-text-area">
+                            <input type="text" placeholder="Type skill name..." class="todo-list" [value]="skill"
+                              #task><button (click)="addtask(task.value)">click</button>
+
+
+
+                            <ul class="input_list">
+                              <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i
+                                  class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
+                              </li>
+                            </ul>
+                          </div>
+
+
 
                         </div>
 
-                    </div>
-                    <div class="company-name-headoffice-desc" *ngIf="id ==='all' ">
-                        <form class="vacancy-form" [FormGroup]="jobvacancyform">
-                            <div class="job-title-date">
-                                <form class="job-vacancy-form" [formGroup]="vacancyForm"
-                                    (ngSubmit)="jobvacancydetail()">
-                                    <div class="meeting-mode">
-                                        <div class="form-group">
-                                            <label>Job Title <span>*</span></label> <br>
-                                            <input type="text" placeholder="Type a job title here..."
-                                                class="meeting-input" formControlName="jobtitle"
-                                                formControlName="jobtitle">
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date <span>*</span></label> <br>
-                                            <input type="date" placeholder="23/04/2023" class="meeting-input "
-                                                formControlName="datetitle">
-                                        </div>
-                                    </div>
-
-                                    <div class="meeting-mode">
-                                        <div class="form-group">
-                                            <label>Location <span>*</span></label> <br>
-                                            <div class="dropdown_container" (mouseleave)="contentdropdown = false">
-                                                <div class="dropdwon_select" (click)="dropdownOpen()">
-                                                    <p>{{Selectvariable}}</p>
-                                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                                                </div>
-                                                <div class="select_content" *ngIf="contentdropdown">
-                                                    <ul>
-                                                        <li *ngFor="let arr of array; index as i"
-                                                            [class.select_active]="i === colorvariable"
-                                                            (click)="Changeselect(arr)">
-                                                            {{arr.name}}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>CTC <span>*</span></label> <br>
-                                            <input type="text" placeholder="Specify CTC here..." class="meeting-input"
-                                                formControlName="ctctitle">
-                                        </div>
-                                    </div>
-
-                                    <div class="meeting-mode">
-                                        <div class="form-group">
-                                            <label>Experience <span>*</span></label> <br>
-                                            <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
-                                                <div class="dropdwon_select" (click)="dropdownOpen1()">
-                                                    <p>{{Selectvariable1}}</p>
-                                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                                                </div>
-                                                <div class="select_content" *ngIf="contentdropdown1">
-                                                    <ul>
-                                                        <li *ngFor="let arr1 of array1; index as i"
-                                                            [class.select_active]="i === colorvariable1"
-                                                            (click)="Changeselect1(arr1)">
-                                                            {{arr1.name}}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Job Type <span>*</span></label> <br>
-                                            <div class="dropdown_container" (mouseleave)="contentdropdown2 = false">
-                                                <div class="dropdwon_select" (click)="dropdownOpen2()">
-                                                    <p>{{Selectvariable2}}</p>
-                                                    <i class="fa-sharp fa-solid fa-caret-down"></i>
-                                                </div>
-                                                <div class="select_content" *ngIf="contentdropdown2">
-                                                    <ul>
-                                                        <li *ngFor="let arr2 of array2; index as i"
-                                                            [class.select_active]="i === colorvariable2"
-                                                            (click)="Changeselect2(arr2)">
-                                                            {{arr2.name}}</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="discard-save">
-                                        <div class="save"><button type="submit"
-                                                (click)="tabChange('unread')">Next</button> </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </form>
-                    </div>
 
 
-                    <div class="company-name-headoffice-desc" *ngIf="id ==='unread' ">
-                        <form class="vacancy-form">
-                            <div class="job-title-date">
-                                <form class="job-vacancy-form" [formGroup]="vacancyForm" (ngSubmit)="vacancydetail()">
-                                    <div class="skill-required-mode">
-                                        <div class="form-group">
-                                            <label>Skills required <span>*</span></label> <br>
+                      </div>
+                      <div class="skill-required-mode">
+                        <div class="form-group">
+                          <label>Recruiter's name <span>*</span></label> <br>
 
-                                            <div class="meeting-text-area">
-                                                <input type="text" placeholder="Type skill name..." class="todo-list"
-                                                    [value]="skill" #task><button
-                                                    (click)="addtask(task.value)">click</button>
+                          <div class="meeting-text-area">
+                            <input type="text" placeholder="Amanda Kerry" class="todo-list" #task>
+
+
+                            <button (click)="addtask1(task1.value1)">click</button>
+                            <ul class="input_list">
+                              <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i
+                                  class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
+                              </li>
+                            </ul>
+                          </div>
 
 
 
-                                                <ul class="input_list">
-                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i
-                                                            class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-
-                                        </div>
-
-
-
-                                    </div>
-                                    <div class="skill-required-mode">
-                                        <div class="form-group">
-                                            <label>Recruiter's name <span>*</span></label> <br>
-
-                                            <div class="meeting-text-area">
-                                                <input type="text" placeholder="Amanda Kerry" class="todo-list" #task>
-
-
-                                                <button (click)="addtask1(task1.value1)">click</button>
-                                                <ul class="input_list">
-                                                    <li class="input_list_li" *ngFor="let item of list">{{item.name}} <i
-                                                            class="fa-solid fa-xmark" (click)="removetask(item.id)"></i>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-
-
-                                        </div>
-
-
-
-                                    </div>
-
-                                    <div class="skill-required-mode">
-                                        <div class="form-group">
-                                            <label>Job description:</label> <br>
-
-                                            <div class="job-description">
-                                                <textarea name="" id="" placeholder="Enter description..."></textarea>
-                                            </div>
-
-
-
-                                        </div>
-
-
-
-                                    </div>
-
-
-
-
-
-                                    <div class="Back-Add">
-                                        <div class="back"><button type="submit" (click)="tabChange('all')">Back</button>
-                                        </div>
-                                        <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-----------------------------New-Job-Added-Modal---------------------------------->
-
-
-            </div>
-
-
-            <div class="forget_email_send_content_main" *ngIf="successmodal">
-                <div class="forget_email_send_content">
-                    <div class="forget_content">
-                        <div class="forget_text">
-                            <img src="./assets/images/tick.png" alt="img">
                         </div>
-                        <h1>New job vacancies added successfully!</h1>
-                        <p>You can add more job vacancies in a similar way.</p>
-                        <button class="done_btn" (click)="closesuccessmodal()">Done</button>
-                    </div>
-                </div>
+
+
+
+                      </div>
+
+                      <div class="skill-required-mode">
+                        <div class="form-group">
+                          <label>Job description:</label> <br>
+
+                          <div class="job-description">
+                            <textarea name="" id="" placeholder="Enter description..."></textarea>
+                          </div>
+
+
+
+                        </div>
+
+
+
+                      </div>
+
+
+
+
+
+                      <div class="Back-Add">
+                        <div class="back"><button type="submit" (click)="tabChange('all')">Back</button>
+                        </div>
+                        <div class="add"><button type="submit" (click)="successfulmodal()">Add</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                </form>
+              </div>
             </div>
+            <!-----------------------------New-Job-Added-Modal---------------------------------->
+
+
+          </div>
+
+
+          <div class="forget_email_send_content_main" *ngIf="successmodal">
+            <div class="forget_email_send_content">
+              <div class="forget_content">
+                <div class="forget_text">
+                  <img src="./assets/images/tick.png" alt="img">
+                </div>
+                <h1>New job vacancies added successfully!</h1>
+                <p>You can add more job vacancies in a similar way.</p>
+                <button class="done_btn" (click)="closesuccessmodal()">Done</button>
+              </div>
+            </div>
+          </div>
 
         </div>
+      </div>
     </div>
-</div>

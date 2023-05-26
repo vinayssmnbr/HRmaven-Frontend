@@ -1,32 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DashService } from 'src/app/dashboard-module/shared/dash.service';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  AbstractControl,
-} from '@angular/forms';
+import { EmpService } from '../../shared/emp.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-job-details',
   templateUrl: './job-details.component.html',
   styleUrls: ['./job-details.component.css'],
 })
 export class JobDetailsComponent {
-  constructor(private dashService: DashService, private empService:DashService) {
+  @Input() i: any;
+
+  constructor(private dashService: EmpService) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
     // private empService:DashService
+  }
+
+  ngOnInit() {
+    this.i = this.dashService.getSelectedJobDetail();
+    console.log('select1', this.i);
   }
   selectedPdfFile: any = '';
   fileName: string = '';
   candidate: any[] = [];
   currentCandidateUid: any = '';
   id: any = 'all';
-  tabChange(ids: any) {
-    this.id = ids;
-    console.log(this.id);
-  }
+  statusFilter: string = 'All';
   designationdropdownOption: boolean = false;
 
   dropdownOpenOption() {
@@ -101,7 +101,7 @@ export class JobDetailsComponent {
   }
   openmodal() {
     this.addcandidate = true;
-    this.empService.getCandidateUid().subscribe((res: any) => {
+    this.dashService.getCandidateUid().subscribe((res: any) => {
       console.log('data', res);
       this.currentCandidateUid = res.uid;
     });
@@ -114,7 +114,20 @@ export class JobDetailsComponent {
   closedone() {
     this.Newcandidate = false;
   }
- 
+  statusItem: string[] = [
+    'All',
+    'Resume Received',
+    'Shortlisted',
+    'Interview',
+    'Hired',
+    'Rejected',
+    'Archive',
+  ];
+
+  tabChange(status: string) {
+    this.statusFilter = status;
+  }
+
   validateEmail(event: KeyboardEvent) {
     const input = (event.target as HTMLInputElement).value.trim();
     if (event.key === ' ') {
@@ -136,7 +149,7 @@ export class JobDetailsComponent {
     this.mobileNo = this.newcandidateform.controls['contactnumber'].value;
 
     console.log('adarsh', this.mobileNo);
-    this.empService
+    this.dashService
       .getCandidateMobile(this.mobileNo)
       .subscribe((response: any) => {
         console.log('prince', response);
@@ -157,7 +170,7 @@ export class JobDetailsComponent {
     this.emailId = this.newcandidateform.controls['email'].value;
 
     console.log('adarsh', this.emailId);
-    this.empService
+    this.dashService
       .getCandidateEmail(this.emailId)
       .subscribe((response: any) => {
         console.log('prince', response);
@@ -192,7 +205,7 @@ export class JobDetailsComponent {
       return 'file selected';
     }
     try {
-      let response = await this.empService.uploaded(file);
+      let response = await this.dashService.uploaded(file);
       this.progress = false;
       return response.url;
     } catch (err) {
@@ -202,15 +215,15 @@ export class JobDetailsComponent {
   }
 
   async tabChange1() {
-    console.log(this.newcandidateform.value)
+    console.log(this.newcandidateform.value);
     let data = {
       ...this.newcandidateform.value,
     };
     let url = await this.onUpload(this.selectedPdfFile, false);
     data['url'] = url;
 
-    this.empService.addCandidate(data).subscribe((result) => {
-      this.empService.addCandidate(this.newcandidateform);
+    this.dashService.addCandidate(data).subscribe((result) => {
+      this.dashService.addCandidate(this.newcandidateform);
       // this.newcandidateform.reset();
       // this.loading=false
     });
@@ -218,13 +231,10 @@ export class JobDetailsComponent {
     this.newcandidateform.reset();
   }
 
-
   fetchJobVecancies() {
-    this.empService.getCandidate().subscribe((data: any) => {
+    this.dashService.getCandidate().subscribe((data: any) => {
       console.log('hbhvdhsdh', data);
       this.candidate = data;
     });
   }
-
- 
 }
