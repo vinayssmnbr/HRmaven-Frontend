@@ -11,16 +11,18 @@
     </div>
     <div class="card2">
       <span class="profile_pic">
-        <div class="loader" *ngIf="progress"></div>
+        <!-- <img src="{{user.url}}"> -->
+        <!-- <div role="progressbar" aria-valuenow="65" aria-valuemin="0" (change)="onFileSelected($event)" aria-valuemax="100" style="--value:100"></div> -->
+        <div class="loader-image" *ngIf="progress"></div>
         <img *ngIf="!obj.url && !upload" src="./assets/images/Ellipse 98.svg">
         <img *ngIf="obj.url  && !upload" src="{{obj.url}}" alt="">
         <img *ngIf="upload" src="{{imageurl}}" alt="">
-        <!-- <img  alt=""> -->
-        <div class="profile-content">
-          <input type="file" accept="image/*" id="file-input">
+
+        <div class="profile-content" *ngIf="!obj.url">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
+
           <i class="fa-solid fa-arrow-up"></i>
           <h2>Upload</h2>
-          <p>Profile Picture</p>
         </div>
         <div class="profile-content1" *ngIf="obj.url">
           <input type="file" (change)="onFileSelected($event)" accept="image/*" id="file-input">
