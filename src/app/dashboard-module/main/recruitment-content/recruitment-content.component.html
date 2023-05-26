@@ -22,8 +22,8 @@
 
       <div class="jobs-completed">
         <ul class="all-completed">
-          <li class="active" [class.color]="id ==='all'">All Jobs</li>
-          <li [class.color]="id ==='unread'">Completed</li>
+          <li class="all" [class.color]="id1 ==='all'" (click)="tabChange('all')">All Jobs</li>
+          <li class="unread" [class.color]="id1 ==='unread'" (click)="tabChange('unread')">Completed</li>
         </ul>
         <span class="line"></span>
       </div>
@@ -160,7 +160,7 @@
                         <div class="dropdwon_select" (click)="dropdownOpen1()">
                           <!-- <p>{{Selectvariable1}}</p> -->
                           <input class="none" type="text" [(ngModel)]="Selectvariable1" formControlName="experience"
-                            id="text11" placeholder="Select">
+                            id="text11" placeholder="Select" readonly>
                           <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
                         <div class="select_content" *ngIf="contentdropdown1">

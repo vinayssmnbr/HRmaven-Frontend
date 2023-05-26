@@ -11,7 +11,7 @@ export class RecruitmentComponent {
     empService.activeComponent = 'recruitment';
     empService.headerContent = '';
   }
-  skill:any="";
+  skill: any = "";
   ngOnInit(): void {
     // ------------Drop Down Menu----------
     const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
@@ -56,8 +56,7 @@ export class RecruitmentComponent {
   }
   id: any = 'all';
   tabChange(ids: any) {
-    if(this.Selectvariable!='Select' && this.Selectvariable1!='Select' && this.Selectvariable2!='Select' )
-    {
+    if (this.Selectvariable != 'Select' && this.Selectvariable1 != 'Select' && this.Selectvariable2 != 'Select') {
       this.id = ids;
     }
     console.log(this.id);
@@ -171,7 +170,7 @@ export class RecruitmentComponent {
 
   list: any[] = [];
   addtask(item: string) {
-    this.skill='';
+    this.skill = '';
     this.list.push({ id: this.list.length, name: item });
     console.warn(this.list);
   }
@@ -216,6 +215,11 @@ export class RecruitmentComponent {
 
   closesuccessmodal() {
     this.successmodal = false;
+  }
+  id1: any = 'all';
+  tabChange1(ids: any) {
+    this.id1 = ids;
+    console.log(this.id1);
   }
 
 }
