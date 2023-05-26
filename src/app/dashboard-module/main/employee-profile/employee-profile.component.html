@@ -201,7 +201,7 @@
             <p class="duration2">{{item.stream || '--------'}}</p>
           </div>
         </div>
-        <hr *ngIf="Showhrline && i !== user.educationItems.length - 1">
+        <hr>
       </div>
       <div class="cnt-btn">
         <button class="view" (click)="toggleDataView()" *ngIf="!showAllData1 && user?.educationItems?.length > 1">View
@@ -255,8 +255,7 @@
               <p class="designation">{{item.expdesignation || '--------'}}</p>
             </div>
           </div>
-          <hr *ngIf="Showhrline1 && i !== user.experienceItems.length - i">
-
+          <hr>
         </div>
         <div class="cnt-btn">
           <!-- <button class="view" (click)="showMoredata()" *ngIf="showbutton">View More<i

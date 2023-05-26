@@ -28,7 +28,7 @@
         <label for="">Query</label>
         <textarea placeholder="Type your query..." rows="6" cols="10"></textarea>
       </div>
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn" (click)="openmodal()">Submit</button>
       <hr>
       <div class="icons">
         <a href=""><i class="fa-brands fa-facebook"></i></a>
@@ -41,7 +41,8 @@
       <div class="main-content">
       <div class="content1">
         <h2>What is HRMaven?</h2>
-        <img src="./assets/images/addition.svg" alt="image" (click)="opencontent1()">
+        <img src="./assets/images/addition.svg" alt="image" (click)="opencontent1()" class="addition" [ngClass]="{'active': content1}">
+          <img src="./assets/images/subtract_img.svg" alt="" class="subtraction" [ngClass]="{'active': content1}" (click)="closecontent1()">
         </div>
         <div class="content2" *ngIf="content1">
           <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources and
@@ -50,7 +51,8 @@
         <hr>
         <div class="content1">
           <h2>Can HRMaven support remote work and mobile access?</h2>
-          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent2()">
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent2()" class="addition" [ngClass]="{'active': content2}">
+          <img src="./assets/images/subtract_img.svg" alt="" class="subtraction" [ngClass]="{'active': content2}" (click)="closecontent2()">
         </div>
         <div class="content2" *ngIf="content2">
           <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
@@ -60,7 +62,8 @@
         <hr>
         <div class="content1">
           <h2>Is HRMaven suitable for small businesses?</h2>
-          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent3()">
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent3()" class="addition" [ngClass]="{'active': content3}">
+          <img src="./assets/images/subtract_img.svg" alt="" class="subtraction" [ngClass]="{'active': content3}" (click)="closecontent3()">
         </div>
         <div class="content2" *ngIf="content3">
           <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
@@ -70,7 +73,8 @@
         <hr>
         <div class="content1">
           <h2>What features are typically included in HRMaven?</h2>
-          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent4()">
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent4()"  class="addition" [ngClass]="{'active': content4}">
+          <img src="./assets/images/subtract_img.svg" alt="" class="subtraction" [ngClass]="{'active': content4}" (click)="closecontent4()">
         </div>
         <div class="content2" *ngIf="content4">
           <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
@@ -80,7 +84,8 @@
         <hr>
         <div class="content1">
           <h2>How can HRMaven improve data accuracy?</h2>
-          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent5()">
+          <img src="./assets/images/addition.svg" alt="image" (click)="opencontent5()" class="addition" [ngClass]="{'active': content5}">
+          <img src="./assets/images/subtract_img.svg" alt="" class="subtraction" [ngClass]="{'active': content5}" (click)="closecontent5()"  >
         </div>
         <div class="content2" *ngIf="content5">
           <p>An HRMS, or human resources management system, is a suite of software applications used to manage human resources
@@ -91,4 +96,18 @@
       </div>
     </div>
   </div>
+ <div class="modal" *ngIf="modal">
+  <div class="modal-content3">
+    <div class="modal-header2">
+      <i class="fa-solid fa-xmark" (click)="closemodal()"></i>
+      <img src="assets/images/tick.png" alt="image">
+    </div>
+    <div class="modal-body3">
+      <h3>Query sent successfully!</h3>
+      <p>We'll get back to you as soon as possible
+      with a response.</p>
+      <button class="done-btn2" (click)="closemodal()">Done</button>
+    </div>
+  </div>
+ </div>
 </div>
