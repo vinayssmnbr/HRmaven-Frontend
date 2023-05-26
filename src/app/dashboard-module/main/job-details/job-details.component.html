@@ -298,6 +298,18 @@
                     <option value="Rejected">Rejected</option>
                     <option value="Archive">Archive</option>
                   </select>
+                  <!-- <div class="dropdown_container">
+                    <div class="dropdwon_select1" (click)="dropdownOpen2()">
+                      <p>{{Selectvariable2}}</p>
+                      <i class="fa-sharp fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="select_content" *ngIf="contentdropdown2">
+                      <ul>
+                        <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2" (click)="Changeselect2(arr2)">
+                          {{arr2.name}}</li>
+                      </ul>
+                    </div>
+                  </div> -->
                 </td>
                 <td class="pdf_logo">
                   <a href="{{item.url}}" target="_blank">

@@ -139,6 +139,36 @@ export class JobDetailsComponent {
     this.colorvariable1 = arr1.id;
     console.log(arr1.name);
   }
+  array2: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  dropdownOpen2() {
+    this.contentdropdown2 = !this.contentdropdown2;
+  }
+  Selectvariable2: string = 'Designation';
+  colorvariable2: number = 0;
+  Changeselect2(arr2: any) {
+    this.Selectvariable = arr2.name;
+    this.colorvariable = arr2.id;
+    this.contentdropdown = false;
+    console.log(arr2.name);
+  }
+  contentdropdown2:boolean=false;
   Jobdetails: boolean = false;
   viewbtn() {
     this.Jobdetails = true;
@@ -633,4 +663,5 @@ export class JobDetailsComponent {
     console.log(data, 'adarsh sort');
     return data;
   }
+
 }

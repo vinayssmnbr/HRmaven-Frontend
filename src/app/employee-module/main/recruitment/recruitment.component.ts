@@ -225,6 +225,11 @@ export class RecruitmentComponent {
   closesuccessmodal() {
     this.successmodal = false;
   }
+  id1: any = 'all';
+  tabChange1(ids: any) {
+    this.id1 = ids;
+    console.log(this.id1);
+  }
 
   fetchjob() {
     this.empService.fetchjob().subscribe((res: any) => {

@@ -737,8 +737,14 @@ form.job-vacancy-form {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+.form-group input::-webkit-outer-spin-button,
+.form-group input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
 }
 
 .date-input {
@@ -886,6 +892,20 @@ input::-webkit-inner-spin-button {
   border-radius: 8px;
   outline: none;
   border: none;
+}
+.all:hover {
+  border-bottom: 2px solid #2F2C9F;
+}
+
+.unread:hover {
+  border-bottom: 2px solid #2F2C9F;
+}
+
+
+
+.color {
+  color: #2F2C9F;
+  border-bottom: 2px solid #2F2C9F;
 }
 
 /*-----------------------More Detail Modal--------------------*/

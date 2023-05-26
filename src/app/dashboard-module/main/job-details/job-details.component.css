@@ -456,6 +456,19 @@ thead .Resume {
   border-radius: 100px;
   padding: 8px 15px;
 } */
+.table_option{
+  
+  width: 152px;
+  height: 25px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(94, 221, 255, 0.25);
+    font-weight: 400;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+
+}
 .dropdwon_select1 {
   cursor: pointer;
   border: 1px solid transparent;

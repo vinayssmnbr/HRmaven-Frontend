@@ -44,7 +44,7 @@ export class RecruitmentContentComponent {
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
   jobDetails: any = [];
-  recruiters:any=[];
+  recruiters: any = [];
   loading: boolean = false;
   openModal() {
     this.showModal = true;
@@ -62,8 +62,7 @@ export class RecruitmentContentComponent {
   id: any = 'all';
   tabChange1(ids: any) {
     console.log('yeahhhhhh');
-    if(this.Selectvariable!='' && this.Selectvariable1!='' && this.Selectvariable2!='' )
-    {
+    if (this.Selectvariable != '' && this.Selectvariable1 != '' && this.Selectvariable2 != '') {
       this.id = ids;
       let data = this.vacancyForm.value;
     }
@@ -143,6 +142,7 @@ export class RecruitmentContentComponent {
     this.contentdropdown = false;
     console.log(arr.name);
   }
+
 
   /*-------------------Experience-dropdown--------------*/
 
@@ -259,50 +259,49 @@ export class RecruitmentContentComponent {
   successmodal: boolean = false;
   fetchjobVacancies() {
     this.dashService.fetchJobVecancies().subscribe((res: any) => {
-      console.log('this.jobVacancies',res.length);
+      console.log('this.jobVacancies', res.length);
       this.jobDetails = res.response;
     });
   }
   fetchrecruiteremail() {
     this.dashService.fetchrecruiterEmail().subscribe((res: any) => {
-      console.log('this.jobVacancies',res.length);
+      console.log('this.jobVacancies', res.length);
       this.recruiters = res.data;
     });
   }
   successfulmodal() {
-    if(this.vacancyForm2.controls.job_description.valid && (this.recruiter.length > 0) && (this.list.length > 0))
-    {
-    console.log(this.vacancyForm2.controls.job_description.valid);
-    this.loading = true;
-    this.showModal5 = true;
-    const jobDescription = this.vacancyForm2.get('job_description')?.value;
-    let data = {
-      ...this.vacancyForm.value,
-      list: this.list,
-      recruiter: this.recruiter,
-      job_description: jobDescription,
-      hrid: this.cookie.get('hr_id'),
-    };
-    this.dashService.addJobVacancies(data).subscribe((res) => {
-      console.log('job', res);
-      this.fetchjobVacancies();
-      this.loading = false;
-      this.showModal5 = false;
-      this.successmodal = true;
-      this.Selectvariable=this.Selectvariable2=this.Selectvariable1='';
-      this.id='all'
-      this.recruiter=[];
-      this.list=[];
-      this.vacancyForm.reset();
-      this.vacancyForm1.reset();
-      this.vacancyForm2.reset();
+    if (this.vacancyForm2.controls.job_description.valid && (this.recruiter.length > 0) && (this.list.length > 0)) {
+      console.log(this.vacancyForm2.controls.job_description.valid);
+      this.loading = true;
+      this.showModal5 = true;
+      const jobDescription = this.vacancyForm2.get('job_description')?.value;
+      let data = {
+        ...this.vacancyForm.value,
+        list: this.list,
+        recruiter: this.recruiter,
+        job_description: jobDescription,
+        hrid: this.cookie.get('hr_id'),
+      };
+      this.dashService.addJobVacancies(data).subscribe((res) => {
+        console.log('job', res);
+        this.fetchjobVacancies();
+        this.loading = false;
+        this.showModal5 = false;
+        this.successmodal = true;
+        this.Selectvariable = this.Selectvariable2 = this.Selectvariable1 = '';
+        this.id = 'all'
+        this.recruiter = [];
+        this.list = [];
+        this.vacancyForm.reset();
+        this.vacancyForm1.reset();
+        this.vacancyForm2.reset();
 
 
-    });
-  }
-  else {
-    alert('fill required fields');
-  }
+      });
+    }
+    else {
+      alert('fill required fields');
+    }
   }
   closesuccessmodal() {
     this.successmodal = false;
@@ -315,4 +314,12 @@ export class RecruitmentContentComponent {
   }
   popupsearch = false;
   popupsearchemail = false;
+
+  id1: any = 'all';
+  tabChange(ids: any) {
+    this.id1 = ids;
+    console.log(this.id1);
+  }
+
+
 }
