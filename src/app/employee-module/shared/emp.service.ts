@@ -199,4 +199,63 @@ export class EmpService {
       oldpassword,
     });
   }
+
+  // async upload(file: File, userId?: string) {
+  //   try {
+  //     const res = await this.client.upload(file);
+  //     console.log('res', res);
+  //     this.fileUrl = res.url;
+  //     const user = await this. updateJobStatus({
+  //       _id: userId,
+  //       url: res.url,
+  //     }).subscribe((result) => {
+  //       console.log('update', result);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  uploaded(file: File): Promise<any> {
+    return this.client.upload(file);
+  }
+
+  addCandidate(data: any) {
+    const id = this.cookie.get('job_id');
+    data['jobId'] = id;
+    return this.http.post(this.prefix + 'candid/candidates', data);
+  }
+
+  updateJobStatus(id: any, status: any) {
+    const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
+    return this.http.patch(url, { status });
+  }
+
+  getCandidateEmail(email: any) {
+    return this.http.get(`${this.prefix + 'candid/checkedmail'}/${email}`);
+  }
+
+  getCandidateMobile(contactnumber: any) {
+    return this.http.get(
+      `${this.prefix + 'candid/checkedmobile'}/${contactnumber}`
+    );
+  }
+
+  getCandidate() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/findcandidate', { headers });
+  }
+
+  getCandidateUid() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/candiduid', { headers });
+  }
+
+  
 }

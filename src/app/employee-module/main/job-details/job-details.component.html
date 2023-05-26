@@ -170,13 +170,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                         <!-- <tr *ngFor="let item of candidate>  -->
                         <tr>
-                            <!-- <td colspan="7" class="nodata" class="no_data">
-                      <p>
-                        <img src="assets/images/no_record.png" alt="" class="center" />
-                      </p>
-                      <h2>No Record Found!</h2>
-                    </td> -->
+                           
                             <td class="input_check">
                                 <input type="checkbox">
                                 <p>29591</p>
@@ -291,7 +287,8 @@
                             <td class="pdf_logo">
                                 <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
                             </td>
-                        </tr>
+                        </tr> 
+                    <!-- </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -393,9 +390,9 @@
 </div>
 
 <!-- ------------------Add a  new candidate modal--------------- -->
-
+<!-- 
 <div class="Add_candidate" *ngIf="addcandidate">
-    <form action="#">
+    <form action="#" [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
         <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
         <div class="form_title">
             <h1>Add a new candidate</h1>
@@ -404,7 +401,7 @@
         <div class="user__details">
             <div class="input__box">
                 <span class="details">Candidate name</span>
-                <input type="text" placeholder="Sahil Verma" required>
+                <input type="text" placeholder="Sahil Verma" required formControlName="candidateName">
             </div>
             <div class="input__box">
                 <span class="details">Candidate id</span>
@@ -412,26 +409,80 @@
             </div>
             <div class="input__box">
                 <span class="details">Contact number</span>
-                <input type="text" placeholder="johnsmith@hotmail.com" required>
+                <input type="text" placeholder="johnsmith@hotmail.com" required formControlName="contactnumber">
             </div>
             <div class="input__box">
                 <span class="details">Email</span>
-                <input type="email" placeholder="sahilverma@gmail.com" required>
+                <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email">
             </div>
             <div class="input__box">
                 <span class="details">Applied date</span>
-                <input type="number" placeholder="23/04/2023" required>
+                <input type="date" placeholder="23/04/2023" required formControlName="applieddate">
             </div>
             <div class="input__box">
                 <span class="details">Resume</span>
-                <input type="file" placeholder="No file choosen" required>
+                <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required
+                formControlName="url" accept=".pdf">
             </div>
         </div>
         <div class="form_button" (click)="openaddmodal()">
-            <button>Add a candidate</button>
+            <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a candidate</button>
         </div>
     </form>
-</div>
+</div> -->
+<div class="Add_candidate" *ngIf="addcandidate">
+    <form [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
+      <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
+      <div class="form_title">
+        <h1>Add a new candidate</h1>
+      </div>
+  
+      <div class="user__details">
+        <div class="input__box">
+          <span class="details">Candidate name</span>
+          <input type="text" placeholder="Sahil Verma" required formControlName="candidateName" class="text"
+            [ngClass]="{'ng_invalid': newcandidateform.controls.candidateName.invalid && newcandidateform.controls.candidateName.dirty,'ng_valid': newcandidateform.controls.candidateName.valid}">
+        </div>
+        <div class="input__box">
+          <span class="details">Candidate id</span>
+          <input type="text" placeholder="29591" disabled [(ngModel)]="currentCandidateUid" formControlName="uid">
+        </div>
+        <div class="input__box">
+          <span class="details">Contact number</span>
+          <input type="number" placeholder="XXXXXX0652" required formControlName="contactnumber" class="text"
+            (keydown)="validatePhoneNumber($event)" (blur)="checkmobileExists()"
+            [ngClass]="{'ng_invalid': (mobileExists || newcandidateform.controls.contactnumber.invalid && newcandidateform.controls.contactnumber.dirty),'ng_valid': !mobileExists && newcandidateform.controls.contactnumber.valid}">
+          <div class="validation-message" *ngIf="mobileExists">Mobile
+            No.
+            already exists</div>
+        </div>
+        <div class="input__box">
+          <span class="details">Email</span>
+          <input type="email" placeholder="sahilverma@gmail.com" required formControlName="email" class="text"
+            (keydown)="validateEmail($event)" (blur)="checkEmailExists()"
+            [ngClass]="{'ng_invalid': (emailExists || newcandidateform.controls.email.invalid && newcandidateform.controls.email.dirty),'ng_valid':!emailExists && newcandidateform.controls.email.valid}">
+          <div class="validation-message" *ngIf="emailExists">Email
+            already
+            exists</div>
+        </div>
+        <div class="input__box">
+          <span class="details">Applied date</span>
+          <input type="date" placeholder="23/04/2023" class="text" required formControlName="applieddate">
+        </div>
+        <!-- <div class="loader" *ngIf="progress"></div> -->
+        <div class="input__box">
+          <span class="details">Resume</span>
+          <input type="file" placeholder="No file choosen" (change)="onFileSelected($event)" [value]="fileName" required
+            formControlName="url" accept=".pdf">
+        </div>
+      </div>
+      <div class="form_button" (click)="openaddmodal()">
+        <button type="submit" (click)="tabChange1(newcandidateform.value)">Add a
+          candidate</button>
+      </div>
+    </form>
+  
+  </div>
 
 
 <!-- ------------------------New candidate added successfully!------------------------------------- -->
