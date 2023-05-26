@@ -82,7 +82,7 @@
 
       </div>
 
-      <!--------------------------------------------- TAB CHANGE ----------------------------------------------------------------------->
+      <!--------------------------------------------- TAB CHANGE ------------------------------------------------>
       <div class="recruiters_nav">
         <div *ngFor="let status of statusItem" class="all"
           [ngClass]="{'color': statusFilter === status, 'active': statusFilter === status}" (click)="tabChange(status)">
@@ -91,21 +91,22 @@
       </div>
     </div>
   </div>
-
   <div class="regquirement_table">
     <div class="Candiddate">
       <div class="Candiddate_input">
         <i class="fa fa-search" aria-hidden="true" id="ico"></i>
-        <input type="text" placeholder="Enter Candiddate Id" />
+        <input type="text" placeholder="Enter Candiddate Id" [(ngModel)]="Searchuid"
+          [disabled]="searchFieldDisabled()" />
       </div>
       <div class="Candiddate_input_btn">
         <div class="Export_btn">
-          <button class="export" (click)=" download()"><img src="assets/images/prime_file-export.png" alt="">
+          <button class="export" (click)=" download()" [ngClass]="{'disabledBtn': selectedCandidate.length==0}"
+            [disabled]="selectedCandidate.length==0"><img src="assets/images/prime_file-export.png" alt="">
             <p>Export</p>
           </button>
         </div>
         <div class="Export_btn" (click)="modalimp()">
-          <button class="Import"><img src="assets/images/prime_file-import.png" alt="">
+          <button class="Import" [disabled]="csvForm.invalid"><img src="assets/images/prime_file-import.png" alt="">
             <p>Import</p>
           </button>
         </div>
@@ -156,7 +157,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of candidate | jobstatus:statusFilter ">
+            <tr *ngFor="let item of sortEmployeeByUid(candidate)| jobstatus:statusFilter | candidatefilter:Searchuid">
               <td colspan="7" class="no_data" *ngIf=" item.found=='true'">
                 <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                     xmlns="http://www.w3.org/2000/svg">
@@ -311,14 +312,8 @@
         </table>
       </div>
     </div>
-
-
-
-
   </div>
-
-
-  <!-- ---------------Job details modal--------------------------- -->
+  <!-- ---------------Job details modal----------------------------->
   <div class="Job_details" *ngIf="Jobdetails">
     <div class="Job_details_content">
       <div class="Job_details_title">
@@ -402,9 +397,7 @@
     </div>
   </div>
 </div>
-
-<!--------------------Add a  new candidate modal------------------------------------------->
-
+<!--------------------Add a  new candidate modal-------------------->
 <div class="Add_candidate" *ngIf="addcandidate">
   <form [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
     <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
@@ -458,8 +451,7 @@
   </form>
 
 </div>
-
-<!--------------------------New candidate added successfully!------------------------------->
+<!--------------------New candidate added successfully!------------>
 <div class="New_candidate_main" *ngIf="Newcandidate">
   <div class="New_candidate">
     <div class="New_candidate_logo">
@@ -470,43 +462,48 @@
     <button class="done_btn" (click)="closedone()">Done</button>
   </div>
 </div>
-<!-------------------------------------Import Modal----------------------------------------->
+<!------------------Import Modal----------------------------------->
 <div class="import_modal_main" *ngIf="importmodal">
   <div class="import_modal">
     <div class="import_title">
       <h4>Upload CSV</h4>
       <i class="fa-solid fa-xmark" (click)="closeinputmodal()"></i>
     </div>
-
-    <div class="import_csv">
-      <img src="assets/images/Vector (4).png" alt="">
-      <h2>Select a CSV file to upload</h2>
-      <input type="file" accept=".csv" #csvInput>
-    </div>
+    <form action="" [formGroup]="csvForm">
+      <div class="import_csv">
+        <img src="assets/images/Vector (4).png" alt="">
+        <h2>Select a CSV file to upload</h2>
+        <input type="file" accept=".csv" #csvInput formControlName="csv">
+      </div>
+    </form>
     <div class="sample_download">
       <p>Download <a href="assets/csv/Sample.csv" [download]><u>Sample CSV File</u></a> for reference.</p>
       <p>Maximum Size : 5 MB</p>
     </div>
-    <div class="input_loader">
+
+    <div class="input_loader" *ngIf="loader">
       <img src="assets/images/Vector (8).png" alt="">
       <div class="progress_bar_loader"></div>
     </div>
+
     <div class="input_btn">
       <button class="cancel_btn" (click)="closeinputmodal()">Cancel</button>
-      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)">Import</button>
+      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)"
+        [disabled]="csvForm.controls.csv.pristine">Import</button>
     </div>
   </div>
 </div>
 
-<!-------------------------------------Import Modal Successful----------------------------------------->
-<div class="Successful_import" *ngIf="colseimportmod">
+<!-------------------------------------Import Modal Successful *ngIf="colseimportmod"----------------------------------------->
+<div class="Successful_import" *ngIf="csvadded  && importFileResponse.numSuccesses > 0">
   <div class="Successful_input_file">
     <i class="fa-solid fa-xmark" (click)="closeimportmodal()"></i>
     <div class="Successful_box">
       <img src="assets/images/tick.png" alt="">
     </div>
     <h1>Successful</h1>
-    <p>CSV file imported successfully!</p>
+    <!-- <p>CSV file imported successfully!</p> -->
+    <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
     <button class="done_btn_input" (click)="closeimportmodal()">Done</button>
   </div>
 </div>

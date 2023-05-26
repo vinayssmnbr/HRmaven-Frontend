@@ -68,7 +68,8 @@
           <p *ngIf="!obj.motherName">----------</p>
           <p class="mname" *ngIf="obj.motherName">{{obj.motherName}}</p>
           <span class="gender">Gender</span>
-          <p class="gender">{{obj.gender}}</p>
+          <p *ngIf="!obj.gender">----------</p>
+          <p class="gender" *ngIf="obj.gender">{{obj.gender}}</p>
         </div>
         <div class="column3">
           <span class="dob">Date of birth</span>
@@ -237,12 +238,13 @@
             <p class="duration2">{{item.stream || '--------'}}</p>
           </div>
         </div>
+        <hr *ngIf="Showhrline && i !== obj.educationItems.length - 1">
       </div>
       <div class="cnt-btn">
-        <button class="view" (click)="showMoredata1()" *ngIf="showbutton1">View less<i
+        <button class="view" (click)="toggleDataView()" *ngIf="!showAllData1 && obj?.educationItems?.length > 1">View
+          More<i class="fa-solid fa-angle-down"></i></button>
+        <button class="hide" (click)="toggleDataView()" *ngIf="showAllData1">View less<i
             class="fa-solid fa-angle-up"></i></button>
-        <button class="hide" (click)="hidedata1()" *ngIf="!showbutton1 && showAllData1">View More <i
-            class="fa-solid fa-angle-down"></i></button>
       </div>
     </div>
     <!-- ---------------------------------------EXPERIENCE ----------------------------------------------->
@@ -284,12 +286,13 @@
             <p class="designation">{{item.expdesignation || '--------'}}</p>
           </div>
         </div>
+        <hr *ngIf="Showhrline1 && i !== obj.experienceItems.length - i">
       </div>
       <div class="cnt-btn">
-        <button class="view" (click)="showMoredata()" *ngIf="showbutton">View less <i
+        <button class="view" (click)="toggleDataExp()" *ngIf="!showAllData && obj?.experienceItems?.length > 1">View
+          More<i class="fa-solid fa-angle-down"></i></button>
+        <button class="hide" (click)="toggleDataExp()" *ngIf="showAllData">View less<i
             class="fa-solid fa-angle-up"></i></button>
-        <button class="hide" (click)="hidedata()" *ngIf="!showbutton && showAllData">View More <i
-            class="fa-solid fa-angle-down"></i></button>
       </div>
 
     </div>

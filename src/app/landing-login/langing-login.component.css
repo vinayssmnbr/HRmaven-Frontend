@@ -1,0 +1,282 @@
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    position: relative;
+    background-color: #fff;
+}
+
+.left-side {
+    background-color: var(--primary-color);
+    border-radius: 12px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    height: calc(100vh - 48px);
+    width: 546px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 24px 0 18px 21px;
+}
+
+.leftContent {
+    padding-left: 78px;
+}
+
+.left-side .logo-image {
+    margin-top: 78px;
+}
+
+.left-side .title {
+    padding-top: 29px;
+    font-size: 36px;
+    font-weight: 500;
+    color: #FFFFFF;
+    width: 80%;
+}
+
+.left-side .title_para {
+    padding-top: 12px;
+    font-size: 18px;
+    color: #FAFAFA;
+    width: 85%;
+    font-weight: 400;
+}
+
+.card {
+    width: 392px;
+    height: 197px;
+    background-color: #1D38A6;
+    margin-top: 56px;
+    border-radius: 16px;
+    transition: 2s;
+}
+
+.card .card-text {
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FAFAFA;
+    font-family: 'Outfit';
+    font-weight: 400;
+}
+
+.profile {
+    display: flex;
+    gap: 12px;
+    margin-left: 30px;
+    margin-top: 34px;
+}
+
+.profile img {
+    width: 35px;
+    height: 35px;
+}
+
+.profile h5 {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: 'Outfit';
+    font-weight: 700;
+}
+
+.profile p {
+    font-size: 12px;
+    color: #FFFFFF;
+    font-family: 'Outfit';
+    font-weight: 400;
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+/* ---------------------- Slider card--------------------*/
+
+.slider {
+    display: flex;
+    width: 500%;
+    gap: 150px;
+    margin-left: 75px;
+    padding-bottom: 80px;
+}
+
+.slider input {
+    display: none;
+}
+
+.navigation-manual {
+    position: absolute;
+    width: 530px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manual-btn {
+    border: 2px solid #fff;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    background: rgba(217, 217, 217, 0.4);
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 10px;
+}
+
+.manual-btn:hover {
+    background: #fff;
+}
+
+#radio1:checked~.first {
+    margin-left: 0;
+}
+
+#radio2:checked~.first {
+    margin-left: -20%;
+}
+
+#radio3:checked~.first {
+    margin-left: -40%;
+}
+
+#radio4:checked~.first {
+    margin-left: -60%;
+}
+
+/*css for automatic navigation*/
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    width: 380px;
+    justify-content: center;
+    margin-top: 293px;
+    align-items: center;
+}
+
+.navigation-auto div {
+    border: 2px solid #fff;
+    padding: 4px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 10px;
+}
+
+#radio1:checked~.navigation-auto .auto-btn1 {
+    background: #fff;
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
+    background: #fff;
+}
+
+#radio3:checked~.navigation-auto .auto-btn3 {
+    background: #fff;
+}
+
+#radio4:checked~.navigation-auto .auto-btn4 {
+    background: #fff;
+}
+
+/* ---------------Right side---------------- */
+.right-side {
+    width: calc(100% - 546px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_content {
+    display: inline-block;
+}
+
+.right_content h1 {
+    font-weight: 500;
+    font-size: 30px;
+    color: #555555;
+}
+
+.right_content p {
+    padding-top: 7px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+}
+
+.right_content button {
+    margin-top: 45px;
+    width: 281px;
+    height: 50px;
+    background: rgba(239, 239, 248, 0.6);
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.login_btn {
+    display: flex;
+    flex-direction: column;
+}
+.login_btn button:hover{
+    background: #EFEFF8;
+}
+
+.login_btn .admin i,
+.login_btn .Employee i {
+    padding-left: 28px;
+    color: #2F2C9F;
+}
+
+
+.login_btn .admin span,
+.login_btn .Employee span {
+    padding-left: 43px;
+    color: #2F2C9F;
+}
+
+.login_btn button.Continue {
+    background-color: #2F2C9F;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.login_btn button.Continue span {
+    color: #fff;
+}
+
+.Continue i {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------Responsive For Tablet------------------ */
+
+@media only screen and (min-width: 481px) and (max-width: 850px) {}
+
+/* --------------For Mobile------------------ */
+@media only screen and (max-width: 480px) {}

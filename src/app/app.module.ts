@@ -15,6 +15,7 @@ import { LoginEmployeeComponent } from './login-employee/login-employee.componen
 import { ForgetempComponent } from './forgetemp/forgetemp.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RecruitersfilterPipe } from './dashboar-module/pipe/recruitersfilter.pipe';
+import { LangingLoginComponent } from './landing-login/langing-login.component';
 // import { DashboardComponent } from './main/dashboard/dashboard.component';
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RecruitersfilterPipe } from './dashboar-module/pipe/recruitersfilter.pi
     ForgetempComponent,
     LandingPageComponent,
     RecruitersfilterPipe,
+    LangingLoginComponent,
     // DashboardComponent,
   ],
   imports: [

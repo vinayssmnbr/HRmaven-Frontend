@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -29,7 +29,6 @@ export class EmployeeProfileComponent implements OnInit {
 
   employeeExperience: any[] = [];
   employeeId: string;
-
   selectedUser: any = {};
   personaldetail: boolean = true;
   jobdetail: boolean = false;
@@ -215,6 +214,11 @@ export class EmployeeProfileComponent implements OnInit {
     }
   }
 
+  @HostListener('window:beforeunload')
+  saveSelectedEmployee() {
+    this.dashService.setSelectedEmployee(this.user);
+  }
+
   createEducationItem(item?: any): FormGroup {
     return new FormGroup({
       college: new FormControl(item?.college || ''),
@@ -240,8 +244,13 @@ export class EmployeeProfileComponent implements OnInit {
     this.experienceItems.push(this.createExperienceItem());
     console.log(this.experienceForm.value);
   }
-  removeItem(index: number) {
+
+  removeExprence(index: number) {
     this.experienceItems.removeAt(index);
+  }
+
+  removeEducation(index: any) {
+    this.educationItems.removeAt(index);
   }
 
   array1: any = [
@@ -848,11 +857,16 @@ export class EmployeeProfileComponent implements OnInit {
   //   this.showAllData1 = false;
   //   this.showbutton1 = true;
   // }
+  Showhrline: boolean = false;
+  Showhrline1: boolean = false;
+
   toggleDataExp() {
     this.showAllData = !this.showAllData;
+    this.Showhrline1 = this.showAllData;
   }
   toggleDataView() {
     this.showAllData1 = !this.showAllData1;
+    this.Showhrline = this.showAllData1;
   }
 
   showpgdetails: boolean = false;
@@ -883,5 +897,4 @@ export class EmployeeProfileComponent implements OnInit {
       event.preventDefault();
     }
   }
-  //ARRAY Form
 }
