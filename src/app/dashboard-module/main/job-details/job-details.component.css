@@ -1210,10 +1210,10 @@ form .user__details .input__box {
 }
 
 .input_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 20px;
+  position: absolute;
+  left: 25%;
+  bottom: 15px;
 }
 
 .input_btn button {
@@ -1289,20 +1289,23 @@ form .user__details .input__box {
   color: #666666;
   padding-top: 16px;
 }
-.Successful_input_file button{
+
+.Successful_input_file button {
   margin-top: 20px;
   cursor: pointer;
 }
-.done_btn_input{
+
+.done_btn_input {
   font-weight: 500;
-font-size: 14px;
-color: #FFFFFF;
-padding: 9px 24px;
-background: #3D9130;
-border-radius: 8px;
-border: none;
+  font-size: 14px;
+  color: #FFFFFF;
+  padding: 9px 24px;
+  background: #3D9130;
+  border-radius: 8px;
+  border: none;
 
 }
+
 .disabledBtn {
   cursor: not-allowed;
   opacity: 0.7;

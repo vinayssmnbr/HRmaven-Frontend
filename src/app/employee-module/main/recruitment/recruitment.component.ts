@@ -10,8 +10,12 @@ export class RecruitmentComponent {
   constructor(public empService: EmpService) {
     empService.activeComponent = 'recruitment';
     empService.headerContent = '';
+
+    this.fetchjob();
+
   }
-  skill: any = "";
+  skill:any="";
+  jobs:any=[];
   ngOnInit(): void {
     // ------------Drop Down Menu----------
     const optionMenu = document.querySelector<HTMLElement>('.filter-menu')!,
@@ -29,6 +33,7 @@ export class RecruitmentComponent {
         optionMenu.classList.remove('active');
       });
     });
+
   }
   // constructor(private dashService: DashService) {
   //   dashService.activeComponent = 'recruitment';
@@ -41,6 +46,7 @@ export class RecruitmentComponent {
   thirdStep: boolean = false;
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
+  job:any=[];
   openModal() {
     this.showModal = true;
     this.showModalContent = true;
@@ -220,6 +226,14 @@ export class RecruitmentComponent {
   tabChange1(ids: any) {
     this.id1 = ids;
     console.log(this.id1);
+  }
+
+  fetchjob(){
+    this.empService.fetchjob().subscribe((res:any)=>{
+      this.jobs=res.data[0].job;
+      console.log(this.jobs);
+
+    })
   }
 
 }
