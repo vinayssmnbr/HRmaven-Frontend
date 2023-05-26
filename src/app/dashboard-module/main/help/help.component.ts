@@ -11,6 +11,7 @@ content2:boolean= false;
 content3:boolean= false;
 content4:boolean = false;
 content5:boolean = false;
+modal:boolean=false;
 opencontent1(){
   this.content1=!this.content1;
   this.content2=false;
@@ -46,4 +47,26 @@ opencontent5(){
   this.content4 = false;
   this.content1 = false;
 }
+closecontent1(){
+  this.content1 = !this.content1;
+}
+closecontent2() {
+    this.content2 = !this.content2;
+  }
+closecontent3() {
+    this.content3 = !this.content3;
+  }
+closecontent4() {
+    this.content4 = !this.content4;
+  }
+closecontent5() {
+    this.content5 = !this.content5;
+  }
+
+  openmodal(){
+    this.modal=!this.modal;
+  }
+  closemodal(){
+    this.modal=false;
+  }
 }
