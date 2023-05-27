@@ -15,6 +15,8 @@ export class JobDetailsComponent {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
     // private empService:DashService
+
+    this.fetchJobVecancies();
   }
 
   ngOnInit() {

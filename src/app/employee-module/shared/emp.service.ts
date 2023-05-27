@@ -228,7 +228,9 @@ export class EmpService {
 
   addCandidate(data: any) {
     const id = this.cookie.get('job_id');
+    const empId = this.cookie.get('id');
     data['jobId'] = id;
+    data['empId'] = empId;
     return this.http.post(this.prefix + 'candid/candidates', data);
   }
 
@@ -249,8 +251,11 @@ export class EmpService {
 
   getCandidate() {
     const id = this.cookie.get('job_id');
+    const empid = this.cookie.get('job_id');
+
     const headers = new HttpHeaders({
       jobid: id.toString(),
+      empid: empid.toString(),
     });
     return this.http.get(this.prefix + 'candid/findcandidate', { headers });
   }
