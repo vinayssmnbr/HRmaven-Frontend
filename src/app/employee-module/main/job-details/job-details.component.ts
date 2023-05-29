@@ -30,6 +30,7 @@ export class JobDetailsComponent {
   currentCandidateUid: any = '';
   id: any = 'all';
   statusFilter: string = 'All';
+  Searchuid: any = '';
   designationdropdownOption: boolean = false;
 
   dropdownOpenOption() {
@@ -241,10 +242,14 @@ export class JobDetailsComponent {
     });
   }
 
-  fetchcandidate(){
-    this.dashService.fetchcandidate().subscribe((res:any)=>{
+  fetchcandidate() {
+    this.dashService.fetchcandidate().subscribe((res: any) => {
       console.log(res.data);
       this.candidate = res.data;
-    })
+    });
+  }
+
+  searchFieldDisabled(): boolean {
+    return this.candidate.length == 0;
   }
 }

@@ -286,10 +286,11 @@ td {
 
 .form {
   margin-top: 25px;
-  gap: 22px;
+  /* gap: 22px; */
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  justify-content: space-between;
 }
 
 .formapply {
