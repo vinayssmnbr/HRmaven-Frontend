@@ -14,7 +14,7 @@ import { TermConditionComponent } from './term-condition/term-condition.componen
 import { LoginEmployeeComponent } from './login-employee/login-employee.component';
 import { ForgetempComponent } from './forgetemp/forgetemp.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { RecruitersfilterPipe } from './dashboar-module/pipe/recruitersfilter.pipe';
+// import { RecruitersfilterPipe } from './dashboar-module/pipe/recruitersfilter.pipe';
 import { LangingLoginComponent } from './landing-login/langing-login.component';
 // import { DashboardComponent } from './main/dashboard/dashboard.component';
 @NgModule({
@@ -27,9 +27,7 @@ import { LangingLoginComponent } from './landing-login/langing-login.component';
     LoginEmployeeComponent,
     ForgetempComponent,
     LandingPageComponent,
-    RecruitersfilterPipe,
     LangingLoginComponent,
-    // DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,10 +37,10 @@ import { LangingLoginComponent } from './landing-login/langing-login.component';
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-   
+
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule {}
