@@ -359,4 +359,19 @@ export class DashService {
     const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
     return this.http.patch(url, { status });
   }
+  activity(){
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'job/activity', { headers });
+  }
+
+  dynamicrecord() {
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'job/app/analysis', { headers });
+  }
 }
