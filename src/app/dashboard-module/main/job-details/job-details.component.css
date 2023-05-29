@@ -1214,6 +1214,7 @@ form .user__details .input__box {
   position: absolute;
   left: 25%;
   bottom: 15px;
+  display: flex;
 }
 
 .input_btn button {
