@@ -109,7 +109,7 @@
           </button>
         </div>
         <div class="Export_btn" (mouseleave)="contentdropdown = false">
-          <button class="Filters" (click)="dropdownOpen()">
+          <!-- <button class="Filters" (click)="dropdownOpen()">
             <img src="assets/images/Group (1).png" alt="">
             <p>Filters</p>
           </button>
@@ -123,7 +123,7 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="Add_Candidate_btn" (click)="openmodal()">
           <button class="Add_Candidate">
@@ -156,6 +156,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of sortEmployeeByUid(candidate)| jobstatus:statusFilter | candidatefilter:Searchuid">
+              <!-- <tr *ngFor="let item of candidate"> -->
               <td colspan="7" class="no_data" *ngIf=" item.found=='true'">
                 <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                     xmlns="http://www.w3.org/2000/svg">
