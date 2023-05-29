@@ -181,12 +181,12 @@
                     </td> -->
                 <td class="input_check">
                   <input type="checkbox">
-                  <p>29591</p>
+                  <p>{{item.uid}}</p>
                 </td>
-                <td>Cameron Williamson</td>
-                <td>Cameron@gmail.com</td>
-                <td>987654321</td>
-                <td>01 Mar, 2023</td>
+                <td>{{item.candidateName}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.contactnumber}}</td>
+                <td>{{item.applieddate | date:"shortDate"}}</td>
                 <td>
                   <select class="table_option" [value]="item.status" [class.active]="item.status==='active'"
                     (change)="onSelectChange($event,item)">
@@ -198,8 +198,9 @@
                     <option value="Archive">Archive</option>
                   </select>
                 </td>
-                <td class="pdf_logo">
-                  <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="">
+                <td class="pdf_logo" >
+                  <a href="{{item.url}}" target="_blank">
+                  <img src="assets/images/vscode-icons_file-type-pdf2.png" alt="" ></a>
                 </td>
 
               </tr>
