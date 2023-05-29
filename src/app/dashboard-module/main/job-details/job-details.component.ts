@@ -663,4 +663,19 @@ export class JobDetailsComponent {
     return data;
   }
 
+
+/*----------------*/
+showModalContent: boolean;
+showModal10=false;
+openModal10(){
+  this.showModal10 = true;
+  this.showModalContent=true
+}
+
+closeModal10(){
+  this.showModal10 = false;
+  this.showModalContent=false;
+}
+
+
 }
