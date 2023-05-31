@@ -16,7 +16,6 @@
   display: flex;
   width: 100%;
   align-items: center;
-  /* column-gap: 50px; */
 }
 
 .list_nav p {
@@ -27,7 +26,6 @@
   font-size: 14px;
   color: #999999;
   padding-bottom: 5px;
-  /* padding-left: 15px; */
 }
 
 .All.active {
@@ -57,7 +55,6 @@
 .Absconder {
   padding: 2px 50px;
   border-bottom: 3px solid transparent;
-  /* border-radius: 3px; */
 }
 
 .All.active,
@@ -86,7 +83,6 @@
   color: #2f2c9f;
   font-weight: 500;
   padding-bottom: 4px;
-  /* width: 60px; */
 }
 
 .Resigned.active {
@@ -97,7 +93,6 @@
   color: #2f2c9f;
   font-weight: 500;
   padding-bottom: 4px;
-  /* width: 77px; */
 }
 
 .Terminated.active {
@@ -108,7 +103,6 @@
   color: #2f2c9f;
   font-weight: 500;
   padding-bottom: 4px;
-  /* width: 92px; */
 }
 
 .Absconder.active {
@@ -119,7 +113,6 @@
   color: #2f2c9f;
   font-weight: 500;
   padding-bottom: 4px;
-  /* width: 88px; */
 }
 /* --------------------------------- */
 .selection2 {
@@ -163,7 +156,6 @@
   font-weight: 400;
   font-size: 14px;
   color: #2f2c9f;
-  /* cursor: not-allowed; */
 }
 
 .view {
@@ -175,7 +167,6 @@
   box-shadow: 0px 4px 18px -7px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   cursor: pointer;
-  /* display: none; */
 }
 .view span {
   width: 26px;
@@ -192,13 +183,6 @@
 .view span:hover {
   background-color: #ebeaf6;
 }
-/* .view img{
-  width: 13px;
-  height: 13px;
-} */
-/* .view img:hover {
-  background-color: #ebeaf6;
-} */
 
 .view span.active {
   background-color: #ebeaf6;
@@ -208,9 +192,6 @@
   height: 12px;
   width: 12px;
 }
-/* .view img:active {
-  background-color: #ebeaf6;
-} */
 
 .import:hover {
   border: 1px solid #2f2c9f;
@@ -331,7 +312,6 @@ input:focus {
 
 .icons img {
   cursor: pointer;
-  /* background-color: #f9f9f9 !important; */
 }
 
 .icons img:hover {
@@ -341,12 +321,6 @@ input:focus {
 tbody {
   background-color: #ffffff !important;
 }
-/* tbody td.active {
-  background-color: #ffffff !important;
-}
-tbody td.inactive{
-  display: none;
-} */
 
 .icons .fa-trash-can:hover {
   color: red;
@@ -362,7 +336,7 @@ tbody {
   overflow-y: auto;
   width: 100%;
   display: block;
-  height: 420px;
+  min-height: 67px;
 }
 
 .image_record {
@@ -476,10 +450,8 @@ input[type="checkbox"] {
 }
 
 .name1 img {
-  /* margin-top: -3px; */
   width: 34px;
   height: 34px;
-  /* display: none; */
 }
 
 .name1 p {
@@ -487,8 +459,6 @@ input[type="checkbox"] {
 }
 
 .email1 {
-  /* width: 220px; */
-  /* height: 44px; */
   text-align: justify;
   padding: 15px 20px;
   white-space: nowrap;
@@ -502,8 +472,6 @@ input[type="checkbox"] {
 }
 
 .designation1 {
-  /* width: 220px; */
-  /* height: 44px; */
   text-align: justify;
   white-space: nowrap;
   padding: 15px 20px;
@@ -569,7 +537,7 @@ tr {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  appearance: none;
+  /* appearance: none; */
   /* background-image: ('./assets/images/down-arrow.png'); */
 }
 
@@ -1253,11 +1221,6 @@ input::placeholder {
   color: black;
 }
 
-#form3 {
-  /* padding-top: 50px;
-    padding-left: 75px; */
-}
-
 .close-btn {
   background-color: transparent;
   border: none;
@@ -1630,7 +1593,6 @@ input::placeholder {
 .dropdwon_select i {
   font-size: 14px;
   color: #444444;
-  /* padding: 3px 7px; */
 }
 
 .file-content2 {
@@ -1693,12 +1655,10 @@ input::placeholder {
 .card {
   display: flex;
   gap: 10px;
-  /* justify-content: center; */
   align-items: center;
   border: 1px solid #999999;
   width: 420px;
   height: 60px;
-  /* height: 79px; */
   border-radius: 8px;
   padding-bottom: 10px;
 }
@@ -1862,7 +1822,6 @@ input::placeholder {
   font-weight: 400;
   font-size: 14px;
   color: #333333;
-  /* margin-top: 15px; */
   margin-bottom: 10px;
 }
 
@@ -1884,13 +1843,10 @@ input::placeholder {
 }
 
 #text18 {
-  /* width: 4px;
-  height: 37px; */
   background: #ffffff;
   border: 1px solid transparent;
   border-radius: 8px;
   box-shadow: none;
-  /* padding: 6px 40px; */
   font-style: normal;
   font-family: "Outfit", sans-serif;
   font-weight: 400;
@@ -1994,8 +1950,6 @@ input::placeholder {
   flex-direction: column;
   margin-top: 150px;
   background-color: transparent;
-  /* position: absolute;
-  left: 50%; */
 }
 .no-data {
   padding: 20px 0;
@@ -2016,9 +1970,6 @@ input::placeholder {
   font-size: 20px;
   text-align: center;
 }
-/* tbody img{
-  background-color: #ffffff;
-} */
 .no_data:hover {
   background-color: transparent !important;
 }
@@ -2099,7 +2050,6 @@ input::placeholder {
 }
 .disabledBtn1 {
   display: none;
-  /* opacity: 0.7; */
 }
 
 .card-wrapper {
@@ -2158,7 +2108,6 @@ input::placeholder {
 }
 .view2 {
   display: flex;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
   gap: 25px;
   width: 100%;
@@ -2169,7 +2118,6 @@ input::placeholder {
 }
 .card-detail {
   padding: 15px 15px;
-  /* max-width: 270px; */
   cursor: pointer;
   outline: none;
   width: 100%;
@@ -2205,7 +2153,7 @@ input::placeholder {
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  appearance: none;
+  /* appearance: none; */
 }
 .select1 option {
   background-color: #fff;
@@ -2224,13 +2172,6 @@ input::placeholder {
   align-items: center;
   margin-top: 25px;
 }
-/* .image-detail span{
-  border: 1px solid #666666;
-  padding: 4px;
-  border-radius: 50%;
-  height: 80px;
-  width: 80px;
-} */
 .image-detail span img {
   height: 80px;
   width: 80px;
@@ -2257,7 +2198,6 @@ input::placeholder {
   font-weight: 400;
   font-size: 12px;
   color: #777777;
-  /* margin-top: 4px; */
 }
 .contact-detail {
   display: flex;
@@ -2280,12 +2220,6 @@ input::placeholder {
   font-size: 13px;
   color: #2f2c9f;
 }
-/* .view2 {
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  width: 100%;
-} */
 .loader-main {
   display: flex;
   justify-content: center;
@@ -2294,7 +2228,6 @@ input::placeholder {
   z-index: 99999;
   width: 100%;
   height: 100%;
-  /* background: red; */
   top: 0;
   left: 0;
 }
@@ -2302,15 +2235,9 @@ input::placeholder {
   border: 8px solid #f3f3f3;
   border-top: 8px solid #2f2c9f;
   border-radius: 50%;
-  /* position: absolute; */
   width: 70px;
   height: 70px;
   animation: spin 1s linear infinite;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* z-index: 99999; */
-  /* background-color: red; */
 }
 
 @keyframes spin {
@@ -2445,7 +2372,6 @@ div.loader-parent {
   border-radius: 8px;
   padding: 20px;
   position: absolute;
-  /* margin-top: -70px; */
   animation-name: example1;
   animation-duration: 3s;
 }

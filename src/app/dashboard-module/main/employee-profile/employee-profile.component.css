@@ -991,20 +991,6 @@ input[type='date'] {
   margin-bottom: 15px;
   cursor: pointer;
 }
-
-/* .cancel{
-  padding: 13px 26px;
-  width: 140px;
-  background-color: #F7F7FB;
-  border: 1px solid #2F2C9F;
-  border-radius: 8px;
-  color: #2F2C9F;
-  font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-} */
 .save {
   padding: 10px 25px;
   background-color: #2F2C9F;
@@ -1250,18 +1236,6 @@ input[type='number']:hover {
   padding: 10px 10px;
 }
 
-/* .dropdwon_select:hover,
-.dropdwon_select:focus{
-  border: 1px solid #2F2C9F !important;
-  border-radius: 8px;
-} */
-
-/* .input .dropdwon_select:hover,
-.input .dropdwon_select:focus {
-  border: 1px solid #2F2C9F !important;
-  border-radius: 8px !important;
-} */
-
 .dropdwon_select p {
   font-size: 14px;
   font-weight: 400;
@@ -1319,13 +1293,6 @@ input[type='number']:hover {
   padding-top: 25px;
   font-size: 12px;
 }
-/* .text {
-  border: 1px solid #Cbcbcb !important;
-}
-
-.text:hover {
-  border: 1px solid #2F2C9F !important;
-} */
 .text.invalid {
   border: 1px solid red  ;
 }
@@ -1345,9 +1312,6 @@ input[type='number']:hover {
 .dropdwon_select:hover{
   border: 1px solid #2F2C9F !important;
 }
-/* input[type='text']:hover{
-  border: 1px solid #2F2C9F;
-} */
 .text.ng_invalid {
   border: 1px solid red !important ;
 }
@@ -1359,61 +1323,9 @@ input[type='number']:hover {
 .text.ng_valid {
   border: 1px solid green !important;
 }
-
-/* .text.ng_valid:hover {
-  border: 1px solid green !important;
-} */
-
-/* @keyframes growProgressBar {
-
-  0%,
-  33% {
-    --pgPercentage: 0;
-  }
-
-  100% {
-    --pgPercentage: var(--value);
-  }
-}
-
-@property --pgPercentage {
-  syntax: '<number>';
-  inherits: false;
-  initial-value: 0;
-}
-
-div[role="progressbar"] {
-  --size: 2.9rem;
-  --fg: #2f2c9f;
-  --bg: #def;
-  --pgPercentage: var(--value);
-  animation: growProgressBar 5s 1 forwards;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  position: absolute;
-  margin-top: 30px;
-  margin-left: 30px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
-    conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: calc(var(--size) / 5);
-  color: var(--fg);
-}
-
-div[role="progressbar"]::before {
-  counter-reset: percentage var(--value);
-  content: counter(percentage) '%';
-} */
-
 .loader {
   border: 8px solid #f3f3f3;
-  /* Light grey */
   border-top: 8px solid #2f2c9f;
-  /* Blue */
   border-radius: 50%;
   position: absolute;
   margin-top: 34px;
@@ -1431,9 +1343,6 @@ div[role="progressbar"]::before {
   100% {
     transform: rotate(360deg);
   }
-}
-.parent {
-  /* position: relative; */
 }
 .parent .content3 {
   background-color: #fff;
