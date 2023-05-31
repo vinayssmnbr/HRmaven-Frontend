@@ -359,4 +359,10 @@ export class DashService {
     const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
     return this.http.patch(url, { status });
   }
+
+  CreatecandidateMetting(data: any) {
+    const id = this.cookie.get('statusid');
+    data['statusid'] = id;
+    return this.http.post(this.prefix + 'job/meeting', data);
+  }
 }
