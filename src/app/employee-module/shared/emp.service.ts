@@ -15,7 +15,7 @@ export class EmpService {
   }
   public headerContent: string;
   public activeComponent: string;
-  welcome:boolean=true;
+  welcome: boolean = true;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -151,8 +151,11 @@ export class EmpService {
       id: id,
     });
     console.log(id);
-    return this.http.post(this.prefix+'attendance/emp/punchin',{id,ip},{ headers });
-
+    return this.http.post(
+      this.prefix + 'attendance/emp/punchin',
+      { id, ip },
+      { headers }
+    );
   }
 
   punchout(ip: any) {
@@ -164,8 +167,11 @@ export class EmpService {
       id: id,
     });
     console.log(id);
-    return this.http.post(this.prefix+'attendance/emp/punchout',{id,ip},{ headers });
-
+    return this.http.post(
+      this.prefix + 'attendance/emp/punchout',
+      { id, ip },
+      { headers }
+    );
   }
 
   getEmployee() {
@@ -197,6 +203,94 @@ export class EmpService {
   oldpasswordEmployee(email: any, oldpassword: any) {
     return this.http.post(`${this.prefix + 'api/empoldpwd'}/${email}`, {
       oldpassword,
+    });
+  }
+
+  // async upload(file: File, userId?: string) {
+  //   try {
+  //     const res = await this.client.upload(file);
+  //     console.log('res', res);
+  //     this.fileUrl = res.url;
+  //     const user = await this. updateJobStatus({
+  //       _id: userId,
+  //       url: res.url,
+  //     }).subscribe((result) => {
+  //       console.log('update', result);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  uploaded(file: File): Promise<any> {
+    return this.client.upload(file);
+  }
+
+  addCandidate(data: any) {
+    const id = this.cookie.get('job_id');
+    const empId = this.cookie.get('id');
+    data['jobId'] = id;
+    data['empId'] = empId;
+    return this.http.post(this.prefix + 'candid/candidates', data);
+  }
+
+  getCandidateEmail(email: any) {
+    return this.http.get(`${this.prefix + 'candid/checkedmail'}/${email}`);
+  }
+
+  getCandidateMobile(contactnumber: any) {
+    return this.http.get(
+      `${this.prefix + 'candid/checkedmobile'}/${contactnumber}`
+    );
+  }
+
+  getCandidate() {
+    const id = this.cookie.get('job_id');
+    const empid = this.cookie.get('job_id');
+
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+      empid: empid.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/findcandidate', { headers });
+  }
+
+  getCandidateUid() {
+    const id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      jobid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'candid/candiduid', { headers });
+  }
+  fetchjob() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(`${this.prefix + 'job/fetchjob'}`, { headers });
+  }
+
+  private selectedJobDetailKey = 'selectedJobDetail';
+
+  setSelectedJobDetail(i: any) {
+    localStorage.setItem(this.selectedJobDetailKey, JSON.stringify(i));
+  }
+
+  getSelectedJobDetail() {
+    const itemString = localStorage.getItem(this.selectedJobDetailKey);
+    return itemString ? JSON.parse(itemString) : null;
+  }
+  fetchcandidate() {
+    const id = this.cookie.get('id');
+    const job_id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+      jobid: job_id,
+    });
+    return this.http.get(this.prefix + 'candid/fetchcandidate/refer', {
+      headers,
     });
   }
 }

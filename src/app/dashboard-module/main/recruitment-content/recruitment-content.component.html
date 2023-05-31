@@ -7,7 +7,7 @@
       <div class="jobprofile-filter-add">
         <div class="jobprofile">
           <h3>Job Vacancies</h3>
-          <p>Lorem Ipsum is simply dummy text </p>
+          <p></p>
         </div>
         <div class="job-btn">
 
@@ -22,8 +22,8 @@
 
       <div class="jobs-completed">
         <ul class="all-completed">
-          <li class="active" [class.color]="id ==='all'">All Jobs</li>
-          <li [class.color]="id ==='unread'">Completed</li>
+          <li class="all" [class.color]="id1 ==='all'" (click)="tabChange('all')">All Jobs</li>
+          <li class="unread" [class.color]="id1 ==='unread'" (click)="tabChange('unread')">Completed</li>
         </ul>
         <span class="line"></span>
       </div>
@@ -35,15 +35,13 @@
           <div class="card-outer">
             <div class="card-head">
               <div class="card-logo">
-                <img src="assets/images/Ellipse 70.png" alt="">
-                <img src="assets/images/logos_spotify-icon.png" alt="" class="spotify">
                 <div class="card-text">
                   <h5>{{item.job_title}}</h5>
                   <p>{{item.date | date:"shortDate"}}</p>
                 </div>
               </div>
               <div class="progress-btn">
-                <button class="progres">Inprogress</button>
+                <button class="progres">{{item.status==""?"In Progress":"Completed"}}</button>
               </div>
             </div>
           </div>
@@ -160,7 +158,7 @@
                         <div class="dropdwon_select" (click)="dropdownOpen1()">
                           <!-- <p>{{Selectvariable1}}</p> -->
                           <input class="none" type="text" [(ngModel)]="Selectvariable1" formControlName="experience"
-                            id="text11" placeholder="Select">
+                            id="text11" placeholder="Select" readonly>
                           <i class="fa-sharp fa-solid fa-caret-down"></i>
                         </div>
                         <div class="select_content" *ngIf="contentdropdown1">

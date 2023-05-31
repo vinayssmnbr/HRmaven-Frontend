@@ -1,10 +1,12 @@
 import { Component, ElementRef, Renderer2 } from '@angular/core';
 declare var jQuery: any;
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
 })
+
 export class LandingPageComponent {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
   ngOnInit() {
@@ -69,5 +71,18 @@ export class LandingPageComponent {
       }, 800);
     });
   }
-  
+  contentdropdown: boolean = false;
+  dropdownOpen() {
+    this.contentdropdown = !this.contentdropdown;
+  }
+  colorvariable: number = 0;
+  Changeselect(arr: any) {
+    this.contentdropdown = false;
+  }
+  // scrolltop(){
+  //   let audio =new Audio();
+  //   audio.src = "../assets/Audio/videoplaybackmp4_iFjacumZ.mp3"
+  //   audio.load();
+  //   audio.play();
+  // }
 }

@@ -3,6 +3,7 @@ import { DashService } from '../../shared/dash.service';
 import {
   FormGroup,
   FormControl,
+  FormBuilder,
   Validators,
   AbstractControl,
 } from '@angular/forms';
@@ -21,9 +22,14 @@ export class JobDetailsComponent {
   fileName: string = '';
   jobrecord: any[] = [];
   statusFilter: string = 'All';
+  Searchuid: any = '';
   // currentCandidateUid: any = '';
 
-  constructor(private dashService: DashService, private cookie: CookieService) {
+  constructor(
+    private dashService: DashService,
+    private cookie: CookieService,
+    private formBuilder: FormBuilder
+  ) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
   }
@@ -32,6 +38,9 @@ export class JobDetailsComponent {
     console.log('select1', this.item);
 
     this.fetchJobVecancies();
+    this.csvForm = this.formBuilder.group({
+      csv: [''],
+    });
   }
 
   statusItem: string[] = [
@@ -43,6 +52,10 @@ export class JobDetailsComponent {
     'Rejected',
     'Archive',
   ];
+  importfile: boolean = false;
+  csvadded: boolean = false;
+  loader: boolean = false;
+  csvForm: FormGroup;
   importFileResponse: any = { success: [], error: [] };
   id: any = 'all';
   candidate: any[] = [];
@@ -126,6 +139,36 @@ export class JobDetailsComponent {
     this.colorvariable1 = arr1.id;
     console.log(arr1.name);
   }
+  array2: any = [
+    {
+      id: 0,
+      name: 'Software Developer',
+    },
+    {
+      id: 1,
+      name: 'Frontend Developer',
+    },
+    {
+      id: 3,
+      name: 'Full Stack Developer',
+    },
+    {
+      id: 4,
+      name: 'UI/UX Designer',
+    },
+  ];
+  dropdownOpen2() {
+    this.contentdropdown2 = !this.contentdropdown2;
+  }
+  Selectvariable2: string = 'Designation';
+  colorvariable2: number = 0;
+  Changeselect2(arr2: any) {
+    this.Selectvariable = arr2.name;
+    this.colorvariable = arr2.id;
+    this.contentdropdown = false;
+    console.log(arr2.name);
+  }
+  contentdropdown2:boolean=false;
   Jobdetails: boolean = false;
   viewbtn() {
     this.Jobdetails = true;
@@ -189,6 +232,10 @@ export class JobDetailsComponent {
     url: new FormControl('', Validators.required),
 
     // url: new FormControl(''),
+  });
+
+  csvform = new FormGroup({
+    csv: new FormControl('', Validators.required),
   });
 
   get registrationFormControl() {
@@ -296,8 +343,7 @@ export class JobDetailsComponent {
 
     this.dashService.addCandidate(data).subscribe((result) => {
       this.dashService.addCandidate(this.newcandidateform);
-      // this.newcandidateform.reset();
-      // this.loading=false
+
       this.fetchJobVecancies();
     });
 
@@ -307,7 +353,7 @@ export class JobDetailsComponent {
   fetchJobVecancies() {
     this.dashService.getCandidate().subscribe((data: any) => {
       console.log('hbhvdhsdh', data);
-      this.candidate = data;
+      this.candidate = data.Candidate;
     });
   }
   selecteditem: any;
@@ -421,8 +467,11 @@ export class JobDetailsComponent {
   modalimp() {
     this.importmodal = true;
   }
+
   closeinputmodal() {
     this.importmodal = false;
+    this.csvadded = false;
+    this.fetchJobVecancies();
   }
 
   // onFileSelectedrem(event: any): void {
@@ -471,6 +520,7 @@ export class JobDetailsComponent {
 
   async onFileSelectedrem(event: any) {
     const file: File = event.files[0];
+    console.log(file);
     // this.loader = true;
     if (!file) {
       console.log('No file selected.');
@@ -483,7 +533,7 @@ export class JobDetailsComponent {
       alert('Invalid file type. Please select a CSV file.');
       return;
     } else {
-      // this.loader = true;
+      this.loader = true;
     }
 
     function validateCsvFile(file: File): boolean {
@@ -492,7 +542,6 @@ export class JobDetailsComponent {
       } else {
         return false;
       }
-      
     }
 
     // Check file size
@@ -542,7 +591,7 @@ export class JobDetailsComponent {
         console.log(res, 'uid response');
         console.log(res.message);
         if (uid == -1) return 'there is an error while getting uid';
-       
+
         data.forEach((candidate) => {
           console.log('Adding employee:', candidate);
           candidate['uid'] = uid++;
@@ -550,22 +599,22 @@ export class JobDetailsComponent {
             async (res: any) => {
               console.log('res', res);
               console.log('messagge', res.message);
-              // this.loader = true;
+              this.loader = true;
               responseArr.push(res);
               console.log('Data:', res.data);
               if (res.status == 'failed') {
                 numFailures++;
                 errors.push({ ...candidate, error: res.message });
-              }
-              else if (res.status == "Success") {
+              } else if (res.status == 'Success') {
                 numSuccesses++;
                 sucesses.push(res);
               }
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                // this.loader = false;
-                // this.csvadded = true;
-                // this.importfile = false;
+                this.loader = true;
+                this.csvadded = true;
+                this.importfile = false;
+                this.importmodal = false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -579,9 +628,9 @@ export class JobDetailsComponent {
               responseArr.push(candidate);
               if (responseArr.length == data.length) {
                 await this.waitThreeSeconds();
-                // this.loader = false;
-                // this.csvadded = true;
-                // this.importfile = false;
+                this.loader = true;
+                this.csvadded = true;
+                this.importfile = false;
                 console.log('not uploaded files', errors);
                 this.importFileResponse.error = [...errors];
                 this.importFileResponse.sucess = [...sucesses];
@@ -597,5 +646,36 @@ export class JobDetailsComponent {
 
     reader.readAsText(file);
   }
+  colseimportmod: boolean = false;
+  closeimportmodal() {
+    this.importmodal = false;
+    this.csvadded = false;
+    this.colseimportmod = true;
+    this.fetchJobVecancies();
+  }
+
+  searchFieldDisabled(): boolean {
+    return this.candidate.length == 0;
+  }
+  sortEmployeeByUid(data: any) {
+    data.sort((a: any, b: any) => +a.uid - +b.uid);
+    console.log(data, 'adarsh sort');
+    return data;
+  }
+
+
+/*----------------*/
+showModalContent: boolean;
+showModal10=false;
+openModal10(){
+  this.showModal10 = true;
+  this.showModalContent=true
+}
+
+closeModal10(){
+  this.showModal10 = false;
+  this.showModalContent=false;
+}
+
 
 }

@@ -56,16 +56,17 @@
   border: 2px solid transparent;
 }
 
-.all {
+.all,.completed {
   width: 100%;
   max-width: 150px;
   padding-bottom: 5px;
-
+  border: 1px solid transparent;
 }
 
-.all:hover {
+.all:hover,.completed:hover {
   border-bottom: 2px solid #2F2C9F;
 }
+
 
 .color {
   color: #2F2C9F;
@@ -79,6 +80,7 @@
   gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(372.33px, 1fr)); */
   display: inline-block;
+  width:100%;
 }
 
 .col-4 {
@@ -500,7 +502,7 @@ span.line {
   font-size: 12px;
   gap: 30px;
 }
-/* 
+/*
 .year {
   display: flex;
   font-size: 12px;

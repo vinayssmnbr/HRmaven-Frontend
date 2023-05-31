@@ -78,11 +78,9 @@
         <div class="view_btn" (click)="viewbtn()">
           <button><u>View more </u></button>
         </div>
-
-
       </div>
 
-      <!--------------------------------------------- TAB CHANGE ----------------------------------------------------------------------->
+      <!--------------------------------------------- TAB CHANGE ------------------------------------------------>
       <div class="recruiters_nav">
         <div *ngFor="let status of statusItem" class="all"
           [ngClass]="{'color': statusFilter === status, 'active': statusFilter === status}" (click)="tabChange(status)">
@@ -91,31 +89,32 @@
       </div>
     </div>
   </div>
-
   <div class="regquirement_table">
     <div class="Candiddate">
       <div class="Candiddate_input">
         <i class="fa fa-search" aria-hidden="true" id="ico"></i>
-        <input type="text" placeholder="Enter Candiddate Id" />
+        <input type="text" placeholder="Enter Candiddate Id" [(ngModel)]="Searchuid"
+          [disabled]="searchFieldDisabled()" />
       </div>
       <div class="Candiddate_input_btn">
         <div class="Export_btn">
-          <button class="export" (click)=" download()"><img src="assets/images/prime_file-export.png" alt="">
+          <button class="export" (click)=" download()" [ngClass]="{'disabledBtn': selectedCandidate.length==0}"
+            [disabled]="selectedCandidate.length==0"><img src="assets/images/prime_file-export.png" alt="">
             <p>Export</p>
           </button>
         </div>
         <div class="Export_btn" (click)="modalimp()">
-          <button class="Import"><img src="assets/images/prime_file-import.png" alt="">
+          <button class="Import" [disabled]="csvForm.invalid"><img src="assets/images/prime_file-import.png" alt="">
             <p>Import</p>
           </button>
         </div>
-        <div class="Export_btn">
-          <button class="Filters" (click)="dropdownOpen()">
+        <div class="Export_btn" (mouseleave)="contentdropdown = false">
+          <!-- <button class="Filters" (click)="dropdownOpen()">
             <img src="assets/images/Group (1).png" alt="">
             <p>Filters</p>
           </button>
           <div class="dropdown_container">
-            <div class="select_content" *ngIf="contentdropdown" (mouseleave)="contentdropdown = false">
+            <div class="select_content" *ngIf="contentdropdown">
               <p class="Stages">Stages</p>
               <ul>
                 <li *ngFor="let arr of array; index as i" [class.select_active]="i === colorvariable"
@@ -124,7 +123,7 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="Add_Candidate_btn" (click)="openmodal()">
           <button class="Add_Candidate">
@@ -156,7 +155,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of candidate | jobstatus:statusFilter ">
+            <tr *ngFor="let item of sortEmployeeByUid(candidate)| jobstatus:statusFilter | candidatefilter:Searchuid">
+              <!-- <tr *ngFor="let item of candidate"> -->
               <td colspan="7" class="no_data" *ngIf=" item.found=='true'">
                 <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                     xmlns="http://www.w3.org/2000/svg">
@@ -294,11 +294,23 @@
                     (change)="onSelectChange($event,item)">
                     <option value="Resume Received">Resume Received</option>
                     <option value="Shortlisted">Shortlisted</option>
-                    <option value="Interview">Interview</option>
+                    <option value="Interview" (click)="openModal10()">Interview</option>
                     <option value="Hired">Hired</option>
                     <option value="Rejected">Rejected</option>
                     <option value="Archive">Archive</option>
                   </select>
+                  <!-- <div class="dropdown_container">
+                    <div class="dropdwon_select1" (click)="dropdownOpen2()">
+                      <p>{{Selectvariable2}}</p>
+                      <i class="fa-sharp fa-solid fa-caret-down"></i>
+                    </div>
+                    <div class="select_content" *ngIf="contentdropdown2">
+                      <ul>
+                        <li *ngFor="let arr2 of array2; index as i" [class.select_active]="i === colorvariable2" (click)="Changeselect2(arr2)">
+                          {{arr2.name}}</li>
+                      </ul>
+                    </div>
+                  </div> -->
                 </td>
                 <td class="pdf_logo">
                   <a href="{{item.url}}" target="_blank">
@@ -311,14 +323,8 @@
         </table>
       </div>
     </div>
-
-
-
-
   </div>
-
-
-  <!-- ---------------Job details modal--------------------------- -->
+  <!-- ---------------Job details modal----------------------------->
   <div class="Job_details" *ngIf="Jobdetails">
     <div class="Job_details_content">
       <div class="Job_details_title">
@@ -402,9 +408,7 @@
     </div>
   </div>
 </div>
-
-<!-- ------------------Add a  new candidate modal--------------- -->
-
+<!--------------------Add a  new candidate modal-------------------->
 <div class="Add_candidate" *ngIf="addcandidate">
   <form [formGroup]="newcandidateform" (ngSubmit)="newcandidatedetail()">
     <i class="fa-sharp fa-solid fa-xmark" (click)="closemodal()"></i>
@@ -458,9 +462,7 @@
   </form>
 
 </div>
-
-
-<!-- ------------------------New candidate added successfully!------------------------------------- -->
+<!--------------------New candidate added successfully!------------>
 <div class="New_candidate_main" *ngIf="Newcandidate">
   <div class="New_candidate">
     <div class="New_candidate_logo">
@@ -471,30 +473,191 @@
     <button class="done_btn" (click)="closedone()">Done</button>
   </div>
 </div>
-<!-- -----------------------------------Import Modal-------------------------------------- -->
+<!------------------Import Modal----------------------------------->
 <div class="import_modal_main" *ngIf="importmodal">
   <div class="import_modal">
     <div class="import_title">
       <h4>Upload CSV</h4>
       <i class="fa-solid fa-xmark" (click)="closeinputmodal()"></i>
     </div>
-
-    <div class="import_csv">
-      <img src="assets/images/Vector (4).png" alt="">
-      <h2>Select a CSV file to upload</h2>
-      <input type="file" accept=".csv"  #csvInput>
-    </div>
+    <form action="" [formGroup]="csvForm">
+      <div class="import_csv">
+        <img src="assets/images/Vector (4).png" alt="">
+        <h2>Select a CSV file to upload</h2>
+        <input type="file" accept=".csv" #csvInput formControlName="csv">
+      </div>
+    </form>
     <div class="sample_download">
-      <p>Download <a href="assets/csv/Sample.csv" [download]><u>Sample CSV File</u></a> for reference.</p>
+      <p>Download <a href="assets/csv/users (7).csv" [download]><u>Sample CSV File</u></a> for reference.</p>
       <p>Maximum Size : 5 MB</p>
     </div>
-    <div class="input_loader">
+
+    <div class="input_loader" *ngIf="loader">
       <img src="assets/images/Vector (8).png" alt="">
       <div class="progress_bar_loader"></div>
     </div>
+
     <div class="input_btn">
       <button class="cancel_btn" (click)="closeinputmodal()">Cancel</button>
-      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)">Import</button>
+      <button class="Import_btn" (click)="onFileSelectedrem(csvInput)"
+        [disabled]="csvForm.controls.csv.pristine">Import</button>
     </div>
+  </div>
+</div>
+
+<!-------------------------------------Import Modal Successful *ngIf="colseimportmod"----------------------------------------->
+<div class="Successful_import" *ngIf="csvadded  && importFileResponse.numSuccesses > 0">
+  <div class="Successful_input_file">
+    <i class="fa-solid fa-xmark" (click)="closeimportmodal()"></i>
+    <div class="Successful_box">
+      <img src="assets/images/tick.png" alt="">
+    </div>
+    <h1>Successful</h1>
+    <!-- <p>CSV file imported successfully!</p> -->
+    <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
+    <button class="done_btn_input" (click)="closeimportmodal()">Done</button>
+  </div>
+</div>
+
+
+
+
+<!-----------------------------------------interview-Modal-------------------------------------->
+<div class="modal" *ngIf="showModal10">
+  <div class="modal-content" *ngIf="showModalContent">
+      <i class="fa-solid fa-xmark" (click)="closeModal10()"></i>
+      <div class="modal-heading">
+          <h5>Add an event or meetings</h5>
+      </div>
+      <form class="create-new-form" [formGroup]="meetingForm" (ngSubmit)="meetingdetail()">
+          <div class="meeting-mode">
+              <div class="form-group">
+                  <label>Meeting title</label> <br>
+                  <input type="text" placeholder="UI/UX designer" class="meeting-input"
+                      formControlName="meetingtitle">
+              </div>
+              <div class="form-group">
+                  <label>Mode</label><br>
+                  <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                      <div class="dropdwon_select" (click)="dropdownOpen1()">
+                          <p>{{Selectvariable1}}</p>
+                          <i class="fa-sharp fa-solid fa-caret-down"></i>
+                      </div>
+                      <div class="select_content" *ngIf="contentdropdown1">
+                          <ul>
+                              <li *ngFor="let arr1 of array1; index as i"
+                                  [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                                  {{arr1.name}}</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="meeting-mode">
+              <div class="form-group">
+                  <label>Date</label> <br>
+                  <input type="date" placeholder="23/04/2023" class="date-input" formControlName="date">
+              </div>
+              <div class="form-group">
+                  <label>Start time</label><br>
+                  <input type="time" placeholder="02:00 pm" class="date-input" formControlName="starttime">
+              </div>
+              <div class="form-group">
+                  <label>End time</label><br>
+                  <input type="time" placeholder="2 hrs" class="date-input" formControlName="endtime">
+              </div>
+          </div>
+
+          <div class="meeting-mode" *ngIf="Meetinglink">
+              <div class="form-group">
+                  <label>Meeting link</label> <br>
+                  <input type="text" placeholder="Paste here..." class="meeting-link"
+                      formControlName="meetinglink">
+                  <div class="link-image"><img src="assets/images/meeting-link.svg" alt=""></div>
+              </div>
+          </div>
+          <div class="meeting-mode" *ngIf="Venuelink">
+              <div class="form-group">
+                  <label>Venue</label> <br>
+                  <input type="text" placeholder="Paste here..." class="meeting-link" formControlName="venue">
+              </div>
+          </div>
+
+          <div class="meeting-mode">
+              <div class="invite-add">
+                  <div class="form-group">
+                      <label>Invite an employees</label> <br>
+                      <input type="text" placeholder="Type employee name" class="invite"
+                          formControlName="inviteanemplyee">
+                  </div>
+                  <div class="add-btn">
+                      <button>Add</button>
+                  </div>
+              </div>
+          </div>
+          <div class="in-this-interview-area">
+              <h5>In this interview</h5>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+          </div>
+          <div class="discard-save">
+              <div class="discard"><button (click)="closeModal10()">Discard</button></div>
+              <div class="save"><button type="submit" (click)="closeModal10()">Save</button> </div>
+          </div>
+      </form>
   </div>
 </div>

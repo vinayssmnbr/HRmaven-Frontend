@@ -22,6 +22,7 @@ export class DashboardContentComponent implements OnInit {
   isFromSignupPage = false;
   formSubmitted = false;
   showModalContent: boolean;
+  recruitment:any;
 
 
   constructor(
@@ -174,6 +175,14 @@ export class DashboardContentComponent implements OnInit {
     loading = true;
 
     ngOnInit() {
+      this.activity();
+      this.dynamicrecord();
+      this.recruitment={
+        total:0,
+        hired:0,
+        short:0,
+        reject:0,
+      }
       this.loading = true;
 
     this.dashService.getleavecontent().subscribe((res:any)=>{
@@ -482,5 +491,24 @@ export class DashboardContentComponent implements OnInit {
 showhrmaven1:boolean=true;
 closewelcome(){
   this.showhrmaven1=false;
+}
+activitydata:any=[];
+activity(){
+  this.dashService.activity().subscribe((res:any)=>{
+    this.activitydata=res.data;
+
+  })
+}
+
+dynamicrecord(){
+  this.dashService.dynamicrecord().subscribe((res:any)=>{
+    if(res.data.length!=0){
+    this.recruitment.hired=res.data[0].hired,
+    this.recruitment.short=res.data[0].shortlisted
+    this.recruitment.reject=res.data[0].reject;
+    this.recruitment.total=res.data[0].total;
+    }
+  })
+
 }
 }

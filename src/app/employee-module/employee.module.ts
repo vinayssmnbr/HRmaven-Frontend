@@ -21,6 +21,8 @@ import { TodayattendancePipe } from './pipe/todayattendance.pipe';
 import { FilterattendancePipe } from './pipe/filterattendance.pipe';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { JobDetailsComponent } from './main/job-details/job-details.component';
+import { EmpjobuidPipe } from './pipe/empjobuid.pipe';
+import { EmpjobstatusPipe } from './pipe/empjobstatus.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { JobDetailsComponent } from './main/job-details/job-details.component';
     TimesheetComponent,
     TodayattendancePipe,
     FilterattendancePipe,
-    JobDetailsComponent
+    JobDetailsComponent,
+    EmpjobuidPipe,
+    EmpjobstatusPipe
   ],
   imports: [
     CommonModule,
