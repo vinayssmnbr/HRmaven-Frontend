@@ -168,7 +168,7 @@ export class JobDetailsComponent {
     this.contentdropdown = false;
     console.log(arr2.name);
   }
-  contentdropdown2:boolean=false;
+  contentdropdown2: boolean = false;
   Jobdetails: boolean = false;
   viewbtn() {
     this.Jobdetails = true;
@@ -241,6 +241,17 @@ export class JobDetailsComponent {
   get registrationFormControl() {
     return this.newcandidateform.controls;
   }
+  meeting: FormGroup;
+  meetingForm = new FormGroup({
+    meeting_title: new FormControl(''),
+    mode: new FormControl(''),
+    date: new FormControl(''),
+    start_time: new FormControl(''),
+    end_time: new FormControl(''),
+    invite_employee: new FormControl(''),
+    meetinglink: new FormControl(''),
+    venue: new FormControl(''),
+  });
 
   Space(event: any) {
     if (event.target.selectionStart === 0 && event.code == 'Space') {
@@ -357,8 +368,9 @@ export class JobDetailsComponent {
     });
   }
   selecteditem: any;
-
   onSelectChange(event: any, item: any) {
+    const statusid = this.cookie.set('statusid', item._id);
+
     if (item) {
       item.status = event.target.value;
       this.selecteditem = item._id;
@@ -370,6 +382,10 @@ export class JobDetailsComponent {
           console.log(error);
         }
       );
+    }
+
+    if (event.target.value === 'Interview') {
+      this.openModal10();
     }
   }
 
@@ -474,42 +490,6 @@ export class JobDetailsComponent {
     this.fetchJobVecancies();
   }
 
-  // onFileSelectedrem(event: any): void {
-  //   console.log
-  //   const file: File = event.target.files[0];
-  //   const reader: FileReader = new FileReader();
-  //   reader.onload = (e: any) => {
-  //     const csv: string = e.target.result;
-  //     const lines: string[] = csv.split(/\r\n|\n/);
-  //     const headers: string[] = lines[0].split(',');
-  //     const data: any[] = [];
-
-  //     for (let i = 1; i < lines.length - 1; i++) {
-  //       const values: string[] = lines[i].split(',');
-  //       const item: any = {};
-
-  //       for (let j = 0; j < headers.length; j++) {
-  //         item[headers[j]] = values[j];
-  //       }
-
-  //       data.push(item);
-  //     }
-  //     console.log(data, 'adarsh console')
-  //     data.forEach( candidate => {
-  //       console.log("adarsh",  candidate)
-  //       this.dashService.addCandidate( candidate).subscribe((res: any) => {
-  //         console.log(res, 'response')
-  //         console.log(res.data)
-  //       })
-  //     });
-  //     console.log(data);
-  //     // this.fetchdata()
-  //   };
-
-  //   reader.readAsText(file);
-  //   // this.fetchdata()
-
-  // }
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -659,23 +639,59 @@ export class JobDetailsComponent {
   }
   sortEmployeeByUid(data: any) {
     data.sort((a: any, b: any) => +a.uid - +b.uid);
-    console.log(data, 'adarsh sort');
     return data;
   }
 
+  /*----------------*/
+  showModalContent: boolean = false;
+  showModal10 = false;
+  openModal10() {
+    this.showModal10 = true;
+    this.showModalContent = true;
+  }
 
-/*----------------*/
-showModalContent: boolean;
-showModal10=false;
-openModal10(){
-  this.showModal10 = true;
-  this.showModalContent=true
-}
+  closeModal10() {
+    this.showModal10 = false;
+    this.showModalContent = false;
+    console.log(this.meetingForm.value);
+    let data = {
+      ...this.meetingForm.value,
+    };
+    this.dashService.CreatecandidateMetting(data).subscribe((result) => {
+      console.log(result);
+    });
+  }
 
-closeModal10(){
-  this.showModal10 = false;
-  this.showModalContent=false;
-}
-
-
+  array3: any = [
+    {
+      id: 0,
+      name: 'Online',
+    },
+    {
+      id: 1,
+      name: 'Offline',
+    },
+  ];
+  Venuelink: boolean = false;
+  Meetinglink: boolean = true;
+  contentdropdown3: boolean = false;
+  dropdownOpen3() {
+    this.contentdropdown3 = !this.contentdropdown3;
+  }
+  Selectvariable3: string = 'online';
+  colorvariable3: number = 0;
+  Changeselect3(arr3: any) {
+    if (arr3.id == 0) {
+      this.Meetinglink = true;
+      this.Venuelink = false;
+    }
+    if (arr3.id == 1) {
+      this.Venuelink = true;
+      this.Meetinglink = false;
+    }
+    this.Selectvariable3 = arr3.name;
+    this.colorvariable3 = arr3.id;
+    this.contentdropdown3 = false;
+    console.log(arr3.name);
+  }
 }
