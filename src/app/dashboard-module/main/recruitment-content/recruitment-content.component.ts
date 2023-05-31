@@ -44,6 +44,7 @@ export class RecruitmentContentComponent {
   showmodalcontent2: boolean = false;
   fourthStep: boolean = false;
   jobDetails: any = [];
+  Alljob:any=[];
   recruiters: any = [];
   loading: boolean = false;
   openModal() {
@@ -261,6 +262,7 @@ export class RecruitmentContentComponent {
     this.dashService.fetchJobVecancies().subscribe((res: any) => {
       console.log('this.jobVacancies', res.length);
       this.jobDetails = res.response;
+      this.Alljob=res.response;
     });
   }
   fetchrecruiteremail() {
@@ -316,9 +318,20 @@ export class RecruitmentContentComponent {
   popupsearchemail = false;
 
   id1: any = 'all';
+  completedjob:any=[];
   tabChange(ids: any) {
     this.id1 = ids;
     console.log(this.id1);
+    if(ids=="unread"){
+    this.jobDetails=this.Alljob.filter((job:any)=>{
+        if(job.status!=""){
+          return job;
+        }
+    })
+  }
+  else{
+    this.jobDetails=this.Alljob;
+  }
   }
 
 

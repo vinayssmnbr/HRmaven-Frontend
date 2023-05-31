@@ -1269,4 +1269,8 @@ export class EmployeeContentComponent implements OnInit {
     console.log(data, 'adarsh sort');
     return data;
   }
+  item:boolean=true;
+  itemopen(){
+    this.item=true;
+  }
 }

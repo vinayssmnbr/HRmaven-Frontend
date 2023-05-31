@@ -365,4 +365,19 @@ export class DashService {
     data['statusid'] = id;
     return this.http.post(this.prefix + 'job/meeting', data);
   }
+  activity() {
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'job/activity', { headers });
+  }
+
+  dynamicrecord() {
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      hrid: id.toString(),
+    });
+    return this.http.get(this.prefix + 'job/app/analysis', { headers });
+  }
 }
