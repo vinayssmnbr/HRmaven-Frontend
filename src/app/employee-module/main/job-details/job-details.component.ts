@@ -22,13 +22,15 @@ export class JobDetailsComponent {
   ngOnInit() {
     this.i = this.dashService.getSelectedJobDetail();
     console.log('select1', this.i);
+    this.fetchcandidate();
   }
   selectedPdfFile: any = '';
   fileName: string = '';
-  candidate: any[] = [];
+  candidate: any = [];
   currentCandidateUid: any = '';
   id: any = 'all';
   statusFilter: string = 'All';
+  Searchuid: any = '';
   designationdropdownOption: boolean = false;
 
   dropdownOpenOption() {
@@ -238,5 +240,16 @@ export class JobDetailsComponent {
       console.log('hbhvdhsdh', data);
       this.candidate = data;
     });
+  }
+
+  fetchcandidate() {
+    this.dashService.fetchcandidate().subscribe((res: any) => {
+      console.log(res.data);
+      this.candidate = res.data;
+    });
+  }
+
+  searchFieldDisabled(): boolean {
+    return this.candidate.length == 0;
   }
 }

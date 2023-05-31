@@ -343,8 +343,7 @@ export class JobDetailsComponent {
 
     this.dashService.addCandidate(data).subscribe((result) => {
       this.dashService.addCandidate(this.newcandidateform);
-      // this.newcandidateform.reset();
-      // this.loading=false
+
       this.fetchJobVecancies();
     });
 
@@ -354,7 +353,7 @@ export class JobDetailsComponent {
   fetchJobVecancies() {
     this.dashService.getCandidate().subscribe((data: any) => {
       console.log('hbhvdhsdh', data);
-      this.candidate = data;
+      this.candidate = data.Candidate;
     });
   }
   selecteditem: any;
@@ -663,5 +662,20 @@ export class JobDetailsComponent {
     console.log(data, 'adarsh sort');
     return data;
   }
+
+
+/*----------------*/
+showModalContent: boolean;
+showModal10=false;
+openModal10(){
+  this.showModal10 = true;
+  this.showModalContent=true
+}
+
+closeModal10(){
+  this.showModal10 = false;
+  this.showModalContent=false;
+}
+
 
 }

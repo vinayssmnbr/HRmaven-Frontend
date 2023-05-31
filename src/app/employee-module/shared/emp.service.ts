@@ -234,11 +234,6 @@ export class EmpService {
     return this.http.post(this.prefix + 'candid/candidates', data);
   }
 
-  updateJobStatus(id: any, status: any) {
-    const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
-    return this.http.patch(url, { status });
-  }
-
   getCandidateEmail(email: any) {
     return this.http.get(`${this.prefix + 'candid/checkedmail'}/${email}`);
   }
@@ -285,5 +280,17 @@ export class EmpService {
   getSelectedJobDetail() {
     const itemString = localStorage.getItem(this.selectedJobDetailKey);
     return itemString ? JSON.parse(itemString) : null;
+  }
+  fetchcandidate() {
+    const id = this.cookie.get('id');
+    const job_id = this.cookie.get('job_id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+      jobid: job_id,
+    });
+    return this.http.get(this.prefix + 'candid/fetchcandidate/refer', {
+      headers,
+    });
   }
 }

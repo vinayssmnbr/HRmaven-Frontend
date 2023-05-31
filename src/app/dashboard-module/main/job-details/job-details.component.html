@@ -109,7 +109,7 @@
           </button>
         </div>
         <div class="Export_btn" (mouseleave)="contentdropdown = false">
-          <button class="Filters" (click)="dropdownOpen()">
+          <!-- <button class="Filters" (click)="dropdownOpen()">
             <img src="assets/images/Group (1).png" alt="">
             <p>Filters</p>
           </button>
@@ -123,7 +123,7 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="Add_Candidate_btn" (click)="openmodal()">
           <button class="Add_Candidate">
@@ -156,6 +156,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of sortEmployeeByUid(candidate)| jobstatus:statusFilter | candidatefilter:Searchuid">
+              <!-- <tr *ngFor="let item of candidate"> -->
               <td colspan="7" class="no_data" *ngIf=" item.found=='true'">
                 <p> <svg width="209" height="176" viewBox="0 0 209 176" fill="transparent"
                     xmlns="http://www.w3.org/2000/svg">
@@ -293,7 +294,7 @@
                     (change)="onSelectChange($event,item)">
                     <option value="Resume Received">Resume Received</option>
                     <option value="Shortlisted">Shortlisted</option>
-                    <option value="Interview">Interview</option>
+                    <option value="Interview" (click)="openModal10()">Interview</option>
                     <option value="Hired">Hired</option>
                     <option value="Rejected">Rejected</option>
                     <option value="Archive">Archive</option>
@@ -515,5 +516,148 @@
     <!-- <p>CSV file imported successfully!</p> -->
     <p style="color:#3D9030">{{importFileResponse.numSuccesses}} Records Imported Successfully!</p>
     <button class="done_btn_input" (click)="closeimportmodal()">Done</button>
+  </div>
+</div>
+
+
+
+
+<!-----------------------------------------interview-Modal-------------------------------------->
+<div class="modal" *ngIf="showModal10">
+  <div class="modal-content" *ngIf="showModalContent">
+      <i class="fa-solid fa-xmark" (click)="closeModal10()"></i>
+      <div class="modal-heading">
+          <h5>Add an event or meetings</h5>
+      </div>
+      <form class="create-new-form" [formGroup]="meetingForm" (ngSubmit)="meetingdetail()">
+          <div class="meeting-mode">
+              <div class="form-group">
+                  <label>Meeting title</label> <br>
+                  <input type="text" placeholder="UI/UX designer" class="meeting-input"
+                      formControlName="meetingtitle">
+              </div>
+              <div class="form-group">
+                  <label>Mode</label><br>
+                  <div class="dropdown_container" (mouseleave)="contentdropdown1 = false">
+                      <div class="dropdwon_select" (click)="dropdownOpen1()">
+                          <p>{{Selectvariable1}}</p>
+                          <i class="fa-sharp fa-solid fa-caret-down"></i>
+                      </div>
+                      <div class="select_content" *ngIf="contentdropdown1">
+                          <ul>
+                              <li *ngFor="let arr1 of array1; index as i"
+                                  [class.select_active]="i === colorvariable1" (click)="Changeselect1(arr1)">
+                                  {{arr1.name}}</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="meeting-mode">
+              <div class="form-group">
+                  <label>Date</label> <br>
+                  <input type="date" placeholder="23/04/2023" class="date-input" formControlName="date">
+              </div>
+              <div class="form-group">
+                  <label>Start time</label><br>
+                  <input type="time" placeholder="02:00 pm" class="date-input" formControlName="starttime">
+              </div>
+              <div class="form-group">
+                  <label>End time</label><br>
+                  <input type="time" placeholder="2 hrs" class="date-input" formControlName="endtime">
+              </div>
+          </div>
+
+          <div class="meeting-mode" *ngIf="Meetinglink">
+              <div class="form-group">
+                  <label>Meeting link</label> <br>
+                  <input type="text" placeholder="Paste here..." class="meeting-link"
+                      formControlName="meetinglink">
+                  <div class="link-image"><img src="assets/images/meeting-link.svg" alt=""></div>
+              </div>
+          </div>
+          <div class="meeting-mode" *ngIf="Venuelink">
+              <div class="form-group">
+                  <label>Venue</label> <br>
+                  <input type="text" placeholder="Paste here..." class="meeting-link" formControlName="venue">
+              </div>
+          </div>
+
+          <div class="meeting-mode">
+              <div class="invite-add">
+                  <div class="form-group">
+                      <label>Invite an employees</label> <br>
+                      <input type="text" placeholder="Type employee name" class="invite"
+                          formControlName="inviteanemplyee">
+                  </div>
+                  <div class="add-btn">
+                      <button>Add</button>
+                  </div>
+              </div>
+          </div>
+          <div class="in-this-interview-area">
+              <h5>In this interview</h5>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+              <div class="image-text-design">
+                  <div class="image-text-heading">
+                      <div class="image-name">
+                          <img src="assets/images/olivye.png" alt="">
+                      </div>
+                      <div class="name-heading">
+                          <h6>Olivye Wu</h6>
+                          <p>Olivye@gmail.com</p>
+                      </div>
+                  </div>
+                  <div class="designer-text">
+                      <h5>UI/UX designer</h5>
+                  </div>
+              </div>
+          </div>
+          <div class="discard-save">
+              <div class="discard"><button (click)="closeModal10()">Discard</button></div>
+              <div class="save"><button type="submit" (click)="closeModal10()">Save</button> </div>
+          </div>
+      </form>
   </div>
 </div>
