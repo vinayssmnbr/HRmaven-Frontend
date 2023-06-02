@@ -27,8 +27,7 @@ export class LoginComponent {
   userEmail: any = '';
   emailExists = false;
   Invalid = false;
-  loginLoader:boolean = false;
-
+  loginLoader: boolean = false;
 
   constructor(
     public fb1: FormBuilder,
@@ -36,10 +35,10 @@ export class LoginComponent {
     private http: HttpClient,
     private router: Router,
     private cookie: CookieService,
-    public userService: UserService,
-    // private cdRef: ChangeDetectorRef,
-  ) {}
-  incorrect:boolean=true;
+    public userService: UserService
+  ) // private cdRef: ChangeDetectorRef,
+  {}
+  incorrect: boolean = true;
   ngOnInit() {
     localStorage.setItem('personalDataSubmitted', JSON.stringify(true));
     this.userService.isFromLoginPage = false;
@@ -71,22 +70,21 @@ export class LoginComponent {
     this.activatedRoute.queryParams.subscribe((params) => {
       // console.log(params);
       const token = params['token'];
-      const id= params['hrid'];
+      const id = params['hrid'];
       const email = params['email'];
-      console.log(id,email);
+      console.log(id, email);
       // console.log(token);
-      if(token == 'notfound')
-      {
+      if (token == 'notfound') {
         this.cookie.delete('token');
-        this.Invalid=!this.Invalid;
-        this.incorrect=false;
+        this.Invalid = !this.Invalid;
+        this.incorrect = false;
         return;
       }
       if (token && token != 'undefined') {
         this.cookie.set('token', token);
-        this.cookie.set('hr_id',id)
-        this.cookie.set('email',email);
-        this.cookie.set('role','hr');
+        this.cookie.set('hr_id', id);
+        this.cookie.set('email', email);
+        this.cookie.set('role', 'hr');
         this.router.navigate(['/dashboard']);
       } else {
         this.cookie.delete('token');
@@ -115,7 +113,6 @@ export class LoginComponent {
           this.userdetail = res.message;
         } else if (res.message === 'user-not-found') {
           this.usernotfound = res.message;
-
         }
 
         this.employeemail = res;
@@ -141,7 +138,7 @@ export class LoginComponent {
       Validators.pattern(
         '^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$'
         // '[a-zA-Z0-9]+\.[a-zA-Z0-9]+@gmail\.com'
-        ),
+      ),
     ]),
     password: new FormControl('', [
       Validators.required,
@@ -201,7 +198,6 @@ export class LoginComponent {
 
   loader = false;
   submit() {
-
     this.loader = true;
     setTimeout(() => {
       this.router.navigate(['/dashboard']);
@@ -209,22 +205,27 @@ export class LoginComponent {
   }
 
   // submissions
-ress: any =''
+  ress: any = '';
   onSubmit(data: any) {
     this.loginLoader = true;
     console.log(this.loginForm.value);
     // const isFromLoginPage = true; // set the flag to true
     this.userService.users(data).subscribe((res: any) => {
-      this.incorrect=true;
+      this.incorrect = true;
       localStorage.setItem('personalDataSubmitted', 'true');
-      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted)); // Debugging statement
+      console.log(
+        'personalDataSubmitted value: ',
+        JSON.stringify(res.personalDataSubmitted)
+      ); // Debugging statement
       if (res.personalDataSubmitted) {
-
-      console.log("personalDataSubmitted value: ", JSON.stringify(res.personalDataSubmitted));
+        console.log(
+          'personalDataSubmitted value: ',
+          JSON.stringify(res.personalDataSubmitted)
+        );
         localStorage.setItem('personalDataSubmitted', 'true');
       }
-      console.log("ress: ", res.username)
-      this.cookie.set("company",res.username)
+      console.log('ress: ', res.username);
+      this.cookie.set('company', res.username);
       localStorage.setItem('companyname', res.username);
       // console.log("isFromLoginPage: ", isFromLoginPage);
       // localStorage.setItem("isFromLoginPage",JSON.stringify(isFromLoginPage))
@@ -250,15 +251,17 @@ ress: any =''
         if (this.loginForm.value.Remember) {
           localStorage.setItem('email', this.loginForm.value.email);
           localStorage.setItem('password', this.loginForm.value.password);
-
         }
 
         console.log(res._id);
         this.cookie.set('hr_id', res._id);
         this.cookie.set('role', 'hr');
-              localStorage.setItem('personalDataSubmitted', 'true');
+        localStorage.setItem('personalDataSubmitted', 'true');
         this.submit();
-      } else if (res.message == 'Invalid' || res.message == "Employee email or status invalid") {
+      } else if (
+        res.message == 'Invalid' ||
+        res.message == 'Employee email or status invalid'
+      ) {
         console.log('haha');
         this.Invalid = !this.Invalid;
         // this.cdRef.detectChanges();
@@ -347,7 +350,6 @@ ress: any =''
         this.usernotfound = res.message;
         console.log('usernotfound: ', this.usernotfound);
         this.usernotfound = true;
-
       }
 
       this.employeemail = res;

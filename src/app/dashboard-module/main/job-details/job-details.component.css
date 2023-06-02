@@ -751,7 +751,11 @@ select.table_option::after {
   font-size: 18px;
   color: #444444;
 }
-
+.form_title i {
+  position: absolute;
+  color: red;
+  z-index: 999;
+}
 .Add_candidate form {
   width: 700px;
   height: 463px;
@@ -1508,15 +1512,6 @@ form .user__details .input__box {
   border-radius: 6px;
   outline: none;
   border: none;
-}
-
-.fa-xmark {
-  position: absolute;
-  top: -4%;
-  right: -5%;
-  cursor: pointer;
-  color: #ececec;
-  font-size: 20px;
 }
 
 .dropdwon_select {
