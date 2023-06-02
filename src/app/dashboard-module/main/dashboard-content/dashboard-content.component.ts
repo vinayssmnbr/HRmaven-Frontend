@@ -511,4 +511,10 @@ dynamicrecord(){
   })
 
 }
+
+list:any[]=[];
+addTask(item:string){
+  this.list.push({is:this.list.length,name:item});
+  console.warn(this.list)
+}
 }

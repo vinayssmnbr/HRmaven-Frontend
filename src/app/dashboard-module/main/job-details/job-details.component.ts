@@ -694,4 +694,40 @@ export class JobDetailsComponent {
     this.contentdropdown3 = false;
     console.log(arr3.name);
   }
+
+  list:any[]=[];
+  popupsearchemail=false
+  item1:string=""
+addTask(item1:string){
+ 
+  // this.list.push({is:this.list.length,name:item1});
+  this.list.push(item1)
+  console.warn(this.list)
+  this.popupsearchemail = false;
+  this.item1 = '';
+  
+}
+removeTask(id:number){
+  console.warn(id)
+  this.list=this.list.filter(item=>item.id!==id)
+}
+
+recruiters: any = [
+  {
+    id: 0,
+    professionalemail: 'vinay@gmail.com',
+    designation:'Full Stack Developer',
+    name:'vinay'
+  },
+  {
+    id: 1,
+    professionalemail: 'saacket@gmail.com',
+    designation:'Frontend Developer',
+    name:'Saacket'
+
+  }]
+  skilladd1(item1:any){
+    this.item1=item1;
+    this.addTask(item1)
+  }
 }
