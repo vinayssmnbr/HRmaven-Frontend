@@ -558,7 +558,7 @@
       <div class="meeting-mode">
         <div class="form-group">
           <label for="">Description</label> <br>
-          <textarea name="" id="" placeholder="Enter meeting description here"></textarea>
+          <textarea name="" id="" placeholder="Enter meeting description here" formControlName="description"></textarea>
         </div>
       </div>
       <div class="meeting-mode">
@@ -596,11 +596,6 @@
             <label>Invite an employees</label> <br>
             <input type="text" placeholder="Type employee name" class="invite" formControlName="invite_employee" #task
               (keydown)="popupsearchemail=true">
-            <!-- <div class="add-btn">
-            <button (click)="addTask(task.value)">Add</button></div> -->
-            <!-- <ul class="inviteanemployee" *ngFor="let item of list">
-              <li >{{item.name}} </li> <i class="fa-solid fa-xmark" (click)="removeTask(item.id)"></i> 
-            </ul> -->
           </div>
           <div class="popup_search" *ngIf="popupsearchemail">
             <div class="popup_email" *ngFor="let i of recruiters | recruiterfilter:item1">
@@ -629,7 +624,7 @@
             </div>
             <div class="designer-text">
               <h5>{{item.designation}}</h5>
-              <i class="fa-solid fa-xmark" (click)="removeTask(item.id)"></i>
+              <i class="fa-solid fa-xmark" (click)="removeTask(item._id)"></i>
             </div>
           </div>
         </div>
