@@ -927,67 +927,6 @@ export class EmployeeContentComponent implements OnInit {
     // }
   }
 
-  // download(): void {
-  //   const selectedEmployee = this.employee.filter(emp => emp.checked);
-  //   if (selectedEmployee.length === 0) {
-  //     alert('Please select at least one employee to download.');
-  //     return;
-  //   }
-
-  //   const data = [
-  //     ['EMPLOYEEID', 'NAME', 'DESIGNATION', 'EMAIL', 'CONTACT', 'STATUS'],
-  //     ...selectedEmployee.map((employee) => [employee.uid, employee.name, employee.designation, employee.email, employee.mobile, employee.status])
-  //   ];
-
-  //   const worksheet = XLSX.utils.aoa_to_sheet(data);
-  //   const workbook = XLSX.utils.book_new();
-  //   XLSX.utils.book_append_sheet(workbook, worksheet, 'Data');z
-  //   const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-  //   const filename = 'data.xlsx';
-  //   const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-  //   saveAs(blob, filename);
-  // }
-
-  // onFileSelectedrem(event: any): void {
-  //   const file: File = event.target.files[0];
-  //   const reader: FileReader = new FileReader();
-  //   reader.onload = (e: any) => {
-  //     const csv: string = e.target.result;
-  //     const lines: string[] = csv.split(/\r\n|\n/);
-  //     const headers: string[] = lines[0].split(',');
-  //     const data: any[] = [];
-
-  //     for (let i = 1; i < lines.length - 1; i++) {
-  //       const values: string[] = lines[i].split(',');
-  //       const item: any = {};
-
-  //       for (let j = 0; j < headers.length; j++) {
-  //         item[headers[j]] = values[j];
-  //       }
-
-  //       data.push(item);
-  //     }
-  //     console.log(data, 'adarsh console')
-  //     data.forEach(employee => {
-  //       console.log("Adarsh", employee)
-  //       this.dashService.addEmployee(employee).subscribe((res: any) => {
-  //         console.log(res, 'response')
-  //         console.log(res.data)
-  //       })
-  //     });
-  //     console.log(data);
-  //     // this.fetchdata()
-  //   };
-
-  //   reader.readAsText(file);
-  //   // this.fetchdata()
-
-  // }
-
-  // importFile() {
-  //   const fileInput = document.querySelector('input[type=file]') as HTMLInputElement;
-  //   fileInput.click();
-  // }
   waitThreeSeconds() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -1268,5 +1207,9 @@ export class EmployeeContentComponent implements OnInit {
     data.sort((a: any, b: any) => +a.uid - +b.uid);
     console.log(data, 'adarsh sort');
     return data;
+  }
+  item: boolean = true;
+  itemopen() {
+    this.item = true;
   }
 }

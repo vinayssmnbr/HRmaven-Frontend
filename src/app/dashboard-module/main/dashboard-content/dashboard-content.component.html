@@ -533,13 +533,16 @@
             <div class="invite-add">
               <div class="form-group">
                 <label>Invite an employees</label> <br>
-                <input type="text" placeholder="Type employee name" class="invite" formControlName="inviteanemplyee">
+                <input type="text" placeholder="Type employee name" class="invite" formControlName="inviteanemplyee" #task>
               </div>
               <div class="add-btn">
-                <button>Add</button>
+                <button (click)="addTask(task.value)">Add</button>
               </div>
             </div>
           </div>
+          <ul class="inviteanemployee" *ngFor="let item of list">
+            <li>{{item.name}}</li>
+          </ul>
           <div class="in-this-interview-area">
             <h5>In this interview</h5>
             <div class="image-text-design">
