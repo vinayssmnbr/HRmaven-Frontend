@@ -69,12 +69,11 @@ export class LoginComponent {
     //GOOGLE LOGIN
 
     this.activatedRoute.queryParams.subscribe((params) => {
-      // console.log(params);
+      
       const token = params['token'];
       const id= params['hrid'];
       const email = params['email'];
       console.log(id,email);
-      // console.log(token);
       if(token == 'notfound')
       {
         this.cookie.delete('token');
@@ -133,6 +132,7 @@ export class LoginComponent {
     console.log('google');
     window.location.href = 'https://hrmaven.works/auth/google';
   }
+
 
   loginForm = new FormGroup({
     email: new FormControl('', [
