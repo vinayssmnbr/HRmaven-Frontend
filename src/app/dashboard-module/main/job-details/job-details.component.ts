@@ -32,6 +32,8 @@ export class JobDetailsComponent {
   ) {
     dashService.activeComponent = 'job-details';
     dashService.headerContent = '';
+
+    this.fetchrecruiteremail();
   }
   ngOnInit() {
     this.item = this.dashService.getSelectedJobDetail();
@@ -62,6 +64,18 @@ export class JobDetailsComponent {
   selectedCandidate: any[] = [];
   selectedPdfFile: any = '';
   currentCandidateUid: any = '';
+  colseimportmod: boolean = false;
+  showModalContent: boolean = false;
+  showModal10 = false;
+  Venuelink: boolean = false;
+  Meetinglink: boolean = true;
+  contentdropdown3: boolean = false;
+  Selectvariable3: string = 'online';
+  colorvariable3: number = 0;
+  list: any[] = [];
+  popupsearchemail = false;
+  item1: string = '';
+  recruiters: any = [];
   tabChange(status: string) {
     // this.id = ids;
     // console.log(this.id);
@@ -251,6 +265,7 @@ export class JobDetailsComponent {
     invite_employee: new FormControl(''),
     meetinglink: new FormControl(''),
     venue: new FormControl(''),
+    description: new FormControl(''),
   });
 
   Space(event: any) {
@@ -626,7 +641,7 @@ export class JobDetailsComponent {
 
     reader.readAsText(file);
   }
-  colseimportmod: boolean = false;
+
   closeimportmodal() {
     this.importmodal = false;
     this.csvadded = false;
@@ -643,8 +658,7 @@ export class JobDetailsComponent {
   }
 
   /*----------------*/
-  showModalContent: boolean = false;
-  showModal10 = false;
+
   openModal10() {
     this.showModal10 = true;
     this.showModalContent = true;
@@ -656,10 +670,12 @@ export class JobDetailsComponent {
     console.log(this.meetingForm.value);
     let data = {
       ...this.meetingForm.value,
+      list: this.list,
     };
     this.dashService.CreatecandidateMetting(data).subscribe((result) => {
       console.log(result);
     });
+    this.meetingForm.reset();
   }
 
   array3: any = [
@@ -672,14 +688,11 @@ export class JobDetailsComponent {
       name: 'Offline',
     },
   ];
-  Venuelink: boolean = false;
-  Meetinglink: boolean = true;
-  contentdropdown3: boolean = false;
+
   dropdownOpen3() {
     this.contentdropdown3 = !this.contentdropdown3;
   }
-  Selectvariable3: string = 'online';
-  colorvariable3: number = 0;
+
   Changeselect3(arr3: any) {
     if (arr3.id == 0) {
       this.Meetinglink = true;
@@ -695,39 +708,26 @@ export class JobDetailsComponent {
     console.log(arr3.name);
   }
 
-  list:any[]=[];
-  popupsearchemail=false
-  item1:string=""
-addTask(item1:string){
- 
-  // this.list.push({is:this.list.length,name:item1});
-  this.list.push(item1)
-  console.warn(this.list)
-  this.popupsearchemail = false;
-  this.item1 = '';
-  
-}
-removeTask(id:number){
-  console.warn(id)
-  this.list=this.list.filter(item=>item.id!==id)
-}
+  addTask(item1: string) {
+    // this.list.push({is:this.list.length,name:item1});
+    this.list.push(item1);
+    console.warn(this.list);
+    this.popupsearchemail = false;
+    this.item1 = '';
+  }
+  removeTask(id: number) {
+    console.warn(id);
+    this.list = this.list.filter((item) => item._id !== id);
+  }
 
-recruiters: any = [
-  {
-    id: 0,
-    professionalemail: 'vinay@gmail.com',
-    designation:'Full Stack Developer',
-    name:'vinay'
-  },
-  {
-    id: 1,
-    professionalemail: 'saacket@gmail.com',
-    designation:'Frontend Developer',
-    name:'Saacket'
-
-  }]
-  skilladd1(item1:any){
-    this.item1=item1;
-    this.addTask(item1)
+  fetchrecruiteremail() {
+    this.dashService.fetchrecruiterEmail().subscribe((res: any) => {
+      console.log('this.jobVacancies', res.length);
+      this.recruiters = res.data;
+    });
+  }
+  skilladd1(item1: any) {
+    this.item1 = item1;
+    this.addTask(item1);
   }
 }
