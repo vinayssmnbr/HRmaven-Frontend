@@ -6,13 +6,24 @@
 }
 
 .meeting_content {
-    align-items: start;
+    /* align-items: start;
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(auto-fill, minmax(565px, 1fr));
-    padding: 0 20px;
+    padding: 0 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 77vh;
 }
-
+.meeting_content h2{
+    color: #444444;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 21px;
+}
 .col-6 {
     display: inline-block;
     width: 100%;
