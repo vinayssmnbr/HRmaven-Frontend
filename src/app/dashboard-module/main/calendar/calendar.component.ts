@@ -19,25 +19,25 @@ export class CalendarComponent {
   // progressStartValue: number = 0;
   // progressEndValue: number = 90;
   // speed: number = 100;
+  meeting: any = [];
   ngOnInit() {
-    // this.progressBar = document.querySelector('.progress_upload');
-    // this.progressText = document.querySelector('.progress-text-input');
-
-    // this.interval = setInterval(() => {
-    //   this.progress++;
-    //   if (this.progress > 100) {
-    //     this.progress = 0;
-    //   }
-    //   this.progressBar.style.width = `${this.progress}%`;
-    //   this.progressText.innerText = `${this.progress}%`;
-    // }, 50);
+    this.fetchmeeting();
+  }
+  fetchmeeting() {
+    this.dashService.fetchmeeting().subscribe((res: any) => {
+      this.meeting = res.data[0].meeting;
+      if (this.meeting.length > 0) {
+        this.meeting.map((item: any) => {
+          var x = new Date(item.start_time);
+          var y = new Date(item.end_time);
+          let seconds = Math.abs(x.getTime() - y.getTime()) / 1000;
+          let min=seconds / 60;
+          item['min']=min;
+        })
+      }
+      console.log(this.meeting);
+    }
+    )
 
   }
-  // inputfilename: boolean = false;
-  // selectedFile: File | null = null;
-  // fileName: string = '';
-  // onfileselected(event: any) {
-  //   this.selectedFile = event.target.files[0];
-  //   this.fileName = this.selectedFile ? this.selectedFile.name : '';
-  // }
 }

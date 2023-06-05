@@ -54,7 +54,7 @@
 .meeting_mode {
     display: flex;
     align-items: center;
-    gap: 88px;
+    gap: 96px;
 }
 
 .meeting_mode .meeting_link {

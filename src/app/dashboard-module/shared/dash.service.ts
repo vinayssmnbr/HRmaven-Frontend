@@ -393,4 +393,13 @@ export class DashService {
     });
     return this.http.get(this.prefix + 'job/app/analysis', { headers });
   }
+
+  fetchmeeting(){
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(`${this.prefix + 'job/meeting'}`, { headers });
+  }
 }

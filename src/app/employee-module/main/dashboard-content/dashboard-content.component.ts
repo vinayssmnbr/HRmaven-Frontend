@@ -125,6 +125,7 @@ export class DashboardContentComponent {
       compensatory: 0,
       medical: 0
     }
+    this.fetchmeeting();
 
     // this.present=0
     // this.absent=0;
@@ -151,6 +152,12 @@ export class DashboardContentComponent {
     this.empService.fetchjob().subscribe((res:any)=>{
       this.jobs=res.data[0].job;
       console.log(this.jobs);
+
+    })
+  }
+
+  fetchmeeting(){
+    this.empService.fetchmeeting().subscribe((res:any)=>{
 
     })
   }

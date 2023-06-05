@@ -281,6 +281,16 @@ export class EmpService {
     const itemString = localStorage.getItem(this.selectedJobDetailKey);
     return itemString ? JSON.parse(itemString) : null;
   }
+  fetchmeeting(){
+    const id = this.cookie.get('id');
+    const role= this.cookie.get('role');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+      role:role
+    });
+    return this.http.get(`${this.prefix + 'job/meeting'}`, { headers });
+  }
   fetchcandidate() {
     const id = this.cookie.get('id');
     const job_id = this.cookie.get('job_id');
