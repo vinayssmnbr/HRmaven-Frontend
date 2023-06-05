@@ -2,7 +2,8 @@
 <app-sidebar></app-sidebar>
 <div class="meeting_main">
   <div class="meeting_content">
-    <div class="col-6" *ngFor="let item of meeting">
+    <ng-container *ngIf="this.meeting.length>0">
+    <div class="col-6" *ngFor="let item of meeting" >
       <div class="card">
         <h1>{{item.meeting_title}}</h1>
         <p>{{item.description}} </p>
@@ -17,5 +18,12 @@
         </div>
       </div>
     </div>
+  </ng-container>
+  <div class="parentno" *ngIf="this.meeting.length==0">
+    <div class="nofound" >
+      <img src="../../../../assets/images/no_record.png">
+      <h2>No Record Found</h2>
+    </div>
+  </div>
   </div>
 </div>
