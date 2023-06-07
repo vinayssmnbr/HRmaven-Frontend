@@ -710,8 +710,9 @@ input[type="radio"] {
   height: 400px;
   padding-right: 4px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+
 }
 
 .hidden {
