@@ -1,3 +1,30 @@
 <app-sidebar></app-sidebar>
 <app-header></app-header>
-
+<div class="meeting_main">
+  <div class="meeting_content">
+    <ng-container *ngIf="this.meeting.length>0">
+      <div class="col-6" *ngFor="let item of meeting">
+        <div class="card">
+          <h1>{{item.meeting_title}}</h1>
+          <p>{{item.description}} </p>
+          <div class="meeting_date">
+            <p><span>Date:</span> {{item.date}}</p>
+            <p><span>Time:</span> {{item.start_time | date:'shortTime'}} - {{item.end_time | date:'shortTime'}}</p>
+          </div>
+          <div class="meeting_mode">
+            <p><span>Mode:</span>{{item.mode}}</p>
+            <p class="meeting_link" *ngIf="item.mode=='online'"><span>Meeting link:</span> <a
+                href="{{item.meetinglink}}">{{item.meetinglink}}</a></p>
+            <p class="meeting_link" *ngIf="item.mode!='online'"><span>Venue: </span> <b>{{item.venue}}</b></p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="parentno" *ngIf="this.meeting.length==0">
+      <div class="nofound">
+        <img src="../../../../assets/images/no_record.png">
+        <h2>No Record Found</h2>
+      </div>
+    </div>
+  </div>
+</div>

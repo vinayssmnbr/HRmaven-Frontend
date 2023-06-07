@@ -1,0 +1,88 @@
+.meeting_main {
+  width: calc(100% - 223px);
+  margin-left: 223px;
+  background: #f9f9f9;
+  padding: 78px 30px;
+}
+
+.meeting_content {
+  /* align-items: start;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(565px, 1fr));
+  padding: 0 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 77vh;
+}
+.parentno {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid red; */
+  justify-content: center;
+  align-content: center;
+}
+.nofound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.meeting_content h2 {
+  color: #444444;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 21px;
+}
+.col-6 {
+  display: inline-block;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+}
+
+.card {
+  padding: 20px 35px;
+}
+
+.card h1 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #333333;
+}
+
+.card p {
+  font-weight: 400;
+  font-size: 12px;
+  color: #999999;
+  padding-top: 6px;
+}
+
+.meeting_date {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  text-align: left;
+}
+
+.meeting_date p span,
+.meeting_mode p span {
+  color: #333333;
+}
+
+.meeting_mode {
+  display: flex;
+  align-items: center;
+  gap: 96px;
+}
+
+.meeting_mode .meeting_link {
+  color: #6092c0;
+  cursor: pointer;
+}

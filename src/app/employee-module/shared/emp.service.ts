@@ -281,13 +281,13 @@ export class EmpService {
     const itemString = localStorage.getItem(this.selectedJobDetailKey);
     return itemString ? JSON.parse(itemString) : null;
   }
-  fetchmeeting(){
+  fetchmeeting() {
     const id = this.cookie.get('id');
-    const role= this.cookie.get('role');
+    const role = this.cookie.get('role');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       id: id,
-      role:role
+      role: role,
     });
     return this.http.get(`${this.prefix + 'job/meeting'}`, { headers });
   }
@@ -302,5 +302,13 @@ export class EmpService {
     return this.http.get(this.prefix + 'candid/fetchcandidate/refer', {
       headers,
     });
+  }
+  fetchmeetings() {
+    const id = this.cookie.get('id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(`${this.prefix + 'job/empmeeting'}`, { headers });
   }
 }
