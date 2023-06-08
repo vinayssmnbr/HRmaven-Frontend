@@ -709,8 +709,8 @@ input[type="radio"] {
   overflow-x: hidden;
   height: 400px;
   padding-right: 4px;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   align-items: center;
 }
 

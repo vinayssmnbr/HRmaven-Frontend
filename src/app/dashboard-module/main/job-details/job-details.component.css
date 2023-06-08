@@ -1510,14 +1510,14 @@ form .user__details .input__box {
   border: none;
 }
 
-.fa-xmark {
+/* .fa-xmark {
   position: absolute;
   top: -4%;
   right: -5%;
   cursor: pointer;
   color: #ececec;
   font-size: 20px;
-}
+} */
 
 .dropdwon_select {
   background-color: #fff;
