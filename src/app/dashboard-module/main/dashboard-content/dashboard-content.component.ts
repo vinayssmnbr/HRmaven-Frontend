@@ -176,6 +176,7 @@ export class DashboardContentComponent implements OnInit {
 
     ngOnInit() {
       this.activity();
+      this.fetchmeeting();
       this.dynamicrecord();
       this.recruitment={
         total:0,
@@ -427,9 +428,14 @@ export class DashboardContentComponent implements OnInit {
   }
 
   showModal11=false;
-  openModal11(){
+  option:any;
+  openModal11(data:any){
+    if(data.mode=='online')
+    {
     this.showModal11 = true;
+    this.option=data;
     this.showModalContent=true
+    }
   }
 
   closeModal11(){
@@ -510,5 +516,28 @@ dynamicrecord(){
     }
   })
 
+}
+
+list:any[]=[];
+addTask(item:string){
+  this.list.push({is:this.list.length,name:item});
+  console.warn(this.list)
+}
+meeting:any=[];
+fetchmeeting(){
+  this.dashService.fetchmeeting().subscribe((res:any)=>{
+    this.meeting = res.data[0].meeting;
+      if (this.meeting.length > 0) {
+        this.meeting.map((item: any) => {
+          const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          const d = new Date(item.date);
+          let day = weekday[d.getDay()];
+          item['day'] = day;
+          item['dd']=d.getDate();
+        })
+        console.log(this.meeting);
+      }
+
+  })
 }
 }

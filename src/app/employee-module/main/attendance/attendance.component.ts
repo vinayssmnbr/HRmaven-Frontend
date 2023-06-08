@@ -73,10 +73,13 @@ export class AttendanceComponent implements OnInit {
 
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
-    const lat1 = 31.279581;
-    const lon1 = 75.782387;
+    // const lat1 = 31.279581;
+    // const lon1 = 75.782387;
+    //LPU Coordinate
+    const lat1 = 31.2444468;
+    const lon1 = 75.7022454;
     const R = 63710;
-    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 2000)) {
 
       console.log(lat);
       console.log(lon);
@@ -116,10 +119,13 @@ export class AttendanceComponent implements OnInit {
 
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
-    const lat1 = 31.279581;
-    const lon1 = 75.782387;
+    // const lat1 = 31.279581;
+    // const lon1 = 75.782387;
+    //LPU Coordinate
+    const lat1 = 31.2444468;
+    const lon1 = 75.7022454;
     const R = 63710;
-    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 2000)) {
 
       console.log(lat);
       console.log(lon);

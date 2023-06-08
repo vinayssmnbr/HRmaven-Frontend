@@ -49,12 +49,14 @@ export class DashService {
     return this.http.post(this.prefix + 'api/create', data);
   }
 
+  //ADD JOB VACANCIES
   addJobVacancies(data: any) {
     const id = this.cookie.get('hr_id');
     data['hrid'] = id;
     return this.http.post(this.prefix + 'job/vacancies', data);
   }
 
+  //GET JOB VACANCIES
   fetchJobVecancies() {
     const id = this.cookie.get('hr_id');
     const headers = new HttpHeaders({
@@ -200,11 +202,14 @@ export class DashService {
     return this.http.get(this.prefix + 'api/leave/graph/leave', { headers });
   }
 
+  //GET EMPLOYEE STATUS
   getEmployeeStatus(status: string): Observable<any[]> {
     return this.http
       .get<any[]>(this.prefix + 'api/find')
       .pipe(map((data) => data.filter((user) => user.status === status)));
   }
+
+  //GET ALL EMPLOYEE
   getEmployee() {
     const id = this.cookie.get('hr_id');
     const headers = new HttpHeaders({
@@ -213,18 +218,22 @@ export class DashService {
     return this.http.get(this.prefix + 'api/find', { headers });
   }
 
+  //GET EMPLOYEE EMAIL
   getEmployeeEmail(email: any) {
     return this.http.get(`${this.prefix + 'api/checkemail'}/${email}`);
   }
 
+  //GET EMPLOYEE MOBILE
   getEmployeeMobile(mobile: any) {
     return this.http.get(`${this.prefix + 'api/checkmobile'}/${mobile}`);
   }
 
+  //GET CANDIDATE EMAIL
   getCandidateEmail(email: any) {
     return this.http.get(`${this.prefix + 'candid/checkedmail'}/${email}`);
   }
 
+  //GET CANDIDATE MOIBILE
   getCandidateMobile(contactnumber: any) {
     return this.http.get(
       `${this.prefix + 'candid/checkedmobile'}/${contactnumber}`
@@ -313,6 +322,7 @@ export class DashService {
     });
   }
 
+  //UPLOAD EMPLOYEE IMAGE
   private client: filestack.Client;
   fileUrl: any;
 
@@ -350,16 +360,19 @@ export class DashService {
     return this.http.post(url, { data }, { headers, responseType: 'blob' });
   }
 
+  //UPDATE EMPLOYEE STATUS
   updateEmpStatus(id: any, status: any): Observable<any> {
     const url = `${this.prefix + 'api/update'}/${id}`;
     return this.http.patch(url, { status });
   }
 
+  //UPDATE JOB STATUS
   updateJobStatus(id: any, status: any) {
     const url = `${this.prefix + 'candid/status/jobupdate'}/${id}`;
     return this.http.patch(url, { status });
   }
 
+  //CREATE CANDIDATE MEETING
   CreatecandidateMetting(data: any) {
     const id = this.cookie.get('statusid');
     data['statusid'] = id;
@@ -379,5 +392,14 @@ export class DashService {
       hrid: id.toString(),
     });
     return this.http.get(this.prefix + 'job/app/analysis', { headers });
+  }
+
+  fetchmeeting(){
+    const id = this.cookie.get('hr_id');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      id: id,
+    });
+    return this.http.get(`${this.prefix + 'job/meeting'}`, { headers });
   }
 }

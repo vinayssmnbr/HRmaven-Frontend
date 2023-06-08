@@ -42,12 +42,10 @@
   width: 32%;
 }
 
-
 .card p {
   font-weight: 400;
   font-size: 14px;
   color: #666666;
-
 }
 
 .card h1 {
@@ -72,7 +70,6 @@
 .chart-balance {
   display: flex;
 }
-
 
 .attendance-chart {
   height: 420px;
@@ -121,7 +118,7 @@
 }
 
 .job-post-summary-area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 25px 25px;
   border-radius: 8px;
 }
@@ -139,12 +136,11 @@
 
 .job-summary-list {
   margin-top: 25px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   padding: 22px 20px;
 }
-
 
 .UI-UX-area {
   display: flex;
@@ -162,14 +158,14 @@
 .ui-heading p {
   width: 93px;
   height: 24px;
-  background-color: #FEF0C8;
+  background-color: #fef0c8;
   display: flex;
   justify-content: center;
   border-radius: 1000px;
   align-items: center;
   font-weight: 400;
   font-size: 12px;
-  color: #5F2500;
+  color: #5f2500;
 }
 
 .ul-li h4 {
@@ -198,12 +194,12 @@
 .skill-require-ul li {
   padding: 4px 8px;
   height: 25px;
-  background-color: #EFEFF8;
+  background-color: #efeff8;
   border-radius: 12px;
   cursor: pointer;
   font-weight: 400;
   font-size: 12px;
-  color: #2F2C9F;
+  color: #2f2c9f;
 }
 
 .job-posted {
@@ -211,7 +207,6 @@
   font-size: 12px;
   color: #999999;
 }
-
 
 .leave-profile {
   display: flex;
@@ -231,11 +226,11 @@
 }
 
 .leave:hover {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
 }
 
 .profile:hover {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
 }
 
 .leave,
@@ -254,29 +249,28 @@
 }
 
 .iconCenter.file {
-  color: #F8BB6F;
+  color: #f8bb6f;
   background-color: rgba(251, 205, 147, 0.14);
 }
 
 .iconCenter.list {
-  color: #7BD36D;
+  color: #7bd36d;
   background-color: rgba(141, 220, 128, 0.2);
 }
 
 .iconCenter.reject {
-  color: #FA9796;
+  color: #fa9796;
   background: rgba(255, 168, 167, 0.2);
 }
 
 .iconCenter.clock {
-  color: #8BAFFF;
+  color: #8bafff;
   background: rgba(221, 232, 255, 0.29);
 }
 
 .text-image p {
   font-size: 14px;
   color: #777777;
-
 }
 
 .text-image h1 {
@@ -295,8 +289,6 @@
   padding-left: 33.5px;
 }
 
-
-
 .attendance h2 {
   font-size: 18px;
   font-weight: 500;
@@ -309,7 +301,7 @@
 
 /* -------------Drop Down -------- */
 .dropdwon_select {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   height: 40px;
   cursor: pointer;
   padding: 8px;
@@ -359,7 +351,7 @@
 }
 
 .select_content::-webkit-scrollbar-track {
-  background-color: #EFEFF8;
+  background-color: #efeff8;
 }
 
 .select_content::-webkit-scrollbar-thumb {
@@ -381,7 +373,7 @@
 }
 
 .select_content ul li:hover {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   border-radius: 8px;
 }
 
@@ -397,7 +389,7 @@
   justify-content: space-between;
   width: 100%;
   height: 92px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border-radius: 10px;
   align-items: center;
   padding: 0 15px;
@@ -406,7 +398,7 @@
 .leave_balance {
   margin: 20px 0px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 420px;
   border-radius: 8px;
   padding: 24px 19px;
@@ -420,7 +412,6 @@
   font-weight: 500;
   font-size: 18px;
   color: #222222;
-
 }
 
 .casual-heading h3 {
@@ -442,10 +433,9 @@
   gap: 25px;
 }
 
-
 /*-----------------------------Leave Balance End---------------------*/
 .attendance-area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -474,7 +464,9 @@
 .grey-doughnut {
   position: absolute;
   border-radius: 50%;
-  box-shadow: 0px 0px 0px 10px #E0E0E0, 0px 0px 0px 20px #E0E0E0, 0px 0px 0px 30px #E0E0E0, 0px 0px 0px 40px #E0E0E0, 0px 0px 0px 50px #E0E0E0, 0px 0px 0px 60px #E0E0E0;
+  box-shadow: 0px 0px 0px 10px #e0e0e0, 0px 0px 0px 20px #e0e0e0,
+    0px 0px 0px 30px #e0e0e0, 0px 0px 0px 40px #e0e0e0, 0px 0px 0px 50px #e0e0e0,
+    0px 0px 0px 60px #e0e0e0;
   width: 108px;
   height: 111px;
   margin-left: 67px;
@@ -485,8 +477,6 @@
   display: flex;
   gap: 43px;
 }
-
-
 
 .meeting-text {
   display: flex;
@@ -499,27 +489,26 @@
 }
 
 a {
-  color: #2F2C9F;
+  color: #2f2c9f;
   gap: 8px;
   display: flex;
   margin-top: 4px;
 }
-.meeting-text i{
+.meeting-text i {
   margin-top: 4px;
 }
 
 .meeting-text p {
-  color: #2F2C9F;
+  color: #2f2c9f;
   font-size: 14px;
 }
 
 .meeting-area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   min-height: 97%;
   height: 543px;
-
 }
 
 .interview-area {
@@ -555,8 +544,8 @@ a {
 .dots ul button {
   width: 100%;
   padding: 10px 25px;
-  background-color: #FFFFFF;
-  color: #37474F;
+  background-color: #ffffff;
+  color: #37474f;
   outline: none;
   border: none;
   border-radius: 4px 4px 0px 0px;
@@ -598,11 +587,11 @@ a {
 }
 
 .interview-area:hover {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
 }
 
 .interview-area:hover .date {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   border-radius: 5px;
   cursor: pointer;
@@ -627,7 +616,7 @@ a {
 }
 
 .date {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   height: 50px;
   width: 50px;
   text-align: center;
@@ -668,7 +657,7 @@ a {
 }
 
 .leave-request-area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 20px;
   height: 100%;
   border-radius: 8px;
@@ -685,7 +674,7 @@ a {
 }
 
 .leave-request-heading p {
-  color: #2F2C9F;
+  color: #2f2c9f;
 }
 
 .leave-request-heading p a {
@@ -693,7 +682,7 @@ a {
 }
 
 .activity-area {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 20px 19px 14px 20px;
   height: 100%;
 }
@@ -711,7 +700,7 @@ a {
 }
 
 .activity-feed-text p {
-  color: #2F2C9F;
+  color: #2f2c9f;
 }
 
 .activity-feed-text:hover p {
@@ -725,7 +714,7 @@ a {
 }
 
 .john-image:hover {
-  background-color: #F7F7FB;
+  background-color: #f7f7fb;
   border-radius: 8px;
 }
 
@@ -750,7 +739,6 @@ a {
 
 .john-text p {
   color: #555555;
-
 }
 
 table {
@@ -758,7 +746,6 @@ table {
   width: 100%;
   height: calc(100% - 12px);
 }
-
 
 .table_data {
   width: 100%;
@@ -772,8 +759,6 @@ table {
   width: 100%;
   background-color: #f9f9f9;
   border-collapse: separate;
-
-
 }
 
 table {
@@ -815,7 +800,7 @@ td {
 }
 
 .table_data::-webkit-scrollbar-track {
-  background-color: #EFEFF8;
+  background-color: #efeff8;
 }
 
 .table_data::-webkit-scrollbar-thumb {
@@ -824,10 +809,8 @@ td {
   height: 10px;
 }
 
-
-
 .table_text tr:nth-child(even) {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .table_text tr:nth-child(odd) {
@@ -838,7 +821,7 @@ td {
   font-size: 11px;
   text-transform: uppercase;
   color: #444444;
-  background-color: #EFEFF8;
+  background-color: #efeff8;
   margin-top: 10px;
 }
 
@@ -859,7 +842,6 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-
 .custom-radio {
   appearance: none;
   -webkit-appearance: none;
@@ -879,10 +861,9 @@ input[type="radio"] {
   outline: 2px solid #e8e8e8;
 }
 
-
 #outline1:checked {
-  outline-color: #29A74C;
-  background-color: #29A74C;
+  outline-color: #29a74c;
+  background-color: #29a74c;
   animation: outline-checked1;
   animation-duration: 0.1s;
   animation-iteration-count: 4;
@@ -890,24 +871,23 @@ input[type="radio"] {
   animation-timing-function: linear;
 }
 
-#outline1:checked+label {
-  color: #29A74C;
+#outline1:checked + label {
+  color: #29a74c;
 }
 
-#outline:checked+label {
-  color: #FA5D5D;
+#outline:checked + label {
+  color: #fa5d5d;
 }
 
 #outline:checked {
-  outline-color: #FA5D5D;
-  background-color: #FA5D5D;
+  outline-color: #fa5d5d;
+  background-color: #fa5d5d;
   animation: outline-checked;
   animation-duration: 0.1s;
   animation-iteration-count: 4;
   animation-direction: alternate;
   animation-timing-function: linear;
 }
-
 
 @keyframes outline-checked {
   0% {
@@ -928,7 +908,6 @@ input[type="radio"] {
     outline-offset: -0.2rem;
   }
 }
-
 
 .three-dots {
   position: relative;
@@ -966,7 +945,7 @@ input[type="radio"] {
 
 .scrollbar-start::-webkit-scrollbar-track,
 .meeting-scrollbar::-webkit-scrollbar-track {
-  background-color: #EFEFF8;
+  background-color: #efeff8;
 }
 
 .scrollbar-start::-webkit-scrollbar-thumb,
@@ -975,7 +954,6 @@ input[type="radio"] {
   border-radius: 6px;
   height: 10px;
 }
-
 
 .scrollbar-start {
   overflow-y: auto;
@@ -989,11 +967,11 @@ input[type="radio"] {
 .meeting-scrollbar {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 481px;
+  /* height: 481px; */
   padding-right: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 .hidden {
@@ -1027,11 +1005,10 @@ input[type="radio"] {
 
 .access-location {
   width: 422px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 8px;
   padding: 30px 43px 20px 43px;
   text-align: center;
-
 }
 
 .access-location-text h3 {
@@ -1055,21 +1032,19 @@ input[type="radio"] {
 
 .access-location button {
   width: 67px;
-  background-color: #2F2C9F;
+  background-color: #2f2c9f;
   border-radius: 8px;
   padding: 9px 24px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   border: none;
-
 }
-
 
 .no-jobs-to-display {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
 }
 
@@ -1085,7 +1060,6 @@ input[type="radio"] {
   display: flex;
   justify-content: center;
   text-align: center;
-
 }
 
 .welcome_modal {
@@ -1100,19 +1074,18 @@ input[type="radio"] {
 .welcome_modal img {
   width: 100%;
   height: 250px;
-
 }
 
 .welcome_modal h1 {
   font-weight: 500;
   font-size: 18px;
   line-height: 140%;
-  color: #2F2C9F;
+  color: #2f2c9f;
   padding: 15px 0 8px 0;
 }
 
 .welcome_modal p {
-  font-family: 'Outfit';
+  font-family: "Outfit";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -1123,17 +1096,17 @@ input[type="radio"] {
 
 .welcome_modal button {
   padding: 10px 25px;
-  background: #2F2C9F;
+  background: #2f2c9f;
   border-radius: 8px;
   margin-top: 8px;
   font-weight: 500;
   font-size: 13px;
   line-height: 140%;
-  color: #FFFFFF;
-  outline:none;
-  border:none;
+  color: #ffffff;
+  outline: none;
+  border: none;
   margin-bottom: 30px;
 }
-.welcome_modal button:hover{
+.welcome_modal button:hover {
   opacity: 70%;
 }

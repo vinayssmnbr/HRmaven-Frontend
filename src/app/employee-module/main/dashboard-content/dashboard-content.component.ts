@@ -8,15 +8,17 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-dashboard-content',
   templateUrl: './dashboard-content.component.html',
-  styleUrls: ['./dashboard-content.component.css']
+  styleUrls: ['./dashboard-content.component.css'],
 })
 export class DashboardContentComponent {
-
   oilCanvas: any = '';
-  constructor(public  empService: EmpService, private http: HttpClient,public login : EmployeeService) {
+  constructor(
+    public empService: EmpService,
+    private http: HttpClient,
+    public login: EmployeeService
+  ) {
     empService.activeComponent = 'dashboard';
     empService.headerContent = '';
-
   }
   in: any;
   out: any;
@@ -27,12 +29,10 @@ export class DashboardContentComponent {
   absent: number = 0;
   leave: number = 0;
   total: number = 0;
-  done_punch_in:boolean=false;
-  done_punch_out:boolean=false;
-  loaderz:boolean=false;
-  jobs:any=[];
-
-
+  done_punch_in: boolean = false;
+  done_punch_out: boolean = false;
+  loaderz: boolean = false;
+  jobs: any = [];
 
   array: any = [
     {
@@ -83,11 +83,9 @@ export class DashboardContentComponent {
       id: 11,
       name: 'December',
     },
-
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
-
     this.contentdropdown = !this.contentdropdown;
   }
   Selectvariable: string = 'January';
@@ -98,23 +96,26 @@ export class DashboardContentComponent {
     this.contentdropdown = false;
     console.log(arr.name);
     this.donutdata.map((item) => {
-      if ((item.month - 1) == arr.id) {
-        this.present = item.present,
-          this.total = item.total,
-          this.leave = item.leave,
-          this.absent = item.absent
+      if (item.month - 1 == arr.id) {
+        (this.present = item.present),
+          (this.total = item.total),
+          (this.leave = item.leave),
+          (this.absent = item.absent);
         this.blank = false;
-        if(this.total!=0 && this.leave==0 && this.absent==0 && this.present==0)
-        {
-          this.blank=true;
+        if (
+          this.total != 0 &&
+          this.leave == 0 &&
+          this.absent == 0 &&
+          this.present == 0
+        ) {
+          this.blank = true;
         }
-      }
-      else {
+      } else {
         this.present = this.absent = this.leave = 0;
         this.total = 0;
         this.blank = true;
       }
-    })
+    });
 
     this.pieChart.destroy();
     this.piechart();
@@ -123,8 +124,10 @@ export class DashboardContentComponent {
     this.obj = {
       casual: 0,
       compensatory: 0,
-      medical: 0
-    }
+      medical: 0,
+    };
+    this.fetchmeeting();
+    this.fetchempmeeting();
 
     // this.present=0
     // this.absent=0;
@@ -134,25 +137,27 @@ export class DashboardContentComponent {
     this.leavegraphcontent();
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
-        this.in = "";
-        this.out = "";
-      }
-      else {
+        this.in = '';
+        this.out = '';
+      } else {
         this.in = res.in;
         this.out = res.out;
       }
       console.log(res);
-    })
+    });
     this.getIPAddress();
     this.fetchjob();
   }
 
-  fetchjob(){
-    this.empService.fetchjob().subscribe((res:any)=>{
-      this.jobs=res.data[0].job;
+  fetchjob() {
+    this.empService.fetchjob().subscribe((res: any) => {
+      this.jobs = res.data[0].job;
       console.log(this.jobs);
+    });
+  }
 
-    })
+  fetchmeeting() {
+    this.empService.fetchmeeting().subscribe((res: any) => {});
   }
   contentdropdown1: boolean = false;
   dropdownOpen1() {
@@ -161,42 +166,41 @@ export class DashboardContentComponent {
 
   //  attendance // punchin
   donut() {
-
     this.empService.attendancedonut().subscribe((res) => {
       console.log(res);
       this.donutdata = res;
-      this.loaderz=false;
+      this.loaderz = false;
       this.aa();
-    })
-
+    });
   }
 
-  aa(){
+  aa() {
     const d = new Date();
     const month = d.getMonth() + 1;
     this.Selectvariable = this.array[d.getMonth()].name;
     this.donutdata.map((item: any) => {
-      if ((item.month) == month) {
-        this.present = item.present,
-          this.total = item.total,
-          this.leave = item.leave,
-          this.absent = item.absent
+      if (item.month == month) {
+        (this.present = item.present),
+          (this.total = item.total),
+          (this.leave = item.leave),
+          (this.absent = item.absent);
         this.blank = false;
-        if(this.total!=0 && this.leave==0 && this.absent==0 && this.present==0)
-        {
-          this.blank=true;
+        if (
+          this.total != 0 &&
+          this.leave == 0 &&
+          this.absent == 0 &&
+          this.present == 0
+        ) {
+          this.blank = true;
         }
-      }
-      else {
+      } else {
         this.present = this.absent = this.leave = 0;
         this.total = 0;
         this.blank = true;
       }
-    })
-    this.piechart()
+    });
+    this.piechart();
   }
-
-
 
   ip: any;
   async punchin() {
@@ -208,41 +212,41 @@ export class DashboardContentComponent {
 
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
-    const lat1 = 31.279581;
-    const lon1 = 75.782387;
+    // const lat1 = 31.279581;
+    // const lon1 = 75.782387;
+    //LPU Coordinate
+    const lat1 = 31.2444468;
+    const lon1 = 75.7022454;
     // const lat1=31.280317;
     // const lon1=75.575594;
     const R = 63710;
-    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 2000)) {
 
       console.log(lat);
       console.log(lon);
       if (this.ipAddress != '') {
-        this.empService.punchin(this.ipAddress).
-          subscribe((res: any) => {
-            console.log(res.time);
-            console.log(this.ipAddress);
-            this.in = new Date();
-            this.done_punch_in=true;
-          })
+        this.empService.punchin(this.ipAddress).subscribe((res: any) => {
+          console.log(res.time);
+          console.log(this.ipAddress);
+          this.in = new Date();
+          this.done_punch_in = true;
+        });
       }
-    }
-    else {
-      console.log("out of range")
+    } else {
+      console.log('out of range');
       alert('out of range');
-
-
     }
-  }
+  };
 
   errHand(err: any) {
     switch (err.code) {
       case err.PERMISSION_DENIED:
-        alert('you dont have right to mark the attendance until location is share')
+        alert(
+          'you dont have right to mark the attendance until location is share'
+        );
         break;
     }
   }
-
 
   punchout() {
     navigator.geolocation.getCurrentPosition(this.showLocation, this.error);
@@ -253,52 +257,48 @@ export class DashboardContentComponent {
 
     const lat = pos.coords.latitude
     const lon = pos.coords.longitude
-    const lat1 = 31.279581;
-    const lon1 = 75.782387;
+    // const lat1 = 31.279581;
+    // const lon1 = 75.782387;
     // const lat1=31.280317;
     // const lon1=75.575594;
+    //LPU Coordinate
+    const lat1 = 31.2444468;
+    const lon1 = 75.7022454;
     const R = 63710;
-    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
+    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 2000)) {
 
       console.log(lat);
       console.log(lon);
       if (this.ipAddress != '') {
-        this.empService.punchout(this.ipAddress).
-          subscribe((res: any) => {
-            console.log(res.time);
-            console.log(this.ipAddress);
-            this.out = new Date();
-            this.done_punch_out=true;
-
-          })
+        this.empService.punchout(this.ipAddress).subscribe((res: any) => {
+          console.log(res.time);
+          console.log(this.ipAddress);
+          this.out = new Date();
+          this.done_punch_out = true;
+        });
       }
-    }
-    else {
-      console.log("out of range")
+    } else {
+      console.log('out of range');
       alert('out of range');
     }
-  }
+  };
 
   error(err: any) {
     switch (err.code) {
       case err.PERMISSION_DENIED:
-        alert('you dont have right to mark the attendance until location is share')
+        alert(
+          'you dont have right to mark the attendance until location is share'
+        );
         break;
     }
   }
 
   getIPAddress() {
-
-    this.http.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
-
+    this.http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
       this.ipAddress = res.ip;
       console.log(this.ipAddress);
-
     });
-
   }
-
-
 
   async leavegraphcontent() {
     await this.empService.leavegraph().subscribe((res: any) => {
@@ -321,37 +321,42 @@ export class DashboardContentComponent {
   }
 
   ngAfterViewInit() {
-    this.oilCanvas = document.getElementById("oilChart");
+    this.oilCanvas = document.getElementById('oilChart');
     this.loaderz = false;
-
   }
   blank: boolean = false;
   pieChart: any;
   piechart = () => {
-
-
     const data = {
-      labels: [
-
-      ],
+      labels: [],
       datasets: [
         {
           data: [this.present, this.absent, this.leave],
-          backgroundColor: [
-            "#5AB452",
-            "#EA6565",
-            "#FBB642"
-          ]
-        }]
+          backgroundColor: ['#5AB452', '#EA6565', '#FBB642'],
+        },
+      ],
     };
 
     this.pieChart = new Chart(this.oilCanvas, {
       type: 'doughnut',
-      data: data
+      data: data,
+    });
+  };
+
+  meeting: any = [];
+
+  fetchempmeeting() {
+    this.empService.fetchmeetings().subscribe((res: any) => {
+      this.meeting = res.data;
+      console.log('mhdjakjk', res.data);
+      if (this.meeting.length != 0) {
+        this.meeting.map((item: any) => {
+          const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          const d = new Date(item.date);
+          let day = weekday[d.getDay()];
+          item['day'] = day;
+        });
+      }
     });
   }
-
-
 }
-
-
