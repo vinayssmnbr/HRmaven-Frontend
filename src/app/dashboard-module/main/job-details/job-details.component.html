@@ -295,7 +295,7 @@
                     <option value="Resume Received">Resume Received</option>
                     <option value="Shortlisted">Shortlisted</option>
                     <option value="Interview">Interview</option>
-                    <option value="Hired">Hired</option>
+                    <option value="Hired" (click)="hired()">Hired</option>
                     <option value="Rejected">Rejected</option>
                     <option value="Archive">Archive</option>
                   </select>
@@ -635,4 +635,30 @@
       </div>
     </form>
   </div>
+</div>
+
+
+<!-------------------------------------------------Hired-Modal------------------------------------------------->
+
+<div class="hired-modal" *ngIf="hireModal">
+  <div class="hired-modal-content">
+    <h5>Upload Offer Letter</h5>
+    <i class="fa-solid fa-xmark"></i>
+    <div class="pdf-upload">
+      <div class="pdf-upload-content" *ngIf="pdfupload">
+      <img src="assets/images/pdf.png" alt="">
+      <h4>Select a PDF file to upload</h4>
+      <label for="file-style" class="choose-file-btn">
+        <span>Choose File</span>
+      </label>
+      <input type="file" name="file_2" id="file-style">
+    </div>
+    </div>
+    <h6>Maximum Size : 5 MB</h6>
+    <div class="upload-button">
+      <button (click)="upload()">Upload</button>
+    </div>
+    <div class="loader" *ngIf="uploadloader"></div>
+  </div>
+
 </div>
