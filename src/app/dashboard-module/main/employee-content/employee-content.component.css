@@ -336,7 +336,7 @@ tbody {
   overflow-y: auto;
   width: 100%;
   display: block;
-  min-height: 67px;
+  height: 420px;
 }
 
 .image_record {

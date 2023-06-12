@@ -730,4 +730,16 @@ export class JobDetailsComponent {
     this.item1 = item1;
     this.addTask(item1);
   }
+
+
+  hireModal:boolean=true;
+  hired(){
+    this.hireModal=true;
+  }
+  uploadloader:boolean=false;
+  pdfupload:boolean=true;
+  upload(){
+this.pdfupload=false;
+this.uploadloader=true;
+  }
 }

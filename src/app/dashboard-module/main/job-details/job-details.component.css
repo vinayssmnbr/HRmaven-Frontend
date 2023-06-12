@@ -459,6 +459,7 @@ thead .Resume {
   outline: none;
   cursor: pointer;
 }
+
 .dropdwon_select1 {
   cursor: pointer;
   border: 1px solid transparent;
@@ -751,11 +752,13 @@ select.table_option::after {
   font-size: 18px;
   color: #444444;
 }
+
 .form_title i {
   position: absolute;
   color: red;
   z-index: 999;
 }
+
 .Add_candidate form {
   width: 700px;
   height: 463px;
@@ -971,11 +974,13 @@ form .user__details .input__box {
   color: #444444;
   padding: 3px 7px;
 }
+
 .dropdwon_select input {
   outline: none;
   border: 1px solid transparent;
   cursor: pointer;
 }
+
 .select_content {
   background-color: #fff;
   cursor: pointer;
@@ -1179,13 +1184,11 @@ form .user__details .input__box {
   height: 100%;
   position: absolute;
   animation: progress-anime 10s ease-out infinite;
-  background: linear-gradient(
-    to right,
-    #2f2c9f 0%,
-    #2f2c9f 50%,
-    #d2d2d2 50%,
-    #d2d2d2 100%
-  );
+  background: linear-gradient(to right,
+      #2f2c9f 0%,
+      #2f2c9f 50%,
+      #d2d2d2 50%,
+      #d2d2d2 100%);
 }
 
 @keyframes progress-anime {
@@ -1352,6 +1355,7 @@ form .user__details .input__box {
   font-size: 14px;
   color: #333333;
 }
+
 .form-group textarea {
   width: 560px;
   height: 80px;
@@ -1362,6 +1366,7 @@ form .user__details .input__box {
   outline: none;
   padding: 10px 14px;
 }
+
 ul.inviteanemployee li {
   position: absolute;
   background: #ffffff;
@@ -1370,10 +1375,12 @@ ul.inviteanemployee li {
   padding: 10px 10px;
   border-radius: 6px;
 }
+
 ul.inviteanemployee i {
   color: #000;
   position: absolute;
 }
+
 .meeting-input {
   width: 275px;
   height: 40px;
@@ -1458,6 +1465,7 @@ ul.inviteanemployee i {
   font-size: 14px;
   color: #222222;
 }
+
 .all-employees {
   height: 100px;
   overflow-y: auto;
@@ -1483,6 +1491,7 @@ ul.inviteanemployee i {
 .all-employees::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 .popup_search {
   position: absolute;
   background: #ffffff;
@@ -1496,11 +1505,13 @@ ul.inviteanemployee i {
   gap: 10px;
   /* z-index: 50; */
 }
+
 .popup_email {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
 }
+
 .image-text-design {
   display: flex;
   justify-content: space-between;
@@ -1547,12 +1558,14 @@ ul.inviteanemployee i {
   font-size: 11px;
   color: #2f2c9f;
 }
+
 .all-employees .image-text-design .designer-text i {
   position: absolute;
   right: -10px;
   color: black;
   cursor: pointer;
 }
+
 .discard-save {
   display: flex;
   gap: 20px;
@@ -1586,14 +1599,14 @@ ul.inviteanemployee i {
   border: none;
 }
 
-.modal-content .modal-content_icon i {
+/* .fa-xmark {
   position: absolute;
   top: -4%;
   right: -5%;
   cursor: pointer;
   color: #ececec;
   font-size: 20px;
-}
+} */
 
 .dropdwon_select {
   background-color: #fff;
@@ -1657,4 +1670,126 @@ ul.inviteanemployee i {
 .select_active {
   background-color: #ececec;
   border-radius: 8px;
+}
+
+
+/*--------------------Hired-Modal----------------------*/
+.hired-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+}
+
+.hired-modal-content {
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 8px;
+  width: 553px;
+  padding: 8px 30px 12px 30px;
+  height: 334px;
+}
+.hired-modal-content h5{
+  color: #666666;
+  font-weight: 500;
+font-size: 16px;
+border-bottom: 1px solid #D9D9D9;
+padding-bottom: 7px;
+}
+.hired-modal-content i{
+  position: absolute;
+  right: -22px;
+  top: -19px;
+ color: #ECECEC;
+}
+.pdf-upload {
+  margin-top: 16.3px;
+  border: 1px dashed #CBCBCB;
+  width: 493px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15.8px;
+  height: 177px;
+}
+.pdf-upload h4{
+  color: #666666;
+  font-weight: 600;
+font-size: 16px;
+}
+.pdf-upload-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+}
+#file-style {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  display: none;
+}
+.choose-file-btn {
+  background-color: #EFEFF8;
+  padding: 3px 10px;
+  border-radius: 6px;
+  color: #2F2C9F;
+  height: 22px;
+  width: 82px;
+  font-weight: 400;
+  font-size: 12px;
+}
+.hired-modal-content h6{
+  color: #999999;
+  font-weight: 400;
+font-size: 12px;
+padding-top: 20px;
+}
+.upload-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+.upload-button button{
+  background-color: #2F2C9F;
+  border-radius: 8px;
+  padding: 9px 34px;
+  width: 114px;
+  height: 38px;
+  color: #FFFFFF;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+}
+.loader {
+  border: 6px solid #CBCBCB;
+  border-radius: 50%;
+  border-top: 6px solid #2f2c9f;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+position: absolute;
+top: 80px;
+right: 250px;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

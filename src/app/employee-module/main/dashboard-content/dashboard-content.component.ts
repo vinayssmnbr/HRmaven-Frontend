@@ -212,8 +212,11 @@ export class DashboardContentComponent {
 
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
-    const lat1 = 31.2521969;
-    const lon1 = 75.7033896;
+    // const lat1 = 31.279581;
+    // const lon1 = 75.782387;
+    //LPU Coordinate
+    const lat1 = 31.2444468;
+    const lon1 = 75.7022454;
     // const lat1=31.280317;
     // const lon1=75.575594;
     const R = 63710;
@@ -223,7 +226,7 @@ export class DashboardContentComponent {
           Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)
       ) *
         R <
-      1000
+      2000
     ) {
       console.log(lat);
       console.log(lon);
@@ -260,10 +263,13 @@ export class DashboardContentComponent {
 
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
-    const lat1 = 31.2521969;
-    const lon1 = 75.7033896;
+    // const lat1 = 31.279581;
+    // const lon1 = 75.782387;
     // const lat1=31.280317;
     // const lon1=75.575594;
+    //LPU Coordinate
+    const lat1 = 31.2444468;
+    const lon1 = 75.7022454;
     const R = 63710;
     if (
       Math.acos(
@@ -271,7 +277,7 @@ export class DashboardContentComponent {
           Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)
       ) *
         R <
-      1000
+      2000
     ) {
       console.log(lat);
       console.log(lon);

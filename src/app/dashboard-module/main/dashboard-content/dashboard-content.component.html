@@ -67,7 +67,7 @@
               new</p>
           </div>
           <div class="meeting-scrollbar">
-            <!-- <div class="all-meetings" *ngFor="let option of options let index = index" >
+            <div class="all-meetings" *ngFor="let option of options let index = index" >
                         <div class="interview-area">
                             <div class="date">
                                 <p>{{option.day}}</p>
@@ -128,8 +128,8 @@
                         <div class="join-meeting-button">
                             <button class="join" (click)="closeModal11()">Join meeting</button>
                         </div>
-                    </div> -->
-            <svg width="250" height="250" viewBox="0 0 145 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </div>
+            <!-- <svg width="250" height="250" viewBox="0 0 145 172" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.7" clip-path="url(#clip0_5453_87069)">
                 <path
                   d="M91.3782 30.8128H53.6543C52.7946 30.8138 51.9705 31.1566 51.3626 31.766C50.7547 32.3754 50.4128 33.2016 50.4117 34.0634V118.115L49.9794 118.248L40.7251 121.089C40.2865 121.223 39.8128 121.177 39.4079 120.961C39.003 120.745 38.7001 120.377 38.5656 119.938L11.0384 29.7964C10.9044 29.3567 10.95 28.8817 11.1653 28.4757C11.3805 28.0697 11.7477 27.7661 12.1862 27.6314L26.4471 23.2538L67.7897 10.5675L82.0504 6.18988C82.2675 6.12292 82.4955 6.09952 82.7216 6.12102C82.9476 6.14252 83.1672 6.20851 83.3678 6.31519C83.5684 6.42187 83.7461 6.56716 83.8906 6.74275C84.0351 6.91833 84.1436 7.12076 84.21 7.33846L91.2463 30.3793L91.3782 30.8128Z"
@@ -170,7 +170,7 @@
                   <rect width="140" height="137" fill="white" transform="translate(2.5)" />
                 </clipPath>
               </defs>
-            </svg>
+            </svg> -->
 
           </div>
 
@@ -533,16 +533,13 @@
             <div class="invite-add">
               <div class="form-group">
                 <label>Invite an employees</label> <br>
-                <input type="text" placeholder="Type employee name" class="invite" formControlName="inviteanemplyee" #task>
+                <input type="text" placeholder="Type employee name" class="invite" formControlName="inviteanemplyee">
               </div>
               <div class="add-btn">
-                <button (click)="addTask(task.value)">Add</button>
+                <button>Add</button>
               </div>
             </div>
           </div>
-          <ul class="inviteanemployee" *ngFor="let item of list">
-            <li>{{item.name}}</li>
-          </ul>
           <div class="in-this-interview-area">
             <h5>In this interview</h5>
             <div class="image-text-design">

@@ -180,7 +180,7 @@
               <input type="password" placeholder="Type a new password" formControlName="password"
                 class="form-control password" (keyup)="onKeyUp($event)" (input)="onNewPasswordChange()" required
                 id="passwordp" #passwordInput1 [ngClass]="{'ng-invalid': forgetpwd.controls.password.errors?.isPasswordMatched && forgetpwd.controls.password.dirty,
-                                     'ng-valid': forgetpwd.controls.password.valid}"> <span class="password-toggle"
+                                      'ng_valid': forgetpwd.controls.password.valid}"> <span class="password-toggle"
                 (click)="togglePasswordVisibility1(passwordInput1)">
                 <i class="fa {{ showPasswordIcon1 }}"></i>
               </span>
