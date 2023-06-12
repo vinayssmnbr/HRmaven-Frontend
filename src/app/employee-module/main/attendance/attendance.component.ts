@@ -4,29 +4,26 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
-  styleUrls: ['./attendance.component.css']
+  styleUrls: ['./attendance.component.css'],
 })
 export class AttendanceComponent implements OnInit {
-
-
   constructor(public empService: EmpService, private http: HttpClient) {
     empService.activeComponent = 'attendance';
     empService.headerContent = '';
-
   }
   obj: any;
   total: any = 0;
   leave: any = 0;
   present: any = 0;
   absent: any = 0;
-  loader:boolean=true;
+  loader: boolean = true;
   today: any;
   tomorrow: any;
   in: any;
   out: any;
   ipAddress = '';
-  done_punch_in:boolean=false;
-  done_punch_out:boolean=false;
+  done_punch_in: boolean = false;
+  done_punch_out: boolean = false;
   attendance() {
     this.empService.attendanceload().subscribe((res: any) => {
       // current date
@@ -34,28 +31,25 @@ export class AttendanceComponent implements OnInit {
       const m = d.getMonth();
       console.log(res.response);
       this.obj = res.response;
-      this.loader=false;
+      this.loader = false;
       res.response.map((d) => {
         let date = new Date(d.date);
         let month = date.getMonth();
         if (month == m) {
           if (d.status == 'present') {
             this.present = this.present + 1;
-
           }
           if (d.status == 'absent') {
             this.absent = this.absent + 1;
-
           }
           if (d.status == 'leave') {
             this.leave = this.leave + 1;
-
           }
         }
-      })
+      });
 
-      console.log(typeof (this.leave));
-    })
+      console.log(typeof this.leave);
+    });
     // this.total = this.leave + this.absent + this.present;
     // this.total = Number(this.total);
     // this.present=(this.present/this.total)*100;
@@ -71,41 +65,44 @@ export class AttendanceComponent implements OnInit {
   showLoc = async (pos: any) => {
     console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
 
-    const lat = pos.coords.latitude
-    const lon = pos.coords.longitude
-    const lat1 = 31.279581;
-    const lon1 = 75.782387;
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const lat1 = 31.2521969;
+    const lon1 = 75.7033896;
     const R = 63710;
-    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
-
+    if (
+      Math.acos(
+        Math.sin(lat1) * Math.sin(lat) +
+          Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)
+      ) *
+        R <
+      1000
+    ) {
       console.log(lat);
       console.log(lon);
       if (this.ipAddress != '') {
-        this.empService.punchin(this.ipAddress).
-          subscribe((res: any) => {
-            console.log(res.time);
-            console.log(this.ipAddress);
-            this.in = new Date();
-            this.done_punch_in=true;
-          })
+        this.empService.punchin(this.ipAddress).subscribe((res: any) => {
+          console.log(res.time);
+          console.log(this.ipAddress);
+          this.in = new Date();
+          this.done_punch_in = true;
+        });
       }
-    }
-    else {
-      console.log("out of range");
+    } else {
+      console.log('out of range');
       alert('out of range');
-
-
     }
-  }
+  };
 
   errHand(err: any) {
     switch (err.code) {
       case err.PERMISSION_DENIED:
-        alert('you dont have right to mark the attendance until location is share')
+        alert(
+          'you dont have right to mark the attendance until location is share'
+        );
         break;
     }
   }
-
 
   punchout() {
     navigator.geolocation.getCurrentPosition(this.showLocation, this.error);
@@ -114,35 +111,41 @@ export class AttendanceComponent implements OnInit {
   showLocation = async (pos: any) => {
     console.log('lat' + pos.coords.latitude, 'long' + pos.coords.longitude);
 
-    const lat = pos.coords.latitude
-    const lon = pos.coords.longitude
-    const lat1 = 31.279581;
-    const lon1 = 75.782387;
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const lat1 = 31.2521969;
+    const lon1 = 75.7033896;
     const R = 63710;
-    if ((Math.acos(Math.sin(lat1) * Math.sin(lat) + Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)) * R < 1000)) {
-
+    if (
+      Math.acos(
+        Math.sin(lat1) * Math.sin(lat) +
+          Math.cos(lat1) * Math.cos(lat) * Math.cos(lon - lon1)
+      ) *
+        R <
+      1000
+    ) {
       console.log(lat);
       console.log(lon);
       if (this.ipAddress != '') {
-        this.empService.punchout(this.ipAddress).
-          subscribe((res: any) => {
-            console.log(res.time);
-            console.log(this.ipAddress);
-            this.out = new Date();
-            this.done_punch_out=true;
-          })
+        this.empService.punchout(this.ipAddress).subscribe((res: any) => {
+          console.log(res.time);
+          console.log(this.ipAddress);
+          this.out = new Date();
+          this.done_punch_out = true;
+        });
       }
-    }
-    else {
-      console.log("out of range");
+    } else {
+      console.log('out of range');
       alert('out of range');
     }
-  }
+  };
 
   error(err: any) {
     switch (err.code) {
       case err.PERMISSION_DENIED:
-        alert('you dont have right to mark the attendance until location is share')
+        alert(
+          'you dont have right to mark the attendance until location is share'
+        );
         break;
     }
   }
@@ -154,30 +157,23 @@ export class AttendanceComponent implements OnInit {
 
     this.empService.attendanceTime().subscribe((res: any) => {
       if (res.in == '----') {
-        this.in = "";
-        this.out = "";
-      }
-      else {
+        this.in = '';
+        this.out = '';
+      } else {
         this.in = res.in;
         this.out = res.out;
       }
       console.log(res);
-
-    })
+    });
 
     this.getIPAddress();
   }
 
   getIPAddress() {
-
-    this.http.get("http://api.ipify.org/?format=json").subscribe((res: any) => {
-
+    this.http.get('http://api.ipify.org/?format=json').subscribe((res: any) => {
       this.ipAddress = res.ip;
       console.log(this.ipAddress);
-
-
     });
-
   }
 
   array: any = [
@@ -228,11 +224,10 @@ export class AttendanceComponent implements OnInit {
     {
       id: 11,
       name: 'December',
-    }
+    },
   ];
   contentdropdown: boolean = false;
   dropdownOpen() {
-
     this.contentdropdown = !this.contentdropdown;
   }
   Selectvariable: string = 'Months';
